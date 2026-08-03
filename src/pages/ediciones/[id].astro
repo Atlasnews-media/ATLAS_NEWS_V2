@@ -1,0 +1,91 @@
+---
+import { render } from "astro:content";
+import ArticleHeader from "../../components/ArticleHeader.astro";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import {
+  editionTypeLabel,
+  formatEditorialDate,
+  getPublishedEditions,
+  type Edition,
+} from "../../lib/content";
+
+export async function getStaticPaths() {
+  const editions = await getPublishedEditions();
+  return editions.map((edition) => ({
+    params: { id: edition.id },
+    props: { edition },
+  }));
+}
+
+interface Props {
+  edition: Edition;
+}
+const { edition } = Astro.props;
+const { Content } = await render(edition);
+---
+
+<BaseLayout
+  title={`${edition.data.title} — ATLAS NEWS`}
+  description={edition.data.summary}
+>
+  <main>
+    <ArticleHeader
+      eyebrow={editionTypeLabel(edition.data.type)}
+      title={edition.data.title}
+      summary={edition.data.summary}
+      date={formatEditorialDate(edition.data.publishedAt)}
+      cutoff={formatEditorialDate(edition.data.cutoffAt)}
+      demo={edition.data.demo}
+      tags={edition.data.tags}
+    />
+    <article class="prose"><Content /></article>
+    <section class="sources" aria-labelledby="fuentes-documentadas">
+      <h2 id="fuentes-documentadas">Fuentes documentadas</h2>
+      <ul>
+        {
+          edition.data.sources.map((source) => (
+            <li>
+              <a href={source.url}>{source.name}</a>
+            </li>
+          ))
+        }
+      </ul>
+    </section>
+  </main>
+</BaseLayout>
+
+<style>
+  main {
+    width: min(72rem, calc(100% - 2rem));
+    margin: 0 auto;
+  }
+  .prose {
+    max-width: 46rem;
+    margin: 3rem auto;
+    font-size: 1.1rem;
+    line-height: 1.7;
+  }
+  .prose :global(h2) {
+    margin: 3rem 0 1rem;
+    font-size: clamp(1.7rem, 4vw, 2.5rem);
+    line-height: 1;
+  }
+  .prose :global(blockquote) {
+    margin: 2rem 0;
+    padding: 1rem 1.5rem;
+    border: 1px solid currentColor;
+    font-family: system-ui, sans-serif;
+  }
+  .prose :global(li) {
+    margin: 0.5rem 0;
+  }
+  .sources {
+    max-width: 46rem;
+    margin: 4rem auto;
+    padding-top: 1.5rem;
+    border-top: 1px solid currentColor;
+  }
+  .sources a {
+    color: inherit;
+  }
+</style>

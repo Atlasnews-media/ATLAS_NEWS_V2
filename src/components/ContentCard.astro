@@ -1,0 +1,71 @@
+---
+interface Props {
+  href: string;
+  eyebrow: string;
+  title: string;
+  summary: string;
+  date: string;
+  demo?: boolean;
+}
+
+const { href, eyebrow, title, summary, date, demo = false } = Astro.props;
+---
+
+<article class="card">
+  <div class="meta">
+    <span>{eyebrow}</span>
+    {demo && <span class="demo">Demostración</span>}
+  </div>
+  <h2><a href={href}>{title}</a></h2>
+  <p>{summary}</p>
+  <time>{date}</time>
+</article>
+
+<style>
+  .card {
+    padding: 1.5rem 0;
+    border-top: 1px solid currentColor;
+  }
+
+  .meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    font:
+      700 0.7rem/1.2 system-ui,
+      sans-serif;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  .demo {
+    padding: 0.15rem 0.35rem;
+    color: #efeee8;
+    background: #171713;
+  }
+
+  h2 {
+    max-width: 42rem;
+    margin: 0.75rem 0;
+    font-size: clamp(1.5rem, 4vw, 2.4rem);
+    line-height: 1;
+  }
+
+  a {
+    color: inherit;
+    text-decoration-thickness: 0.06em;
+    text-underline-offset: 0.12em;
+  }
+
+  p {
+    max-width: 46rem;
+    font-size: 1.05rem;
+    line-height: 1.5;
+  }
+
+  time {
+    font:
+      0.8rem/1.2 system-ui,
+      sans-serif;
+  }
+</style>

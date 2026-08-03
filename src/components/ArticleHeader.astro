@@ -1,0 +1,125 @@
+---
+interface Props {
+  eyebrow: string;
+  title: string;
+  summary: string;
+  date: string;
+  cutoff?: string;
+  demo?: boolean;
+  tags: string[];
+}
+
+const {
+  eyebrow,
+  title,
+  summary,
+  date,
+  cutoff,
+  demo = false,
+  tags,
+} = Astro.props;
+---
+
+<header class="article-header">
+  <div class="meta">
+    <span>{eyebrow}</span>
+    {demo && <strong>Contenido de demostración</strong>}
+  </div>
+  <h1>{title}</h1>
+  <p class="summary">{summary}</p>
+  <dl>
+    <div><dt>Publicado</dt><dd>{date}</dd></div>
+    {
+      cutoff && (
+        <div>
+          <>
+            <dt>Cierre informativo</dt>
+            <dd>{cutoff}</dd>
+          </>
+        </div>
+      )
+    }
+  </dl>
+  <ul class="tags" aria-label="Etiquetas">
+    {tags.map((tag) => <li>{tag}</li>)}
+  </ul>
+</header>
+
+<style>
+  .article-header {
+    padding: 3rem 0 2rem;
+    border-bottom: 1px solid currentColor;
+  }
+
+  .meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    font:
+      700 0.72rem/1.2 system-ui,
+      sans-serif;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  .meta strong {
+    padding: 0.15rem 0.35rem;
+    color: #efeee8;
+    background: #171713;
+  }
+
+  h1 {
+    max-width: 62rem;
+    margin: 1.5rem 0;
+    font-size: clamp(2.5rem, 8vw, 6.5rem);
+    line-height: 0.92;
+    letter-spacing: -0.04em;
+  }
+
+  .summary {
+    max-width: 50rem;
+    font-size: clamp(1.15rem, 2.5vw, 1.55rem);
+    line-height: 1.45;
+  }
+
+  dl,
+  dl div,
+  .tags {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  dl {
+    gap: 1rem 2rem;
+    font:
+      0.78rem/1.4 system-ui,
+      sans-serif;
+  }
+
+  dl div {
+    gap: 0.35rem;
+  }
+
+  dt {
+    font-weight: 700;
+  }
+
+  dd {
+    margin: 0;
+  }
+
+  .tags {
+    gap: 0.5rem;
+    margin: 1.5rem 0 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .tags li {
+    padding: 0.25rem 0.5rem;
+    border: 1px solid currentColor;
+    font:
+      0.72rem/1.2 system-ui,
+      sans-serif;
+  }
+</style>

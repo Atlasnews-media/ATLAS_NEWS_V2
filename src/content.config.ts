@@ -18,6 +18,7 @@ const editionSchema = z.object({
   tags: z.array(z.string().min(2)).min(1),
   sources: z.array(sourceSchema).min(1),
   featured: z.boolean().default(false),
+  demo: z.boolean().default(false),
   editionNumber: z.number().int().positive().optional(),
 });
 
@@ -29,6 +30,7 @@ const readingSchema = z.object({
   tags: z.array(z.string().min(2)).min(1),
   source: sourceSchema,
   author: z.string().min(2).optional(),
+  demo: z.boolean().default(false),
 });
 
 export const collections = {

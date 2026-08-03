@@ -20,7 +20,21 @@ const {
     <title>{title}</title>
   </head>
   <body>
+    <header class="site-header">
+      <a class="brand" href="/">ATLAS NEWS</a>
+      <nav aria-label="Navegación principal">
+        <a href="/ediciones/">Ediciones</a>
+        <a href="/lecturas/">Lecturas</a>
+        <a href="/archivo/">Archivo</a>
+      </nav>
+    </header>
     <slot />
+    <footer class="site-footer">
+      <p>
+        Información y análisis editorial. No constituye una recomendación de
+        inversión.
+      </p>
+    </footer>
   </body>
 </html>
 
@@ -38,5 +52,55 @@ const {
 
   body {
     margin: 0;
+  }
+
+  .site-header,
+  .site-footer {
+    width: min(72rem, calc(100% - 2rem));
+    margin: 0 auto;
+  }
+
+  .site-header {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 1rem 0;
+    border-bottom: 1px solid currentColor;
+  }
+
+  .brand {
+    color: inherit;
+    font-weight: 700;
+    text-decoration: none;
+  }
+
+  nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    font:
+      0.8rem/1.2 system-ui,
+      sans-serif;
+  }
+
+  nav a {
+    color: inherit;
+  }
+
+  .site-footer {
+    margin-top: 4rem;
+    padding: 1.5rem 0 3rem;
+    border-top: 1px solid currentColor;
+    font:
+      0.8rem/1.5 system-ui,
+      sans-serif;
+  }
+
+  @media (max-width: 36rem) {
+    .site-header {
+      align-items: flex-start;
+      flex-direction: column;
+    }
   }
 </style>

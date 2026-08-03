@@ -5,11 +5,13 @@
   "type": "module",
   "scripts": {
     "dev": "astro dev",
-    "build": "astro check && astro build",
+    "build": "npm run validate:content && astro check && astro build && npm run validate:build",
     "check": "astro check",
     "preview": "astro preview",
     "format": "prettier --write .",
-    "format:check": "prettier --check ."
+    "format:check": "prettier --check .",
+    "validate:content": "node scripts/validate-content.mjs",
+    "validate:build": "node scripts/validate-build.mjs"
   },
   "dependencies": {
     "astro": "latest",

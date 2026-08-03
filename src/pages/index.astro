@@ -1,14 +1,91 @@
 ---
+import ContentCard from "../components/ContentCard.astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
+import {
+  editionTypeLabel,
+  formatEditorialDate,
+  getLatestDaily,
+  getPublishedEditions,
+  getPublishedReadings,
+} from "../lib/content";
+
+const [latestDaily, editions, readings] = await Promise.all([
+  getLatestDaily(),
+  getPublishedEditions(),
+  getPublishedReadings(),
+]);
+
+const secondaryEditions = editions
+  .filter(({ id }) => id !== latestDaily?.id)
+  .slice(0, 2);
 ---
 
 <BaseLayout title="ATLAS NEWS">
   <main>
-    <p class="eyebrow">MVP · Fundación técnica</p>
+    <p class="eyebrow">Edición financiera digital</p>
     <h1>ATLAS NEWS</h1>
     <p class="dek">
       Codex construye. GPT publica. ATLAS NEWS conserva, organiza y presenta.
     </p>
+
+    {
+      latestDaily ? (
+        <section aria-labelledby="edicion-principal">
+          <p class="section-label">Última edición</p>
+          <h2 id="edicion-principal">
+            <a href={`/ediciones/${latestDaily.id}/`}>
+              {latestDaily.data.title}
+            </a>
+          </h2>
+          <p class="lead">{latestDaily.data.summary}</p>
+          {latestDaily.data.demo && (
+            <strong class="demo">Contenido de demostración</strong>
+          )}
+        </section>
+      ) : (
+        <p>No hay ediciones publicadas.</p>
+      )
+    }
+
+    <div class="grid">
+      <section aria-labelledby="ediciones-recientes">
+        <h2 class="section-title" id="ediciones-recientes">
+          Ediciones recientes
+        </h2>
+        {
+          secondaryEditions.map((edition) => (
+            <ContentCard
+              href={`/ediciones/${edition.id}/`}
+              eyebrow={editionTypeLabel(edition.data.type)}
+              title={edition.data.title}
+              summary={edition.data.summary}
+              date={formatEditorialDate(edition.data.publishedAt)}
+              demo={edition.data.demo}
+            />
+          ))
+        }
+      </section>
+
+      <section aria-labelledby="lecturas-seleccionadas">
+        <h2 class="section-title" id="lecturas-seleccionadas">
+          Lecturas seleccionadas
+        </h2>
+        {
+          readings
+            .slice(0, 2)
+            .map((reading) => (
+              <ContentCard
+                href={`/lecturas/${reading.id}/`}
+                eyebrow="Lectura seleccionada"
+                title={reading.data.title}
+                summary={reading.data.summary}
+                date={formatEditorialDate(reading.data.publishedAt)}
+                demo={reading.data.demo}
+              />
+            ))
+        }
+      </section>
+    </div>
   </main>
 </BaseLayout>
 
@@ -17,14 +94,15 @@ import BaseLayout from "../layouts/BaseLayout.astro";
     width: min(72rem, calc(100% - 2rem));
     margin: 0 auto;
     padding: 4rem 0;
-    border-top: 0.25rem solid currentColor;
   }
 
-  .eyebrow {
+  .eyebrow,
+  .section-label,
+  .section-title {
     font:
       700 0.75rem/1.2 system-ui,
       sans-serif;
-    letter-spacing: 0.16em;
+    letter-spacing: 0.14em;
     text-transform: uppercase;
   }
 
@@ -39,5 +117,55 @@ import BaseLayout from "../layouts/BaseLayout.astro";
     max-width: 45rem;
     font-size: clamp(1.25rem, 3vw, 2rem);
     line-height: 1.25;
+  }
+
+  section[aria-labelledby="edicion-principal"] {
+    margin-top: 4rem;
+    padding: 1.5rem 0 2.5rem;
+    border-top: 0.25rem solid currentColor;
+    border-bottom: 1px solid currentColor;
+  }
+
+  section[aria-labelledby="edicion-principal"] h2 {
+    max-width: 60rem;
+    margin: 1rem 0;
+    font-size: clamp(2.5rem, 7vw, 5.5rem);
+    line-height: 0.95;
+  }
+
+  h2 a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .lead {
+    max-width: 48rem;
+    font-size: clamp(1.1rem, 2vw, 1.4rem);
+    line-height: 1.45;
+  }
+
+  .demo {
+    font:
+      700 0.7rem/1.2 system-ui,
+      sans-serif;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 3rem;
+    margin-top: 3rem;
+  }
+
+  .section-title {
+    padding-bottom: 0.75rem;
+  }
+
+  @media (max-width: 48rem) {
+    .grid {
+      grid-template-columns: 1fr;
+    }
   }
 </style>

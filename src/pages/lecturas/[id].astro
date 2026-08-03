@@ -1,0 +1,78 @@
+---
+import { render } from "astro:content";
+import ArticleHeader from "../../components/ArticleHeader.astro";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import {
+  formatEditorialDate,
+  getPublishedReadings,
+  type Reading,
+} from "../../lib/content";
+
+export async function getStaticPaths() {
+  const readings = await getPublishedReadings();
+  return readings.map((reading) => ({
+    params: { id: reading.id },
+    props: { reading },
+  }));
+}
+
+interface Props {
+  reading: Reading;
+}
+const { reading } = Astro.props;
+const { Content } = await render(reading);
+---
+
+<BaseLayout
+  title={`${reading.data.title} — ATLAS NEWS`}
+  description={reading.data.summary}
+>
+  <main>
+    <ArticleHeader
+      eyebrow="Lectura seleccionada"
+      title={reading.data.title}
+      summary={reading.data.summary}
+      date={formatEditorialDate(reading.data.publishedAt)}
+      demo={reading.data.demo}
+      tags={reading.data.tags}
+    />
+    <article class="prose"><Content /></article>
+    <p class="source">
+      <strong>Fuente original:</strong>
+      <a href={reading.data.source.url}>{reading.data.source.name}</a>
+    </p>
+  </main>
+</BaseLayout>
+
+<style>
+  main {
+    width: min(72rem, calc(100% - 2rem));
+    margin: 0 auto;
+  }
+  .prose {
+    max-width: 46rem;
+    margin: 3rem auto;
+    font-size: 1.1rem;
+    line-height: 1.7;
+  }
+  .prose :global(h2) {
+    margin: 3rem 0 1rem;
+    font-size: clamp(1.7rem, 4vw, 2.5rem);
+    line-height: 1;
+  }
+  .prose :global(blockquote) {
+    margin: 2rem 0;
+    padding: 1rem 1.5rem;
+    border: 1px solid currentColor;
+    font-family: system-ui, sans-serif;
+  }
+  .source {
+    max-width: 46rem;
+    margin: 4rem auto;
+    padding-top: 1.5rem;
+    border-top: 1px solid currentColor;
+  }
+  .source a {
+    color: inherit;
+  }
+</style>
