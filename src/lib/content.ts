@@ -32,5 +32,5 @@ export function formatEditorialDate(date: Date): string {
 }
 
 export function editionTypeLabel(type: Edition["data"]["type"]): string {
-  return type === "daily" ? "Briefing diario" : "Panorama semanal";
+  return type === "daily" ? "Edición diaria" : "Panorama semanal";
 }

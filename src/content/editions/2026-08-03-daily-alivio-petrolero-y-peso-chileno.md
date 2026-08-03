@@ -11,7 +11,7 @@ tags:
   - petróleo
   - tasas
 sources:
-  - name: "Briefing de mercado — corte 08:05"
+  - name: "Documento editorial de origen — corte 08:05"
     url: "https://drive.google.com/file/d/14HQXiOfrsPa2hxkZ48zwpZTqjPZIDbzK/view"
   - name: "Banco Central de Chile — dólar observado"
     url: "https://si3.bcentral.cl/siete/ES/Siete/Cuadro/CAP_TIPO_CAMBIO/MN_TIPO_CAMBIO4/DOLAR_OBS_ADO?idSerie=F073.TCO.PRE.Z.D"
@@ -29,33 +29,31 @@ featured: true
 demo: false
 highlights:
   - label: "Petróleo"
-    text: "El briefing sitúa al Brent cerca de US$83,5 y con una caída superior a 5% al corte."
+    text: "El Brent se ubicaba cerca de US$83,5 y registraba una caída superior a 5% al corte."
   - label: "Chile"
     text: "El dólar observado informado para la jornada es $928,42 y la TPM permanece en 4,5%."
   - label: "Actividad"
     text: "El IMACEC de junio todavía no se había divulgado al cierre de las 08:05."
 ---
 
-> **Corte informativo: 08:05 de Santiago.** Los precios de mercado son una fotografía del briefing y pueden haber cambiado después del cierre. Las relaciones causales se presentan como interpretación editorial, no como hechos comprobados ni recomendaciones de inversión.
-
 ## Hecho central
 
-La fotografía recibida a las 08:05 muestra una devolución importante de la prima incorporada en el petróleo, mientras los futuros estadounidenses avanzan. La coincidencia entre crudo a la baja y activos de riesgo al alza es consistente con condiciones financieras algo menos tensas, pero no demuestra por sí sola un cambio duradero del escenario geopolítico.
+A las 08:05, el petróleo devolvía una parte importante de la prima incorporada en jornadas anteriores, mientras los futuros estadounidenses avanzaban. La coincidencia entre crudo a la baja y activos de riesgo al alza es consistente con condiciones financieras algo menos tensas, aunque todavía no confirma un cambio duradero del escenario geopolítico.
 
 ## En una mirada
 
-- El briefing sitúa al Brent cerca de US$83,5, con una caída superior a 5% al corte.
+- El Brent se ubicaba cerca de US$83,5, con una caída superior a 5% al corte.
 - Los futuros del S&P 500 avanzan alrededor de 0,6% y los del Nasdaq cerca de 0,4%.
 - En Chile, el dólar observado informado baja a $928,42.
 - El IMACEC de junio todavía no se había publicado al corte de las 08:05.
 
 ## Por qué importa
 
-Una caída sostenida del petróleo reduciría presión sobre la inflación importada y mejoraría el balance para economías compradoras de energía. Esa es una inferencia económica, no una garantía de mercado: el efecto dependerá de la duración del movimiento, del tipo de cambio y de la respuesta de las tasas.
+Una caída sostenida del petróleo reduciría presión sobre la inflación importada y mejoraría el balance para economías compradoras de energía. El efecto dependerá de la duración del movimiento, del tipo de cambio y de la respuesta de las tasas.
 
 ## Mercados globales
 
-Los futuros del S&P 500 y del Nasdaq descritos en el briefing avanzaban aproximadamente 0,6% y 0,4%, respectivamente. Las referencias de CME permiten seguir ambos contratos, cuyos valores cambian durante la sesión.
+Los futuros del S&P 500 y del Nasdaq avanzaban aproximadamente 0,6% y 0,4%, respectivamente al cierre informativo. El movimiento acompañaba la caída del petróleo y un tono algo más favorable para los activos de riesgo.
 
 La lectura editorial es prudente: el alivio en energía favorece el apetito por riesgo, pero la reacción entre regiones y sectores continúa siendo desigual.
 
@@ -67,7 +65,7 @@ El dato local decisivo del día es el IMACEC. Una lectura mejor apoyaría bancos
 
 ## Tasas, monedas y commodities
 
-La deuda corta chilena conserva el respaldo de una TPM de 4,5%. La duración media podría beneficiarse si el alivio petrolero se sostiene, mientras la duración larga todavía requiere confirmación inflacionaria. Estas son lecturas de escenario y no instrucciones para modificar una cartera.
+La deuda corta chilena conserva el respaldo de una TPM de 4,5%. La duración media podría beneficiarse si el alivio petrolero se sostiene, mientras la duración larga todavía requiere confirmación inflacionaria.
 
 El petróleo es simultáneamente el principal catalizador favorable y el riesgo de reversión más importante de la jornada.
 
@@ -79,17 +77,3 @@ El petróleo es simultáneamente el principal catalizador favorable y el riesgo 
 - Reacción de los Treasury al retroceso del crudo.
 - Amplitud del avance bursátil más allá de las megacapitalizaciones.
 - Resultados tecnológicos y capacidad de monetizar inversión en inteligencia artificial.
-
-## Fuentes y metodología
-
-Esta edición resume el archivo `Brifing de mercado - 2026-08-03.md` y conserva su hora de corte. Las cifras oficiales de Chile se contrastaron con el Banco Central y el INE; las observaciones intradía se enlazan a los mercados de ICE y CME y deben interpretarse como valores dinámicos.
-
-- [Briefing fuente en Google Drive](https://drive.google.com/file/d/14HQXiOfrsPa2hxkZ48zwpZTqjPZIDbzK/view)
-- [Dólar observado — Banco Central de Chile](https://si3.bcentral.cl/siete/ES/Siete/Cuadro/CAP_TIPO_CAMBIO/MN_TIPO_CAMBIO4/DOLAR_OBS_ADO?idSerie=F073.TCO.PRE.Z.D)
-- [Política monetaria — Banco Central de Chile](https://www.bcentral.cl/es/web/banco-central/areas/politica-monetaria)
-- [IPC de junio de 2026 — INE](https://www.ine.gob.cl/sala-de-prensa/prensa/general/noticia/2026/07/08/%C3%ADndice-de-precios-al-consumidor-%28ipc%29-de-junio-present%C3%B3-una-variaci%C3%B3n-mensual-de-0-0)
-- [IMACEC de mayo de 2026 — Banco Central de Chile](https://www.bcentral.cl/contenido/-/details/prensa/nota-de-prensa/imacec-mayo-2026)
-- [Calendario estadístico — Banco Central de Chile](https://www.bcentral.cl/es/calendario-estadistico)
-- [Futuros de Brent — ICE](https://www.ice.com/products/219/Brent-Crude-Futures/data)
-- [Futuros E-mini S&P 500 — CME Group](https://www.cmegroup.com/markets/equities/sp/e-mini-sandp500.contract.html)
-- [Futuros Nasdaq-100 — CME Group](https://www.cmegroup.com/markets/equities/nasdaq.html)

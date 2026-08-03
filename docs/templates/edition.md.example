@@ -11,6 +11,14 @@ sources:
   - name: "Fuente primaria"
     url: "https://example.com/fuente"
 featured: false
+demo: false
+highlights:
+  - label: "Primera clave"
+    text: "Síntesis breve del primer dato que debe aparecer en la portada."
+  - label: "Segunda clave"
+    text: "Síntesis breve del segundo dato que debe aparecer en la portada."
+  - label: "Tercera clave"
+    text: "Síntesis breve del tercer dato que debe aparecer en la portada."
 ---
 
 ## Hecho central
@@ -26,5 +34,3 @@ featured: false
 ## Tasas, monedas y commodities
 
 ## Qué observar
-
-## Fuentes y metodología

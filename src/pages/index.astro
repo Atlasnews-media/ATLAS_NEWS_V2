@@ -49,7 +49,7 @@ const issueDate = latestDaily
             </a>
           </article>
 
-          <aside class="briefing-rail" aria-label="Claves de la edición">
+          <aside class="edition-rail" aria-label="Claves de la edición">
             <p class="rail-title">En una mirada</p>
             <ol>
               {latestDaily.data.highlights?.map((highlight) => (
@@ -110,8 +110,8 @@ const issueDate = latestDaily
         <p class="kicker">Por qué importa</p><h2>
           Información ordenada antes que ruido acumulado
         </h2><p>
-          ATLAS NEWS transforma cada briefing en una edición finita, trazable y
-          recuperable. La jerarquía editorial precede a la velocidad.
+          ATLAS NEWS presenta cada publicación como una edición finita, trazable
+          y recuperable. La jerarquía editorial precede a la velocidad.
         </p>
       </article>
       <article>
@@ -212,38 +212,38 @@ const issueDate = latestDaily
     letter-spacing: 0.1em;
     text-transform: uppercase;
   }
-  .briefing-rail {
+  .edition-rail {
     padding: clamp(2rem, 5vw, 4.5rem) 0 3rem clamp(1.25rem, 3vw, 2.25rem);
   }
-  .briefing-rail ol {
+  .edition-rail ol {
     margin: 1.25rem 0 0;
     padding: 0;
     list-style: none;
     counter-reset: point;
   }
-  .briefing-rail li {
+  .edition-rail li {
     display: grid;
     grid-template-columns: 2.1rem 1fr;
     padding: 1.1rem 0;
     border-top: 1px solid var(--rule);
     counter-increment: point;
   }
-  .briefing-rail li::before {
+  .edition-rail li::before {
     content: "0" counter(point);
     color: var(--accent);
     font: 800 0.72rem/1.2 var(--sans);
   }
-  .briefing-rail strong,
-  .briefing-rail span {
+  .edition-rail strong,
+  .edition-rail span {
     grid-column: 2;
   }
-  .briefing-rail strong {
+  .edition-rail strong {
     margin-bottom: 0.3rem;
     font: 800 0.8rem/1.2 var(--sans);
     letter-spacing: 0.08em;
     text-transform: uppercase;
   }
-  .briefing-rail span {
+  .edition-rail span {
     color: var(--ink-soft);
     line-height: 1.4;
   }
@@ -336,7 +336,7 @@ const issueDate = latestDaily
       padding-right: 0;
       border-right: 0;
     }
-    .briefing-rail {
+    .edition-rail {
       padding-left: 0;
       border-top: 1px solid var(--rule);
     }

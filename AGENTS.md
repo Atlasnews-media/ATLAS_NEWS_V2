@@ -19,6 +19,9 @@ Mantener un periódico financiero digital donde el código y el contenido estén
 - Registrar `publishedAt` y `cutoffAt` con zona horaria explícita.
 - Diferenciar hechos, inferencias y lectura profesional.
 - No presentar análisis como recomendación personalizada de inversión.
+- Tratar cada Markdown como la publicación final: no resumir, reescribir ni duplicar su cuerpo durante el ingreso.
+- Escribir para el lector y omitir términos internos como `briefing` o `brifing` en contenido publicado.
+- Mantener el cuerpo limpio de avisos generales ya presentes en el pie del sitio.
 - No insertar HTML sin una necesidad revisada y documentada.
 
 ## Reglas técnicas

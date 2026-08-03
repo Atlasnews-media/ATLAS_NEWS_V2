@@ -16,6 +16,7 @@ Una edición diaria o semanal debe incluir los siguientes metadatos:
 | `sources`       | Al menos una fuente con nombre y URL válida  |
 | `featured`      | Indicador booleano; por defecto `false`      |
 | `editionNumber` | Entero positivo opcional                     |
+| `highlights`    | Tres claves breves para la portada           |
 
 El cuerpo debe respetar este orden editorial:
 
@@ -26,9 +27,14 @@ El cuerpo debe respetar este orden editorial:
 5. Chile.
 6. Tasas, monedas y commodities.
 7. Qué observar.
-8. Fuentes y metodología.
 
 Una sección puede indicar explícitamente que no hubo cambios materiales. No debe inventarse contenido para completar una sección.
+
+El archivo Markdown es la publicación definitiva. El cuerpo se renderiza en el sitio en el mismo orden y con el mismo texto recibido: no existe una etapa posterior de resumen, reescritura o adaptación. Los metadatos solo controlan portada, archivo, fechas, etiquetas y fuentes.
+
+Las fuentes se declaran una sola vez en `sources` y el sitio las presenta al final de la edición. No debe repetirse una sección de metodología ni incluirse dentro del cuerpo el aviso general de inversión que ya aparece en el pie del sitio.
+
+La publicación debe escribirse para el lector. No debe mencionar el documento de preparación, el proceso interno ni expresiones como “briefing” o “brifing”.
 
 ## Lecturas seleccionadas
 

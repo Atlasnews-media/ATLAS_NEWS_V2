@@ -12,7 +12,6 @@ const editionHeadings = [
   "Chile",
   "Tasas, monedas y commodities",
   "Qué observar",
-  "Fuentes y metodología",
 ];
 
 const readingHeadings = [
@@ -66,6 +65,19 @@ async function validateFile(directory, filename, requiredHeadings) {
     !text.includes("\nhighlights:")
   ) {
     errors.push("la edición diaria publicada no contiene tres destacados");
+  }
+
+  if (status === "published" && /\bbr(?:ie|i)fings?\b/i.test(text)) {
+    errors.push("la publicación expone terminología interna de preparación");
+  }
+
+  if (
+    status === "published" &&
+    /no constituye (?:una )?recomendación|no (?:son|es) (?:una )?recomendación|no instrucciones para/i.test(
+      text,
+    )
+  ) {
+    errors.push("la publicación repite el aviso general del sitio");
   }
 
   if (
