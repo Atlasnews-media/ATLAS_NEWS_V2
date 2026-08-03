@@ -14,27 +14,25 @@ const expectedPages = [
 for (const path of expectedPages) await access(new URL(path, root));
 
 const home = await readFile(new URL("dist/index.html", root), "utf8");
-for (const label of [
-  "ATLAS NEWS",
-  "Ediciones recientes",
-  "Lecturas seleccionadas",
-]) {
+for (const label of ["ATLAS NEWS", "En una mirada", "Panorama y contexto"]) {
   if (!home.includes(label))
     throw new Error(`La portada generada no contiene: ${label}`);
 }
 
-try {
-  await access(
-    new URL(
-      "dist/ediciones/2026-08-04-daily-borrador-interno/index.html",
-      root,
-    ),
-  );
-  throw new Error("El borrador interno fue publicado por error.");
-} catch (error) {
-  if (error?.code !== "ENOENT") throw error;
+const draftPages = [
+  "dist/ediciones/2026-08-04-daily-borrador-interno/index.html",
+  "dist/ediciones/2026-08-03-daily-alivio-petrolero-y-peso-chileno/index.html",
+];
+
+for (const path of draftPages) {
+  try {
+    await access(new URL(path, root));
+    throw new Error(`El borrador ${path} fue publicado por error.`);
+  } catch (error) {
+    if (error?.code !== "ENOENT") throw error;
+  }
 }
 
 console.log(
-  `Salida validada: ${expectedPages.length} páginas requeridas y ningún borrador publicado.`,
+  `Salida validada: ${expectedPages.length} páginas requeridas y ${draftPages.length} borradores excluidos.`,
 );

@@ -6,7 +6,6 @@ import {
   getPublishedEditions,
   getPublishedReadings,
 } from "../../lib/content";
-
 const [editions, readings] = await Promise.all([
   getPublishedEditions(),
   getPublishedReadings(),
@@ -17,18 +16,20 @@ const [editions, readings] = await Promise.all([
   title="Archivo — ATLAS NEWS"
   description="Archivo cronológico de ATLAS NEWS."
 >
-  <main>
-    <p class="eyebrow">Historia editorial</p>
-    <h1>Archivo</h1>
+  <main class="page-shell">
+    <p class="page-kicker">Historia editorial</p>
+    <h1 class="page-title">Archivo</h1>
     <section aria-labelledby="archivo-ediciones">
       <h2 id="archivo-ediciones">Ediciones</h2>
       <ol>
         {
           editions.map((edition) => (
             <li>
-              <time>{formatEditorialDate(edition.data.publishedAt)}</time>
-              <a href={`/ediciones/${edition.id}/`}>{edition.data.title}</a>
-              <span>{editionTypeLabel(edition.data.type)}</span>
+              <>
+                <time>{formatEditorialDate(edition.data.publishedAt)}</time>
+                <a href={`/ediciones/${edition.id}/`}>{edition.data.title}</a>
+                <span>{editionTypeLabel(edition.data.type)}</span>
+              </>
             </li>
           ))
         }
@@ -40,9 +41,11 @@ const [editions, readings] = await Promise.all([
         {
           readings.map((reading) => (
             <li>
-              <time>{formatEditorialDate(reading.data.publishedAt)}</time>
-              <a href={`/lecturas/${reading.id}/`}>{reading.data.title}</a>
-              <span>Lectura seleccionada</span>
+              <>
+                <time>{formatEditorialDate(reading.data.publishedAt)}</time>
+                <a href={`/lecturas/${reading.id}/`}>{reading.data.title}</a>
+                <span>Lectura seleccionada</span>
+              </>
             </li>
           ))
         }
@@ -52,48 +55,40 @@ const [editions, readings] = await Promise.all([
 </BaseLayout>
 
 <style>
-  main {
-    width: min(72rem, calc(100% - 2rem));
-    margin: 0 auto;
-    padding: 4rem 0;
-  }
-  .eyebrow {
-    font:
-      700 0.75rem/1.2 system-ui,
-      sans-serif;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-  }
-  h1 {
-    margin: 0.75rem 0 4rem;
-    font-size: clamp(3rem, 10vw, 7rem);
-    line-height: 0.9;
-  }
   section {
     margin-top: 3rem;
+  }
+  section h2 {
+    padding: 0.65rem 0;
+    border-top: 4px double var(--rule);
+    border-bottom: 1px solid var(--rule);
+    font: 800 1.2rem/1 var(--sans);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
   }
   ol {
     margin: 0;
     padding: 0;
     list-style: none;
-    border-top: 1px solid currentColor;
   }
   li {
     display: grid;
     grid-template-columns: 12rem 1fr auto;
     gap: 1rem;
-    padding: 1rem 0;
-    border-bottom: 1px solid currentColor;
+    padding: 1.15rem 0;
+    border-bottom: 1px solid var(--rule);
   }
   a {
-    color: inherit;
+    font-size: 1.15rem;
     font-weight: 700;
+    text-decoration-thickness: 0.06em;
+    text-underline-offset: 0.12em;
   }
   time,
   li span {
-    font:
-      0.78rem/1.4 system-ui,
-      sans-serif;
+    font: 0.72rem/1.4 var(--sans);
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
   }
   @media (max-width: 42rem) {
     li {

@@ -22,104 +22,122 @@ const {
 
 <header class="article-header">
   <div class="meta">
-    <span>{eyebrow}</span>
+    <span>{eyebrow}</span><span aria-hidden="true">◆</span><span
+      >ATLAS NEWS</span
+    >
     {demo && <strong>Contenido de demostración</strong>}
   </div>
   <h1>{title}</h1>
   <p class="summary">{summary}</p>
-  <dl>
-    <div><dt>Publicado</dt><dd>{date}</dd></div>
-    {
-      cutoff && (
-        <div>
-          <>
-            <dt>Cierre informativo</dt>
-            <dd>{cutoff}</dd>
-          </>
-        </div>
-      )
-    }
-  </dl>
-  <ul class="tags" aria-label="Etiquetas">
-    {tags.map((tag) => <li>{tag}</li>)}
-  </ul>
+  <div class="publication-data">
+    <dl>
+      <div><dt>Publicado</dt><dd>{date}</dd></div>
+      {
+        cutoff && (
+          <div>
+            <>
+              <dt>Cierre</dt>
+              <dd>{cutoff}</dd>
+            </>
+          </div>
+        )
+      }
+    </dl>
+    <ul class="tags" aria-label="Etiquetas">
+      {tags.map((tag) => <li>{tag}</li>)}
+    </ul>
+  </div>
 </header>
 
 <style>
   .article-header {
-    padding: 3rem 0 2rem;
-    border-bottom: 1px solid currentColor;
+    padding: clamp(2.5rem, 6vw, 5rem) 0 2rem;
+    border-bottom: 4px double var(--rule);
   }
-
   .meta {
     display: flex;
     flex-wrap: wrap;
-    gap: 1rem;
-    font:
-      700 0.72rem/1.2 system-ui,
-      sans-serif;
+    align-items: center;
+    gap: 0.7rem;
+    color: var(--accent);
+    font: 800 0.7rem/1.2 var(--sans);
     letter-spacing: 0.12em;
     text-transform: uppercase;
   }
-
   .meta strong {
-    padding: 0.15rem 0.35rem;
-    color: #efeee8;
-    background: #171713;
+    margin-left: auto;
+    padding: 0.2rem 0.4rem;
+    color: var(--paper);
+    background: var(--ink);
   }
-
   h1 {
-    max-width: 62rem;
-    margin: 1.5rem 0;
-    font-size: clamp(2.5rem, 8vw, 6.5rem);
-    line-height: 0.92;
-    letter-spacing: -0.04em;
+    max-width: 76rem;
+    margin: 1.25rem 0 1.5rem;
+    font-size: clamp(3rem, 8.5vw, 7.5rem);
+    line-height: 0.88;
+    letter-spacing: -0.055em;
+    text-wrap: balance;
   }
-
   .summary {
-    max-width: 50rem;
-    font-size: clamp(1.15rem, 2.5vw, 1.55rem);
-    line-height: 1.45;
+    max-width: 58rem;
+    margin: 0;
+    color: var(--ink-soft);
+    font-size: clamp(1.18rem, 2.5vw, 1.62rem);
+    line-height: 1.4;
   }
-
+  .publication-data {
+    display: flex;
+    align-items: end;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-top: 2rem;
+  }
   dl,
   dl div,
   .tags {
     display: flex;
     flex-wrap: wrap;
   }
-
   dl {
-    gap: 1rem 2rem;
-    font:
-      0.78rem/1.4 system-ui,
-      sans-serif;
+    gap: 0.6rem 2rem;
+    margin: 0;
+    font: 0.72rem/1.4 var(--sans);
+    text-transform: uppercase;
   }
-
   dl div {
     gap: 0.35rem;
   }
-
   dt {
-    font-weight: 700;
+    font-weight: 800;
   }
-
   dd {
     margin: 0;
   }
-
   .tags {
-    gap: 0.5rem;
-    margin: 1.5rem 0 0;
+    justify-content: flex-end;
+    gap: 0.4rem;
+    margin: 0;
     padding: 0;
     list-style: none;
   }
-
   .tags li {
-    padding: 0.25rem 0.5rem;
-    border: 1px solid currentColor;
-    font:
-      0.72rem/1.2 system-ui,
-      sans-serif;
+    padding: 0.22rem 0.45rem;
+    border: 1px solid var(--rule);
+    font: 0.67rem/1.2 var(--sans);
+    text-transform: uppercase;
+  }
+
+  @media (max-width: 42rem) {
+    .meta strong {
+      width: 100%;
+      margin-left: 0;
+    }
+    .publication-data {
+      align-items: flex-start;
+      flex-direction: column;
+    }
+    .tags {
+      justify-content: flex-start;
+    }
   }
 </style>

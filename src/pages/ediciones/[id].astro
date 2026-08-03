@@ -28,7 +28,7 @@ const { Content } = await render(edition);
   title={`${edition.data.title} — ATLAS NEWS`}
   description={edition.data.summary}
 >
-  <main>
+  <main class="article-page">
     <ArticleHeader
       eyebrow={editionTypeLabel(edition.data.type)}
       title={edition.data.title}
@@ -55,37 +55,81 @@ const { Content } = await render(edition);
 </BaseLayout>
 
 <style>
-  main {
-    width: min(72rem, calc(100% - 2rem));
+  .article-page {
+    width: min(88rem, calc(100% - 2rem));
     margin: 0 auto;
   }
   .prose {
-    max-width: 46rem;
-    margin: 3rem auto;
+    max-width: 52rem;
+    margin: 3.5rem auto;
     font-size: 1.1rem;
-    line-height: 1.7;
+    line-height: 1.72;
+  }
+  .prose :global(p:first-of-type:first-letter) {
+    float: left;
+    margin: 0.08em 0.08em 0 0;
+    color: var(--accent);
+    font-size: 4.6rem;
+    font-weight: 700;
+    line-height: 0.72;
   }
   .prose :global(h2) {
-    margin: 3rem 0 1rem;
-    font-size: clamp(1.7rem, 4vw, 2.5rem);
-    line-height: 1;
+    margin: 3.5rem 0 1rem;
+    padding-top: 0.65rem;
+    border-top: 4px double var(--rule);
+    font: 800 clamp(1.55rem, 4vw, 2.45rem)/1 var(--sans);
+    letter-spacing: -0.02em;
+  }
+  .prose :global(h3) {
+    margin-top: 2.3rem;
+    font-size: 1.45rem;
+    line-height: 1.1;
   }
   .prose :global(blockquote) {
     margin: 2rem 0;
-    padding: 1rem 1.5rem;
-    border: 1px solid currentColor;
-    font-family: system-ui, sans-serif;
+    padding: 1.25rem 1.5rem;
+    border-top: 2px solid var(--rule);
+    border-bottom: 2px solid var(--rule);
+    font: 700 1.25rem/1.45 var(--serif);
   }
   .prose :global(li) {
     margin: 0.5rem 0;
   }
+  .prose :global(hr) {
+    margin: 3rem 0;
+    border: 0;
+    border-top: 1px solid var(--rule);
+  }
+  .prose :global(table) {
+    display: block;
+    width: 100%;
+    overflow-x: auto;
+    border-collapse: collapse;
+    font: 0.82rem/1.35 var(--sans);
+  }
+  .prose :global(th),
+  .prose :global(td) {
+    padding: 0.6rem;
+    border-top: 1px solid var(--rule);
+    text-align: left;
+  }
   .sources {
-    max-width: 46rem;
+    max-width: 52rem;
     margin: 4rem auto;
     padding-top: 1.5rem;
-    border-top: 1px solid currentColor;
+    border-top: 4px double var(--rule);
   }
-  .sources a {
-    color: inherit;
+  .sources h2 {
+    font: 800 1.1rem/1 var(--sans);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  @media (max-width: 42rem) {
+    .article-page {
+      width: min(100% - 1.25rem, 88rem);
+    }
+    .prose {
+      font-size: 1.03rem;
+    }
   }
 </style>

@@ -14,44 +14,84 @@ const [latestDaily, editions, readings] = await Promise.all([
   getPublishedEditions(),
   getPublishedReadings(),
 ]);
-
 const secondaryEditions = editions
   .filter(({ id }) => id !== latestDaily?.id)
-  .slice(0, 2);
+  .slice(0, 3);
+const issueDate = latestDaily
+  ? formatEditorialDate(latestDaily.data.publishedAt)
+  : "Edición en preparación";
 ---
 
-<BaseLayout title="ATLAS NEWS">
-  <main>
-    <p class="eyebrow">Edición financiera digital</p>
-    <h1>ATLAS NEWS</h1>
-    <p class="dek">
-      Codex construye. GPT publica. ATLAS NEWS conserva, organiza y presenta.
-    </p>
+<BaseLayout title="ATLAS NEWS — Inteligencia financiera con criterio">
+  <main class="front-page">
+    <div class="issue-line">
+      <p>Portada</p><time>{issueDate}</time><p>Edición matutina</p>
+    </div>
 
     {
       latestDaily ? (
-        <section aria-labelledby="edicion-principal">
-          <p class="section-label">Última edición</p>
-          <h2 id="edicion-principal">
-            <a href={`/ediciones/${latestDaily.id}/`}>
-              {latestDaily.data.title}
+        <section class="lead-grid" aria-labelledby="edicion-principal">
+          <article class="lead-story">
+            <p class="kicker">Hecho central</p>
+            <h1 id="edicion-principal">
+              <a href={`/ediciones/${latestDaily.id}/`}>
+                {latestDaily.data.title}
+              </a>
+            </h1>
+            <p class="standfirst">{latestDaily.data.summary}</p>
+            <div class="lead-meta">
+              <span>{editionTypeLabel(latestDaily.data.type)}</span>
+              {latestDaily.data.demo && <strong>Edición demostrativa</strong>}
+            </div>
+            <a class="lead-link" href={`/ediciones/${latestDaily.id}/`}>
+              Abrir la edición completa <span aria-hidden="true">→</span>
             </a>
-          </h2>
-          <p class="lead">{latestDaily.data.summary}</p>
-          {latestDaily.data.demo && (
-            <strong class="demo">Contenido de demostración</strong>
-          )}
+          </article>
+
+          <aside class="briefing-rail" aria-label="Claves de la edición">
+            <p class="rail-title">En una mirada</p>
+            <ol>
+              <li>
+                <>
+                  <strong>Riesgo</strong>
+                  <span>
+                    La cautela domina mientras faltan catalizadores confirmados.
+                  </span>
+                </>
+              </li>
+              <li>
+                <>
+                  <strong>Chile</strong>
+                  <span>
+                    El bloque local permanece separado de la lectura global.
+                  </span>
+                </>
+              </li>
+              <li>
+                <>
+                  <strong>Tasas</strong>
+                  <span>
+                    La duración exige evidencia antes de ampliar exposición.
+                  </span>
+                </>
+              </li>
+            </ol>
+          </aside>
         </section>
       ) : (
-        <p>No hay ediciones publicadas.</p>
+        <section class="empty">
+          <h1>La próxima edición está en preparación</h1>
+        </section>
       )
     }
 
-    <div class="grid">
-      <section aria-labelledby="ediciones-recientes">
-        <h2 class="section-title" id="ediciones-recientes">
-          Ediciones recientes
-        </h2>
+    <section class="news-grid" aria-labelledby="panorama">
+      <div class="section-rule">
+        <h2 id="panorama">Panorama y contexto</h2><a href="/ediciones/"
+          >Todas las ediciones</a
+        >
+      </div>
+      <div class="columns">
         {
           secondaryEditions.map((edition) => (
             <ContentCard
@@ -61,18 +101,13 @@ const secondaryEditions = editions
               summary={edition.data.summary}
               date={formatEditorialDate(edition.data.publishedAt)}
               demo={edition.data.demo}
+              compact
             />
           ))
         }
-      </section>
-
-      <section aria-labelledby="lecturas-seleccionadas">
-        <h2 class="section-title" id="lecturas-seleccionadas">
-          Lecturas seleccionadas
-        </h2>
         {
           readings
-            .slice(0, 2)
+            .slice(0, 1)
             .map((reading) => (
               <ContentCard
                 href={`/lecturas/${reading.id}/`}
@@ -81,91 +116,262 @@ const secondaryEditions = editions
                 summary={reading.data.summary}
                 date={formatEditorialDate(reading.data.publishedAt)}
                 demo={reading.data.demo}
+                compact
               />
             ))
         }
-      </section>
-    </div>
+      </div>
+    </section>
+
+    <section class="closing-grid">
+      <article>
+        <p class="kicker">Por qué importa</p><h2>
+          Información ordenada antes que ruido acumulado
+        </h2><p>
+          ATLAS NEWS transforma cada briefing en una edición finita, trazable y
+          recuperable. La jerarquía editorial precede a la velocidad.
+        </p>
+      </article>
+      <article>
+        <p class="kicker">Qué observar</p><h2>
+          Las señales que pueden cambiar la lectura
+        </h2><p>
+          Cada edición separa el hecho central, las implicancias y las
+          condiciones que podrían invalidar la interpretación inicial.
+        </p>
+      </article>
+      <article>
+        <p class="kicker">Método</p><h2>
+          Hechos, inferencias y criterio profesional
+        </h2><p>
+          Las fuentes y el momento de cierre forman parte del contenido. Un
+          borrador incompleto nunca llega al archivo público.
+        </p>
+      </article>
+    </section>
   </main>
 </BaseLayout>
 
 <style>
-  main {
-    width: min(72rem, calc(100% - 2rem));
+  .front-page {
+    width: min(88rem, calc(100% - 2rem));
     margin: 0 auto;
-    padding: 4rem 0;
   }
-
-  .eyebrow,
-  .section-label,
-  .section-title {
-    font:
-      700 0.75rem/1.2 system-ui,
-      sans-serif;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-  }
-
-  h1 {
-    margin: 1rem 0;
-    font-size: clamp(3rem, 12vw, 9rem);
-    line-height: 0.85;
-    letter-spacing: -0.06em;
-  }
-
-  .dek {
-    max-width: 45rem;
-    font-size: clamp(1.25rem, 3vw, 2rem);
-    line-height: 1.25;
-  }
-
-  section[aria-labelledby="edicion-principal"] {
-    margin-top: 4rem;
-    padding: 1.5rem 0 2.5rem;
-    border-top: 0.25rem solid currentColor;
-    border-bottom: 1px solid currentColor;
-  }
-
-  section[aria-labelledby="edicion-principal"] h2 {
-    max-width: 60rem;
-    margin: 1rem 0;
-    font-size: clamp(2.5rem, 7vw, 5.5rem);
-    line-height: 0.95;
-  }
-
-  h2 a {
-    color: inherit;
-    text-decoration: none;
-  }
-
-  .lead {
-    max-width: 48rem;
-    font-size: clamp(1.1rem, 2vw, 1.4rem);
-    line-height: 1.45;
-  }
-
-  .demo {
-    font:
-      700 0.7rem/1.2 system-ui,
-      sans-serif;
+  .issue-line {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    gap: 1rem;
+    padding: 0.75rem 0;
+    border-bottom: 1px solid var(--rule);
+    font: 800 0.68rem/1.2 var(--sans);
     letter-spacing: 0.1em;
     text-transform: uppercase;
   }
-
-  .grid {
+  .issue-line p {
+    margin: 0;
+  }
+  .issue-line p:last-child {
+    text-align: right;
+  }
+  .lead-grid {
     display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 3rem;
+    grid-template-columns: minmax(0, 2.7fr) minmax(15rem, 1fr);
+    gap: 0;
+    border-bottom: 5px double var(--rule);
+  }
+  .lead-story {
+    padding: clamp(2rem, 5vw, 4.5rem) clamp(1.5rem, 4vw, 4rem) 3rem 0;
+    border-right: 1px solid var(--rule);
+  }
+  .kicker,
+  .rail-title {
+    margin: 0;
+    color: var(--accent);
+    font: 800 0.72rem/1.2 var(--sans);
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+  }
+  .lead-story h1 {
+    max-width: 70rem;
+    margin: 0.65rem 0 1.5rem;
+    font-size: clamp(3.5rem, 8.8vw, 8.4rem);
+    line-height: 0.82;
+    letter-spacing: -0.07em;
+    text-wrap: balance;
+  }
+  .lead-story h1 a {
+    text-decoration: none;
+  }
+  .lead-story h1 a:hover {
+    color: var(--accent);
+  }
+  .standfirst {
+    max-width: 55rem;
+    margin: 0;
+    color: var(--ink-soft);
+    font-size: clamp(1.2rem, 2vw, 1.58rem);
+    line-height: 1.42;
+  }
+  .lead-meta {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1.5rem;
+    font: 800 0.68rem/1.2 var(--sans);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .lead-meta strong {
+    color: var(--accent);
+  }
+  .lead-link {
+    display: inline-block;
+    margin-top: 2rem;
+    font: 800 0.72rem/1.2 var(--sans);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+  .briefing-rail {
+    padding: clamp(2rem, 5vw, 4.5rem) 0 3rem clamp(1.25rem, 3vw, 2.25rem);
+  }
+  .briefing-rail ol {
+    margin: 1.25rem 0 0;
+    padding: 0;
+    list-style: none;
+    counter-reset: point;
+  }
+  .briefing-rail li {
+    display: grid;
+    grid-template-columns: 2.1rem 1fr;
+    padding: 1.1rem 0;
+    border-top: 1px solid var(--rule);
+    counter-increment: point;
+  }
+  .briefing-rail li::before {
+    content: "0" counter(point);
+    color: var(--accent);
+    font: 800 0.72rem/1.2 var(--sans);
+  }
+  .briefing-rail strong,
+  .briefing-rail span {
+    grid-column: 2;
+  }
+  .briefing-rail strong {
+    margin-bottom: 0.3rem;
+    font: 800 0.8rem/1.2 var(--sans);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .briefing-rail span {
+    color: var(--ink-soft);
+    line-height: 1.4;
+  }
+  .news-grid {
+    padding-top: 2.5rem;
+  }
+  .section-rule {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 0.65rem 0;
+    border-top: 4px double var(--rule);
+    border-bottom: 1px solid var(--rule);
+  }
+  .section-rule h2 {
+    margin: 0;
+    font: 800 1.2rem/1 var(--sans);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .section-rule a {
+    font: 800 0.68rem/1.2 var(--sans);
+    text-transform: uppercase;
+  }
+  .columns {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+  .columns :global(.card) {
+    padding-right: 1.5rem;
+  }
+  .columns :global(.card + .card) {
+    padding-left: 1.5rem;
+    border-left: 1px solid var(--rule);
+  }
+  .closing-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
     margin-top: 3rem;
+    border-top: 5px double var(--rule);
+    border-bottom: 1px solid var(--rule);
+  }
+  .closing-grid article {
+    padding: 1.5rem;
+  }
+  .closing-grid article:first-child {
+    padding-left: 0;
+  }
+  .closing-grid article + article {
+    border-left: 1px solid var(--rule);
+  }
+  .closing-grid h2 {
+    margin: 0.6rem 0;
+    font-size: 1.55rem;
+    line-height: 1;
+  }
+  .closing-grid p:last-child {
+    color: var(--ink-soft);
+    line-height: 1.45;
   }
 
-  .section-title {
-    padding-bottom: 0.75rem;
+  @media (max-width: 58rem) {
+    .lead-grid {
+      grid-template-columns: minmax(0, 2fr) minmax(13rem, 1fr);
+    }
+    .columns {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    .columns :global(.card:nth-child(3)) {
+      grid-column: 1 / -1;
+      padding-left: 0;
+      border-left: 0;
+    }
   }
-
-  @media (max-width: 48rem) {
-    .grid {
+  @media (max-width: 42rem) {
+    .front-page {
+      width: min(100% - 1.25rem, 88rem);
+    }
+    .issue-line {
+      grid-template-columns: 1fr auto;
+    }
+    .issue-line p:last-child {
+      display: none;
+    }
+    .lead-grid {
       grid-template-columns: 1fr;
+    }
+    .lead-story {
+      padding-right: 0;
+      border-right: 0;
+    }
+    .briefing-rail {
+      padding-left: 0;
+      border-top: 1px solid var(--rule);
+    }
+    .columns,
+    .closing-grid {
+      grid-template-columns: 1fr;
+    }
+    .columns :global(.card),
+    .columns :global(.card + .card),
+    .closing-grid article,
+    .closing-grid article:first-child {
+      padding-right: 0;
+      padding-left: 0;
+      border-left: 0;
+    }
+    .closing-grid article + article {
+      border-top: 1px solid var(--rule);
     }
   }
 </style>

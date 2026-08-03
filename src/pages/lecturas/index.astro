@@ -2,7 +2,6 @@
 import ContentCard from "../../components/ContentCard.astro";
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import { formatEditorialDate, getPublishedReadings } from "../../lib/content";
-
 const readings = await getPublishedReadings();
 ---
 
@@ -10,51 +9,36 @@ const readings = await getPublishedReadings();
   title="Lecturas seleccionadas — ATLAS NEWS"
   description="Selección editorial de lecturas de ATLAS NEWS."
 >
-  <main>
-    <p class="eyebrow">Curaduría</p>
-    <h1>Lecturas seleccionadas</h1>
-    <p class="intro">
+  <main class="page-shell">
+    <p class="page-kicker">Curaduría</p>
+    <h1 class="page-title">Lecturas seleccionadas</h1>
+    <p class="page-intro">
       Textos elegidos por su capacidad de aportar contexto, método o una
       perspectiva verificable.
     </p>
-    {
-      readings.map((reading) => (
-        <ContentCard
-          href={`/lecturas/${reading.id}/`}
-          eyebrow="Lectura seleccionada"
-          title={reading.data.title}
-          summary={reading.data.summary}
-          date={formatEditorialDate(reading.data.publishedAt)}
-          demo={reading.data.demo}
-        />
-      ))
-    }
+    <div class="reading-list">
+      {
+        readings.map((reading) => (
+          <ContentCard
+            href={`/lecturas/${reading.id}/`}
+            eyebrow="Lectura seleccionada"
+            title={reading.data.title}
+            summary={reading.data.summary}
+            date={formatEditorialDate(reading.data.publishedAt)}
+            demo={reading.data.demo}
+          />
+        ))
+      }
+    </div>
   </main>
 </BaseLayout>
 
 <style>
-  main {
-    width: min(72rem, calc(100% - 2rem));
-    margin: 0 auto;
-    padding: 4rem 0;
+  .reading-list {
+    max-width: 64rem;
+    border-top: 5px double var(--rule);
   }
-  .eyebrow {
-    font:
-      700 0.75rem/1.2 system-ui,
-      sans-serif;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-  }
-  h1 {
-    max-width: 60rem;
-    margin: 0.75rem 0;
-    font-size: clamp(3rem, 10vw, 7rem);
-    line-height: 0.9;
-  }
-  .intro {
-    max-width: 44rem;
-    margin-bottom: 3rem;
-    font-size: 1.25rem;
-    line-height: 1.5;
+  .reading-list :global(.card) {
+    padding: 2rem 0;
   }
 </style>

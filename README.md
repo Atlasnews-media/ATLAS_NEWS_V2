@@ -4,7 +4,7 @@ MVP de una publicación financiera digital con gramática visual de periódico y
 
 ## Estado
 
-Fase 2: sistema de contenido, rutas públicas y muestras editoriales.
+Fase 3: experiencia editorial responsive y primer briefing real incorporado como borrador.
 
 ## Requisitos
 
@@ -31,6 +31,7 @@ src/
 │   ├── editions/
 │   └── readings/
 ├── layouts/
+├── styles/
 └── pages/
 ```
 

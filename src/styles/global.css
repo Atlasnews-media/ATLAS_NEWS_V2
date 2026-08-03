@@ -1,0 +1,120 @@
+:root {
+  --paper: #f2efe5;
+  --paper-deep: #e7e1d2;
+  --ink: #161611;
+  --ink-soft: #4b493f;
+  --rule: #23231d;
+  --accent: #8e2f24;
+  --serif: Georgia, "Times New Roman", serif;
+  --display: "Old English Text MT", "UnifrakturCook", Georgia, serif;
+  --sans: "Arial Narrow", "Roboto Condensed", Arial, sans-serif;
+  color-scheme: light;
+  font-family: var(--serif);
+  background: var(--paper);
+  color: var(--ink);
+  font-synthesis: none;
+}
+
+* {
+  box-sizing: border-box;
+}
+html {
+  min-width: 20rem;
+  background: #d9d4c8;
+}
+body {
+  position: relative;
+  min-height: 100vh;
+  margin: 0;
+  background:
+    radial-gradient(
+      circle at 18% 12%,
+      rgb(255 255 255 / 42%),
+      transparent 32rem
+    ),
+    repeating-linear-gradient(
+      0deg,
+      transparent 0 3px,
+      rgb(22 22 17 / 1.5%) 3px 4px
+    ),
+    var(--paper);
+}
+
+body::before {
+  position: fixed;
+  z-index: 20;
+  inset: 0;
+  pointer-events: none;
+  content: "";
+  opacity: 0.18;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.14'/%3E%3C/svg%3E");
+  mix-blend-mode: multiply;
+}
+
+a {
+  color: inherit;
+}
+a:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 3px;
+}
+::selection {
+  color: var(--paper);
+  background: var(--accent);
+}
+
+.skip-link {
+  position: fixed;
+  z-index: 100;
+  top: 0.5rem;
+  left: 0.5rem;
+  padding: 0.75rem 1rem;
+  color: var(--paper);
+  background: var(--ink);
+  transform: translateY(-150%);
+}
+.skip-link:focus {
+  transform: translateY(0);
+}
+
+.page-shell {
+  width: min(88rem, calc(100% - 2rem));
+  margin: 0 auto;
+  padding: clamp(2.5rem, 6vw, 5rem) 0;
+}
+.page-kicker {
+  margin: 0;
+  color: var(--accent);
+  font: 800 0.72rem/1.2 var(--sans);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+.page-title {
+  max-width: 68rem;
+  margin: 0.45rem 0 1rem;
+  font-size: clamp(3.4rem, 10vw, 8.5rem);
+  font-weight: 700;
+  line-height: 0.82;
+  letter-spacing: -0.065em;
+}
+.page-intro {
+  max-width: 48rem;
+  margin: 0 0 4rem;
+  color: var(--ink-soft);
+  font-size: clamp(1.12rem, 2vw, 1.4rem);
+  line-height: 1.45;
+}
+
+@media (max-width: 42rem) {
+  .page-shell {
+    width: min(100% - 1.25rem, 88rem);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+}
