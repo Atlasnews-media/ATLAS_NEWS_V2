@@ -1,0 +1,27 @@
+{
+  "name": "atlas-news",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro check && astro build",
+    "check": "astro check",
+    "preview": "astro preview",
+    "format": "prettier --write .",
+    "format:check": "prettier --check ."
+  },
+  "dependencies": {
+    "astro": "latest",
+    "zod": "latest"
+  },
+  "devDependencies": {
+    "@astrojs/check": "latest",
+    "prettier": "latest",
+    "prettier-plugin-astro": "latest",
+    "typescript": "latest"
+  },
+  "engines": {
+    "node": ">=22.12.0"
+  }
+}

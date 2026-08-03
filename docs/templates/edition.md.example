@@ -1,0 +1,30 @@
+---
+title: "Título informativo de la edición"
+summary: "Resumen ejecutivo suficiente para explicar el foco principal de la edición sin sustituir su lectura."
+publishedAt: "2026-08-03T08:30:00-04:00"
+cutoffAt: "2026-08-03T08:00:00-04:00"
+type: "daily"
+status: "draft"
+tags:
+  - mercados-globales
+sources:
+  - name: "Fuente primaria"
+    url: "https://example.com/fuente"
+featured: false
+---
+
+## Hecho central
+
+## En una mirada
+
+## Por qué importa
+
+## Mercados globales
+
+## Chile
+
+## Tasas, monedas y commodities
+
+## Qué observar
+
+## Fuentes y metodología

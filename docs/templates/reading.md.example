@@ -1,0 +1,18 @@
+---
+title: "Título de la lectura seleccionada"
+summary: "Descripción editorial de la lectura, su argumento principal y la razón concreta por la que fue seleccionada."
+publishedAt: "2026-08-03T12:00:00-04:00"
+status: "draft"
+tags:
+  - lectura-seleccionada
+source:
+  name: "Publicación original"
+  url: "https://example.com/lectura"
+author: "Nombre del autor"
+---
+
+## Tesis principal
+
+## Por qué fue seleccionada
+
+## Contexto y límites
