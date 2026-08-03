@@ -34,6 +34,8 @@ El archivo Markdown es la publicación definitiva. El cuerpo se renderiza en el 
 
 Las fuentes se declaran una sola vez en `sources` y el sitio las presenta al final de la edición. No debe repetirse una sección de metodología ni incluirse dentro del cuerpo el aviso general de inversión que ya aparece en el pie del sitio.
 
+Cada fuente debe tener una URL pública y verificable. Los marcadores internos de ChatGPT, por ejemplo `cite...`, no son referencias válidas y bloquean la publicación.
+
 La publicación debe escribirse para el lector. No debe mencionar el documento de preparación, el proceso interno ni expresiones como “briefing” o “brifing”.
 
 ## Lecturas seleccionadas

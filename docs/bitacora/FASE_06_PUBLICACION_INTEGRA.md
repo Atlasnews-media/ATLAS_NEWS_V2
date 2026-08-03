@@ -34,6 +34,7 @@ Los metadatos controlan el titular, resumen, fechas, destacados, etiquetas y fue
 - La construcción comprueba que pasajes representativos del Markdown estén presentes en el HTML generado.
 - La construcción exige exactamente una aparición del aviso general en la página completa.
 - Las fuentes continúan siendo obligatorias.
+- Los marcadores internos de citas de ChatGPT bloquean la publicación.
 
 ## Procedimiento para GPT
 
@@ -59,6 +60,17 @@ La lectura posterior confirmó:
 - frontmatter completo;
 - texto limpio;
 - ausencia de terminología interna y avisos repetidos.
+
+## Prueba con el resumen semanal
+
+Se detectó en Drive `resumen semanal - 3 al 7 de agosto de 2026.md` como material complementario. La lectura confirmó que contiene el cuerpo completo, pero todavía no cumple el contrato de publicación:
+
+- no incluye frontmatter de ATLAS NEWS;
+- contiene 40 marcadores internos de cita de ChatGPT;
+- no contiene URLs públicas;
+- incorpora secciones distintas del contrato editorial vigente.
+
+El archivo no se modificó ni se publicó. La plataforma ya admite ediciones semanales y lo incorporará como complemento cuando GPT entregue el mismo texto en formato publicable, con metadatos y fuentes verificables. Esta prueba originó una nueva protección automática contra referencias internas.
 
 ## Verificaciones
 

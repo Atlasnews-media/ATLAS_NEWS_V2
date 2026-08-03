@@ -71,6 +71,10 @@ async function validateFile(directory, filename, requiredHeadings) {
     errors.push("la publicación expone terminología interna de preparación");
   }
 
+  if (status === "published" && text.includes("cite")) {
+    errors.push("la publicación contiene referencias internas de ChatGPT");
+  }
+
   if (
     status === "published" &&
     /no constituye (?:una )?recomendación|no (?:son|es) (?:una )?recomendación|no instrucciones para/i.test(

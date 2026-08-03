@@ -36,6 +36,8 @@ Drive puede conservar una copia documental, pero GitHub es la fuente que publica
 5. Utilizar `status: published` cuando el archivo esté completo y respaldado por fuentes. Utilizar `status: draft` si falta un dato, una fuente o una revisión necesaria.
 6. No agregar una sección duplicada de fuentes: el sitio la construye desde `sources`.
 
+Las fuentes deben utilizar URLs públicas completas. Antes de entregar el archivo, GPT debe reemplazar todos sus marcadores internos de cita (`cite...`) por entradas verificables en `sources`. Un archivo que conserve esos marcadores debe quedar fuera de publicación.
+
 La plantilla canónica está en `docs/templates/edition.md.example`.
 
 ## Criterios de redacción pública
@@ -44,6 +46,7 @@ La plantilla canónica está en `docs/templates/edition.md.example`.
 - No utilizar “briefing”, “brifing”, “documento recibido” ni expresiones equivalentes.
 - No explicar que el texto fue generado, transformado o cargado por GPT.
 - No repetir avisos generales sobre recomendaciones de inversión dentro del cuerpo.
+- No incluir referencias internas de ChatGPT ni citas que el lector no pueda abrir.
 - Mantener las cautelas que formen parte del análisis, pero expresarlas como condiciones del escenario.
 - No inventar información para completar una sección.
 
