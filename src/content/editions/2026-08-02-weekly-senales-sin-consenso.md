@@ -4,7 +4,7 @@ summary: "Panorama semanal ficticio diseñado para validar la convivencia entre 
 publishedAt: "2026-08-02T18:00:00-04:00"
 cutoffAt: "2026-08-02T17:30:00-04:00"
 type: "weekly"
-status: "published"
+status: "draft"
 tags:
   - panorama-semanal
   - escenarios

@@ -4,7 +4,7 @@ summary: "Edición demostrativa para comprobar la jerarquía editorial, las fuen
 publishedAt: "2026-08-03T08:30:00-04:00"
 cutoffAt: "2026-08-03T08:00:00-04:00"
 type: "daily"
-status: "published"
+status: "draft"
 tags:
   - mercados-globales
   - chile

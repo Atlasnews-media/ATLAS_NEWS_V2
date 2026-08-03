@@ -4,24 +4,28 @@ const root = new URL("../", import.meta.url);
 const expectedPages = [
   "dist/index.html",
   "dist/ediciones/index.html",
-  "dist/ediciones/2026-08-03-daily-riesgo-y-disciplina/index.html",
-  "dist/ediciones/2026-08-02-weekly-senales-sin-consenso/index.html",
+  "dist/ediciones/2026-08-03-daily-alivio-petrolero-y-peso-chileno/index.html",
   "dist/lecturas/index.html",
-  "dist/lecturas/2026-08-03-reading-como-leer-la-incertidumbre/index.html",
   "dist/archivo/index.html",
 ];
 
 for (const path of expectedPages) await access(new URL(path, root));
 
 const home = await readFile(new URL("dist/index.html", root), "utf8");
-for (const label of ["ATLAS NEWS", "En una mirada", "Panorama y contexto"]) {
+for (const label of [
+  "ATLAS NEWS",
+  "En una mirada",
+  "Petróleo y peso chileno",
+]) {
   if (!home.includes(label))
     throw new Error(`La portada generada no contiene: ${label}`);
 }
 
 const draftPages = [
   "dist/ediciones/2026-08-04-daily-borrador-interno/index.html",
-  "dist/ediciones/2026-08-03-daily-alivio-petrolero-y-peso-chileno/index.html",
+  "dist/ediciones/2026-08-03-daily-riesgo-y-disciplina/index.html",
+  "dist/ediciones/2026-08-02-weekly-senales-sin-consenso/index.html",
+  "dist/lecturas/2026-08-03-reading-como-leer-la-incertidumbre/index.html",
 ];
 
 for (const path of draftPages) {

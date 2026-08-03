@@ -2,7 +2,7 @@
 title: "Cómo leer la incertidumbre sin inventar una tendencia"
 summary: "Lectura ficticia elegida para probar la sección de recomendaciones editoriales y mostrar cómo ATLAS NEWS explicará el valor y los límites de cada selección."
 publishedAt: "2026-08-03T12:00:00-04:00"
-status: "published"
+status: "draft"
 tags:
   - metodo
   - incertidumbre

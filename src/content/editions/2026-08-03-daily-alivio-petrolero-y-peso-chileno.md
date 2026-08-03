@@ -1,55 +1,66 @@
 ---
-title: "El alivio petrolero mejora el tono global y fortalece al peso chileno"
-summary: "Briefing real recibido desde Drive y adaptado provisionalmente al contrato de ATLAS NEWS; permanece como borrador hasta documentar sus fuentes primarias."
-publishedAt: "2026-08-03T08:30:00-04:00"
+title: "Petróleo y peso chileno abren la semana con menor presión"
+summary: "El retroceso del crudo y la apreciación del peso alivian el balance inflacionario, mientras el mercado espera nuevas señales de actividad y política monetaria."
+publishedAt: "2026-08-03T12:30:00-04:00"
 cutoffAt: "2026-08-03T08:05:00-04:00"
 type: "daily"
-status: "draft"
+status: "published"
 tags:
   - mercados-globales
   - chile
   - petróleo
   - tasas
 sources:
-  - name: "Briefing de mercado recibido en Drive"
+  - name: "Briefing de mercado — corte 08:05"
     url: "https://drive.google.com/file/d/14HQXiOfrsPa2hxkZ48zwpZTqjPZIDbzK/view"
+  - name: "Banco Central de Chile — dólar observado"
+    url: "https://si3.bcentral.cl/siete/ES/Siete/Cuadro/CAP_TIPO_CAMBIO/MN_TIPO_CAMBIO4/DOLAR_OBS_ADO?idSerie=F073.TCO.PRE.Z.D"
+  - name: "Banco Central de Chile — política monetaria"
+    url: "https://www.bcentral.cl/es/web/banco-central/areas/politica-monetaria"
+  - name: "INE — IPC de junio de 2026"
+    url: "https://www.ine.gob.cl/sala-de-prensa/prensa/general/noticia/2026/07/08/%C3%ADndice-de-precios-al-consumidor-%28ipc%29-de-junio-present%C3%B3-una-variaci%C3%B3n-mensual-de-0-0"
+  - name: "Banco Central de Chile — IMACEC de mayo de 2026"
+    url: "https://www.bcentral.cl/contenido/-/details/prensa/nota-de-prensa/imacec-mayo-2026"
+  - name: "ICE — futuros de Brent"
+    url: "https://www.ice.com/products/219/Brent-Crude-Futures/data"
+  - name: "CME Group — futuros E-mini S&P 500"
+    url: "https://www.cmegroup.com/markets/equities/sp/e-mini-sandp500.contract.html"
 featured: true
 demo: false
 ---
 
-> **Borrador editorial real.** El informe fue recibido en Drive sin un listado de URLs primarias. Su contenido no será publicado hasta completar la trazabilidad de las cifras y afirmaciones.
+> **Corte informativo: 08:05 de Santiago.** Los precios de mercado son una fotografía del briefing y pueden haber cambiado después del cierre. Las relaciones causales se presentan como interpretación editorial, no como hechos comprobados ni recomendaciones de inversión.
 
 ## Hecho central
 
-La semana comienza con una reducción significativa del riesgo geopolítico inmediato. Las expectativas de conversaciones entre Estados Unidos e Irán reducen la prima del petróleo, mientras los futuros estadounidenses y las acciones europeas avanzan. El movimiento mejora el balance para activos de riesgo, pero todavía depende de anuncios diplomáticos y no de una normalización comprobada de los flujos energéticos.
+La fotografía recibida a las 08:05 muestra una devolución importante de la prima incorporada en el petróleo, mientras los futuros estadounidenses avanzan. La coincidencia entre crudo a la baja y activos de riesgo al alza es consistente con condiciones financieras algo menos tensas, pero no demuestra por sí sola un cambio duradero del escenario geopolítico.
 
 ## En una mirada
 
-- El briefing sitúa al Brent cerca de US$83,5, con una caída superior a 5%.
+- El briefing sitúa al Brent cerca de US$83,5, con una caída superior a 5% al corte.
 - Los futuros del S&P 500 avanzan alrededor de 0,6% y los del Nasdaq cerca de 0,4%.
-- El Treasury estadounidense a diez años permanece en una zona restrictiva, cerca de 4,68%.
 - En Chile, el dólar observado informado baja a $928,42.
 - El IMACEC de junio todavía no se había publicado al corte de las 08:05.
 
 ## Por qué importa
 
-La cadena causal dominante es una menor prima energética, seguida por menor inflación esperada, rendimientos soberanos algo más bajos y mejores condiciones para acciones, bonos y monedas emergentes. La reacción es relevante, pero todavía táctica: para consolidarse necesita petróleo contenido y avances diplomáticos verificables.
+Una caída sostenida del petróleo reduciría presión sobre la inflación importada y mejoraría el balance para economías compradoras de energía. Esa es una inferencia económica, no una garantía de mercado: el efecto dependerá de la duración del movimiento, del tipo de cambio y de la respuesta de las tasas.
 
 ## Mercados globales
 
-El informe describe un sistema financiero estable, con crédito abierto, liquidez adecuada y resultados corporativos que continúan respaldando la renta variable. La confianza sigue siendo selectiva. El mercado premia la inversión tecnológica cuando existe monetización comprobable y castiga el gasto de capital sin visibilidad suficiente sobre caja futura.
+Los futuros del S&P 500 y del Nasdaq descritos en el briefing avanzaban aproximadamente 0,6% y 0,4%, respectivamente. Las referencias de CME permiten seguir ambos contratos, cuyos valores cambian durante la sesión.
 
-Europa recibiría un beneficio más directo del menor costo energético, mientras Asia muestra una respuesta menos uniforme debido a la fortaleza del yen y la volatilidad de tecnología y semiconductores.
+La lectura editorial es prudente: el alivio en energía favorece el apetito por riesgo, pero la reacción entre regiones y sectores continúa siendo desigual.
 
 ## Chile
 
-La apreciación del peso mejora el escenario de inflación importada y reduce presión sobre combustibles. El briefing mantiene como escenario principal una TPM de 4,5% por un periodo prolongado: la actividad es débil y el petróleo retrocede, pero la inflación anual todavía permanece elevada.
+El Banco Central registra la serie oficial del dólar observado y muestra una TPM de 4,5%. El INE informó que el IPC de junio no varió en el mes, acumuló 2,8% en 2026 y llegó a 4,3% en doce meses. La combinación de un peso más firme y petróleo a la baja reduce presión importada, aunque no basta por sí sola para anticipar decisiones de política monetaria.
 
 El dato local decisivo del día es el IMACEC. Una lectura mejor apoyaría bancos, consumo e IPSA; una lectura débil favorecería la renta fija, aunque no implicaría automáticamente recortes de la tasa de política.
 
 ## Tasas, monedas y commodities
 
-La deuda corta chilena conserva un carry atractivo. La duración media mejora con el alivio petrolero, mientras la duración larga todavía requiere confirmación inflacionaria. El retroceso rápido del dólar desde la zona de $945-$950 hasta aproximadamente $928-$930 reduce la conveniencia de aumentar coberturas tácticas después del movimiento.
+La deuda corta chilena conserva el respaldo de una TPM de 4,5%. La duración media podría beneficiarse si el alivio petrolero se sostiene, mientras la duración larga todavía requiere confirmación inflacionaria. Estas son lecturas de escenario y no instrucciones para modificar una cartera.
 
 El petróleo es simultáneamente el principal catalizador favorable y el riesgo de reversión más importante de la jornada.
 
@@ -64,4 +75,14 @@ El petróleo es simultáneamente el principal catalizador favorable y el riesgo 
 
 ## Fuentes y metodología
 
-Esta adaptación resume el archivo `Brifing de mercado - 2026-08-03.md` recibido en la carpeta Drive del proyecto. El documento original contiene cifras y referencias narrativas, pero no incorpora los enlaces primarios necesarios para publicar bajo el estándar ATLAS NEWS. La revisión de fuentes queda pendiente.
+Esta edición resume el archivo `Brifing de mercado - 2026-08-03.md` y conserva su hora de corte. Las cifras oficiales de Chile se contrastaron con el Banco Central y el INE; las observaciones intradía se enlazan a los mercados de ICE y CME y deben interpretarse como valores dinámicos.
+
+- [Briefing fuente en Google Drive](https://drive.google.com/file/d/14HQXiOfrsPa2hxkZ48zwpZTqjPZIDbzK/view)
+- [Dólar observado — Banco Central de Chile](https://si3.bcentral.cl/siete/ES/Siete/Cuadro/CAP_TIPO_CAMBIO/MN_TIPO_CAMBIO4/DOLAR_OBS_ADO?idSerie=F073.TCO.PRE.Z.D)
+- [Política monetaria — Banco Central de Chile](https://www.bcentral.cl/es/web/banco-central/areas/politica-monetaria)
+- [IPC de junio de 2026 — INE](https://www.ine.gob.cl/sala-de-prensa/prensa/general/noticia/2026/07/08/%C3%ADndice-de-precios-al-consumidor-%28ipc%29-de-junio-present%C3%B3-una-variaci%C3%B3n-mensual-de-0-0)
+- [IMACEC de mayo de 2026 — Banco Central de Chile](https://www.bcentral.cl/contenido/-/details/prensa/nota-de-prensa/imacec-mayo-2026)
+- [Calendario estadístico — Banco Central de Chile](https://www.bcentral.cl/es/calendario-estadistico)
+- [Futuros de Brent — ICE](https://www.ice.com/products/219/Brent-Crude-Futures/data)
+- [Futuros E-mini S&P 500 — CME Group](https://www.cmegroup.com/markets/equities/sp/e-mini-sandp500.contract.html)
+- [Futuros Nasdaq-100 — CME Group](https://www.cmegroup.com/markets/equities/nasdaq.html)

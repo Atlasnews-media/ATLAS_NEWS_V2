@@ -17,6 +17,7 @@ const [latestDaily, editions, readings] = await Promise.all([
 const secondaryEditions = editions
   .filter(({ id }) => id !== latestDaily?.id)
   .slice(0, 3);
+const hasSecondaryContent = secondaryEditions.length > 0 || readings.length > 0;
 const issueDate = latestDaily
   ? formatEditorialDate(latestDaily.data.publishedAt)
   : "Edición en preparación";
@@ -85,30 +86,28 @@ const issueDate = latestDaily
       )
     }
 
-    <section class="news-grid" aria-labelledby="panorama">
-      <div class="section-rule">
-        <h2 id="panorama">Panorama y contexto</h2><a href="/ediciones/"
-          >Todas las ediciones</a
-        >
-      </div>
-      <div class="columns">
-        {
-          secondaryEditions.map((edition) => (
-            <ContentCard
-              href={`/ediciones/${edition.id}/`}
-              eyebrow={editionTypeLabel(edition.data.type)}
-              title={edition.data.title}
-              summary={edition.data.summary}
-              date={formatEditorialDate(edition.data.publishedAt)}
-              demo={edition.data.demo}
-              compact
-            />
-          ))
-        }
-        {
-          readings
-            .slice(0, 1)
-            .map((reading) => (
+    {
+      hasSecondaryContent && (
+        <section class="news-grid" aria-labelledby="panorama">
+          <div class="section-rule">
+            <>
+              <h2 id="panorama">Panorama y contexto</h2>
+              <a href="/ediciones/">Todas las ediciones</a>
+            </>
+          </div>
+          <div class="columns">
+            {secondaryEditions.map((edition) => (
+              <ContentCard
+                href={`/ediciones/${edition.id}/`}
+                eyebrow={editionTypeLabel(edition.data.type)}
+                title={edition.data.title}
+                summary={edition.data.summary}
+                date={formatEditorialDate(edition.data.publishedAt)}
+                demo={edition.data.demo}
+                compact
+              />
+            ))}
+            {readings.slice(0, 1).map((reading) => (
               <ContentCard
                 href={`/lecturas/${reading.id}/`}
                 eyebrow="Lectura seleccionada"
@@ -118,10 +117,11 @@ const issueDate = latestDaily
                 demo={reading.data.demo}
                 compact
               />
-            ))
-        }
-      </div>
-    </section>
+            ))}
+          </div>
+        </section>
+      )
+    }
 
     <section class="closing-grid">
       <article>
