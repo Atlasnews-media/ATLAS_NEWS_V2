@@ -60,6 +60,13 @@ async function validateFile(directory, filename, requiredHeadings) {
   const status = frontmatterValue(text, "status");
   if (!status || !["draft", "published"].includes(status))
     errors.push("status no es válido");
+  if (
+    status === "published" &&
+    filename.includes("-daily-") &&
+    !text.includes("\nhighlights:")
+  ) {
+    errors.push("la edición diaria publicada no contiene tres destacados");
+  }
 
   if (
     frontmatterValue(text, "demo") === "true" &&

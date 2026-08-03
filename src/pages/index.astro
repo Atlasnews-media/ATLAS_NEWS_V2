@@ -52,30 +52,12 @@ const issueDate = latestDaily
           <aside class="briefing-rail" aria-label="Claves de la edición">
             <p class="rail-title">En una mirada</p>
             <ol>
-              <li>
-                <>
-                  <strong>Riesgo</strong>
-                  <span>
-                    La cautela domina mientras faltan catalizadores confirmados.
-                  </span>
-                </>
-              </li>
-              <li>
-                <>
-                  <strong>Chile</strong>
-                  <span>
-                    El bloque local permanece separado de la lectura global.
-                  </span>
-                </>
-              </li>
-              <li>
-                <>
-                  <strong>Tasas</strong>
-                  <span>
-                    La duración exige evidencia antes de ampliar exposición.
-                  </span>
-                </>
-              </li>
+              {latestDaily.data.highlights?.map((highlight) => (
+                <li>
+                  <strong>{highlight.label}</strong>
+                  <span>{highlight.text}</span>
+                </li>
+              ))}
             </ol>
           </aside>
         </section>

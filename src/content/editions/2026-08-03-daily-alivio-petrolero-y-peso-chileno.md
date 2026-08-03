@@ -27,6 +27,13 @@ sources:
     url: "https://www.cmegroup.com/markets/equities/sp/e-mini-sandp500.contract.html"
 featured: true
 demo: false
+highlights:
+  - label: "Petróleo"
+    text: "El briefing sitúa al Brent cerca de US$83,5 y con una caída superior a 5% al corte."
+  - label: "Chile"
+    text: "El dólar observado informado para la jornada es $928,42 y la TPM permanece en 4,5%."
+  - label: "Actividad"
+    text: "El IMACEC de junio todavía no se había divulgado al cierre de las 08:05."
 ---
 
 > **Corte informativo: 08:05 de Santiago.** Los precios de mercado son una fotografía del briefing y pueden haber cambiado después del cierre. Las relaciones causales se presentan como interpretación editorial, no como hechos comprobados ni recomendaciones de inversión.

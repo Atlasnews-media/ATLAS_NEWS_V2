@@ -8,6 +8,11 @@ const sourceSchema = z.object({
   publishedAt: z.coerce.date().optional(),
 });
 
+const highlightSchema = z.object({
+  label: z.string().min(2).max(24),
+  text: z.string().min(12).max(140),
+});
+
 const editionSchema = z.object({
   title: z.string().min(8).max(140),
   summary: z.string().min(40).max(320),
@@ -20,6 +25,7 @@ const editionSchema = z.object({
   featured: z.boolean().default(false),
   demo: z.boolean().default(false),
   editionNumber: z.number().int().positive().optional(),
+  highlights: z.array(highlightSchema).length(3).optional(),
 });
 
 const readingSchema = z.object({
