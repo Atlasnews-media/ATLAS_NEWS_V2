@@ -2,7 +2,8 @@
 
 ## Fase 1: Fundación técnica y contrato editorial
 
-**Fecha:** 3 de agosto de 2026  
+**Fecha:** 3 de agosto de 2026
+
 **Estado:** Completada
 
 ## Objetivo de la fase
