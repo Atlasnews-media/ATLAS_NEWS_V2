@@ -1,0 +1,61 @@
+name: Publicar ATLAS NEWS
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: atlas-news-production
+  cancel-in-progress: true
+
+jobs:
+  build-and-publish:
+    name: Validar, construir y publicar
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Descargar el repositorio privado
+        uses: actions/checkout@v4
+
+      - name: Preparar Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Instalar dependencias
+        run: npm ci
+
+      - name: Validar y construir el sitio
+        run: npm run build
+
+      - name: Preparar acceso al repositorio público
+        env:
+          DEPLOY_KEY: ${{ secrets.ATLAS_PAGES_DEPLOY_KEY }}
+        run: |
+          install -m 700 -d ~/.ssh
+          printf '%s\n' "$DEPLOY_KEY" > ~/.ssh/atlas_news_pages
+          chmod 600 ~/.ssh/atlas_news_pages
+          ssh-keyscan -H github.com >> ~/.ssh/known_hosts
+
+      - name: Publicar la salida estática
+        env:
+          GIT_SSH_COMMAND: ssh -i ~/.ssh/atlas_news_pages -o IdentitiesOnly=yes
+        run: |
+          atlas_publish_dir="$RUNNER_TEMP/atlas-news-public"
+          git clone --depth 1 git@github.com:EldeSiempre100/EldeSiempre100.github.io.git "$atlas_publish_dir"
+          rsync -a --delete --exclude='.git' dist/ "$atlas_publish_dir/"
+          cd "$atlas_publish_dir"
+          git config user.name "ATLAS NEWS Publisher"
+          git config user.email "actions@users.noreply.github.com"
+          git add --all
+          if git diff --cached --quiet; then
+            echo "La versión pública ya está actualizada."
+            exit 0
+          fi
+          git commit -m "Publica ATLAS NEWS desde ${GITHUB_SHA::7}"
+          git push origin main
