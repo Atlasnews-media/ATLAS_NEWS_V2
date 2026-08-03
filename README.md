@@ -4,7 +4,7 @@ MVP de una publicación financiera digital con gramática visual de periódico y
 
 ## Estado
 
-Fase 5 completada: primera edición real publicada, portada alimentada por Markdown y contenido de demostración retirado del sitio público.
+Fase 6 completada: publicación íntegra desde Markdown, redacción pública limpia y procedimiento operativo para GPT.
 
 ## Sitio público
 
@@ -12,7 +12,9 @@ Fase 5 completada: primera edición real publicada, portada alimentada por Markd
 
 El código y el contenido fuente permanecen en el repositorio privado. GitHub Actions publica únicamente la salida estática en `EldeSiempre100.github.io` después de validar cada cambio aceptado en `main`.
 
-La edición vigente se construye desde `src/content/editions/`. Sus tres destacados alimentan automáticamente el bloque «En una mirada» de la portada.
+La edición vigente se construye desde `src/content/editions/`. Su cuerpo llega íntegro al artículo y sus tres destacados alimentan automáticamente el bloque «En una mirada» de la portada.
+
+El procedimiento de entrega para GPT está documentado en `docs/PROCEDIMIENTO_GPT_PUBLICACION.md`.
 
 ## Requisitos
 
