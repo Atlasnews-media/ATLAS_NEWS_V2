@@ -62,6 +62,11 @@ jobs:
             (.latestDaily == null or .latestDaily.issueNumber >= 1)
           ' dist/status.json > /dev/null
 
+      - name: Probar el auditor contra el build
+        env:
+          ATLAS_PUBLIC_DIR: dist
+        run: npm run audit:production
+
       - name: Preparar acceso al repositorio público
         if: github.event_name != 'pull_request'
         env:
