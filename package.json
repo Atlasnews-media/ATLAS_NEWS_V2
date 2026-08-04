@@ -5,11 +5,13 @@
   "type": "module",
   "scripts": {
     "dev": "astro dev",
-    "build": "npm run validate:content && astro check && astro build && npm run validate:build",
+    "build": "npm run update:indicators && npm run build:site",
+    "build:site": "npm run validate:content && astro check && astro build && npm run validate:build",
     "check": "astro check",
     "preview": "astro preview",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
+    "update:indicators": "node scripts/update-economic-indicators.mjs",
     "validate:content": "node scripts/validate-content.mjs",
     "validate:build": "node scripts/validate-build.mjs"
   },
