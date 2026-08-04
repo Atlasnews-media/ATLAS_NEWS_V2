@@ -2,7 +2,14 @@
 import ContentCard from "../../components/ContentCard.astro";
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import { formatEditorialDate, getPublishedReadings } from "../../lib/content";
+
 const readings = await getPublishedReadings();
+
+function readingEyebrow(tags: string[]) {
+  if (tags.includes("radar-ipsa")) return "Radar IPSA";
+  if (tags.includes("buzon-editorial")) return "Buzón editorial";
+  return "Lectura seleccionada";
+}
 ---
 
 <BaseLayout
@@ -21,7 +28,7 @@ const readings = await getPublishedReadings();
         readings.map((reading) => (
           <ContentCard
             href={`/lecturas/${reading.id}/`}
-            eyebrow="Lectura seleccionada"
+            eyebrow={readingEyebrow(reading.data.tags)}
             title={reading.data.title}
             summary={reading.data.summary}
             date={formatEditorialDate(reading.data.publishedAt)}
