@@ -13,7 +13,9 @@ const {
   editorialDate,
 } = Astro.props;
 
-const headerDateCandidate = editorialDate ? new Date(editorialDate) : new Date();
+const headerDateCandidate = editorialDate
+  ? new Date(editorialDate)
+  : new Date();
 const headerDate = Number.isFinite(headerDateCandidate.valueOf())
   ? headerDateCandidate
   : new Date();
