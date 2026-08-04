@@ -118,7 +118,8 @@ function truncateAtWord(value, maximumLength) {
 
   const shortened = normalized.slice(0, Math.max(1, maximumLength - 1));
   const lastSpace = shortened.lastIndexOf(" ");
-  const boundary = lastSpace > maximumLength * 0.6 ? lastSpace : shortened.length;
+  const boundary =
+    lastSpace > maximumLength * 0.6 ? lastSpace : shortened.length;
   return `${shortened.slice(0, boundary).trim()}…`;
 }
 
@@ -139,7 +140,8 @@ function normalizeUrl(value) {
       }
     }
     url.searchParams.sort();
-    if (url.pathname.length > 1) url.pathname = url.pathname.replace(/\/+$/, "");
+    if (url.pathname.length > 1)
+      url.pathname = url.pathname.replace(/\/+$/, "");
 
     return url.toString();
   } catch {
@@ -193,7 +195,8 @@ async function existingContentSignals() {
         if (url) urls.add(url);
       }
       const titleMatch = text.match(/^title:\s*(.+)$/m);
-      if (titleMatch) titles.add(normalizeTitle(parseYamlScalar(titleMatch[1])));
+      if (titleMatch)
+        titles.add(normalizeTitle(parseYamlScalar(titleMatch[1])));
     }
   }
 
@@ -288,6 +291,11 @@ function readingTitle(candidate) {
   return `${prefix}${truncateAtWord(candidate.title, 160 - prefix.length)}`;
 }
 
+function inlineJsonArray(values) {
+  const items = values.map((value) => JSON.stringify(value));
+  return `[${items.join(", ")}]`;
+}
+
 function readingMarkdown(candidate, detectedAt) {
   const title = readingTitle(candidate);
   const companyLabel = `${candidate.company.name} (${candidate.company.ticker})`;
@@ -296,8 +304,14 @@ function readingMarkdown(candidate, detectedAt) {
     "la fecha y la fuente original antes de cualquier publicación editorial.";
   const sourceDate = candidate.seenAt.toISOString();
   const detectedLabel = formatDetectionDate(candidate.seenAt);
+  const tags = inlineJsonArray([
+    "radar-ipsa",
+    candidate.company.ticker,
+    "gdelt",
+    "pendiente-verificacion",
+  ]);
 
-  return `---\ntitle: ${JSON.stringify(title)}\nsummary: ${JSON.stringify(summary)}\npublishedAt: ${JSON.stringify(sourceDate)}\nstatus: draft\ntags: ${JSON.stringify(["radar-ipsa", candidate.company.ticker, "gdelt", "pendiente-verificacion"])}\nsource:\n  name: ${JSON.stringify(candidate.domain)}\n  url: ${JSON.stringify(candidate.url)}\n  publishedAt: ${JSON.stringify(sourceDate)}\nauthor: ${JSON.stringify("ATLAS Radar")}\ndemo: false\n---\n\n## Tesis principal\n\nGDELT detectó una publicación que menciona **${markdownText(companyLabel)}**. El título informado por la fuente es «${markdownText(candidate.title)}». Esta ficha registra una señal de descubrimiento y no confirma el hecho descrito.\n\n## Por qué fue seleccionada\n\nLa empresa forma parte del piloto Radar IPSA. La señal fue observada el ${detectedLabel}, con origen declarado en ${markdownText(candidate.domain)}, idioma ${markdownText(candidate.language)} y país de la fuente ${markdownText(candidate.sourceCountry)}.\n\n## Contexto y límites\n\nGDELT se utiliza únicamente para descubrir candidatos. ATLAS NEWS no copió el cuerpo del artículo ni verificó todavía su contenido. Antes de retirar la etiqueta \`pendiente-verificacion\` o cambiar el estado, se debe abrir la fuente, confirmar fecha, autoría y hecho central, y contrastar con una fuente primaria cuando corresponda.\n\nDetección técnica registrada: ${detectedAt.toISOString()}.\n`;
+  return `---\ntitle: ${JSON.stringify(title)}\nsummary: ${JSON.stringify(summary)}\npublishedAt: ${JSON.stringify(sourceDate)}\nstatus: draft\ntags: ${tags}\nsource:\n  name: ${JSON.stringify(candidate.domain)}\n  url: ${JSON.stringify(candidate.url)}\n  publishedAt: ${JSON.stringify(sourceDate)}\nauthor: ${JSON.stringify("ATLAS Radar")}\ndemo: false\n---\n\n## Tesis principal\n\nGDELT detectó una publicación que menciona **${markdownText(companyLabel)}**. El título informado por la fuente es «${markdownText(candidate.title)}». Esta ficha registra una señal de descubrimiento y no confirma el hecho descrito.\n\n## Por qué fue seleccionada\n\nLa empresa forma parte del piloto Radar IPSA. La señal fue observada el ${detectedLabel}, con origen declarado en ${markdownText(candidate.domain)}, idioma ${markdownText(candidate.language)} y país de la fuente ${markdownText(candidate.sourceCountry)}.\n\n## Contexto y límites\n\nGDELT se utiliza únicamente para descubrir candidatos. ATLAS NEWS no copió el cuerpo del artículo ni verificó todavía su contenido. Antes de retirar la etiqueta \`pendiente-verificacion\` o cambiar el estado, se debe abrir la fuente, confirmar fecha, autoría y hecho central, y contrastar con una fuente primaria cuando corresponda.\n\nDetección técnica registrada: ${detectedAt.toISOString()}.\n`;
 }
 
 async function writeReport(report) {
@@ -428,7 +442,10 @@ const files = [];
 
 await mkdir(outputPath, { recursive: true });
 for (const candidate of selectedCandidates) {
-  const digest = createHash("sha256").update(candidate.url).digest("hex").slice(0, 12);
+  const digest = createHash("sha256")
+    .update(candidate.url)
+    .digest("hex")
+    .slice(0, 12);
   const filename = `${dateInSantiago(candidate.seenAt)}-reading-radar-${slugify(candidate.company.ticker)}-${digest}.md`;
   if (existing.filenames.has(filename)) {
     discarded += 1;
