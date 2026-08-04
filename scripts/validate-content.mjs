@@ -28,6 +28,43 @@ function frontmatterValue(text, field) {
     ?.trim();
 }
 
+function frontmatterText(text) {
+  return text.match(/^---\s*\r?\n([\s\S]*?)\r?\n---/)?.[1] ?? "";
+}
+
+function parseYamlScalar(value) {
+  const trimmed = value.trim();
+  try {
+    return JSON.parse(trimmed);
+  } catch {
+    return trimmed.replace(/^["']|["']$/g, "");
+  }
+}
+
+function normalizeSourceUrl(value) {
+  try {
+    const url = new URL(value);
+    if (!new Set(["http:", "https:"]).has(url.protocol)) return undefined;
+
+    url.hash = "";
+    url.hostname = url.hostname.toLowerCase().replace(/^www\./, "");
+    for (const parameter of [...url.searchParams.keys()]) {
+      if (
+        parameter.toLowerCase().startsWith("utm_") ||
+        ["fbclid", "gclid"].includes(parameter.toLowerCase())
+      ) {
+        url.searchParams.delete(parameter);
+      }
+    }
+    url.searchParams.sort();
+    if (url.pathname.length > 1) url.pathname = url.pathname.replace(/\/+$/, "");
+
+    return url.toString();
+  } catch {
+    return undefined;
+  }
+}
+
 async function markdownFiles(directory) {
   return (await readdir(directory, { withFileTypes: true }))
     .filter((entry) => entry.isFile() && /\.mdx?$/.test(entry.name))
@@ -36,6 +73,7 @@ async function markdownFiles(directory) {
 
 async function validateFile(directory, filename, requiredHeadings) {
   const text = await readFile(new URL(filename, directory), "utf8");
+  const frontmatter = frontmatterText(text);
   const errors = [];
 
   if (!filenamePattern.test(filename))
@@ -67,6 +105,18 @@ async function validateFile(directory, filename, requiredHeadings) {
     errors.push("la edición diaria publicada no contiene tres destacados");
   }
 
+  const pendingVerification = frontmatter.includes("pendiente-verificacion");
+  const radarReading = filename.includes("-reading-radar-");
+  if (radarReading && !frontmatter.includes("radar-ipsa")) {
+    errors.push("el candidato Radar IPSA no contiene su etiqueta de origen");
+  }
+  if (radarReading && status === "draft" && !pendingVerification) {
+    errors.push("el candidato Radar IPSA no está marcado para verificación");
+  }
+  if (status === "published" && pendingVerification) {
+    errors.push("la publicación conserva la etiqueta pendiente-verificacion");
+  }
+
   if (status === "published" && /\bbr(?:ie|i)fings?\b/i.test(text)) {
     errors.push("la publicación expone terminología interna de preparación");
   }
@@ -94,6 +144,31 @@ async function validateFile(directory, filename, requiredHeadings) {
   return errors.map((error) => `${filename}: ${error}`);
 }
 
+async function duplicateReadingSourceErrors(files) {
+  const ownersByUrl = new Map();
+  const errors = [];
+
+  for (const filename of files) {
+    const text = await readFile(new URL(filename, readingDir), "utf8");
+    const rawUrl = text.match(/^\s*url:\s*(.+)$/m)?.[1];
+    if (!rawUrl) continue;
+
+    const normalizedUrl = normalizeSourceUrl(parseYamlScalar(rawUrl));
+    if (!normalizedUrl) continue;
+
+    const previousOwner = ownersByUrl.get(normalizedUrl);
+    if (previousOwner) {
+      errors.push(
+        `${filename}: repite la URL fuente ya registrada en ${previousOwner}`,
+      );
+    } else {
+      ownersByUrl.set(normalizedUrl, filename);
+    }
+  }
+
+  return errors;
+}
+
 const editionFiles = await markdownFiles(editionDir);
 const readingFiles = await markdownFiles(readingDir);
 const errors = (
@@ -104,6 +179,7 @@ const errors = (
     ...readingFiles.map((file) =>
       validateFile(readingDir, file, readingHeadings),
     ),
+    duplicateReadingSourceErrors(readingFiles),
   ])
 ).flat();
 
