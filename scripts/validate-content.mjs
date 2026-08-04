@@ -74,7 +74,9 @@ function santiagoDate(timestamp) {
     month: "2-digit",
     day: "2-digit",
   }).formatToParts(new Date(timestamp));
-  const values = Object.fromEntries(parts.map(({ type, value }) => [type, value]));
+  const values = Object.fromEntries(
+    parts.map(({ type, value }) => [type, value]),
+  );
   return `${values.year}-${values.month}-${values.day}`;
 }
 
