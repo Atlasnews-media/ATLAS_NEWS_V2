@@ -19,7 +19,9 @@ const currentDaily = dailies[0];
 const currentIssueNumber = currentDaily
   ? dailyIssueNumber(currentDaily, editions)
   : undefined;
-const weeklyCount = editions.filter(({ data }) => data.type === "weekly").length;
+const weeklyCount = editions.filter(
+  ({ data }) => data.type === "weekly",
+).length;
 const sourceCommit = (
   process.env.ATLAS_SOURCE_SHA ??
   process.env.GITHUB_SHA ??
@@ -73,7 +75,9 @@ const indicatorDate = new Intl.DateTimeFormat("es-CL", {
       </article>
       <article>
         <p class="label">Indicadores económicos</p>
-        <strong>{indicators.status === "current" ? "Vigentes" : "Respaldo"}</strong>
+        <strong
+          >{indicators.status === "current" ? "Vigentes" : "Respaldo"}</strong
+        >
         <span>Datos al {indicatorDate}</span>
       </article>
     </section>
@@ -98,7 +102,9 @@ const indicatorDate = new Intl.DateTimeFormat("es-CL", {
             </div>
             <div>
               <dt>Versión de código</dt>
-              <dd><code>{sourceCommit}</code></dd>
+              <dd>
+                <code>{sourceCommit}</code>
+              </dd>
             </div>
             <div>
               <dt>Fuente económica</dt>
