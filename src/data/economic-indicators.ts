@@ -2,10 +2,7 @@ import snapshot from "./economic-indicators.json";
 
 export type EconomicIndicatorStatus = "current" | "stale";
 export type EconomicIndicatorUnit =
-  | "clp"
-  | "clp-integer"
-  | "percent"
-  | "usd-per-pound";
+  "clp" | "clp-integer" | "percent" | "usd-per-pound";
 
 export interface EconomicIndicator {
   code: string;
