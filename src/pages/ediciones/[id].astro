@@ -3,7 +3,8 @@ import { render } from "astro:content";
 import ArticleHeader from "../../components/ArticleHeader.astro";
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import {
-  editionTypeLabel,
+  dailyIssueNumber,
+  editionDisplayLabel,
   formatEditorialDate,
   getPublishedEditions,
   type Edition,
@@ -13,14 +14,18 @@ export async function getStaticPaths() {
   const editions = await getPublishedEditions();
   return editions.map((edition) => ({
     params: { id: edition.id },
-    props: { edition },
+    props: {
+      edition,
+      issueNumber: dailyIssueNumber(edition, editions),
+    },
   }));
 }
 
 interface Props {
   edition: Edition;
+  issueNumber?: number;
 }
-const { edition } = Astro.props;
+const { edition, issueNumber } = Astro.props;
 const { Content } = await render(edition);
 ---
 
@@ -30,7 +35,7 @@ const { Content } = await render(edition);
 >
   <main class="article-page">
     <ArticleHeader
-      eyebrow={editionTypeLabel(edition.data.type)}
+      eyebrow={editionDisplayLabel(edition, issueNumber)}
       title={edition.data.title}
       summary={edition.data.summary}
       date={formatEditorialDate(edition.data.publishedAt)}
