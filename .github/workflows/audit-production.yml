@@ -1,0 +1,39 @@
+name: Auditar producción
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "15 9 * * 1-5"
+      timezone: "America/Santiago"
+
+permissions:
+  contents: read
+
+concurrency:
+  group: audit-production
+  cancel-in-progress: false
+
+jobs:
+  audit:
+    name: Comparar main con la web pública
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: Descargar main
+        uses: actions/checkout@v5
+        with:
+          ref: main
+          fetch-depth: 1
+
+      - name: Descargar la versión pública
+        run: |
+          git clone --depth 1 \
+            https://github.com/EldeSiempre100/EldeSiempre100.github.io.git \
+            "$RUNNER_TEMP/atlas-news-public"
+
+      - name: Comparar edición y versión
+        env:
+          ATLAS_PUBLIC_DIR: ${{ runner.temp }}/atlas-news-public
+          ATLAS_SOURCE_SHA: ${{ github.sha }}
+        run: node scripts/audit-publication.mjs
