@@ -1,21 +1,28 @@
 ---
 import "../styles/global.css";
+import {
+  dailyIssueNumber,
+  formatIssueNumber,
+  getPublishedDailies,
+  getPublishedEditions,
+} from "../lib/content";
 
 interface Props {
   title: string;
   description?: string;
-  editorialDate?: Date | string;
 }
 
 const {
   title,
   description = "ATLAS NEWS — Inteligencia financiera con criterio editorial.",
-  editorialDate,
 } = Astro.props;
 
-const headerDateCandidate = editorialDate
-  ? new Date(editorialDate)
-  : new Date();
+const editions = await getPublishedEditions();
+const currentDaily = getPublishedDailies(editions)[0];
+const currentIssueNumber = currentDaily
+  ? dailyIssueNumber(currentDaily, editions)
+  : undefined;
+const headerDateCandidate = currentDaily?.data.publishedAt ?? new Date();
 const headerDate = Number.isFinite(headerDateCandidate.valueOf())
   ? headerDateCandidate
   : new Date();
@@ -23,6 +30,14 @@ const currentDate = new Intl.DateTimeFormat("es-CL", {
   dateStyle: "full",
   timeZone: "America/Santiago",
 }).format(headerDate);
+const issueLabel = currentIssueNumber
+  ? `Vol. I · ${formatIssueNumber(currentIssueNumber)}`
+  : "Vol. I · Edición en preparación";
+const sourceCommit = (
+  process.env.ATLAS_SOURCE_SHA ??
+  process.env.GITHUB_SHA ??
+  "local"
+).slice(0, 7);
 ---
 
 <!doctype html>
@@ -33,6 +48,7 @@ const currentDate = new Intl.DateTimeFormat("es-CL", {
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
     <meta name="theme-color" content="#f2efe5" />
+    <meta name="atlas-source-commit" content={sourceCommit} />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <title>{title}</title>
   </head>
@@ -40,7 +56,7 @@ const currentDate = new Intl.DateTimeFormat("es-CL", {
     <a class="skip-link" href="#contenido">Saltar al contenido</a>
     <header class="site-header">
       <div class="edition-bar">
-        <span>Vol. I · N° 001</span>
+        <span>{issueLabel}</span>
         <time>{currentDate}</time>
         <span>Santiago de Chile</span>
       </div>
@@ -62,7 +78,10 @@ const currentDate = new Intl.DateTimeFormat("es-CL", {
         Información y análisis editorial. No constituye una recomendación de
         inversión.
       </p>
-      <p>Publicado desde Santiago de Chile · Archivo trazable y versionado</p>
+      <p>
+        <a href="/estado/">Estado de publicación</a><br />Santiago de Chile ·
+        código {sourceCommit}
+      </p>
     </footer>
   </body>
 </html>
@@ -140,6 +159,10 @@ const currentDate = new Intl.DateTimeFormat("es-CL", {
   }
   .site-footer p:last-child {
     text-align: right;
+  }
+  .site-footer p:last-child a {
+    font-weight: 800;
+    text-underline-offset: 0.15em;
   }
   .footer-brand {
     font: 700 1.15rem/1 var(--serif);
