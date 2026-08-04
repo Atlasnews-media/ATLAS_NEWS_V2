@@ -24,7 +24,6 @@ const editionSchema = z.object({
   sources: z.array(sourceSchema).min(1),
   featured: z.boolean().default(false),
   demo: z.boolean().default(false),
-  editionNumber: z.number().int().positive().optional(),
   highlights: z.array(highlightSchema).length(3).optional(),
 });
 
