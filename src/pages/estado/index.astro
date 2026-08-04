@@ -1,0 +1,239 @@
+---
+import indicators from "../../data/economic-indicators.json";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import {
+  dailyIssueNumber,
+  formatEditorialDate,
+  formatIssueNumber,
+  getPublishedDailies,
+  getPublishedEditions,
+  getPublishedReadings,
+} from "../../lib/content";
+
+const [editions, readings] = await Promise.all([
+  getPublishedEditions(),
+  getPublishedReadings(),
+]);
+const dailies = getPublishedDailies(editions);
+const currentDaily = dailies[0];
+const currentIssueNumber = currentDaily
+  ? dailyIssueNumber(currentDaily, editions)
+  : undefined;
+const weeklyCount = editions.filter(({ data }) => data.type === "weekly").length;
+const sourceCommit = (
+  process.env.ATLAS_SOURCE_SHA ??
+  process.env.GITHUB_SHA ??
+  "local"
+).slice(0, 7);
+const indicatorDate = new Intl.DateTimeFormat("es-CL", {
+  dateStyle: "long",
+  timeZone: "America/Santiago",
+}).format(new Date(`${indicators.asOf}T12:00:00-04:00`));
+---
+
+<BaseLayout
+  title="Estado de publicación — ATLAS NEWS"
+  description="Estado verificable de la edición, los indicadores y la versión pública de ATLAS NEWS."
+>
+  <main class="page-shell status-page">
+    <p class="page-kicker">Trazabilidad pública</p>
+    <h1 class="page-title">Estado de publicación</h1>
+    <p class="page-intro">
+      Esta página indica qué edición debería verse en la portada y qué datos
+      fueron utilizados al construir el sitio.
+    </p>
+
+    <section class="status-grid" aria-label="Resumen de la publicación">
+      <article>
+        <p class="label">Edición vigente</p>
+        <strong>
+          {
+            currentIssueNumber
+              ? formatIssueNumber(currentIssueNumber)
+              : "En preparación"
+          }
+        </strong>
+        <span>
+          {
+            currentDaily
+              ? formatEditorialDate(currentDaily.data.publishedAt)
+              : "Sin edición diaria publicada"
+          }
+        </span>
+      </article>
+      <article>
+        <p class="label">Ediciones publicadas</p>
+        <strong>{dailies.length} diarias</strong>
+        <span>{weeklyCount} panoramas semanales</span>
+      </article>
+      <article>
+        <p class="label">Lecturas publicadas</p>
+        <strong>{readings.length}</strong>
+        <span>Los borradores no aparecen en la web</span>
+      </article>
+      <article>
+        <p class="label">Indicadores económicos</p>
+        <strong>{indicators.status === "current" ? "Vigentes" : "Respaldo"}</strong>
+        <span>Datos al {indicatorDate}</span>
+      </article>
+    </section>
+
+    {
+      currentDaily && (
+        <section class="current-edition" aria-labelledby="edicion-publicada">
+          <p class="label">Portada esperada</p>
+          <h2 id="edicion-publicada">
+            <a href={`/ediciones/${currentDaily.id}/`}>
+              {currentDaily.data.title}
+            </a>
+          </h2>
+          <dl>
+            <div>
+              <dt>Publicada</dt>
+              <dd>{formatEditorialDate(currentDaily.data.publishedAt)}</dd>
+            </div>
+            <div>
+              <dt>Cierre editorial</dt>
+              <dd>{formatEditorialDate(currentDaily.data.cutoffAt)}</dd>
+            </div>
+            <div>
+              <dt>Versión de código</dt>
+              <dd><code>{sourceCommit}</code></dd>
+            </div>
+            <div>
+              <dt>Fuente económica</dt>
+              <dd>{indicators.sourceName}</dd>
+            </div>
+          </dl>
+        </section>
+      )
+    }
+
+    <section class="review-guide" aria-labelledby="como-revisar">
+      <h2 id="como-revisar">Cómo interpretar el estado</h2>
+      <p>
+        La portada está al día cuando coincide con el número, la fecha y el
+        título indicados arriba. El archivo público <a href="/status.json"
+          >status.json</a
+        > contiene los mismos datos en formato verificable.
+      </p>
+    </section>
+  </main>
+</BaseLayout>
+
+<style>
+  .status-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    border-top: 5px double var(--rule);
+    border-bottom: 1px solid var(--rule);
+  }
+  .status-grid article {
+    min-width: 0;
+    padding: 1.4rem;
+  }
+  .status-grid article:first-child {
+    padding-left: 0;
+  }
+  .status-grid article + article {
+    border-left: 1px solid var(--rule);
+  }
+  .label {
+    margin: 0 0 0.55rem;
+    color: var(--accent);
+    font: 800 0.7rem/1.2 var(--sans);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+  .status-grid strong,
+  .status-grid span {
+    display: block;
+  }
+  .status-grid strong {
+    font-size: 1.45rem;
+    line-height: 1.05;
+  }
+  .status-grid span {
+    margin-top: 0.45rem;
+    color: var(--ink-soft);
+    font: 0.78rem/1.4 var(--sans);
+  }
+  .current-edition,
+  .review-guide {
+    max-width: 60rem;
+    margin: 4rem auto 0;
+    padding-top: 1.25rem;
+    border-top: 4px double var(--rule);
+  }
+  .current-edition h2 {
+    max-width: 54rem;
+    margin: 0.4rem 0 1.5rem;
+    font-size: clamp(2rem, 5vw, 4rem);
+    line-height: 0.95;
+    letter-spacing: -0.04em;
+  }
+  .current-edition h2 a {
+    text-decoration: none;
+  }
+  .current-edition h2 a:hover {
+    text-decoration: underline;
+    text-underline-offset: 0.12em;
+  }
+  dl {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1rem 2rem;
+    margin: 0;
+  }
+  dl div {
+    padding-top: 0.7rem;
+    border-top: 1px solid var(--rule);
+  }
+  dt {
+    font: 800 0.7rem/1.2 var(--sans);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  dd {
+    margin: 0.3rem 0 0;
+    color: var(--ink-soft);
+  }
+  .review-guide h2 {
+    margin: 0 0 0.75rem;
+    font: 800 1.3rem/1.1 var(--sans);
+    text-transform: uppercase;
+  }
+  .review-guide p {
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+
+  @media (max-width: 58rem) {
+    .status-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    .status-grid article:nth-child(3) {
+      border-left: 0;
+      border-top: 1px solid var(--rule);
+    }
+    .status-grid article:nth-child(4) {
+      border-top: 1px solid var(--rule);
+    }
+  }
+  @media (max-width: 42rem) {
+    .status-grid,
+    dl {
+      grid-template-columns: 1fr;
+    }
+    .status-grid article,
+    .status-grid article:first-child,
+    .status-grid article + article {
+      padding-right: 0;
+      padding-left: 0;
+      border-left: 0;
+    }
+    .status-grid article + article {
+      border-top: 1px solid var(--rule);
+    }
+  }
+</style>
