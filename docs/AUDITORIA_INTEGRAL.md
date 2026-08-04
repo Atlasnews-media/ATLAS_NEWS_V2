@@ -6,21 +6,24 @@ Fecha de auditoría: 2026-08-04.
 
 1. La cabecera mostraba `Vol. I · N° 001` como texto fijo, aunque ya existían dos ediciones diarias publicadas.
 2. `main` contenía la edición diaria del 4 de agosto, pero el repositorio público todavía correspondía al despliegue anterior.
-3. La portada no disponía de un manifiesto que permitiera identificar la edición y el commit realmente desplegados.
-4. La concurrencia del workflow podía cancelar despliegues de producción en curso.
-5. Las validaciones comprobaban la integridad de páginas individuales, pero no exigían que la portada mostrara la edición diaria más reciente.
-6. La revisión operativa dependía de interpretar commits, correos y ejecuciones de GitHub Actions.
+3. La causa concreta del despliegue detenido era un destacado de 149 caracteres frente a un límite de esquema de 140. Astro rechazaba la edición completa antes de construir la web.
+4. La portada no disponía de un manifiesto que permitiera identificar la edición y el commit realmente desplegados.
+5. La concurrencia del workflow podía cancelar despliegues de producción en curso.
+6. Las validaciones comprobaban la integridad de páginas individuales, pero no exigían que la portada mostrara la edición diaria más reciente.
+7. La revisión operativa dependía de interpretar commits, correos y ejecuciones de GitHub Actions.
 
 ## Correcciones estructurales
 
 - La numeración se deriva del orden cronológico de las ediciones diarias publicadas.
 - Los panoramas semanales y las Lecturas no modifican la numeración diaria.
 - La cabecera, la portada, el listado, el archivo y los artículos utilizan la misma función de numeración.
+- El límite de los destacados se ajustó a 160 caracteres para admitir la edición ya aceptada sin reescribir su texto.
 - El build genera `status.json` con edición vigente, número, conteos, indicadores y commit de origen.
 - La página `/estado/` presenta esa información en formato legible.
 - El build falla cuando la portada, el archivo, la página de estado o el manifiesto no coinciden.
 - Los despliegues de producción se serializan y verifican después de publicar.
 - El workflow **Auditar producción** compara diariamente `main` con la web pública.
+- El propio auditor se prueba contra cada build antes de habilitar el despliegue.
 
 ## Invariantes editoriales
 
@@ -31,6 +34,7 @@ Fecha de auditoría: 2026-08-04.
 5. El número visible debe ser igual a la cantidad histórica de ediciones diarias publicadas.
 6. Un candidato de Radar o Buzón no puede publicarse con `pendiente-verificacion`.
 7. Los borradores no generan páginas públicas.
+8. Cada edición diaria publicada debe cumplir el esquema completo antes de generar la portada.
 
 ## Invariantes de despliegue
 
