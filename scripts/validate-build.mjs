@@ -240,13 +240,22 @@ if (status.schemaVersion !== 1) {
 }
 if (latestDaily) {
   if (status.latestDaily?.id !== latestDaily.slug) {
-    throw new Error("El manifiesto no identifica la edición diaria más reciente.");
+    throw new Error(
+      "El manifiesto no identifica la edición diaria más reciente.",
+    );
   }
   if (status.latestDaily?.issueNumber !== currentIssueNumber) {
-    throw new Error("El manifiesto contiene una numeración editorial incorrecta.");
+    throw new Error(
+      "El manifiesto contiene una numeración editorial incorrecta.",
+    );
   }
-  if (normalizeText(status.latestDaily?.title ?? "") !== normalizeText(latestDaily.title)) {
-    throw new Error("El manifiesto no conserva el título de la portada vigente.");
+  if (
+    normalizeText(status.latestDaily?.title ?? "") !==
+    normalizeText(latestDaily.title)
+  ) {
+    throw new Error(
+      "El manifiesto no conserva el título de la portada vigente.",
+    );
   }
 }
 if (!status.sourceCommit || typeof status.sourceCommit !== "string") {
