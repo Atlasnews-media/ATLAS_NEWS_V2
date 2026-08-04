@@ -3,6 +3,14 @@ name: Generar candidatos Radar IPSA
 on:
   workflow_dispatch:
     inputs:
+      mode:
+        description: Ejecutar en seco o proponer borradores mediante Pull Request
+        required: true
+        default: dry-run
+        type: choice
+        options:
+          - dry-run
+          - propose
       timespan:
         description: Ventana de búsqueda en GDELT
         required: true
@@ -15,12 +23,12 @@ on:
       max_total:
         description: Máximo total de candidatos
         required: true
-        default: "5"
+        default: "3"
         type: choice
         options:
+          - "1"
           - "3"
           - "5"
-          - "7"
 
 permissions:
   contents: write
@@ -52,42 +60,49 @@ jobs:
       - name: Instalar dependencias
         run: npm ci
 
-      - name: Preparar rama de candidatos
-        id: branch
+      - name: Preparar metadatos
+        id: metadata
         run: |
           run_date="$(TZ=America/Santiago date +%Y%m%d)"
-          branch_name="radar/candidatos-${run_date}-${GITHUB_RUN_ID}"
-          git switch -c "$branch_name"
-          echo "branch_name=$branch_name" >> "$GITHUB_OUTPUT"
           echo "run_date=$run_date" >> "$GITHUB_OUTPUT"
 
       - name: Descubrir candidatos
         id: radar
         env:
+          ATLAS_RADAR_ALLOW_EMPTY: "1"
+          ATLAS_RADAR_DRY_RUN: ${{ inputs.mode == 'dry-run' && '1' || '0' }}
           ATLAS_RADAR_TIMESPAN: ${{ inputs.timespan }}
           ATLAS_RADAR_MAX_TOTAL: ${{ inputs.max_total }}
           ATLAS_RADAR_REPORT_PATH: tmp/radar-report.json
         run: npm run radar:discover
 
       - name: Comprobar formato
-        if: steps.radar.outputs.created_count != '0'
+        if: inputs.mode == 'propose' && steps.radar.outputs.created_count != '0'
         run: npm run format:check
 
       - name: Validar y construir el sitio
-        if: steps.radar.outputs.created_count != '0'
+        if: inputs.mode == 'propose' && steps.radar.outputs.created_count != '0'
         run: npm run build:site
 
+      - name: Preparar rama de candidatos
+        if: inputs.mode == 'propose' && steps.radar.outputs.created_count != '0'
+        id: branch
+        run: |
+          branch_name="radar/candidatos-${{ steps.metadata.outputs.run_date }}-${GITHUB_RUN_ID}"
+          git switch -c "$branch_name"
+          echo "branch_name=$branch_name" >> "$GITHUB_OUTPUT"
+
       - name: Guardar borradores en la rama
-        if: steps.radar.outputs.created_count != '0'
+        if: inputs.mode == 'propose' && steps.radar.outputs.created_count != '0'
         run: |
           git config user.name "ATLAS Radar"
           git config user.email "actions@users.noreply.github.com"
           git add src/content/readings
-          git commit -m "Añade candidatos Radar IPSA ${{ steps.branch.outputs.run_date }}"
+          git commit -m "Añade candidatos Radar IPSA ${{ steps.metadata.outputs.run_date }}"
           git push --set-upstream origin "${{ steps.branch.outputs.branch_name }}"
 
       - name: Abrir Pull Request editorial
-        if: steps.radar.outputs.created_count != '0'
+        if: inputs.mode == 'propose' && steps.radar.outputs.created_count != '0'
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
@@ -100,7 +115,12 @@ jobs:
             echo "Todos los archivos permanecen en estado draft y con la etiqueta pendiente-verificacion."
             echo "GDELT se utilizó solo para descubrimiento; no se copió el cuerpo de los artículos."
             echo
+            echo "## Candidatos y prioridad técnica"
+            echo
+            jq -r '.candidates[] | "- [\(.sourceKind)] **\(.ticker)** — \(.title) — \(.domain)"' tmp/radar-report.json
+            echo
             echo "## Archivos"
+            echo
             jq -r '.files[] | "- src/content/readings/\(.)"' tmp/radar-report.json
             echo
             echo "## Revisión requerida"
@@ -108,18 +128,24 @@ jobs:
             echo "- Abrir cada fuente original."
             echo "- Confirmar fecha, autoría y hecho central."
             echo "- Contrastar con una fuente primaria cuando corresponda."
+            echo "- Reescribir las tres secciones con criterio editorial."
             echo "- Retirar pendiente-verificacion antes de publicar."
           } > "$body_file"
           gh pr create \
             --draft \
             --base main \
             --head "${{ steps.branch.outputs.branch_name }}" \
-            --title "Radar IPSA: candidatos ${{ steps.branch.outputs.run_date }}" \
+            --title "Radar IPSA: candidatos ${{ steps.metadata.outputs.run_date }}" \
             --body-file "$body_file"
 
-      - name: Informar ausencia de candidatos
-        if: steps.radar.outputs.created_count == '0'
+      - name: Informar resultado sin Pull Request
+        if: inputs.mode == 'dry-run' || steps.radar.outputs.created_count == '0'
         run: |
-          echo "## Radar IPSA" >> "$GITHUB_STEP_SUMMARY"
           echo >> "$GITHUB_STEP_SUMMARY"
-          echo "No se encontraron candidatos nuevos para la ventana solicitada." >> "$GITHUB_STEP_SUMMARY"
+          if [[ "${{ steps.radar.outputs.provider_available }}" != "1" ]]; then
+            echo "El proveedor no respondió. No se creó ninguna propuesta." >> "$GITHUB_STEP_SUMMARY"
+          elif [[ "${{ inputs.mode }}" == "dry-run" ]]; then
+            echo "Ejecución seca completada. No se escribieron archivos ni se abrió un Pull Request." >> "$GITHUB_STEP_SUMMARY"
+          else
+            echo "No se encontraron candidatos nuevos para la ventana solicitada." >> "$GITHUB_STEP_SUMMARY"
+          fi
