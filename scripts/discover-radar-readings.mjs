@@ -159,7 +159,9 @@ function sourceDomain(article, normalizedUrl) {
 
 function domainMatches(domain, expectedDomain) {
   const normalizedExpected = expectedDomain.toLowerCase().replace(/^www\./, "");
-  return domain === normalizedExpected || domain.endsWith(`.${normalizedExpected}`);
+  return (
+    domain === normalizedExpected || domain.endsWith(`.${normalizedExpected}`)
+  );
 }
 
 function isBlockedDomain(domain) {
@@ -270,9 +272,7 @@ async function providerPayload(
 
 function sourceAssessment(config, company, candidate) {
   const preferredDomains = [
-    ...(Array.isArray(config.preferredDomains)
-      ? config.preferredDomains
-      : []),
+    ...(Array.isArray(config.preferredDomains) ? config.preferredDomains : []),
     ...(Array.isArray(company.officialDomains) ? company.officialDomains : []),
   ];
   const primary = preferredDomains.some((domain) =>
@@ -286,7 +286,8 @@ function sourceAssessment(config, company, candidate) {
 
   let score = primary ? 100 : 0;
   if (normalizedCountry === "chile") score += 10;
-  if (["spanish", "español", "espanol"].includes(normalizedLanguage)) score += 5;
+  if (["spanish", "español", "espanol"].includes(normalizedLanguage))
+    score += 5;
   score += Math.min(keywordMatches.length, 5) * 3;
 
   return {
