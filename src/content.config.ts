@@ -10,7 +10,7 @@ const sourceSchema = z.object({
 
 const highlightSchema = z.object({
   label: z.string().min(2).max(24),
-  text: z.string().min(12).max(140),
+  text: z.string().min(12).max(160),
 });
 
 const editionSchema = z.object({
