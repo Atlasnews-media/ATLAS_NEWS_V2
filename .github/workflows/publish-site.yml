@@ -35,6 +35,13 @@ jobs:
       - name: Instalar dependencias
         run: npm ci
 
+      - name: Probar el respaldo económico
+        if: github.event_name == 'pull_request'
+        env:
+          ATLAS_INDICATORS_API_BASE: http://127.0.0.1:9
+          ATLAS_PUBLIC_SNAPSHOT_URL: http://127.0.0.1:9/snapshot.json
+        run: npm run update:indicators
+
       - name: Actualizar indicadores económicos
         run: npm run update:indicators
 
