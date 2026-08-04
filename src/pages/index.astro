@@ -1,5 +1,6 @@
 ---
 import ContentCard from "../components/ContentCard.astro";
+import EconomicIndicators from "../components/EconomicIndicators.astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
 import {
   editionTypeLabel,
@@ -28,6 +29,8 @@ const issueDate = latestDaily
     <div class="issue-line">
       <p>Portada</p><time>{issueDate}</time><p>Edición matutina</p>
     </div>
+
+    <EconomicIndicators />
 
     {
       latestDaily ? (
