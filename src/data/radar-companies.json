@@ -5,22 +5,40 @@
   "timespan": "2days",
   "maxPerCompany": 2,
   "maxTotal": 5,
+  "requestTimeoutMs": 12000,
+  "requestAttempts": 2,
   "selectionAsOf": "2026-06-30",
   "selectionSource": "https://www.spglobal.com/spdji/en/indices/equity/sp-ipsa/",
+  "preferredDomains": ["cmfchile.cl", "bolsadesantiago.com"],
+  "relevanceKeywords": [
+    "hecho esencial",
+    "resultados",
+    "dividendo",
+    "junta de accionistas",
+    "emisión",
+    "bonos",
+    "adquisición",
+    "inversión",
+    "clasificación de riesgo",
+    "estados financieros"
+  ],
   "companies": [
     {
       "ticker": "SQM-B",
       "name": "Sociedad Química y Minera de Chile",
+      "officialDomains": ["ir.sqm.com", "sqm.com"],
       "query": "(\"Sociedad Quimica y Minera\" OR \"SQM Chile\" OR \"SQM-B\") sourcecountry:chile sourcelang:spanish"
     },
     {
       "ticker": "CHILE",
       "name": "Banco de Chile",
+      "officialDomains": ["bancochile.cl", "sitiospublicos.bancochile.cl"],
       "query": "(\"Banco de Chile\" OR \"Banco Chile\") sourcecountry:chile sourcelang:spanish"
     },
     {
       "ticker": "LTM",
       "name": "LATAM Airlines Group",
+      "officialDomains": ["latamairlinesgroup.net", "latam.com"],
       "query": "(\"LATAM Airlines\" OR \"LATAM Airlines Group\") sourcecountry:chile sourcelang:spanish"
     }
   ]
