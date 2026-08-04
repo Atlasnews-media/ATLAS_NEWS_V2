@@ -1,0 +1,27 @@
+{
+  "schemaVersion": 1,
+  "provider": "gdelt-doc-2.0",
+  "providerUrl": "https://api.gdeltproject.org/api/v2/doc/doc",
+  "timespan": "2days",
+  "maxPerCompany": 2,
+  "maxTotal": 5,
+  "selectionAsOf": "2026-06-30",
+  "selectionSource": "https://www.spglobal.com/spdji/en/indices/equity/sp-ipsa/",
+  "companies": [
+    {
+      "ticker": "SQM-B",
+      "name": "Sociedad Química y Minera de Chile",
+      "query": "(\"Sociedad Quimica y Minera\" OR \"SQM Chile\" OR \"SQM-B\") sourcecountry:chile sourcelang:spanish"
+    },
+    {
+      "ticker": "CHILE",
+      "name": "Banco de Chile",
+      "query": "(\"Banco de Chile\" OR \"Banco Chile\") sourcecountry:chile sourcelang:spanish"
+    },
+    {
+      "ticker": "LTM",
+      "name": "LATAM Airlines Group",
+      "query": "(\"LATAM Airlines\" OR \"LATAM Airlines Group\") sourcecountry:chile sourcelang:spanish"
+    }
+  ]
+}
