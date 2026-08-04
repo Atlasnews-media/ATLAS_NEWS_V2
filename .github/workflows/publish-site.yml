@@ -3,13 +3,18 @@ name: Publicar ATLAS NEWS
 on:
   push:
     branches: [main]
+  pull_request:
+    branches: [main]
+  schedule:
+    - cron: "45 8 * * 1-5"
+      timezone: "America/Santiago"
   workflow_dispatch:
 
 permissions:
   contents: read
 
 concurrency:
-  group: atlas-news-production
+  group: atlas-news-${{ github.event.pull_request.number || github.ref }}
   cancel-in-progress: true
 
 jobs:
@@ -30,13 +35,24 @@ jobs:
       - name: Instalar dependencias
         run: npm ci
 
+      - name: Probar el respaldo económico
+        if: github.event_name == 'pull_request'
+        env:
+          ATLAS_INDICATORS_API_BASE: http://127.0.0.1:9
+          ATLAS_PUBLIC_SNAPSHOT_URL: http://127.0.0.1:9/snapshot.json
+        run: npm run update:indicators
+
+      - name: Actualizar indicadores económicos
+        run: npm run update:indicators
+
       - name: Comprobar formato
         run: npm run format:check
 
       - name: Validar y construir el sitio
-        run: npm run build
+        run: npm run build:site
 
       - name: Preparar acceso al repositorio público
+        if: github.event_name != 'pull_request'
         env:
           DEPLOY_KEY: ${{ secrets.ATLAS_PAGES_DEPLOY_KEY }}
         run: |
@@ -46,6 +62,7 @@ jobs:
           ssh-keyscan -H github.com >> ~/.ssh/known_hosts
 
       - name: Publicar la salida estática
+        if: github.event_name != 'pull_request'
         env:
           GIT_SSH_COMMAND: ssh -i ~/.ssh/atlas_news_pages -o IdentitiesOnly=yes
         run: |
