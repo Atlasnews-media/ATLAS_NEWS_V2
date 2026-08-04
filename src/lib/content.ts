@@ -36,7 +36,9 @@ export function dailyIssueNumber(
   if (edition.data.type !== "daily") return undefined;
 
   const chronologicalDailies = getPublishedDailies(editions).sort(oldestFirst);
-  const position = chronologicalDailies.findIndex(({ id }) => id === edition.id);
+  const position = chronologicalDailies.findIndex(
+    ({ id }) => id === edition.id,
+  );
   return position >= 0 ? position + 1 : undefined;
 }
 
@@ -60,5 +62,7 @@ export function editionDisplayLabel(
   issueNumber?: number,
 ): string {
   const typeLabel = editionTypeLabel(edition.data.type);
-  return issueNumber ? `${typeLabel} · ${formatIssueNumber(issueNumber)}` : typeLabel;
+  return issueNumber
+    ? `${typeLabel} · ${formatIssueNumber(issueNumber)}`
+    : typeLabel;
 }
