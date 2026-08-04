@@ -48,20 +48,8 @@ jobs:
       - name: Actualizar indicadores económicos
         run: npm run update:indicators
 
-      - name: Mostrar el formato requerido
-        run: |
-          files=(
-            scripts/generate-publication-status.mjs
-            scripts/validate-build.mjs
-            scripts/validate-content.mjs
-            src/lib/content.ts
-            src/pages/ediciones/index.astro
-            src/pages/estado/index.astro
-            src/pages/index.astro
-          )
-          npx prettier --write "${files[@]}"
-          git diff -- "${files[@]}"
-          exit 1
+      - name: Comprobar formato
+        run: npm run format:check
 
       - name: Validar y construir el sitio
         run: npm run build:site
