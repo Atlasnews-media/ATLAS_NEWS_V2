@@ -156,9 +156,7 @@ async function fetchIndicator(definition, today) {
         Number.isFinite(observation?.valor) &&
         typeof observation?.fecha === "string",
     )
-    .sort(
-      (left, right) => Date.parse(right.fecha) - Date.parse(left.fecha),
-    );
+    .sort((left, right) => Date.parse(right.fecha) - Date.parse(left.fecha));
 
   const latest = candidates[0];
   if (!latest) {
@@ -189,9 +187,7 @@ async function fetchIndicator(definition, today) {
 async function fetchCurrentSnapshot(now) {
   const today = dateInSantiago(now);
   const indicators = await Promise.all(
-    indicatorDefinitions.map((definition) =>
-      fetchIndicator(definition, today),
-    ),
+    indicatorDefinitions.map((definition) => fetchIndicator(definition, today)),
   );
   const attemptTime = now.toISOString();
   const asOf = indicators
