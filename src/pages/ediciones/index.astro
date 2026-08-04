@@ -2,7 +2,8 @@
 import ContentCard from "../../components/ContentCard.astro";
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import {
-  editionTypeLabel,
+  dailyIssueNumber,
+  editionDisplayLabel,
   formatEditorialDate,
   getPublishedEditions,
 } from "../../lib/content";
@@ -18,14 +19,18 @@ const editions = await getPublishedEditions();
     <h1 class="page-title">Ediciones</h1>
     <p class="page-intro">
       Ediciones diarias y panoramas semanales, ordenadas desde el cierre más
-      reciente.
+      reciente. La numeración corresponde exclusivamente a las ediciones
+      diarias publicadas.
     </p>
     <div class="edition-list">
       {
         editions.map((edition) => (
           <ContentCard
             href={`/ediciones/${edition.id}/`}
-            eyebrow={editionTypeLabel(edition.data.type)}
+            eyebrow={editionDisplayLabel(
+              edition,
+              dailyIssueNumber(edition, editions),
+            )}
             title={edition.data.title}
             summary={edition.data.summary}
             date={formatEditorialDate(edition.data.publishedAt)}
