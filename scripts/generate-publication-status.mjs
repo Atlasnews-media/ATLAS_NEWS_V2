@@ -63,8 +63,7 @@ const publishedEditions = editions.filter(
 const publishedDailies = publishedEditions
   .filter(({ type }) => type === "daily")
   .sort(
-    (a, b) =>
-      Date.parse(a.publishedAt ?? "") - Date.parse(b.publishedAt ?? ""),
+    (a, b) => Date.parse(a.publishedAt ?? "") - Date.parse(b.publishedAt ?? ""),
   );
 const publishedWeeklies = publishedEditions.filter(
   ({ type }) => type === "weekly",
