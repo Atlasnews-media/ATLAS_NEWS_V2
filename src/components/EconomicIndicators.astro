@@ -1,12 +1,57 @@
 ---
-import { economicIndicatorsSnapshot } from "../data/economic-indicators";
+import {
+  economicIndicatorsSnapshot,
+  type EconomicIndicator,
+} from "../data/economic-indicators";
 
-const asOfLabel = new Intl.DateTimeFormat("es-CL", {
+const dateFormatter = new Intl.DateTimeFormat("es-CL", {
   day: "numeric",
   month: "short",
   year: "numeric",
   timeZone: "America/Santiago",
-}).format(new Date(`${economicIndicatorsSnapshot.asOf}T12:00:00-04:00`));
+});
+const clpFormatter = new Intl.NumberFormat("es-CL", {
+  style: "currency",
+  currency: "CLP",
+  minimumFractionDigits: 2,
+  maximumFractionDigits: 2,
+});
+const clpIntegerFormatter = new Intl.NumberFormat("es-CL", {
+  style: "currency",
+  currency: "CLP",
+  maximumFractionDigits: 0,
+});
+const percentFormatter = new Intl.NumberFormat("es-CL", {
+  minimumFractionDigits: 2,
+  maximumFractionDigits: 2,
+});
+const decimalFormatter = new Intl.NumberFormat("es-CL", {
+  minimumFractionDigits: 2,
+  maximumFractionDigits: 2,
+});
+
+function formatDate(date: string) {
+  return dateFormatter.format(new Date(`${date}T12:00:00-04:00`));
+}
+
+function formatValue(indicator: EconomicIndicator) {
+  switch (indicator.unit) {
+    case "clp":
+      return clpFormatter.format(indicator.value);
+    case "clp-integer":
+      return clpIntegerFormatter.format(indicator.value);
+    case "percent":
+      return `${percentFormatter.format(indicator.value)}%`;
+    case "usd-per-pound":
+      return `US$${decimalFormatter.format(indicator.value)}/lb`;
+  }
+}
+
+const asOfLabel = formatDate(economicIndicatorsSnapshot.asOf);
+const freshnessLabel =
+  economicIndicatorsSnapshot.status === "stale"
+    ? "Último dato disponible"
+    : "Datos al";
 ---
 
 <section
@@ -23,8 +68,8 @@ const asOfLabel = new Intl.DateTimeFormat("es-CL", {
       economicIndicatorsSnapshot.indicators.map((indicator) => (
         <div class="economic-strip__item">
           <dt>{indicator.label}</dt>
-          <dd title={`Dato efectivo al ${indicator.effectiveDate}`}>
-            {indicator.value}
+          <dd title={`Dato efectivo al ${formatDate(indicator.effectiveDate)}`}>
+            {formatValue(indicator)}
           </dd>
         </div>
       ))
@@ -36,7 +81,7 @@ const asOfLabel = new Intl.DateTimeFormat("es-CL", {
       {economicIndicatorsSnapshot.sourceName}
     </a>
     <span aria-hidden="true"> · </span>
-    Corte controlado: <time datetime={economicIndicatorsSnapshot.asOf}>
+    {freshnessLabel}: <time datetime={economicIndicatorsSnapshot.asOf}>
       {asOfLabel}
     </time>
   </p>
