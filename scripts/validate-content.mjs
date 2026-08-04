@@ -57,7 +57,8 @@ function normalizeSourceUrl(value) {
       }
     }
     url.searchParams.sort();
-    if (url.pathname.length > 1) url.pathname = url.pathname.replace(/\/+$/, "");
+    if (url.pathname.length > 1)
+      url.pathname = url.pathname.replace(/\/+$/, "");
 
     return url.toString();
   } catch {
