@@ -1,0 +1,125 @@
+name: Generar candidatos Radar IPSA
+
+on:
+  workflow_dispatch:
+    inputs:
+      timespan:
+        description: Ventana de búsqueda en GDELT
+        required: true
+        default: 2days
+        type: choice
+        options:
+          - 1day
+          - 2days
+          - 1week
+      max_total:
+        description: Máximo total de candidatos
+        required: true
+        default: "5"
+        type: choice
+        options:
+          - "3"
+          - "5"
+          - "7"
+
+permissions:
+  contents: write
+  pull-requests: write
+
+concurrency:
+  group: radar-ipsa-discovery
+  cancel-in-progress: false
+
+jobs:
+  discover:
+    name: Descubrir y proponer candidatos
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - name: Descargar main
+        uses: actions/checkout@v5
+        with:
+          ref: main
+          fetch-depth: 0
+
+      - name: Preparar Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Instalar dependencias
+        run: npm ci
+
+      - name: Preparar rama de candidatos
+        id: branch
+        run: |
+          run_date="$(TZ=America/Santiago date +%Y%m%d)"
+          branch_name="radar/candidatos-${run_date}-${GITHUB_RUN_ID}"
+          git switch -c "$branch_name"
+          echo "branch_name=$branch_name" >> "$GITHUB_OUTPUT"
+          echo "run_date=$run_date" >> "$GITHUB_OUTPUT"
+
+      - name: Descubrir candidatos
+        id: radar
+        env:
+          ATLAS_RADAR_TIMESPAN: ${{ inputs.timespan }}
+          ATLAS_RADAR_MAX_TOTAL: ${{ inputs.max_total }}
+          ATLAS_RADAR_REPORT_PATH: tmp/radar-report.json
+        run: npm run radar:discover
+
+      - name: Comprobar formato
+        if: steps.radar.outputs.created_count != '0'
+        run: npm run format:check
+
+      - name: Validar y construir el sitio
+        if: steps.radar.outputs.created_count != '0'
+        run: npm run build:site
+
+      - name: Guardar borradores en la rama
+        if: steps.radar.outputs.created_count != '0'
+        run: |
+          git config user.name "ATLAS Radar"
+          git config user.email "actions@users.noreply.github.com"
+          git add src/content/readings
+          git commit -m "Añade candidatos Radar IPSA ${{ steps.branch.outputs.run_date }}"
+          git push --set-upstream origin "${{ steps.branch.outputs.branch_name }}"
+
+      - name: Abrir Pull Request editorial
+        if: steps.radar.outputs.created_count != '0'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          body_file="$RUNNER_TEMP/radar-pr.md"
+          {
+            echo "## Candidatos detectados"
+            echo
+            echo "Generados mediante GDELT DOC 2.0 durante la ejecución ${GITHUB_RUN_ID}."
+            echo
+            echo "Todos los archivos permanecen en estado draft y con la etiqueta pendiente-verificacion."
+            echo "GDELT se utilizó solo para descubrimiento; no se copió el cuerpo de los artículos."
+            echo
+            echo "## Archivos"
+            jq -r '.files[] | "- src/content/readings/\(.)"' tmp/radar-report.json
+            echo
+            echo "## Revisión requerida"
+            echo
+            echo "- Abrir cada fuente original."
+            echo "- Confirmar fecha, autoría y hecho central."
+            echo "- Contrastar con una fuente primaria cuando corresponda."
+            echo "- Retirar pendiente-verificacion antes de publicar."
+          } > "$body_file"
+          gh pr create \
+            --draft \
+            --base main \
+            --head "${{ steps.branch.outputs.branch_name }}" \
+            --title "Radar IPSA: candidatos ${{ steps.branch.outputs.run_date }}" \
+            --body-file "$body_file"
+
+      - name: Informar ausencia de candidatos
+        if: steps.radar.outputs.created_count == '0'
+        run: |
+          echo "## Radar IPSA" >> "$GITHUB_STEP_SUMMARY"
+          echo >> "$GITHUB_STEP_SUMMARY"
+          echo "No se encontraron candidatos nuevos para la ventana solicitada." >> "$GITHUB_STEP_SUMMARY"

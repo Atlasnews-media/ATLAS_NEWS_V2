@@ -11,6 +11,7 @@
     "preview": "astro preview",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
+    "radar:discover": "node scripts/discover-radar-readings.mjs",
     "update:indicators": "node scripts/update-economic-indicators.mjs",
     "validate:content": "node scripts/validate-content.mjs",
     "validate:build": "node scripts/validate-build.mjs"
