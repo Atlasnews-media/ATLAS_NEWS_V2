@@ -38,8 +38,11 @@ jobs:
       - name: Actualizar indicadores económicos
         run: npm run update:indicators
 
-      - name: Comprobar formato
-        run: npm run format:check
+      - name: Mostrar formato requerido
+        run: |
+          npx prettier --write scripts/update-economic-indicators.mjs src/data/economic-indicators.ts
+          git diff -- scripts/update-economic-indicators.mjs src/data/economic-indicators.ts
+          exit 1
 
       - name: Validar y construir el sitio
         run: npm run build:site
