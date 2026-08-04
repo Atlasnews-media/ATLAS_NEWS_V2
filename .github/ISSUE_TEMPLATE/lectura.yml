@@ -1,0 +1,91 @@
+name: Proponer una lectura
+description: Registrar una fuente para revisión editorial de ATLAS NEWS
+title: "Lectura: "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Este formulario registra una propuesta. No publica contenido ni confirma la información de la fuente.
+
+  - type: input
+    id: source_title
+    attributes:
+      label: Título de la fuente
+      description: Copia el título visible de la publicación original.
+      placeholder: Título completo
+    validations:
+      required: true
+
+  - type: input
+    id: source_url
+    attributes:
+      label: URL de la fuente
+      description: Usa la URL directa del documento o artículo original.
+      placeholder: https://...
+    validations:
+      required: true
+
+  - type: input
+    id: source_date
+    attributes:
+      label: Fecha de publicación
+      description: Fecha conocida en formato AAAA-MM-DD. Deja "no confirmada" cuando corresponda.
+      placeholder: AAAA-MM-DD o no confirmada
+    validations:
+      required: true
+
+  - type: input
+    id: author
+    attributes:
+      label: Autor o entidad responsable
+      placeholder: Persona, empresa, regulador o medio
+    validations:
+      required: true
+
+  - type: textarea
+    id: relevance
+    attributes:
+      label: Por qué merece revisión
+      description: Explica qué contexto, método o hecho verificable aporta.
+      placeholder: Relevancia editorial de la fuente
+    validations:
+      required: true
+
+  - type: input
+    id: primary_source
+    attributes:
+      label: Fuente primaria relacionada
+      description: URL de un comunicado, documento regulatorio o sitio oficial. Escribe "no localizada" si todavía no existe.
+      placeholder: https://... o no localizada
+    validations:
+      required: true
+
+  - type: dropdown
+    id: proposed_section
+    attributes:
+      label: Sección propuesta
+      options:
+        - Lecturas seleccionadas
+        - Radar IPSA
+        - Contexto económico
+        - Metodología
+        - Otra
+    validations:
+      required: true
+
+  - type: textarea
+    id: notes
+    attributes:
+      label: Observaciones y límites
+      description: Registra dudas, posibles conflictos, paywall, idioma o datos que aún requieren confirmación.
+      placeholder: Aspectos que el editor debe revisar
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: declaration
+    attributes:
+      label: Confirmación
+      options:
+        - label: Entiendo que esta propuesta quedará pendiente de verificación y no será publicada automáticamente.
+          required: true
