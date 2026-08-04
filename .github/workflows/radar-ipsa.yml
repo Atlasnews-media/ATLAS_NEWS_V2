@@ -73,8 +73,15 @@ jobs:
           ATLAS_RADAR_DRY_RUN: ${{ inputs.mode == 'dry-run' && '1' || '0' }}
           ATLAS_RADAR_TIMESPAN: ${{ inputs.timespan }}
           ATLAS_RADAR_MAX_TOTAL: ${{ inputs.max_total }}
-          ATLAS_RADAR_REPORT_PATH: tmp/radar-report.json
+          ATLAS_RADAR_REPORT_PATH: ${{ runner.temp }}/radar-report.json
         run: npm run radar:discover
+
+      - name: Formatear solo los borradores creados
+        if: inputs.mode == 'propose' && steps.radar.outputs.created_count != '0'
+        run: |
+          jq -r '.files[]' "${{ runner.temp }}/radar-report.json" | while IFS= read -r filename; do
+            npx prettier --write "src/content/readings/$filename"
+          done
 
       - name: Comprobar formato
         if: inputs.mode == 'propose' && steps.radar.outputs.created_count != '0'
@@ -117,11 +124,11 @@ jobs:
             echo
             echo "## Candidatos y prioridad técnica"
             echo
-            jq -r '.candidates[] | "- [\(.sourceKind)] **\(.ticker)** — \(.title) — \(.domain)"' tmp/radar-report.json
+            jq -r '.candidates[] | "- [\(.sourceKind)] **\(.ticker)** — \(.title) — \(.domain)"' "${{ runner.temp }}/radar-report.json"
             echo
             echo "## Archivos"
             echo
-            jq -r '.files[] | "- src/content/readings/\(.)"' tmp/radar-report.json
+            jq -r '.files[] | "- src/content/readings/\(.)"' "${{ runner.temp }}/radar-report.json"
             echo
             echo "## Revisión requerida"
             echo
