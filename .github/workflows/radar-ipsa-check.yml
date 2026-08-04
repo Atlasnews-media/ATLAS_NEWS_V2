@@ -63,8 +63,21 @@ jobs:
             grep -q '^## Contexto y límites$' "$radar_file"
           done
 
-      - name: Comprobar formato
-        run: npm run format:check
+      - name: Mostrar formato requerido
+        run: |
+          before="$RUNNER_TEMP/radar-before"
+          mkdir -p "$before/readings" "$before/tmp"
+          mapfile -t radar_files < <(find src/content/readings -maxdepth 1 -type f -name '*-reading-radar-*.md' | sort)
+          for radar_file in "${radar_files[@]}"; do
+            cp "$radar_file" "$before/readings/$(basename "$radar_file")"
+          done
+          cp tmp/radar-report.json "$before/tmp/radar-report.json"
+          npx prettier --write "src/content/readings/*-reading-radar-*.md" tmp/radar-report.json
+          for radar_file in "${radar_files[@]}"; do
+            diff -u "$before/readings/$(basename "$radar_file")" "$radar_file" || true
+          done
+          diff -u "$before/tmp/radar-report.json" tmp/radar-report.json || true
+          exit 1
 
       - name: Validar y construir el sitio
         run: npm run build:site
