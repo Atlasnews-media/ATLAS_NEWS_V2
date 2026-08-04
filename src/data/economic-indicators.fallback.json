@@ -1,0 +1,54 @@
+{
+  "schemaVersion": 1,
+  "status": "stale",
+  "asOf": "2026-07-27",
+  "fetchedAt": "2026-07-27T12:00:00.000Z",
+  "lastAttemptAt": "2026-07-27T12:00:00.000Z",
+  "sourceName": "Banco Central de Chile",
+  "sourceUrl": "https://si3.bcentral.cl/Bdemovil/BDE/IndicadoresDiarios",
+  "provider": "fallback",
+  "indicators": [
+    {
+      "code": "uf",
+      "label": "UF",
+      "value": 40844.79,
+      "unit": "clp",
+      "effectiveDate": "2026-07-27"
+    },
+    {
+      "code": "dolar",
+      "label": "Dólar observado",
+      "value": 946.14,
+      "unit": "clp",
+      "effectiveDate": "2026-07-27"
+    },
+    {
+      "code": "euro",
+      "label": "Euro",
+      "value": 1075.65,
+      "unit": "clp",
+      "effectiveDate": "2026-07-27"
+    },
+    {
+      "code": "utm",
+      "label": "UTM",
+      "value": 71649,
+      "unit": "clp-integer",
+      "effectiveDate": "2026-07-01"
+    },
+    {
+      "code": "tpm",
+      "label": "TPM",
+      "value": 4.5,
+      "unit": "percent",
+      "effectiveDate": "2026-07-27"
+    },
+    {
+      "code": "cobre",
+      "label": "Cobre",
+      "value": 6.17,
+      "unit": "usd-per-pound",
+      "effectiveDate": "2026-07-27"
+    }
+  ]
+}
