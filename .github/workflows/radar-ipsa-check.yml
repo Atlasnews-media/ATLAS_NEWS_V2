@@ -1,0 +1,75 @@
+name: Validar Radar IPSA
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - ".github/workflows/radar-ipsa*.yml"
+      - "package.json"
+      - "scripts/discover-radar-readings.mjs"
+      - "scripts/fixtures/gdelt-radar-sample.json"
+      - "scripts/validate-content.mjs"
+      - "src/data/radar-companies.json"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: radar-ipsa-check-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  validate-radar:
+    name: Generar y validar borradores
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: Descargar el repositorio
+        uses: actions/checkout@v5
+
+      - name: Preparar Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Instalar dependencias
+        run: npm ci
+
+      - name: Generar borradores con datos controlados
+        id: radar
+        env:
+          ATLAS_RADAR_FIXTURE: scripts/fixtures/gdelt-radar-sample.json
+          ATLAS_RADAR_MAX_TOTAL: 3
+          ATLAS_RADAR_REPORT_PATH: tmp/radar-report.json
+        run: npm run radar:discover
+
+      - name: Comprobar el contrato de los borradores
+        run: |
+          test "$(jq -r '.created' tmp/radar-report.json)" = "3"
+          mapfile -t radar_files < <(find src/content/readings -maxdepth 1 -type f -name '*-reading-radar-*.md' | sort)
+          test "${#radar_files[@]}" -eq 3
+          for radar_file in "${radar_files[@]}"; do
+            grep -q '^status: draft$' "$radar_file"
+            grep -q '"radar-ipsa"' "$radar_file"
+            grep -q '"pendiente-verificacion"' "$radar_file"
+            grep -q '^## Tesis principal$' "$radar_file"
+            grep -q '^## Por qué fue seleccionada$' "$radar_file"
+            grep -q '^## Contexto y límites$' "$radar_file"
+          done
+
+      - name: Comprobar formato
+        run: npm run format:check
+
+      - name: Validar y construir el sitio
+        run: npm run build:site
+
+      - name: Probar conectividad con GDELT
+        continue-on-error: true
+        env:
+          ATLAS_RADAR_DRY_RUN: 1
+          ATLAS_RADAR_MAX_TOTAL: 1
+          ATLAS_RADAR_REPORT_PATH: tmp/radar-live-report.json
+        run: npm run radar:discover
