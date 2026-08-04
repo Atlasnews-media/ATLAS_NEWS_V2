@@ -67,8 +67,16 @@ jobs:
       - name: Confirmar que la segunda ejecución no duplica
         run: test "${{ steps.duplicate.outputs.created_count }}" = "0"
 
-      - name: Comprobar formato
-        run: npm run format:check
+      - name: Mostrar formato requerido
+        run: |
+          before="$RUNNER_TEMP/editorial-before"
+          mkdir -p "$before"
+          cp scripts/create-reading-from-issue.mjs "$before/create-reading-from-issue.mjs"
+          cp scripts/discover-radar-readings.mjs "$before/discover-radar-readings.mjs"
+          npx prettier --write scripts/create-reading-from-issue.mjs scripts/discover-radar-readings.mjs
+          diff -u "$before/create-reading-from-issue.mjs" scripts/create-reading-from-issue.mjs || true
+          diff -u "$before/discover-radar-readings.mjs" scripts/discover-radar-readings.mjs || true
+          exit 1
 
       - name: Validar y construir el sitio
         run: npm run build:site
