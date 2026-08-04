@@ -7,6 +7,10 @@ import {
   getPublishedEditions,
 } from "../lib/content";
 
+declare const process: {
+  env: Record<string, string | undefined>;
+};
+
 interface Props {
   title: string;
   description?: string;
