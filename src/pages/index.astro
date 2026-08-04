@@ -54,7 +54,9 @@ const hasSecondaryContent = secondaryEditions.length > 0 || readings.length > 0;
             </h1>
             <p class="standfirst">{latestDaily.data.summary}</p>
             <div class="lead-meta">
-              <span>{editionDisplayLabel(latestDaily, currentIssueNumber)}</span>
+              <span>
+                {editionDisplayLabel(latestDaily, currentIssueNumber)}
+              </span>
               {latestDaily.data.demo && <strong>Edición demostrativa</strong>}
             </div>
             <a class="lead-link" href={`/ediciones/${latestDaily.id}/`}>
