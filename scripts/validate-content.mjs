@@ -108,11 +108,17 @@ async function validateFile(directory, filename, requiredHeadings) {
 
   const pendingVerification = frontmatter.includes("pendiente-verificacion");
   const radarReading = filename.includes("-reading-radar-");
+  const editorialInboxReading = filename.includes("-reading-buzon-");
+  const automatedReading = radarReading || editorialInboxReading;
+
   if (radarReading && !frontmatter.includes("radar-ipsa")) {
     errors.push("el candidato Radar IPSA no contiene su etiqueta de origen");
   }
-  if (radarReading && status === "draft" && !pendingVerification) {
-    errors.push("el candidato Radar IPSA no está marcado para verificación");
+  if (editorialInboxReading && !frontmatter.includes("buzon-editorial")) {
+    errors.push("el candidato del Buzón no contiene su etiqueta de origen");
+  }
+  if (automatedReading && status === "draft" && !pendingVerification) {
+    errors.push("el candidato automático no está marcado para verificación");
   }
   if (status === "published" && pendingVerification) {
     errors.push("la publicación conserva la etiqueta pendiente-verificacion");
