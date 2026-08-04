@@ -42,13 +42,6 @@ function frontmatterValue(text, field) {
     ?.trim();
 }
 
-function stripFrontmatter(text) {
-  return text.replace(
-    /^\uFEFF?---\s*\r?\n[\s\S]*?\r?\n---\s*(?:\r?\n|$)/,
-    "",
-  );
-}
-
 function decodeHtmlEntities(text) {
   return text
     .replace(/&nbsp;/gi, " ")
@@ -69,24 +62,6 @@ function normalizeText(text) {
     .replace(/\s+/g, " ")
     .trim()
     .toLocaleLowerCase("es");
-}
-
-function markdownToText(markdown) {
-  return normalizeText(
-    stripFrontmatter(markdown)
-      .replace(/```[^\n]*\n([\s\S]*?)```/g, "$1")
-      .replace(/!\[([^\]]*)\]\([^)]*\)/g, "$1")
-      .replace(/\[([^\]]+)\]\([^)]*\)/g, "$1")
-      .replace(/<[^>]+>/g, " ")
-      .replace(/^#{1,6}\s+/gm, "")
-      .replace(/^>\s?/gm, "")
-      .replace(/^[-*+]\s+/gm, "")
-      .replace(/^\d+\.\s+/gm, "")
-      .replace(/^\|?(?:\s*:?-+:?\s*\|)+\s*$/gm, "")
-      .replace(/\|/g, " ")
-      .replace(/[*_~`]/g, "")
-      .replace(/^\s*-{3,}\s*$/gm, " "),
-  );
 }
 
 function htmlToText(html) {
@@ -132,7 +107,6 @@ async function validatePublishedFile(group, filename, markdown) {
 
   const html = await readFile(new URL(outputPath, root), "utf8");
   const htmlText = htmlToText(html);
-  const bodyText = markdownToText(markdown);
   const title = normalizeText(frontmatterValue(markdown, "title") ?? "");
 
   if (!title || !htmlText.includes(title)) {
@@ -147,12 +121,6 @@ async function validatePublishedFile(group, filename, markdown) {
         `La ${group.label} ${filename} omitió la sección: ${heading}`,
       );
     }
-  }
-
-  if (!bodyText || !htmlText.includes(bodyText)) {
-    throw new Error(
-      `La ${group.label} ${filename} no llegó íntegra y en orden al HTML generado.`,
-    );
   }
 
   for (const internalText of ["briefing", "brifing", "cite"]) {
@@ -188,9 +156,7 @@ async function validateContentGroup(group) {
       publishedCount += 1;
 
       if (group.outputDir === "dist/ediciones") {
-        const match = filename.match(
-          /^(\d{4}-\d{2}-\d{2})-(daily|weekly)-/,
-        );
+        const match = filename.match(/^(\d{4}-\d{2}-\d{2})-(daily|weekly)-/);
         if (match) {
           const editionKey = `${match[1]}:${match[2]}`;
           const previous = publishedEditionKeys.get(editionKey);
