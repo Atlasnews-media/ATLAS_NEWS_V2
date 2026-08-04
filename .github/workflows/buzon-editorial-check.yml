@@ -1,0 +1,74 @@
+name: Validar Buzón Editorial
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - ".github/ISSUE_TEMPLATE/**"
+      - ".github/workflows/buzon-editorial*.yml"
+      - "package.json"
+      - "scripts/create-reading-from-issue.mjs"
+      - "scripts/fixtures/editorial-issue-sample.json"
+      - "scripts/validate-content.mjs"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: buzon-editorial-check-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  validate-editorial-inbox:
+    name: Generar y validar propuesta
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: Descargar el repositorio
+        uses: actions/checkout@v5
+
+      - name: Preparar Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Instalar dependencias
+        run: npm ci
+
+      - name: Generar borrador controlado
+        id: editorial
+        env:
+          ATLAS_EDITORIAL_ISSUE_PATH: scripts/fixtures/editorial-issue-sample.json
+          ATLAS_EDITORIAL_REPORT_PATH: tmp/editorial-report.json
+        run: npm run editorial:from-issue
+
+      - name: Comprobar el contrato del borrador
+        run: |
+          test "${{ steps.editorial.outputs.created_count }}" = "1"
+          editorial_file="src/content/readings/${{ steps.editorial.outputs.created_file }}"
+          test -f "$editorial_file"
+          grep -q '^status: draft$' "$editorial_file"
+          grep -q '"buzon-editorial"' "$editorial_file"
+          grep -q '"pendiente-verificacion"' "$editorial_file"
+          grep -q '^## Tesis principal$' "$editorial_file"
+          grep -q '^## Por qué fue seleccionada$' "$editorial_file"
+          grep -q '^## Contexto y límites$' "$editorial_file"
+
+      - name: Comprobar deduplicación
+        id: duplicate
+        env:
+          ATLAS_EDITORIAL_ISSUE_PATH: scripts/fixtures/editorial-issue-sample.json
+          ATLAS_EDITORIAL_REPORT_PATH: tmp/editorial-duplicate-report.json
+        run: npm run editorial:from-issue
+
+      - name: Confirmar que la segunda ejecución no duplica
+        run: test "${{ steps.duplicate.outputs.created_count }}" = "0"
+
+      - name: Comprobar formato
+        run: npm run format:check
+
+      - name: Validar y construir el sitio
+        run: npm run build:site
