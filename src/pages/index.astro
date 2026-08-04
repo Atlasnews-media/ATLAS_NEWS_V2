@@ -3,8 +3,10 @@ import ContentCard from "../components/ContentCard.astro";
 import EconomicIndicators from "../components/EconomicIndicators.astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
 import {
-  editionTypeLabel,
+  dailyIssueNumber,
+  editionDisplayLabel,
   formatEditorialDate,
+  formatIssueNumber,
   getLatestDaily,
   getPublishedEditions,
   getPublishedReadings,
@@ -15,20 +17,26 @@ const [latestDaily, editions, readings] = await Promise.all([
   getPublishedEditions(),
   getPublishedReadings(),
 ]);
+const currentIssueNumber = latestDaily
+  ? dailyIssueNumber(latestDaily, editions)
+  : undefined;
 const secondaryEditions = editions
   .filter(({ id }) => id !== latestDaily?.id)
   .slice(0, 3);
 const hasSecondaryContent = secondaryEditions.length > 0 || readings.length > 0;
 ---
 
-<BaseLayout
-  title="ATLAS NEWS — Inteligencia financiera con criterio"
-  editorialDate={latestDaily?.data.publishedAt}
->
+<BaseLayout title="ATLAS NEWS — Inteligencia financiera con criterio">
   <main class="front-page">
     <div class="issue-line">
       <p>Portada</p>
-      <p>{latestDaily ? "Última edición" : "En preparación"}</p>
+      <p>
+        {
+          currentIssueNumber
+            ? formatIssueNumber(currentIssueNumber)
+            : "En preparación"
+        }
+      </p>
       <p>Edición matutina</p>
     </div>
 
@@ -46,7 +54,9 @@ const hasSecondaryContent = secondaryEditions.length > 0 || readings.length > 0;
             </h1>
             <p class="standfirst">{latestDaily.data.summary}</p>
             <div class="lead-meta">
-              <span>{editionTypeLabel(latestDaily.data.type)}</span>
+              <span>
+                {editionDisplayLabel(latestDaily, currentIssueNumber)}
+              </span>
               {latestDaily.data.demo && <strong>Edición demostrativa</strong>}
             </div>
             <a class="lead-link" href={`/ediciones/${latestDaily.id}/`}>
@@ -86,7 +96,10 @@ const hasSecondaryContent = secondaryEditions.length > 0 || readings.length > 0;
             {secondaryEditions.map((edition) => (
               <ContentCard
                 href={`/ediciones/${edition.id}/`}
-                eyebrow={editionTypeLabel(edition.data.type)}
+                eyebrow={editionDisplayLabel(
+                  edition,
+                  dailyIssueNumber(edition, editions),
+                )}
                 title={edition.data.title}
                 summary={edition.data.summary}
                 date={formatEditorialDate(edition.data.publishedAt)}

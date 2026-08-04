@@ -7,6 +7,7 @@ const corePages = [
   "dist/ediciones/index.html",
   "dist/lecturas/index.html",
   "dist/archivo/index.html",
+  "dist/estado/index.html",
 ];
 
 const contentGroups = [
@@ -143,7 +144,7 @@ async function validatePublishedFile(group, filename, markdown) {
 async function validateContentGroup(group) {
   const files = await markdownFiles(group.sourceDir);
   const publishedEditionKeys = new Map();
-  let publishedCount = 0;
+  const published = [];
   let draftCount = 0;
 
   for (const filename of files) {
@@ -153,7 +154,14 @@ async function validateContentGroup(group) {
     const outputPath = `${group.outputDir}/${slug}/index.html`;
 
     if (status === "published") {
-      publishedCount += 1;
+      const record = {
+        filename,
+        slug,
+        title: frontmatterValue(markdown, "title") ?? "",
+        publishedAt: frontmatterValue(markdown, "publishedAt") ?? "",
+        type: frontmatterValue(markdown, "type"),
+      };
+      published.push(record);
 
       if (group.outputDir === "dist/ediciones") {
         const match = filename.match(/^(\d{4}-\d{2}-\d{2})-(daily|weekly)-/);
@@ -181,13 +189,15 @@ async function validateContentGroup(group) {
     }
   }
 
-  return { publishedCount, draftCount };
+  return { published, draftCount };
 }
 
 for (const path of corePages) await access(new URL(path, root));
+await access(new URL("dist/status.json", root));
 
 const home = await readFile(new URL("dist/index.html", root), "utf8");
-if (!htmlToText(home).includes(normalizeText("ATLAS NEWS"))) {
+const homeText = htmlToText(home);
+if (!homeText.includes(normalizeText("ATLAS NEWS"))) {
   throw new Error("La portada generada no contiene la marca ATLAS NEWS.");
 }
 
@@ -196,15 +206,87 @@ for (const group of contentGroups) {
   results.push({ group, result: await validateContentGroup(group) });
 }
 
+const editionResult = results.find(
+  ({ group }) => group.outputDir === "dist/ediciones",
+)?.result;
+const readingResult = results.find(
+  ({ group }) => group.outputDir === "dist/lecturas",
+)?.result;
+const publishedDailies = (editionResult?.published ?? [])
+  .filter(({ type }) => type === "daily")
+  .sort((a, b) => Date.parse(a.publishedAt) - Date.parse(b.publishedAt));
+const latestDaily = publishedDailies.at(-1);
+const currentIssueNumber = publishedDailies.length;
+const currentIssueLabel = `N° ${String(currentIssueNumber).padStart(3, "0")}`;
+
+if (latestDaily) {
+  if (!homeText.includes(normalizeText(latestDaily.title))) {
+    throw new Error(
+      `La portada no muestra la edición diaria más reciente: ${latestDaily.filename}.`,
+    );
+  }
+  if (!homeText.includes(normalizeText(currentIssueLabel))) {
+    throw new Error(
+      `La portada no muestra la numeración vigente ${currentIssueLabel}.`,
+    );
+  }
+}
+
+const status = JSON.parse(
+  await readFile(new URL("dist/status.json", root), "utf8"),
+);
+if (status.schemaVersion !== 1) {
+  throw new Error("El manifiesto público no usa el esquema esperado.");
+}
+if (latestDaily) {
+  if (status.latestDaily?.id !== latestDaily.slug) {
+    throw new Error(
+      "El manifiesto no identifica la edición diaria más reciente.",
+    );
+  }
+  if (status.latestDaily?.issueNumber !== currentIssueNumber) {
+    throw new Error(
+      "El manifiesto contiene una numeración editorial incorrecta.",
+    );
+  }
+  if (
+    normalizeText(status.latestDaily?.title ?? "") !==
+    normalizeText(latestDaily.title)
+  ) {
+    throw new Error(
+      "El manifiesto no conserva el título de la portada vigente.",
+    );
+  }
+}
+if (!status.sourceCommit || typeof status.sourceCommit !== "string") {
+  throw new Error("El manifiesto no identifica el commit de origen.");
+}
+
+const statePage = htmlToText(
+  await readFile(new URL("dist/estado/index.html", root), "utf8"),
+);
+if (latestDaily && !statePage.includes(normalizeText(latestDaily.title))) {
+  throw new Error("La página de estado no identifica la portada vigente.");
+}
+if (latestDaily && !statePage.includes(normalizeText(currentIssueLabel))) {
+  throw new Error("La página de estado no muestra la numeración vigente.");
+}
+
 const publishedTotal = results.reduce(
-  (total, { result }) => total + result.publishedCount,
+  (total, { result }) => total + result.published.length,
   0,
 );
 const draftTotal = results.reduce(
   (total, { result }) => total + result.draftCount,
   0,
 );
+if (status.publications?.total !== publishedTotal) {
+  throw new Error("El manifiesto no coincide con el total publicado.");
+}
+if (status.publications?.readings !== (readingResult?.published.length ?? 0)) {
+  throw new Error("El manifiesto no coincide con las lecturas publicadas.");
+}
 
 console.log(
-  `Salida validada: ${corePages.length} páginas base, ${publishedTotal} publicaciones íntegras y ${draftTotal} borradores excluidos.`,
+  `Salida validada: ${corePages.length} páginas base, ${publishedTotal} publicaciones íntegras, ${draftTotal} borradores excluidos y ${currentIssueLabel} vigente.`,
 );

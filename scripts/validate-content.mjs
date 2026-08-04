@@ -66,6 +66,20 @@ function normalizeSourceUrl(value) {
   }
 }
 
+function santiagoDate(timestamp) {
+  if (!Number.isFinite(timestamp)) return undefined;
+  const parts = new Intl.DateTimeFormat("en-CA", {
+    timeZone: "America/Santiago",
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit",
+  }).formatToParts(new Date(timestamp));
+  const values = Object.fromEntries(
+    parts.map(({ type, value }) => [type, value]),
+  );
+  return `${values.year}-${values.month}-${values.day}`;
+}
+
 async function markdownFiles(directory) {
   return (await readdir(directory, { withFileTypes: true }))
     .filter((entry) => entry.isFile() && /\.mdx?$/.test(entry.name))
@@ -93,6 +107,14 @@ async function validateFile(directory, filename, requiredHeadings) {
     errors.push("cutoffAt no es una fecha válida");
   if (cutoffAt && publishedAt && cutoffAt > publishedAt) {
     errors.push("cutoffAt no puede ser posterior a publishedAt");
+  }
+
+  const filenameDate = filename.match(/^(\d{4}-\d{2}-\d{2})-/)?.[1];
+  const editorialDate = santiagoDate(publishedAt);
+  if (filenameDate && editorialDate && filenameDate !== editorialDate) {
+    errors.push(
+      `la fecha del nombre (${filenameDate}) no coincide con publishedAt en Santiago (${editorialDate})`,
+    );
   }
 
   const status = frontmatterValue(text, "status");
@@ -176,6 +198,31 @@ async function duplicateReadingSourceErrors(files) {
   return errors;
 }
 
+async function duplicatePublishedEditionErrors(files) {
+  const ownersByEdition = new Map();
+  const errors = [];
+
+  for (const filename of files) {
+    const text = await readFile(new URL(filename, editionDir), "utf8");
+    if (frontmatterValue(text, "status") !== "published") continue;
+
+    const match = filename.match(/^(\d{4}-\d{2}-\d{2})-(daily|weekly)-/);
+    if (!match) continue;
+
+    const key = `${match[1]}:${match[2]}`;
+    const previousOwner = ownersByEdition.get(key);
+    if (previousOwner) {
+      errors.push(
+        `${filename}: duplica la edición publicada ${key} ya registrada en ${previousOwner}`,
+      );
+    } else {
+      ownersByEdition.set(key, filename);
+    }
+  }
+
+  return errors;
+}
+
 const editionFiles = await markdownFiles(editionDir);
 const readingFiles = await markdownFiles(readingDir);
 const errors = (
@@ -187,6 +234,7 @@ const errors = (
       validateFile(readingDir, file, readingHeadings),
     ),
     duplicateReadingSourceErrors(readingFiles),
+    duplicatePublishedEditionErrors(editionFiles),
   ])
 ).flat();
 

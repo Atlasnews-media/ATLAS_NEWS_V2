@@ -14,13 +14,16 @@ permissions:
   contents: read
 
 concurrency:
-  group: atlas-news-${{ github.event.pull_request.number || github.ref }}
-  cancel-in-progress: true
+  group: atlas-news-${{ github.event_name == 'pull_request' && format('pr-{0}', github.event.pull_request.number) || 'production' }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
 
 jobs:
   build-and-publish:
     name: Validar, construir y publicar
     runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      ATLAS_SOURCE_SHA: ${{ github.event_name == 'pull_request' && github.event.pull_request.head.sha || github.sha }}
 
     steps:
       - name: Descargar el repositorio privado
@@ -51,6 +54,19 @@ jobs:
       - name: Validar y construir el sitio
         run: npm run build:site
 
+      - name: Comprobar manifiesto de publicación
+        run: |
+          jq -e --arg sha "$ATLAS_SOURCE_SHA" '
+            .schemaVersion == 1 and
+            .sourceCommit == $sha and
+            (.latestDaily == null or .latestDaily.issueNumber >= 1)
+          ' dist/status.json > /dev/null
+
+      - name: Probar el auditor contra el build
+        env:
+          ATLAS_PUBLIC_DIR: dist
+        run: npm run audit:production
+
       - name: Preparar acceso al repositorio público
         if: github.event_name != 'pull_request'
         env:
@@ -75,7 +91,21 @@ jobs:
           git add --all
           if git diff --cached --quiet; then
             echo "La versión pública ya está actualizada."
-            exit 0
+          else
+            git commit -m "Publica ATLAS NEWS desde ${ATLAS_SOURCE_SHA::7}"
+            git push origin main
           fi
-          git commit -m "Publica ATLAS NEWS desde ${GITHUB_SHA::7}"
-          git push origin main
+
+      - name: Verificar la versión pública
+        if: github.event_name != 'pull_request'
+        run: |
+          atlas_publish_dir="$RUNNER_TEMP/atlas-news-public"
+          test -f "$atlas_publish_dir/status.json"
+          jq -e --arg sha "$ATLAS_SOURCE_SHA" '.sourceCommit == $sha' \
+            "$atlas_publish_dir/status.json" > /dev/null
+          latest_id="$(jq -r '.latestDaily.id // empty' "$atlas_publish_dir/status.json")"
+          if [[ -n "$latest_id" ]]; then
+            test -f "$atlas_publish_dir/ediciones/$latest_id/index.html"
+            grep -Fq "/ediciones/$latest_id/" "$atlas_publish_dir/index.html"
+          fi
+          echo "Versión pública verificada: $(git -C "$atlas_publish_dir" rev-parse HEAD)"

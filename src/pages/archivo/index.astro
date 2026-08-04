@@ -1,7 +1,8 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import {
-  editionTypeLabel,
+  dailyIssueNumber,
+  editionDisplayLabel,
   formatEditorialDate,
   getPublishedEditions,
   getPublishedReadings,
@@ -28,7 +29,12 @@ const [editions, readings] = await Promise.all([
               <>
                 <time>{formatEditorialDate(edition.data.publishedAt)}</time>
                 <a href={`/ediciones/${edition.id}/`}>{edition.data.title}</a>
-                <span>{editionTypeLabel(edition.data.type)}</span>
+                <span>
+                  {editionDisplayLabel(
+                    edition,
+                    dailyIssueNumber(edition, editions),
+                  )}
+                </span>
               </>
             </li>
           ))
