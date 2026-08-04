@@ -19,15 +19,17 @@ const secondaryEditions = editions
   .filter(({ id }) => id !== latestDaily?.id)
   .slice(0, 3);
 const hasSecondaryContent = secondaryEditions.length > 0 || readings.length > 0;
-const issueDate = latestDaily
-  ? formatEditorialDate(latestDaily.data.publishedAt)
-  : "Edición en preparación";
 ---
 
-<BaseLayout title="ATLAS NEWS — Inteligencia financiera con criterio">
+<BaseLayout
+  title="ATLAS NEWS — Inteligencia financiera con criterio"
+  editorialDate={latestDaily?.data.publishedAt}
+>
   <main class="front-page">
     <div class="issue-line">
-      <p>Portada</p><time>{issueDate}</time><p>Edición matutina</p>
+      <p>Portada</p>
+      <p>{latestDaily ? "Última edición" : "En preparación"}</p>
+      <p>Edición matutina</p>
     </div>
 
     <EconomicIndicators />
