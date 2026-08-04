@@ -23,6 +23,7 @@ const reportPath = process.env.ATLAS_RADAR_REPORT_PATH
   ? resolve(root, process.env.ATLAS_RADAR_REPORT_PATH)
   : undefined;
 const dryRun = process.env.ATLAS_RADAR_DRY_RUN === "1";
+const allowEmpty = process.env.ATLAS_RADAR_ALLOW_EMPTY === "1";
 
 const blockedDomains = new Set([
   "facebook.com",
@@ -156,10 +157,16 @@ function sourceDomain(article, normalizedUrl) {
   return domain.toLowerCase().replace(/^www\./, "");
 }
 
+function domainMatches(domain, expectedDomain) {
+  const normalizedExpected = expectedDomain.toLowerCase().replace(/^www\./, "");
+  return (
+    domain === normalizedExpected || domain.endsWith(`.${normalizedExpected}`)
+  );
+}
+
 function isBlockedDomain(domain) {
-  return [...blockedDomains].some(
-    (blockedDomain) =>
-      domain === blockedDomain || domain.endsWith(`.${blockedDomain}`),
+  return [...blockedDomains].some((blockedDomain) =>
+    domainMatches(domain, blockedDomain),
   );
 }
 
@@ -203,7 +210,7 @@ async function existingContentSignals() {
   return { urls, titles, filenames };
 }
 
-async function fetchJson(url, attempts = 3) {
+async function fetchJson(url, attempts, timeoutMs) {
   let lastError;
 
   for (let attempt = 1; attempt <= attempts; attempt += 1) {
@@ -211,9 +218,9 @@ async function fetchJson(url, attempts = 3) {
       const response = await fetch(url, {
         headers: {
           accept: "application/json",
-          "user-agent": "ATLAS-NEWS-RADAR/1.0",
+          "user-agent": "ATLAS-NEWS-RADAR/1.1",
         },
-        signal: AbortSignal.timeout(20_000),
+        signal: AbortSignal.timeout(timeoutMs),
       });
 
       if (!response.ok) {
@@ -246,12 +253,51 @@ function gdeltUrl(config, company, maxRecords, timespan) {
   return url;
 }
 
-async function providerPayload(config, company, fixture, maxRecords, timespan) {
+async function providerPayload(
+  config,
+  company,
+  fixture,
+  maxRecords,
+  timespan,
+  attempts,
+  timeoutMs,
+) {
   if (fixture) return fixture[company.ticker] ?? { articles: [] };
-  return fetchJson(gdeltUrl(config, company, maxRecords, timespan));
+  return fetchJson(
+    gdeltUrl(config, company, maxRecords, timespan),
+    attempts,
+    timeoutMs,
+  );
 }
 
-function candidateFromArticle(article, company, now) {
+function sourceAssessment(config, company, candidate) {
+  const preferredDomains = [
+    ...(Array.isArray(config.preferredDomains) ? config.preferredDomains : []),
+    ...(Array.isArray(company.officialDomains) ? company.officialDomains : []),
+  ];
+  const primary = preferredDomains.some((domain) =>
+    domainMatches(candidate.domain, domain),
+  );
+  const normalizedLanguage = candidate.language.toLowerCase();
+  const normalizedCountry = candidate.sourceCountry.toLowerCase();
+  const keywordMatches = (config.relevanceKeywords ?? []).filter((keyword) =>
+    candidate.titleKey.includes(normalizeTitle(keyword)),
+  );
+
+  let score = primary ? 100 : 0;
+  if (normalizedCountry === "chile") score += 10;
+  if (["spanish", "español", "espanol"].includes(normalizedLanguage))
+    score += 5;
+  score += Math.min(keywordMatches.length, 5) * 3;
+
+  return {
+    keywordMatches,
+    sourceKind: primary ? "primary" : "secondary",
+    sourceScore: score,
+  };
+}
+
+function candidateFromArticle(article, company, config, now) {
   if (!article || typeof article !== "object") return undefined;
   if (typeof article.title !== "string" || typeof article.url !== "string") {
     return undefined;
@@ -270,7 +316,7 @@ function candidateFromArticle(article, company, now) {
   const domain = sourceDomain(article, url);
   if (isBlockedDomain(domain)) return undefined;
 
-  return {
+  const candidate = {
     company,
     domain,
     language:
@@ -283,6 +329,11 @@ function candidateFromArticle(article, company, now) {
     title,
     titleKey,
     url,
+  };
+
+  return {
+    ...candidate,
+    ...sourceAssessment(config, company, candidate),
   };
 }
 
@@ -304,14 +355,21 @@ function readingMarkdown(candidate, detectedAt) {
     "la fecha y la fuente original antes de cualquier publicación editorial.";
   const sourceDate = candidate.seenAt.toISOString();
   const detectedLabel = formatDetectionDate(candidate.seenAt);
+  const sourceTag =
+    candidate.sourceKind === "primary"
+      ? "fuente-primaria"
+      : "fuente-secundaria";
+  const sourceLabel =
+    candidate.sourceKind === "primary" ? "primaria" : "secundaria";
   const tags = inlineJsonArray([
     "radar-ipsa",
     candidate.company.ticker,
     "gdelt",
+    sourceTag,
     "pendiente-verificacion",
   ]);
 
-  return `---\ntitle: ${JSON.stringify(title)}\nsummary: ${JSON.stringify(summary)}\npublishedAt: ${JSON.stringify(sourceDate)}\nstatus: draft\ntags: ${tags}\nsource:\n  name: ${JSON.stringify(candidate.domain)}\n  url: ${JSON.stringify(candidate.url)}\n  publishedAt: ${JSON.stringify(sourceDate)}\nauthor: ${JSON.stringify("ATLAS Radar")}\ndemo: false\n---\n\n## Tesis principal\n\nGDELT detectó una publicación que menciona **${markdownText(companyLabel)}**. El título informado por la fuente es «${markdownText(candidate.title)}». Esta ficha registra una señal de descubrimiento y no confirma el hecho descrito.\n\n## Por qué fue seleccionada\n\nLa empresa forma parte del piloto Radar IPSA. La señal fue observada el ${detectedLabel}, con origen declarado en ${markdownText(candidate.domain)}, idioma ${markdownText(candidate.language)} y país de la fuente ${markdownText(candidate.sourceCountry)}.\n\n## Contexto y límites\n\nGDELT se utiliza únicamente para descubrir candidatos. ATLAS NEWS no copió el cuerpo del artículo ni verificó todavía su contenido. Antes de retirar la etiqueta \`pendiente-verificacion\` o cambiar el estado, se debe abrir la fuente, confirmar fecha, autoría y hecho central, y contrastar con una fuente primaria cuando corresponda.\n\nDetección técnica registrada: ${detectedAt.toISOString()}.\n`;
+  return `---\ntitle: ${JSON.stringify(title)}\nsummary: ${JSON.stringify(summary)}\npublishedAt: ${JSON.stringify(sourceDate)}\nstatus: draft\ntags: ${tags}\nsource:\n  name: ${JSON.stringify(candidate.domain)}\n  url: ${JSON.stringify(candidate.url)}\n  publishedAt: ${JSON.stringify(sourceDate)}\nauthor: ${JSON.stringify("ATLAS Radar")}\ndemo: false\n---\n\n## Tesis principal\n\nGDELT detectó una publicación que menciona **${markdownText(companyLabel)}**. El título informado por la fuente es «${markdownText(candidate.title)}». Esta ficha registra una señal de descubrimiento y no confirma el hecho descrito.\n\n## Por qué fue seleccionada\n\nLa empresa forma parte del piloto Radar IPSA. La señal fue observada el ${detectedLabel}, con origen declarado en ${markdownText(candidate.domain)}, idioma ${markdownText(candidate.language)} y país de la fuente ${markdownText(candidate.sourceCountry)}. La clasificación técnica del dominio es **fuente ${sourceLabel}**.\n\n## Contexto y límites\n\nGDELT se utiliza únicamente para descubrir candidatos. ATLAS NEWS no copió el cuerpo del artículo ni verificó todavía su contenido. La clasificación de dominio solo ordena la revisión y no confirma la exactitud de la publicación. Antes de retirar la etiqueta \`pendiente-verificacion\` o cambiar el estado, se debe abrir la fuente, confirmar fecha, autoría y hecho central, y contrastar con una fuente primaria cuando corresponda.\n\nDetección técnica registrada: ${detectedAt.toISOString()}.\n`;
 }
 
 async function writeReport(report) {
@@ -324,20 +382,20 @@ async function writeReport(report) {
   if (process.env.GITHUB_OUTPUT) {
     await appendFile(
       process.env.GITHUB_OUTPUT,
-      `created_count=${report.created}\ncreated_files=${report.files.join(",")}\n`,
+      `created_count=${report.created}\nselected_count=${report.selected}\ncreated_files=${report.files.join(",")}\nprovider_available=${report.providerAvailable ? "1" : "0"}\n`,
     );
   }
 
   if (process.env.GITHUB_STEP_SUMMARY) {
     const companyRows = report.companies
       .map(
-        ({ ticker, selected, error }) =>
-          `| ${ticker} | ${selected} | ${error ? error.replace(/\|/g, "\\|") : "—"} |`,
+        ({ ticker, selected, primary = 0, error }) =>
+          `| ${ticker} | ${selected} | ${primary} | ${error ? error.replace(/\|/g, "\\|") : "—"} |`,
       )
       .join("\n");
     await appendFile(
       process.env.GITHUB_STEP_SUMMARY,
-      `## Radar IPSA\n\n- Candidatos seleccionados: ${report.selected}\n- Borradores creados: ${report.created}\n- Duplicados o descartes: ${report.skipped}\n\n| Emisor | Seleccionados | Observación |\n| --- | ---: | --- |\n${companyRows}\n`,
+      `## Radar IPSA\n\n- Proveedor disponible: ${report.providerAvailable ? "sí" : "no"}\n- Candidatos seleccionados: ${report.selected}\n- Borradores creados: ${report.created}\n- Duplicados o descartes: ${report.skipped}\n\n| Emisor | Seleccionados | Fuentes primarias | Observación |\n| --- | ---: | ---: | --- |\n${companyRows}\n`,
     );
   }
 }
@@ -368,6 +426,18 @@ const maxRecords = integerFromEnvironment(
   1,
   250,
 );
+const requestAttempts = integerFromEnvironment(
+  "ATLAS_RADAR_REQUEST_ATTEMPTS",
+  config.requestAttempts ?? 2,
+  1,
+  3,
+);
+const requestTimeoutMs = integerFromEnvironment(
+  "ATLAS_RADAR_REQUEST_TIMEOUT_MS",
+  config.requestTimeoutMs ?? 12_000,
+  2_000,
+  30_000,
+);
 const timespan = process.env.ATLAS_RADAR_TIMESPAN ?? config.timespan;
 const now = new Date();
 const existing = await existingContentSignals();
@@ -384,6 +454,8 @@ for (const company of config.companies) {
       fixture,
       maxRecords,
       timespan,
+      requestAttempts,
+      requestTimeoutMs,
     );
     if (!Array.isArray(payload?.articles)) {
       throw new Error("GDELT no devolvió una lista de artículos.");
@@ -392,7 +464,7 @@ for (const company of config.companies) {
     successfulQueries += 1;
     const companyCandidates = [];
     for (const article of payload.articles) {
-      const candidate = candidateFromArticle(article, company, now);
+      const candidate = candidateFromArticle(article, company, config, now);
       if (!candidate) {
         discarded += 1;
         continue;
@@ -411,7 +483,9 @@ for (const company of config.companies) {
     }
 
     companyCandidates.sort(
-      (left, right) => right.seenAt.valueOf() - left.seenAt.valueOf(),
+      (left, right) =>
+        right.sourceScore - left.sourceScore ||
+        right.seenAt.valueOf() - left.seenAt.valueOf(),
     );
     const selected = companyCandidates.slice(0, maxPerCompany);
     discarded += Math.max(0, companyCandidates.length - selected.length);
@@ -419,28 +493,57 @@ for (const company of config.companies) {
     companyResults.push({
       ticker: company.ticker,
       selected: selected.length,
+      primary: selected.filter(({ sourceKind }) => sourceKind === "primary")
+        .length,
     });
   } catch (error) {
     companyResults.push({
       ticker: company.ticker,
       selected: 0,
-      error: error.message,
+      primary: 0,
+      error: error instanceof Error ? error.message : String(error),
     });
   }
 }
 
 if (successfulQueries === 0) {
-  throw new Error("No fue posible consultar ningún emisor del Radar IPSA.");
+  const report = {
+    schemaVersion: 1,
+    provider: config.provider,
+    providerAvailable: false,
+    fixture: Boolean(fixture),
+    dryRun,
+    detectedAt: now.toISOString(),
+    timespan,
+    selected: 0,
+    created: 0,
+    skipped: discarded,
+    files: [],
+    proposedFiles: [],
+    candidates: [],
+    companies: companyResults,
+  };
+
+  await writeReport(report);
+  const message = "No fue posible consultar ningún emisor del Radar IPSA.";
+  if (allowEmpty) {
+    console.warn(`${message} No se creará ninguna propuesta.`);
+    process.exit(0);
+  }
+  throw new Error(message);
 }
 
 candidates.sort(
-  (left, right) => right.seenAt.valueOf() - left.seenAt.valueOf(),
+  (left, right) =>
+    right.sourceScore - left.sourceScore ||
+    right.seenAt.valueOf() - left.seenAt.valueOf(),
 );
 const selectedCandidates = candidates.slice(0, maxTotal);
 discarded += Math.max(0, candidates.length - selectedCandidates.length);
 const files = [];
+const proposedFiles = [];
 
-await mkdir(outputPath, { recursive: true });
+if (!dryRun) await mkdir(outputPath, { recursive: true });
 for (const candidate of selectedCandidates) {
   const digest = createHash("sha256")
     .update(candidate.url)
@@ -452,20 +555,22 @@ for (const candidate of selectedCandidates) {
     continue;
   }
 
+  proposedFiles.push(filename);
   if (!dryRun) {
     await writeFile(
       resolve(outputPath, filename),
       readingMarkdown(candidate, now),
       { flag: "wx" },
     );
+    files.push(filename);
   }
   existing.filenames.add(filename);
-  files.push(filename);
 }
 
 const report = {
   schemaVersion: 1,
   provider: config.provider,
+  providerAvailable: true,
   fixture: Boolean(fixture),
   dryRun,
   detectedAt: now.toISOString(),
@@ -474,10 +579,23 @@ const report = {
   created: files.length,
   skipped: discarded,
   files,
+  proposedFiles,
+  candidates: selectedCandidates.map((candidate) => ({
+    ticker: candidate.company.ticker,
+    title: candidate.title,
+    url: candidate.url,
+    domain: candidate.domain,
+    sourceKind: candidate.sourceKind,
+    sourceScore: candidate.sourceScore,
+    keywordMatches: candidate.keywordMatches,
+    seenAt: candidate.seenAt.toISOString(),
+  })),
   companies: companyResults,
 };
 
 await writeReport(report);
 console.log(
-  `Radar IPSA: ${report.created} borradores creados, ${report.skipped} candidatos descartados.`,
+  dryRun
+    ? `Radar IPSA: ${report.selected} candidatos válidos en ejecución seca.`
+    : `Radar IPSA: ${report.created} borradores creados, ${report.skipped} candidatos descartados.`,
 );

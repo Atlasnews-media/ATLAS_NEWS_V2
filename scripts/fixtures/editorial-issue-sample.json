@@ -1,0 +1,6 @@
+{
+  "number": 42,
+  "title": "Lectura: Resultados trimestrales de una empresa de prueba",
+  "url": "https://github.com/EldeSiempre100/ATLAS_NEWS/issues/42",
+  "body": "### Título de la fuente\n\nEmpresa de prueba publica sus resultados trimestrales\n\n### URL de la fuente\n\nhttps://example.org/inversionistas/resultados?utm_source=fixture\n\n### Fecha de publicación\n\n2026-08-03\n\n### Autor o entidad responsable\n\nEmpresa de prueba\n\n### Por qué merece revisión\n\nEl documento permite revisar resultados, márgenes y supuestos directamente desde una fuente corporativa.\n\n### Fuente primaria relacionada\n\nhttps://example.org/inversionistas/estados-financieros\n\n### Sección propuesta\n\nLecturas seleccionadas\n\n### Observaciones y límites\n\nLos valores son de prueba y no deben publicarse como información real.\n\n### Confirmación\n\n- [x] Entiendo que esta propuesta quedará pendiente de verificación y no será publicada automáticamente."
+}

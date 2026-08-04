@@ -1,0 +1,134 @@
+name: Convertir propuesta del Buzón
+
+on:
+  workflow_dispatch:
+    inputs:
+      issue_number:
+        description: Número del issue creado con el formulario de Lecturas
+        required: true
+        type: string
+
+permissions:
+  contents: write
+  pull-requests: write
+  issues: write
+
+concurrency:
+  group: buzon-editorial-${{ inputs.issue_number }}
+  cancel-in-progress: false
+
+jobs:
+  propose-reading:
+    name: Crear Pull Request editorial
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: Validar número de issue
+        run: |
+          if [[ ! "${{ inputs.issue_number }}" =~ ^[0-9]+$ ]]; then
+            echo "El número de issue no es válido." >&2
+            exit 1
+          fi
+
+      - name: Descargar main
+        uses: actions/checkout@v5
+        with:
+          ref: main
+          fetch-depth: 0
+
+      - name: Preparar Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Instalar dependencias
+        run: npm ci
+
+      - name: Descargar la propuesta
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          mkdir -p tmp
+          gh issue view "${{ inputs.issue_number }}" \
+            --repo "$GITHUB_REPOSITORY" \
+            --json number,title,body,url,author \
+            > tmp/editorial-issue.json
+
+      - name: Preparar rama editorial
+        id: branch
+        run: |
+          branch_name="editorial/buzon-${{ inputs.issue_number }}-${GITHUB_RUN_ID}"
+          git switch -c "$branch_name"
+          echo "branch_name=$branch_name" >> "$GITHUB_OUTPUT"
+
+      - name: Crear borrador
+        id: editorial
+        env:
+          ATLAS_EDITORIAL_ISSUE_PATH: tmp/editorial-issue.json
+          ATLAS_EDITORIAL_REPORT_PATH: tmp/editorial-report.json
+        run: npm run editorial:from-issue
+
+      - name: Comprobar formato
+        if: steps.editorial.outputs.created_count != '0'
+        run: npm run format:check
+
+      - name: Validar y construir el sitio
+        if: steps.editorial.outputs.created_count != '0'
+        run: npm run build:site
+
+      - name: Guardar el borrador
+        if: steps.editorial.outputs.created_count != '0'
+        run: |
+          git config user.name "ATLAS Buzón"
+          git config user.email "actions@users.noreply.github.com"
+          git add "src/content/readings/${{ steps.editorial.outputs.created_file }}"
+          git commit -m "Añade propuesta editorial del issue #${{ inputs.issue_number }}"
+          git push --set-upstream origin "${{ steps.branch.outputs.branch_name }}"
+
+      - name: Abrir Pull Request editorial
+        if: steps.editorial.outputs.created_count != '0'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          body_file="$RUNNER_TEMP/editorial-pr.md"
+          {
+            echo "## Propuesta del Buzón Editorial"
+            echo
+            echo "Origen: issue #${{ inputs.issue_number }}."
+            echo
+            echo "El archivo permanece en estado draft y con pendiente-verificacion."
+            echo
+            echo "## Archivo"
+            echo
+            echo "- src/content/readings/${{ steps.editorial.outputs.created_file }}"
+            echo
+            echo "## Revisión requerida"
+            echo
+            echo "- Abrir la fuente original."
+            echo "- Confirmar fecha, autoría y hecho central."
+            echo "- Contrastar la fuente primaria informada."
+            echo "- Reescribir las tres secciones con criterio editorial."
+            echo "- Retirar pendiente-verificacion antes de publicar."
+          } > "$body_file"
+
+          pr_url="$(gh pr create \
+            --draft \
+            --base main \
+            --head "${{ steps.branch.outputs.branch_name }}" \
+            --title "Buzón Editorial: propuesta #${{ inputs.issue_number }}" \
+            --body-file "$body_file")"
+
+          gh issue comment "${{ inputs.issue_number }}" \
+            --repo "$GITHUB_REPOSITORY" \
+            --body "Se creó un Pull Request editorial en borrador: ${pr_url}"
+
+      - name: Informar propuesta duplicada
+        if: steps.editorial.outputs.created_count == '0'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh issue comment "${{ inputs.issue_number }}" \
+            --repo "$GITHUB_REPOSITORY" \
+            --body "La URL propuesta ya existe en Lecturas. No se creó un nuevo borrador."
