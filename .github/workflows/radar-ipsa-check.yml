@@ -9,6 +9,7 @@ on:
       - "scripts/discover-radar-readings.mjs"
       - "scripts/fixtures/gdelt-radar-sample.json"
       - "scripts/validate-content.mjs"
+      - "src/content.config.ts"
       - "src/data/radar-companies.json"
   workflow_dispatch:
 
