@@ -25,7 +25,8 @@ Drive puede conservar una copia documental, pero GitHub es la fuente que publica
 1. Escribir el titular, resumen, tres destacados y cuerpo completo.
 2. Incorporar fecha de publicación y hora de corte con zona horaria de Santiago.
 3. Declarar las fuentes primarias en `sources`.
-4. Escribir el cuerpo en este orden:
+4. Cuando existan entre tres y seis cifras de mercado verificadas dentro del cuerpo, resumirlas también en el campo opcional `marketSummary`. Cada cifra debe conservar nombre, valor, variación cuando corresponda, categoría y la misma fecha de corte. El campo no agrega información nueva ni altera el texto visible.
+5. Escribir el cuerpo en este orden:
    - Hecho central.
    - En una mirada.
    - Por qué importa.
@@ -33,8 +34,10 @@ Drive puede conservar una copia documental, pero GitHub es la fuente que publica
    - Chile.
    - Tasas, monedas y commodities.
    - Qué observar.
-5. Utilizar `status: published` cuando el archivo esté completo y respaldado por fuentes. Utilizar `status: draft` si falta un dato, una fuente o una revisión necesaria.
-6. No agregar una sección duplicada de fuentes: el sitio la construye desde `sources`.
+6. Utilizar `status: published` cuando el archivo esté completo y respaldado por fuentes. Utilizar `status: draft` si falta un dato, una fuente o una revisión necesaria.
+7. No agregar una sección duplicada de fuentes: el sitio la construye desde `sources`.
+
+`marketSummary` nunca debe construirse extrayendo números automáticamente desde párrafos ya redactados. Debe generarse junto con el artículo a partir de los mismos datos verificados. Si no existen al menos tres cifras aptas, el campo se omite y la portada utiliza su contenido de respaldo.
 
 Las fuentes deben utilizar URLs públicas completas. Antes de entregar el archivo, GPT debe reemplazar todos sus marcadores internos de cita (`cite...`) por entradas verificables en `sources`. Un archivo que conserve esos marcadores debe quedar fuera de publicación.
 

@@ -13,19 +13,46 @@ const highlightSchema = z.object({
   text: z.string().min(12).max(160),
 });
 
-const editionSchema = z.object({
-  title: z.string().min(8).max(140),
-  summary: z.string().min(40).max(320),
-  publishedAt: z.coerce.date(),
-  cutoffAt: z.coerce.date(),
-  type: z.enum(["daily", "weekly"]),
-  status: z.enum(["draft", "published"]).default("draft"),
-  tags: z.array(z.string().min(2)).min(1),
-  sources: z.array(sourceSchema).min(1),
-  featured: z.boolean().default(false),
-  demo: z.boolean().default(false),
-  highlights: z.array(highlightSchema).length(3).optional(),
+const marketItemSchema = z.object({
+  label: z.string().min(2).max(32),
+  value: z.string().min(1).max(32),
+  change: z.string().min(1).max(16).optional(),
+  category: z.enum(["monedas", "mercados", "commodities", "tasas"]),
 });
+
+const marketSummarySchema = z.object({
+  asOf: z.coerce.date(),
+  items: z.array(marketItemSchema).min(3).max(6),
+});
+
+const editionSchema = z
+  .object({
+    title: z.string().min(8).max(140),
+    summary: z.string().min(40).max(320),
+    publishedAt: z.coerce.date(),
+    cutoffAt: z.coerce.date(),
+    type: z.enum(["daily", "weekly"]),
+    status: z.enum(["draft", "published"]).default("draft"),
+    tags: z.array(z.string().min(2)).min(1),
+    sources: z.array(sourceSchema).min(1),
+    featured: z.boolean().default(false),
+    demo: z.boolean().default(false),
+    highlights: z.array(highlightSchema).length(3).optional(),
+    marketSummary: marketSummarySchema.optional(),
+  })
+  .superRefine((edition, context) => {
+    if (
+      edition.marketSummary &&
+      edition.marketSummary.asOf > edition.cutoffAt
+    ) {
+      context.addIssue({
+        code: "custom",
+        path: ["marketSummary", "asOf"],
+        message:
+          "La fecha del resumen de mercado no puede superar el corte editorial.",
+      });
+    }
+  });
 
 const readingSchema = z.object({
   title: z.string().min(8).max(160),

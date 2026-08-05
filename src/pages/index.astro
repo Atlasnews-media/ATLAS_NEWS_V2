@@ -1,6 +1,7 @@
 ---
 import ContentCard from "../components/ContentCard.astro";
 import EconomicIndicators from "../components/EconomicIndicators.astro";
+import MarketPulse from "../components/MarketPulse.astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
 import {
   dailyIssueNumber,
@@ -133,12 +134,25 @@ const hasSecondaryContent = secondaryEditions.length > 0 || readings.length > 0;
         </p>
       </article>
       <article>
-        <p class="kicker">Qué observar</p><h2>
-          Las señales que pueden cambiar la lectura
-        </h2><p>
-          Cada edición separa el hecho central, las implicancias y las
-          condiciones que podrían invalidar la interpretación inicial.
-        </p>
+        {
+          latestDaily?.data.marketSummary ? (
+            <MarketPulse
+              asOf={latestDaily.data.marketSummary.asOf}
+              items={latestDaily.data.marketSummary.items}
+            />
+          ) : (
+            <>
+              <>
+                <p class="kicker">Qué observar</p>
+                <h2>Las señales que pueden cambiar la lectura</h2>
+                <p>
+                  Cada edición separa el hecho central, las implicancias y las
+                  condiciones que podrían invalidar la interpretación inicial.
+                </p>
+              </>
+            </>
+          )
+        }
       </article>
       <article>
         <p class="kicker">Método</p><h2>

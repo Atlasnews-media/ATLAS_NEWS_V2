@@ -19,6 +19,19 @@ highlights:
     text: "Síntesis breve del segundo dato que debe aparecer en la portada."
   - label: "Tercera clave"
     text: "Síntesis breve del tercer dato que debe aparecer en la portada."
+marketSummary:
+  asOf: "2026-08-03T08:00:00-04:00"
+  items:
+    - label: "Dólar observado"
+      value: "$000,00"
+      category: "monedas"
+    - label: "Índice verificado"
+      value: "0.000,00"
+      change: "+0,00%"
+      category: "mercados"
+    - label: "Commodity verificado"
+      value: "US$00,00"
+      category: "commodities"
 ---
 
 ## Hecho central
