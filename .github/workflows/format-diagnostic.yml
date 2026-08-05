@@ -1,0 +1,36 @@
+name: Diagnosticar formato
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - "src/content.config.ts"
+      - "src/pages/index.astro"
+      - ".github/workflows/format-diagnostic.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  prettier-diff:
+    name: Mostrar formato requerido
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Descargar el repositorio
+        uses: actions/checkout@v5
+
+      - name: Preparar Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Instalar dependencias
+        run: npm ci
+
+      - name: Mostrar el diff de Prettier
+        run: |
+          npx prettier --write src/content.config.ts src/pages/index.astro
+          git --no-pager diff -- src/content.config.ts src/pages/index.astro
+          test -z "$(git status --short src/content.config.ts src/pages/index.astro)"
