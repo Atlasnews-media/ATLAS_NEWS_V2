@@ -121,21 +121,19 @@ Palantir y varias compañías de software y semiconductores fueron premiadas por
 
 ## En una mirada
 
-| Activo | Situación | Lectura práctica |
-|---|---:|---|
-| S&P 500 | Máximo histórico | Beneficios y menor petróleo apoyan |
-| Nasdaq | Fuerte recuperación | IA lidera, pero aumenta la dispersión |
-| Futuros S&P 500 | Aproximadamente +0,3% | Continuidad moderada |
-| Futuros Nasdaq | Cerca de plano | AMD y SpaceX compensan el impulso |
-| Nikkei | +3,7% | Semiconductores lideran |
-| Kospi | +3,8% a +4,0% | Fuerte recuperación tecnológica |
-| STOXX 600 | Cerca de +0,1% | Europa avanza con menor intensidad |
-| Brent | US$79-US$80 | Menor prima geopolítica |
-| Treasury 10 años | Cerca de 4,61% | Alivio, pero aún restrictivo |
-| Oro | Aproximadamente +2,2% | Apoyo por menores rendimientos |
-| Dólar global | Estable | Menor demanda defensiva |
-| Crédito de grado de inversión | Resiliente | Favorecer calidad |
-| Alto rendimiento | Mejora táctica | Mantiene riesgo de refinanciamiento |
+- **S&P 500:** máximo histórico; beneficios y menor petróleo apoyan.
+- **Nasdaq:** fuerte recuperación; la inteligencia artificial lidera, pero aumenta la dispersión.
+- **Futuros S&P 500:** aproximadamente +0,3%; continuidad moderada.
+- **Futuros Nasdaq:** cerca de plano; AMD y SpaceX compensan el impulso.
+- **Nikkei:** +3,7%; semiconductores lideran.
+- **Kospi:** +3,8% a +4,0%; fuerte recuperación tecnológica.
+- **STOXX 600:** cerca de +0,1%; Europa avanza con menor intensidad.
+- **Brent:** US$79-US$80; menor prima geopolítica.
+- **Treasury a diez años:** cerca de 4,61%; alivio, pero aún restrictivo.
+- **Oro:** aproximadamente +2,2%; apoyo por menores rendimientos.
+- **Dólar global:** estable; menor demanda defensiva.
+- **Crédito de grado de inversión:** resiliente; favorecer calidad.
+- **Alto rendimiento:** mejora táctica; mantiene riesgo de refinanciamiento.
 
 ## Por qué importa
 
@@ -197,47 +195,60 @@ Evitar compañías cuyo crecimiento dependa permanentemente de nuevas emisiones 
 
 #### Favorecidas
 
-**Renta fija local de duración media**  
+**Renta fija local de duración media**
+
 Mejora con menor petróleo, dólar y presión inflacionaria.
 
-**Deuda corta y money market**  
+**Deuda corta y money market**
+
 Carry atractivo con baja volatilidad.
 
-**Crédito de grado de inversión**  
+**Crédito de grado de inversión**
+
 Balances sólidos y spreads razonables.
 
-**Fondos balanceados globales**  
+**Fondos balanceados globales**
+
 Capturan el avance bursátil con menor concentración.
 
-**Fondos de consumo, transporte e industriales**  
+**Fondos de consumo, transporte e industriales**
+
 Reciben alivio por menores costos energéticos.
 
 #### Selectivas
 
-**Fondos tecnológicos**  
+**Fondos tecnológicos**
+
 Favorecer generación de caja y monetización efectiva.
 
-**Fondos UF**  
+**Fondos UF**
+
 Cobertura vigente, pero menor urgencia táctica.
 
-**Renta variable chilena**  
+**Renta variable chilena**
+
 Mejor entorno macro, pendiente de empleo e IPC.
 
-**Deuda emergente local**  
+**Deuda emergente local**
+
 Favorecida por dólar más contenido, pero sensible a la Reserva Federal.
 
 #### Vulnerables
 
-**Fondos energéticos**  
+**Fondos energéticos**
+
 Pierden soporte si el petróleo continúa bajo US$80.
 
-**Duración internacional larga**  
+**Duración internacional larga**
+
 Los rendimientos siguen elevados.
 
-**Alto rendimiento de baja calidad**  
+**Alto rendimiento de baja calidad**
+
 Refinanciamiento todavía costoso.
 
-**Tecnología con gasto de capital desproporcionado**  
+**Tecnología con gasto de capital desproporcionado**
+
 Mayor riesgo de emisiones y deterioro de caja.
 
 ## Mercados globales
@@ -418,21 +429,19 @@ La atención seguirá concentrada en márgenes, gasto de capital y capacidad par
 
 ### Riesgos en semáforo
 
-| Factor | Nivel | Lectura |
-|---|---:|---|
-| Sistema bancario global | Verde | Sin estrés sistémico |
-| Liquidez | Verde | Mercados operativos |
-| Deuda corta chilena | Verde | Carry respaldado por TPM |
-| Crédito de calidad | Verde | Resultados y balances sólidos |
-| Petróleo | Verde/amarillo | Bajo US$80, pero dependiente de diplomacia |
-| USD/CLP | Verde/amarillo | Corrección significativa |
-| Duración media local | Amarillo | Mejora con menor inflación esperada |
-| S&P 500 | Amarillo | Máximos históricos y múltiplos altos |
-| IPSA | Amarillo | Entorno favorable; empleo condiciona |
-| Nasdaq | Naranjo | Rally fuerte y concentración |
-| Treasury largo | Naranjo | Todavía restrictivo |
-| Gasto de capital tecnológico | Naranjo | Riesgo de deterioro de caja |
-| Acuerdo con Irán | Rojo | Progreso informado, pero sin solución definitiva |
+- **Sistema bancario global — Verde:** sin estrés sistémico.
+- **Liquidez — Verde:** mercados operativos.
+- **Deuda corta chilena — Verde:** carry respaldado por la TPM.
+- **Crédito de calidad — Verde:** resultados y balances sólidos.
+- **Petróleo — Verde/amarillo:** bajo US$80, pero dependiente de la diplomacia.
+- **USD/CLP — Verde/amarillo:** corrección significativa.
+- **Duración media local — Amarillo:** mejora con menor inflación esperada.
+- **S&P 500 — Amarillo:** máximos históricos y múltiplos altos.
+- **IPSA — Amarillo:** entorno favorable; empleo condiciona.
+- **Nasdaq — Naranjo:** rally fuerte y concentración.
+- **Treasury largo — Naranjo:** todavía restrictivo.
+- **Gasto de capital tecnológico — Naranjo:** riesgo de deterioro de caja.
+- **Acuerdo con Irán — Rojo:** progreso informado, pero sin solución definitiva.
 
 ### Consenso versus lo que descuenta el mercado
 
@@ -467,26 +476,34 @@ Para Chile:
 
 ### Señales débiles
 
-1. **El petróleo cae más rápido que las expectativas de inflación.**  
+1. **El petróleo cae más rápido que las expectativas de inflación.**
+
    El mercado todavía duda de la permanencia del alivio.
 
-2. **Los Treasury bajan, pero siguen sobre 4,6%.**  
+2. **Los Treasury bajan, pero siguen sobre 4,6%.**
+
    Persisten riesgos fiscales y monetarios estructurales.
 
-3. **AMD cae pese a superar estimaciones.**  
+3. **AMD cae pese a superar estimaciones.**
+
    Las expectativas futuras pesan más que el trimestre reportado.
 
-4. **SpaceX muestra crecimiento de ingresos y deterioro de caja simultáneamente.**  
+4. **SpaceX muestra crecimiento de ingresos y deterioro de caja simultáneamente.**
+
    El financiamiento del gasto de capital puede convertirse en la próxima fuente de dispersión tecnológica.
 
-5. **Asia supera claramente a Europa.**  
+5. **Asia supera claramente a Europa.**
+
    La recuperación se concentra en semiconductores y tecnología.
 
-6. **El peso chileno se apreció más de $20 en pocos días.**  
+6. **El peso chileno se apreció más de $20 en pocos días.**
+
    Parte del movimiento puede corresponder a cierre de posiciones, no solo a fundamentos.
 
-7. **El Imacec mejora más por minería que por demanda interna.**  
+7. **El Imacec mejora más por minería que por demanda interna.**
+
    La recuperación todavía necesita confirmación en empleo y salarios.
 
-8. **La informalidad puede aumentar aunque el empleo agregado mejore.**  
+8. **La informalidad puede aumentar aunque el empleo agregado mejore.**
+
    Esto limita el efecto positivo sobre consumo, ahorro y calidad crediticia.
