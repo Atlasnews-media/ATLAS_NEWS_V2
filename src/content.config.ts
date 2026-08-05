@@ -48,7 +48,8 @@ const editionSchema = z
       context.addIssue({
         code: "custom",
         path: ["marketSummary", "asOf"],
-        message: "La fecha del resumen de mercado no puede superar el corte editorial.",
+        message:
+          "La fecha del resumen de mercado no puede superar el corte editorial.",
       });
     }
   });
