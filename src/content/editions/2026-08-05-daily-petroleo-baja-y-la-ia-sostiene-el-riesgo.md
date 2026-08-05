@@ -4,7 +4,7 @@ summary: "Las bolsas globales avanzan con apoyo de resultados corporativos y men
 publishedAt: "2026-08-05T10:02:00-04:00"
 cutoffAt: "2026-08-05T06:20:00-04:00"
 type: "daily"
-status: "draft"
+status: "published"
 tags:
   - mercados-globales
   - chile
