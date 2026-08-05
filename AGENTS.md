@@ -25,6 +25,8 @@ Mantener un periódico financiero digital donde el código, los datos y el conte
 - Omitir términos internos como `briefing` o `brifing` en contenido publicado.
 - Mantener el cuerpo limpio de avisos generales ya presentes en el pie del sitio.
 - No insertar HTML sin una necesidad revisada y documentada.
+- `marketSummary` es opcional y solo puede resumir cifras verificadas que ya estén presentes en el cuerpo y respaldadas por las fuentes de la misma edición.
+- El resumen de mercado no sustituye el texto editorial ni puede presentarse como cotización en tiempo real; debe conservar su fecha de corte.
 
 ## Borradores automatizados
 
