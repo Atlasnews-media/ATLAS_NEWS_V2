@@ -1,0 +1,122 @@
+---
+interface MarketItem {
+  label: string;
+  value: string;
+  change?: string;
+  category: "monedas" | "mercados" | "commodities" | "tasas";
+}
+
+interface Props {
+  asOf: Date;
+  items: MarketItem[];
+}
+
+const { asOf, items } = Astro.props;
+const asOfLabel = new Intl.DateTimeFormat("es-CL", {
+  dateStyle: "medium",
+  timeStyle: "short",
+  timeZone: "America/Santiago",
+}).format(asOf);
+
+function changeDirection(change?: string) {
+  if (!change) return "flat";
+  const normalized = change.trim();
+  if (normalized.startsWith("+")) return "up";
+  if (normalized.startsWith("-") || normalized.startsWith("−")) return "down";
+  return "flat";
+}
+---
+
+<div class="market-pulse">
+  <p class="market-kicker">Pulso de mercado</p>
+  <h2>Datos clave de la edición</h2>
+  <ul aria-label="Resumen de mercado de la edición vigente">
+    {
+      items.map((item) => (
+        <li>
+          <span class="market-label">{item.label}</span>
+          <strong>{item.value}</strong>
+          {item.change && (
+            <span
+              class="market-change"
+              data-direction={changeDirection(item.change)}
+            >
+              {item.change}
+            </span>
+          )}
+        </li>
+      ))
+    }
+  </ul>
+  <p class="market-meta">
+    Datos según la edición vigente · Corte {asOfLabel}
+  </p>
+</div>
+
+<style>
+  .market-pulse {
+    min-width: 0;
+  }
+  .market-kicker {
+    margin: 0;
+    color: var(--accent);
+    font: 800 0.72rem/1.2 var(--sans);
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+  }
+  h2 {
+    margin: 0.6rem 0 1rem;
+    font-size: 1.55rem;
+    line-height: 1;
+  }
+  ul {
+    margin: 0;
+    padding: 0;
+    border-top: 1px solid var(--rule);
+    list-style: none;
+  }
+  li {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto auto;
+    align-items: baseline;
+    gap: 0.35rem 0.7rem;
+    padding: 0.7rem 0;
+    border-bottom: 1px solid var(--rule);
+    font-family: var(--sans);
+  }
+  .market-label {
+    min-width: 0;
+    overflow-wrap: anywhere;
+    font-size: 0.76rem;
+    font-weight: 800;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+  strong,
+  .market-change {
+    white-space: nowrap;
+    font-size: 0.82rem;
+  }
+  .market-change[data-direction="up"] {
+    color: #2f6d4f;
+  }
+  .market-change[data-direction="down"] {
+    color: var(--accent);
+  }
+  .market-meta {
+    margin: 0.85rem 0 0;
+    color: var(--ink-soft);
+    font: 700 0.62rem/1.45 var(--sans);
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+
+  @media (max-width: 24rem) {
+    li {
+      grid-template-columns: minmax(0, 1fr) auto;
+    }
+    .market-change {
+      grid-column: 2;
+    }
+  }
+</style>
