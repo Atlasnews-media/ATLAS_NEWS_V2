@@ -33,6 +33,29 @@ highlights:
     text: "El Imacec de junio creció 2,4% anual y 0,6% mensual desestacionalizado, apoyado por minería, comercio y servicios."
   - label: "Mercados"
     text: "El S&P 500 subió 1,48% y el Nasdaq 2,13% el lunes; los futuros mantienen avances moderados antes de nuevos datos laborales y resultados tecnológicos."
+marketSummary:
+  asOf: "2026-08-04T07:01:00-04:00"
+  items:
+    - label: "Dólar observado"
+      value: "$924,89"
+      category: "monedas"
+    - label: "S&P 500"
+      value: "7.600,50"
+      change: "+1,48%"
+      category: "mercados"
+    - label: "Nasdaq"
+      value: "25.913,90"
+      change: "+2,13%"
+      category: "mercados"
+    - label: "Brent"
+      value: "≈ US$85"
+      category: "commodities"
+    - label: "Treasury 10 años"
+      value: "≈ 4,7%"
+      category: "tasas"
+    - label: "TPM"
+      value: "4,5%"
+      category: "tasas"
 ---
 
 ## Hecho central
