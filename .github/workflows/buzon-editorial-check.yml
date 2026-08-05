@@ -10,6 +10,7 @@ on:
       - "scripts/create-reading-from-issue.mjs"
       - "scripts/fixtures/editorial-issue-sample.json"
       - "scripts/validate-content.mjs"
+      - "src/content.config.ts"
   workflow_dispatch:
 
 permissions:
