@@ -4,7 +4,7 @@ summary: "Las bolsas globales mantienen un tono favorable gracias a resultados c
 publishedAt: "2026-08-05T06:29:00-04:00"
 cutoffAt: "2026-08-05T06:29:00-04:00"
 type: "daily"
-status: "draft"
+status: "published"
 tags:
   - mercados-globales
   - chile
@@ -33,6 +33,18 @@ highlights:
     text: "Wall Street cerró en máximos y Asia siguió el impulso, con semiconductores e infraestructura de IA como principales soportes."
   - label: "Chile"
     text: "El mejor Imacec y un dólar más bajo favorecen la renta fija media, mientras el mercado espera informalidad e IPC."
+marketSummary:
+  asOf: "2026-08-05T06:29:00-04:00"
+  items:
+    - label: "Brent"
+      value: "≈ US$80"
+      category: "commodities"
+    - label: "Treasury 10 años"
+      value: "≈ 4,6%"
+      category: "tasas"
+    - label: "TPM"
+      value: "4,5%"
+      category: "tasas"
 ---
 
 ## Hecho central
