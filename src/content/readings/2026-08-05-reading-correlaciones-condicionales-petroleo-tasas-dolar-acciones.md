@@ -30,12 +30,12 @@ La primera pregunta, por tanto, no es «¿qué activo subió o bajó?», sino **
 
 La siguiente matriz resume reacciones iniciales habituales. No son resultados mecánicos, sino hipótesis que deben contrastarse con actividad, inflación, tasas y amplitud del mercado.
 
-| Shock dominante | Petróleo | Inflación y tasas | Acciones | Monedas y riesgo |
-| --- | --- | --- | --- | --- |
-| Restricción de oferta o conflicto | Sube | La inflación esperada tiende a aumentar; las tasas pueden subir | Importadores de energía, consumo y transporte suelen enfrentar presión | Aumenta la demanda por liquidez y protección; las monedas emergentes pueden debilitarse |
-| Expansión de la demanda mundial | Sube | Las tasas pueden subir por mayor crecimiento | Sectores cíclicos pueden avanzar junto con el crudo | Monedas de exportadores de materias primas pueden fortalecerse |
-| Normalización de la oferta | Baja | Disminuye parte de la presión inflacionaria; las tasas pueden ceder | Acciones y crédito pueden recibir apoyo | Mejora el apetito por riesgo y pueden fortalecerse monedas importadoras de energía |
-| Debilidad de demanda o recesión | Baja | Las tasas suelen bajar por menor crecimiento | Las acciones también pueden caer por menores utilidades esperadas | El dólar puede fortalecerse por búsqueda de seguridad y liquidez |
+| Shock dominante                   | Petróleo | Inflación y tasas                                                   | Acciones                                                               | Monedas y riesgo                                                                        |
+| --------------------------------- | -------- | ------------------------------------------------------------------- | ---------------------------------------------------------------------- | --------------------------------------------------------------------------------------- |
+| Restricción de oferta o conflicto | Sube     | La inflación esperada tiende a aumentar; las tasas pueden subir     | Importadores de energía, consumo y transporte suelen enfrentar presión | Aumenta la demanda por liquidez y protección; las monedas emergentes pueden debilitarse |
+| Expansión de la demanda mundial   | Sube     | Las tasas pueden subir por mayor crecimiento                        | Sectores cíclicos pueden avanzar junto con el crudo                    | Monedas de exportadores de materias primas pueden fortalecerse                          |
+| Normalización de la oferta        | Baja     | Disminuye parte de la presión inflacionaria; las tasas pueden ceder | Acciones y crédito pueden recibir apoyo                                | Mejora el apetito por riesgo y pueden fortalecerse monedas importadoras de energía      |
+| Debilidad de demanda o recesión   | Baja     | Las tasas suelen bajar por menor crecimiento                        | Las acciones también pueden caer por menores utilidades esperadas      | El dólar puede fortalecerse por búsqueda de seguridad y liquidez                        |
 
 El [BIS Working Paper 725](https://www.bis.org/publ/work725.htm) muestra por qué esta identificación es esencial: las consecuencias de una variación del petróleo dependen de si el impulso proviene de oferta, demanda realizada, expectativas futuras o factores financieros. La correlación observada es el resultado; el shock es la causa que debe investigarse.
 
