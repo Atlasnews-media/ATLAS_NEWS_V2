@@ -4,7 +4,7 @@ summary: "El crudo bajo US$80 reduce la presión inflacionaria, mientras la corr
 publishedAt: "2026-08-06T07:46:00-04:00"
 cutoffAt: "2026-08-06T07:07:00-04:00"
 type: "daily"
-status: "draft"
+status: "published"
 tags:
   - mercados-globales
   - chile
