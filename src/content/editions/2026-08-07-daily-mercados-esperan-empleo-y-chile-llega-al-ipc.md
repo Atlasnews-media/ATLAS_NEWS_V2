@@ -1,8 +1,8 @@
 ---
-title: "Los mercados esperan el empleo de EE.UU. y Chile llega al IPC con el peso más firme"
-summary: "Las bolsas globales encaran una semana fuerte, pero tasas y divisas esperan el empleo estadounidense. En Chile, el dólar observado cae a $911,58 y el IPC de julio se publica a las 08:00."
-publishedAt: "2026-08-07T07:42:00-04:00"
-cutoffAt: "2026-08-07T07:35:00-04:00"
+title: "El empleo de EE.UU. se debilita y la inflación chilena se modera"
+summary: "Estados Unidos perdió 23.000 empleos en julio y los rendimientos retrocedieron. En Chile, el IPC subió 0,1% mensual y la inflación anual bajó a 3,5%, mientras el dólar observado quedó en $913,86."
+publishedAt: "2026-08-07T13:18:00-04:00"
+cutoffAt: "2026-08-07T13:15:00-04:00"
 type: "daily"
 status: "published"
 tags:
@@ -13,48 +13,36 @@ tags:
   - tasas
   - tecnologia
 sources:
-  - name: "Reuters — Mercados globales antes del empleo de Estados Unidos"
-    url: "https://www.reuters.com/world/china/global-markets-global-markets-2026-08-07/"
-  - name: "Reuters — Futuros de Wall Street y resultados tecnológicos"
-    url: "https://www.reuters.com/business/sp-500-dow-futures-muted-ahead-jobs-data-chips-software-stocks-rise-2026-08-07/"
-  - name: "Associated Press — Cierre de los índices estadounidenses del 6 de agosto"
-    url: "https://apnews.com/article/b13b60e192e74e6dc6ab222dc296b5d2"
-  - name: "INE Chile — Calendario de publicaciones 2026"
-    url: "https://www.ine.gob.cl/docs/default-source/prensa-y-comunicacion/calendario/calendario-de-publicaciones.pdf.pdf?sfvrsn=93b45045_52"
-  - name: "Servicio de Impuestos Internos — Dólar observado 2026"
-    url: "https://www.sii.cl/valores_y_fechas/dolar/dolar2026.htm"
-  - name: "Banco Central de Chile — Reunión de Política Monetaria de julio de 2026"
-    url: "https://www.bcentral.cl/contenido/-/detalle/prensa/comunicados-rpm/comunicado-rpm-julio-2026"
+  - name: "Reuters — Empleo de Estados Unidos en julio y reacción de mercado"
+    url: "https://www.reuters.com/business/us-nonfarm-payrolls-fall-july-unemployment-rate-eases-41-2026-08-07/"
+  - name: "Reuters — Europa cierra la semana en máximos tras el empleo estadounidense"
+    url: "https://www.reuters.com/markets/europe/healthcare-leads-european-shares-higher-middle-east-focus-2026-08-07/"
+  - name: "INE Chile — Índice de Precios al Consumidor"
+    url: "https://www.ine.gob.cl/estadisticas-por-tema/precios-e-inflacion/indice-de-precios-al-consumidor"
+  - name: "El País Chile — Inflación de julio con cifras difundidas por el INE"
+    url: "https://elpais.com/chile/2026-08-07/la-inflacion-en-chile-se-modera-en-julio-impulsada-por-una-baja-en-los-combustibles.html"
+  - name: "Mi Indicador — Indicadores económicos de Chile"
+    url: "https://mindicador.cl/"
+  - name: "Banco Central de Chile — Política monetaria"
+    url: "https://www.bcentral.cl/es/web/banco-central/areas/politica-monetaria"
 featured: false
 demo: false
 highlights:
   - label: "Empleo EE.UU."
-    text: "El consenso espera 80.000 nuevas nóminas en julio y una tasa de desempleo estable en 4,2%."
-  - label: "Chile"
-    text: "El dólar observado baja a $911,58 y el IPC de julio se publica a las 08:00, después del corte editorial."
+    text: "Las nóminas no agrícolas cayeron en 23.000 puestos en julio y el desempleo bajó a 4,1%, con menor participación laboral."
+  - label: "Inflación Chile"
+    text: "El IPC de julio subió 0,1% mensual y la inflación anual se moderó a 3,5%, acercándose al objetivo del Banco Central."
   - label: "Mercados"
-    text: "El índice global MSCI avanza 2,3% en la semana y el Treasury a diez años se mantiene cerca de 4,67%."
+    text: "El dato laboral debilitó al dólar y redujo los rendimientos del Treasury, mientras las acciones reaccionaron al alivio en tasas."
 marketSummary:
-  asOf: "2026-08-07T07:35:00-04:00"
+  asOf: "2026-08-07T13:15:00-04:00"
   items:
-    - label: "S&P 500"
-      value: "7.709,96"
-      change: "-0,18%"
-      category: "mercados"
-    - label: "Nasdaq"
-      value: "26.348,35"
-      change: "-0,06%"
-      category: "mercados"
-    - label: "Brent"
-      value: "≈ US$83"
-      change: "+1%"
-      category: "commodities"
-    - label: "Treasury 10 años"
-      value: "≈ 4,67%"
-      category: "tasas"
     - label: "Dólar observado"
-      value: "$911,58"
+      value: "$913,86"
       category: "monedas"
+    - label: "Cobre"
+      value: "US$6,45/lb"
+      category: "commodities"
     - label: "TPM Chile"
       value: "4,50%"
       category: "tasas"
@@ -62,110 +50,111 @@ marketSummary:
 
 ## Hecho central
 
-Los mercados llegan al viernes con dos datos capaces de redefinir el escenario de tasas en pocas horas. En Estados Unidos, el informe de empleo de julio se publica a las 08:30 de Santiago y el consenso espera la creación de 80.000 puestos de trabajo, después de 57.000 en junio, con la tasa de desempleo estable en 4,2%. En Chile, el IPC de julio se publica a las 08:00, después del corte editorial de esta edición.
+El viernes cambió de eje después de dos publicaciones macroeconómicas que entregaron una señal común: las presiones que justificaban mantener tasas elevadas comienzan a moderarse, aunque por razones distintas en Estados Unidos y Chile.
 
-La diferencia respecto de los días anteriores es importante. El petróleo continúa siendo una fuente de volatilidad, pero ya no es la única variable que organiza la jornada. El mercado entra en una fase de validación: debe comprobar si la fortaleza de las utilidades, el avance de la inteligencia artificial y la recuperación de los activos de riesgo pueden convivir con tasas que siguen elevadas y con una inflación todavía resistente.
+En Estados Unidos, las nóminas no agrícolas cayeron en 23.000 puestos durante julio, frente a expectativas de creación de empleo. La tasa de desempleo bajó a 4,1%, pero esa mejora estuvo acompañada por una caída de la participación laboral hasta 61,4%, su menor nivel en varios años. El mercado reaccionó reduciendo las expectativas de nuevas alzas de la Reserva Federal: los rendimientos del Treasury retrocedieron, el dólar se debilitó y las acciones recibieron apoyo inicial.
 
-Las bolsas globales encaran su mejor semana desde mayo. El índice MSCI All-World acumula un avance de 2,3% y el STOXX 600 europeo gana 1,6% en la semana. En Estados Unidos, los futuros del S&P 500 se mantienen prácticamente planos y los del Nasdaq 100 avanzan cerca de 0,3%, apoyados por resultados y proyecciones favorables de compañías de software y semiconductores.
+En Chile, el IPC de julio registró una variación mensual de 0,1% y acumuló 2,9% en el año. La inflación a doce meses bajó desde 4,3% en junio a 3,5% en julio. La moderación estuvo apoyada por una fuerte caída en transporte y combustibles, mientras alimentos, vivienda y servicios básicos todavía mostraron presiones al alza.
+
+La novedad de la jornada no es, por tanto, una sola materia prima ni un movimiento aislado de mercado. Es la aparición simultánea de señales que vuelven a poner el foco en la trayectoria de las tasas: menor inflación en Chile y mayor debilidad laboral en Estados Unidos.
 
 ### Qué cambió desde ayer
 
-El jueves, Wall Street interrumpió parcialmente su avance. El S&P 500 cerró en 7.709,96 puntos, con una baja de 0,18%; el Nasdaq terminó en 26.348,35 puntos, con un retroceso de 0,06%; y el Dow Jones cayó 0,85%. La corrección fue moderada en los índices amplios y ocurrió antes de un dato laboral que puede alterar las expectativas de la Reserva Federal.
+Hasta esta mañana, la edición estaba condicionada por la espera de dos datos. Ambos ya fueron publicados y cambiaron la lectura.
 
-El Treasury a diez años se mantiene cerca de 4,67%. Ese nivel sigue siendo restrictivo para activos de larga duración y obliga a que las valorizaciones elevadas se sostengan con crecimiento efectivo de utilidades y flujo de caja.
+Primero, el empleo estadounidense sorprendió negativamente. La pérdida de 23.000 puestos contrasta con la expectativa previa de crecimiento y se suma a revisiones a la baja de meses anteriores. El descenso del desempleo a 4,1% no elimina esa señal porque parte de la mejora se explica por personas que salieron de la fuerza laboral.
 
-La tecnología, sin embargo, vuelve a mostrar dispersión positiva esta mañana. Atlassian, Microchip Technology y Cloudflare reciben una respuesta favorable del mercado después de mejorar resultados o perspectivas. La señal no contradice la selectividad observada durante la semana: confirma que la exposición a inteligencia artificial o software ya no basta por sí sola y que el mercado distingue con más fuerza entre crecimiento esperado y crecimiento demostrado.
+Segundo, la inflación chilena se moderó con más fuerza que en junio. El IPC mensual de 0,1% llevó la inflación anual a 3,5%, más cerca del objetivo de 3% del Banco Central. El componente energético ayudó de forma importante: los combustibles para vehículos personales cayeron 9,2% en julio, con bajas de 8,5% en gasolina y 13,5% en diésel.
+
+Tercero, la reacción financiera fue coherente con un escenario de menor presión sobre tasas. Reuters reportó una caída de los rendimientos del Treasury y un debilitamiento del dólar después del empleo estadounidense. En Europa, el STOXX 600 terminó la semana en un máximo histórico, apoyado por resultados empresariales y por la lectura más favorable de tasas.
 
 ## En una mirada
 
-- **Empleo en Estados Unidos:** el consenso espera 80.000 nuevas nóminas en julio y desempleo de 4,2%.
-- **S&P 500:** 7.709,96 puntos al cierre del jueves; -0,18%.
-- **Nasdaq:** 26.348,35 puntos; -0,06%.
-- **MSCI All-World:** +2,3% en la semana, su mejor desempeño semanal desde mayo.
-- **STOXX 600:** +0,2% durante la mañana europea y +1,6% en la semana.
-- **Treasury a diez años:** cerca de 4,67% antes del empleo estadounidense.
-- **Brent:** alrededor de US$83, con un alza cercana a 1% en la jornada, aunque todavía cae aproximadamente 7% en la semana.
-- **Oro:** cerca de US$4.289 por onza y más de 6% de avance semanal.
-- **Dólar observado en Chile:** $911,58 para el jueves 6 de agosto, último valor oficial disponible antes del corte.
+- **Empleo de Estados Unidos:** -23.000 puestos en julio.
+- **Desempleo estadounidense:** 4,1%.
+- **Participación laboral:** 61,4%.
+- **IPC de Chile:** +0,1% mensual en julio.
+- **Inflación anual en Chile:** 3,5%.
+- **Inflación acumulada en 2026:** 2,9%.
+- **Combustibles para vehículos personales:** -9,2% mensual en julio.
+- **Dólar observado:** $913,86.
+- **Cobre:** US$6,45 por libra.
 - **TPM Chile:** 4,50%.
-- **IPC de julio:** publicación programada para las 08:00 del viernes 7 de agosto.
 
 ## Por qué importa
 
-El mercado enfrenta hoy una prueba de consistencia entre crecimiento e inflación.
+Los dos datos reducen, por caminos distintos, la necesidad de una política monetaria más restrictiva.
 
-Un empleo estadounidense más fuerte de lo esperado puede confirmar resiliencia económica, pero también reforzar la posibilidad de tasas altas por más tiempo. En ese escenario, los rendimientos de los bonos podrían subir y las acciones de mayor duración volverían a enfrentar presión sobre sus múltiplos.
+En Estados Unidos, un mercado laboral más débil disminuye el riesgo de que la demanda siga presionando salarios y precios. Eso favorece a los bonos porque reduce la probabilidad de tasas más altas por más tiempo. Sin embargo, una desaceleración laboral demasiado profunda también puede convertirse en un problema para utilidades empresariales y consumo. Por eso una cifra débil puede ser inicialmente positiva para los activos de duración y, al mismo tiempo, exigir cautela sobre crecimiento.
 
-Un informe laboral más débil puede producir el efecto contrario: menores tasas y soporte inicial para acciones y bonos. Sin embargo, una sorpresa demasiado negativa también podría reabrir dudas sobre crecimiento. La dirección del mercado dependerá no solo del número de empleos, sino de cómo cambie la expectativa sobre la Reserva Federal.
+En Chile, la caída de la inflación anual a 3,5% mejora el balance para la renta fija local. La TPM continúa en 4,5%, por lo que una inflación que se acerque de manera sostenible a 3% aumenta el interés relativo de extender duración gradualmente. El matiz importante es que la baja de julio estuvo apoyada por combustibles, un componente volátil que puede revertirse si reaparece una prima energética persistente.
 
-En Chile, el IPC cumple una función equivalente para la curva local. La TPM permanece en 4,5% y el Banco Central ha reconocido que el escenario internacional sigue expuesto a volatilidad energética y financiera. Un IPC benigno reforzaría la posibilidad de que la inflación converja sin exigir una política más restrictiva; una sorpresa al alza mantendría presión sobre las tasas reales y la duración.
-
-La apreciación reciente del peso entrega una señal favorable para la inflación importada. El dólar observado bajó desde $928,42 el lunes 3 de agosto a $911,58 el jueves 6. Ese movimiento reduce parte de la presión sobre bienes transables, aunque no implica un traspaso inmediato ni completo al IPC.
+La lectura patrimonial general cambia así: la discusión deja de ser únicamente cuánto tiempo permanecerán altas las tasas y pasa a ser cuánto espacio existe para que bajen sin que esa baja responda a un deterioro excesivo del crecimiento.
 
 ### Implicancias patrimoniales generales
 
-La combinación de datos binarios cercanos favorece una lectura prudente antes de aumentar riesgo direccional. La renta fija corta continúa ofreciendo carry, mientras la duración media puede beneficiarse si inflación y empleo permiten una trayectoria de tasas menos restrictiva. En renta variable, la semana vuelve a demostrar que la selección importa más que una exposición temática indiscriminada.
+Para posiciones conservadoras, el carry en instrumentos de corto plazo sigue siendo relevante porque la TPM chilena permanece en 4,5%. La moderación inflacionaria mejora la tasa real ex ante, aunque no elimina la necesidad de liquidez.
 
-La señal relevante no es abandonar tecnología, sino exigir calidad de beneficios, capacidad de financiar inversión y retorno sobre capital. Del mismo modo, una baja de tasas no debería interpretarse automáticamente como positiva si proviene de un deterioro fuerte de la actividad.
+Para perfiles moderados, aumenta el argumento para incorporar duración media de forma gradual. La clave es distinguir entre una caída ordenada de inflación y una desaceleración económica más abrupta.
+
+En renta variable global, el empleo estadounidense reduce presión sobre la tasa de descuento, pero no elimina la exigencia sobre utilidades. La selectividad tecnológica observada durante la semana sigue vigente: menores tasas ayudan a las valorizaciones, pero no sustituyen crecimiento de caja y retorno sobre capital.
 
 ## Mercados globales
 
 ### Estados Unidos
 
-Los futuros avanzan ligeramente antes del informe laboral. El Nasdaq 100 gana cerca de 0,3%, mientras el S&P 500 se mantiene prácticamente plano. Las acciones de Atlassian, Microchip Technology y Cloudflare suben con fuerza después de entregar resultados o proyecciones mejores de lo esperado.
+La reacción inicial al informe laboral fue de alivio en tasas. Los rendimientos del Treasury retrocedieron y el dólar perdió fuerza, mientras las acciones subieron. El mercado redujo la probabilidad asignada a una nueva alza de la Reserva Federal en septiembre.
 
-Los principales índices mantienen ganancias semanales importantes pese a la pausa del jueves. El S&P 500 y el Dow se encaminan a su mejor semana desde abril y el Nasdaq a su mayor avance semanal desde mayo si los movimientos se sostienen.
+La señal debe interpretarse con cuidado. La caída de 23.000 puestos es negativa para la actividad, pero la magnitud del deterioro todavía puede estar afectada por factores estacionales. Los próximos datos de inflación y consumo serán necesarios para distinguir entre una normalización del mercado laboral y una desaceleración más profunda.
 
-La concentración de la atención en el empleo aumenta la sensibilidad de tasas y acciones al dato. Con menor orientación explícita de la Reserva Federal, los precios de mercado deben incorporar más directamente cada nueva cifra macroeconómica.
+### Europa
 
-### Europa y Asia
+El STOXX 600 cerró en un máximo histórico de 660,25 puntos y completó su cuarta semana consecutiva de avances. Tecnología y salud lideraron la jornada, mientras los resultados corporativos siguieron respaldando al mercado.
 
-Europa mantiene un tono positivo. El STOXX 600 avanza cerca de 0,2% y acumula 1,6% en la semana, apoyado por tecnología, farmacéuticas y resultados corporativos.
+La combinación de utilidades sólidas y menor presión sobre tasas explica mejor el movimiento que una sola variable sectorial. El mercado está premiando crecimiento verificable mientras disminuye parcialmente la tasa de descuento.
 
-En Asia, el balance sigue condicionado por la volatilidad tecnológica de jornadas anteriores. La lectura de fondo es una rotación más selectiva, no una retirada generalizada de la renta variable global.
+### Tecnología
 
-### Riesgo geopolítico
+La tesis de selectividad se mantiene. Las empresas expuestas a inteligencia artificial, software e infraestructura digital continúan recibiendo valoraciones elevadas, pero la reacción a resultados depende cada vez más de la conversión de inversión en ingresos, márgenes y flujo de caja.
 
-La tensión en Medio Oriente vuelve a elevar la prima energética. El Brent se mueve alrededor de US$83 después de ataques hutíes contra Arabia Saudita y nuevas amenazas sobre el tránsito por el estrecho de Ormuz. Aun así, el crudo permanece aproximadamente 7% por debajo del nivel de una semana atrás y lejos del máximo reciente cercano a US$102.
-
-Por eso el petróleo vuelve a ser un factor de riesgo, pero no constituye por sí solo el hecho central de la jornada. Su importancia depende de si el repunte se prolonga lo suficiente para modificar expectativas de inflación y tasas.
+La moderación de tasas mejora el entorno para activos de larga duración. No elimina, sin embargo, el riesgo de pagar múltiplos excesivos por crecimiento que todavía no se materializa.
 
 ## Chile
 
-### IPC de julio
+### Inflación
 
-El Instituto Nacional de Estadísticas tiene programada la publicación del IPC de julio a las 08:00. El dato todavía no estaba disponible al cierre de esta edición y no se incorpora ninguna estimación como hecho confirmado.
+El IPC de julio subió 0,1% mensual, acumuló 2,9% en 2026 y se ubicó en 3,5% a doce meses. El descenso desde 4,3% anual en junio constituye una mejora relevante para el escenario de convergencia.
 
-El último IPC conocido, correspondiente a junio, registró una variación mensual de 0,0% y 4,3% a doce meses. El dato de julio permitirá evaluar si la apreciación del peso y la moderación reciente del petróleo comienzan a mejorar el balance de inflación o si la persistencia de servicios y otros componentes mantiene la presión.
+Transporte cayó 3,5% durante julio. Dentro de esa división, los combustibles para vehículos personales bajaron 9,2%. La gasolina retrocedió 8,5% y el diésel 13,5%.
+
+La composición importa. Una inflación general más baja es favorable, pero alimentos, vivienda y servicios básicos todavía mostraron aumentos. La convergencia será más robusta si la moderación se extiende desde energía hacia componentes menos volátiles.
 
 ### Dólar observado
 
-El dólar observado para el jueves 6 de agosto es de $911,58. La trayectoria de la semana muestra una apreciación significativa del peso: $928,42 el lunes, $924,89 el martes, $914,46 el miércoles y $911,58 el jueves.
+El indicador económico actualizado al 7 de agosto muestra un dólar observado de $913,86. El peso continúa más firme que al comienzo de la semana, aunque el valor diario puede reaccionar a la debilidad del dólar global, al cobre y a los cambios en las tasas estadounidenses.
 
-La caída del dólar ayuda a moderar costos importados y mejora el escenario para bienes transables. Sin embargo, la dirección del peso durante la próxima semana dependerá también del empleo estadounidense, de los rendimientos del Treasury, del cobre y del riesgo geopolítico.
+Una moneda local más apreciada contribuye a reducir presión sobre bienes importados. Ese traspaso no es inmediato ni completo, por lo que debe analizarse junto con demanda, márgenes y costos internos.
 
 ### Política monetaria
 
-La TPM se mantiene en 4,5% desde la reunión del 28 de julio. El Banco Central decidió mantenerla por unanimidad y destacó que el panorama internacional sigue marcado por volatilidad geopolítica, petróleo y tasas externas.
+La TPM se mantiene en 4,5%. Con una inflación anual de 3,5%, el margen para discutir una trayectoria menos restrictiva aumenta, pero el Banco Central seguirá evaluando la persistencia de la inflación subyacente y los riesgos externos.
 
-El IPC de esta mañana será, por tanto, una pieza importante para evaluar cuánto espacio existe para una trayectoria menos restrictiva sin comprometer la convergencia de inflación.
+El mercado de tasas locales debería incorporar ahora no solo el dato general de IPC, sino su composición y la sostenibilidad de la baja energética.
 
 ## Tasas, monedas y commodities
 
-El Treasury a diez años se mantiene alrededor de 4,67% y el bono a dos años cerca de 4,24%. La estabilidad previa al empleo refleja espera, no ausencia de riesgo: una sorpresa relevante puede mover con rapidez la curva.
+El dato laboral estadounidense hizo caer los rendimientos del Treasury y debilitó al dólar. Esa combinación suele aliviar las condiciones financieras para activos de mayor duración y para monedas emergentes, siempre que no sea interpretada como señal de una recesión profunda.
 
-El dólar global opera estable antes de las nóminas. El yen permanece cerca de 158,4 por dólar después de la intervención cambiaria conjunta de la semana pasada.
+En Chile, el dólar observado se ubica en $913,86 y la TPM en 4,50%. El cobre aparece en US$6,45 por libra en la actualización de indicadores económicos de la jornada.
 
-El Brent cotiza alrededor de US$83 y sube cerca de 1% en la sesión. La reacción refleja una nueva prima geopolítica, aunque el balance semanal todavía muestra una baja cercana a 7%.
-
-El oro se mantiene alrededor de US$4.289 por onza, con un avance semanal superior a 6%. La coexistencia de bolsas fuertes y oro al alza indica que parte del mercado mantiene exposición al riesgo mientras conserva coberturas frente a inflación, geopolítica y volatilidad de tasas.
+El petróleo sigue siendo una variable relevante para inflación y geopolítica, pero deja de ser el eje editorial del día. La información nueva y material está en empleo, inflación y tasas. Si la energía vuelve a alterar de forma persistente las expectativas inflacionarias, recuperará protagonismo por sus consecuencias y no por simple continuidad temática.
 
 ## Qué observar
 
-- **08:00 en Chile:** IPC de julio y su composición entre bienes, energía y servicios.
-- **08:30 en Estados Unidos:** nóminas no agrícolas, desempleo y crecimiento salarial.
-- **Treasury a diez años:** una ruptura clara sobre 4,7% volvería a endurecer las condiciones financieras.
-- **Tecnología:** confirmar si los buenos resultados de software y semiconductores amplían la recuperación o si continúa la dispersión entre compañías.
-- **Dólar observado y peso chileno:** evaluar si la apreciación reciente se sostiene después de los datos macroeconómicos.
-- **Brent y estrecho de Ormuz:** distinguir un rebote táctico de una nueva interrupción persistente de oferta.
-- **Curva local:** observar cómo el IPC modifica las expectativas para TPM y duración en pesos.
+- **Inflación subyacente en Chile:** confirmar si la moderación se extiende más allá de combustibles.
+- **Curva local:** observar cuánto incorpora el mercado de tasas después del IPC de 3,5% anual.
+- **Treasury de Estados Unidos:** verificar si la caída posterior al empleo se sostiene durante las próximas sesiones.
+- **Dólar global y peso chileno:** evaluar si la debilidad del dólar estadounidense refuerza la apreciación local.
+- **Mercado laboral estadounidense:** distinguir entre un dato estacionalmente débil y una tendencia sostenida de desaceleración.
+- **Resultados corporativos:** comprobar si menores tasas amplían el avance bursátil o si continúa la dispersión entre compañías.
+- **Energía:** mantener el petróleo como condición de riesgo capaz de volver a alterar inflación, pero no como explicación automática de toda la jornada.
