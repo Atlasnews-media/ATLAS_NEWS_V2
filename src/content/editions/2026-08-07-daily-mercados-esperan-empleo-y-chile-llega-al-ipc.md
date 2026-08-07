@@ -4,7 +4,7 @@ summary: "Las bolsas globales encaran una semana fuerte, pero tasas y divisas es
 publishedAt: "2026-08-07T07:42:00-04:00"
 cutoffAt: "2026-08-07T07:35:00-04:00"
 type: "daily"
-status: "draft"
+status: "published"
 tags:
   - mercados-globales
   - chile
