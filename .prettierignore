@@ -2,3 +2,4 @@ dist/
 node_modules/
 .astro/
 package-lock.json
+src/content/editions/*.md
