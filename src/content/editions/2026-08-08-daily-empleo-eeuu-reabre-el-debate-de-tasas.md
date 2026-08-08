@@ -4,7 +4,7 @@ summary: "El empleo estadounidense sorprendió a la baja, Wall Street cerró en 
 publishedAt: "2026-08-08T13:03:00-04:00"
 cutoffAt: "2026-08-08T13:00:00-04:00"
 type: "daily"
-status: "draft"
+status: "published"
 tags:
   - mercados-globales
   - chile
