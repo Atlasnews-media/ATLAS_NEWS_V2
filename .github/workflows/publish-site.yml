@@ -5,13 +5,11 @@ on:
     branches: [main]
   pull_request:
     branches: [main]
-  schedule:
-    - cron: "45 8 * * 1-5"
-      timezone: "America/Santiago"
   workflow_dispatch:
 
 permissions:
   contents: read
+  id-token: write
 
 concurrency:
   group: atlas-news-${{ github.event_name == 'pull_request' && format('pr-{0}', github.event.pull_request.number) || 'production' }}
@@ -24,10 +22,100 @@ jobs:
     timeout-minutes: 20
     env:
       ATLAS_SOURCE_SHA: ${{ github.event_name == 'pull_request' && github.event.pull_request.head.sha || github.sha }}
+      ATLAS_STATE_ENDPOINT: https://zukkeurioymejoffarrp.supabase.co/functions/v1/atlas-news-state
 
     steps:
       - name: Descargar el repositorio privado
         uses: actions/checkout@v5
+        with:
+          fetch-depth: 2
+
+      - name: Detectar edición asociada
+        id: edition
+        shell: bash
+        run: |
+          set -euo pipefail
+          track=false
+          edition_date=""
+          edition_type=""
+          edition_key=""
+          edition_id=""
+          branch="${GITHUB_HEAD_REF:-${GITHUB_REF_NAME}}"
+
+          if [[ "${GITHUB_EVENT_NAME}" == "pull_request" && "$branch" =~ ^editorial/([0-9]{4}-[0-9]{2}-[0-9]{2})-(daily|weekly)$ ]]; then
+            edition_date="${BASH_REMATCH[1]}"
+            edition_type="${BASH_REMATCH[2]}"
+            edition_key="${edition_date}-${edition_type}"
+            file="$(git diff --name-only HEAD^ HEAD | grep -E "^src/content/editions/${edition_date}-${edition_type}-.*\.md$" | head -n1 || true)"
+            if [[ -n "$file" ]]; then
+              edition_id="$(basename "$file" .md)"
+              track=true
+            fi
+          elif [[ "${GITHUB_EVENT_NAME}" == "push" ]]; then
+            file="$(git diff-tree --no-commit-id --name-only -r HEAD | grep -E '^src/content/editions/[0-9]{4}-[0-9]{2}-[0-9]{2}-(daily|weekly)-.*\.md$' | head -n1 || true)"
+            if [[ -n "$file" ]]; then
+              base="$(basename "$file" .md)"
+              edition_date="${base:0:10}"
+              rest="${base:11}"
+              edition_type="${rest%%-*}"
+              edition_key="${edition_date}-${edition_type}"
+              edition_id="$base"
+              track=true
+            fi
+          fi
+
+          echo "track=$track" >> "$GITHUB_OUTPUT"
+          echo "edition_date=$edition_date" >> "$GITHUB_OUTPUT"
+          echo "edition_type=$edition_type" >> "$GITHUB_OUTPUT"
+          echo "edition_key=$edition_key" >> "$GITHUB_OUTPUT"
+          echo "edition_id=$edition_id" >> "$GITHUB_OUTPUT"
+          echo "branch=$branch" >> "$GITHUB_OUTPUT"
+
+      - name: Registrar PR abierto en memoria operacional
+        if: github.event_name == 'pull_request' && steps.edition.outputs.track == 'true'
+        continue-on-error: true
+        env:
+          EDITION_KEY: ${{ steps.edition.outputs.edition_key }}
+          EDITION_DATE: ${{ steps.edition.outputs.edition_date }}
+          EDITION_TYPE: ${{ steps.edition.outputs.edition_type }}
+          EDITION_BRANCH: ${{ steps.edition.outputs.branch }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+          HEAD_SHA: ${{ github.event.pull_request.head.sha }}
+        run: |
+          token="$(curl -fsSL -H "Authorization: bearer $ACTIONS_ID_TOKEN_REQUEST_TOKEN" \
+            "${ACTIONS_ID_TOKEN_REQUEST_URL}&audience=atlas-news-supabase" | jq -r '.value')"
+          jq -n \
+            --arg edition_key "$EDITION_KEY" \
+            --arg edition_date "$EDITION_DATE" \
+            --arg edition_type "$EDITION_TYPE" \
+            --arg status "pr_open" \
+            --arg branch "$EDITION_BRANCH" \
+            --argjson pr_number "$PR_NUMBER" \
+            --arg head_sha "$HEAD_SHA" \
+            --arg run_url "https://github.com/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID}" \
+            '{edition_key:$edition_key,edition_date:$edition_date,edition_type:$edition_type,status:$status,branch:$branch,pr_number:$pr_number,head_sha:$head_sha,metadata:{run_url:$run_url}}' \
+            | curl -fsSL -X POST "$ATLAS_STATE_ENDPOINT" -H "Authorization: Bearer $token" -H 'content-type: application/json' --data-binary @-
+
+      - name: Registrar merge en memoria operacional
+        if: github.event_name == 'push' && steps.edition.outputs.track == 'true'
+        continue-on-error: true
+        env:
+          EDITION_KEY: ${{ steps.edition.outputs.edition_key }}
+          EDITION_DATE: ${{ steps.edition.outputs.edition_date }}
+          EDITION_TYPE: ${{ steps.edition.outputs.edition_type }}
+          SOURCE_COMMIT: ${{ github.sha }}
+        run: |
+          token="$(curl -fsSL -H "Authorization: bearer $ACTIONS_ID_TOKEN_REQUEST_TOKEN" \
+            "${ACTIONS_ID_TOKEN_REQUEST_URL}&audience=atlas-news-supabase" | jq -r '.value')"
+          jq -n \
+            --arg edition_key "$EDITION_KEY" \
+            --arg edition_date "$EDITION_DATE" \
+            --arg edition_type "$EDITION_TYPE" \
+            --arg status "merged" \
+            --arg source_commit "$SOURCE_COMMIT" \
+            --arg run_url "https://github.com/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID}" \
+            '{edition_key:$edition_key,edition_date:$edition_date,edition_type:$edition_type,status:$status,source_commit:$source_commit,metadata:{run_url:$run_url}}' \
+            | curl -fsSL -X POST "$ATLAS_STATE_ENDPOINT" -H "Authorization: Bearer $token" -H 'content-type: application/json' --data-binary @-
 
       - name: Preparar Node.js
         uses: actions/setup-node@v6
@@ -48,7 +136,7 @@ jobs:
       - name: Actualizar indicadores económicos
         run: npm run update:indicators
 
-      - name: Comprobar formato
+      - name: Comprobar formato técnico
         run: npm run format:check
 
       - name: Validar y construir el sitio
@@ -67,6 +155,30 @@ jobs:
           ATLAS_PUBLIC_DIR: dist
         run: npm run audit:production
 
+      - name: Registrar validación correcta
+        if: github.event_name == 'pull_request' && steps.edition.outputs.track == 'true'
+        continue-on-error: true
+        env:
+          EDITION_KEY: ${{ steps.edition.outputs.edition_key }}
+          EDITION_DATE: ${{ steps.edition.outputs.edition_date }}
+          EDITION_TYPE: ${{ steps.edition.outputs.edition_type }}
+          EDITION_BRANCH: ${{ steps.edition.outputs.branch }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+          HEAD_SHA: ${{ github.event.pull_request.head.sha }}
+        run: |
+          token="$(curl -fsSL -H "Authorization: bearer $ACTIONS_ID_TOKEN_REQUEST_TOKEN" \
+            "${ACTIONS_ID_TOKEN_REQUEST_URL}&audience=atlas-news-supabase" | jq -r '.value')"
+          jq -n \
+            --arg edition_key "$EDITION_KEY" \
+            --arg edition_date "$EDITION_DATE" \
+            --arg edition_type "$EDITION_TYPE" \
+            --arg status "validated" \
+            --arg branch "$EDITION_BRANCH" \
+            --argjson pr_number "$PR_NUMBER" \
+            --arg head_sha "$HEAD_SHA" \
+            '{edition_key:$edition_key,edition_date:$edition_date,edition_type:$edition_type,status:$status,branch:$branch,pr_number:$pr_number,head_sha:$head_sha}' \
+            | curl -fsSL -X POST "$ATLAS_STATE_ENDPOINT" -H "Authorization: Bearer $token" -H 'content-type: application/json' --data-binary @-
+
       - name: Preparar acceso al repositorio público
         if: github.event_name != 'pull_request'
         env:
@@ -78,6 +190,7 @@ jobs:
           ssh-keyscan -H github.com >> ~/.ssh/known_hosts
 
       - name: Publicar la salida estática
+        id: deploy
         if: github.event_name != 'pull_request'
         env:
           GIT_SSH_COMMAND: ssh -i ~/.ssh/atlas_news_pages -o IdentitiesOnly=yes
@@ -95,6 +208,29 @@ jobs:
             git commit -m "Publica ATLAS NEWS desde ${ATLAS_SOURCE_SHA::7}"
             git push origin main
           fi
+          echo "public_commit=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
+
+      - name: Registrar despliegue
+        if: github.event_name == 'push' && steps.edition.outputs.track == 'true'
+        continue-on-error: true
+        env:
+          EDITION_KEY: ${{ steps.edition.outputs.edition_key }}
+          EDITION_DATE: ${{ steps.edition.outputs.edition_date }}
+          EDITION_TYPE: ${{ steps.edition.outputs.edition_type }}
+          SOURCE_COMMIT: ${{ github.sha }}
+          PUBLIC_COMMIT: ${{ steps.deploy.outputs.public_commit }}
+        run: |
+          token="$(curl -fsSL -H "Authorization: bearer $ACTIONS_ID_TOKEN_REQUEST_TOKEN" \
+            "${ACTIONS_ID_TOKEN_REQUEST_URL}&audience=atlas-news-supabase" | jq -r '.value')"
+          jq -n \
+            --arg edition_key "$EDITION_KEY" \
+            --arg edition_date "$EDITION_DATE" \
+            --arg edition_type "$EDITION_TYPE" \
+            --arg status "deployed" \
+            --arg source_commit "$SOURCE_COMMIT" \
+            --arg public_commit "$PUBLIC_COMMIT" \
+            '{edition_key:$edition_key,edition_date:$edition_date,edition_type:$edition_type,status:$status,source_commit:$source_commit,public_commit:$public_commit}' \
+            | curl -fsSL -X POST "$ATLAS_STATE_ENDPOINT" -H "Authorization: Bearer $token" -H 'content-type: application/json' --data-binary @-
 
       - name: Verificar la versión pública
         if: github.event_name != 'pull_request'
@@ -109,3 +245,56 @@ jobs:
             grep -Fq "/ediciones/$latest_id/" "$atlas_publish_dir/index.html"
           fi
           echo "Versión pública verificada: $(git -C "$atlas_publish_dir" rev-parse HEAD)"
+
+      - name: Registrar publicación verificada
+        if: github.event_name == 'push' && steps.edition.outputs.track == 'true'
+        continue-on-error: true
+        env:
+          EDITION_KEY: ${{ steps.edition.outputs.edition_key }}
+          EDITION_DATE: ${{ steps.edition.outputs.edition_date }}
+          EDITION_TYPE: ${{ steps.edition.outputs.edition_type }}
+          EDITION_ID: ${{ steps.edition.outputs.edition_id }}
+          SOURCE_COMMIT: ${{ github.sha }}
+          PUBLIC_COMMIT: ${{ steps.deploy.outputs.public_commit }}
+        run: |
+          token="$(curl -fsSL -H "Authorization: bearer $ACTIONS_ID_TOKEN_REQUEST_TOKEN" \
+            "${ACTIONS_ID_TOKEN_REQUEST_URL}&audience=atlas-news-supabase" | jq -r '.value')"
+          public_url="https://eldesiempre100.github.io/ediciones/${EDITION_ID}/"
+          jq -n \
+            --arg edition_key "$EDITION_KEY" \
+            --arg edition_date "$EDITION_DATE" \
+            --arg edition_type "$EDITION_TYPE" \
+            --arg status "verified" \
+            --arg source_commit "$SOURCE_COMMIT" \
+            --arg public_commit "$PUBLIC_COMMIT" \
+            --arg published_url "$public_url" \
+            '{edition_key:$edition_key,edition_date:$edition_date,edition_type:$edition_type,status:$status,source_commit:$source_commit,public_commit:$public_commit,published_url:$published_url}' \
+            | curl -fsSL -X POST "$ATLAS_STATE_ENDPOINT" -H "Authorization: Bearer $token" -H 'content-type: application/json' --data-binary @-
+
+      - name: Registrar fallo operacional
+        if: failure() && steps.edition.outputs.track == 'true'
+        continue-on-error: true
+        env:
+          EDITION_KEY: ${{ steps.edition.outputs.edition_key }}
+          EDITION_DATE: ${{ steps.edition.outputs.edition_date }}
+          EDITION_TYPE: ${{ steps.edition.outputs.edition_type }}
+          EDITION_BRANCH: ${{ steps.edition.outputs.branch }}
+          HEAD_SHA: ${{ github.event.pull_request.head.sha || github.sha }}
+          PR_NUMBER: ${{ github.event.pull_request.number || 0 }}
+        run: |
+          token="$(curl -fsSL -H "Authorization: bearer $ACTIONS_ID_TOKEN_REQUEST_TOKEN" \
+            "${ACTIONS_ID_TOKEN_REQUEST_URL}&audience=atlas-news-supabase" | jq -r '.value')"
+          run_url="https://github.com/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID}"
+          jq -n \
+            --arg edition_key "$EDITION_KEY" \
+            --arg edition_date "$EDITION_DATE" \
+            --arg edition_type "$EDITION_TYPE" \
+            --arg status "failed" \
+            --arg branch "$EDITION_BRANCH" \
+            --arg head_sha "$HEAD_SHA" \
+            --arg error_stage "github_action" \
+            --arg error "Falló el workflow Publicar ATLAS NEWS. Revisar run_url." \
+            --arg run_url "$run_url" \
+            --argjson pr_number "$PR_NUMBER" \
+            '{edition_key:$edition_key,edition_date:$edition_date,edition_type:$edition_type,status:$status,branch:$branch,pr_number:(if $pr_number > 0 then $pr_number else null end),head_sha:$head_sha,error_stage:$error_stage,error:$error,metadata:{run_url:$run_url}}' \
+            | curl -fsSL -X POST "$ATLAS_STATE_ENDPOINT" -H "Authorization: Bearer $token" -H 'content-type: application/json' --data-binary @-
