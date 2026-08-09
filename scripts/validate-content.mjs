@@ -352,9 +352,7 @@ async function duplicatePublishedBriefingErrors(files) {
     const text = await readFile(new URL(filename, briefingDir), "utf8");
     if (frontmatterValue(text, "status") !== "published") continue;
 
-    const match = filename.match(
-      /^(\d{4}-\d{2}-\d{2})-(national|markets)-/,
-    );
+    const match = filename.match(/^(\d{4}-\d{2}-\d{2})-(national|markets)-/);
     if (!match) continue;
 
     const key = `${match[1]}:${match[2]}`;
