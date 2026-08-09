@@ -4,7 +4,7 @@ summary: "La inflación de julio bajó a 3,5% anual y el Imacec de junio creció
 publishedAt: "2026-08-09T15:58:00-04:00"
 cutoffAt: "2026-08-09T14:15:00-04:00"
 section: "national"
-status: "draft"
+status: "published"
 tags:
   - chile
   - economia
