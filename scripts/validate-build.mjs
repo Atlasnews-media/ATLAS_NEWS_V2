@@ -115,7 +115,9 @@ async function validateRenderedPublication({
   const title = normalizeText(frontmatterValue(markdown, "title") ?? "");
 
   if (!title || !htmlText.includes(title)) {
-    throw new Error(`La ${label} ${filename} no conserva su título en el HTML.`);
+    throw new Error(
+      `La ${label} ${filename} no conserva su título en el HTML.`,
+    );
   }
 
   for (const heading of requiredHeadings) {
