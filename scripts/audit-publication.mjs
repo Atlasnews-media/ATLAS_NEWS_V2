@@ -115,7 +115,9 @@ async function auditBriefing({ record, statusKey, route, label }) {
   const manifestRecord = status[statusKey];
   if (!record) {
     if (manifestRecord !== null) {
-      errors.push(`${statusKey} debería ser null porque no hay ${label} publicado`);
+      errors.push(
+        `${statusKey} debería ser null porque no hay ${label} publicado`,
+      );
     }
     return;
   }
@@ -159,10 +161,14 @@ const expectedTotal =
   publishedReadingCount;
 
 if (status.publications?.daily !== publishedDailies.length) {
-  errors.push("el conteo daily de status.json no coincide con el contenido publicado");
+  errors.push(
+    "el conteo daily de status.json no coincide con el contenido publicado",
+  );
 }
 if (status.publications?.weekly !== publishedWeeklyCount) {
-  errors.push("el conteo weekly de status.json no coincide con el contenido publicado");
+  errors.push(
+    "el conteo weekly de status.json no coincide con el contenido publicado",
+  );
 }
 if (status.publications?.national !== publishedNational.length) {
   errors.push(
@@ -180,7 +186,9 @@ if (status.publications?.readings !== publishedReadingCount) {
   );
 }
 if (status.publications?.total !== expectedTotal) {
-  errors.push("el total de status.json no coincide con las publicaciones publicadas");
+  errors.push(
+    "el total de status.json no coincide con las publicaciones publicadas",
+  );
 }
 
 if (errors.length) {
