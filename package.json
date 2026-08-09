@@ -11,7 +11,7 @@
     "check": "astro check",
     "preview": "astro preview",
     "format": "prettier --write .",
-    "format:check": "prettier --check .",
+    "format:check": "prettier --write . && git diff -- src/content/readings/2026-08-08-reading-inflacion-tasas-chile.md && exit 1",
     "editorial:from-issue": "node scripts/create-reading-from-issue.mjs",
     "radar:discover": "node scripts/discover-radar-readings.mjs",
     "status:generate": "node scripts/generate-publication-status.mjs",
