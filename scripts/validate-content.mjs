@@ -2,6 +2,7 @@ import { readdir, readFile } from "node:fs/promises";
 
 const root = new URL("../", import.meta.url);
 const editionDir = new URL("src/content/editions/", root);
+const briefingDir = new URL("src/content/briefings/", root);
 const readingDir = new URL("src/content/readings/", root);
 const editorialStateFile = new URL("data/editorial_state.json", root);
 
@@ -20,8 +21,12 @@ const readingHeadings = [
   "Por qué fue seleccionada",
   "Contexto y límites",
 ];
-const filenamePattern =
-  /^\d{4}-\d{2}-\d{2}-(daily|weekly|reading)-[a-z0-9-]+\.mdx?$/;
+const editionFilenamePattern =
+  /^\d{4}-\d{2}-\d{2}-(daily|weekly)-[a-z0-9-]+\.mdx?$/;
+const briefingFilenamePattern =
+  /^\d{4}-\d{2}-\d{2}-(national|markets)-[a-z0-9-]+\.mdx?$/;
+const readingFilenamePattern =
+  /^\d{4}-\d{2}-\d{2}-reading-[a-z0-9-]+\.mdx?$/;
 const editorialStatuses = new Set([
   "new",
   "continues",
@@ -169,7 +174,12 @@ async function validateEditorialState() {
   return errors;
 }
 
-async function validateFile(directory, filename, requiredHeadings) {
+async function validateFile(
+  directory,
+  filename,
+  requiredHeadings,
+  filenamePattern,
+) {
   const text = await readFile(new URL(filename, directory), "utf8");
   const frontmatter = frontmatterText(text);
   const errors = [];
@@ -256,6 +266,34 @@ async function validateFile(directory, filename, requiredHeadings) {
   return errors.map((error) => `${filename}: ${error}`);
 }
 
+async function validateBriefingFile(filename) {
+  const errors = await validateFile(
+    briefingDir,
+    filename,
+    [],
+    briefingFilenamePattern,
+  );
+  const text = await readFile(new URL(filename, briefingDir), "utf8");
+  const section = frontmatterValue(text, "section");
+  const filenameSection = filename.match(
+    /^\d{4}-\d{2}-\d{2}-(national|markets)-/,
+  )?.[1];
+
+  if (!section || !["national", "markets"].includes(section)) {
+    errors.push(`${filename}: section no es válido`);
+  } else if (filenameSection && section !== filenameSection) {
+    errors.push(
+      `${filename}: section ${section} no coincide con ${filenameSection} en el nombre`,
+    );
+  }
+
+  if (!frontmatterValue(text, "cutoffAt")) {
+    errors.push(`${filename}: cutoffAt es obligatorio`);
+  }
+
+  return errors;
+}
+
 async function duplicateReadingSourceErrors(files) {
   const ownersByUrl = new Map();
   const errors = [];
@@ -306,18 +344,48 @@ async function duplicatePublishedEditionErrors(files) {
   return errors;
 }
 
+async function duplicatePublishedBriefingErrors(files) {
+  const ownersByBriefing = new Map();
+  const errors = [];
+
+  for (const filename of files) {
+    const text = await readFile(new URL(filename, briefingDir), "utf8");
+    if (frontmatterValue(text, "status") !== "published") continue;
+
+    const match = filename.match(
+      /^(\d{4}-\d{2}-\d{2})-(national|markets)-/,
+    );
+    if (!match) continue;
+
+    const key = `${match[1]}:${match[2]}`;
+    const previousOwner = ownersByBriefing.get(key);
+    if (previousOwner) {
+      errors.push(
+        `${filename}: duplica la publicación ${key} ya registrada en ${previousOwner}`,
+      );
+    } else {
+      ownersByBriefing.set(key, filename);
+    }
+  }
+
+  return errors;
+}
+
 const editionFiles = await markdownFiles(editionDir);
+const briefingFiles = await markdownFiles(briefingDir);
 const readingFiles = await markdownFiles(readingDir);
 const errors = (
   await Promise.all([
     ...editionFiles.map((file) =>
-      validateFile(editionDir, file, editionHeadings),
+      validateFile(editionDir, file, editionHeadings, editionFilenamePattern),
     ),
+    ...briefingFiles.map((file) => validateBriefingFile(file)),
     ...readingFiles.map((file) =>
-      validateFile(readingDir, file, readingHeadings),
+      validateFile(readingDir, file, readingHeadings, readingFilenamePattern),
     ),
     duplicateReadingSourceErrors(readingFiles),
     duplicatePublishedEditionErrors(editionFiles),
+    duplicatePublishedBriefingErrors(briefingFiles),
     validateEditorialState(),
   ])
 ).flat();
@@ -328,5 +396,5 @@ if (errors.length) {
 }
 
 console.log(
-  `Contenido validado: ${editionFiles.length} ediciones y ${readingFiles.length} lecturas.`,
+  `Contenido validado: ${editionFiles.length} ediciones, ${briefingFiles.length} briefings y ${readingFiles.length} lecturas.`,
 );
