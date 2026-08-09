@@ -3,6 +3,7 @@ import { readdir, readFile } from "node:fs/promises";
 const root = new URL("../", import.meta.url);
 const editionDir = new URL("src/content/editions/", root);
 const readingDir = new URL("src/content/readings/", root);
+const editorialStateFile = new URL("data/editorial_state.json", root);
 
 const editionHeadings = [
   "Hecho central",
@@ -21,6 +22,27 @@ const readingHeadings = [
 ];
 const filenamePattern =
   /^\d{4}-\d{2}-\d{2}-(daily|weekly|reading)-[a-z0-9-]+\.mdx?$/;
+const editorialStatuses = new Set([
+  "new",
+  "continues",
+  "confirmed",
+  "weakened",
+  "changed",
+  "contradicted",
+  "closed",
+]);
+const editorialThreadFields = [
+  "id",
+  "topic",
+  "thesis",
+  "status",
+  "last_evidence",
+  "effect",
+  "base_scenario",
+  "invalidate_if",
+  "watch",
+  "last_publication",
+];
 
 function frontmatterValue(text, field) {
   return text
@@ -84,6 +106,67 @@ async function markdownFiles(directory) {
   return (await readdir(directory, { withFileTypes: true }))
     .filter((entry) => entry.isFile() && /\.mdx?$/.test(entry.name))
     .map((entry) => entry.name);
+}
+
+async function validateEditorialState() {
+  let document;
+  try {
+    document = JSON.parse(await readFile(editorialStateFile, "utf8"));
+  } catch (error) {
+    return [
+      `data/editorial_state.json: no puede leerse como JSON válido (${error.message})`,
+    ];
+  }
+
+  if (!document || typeof document !== "object" || Array.isArray(document)) {
+    return ["data/editorial_state.json: la raíz debe ser un objeto"];
+  }
+  if (!Array.isArray(document.threads)) {
+    return ["data/editorial_state.json: threads debe ser un arreglo"];
+  }
+
+  const errors = [];
+  const ids = new Set();
+
+  for (const [index, thread] of document.threads.entries()) {
+    const label = `data/editorial_state.json: threads[${index}]`;
+    if (!thread || typeof thread !== "object" || Array.isArray(thread)) {
+      errors.push(`${label} debe ser un objeto`);
+      continue;
+    }
+
+    for (const field of editorialThreadFields) {
+      if (typeof thread[field] !== "string" || !thread[field].trim()) {
+        errors.push(`${label}.${field} debe ser un texto no vacío`);
+      }
+    }
+
+    if (typeof thread.id === "string") {
+      if (!/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(thread.id)) {
+        errors.push(`${label}.id debe usar minúsculas, números y guiones`);
+      } else if (ids.has(thread.id)) {
+        errors.push(`${label}.id repite el identificador ${thread.id}`);
+      } else {
+        ids.add(thread.id);
+      }
+    }
+
+    if (
+      typeof thread.status === "string" &&
+      !editorialStatuses.has(thread.status)
+    ) {
+      errors.push(`${label}.status no es válido`);
+    }
+
+    if (
+      typeof thread.last_publication === "string" &&
+      !/^\/(ediciones|lecturas)\/[a-z0-9-]+\/$/.test(thread.last_publication)
+    ) {
+      errors.push(`${label}.last_publication no es una ruta pública válida`);
+    }
+  }
+
+  return errors;
 }
 
 async function validateFile(directory, filename, requiredHeadings) {
@@ -235,6 +318,7 @@ const errors = (
     ),
     duplicateReadingSourceErrors(readingFiles),
     duplicatePublishedEditionErrors(editionFiles),
+    validateEditorialState(),
   ])
 ).flat();
 
