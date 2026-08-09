@@ -37,10 +37,16 @@ const briefingFiles = await markdownFiles(briefingDir);
 const readingFiles = await markdownFiles(readingDir);
 
 const publishedDailies = [];
+let publishedWeeklyCount = 0;
 for (const filename of editionFiles) {
   const text = await readFile(new URL(filename, editionDir), "utf8");
   if (frontmatterValue(text, "status") !== "published") continue;
-  if (frontmatterValue(text, "type") !== "daily") continue;
+  const type = frontmatterValue(text, "type");
+  if (type === "weekly") {
+    publishedWeeklyCount += 1;
+    continue;
+  }
+  if (type !== "daily") continue;
   publishedDailies.push({
     id: filename.replace(/\.mdx?$/, ""),
     title: frontmatterValue(text, "title") ?? "",
@@ -147,13 +153,16 @@ await auditBriefing({
 
 const expectedTotal =
   publishedDailies.length +
-  status.publications.weekly +
+  publishedWeeklyCount +
   publishedNational.length +
   publishedMarkets.length +
   publishedReadingCount;
 
 if (status.publications?.daily !== publishedDailies.length) {
   errors.push("el conteo daily de status.json no coincide con el contenido publicado");
+}
+if (status.publications?.weekly !== publishedWeeklyCount) {
+  errors.push("el conteo weekly de status.json no coincide con el contenido publicado");
 }
 if (status.publications?.national !== publishedNational.length) {
   errors.push(
