@@ -4,7 +4,7 @@ summary: "Wall Street cerró en máximos tras un empleo estadounidense inesperad
 publishedAt: "2026-08-09T15:58:00-04:00"
 cutoffAt: "2026-08-09T14:15:00-04:00"
 section: "markets"
-status: "draft"
+status: "published"
 tags:
   - wall-street
   - reserva-federal
