@@ -160,9 +160,7 @@ async function validateEditorialState() {
 
     if (
       typeof thread.last_publication === "string" &&
-      !/^\/(ediciones|lecturas)\/[a-z0-9-]+\/$/.test(
-        thread.last_publication,
-      )
+      !/^\/(ediciones|lecturas)\/[a-z0-9-]+\/$/.test(thread.last_publication)
     ) {
       errors.push(`${label}.last_publication no es una ruta pública válida`);
     }
