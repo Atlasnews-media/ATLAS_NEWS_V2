@@ -103,6 +103,19 @@ const latestMarkets = publishedMarkets.at(-1);
 const sourceCommit =
   process.env.ATLAS_SOURCE_SHA ?? process.env.GITHUB_SHA ?? "local";
 
+const morningDate = latestDaily?.id.slice(0, 10);
+const generalPublished = Boolean(latestDaily);
+const nationalPublished = Boolean(
+  morningDate && latestNational?.id.startsWith(`${morningDate}-national-`),
+);
+const marketsPublished = Boolean(
+  morningDate && latestMarkets?.id.startsWith(`${morningDate}-markets-`),
+);
+const morningCompleteness =
+  Number(generalPublished) +
+  Number(nationalPublished) +
+  Number(marketsPublished);
+
 const status = {
   schemaVersion: 1,
   sourceCommit,
@@ -117,6 +130,15 @@ const status = {
     : null,
   latestNational: latestBriefingRecord(latestNational),
   latestMarkets: latestBriefingRecord(latestMarkets),
+  morningPackage: morningDate
+    ? {
+        date: morningDate,
+        generalPublished,
+        nationalPublished,
+        marketsPublished,
+        completeness: morningCompleteness,
+      }
+    : null,
   publications: {
     daily: publishedDailies.length,
     weekly: publishedWeeklies.length,
@@ -141,5 +163,5 @@ await mkdir(outputDir, { recursive: true });
 await writeFile(outputFile, `${JSON.stringify(status, null, 2)}\n`, "utf8");
 
 console.log(
-  `Estado generado: ${publishedDailies.length} diarias, ${publishedNational.length} nacionales, ${publishedMarkets.length} de mercados y ${publishedReadings.length} lecturas.`,
+  `Estado generado: ${publishedDailies.length} diarias, ${publishedNational.length} nacionales, ${publishedMarkets.length} de mercados y ${publishedReadings.length} lecturas; paquete matutino ${morningDate ?? "sin fecha"}: ${morningCompleteness}/3.`,
 );
