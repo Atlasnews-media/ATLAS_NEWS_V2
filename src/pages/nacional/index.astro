@@ -1,0 +1,78 @@
+---
+import ContentCard from "../../components/ContentCard.astro";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { formatEditorialDate, getPublishedNational } from "../../lib/content";
+
+const briefings = await getPublishedNational();
+---
+
+<BaseLayout
+  title="Nacional — ATLAS NEWS"
+  description="Análisis de profundidad sobre economía, política, regulación y asuntos públicos de Chile."
+>
+  <main class="page-shell">
+    <p class="page-kicker">Profundidad Chile</p>
+    <h1 class="page-title">Nacional</h1>
+    <p class="page-intro">
+      Seguimiento de los hechos nacionales que requieren más contexto que una
+      señal de portada: datos, composición, transmisión, consecuencias y
+      riesgos.
+    </p>
+
+    {
+      briefings.length > 0 ? (
+        <div class="briefing-list">
+          {briefings.map((briefing) => (
+            <ContentCard
+              href={`/nacional/${briefing.id}/`}
+              eyebrow="Nacional"
+              title={briefing.data.title}
+              summary={briefing.data.summary}
+              date={formatEditorialDate(briefing.data.publishedAt)}
+              demo={briefing.data.demo}
+            />
+          ))}
+        </div>
+      ) : (
+        <p class="empty-state">
+          Aún no hay publicaciones nacionales disponibles.
+        </p>
+      )
+    }
+  </main>
+</BaseLayout>
+
+<style>
+  .briefing-list {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    border-top: 5px double var(--rule);
+  }
+  .briefing-list :global(.card) {
+    padding: 1.75rem;
+    border-top-width: 1px;
+  }
+  .briefing-list :global(.card:nth-child(odd)) {
+    padding-left: 0;
+    border-right: 1px solid var(--rule);
+  }
+  .empty-state {
+    margin-top: 2rem;
+    padding: 2rem 0;
+    border-top: 5px double var(--rule);
+    border-bottom: 1px solid var(--rule);
+    color: var(--ink-soft);
+    font: 0.95rem/1.5 var(--sans);
+  }
+  @media (max-width: 42rem) {
+    .briefing-list {
+      grid-template-columns: 1fr;
+    }
+    .briefing-list :global(.card),
+    .briefing-list :global(.card:nth-child(odd)) {
+      padding-right: 0;
+      padding-left: 0;
+      border-right: 0;
+    }
+  }
+</style>

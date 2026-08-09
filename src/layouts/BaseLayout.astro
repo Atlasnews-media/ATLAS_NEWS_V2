@@ -18,7 +18,7 @@ interface Props {
 
 const {
   title,
-  description = "ATLAS NEWS — Inteligencia financiera con criterio editorial.",
+  description = "ATLAS NEWS — Inteligencia financiera, contexto y criterio editorial.",
 } = Astro.props;
 
 const editions = await getPublishedEditions();
@@ -65,12 +65,10 @@ const sourceCommit = (
         <span>Santiago de Chile</span>
       </div>
       <a class="brand" href="/" aria-label="ATLAS NEWS, portada">ATLAS NEWS</a>
-      <p class="motto">
-        Inteligencia financiera · contexto · criterio editorial
-      </p>
       <nav aria-label="Navegación principal">
         <a href="/">Portada</a>
-        <a href="/ediciones/">Ediciones</a>
+        <a href="/nacional/">Nacional</a>
+        <a href="/mercados/">Mercados</a>
         <a href="/lecturas/">Lecturas</a>
         <a href="/archivo/">Archivo</a>
       </nav>
@@ -103,7 +101,7 @@ const sourceCommit = (
   }
   .brand {
     display: block;
-    margin: 0.55rem 0 0;
+    margin: 0.55rem 0 0.8rem;
     color: inherit;
     font: 700 clamp(3.8rem, 11vw, 9.5rem)/0.82 var(--display);
     letter-spacing: -0.04em;
@@ -124,13 +122,6 @@ const sourceCommit = (
     padding: 0.5rem 0;
     border-top: 3px double var(--rule);
     border-bottom: 1px solid var(--rule);
-  }
-  .motto {
-    margin: 0.75rem 0 0.65rem;
-    font: 700 clamp(0.7rem, 1.5vw, 0.9rem)/1.2 var(--sans);
-    letter-spacing: 0.14em;
-    text-align: center;
-    text-transform: uppercase;
   }
   .site-header nav {
     justify-content: center;
@@ -186,17 +177,17 @@ const sourceCommit = (
     }
     .site-header nav {
       display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: 0.25rem;
-      font-size: 0.58rem;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 0.2rem;
+      font-size: 0.52rem;
       text-align: center;
     }
     .site-header nav a {
       min-width: 0;
     }
     .site-header nav a + a::before {
-      margin-right: 0.35rem;
-      font-size: 0.3rem;
+      margin-right: 0.25rem;
+      font-size: 0.26rem;
     }
     .site-footer {
       grid-template-columns: 1fr;

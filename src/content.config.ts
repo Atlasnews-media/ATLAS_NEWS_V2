@@ -54,6 +54,30 @@ const editionSchema = z
     }
   });
 
+const briefingSchema = z
+  .object({
+    title: z.string().min(8).max(160),
+    summary: z.string().min(40).max(320),
+    publishedAt: z.coerce.date(),
+    cutoffAt: z.coerce.date(),
+    section: z.enum(["national", "markets"]),
+    status: z.enum(["draft", "published"]).default("draft"),
+    tags: z.array(z.string().min(2)).min(1),
+    sources: z.array(sourceSchema).min(1),
+    highlights: z.array(highlightSchema).length(3).optional(),
+    demo: z.boolean().default(false),
+  })
+  .superRefine((briefing, context) => {
+    if (briefing.cutoffAt > briefing.publishedAt) {
+      context.addIssue({
+        code: "custom",
+        path: ["cutoffAt"],
+        message:
+          "La fecha de corte editorial no puede superar la fecha de publicación.",
+      });
+    }
+  });
+
 const readingSchema = z.object({
   title: z.string().min(8).max(160),
   summary: z.string().min(40).max(320),
@@ -69,6 +93,10 @@ export const collections = {
   editions: defineCollection({
     loader: glob({ pattern: "**/*.{md,mdx}", base: "./src/content/editions" }),
     schema: editionSchema,
+  }),
+  briefings: defineCollection({
+    loader: glob({ pattern: "**/*.{md,mdx}", base: "./src/content/briefings" }),
+    schema: briefingSchema,
   }),
   readings: defineCollection({
     loader: glob({ pattern: "**/*.{md,mdx}", base: "./src/content/readings" }),

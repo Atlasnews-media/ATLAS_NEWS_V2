@@ -1,6 +1,7 @@
 import { getCollection, type CollectionEntry } from "astro:content";
 
 export type Edition = CollectionEntry<"editions">;
+export type Briefing = CollectionEntry<"briefings">;
 export type Reading = CollectionEntry<"readings">;
 
 const newestFirst = <T extends { data: { publishedAt: Date } }>(a: T, b: T) =>
@@ -13,6 +14,32 @@ export async function getPublishedEditions(): Promise<Edition[]> {
   return (
     await getCollection("editions", ({ data }) => data.status === "published")
   ).sort(newestFirst);
+}
+
+export async function getPublishedBriefings(): Promise<Briefing[]> {
+  return (
+    await getCollection("briefings", ({ data }) => data.status === "published")
+  ).sort(newestFirst);
+}
+
+export async function getPublishedNational(): Promise<Briefing[]> {
+  return (await getPublishedBriefings()).filter(
+    ({ data }) => data.section === "national",
+  );
+}
+
+export async function getPublishedMarkets(): Promise<Briefing[]> {
+  return (await getPublishedBriefings()).filter(
+    ({ data }) => data.section === "markets",
+  );
+}
+
+export async function getLatestNational(): Promise<Briefing | undefined> {
+  return (await getPublishedNational())[0];
+}
+
+export async function getLatestMarkets(): Promise<Briefing | undefined> {
+  return (await getPublishedMarkets())[0];
 }
 
 export async function getPublishedReadings(): Promise<Reading[]> {
@@ -49,6 +76,14 @@ export function formatIssueNumber(issueNumber: number): string {
 export function formatEditorialDate(date: Date): string {
   return new Intl.DateTimeFormat("es-CL", {
     dateStyle: "long",
+    timeZone: "America/Santiago",
+  }).format(date);
+}
+
+export function formatEditorialDateTime(date: Date): string {
+  return new Intl.DateTimeFormat("es-CL", {
+    dateStyle: "long",
+    timeStyle: "short",
     timeZone: "America/Santiago",
   }).format(date);
 }
