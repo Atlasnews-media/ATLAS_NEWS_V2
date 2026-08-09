@@ -1,0 +1,34 @@
+---
+title: "Título informativo de la pieza de profundidad"
+summary: "Resumen ejecutivo suficiente para explicar el foco sin sustituir la lectura completa."
+publishedAt: "2026-08-09T06:30:00-04:00"
+cutoffAt: "2026-08-09T06:15:00-04:00"
+section: "national"
+status: "draft"
+tags:
+  - chile
+sources:
+  - name: "Fuente primaria"
+    url: "https://example.com/fuente"
+    publishedAt: "2026-08-09T05:45:00-04:00"
+highlights:
+  - label: "Primera clave"
+    text: "Síntesis breve de la primera señal relevante para esta pieza."
+  - label: "Segunda clave"
+    text: "Síntesis breve de la segunda señal relevante para esta pieza."
+  - label: "Tercera clave"
+    text: "Síntesis breve de la tercera señal relevante para esta pieza."
+demo: false
+---
+
+<!--
+Usar section: national o section: markets.
+El bloque highlights es opcional y, cuando se use, debe contener exactamente tres elementos.
+El cuerpo debe ser una pieza propia de profundidad. Puede compartir hechos y fuentes con la edición general, pero no clonar sus párrafos.
+-->
+
+## Desarrollo
+
+## Implicancias y riesgos
+
+## Qué observar
