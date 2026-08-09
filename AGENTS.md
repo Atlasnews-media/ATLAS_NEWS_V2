@@ -8,6 +8,7 @@ Mantener un periódico financiero digital donde el código, los datos y el conte
 
 - `main` representa el estado remoto aceptado y desplegable.
 - Las ediciones viven exclusivamente en `src/content/editions/`.
+- Nacional y Mercados viven exclusivamente en `src/content/briefings/` y se distinguen por `section: national | markets`.
 - Las lecturas seleccionadas viven exclusivamente en `src/content/readings/`.
 - La memoria editorial persistente vive únicamente en `data/editorial_state.json` y conserva solo hilos activos.
 - Cada publicación corresponde a un solo archivo Markdown o MDX.
@@ -29,13 +30,26 @@ Mantener un periódico financiero digital donde el código, los datos y el conte
 - `marketSummary` es opcional y solo puede resumir cifras verificadas que ya estén presentes en el cuerpo y respaldadas por las fuentes de la misma edición.
 - El resumen de mercado no sustituye el texto editorial ni puede presentarse como cotización en tiempo real; debe conservar su fecha de corte.
 
+## Paquete editorial matutino
+
+- La rama canónica del paquete diario es `editorial/AAAA-MM-DD-morning`.
+- El Pull Request canónico se titula `Paquete editorial matutino — AAAA-MM-DD`.
+- El paquete contiene exactamente una edición General diaria y puede contener como máximo una pieza Nacional y una pieza Mercados para la misma fecha.
+- General es obligatoria. Nacional y Mercados son componentes complementarios y pueden faltar sin crear una segunda edición General ni un segundo pipeline.
+- Los tres contenidos, cuando existan, viajan en la misma rama y el mismo Pull Request y se validan con un solo build.
+- Un merge del paquete produce un solo despliegue del sitio.
+- No crear ramas, Pull Requests, merges o despliegues independientes para Nacional o Mercados durante el flujo matutino.
+- Las ramas `editorial/AAAA-MM-DD-daily` y `editorial/AAAA-MM-DD-weekly` se conservan por compatibilidad con flujos existentes; la rama `-morning` es la convención canónica del nuevo paquete diario.
+
 ## Memoria editorial mínima
 
 - Cada generación parte del archivo vigente en `main`: la edición diaria compara solo los hilos pertinentes y el panorama semanal puede considerar todos los hilos activos.
+- Nacional y Mercados pueden leer `data/editorial_state.json` para mantener continuidad, pero no lo modifican por sí mismos.
+- Dentro del paquete matutino, solo la edición General tiene autoridad para proponer cambios en `data/editorial_state.json`.
 - Clasificar la relación de cada hecho con una tesis usando solo `new`, `continues`, `confirmed`, `weakened`, `changed`, `contradicted` o `closed`.
 - Actualizar únicamente los hilos afectados y conservar sin cambios los demás objetos.
-- Toda publicación debe evaluar la memoria, pero `data/editorial_state.json` solo se modifica cuando existe un cambio editorial sustantivo. No crear cambios artificiales para satisfacer validadores.
-- Cuando la memoria cambie, la publicación y su actualización deben viajar en la misma rama editorial y en el mismo Pull Request.
+- Toda publicación debe evaluar la memoria pertinente, pero `data/editorial_state.json` solo se modifica cuando existe un cambio editorial sustantivo. No crear cambios artificiales para satisfacer validadores.
+- Cuando la memoria cambie, la edición General y su actualización deben viajar en la misma rama editorial y en el mismo Pull Request del paquete.
 - La memoria solo avanza al fusionarse esa publicación en `main`; no crear commits ni Pull Requests independientes para adelantarla.
 - Una lectura seleccionada puede integrar, reformular o cerrar hilos en su mismo Pull Request.
 
@@ -57,10 +71,11 @@ Mantener un periódico financiero digital donde el código, los datos y el conte
 - La integridad de publicaciones y memoria se controla con `npm run validate:content`, el esquema Astro, el build, el manifiesto y el auditor.
 - Un error editorial nunca debe reemplazar o eliminar una edición anterior.
 - Los Pull Requests validan y no despliegan producción.
+- La memoria operacional de Supabase conserva una sola secuencia de estado para el paquete matutino, identificada por la edición General diaria; Nacional y Mercados no crean estados operacionales independientes.
 
 ## Autonomía editorial
 
-- Las ediciones diaria y semanal y las Lecturas solicitadas directamente deben completar su ciclo sin aprobación humana rutinaria.
+- Las ediciones diaria y semanal, Nacional, Mercados y las Lecturas solicitadas directamente deben completar su ciclo sin aprobación humana rutinaria cuando el flujo correspondiente esté habilitado.
 - La evaluación previa al merge es automatizada y objetiva: contrato de contenido, fuentes, estructura, build, manifiesto y despliegue.
 - Un fallo determinista y reparable en el contenido debe corregirse en la misma rama y volver a validarse automáticamente cuando el agente ejecutor tenga capacidad para hacerlo.
 - Si persiste un fallo objetivo que impide una publicación íntegra, conservar la última versión pública válida y registrar la excepción; no sustituir el fallo por una solicitud rutinaria de aprobación.
