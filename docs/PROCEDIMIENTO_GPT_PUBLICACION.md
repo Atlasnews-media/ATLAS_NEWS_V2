@@ -16,6 +16,7 @@ Para formular el titular, responder: **¿Cuál es la principal conclusión de me
 
 - Repositorio privado: `EldeSiempre100/ATLAS_NEWS`.
 - Carpeta: `src/content/editions/`.
+- Memoria editorial: `data/editorial_state.json`.
 - Nombre diario: `AAAA-MM-DD-daily-titulo-breve.md`.
 - Nombre semanal: `AAAA-MM-DD-weekly-titulo-breve.md`.
 - Rama editorial diaria: `editorial/AAAA-MM-DD-daily`.
@@ -49,15 +50,23 @@ Las fuentes deben utilizar URLs públicas completas. Antes de entregar el archiv
 
 La plantilla canónica está en `docs/templates/edition.md.example`.
 
+## Memoria editorial mínima
+
+`data/editorial_state.json` conserva solo hilos activos. Cada hilo contiene `id`, `topic`, `thesis`, `status`, `last_evidence`, `effect`, `base_scenario`, `invalidate_if`, `watch` y `last_publication`. El estado debe ser `new`, `continues`, `confirmed`, `weakened`, `changed`, `contradicted` o `closed`.
+
+La edición diaria contrasta la información nueva solo con los hilos pertinentes; el panorama semanal puede leer todos los hilos activos. Una lectura seleccionada puede integrar, reformular o cerrar hilos. Los objetos no afectados se conservan exactamente como estaban.
+
 ## Entrega de las 06:00
 
-1. Leer `AGENTS.md`, `docs/CONTRATO_EDITORIAL.md` y la plantilla vigente.
+1. Leer `AGENTS.md`, `docs/CONTRATO_EDITORIAL.md`, la plantilla y `data/editorial_state.json` desde el `main` remoto vigente.
 2. Comprobar que no exista otra edición del mismo tipo para la misma fecha.
-3. Crear la rama editorial desde el `main` remoto vigente.
-4. Escribir un único Markdown completo con `status: draft`.
-5. Crear un commit que identifique fecha y tipo de publicación.
-6. Abrir un Pull Request **normal, no Draft PR**, contra `main`.
-7. No fusionar en esta etapa.
+3. Crear la rama editorial desde ese mismo `main`.
+4. Comparar la información nueva con los hilos pertinentes y clasificar su efecto sobre las tesis; el panorama semanal puede usar todos los hilos activos.
+5. Escribir un único Markdown completo con `status: draft`.
+6. Actualizar en `data/editorial_state.json` solo los hilos afectados, creando uno cuando el hecho inicie un tema.
+7. Incluir el Markdown y el estado actualizado en el mismo commit y rama.
+8. Abrir un Pull Request **normal, no Draft PR**, contra `main`.
+9. No fusionar en esta etapa.
 
 La creación o actualización del Pull Request dispara GitHub Actions mediante `pull_request`. GitHub valida contenido y construcción; el PR no despliega producción.
 
@@ -69,13 +78,14 @@ Si existe un error real de contenido, contrato o build, no publica y reporta la 
 
 Si no existe un error bloqueante:
 
-1. Cambiar únicamente `status: draft` por `status: published` en el mismo archivo y rama.
-2. Crear el commit de promoción editorial.
-3. Esperar las validaciones del **SHA final** del Pull Request.
-4. Si el SHA final queda verde, fusionar mediante `squash` verificando el SHA esperado.
-5. Si el SHA final falla, no fusionar.
+1. Verificar que `data/editorial_state.json` acompañe la publicación y que los hilos no afectados sigan intactos.
+2. Cambiar únicamente `status: draft` por `status: published` en el mismo archivo y rama. Si una corrección editorial altera una tesis, actualizar también el mismo hilo en esa rama.
+3. Crear el commit de promoción editorial.
+4. Esperar las validaciones del **SHA final** del Pull Request.
+5. Si el SHA final queda verde, fusionar mediante `squash` verificando el SHA esperado.
+6. Si el SHA final falla, no fusionar.
 
-No es necesario ejecutar una aprobación humana ni convertir un Draft PR en Ready for review porque los PR editoriales se crean como PR normales.
+No es necesario ejecutar una aprobación humana ni convertir un Draft PR en Ready for review porque los PR editoriales se crean como PR normales. Si la publicación no se fusiona, la memoria editorial tampoco avanza en `main`.
 
 ## Despliegue
 
