@@ -5,53 +5,86 @@ import {
   editionDisplayLabel,
   formatEditorialDate,
   getPublishedEditions,
+  getPublishedMarkets,
+  getPublishedNational,
   getPublishedReadings,
 } from "../../lib/content";
-const [editions, readings] = await Promise.all([
+
+const [editions, national, markets, readings] = await Promise.all([
   getPublishedEditions(),
+  getPublishedNational(),
+  getPublishedMarkets(),
   getPublishedReadings(),
 ]);
 ---
 
 <BaseLayout
   title="Archivo — ATLAS NEWS"
-  description="Archivo cronológico de ATLAS NEWS."
+  description="Archivo cronológico de ediciones, Nacional, Mercados y Lecturas de ATLAS NEWS."
 >
   <main class="page-shell">
     <p class="page-kicker">Historia editorial</p>
     <h1 class="page-title">Archivo</h1>
+
     <section aria-labelledby="archivo-ediciones">
       <h2 id="archivo-ediciones">Ediciones</h2>
       <ol>
         {
           editions.map((edition) => (
             <li>
-              <>
-                <time>{formatEditorialDate(edition.data.publishedAt)}</time>
-                <a href={`/ediciones/${edition.id}/`}>{edition.data.title}</a>
-                <span>
-                  {editionDisplayLabel(
-                    edition,
-                    dailyIssueNumber(edition, editions),
-                  )}
-                </span>
-              </>
+              <time>{formatEditorialDate(edition.data.publishedAt)}</time>
+              <a href={`/ediciones/${edition.id}/`}>{edition.data.title}</a>
+              <span>
+                {editionDisplayLabel(
+                  edition,
+                  dailyIssueNumber(edition, editions),
+                )}
+              </span>
             </li>
           ))
         }
       </ol>
     </section>
+
+    <section aria-labelledby="archivo-nacional">
+      <h2 id="archivo-nacional">Nacional</h2>
+      <ol>
+        {
+          national.map((briefing) => (
+            <li>
+              <time>{formatEditorialDate(briefing.data.publishedAt)}</time>
+              <a href={`/nacional/${briefing.id}/`}>{briefing.data.title}</a>
+              <span>Nacional</span>
+            </li>
+          ))
+        }
+      </ol>
+    </section>
+
+    <section aria-labelledby="archivo-mercados">
+      <h2 id="archivo-mercados">Mercados</h2>
+      <ol>
+        {
+          markets.map((briefing) => (
+            <li>
+              <time>{formatEditorialDate(briefing.data.publishedAt)}</time>
+              <a href={`/mercados/${briefing.id}/`}>{briefing.data.title}</a>
+              <span>Mercados</span>
+            </li>
+          ))
+        }
+      </ol>
+    </section>
+
     <section aria-labelledby="archivo-lecturas">
-      <h2 id="archivo-lecturas">Lecturas seleccionadas</h2>
+      <h2 id="archivo-lecturas">Lecturas</h2>
       <ol>
         {
           readings.map((reading) => (
             <li>
-              <>
-                <time>{formatEditorialDate(reading.data.publishedAt)}</time>
-                <a href={`/lecturas/${reading.id}/`}>{reading.data.title}</a>
-                <span>Lectura seleccionada</span>
-              </>
+              <time>{formatEditorialDate(reading.data.publishedAt)}</time>
+              <a href={`/lecturas/${reading.id}/`}>{reading.data.title}</a>
+              <span>Lectura seleccionada</span>
             </li>
           ))
         }
