@@ -2,6 +2,7 @@ import { mkdir, readdir, readFile, writeFile } from "node:fs/promises";
 
 const root = new URL("../", import.meta.url);
 const editionDir = new URL("src/content/editions/", root);
+const briefingDir = new URL("src/content/briefings/", root);
 const readingDir = new URL("src/content/readings/", root);
 const outputDir = new URL("public/", root);
 const outputFile = new URL("status.json", outputDir);
@@ -43,14 +44,31 @@ async function markdownRecords(directory) {
         publishedAt: field(text, "publishedAt"),
         cutoffAt: field(text, "cutoffAt"),
         type: field(text, "type"),
+        section: field(text, "section"),
         status: field(text, "status"),
       };
     }),
   );
 }
 
-const [editions, readings, indicators] = await Promise.all([
+function oldestFirst(a, b) {
+  return Date.parse(a.publishedAt ?? "") - Date.parse(b.publishedAt ?? "");
+}
+
+function latestBriefingRecord(record) {
+  return record
+    ? {
+        id: record.id,
+        title: record.title,
+        publishedAt: record.publishedAt,
+        cutoffAt: record.cutoffAt,
+      }
+    : null;
+}
+
+const [editions, briefings, readings, indicators] = await Promise.all([
   markdownRecords(editionDir),
+  markdownRecords(briefingDir),
   markdownRecords(readingDir),
   readFile(new URL("src/data/economic-indicators.json", root), "utf8").then(
     JSON.parse,
@@ -62,16 +80,26 @@ const publishedEditions = editions.filter(
 );
 const publishedDailies = publishedEditions
   .filter(({ type }) => type === "daily")
-  .sort(
-    (a, b) => Date.parse(a.publishedAt ?? "") - Date.parse(b.publishedAt ?? ""),
-  );
+  .sort(oldestFirst);
 const publishedWeeklies = publishedEditions.filter(
   ({ type }) => type === "weekly",
 );
+const publishedBriefings = briefings.filter(
+  ({ status }) => status === "published",
+);
+const publishedNational = publishedBriefings
+  .filter(({ section }) => section === "national")
+  .sort(oldestFirst);
+const publishedMarkets = publishedBriefings
+  .filter(({ section }) => section === "markets")
+  .sort(oldestFirst);
 const publishedReadings = readings.filter(
   ({ status }) => status === "published",
 );
+
 const latestDaily = publishedDailies.at(-1);
+const latestNational = publishedNational.at(-1);
+const latestMarkets = publishedMarkets.at(-1);
 const sourceCommit =
   process.env.ATLAS_SOURCE_SHA ?? process.env.GITHUB_SHA ?? "local";
 
@@ -87,13 +115,19 @@ const status = {
         cutoffAt: latestDaily.cutoffAt,
       }
     : null,
+  latestNational: latestBriefingRecord(latestNational),
+  latestMarkets: latestBriefingRecord(latestMarkets),
   publications: {
     daily: publishedDailies.length,
     weekly: publishedWeeklies.length,
+    national: publishedNational.length,
+    markets: publishedMarkets.length,
     readings: publishedReadings.length,
     total:
       publishedDailies.length +
       publishedWeeklies.length +
+      publishedNational.length +
+      publishedMarkets.length +
       publishedReadings.length,
   },
   indicators: {
@@ -107,7 +141,5 @@ await mkdir(outputDir, { recursive: true });
 await writeFile(outputFile, `${JSON.stringify(status, null, 2)}\n`, "utf8");
 
 console.log(
-  latestDaily
-    ? `Estado generado: edición diaria ${publishedDailies.length}, ${latestDaily.id}.`
-    : "Estado generado: no hay una edición diaria publicada.",
+  `Estado generado: ${publishedDailies.length} diarias, ${publishedNational.length} nacionales, ${publishedMarkets.length} de mercados y ${publishedReadings.length} lecturas.`,
 );
