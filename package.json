@@ -11,7 +11,7 @@
     "check": "astro check",
     "preview": "astro preview",
     "format": "prettier --write .",
-    "format:check": "prettier --write scripts/audit-publication.mjs scripts/validate-build.mjs && git diff -- scripts/audit-publication.mjs scripts/validate-build.mjs && exit 1",
+    "format:check": "prettier --check .",
     "editorial:from-issue": "node scripts/create-reading-from-issue.mjs",
     "radar:discover": "node scripts/discover-radar-readings.mjs",
     "status:generate": "node scripts/generate-publication-status.mjs",
