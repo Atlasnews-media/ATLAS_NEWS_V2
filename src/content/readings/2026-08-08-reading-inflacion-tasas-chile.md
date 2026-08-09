@@ -2,7 +2,7 @@
 title: "Inflación en 3,5% y TPM en 4,5%: cuánto espacio tiene Chile para bajar tasas"
 summary: "El IPC de julio mejoró el cuadro inflacionario chileno, pero una parte relevante del alivio provino de combustibles. La discusión de tasas depende ahora de cuánto de esa desinflación sea persistente."
 publishedAt: "2026-08-08T21:14:00-04:00"
-status: "draft"
+status: "published"
 tags:
   - lectura-seleccionada
   - chile
