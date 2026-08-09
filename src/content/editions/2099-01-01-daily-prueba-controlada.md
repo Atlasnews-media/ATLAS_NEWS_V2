@@ -4,7 +4,7 @@ summary: "Contenido sintético creado exclusivamente para validar que el paquete
 publishedAt: "2099-01-01T06:10:00-03:00"
 cutoffAt: "2099-01-01T06:00:00-03:00"
 type: "daily"
-status: "draft"
+status: "published"
 tags:
   - prueba-controlada
 sources:

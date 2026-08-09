@@ -4,7 +4,7 @@ summary: "Pieza sintética destinada únicamente a validar la vertical Nacional 
 publishedAt: "2099-01-01T06:20:00-03:00"
 cutoffAt: "2099-01-01T06:10:00-03:00"
 section: "national"
-status: "draft"
+status: "published"
 tags:
   - chile
   - prueba-controlada

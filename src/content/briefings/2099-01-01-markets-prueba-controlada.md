@@ -4,7 +4,7 @@ summary: "Pieza sintética destinada exclusivamente a validar la vertical Mercad
 publishedAt: "2099-01-01T06:30:00-03:00"
 cutoffAt: "2099-01-01T06:20:00-03:00"
 section: "markets"
-status: "draft"
+status: "published"
 tags:
   - mercados
   - prueba-controlada
