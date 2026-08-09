@@ -25,8 +25,7 @@ const editionFilenamePattern =
   /^\d{4}-\d{2}-\d{2}-(daily|weekly)-[a-z0-9-]+\.mdx?$/;
 const briefingFilenamePattern =
   /^\d{4}-\d{2}-\d{2}-(national|markets)-[a-z0-9-]+\.mdx?$/;
-const readingFilenamePattern =
-  /^\d{4}-\d{2}-\d{2}-reading-[a-z0-9-]+\.mdx?$/;
+const readingFilenamePattern = /^\d{4}-\d{2}-\d{2}-reading-[a-z0-9-]+\.mdx?$/;
 const editorialStatuses = new Set([
   "new",
   "continues",
