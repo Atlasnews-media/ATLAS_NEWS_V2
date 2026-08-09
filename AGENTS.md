@@ -9,6 +9,7 @@ Mantener un periódico financiero digital donde el código, los datos y el conte
 - `main` representa el estado remoto aceptado y desplegable.
 - Las ediciones viven exclusivamente en `src/content/editions/`.
 - Las lecturas seleccionadas viven exclusivamente en `src/content/readings/`.
+- La memoria editorial persistente vive únicamente en `data/editorial_state.json` y conserva solo hilos activos.
 - Cada publicación corresponde a un solo archivo Markdown o MDX.
 - No duplicar contenido en componentes, datos JSON o páginas manuales.
 - El clon local puede quedar desactualizado, pero no debe utilizarse para editar hasta ejecutar `fetch` y `pull --ff-only` con el árbol limpio.
@@ -27,6 +28,15 @@ Mantener un periódico financiero digital donde el código, los datos y el conte
 - No insertar HTML sin una necesidad revisada y documentada.
 - `marketSummary` es opcional y solo puede resumir cifras verificadas que ya estén presentes en el cuerpo y respaldadas por las fuentes de la misma edición.
 - El resumen de mercado no sustituye el texto editorial ni puede presentarse como cotización en tiempo real; debe conservar su fecha de corte.
+
+## Memoria editorial mínima
+
+- Cada generación parte del archivo vigente en `main`: la edición diaria compara solo los hilos pertinentes y el panorama semanal puede considerar todos los hilos activos.
+- Clasificar la relación de cada hecho con una tesis usando solo `new`, `continues`, `confirmed`, `weakened`, `changed`, `contradicted` o `closed`.
+- Actualizar únicamente los hilos afectados y conservar sin cambios los demás objetos.
+- La publicación y su actualización de memoria deben viajar en la misma rama editorial y en el mismo Pull Request.
+- La memoria solo avanza al fusionarse esa publicación en `main`; no crear commits ni Pull Requests independientes para adelantarla.
+- Una lectura seleccionada puede integrar, reformular o cerrar hilos en su mismo Pull Request.
 
 ## Borradores automatizados
 
