@@ -124,7 +124,7 @@ async function validateRenderedPublication({
     }
   }
 
-  for (const internalText of ["brifing", "cite"]) {
+  for (const internalText of ["briefing", "brifing", "cite"]) {
     if (html.toLowerCase().includes(internalText.toLowerCase())) {
       throw new Error(
         `La ${label} ${filename} expone texto interno: ${internalText}`,
