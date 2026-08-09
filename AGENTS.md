@@ -34,7 +34,8 @@ Mantener un periódico financiero digital donde el código, los datos y el conte
 - Cada generación parte del archivo vigente en `main`: la edición diaria compara solo los hilos pertinentes y el panorama semanal puede considerar todos los hilos activos.
 - Clasificar la relación de cada hecho con una tesis usando solo `new`, `continues`, `confirmed`, `weakened`, `changed`, `contradicted` o `closed`.
 - Actualizar únicamente los hilos afectados y conservar sin cambios los demás objetos.
-- La publicación y su actualización de memoria deben viajar en la misma rama editorial y en el mismo Pull Request.
+- Toda publicación debe evaluar la memoria, pero `data/editorial_state.json` solo se modifica cuando existe un cambio editorial sustantivo. No crear cambios artificiales para satisfacer validadores.
+- Cuando la memoria cambie, la publicación y su actualización deben viajar en la misma rama editorial y en el mismo Pull Request.
 - La memoria solo avanza al fusionarse esa publicación en `main`; no crear commits ni Pull Requests independientes para adelantarla.
 - Una lectura seleccionada puede integrar, reformular o cerrar hilos en su mismo Pull Request.
 
@@ -43,7 +44,7 @@ Mantener un periódico financiero digital donde el código, los datos y el conte
 - Radar IPSA debe usar las etiquetas `radar-ipsa` y `pendiente-verificacion`.
 - El Buzón Editorial debe usar las etiquetas `buzon-editorial` y `pendiente-verificacion`.
 - Ningún archivo con `pendiente-verificacion` puede cambiar a `published`.
-- Una clasificación técnica de fuente primaria no sustituye la revisión humana.
+- Radar IPSA y Buzón Editorial son colas de calibración independientes y nunca bloquean la edición diaria, semanal ni una Lectura solicitada directamente.
 - No copiar el cuerpo completo de artículos externos.
 
 ## Reglas técnicas
@@ -52,9 +53,17 @@ Mantener un periódico financiero digital donde el código, los datos y el conte
 - Mantener TypeScript estricto.
 - Favorecer HTML y CSS; añadir JavaScript de cliente solo cuando sea imprescindible.
 - No incluir secretos en Git, contenido, prompts, logs o archivos de ejemplo.
-- Antes de entregar cambios, ejecutar `npm run format:check` y `npm run build:site`.
+- `npm run format:check` protege código, configuración y documentación técnica; el estilo cosmético de los Markdown editoriales y de `data/editorial_state.json` no puede bloquear una publicación.
+- La integridad de publicaciones y memoria se controla con `npm run validate:content`, el esquema Astro, el build, el manifiesto y el auditor.
 - Un error editorial nunca debe reemplazar o eliminar una edición anterior.
 - Los Pull Requests validan y no despliegan producción.
+
+## Autonomía editorial
+
+- Las ediciones diaria y semanal y las Lecturas solicitadas directamente deben completar su ciclo sin aprobación humana rutinaria.
+- La evaluación previa al merge es automatizada y objetiva: contrato de contenido, fuentes, estructura, build, manifiesto y despliegue.
+- Un fallo determinista y reparable en el contenido debe corregirse en la misma rama y volver a validarse automáticamente cuando el agente ejecutor tenga capacidad para hacerlo.
+- Si persiste un fallo objetivo que impide una publicación íntegra, conservar la última versión pública válida y registrar la excepción; no sustituir el fallo por una solicitud rutinaria de aprobación.
 
 ## Cambios y recuperación
 
@@ -70,4 +79,4 @@ Mantener un periódico financiero digital donde el código, los datos y el conte
 - Las credenciales de una futura API oficial deben vivir en GitHub Secrets.
 - Radar IPSA funciona en calibración manual y solo crea borradores.
 - No incorporar precios, volúmenes o valorizaciones bursátiles sin confirmar fuente y licencia de exhibición pública.
-- No activar publicación editorial automática sin una etapa explícita de evaluación.
+- La publicación automática siempre debe incluir una etapa explícita de evaluación automatizada; no requiere aprobación humana por defecto.

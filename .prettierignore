@@ -3,3 +3,5 @@ node_modules/
 .astro/
 package-lock.json
 src/content/editions/*.md
+src/content/readings/*.md
+data/editorial_state.json
