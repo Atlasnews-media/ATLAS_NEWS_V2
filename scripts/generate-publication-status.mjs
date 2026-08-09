@@ -112,7 +112,9 @@ const marketsPublished = Boolean(
   morningDate && latestMarkets?.id.startsWith(`${morningDate}-markets-`),
 );
 const morningCompleteness =
-  Number(generalPublished) + Number(nationalPublished) + Number(marketsPublished);
+  Number(generalPublished) +
+  Number(nationalPublished) +
+  Number(marketsPublished);
 
 const status = {
   schemaVersion: 1,
