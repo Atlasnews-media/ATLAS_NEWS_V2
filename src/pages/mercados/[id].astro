@@ -1,0 +1,160 @@
+---
+import { render } from "astro:content";
+import ArticleHeader from "../../components/ArticleHeader.astro";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import {
+  formatEditorialDateTime,
+  getPublishedMarkets,
+  type Briefing,
+} from "../../lib/content";
+
+export async function getStaticPaths() {
+  const briefings = await getPublishedMarkets();
+  return briefings.map((briefing) => ({
+    params: { id: briefing.id },
+    props: { briefing },
+  }));
+}
+
+interface Props {
+  briefing: Briefing;
+}
+
+const { briefing } = Astro.props;
+const { Content } = await render(briefing);
+---
+
+<BaseLayout
+  title={`${briefing.data.title} — Mercados — ATLAS NEWS`}
+  description={briefing.data.summary}
+>
+  <main class="article-page">
+    <ArticleHeader
+      eyebrow="Mercados"
+      title={briefing.data.title}
+      summary={briefing.data.summary}
+      date={formatEditorialDateTime(briefing.data.publishedAt)}
+      cutoff={formatEditorialDateTime(briefing.data.cutoffAt)}
+      demo={briefing.data.demo}
+      tags={briefing.data.tags}
+    />
+
+    <article class="prose"><Content /></article>
+
+    <section class="sources" aria-labelledby="fuentes-documentadas">
+      <h2 id="fuentes-documentadas">Fuentes documentadas</h2>
+      <ul>
+        {
+          briefing.data.sources.map((source) => (
+            <li>
+              <a href={source.url}>{source.name}</a>
+              {source.publishedAt && (
+                <span>{formatEditorialDateTime(source.publishedAt)}</span>
+              )}
+            </li>
+          ))
+        }
+      </ul>
+    </section>
+
+    <p class="return-link"><a href="/mercados/">← Volver a Mercados</a></p>
+  </main>
+</BaseLayout>
+
+<style>
+  .article-page {
+    width: min(88rem, calc(100% - 2rem));
+    margin: 0 auto;
+  }
+  .prose {
+    max-width: 52rem;
+    margin: 3.5rem auto;
+    font-size: 1.1rem;
+    line-height: 1.72;
+  }
+  .prose :global(p:first-of-type:first-letter) {
+    float: left;
+    margin: 0.08em 0.08em 0 0;
+    color: var(--accent);
+    font-size: 4.6rem;
+    font-weight: 700;
+    line-height: 0.72;
+  }
+  .prose :global(h2) {
+    margin: 3.5rem 0 1rem;
+    padding-top: 0.65rem;
+    border-top: 4px double var(--rule);
+    font: 800 clamp(1.55rem, 4vw, 2.45rem)/1 var(--sans);
+    letter-spacing: -0.02em;
+  }
+  .prose :global(h3) {
+    margin-top: 2.3rem;
+    font-size: 1.45rem;
+    line-height: 1.1;
+  }
+  .prose :global(blockquote) {
+    margin: 2rem 0;
+    padding: 1.25rem 1.5rem;
+    border-top: 2px solid var(--rule);
+    border-bottom: 2px solid var(--rule);
+    font: 700 1.25rem/1.45 var(--serif);
+  }
+  .prose :global(li) {
+    margin: 0.5rem 0;
+  }
+  .prose :global(hr) {
+    margin: 3rem 0;
+    border: 0;
+    border-top: 1px solid var(--rule);
+  }
+  .prose :global(table) {
+    display: block;
+    width: 100%;
+    overflow-x: auto;
+    border-collapse: collapse;
+    font: 0.82rem/1.35 var(--sans);
+  }
+  .prose :global(th),
+  .prose :global(td) {
+    padding: 0.6rem;
+    border-top: 1px solid var(--rule);
+    text-align: left;
+  }
+  .sources,
+  .return-link {
+    max-width: 52rem;
+    margin: 4rem auto;
+  }
+  .sources {
+    padding-top: 1.5rem;
+    border-top: 4px double var(--rule);
+  }
+  .sources h2 {
+    font: 800 1.1rem/1 var(--sans);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .sources li {
+    margin: 0.7rem 0;
+  }
+  .sources span {
+    display: block;
+    margin-top: 0.15rem;
+    color: var(--ink-soft);
+    font: 0.72rem/1.4 var(--sans);
+  }
+  .return-link {
+    padding-top: 1rem;
+    border-top: 1px solid var(--rule);
+    font: 800 0.8rem/1.4 var(--sans);
+    text-transform: uppercase;
+  }
+  @media (max-width: 42rem) {
+    .article-page {
+      width: min(100% - 1.25rem, 88rem);
+    }
+    .prose {
+      font-size: 1.03rem;
+    }
+  }
+</style>
