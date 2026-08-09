@@ -53,14 +53,14 @@ jobs:
             else
               changed_files="$(git diff --name-only HEAD^ HEAD)"
             fi
-            file="$(printf '%s\n' "$changed_files" | grep -E "^src/content/editions/${edition_date}-${edition_type}-.*\.md$" | head -n1 || true)
+            file="$(printf '%s\n' "$changed_files" | grep -E "^src/content/editions/${edition_date}-${edition_type}-.*\.md$" | head -n1 || true)"
             if [[ -n "$file" ]]; then
               edition_id="$(basename "$file" .md)"
               track=true
             fi
           elif [[ "${GITHUB_EVENT_NAME}" == "push" ]]; then
             changed_files="$(git diff-tree --no-commit-id --name-only -r HEAD)"
-            file="$(printf '%s\n' "$changed_files" | grep -E '^src/content/editions/[0-9]{4}-[0-9]{2}-[0-9]{2}-(daily|weekly)-.*\.md$' | head -n1 || true)
+            file="$(printf '%s\n' "$changed_files" | grep -E '^src/content/editions/[0-9]{4}-[0-9]{2}-[0-9]{2}-(daily|weekly)-.*\.md$' | head -n1 || true)"
             if [[ -n "$file" ]]; then
               base="$(basename "$file" .md)"
               edition_date="${base:0:10}"
