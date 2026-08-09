@@ -38,6 +38,49 @@ Cada fuente debe tener una URL pública y verificable. Los marcadores internos d
 
 La publicación debe escribirse para el lector. No debe mencionar el documento de preparación, el proceso interno ni expresiones como “briefing” o “brifing”.
 
+## Nacional y Mercados
+
+Las piezas de Nacional y Mercados comparten la colección `briefings` y deben incluir:
+
+| Campo         | Regla                                        |
+| ------------- | -------------------------------------------- |
+| `title`       | Entre 8 y 160 caracteres                     |
+| `summary`     | Entre 40 y 320 caracteres                    |
+| `publishedAt` | Fecha ISO 8601 con zona horaria              |
+| `cutoffAt`    | Cierre informativo ISO 8601 con zona horaria |
+| `section`     | `national` o `markets`                       |
+| `status`      | `draft` o `published`                        |
+| `tags`        | Al menos una etiqueta                        |
+| `sources`     | Al menos una fuente con nombre y URL válida  |
+| `highlights`  | Opcional; si existe, exactamente tres claves |
+| `demo`        | Debe ser `false`                             |
+
+El cuerpo debe desarrollar análisis propio de la vertical. Los hechos y fuentes pueden coincidir con la edición General, pero el texto no debe duplicar sus párrafos. La edición General informa la señal principal; Nacional y Mercados profundizan su contexto, transmisión, consecuencias, riesgos y variables de seguimiento.
+
+Los nombres deben respetar la sección declarada:
+
+```text
+AAAA-MM-DD-national-titulo-breve.md
+AAAA-MM-DD-markets-titulo-breve.md
+```
+
+Un archivo Nacional no puede declarar `section: markets`, ni viceversa.
+
+## Paquete editorial matutino
+
+El paquete matutino diario utiliza una sola rama y un solo Pull Request:
+
+```text
+Rama: editorial/AAAA-MM-DD-morning
+PR: Paquete editorial matutino — AAAA-MM-DD
+```
+
+Debe contener exactamente una edición General diaria para esa fecha. Puede contener además una pieza Nacional y una pieza Mercados. Nacional y Mercados son opcionales en la composición técnica del paquete y nunca crean un segundo paquete, merge o despliegue.
+
+Los tres archivos comienzan como `draft`. La promoción a `published`, cuando corresponda, se realiza en la misma rama y sin reescribir el cuerpo.
+
+La memoria editorial `data/editorial_state.json` puede ser leída por las tres piezas, pero dentro del paquete matutino solo la edición General puede modificarla. Nacional y Mercados no escriben memoria editorial de forma independiente.
+
 ## Lecturas seleccionadas
 
 Cada lectura debe tener título, resumen, fecha, estado, etiquetas y una fuente principal. El autor es opcional.
@@ -47,6 +90,8 @@ Cada lectura debe tener título, resumen, fecha, estado, etiquetas y una fuente 
 ```text
 AAAA-MM-DD-daily-titulo-breve.md
 AAAA-MM-DD-weekly-titulo-breve.md
+AAAA-MM-DD-national-titulo-breve.md
+AAAA-MM-DD-markets-titulo-breve.md
 AAAA-MM-DD-reading-titulo-breve.md
 ```
 
