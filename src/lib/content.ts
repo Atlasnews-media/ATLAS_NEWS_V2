@@ -80,6 +80,14 @@ export function formatEditorialDate(date: Date): string {
   }).format(date);
 }
 
+export function formatEditorialDateTime(date: Date): string {
+  return new Intl.DateTimeFormat("es-CL", {
+    dateStyle: "long",
+    timeStyle: "short",
+    timeZone: "America/Santiago",
+  }).format(date);
+}
+
 export function editionTypeLabel(type: Edition["data"]["type"]): string {
   return type === "daily" ? "Edición diaria" : "Panorama semanal";
 }
