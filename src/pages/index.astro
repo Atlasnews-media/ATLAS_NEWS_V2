@@ -9,25 +9,33 @@ import {
   formatEditorialDate,
   formatIssueNumber,
   getLatestDaily,
+  getLatestMarkets,
+  getLatestNational,
   getPublishedEditions,
   getPublishedReadings,
 } from "../lib/content";
 
-const [latestDaily, editions, readings] = await Promise.all([
-  getLatestDaily(),
-  getPublishedEditions(),
-  getPublishedReadings(),
-]);
+const [latestDaily, editions, latestNational, latestMarkets, readings] =
+  await Promise.all([
+    getLatestDaily(),
+    getPublishedEditions(),
+    getLatestNational(),
+    getLatestMarkets(),
+    getPublishedReadings(),
+  ]);
 const currentIssueNumber = latestDaily
   ? dailyIssueNumber(latestDaily, editions)
   : undefined;
-const secondaryEditions = editions
-  .filter(({ id }) => id !== latestDaily?.id)
-  .slice(0, 3);
-const hasSecondaryContent = secondaryEditions.length > 0 || readings.length > 0;
+const latestReading = readings[0];
+const hasDepthContent = Boolean(
+  latestNational || latestMarkets || latestReading,
+);
 ---
 
-<BaseLayout title="ATLAS NEWS — Inteligencia financiera con criterio">
+<BaseLayout
+  title="ATLAS NEWS — Portada"
+  description="ATLAS NEWS — Inteligencia financiera, contexto y criterio editorial. Portada general con profundidad en Chile, mercados y lecturas seleccionadas."
+>
   <main class="front-page">
     <div class="issue-line">
       <p>Portada</p>
@@ -85,40 +93,46 @@ const hasSecondaryContent = secondaryEditions.length > 0 || readings.length > 0;
     }
 
     {
-      hasSecondaryContent && (
-        <section class="news-grid" aria-labelledby="panorama">
+      hasDepthContent && (
+        <section class="news-grid" aria-labelledby="profundidad">
           <div class="section-rule">
-            <>
-              <h2 id="panorama">Panorama y contexto</h2>
-              <a href="/ediciones/">Todas las ediciones</a>
-            </>
+            <h2 id="profundidad">Profundidad y comprensión</h2>
+            <span>Portada orienta · verticales profundizan</span>
           </div>
           <div class="columns">
-            {secondaryEditions.map((edition) => (
+            {latestNational && (
               <ContentCard
-                href={`/ediciones/${edition.id}/`}
-                eyebrow={editionDisplayLabel(
-                  edition,
-                  dailyIssueNumber(edition, editions),
-                )}
-                title={edition.data.title}
-                summary={edition.data.summary}
-                date={formatEditorialDate(edition.data.publishedAt)}
-                demo={edition.data.demo}
+                href={`/nacional/${latestNational.id}/`}
+                eyebrow="Nacional · Profundidad"
+                title={latestNational.data.title}
+                summary={latestNational.data.summary}
+                date={formatEditorialDate(latestNational.data.publishedAt)}
+                demo={latestNational.data.demo}
                 compact
               />
-            ))}
-            {readings.slice(0, 1).map((reading) => (
+            )}
+            {latestMarkets && (
               <ContentCard
-                href={`/lecturas/${reading.id}/`}
-                eyebrow="Lectura seleccionada"
-                title={reading.data.title}
-                summary={reading.data.summary}
-                date={formatEditorialDate(reading.data.publishedAt)}
-                demo={reading.data.demo}
+                href={`/mercados/${latestMarkets.id}/`}
+                eyebrow="Mercados · Profundidad"
+                title={latestMarkets.data.title}
+                summary={latestMarkets.data.summary}
+                date={formatEditorialDate(latestMarkets.data.publishedAt)}
+                demo={latestMarkets.data.demo}
                 compact
               />
-            ))}
+            )}
+            {latestReading && (
+              <ContentCard
+                href={`/lecturas/${latestReading.id}/`}
+                eyebrow="Lecturas · Comprensión"
+                title={latestReading.data.title}
+                summary={latestReading.data.summary}
+                date={formatEditorialDate(latestReading.data.publishedAt)}
+                demo={latestReading.data.demo}
+                compact
+              />
+            )}
           </div>
         </section>
       )
@@ -127,10 +141,11 @@ const hasSecondaryContent = secondaryEditions.length > 0 || readings.length > 0;
     <section class="closing-grid">
       <article>
         <p class="kicker">Por qué importa</p><h2>
-          Información ordenada antes que ruido acumulado
+          Portada para orientarse, verticales para profundizar
         </h2><p>
-          ATLAS NEWS presenta cada publicación como una edición finita, trazable
-          y recuperable. La jerarquía editorial precede a la velocidad.
+          La edición general concentra las señales decisivas. Nacional y Mercados
+          desarrollan los temas que necesitan contexto, mecanismos, consecuencias
+          y seguimiento propio.
         </p>
       </article>
       <article>
@@ -142,24 +157,22 @@ const hasSecondaryContent = secondaryEditions.length > 0 || readings.length > 0;
             />
           ) : (
             <>
-              <>
-                <p class="kicker">Qué observar</p>
-                <h2>Las señales que pueden cambiar la lectura</h2>
-                <p>
-                  Cada edición separa el hecho central, las implicancias y las
-                  condiciones que podrían invalidar la interpretación inicial.
-                </p>
-              </>
+              <p class="kicker">Qué observar</p>
+              <h2>Las señales que pueden cambiar la lectura</h2>
+              <p>
+                Cada edición separa el hecho central, las implicancias y las
+                condiciones que podrían invalidar la interpretación inicial.
+              </p>
             </>
           )
         }
       </article>
       <article>
-        <p class="kicker">Método</p><h2>
-          Hechos, inferencias y criterio profesional
+        <p class="kicker">Lecturas</p><h2>
+          Comprender el mecanismo detrás de la noticia
         </h2><p>
-          Las fuentes y el momento de cierre forman parte del contenido. Un
-          borrador incompleto nunca llega al archivo público.
+          Las lecturas seleccionadas explican ideas, marcos y mecanismos que
+          siguen siendo útiles más allá del ciclo noticioso inmediato.
         </p>
       </article>
     </section>
@@ -297,7 +310,7 @@ const hasSecondaryContent = secondaryEditions.length > 0 || readings.length > 0;
     letter-spacing: 0.08em;
     text-transform: uppercase;
   }
-  .section-rule a {
+  .section-rule span {
     font: 800 0.68rem/1.2 var(--sans);
     text-transform: uppercase;
   }
@@ -371,6 +384,10 @@ const hasSecondaryContent = secondaryEditions.length > 0 || readings.length > 0;
     .edition-rail {
       padding-left: 0;
       border-top: 1px solid var(--rule);
+    }
+    .section-rule {
+      align-items: flex-start;
+      flex-direction: column;
     }
     .columns,
     .closing-grid {
