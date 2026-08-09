@@ -4,7 +4,7 @@ summary: "Wall Street cerró la semana en máximos tras un empleo estadounidense
 publishedAt: "2026-08-09T06:00:00-04:00"
 cutoffAt: "2026-08-09T05:45:00-04:00"
 type: "daily"
-status: "draft"
+status: "published"
 tags:
   - mercados-globales
   - tasas
