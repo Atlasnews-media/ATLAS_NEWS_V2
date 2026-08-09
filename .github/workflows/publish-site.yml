@@ -30,32 +30,77 @@ jobs:
         with:
           fetch-depth: 2
 
-      - name: Detectar edición asociada
+      - name: Detectar paquete o edición asociada
         id: edition
         shell: bash
+        env:
+          PR_TITLE: ${{ github.event.pull_request.title || '' }}
         run: |
           set -euo pipefail
           track=false
+          package_kind="single"
           edition_date=""
           edition_type=""
           edition_key=""
           edition_id=""
+          national_id=""
+          markets_id=""
           branch="${GITHUB_HEAD_REF:-${GITHUB_REF_NAME}}"
           changed_files=""
 
-          if [[ "${GITHUB_EVENT_NAME}" == "pull_request" && "$branch" =~ ^editorial/([0-9]{4}-[0-9]{2}-[0-9]{2})-(daily|weekly)$ ]]; then
-            edition_date="${BASH_REMATCH[1]}"
-            edition_type="${BASH_REMATCH[2]}"
-            edition_key="${edition_date}-${edition_type}"
+          if [[ "${GITHUB_EVENT_NAME}" == "pull_request" ]]; then
             if git rev-parse HEAD^2 >/dev/null 2>&1; then
               changed_files="$(git diff --name-only HEAD^1 HEAD^2)"
             else
               changed_files="$(git diff --name-only HEAD^ HEAD)"
             fi
-            file="$(printf '%s\n' "$changed_files" | grep -E "^src/content/editions/${edition_date}-${edition_type}-.*\.md$" | head -n1 || true)"
-            if [[ -n "$file" ]]; then
-              edition_id="$(basename "$file" .md)"
+
+            if [[ "$branch" =~ ^editorial/([0-9]{4}-[0-9]{2}-[0-9]{2})-morning$ ]]; then
+              package_kind="morning"
+              edition_date="${BASH_REMATCH[1]}"
+              edition_type="daily"
+              edition_key="${edition_date}-daily"
+
+              expected_title="Paquete editorial matutino — ${edition_date}"
+              if [[ "$PR_TITLE" != "$expected_title" ]]; then
+                echo "El PR matutino debe llamarse: $expected_title" >&2
+                exit 1
+              fi
+
+              general_files="$(printf '%s\n' "$changed_files" | grep -E "^src/content/editions/${edition_date}-daily-.*\.md$" || true)"
+              national_files="$(printf '%s\n' "$changed_files" | grep -E "^src/content/briefings/${edition_date}-national-.*\.md$" || true)"
+              markets_files="$(printf '%s\n' "$changed_files" | grep -E "^src/content/briefings/${edition_date}-markets-.*\.md$" || true)"
+
+              general_count="$(printf '%s\n' "$general_files" | grep -c . || true)"
+              national_count="$(printf '%s\n' "$national_files" | grep -c . || true)"
+              markets_count="$(printf '%s\n' "$markets_files" | grep -c . || true)"
+
+              if [[ "$general_count" -ne 1 ]]; then
+                echo "El paquete matutino requiere exactamente una edición General diaria; detectadas: $general_count." >&2
+                exit 1
+              fi
+              if [[ "$national_count" -gt 1 || "$markets_count" -gt 1 ]]; then
+                echo "El paquete matutino admite como máximo una pieza Nacional y una de Mercados." >&2
+                exit 1
+              fi
+
+              edition_id="$(basename "$general_files" .md)"
+              if [[ -n "$national_files" ]]; then
+                national_id="$(basename "$national_files" .md)"
+              fi
+              if [[ -n "$markets_files" ]]; then
+                markets_id="$(basename "$markets_files" .md)"
+              fi
               track=true
+            elif [[ "$branch" =~ ^editorial/([0-9]{4}-[0-9]{2}-[0-9]{2})-(daily|weekly)$ ]]; then
+              edition_date="${BASH_REMATCH[1]}"
+              edition_type="${BASH_REMATCH[2]}"
+              edition_key="${edition_date}-${edition_type}"
+              file="$(printf '%s\n' "$changed_files" | grep -E "^src/content/editions/${edition_date}-${edition_type}-.*\.md$" | head -n1 || true)"
+              if [[ -n "$file" ]]; then
+                edition_id="$(basename "$file" .md)"
+                track=true
+              fi
             fi
           elif [[ "${GITHUB_EVENT_NAME}" == "push" ]]; then
             changed_files="$(git diff-tree --no-commit-id --name-only -r HEAD)"
@@ -68,14 +113,31 @@ jobs:
               edition_key="${edition_date}-${edition_type}"
               edition_id="$base"
               track=true
+
+              if [[ "$edition_type" == "daily" ]]; then
+                national_file="$(printf '%s\n' "$changed_files" | grep -E "^src/content/briefings/${edition_date}-national-.*\.md$" | head -n1 || true)"
+                markets_file="$(printf '%s\n' "$changed_files" | grep -E "^src/content/briefings/${edition_date}-markets-.*\.md$" | head -n1 || true)"
+                if [[ -n "$national_file" ]]; then
+                  national_id="$(basename "$national_file" .md)"
+                fi
+                if [[ -n "$markets_file" ]]; then
+                  markets_id="$(basename "$markets_file" .md)"
+                fi
+                if [[ -n "$national_id" || -n "$markets_id" ]]; then
+                  package_kind="morning"
+                fi
+              fi
             fi
           fi
 
           echo "track=$track" >> "$GITHUB_OUTPUT"
+          echo "package_kind=$package_kind" >> "$GITHUB_OUTPUT"
           echo "edition_date=$edition_date" >> "$GITHUB_OUTPUT"
           echo "edition_type=$edition_type" >> "$GITHUB_OUTPUT"
           echo "edition_key=$edition_key" >> "$GITHUB_OUTPUT"
           echo "edition_id=$edition_id" >> "$GITHUB_OUTPUT"
+          echo "national_id=$national_id" >> "$GITHUB_OUTPUT"
+          echo "markets_id=$markets_id" >> "$GITHUB_OUTPUT"
           echo "branch=$branch" >> "$GITHUB_OUTPUT"
 
       - name: Registrar PR abierto en memoria operacional
@@ -154,7 +216,11 @@ jobs:
           jq -e --arg sha "$ATLAS_SOURCE_SHA" '
             .schemaVersion == 1 and
             .sourceCommit == $sha and
-            (.latestDaily == null or .latestDaily.issueNumber >= 1)
+            (.latestDaily == null or .latestDaily.issueNumber >= 1) and
+            (.latestNational == null or (.latestNational.id | type == "string")) and
+            (.latestMarkets == null or (.latestMarkets.id | type == "string")) and
+            (.publications.national >= 0) and
+            (.publications.markets >= 0)
           ' dist/status.json > /dev/null
 
       - name: Probar el auditor contra el build
@@ -246,11 +312,25 @@ jobs:
           test -f "$atlas_publish_dir/status.json"
           jq -e --arg sha "$ATLAS_SOURCE_SHA" '.sourceCommit == $sha' \
             "$atlas_publish_dir/status.json" > /dev/null
+
           latest_id="$(jq -r '.latestDaily.id // empty' "$atlas_publish_dir/status.json")"
           if [[ -n "$latest_id" ]]; then
             test -f "$atlas_publish_dir/ediciones/$latest_id/index.html"
             grep -Fq "/ediciones/$latest_id/" "$atlas_publish_dir/index.html"
           fi
+
+          national_id="$(jq -r '.latestNational.id // empty' "$atlas_publish_dir/status.json")"
+          if [[ -n "$national_id" ]]; then
+            test -f "$atlas_publish_dir/nacional/$national_id/index.html"
+            grep -Fq "/nacional/$national_id/" "$atlas_publish_dir/index.html"
+          fi
+
+          markets_id="$(jq -r '.latestMarkets.id // empty' "$atlas_publish_dir/status.json")"
+          if [[ -n "$markets_id" ]]; then
+            test -f "$atlas_publish_dir/mercados/$markets_id/index.html"
+            grep -Fq "/mercados/$markets_id/" "$atlas_publish_dir/index.html"
+          fi
+
           echo "Versión pública verificada: $(git -C "$atlas_publish_dir" rev-parse HEAD)"
 
       - name: Registrar publicación verificada
