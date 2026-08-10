@@ -135,7 +135,7 @@ La señal que ATLAS NEWS debería seguir hacia adelante es el quiebre de esa cad
 
 ## Contexto y límites
 
-Esta lectura describe mecanismos generales y no constituye una recomendación de inversión. La conveniencia de un depósito a plazo o de un fondo mutuo depende del horizonte, la liquidez requerida, la tolerancia a la volatilidad, los costos, la tributación y las condiciones particulares de cada inversionista.
+Esta lectura describe mecanismos generales. La conveniencia de un depósito a plazo o de un fondo mutuo depende del horizonte, la liquidez requerida, la tolerancia a la volatilidad, los costos, la tributación y las condiciones particulares de cada inversionista.
 
 Las tasas promedio publicadas por el Banco Central corresponden a operaciones efectivamente cursadas por bancos y no necesariamente a las tasas de pizarra disponibles para todos los clientes. Los rendimientos de fondos mutuos tampoco son garantizados y pueden variar según cartera, duración, riesgo de crédito, costos y condiciones de mercado.
 
