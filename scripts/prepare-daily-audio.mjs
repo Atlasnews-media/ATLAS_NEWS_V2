@@ -1,4 +1,10 @@
-import { appendFile, mkdir, readdir, readFile, writeFile } from "node:fs/promises";
+import {
+  appendFile,
+  mkdir,
+  readdir,
+  readFile,
+  writeFile,
+} from "node:fs/promises";
 import path from "node:path";
 
 const root = new URL("../", import.meta.url);
@@ -158,7 +164,9 @@ const sourceIds = {
   markets: markets?.id ?? null,
 };
 const completeness =
-  Number(Boolean(latestDaily)) + Number(Boolean(national)) + Number(Boolean(markets));
+  Number(Boolean(latestDaily)) +
+  Number(Boolean(national)) +
+  Number(Boolean(markets));
 
 let existing = null;
 if (publicDir) {
@@ -179,7 +187,11 @@ const sameSources =
 
 const parts = [];
 const seen = new Set();
-addUnique(parts, seen, `ATLAS NEWS. Resumen de audio del ${formatSpanishDate(date)}.`);
+addUnique(
+  parts,
+  seen,
+  `ATLAS NEWS. Resumen de audio del ${formatSpanishDate(date)}.`,
+);
 addUnique(parts, seen, `La señal central. ${latestDaily.summary}`);
 for (const item of latestDaily.highlights.slice(0, 3)) {
   addUnique(parts, seen, `${item.label}. ${item.text}`);
@@ -204,7 +216,10 @@ addUnique(
 
 const script = parts.join("\n\n");
 const wordCount = script.split(/\s+/).filter(Boolean).length;
-const estimatedDurationSeconds = Math.max(60, Math.round((wordCount / 125) * 60));
+const estimatedDurationSeconds = Math.max(
+  60,
+  Math.round((wordCount / 125) * 60),
+);
 const plan = {
   needsGeneration: !sameSources,
   date,
