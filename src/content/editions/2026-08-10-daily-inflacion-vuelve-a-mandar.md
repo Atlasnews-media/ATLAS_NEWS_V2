@@ -47,7 +47,7 @@ marketSummary:
       category: "tasas"
     - label: "IPC Chile julio"
       value: "3,5% anual"
-      category: "inflacion"
+      category: "mercados"
 ---
 
 ## Hecho central
