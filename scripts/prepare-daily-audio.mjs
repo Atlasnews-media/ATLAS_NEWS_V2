@@ -225,7 +225,14 @@ function addSegment(parts, accepted, text, { force = false } = {}) {
   return true;
 }
 
-function addEditorialSection(parts, accepted, label, summary, candidates, targetWords) {
+function addEditorialSection(
+  parts,
+  accepted,
+  label,
+  summary,
+  candidates,
+  targetWords,
+) {
   addSegment(parts, accepted, label, { force: true });
   addSegment(parts, accepted, summary);
   const startWords = countWords(parts.join(" "));
@@ -306,7 +313,11 @@ const sameSources =
 
 const generalCandidates = [
   ...latestDaily.highlights.map(({ label, text }) => `${label}. ${text}`),
-  ...sentencesFrom(latestDaily, ["Hecho central", "Por qué importa", "En una mirada"]),
+  ...sentencesFrom(latestDaily, [
+    "Hecho central",
+    "Por qué importa",
+    "En una mirada",
+  ]),
 ];
 const nationalCandidates = national
   ? [
