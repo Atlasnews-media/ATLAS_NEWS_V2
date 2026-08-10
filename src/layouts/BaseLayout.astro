@@ -129,23 +129,26 @@ const sourceCommit = (
   }
   .brand-lockup {
     display: flex;
-    flex-direction: column;
     align-items: center;
-    gap: 0.1rem;
+    justify-content: center;
+    gap: clamp(0.65rem, 1.5vw, 1.25rem);
     margin: 0.45rem 0 0.8rem;
   }
   .brand-mark {
     display: block;
-    width: clamp(1.75rem, 2.4vw, 2.4rem);
+    flex: 0 0 auto;
+    width: clamp(2.8rem, 4.5vw, 4.75rem);
     height: auto;
   }
   .brand {
     display: block;
+    min-width: 0;
     color: inherit;
     font: 700 clamp(3.8rem, 11vw, 9.5rem)/0.82 var(--display);
     letter-spacing: -0.04em;
     text-align: center;
     text-decoration: none;
+    white-space: nowrap;
   }
   .edition-bar,
   .site-header nav {
@@ -212,14 +215,14 @@ const sourceCommit = (
       display: none;
     }
     .brand-lockup {
-      gap: 0.05rem;
+      gap: clamp(0.4rem, 2vw, 0.65rem);
       margin-top: 0.35rem;
     }
     .brand-mark {
-      width: 1.65rem;
+      width: clamp(2.1rem, 9vw, 2.75rem);
     }
     .brand {
-      font-size: clamp(3.4rem, 19vw, 5rem);
+      font-size: clamp(3rem, 15.5vw, 4.5rem);
     }
     .site-header nav {
       display: grid;
