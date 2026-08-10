@@ -53,7 +53,25 @@ const sourceCommit = (
     <meta name="generator" content={Astro.generator} />
     <meta name="theme-color" content="#f2efe5" />
     <meta name="atlas-source-commit" content={sourceCommit} />
-    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="/brand/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="/brand/favicon-16x16.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="/brand/apple-touch-icon.png"
+    />
+    <link rel="manifest" href="/site.webmanifest" />
     <title>{title}</title>
   </head>
   <body>
@@ -64,7 +82,17 @@ const sourceCommit = (
         <time>{currentDate}</time>
         <span>Santiago de Chile</span>
       </div>
-      <a class="brand" href="/" aria-label="ATLAS NEWS, portada">ATLAS NEWS</a>
+      <div class="brand-lockup">
+        <img
+          class="brand-mark"
+          src="/brand/atlas-icon.png"
+          alt=""
+          width="1172"
+          height="1172"
+        />
+        <a class="brand" href="/" aria-label="ATLAS NEWS, portada">ATLAS NEWS</a
+        >
+      </div>
       <nav aria-label="Navegación principal">
         <a href="/">Portada</a>
         <a href="/nacional/">Nacional</a>
@@ -99,9 +127,20 @@ const sourceCommit = (
   .site-header {
     padding-top: 1rem;
   }
+  .brand-lockup {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.1rem;
+    margin: 0.45rem 0 0.8rem;
+  }
+  .brand-mark {
+    display: block;
+    width: clamp(1.75rem, 2.4vw, 2.4rem);
+    height: auto;
+  }
   .brand {
     display: block;
-    margin: 0.55rem 0 0.8rem;
     color: inherit;
     font: 700 clamp(3.8rem, 11vw, 9.5rem)/0.82 var(--display);
     letter-spacing: -0.04em;
@@ -171,6 +210,13 @@ const sourceCommit = (
     }
     .edition-bar span:last-child {
       display: none;
+    }
+    .brand-lockup {
+      gap: 0.05rem;
+      margin-top: 0.35rem;
+    }
+    .brand-mark {
+      width: 1.65rem;
     }
     .brand {
       font-size: clamp(3.4rem, 19vw, 5rem);
