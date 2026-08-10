@@ -4,7 +4,7 @@ summary: "El IPC de julio bajó a 3,5% anual y el Imacec de junio creció 2,4%, 
 publishedAt: "2026-08-10T07:45:00-04:00"
 cutoffAt: "2026-08-10T07:35:00-04:00"
 section: "national"
-status: "draft"
+status: "published"
 tags:
   - chile
   - inflacion
