@@ -4,7 +4,7 @@ summary: "La caída del petróleo y el enfriamiento laboral en Estados Unidos im
 publishedAt: "2026-08-10T07:30:00-04:00"
 cutoffAt: "2026-08-10T07:20:00-04:00"
 type: "weekly"
-status: "draft"
+status: "published"
 tags:
   - mercados-globales
   - chile
