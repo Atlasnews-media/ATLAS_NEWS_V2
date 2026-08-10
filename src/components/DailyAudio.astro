@@ -1,0 +1,135 @@
+---
+interface Props {
+  expectedDate?: string;
+}
+
+const { expectedDate } = Astro.props;
+---
+
+<section
+  class="daily-audio"
+  data-daily-audio
+  data-expected-date={expectedDate}
+  aria-labelledby="daily-audio-title"
+  hidden
+>
+  <div class="audio-copy">
+    <p class="audio-kicker">Edición sonora</p>
+    <h2 id="daily-audio-title">Escuchar el resumen del día</h2>
+    <p data-audio-summary>
+      General, Nacional y Mercados reunidos en una sola cápsula de audio.
+    </p>
+  </div>
+  <div class="audio-player">
+    <p class="audio-meta" data-audio-meta>Resumen diario · Kokoro</p>
+    <audio
+      controls
+      preload="none"
+      data-audio-player
+      aria-label="Resumen diario de ATLAS NEWS"
+    >
+      <source data-audio-source type="audio/mpeg" />
+    </audio>
+  </div>
+</section>
+
+<script is:inline>
+  (() => {
+    const root = document.querySelector("[data-daily-audio]");
+    if (!root) return;
+
+    const expectedDate = root.dataset.expectedDate;
+    if (!expectedDate) return;
+
+    fetch(`/audio/latest.json?v=${Date.now()}`, { cache: "no-store" })
+      .then((response) => {
+        if (!response.ok) throw new Error("audio metadata unavailable");
+        return response.json();
+      })
+      .then((metadata) => {
+        if (
+          metadata?.status !== "published" ||
+          metadata?.date !== expectedDate ||
+          !metadata?.path
+        ) {
+          return;
+        }
+
+        const summary = root.querySelector("[data-audio-summary]");
+        const meta = root.querySelector("[data-audio-meta]");
+        const player = root.querySelector("[data-audio-player]");
+        const source = root.querySelector("[data-audio-source]");
+
+        if (summary && metadata.summary) summary.textContent = metadata.summary;
+        if (meta) {
+          const completeness = metadata.completeness
+            ? ` · paquete ${metadata.completeness}/3`
+            : "";
+          meta.textContent = `${metadata.durationLabel ?? "Audio diario"} · Kokoro${completeness}`;
+        }
+        if (source && player) {
+          source.src = metadata.path;
+          player.load();
+        }
+        root.hidden = false;
+      })
+      .catch(() => {
+        root.hidden = true;
+      });
+  })();
+</script>
+
+<style>
+  .daily-audio {
+    display: grid;
+    grid-template-columns: minmax(0, 1.4fr) minmax(18rem, 1fr);
+    gap: clamp(1.25rem, 4vw, 3rem);
+    align-items: center;
+    padding: 1.35rem 0 1.5rem;
+    border-bottom: 4px double var(--rule);
+  }
+  .daily-audio[hidden] {
+    display: none;
+  }
+  .audio-kicker {
+    margin: 0;
+    color: var(--accent);
+    font: 800 0.72rem/1.2 var(--sans);
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+  }
+  h2 {
+    margin: 0.4rem 0 0.55rem;
+    font-size: clamp(1.55rem, 3vw, 2.35rem);
+    line-height: 0.98;
+    letter-spacing: -0.035em;
+  }
+  .audio-copy > p:last-child {
+    max-width: 45rem;
+    margin: 0;
+    color: var(--ink-soft);
+    line-height: 1.4;
+  }
+  .audio-player {
+    min-width: 0;
+  }
+  .audio-meta {
+    margin: 0 0 0.55rem;
+    font: 800 0.66rem/1.2 var(--sans);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  audio {
+    display: block;
+    width: 100%;
+    min-height: 2.6rem;
+  }
+
+  @media (max-width: 42rem) {
+    .daily-audio {
+      grid-template-columns: 1fr;
+      gap: 1rem;
+      padding: 1.2rem 0 1.35rem;
+    }
+  }
+</style>

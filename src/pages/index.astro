@@ -1,5 +1,6 @@
 ---
 import ContentCard from "../components/ContentCard.astro";
+import DailyAudio from "../components/DailyAudio.astro";
 import EconomicIndicators from "../components/EconomicIndicators.astro";
 import MarketPulse from "../components/MarketPulse.astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
@@ -49,6 +50,7 @@ const hasAnalysisContent = Boolean(latestNational || latestMarkets);
     </div>
 
     <EconomicIndicators />
+    <DailyAudio expectedDate={latestDaily?.id.slice(0, 10)} />
 
     {
       latestDaily ? (
