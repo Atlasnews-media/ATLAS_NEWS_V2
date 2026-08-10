@@ -26,7 +26,6 @@ sources:
     publishedAt: "2026-08-10T01:04:49Z"
   - name: "Reuters — Australian shares dip as Westpac weighs on banks ahead of RBA decision"
     url: "https://www.reuters.com/business/finance/australian-shares-dip-westpac-weighs-banks-ahead-rba-decision-2026-08-10/"
-    publishedAt: "2026-08-10T03:00:00Z"
 highlights:
   - label: "Duración"
     text: "El empleo débil redujo las apuestas de alza de la Fed y alivió la curva, pero el Treasury a diez años sigue cerca de 4,65%."
@@ -55,7 +54,7 @@ Los commodities muestran otra capa de dispersión. El Brent se mantenía alreded
 
 El oro, en cambio, subía 0,1% hasta aproximadamente US$4.345 por onza y venía de marcar el viernes un máximo de siete semanas. Su comportamiento es coherente con la caída de las apuestas de alza de la Fed: un menor costo de oportunidad favorece al metal incluso mientras las bolsas permanecen cerca de máximos. Que oro y renta variable puedan subir juntos indica que el mercado no está comprando un único escenario defensivo; está comprando menor presión de tasas mientras conserva cobertura frente a inflación, geopolítica y riesgo institucional.
 
-En Australia aparece una señal útil sobre sectores y materias primas. El ASX 200 caía 0,5%, arrastrado por financieras después de que Westpac perdiera más de 5% tras informar menor actividad hipotecaria, mientras mineras y productoras de oro avanzaban. La divergencia entre bancos y recursos muestra que el índice agregado oculta mecanismos distintos: crédito doméstico más débil por un lado y precios de metales favorables por otro. Para leer el ciclo global, esa dispersión sectorial aporta más información que el movimiento del índice por sí solo.
+En Australia aparece una señal útil sobre sectores y materias primas. El ASX 200 caía 0,5%, arrastrado por financieras después de que Westpac perdiera más de 5% tras informar menor actividad hipotecaria, mientras mineras y productoras de oro avanzaban. La divergencia entre bancos y recursos muestra que el índice agregado oculta mecanismos distintos: crédito doméstico más débil por un lado y precios de metales favorables por otro.
 
 El cobre sigue siendo relevante para la transmisión hacia economías exportadoras como Chile, pero al corte no se incorporó una cotización puntual nueva porque no se obtuvo una referencia pública suficientemente robusta y homogénea para la misma ventana temporal. La lectura válida es relativa: metales y mineras mostraban soporte en Asia-Pacífico, mientras el petróleo más contenido reduce presión sobre importadores de energía. No corresponde convertir esa señal en un precio de cobre no verificado.
 
