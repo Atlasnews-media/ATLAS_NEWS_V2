@@ -4,25 +4,25 @@
       "id": "oil-geopolitics-inflation",
       "topic": "Petróleo, geopolítica e inflación",
       "thesis": "El alivio energético reduce la presión sobre inflación y tasas, pero sigue condicionado por la oferta y Medio Oriente.",
-      "status": "continues",
-      "last_evidence": "El petróleo cedió desde sus máximos recientes, aunque conserva sensibilidad a la prima geopolítica.",
+      "status": "confirmed",
+      "last_evidence": "El Brent se estabilizó cerca de US$83,5 por barril, muy por debajo de los máximos de abril, mientras avanzan conversaciones sobre rutas de navegación en Hormuz sin una reapertura completa asegurada.",
       "effect": "Favorece duración selectiva y activos de riesgo mientras el alivio energético persista.",
       "base_scenario": "Petróleo contenido y ausencia de una interrupción severa de oferta.",
       "invalidate_if": "Un repunte energético sostenido reabre la inflación y eleva las tasas largas.",
       "watch": "Brent, flujos energéticos y negociaciones en Medio Oriente.",
-      "last_publication": "/ediciones/2026-08-08-daily-empleo-eeuu-reabre-el-debate-de-tasas/"
+      "last_publication": "/ediciones/2026-08-10-daily-inflacion-vuelve-a-mandar/"
     },
     {
       "id": "us-employment-fed-rates",
       "topic": "Empleo de Estados Unidos y Reserva Federal",
       "thesis": "El debilitamiento laboral reduce la presión por una subida inmediata de tasas, pero la inflación todavía determina el margen de la Reserva Federal.",
-      "status": "changed",
-      "last_evidence": "El empleo de julio sorprendió a la baja y redujo la probabilidad asignada a una subida inmediata.",
+      "status": "confirmed",
+      "last_evidence": "La pérdida neta de 23.000 empleos en julio redujo la probabilidad implícita de un alza de la Fed en septiembre hacia 45%; el IPC de julio pasa a ser la prueba decisiva del escenario.",
       "effect": "Apoya bonos y acciones de crecimiento mientras la desaceleración no derive en una recesión profunda.",
       "base_scenario": "Desaceleración laboral moderada con inflación en gradual contención.",
       "invalidate_if": "La inflación repunta o el deterioro laboral pasa de enfriamiento a contracción amplia.",
       "watch": "IPC y precios al productor de Estados Unidos, salarios, participación y revisiones de empleo.",
-      "last_publication": "/ediciones/2026-08-08-daily-empleo-eeuu-reabre-el-debate-de-tasas/"
+      "last_publication": "/ediciones/2026-08-10-daily-inflacion-vuelve-a-mandar/"
     },
     {
       "id": "ai-monetization-selectivity",
@@ -41,12 +41,12 @@
       "topic": "Inflación, actividad y tasas en Chile",
       "thesis": "La moderación inflacionaria y el rebote de actividad mejoran el escenario local, pero todavía no prueban un cambio de régimen.",
       "status": "confirmed",
-      "last_evidence": "El IPC anual bajó a 3,5% y el IMACEC creció 2,4%, con una contribución minera relevante.",
+      "last_evidence": "El IPC de julio se moderó a 3,5% anual y el Imacec de junio creció 2,4%, mientras la TPM permanece en 4,5% y la recuperación continúa siendo heterogénea.",
       "effect": "Mejora el tono para renta fija local y activos domésticos sin justificar una apuesta por recortes acelerados.",
       "base_scenario": "Inflación convergente, TPM cautelosa y recuperación económica gradual.",
       "invalidate_if": "Petróleo, dólar o inflación vuelven a subir, o la actividad se debilita fuera de la minería.",
       "watch": "Expectativas de inflación, próxima RPM, empleo, salarios y amplitud de la recuperación.",
-      "last_publication": "/ediciones/2026-08-08-daily-empleo-eeuu-reabre-el-debate-de-tasas/"
+      "last_publication": "/ediciones/2026-08-10-daily-inflacion-vuelve-a-mandar/"
     }
   ]
 }
