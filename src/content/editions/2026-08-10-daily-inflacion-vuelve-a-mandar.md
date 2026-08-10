@@ -4,7 +4,7 @@ summary: "El empleo débil en Estados Unidos alivió las tasas y sostuvo a las b
 publishedAt: "2026-08-10T06:00:00-04:00"
 cutoffAt: "2026-08-10T06:00:00-04:00"
 type: "daily"
-status: "draft"
+status: "published"
 tags:
   - mercados-globales
   - tasas

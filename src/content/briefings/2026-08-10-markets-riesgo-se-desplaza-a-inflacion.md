@@ -4,7 +4,7 @@ summary: "Bonos, acciones de crecimiento y oro recogen el enfriamiento del emple
 publishedAt: "2026-08-10T06:30:00-04:00"
 cutoffAt: "2026-08-10T06:25:00-04:00"
 section: "markets"
-status: "draft"
+status: "published"
 tags:
   - mercados-globales
   - renta-fija
