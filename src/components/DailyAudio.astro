@@ -21,7 +21,6 @@ const { expectedDate } = Astro.props;
     </p>
   </div>
   <div class="audio-player">
-    <p class="audio-meta" data-audio-meta>Resumen diario · Kokoro</p>
     <audio
       controls
       preload="none"
@@ -56,17 +55,10 @@ const { expectedDate } = Astro.props;
         }
 
         const summary = root.querySelector("[data-audio-summary]");
-        const meta = root.querySelector("[data-audio-meta]");
         const player = root.querySelector("[data-audio-player]");
         const source = root.querySelector("[data-audio-source]");
 
         if (summary && metadata.summary) summary.textContent = metadata.summary;
-        if (meta) {
-          const completeness = metadata.completeness
-            ? ` · paquete ${metadata.completeness}/3`
-            : "";
-          meta.textContent = `${metadata.durationLabel ?? "Audio diario"} · Kokoro${completeness}`;
-        }
         if (source && player) {
           source.src = metadata.path;
           player.load();
@@ -112,12 +104,6 @@ const { expectedDate } = Astro.props;
   }
   .audio-player {
     min-width: 0;
-  }
-  .audio-meta {
-    margin: 0 0 0.55rem;
-    font: 800 0.66rem/1.2 var(--sans);
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
   }
   audio {
     display: block;

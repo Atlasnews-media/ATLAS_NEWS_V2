@@ -83,6 +83,7 @@ for old_audio in audio_dir.glob("*-resumen-diario.mp3"):
 duration_seconds = round(len(samples) / SAMPLE_RATE, 1)
 metadata = {
     "schemaVersion": 1,
+    "scriptVersion": plan.get("scriptVersion", 1),
     "status": "published",
     "date": date,
     "title": plan["title"],
@@ -104,5 +105,5 @@ metadata = {
 
 print(
     f"Audio diario generado: {filename} · {duration_seconds:.1f}s · "
-    f"voz {voice} · paquete {metadata['completeness']}/3."
+    f"voz {voice} · paquete {metadata['completeness']}/3 · guion v{metadata['scriptVersion']}."
 )
