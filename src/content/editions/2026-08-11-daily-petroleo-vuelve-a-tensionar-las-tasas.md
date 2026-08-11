@@ -1,6 +1,6 @@
 ---
 title: "El petróleo vuelve a tensionar las tasas antes de la prueba de inflación en Estados Unidos"
-summary: "El retroceso de la desinflación energética vuelve a enfrentar a los mercados con una combinación incómoda: empleo más débil, petróleo al alza y una Reserva Federal que necesita confirmación del IPC antes de definir septiembre."
+summary: "La desinflación energética pierde fuerza y vuelve a enfrentar a los mercados con una combinación incómoda: empleo más débil, petróleo al alza y una Reserva Federal que necesita confirmación del IPC antes de definir septiembre."
 publishedAt: "2026-08-11T06:00:00-04:00"
 cutoffAt: "2026-08-11T06:00:00-04:00"
 type: "daily"
