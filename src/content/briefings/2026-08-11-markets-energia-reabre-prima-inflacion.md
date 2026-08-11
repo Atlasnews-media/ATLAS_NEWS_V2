@@ -4,7 +4,7 @@ summary: "El petróleo recupera prima geopolítica, los Treasuries vuelven a ven
 publishedAt: "2026-08-11T06:30:00-04:00"
 cutoffAt: "2026-08-11T06:30:00-04:00"
 section: "markets"
-status: "draft"
+status: "published"
 tags:
   - mercados-globales
   - tasas

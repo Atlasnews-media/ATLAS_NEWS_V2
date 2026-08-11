@@ -4,7 +4,7 @@ summary: "El retroceso de la desinflación energética vuelve a enfrentar a los 
 publishedAt: "2026-08-11T06:00:00-04:00"
 cutoffAt: "2026-08-11T06:00:00-04:00"
 type: "daily"
-status: "draft"
+status: "published"
 tags:
   - mercados-globales
   - tasas
