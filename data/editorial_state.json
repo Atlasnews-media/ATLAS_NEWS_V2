@@ -3,26 +3,26 @@
     {
       "id": "oil-geopolitics-inflation",
       "topic": "Petróleo, geopolítica e inflación",
-      "thesis": "El alivio energético reduce la presión sobre inflación y tasas, pero sigue condicionado por la oferta y Medio Oriente.",
-      "status": "confirmed",
-      "last_evidence": "El Brent se estabilizó cerca de US$83,5 por barril, muy por debajo de los máximos de abril, mientras avanzan conversaciones sobre rutas de navegación en Hormuz sin una reapertura completa asegurada.",
-      "effect": "Favorece duración selectiva y activos de riesgo mientras el alivio energético persista.",
-      "base_scenario": "Petróleo contenido y ausencia de una interrupción severa de oferta.",
-      "invalidate_if": "Un repunte energético sostenido reabre la inflación y eleva las tasas largas.",
-      "watch": "Brent, flujos energéticos y negociaciones en Medio Oriente.",
-      "last_publication": "/ediciones/2026-08-10-daily-inflacion-vuelve-a-mandar/"
+      "thesis": "El alivio energético se debilitó: el repunte del petróleo vuelve a introducir presión inflacionaria mientras Hormuz continúe restringido.",
+      "status": "changed",
+      "last_evidence": "El Brent subió a US$89,64 por barril el 11 de agosto, cerca de 5% en dos sesiones, al deteriorarse las perspectivas de un acuerdo entre Estados Unidos e Irán y mantenerse restringido el tráfico por Hormuz.",
+      "effect": "Reduce el margen para extender apuestas agresivas de duración y vuelve a favorecer coberturas frente a inflación y geopolítica.",
+      "base_scenario": "Prima energética elevada pero sin interrupción total de oferta; inflación sensible a la persistencia del shock.",
+      "invalidate_if": "La normalización física del tráfico por Hormuz y una caída sostenida del Brent restauran el escenario de alivio energético.",
+      "watch": "Brent, tráfico y embarques por Hormuz, negociaciones Estados Unidos-Irán y transmisión a expectativas de inflación.",
+      "last_publication": "/ediciones/2026-08-11-daily-petroleo-vuelve-a-tensionar-las-tasas/"
     },
     {
       "id": "us-employment-fed-rates",
       "topic": "Empleo de Estados Unidos y Reserva Federal",
-      "thesis": "El debilitamiento laboral reduce la presión por una subida inmediata de tasas, pero la inflación todavía determina el margen de la Reserva Federal.",
-      "status": "confirmed",
-      "last_evidence": "La pérdida neta de 23.000 empleos en julio redujo la probabilidad implícita de un alza de la Fed en septiembre hacia 45%; el IPC de julio pasa a ser la prueba decisiva del escenario.",
-      "effect": "Apoya bonos y acciones de crecimiento mientras la desaceleración no derive en una recesión profunda.",
-      "base_scenario": "Desaceleración laboral moderada con inflación en gradual contención.",
-      "invalidate_if": "La inflación repunta o el deterioro laboral pasa de enfriamiento a contracción amplia.",
-      "watch": "IPC y precios al productor de Estados Unidos, salarios, participación y revisiones de empleo.",
-      "last_publication": "/ediciones/2026-08-10-daily-inflacion-vuelve-a-mandar/"
+      "thesis": "El debilitamiento laboral reduce la presión por una subida inmediata, pero el repunte energético aumenta nuevamente la dependencia de la Fed respecto de la inflación.",
+      "status": "changed",
+      "last_evidence": "Antes del IPC de julio, el petróleo volvió a subir con fuerza y las apuestas de una subida de la Fed en septiembre regresaron hacia un escenario cercano al 50/50, pese a la pérdida de empleos de julio.",
+      "effect": "Mantiene valor en bonos de calidad, pero limita una extensión agresiva de duración hasta confirmar que la inflación continúa cediendo.",
+      "base_scenario": "Desaceleración laboral moderada con inflación todavía contenible pese a mayor volatilidad energética.",
+      "invalidate_if": "El IPC sorprende al alza y consolida una trayectoria de endurecimiento, o el deterioro laboral pasa de enfriamiento a contracción amplia.",
+      "watch": "IPC y precios al productor de Estados Unidos, petróleo, salarios, revisiones de empleo y comunicación de la Fed.",
+      "last_publication": "/ediciones/2026-08-11-daily-petroleo-vuelve-a-tensionar-las-tasas/"
     },
     {
       "id": "ai-monetization-selectivity",
@@ -39,14 +39,14 @@
     {
       "id": "chile-inflation-activity-rates",
       "topic": "Inflación, actividad y tasas en Chile",
-      "thesis": "La moderación inflacionaria y el rebote de actividad mejoran el escenario local, pero todavía no prueban un cambio de régimen.",
-      "status": "confirmed",
-      "last_evidence": "El IPC de julio se moderó a 3,5% anual y el Imacec de junio creció 2,4%, mientras la TPM permanece en 4,5% y la recuperación continúa siendo heterogénea.",
-      "effect": "Mejora el tono para renta fija local y activos domésticos sin justificar una apuesta por recortes acelerados.",
-      "base_scenario": "Inflación convergente, TPM cautelosa y recuperación económica gradual.",
-      "invalidate_if": "Petróleo, dólar o inflación vuelven a subir, o la actividad se debilita fuera de la minería.",
-      "watch": "Expectativas de inflación, próxima RPM, empleo, salarios y amplitud de la recuperación.",
-      "last_publication": "/ediciones/2026-08-10-daily-inflacion-vuelve-a-mandar/"
+      "thesis": "La moderación inflacionaria y el rebote de actividad mejoran el escenario local, pero el renovado riesgo energético limita la extrapolación hacia recortes acelerados.",
+      "status": "changed",
+      "last_evidence": "Chile mantiene IPC de julio en 3,5% anual, Imacec de junio en 2,4% y TPM en 4,5%, pero el Brent volvió hacia US$90 antes de conocerse la EEE de agosto.",
+      "effect": "Sostiene un tono favorable para renta fija local, aunque vuelve más valiosa la selectividad por duración y la protección frente a inflación.",
+      "base_scenario": "Inflación convergente, TPM cautelosa y recuperación gradual, con petróleo como principal riesgo externo inmediato.",
+      "invalidate_if": "Petróleo y dólar vuelven a caer de forma sostenida y las expectativas confirman desinflación, o la inflación local repunta materialmente.",
+      "watch": "EEE de agosto, EOF post RPM, petróleo, dólar, empleo, salarios y amplitud de la recuperación.",
+      "last_publication": "/ediciones/2026-08-11-daily-petroleo-vuelve-a-tensionar-las-tasas/"
     }
   ]
 }
