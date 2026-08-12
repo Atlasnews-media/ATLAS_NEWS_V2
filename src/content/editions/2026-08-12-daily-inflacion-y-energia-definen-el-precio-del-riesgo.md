@@ -1,6 +1,6 @@
 ---
-title: "La desinflación se confirma, pero el petróleo mantiene abierta la prima de inflación"
-summary: "El IPC de Estados Unidos bajó a 3,4% anual y el subyacente a 2,5%, ambos en línea con lo esperado. El dato reduce el riesgo inmediato de una Fed más restrictiva, aunque el nuevo repunte del petróleo todavía no está plenamente reflejado en julio."
+title: "La inflación de Estados Unidos se modera a 3,4% anual en julio"
+summary: "El IPC de Estados Unidos bajó a 3,4% anual y el subyacente a 2,5%, ambos en línea con lo esperado. El dato confirma la desinflación y reduce el riesgo inmediato de una Fed más restrictiva; el reciente repunte energético queda como riesgo para los próximos meses."
 publishedAt: "2026-08-12T08:44:00-04:00"
 cutoffAt: "2026-08-12T08:44:00-04:00"
 type: "daily"
@@ -123,6 +123,8 @@ Segundo, los próximos datos de inflación. El IPC de julio no incorpora plename
 
 Tercero, Hormuz y Bab el-Mandeb. Las declaraciones diplomáticas deben contrastarse con tráfico físico, embarques y costos de seguro. Una recuperación verificable de flujos reduciría la prima energética; nuevas interrupciones convertirían el shock en un problema más persistente para inflación global.
 
-Cuarto, la EOF chilena de hoy. Si mantiene inflación a dos años en 3% y comienza a incorporar una TPM menor en horizontes próximos, la renta fija local recibe una confirmación adicional. Si las expectativas de tasa permanecen rígidas, la lectura sería que el mercado reconoce la mejora del IPC pero todavía exige evidencia de que combustibles, dólar y precios subyacentes no revertirán el proceso.
+Cuarto, la EOF chilena de hoy. Si mantiene inflación a dos años en 3% y comienza a incorporar una TPM menor en horizontes próximos, la renta fija local recibe una confirmación adicional. Si las expectativas de tasa permanecen rígidas, la lectura sería que el mercado reconoce la mejora del IPC pero todavía exige evidencia de que combustibles, dólar y precios subyacentes no revertirán el avance.
 
-La narrativa dominante se fortalece: desaceleración sin recesión profunda y desinflación gradual. El IPC de julio confirmó esa dirección, pero el nuevo petróleo obliga a separar inflación observada de inflación prospectiva. La señal débil es que el mercado puede volver a premiar duración y crecimiento mientras simultáneamente paga protección frente a energía y geopolítica; esa convivencia será sostenible solo si los próximos datos muestran que el shock petrolero no se generaliza hacia precios y expectativas.
+La narrativa dominante vuelve a ser más coherente después del dato: desaceleración laboral con inflación observada descendiendo y sin una sorpresa de precios que fuerce una reprecificación inmediata. Eso favorece activos de duración y crecimiento rentable en el margen, aunque el petróleo impide declarar resuelto el problema inflacionario.
+
+La señal débil sigue siendo la coexistencia entre activos de riesgo próximos a máximos y una prima inflacionaria energética elevada. El IPC de julio compró tiempo para la narrativa de aterrizaje benigno; los próximos datos dirán si ese tiempo se convierte en tendencia o solo en una pausa.
