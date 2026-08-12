@@ -4,7 +4,7 @@ summary: "El mercado llega al IPC estadounidense con petróleo nuevamente cerca 
 publishedAt: "2026-08-12T06:00:00-04:00"
 cutoffAt: "2026-08-12T06:00:00-04:00"
 type: "daily"
-status: "draft"
+status: "published"
 tags:
   - mercados-globales
   - inflacion

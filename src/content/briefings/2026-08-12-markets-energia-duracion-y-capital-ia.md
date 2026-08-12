@@ -4,7 +4,7 @@ summary: "El petróleo sostiene la prima inflacionaria, Japón reabre el precio 
 publishedAt: "2026-08-12T06:30:00-04:00"
 cutoffAt: "2026-08-12T06:30:00-04:00"
 section: "markets"
-status: "draft"
+status: "published"
 tags:
   - mercados-globales
   - tasas

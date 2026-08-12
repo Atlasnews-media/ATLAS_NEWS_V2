@@ -4,7 +4,7 @@ summary: "El ICT cayó 2,9% en julio por combustibles y reforzó la señal desin
 publishedAt: "2026-08-12T06:15:00-04:00"
 cutoffAt: "2026-08-12T06:15:00-04:00"
 section: "national"
-status: "draft"
+status: "published"
 tags:
   - chile
   - inflacion
