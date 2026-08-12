@@ -1,7 +1,7 @@
 ---
 title: "La desinflación se confirma, pero el petróleo mantiene abierta la prima de inflación"
 summary: "El IPC de Estados Unidos bajó a 3,4% anual y el subyacente a 2,5%, ambos en línea con lo esperado. El dato reduce el riesgo inmediato de una Fed más restrictiva, aunque el nuevo repunte del petróleo todavía no está plenamente reflejado en julio."
-publishedAt: "2026-08-12T06:00:00-04:00"
+publishedAt: "2026-08-12T08:44:00-04:00"
 cutoffAt: "2026-08-12T08:44:00-04:00"
 type: "daily"
 status: "published"
