@@ -15,13 +15,13 @@
     {
       "id": "us-employment-fed-rates",
       "topic": "Empleo de Estados Unidos y Reserva Federal",
-      "thesis": "El debilitamiento laboral reduce la presión por una subida inmediata, pero el repunte energético aumenta nuevamente la dependencia de la Fed respecto de la inflación.",
+      "thesis": "El debilitamiento laboral y la moderación del IPC reducen la presión por una subida inmediata, aunque el repunte energético mantiene a la Fed dependiente de los próximos datos.",
       "status": "confirmed",
-      "last_evidence": "Antes del IPC de julio del 12 de agosto, el Treasury a diez años se mantenía cerca de 4,68% y el mercado asignaba algo más de 50% de probabilidad a una subida de la Fed en septiembre, pese al deterioro laboral previo.",
-      "effect": "Mantiene valor en bonos de calidad, pero limita una extensión agresiva de duración hasta confirmar que la inflación continúa cediendo.",
-      "base_scenario": "Desaceleración laboral moderada con inflación todavía contenible pese a mayor volatilidad energética.",
-      "invalidate_if": "El IPC confirma desinflación suficiente para reducir de forma sostenida las expectativas de endurecimiento, o el deterioro laboral pasa de enfriamiento a contracción amplia.",
-      "watch": "IPC de julio, precios al productor, petróleo, salarios, revisiones de empleo y comunicación de la Fed.",
+      "last_evidence": "El IPC de julio avanzó 0,1% mensual y se moderó a 3,4% anual; el componente subyacente subió 0,2% mensual y bajó a 2,5% anual, todas cifras en línea con el consenso.",
+      "effect": "Refuerza el valor de bonos de calidad y duración selectiva, pero petróleo e inflación futura todavía limitan una apuesta agresiva por tasas menores.",
+      "base_scenario": "Desaceleración laboral moderada con inflación en gradual contención y volatilidad energética elevada.",
+      "invalidate_if": "Los próximos datos muestran que el shock energético vuelve a acelerar inflación o el deterioro laboral pasa de enfriamiento a contracción amplia.",
+      "watch": "Reacción de Treasuries y probabilidades de septiembre, precios al productor, petróleo, salarios y próximos IPC.",
       "last_publication": "/ediciones/2026-08-12-daily-inflacion-y-energia-definen-el-precio-del-riesgo/"
     },
     {
