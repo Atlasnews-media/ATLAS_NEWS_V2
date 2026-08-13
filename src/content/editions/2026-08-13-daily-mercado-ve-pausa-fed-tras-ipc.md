@@ -40,7 +40,7 @@ highlights:
 marketSummary:
   asOf: "2026-08-13T06:00:00-04:00"
   items:
-    - label: "Probabilidad pausa Fed septiembre"
+    - label: "Pausa Fed septiembre"
       value: "65%"
       category: "tasas"
     - label: "Brent"
