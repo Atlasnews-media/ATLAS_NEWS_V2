@@ -4,7 +4,7 @@ summary: "El IPC de julio confirmó una desinflación gradual y redujo las apues
 publishedAt: "2026-08-13T06:00:00-04:00"
 cutoffAt: "2026-08-13T06:00:00-04:00"
 type: "daily"
-status: "draft"
+status: "published"
 tags:
   - mercados-globales
   - fed
