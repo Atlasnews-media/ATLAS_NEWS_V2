@@ -4,7 +4,7 @@ summary: "La CMF publica hoy las nuevas tasas de interés corriente y máxima co
 publishedAt: "2026-08-14T06:15:00-04:00"
 cutoffAt: "2026-08-14T06:15:00-04:00"
 section: "national"
-status: "draft"
+status: "published"
 tags:
   - chile
   - credito
