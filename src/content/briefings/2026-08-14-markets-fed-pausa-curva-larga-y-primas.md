@@ -4,7 +4,7 @@ summary: "La inflación benigna sostiene acciones y reduce la probabilidad de un
 publishedAt: "2026-08-14T06:30:00-04:00"
 cutoffAt: "2026-08-14T06:30:00-04:00"
 section: "markets"
-status: "draft"
+status: "published"
 tags:
   - mercados-globales
   - tasas
