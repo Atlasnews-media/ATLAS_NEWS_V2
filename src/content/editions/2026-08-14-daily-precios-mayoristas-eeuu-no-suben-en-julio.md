@@ -4,7 +4,7 @@ summary: "El PPI quedó sin variación mensual y bajó a 4,7% anual, reforzando 
 publishedAt: "2026-08-14T06:00:00-04:00"
 cutoffAt: "2026-08-14T06:00:00-04:00"
 type: "daily"
-status: "draft"
+status: "published"
 tags:
   - mercados-globales
   - inflacion
