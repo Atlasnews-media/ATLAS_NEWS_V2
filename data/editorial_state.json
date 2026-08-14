@@ -5,24 +5,24 @@
       "topic": "Petróleo, geopolítica e inflación",
       "thesis": "El alivio energético se debilitó: el repunte del petróleo vuelve a introducir presión inflacionaria mientras Hormuz continúe restringido.",
       "status": "confirmed",
-      "last_evidence": "El Brent se mantuvo cerca de US$90 el 12 de agosto y nuevos ataques a embarcaciones en Hormuz y Bab el-Mandeb reforzaron que la restricción de oferta y transporte sigue siendo física, no solo diplomática.",
+      "last_evidence": "El Brent volvió a US$88,50 el 14 de agosto tras la amenaza estadounidense de prolongar indefinidamente el bloqueo de Irán; los tránsitos de commodities por Hormuz subieron a nueve, pero permanecieron bajo el promedio de agosto de doce por día y dos buques de ADNOC fueron atacados.",
       "effect": "Reduce el margen para extender apuestas agresivas de duración y vuelve a favorecer coberturas frente a inflación y geopolítica.",
       "base_scenario": "Prima energética elevada pero sin interrupción total de oferta; inflación sensible a la persistencia del shock.",
       "invalidate_if": "La normalización física del tráfico por Hormuz y una caída sostenida del Brent restauran el escenario de alivio energético.",
-      "watch": "Brent, tráfico y embarques por Hormuz y Bab el-Mandeb, inventarios estadounidenses y transmisión a expectativas de inflación.",
-      "last_publication": "/ediciones/2026-08-12-daily-inflacion-y-energia-definen-el-precio-del-riesgo/"
+      "watch": "Brent, tráfico y embarques por Hormuz y Bab el-Mandeb, inventarios estadounidenses, bloqueo de Irán y transmisión a expectativas de inflación.",
+      "last_publication": "/ediciones/2026-08-14-daily-precios-mayoristas-eeuu-no-suben-en-julio/"
     },
     {
       "id": "us-employment-fed-rates",
       "topic": "Empleo de Estados Unidos y Reserva Federal",
-      "thesis": "El debilitamiento laboral reduce la presión por una subida inmediata, pero el repunte energético aumenta nuevamente la dependencia de la Fed respecto de la inflación.",
-      "status": "confirmed",
-      "last_evidence": "Antes del IPC de julio del 12 de agosto, el Treasury a diez años se mantenía cerca de 4,68% y el mercado asignaba algo más de 50% de probabilidad a una subida de la Fed en septiembre, pese al deterioro laboral previo.",
-      "effect": "Mantiene valor en bonos de calidad, pero limita una extensión agresiva de duración hasta confirmar que la inflación continúa cediendo.",
-      "base_scenario": "Desaceleración laboral moderada con inflación todavía contenible pese a mayor volatilidad energética.",
-      "invalidate_if": "El IPC confirma desinflación suficiente para reducir de forma sostenida las expectativas de endurecimiento, o el deterioro laboral pasa de enfriamiento a contracción amplia.",
-      "watch": "IPC de julio, precios al productor, petróleo, salarios, revisiones de empleo y comunicación de la Fed.",
-      "last_publication": "/ediciones/2026-08-12-daily-inflacion-y-energia-definen-el-precio-del-riesgo/"
+      "thesis": "Dos lecturas benignas de inflación y el debilitamiento laboral hacen que una pausa de la Fed en septiembre sea el escenario dominante, aunque las tasas largas siguen elevadas por riesgo fiscal, oferta de deuda y demanda estructural de capital.",
+      "status": "changed",
+      "last_evidence": "El PPI de julio no registró variación mensual y bajó a 4,7% anual desde 5,5%, reforzando el IPC benigno; el mercado redujo la probabilidad de una subida de septiembre hacia un tercio, mientras la subasta del Treasury a treinta años se adjudicó a 5,22%, el mayor costo desde 2001.",
+      "effect": "Favorece duración corta e intermedia y activos de crecimiento rentable, pero mantiene más riesgo en el extremo largo de la curva por prima por plazo y competencia por capital.",
+      "base_scenario": "Fed sin cambios en septiembre, inflación moderándose y desaceleración laboral sin recesión profunda, con tasas reales largas persistentemente altas.",
+      "invalidate_if": "Inflación o demanda vuelven a acelerarse lo suficiente para restaurar una mayoría de probabilidades de subida, o el deterioro laboral pasa de enfriamiento a contracción amplia.",
+      "watch": "Ventas minoristas, PCE, IPC de agosto, curva de dos a treinta años, oferta del Treasury y comunicación de la Fed.",
+      "last_publication": "/ediciones/2026-08-14-daily-precios-mayoristas-eeuu-no-suben-en-julio/"
     },
     {
       "id": "ai-monetization-selectivity",
