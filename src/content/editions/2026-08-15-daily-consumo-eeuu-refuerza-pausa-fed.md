@@ -4,7 +4,7 @@ summary: "Las ventas minoristas de julio cayeron 0,6%, primera baja en nueve mes
 publishedAt: "2026-08-15T06:00:00-04:00"
 cutoffAt: "2026-08-15T06:00:00-04:00"
 type: "daily"
-status: "draft"
+status: "published"
 tags:
   - mercados-globales
   - fed

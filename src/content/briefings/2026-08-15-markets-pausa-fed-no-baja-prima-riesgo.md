@@ -4,7 +4,7 @@ summary: "El consumo débil consolida una Fed en pausa y favorece duración cort
 publishedAt: "2026-08-15T06:30:00-04:00"
 cutoffAt: "2026-08-15T06:30:00-04:00"
 section: "markets"
-status: "draft"
+status: "published"
 tags:
   - mercados-globales
   - fed

@@ -4,7 +4,7 @@ summary: "Chile llega al dato del segundo trimestre con inflación más cerca de
 publishedAt: "2026-08-15T06:20:00-04:00"
 cutoffAt: "2026-08-15T06:20:00-04:00"
 section: "national"
-status: "draft"
+status: "published"
 tags:
   - chile
   - crecimiento
