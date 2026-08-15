@@ -31,7 +31,7 @@ sources:
     url: "https://www.reuters.com/business/energy/antofagasta-first-half-earnings-rise-higher-copper-prices-offset-output-decline-2026-08-13/"
 highlights:
   - label: "Curva"
-    text: "El consumo débil baja el riesgo de una subida de la Fed, pero el Treasury a diez años terminó cerca de 4,69%: pausa monetaria no equivale a duración larga barata."
+    text: "El consumo débil reduce el riesgo de alza de la Fed, pero el Treasury a diez años cerró cerca de 4,69%: el tramo largo mantiene prima."
   - label: "Flujos"
     text: "Entraron US$2.580 millones a fondos de acciones y US$9.400 millones a bonos, mientras tecnología sufrió US$4.620 millones de salidas."
   - label: "Energía"
