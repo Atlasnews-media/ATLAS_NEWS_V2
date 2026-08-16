@@ -32,3 +32,5 @@ jobs:
             .github/workflows/editorial-shadow-audit.yml
             docs/FASE_1_OBSERVACION_EDITORIAL.md
           retention-days: 1
+
+# Helper temporal; se elimina antes de integrar.
