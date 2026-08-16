@@ -7,11 +7,69 @@ const CONTENT_DIRS = [
 ];
 
 const STOPWORDS = new Set([
-  "a", "al", "algo", "ante", "bajo", "cada", "como", "con", "contra", "cuando", "de", "del", "desde",
-  "donde", "el", "ella", "en", "entre", "era", "es", "esa", "ese", "esta", "este", "esto", "hacia",
-  "hasta", "la", "las", "lo", "los", "mas", "más", "mientras", "muy", "no", "o", "para", "pero", "por",
-  "porque", "que", "qué", "se", "sin", "sobre", "su", "sus", "tras", "un", "una", "uno", "y", "ya",
-  "the", "and", "for", "from", "into", "of", "on", "to", "with",
+  "a",
+  "al",
+  "algo",
+  "ante",
+  "bajo",
+  "cada",
+  "como",
+  "con",
+  "contra",
+  "cuando",
+  "de",
+  "del",
+  "desde",
+  "donde",
+  "el",
+  "ella",
+  "en",
+  "entre",
+  "era",
+  "es",
+  "esa",
+  "ese",
+  "esta",
+  "este",
+  "esto",
+  "hacia",
+  "hasta",
+  "la",
+  "las",
+  "lo",
+  "los",
+  "mas",
+  "más",
+  "mientras",
+  "muy",
+  "no",
+  "o",
+  "para",
+  "pero",
+  "por",
+  "porque",
+  "que",
+  "qué",
+  "se",
+  "sin",
+  "sobre",
+  "su",
+  "sus",
+  "tras",
+  "un",
+  "una",
+  "uno",
+  "y",
+  "ya",
+  "the",
+  "and",
+  "for",
+  "from",
+  "into",
+  "of",
+  "on",
+  "to",
+  "with",
 ]);
 
 const DEFAULTS = {
@@ -26,10 +84,15 @@ const DEFAULTS = {
 function parseArgs(argv) {
   const config = { ...DEFAULTS };
   for (const arg of argv.slice(2)) {
-    if (arg.startsWith("--window=")) config.windowDays = Number(arg.split("=")[1]);
+    if (arg.startsWith("--window="))
+      config.windowDays = Number(arg.split("=")[1]);
     if (arg.startsWith("--out=")) config.outDir = arg.split("=")[1];
   }
-  if (!Number.isInteger(config.windowDays) || config.windowDays < 2 || config.windowDays > 14) {
+  if (
+    !Number.isInteger(config.windowDays) ||
+    config.windowDays < 2 ||
+    config.windowDays > 14
+  ) {
     throw new Error("--window debe ser un entero entre 2 y 14");
   }
   return config;
@@ -37,7 +100,10 @@ function parseArgs(argv) {
 
 function stripQuotes(value = "") {
   const trimmed = value.trim();
-  if ((trimmed.startsWith('"') && trimmed.endsWith('"')) || (trimmed.startsWith("'") && trimmed.endsWith("'"))) {
+  if (
+    (trimmed.startsWith('"') && trimmed.endsWith('"')) ||
+    (trimmed.startsWith("'") && trimmed.endsWith("'"))
+  ) {
     return trimmed.slice(1, -1);
   }
   return trimmed;
@@ -117,7 +183,8 @@ function dateFromFilename(filename) {
 }
 
 function daysAgo(date, latestDate) {
-  const ms = Date.parse(`${latestDate}T00:00:00Z`) - Date.parse(`${date}T00:00:00Z`);
+  const ms =
+    Date.parse(`${latestDate}T00:00:00Z`) - Date.parse(`${date}T00:00:00Z`);
   return Math.round(ms / 86_400_000);
 }
 
@@ -137,7 +204,11 @@ function topTerms(items, limit = 12) {
   return [...counts.entries()]
     .sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0]))
     .slice(0, limit)
-    .map(([term, count]) => ({ term, count, share: round(count / Math.max(items.length, 1), 2) }));
+    .map(([term, count]) => ({
+      term,
+      count,
+      share: round(count / Math.max(items.length, 1), 2),
+    }));
 }
 
 async function collectItems() {
@@ -171,15 +242,24 @@ async function collectItems() {
       });
     }
   }
-  return items.sort((a, b) => a.date.localeCompare(b.date) || a.section.localeCompare(b.section));
+  return items.sort(
+    (a, b) =>
+      a.date.localeCompare(b.date) || a.section.localeCompare(b.section),
+  );
 }
 
 function nearestHistorical(item, history, field) {
-  const source = tokenSet(field === "title" ? item.title : `${item.title} ${item.summary}`);
+  const source = tokenSet(
+    field === "title" ? item.title : `${item.title} ${item.summary}`,
+  );
   let best = null;
   for (const candidate of history) {
     if (candidate.date >= item.date) continue;
-    const target = tokenSet(field === "title" ? candidate.title : `${candidate.title} ${candidate.summary}`);
+    const target = tokenSet(
+      field === "title"
+        ? candidate.title
+        : `${candidate.title} ${candidate.summary}`,
+    );
     const similarity = jaccard(source, target);
     if (!best || similarity > best.similarity) best = { candidate, similarity };
   }
@@ -202,8 +282,14 @@ function buildReport(allItems, config) {
     const age = daysAgo(item.date, latestDate);
     return age >= 0 && age < config.windowDays;
   });
-  const publishedWindow = windowItems.filter((item) => item.status === "published");
-  const historicalPool = allItems.filter((item) => item.status === "published" && daysAgo(item.date, latestDate) < config.windowDays * 2);
+  const publishedWindow = windowItems.filter(
+    (item) => item.status === "published",
+  );
+  const historicalPool = allItems.filter(
+    (item) =>
+      item.status === "published" &&
+      daysAgo(item.date, latestDate) < config.windowDays * 2,
+  );
 
   const novelty = publishedWindow.map((item) => {
     const nearest = nearestHistorical(item, historicalPool, "thesis");
@@ -275,10 +361,18 @@ function buildReport(allItems, config) {
     }
   }
 
-  const lowNovelty = novelty.filter((item) => item.noveltyScore < config.lowNovelty);
+  const lowNovelty = novelty.filter(
+    (item) => item.noveltyScore < config.lowNovelty,
+  );
   const nonPublished = windowItems
     .filter((item) => item.status !== "published")
-    .map(({ date, section, status, title, path: itemPath }) => ({ date, section, status, title, path: itemPath }));
+    .map(({ date, section, status, title, path: itemPath }) => ({
+      date,
+      section,
+      status,
+      title,
+      path: itemPath,
+    }));
 
   return {
     mode: "shadow",
@@ -297,14 +391,16 @@ function buildReport(allItems, config) {
       dates: [...new Set(publishedWindow.map((item) => item.date))],
       sections: [...new Set(publishedWindow.map((item) => item.section))],
     },
-    shortMemory: publishedWindow.map(({ date, section, title, summary, tags, path: itemPath }) => ({
-      date,
-      section,
-      title,
-      summary,
-      tags,
-      path: itemPath,
-    })),
+    shortMemory: publishedWindow.map(
+      ({ date, section, title, summary, tags, path: itemPath }) => ({
+        date,
+        section,
+        title,
+        summary,
+        tags,
+        path: itemPath,
+      }),
+    ),
     dominantTerms: topTerms(publishedWindow),
     novelty,
     signals: {
@@ -317,7 +413,8 @@ function buildReport(allItems, config) {
 }
 
 function markdownSummary(report) {
-  if (!report.latestEditorialDate) return "# ATLAS NEWS — Observación editorial\n\nSin publicaciones para analizar.\n";
+  if (!report.latestEditorialDate)
+    return "# ATLAS NEWS — Observación editorial\n\nSin publicaciones para analizar.\n";
 
   const lines = [
     "# ATLAS NEWS — Observación editorial (shadow)",
@@ -336,7 +433,12 @@ function markdownSummary(report) {
     "## Términos dominantes",
     "",
     report.dominantTerms.length
-      ? report.dominantTerms.map((item) => `- ${item.term}: ${item.count}/${report.scope.publishedItems}`).join("\n")
+      ? report.dominantTerms
+          .map(
+            (item) =>
+              `- ${item.term}: ${item.count}/${report.scope.publishedItems}`,
+          )
+          .join("\n")
       : "- Sin datos.",
     "",
   ];
@@ -344,7 +446,9 @@ function markdownSummary(report) {
   if (report.signals.lowNovelty.length) {
     lines.push("## Novedad baja", "");
     for (const item of report.signals.lowNovelty) {
-      lines.push(`- ${item.date} · ${item.section} · **${item.noveltyScore}/100** — ${item.title}`);
+      lines.push(
+        `- ${item.date} · ${item.section} · **${item.noveltyScore}/100** — ${item.title}`,
+      );
     }
     lines.push("");
   }
@@ -352,7 +456,9 @@ function markdownSummary(report) {
   if (report.signals.repetition.length) {
     lines.push("## Repetición detectada", "");
     for (const item of report.signals.repetition) {
-      lines.push(`- ${item.date} · ${item.section} · ${item.type} ${item.similarity} — “${item.title}” ↔ “${item.comparedWith}”`);
+      lines.push(
+        `- ${item.date} · ${item.section} · ${item.type} ${item.similarity} — “${item.title}” ↔ “${item.comparedWith}”`,
+      );
     }
     lines.push("");
   }
@@ -360,7 +466,9 @@ function markdownSummary(report) {
   if (report.signals.crossSectionOverlap.length) {
     lines.push("## Solapamiento del mismo día", "");
     for (const item of report.signals.crossSectionOverlap) {
-      lines.push(`- ${item.date} · ${item.sections.join(" / ")} · similitud ${item.similarity}`);
+      lines.push(
+        `- ${item.date} · ${item.sections.join(" / ")} · similitud ${item.similarity}`,
+      );
     }
     lines.push("");
   }
@@ -368,7 +476,9 @@ function markdownSummary(report) {
   if (report.signals.nonPublished.length) {
     lines.push("## Piezas no publicadas", "");
     for (const item of report.signals.nonPublished) {
-      lines.push(`- ${item.date} · ${item.section} · ${item.status} — ${item.title}`);
+      lines.push(
+        `- ${item.date} · ${item.section} · ${item.status} — ${item.title}`,
+      );
     }
     lines.push("");
   }
@@ -388,10 +498,18 @@ async function main() {
   const items = await collectItems();
   const report = buildReport(items, config);
   await fs.mkdir(config.outDir, { recursive: true });
-  await fs.writeFile(path.join(config.outDir, "report.json"), `${JSON.stringify(report, null, 2)}\n`);
-  await fs.writeFile(path.join(config.outDir, "summary.md"), markdownSummary(report));
+  await fs.writeFile(
+    path.join(config.outDir, "report.json"),
+    `${JSON.stringify(report, null, 2)}\n`,
+  );
+  await fs.writeFile(
+    path.join(config.outDir, "summary.md"),
+    markdownSummary(report),
+  );
 
-  console.log(`ATLAS editorial shadow: ${report.scope?.publishedItems ?? 0} publicaciones analizadas.`);
+  console.log(
+    `ATLAS editorial shadow: ${report.scope?.publishedItems ?? 0} publicaciones analizadas.`,
+  );
   console.log(`Reporte: ${path.join(config.outDir, "report.json")}`);
 }
 
