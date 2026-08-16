@@ -39,14 +39,14 @@
     {
       "id": "chile-inflation-activity-rates",
       "topic": "Inflación, actividad y tasas en Chile",
-      "thesis": "La moderación inflacionaria y el rebote de actividad mejoran el escenario local, pero el renovado riesgo energético limita la extrapolación hacia recortes acelerados.",
-      "status": "confirmed",
-      "last_evidence": "Chile mantiene IPC de julio en 3,5% anual, Imacec de junio en 2,4% y TPM en 4,5%; la EOF post RPM de julio se publica el 12 de agosto mientras el Brent continúa cerca de US$90.",
-      "effect": "Sostiene un tono favorable para renta fija local, aunque vuelve más valiosa la selectividad por duración y la protección frente a inflación.",
-      "base_scenario": "Inflación convergente, TPM cautelosa y recuperación gradual, con petróleo como principal riesgo externo inmediato.",
-      "invalidate_if": "Petróleo y dólar vuelven a caer de forma sostenida y las expectativas confirman desinflación, o la inflación local repunta materialmente.",
-      "watch": "EOF post RPM, petróleo, dólar, empleo, salarios, inflación subyacente y Cuentas Nacionales del segundo trimestre.",
-      "last_publication": "/ediciones/2026-08-12-daily-inflacion-y-energia-definen-el-precio-del-riesgo/"
+      "thesis": "La moderación inflacionaria mejora el escenario local, pero tasas largas globales persistentemente altas pueden limitar cuánto se transmite una futura baja de TPM al costo del crédito, la inversión y las valorizaciones en Chile.",
+      "status": "changed",
+      "last_evidence": "Chile mantiene IPC de julio en 3,5% anual y TPM en 4,5%, mientras la colocación estadounidense a 30 años alcanzó cerca de 5,22%, las tasas reales largas se mantienen alrededor de 3% y el dólar en Chile cerró el 14 de agosto cerca de $915,6 tras repuntar junto a las tasas globales.",
+      "effect": "Favorece una lectura más selectiva de la renta fija local: una eventual normalización de la TPM no garantiza por sí sola una caída equivalente del costo financiero de mediano y largo plazo.",
+      "base_scenario": "Inflación convergente y TPM cautelosa, con tasas locales de largo plazo sensibles tanto al ciclo interno como al precio global del capital.",
+      "invalidate_if": "Las tasas largas globales caen de forma sostenida y la curva chilena acompaña esa baja, reduciendo de manera visible el costo de financiamiento aun sin cambios relevantes en la TPM.",
+      "watch": "Treasury a diez y treinta años, curva local, dólar, inflación subyacente, comunicación del Banco Central, condiciones de crédito y costo de financiamiento corporativo.",
+      "last_publication": "/lecturas/2026-08-16-reading-tasas-largas-chile/"
     }
   ]
 }
