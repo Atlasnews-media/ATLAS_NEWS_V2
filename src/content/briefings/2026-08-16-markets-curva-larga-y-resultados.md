@@ -4,7 +4,7 @@ summary: "La semana abre con una Fed más cerca de pausar, pero la prueba para l
 publishedAt: "2026-08-16T15:10:00-04:00"
 cutoffAt: "2026-08-16T14:50:00-04:00"
 section: "markets"
-status: "draft"
+status: "published"
 tags:
   - mercados
   - treasury
