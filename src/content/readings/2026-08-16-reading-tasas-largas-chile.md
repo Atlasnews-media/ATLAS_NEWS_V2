@@ -2,7 +2,7 @@
 title: "Cuando bajar la TPM no basta: Chile frente a un mundo de tasas largas más altas"
 summary: "La inflación chilena mejora, pero el costo del dinero de largo plazo depende también del exterior. Tasas globales elevadas pueden transmitirse a Chile mediante el dólar, la curva local, el crédito, la inversión y la valoración de activos."
 publishedAt: "2026-08-16T14:48:00-04:00"
-status: "draft"
+status: "published"
 tags:
   - lectura-seleccionada
   - chile
