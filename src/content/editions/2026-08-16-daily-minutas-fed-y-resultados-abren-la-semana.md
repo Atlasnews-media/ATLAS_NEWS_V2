@@ -4,7 +4,7 @@ summary: "Con los mercados cerrados este domingo, la atención pasa a la agenda:
 publishedAt: "2026-08-16T15:00:00-04:00"
 cutoffAt: "2026-08-16T14:50:00-04:00"
 type: "daily"
-status: "draft"
+status: "published"
 tags:
   - mercados-globales
   - fed
