@@ -1,0 +1,60 @@
+name: Observación editorial shadow
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "15 7 * * *"
+      timezone: "America/Santiago"
+
+permissions:
+  contents: read
+
+concurrency:
+  group: editorial-shadow-audit
+  cancel-in-progress: true
+
+jobs:
+  observe:
+    name: Medir novedad, repetición y solapamiento
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+
+    steps:
+      - name: Descargar main
+        uses: actions/checkout@v5
+        with:
+          ref: main
+          fetch-depth: 1
+
+      - name: Configurar Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: Ejecutar observación no bloqueante
+        id: shadow
+        shell: bash
+        run: |
+          set +e
+          node scripts/editorial-shadow-audit.mjs --window=5 --out=artifacts/editorial-shadow
+          code=$?
+          if [ -f artifacts/editorial-shadow/summary.md ]; then
+            cat artifacts/editorial-shadow/summary.md >> "$GITHUB_STEP_SUMMARY"
+          else
+            {
+              echo "# ATLAS NEWS — Observación editorial (shadow)"
+              echo
+              echo "El auditor no generó resumen. Al estar en shadow mode, esto no afecta publicación ni producción."
+            } >> "$GITHUB_STEP_SUMMARY"
+          fi
+          echo "exit_code=$code" >> "$GITHUB_OUTPUT"
+          exit 0
+
+      - name: Guardar diagnóstico
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: editorial-shadow-${{ github.run_id }}
+          path: artifacts/editorial-shadow/
+          if-no-files-found: ignore
+          retention-days: 14
