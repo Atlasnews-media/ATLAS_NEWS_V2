@@ -1,0 +1,34 @@
+name: Temp format phase 1
+
+on:
+  push:
+    branches:
+      - agent/editorial-phase-1-shadow-v2
+
+permissions:
+  contents: read
+
+jobs:
+  format:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - run: npm ci
+      - name: Formatear archivos nuevos
+        run: |
+          npx prettier --write \
+            scripts/editorial-shadow-audit.mjs \
+            .github/workflows/editorial-shadow-audit.yml \
+            docs/FASE_1_OBSERVACION_EDITORIAL.md
+      - uses: actions/upload-artifact@v4
+        with:
+          name: phase1-formatted
+          path: |
+            scripts/editorial-shadow-audit.mjs
+            .github/workflows/editorial-shadow-audit.yml
+            docs/FASE_1_OBSERVACION_EDITORIAL.md
+          retention-days: 1
