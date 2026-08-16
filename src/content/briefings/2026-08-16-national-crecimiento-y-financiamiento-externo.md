@@ -4,7 +4,7 @@ summary: "El Banco Central publica el lunes flujos de no residentes y el martes 
 publishedAt: "2026-08-16T15:05:00-04:00"
 cutoffAt: "2026-08-16T14:50:00-04:00"
 section: "national"
-status: "draft"
+status: "published"
 tags:
   - chile
   - crecimiento
