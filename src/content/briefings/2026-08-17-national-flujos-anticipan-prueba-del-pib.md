@@ -4,7 +4,7 @@ summary: "El Banco Central publica hoy posiciones de no residentes y mañana las
 publishedAt: "2026-08-17T07:05:00-04:00"
 cutoffAt: "2026-08-17T07:00:00-04:00"
 section: "national"
-status: "draft"
+status: "published"
 tags:
   - chile
   - flujos

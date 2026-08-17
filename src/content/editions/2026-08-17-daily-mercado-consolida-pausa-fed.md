@@ -4,7 +4,7 @@ summary: "Las bolsas globales avanzan, el dólar cede y la probabilidad de una s
 publishedAt: "2026-08-17T06:30:00-04:00"
 cutoffAt: "2026-08-17T06:30:00-04:00"
 type: "daily"
-status: "draft"
+status: "published"
 tags:
   - mercados-globales
   - fed

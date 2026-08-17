@@ -4,7 +4,7 @@ summary: "Treasury corto y dólar recogen una Fed más paciente, mientras petró
 publishedAt: "2026-08-17T07:20:00-04:00"
 cutoffAt: "2026-08-17T07:15:00-04:00"
 section: "markets"
-status: "draft"
+status: "published"
 tags:
   - mercados-globales
   - fed
