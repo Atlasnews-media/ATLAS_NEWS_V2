@@ -9,6 +9,14 @@ on:
       - "scripts/funds/**"
       - "package.json"
       - "package-lock.json"
+  pull_request:
+    branches: [main]
+    paths:
+      - ".github/workflows/update-funds.yml"
+      - "src/lib/funds/**"
+      - "scripts/funds/**"
+      - "package.json"
+      - "package-lock.json"
   schedule:
     - cron: "17 9 * * *"
       timezone: "America/Santiago"
@@ -18,8 +26,8 @@ permissions:
   contents: read
 
 concurrency:
-  group: atlas-news-production
-  cancel-in-progress: false
+  group: ${{ github.event_name == 'pull_request' && format('funds-pr-{0}', github.event.pull_request.number) || 'atlas-news-production' }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
 
 jobs:
   update-funds:
@@ -46,7 +54,36 @@ jobs:
       - name: Consultar BuscaFondos y generar snapshot
         run: npm run funds:update -- --output .artifacts/funds/funds-beagf.json
 
+      - name: Validar plan contra el repositorio público
+        if: github.event_name == 'pull_request'
+        run: |
+          set -euo pipefail
+
+          public_dir="$RUNNER_TEMP/atlas-news-public-readonly"
+          new_snapshot="$GITHUB_WORKSPACE/.artifacts/funds/funds-beagf.json"
+          git clone --depth 1 https://github.com/EldeSiempre100/EldeSiempre100.github.io.git "$public_dir"
+
+          target="$public_dir/data/funds-beagf.json"
+          test -f "$target"
+
+          new_as_of="$(jq -r '.asOf' "$new_snapshot")"
+          old_as_of="$(jq -r '.asOf' "$target")"
+          if [[ "$new_as_of" < "$old_as_of" ]]; then
+            echo "La fuente retrocedió desde $old_as_of a $new_as_of." >&2
+            exit 1
+          fi
+
+          jq -e '
+            .schemaVersion == 1 and
+            .status == "current" and
+            .source.provider == "buscafondos" and
+            (.funds | length) == 10
+          ' "$new_snapshot" > /dev/null
+
+          echo "Plan de actualización validado: público=$old_as_of · fuente=$new_as_of."
+
       - name: Preparar acceso al repositorio público
+        if: github.event_name != 'pull_request'
         env:
           DEPLOY_KEY: ${{ secrets.ATLAS_PAGES_DEPLOY_KEY }}
         run: |
@@ -57,6 +94,7 @@ jobs:
 
       - name: Actualizar únicamente el snapshot público
         id: publish
+        if: github.event_name != 'pull_request'
         env:
           GIT_SSH_COMMAND: ssh -i ~/.ssh/atlas_news_pages -o IdentitiesOnly=yes
         run: |
@@ -111,6 +149,7 @@ jobs:
           echo "public_commit=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
 
       - name: Verificar integridad del repositorio público
+        if: github.event_name != 'pull_request'
         env:
           EXPECTED_AS_OF: ${{ steps.publish.outputs.as_of }}
         run: |
