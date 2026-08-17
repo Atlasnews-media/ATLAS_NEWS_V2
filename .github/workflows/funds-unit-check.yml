@@ -1,4 +1,4 @@
-name: Validar motor Fondos
+name: Validar Fondos
 
 on:
   pull_request:
@@ -14,8 +14,8 @@ permissions:
   contents: read
 
 jobs:
-  test-finance:
-    name: Probar cálculos financieros
+  test-funds:
+    name: Probar motor y snapshot
     runs-on: ubuntu-latest
     steps:
       - name: Descargar repositorio
@@ -31,7 +31,7 @@ jobs:
         run: npm ci
 
       - name: Comprobar formato de Fondos
-        run: npx prettier --check src/lib/funds/finance.ts scripts/funds/run-finance-tests.mjs scripts/funds/finance.test.cjs
+        run: npx prettier --check src/lib/funds scripts/funds
 
       - name: Ejecutar pruebas de Fondos
         run: npm run test:funds
