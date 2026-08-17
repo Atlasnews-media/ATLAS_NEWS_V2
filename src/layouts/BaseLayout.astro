@@ -43,17 +43,10 @@ const sourceCommit = (
   "local"
 ).slice(0, 7);
 
-/**
- * El enlace Fondos se habilita únicamente cuando el canal independiente de
- * datos queda operativo en producción (Fase 6). La ruta /fondos/ puede
- * validarse durante Fase 5 sin alterar la navegación pública vigente.
- */
-const fundsPublicEnabled = false;
 const isHome = Astro.url.pathname === "/";
-const primaryEntry =
-  fundsPublicEnabled && isHome
-    ? { href: "/fondos/", label: "Fondos" }
-    : { href: "/", label: "Portada" };
+const primaryEntry = isHome
+  ? { href: "/fondos/", label: "Fondos" }
+  : { href: "/", label: "Portada" };
 ---
 
 <!doctype html>
