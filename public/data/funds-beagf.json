@@ -16,7 +16,13 @@
       "seriesName": "C",
       "effectiveDate": "2026-08-13",
       "trend": "up",
-      "returns": { "d7": 0.06, "d30": 0.26, "d60": 0.51, "d90": 0.78, "y1": 3.26 }
+      "returns": {
+        "d7": 0.06,
+        "d30": 0.26,
+        "d60": 0.51,
+        "d90": 0.78,
+        "y1": 3.26
+      }
     },
     {
       "key": "liquidez-asg-clasico",
@@ -25,7 +31,13 @@
       "seriesName": "Clásico",
       "effectiveDate": "2026-08-13",
       "trend": "up",
-      "returns": { "d7": 0.06, "d30": 0.26, "d60": 0.51, "d90": 0.78, "y1": 3.22 }
+      "returns": {
+        "d7": 0.06,
+        "d30": 0.26,
+        "d60": 0.51,
+        "d90": 0.78,
+        "y1": 3.22
+      }
     },
     {
       "key": "chile-sostenible-conservador-clasico",
@@ -34,7 +46,13 @@
       "seriesName": "Clásico",
       "effectiveDate": "2026-08-13",
       "trend": "up",
-      "returns": { "d7": 0.09, "d30": 0.27, "d60": 0.6, "d90": 0.84, "y1": 4.39 }
+      "returns": {
+        "d7": 0.09,
+        "d30": 0.27,
+        "d60": 0.6,
+        "d90": 0.84,
+        "y1": 4.39
+      }
     },
     {
       "key": "mi-futuro-accesible-clasico",
@@ -43,7 +61,13 @@
       "seriesName": "Clásico",
       "effectiveDate": "2026-08-13",
       "trend": "up",
-      "returns": { "d7": 0.08, "d30": 0.31, "d60": 0.64, "d90": 0.9, "y1": 4.31 }
+      "returns": {
+        "d7": 0.08,
+        "d30": 0.31,
+        "d60": 0.64,
+        "d90": 0.9,
+        "y1": 4.31
+      }
     },
     {
       "key": "mi-futuro-conservador-clasico",
@@ -52,7 +76,13 @@
       "seriesName": "Clásico",
       "effectiveDate": "2026-08-13",
       "trend": "up",
-      "returns": { "d7": 0.1, "d30": 0.26, "d60": 0.63, "d90": 0.68, "y1": 4.83 }
+      "returns": {
+        "d7": 0.1,
+        "d30": 0.26,
+        "d60": 0.63,
+        "d90": 0.68,
+        "y1": 4.83
+      }
     },
     {
       "key": "mi-futuro-moderado-clasico",
@@ -61,7 +91,13 @@
       "seriesName": "Clásico",
       "effectiveDate": "2026-08-13",
       "trend": "up",
-      "returns": { "d7": 0.09, "d30": 0.31, "d60": 0.87, "d90": 1.08, "y1": 5.86 }
+      "returns": {
+        "d7": 0.09,
+        "d30": 0.31,
+        "d60": 0.87,
+        "d90": 1.08,
+        "y1": 5.86
+      }
     },
     {
       "key": "chile-ecologico-clasico",
@@ -70,7 +106,13 @@
       "seriesName": "Clásico",
       "effectiveDate": "2026-08-13",
       "trend": "up",
-      "returns": { "d7": 0.13, "d30": 0.05, "d60": 0.37, "d90": 0.28, "y1": 4.51 }
+      "returns": {
+        "d7": 0.13,
+        "d30": 0.05,
+        "d60": 0.37,
+        "d90": 0.28,
+        "y1": 4.51
+      }
     },
     {
       "key": "perfil-e-clasico",
@@ -79,7 +121,13 @@
       "seriesName": "Clásico",
       "effectiveDate": "2026-08-13",
       "trend": "up",
-      "returns": { "d7": 0.14, "d30": 0.02, "d60": 0.89, "d90": 0.92, "y1": 6.06 }
+      "returns": {
+        "d7": 0.14,
+        "d30": 0.02,
+        "d60": 0.89,
+        "d90": 0.92,
+        "y1": 6.06
+      }
     },
     {
       "key": "perfil-c-clasico",
@@ -88,7 +136,13 @@
       "seriesName": "Clásico",
       "effectiveDate": "2026-08-13",
       "trend": "up",
-      "returns": { "d7": 0.21, "d30": 0.3, "d60": 1.59, "d90": 2.25, "y1": 10.41 }
+      "returns": {
+        "d7": 0.21,
+        "d30": 0.3,
+        "d60": 1.59,
+        "d90": 2.25,
+        "y1": 10.41
+      }
     },
     {
       "key": "perfil-a-clasico",
@@ -97,7 +151,13 @@
       "seriesName": "Clásico",
       "effectiveDate": "2026-08-13",
       "trend": "up",
-      "returns": { "d7": 0.42, "d30": 0.89, "d60": 2.48, "d90": 3.61, "y1": 15.42 }
+      "returns": {
+        "d7": 0.42,
+        "d30": 0.89,
+        "d60": 2.48,
+        "d90": 3.61,
+        "y1": 15.42
+      }
     }
   ]
 }
