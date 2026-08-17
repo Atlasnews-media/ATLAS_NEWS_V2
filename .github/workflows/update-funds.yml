@@ -1,0 +1,125 @@
+name: Actualizar Fondos BEAGF
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/update-funds.yml"
+      - "src/lib/funds/**"
+      - "scripts/funds/**"
+      - "package.json"
+      - "package-lock.json"
+  schedule:
+    - cron: "17 9 * * *"
+      timezone: "America/Santiago"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: atlas-news-production
+  cancel-in-progress: false
+
+jobs:
+  update-funds:
+    name: Validar y publicar snapshot de Fondos
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - name: Descargar repositorio privado
+        uses: actions/checkout@v5
+
+      - name: Preparar Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Instalar dependencias
+        run: npm ci
+
+      - name: Probar subsistema Fondos
+        run: npm run test:funds
+
+      - name: Consultar BuscaFondos y generar snapshot
+        run: npm run funds:update -- --output .artifacts/funds/funds-beagf.json
+
+      - name: Preparar acceso al repositorio público
+        env:
+          DEPLOY_KEY: ${{ secrets.ATLAS_PAGES_DEPLOY_KEY }}
+        run: |
+          install -m 700 -d ~/.ssh
+          printf '%s\n' "$DEPLOY_KEY" > ~/.ssh/atlas_news_pages
+          chmod 600 ~/.ssh/atlas_news_pages
+          ssh-keyscan -H github.com >> ~/.ssh/known_hosts
+
+      - name: Actualizar únicamente el snapshot público
+        id: publish
+        env:
+          GIT_SSH_COMMAND: ssh -i ~/.ssh/atlas_news_pages -o IdentitiesOnly=yes
+        run: |
+          set -euo pipefail
+
+          public_dir="$RUNNER_TEMP/atlas-news-public"
+          new_snapshot="$GITHUB_WORKSPACE/.artifacts/funds/funds-beagf.json"
+          target_relative="data/funds-beagf.json"
+
+          git clone --depth 1 git@github.com:EldeSiempre100/EldeSiempre100.github.io.git "$public_dir"
+          target="$public_dir/$target_relative"
+
+          new_as_of="$(jq -r '.asOf' "$new_snapshot")"
+          if [[ -z "$new_as_of" || "$new_as_of" == "null" ]]; then
+            echo "El snapshot nuevo no contiene una fecha efectiva válida." >&2
+            exit 1
+          fi
+
+          changed=true
+          if [[ -f "$target" ]]; then
+            old_as_of="$(jq -r '.asOf' "$target")"
+            if [[ -n "$old_as_of" && "$old_as_of" != "null" && "$new_as_of" < "$old_as_of" ]]; then
+              echo "La fuente retrocedió desde $old_as_of a $new_as_of; se conserva el dato público vigente." >&2
+              exit 1
+            fi
+
+            old_normalized="$RUNNER_TEMP/funds-old.json"
+            new_normalized="$RUNNER_TEMP/funds-new.json"
+            jq -S 'del(.fetchedAt)' "$target" > "$old_normalized"
+            jq -S 'del(.fetchedAt)' "$new_snapshot" > "$new_normalized"
+            if cmp -s "$old_normalized" "$new_normalized"; then
+              changed=false
+            fi
+          fi
+
+          cd "$public_dir"
+          git config user.name "ATLAS NEWS Funds Publisher"
+          git config user.email "actions@users.noreply.github.com"
+
+          if [[ "$changed" == "true" ]]; then
+            install -D -m 644 "$new_snapshot" "$target"
+            git add -- "$target_relative"
+            git commit -m "Actualiza Fondos BEAGF al $new_as_of"
+            git push origin main
+            echo "Snapshot público actualizado con datos al $new_as_of."
+          else
+            echo "Fondos ya contiene el último snapshot validado ($new_as_of)."
+          fi
+
+          echo "as_of=$new_as_of" >> "$GITHUB_OUTPUT"
+          echo "changed=$changed" >> "$GITHUB_OUTPUT"
+          echo "public_commit=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
+
+      - name: Verificar integridad del repositorio público
+        env:
+          EXPECTED_AS_OF: ${{ steps.publish.outputs.as_of }}
+        run: |
+          public_dir="$RUNNER_TEMP/atlas-news-public"
+          test -f "$public_dir/data/funds-beagf.json"
+          jq -e --arg date "$EXPECTED_AS_OF" '
+            .schemaVersion == 1 and
+            .status == "current" and
+            .asOf == $date and
+            .source.provider == "buscafondos" and
+            (.funds | length) == 10
+          ' "$public_dir/data/funds-beagf.json" > /dev/null
