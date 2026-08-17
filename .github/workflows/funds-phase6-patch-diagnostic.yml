@@ -1,4 +1,4 @@
-name: Preparar parche aislamiento Fondos
+name: Aplicar parche aislamiento Fondos
 
 on:
   pull_request:
@@ -8,15 +8,20 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: read
+  contents: write
 
 jobs:
   patch:
-    name: Generar publish-site protegido
+    name: Proteger snapshot frente al deploy editorial
     runs-on: ubuntu-latest
+    env:
+      TARGET_BRANCH: ${{ github.event.pull_request.head.ref || github.ref_name }}
+
     steps:
-      - name: Descargar repositorio
+      - name: Descargar rama de trabajo
         uses: actions/checkout@v5
+        with:
+          ref: ${{ env.TARGET_BRANCH }}
 
       - name: Añadir exclusión del snapshot Fondos
         run: |
@@ -28,21 +33,27 @@ jobs:
           old = "rsync -a --delete --exclude='.git' --exclude='audio/' dist/ \"$atlas_publish_dir/\""
           new = "rsync -a --delete --exclude='.git' --exclude='audio/' --exclude='data/funds-beagf.json' dist/ \"$atlas_publish_dir/\""
 
+          if new in text:
+              raise SystemExit(0)
           if text.count(old) != 1:
               raise SystemExit(f'Se esperaba exactamente una línea rsync objetivo; encontradas: {text.count(old)}')
 
           path.write_text(text.replace(old, new), encoding='utf-8')
           PY
 
-      - name: Comprobar cambio acotado
+      - name: Comprobar y guardar cambio acotado
         run: |
+          set -euo pipefail
           git diff --check
           git diff -- .github/workflows/publish-site.yml
 
-      - name: Guardar archivo parcheado
-        uses: actions/upload-artifact@v4
-        with:
-          name: publish-site-protected
-          path: .github/workflows/publish-site.yml
-          if-no-files-found: error
-          retention-days: 1
+          if git diff --quiet -- .github/workflows/publish-site.yml; then
+            echo "El deploy editorial ya protege el snapshot de Fondos."
+            exit 0
+          fi
+
+          git config user.name "ATLAS NEWS Maintainer"
+          git config user.email "actions@users.noreply.github.com"
+          git add .github/workflows/publish-site.yml
+          git commit -m "fondos: preserva snapshot en despliegues editoriales"
+          git push origin "HEAD:${TARGET_BRANCH}"
