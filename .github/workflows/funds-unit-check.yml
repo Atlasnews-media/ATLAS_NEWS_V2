@@ -1,0 +1,34 @@
+name: Validar motor Fondos
+
+on:
+  pull_request:
+    paths:
+      - "src/lib/funds/**"
+      - "scripts/funds/**"
+      - "package.json"
+      - "package-lock.json"
+      - ".github/workflows/funds-unit-check.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  test-finance:
+    name: Probar cálculos financieros
+    runs-on: ubuntu-latest
+    steps:
+      - name: Descargar repositorio
+        uses: actions/checkout@v5
+
+      - name: Preparar Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Instalar dependencias
+        run: npm ci
+
+      - name: Ejecutar pruebas de Fondos
+        run: npm run test:funds
