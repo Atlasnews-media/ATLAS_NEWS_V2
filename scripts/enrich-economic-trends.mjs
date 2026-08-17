@@ -19,7 +19,9 @@ function dateInSantiago(value) {
     month: "2-digit",
     day: "2-digit",
   }).formatToParts(new Date(value));
-  const values = Object.fromEntries(parts.map(({ type, value }) => [type, value]));
+  const values = Object.fromEntries(
+    parts.map(({ type, value }) => [type, value]),
+  );
   return `${values.year}-${values.month}-${values.day}`;
 }
 
@@ -73,7 +75,7 @@ async function enrichIndicator(indicator) {
 
   if (!current || !previous || previous.value === 0) return indicator;
 
-  const rawChange = ((current.value / previous.value) - 1) * 100;
+  const rawChange = (current.value / previous.value - 1) * 100;
   const changePercent = Math.round(rawChange * 100) / 100;
   const trend =
     Math.abs(changePercent) < 0.01 ? "flat" : changePercent > 0 ? "up" : "down";
