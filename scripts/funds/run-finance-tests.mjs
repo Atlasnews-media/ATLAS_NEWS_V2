@@ -39,7 +39,11 @@ const testConfig = {
   ],
 };
 
-writeFileSync(testConfigPath, `${JSON.stringify(testConfig, null, 2)}\n`, "utf8");
+writeFileSync(
+  testConfigPath,
+  `${JSON.stringify(testConfig, null, 2)}\n`,
+  "utf8",
+);
 
 try {
   execFileSync(tscBin, ["-p", testConfigPath], {
@@ -53,10 +57,14 @@ try {
     "utf8",
   );
 
-  execFileSync(process.execPath, ["--test", "scripts/funds/finance.test.cjs"], {
-    cwd: repoRoot,
-    stdio: "inherit",
-  });
+  execFileSync(
+    process.execPath,
+    ["--test", "scripts/funds/finance.test.cjs"],
+    {
+      cwd: repoRoot,
+      stdio: "inherit",
+    },
+  );
 } finally {
   rmSync(outputDir, { recursive: true, force: true });
   rmSync(testConfigPath, { force: true });
