@@ -146,18 +146,33 @@ El snapshot publicado deberá respetar conceptualmente esta estructura:
 
 Los valores del ejemplo son ficticios y no corresponden a fondos reales.
 
-## Universo de fondos
+## Universo definitivo de fondos
 
-El alcance objetivo es de ocho fondos/series específicos de BancoEstado AGF.
+El alcance aprobado es de diez fondos/series específicos de BancoEstado AGF:
 
-La whitelist definitiva se incorporará en `src/lib/funds/config.ts` una vez que se entregue el listado canónico de fondos y series. No se realizará descubrimiento dinámico de productos en producción.
+| Fondo editorial | Serie editorial | ID fondo conceptual | ID serie | Código serie en fuente |
+| --- | --- | --- | --- | --- |
+| Conveniencia | C | `2002574717` | `2923188229` | `C` |
+| Liquidez ASG | Clásico | `249081581` | `1364354814` | `CLASI` |
+| Chile Sostenible Conservador | Clásico | `579377459` | `619462196` | `CLASICO` |
+| Mi Futuro Accesible | Clásico | `3073297714` | `240528668` | `CLASICO` |
+| Mi Futuro Conservador | Clásico | `1389387372` | `1601605775` | `CLASICO` |
+| Mi Futuro Moderado | Clásico | `1596176255` | `1357703813` | `CLASICO` |
+| Chile Ecológico | Clásico | `4237267305` | `395874242` | `CLASI` |
+| Perfil E | Clásico | `3065517706` | `1502993196` | `CLASI` |
+| Perfil C | Clásico | `1570573798` | `63492819` | `CLASI` |
+| Perfil A | Clásico | `2991654653` | `2200754105` | `CLASI` |
+
+Los IDs se tomaron del catálogo de BuscaFondos ya utilizado por el comparador FFMM de referencia. En Fase 3 se validarán nuevamente contra la API antes de habilitar la extracción automática. La diferencia entre `CLASI` y `CLASICO` es una codificación de la fuente; editorialmente ambas se presentan como `Clásico`.
+
+La whitelist queda fijada en `src/lib/funds/config.ts`. Producción no realizará descubrimiento dinámico de productos.
 
 ## Política de fallos
 
 Una actualización nueva solo puede sustituir al snapshot anterior cuando:
 
 - la fuente responde correctamente;
-- todas las series configuradas están presentes;
+- las diez series configuradas están presentes;
 - las observaciones tienen fechas válidas;
 - existen datos suficientes para todos los horizontes;
 - los valores cuota son numéricos, finitos y positivos;
@@ -185,4 +200,5 @@ La Fase 1 se considera aprobada si:
 - no introduce cálculos en componentes Astro;
 - define un contrato tipado para configuración y snapshot;
 - reserva `finance.ts` como capa financiera independiente;
+- fija exactamente las diez series aprobadas;
 - el proyecto continúa construyendo con las mismas reglas previas.
