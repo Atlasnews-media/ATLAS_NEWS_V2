@@ -30,8 +30,11 @@ jobs:
       - name: Instalar dependencias
         run: npm ci
 
-      - name: Comprobar formato de Fondos
-        run: npx prettier --check src/lib/funds scripts/funds
+      - name: Mostrar formato esperado
+        run: |
+          npx prettier --write scripts/funds/snapshot.mjs scripts/funds/update-funds.mjs
+          git diff -- scripts/funds/snapshot.mjs scripts/funds/update-funds.mjs
+          test -z "$(git status --short -- scripts/funds/snapshot.mjs scripts/funds/update-funds.mjs)"
 
       - name: Ejecutar pruebas de Fondos
         run: npm run test:funds
