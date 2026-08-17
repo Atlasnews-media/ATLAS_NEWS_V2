@@ -7,12 +7,8 @@
     </p>
   </header>
 
-  <p class="data-date" id="funds-data-date" aria-live="polite">
-    Datos en preparación
-  </p>
-
   <div class="table-wrap">
-    <table aria-describedby="funds-data-date">
+    <table aria-describedby="funds-data-line">
       <thead>
         <tr>
           <th scope="col">Fondo</th>
@@ -28,11 +24,15 @@
     </table>
   </div>
 
+  <p class="funds-data-line" id="funds-data-line" aria-live="polite">
+    <span class="funds-source">Fuente: CMF</span>
+    <span aria-hidden="true"> · </span>
+    <span id="funds-data-date">Datos en preparación</span>
+  </p>
+
   <p class="funds-status" id="funds-status" hidden>
     Los datos de fondos no están disponibles en este momento.
   </p>
-
-  <p class="source-line" id="funds-source" hidden>Fuente: BuscaFondos</p>
 </section>
 
 <script>
@@ -60,7 +60,6 @@
     document.querySelector<HTMLTableSectionElement>("#funds-table-body");
   const dateNode = document.querySelector<HTMLElement>("#funds-data-date");
   const statusNode = document.querySelector<HTMLElement>("#funds-status");
-  const sourceNode = document.querySelector<HTMLElement>("#funds-source");
 
   const trendSymbols: Record<FundTrend, string> = {
     up: "▲",
@@ -146,7 +145,6 @@
     if (dateNode) {
       dateNode.textContent = `Datos al ${formatDataDate(snapshot.asOf)}`;
     }
-    if (sourceNode) sourceNode.hidden = false;
   }
 
   fetch(snapshotUrl, { cache: "no-store" })
@@ -178,28 +176,15 @@
   }
   .funds-heading p {
     max-width: 52rem;
-    margin: 0.55rem 0 1rem;
+    margin: 0.55rem 0 1.15rem;
     color: var(--ink-soft);
     font-size: clamp(1.02rem, 2vw, 1.3rem);
     line-height: 1.35;
   }
-  .data-date,
-  .source-line,
-  .funds-status {
-    font-family: var(--sans);
-    text-transform: uppercase;
-  }
-  .data-date {
-    margin: 1.25rem 0 0.45rem;
-    color: var(--ink-soft);
-    font-size: 0.72rem;
-    font-weight: 800;
-    letter-spacing: 0.08em;
-  }
   .table-wrap {
     width: 100%;
-    border-top: 2px solid var(--rule);
-    border-bottom: 2px solid var(--rule);
+    border-top: 4px double var(--rule);
+    border-bottom: 4px double var(--rule);
   }
   table {
     width: 100%;
@@ -208,7 +193,7 @@
   }
   th,
   td {
-    padding: 0.72rem 0.45rem;
+    padding: 0.7rem 0.42rem;
     border-bottom: 1px solid var(--rule);
     text-align: right;
     vertical-align: middle;
@@ -227,9 +212,13 @@
     width: 8%;
   }
   tbody th {
-    font: 800 0.78rem/1.16 var(--sans);
-    letter-spacing: 0.025em;
-    text-transform: uppercase;
+    color: var(--ink);
+    font-family: var(--serif);
+    font-size: clamp(0.94rem, 1.8vw, 1.16rem);
+    font-weight: 400;
+    line-height: 1.2;
+    letter-spacing: 0;
+    text-transform: none;
   }
   tbody td {
     font-size: 0.95rem;
@@ -248,12 +237,23 @@
   .return-cell {
     white-space: nowrap;
   }
-  .source-line {
+  .funds-data-line,
+  .funds-status {
+    font-family: var(--sans);
+    text-transform: uppercase;
+  }
+  .funds-data-line {
+    display: flex;
+    justify-content: flex-end;
+    gap: 0.28rem;
     margin: 0.65rem 0 0;
     color: var(--ink-soft);
     font-size: 0.68rem;
     letter-spacing: 0.08em;
     text-align: right;
+  }
+  .funds-source {
+    white-space: nowrap;
   }
   .funds-status {
     margin: 1rem 0 0;
@@ -264,16 +264,12 @@
 
   @media (max-width: 42rem) {
     .funds-heading p {
-      margin-bottom: 0.8rem;
+      margin-bottom: 1rem;
       font-size: 1rem;
-    }
-    .data-date {
-      margin-top: 1rem;
-      font-size: 0.62rem;
     }
     th,
     td {
-      padding: 0.58rem 0.18rem;
+      padding: 0.56rem 0.17rem;
     }
     thead th {
       font-size: 0.51rem;
@@ -287,9 +283,9 @@
       width: 8%;
     }
     tbody th {
-      padding-right: 0.35rem;
-      font-size: 0.59rem;
-      line-height: 1.1;
+      padding-right: 0.32rem;
+      font-size: 0.78rem;
+      line-height: 1.14;
     }
     tbody td {
       font-size: 0.61rem;
@@ -297,7 +293,10 @@
     .trend-cell {
       font-size: 0.64rem;
     }
-    .source-line {
+    .funds-data-line {
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      margin-top: 0.6rem;
       font-size: 0.58rem;
     }
   }
