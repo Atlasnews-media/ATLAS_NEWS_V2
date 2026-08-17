@@ -270,7 +270,7 @@ jobs:
         run: |
           atlas_publish_dir="$RUNNER_TEMP/atlas-news-public"
           git clone --depth 1 git@github.com:EldeSiempre100/EldeSiempre100.github.io.git "$atlas_publish_dir"
-          rsync -a --delete --exclude='.git' --exclude='audio/' dist/ "$atlas_publish_dir/"
+          rsync -a --delete --exclude='.git' --exclude='audio/' --exclude='data/funds-beagf.json' dist/ "$atlas_publish_dir/"
           cd "$atlas_publish_dir"
           git config user.name "ATLAS NEWS Publisher"
           git config user.email "actions@users.noreply.github.com"
