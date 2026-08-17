@@ -57,14 +57,10 @@ try {
     "utf8",
   );
 
-  execFileSync(
-    process.execPath,
-    ["--test", "scripts/funds/finance.test.cjs"],
-    {
-      cwd: repoRoot,
-      stdio: "inherit",
-    },
-  );
+  execFileSync(process.execPath, ["--test", "scripts/funds/finance.test.cjs"], {
+    cwd: repoRoot,
+    stdio: "inherit",
+  });
 } finally {
   rmSync(outputDir, { recursive: true, force: true });
   rmSync(testConfigPath, { force: true });
