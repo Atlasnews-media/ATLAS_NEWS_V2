@@ -30,6 +30,7 @@ const testConfig = {
     declaration: false,
     sourceMap: false,
     noEmitOnError: true,
+    ignoreDeprecations: "6.0",
   },
   files: [
     "../src/lib/funds/types.ts",
@@ -52,11 +53,10 @@ try {
     "utf8",
   );
 
-  execFileSync(
-    process.execPath,
-    ["--test", "scripts/funds/finance.test.cjs"],
-    { cwd: repoRoot, stdio: "inherit" },
-  );
+  execFileSync(process.execPath, ["--test", "scripts/funds/finance.test.cjs"], {
+    cwd: repoRoot,
+    stdio: "inherit",
+  });
 } finally {
   rmSync(outputDir, { recursive: true, force: true });
   rmSync(testConfigPath, { force: true });
