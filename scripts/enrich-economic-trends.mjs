@@ -2,7 +2,10 @@ import { readFile, writeFile } from "node:fs/promises";
 
 const root = new URL("../", import.meta.url);
 const snapshotPath = new URL("src/data/economic-indicators.json", root);
-const publicSnapshotPath = new URL("public/data/economic-indicators.json", root);
+const publicSnapshotPath = new URL(
+  "public/data/economic-indicators.json",
+  root,
+);
 const providerBaseUrl =
   process.env.ATLAS_INDICATORS_API_BASE ?? "https://mindicador.cl/api";
 
@@ -65,7 +68,8 @@ async function enrichIndicator(indicator) {
   const currentIndex = observations.findIndex(
     (observation) => observation.effectiveDate === indicator.effectiveDate,
   );
-  const current = currentIndex >= 0 ? observations[currentIndex] : observations[0];
+  const current =
+    currentIndex >= 0 ? observations[currentIndex] : observations[0];
   const previous = observations.find(
     (observation, index) =>
       index > currentIndex &&
@@ -78,7 +82,11 @@ async function enrichIndicator(indicator) {
   const rawChange = (current.value / previous.value - 1) * 100;
   const changePercent = Math.round(rawChange * 100) / 100;
   const trend =
-    Math.abs(changePercent) < 0.01 ? "flat" : changePercent > 0 ? "up" : "down";
+    Math.abs(changePercent) < 0.01
+      ? "flat"
+      : changePercent > 0
+        ? "up"
+        : "down";
 
   return {
     ...indicator,
