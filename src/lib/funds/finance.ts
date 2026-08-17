@@ -1,9 +1,5 @@
 import { FUND_RETURN_WINDOWS } from "./config";
-import type {
-  FundPriceObservation,
-  FundReturns,
-  FundTrend,
-} from "./types";
+import type { FundPriceObservation, FundReturns, FundTrend } from "./types";
 
 /**
  * Capa financiera del subsistema Fondos.
@@ -127,7 +123,9 @@ export function calculateFundTrend(
   const normalized = normalizeObservations(observations);
 
   if (normalized.length < 2) {
-    throw new Error("Se requieren al menos dos valores cuota para la tendencia.");
+    throw new Error(
+      "Se requieren al menos dos valores cuota para la tendencia.",
+    );
   }
 
   const previous = normalized.at(-2);
