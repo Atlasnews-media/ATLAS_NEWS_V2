@@ -1,5 +1,9 @@
 import { FUND_RETURN_WINDOWS } from "./config";
-import type { FundPriceObservation, FundReturns, FundTrend } from "./types";
+import type {
+  FundPriceObservation,
+  FundReturns,
+  FundTrend,
+} from "./types";
 
 /**
  * Capa financiera del subsistema Fondos.
