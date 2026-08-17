@@ -35,11 +35,8 @@ function writeSnapshotAtomic(outputPath, snapshot) {
 async function main() {
   const outputPath = parseOutputPath(process.argv.slice(2));
   const runtime = loadFundsRuntime();
-  const {
-    BEAGF_FUNDS,
-    BUSCAFONDOS_BASE_URL,
-    EXPECTED_FUND_COUNT,
-  } = runtime.config;
+  const { BEAGF_FUNDS, BUSCAFONDOS_BASE_URL, EXPECTED_FUND_COUNT } =
+    runtime.config;
   const client = createBuscaFondosClient({ baseUrl: BUSCAFONDOS_BASE_URL });
 
   const snapshot = await buildFundsSnapshot({
