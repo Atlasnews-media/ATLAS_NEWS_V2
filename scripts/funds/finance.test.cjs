@@ -61,9 +61,13 @@ test("el motor rechaza historial insuficiente para un año", () => {
     () =>
       calculateFundReturns([
         observation("2026-01-01", 100),
-        observation("2026-08-17", 110),
+        observation("2026-05-19", 102),
+        observation("2026-06-18", 103),
+        observation("2026-07-20", 104),
+        observation("2026-08-10", 105),
+        observation("2026-08-17", 106),
       ]),
-    /Historial insuficiente/,
+    /Historial insuficiente para calcular rentabilidad de 365 días/,
   );
 });
 
