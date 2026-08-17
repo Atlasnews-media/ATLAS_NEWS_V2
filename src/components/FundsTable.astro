@@ -30,6 +30,14 @@
     <span id="funds-data-date">Datos en preparación</span>
   </p>
 
+  <p class="funds-disclaimer">
+    Información referencial. No constituye asesoría ni recomendación de
+    inversión. Las rentabilidades pasadas no garantizan resultados futuros. El
+    valor de las cuotas es variable y puede generar ganancias o pérdidas.
+    Infórmese sobre las características, riesgos, remuneraciones y comisiones de
+    cada fondo.
+  </p>
+
   <p class="funds-status" id="funds-status" hidden>
     Los datos de fondos no están disponibles en este momento.
   </p>
@@ -262,6 +270,17 @@
   .funds-module .funds-source {
     white-space: nowrap;
   }
+  .funds-module .funds-disclaimer {
+    max-width: 54rem;
+    margin: 1.05rem 0 0;
+    color: var(--ink-soft);
+    font-family: var(--sans);
+    font-size: 0.62rem;
+    font-weight: 400;
+    line-height: 1.45;
+    letter-spacing: 0.015em;
+    text-align: left;
+  }
   .funds-module .funds-status {
     margin: 1rem 0 0;
     color: var(--ink-soft);
@@ -321,6 +340,13 @@
       justify-content: flex-end;
       margin-top: 0.62rem;
       font-size: 0.58rem;
+    }
+    .funds-module .funds-disclaimer {
+      max-width: 100%;
+      margin-top: 0.95rem;
+      font-size: 0.54rem;
+      line-height: 1.42;
+      letter-spacing: 0.01em;
     }
   }
 </style>
