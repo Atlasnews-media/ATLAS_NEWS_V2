@@ -30,5 +30,11 @@ jobs:
       - name: Instalar dependencias
         run: npm ci
 
+      - name: Mostrar formato esperado
+        run: |
+          npx prettier --write src/lib/funds/finance.ts scripts/funds/run-finance-tests.mjs
+          git diff -- src/lib/funds/finance.ts scripts/funds/run-finance-tests.mjs
+          test -z "$(git status --short -- src/lib/funds/finance.ts scripts/funds/run-finance-tests.mjs)"
+
       - name: Ejecutar pruebas de Fondos
         run: npm run test:funds
