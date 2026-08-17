@@ -4,7 +4,7 @@ summary: "La desinflación y el enfriamiento del consumo redujeron el riesgo de 
 publishedAt: "2026-08-17T07:30:00-04:00"
 cutoffAt: "2026-08-17T07:27:00-04:00"
 type: "weekly"
-status: "draft"
+status: "published"
 tags:
   - panorama-semanal
   - fed
