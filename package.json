@@ -15,7 +15,7 @@
     "editorial:from-issue": "node scripts/create-reading-from-issue.mjs",
     "radar:discover": "node scripts/discover-radar-readings.mjs",
     "status:generate": "node scripts/generate-publication-status.mjs",
-    "test:funds": "node --test scripts/funds/finance.test.mjs",
+    "test:funds": "node scripts/funds/run-finance-tests.mjs",
     "update:indicators": "node scripts/update-economic-indicators.mjs && node scripts/enrich-economic-trends.mjs",
     "validate:content": "node scripts/validate-content.mjs",
     "validate:build": "node scripts/validate-build.mjs"
