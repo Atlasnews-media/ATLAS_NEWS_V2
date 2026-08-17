@@ -159,97 +159,97 @@
     });
 </script>
 
-<style>
+<style is:global>
   .funds-module {
     padding: clamp(1.5rem, 4vw, 2.75rem) 0 2rem;
     border-bottom: 4px double var(--rule);
   }
-  .funds-heading {
+  .funds-module .funds-heading {
     max-width: 58rem;
   }
-  .funds-heading h1 {
+  .funds-module .funds-heading h1 {
     margin: 0;
     color: var(--accent);
     font: 800 clamp(1rem, 2vw, 1.35rem) / 1.1 var(--sans);
     letter-spacing: 0.14em;
     text-transform: uppercase;
   }
-  .funds-heading p {
+  .funds-module .funds-heading p {
     max-width: 52rem;
     margin: 0.55rem 0 1.15rem;
     color: var(--ink-soft);
     font-size: clamp(1.02rem, 2vw, 1.3rem);
     line-height: 1.35;
   }
-  .table-wrap {
+  .funds-module .table-wrap {
     width: 100%;
     border-top: 5px double var(--rule);
     border-bottom: 5px double var(--rule);
   }
-  table {
+  .funds-module table {
     width: 100%;
     border-collapse: collapse;
     table-layout: fixed;
   }
-  th,
-  td {
+  .funds-module th,
+  .funds-module td {
     padding: 0.62rem 0.38rem;
     border-bottom: 1px solid color-mix(in srgb, var(--rule) 72%, transparent);
     text-align: right;
     vertical-align: middle;
   }
-  th:not(:last-child),
-  td:not(:last-child) {
+  .funds-module th:not(:last-child),
+  .funds-module td:not(:last-child) {
     border-right: 1px solid color-mix(in srgb, var(--rule) 55%, transparent);
   }
-  thead th {
+  .funds-module thead th {
     border-bottom: 1.5px solid var(--rule);
     font: 800 0.7rem/1.1 var(--sans);
     letter-spacing: 0.07em;
     text-transform: uppercase;
   }
-  thead th:first-child,
-  tbody th {
+  .funds-module thead th:first-child,
+  .funds-module tbody th {
     width: 34%;
     text-align: left;
   }
-  .trend-column {
+  .funds-module .trend-column {
     width: 7%;
   }
-  tbody th {
+  .funds-module tbody th {
     color: var(--ink);
     font-family: var(--serif);
     font-size: clamp(0.98rem, 1.8vw, 1.15rem);
-    font-weight: 400 !important;
+    font-weight: 400;
     line-height: 1.18;
     letter-spacing: 0;
     text-transform: none;
   }
-  tbody td {
+  .funds-module tbody td {
     font-family: var(--serif);
     font-size: 0.92rem;
     font-weight: 400;
     font-variant-numeric: tabular-nums;
   }
-  tbody tr:last-child th,
-  tbody tr:last-child td {
+  .funds-module tbody tr:last-child th,
+  .funds-module tbody tr:last-child td {
     border-bottom: 0;
   }
-  .trend-cell {
+  .funds-module .trend-cell {
     font-family: var(--sans);
     font-size: 0.82rem;
     font-weight: 700;
     text-align: center;
   }
-  .return-cell {
+  .funds-module .return-cell {
     white-space: nowrap;
   }
-  .funds-data-line,
-  .funds-status {
+  .funds-module .funds-data-line,
+  .funds-module .funds-status {
     font-family: var(--sans);
     text-transform: uppercase;
   }
-  .funds-data-line {
+  .funds-module .funds-data-line {
     display: flex;
     justify-content: flex-end;
     gap: 0.28rem;
@@ -259,10 +259,10 @@
     letter-spacing: 0.08em;
     text-align: right;
   }
-  .funds-source {
+  .funds-module .funds-source {
     white-space: nowrap;
   }
-  .funds-status {
+  .funds-module .funds-status {
     margin: 1rem 0 0;
     color: var(--ink-soft);
     font-size: 0.72rem;
@@ -270,51 +270,53 @@
   }
 
   @media (max-width: 42rem) {
-    .funds-heading p {
+    .funds-module .funds-heading p {
       margin-bottom: 1.05rem;
       font-size: 1rem;
     }
-    .table-wrap {
+    .funds-module .table-wrap {
       border-top-width: 5px;
       border-bottom-width: 5px;
     }
-    th,
-    td {
-      padding: 0.5rem 0.11rem;
+    .funds-module th,
+    .funds-module td {
+      padding: 0.46rem 0.12rem;
     }
-    thead th {
-      padding-top: 0.48rem;
-      padding-bottom: 0.48rem;
+    .funds-module thead th {
+      padding-top: 0.46rem;
+      padding-bottom: 0.46rem;
       font-size: 0.5rem;
       letter-spacing: 0.015em;
     }
-    thead th:first-child,
-    tbody th {
+    .funds-module thead th:first-child,
+    .funds-module tbody th {
       width: 36%;
     }
-    .trend-column {
+    .funds-module .trend-column {
       width: 6%;
     }
-    tbody th {
-      padding-left: 0.12rem;
+    .funds-module tbody th {
+      padding-left: 0.16rem;
       padding-right: 0.28rem;
       font-family: var(--serif);
-      font-size: clamp(0.76rem, 3.1vw, 0.9rem);
-      font-weight: 400 !important;
+      font-size: clamp(0.82rem, 3.2vw, 0.92rem);
+      font-weight: 400;
       line-height: 1.12;
+      overflow-wrap: normal;
+      word-break: normal;
     }
-    tbody td {
+    .funds-module tbody td {
       font-family: var(--serif);
       font-size: clamp(0.62rem, 2.45vw, 0.72rem);
       font-weight: 400;
       line-height: 1.1;
     }
-    .trend-cell {
+    .funds-module .trend-cell {
       font-family: var(--sans);
       font-size: 0.62rem;
       font-weight: 700;
     }
-    .funds-data-line {
+    .funds-module .funds-data-line {
       flex-wrap: wrap;
       justify-content: flex-end;
       margin-top: 0.62rem;
