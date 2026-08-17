@@ -29,6 +29,11 @@ const decimalFormatter = new Intl.NumberFormat("es-CL", {
   minimumFractionDigits: 2,
   maximumFractionDigits: 2,
 });
+const variationFormatter = new Intl.NumberFormat("es-CL", {
+  minimumFractionDigits: 2,
+  maximumFractionDigits: 2,
+  signDisplay: "never",
+});
 
 function formatDate(date: string) {
   return dateFormatter.format(new Date(`${date}T12:00:00-04:00`));
@@ -45,6 +50,32 @@ function formatValue(indicator: EconomicIndicator) {
     case "usd-per-pound":
       return `US$${decimalFormatter.format(indicator.value)}/lb`;
   }
+}
+
+function trendArrow(indicator: EconomicIndicator) {
+  if (indicator.trend === "up") return "▲";
+  if (indicator.trend === "down") return "▼";
+  if (indicator.trend === "flat") return "→";
+  return null;
+}
+
+function trendLabel(indicator: EconomicIndicator) {
+  if (
+    indicator.changePercent === undefined ||
+    !indicator.previousEffectiveDate ||
+    !indicator.trend
+  ) {
+    return null;
+  }
+
+  const direction =
+    indicator.trend === "up"
+      ? "sube"
+      : indicator.trend === "down"
+        ? "baja"
+        : "sin cambio";
+
+  return `${direction} ${variationFormatter.format(Math.abs(indicator.changePercent))}% versus el dato efectivo del ${formatDate(indicator.previousEffectiveDate)}`;
 }
 
 const asOfLabel = formatDate(economicIndicatorsSnapshot.asOf);
@@ -65,14 +96,33 @@ const freshnessLabel =
 
   <dl class="economic-strip__grid">
     {
-      economicIndicatorsSnapshot.indicators.map((indicator) => (
-        <div class="economic-strip__item">
-          <dt>{indicator.label}</dt>
-          <dd title={`Dato efectivo al ${formatDate(indicator.effectiveDate)}`}>
-            {formatValue(indicator)}
-          </dd>
-        </div>
-      ))
+      economicIndicatorsSnapshot.indicators.map((indicator) => {
+        const arrow = trendArrow(indicator);
+        const variation =
+          indicator.changePercent === undefined
+            ? null
+            : `${variationFormatter.format(Math.abs(indicator.changePercent))}%`;
+        const accessibilityTrend = trendLabel(indicator);
+
+        return (
+          <div class="economic-strip__item">
+            <dt>{indicator.label}</dt>
+            <dd title={`Dato efectivo al ${formatDate(indicator.effectiveDate)}`}>
+              <span class="economic-strip__value">{formatValue(indicator)}</span>
+              {arrow && variation && (
+                <span
+                  class={`economic-strip__trend economic-strip__trend--${indicator.trend}`}
+                  title={accessibilityTrend ?? undefined}
+                  aria-label={accessibilityTrend ?? undefined}
+                >
+                  <span aria-hidden="true">{arrow}</span>
+                  <span>{variation}</span>
+                </span>
+              )}
+            </dd>
+          </div>
+        );
+      })
     }
   </dl>
 
@@ -150,13 +200,39 @@ const freshnessLabel =
   }
 
   .economic-strip__item dd {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 0.18rem 0.38rem;
     margin: 0;
+    line-height: 1.15;
+  }
+
+  .economic-strip__value {
     font-family: var(--serif);
     font-size: clamp(0.8rem, 1.35vw, 1rem);
     font-variant-numeric: tabular-nums;
     font-weight: 700;
-    line-height: 1.15;
     white-space: nowrap;
+  }
+
+  .economic-strip__trend {
+    display: inline-flex;
+    align-items: baseline;
+    gap: 0.12rem;
+    color: var(--ink-soft);
+    font-family: var(--sans);
+    font-size: 0.56rem;
+    font-variant-numeric: tabular-nums;
+    font-weight: 800;
+    letter-spacing: 0.02em;
+    white-space: nowrap;
+  }
+
+  .economic-strip__trend--up,
+  .economic-strip__trend--down,
+  .economic-strip__trend--flat {
+    color: var(--ink-soft);
   }
 
   .economic-strip__source {
