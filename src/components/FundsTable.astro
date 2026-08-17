@@ -36,19 +36,40 @@
 </section>
 
 <script>
-  const snapshotUrl = "/data/funds-beagf.json";
-  const body = document.querySelector("#funds-table-body");
-  const dateNode = document.querySelector("#funds-data-date");
-  const statusNode = document.querySelector("#funds-status");
-  const sourceNode = document.querySelector("#funds-source");
+  type FundTrend = "up" | "down" | "flat";
 
-  const trendSymbols = {
+  interface FundSnapshotRow {
+    displayName: string;
+    trend: FundTrend;
+    returns: {
+      d7: number;
+      d30: number;
+      d60: number;
+      d90: number;
+      y1: number;
+    };
+  }
+
+  interface FundSnapshot {
+    asOf: string;
+    funds: FundSnapshotRow[];
+  }
+
+  const snapshotUrl = "/data/funds-beagf.json";
+  const body = document.querySelector<HTMLTableSectionElement>(
+    "#funds-table-body",
+  );
+  const dateNode = document.querySelector<HTMLElement>("#funds-data-date");
+  const statusNode = document.querySelector<HTMLElement>("#funds-status");
+  const sourceNode = document.querySelector<HTMLElement>("#funds-source");
+
+  const trendSymbols: Record<FundTrend, string> = {
     up: "▲",
     down: "▼",
     flat: "→",
   };
 
-  const trendLabels = {
+  const trendLabels: Record<FundTrend, string> = {
     up: "Al alza",
     down: "A la baja",
     flat: "Sin variación",
@@ -59,11 +80,11 @@
     maximumFractionDigits: 2,
   });
 
-  function formatPercent(value) {
+  function formatPercent(value: number): string {
     return `${percentFormatter.format(value)}%`;
   }
 
-  function formatDataDate(value) {
+  function formatDataDate(value: string): string {
     const match = /^(\d{4})-(\d{2})-(\d{2})$/.exec(value);
     if (!match) return value;
 
@@ -81,14 +102,14 @@
       .toUpperCase();
   }
 
-  function cell(text, className) {
+  function cell(text: string, className?: string): HTMLTableCellElement {
     const td = document.createElement("td");
     if (className) td.className = className;
     td.textContent = text;
     return td;
   }
 
-  function renderSnapshot(snapshot) {
+  function renderSnapshot(snapshot: FundSnapshot): void {
     if (!Array.isArray(snapshot?.funds) || snapshot.funds.length === 0) {
       throw new Error("Snapshot de fondos vacío.");
     }
@@ -132,7 +153,7 @@
   fetch(snapshotUrl, { cache: "no-store" })
     .then((response) => {
       if (!response.ok) throw new Error(`HTTP ${response.status}`);
-      return response.json();
+      return response.json() as Promise<FundSnapshot>;
     })
     .then(renderSnapshot)
     .catch(() => {
