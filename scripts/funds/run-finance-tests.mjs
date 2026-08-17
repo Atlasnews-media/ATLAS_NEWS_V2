@@ -5,7 +5,9 @@ import { fileURLToPath } from "node:url";
 
 const scriptDir = dirname(fileURLToPath(import.meta.url));
 const repoRoot = join(scriptDir, "..", "..");
-const outputDir = join(repoRoot, ".tmp", "funds-test");
+const tempRoot = join(repoRoot, ".tmp");
+const outputDir = join(tempRoot, "funds-test");
+const testConfigPath = join(tempRoot, "funds-tsconfig.json");
 const tscBin = join(
   repoRoot,
   "node_modules",
@@ -14,29 +16,35 @@ const tscBin = join(
 );
 
 rmSync(outputDir, { recursive: true, force: true });
-mkdirSync(outputDir, { recursive: true });
+rmSync(testConfigPath, { force: true });
+mkdirSync(tempRoot, { recursive: true });
+
+const testConfig = {
+  compilerOptions: {
+    module: "CommonJS",
+    moduleResolution: "Node",
+    target: "ES2022",
+    outDir: "./funds-test",
+    rootDir: "../src/lib/funds",
+    skipLibCheck: true,
+    declaration: false,
+    sourceMap: false,
+    noEmitOnError: true,
+  },
+  files: [
+    "../src/lib/funds/types.ts",
+    "../src/lib/funds/config.ts",
+    "../src/lib/funds/finance.ts",
+  ],
+};
+
+writeFileSync(testConfigPath, `${JSON.stringify(testConfig, null, 2)}\n`, "utf8");
 
 try {
-  execFileSync(
-    tscBin,
-    [
-      "--module",
-      "commonjs",
-      "--moduleResolution",
-      "node",
-      "--target",
-      "ES2022",
-      "--outDir",
-      outputDir,
-      "--rootDir",
-      "src/lib/funds",
-      "--skipLibCheck",
-      "src/lib/funds/types.ts",
-      "src/lib/funds/config.ts",
-      "src/lib/funds/finance.ts",
-    ],
-    { cwd: repoRoot, stdio: "inherit" },
-  );
+  execFileSync(tscBin, ["-p", testConfigPath], {
+    cwd: repoRoot,
+    stdio: "inherit",
+  });
 
   writeFileSync(
     join(outputDir, "package.json"),
@@ -51,4 +59,5 @@ try {
   );
 } finally {
   rmSync(outputDir, { recursive: true, force: true });
+  rmSync(testConfigPath, { force: true });
 }
