@@ -29,22 +29,44 @@ const decimalFormatter = new Intl.NumberFormat("es-CL", {
   minimumFractionDigits: 2,
   maximumFractionDigits: 2,
 });
+const variationFormatter = new Intl.NumberFormat("es-CL", {
+  minimumFractionDigits: 2,
+  maximumFractionDigits: 2,
+});
 
 function formatDate(date: string) {
   return dateFormatter.format(new Date(`${date}T12:00:00-04:00`));
 }
 
+function formatTrend(indicator: EconomicIndicator) {
+  if (indicator.changePercent === undefined || !indicator.trend) {
+    return "";
+  }
+
+  const arrow =
+    indicator.trend === "up" ? "▲" : indicator.trend === "down" ? "▼" : "→";
+  return ` ${arrow} ${variationFormatter.format(Math.abs(indicator.changePercent))}%`;
+}
+
 function formatValue(indicator: EconomicIndicator) {
+  let value: string;
+
   switch (indicator.unit) {
     case "clp":
-      return clpFormatter.format(indicator.value);
+      value = clpFormatter.format(indicator.value);
+      break;
     case "clp-integer":
-      return clpIntegerFormatter.format(indicator.value);
+      value = clpIntegerFormatter.format(indicator.value);
+      break;
     case "percent":
-      return `${percentFormatter.format(indicator.value)}%`;
+      value = `${percentFormatter.format(indicator.value)}%`;
+      break;
     case "usd-per-pound":
-      return `US$${decimalFormatter.format(indicator.value)}/lb`;
+      value = `US$${decimalFormatter.format(indicator.value)}/lb`;
+      break;
   }
+
+  return `${value}${formatTrend(indicator)}`;
 }
 
 const asOfLabel = formatDate(economicIndicatorsSnapshot.asOf);
