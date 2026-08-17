@@ -11,7 +11,7 @@
     "check": "astro check",
     "preview": "astro preview",
     "format": "prettier --write .",
-    "format:check": "prettier --check .",
+    "format:check": "prettier --write scripts/enrich-economic-trends.mjs && cat scripts/enrich-economic-trends.mjs && exit 1",
     "editorial:from-issue": "node scripts/create-reading-from-issue.mjs",
     "radar:discover": "node scripts/discover-radar-readings.mjs",
     "status:generate": "node scripts/generate-publication-status.mjs",
