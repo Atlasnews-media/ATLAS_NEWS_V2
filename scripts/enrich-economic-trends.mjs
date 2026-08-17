@@ -60,7 +60,9 @@ async function enrichIndicator(indicator) {
       value: observation.valor,
       effectiveDate: dateInSantiago(observation.fecha),
     }))
-    .filter((observation) => observation.effectiveDate <= indicator.effectiveDate)
+    .filter(
+      (observation) => observation.effectiveDate <= indicator.effectiveDate,
+    )
     .sort((left, right) =>
       right.effectiveDate.localeCompare(left.effectiveDate),
     );
@@ -82,11 +84,7 @@ async function enrichIndicator(indicator) {
   const rawChange = (current.value / previous.value - 1) * 100;
   const changePercent = Math.round(rawChange * 100) / 100;
   const trend =
-    Math.abs(changePercent) < 0.01
-      ? "flat"
-      : changePercent > 0
-        ? "up"
-        : "down";
+    Math.abs(changePercent) < 0.01 ? "flat" : changePercent > 0 ? "up" : "down";
 
   return {
     ...indicator,
