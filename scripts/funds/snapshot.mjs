@@ -95,7 +95,9 @@ async function validateConfiguredUniverse(client, configs) {
   const provider = findBancoEstadoProvider(await client.assetProviders());
   const providerId = String(provider.id ?? "");
   if (!providerId) {
-    throw new Error("BancoEstado AGF no tiene identificador de proveedor válido.");
+    throw new Error(
+      "BancoEstado AGF no tiene identificador de proveedor válido.",
+    );
   }
 
   const conceptualAssets = await client.conceptualAssets(providerId);
@@ -138,7 +140,10 @@ async function validateConfiguredUniverse(client, configs) {
 
     const realAttributes = attributesOf(realAsset, config.displayName);
     const sourceSeries = String(
-      realAttributes.serie ?? realAttributes.series ?? realAttributes.name ?? "",
+      realAttributes.serie ??
+        realAttributes.series ??
+        realAttributes.name ??
+        "",
     );
 
     if (
@@ -174,7 +179,10 @@ export function validateFundsSnapshot(snapshot, expectedCount) {
   if (!snapshot.source || snapshot.source.provider !== "buscafondos") {
     throw new Error("Snapshot de Fondos sin fuente BuscaFondos válida.");
   }
-  if (!Array.isArray(snapshot.funds) || snapshot.funds.length !== expectedCount) {
+  if (
+    !Array.isArray(snapshot.funds) ||
+    snapshot.funds.length !== expectedCount
+  ) {
     throw new Error(
       `Snapshot de Fondos debe contener exactamente ${expectedCount} fondos.`,
     );
@@ -189,7 +197,9 @@ export function validateFundsSnapshot(snapshot, expectedCount) {
       throw new Error("Snapshot de Fondos contiene key vacía o duplicada.");
     }
     if (!row.seriesId || series.has(row.seriesId)) {
-      throw new Error("Snapshot de Fondos contiene seriesId vacío o duplicado.");
+      throw new Error(
+        "Snapshot de Fondos contiene seriesId vacío o duplicado.",
+      );
     }
     keys.add(row.key);
     series.add(row.seriesId);
@@ -227,7 +237,9 @@ export async function buildFundsSnapshot({
 
   const health = await client.health();
   if (health.status !== "ok") {
-    throw new Error(`BuscaFondos /health reportó estado ${health.status ?? "vacío"}.`);
+    throw new Error(
+      `BuscaFondos /health reportó estado ${health.status ?? "vacío"}.`,
+    );
   }
 
   const asOf = String(health.last_scraped_date ?? "");
