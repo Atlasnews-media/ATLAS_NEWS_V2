@@ -5,14 +5,18 @@ export type FundReturnKey = "d7" | "d30" | "d60" | "d90" | "y1";
 export interface FundSeriesConfig {
   /** Identificador interno estable de ATLAS NEWS. */
   key: string;
-  /** Nombre que se mostrará editorialmente en la tabla. */
+  /** Nombre corto que se mostrará editorialmente en la tabla. */
   displayName: string;
+  /** Nombre exacto del fondo tal como aparece en BuscaFondos. */
+  sourceFundName: string;
   /** Identificador del fondo conceptual en BuscaFondos. */
   conceptualAssetId: string;
   /** Identificador de la serie real en BuscaFondos. */
   seriesId: string;
-  /** Nombre o código de la serie seleccionado para publicación. */
+  /** Nombre editorial de la serie seleccionada. */
   seriesName: string;
+  /** Nombre/código exacto de la serie tal como aparece en BuscaFondos. */
+  sourceSeriesName: string;
   /** RUN CMF del fondo, cuando esté disponible. */
   run?: string;
 }
