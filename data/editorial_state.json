@@ -15,14 +15,14 @@
     {
       "id": "us-employment-fed-rates",
       "topic": "Empleo de Estados Unidos y Reserva Federal",
-      "thesis": "Inflación más benigna, empleo débil y una caída inesperada del consumo consolidan la pausa de la Fed en septiembre, pero desplazan el riesgo desde nuevas alzas de tasas hacia una desaceleración más profunda de la demanda.",
-      "status": "changed",
-      "last_evidence": "Las ventas minoristas de julio cayeron 0,6%, primera baja en nueve meses, y el componente de control retrocedió 0,4%; el mercado redujo la probabilidad de una subida de septiembre hacia 31%-33% después de IPC y PPI benignos.",
-      "effect": "Favorece duración corta e intermedia y debilita al dólar, pero eleva la importancia de calidad de utilidades y crédito ante un posible enfriamiento más amplio del crecimiento.",
+      "thesis": "Inflación más benigna, empleo débil y menor consumo consolidan la pausa de la Fed en septiembre; el riesgo relevante se desplaza hacia cuánto puede enfriarse la demanda sin deteriorar utilidades y empleo.",
+      "status": "confirmed",
+      "last_evidence": "El 17 de agosto los mercados redujeron la probabilidad implícita de una subida de la Fed en septiembre hacia 30%, desde cerca de 50% una semana antes; bolsas globales avanzaron, los rendimientos cedieron y el dólar se debilitó tras las ventas minoristas y la confianza del consumidor más débiles.",
+      "effect": "Favorece duración corta e intermedia y resta soporte al dólar, pero eleva la importancia de resultados corporativos, calidad de crédito y empleo para distinguir aterrizaje suave de una desaceleración más profunda.",
       "base_scenario": "Fed sin cambios en septiembre, desinflación gradual y desaceleración de demanda todavía compatible con aterrizaje suave.",
       "invalidate_if": "El consumo y empleo se recuperan con inflación persistente y restauran una mayoría de probabilidades de subida, o la demanda se contrae de forma suficientemente amplia para convertir el aterrizaje suave en riesgo recesivo.",
-      "watch": "Resultados de retailers, empleo, PCE, IPC de agosto, curva de dos a treinta años, comunicación de la Fed y Jackson Hole.",
-      "last_publication": "/ediciones/2026-08-15-daily-consumo-eeuu-refuerza-pausa-fed/"
+      "watch": "Resultados de retailers, empleo, PCE, PMI de agosto, minutas de la Fed, curva de dos a treinta años y Jackson Hole.",
+      "last_publication": "/ediciones/2026-08-17-daily-mercado-consolida-pausa-fed/"
     },
     {
       "id": "ai-monetization-selectivity",
