@@ -5,12 +5,12 @@
       "topic": "Petróleo, geopolítica e inflación",
       "thesis": "El alivio energético se debilitó: el repunte del petróleo vuelve a introducir presión inflacionaria mientras Hormuz continúe restringido.",
       "status": "confirmed",
-      "last_evidence": "El Brent cerró el 14 de agosto en torno a US$88,52 y acumuló cerca de 6% semanal, sostenido por ataques a buques, falta de avances entre Estados Unidos e Irán y la amenaza de prolongar el bloqueo naval; inventarios elevados y menor demanda esperada siguen actuando como contrapeso.",
+      "last_evidence": "El Brent volvió sobre US$90 el 18 de agosto al deteriorarse las perspectivas de una salida diplomática entre Estados Unidos e Irán, mientras las tasas soberanas largas subieron globalmente por el renovado riesgo inflacionario.",
       "effect": "Reduce el margen para extender apuestas agresivas de duración y vuelve a favorecer coberturas frente a inflación y geopolítica.",
       "base_scenario": "Prima energética elevada pero sin interrupción total de oferta; inflación sensible a la persistencia del shock.",
       "invalidate_if": "La normalización física del tráfico por Hormuz y una caída sostenida del Brent restauran el escenario de alivio energético.",
-      "watch": "Brent, tráfico y embarques por Hormuz y Bab el-Mandeb, inventarios estadounidenses, bloqueo de Irán y transmisión a expectativas de inflación.",
-      "last_publication": "/ediciones/2026-08-15-daily-consumo-eeuu-refuerza-pausa-fed/"
+      "watch": "Brent, tráfico y embarques por Hormuz y Bab el-Mandeb, inventarios estadounidenses, negociación Estados Unidos-Irán y transmisión a expectativas de inflación.",
+      "last_publication": "/ediciones/2026-08-18-daily-treasury-largo-rompe-calma-mercado/"
     },
     {
       "id": "us-employment-fed-rates",
@@ -27,26 +27,26 @@
     {
       "id": "ai-monetization-selectivity",
       "topic": "Inteligencia artificial y selectividad bursátil",
-      "thesis": "La inteligencia artificial sostiene el apetito por riesgo, pero el mercado diferencia cada vez más entre monetización efectiva y gasto de capital excesivo.",
-      "status": "continues",
-      "last_evidence": "La tecnología mantuvo liderazgo con tasas más bajas, mientras aumentó la dispersión ante resultados y necesidades de capital.",
-      "effect": "Favorece crecimiento rentable y eleva el riesgo de corrección en compañías con valorizaciones exigentes.",
-      "base_scenario": "Crecimiento tecnológico acompañado por utilidades y generación de caja.",
-      "invalidate_if": "La monetización se amplía de forma consistente o las tasas largas suben y comprimen las valorizaciones del sector.",
-      "watch": "Resultados, márgenes, flujo de caja, gasto de capital y sensibilidad al Treasury a diez años.",
-      "last_publication": "/ediciones/2026-08-08-daily-empleo-eeuu-reabre-el-debate-de-tasas/"
+      "thesis": "La inteligencia artificial sostiene utilidades y apetito por riesgo, pero su creciente intensidad de capital convierte el costo de financiamiento y la monetización efectiva en filtros cada vez más decisivos.",
+      "status": "changed",
+      "last_evidence": "El 18 de agosto el mercado combinó fortaleza selectiva en semiconductores con tasas soberanas largas en máximos multianuales y nuevas estimaciones de necesidades extraordinarias de financiamiento para infraestructura de IA.",
+      "effect": "Favorece compañías capaces de financiar inversión con caja y monetización visible, y aumenta el riesgo de compresión de múltiplos en modelos dependientes de deuda o capex todavía no rentabilizado.",
+      "base_scenario": "Crecimiento tecnológico acompañado por utilidades, pero con mayor disciplina sobre retorno del capital y estructura de financiamiento.",
+      "invalidate_if": "Las tasas largas caen de forma sostenida o la monetización de IA se amplía suficientemente para absorber el aumento de capex sin deteriorar balances ni retornos.",
+      "watch": "Resultados, márgenes, flujo de caja, emisiones de deuda, gasto de capital, utilización de infraestructura y Treasury a diez y treinta años.",
+      "last_publication": "/ediciones/2026-08-18-daily-treasury-largo-rompe-calma-mercado/"
     },
     {
       "id": "chile-inflation-activity-rates",
       "topic": "Inflación, actividad y tasas en Chile",
       "thesis": "La moderación inflacionaria mejora el escenario local, pero tasas largas globales persistentemente altas pueden limitar cuánto se transmite una futura baja de TPM al costo del crédito, la inversión y las valorizaciones en Chile.",
-      "status": "changed",
-      "last_evidence": "Chile mantiene IPC de julio en 3,5% anual y TPM en 4,5%, mientras la colocación estadounidense a 30 años alcanzó cerca de 5,22%, las tasas reales largas se mantienen alrededor de 3% y el dólar en Chile cerró el 14 de agosto cerca de $915,6 tras repuntar junto a las tasas globales.",
+      "status": "confirmed",
+      "last_evidence": "Chile mantiene IPC de julio en 3,5% anual y TPM en 4,5%, mientras el Treasury a 30 años alcanzó cerca de 5,33% y el diez años volvió hacia 4,74% el 18 de agosto, confirmando que el costo global de capital puede permanecer alto aun con una Fed más paciente.",
       "effect": "Favorece una lectura más selectiva de la renta fija local: una eventual normalización de la TPM no garantiza por sí sola una caída equivalente del costo financiero de mediano y largo plazo.",
       "base_scenario": "Inflación convergente y TPM cautelosa, con tasas locales de largo plazo sensibles tanto al ciclo interno como al precio global del capital.",
       "invalidate_if": "Las tasas largas globales caen de forma sostenida y la curva chilena acompaña esa baja, reduciendo de manera visible el costo de financiamiento aun sin cambios relevantes en la TPM.",
-      "watch": "Treasury a diez y treinta años, curva local, dólar, inflación subyacente, comunicación del Banco Central, condiciones de crédito y costo de financiamiento corporativo.",
-      "last_publication": "/lecturas/2026-08-16-reading-tasas-largas-chile/"
+      "watch": "Cuentas Nacionales del segundo trimestre, Treasury a diez y treinta años, curva local, dólar, inflación subyacente, comunicación del Banco Central y costo de financiamiento corporativo.",
+      "last_publication": "/ediciones/2026-08-18-daily-treasury-largo-rompe-calma-mercado/"
     }
   ]
 }
