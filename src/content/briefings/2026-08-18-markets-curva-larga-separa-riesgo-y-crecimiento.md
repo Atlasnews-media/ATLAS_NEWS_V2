@@ -29,11 +29,11 @@ sources:
     url: "https://www.reuters.com/business/finance/alphabet-eyes-inaugural-australian-dollar-bond-bookrunners-message-says-2026-08-17/"
 highlights:
   - label: "Curva"
-    text: "El dos años refleja una Fed más paciente, pero diez y treinta años siguen subiendo: el mercado está cobrando duración, inflación y oferta de capital por separado."
+    text: "La Fed gana espacio para pausar, pero diez y treinta años siguen cobrando duración, inflación y oferta de capital."
   - label: "Commodities"
-    text: "Brent sobre US$91 responde a riesgo físico de oferta, mientras el cobre confirma una escasez estructural capaz de trasladarse directamente a utilidades mineras."
+    text: "Brent sobre US$91 refleja riesgo físico de oferta; el cobre mantiene una escasez estructural que ya se traduce en utilidades mineras."
   - label: "Capital"
-    text: "Home Depot muestra consumo resistente en mantenimiento y BHP monetiza cobre; la IA, en cambio, exige deuda creciente y eleva la competencia por capital de largo plazo."
+    text: "Home Depot muestra consumo resistente y BHP monetiza cobre; la IA exige más deuda y eleva la competencia por capital."
 demo: false
 ---
 
