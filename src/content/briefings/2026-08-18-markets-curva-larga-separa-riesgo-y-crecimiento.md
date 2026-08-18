@@ -4,7 +4,7 @@ summary: "Los rendimientos largos suben mientras la Fed gana espacio para pausar
 publishedAt: "2026-08-18T06:30:00-04:00"
 cutoffAt: "2026-08-18T06:30:00-04:00"
 section: "markets"
-status: "draft"
+status: "published"
 tags:
   - mercados-globales
   - tasas
