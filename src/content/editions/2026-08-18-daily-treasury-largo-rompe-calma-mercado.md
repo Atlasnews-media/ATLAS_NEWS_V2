@@ -4,7 +4,7 @@ summary: "El petróleo vuelve sobre US$90 y las tasas soberanas largas suben glo
 publishedAt: "2026-08-18T06:00:00-04:00"
 cutoffAt: "2026-08-18T06:00:00-04:00"
 type: "daily"
-status: "draft"
+status: "published"
 tags:
   - mercados-globales
   - tasas
