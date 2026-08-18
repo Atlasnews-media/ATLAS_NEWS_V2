@@ -1,0 +1,144 @@
+name: Generar audio ATLAS NEWS diariamente
+
+on:
+  schedule:
+    # Ejecuta todos los días a las 7:30 AM hora de Santiago (America/Santiago)
+    # Cron UTC: 11:30 UTC = 7:30 AM CLST (UTC-4 en verano) o 6:30 AM CLDT (UTC-3 en invierno)
+    # Usando 11:30 UTC para ajustarse a CLST (horario estándar)
+    - cron: '30 11 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  id-token: write
+
+jobs:
+  generate-daily-audio:
+    name: Generar y publicar audio diario
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    env:
+      ATLAS_STATE_ENDPOINT: https://zukkeurioymejoffarrp.supabase.co/functions/v1/atlas-news-state
+
+    steps:
+      - name: Descargar el repositorio privado
+        uses: actions/checkout@v5
+        with:
+          fetch-depth: 1
+
+      - name: Preparar Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Instalar dependencias
+        run: npm ci
+
+      - name: Preparar acceso al repositorio público
+        env:
+          DEPLOY_KEY: ${{ secrets.ATLAS_PAGES_DEPLOY_KEY }}
+        run: |
+          install -m 700 -d ~/.ssh
+          printf '%s\n' "$DEPLOY_KEY" > ~/.ssh/atlas_news_pages
+          chmod 600 ~/.ssh/atlas_news_pages
+          ssh-keyscan -H github.com >> ~/.ssh/known_hosts
+
+      - name: Descargar repositorio público
+        env:
+          GIT_SSH_COMMAND: ssh -i ~/.ssh/atlas_news_pages -o IdentitiesOnly=yes
+        run: |
+          git clone --depth 1 git@github.com:EldeSiempre100/EldeSiempre100.github.io.git \
+            "$RUNNER_TEMP/atlas-news-public"
+
+      - name: Planificar edición sonora diaria
+        id: audio_plan
+        continue-on-error: true
+        env:
+          ATLAS_PUBLIC_REPO_DIR: ${{ runner.temp }}/atlas-news-public
+          ATLAS_AUDIO_PLAN: ${{ runner.temp }}/atlas-audio-plan.json
+          ATLAS_AUDIO_VOICE: ef_dora
+        run: node scripts/prepare-daily-audio.mjs
+
+      - name: Registrar inicio de generación de audio
+        if: steps.audio_plan.outputs.needs_generation == 'true'
+        continue-on-error: true
+        env:
+          AUDIO_DATE: ${{ steps.audio_plan.outputs.audio_date }}
+        run: |
+          token="$(curl -fsSL -H "Authorization: bearer $ACTIONS_ID_TOKEN_REQUEST_TOKEN" \
+            "${ACTIONS_ID_TOKEN_REQUEST_URL}&audience=atlas-news-supabase" | jq -r '.value')"
+          jq -n \
+            --arg audio_date "$AUDIO_DATE" \
+            --arg status "audio_generation_start" \
+            --arg run_url "https://github.com/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID}" \
+            '{audio_date:$audio_date,status:$status,metadata:{run_url:$run_url}}' \
+            | curl -fsSL -X POST "$ATLAS_STATE_ENDPOINT" -H "Authorization: Bearer $token" -H 'content-type: application/json' --data-binary @-
+
+      - name: Restaurar caché de Kokoro
+        if: steps.audio_plan.outputs.needs_generation == 'true'
+        continue-on-error: true
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/huggingface
+          key: kokoro-82m-v1-${{ runner.os }}
+
+      - name: Generar y publicar edición sonora con Kokoro
+        if: steps.audio_plan.outputs.needs_generation == 'true'
+        continue-on-error: true
+        env:
+          ATLAS_PUBLIC_REPO_DIR: ${{ runner.temp }}/atlas-news-public
+          ATLAS_AUDIO_PLAN: ${{ runner.temp }}/atlas-audio-plan.json
+          ATLAS_AUDIO_SPEED: "1.0"
+          GIT_SSH_COMMAND: ssh -i ~/.ssh/atlas_news_pages -o IdentitiesOnly=yes
+        run: |
+          set -euo pipefail
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq espeak-ng ffmpeg python3-venv
+          python3 -m venv "$RUNNER_TEMP/kokoro-venv"
+          source "$RUNNER_TEMP/kokoro-venv/bin/activate"
+          python -m pip install --quiet --upgrade pip
+          python -m pip install --quiet "kokoro==0.9.4" soundfile
+          python scripts/generate-daily-audio.py
+
+          cd "$ATLAS_PUBLIC_REPO_DIR"
+          git config user.name "ATLAS NEWS Audio Generator"
+          git config user.email "actions@users.noreply.github.com"
+          git add audio/
+          if git diff --cached --quiet; then
+            echo "El audio público ya está actualizado."
+          else
+            git commit -m "Publica audio ATLAS NEWS — ${{ steps.audio_plan.outputs.audio_date }}"
+            git push origin main
+          fi
+
+      - name: Registrar generación exitosa
+        if: success() && steps.audio_plan.outputs.needs_generation == 'true'
+        continue-on-error: true
+        env:
+          AUDIO_DATE: ${{ steps.audio_plan.outputs.audio_date }}
+        run: |
+          token="$(curl -fsSL -H "Authorization: bearer $ACTIONS_ID_TOKEN_REQUEST_TOKEN" \
+            "${ACTIONS_ID_TOKEN_REQUEST_URL}&audience=atlas-news-supabase" | jq -r '.value')"
+          jq -n \
+            --arg audio_date "$AUDIO_DATE" \
+            --arg status "audio_published" \
+            --arg run_url "https://github.com/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID}" \
+            '{audio_date:$audio_date,status:$status,metadata:{run_url:$run_url}}' \
+            | curl -fsSL -X POST "$ATLAS_STATE_ENDPOINT" -H "Authorization: Bearer $token" -H 'content-type: application/json' --data-binary @-
+
+      - name: Registrar fallo de generación
+        if: failure()
+        continue-on-error: true
+        env:
+          AUDIO_DATE: ${{ steps.audio_plan.outputs.audio_date }}
+        run: |
+          token="$(curl -fsSL -H "Authorization: bearer $ACTIONS_ID_TOKEN_REQUEST_TOKEN" \
+            "${ACTIONS_ID_TOKEN_REQUEST_URL}&audience=atlas-news-supabase" | jq -r '.value')"
+          jq -n \
+            --arg audio_date "$AUDIO_DATE" \
+            --arg status "audio_generation_failed" \
+            --arg error "Falló la generación de audio. Revisar run_url." \
+            --arg run_url "https://github.com/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID}" \
+            '{audio_date:$audio_date,status:$status,error:$error,metadata:{run_url:$run_url}}' \
+            | curl -fsSL -X POST "$ATLAS_STATE_ENDPOINT" -H "Authorization: Bearer $token" -H 'content-type: application/json' --data-binary @-
