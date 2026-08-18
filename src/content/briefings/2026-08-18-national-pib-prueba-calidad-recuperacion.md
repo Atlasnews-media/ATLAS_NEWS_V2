@@ -4,7 +4,7 @@ summary: "Las Cuentas Nacionales del segundo trimestre deben mostrar si el rebot
 publishedAt: "2026-08-18T06:15:00-04:00"
 cutoffAt: "2026-08-18T06:15:00-04:00"
 section: "national"
-status: "draft"
+status: "published"
 tags:
   - chile
   - actividad
