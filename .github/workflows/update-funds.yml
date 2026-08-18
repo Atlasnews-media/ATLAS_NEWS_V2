@@ -18,7 +18,9 @@ on:
       - "package.json"
       - "package-lock.json"
   schedule:
-    - cron: "17 9 * * *"
+    - cron: "0 9 * * *"
+      timezone: "America/Santiago"
+    - cron: "30 10 * * *"
       timezone: "America/Santiago"
   workflow_dispatch:
 
