@@ -22,6 +22,8 @@ on:
       timezone: "America/Santiago"
     - cron: "30 10 * * *"
       timezone: "America/Santiago"
+    - cron: "0 11 * * *"
+      timezone: "America/Santiago"
   workflow_dispatch:
 
 permissions:
