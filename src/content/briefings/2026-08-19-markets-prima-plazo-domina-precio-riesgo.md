@@ -4,7 +4,7 @@ summary: "Los bonos largos estabilizan tras el selloff, pero deuda soberana, pet
 publishedAt: "2026-08-19T07:15:00-04:00"
 cutoffAt: "2026-08-19T07:10:00-04:00"
 section: "markets"
-status: "draft"
+status: "published"
 tags:
   - mercados-globales
   - treasury
