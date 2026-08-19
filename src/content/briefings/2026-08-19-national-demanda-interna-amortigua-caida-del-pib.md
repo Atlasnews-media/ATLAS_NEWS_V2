@@ -4,7 +4,7 @@ summary: "El PIB cayó 0,2% anual en el segundo trimestre, con minería y export
 publishedAt: "2026-08-19T06:15:00-04:00"
 cutoffAt: "2026-08-19T06:15:00-04:00"
 section: "national"
-status: "draft"
+status: "published"
 tags:
   - chile
   - actividad
