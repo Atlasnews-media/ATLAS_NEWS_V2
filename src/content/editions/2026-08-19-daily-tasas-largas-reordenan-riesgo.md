@@ -4,7 +4,7 @@ summary: "Los rendimientos largos ceden desde máximos, pero siguen imponiendo c
 publishedAt: "2026-08-19T06:00:00-04:00"
 cutoffAt: "2026-08-19T05:58:00-04:00"
 type: "daily"
-status: "draft"
+status: "published"
 tags:
   - mercados-globales
   - tasas
