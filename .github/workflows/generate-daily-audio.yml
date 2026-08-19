@@ -5,7 +5,7 @@ on:
     # Ejecuta todos los días a las 7:30 AM hora de Santiago (America/Santiago)
     # Cron UTC: 11:30 UTC = 7:30 AM CLST (UTC-4 en verano) o 6:30 AM CLDT (UTC-3 en invierno)
     # Usando 11:30 UTC para ajustarse a CLST (horario estándar)
-    - cron: '30 11 * * *'
+    - cron: "30 11 * * *"
   workflow_dispatch:
 
 permissions:

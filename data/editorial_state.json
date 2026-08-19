@@ -27,26 +27,26 @@
     {
       "id": "ai-monetization-selectivity",
       "topic": "Inteligencia artificial y selectividad bursátil",
-      "thesis": "La inteligencia artificial sostiene utilidades y apetito por riesgo, pero su creciente intensidad de capital convierte el costo de financiamiento y la monetización efectiva en filtros cada vez más decisivos.",
-      "status": "changed",
-      "last_evidence": "El 18 de agosto el mercado combinó fortaleza selectiva en semiconductores con tasas soberanas largas en máximos multianuales y nuevas estimaciones de necesidades extraordinarias de financiamiento para infraestructura de IA.",
+      "thesis": "La inteligencia artificial sostiene crecimiento estructural, pero tasas largas elevadas y su creciente intensidad de capital convierten financiamiento, monetización y generación de caja en filtros decisivos de valorización.",
+      "status": "confirmed",
+      "last_evidence": "El 18 de agosto el índice de semiconductores cayó 5%, Nvidia 2,3% y Micron 7% cuando los rendimientos largos alcanzaron máximos multianuales, confirmando que una mayor tasa de descuento golpea especialmente a los activos de crecimiento intensivos en capital.",
       "effect": "Favorece compañías capaces de financiar inversión con caja y monetización visible, y aumenta el riesgo de compresión de múltiplos en modelos dependientes de deuda o capex todavía no rentabilizado.",
       "base_scenario": "Crecimiento tecnológico acompañado por utilidades, pero con mayor disciplina sobre retorno del capital y estructura de financiamiento.",
       "invalidate_if": "Las tasas largas caen de forma sostenida o la monetización de IA se amplía suficientemente para absorber el aumento de capex sin deteriorar balances ni retornos.",
       "watch": "Resultados, márgenes, flujo de caja, emisiones de deuda, gasto de capital, utilización de infraestructura y Treasury a diez y treinta años.",
-      "last_publication": "/ediciones/2026-08-18-daily-treasury-largo-rompe-calma-mercado/"
+      "last_publication": "/ediciones/2026-08-19-daily-tasas-largas-reordenan-riesgo/"
     },
     {
       "id": "chile-inflation-activity-rates",
       "topic": "Inflación, actividad y tasas en Chile",
-      "thesis": "La moderación inflacionaria mejora el escenario local, pero tasas largas globales persistentemente altas pueden limitar cuánto se transmite una futura baja de TPM al costo del crédito, la inversión y las valorizaciones en Chile.",
-      "status": "confirmed",
-      "last_evidence": "Chile mantiene IPC de julio en 3,5% anual y TPM en 4,5%, mientras el Treasury a 30 años alcanzó cerca de 5,33% y el diez años volvió hacia 4,74% el 18 de agosto, confirmando que el costo global de capital puede permanecer alto aun con una Fed más paciente.",
-      "effect": "Favorece una lectura más selectiva de la renta fija local: una eventual normalización de la TPM no garantiza por sí sola una caída equivalente del costo financiero de mediano y largo plazo.",
-      "base_scenario": "Inflación convergente y TPM cautelosa, con tasas locales de largo plazo sensibles tanto al ciclo interno como al precio global del capital.",
-      "invalidate_if": "Las tasas largas globales caen de forma sostenida y la curva chilena acompaña esa baja, reduciendo de manera visible el costo de financiamiento aun sin cambios relevantes en la TPM.",
-      "watch": "Cuentas Nacionales del segundo trimestre, Treasury a diez y treinta años, curva local, dólar, inflación subyacente, comunicación del Banco Central y costo de financiamiento corporativo.",
-      "last_publication": "/ediciones/2026-08-18-daily-treasury-largo-rompe-calma-mercado/"
+      "thesis": "La inflación converge, pero el PIB del segundo trimestre confirma una actividad más débil; aumenta el argumento para normalizar la TPM mientras las tasas largas globales limitan la transmisión hacia el costo financiero de mayor plazo.",
+      "status": "changed",
+      "last_evidence": "El PIB chileno cayó 0,2% interanual en el segundo trimestre de 2026 y quedó plano frente al trimestre previo; minería cayó 6,4% y la inversión se estancó, debilitando la lectura más favorable sugerida por el Imacec de junio de 2,4%.",
+      "effect": "Refuerza el atractivo relativo de renta fija local por el canal de actividad y política monetaria, pero exige diferenciar tramos porque el costo global de capital sigue elevado.",
+      "base_scenario": "Inflación convergente, crecimiento débil y TPM cautelosa, con mayor espacio para normalización si la actividad no repunta y el shock energético no se intensifica.",
+      "invalidate_if": "Consumo, inversión y actividad recuperan fuerza de forma amplia o el shock energético vuelve a elevar inflación y expectativas, reduciendo el espacio para normalizar la TPM.",
+      "watch": "Imacec, consumo, inversión, empleo, curva local, dólar, inflación subyacente, comunicación del Banco Central y Treasury a diez y treinta años.",
+      "last_publication": "/ediciones/2026-08-19-daily-tasas-largas-reordenan-riesgo/"
     }
   ]
 }
