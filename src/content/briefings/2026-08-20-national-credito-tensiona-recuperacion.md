@@ -23,7 +23,7 @@ sources:
     url: "https://www.bcentral.cl/en/content/-/detalle/prensa/comunicados-rpm/comunicado-rpm-julio-2026"
 highlights:
   - label: "Empresas"
-    text: "Las firmas reportan ventas débiles, mayores costos y menor capacidad para traspasarlos a precios, lo que comprime márgenes y eleva necesidades de capital de trabajo."
+    text: "Las firmas reportan ventas débiles, costos altos y poco espacio para subir precios; los márgenes se comprimen y aumenta la necesidad de capital de trabajo."
   - label: "Crédito"
     text: "Aumentan las solicitudes de financiamiento, pero también los rechazos bancarios y las empresas que descartan las condiciones ofrecidas."
   - label: "Política monetaria"
