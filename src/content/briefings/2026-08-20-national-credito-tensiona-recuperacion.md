@@ -4,7 +4,7 @@ summary: "Las empresas reportan demanda débil, márgenes estrechos y más fricc
 publishedAt: "2026-08-20T06:15:00-04:00"
 cutoffAt: "2026-08-20T06:15:00-04:00"
 section: "national"
-status: "draft"
+status: "published"
 tags:
   - chile
   - credito
