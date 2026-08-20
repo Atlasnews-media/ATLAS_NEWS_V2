@@ -5,24 +5,24 @@
       "topic": "Petróleo, geopolítica e inflación",
       "thesis": "El alivio energético se debilitó: el repunte del petróleo vuelve a introducir presión inflacionaria mientras Hormuz continúe restringido.",
       "status": "confirmed",
-      "last_evidence": "El Brent volvió sobre US$90 el 18 de agosto al deteriorarse las perspectivas de una salida diplomática entre Estados Unidos e Irán, mientras las tasas soberanas largas subieron globalmente por el renovado riesgo inflacionario.",
+      "last_evidence": "El 20 de agosto, los datos de Kpler mostraron nueve embarcaciones de commodities atravesando Hormuz el miércoles, igual que el martes, sin una normalización física del tráfico mientras las conversaciones Estados Unidos-Irán permanecen estancadas.",
       "effect": "Reduce el margen para extender apuestas agresivas de duración y vuelve a favorecer coberturas frente a inflación y geopolítica.",
       "base_scenario": "Prima energética elevada pero sin interrupción total de oferta; inflación sensible a la persistencia del shock.",
       "invalidate_if": "La normalización física del tráfico por Hormuz y una caída sostenida del Brent restauran el escenario de alivio energético.",
       "watch": "Brent, tráfico y embarques por Hormuz y Bab el-Mandeb, inventarios estadounidenses, negociación Estados Unidos-Irán y transmisión a expectativas de inflación.",
-      "last_publication": "/ediciones/2026-08-18-daily-treasury-largo-rompe-calma-mercado/"
+      "last_publication": "/ediciones/2026-08-20-daily-tesoro-alivia-curva-no-resuelve-riesgo/"
     },
     {
       "id": "us-employment-fed-rates",
       "topic": "Empleo de Estados Unidos y Reserva Federal",
-      "thesis": "Inflación más benigna, empleo débil y menor consumo consolidan la pausa de la Fed en septiembre; el riesgo relevante se desplaza hacia cuánto puede enfriarse la demanda sin deteriorar utilidades y empleo.",
-      "status": "confirmed",
-      "last_evidence": "El 17 de agosto los mercados redujeron la probabilidad implícita de una subida de la Fed en septiembre hacia 30%, desde cerca de 50% una semana antes; bolsas globales avanzaron, los rendimientos cedieron y el dólar se debilitó tras las ventas minoristas y la confianza del consumidor más débiles.",
-      "effect": "Favorece duración corta e intermedia y resta soporte al dólar, pero eleva la importancia de resultados corporativos, calidad de crédito y empleo para distinguir aterrizaje suave de una desaceleración más profunda.",
-      "base_scenario": "Fed sin cambios en septiembre, desinflación gradual y desaceleración de demanda todavía compatible con aterrizaje suave.",
-      "invalidate_if": "El consumo y empleo se recuperan con inflación persistente y restauran una mayoría de probabilidades de subida, o la demanda se contrae de forma suficientemente amplia para convertir el aterrizaje suave en riesgo recesivo.",
-      "watch": "Resultados de retailers, empleo, PCE, PMI de agosto, minutas de la Fed, curva de dos a treinta años y Jackson Hole.",
-      "last_publication": "/ediciones/2026-08-17-daily-mercado-consolida-pausa-fed/"
+      "thesis": "Inflación más benigna, empleo débil y menor consumo favorecen una pausa de la Fed en septiembre, pero las minutas de julio muestran que la preocupación inflacionaria y el riesgo de futuras alzas siguen activos.",
+      "status": "changed",
+      "last_evidence": "Las minutas publicadas el 19 de agosto mostraron mayor preocupación por inflación persistente y tres votos por subir 25 puntos base en julio; los datos posteriores de inflación, empleo y consumo reducen la urgencia, pero revelan un FOMC más dividido de lo que sugería la reacción reciente del mercado.",
+      "effect": "Favorece duración corta e intermedia por el enfriamiento de actividad, pero limita apuestas agresivas por una trayectoria continua de bajas y aumenta la sensibilidad a PCE, empleo y energía.",
+      "base_scenario": "Fed sin cambios en septiembre, con sesgo dependiente de datos y riesgo de futuras alzas si la inflación vuelve a persistir.",
+      "invalidate_if": "La inflación y el empleo se debilitan suficientemente para cerrar el riesgo de nuevas alzas, o una reaceleración inflacionaria devuelve una subida inmediata al escenario dominante.",
+      "watch": "PCE, empleo, PMI de agosto, mensajes de Jackson Hole, curva de dos a treinta años, petróleo y expectativas de inflación.",
+      "last_publication": "/ediciones/2026-08-20-daily-tesoro-alivia-curva-no-resuelve-riesgo/"
     },
     {
       "id": "ai-monetization-selectivity",
