@@ -4,7 +4,7 @@ summary: "El alivio inicial en bonos pierde fuerza mientras petróleo y deuda ma
 publishedAt: "2026-08-20T06:20:00-04:00"
 cutoffAt: "2026-08-20T06:20:00-04:00"
 section: "markets"
-status: "draft"
+status: "published"
 tags:
   - mercados-globales
   - treasury
