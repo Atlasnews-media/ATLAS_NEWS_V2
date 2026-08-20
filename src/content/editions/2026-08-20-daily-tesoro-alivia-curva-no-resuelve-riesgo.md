@@ -32,7 +32,7 @@ highlights:
   - label: "Tesoro"
     text: "Estados Unidos duplicará a al menos US$4.000 millones por operación las recompras de bonos largos; el Treasury a 30 años retrocedió hacia 5,20%."
   - label: "Fed"
-    text: "Las minutas de julio revelaron mayor preocupación inflacionaria y tres votos por subir tasas, aunque los datos posteriores mantienen septiembre inclinado hacia una pausa."
+    text: "Las minutas de julio mostraron mayor preocupación inflacionaria y tres votos por subir tasas; los datos posteriores aún favorecen una pausa en septiembre."
   - label: "Chile"
     text: "IPC de 3,5%, expectativas a dos años en 3% y TPM en 4,5% conviven con una actividad débil y con tasas globales largas todavía exigentes."
 marketSummary:
