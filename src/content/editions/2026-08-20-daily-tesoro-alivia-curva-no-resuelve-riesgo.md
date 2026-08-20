@@ -4,7 +4,7 @@ summary: "La ampliación de recompras del Tesoro estadounidense hizo caer el ren
 publishedAt: "2026-08-20T06:00:00-04:00"
 cutoffAt: "2026-08-20T06:00:00-04:00"
 type: "daily"
-status: "draft"
+status: "published"
 tags:
   - mercados-globales
   - tasas
