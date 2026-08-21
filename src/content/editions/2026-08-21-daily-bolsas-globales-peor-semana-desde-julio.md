@@ -4,7 +4,7 @@ summary: "La presión de los rendimientos soberanos y la energía vuelve a domin
 publishedAt: "2026-08-21T06:00:00-04:00"
 cutoffAt: "2026-08-21T06:00:00-04:00"
 type: "daily"
-status: "draft"
+status: "published"
 tags:
   - mercados-globales
   - tasas
