@@ -4,7 +4,7 @@ summary: "El alza de combustibles llega a empresas con demanda débil y menor ca
 publishedAt: "2026-08-21T06:20:00-04:00"
 cutoffAt: "2026-08-21T06:20:00-04:00"
 section: "national"
-status: "draft"
+status: "published"
 tags:
   - chile
   - inflacion
