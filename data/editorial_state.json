@@ -3,14 +3,14 @@
     {
       "id": "oil-geopolitics-inflation",
       "topic": "Petróleo, geopolítica e inflación",
-      "thesis": "El alivio energético se debilitó: el repunte del petróleo vuelve a introducir presión inflacionaria mientras Hormuz continúe restringido.",
-      "status": "confirmed",
-      "last_evidence": "El 20 de agosto, los datos de Kpler mostraron nueve embarcaciones de commodities atravesando Hormuz el miércoles, igual que el martes, sin una normalización física del tráfico mientras las conversaciones Estados Unidos-Irán permanecen estancadas.",
-      "effect": "Reduce el margen para extender apuestas agresivas de duración y vuelve a favorecer coberturas frente a inflación y geopolítica.",
-      "base_scenario": "Prima energética elevada pero sin interrupción total de oferta; inflación sensible a la persistencia del shock.",
-      "invalidate_if": "La normalización física del tráfico por Hormuz y una caída sostenida del Brent restauran el escenario de alivio energético.",
-      "watch": "Brent, tráfico y embarques por Hormuz y Bab el-Mandeb, inventarios estadounidenses, negociación Estados Unidos-Irán y transmisión a expectativas de inflación.",
-      "last_publication": "/ediciones/2026-08-20-daily-tesoro-alivia-curva-no-resuelve-riesgo/"
+      "thesis": "El shock energético ya no es solo prospectivo: petróleo elevado y restricciones persistentes están transmitiéndose a combustibles y consumo, manteniendo presión inflacionaria mientras Hormuz no se normalice.",
+      "status": "changed",
+      "last_evidence": "El 21 de agosto, el petróleo acumulaba más de 5% de avance semanal y en Chile ya regían alzas de $34,8 por litro en gasolinas de 93 y 97 octanos y $97 en diésel; Walmart reportó además una rara decepción de ventas en Estados Unidos en un contexto de mayor gasto de los hogares en combustibles.",
+      "effect": "El shock energético combina ahora riesgo inflacionario con erosión de consumo, limita apuestas agresivas de duración y favorece calidad de balance y coberturas frente a inflación y geopolítica.",
+      "base_scenario": "Prima energética elevada con transmisión parcial a precios finales y consumo, pero sin interrupción total de oferta.",
+      "invalidate_if": "La normalización física del tráfico por Hormuz y una caída sostenida del Brent revierten las alzas de combustibles y reducen su efecto sobre inflación y gasto.",
+      "watch": "Brent, tráfico y embarques por Hormuz y Bab el-Mandeb, precios de combustibles, consumo, inventarios estadounidenses, negociación Estados Unidos-Irán y expectativas de inflación.",
+      "last_publication": "/ediciones/2026-08-21-daily-bolsas-globales-peor-semana-desde-julio/"
     },
     {
       "id": "us-employment-fed-rates",
