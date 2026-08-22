@@ -4,7 +4,7 @@ summary: "Acciones y bonos recibieron entradas pese al shock de duración y petr
 publishedAt: "2026-08-22T10:30:00-04:00"
 cutoffAt: "2026-08-22T10:15:00-04:00"
 section: "markets"
-status: "draft"
+status: "published"
 tags:
   - mercados-globales
   - renta-fija
