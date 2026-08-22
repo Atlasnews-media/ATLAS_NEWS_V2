@@ -4,7 +4,7 @@ summary: "Wall Street rebotó el viernes, pero cerró una semana negativa: tasas
 publishedAt: "2026-08-22T06:00:00-04:00"
 cutoffAt: "2026-08-22T05:57:00-04:00"
 type: "daily"
-status: "draft"
+status: "published"
 tags:
   - mercados-globales
   - tasas
