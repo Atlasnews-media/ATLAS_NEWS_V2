@@ -4,13 +4,13 @@
       "id": "oil-geopolitics-inflation",
       "topic": "Petróleo, geopolítica e inflación",
       "thesis": "El shock energético ya no es solo prospectivo: petróleo elevado y restricciones persistentes están transmitiéndose a combustibles y consumo, manteniendo presión inflacionaria mientras Hormuz no se normalice.",
-      "status": "changed",
-      "last_evidence": "El 21 de agosto, el petróleo acumulaba más de 5% de avance semanal y en Chile ya regían alzas de $34,8 por litro en gasolinas de 93 y 97 octanos y $97 en diésel; Walmart reportó además una rara decepción de ventas en Estados Unidos en un contexto de mayor gasto de los hogares en combustibles.",
+      "status": "confirmed",
+      "last_evidence": "Al cierre del 21 de agosto, el Brent se aproximó a US$95 por barril y acumuló más de 5% semanal ante nuevas amenazas de sanciones contra Irán; la persistencia del shock confirma la transmisión ya observada a combustibles, costos y consumo.",
       "effect": "El shock energético combina ahora riesgo inflacionario con erosión de consumo, limita apuestas agresivas de duración y favorece calidad de balance y coberturas frente a inflación y geopolítica.",
       "base_scenario": "Prima energética elevada con transmisión parcial a precios finales y consumo, pero sin interrupción total de oferta.",
       "invalidate_if": "La normalización física del tráfico por Hormuz y una caída sostenida del Brent revierten las alzas de combustibles y reducen su efecto sobre inflación y gasto.",
       "watch": "Brent, tráfico y embarques por Hormuz y Bab el-Mandeb, precios de combustibles, consumo, inventarios estadounidenses, negociación Estados Unidos-Irán y expectativas de inflación.",
-      "last_publication": "/ediciones/2026-08-21-daily-bolsas-globales-peor-semana-desde-julio/"
+      "last_publication": "/ediciones/2026-08-22-daily-mercado-exige-prima-por-capital/"
     },
     {
       "id": "us-employment-fed-rates",
