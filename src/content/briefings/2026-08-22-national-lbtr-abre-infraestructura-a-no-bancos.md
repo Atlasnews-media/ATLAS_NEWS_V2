@@ -4,7 +4,7 @@ summary: "Cooperativas, custodios, contrapartes centrales y operadores no bancar
 publishedAt: "2026-08-22T06:15:00-04:00"
 cutoffAt: "2026-08-22T06:15:00-04:00"
 section: "national"
-status: "draft"
+status: "published"
 tags:
   - chile
   - sistema-financiero
