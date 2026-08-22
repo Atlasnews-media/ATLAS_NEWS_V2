@@ -49,7 +49,7 @@ marketSummary:
       category: "mercados"
     - label: "IPC Chile julio"
       value: "3,5% anual"
-      category: "macro"
+      category: "mercados"
 ---
 
 ## Hecho central
