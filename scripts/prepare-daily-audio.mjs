@@ -1,4 +1,3 @@
-import { createHash } from "node:crypto";
 import {
   appendFile,
   mkdir,
@@ -11,7 +10,7 @@ import path from "node:path";
 const root = new URL("../", import.meta.url);
 const editionDir = new URL("src/content/editions/", root);
 const briefingDir = new URL("src/content/briefings/", root);
-const SCRIPT_VERSION = 3;
+const SCRIPT_VERSION = 4;
 const TARGET_MIN_WORDS = 550;
 const TARGET_MAX_WORDS = 650;
 
@@ -128,7 +127,6 @@ async function records(directory) {
         status: field(text, "status"),
         highlights: highlights(text),
         bodySections: bodySections(text),
-        sourceHash: createHash("sha256").update(text).digest("hex"),
       };
     }),
   );
@@ -292,11 +290,6 @@ const sourceIds = {
   national: national?.id ?? null,
   markets: markets?.id ?? null,
 };
-const sourceHashes = {
-  general: latestDaily.sourceHash,
-  national: national?.sourceHash ?? null,
-  markets: markets?.sourceHash ?? null,
-};
 const completeness =
   Number(Boolean(latestDaily)) +
   Number(Boolean(national)) +
@@ -318,10 +311,7 @@ const sameSources =
   existing?.date === date &&
   existing?.sourceIds?.general === sourceIds.general &&
   existing?.sourceIds?.national === sourceIds.national &&
-  existing?.sourceIds?.markets === sourceIds.markets &&
-  existing?.sourceHashes?.general === sourceHashes.general &&
-  existing?.sourceHashes?.national === sourceHashes.national &&
-  existing?.sourceHashes?.markets === sourceHashes.markets;
+  existing?.sourceIds?.markets === sourceIds.markets;
 
 const generalCandidates = [
   ...latestDaily.highlights.map(({ text }) => text),
@@ -432,7 +422,6 @@ const plan = {
   language: "es",
   completeness,
   sourceIds,
-  sourceHashes,
   targetWords: { min: TARGET_MIN_WORDS, max: TARGET_MAX_WORDS },
   wordCount,
   estimatedDurationSeconds,
