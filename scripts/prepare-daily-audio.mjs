@@ -136,13 +136,6 @@ function newestFirst(a, b) {
   return Date.parse(b.publishedAt ?? "") - Date.parse(a.publishedAt ?? "");
 }
 
-function spokenPercent(integer, decimals) {
-  const significant = String(decimals ?? "").replace(/0+$/, "");
-  return significant
-    ? `${integer},${significant} por ciento`
-    : `${integer} por ciento`;
-}
-
 function speechText(value) {
   return String(value ?? "")
     .replace(/\[([^\]]+)\]\([^)]+\)/g, "$1")
@@ -156,29 +149,13 @@ function speechText(value) {
     .replace(/\bEEE\b/g, "Encuesta de Expectativas Económicas")
     .replace(/\bEOF\b/g, "Encuesta de Operadores Financieros")
     .replace(/\bFed\b/g, "Reserva Federal")
-    .replace(
-      /\bTreasury\s+largos\b/gi,
-      "bonos del Tesoro estadounidense de largo plazo",
-    )
-    .replace(
-      /\bTreasury\s+largo\b/gi,
-      "bono del Tesoro estadounidense de largo plazo",
-    )
     .replace(/\bTreasury\b/gi, "bono del Tesoro estadounidense")
     .replace(/US\$/g, "dólares ")
-    .replace(/(\d+),(\d+)%/g, (_, integer, decimals) =>
-      spokenPercent(integer, decimals),
-    )
-    .replace(/(\d[\d.]*)%/g, "$1 por ciento")
-    .replace(/;\s+/g, ". ")
+    .replace(/(\d+),(\d)0%/g, "$1,$2%")
+    .replace(/(\d+),00%/g, "$1%")
+    .replace(/(\d[\d.,]*)%/g, "$1 por ciento")
     .replace(/\s+/g, " ")
     .trim();
-}
-
-function dailyizeSummary(value) {
-  return String(value ?? "")
-    .replace(/^La semana abre\b/i, "La jornada abre")
-    .replace(/^Esta semana abre\b/i, "La jornada abre");
 }
 
 function formatSpanishDate(date) {
@@ -211,15 +188,6 @@ function sentencesFrom(record, headings) {
   return headings.flatMap((heading) =>
     sentenceList(record.bodySections.get(normalizeHeading(heading)) ?? []),
   );
-}
-
-function observationBlocksFrom(record, limit = 4) {
-  if (!record) return [];
-  const paragraphs =
-    record.bodySections.get(normalizeHeading("Qué observar")) ?? [];
-  return paragraphs
-    .slice(0, limit)
-    .map((paragraph) => sentenceList([paragraph]).slice(0, 2).join(" "));
 }
 
 function tokenSet(text) {
@@ -274,23 +242,6 @@ function addEditorialSection(
   for (const candidate of candidates) {
     addSegment(parts, accepted, candidate);
     if (countWords(parts.join(" ")) - startWords >= targetWords) break;
-  }
-}
-
-function addObservationSection(parts, accepted, candidates) {
-  addSegment(
-    parts,
-    accepted,
-    "Qué observar hoy y durante los próximos días.",
-    { force: true },
-  );
-  addSegment(
-    parts,
-    accepted,
-    "La agenda importa porque puede confirmar o invalidar la lectura con la que comienza la jornada.",
-  );
-  for (const candidate of candidates) {
-    addSegment(parts, accepted, candidate);
   }
 }
 
@@ -382,7 +333,9 @@ const marketsCandidates = markets
       ...sentencesFrom(markets, ["Desarrollo", "Implicancias y riesgos"]),
     ]
   : [];
-const observationCandidates = observationBlocksFrom(latestDaily, 4);
+const observationCandidates = [
+  ...sentencesFrom(latestDaily, ["Qué observar"]),
+];
 
 const parts = [];
 const accepted = [];
@@ -396,7 +349,7 @@ addEditorialSection(
   parts,
   accepted,
   "La señal central.",
-  dailyizeSummary(latestDaily.summary),
+  latestDaily.summary?.replace(/^La semana abre\b/i, "La jornada abre"),
   generalCandidates,
   145,
 );
@@ -420,7 +373,14 @@ if (markets) {
     125,
   );
 }
-addObservationSection(parts, accepted, observationCandidates);
+addEditorialSection(
+  parts,
+  accepted,
+  "Qué observar hoy y durante los próximos días.",
+  "La agenda importa porque puede confirmar o invalidar la lectura con la que comienza la jornada.",
+  observationCandidates,
+  110,
+);
 
 if (countWords(parts.join(" ")) < TARGET_MIN_WORDS) {
   const reserve = [
