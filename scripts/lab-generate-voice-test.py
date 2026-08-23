@@ -25,6 +25,12 @@ out_dir.mkdir(parents=True, exist_ok=True)
 pipelines = {}
 
 for voice, lang_code in VOICES:
+    stem = f"exp1-{voice}"
+    mp3_path = out_dir / f"{stem}.mp3"
+    if mp3_path.exists() and mp3_path.stat().st_size > 0:
+        print(f"LAB exp1 reutilizado: {mp3_path.name} · voz {voice}")
+        continue
+
     pipeline = pipelines.setdefault(lang_code, KPipeline(lang_code=lang_code))
     chunks = []
     for _, _, audio in pipeline(
@@ -43,9 +49,7 @@ for voice, lang_code in VOICES:
         raise RuntimeError(f"Kokoro no devolvió audio para {voice}.")
 
     samples = np.concatenate(chunks)
-    stem = f"exp1-{voice}"
     wav_path = out_dir / f"{stem}.wav"
-    mp3_path = out_dir / f"{stem}.mp3"
     sf.write(wav_path, samples, SAMPLE_RATE)
     subprocess.run(
         [
