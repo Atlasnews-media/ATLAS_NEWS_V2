@@ -1,6 +1,6 @@
 ---
-title: "El capital caro pone a prueba la pausa de la Fed y el ciclo de IA"
-summary: "La semana abre con tasas largas todavía elevadas, petróleo sobre US$90 y dos pruebas decisivas: Jackson Hole para la política monetaria y Nvidia para la rentabilidad del ciclo de inteligencia artificial."
+title: "Tasas largas en máximos desde 2007 dejan a Jackson Hole y Nvidia como pruebas de la semana"
+summary: "El Treasury a 30 años tocó 5,34% durante la semana, mientras el S&P 500 cayó 1,43% y el Nasdaq 2,05%. Jackson Hole y Nvidia serán las próximas pruebas para saber si el mercado puede convivir con un costo de capital más alto."
 publishedAt: "2026-08-23T06:00:00-04:00"
 cutoffAt: "2026-08-23T06:00:00-04:00"
 type: "daily"
@@ -28,72 +28,72 @@ sources:
 featured: false
 demo: false
 highlights:
-  - label: "Costo de capital"
-    text: "El Treasury largo cerró una semana de fuerte tensión y mantiene separada la pausa de la Fed del costo estructural del financiamiento."
-  - label: "Doble prueba"
-    text: "Jackson Hole pondrá a prueba la tesis monetaria y Nvidia la capacidad del ciclo de IA para justificar inversión y valorizaciones exigentes."
-  - label: "Chile"
-    text: "IPC de 3,5%, TPM de 4,50% y actividad débil favorecen renta fija local, pero petróleo y tasas globales limitan el alivio de largo plazo."
+  - label: "Tasas largas"
+    text: "El Treasury a 30 años tocó 5,34% durante la semana, su mayor nivel desde 2007, y cerró todavía en una zona históricamente exigente."
+  - label: "Mercados"
+    text: "El S&P 500 perdió 1,43% en la semana y el Nasdaq 2,05%, con semiconductores cerca de -5%: la corrección se concentró en activos sensibles al costo del capital."
+  - label: "Próxima prueba"
+    text: "Jackson Hole y Nvidia permitirán medir si política monetaria y beneficios son suficientes para sostener valorizaciones con tasas largas elevadas."
 ---
 
 ## Hecho central
 
-Los mercados están cerrados este domingo 23 de agosto, de modo que no existe una nueva sesión que sustituya el cierre del viernes 21. La principal conclusión para la semana que comienza es, por tanto, de régimen y no de precio intradía: una Reserva Federal con espacio para esperar en septiembre no ha conseguido abaratar de forma equivalente el capital de largo plazo. El Treasury a 30 años llegó a 5,34% durante la semana, su mayor nivel desde 2007, mientras el petróleo permaneció sobre US$90 y las bolsas globales cerraron su peor semana desde julio.
+La semana terminó con una señal más importante que cualquier cotización aislada: el Treasury a 30 años tocó 5,34%, su mayor nivel desde 2007, y dejó claro que una Reserva Federal con espacio para esperar no garantiza financiamiento barato a largo plazo. Al mismo tiempo, el S&P 500 perdió 1,43% en la semana, el Nasdaq 2,05% y el índice de semiconductores alrededor de 5%.
 
-La causalidad importa. Inflación más benigna, empleo y consumo menos dinámicos reducen la necesidad de otra subida inmediata de la Fed; déficit, oferta soberana, energía y demanda corporativa de financiamiento empujan en sentido contrario sobre la prima por plazo. El resultado es una curva donde la expectativa sobre la próxima reunión explica cada vez menos por sí sola el costo de financiar diez, veinte o treinta años.
+Eso cambia el foco para los próximos días. El mercado ya no necesita comprobar solamente si la Fed sube o no en septiembre. Necesita saber si las utilidades y el crecimiento pueden justificar valorizaciones exigentes cuando el costo del capital permanece alto. Jackson Hole pondrá a prueba la lectura monetaria; Nvidia, el 26 de agosto, pondrá a prueba la rentabilidad del ciclo de inteligencia artificial.
 
-La semana que comienza someterá esa separación a dos pruebas especialmente limpias. Jackson Hole debe aclarar cómo pondera la Fed inflación, energía y desaceleración. Nvidia reportará el 26 de agosto y permitirá observar si el crecimiento y la monetización del ciclo de inteligencia artificial siguen justificando un volumen de inversión cada vez más intensivo en capital.
+La historia continúa desde las últimas ediciones, pero con una diferencia: el problema ya no es únicamente que las tasas largas estén altas, sino que están empezando a modificar dónde se asigna capital. La caída semanal se concentró en tecnología y semiconductores, mientras los flujos hacia renta fija privilegiaron plazos cortos e intermedios. El mercado mantiene riesgo, pero exige más compensación por duración y financiamiento.
 
 ## En una mirada
 
-El último cierre disponible de Wall Street corresponde al viernes 21. Las acciones rebotaron ese día, pero el S&P 500 perdió 1,43% en la semana, el Nasdaq 2,05% y el Dow 0,85%. El índice de semiconductores retrocedió alrededor de 5% semanal. No hubo capitulación: hubo una repricing selectiva hacia negocios y activos menos dependientes de tasas lejanas y financiamiento abundante.
+El Treasury a 30 años alcanzó 5,34% durante la semana, frente a niveles inferiores al 5,2% antes del último episodio de tensión. Las recompras anunciadas por el Tesoro produjeron alivio temporal, pero no eliminaron la prima por plazo.
 
-El dólar terminó la semana aproximadamente 1% abajo, pese a los rendimientos largos elevados, mientras oro y bitcoin recibieron flujos. Esa combinación es una señal relevante: el mercado no está leyendo el problema únicamente como política monetaria. Riesgo fiscal, oferta de deuda y búsqueda de diversificación también están entrando en el precio de los activos.
+Las bolsas corrigieron en la semana: S&P 500 -1,43%, Nasdaq -2,05% y semiconductores cerca de -5%. La caída fue selectiva y afectó más a negocios cuya valorización depende de beneficios futuros y capital abundante.
 
-En energía, el fin de semana aportó una señal de alivio muy acotada: Irán autorizó el tránsito de algunos petroleros iraquíes por Hormuz. No equivale a normalización. El tráfico sigue severamente restringido y Washington prepara nuevas sanciones, mientras Teherán mantiene una retórica de confrontación. La lectura correcta es permiso excepcional dentro de un sistema todavía dislocado, no reapertura del estrecho.
+El dólar terminó aproximadamente 1% abajo pese a los rendimientos largos elevados. Esa divergencia sugiere que riesgo fiscal, oferta de deuda y diversificación también están influyendo en el precio de los activos.
+
+En energía, el Brent cerró cerca de US$94 y acumuló más de 5% en la semana. El permiso excepcional para algunos petroleros iraquíes mejora marginalmente la operativa de Hormuz, pero no equivale a una normalización sostenida del tráfico.
 
 ## Por qué importa
 
-Para wealth management, la consecuencia práctica es separar carry, duración y riesgo de crédito. Los tramos corto e intermedio de renta fija siguen ofreciendo carry atractivo y se benefician de una Fed que puede esperar. El extremo largo incorpora una prima distinta: déficit, emisiones, energía y competencia por capital pueden mantener los rendimientos altos incluso sin otra subida de la tasa oficial.
+Para renta fija, la principal distinción es entre carry y duración. Los tramos corto e intermedio siguen ofreciendo una relación riesgo-retorno más limpia porque se benefician de una Fed con margen para esperar. El extremo largo incorpora además déficit, oferta de bonos, inflación futura y demanda global por ahorro.
 
-En acciones, el filtro es calidad financiera. La tesis estructural de IA sigue viva, pero una infraestructura que requiere cientos de miles de millones de dólares obliga a distinguir entre crecimiento financiado con caja y crecimiento dependiente de deuda, garantías o refinanciamiento. Nvidia será importante no solo por sus ventas: márgenes, visibilidad de demanda y retorno sobre el capital ayudarán a determinar cuánto del capex del sector puede sostenerse con tasas reales elevadas.
+En renta variable, el filtro pasa por calidad financiera. La tesis de inteligencia artificial sigue viva, pero el mercado está exigiendo que inversión, deuda y gasto de capital se traduzcan en ventas, márgenes y caja. Nvidia será importante no sólo por superar o no expectativas, sino por cuánto respalde esa conversión.
 
-Para fondos balanceados, el escenario favorece diversificación antes que una apuesta binaria por una Fed más expansiva: crédito investment grade y duración moderada para capturar carry; renta variable con beneficios y caja; liquidez para opcionalidad; y coberturas frente a energía y geopolítica mientras Hormuz no se normalice.
+La lectura cambiaría si las tasas largas comienzan a caer de forma sostenida sin deterioro de utilidades, o si una normalización física de Hormuz reduce la presión energética. Si, en cambio, el Treasury a 30 años vuelve claramente sobre 5,3% y el petróleo se mantiene alto, la selectividad debería aumentar.
 
 ## Mercados globales
 
-La semana terminó con una paradoja útil. Las utilidades corporativas continúan siendo robustas y UBS Global Wealth Management elevó su objetivo de fin de año para el S&P 500 a 8.100 puntos, apoyado en beneficios, crecimiento y adopción de IA. Al mismo tiempo, las tasas largas y el petróleo hicieron caer a los principales índices durante la semana. El consenso fundamental sigue constructivo; el mercado está exigiendo una tasa de descuento mayor para creerlo.
+El cierre semanal dejó una combinación poco habitual: acciones y bonos recibieron flujos, pero los principales índices retrocedieron y el costo del capital siguió alto. Eso no describe una salida generalizada del riesgo. Describe un mercado que quiere exposición, pero prefiere escala, calidad y menor sensibilidad a duración.
 
-Ese es el principal desacople entre consenso y precio. Un escenario de aterrizaje suave puede coexistir con acciones al alza si las utilidades compensan el costo de capital. Pero cuanto más alto permanece el Treasury largo, mayor es el crecimiento de beneficios necesario para justificar múltiplos elevados.
+La temporada de resultados continúa sosteniendo la tesis de crecimiento. Cerca de 85% de las compañías del S&P 500 que habían reportado superaron estimaciones de beneficios. El punto de tensión es que mejores utilidades deben compensar ahora una tasa de descuento mayor.
 
-Fuera de Estados Unidos, Japón sigue siendo una señal débil relevante. Rendimientos domésticos en máximos de décadas reducen gradualmente el incentivo para que grandes inversionistas japoneses busquen duración extranjera. No es todavía una retirada masiva de Treasuries, pero sí un cambio marginal en una fuente histórica de demanda internacional justo cuando Estados Unidos necesita absorber más oferta.
+Japón agrega un segundo canal. Rendimientos domésticos en máximos de décadas reducen gradualmente el incentivo para que grandes inversionistas japoneses busquen duración extranjera. No es una retirada masiva de Treasuries, pero sí una menor fuente marginal de demanda justo cuando Estados Unidos necesita absorber más oferta.
 
 ## Chile
 
-Chile también está cerrado este domingo. El dólar observado oficial del viernes 21 fue $923,23. Para el IPSA, la última serie de cierre disponible utilizada en esta edición sitúa el viernes en 11.376,97 puntos, +1,24%. Ambos son cierres del viernes, no cotizaciones de hoy.
+La novedad local de la semana no está en repetir niveles de inflación o TPM, sino en la composición de la actividad. Las Cuentas Nacionales del segundo trimestre mostraron una caída anual de 0,2%, pero consumo y actividad no minera resistieron mejor que minería y exportaciones. Eso obliga a distinguir una economía débil de una economía paralizada.
 
-El marco macro permanece en una tensión conocida: IPC de julio de 3,5% anual, TPM de 4,50% e Imacec de junio de +2,4%, pero Cuentas Nacionales del segundo trimestre que mostraron una economía con escaso impulso. La inflación converge y la actividad entrega argumentos para una futura normalización monetaria; petróleo y tasas globales impiden asumir que esa normalización se transmitirá mecánicamente a toda la curva local.
+El dólar observado cerró el viernes en $923,23 y el IPSA en 11.376,97 puntos, con un avance diario de 1,24%. Ambos son cierres del viernes y no cotizaciones de hoy. Para esta semana, la información relevante será si ventas, crédito y empleo confirman que la demanda doméstica encuentra un piso o si la debilidad del PIB se extiende.
 
-Para renta fija chilena, esto mantiene atractivo relativo en calidad y tramos donde la trayectoria de TPM pesa más directamente. Para el peso, el último cierre sobre $923 refleja un entorno en que cobre, dólar global, petróleo y tasas estadounidenses compiten entre sí; una sola de esas variables ya no explica adecuadamente el USD/CLP.
-
-La agenda local de la semana incluye el programa de operaciones del Banco Central para el 24 al 28 de agosto y nuevas referencias de precios y actividad. El foco de fondo seguirá siendo si consumo, inversión y empleo confirman la debilidad observada en el segundo trimestre o muestran que la economía encontró un piso.
+Para renta fija local, el argumento a favor de tramos cortos e intermedios depende ahora más de la combinación entre actividad y expectativas que de repetir la TPM vigente. El extremo largo seguirá condicionado por Treasury y petróleo.
 
 ## Tasas, monedas y commodities
 
-El Treasury a 30 años tocó 5,34% durante la semana y las mayores recompras anunciadas por el Tesoro solo produjeron alivio parcial. Esto confirma que una intervención de liquidez puede suavizar movimientos, pero no sustituye una respuesta a déficit, oferta de deuda y prima por plazo.
+El Treasury a 30 años es la referencia central porque resume el cambio de régimen: llegó a 5,34% durante la semana y las mayores recompras del Tesoro sólo produjeron alivio parcial. Una caída sostenida desde esos máximos sería una señal nueva; permanecer cerca de ellos confirmaría que la prima estructural sigue elevada.
 
-El dólar cerró la semana débil pese a esas tasas. Si esa divergencia persiste, será una señal de que el atractivo de rendimiento estadounidense está siendo compensado por preocupación fiscal y diversificación hacia otros activos. Oro firme junto a tasas reales altas refuerza la misma lectura.
+El petróleo cerró la semana cerca de US$94, más de 5% arriba en cinco días. La tendencia importa más que el nivel aislado: mientras Hormuz continúe restringido, la energía seguirá transmitiendo presión a inflación, transporte y consumo.
 
-El petróleo sigue siendo el principal riesgo macro de cola, aunque no el titular de esta edición. Las autorizaciones excepcionales a petroleros iraquíes son una mejora operativa puntual; las nuevas sanciones estadounidenses y el tráfico todavía reducido mantienen abierta la transmisión hacia inflación, transporte y consumo. Una normalización física sostenida de Hormuz sería necesaria para debilitar esa tesis.
+El dólar, en cambio, terminó cerca de 1% abajo en la semana pese a tasas largas elevadas. Si esa divergencia persiste, aumentará la evidencia de que el mercado está incorporando también riesgo fiscal y diversificación monetaria.
 
 ## Qué observar
 
-Primero, Jackson Hole. El mercado necesita saber si la Fed valida una pausa de septiembre o mantiene explícitamente abierto el riesgo de nuevas alzas por energía e inflación. Una señal más restrictiva afectaría primero al tramo corto; una discusión sobre inflación persistente y credibilidad puede volver a presionar también el largo.
+Primero, Jackson Hole. La pregunta no es sólo si la Fed valida una pausa en septiembre, sino si su comunicación cambia las expectativas de inflación y la parte larga de la curva.
 
-Segundo, Nvidia el 26 de agosto. El dato importante no será únicamente si supera expectativas, sino si crecimiento, márgenes y demanda justifican la intensidad de capital del ecosistema. Un resultado sólido con guía convincente reforzaría la tesis de monetización; una decepción tendría capacidad de amplificar la sensibilidad ya observada en semiconductores.
+Segundo, Nvidia el 26 de agosto. Importarán crecimiento, márgenes, demanda y capacidad de financiar expansión con una tasa de descuento más alta.
 
-Tercero, Hormuz. La variable relevante es tráfico físico sostenido, no permisos excepcionales. La reapertura efectiva reduciría la prima energética; nuevas sanciones o ataques devolverían presión a inflación y curvas soberanas.
+Tercero, Hormuz. La señal relevante será una mejora sostenida del tráfico físico, no permisos excepcionales.
 
-Cuarto, Chile. Con inflación más cerca de la meta y actividad débil, empleo, inversión y expectativas determinarán cuánto espacio real tiene el Banco Central para normalizar la TPM sin reabrir riesgo inflacionario.
+Cuarto, Chile. Ventas, crédito y empleo permitirán comprobar si la debilidad del segundo trimestre se extiende o si la demanda interna comienza a estabilizarse.
 
-La narrativa dominante para la semana es clara: el mercado puede aceptar una Fed en pausa, pero exige evidencia de que utilidades y crecimiento son suficientes para convivir con un costo estructural del capital más alto. La señal débil está en que política fiscal, demanda internacional por bonos y financiamiento de IA están adquiriendo tanta importancia para las valorizaciones como la próxima decisión de la Fed.
+La idea central para la semana es más simple que en ediciones anteriores: la Fed puede esperar, pero el mercado todavía exige una prima alta por prestar e invertir a largo plazo. Las próximas señales dirán si esa prima empieza a ceder o si se convierte en la principal restricción para activos de riesgo.
