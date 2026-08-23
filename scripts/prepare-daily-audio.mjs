@@ -333,9 +333,7 @@ const marketsCandidates = markets
       ...sentencesFrom(markets, ["Desarrollo", "Implicancias y riesgos"]),
     ]
   : [];
-const observationCandidates = [
-  ...sentencesFrom(latestDaily, ["Qué observar"]),
-];
+const observationCandidates = sentencesFrom(latestDaily, ["Qué observar"]);
 
 const parts = [];
 const accepted = [];
