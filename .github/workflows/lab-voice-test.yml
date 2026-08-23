@@ -52,7 +52,7 @@ jobs:
           path: ~/.cache/huggingface
           key: kokoro-82m-v1-${{ runner.os }}
 
-      - name: Generar Alex y Santa con diagnóstico
+      - name: Generar Alex, Santa y Heart con diagnóstico
         env:
           ATLAS_PUBLIC_REPO_DIR: ${{ runner.temp }}/atlas-news-public
         run: |
@@ -70,7 +70,7 @@ jobs:
           } >"$log" 2>&1
           code=$?
           if [[ $code -eq 0 ]]; then
-            printf '{"status":"success","experiment":"exp1","voices":["em_alex","em_santa"]}\n' > "$RUNNER_TEMP/atlas-news-public/lab/audio/status.json"
+            printf '{"status":"success","experiment":"exp1","voices":["em_alex","em_santa","af_heart"]}\n' > "$RUNNER_TEMP/atlas-news-public/lab/audio/status.json"
           else
             tail -n 40 "$log" | python3 -c 'import json,sys; print(json.dumps({"status":"failure","experiment":"exp1","log":sys.stdin.read()}, ensure_ascii=False))' > "$RUNNER_TEMP/atlas-news-public/lab/audio/status.json"
           fi
@@ -89,6 +89,6 @@ jobs:
           if git diff --cached --quiet; then
             echo "Los resultados LAB ya estaban actualizados."
           else
-            git commit -m "LAB exp1 — voces Alex y Santa"
+            git commit -m "LAB exp1 — voces Alex, Santa y Heart"
             git push origin main
           fi
