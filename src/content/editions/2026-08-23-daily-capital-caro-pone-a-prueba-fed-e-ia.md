@@ -4,7 +4,7 @@ summary: "La semana abre con tasas largas todavía elevadas, petróleo sobre US$
 publishedAt: "2026-08-23T06:00:00-04:00"
 cutoffAt: "2026-08-23T06:00:00-04:00"
 type: "daily"
-status: "draft"
+status: "published"
 tags:
   - mercados-globales
   - tasas
