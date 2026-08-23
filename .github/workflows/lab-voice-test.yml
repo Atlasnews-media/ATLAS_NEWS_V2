@@ -1,6 +1,12 @@
 name: LAB — comparar voces Kokoro
 
 on:
+  pull_request:
+    paths:
+      - "lab/exp1-voice-test.txt"
+      - "scripts/lab-generate-voice-test.py"
+      - "src/pages/lab/index.astro"
+      - ".github/workflows/lab-voice-test.yml"
   push:
     branches:
       - main
