@@ -156,8 +156,14 @@ function speechText(value) {
     .replace(/\bEEE\b/g, "Encuesta de Expectativas Económicas")
     .replace(/\bEOF\b/g, "Encuesta de Operadores Financieros")
     .replace(/\bFed\b/g, "Reserva Federal")
-    .replace(/\bTreasury\s+largos\b/gi, "bonos del Tesoro estadounidense de largo plazo")
-    .replace(/\bTreasury\s+largo\b/gi, "bono del Tesoro estadounidense de largo plazo")
+    .replace(
+      /\bTreasury\s+largos\b/gi,
+      "bonos del Tesoro estadounidense de largo plazo",
+    )
+    .replace(
+      /\bTreasury\s+largo\b/gi,
+      "bono del Tesoro estadounidense de largo plazo",
+    )
     .replace(/\bTreasury\b/gi, "bono del Tesoro estadounidense")
     .replace(/US\$/g, "dólares ")
     .replace(/(\d+),(\d+)%/g, (_, integer, decimals) =>
@@ -209,10 +215,11 @@ function sentencesFrom(record, headings) {
 
 function observationBlocksFrom(record, limit = 4) {
   if (!record) return [];
-  const paragraphs = record.bodySections.get(normalizeHeading("Qué observar")) ?? [];
-  return paragraphs.slice(0, limit).map((paragraph) =>
-    sentenceList([paragraph]).slice(0, 2).join(" "),
-  );
+  const paragraphs =
+    record.bodySections.get(normalizeHeading("Qué observar")) ?? [];
+  return paragraphs
+    .slice(0, limit)
+    .map((paragraph) => sentenceList([paragraph]).slice(0, 2).join(" "));
 }
 
 function tokenSet(text) {
@@ -271,9 +278,12 @@ function addEditorialSection(
 }
 
 function addObservationSection(parts, accepted, candidates) {
-  addSegment(parts, accepted, "Qué observar hoy y durante los próximos días.", {
-    force: true,
-  });
+  addSegment(
+    parts,
+    accepted,
+    "Qué observar hoy y durante los próximos días.",
+    { force: true },
+  );
   addSegment(
     parts,
     accepted,
