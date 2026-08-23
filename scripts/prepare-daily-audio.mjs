@@ -10,7 +10,7 @@ import path from "node:path";
 const root = new URL("../", import.meta.url);
 const editionDir = new URL("src/content/editions/", root);
 const briefingDir = new URL("src/content/briefings/", root);
-const SCRIPT_VERSION = 2;
+const SCRIPT_VERSION = 3;
 const TARGET_MIN_WORDS = 550;
 const TARGET_MAX_WORDS = 650;
 
@@ -136,6 +136,13 @@ function newestFirst(a, b) {
   return Date.parse(b.publishedAt ?? "") - Date.parse(a.publishedAt ?? "");
 }
 
+function spokenPercent(integer, decimals) {
+  const significant = String(decimals ?? "").replace(/0+$/, "");
+  return significant
+    ? `${integer},${significant} por ciento`
+    : `${integer} por ciento`;
+}
+
 function speechText(value) {
   return String(value ?? "")
     .replace(/\[([^\]]+)\]\([^)]+\)/g, "$1")
@@ -149,11 +156,23 @@ function speechText(value) {
     .replace(/\bEEE\b/g, "Encuesta de Expectativas Económicas")
     .replace(/\bEOF\b/g, "Encuesta de Operadores Financieros")
     .replace(/\bFed\b/g, "Reserva Federal")
+    .replace(/\bTreasury\s+largos\b/gi, "bonos del Tesoro estadounidense de largo plazo")
+    .replace(/\bTreasury\s+largo\b/gi, "bono del Tesoro estadounidense de largo plazo")
     .replace(/\bTreasury\b/gi, "bono del Tesoro estadounidense")
     .replace(/US\$/g, "dólares ")
-    .replace(/(\d[\d.,]*)%/g, "$1 por ciento")
+    .replace(/(\d+),(\d+)%/g, (_, integer, decimals) =>
+      spokenPercent(integer, decimals),
+    )
+    .replace(/(\d[\d.]*)%/g, "$1 por ciento")
+    .replace(/;\s+/g, ". ")
     .replace(/\s+/g, " ")
     .trim();
+}
+
+function dailyizeSummary(value) {
+  return String(value ?? "")
+    .replace(/^La semana abre\b/i, "La jornada abre")
+    .replace(/^Esta semana abre\b/i, "La jornada abre");
 }
 
 function formatSpanishDate(date) {
@@ -185,6 +204,14 @@ function sentencesFrom(record, headings) {
   if (!record) return [];
   return headings.flatMap((heading) =>
     sentenceList(record.bodySections.get(normalizeHeading(heading)) ?? []),
+  );
+}
+
+function observationBlocksFrom(record, limit = 4) {
+  if (!record) return [];
+  const paragraphs = record.bodySections.get(normalizeHeading("Qué observar")) ?? [];
+  return paragraphs.slice(0, limit).map((paragraph) =>
+    sentenceList([paragraph]).slice(0, 2).join(" "),
   );
 }
 
@@ -240,6 +267,20 @@ function addEditorialSection(
   for (const candidate of candidates) {
     addSegment(parts, accepted, candidate);
     if (countWords(parts.join(" ")) - startWords >= targetWords) break;
+  }
+}
+
+function addObservationSection(parts, accepted, candidates) {
+  addSegment(parts, accepted, "Qué observar hoy y durante los próximos días.", {
+    force: true,
+  });
+  addSegment(
+    parts,
+    accepted,
+    "La agenda importa porque puede confirmar o invalidar la lectura con la que comienza la jornada.",
+  );
+  for (const candidate of candidates) {
+    addSegment(parts, accepted, candidate);
   }
 }
 
@@ -312,7 +353,7 @@ const sameSources =
   existing?.sourceIds?.markets === sourceIds.markets;
 
 const generalCandidates = [
-  ...latestDaily.highlights.map(({ label, text }) => `${label}. ${text}`),
+  ...latestDaily.highlights.map(({ text }) => text),
   ...sentencesFrom(latestDaily, [
     "Hecho central",
     "Por qué importa",
@@ -321,21 +362,17 @@ const generalCandidates = [
 ];
 const nationalCandidates = national
   ? [
-      ...national.highlights.map(({ label, text }) => `${label}. ${text}`),
+      ...national.highlights.map(({ text }) => text),
       ...sentencesFrom(national, ["Desarrollo", "Implicancias y riesgos"]),
     ]
   : [];
 const marketsCandidates = markets
   ? [
-      ...markets.highlights.map(({ label, text }) => `${label}. ${text}`),
+      ...markets.highlights.map(({ text }) => text),
       ...sentencesFrom(markets, ["Desarrollo", "Implicancias y riesgos"]),
     ]
   : [];
-const observationCandidates = [
-  ...sentencesFrom(latestDaily, ["Qué observar"]),
-  ...sentencesFrom(national, ["Qué observar"]),
-  ...sentencesFrom(markets, ["Qué observar"]),
-];
+const observationCandidates = observationBlocksFrom(latestDaily, 4);
 
 const parts = [];
 const accepted = [];
@@ -349,7 +386,7 @@ addEditorialSection(
   parts,
   accepted,
   "La señal central.",
-  latestDaily.summary,
+  dailyizeSummary(latestDaily.summary),
   generalCandidates,
   145,
 );
@@ -357,7 +394,7 @@ if (national) {
   addEditorialSection(
     parts,
     accepted,
-    "Chile.",
+    "En Chile.",
     national.summary,
     nationalCandidates,
     125,
@@ -367,27 +404,19 @@ if (markets) {
   addEditorialSection(
     parts,
     accepted,
-    "Mercados.",
+    "Ahora, mercados.",
     markets.summary,
     marketsCandidates,
     125,
   );
 }
-addEditorialSection(
-  parts,
-  accepted,
-  "Qué observar hoy.",
-  "La agenda importa porque puede confirmar o invalidar la lectura con la que comienza la jornada.",
-  observationCandidates,
-  90,
-);
+addObservationSection(parts, accepted, observationCandidates);
 
 if (countWords(parts.join(" ")) < TARGET_MIN_WORDS) {
   const reserve = [
     ...generalCandidates,
     ...nationalCandidates,
     ...marketsCandidates,
-    ...observationCandidates,
   ];
   for (const candidate of reserve) {
     addSegment(parts, accepted, candidate);
@@ -395,6 +424,12 @@ if (countWords(parts.join(" ")) < TARGET_MIN_WORDS) {
   }
 }
 
+addSegment(
+  parts,
+  accepted,
+  "La idea para comenzar el día es quedarse con la señal central y observar si los próximos datos la confirman o la contradicen.",
+  { force: true },
+);
 addSegment(
   parts,
   accepted,
