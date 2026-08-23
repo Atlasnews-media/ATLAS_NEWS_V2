@@ -4,7 +4,7 @@ summary: "Chile entra a una semana con IPP, ventas minoristas, crédito comercia
 publishedAt: "2026-08-23T06:30:00-04:00"
 cutoffAt: "2026-08-23T06:20:00-04:00"
 section: "national"
-status: "draft"
+status: "published"
 tags:
   - chile
   - inflacion
