@@ -10,7 +10,7 @@ import path from "node:path";
 const root = new URL("../", import.meta.url);
 const editionDir = new URL("src/content/editions/", root);
 const briefingDir = new URL("src/content/briefings/", root);
-const SCRIPT_VERSION = 3;
+const SCRIPT_VERSION = 4;
 const TARGET_MIN_WORDS = 550;
 const TARGET_MAX_WORDS = 650;
 
