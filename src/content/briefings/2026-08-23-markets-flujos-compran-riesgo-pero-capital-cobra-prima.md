@@ -4,7 +4,7 @@ summary: "Acciones y bonos recibieron capital pese al shock de duraci√≥n y petr√
 publishedAt: "2026-08-23T07:00:00-04:00"
 cutoffAt: "2026-08-23T06:50:00-04:00"
 section: "markets"
-status: "draft"
+status: "published"
 tags:
   - mercados-globales
   - renta-fija
