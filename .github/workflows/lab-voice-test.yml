@@ -46,20 +46,32 @@ jobs:
           path: ~/.cache/huggingface
           key: kokoro-82m-v1-${{ runner.os }}
 
-      - name: Generar Alex y Santa
+      - name: Generar Alex y Santa con diagnóstico
         env:
           ATLAS_PUBLIC_REPO_DIR: ${{ runner.temp }}/atlas-news-public
         run: |
-          set -euo pipefail
-          sudo apt-get update -qq
-          sudo apt-get install -y -qq espeak-ng ffmpeg python3-venv
-          python3 -m venv "$RUNNER_TEMP/kokoro-lab-venv"
-          source "$RUNNER_TEMP/kokoro-lab-venv/bin/activate"
-          python -m pip install --quiet --upgrade pip
-          python -m pip install --quiet "kokoro==0.9.4" soundfile numpy
-          python scripts/lab-generate-voice-test.py
+          set +e
+          mkdir -p "$RUNNER_TEMP/atlas-news-public/lab/audio"
+          log="$RUNNER_TEMP/lab-kokoro.log"
+          {
+            sudo apt-get update -qq && \
+            sudo apt-get install -y -qq espeak-ng ffmpeg python3-venv && \
+            python3 -m venv "$RUNNER_TEMP/kokoro-lab-venv" && \
+            source "$RUNNER_TEMP/kokoro-lab-venv/bin/activate" && \
+            python -m pip install --quiet --upgrade pip && \
+            python -m pip install --quiet "kokoro==0.9.4" soundfile numpy && \
+            python scripts/lab-generate-voice-test.py
+          } >"$log" 2>&1
+          code=$?
+          if [[ $code -eq 0 ]]; then
+            printf '{"status":"success","experiment":"exp1","voices":["em_alex","em_santa"]}\n' > "$RUNNER_TEMP/atlas-news-public/lab/audio/status.json"
+          else
+            tail -n 40 "$log" | python3 -c 'import json,sys; print(json.dumps({"status":"failure","experiment":"exp1","log":sys.stdin.read()}, ensure_ascii=False))' > "$RUNNER_TEMP/atlas-news-public/lab/audio/status.json"
+          fi
+          cat "$log"
+          exit 0
 
-      - name: Publicar sólo los audios LAB
+      - name: Publicar resultados LAB
         env:
           GIT_SSH_COMMAND: ssh -i ~/.ssh/atlas_news_pages -o IdentitiesOnly=yes
         run: |
@@ -69,7 +81,7 @@ jobs:
           git config user.email "actions@users.noreply.github.com"
           git add lab/audio/
           if git diff --cached --quiet; then
-            echo "Los audios LAB ya estaban actualizados."
+            echo "Los resultados LAB ya estaban actualizados."
           else
             git commit -m "LAB exp1 — voces Alex y Santa"
             git push origin main
