@@ -10,7 +10,7 @@ import path from "node:path";
 const root = new URL("../", import.meta.url);
 const editionDir = new URL("src/content/editions/", root);
 const briefingDir = new URL("src/content/briefings/", root);
-const SCRIPT_VERSION = 2;
+const SCRIPT_VERSION = 3;
 const TARGET_MIN_WORDS = 550;
 const TARGET_MAX_WORDS = 650;
 
@@ -151,6 +151,8 @@ function speechText(value) {
     .replace(/\bFed\b/g, "Reserva Federal")
     .replace(/\bTreasury\b/gi, "bono del Tesoro estadounidense")
     .replace(/US\$/g, "dólares ")
+    .replace(/(\d+),(\d)0%/g, "$1,$2%")
+    .replace(/(\d+),00%/g, "$1%")
     .replace(/(\d[\d.,]*)%/g, "$1 por ciento")
     .replace(/\s+/g, " ")
     .trim();
@@ -312,7 +314,7 @@ const sameSources =
   existing?.sourceIds?.markets === sourceIds.markets;
 
 const generalCandidates = [
-  ...latestDaily.highlights.map(({ label, text }) => `${label}. ${text}`),
+  ...latestDaily.highlights.map(({ text }) => text),
   ...sentencesFrom(latestDaily, [
     "Hecho central",
     "Por qué importa",
@@ -321,21 +323,17 @@ const generalCandidates = [
 ];
 const nationalCandidates = national
   ? [
-      ...national.highlights.map(({ label, text }) => `${label}. ${text}`),
+      ...national.highlights.map(({ text }) => text),
       ...sentencesFrom(national, ["Desarrollo", "Implicancias y riesgos"]),
     ]
   : [];
 const marketsCandidates = markets
   ? [
-      ...markets.highlights.map(({ label, text }) => `${label}. ${text}`),
+      ...markets.highlights.map(({ text }) => text),
       ...sentencesFrom(markets, ["Desarrollo", "Implicancias y riesgos"]),
     ]
   : [];
-const observationCandidates = [
-  ...sentencesFrom(latestDaily, ["Qué observar"]),
-  ...sentencesFrom(national, ["Qué observar"]),
-  ...sentencesFrom(markets, ["Qué observar"]),
-];
+const observationCandidates = sentencesFrom(latestDaily, ["Qué observar"]);
 
 const parts = [];
 const accepted = [];
@@ -349,7 +347,7 @@ addEditorialSection(
   parts,
   accepted,
   "La señal central.",
-  latestDaily.summary,
+  latestDaily.summary?.replace(/^La semana abre\b/i, "La jornada abre"),
   generalCandidates,
   145,
 );
@@ -357,7 +355,7 @@ if (national) {
   addEditorialSection(
     parts,
     accepted,
-    "Chile.",
+    "En Chile.",
     national.summary,
     nationalCandidates,
     125,
@@ -367,7 +365,7 @@ if (markets) {
   addEditorialSection(
     parts,
     accepted,
-    "Mercados.",
+    "Ahora, mercados.",
     markets.summary,
     marketsCandidates,
     125,
@@ -376,10 +374,10 @@ if (markets) {
 addEditorialSection(
   parts,
   accepted,
-  "Qué observar hoy.",
+  "Qué observar hoy y durante los próximos días.",
   "La agenda importa porque puede confirmar o invalidar la lectura con la que comienza la jornada.",
   observationCandidates,
-  90,
+  110,
 );
 
 if (countWords(parts.join(" ")) < TARGET_MIN_WORDS) {
@@ -387,7 +385,6 @@ if (countWords(parts.join(" ")) < TARGET_MIN_WORDS) {
     ...generalCandidates,
     ...nationalCandidates,
     ...marketsCandidates,
-    ...observationCandidates,
   ];
   for (const candidate of reserve) {
     addSegment(parts, accepted, candidate);
@@ -395,6 +392,12 @@ if (countWords(parts.join(" ")) < TARGET_MIN_WORDS) {
   }
 }
 
+addSegment(
+  parts,
+  accepted,
+  "La idea para comenzar el día es quedarse con la señal central y observar si los próximos datos la confirman o la contradicen.",
+  { force: true },
+);
 addSegment(
   parts,
   accepted,
