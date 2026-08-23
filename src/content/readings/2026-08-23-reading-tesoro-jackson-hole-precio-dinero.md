@@ -2,7 +2,7 @@
 title: "Tesoro, tasas largas y Jackson Hole: quién determina realmente el precio del dinero"
 summary: "El Tesoro duplicó sus recompras de deuda larga justo antes de Jackson Hole. La tensión revela una diferencia clave entre aliviar el mercado de bonos y cambiar la política monetaria."
 publishedAt: "2026-08-23T09:22:00-04:00"
-status: "draft"
+status: "published"
 tags:
   - lectura-seleccionada
   - estados-unidos
