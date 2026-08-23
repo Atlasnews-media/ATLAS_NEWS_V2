@@ -2,7 +2,7 @@
 title: "El PIB cayó, pero el consumo creció: qué está pasando realmente con la economía chilena"
 summary: "Chile se contrajo 0,2% anual en el segundo trimestre, pero el consumo y la actividad no minera avanzaron. La composición del PIB muestra una economía más desigual que paralizada."
 publishedAt: "2026-08-23T09:22:00-04:00"
-status: "draft"
+status: "published"
 tags:
   - lectura-seleccionada
   - chile
