@@ -90,5 +90,6 @@ jobs:
             echo "Los resultados LAB ya estaban actualizados."
           else
             git commit -m "LAB exp1 — voces Alex, Santa y Heart"
+            git pull --rebase origin main
             git push origin main
           fi
