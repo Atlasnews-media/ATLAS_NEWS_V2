@@ -97,7 +97,6 @@ metadata = {
     "language": "es",
     "completeness": plan.get("completeness", 1),
     "sourceIds": plan["sourceIds"],
-    "sourceHashes": plan.get("sourceHashes"),
 }
 (audio_dir / "latest.json").write_text(
     json.dumps(metadata, ensure_ascii=False, indent=2) + "\n",
