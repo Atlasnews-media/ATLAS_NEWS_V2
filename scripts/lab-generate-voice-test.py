@@ -10,17 +10,28 @@ ROOT = Path(__file__).resolve().parents[1]
 PUBLIC_DIR = Path(os.environ["ATLAS_PUBLIC_REPO_DIR"])
 SCRIPT_PATH = ROOT / "lab" / "exp1-voice-test.txt"
 SAMPLE_RATE = 24_000
-VOICES = ("em_alex", "em_santa")
+VOICES = (
+    ("em_alex", "e"),
+    ("em_santa", "e"),
+    ("af_heart", "a"),
+)
 
 text = SCRIPT_PATH.read_text(encoding="utf-8").strip()
 if not text:
     raise RuntimeError("El guion estático del LAB está vacío.")
 
-pipeline = KPipeline(lang_code="e")
 out_dir = PUBLIC_DIR / "lab" / "audio"
 out_dir.mkdir(parents=True, exist_ok=True)
+pipelines = {}
 
-for voice in VOICES:
+for voice, lang_code in VOICES:
+    stem = f"exp1-{voice}"
+    mp3_path = out_dir / f"{stem}.mp3"
+    if mp3_path.exists() and mp3_path.stat().st_size > 0:
+        print(f"LAB exp1 reutilizado: {mp3_path.name} · voz {voice}")
+        continue
+
+    pipeline = pipelines.setdefault(lang_code, KPipeline(lang_code=lang_code))
     chunks = []
     for _, _, audio in pipeline(
         text,
@@ -38,9 +49,7 @@ for voice in VOICES:
         raise RuntimeError(f"Kokoro no devolvió audio para {voice}.")
 
     samples = np.concatenate(chunks)
-    stem = f"exp1-{voice}"
     wav_path = out_dir / f"{stem}.wav"
-    mp3_path = out_dir / f"{stem}.mp3"
     sf.write(wav_path, samples, SAMPLE_RATE)
     subprocess.run(
         [
@@ -60,4 +69,4 @@ for voice in VOICES:
         check=True,
     )
     wav_path.unlink(missing_ok=True)
-    print(f"LAB exp1 generado: {mp3_path.name} · voz {voice}")
+    print(f"LAB exp1 generado: {mp3_path.name} · voz {voice} · idioma {lang_code}")

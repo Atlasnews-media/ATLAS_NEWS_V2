@@ -45,6 +45,14 @@ import "../../styles/global.css";
               <source src="/lab/audio/exp1-em_santa.mp3" type="audio/mpeg" />
             </audio>
           </article>
+
+          <article class="voice-card">
+            <p class="voice-label">C · af_heart</p>
+            <h3>Heart</h3>
+            <audio controls preload="metadata">
+              <source src="/lab/audio/exp1-af_heart.mp3" type="audio/mpeg" />
+            </audio>
+          </article>
         </div>
       </section>
     </main>
@@ -59,7 +67,7 @@ import "../../styles/global.css";
   }
 
   .lab-shell {
-    width: min(58rem, calc(100% - 2rem));
+    width: min(64rem, calc(100% - 2rem));
     margin: 0 auto;
     padding: clamp(4rem, 12vw, 8rem) 0;
   }
@@ -104,7 +112,7 @@ import "../../styles/global.css";
 
   .voice-grid {
     display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 1rem;
     margin-top: 2rem;
   }
@@ -119,7 +127,7 @@ import "../../styles/global.css";
     width: 100%;
   }
 
-  @media (max-width: 42rem) {
+  @media (max-width: 54rem) {
     .voice-grid {
       grid-template-columns: 1fr;
     }
