@@ -10,17 +10,22 @@ ROOT = Path(__file__).resolve().parents[1]
 PUBLIC_DIR = Path(os.environ["ATLAS_PUBLIC_REPO_DIR"])
 SCRIPT_PATH = ROOT / "lab" / "exp1-voice-test.txt"
 SAMPLE_RATE = 24_000
-VOICES = ("em_alex", "em_santa")
+VOICES = (
+    ("em_alex", "e"),
+    ("em_santa", "e"),
+    ("af_heart", "a"),
+)
 
 text = SCRIPT_PATH.read_text(encoding="utf-8").strip()
 if not text:
     raise RuntimeError("El guion estático del LAB está vacío.")
 
-pipeline = KPipeline(lang_code="e")
 out_dir = PUBLIC_DIR / "lab" / "audio"
 out_dir.mkdir(parents=True, exist_ok=True)
+pipelines = {}
 
-for voice in VOICES:
+for voice, lang_code in VOICES:
+    pipeline = pipelines.setdefault(lang_code, KPipeline(lang_code=lang_code))
     chunks = []
     for _, _, audio in pipeline(
         text,
@@ -60,4 +65,4 @@ for voice in VOICES:
         check=True,
     )
     wav_path.unlink(missing_ok=True)
-    print(f"LAB exp1 generado: {mp3_path.name} · voz {voice}")
+    print(f"LAB exp1 generado: {mp3_path.name} · voz {voice} · idioma {lang_code}")
