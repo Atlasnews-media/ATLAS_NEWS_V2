@@ -19,8 +19,34 @@ import "../../styles/global.css";
         Espacio de prueba para cambios editoriales, visuales, sonoros y
         funcionales antes de incorporarlos a ATLAS NEWS.
       </p>
+
       <div class="lab-rule" aria-hidden="true"></div>
-      <p class="lab-status">Sin experimentos activos.</p>
+
+      <section class="experiment" aria-labelledby="exp1-title">
+        <p class="lab-status">Experimento 1 · Kokoro</p>
+        <h2 id="exp1-title">Comparación de voces</h2>
+        <p class="experiment-copy">
+          Mismo guion estático del briefing. La única variable es la voz.
+        </p>
+
+        <div class="voice-grid">
+          <article class="voice-card">
+            <p class="voice-label">A · em_alex</p>
+            <h3>Alex</h3>
+            <audio controls preload="metadata">
+              <source src="/lab/audio/exp1-em_alex.mp3" type="audio/mpeg" />
+            </audio>
+          </article>
+
+          <article class="voice-card">
+            <p class="voice-label">B · em_santa</p>
+            <h3>Santa</h3>
+            <audio controls preload="metadata">
+              <source src="/lab/audio/exp1-em_santa.mp3" type="audio/mpeg" />
+            </audio>
+          </article>
+        </div>
+      </section>
     </main>
   </body>
 </html>
@@ -33,13 +59,14 @@ import "../../styles/global.css";
   }
 
   .lab-shell {
-    width: min(52rem, calc(100% - 2rem));
+    width: min(58rem, calc(100% - 2rem));
     margin: 0 auto;
     padding: clamp(4rem, 12vw, 8rem) 0;
   }
 
   .lab-kicker,
-  .lab-status {
+  .lab-status,
+  .voice-label {
     margin: 0;
     font: 800 0.72rem/1.2 var(--sans);
     letter-spacing: 0.12em;
@@ -52,14 +79,49 @@ import "../../styles/global.css";
     letter-spacing: -0.04em;
   }
 
-  .lab-copy {
+  h2 {
+    margin: 0.5rem 0 0.6rem;
+    font: 700 clamp(2rem, 5vw, 3.6rem)/0.95 var(--serif);
+    letter-spacing: -0.03em;
+  }
+
+  h3 {
+    margin: 0.35rem 0 1rem;
+    font: 700 1.6rem/1 var(--serif);
+  }
+
+  .lab-copy,
+  .experiment-copy {
     max-width: 42rem;
     margin: 0;
     font: 1.15rem/1.65 var(--serif);
   }
 
   .lab-rule {
-    margin: 2.5rem 0 1.25rem;
+    margin: 2.5rem 0 2rem;
     border-top: 4px double currentColor;
+  }
+
+  .voice-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1rem;
+    margin-top: 2rem;
+  }
+
+  .voice-card {
+    padding: 1.25rem;
+    border: 1px solid currentColor;
+    background: rgba(255, 255, 255, 0.18);
+  }
+
+  audio {
+    width: 100%;
+  }
+
+  @media (max-width: 42rem) {
+    .voice-grid {
+      grid-template-columns: 1fr;
+    }
   }
 </style>
