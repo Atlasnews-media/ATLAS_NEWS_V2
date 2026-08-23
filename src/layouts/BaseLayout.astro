@@ -108,15 +108,53 @@ const primaryEntry = isHome
     </header>
     <div id="contenido"><slot /></div>
     <footer class="site-footer">
-      <a class="footer-brand" href="/">ATLAS NEWS</a>
-      <p>
-        Información y análisis editorial. No constituye una recomendación de
-        inversión.
-      </p>
-      <p>
-        <a href="/estado/">Estado de publicación</a><br />Santiago de Chile ·
-        código {sourceCommit}
-      </p>
+      <div class="footer-meta">
+        <a class="footer-brand" href="/">ATLAS NEWS</a>
+        <p>
+          Información y análisis editorial. No constituye una recomendación de
+          inversión.
+        </p>
+        <p>
+          <a href="/estado/">Estado de publicación</a><br />Santiago de Chile ·
+          código {sourceCommit}
+        </p>
+      </div>
+
+      <div class="footer-hub" aria-label="ATLAS Learning Hub">
+        <img
+          class="footer-hub-mark"
+          src="/brand/atlas-icon.png"
+          alt=""
+          width="1172"
+          height="1172"
+        />
+        <div class="footer-hub-copy">
+          <a
+            class="footer-hub-title"
+            href="https://atlas-learning-hub-web.vercel.app"
+            target="_blank"
+            rel="noreferrer"
+          >
+            ATLAS Learning Hub
+          </a>
+          <p>
+            ATLAS NEWS es parte de ATLAS Learning Hub, ecosistema público de
+            conocimiento y productos digitales de ATLAS Group Hub. Reúne ATLAS
+            News, ATLAS Games, ATLAS Learning y ATLAS Tools bajo una
+            arquitectura común orientada a convertir conocimiento, tecnología y
+            experimentación en contenidos, experiencias y herramientas de valor
+            práctico.
+          </p>
+          <a
+            class="footer-hub-link"
+            href="https://atlas-learning-hub-web.vercel.app"
+            target="_blank"
+            rel="noreferrer"
+          >
+            Conoce el ecosistema →
+          </a>
+        </div>
+      </div>
     </footer>
   </body>
 </html>
@@ -187,28 +225,68 @@ const primaryEntry = isHome
     vertical-align: middle;
   }
   .site-footer {
-    display: grid;
-    grid-template-columns: 1fr 2fr 1fr;
-    gap: 1rem;
     margin-top: 5rem;
     padding: 1.5rem 0 3rem;
     border-top: 4px double var(--rule);
     font: 0.72rem/1.5 var(--sans);
     text-transform: uppercase;
   }
+  .footer-meta {
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+    gap: 1rem;
+  }
   .site-footer p {
     margin: 0;
   }
-  .site-footer p:last-child {
+  .footer-meta > p:last-child {
     text-align: right;
   }
-  .site-footer p:last-child a {
+  .footer-meta > p:last-child a {
     font-weight: 800;
     text-underline-offset: 0.15em;
   }
   .footer-brand {
     font: 700 1.15rem/1 var(--serif);
     text-decoration: none;
+  }
+  .footer-hub {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+    gap: 1rem;
+    align-items: start;
+    margin-top: 1.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--rule);
+    text-transform: none;
+  }
+  .footer-hub-mark {
+    display: block;
+    width: clamp(2.5rem, 4vw, 4rem);
+    height: auto;
+  }
+  .footer-hub-copy {
+    max-width: 56rem;
+  }
+  .footer-hub-title {
+    display: inline-block;
+    color: inherit;
+    font: 700 1.15rem/1.15 var(--serif);
+    text-decoration: none;
+  }
+  .footer-hub-copy p {
+    margin-top: 0.5rem;
+    color: var(--ink-soft);
+    font: 0.82rem/1.55 var(--serif);
+  }
+  .footer-hub-link {
+    display: inline-block;
+    margin-top: 0.65rem;
+    color: inherit;
+    font: 800 0.7rem/1.2 var(--sans);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    text-underline-offset: 0.18em;
   }
 
   @media (max-width: 36rem) {
@@ -246,11 +324,18 @@ const primaryEntry = isHome
       margin-right: 0.25rem;
       font-size: 0.26rem;
     }
-    .site-footer {
+    .footer-meta {
       grid-template-columns: 1fr;
     }
-    .site-footer p:last-child {
+    .footer-meta > p:last-child {
       text-align: left;
+    }
+    .footer-hub {
+      grid-template-columns: auto minmax(0, 1fr);
+      gap: 0.75rem;
+    }
+    .footer-hub-mark {
+      width: 2.5rem;
     }
   }
 </style>
