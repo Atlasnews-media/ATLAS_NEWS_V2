@@ -60,7 +60,6 @@ jobs:
 
       - name: Planificar edición sonora diaria
         id: audio_plan
-        continue-on-error: true
         env:
           ATLAS_PUBLIC_REPO_DIR: ${{ runner.temp }}/atlas-news-public
           ATLAS_AUDIO_PLAN: ${{ runner.temp }}/atlas-audio-plan.json
@@ -91,8 +90,8 @@ jobs:
           key: kokoro-82m-v1-${{ runner.os }}
 
       - name: Generar y publicar edición sonora con Kokoro
+        id: audio_generate
         if: steps.audio_plan.outputs.needs_generation == 'true'
-        continue-on-error: true
         env:
           ATLAS_PUBLIC_REPO_DIR: ${{ runner.temp }}/atlas-news-public
           ATLAS_AUDIO_PLAN: ${{ runner.temp }}/atlas-audio-plan.json
@@ -120,7 +119,7 @@ jobs:
           fi
 
       - name: Registrar generación exitosa
-        if: success() && steps.audio_plan.outputs.needs_generation == 'true'
+        if: steps.audio_generate.outcome == 'success' && steps.audio_plan.outputs.needs_generation == 'true'
         continue-on-error: true
         env:
           AUDIO_DATE: ${{ steps.audio_plan.outputs.audio_date }}
