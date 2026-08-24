@@ -53,11 +53,11 @@ marketSummary:
       category: "tasas"
     - label: "Brent"
       value: "US$94,39"
-      change: "+más de 5% semanal"
+      change: "+5% semanal"
       category: "commodities"
     - label: "Oro spot"
       value: "US$4.623,94"
-      change: "+más de 5% semanal"
+      change: "+5% semanal"
       category: "commodities"
 ---
 
