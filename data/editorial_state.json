@@ -29,12 +29,12 @@
       "topic": "Inteligencia artificial y selectividad bursátil",
       "thesis": "La inteligencia artificial sostiene crecimiento estructural, pero tasas largas elevadas y su creciente intensidad de capital convierten financiamiento, monetización y generación de caja en filtros decisivos de valorización.",
       "status": "confirmed",
-      "last_evidence": "El 18 de agosto el índice de semiconductores cayó 5%, Nvidia 2,3% y Micron 7% cuando los rendimientos largos alcanzaron máximos multianuales, confirmando que una mayor tasa de descuento golpea especialmente a los activos de crecimiento intensivos en capital.",
-      "effect": "Favorece compañías capaces de financiar inversión con caja y monetización visible, y aumenta el riesgo de compresión de múltiplos en modelos dependientes de deuda o capex todavía no rentabilizado.",
+      "last_evidence": "El 24 de agosto Alibaba cayó cerca de 9% tras anunciar una colocación de US$10.200 millones mientras el mercado cuestionó el retorno de su gasto en IA, y Samsung perdió más de 8% pese a un plan récord de retorno al accionista; además, grandes clientes de Nvidia fueron informados de posibles alzas superiores a 15% en servidores de IA por mayores costos de memoria.",
+      "effect": "Favorece compañías capaces de financiar inversión con caja y monetización visible, y aumenta el riesgo de compresión de múltiplos en modelos dependientes de deuda, nuevas emisiones o capex todavía no rentabilizado.",
       "base_scenario": "Crecimiento tecnológico acompañado por utilidades, pero con mayor disciplina sobre retorno del capital y estructura de financiamiento.",
-      "invalidate_if": "Las tasas largas caen de forma sostenida o la monetización de IA se amplía suficientemente para absorber el aumento de capex sin deteriorar balances ni retornos.",
-      "watch": "Resultados, márgenes, flujo de caja, emisiones de deuda, gasto de capital, utilización de infraestructura y Treasury a diez y treinta años.",
-      "last_publication": "/ediciones/2026-08-19-daily-tasas-largas-reordenan-riesgo/"
+      "invalidate_if": "Las tasas largas caen de forma sostenida o la monetización de IA se amplía suficientemente para absorber el aumento de capex y costos de infraestructura sin deteriorar balances ni retornos.",
+      "watch": "Resultados, márgenes, flujo de caja, emisiones de deuda y acciones, gasto de capital, costos de servidores y memoria, utilización de infraestructura y Treasury a diez y treinta años.",
+      "last_publication": "/ediciones/2026-08-24-daily-mercado-exige-retorno-capital-antes-nvidia/"
     },
     {
       "id": "chile-inflation-activity-rates",
