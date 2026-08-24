@@ -4,7 +4,7 @@ summary: "Los expertos entregan hoy a Hacienda y Dipres sus estimaciones de PIB 
 publishedAt: "2026-08-24T10:30:00-04:00"
 cutoffAt: "2026-08-24T10:15:00-04:00"
 section: "national"
-status: "draft"
+status: "published"
 tags:
   - chile
   - politica-fiscal

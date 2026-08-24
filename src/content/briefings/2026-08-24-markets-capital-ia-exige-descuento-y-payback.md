@@ -4,7 +4,7 @@ summary: "La colocación de Alibaba fue casi tres veces sobresuscrita pese al ca
 publishedAt: "2026-08-24T10:20:00-04:00"
 cutoffAt: "2026-08-24T10:15:00-04:00"
 section: "markets"
-status: "draft"
+status: "published"
 tags:
   - mercados-globales
   - inteligencia-artificial

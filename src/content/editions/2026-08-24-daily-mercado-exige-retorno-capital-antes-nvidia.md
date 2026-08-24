@@ -4,7 +4,7 @@ summary: "La apertura de la semana castiga decisiones de capital en grandes tecn
 publishedAt: "2026-08-24T06:00:00-04:00"
 cutoffAt: "2026-08-24T05:57:00-04:00"
 type: "daily"
-status: "draft"
+status: "published"
 tags:
   - inteligencia-artificial
   - mercados-globales
