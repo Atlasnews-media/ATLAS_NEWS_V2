@@ -4,7 +4,7 @@ summary: "La semana cerró con bolsas a la baja, Treasuries largos bajo presión
 publishedAt: "2026-08-24T07:30:00-04:00"
 cutoffAt: "2026-08-24T07:30:00-04:00"
 type: "weekly"
-status: "draft"
+status: "published"
 tags:
   - mercados-globales
   - tasas
