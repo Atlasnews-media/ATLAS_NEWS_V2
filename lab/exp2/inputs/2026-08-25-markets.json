@@ -1,0 +1,60 @@
+{
+  "schemaVersion": 1,
+  "scriptVersion": 1,
+  "date": "2026-08-25",
+  "section": "markets",
+  "sourceIds": {
+    "general": "2026-08-25-daily-mercado-reduce-prima-iran-y-mira-nvidia",
+    "national": "2026-08-25-national-costos-productor-suben-sin-validar-traspaso-al-ipc",
+    "markets": "2026-08-25-markets-sanciones-pierden-prima-y-rotacion-cambia"
+  },
+  "topicsChosen": [
+    "Por qué el mercado dejó de reaccionar automáticamente a cada titular sobre Irán",
+    "Nvidia como prueba del retorno económico detrás de la inversión en inteligencia artificial",
+    "Qué podría devolver inflación y tasas al centro del escenario"
+  ],
+  "discarded": [
+    "Repetición de niveles de activos que no cambiaron la tesis",
+    "Descripción exhaustiva de cada índice, divisa o commodity"
+  ],
+  "voices": {
+    "A": "ef_dora",
+    "B": "em_alex"
+  },
+  "dialogue": [
+    {"speaker":"A","text":"Hay algo curioso en los mercados hoy. Estados Unidos endureció las sanciones contra Irán, Irán prometió responder... y aun así el petróleo bajó."},
+    {"speaker":"B","text":"Eso parece bastante contraintuitivo. Más tensión geopolítica normalmente significa petróleo más caro."},
+    {"speaker":"A","text":"Y durante varias semanas prácticamente funcionó así. Cada nuevo titular agregaba algo de temor al precio. Hoy ocurrió algo distinto."},
+    {"speaker":"B","text":"¿El mercado dejó de creerle a los titulares?"},
+    {"speaker":"A","text":"No exactamente. Más bien empezó a pedir pruebas."},
+    {"speaker":"B","text":"¿Pruebas de qué?"},
+    {"speaker":"A","text":"De que la tensión realmente va a sacar petróleo del mercado. Las sanciones fueron menos duras de lo que algunos inversionistas temían y, por ahora, no implican una escalada militar inmediata."},
+    {"speaker":"B","text":"Entonces el riesgo sigue ahí, pero el mercado ya no está dispuesto a pagar cada vez más por la posibilidad de que ocurra algo."},
+    {"speaker":"A","text":"Esa es una buena forma de decirlo. Irán sigue siendo un riesgo, Hormuz sigue siendo importante, pero para volver a disparar el petróleo probablemente hará falta una interrupción más concreta de la oferta."},
+    {"speaker":"B","text":"Y si el petróleo deja de ocupar el centro del escenario, ¿qué lo reemplaza?"},
+    {"speaker":"A","text":"Nvidia."},
+    {"speaker":"B","text":"Una empresa reemplazando a Irán como principal riesgo del mercado suena un poco exagerado."},
+    {"speaker":"A","text":"Como riesgo geopolítico, claro que sí. Pero como evento capaz de mover precios, no tanto. Los resultados de Nvidia se han convertido en una especie de examen para toda la inversión alrededor de inteligencia artificial."},
+    {"speaker":"B","text":"Porque ya no basta con decir la IA va a crecer."},
+    {"speaker":"A","text":"Exactamente. El mercado ahora quiere saber cuánto dinero genera ese crecimiento y cuánto cuesta conseguirlo."},
+    {"speaker":"B","text":"Eso cambia bastante la discusión."},
+    {"speaker":"A","text":"Mucho. Durante la primera etapa bastaba con anunciar centros de datos, chips e inversiones enormes. Ahora los inversionistas empiezan a preguntar: perfecto, ¿y cuál es el retorno?"},
+    {"speaker":"B","text":"Algo bastante tradicional para una tecnología tan nueva."},
+    {"speaker":"A","text":"Al final, el mercado siempre termina regresando a preguntas bastante antiguas: cuánto ganas, cuánto inviertes y cuánto tiempo tardas en recuperar esa inversión."},
+    {"speaker":"B","text":"¿Y qué tendría que mostrar Nvidia para tranquilizar al mercado?"},
+    {"speaker":"A","text":"No solamente buenas ventas. También márgenes sólidos y señales de que la demanda futura sigue justificando todo el dinero que se está destinando a infraestructura."},
+    {"speaker":"B","text":"¿Y si Nvidia sorprende positivamente?"},
+    {"speaker":"A","text":"Ahí miraría algo incluso más interesante que Nvidia: qué ocurre con el resto del sector."},
+    {"speaker":"B","text":"¿Por qué?"},
+    {"speaker":"A","text":"Porque si suben también fabricantes de memoria, redes y otras compañías relacionadas, el mercado estaría diciendo la historia completa sigue funcionando. Si solamente sube Nvidia, el mensaje sería otro: hay ganadores, pero el mercado está empezando a ser mucho más selectivo."},
+    {"speaker":"B","text":"Entonces hoy tenemos dos cambios. Menos miedo automático a Irán y más exigencia sobre la inteligencia artificial."},
+    {"speaker":"A","text":"Sí. Y hay una tercera pieza que puede cambiarlo todo nuevamente: inflación y Reserva Federal."},
+    {"speaker":"B","text":"Nunca nos dejan tranquilos mucho tiempo."},
+    {"speaker":"A","text":"Los mercados tampoco están diseñados para eso. El dato de inflación preferido por la Fed y las señales desde Jackson Hole pueden volver a poner las tasas en el centro."},
+    {"speaker":"B","text":"Así que el mensaje del día sería…"},
+    {"speaker":"A","text":"El riesgo no desapareció. Simplemente cambió de lugar. Hoy el mercado está menos pendiente de lo que podría pasar y más interesado en comprobar qué está ocurriendo realmente."}
+  ],
+  "wordCount": 516,
+  "estimatedDurationSeconds": 248,
+  "notes": "Input estático aprobado para LAB. No es contenido productivo."
+}
