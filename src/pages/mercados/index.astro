@@ -1,9 +1,13 @@
 ---
 import ContentCard from "../../components/ContentCard.astro";
+import SectionAnalysisAudio from "../../components/SectionAnalysisAudio.astro";
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import { formatEditorialDate, getPublishedMarkets } from "../../lib/content";
 
 const briefings = await getPublishedMarkets();
+const hasCurrentAudio =
+  briefings[0]?.id ===
+  "2026-08-25-markets-sanciones-pierden-prima-y-rotacion-cambia";
 ---
 
 <BaseLayout
@@ -18,6 +22,17 @@ const briefings = await getPublishedMarkets();
       portada: mecanismos de precio, activos, tasas, sectores, flujos,
       posicionamiento y catalizadores.
     </p>
+
+    {
+      hasCurrentAudio && (
+        <SectionAnalysisAudio
+          title="Escuchar el análisis de mercados"
+          summary="Una conversación breve para entender qué está moviendo los mercados y qué vale la pena observar."
+          src="/lab/audio/exp2-markets-dialogue.mp3"
+          ariaLabel="Análisis de mercados de ATLAS NEWS"
+        />
+      )
+    }
 
     {
       briefings.length > 0 ? (

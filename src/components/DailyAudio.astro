@@ -14,10 +14,11 @@ const { expectedDate } = Astro.props;
   hidden
 >
   <div class="audio-copy">
-    <p class="audio-kicker">Edición sonora</p>
-    <h2 id="daily-audio-title">Escuchar el resumen del día</h2>
+    <p class="audio-kicker" id="daily-audio-title">
+      Escuchar el resumen del día
+    </p>
     <p data-audio-summary>
-      General, Nacional y Mercados reunidos en una sola cápsula de audio.
+      Una cápsula con las señales principales de General, Nacional y Mercados.
     </p>
   </div>
   <div class="audio-player">
@@ -90,15 +91,9 @@ const { expectedDate } = Astro.props;
     letter-spacing: 0.16em;
     text-transform: uppercase;
   }
-  h2 {
-    margin: 0.4rem 0 0.55rem;
-    font-size: clamp(1.55rem, 3vw, 2.35rem);
-    line-height: 0.98;
-    letter-spacing: -0.035em;
-  }
   .audio-copy > p:last-child {
     max-width: 45rem;
-    margin: 0;
+    margin: 0.55rem 0 0;
     color: var(--ink-soft);
     line-height: 1.4;
   }

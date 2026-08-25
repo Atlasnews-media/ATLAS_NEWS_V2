@@ -1,9 +1,13 @@
 ---
 import ContentCard from "../../components/ContentCard.astro";
+import SectionAnalysisAudio from "../../components/SectionAnalysisAudio.astro";
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import { formatEditorialDate, getPublishedNational } from "../../lib/content";
 
 const briefings = await getPublishedNational();
+const hasCurrentAudio =
+  briefings[0]?.id ===
+  "2026-08-25-national-costos-productor-suben-sin-validar-traspaso-al-ipc";
 ---
 
 <BaseLayout
@@ -18,6 +22,17 @@ const briefings = await getPublishedNational();
       señal de portada: datos, composición, transmisión, consecuencias y
       riesgos.
     </p>
+
+    {
+      hasCurrentAudio && (
+        <SectionAnalysisAudio
+          title="Escuchar el análisis nacional"
+          summary="Una conversación breve para entender qué hay detrás de las señales que importan en Chile."
+          src="/lab/audio/exp2-national-dialogue.mp3"
+          ariaLabel="Análisis nacional de ATLAS NEWS"
+        />
+      )
+    }
 
     {
       briefings.length > 0 ? (
