@@ -3,7 +3,7 @@ name: Observación editorial shadow
 on:
   workflow_dispatch:
   schedule:
-    - cron: "15 7 * * *"
+    - cron: "15 7 * * 1"
       timezone: "America/Santiago"
 
 permissions:
