@@ -1,0 +1,52 @@
+{
+  "schemaVersion": 1,
+  "scriptVersion": 1,
+  "date": "2026-08-25",
+  "section": "national",
+  "sourceIds": {
+    "general": "2026-08-25-daily-mercado-reduce-prima-iran-y-mira-nvidia",
+    "national": "2026-08-25-national-costos-productor-suben-sin-validar-traspaso-al-ipc",
+    "markets": "2026-08-25-markets-sanciones-pierden-prima-y-rotacion-cambia"
+  },
+  "topicsChosen": [
+    "Por qué el IPP subió sin implicar automáticamente más inflación al consumidor",
+    "La diferencia entre presión minera y costos manufactureros domésticos",
+    "Quién absorbe un aumento de costos cuando una empresa no puede subir precios"
+  ],
+  "discarded": [
+    "Repetición de niveles macro que no cambiaron",
+    "Lectura automática del IPP como señal directa de política monetaria"
+  ],
+  "voices": {
+    "A": "ef_dora",
+    "B": "em_alex"
+  },
+  "dialogue": [
+    {"speaker":"A","text":"Hoy apareció un dato que, leído rápido, puede sonar bastante preocupante: los precios de productor en Chile subieron un 1,9% durante julio."},
+    {"speaker":"B","text":"Y la primera reacción sería pensar: bueno, entonces viene más inflación."},
+    {"speaker":"A","text":"Exactamente. Pero ahí es donde conviene detenerse, porque no necesariamente es así. Buena parte de esa subida viene de la minería, y especialmente del cobre."},
+    {"speaker":"B","text":"¿Y por qué eso cambia la historia?"},
+    {"speaker":"A","text":"Porque si sube el precio al que una minera vende cobre, el índice de precios de productor también sube. Pero eso no significa que mañana el supermercado vaya a cobrarte más por los mismos productos."},
+    {"speaker":"B","text":"Entonces ese 1,9% mezcla cosas bastante distintas."},
+    {"speaker":"A","text":"Muchísimo. Para entender mejor lo que ocurre dentro de Chile, probablemente es más interesante mirar la manufactura. Ahí los precios de productor aumentaron un 1% durante el mes."},
+    {"speaker":"B","text":"Eso ya suena más cercano a empresas que fabrican alimentos, insumos o productos que después terminamos consumiendo."},
+    {"speaker":"A","text":"Sí. Y ahí aparece la pregunta interesante: si fabricar algo se vuelve más caro, ¿quién paga la diferencia?"},
+    {"speaker":"B","text":"¿La empresa o nosotros?"},
+    {"speaker":"A","text":"Justamente. Una empresa tiene tres alternativas básicas: subir el precio, aceptar un margen menor o encontrar alguna forma de compensar ese mayor costo."},
+    {"speaker":"B","text":"Y me imagino que no todas pueden subir precios con la misma facilidad."},
+    {"speaker":"A","text":"Ese es el punto. Si la demanda está débil, subir precios puede significar vender menos. Entonces una compañía puede terminar absorbiendo parte del aumento."},
+    {"speaker":"B","text":"O sea, un aumento de costos podría aparecer primero en las utilidades de las empresas antes que en el IPC."},
+    {"speaker":"A","text":"Exacto. Y por eso sería un error mirar este dato y concluir automáticamente que la inflación al consumidor va a subir."},
+    {"speaker":"B","text":"¿Qué tendría que pasar para empezar a preocuparnos más?"},
+    {"speaker":"A","text":"Que veamos lo mismo durante varios meses, especialmente en manufactura y energía. Y además que esos mayores costos comiencen efectivamente a aparecer en los precios finales."},
+    {"speaker":"B","text":"Entonces el dato de hoy no dice vuelve la inflación."},
+    {"speaker":"A","text":"No. Dice algo bastante más preciso: hay sectores donde los costos están aumentando y vale la pena observar quién logra trasladarlos y quién termina absorbiéndolos."},
+    {"speaker":"B","text":"Y eso también sirve para mirar empresas de otra manera."},
+    {"speaker":"A","text":"Totalmente. Más que preguntarse solamente si una compañía vende más, empieza a importar cuánto poder tiene para defender sus márgenes cuando sus costos suben."},
+    {"speaker":"B","text":"Me quedo entonces con eso: el número grande llama la atención, pero la historia está debajo del número."},
+    {"speaker":"A","text":"Exactamente. Y durante las próximas semanas, manufactura, empleo y comercio nos van a ayudar a saber si esto fue un movimiento puntual o el comienzo de algo más persistente."}
+  ],
+  "wordCount": 426,
+  "estimatedDurationSeconds": 204,
+  "notes": "Input estático aprobado para LAB. No es contenido productivo."
+}
