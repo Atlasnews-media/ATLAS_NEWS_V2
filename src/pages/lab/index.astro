@@ -55,7 +55,109 @@ import "../../styles/global.css";
           </article>
         </div>
       </section>
+
+      <div class="lab-rule" aria-hidden="true"></div>
+
+      <section class="experiment" aria-labelledby="exp2-title">
+        <p class="lab-status">Experimento 2 · Conversación profunda</p>
+        <h2 id="exp2-title">Dos voces, una idea que vale discutir</h2>
+        <p class="experiment-copy">
+          Nacional y Mercados dejan de leerse como resumen: una voz conduce y la
+          otra pregunta, desafía y aterriza. Kokoro sigue siendo el motor de voz.
+        </p>
+
+        <div class="deep-grid">
+          <article class="deep-card">
+            <p class="voice-label">Nacional · Voz A + Voz B</p>
+            <h3>Nacional</h3>
+            <p class="deep-copy">
+              Costos de productor, cobre y la pregunta central: si producir cuesta
+              más, ¿quién absorbe la diferencia?
+            </p>
+            <audio controls preload="metadata">
+              <source src="/lab/audio/exp2-national.mp3" type="audio/mpeg" />
+            </audio>
+            <dl class="card-metrics">
+              <div><dt>Audio</dt><dd data-exp2="national-audio">pendiente</dd></div>
+              <div><dt>TTS</dt><dd data-exp2="national-tts">pendiente</dd></div>
+              <div><dt>Palabras</dt><dd data-exp2="national-words">426</dd></div>
+            </dl>
+          </article>
+
+          <article class="deep-card">
+            <p class="voice-label">Mercados · Voz A + Voz B</p>
+            <h3>Mercados</h3>
+            <p class="deep-copy">
+              Irán pierde prima automática y Nvidia pasa a ser una prueba del
+              retorno económico de la inversión en inteligencia artificial.
+            </p>
+            <audio controls preload="metadata">
+              <source src="/lab/audio/exp2-markets.mp3" type="audio/mpeg" />
+            </audio>
+            <dl class="card-metrics">
+              <div><dt>Audio</dt><dd data-exp2="markets-audio">pendiente</dd></div>
+              <div><dt>TTS</dt><dd data-exp2="markets-tts">pendiente</dd></div>
+              <div><dt>Palabras</dt><dd data-exp2="markets-words">516</dd></div>
+            </dl>
+          </article>
+        </div>
+
+        <aside class="benchmark" aria-labelledby="benchmark-title">
+          <p class="voice-label">Benchmark del runner</p>
+          <h3 id="benchmark-title">Costo real de la prueba</h3>
+          <dl class="benchmark-grid">
+            <div><dt>Setup</dt><dd data-exp2="setup">pendiente</dd></div>
+            <div><dt>Carga Kokoro</dt><dd data-exp2="kokoro-load">pendiente</dd></div>
+            <div><dt>Encode</dt><dd data-exp2="encode">pendiente</dd></div>
+            <div><dt>Publicación</dt><dd data-exp2="publish">pendiente</dd></div>
+            <div><dt>Total</dt><dd data-exp2="total">pendiente</dd></div>
+            <div><dt>Caché Kokoro</dt><dd data-exp2="cache">pendiente</dd></div>
+          </dl>
+          <p class="benchmark-note" data-exp2="status">
+            Aún no existe una corrida medida del Experimento 2.
+          </p>
+        </aside>
+      </section>
     </main>
+
+    <script is:inline>
+      const seconds = (value) =>
+        typeof value === "number" ? `${value.toFixed(1)} s` : "pendiente";
+
+      const setMetric = (key, value) => {
+        const node = document.querySelector(`[data-exp2="${key}"]`);
+        if (node) node.textContent = value;
+      };
+
+      fetch("/lab/audio/exp2-benchmark.json", { cache: "no-store" })
+        .then((response) => {
+          if (!response.ok) throw new Error("benchmark no disponible");
+          return response.json();
+        })
+        .then((data) => {
+          setMetric("national-audio", seconds(data.sections?.national?.audioSeconds));
+          setMetric("national-tts", seconds(data.nationalTtsSeconds));
+          setMetric("national-words", String(data.sections?.national?.wordCount ?? "—"));
+          setMetric("markets-audio", seconds(data.sections?.markets?.audioSeconds));
+          setMetric("markets-tts", seconds(data.marketsTtsSeconds));
+          setMetric("markets-words", String(data.sections?.markets?.wordCount ?? "—"));
+          setMetric("setup", seconds(data.setupSeconds));
+          setMetric("kokoro-load", seconds(data.kokoroLoadSeconds));
+          setMetric("encode", seconds(data.encodeSeconds));
+          setMetric("publish", seconds(data.publishSeconds));
+          setMetric("total", seconds(data.totalSeconds));
+          setMetric("cache", data.kokoroCacheHit ? "hit" : "miss");
+          setMetric(
+            "status",
+            data.status === "published"
+              ? `Corrida ${data.date} medida y publicada en LAB.`
+              : "Benchmark generado; publicación aún no confirmada.",
+          );
+        })
+        .catch(() => {
+          setMetric("status", "Aún no existe una corrida medida del Experimento 2.");
+        });
+    </script>
   </body>
 </html>
 
@@ -99,10 +201,17 @@ import "../../styles/global.css";
   }
 
   .lab-copy,
-  .experiment-copy {
+  .experiment-copy,
+  .deep-copy {
     max-width: 42rem;
     margin: 0;
     font: 1.15rem/1.65 var(--serif);
+  }
+
+  .deep-copy {
+    min-height: 7.5rem;
+    margin-bottom: 1rem;
+    font-size: 1rem;
   }
 
   .lab-rule {
@@ -110,14 +219,24 @@ import "../../styles/global.css";
     border-top: 4px double currentColor;
   }
 
-  .voice-grid {
+  .voice-grid,
+  .deep-grid {
     display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 1rem;
     margin-top: 2rem;
   }
 
-  .voice-card {
+  .voice-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .deep-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .voice-card,
+  .deep-card,
+  .benchmark {
     padding: 1.25rem;
     border: 1px solid currentColor;
     background: rgba(255, 255, 255, 0.18);
@@ -127,9 +246,55 @@ import "../../styles/global.css";
     width: 100%;
   }
 
+  .card-metrics,
+  .benchmark-grid {
+    margin: 1.25rem 0 0;
+  }
+
+  .card-metrics div,
+  .benchmark-grid div {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 0.55rem 0;
+    border-top: 1px solid rgba(21, 21, 21, 0.22);
+  }
+
+  dt {
+    font: 700 0.78rem/1.3 var(--sans);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+
+  dd {
+    margin: 0;
+    font: 1rem/1.3 var(--serif);
+  }
+
+  .benchmark {
+    margin-top: 1rem;
+  }
+
+  .benchmark-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: 2rem;
+  }
+
+  .benchmark-note {
+    margin: 1rem 0 0;
+    font: 0.95rem/1.5 var(--serif);
+  }
+
   @media (max-width: 54rem) {
-    .voice-grid {
+    .voice-grid,
+    .deep-grid,
+    .benchmark-grid {
       grid-template-columns: 1fr;
+    }
+
+    .deep-copy {
+      min-height: 0;
     }
   }
 </style>
