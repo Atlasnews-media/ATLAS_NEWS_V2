@@ -55,6 +55,51 @@ import "../../styles/global.css";
           </article>
         </div>
       </section>
+
+      <div class="lab-rule" aria-hidden="true"></div>
+
+      <section class="experiment" aria-labelledby="exp2-title">
+        <p class="lab-status">Experimento 2 · Diálogo de dos voces</p>
+        <h2 id="exp2-title">Conversación profunda</h2>
+        <p class="experiment-copy">
+          Preview editorial del 25 de agosto. Voz 1 usa Dora y conduce la
+          conversación; Voz 2 usa Alex y pregunta, desafía y aterriza la idea.
+          Los guiones son estáticos: esta prueba evalúa únicamente dinámica,
+          pronunciación, pausas y contraste entre voces.
+        </p>
+
+        <div class="dialogue-grid">
+          <article class="voice-card">
+            <p class="voice-label">Nacional · Dora + Alex</p>
+            <h3>Costos de productor</h3>
+            <p class="card-copy">
+              Del dato de IPP a una pregunta cotidiana: si producir cuesta más,
+              ¿quién termina pagando la diferencia?
+            </p>
+            <audio controls preload="metadata">
+              <source
+                src="/lab/audio/exp2-national-dialogue.mp3"
+                type="audio/mpeg"
+              />
+            </audio>
+          </article>
+
+          <article class="voice-card">
+            <p class="voice-label">Mercados · Dora + Alex</p>
+            <h3>Irán, Nvidia y el riesgo</h3>
+            <p class="card-copy">
+              El mercado exige evidencia física a la geopolítica y devuelve el
+              foco a resultados, inflación y retorno del capital.
+            </p>
+            <audio controls preload="metadata">
+              <source
+                src="/lab/audio/exp2-markets-dialogue.mp3"
+                type="audio/mpeg"
+              />
+            </audio>
+          </article>
+        </div>
+      </section>
     </main>
   </body>
 </html>
@@ -99,10 +144,17 @@ import "../../styles/global.css";
   }
 
   .lab-copy,
-  .experiment-copy {
+  .experiment-copy,
+  .card-copy {
     max-width: 42rem;
     margin: 0;
     font: 1.15rem/1.65 var(--serif);
+  }
+
+  .card-copy {
+    margin-bottom: 1rem;
+    font-size: 1rem;
+    line-height: 1.5;
   }
 
   .lab-rule {
@@ -110,11 +162,19 @@ import "../../styles/global.css";
     border-top: 4px double currentColor;
   }
 
-  .voice-grid {
+  .voice-grid,
+  .dialogue-grid {
     display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 1rem;
     margin-top: 2rem;
+  }
+
+  .voice-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .dialogue-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   .voice-card {
@@ -128,7 +188,8 @@ import "../../styles/global.css";
   }
 
   @media (max-width: 54rem) {
-    .voice-grid {
+    .voice-grid,
+    .dialogue-grid {
       grid-template-columns: 1fr;
     }
   }

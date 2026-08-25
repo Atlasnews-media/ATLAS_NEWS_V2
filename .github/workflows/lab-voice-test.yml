@@ -4,6 +4,8 @@ on:
   pull_request:
     paths:
       - "lab/exp1-voice-test.txt"
+      - "lab/exp2-national-dialogue.txt"
+      - "lab/exp2-markets-dialogue.txt"
       - "scripts/lab-generate-voice-test.py"
       - "src/pages/lab/index.astro"
       - ".github/workflows/lab-voice-test.yml"
@@ -12,6 +14,8 @@ on:
       - main
     paths:
       - "lab/exp1-voice-test.txt"
+      - "lab/exp2-national-dialogue.txt"
+      - "lab/exp2-markets-dialogue.txt"
       - "scripts/lab-generate-voice-test.py"
       - "src/pages/lab/index.astro"
       - ".github/workflows/lab-voice-test.yml"
@@ -52,7 +56,7 @@ jobs:
           path: ~/.cache/huggingface
           key: kokoro-82m-v1-${{ runner.os }}
 
-      - name: Generar Alex, Santa y Heart con diagnóstico
+      - name: Generar comparación y diálogos con diagnóstico
         env:
           ATLAS_PUBLIC_REPO_DIR: ${{ runner.temp }}/atlas-news-public
         run: |
@@ -70,9 +74,11 @@ jobs:
           } >"$log" 2>&1
           code=$?
           if [[ $code -eq 0 ]]; then
-            printf '{"status":"success","experiment":"exp1","voices":["em_alex","em_santa","af_heart"]}\n' > "$RUNNER_TEMP/atlas-news-public/lab/audio/status.json"
+            printf '%s\n' \
+              '{"status":"success","experiments":["exp1","exp2"],"exp1Voices":["em_alex","em_santa","af_heart"],"exp2Voices":{"voice1":"ef_dora","voice2":"em_alex"},"exp2Outputs":["exp2-national-dialogue.mp3","exp2-markets-dialogue.mp3"]}' \
+              > "$RUNNER_TEMP/atlas-news-public/lab/audio/status.json"
           else
-            tail -n 40 "$log" | python3 -c 'import json,sys; print(json.dumps({"status":"failure","experiment":"exp1","log":sys.stdin.read()}, ensure_ascii=False))' > "$RUNNER_TEMP/atlas-news-public/lab/audio/status.json"
+            tail -n 60 "$log" | python3 -c 'import json,sys; print(json.dumps({"status":"failure","experiments":["exp1","exp2"],"log":sys.stdin.read()}, ensure_ascii=False))' > "$RUNNER_TEMP/atlas-news-public/lab/audio/status.json"
           fi
           cat "$log"
           exit 0
@@ -89,7 +95,7 @@ jobs:
           if git diff --cached --quiet; then
             echo "Los resultados LAB ya estaban actualizados."
           else
-            git commit -m "LAB exp1 — voces Alex, Santa y Heart"
+            git commit -m "LAB exp2 — diálogos Nacional y Mercados"
             git pull --rebase origin main
             git push origin main
           fi
