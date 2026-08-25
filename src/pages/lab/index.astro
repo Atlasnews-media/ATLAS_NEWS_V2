@@ -100,6 +100,19 @@ import "../../styles/global.css";
           </article>
         </div>
       </section>
+
+      <div class="lab-rule" aria-hidden="true"></div>
+
+      <section class="experiment" aria-labelledby="exp3-title">
+        <p class="lab-status">Experimento 3 · Fondos</p>
+        <h2 id="exp3-title">Módulo de rentabilidades</h2>
+        <p class="experiment-copy">
+          La sección Fondos queda fuera de la navegación pública mientras se
+          realizan nuevas pruebas. El módulo y su actualización de datos se
+          mantienen intactos.
+        </p>
+        <a class="lab-link" href="/fondos/">Abrir Fondos en LAB →</a>
+      </section>
     </main>
   </body>
 </html>
@@ -181,6 +194,16 @@ import "../../styles/global.css";
     padding: 1.25rem;
     border: 1px solid currentColor;
     background: rgba(255, 255, 255, 0.18);
+  }
+
+  .lab-link {
+    display: inline-block;
+    margin-top: 1.25rem;
+    color: inherit;
+    font: 800 0.75rem/1.2 var(--sans);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    text-underline-offset: 0.2em;
   }
 
   audio {

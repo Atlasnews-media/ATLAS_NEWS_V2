@@ -43,10 +43,7 @@ const sourceCommit = (
   "local"
 ).slice(0, 7);
 
-const isHome = Astro.url.pathname === "/";
-const primaryEntry = isHome
-  ? { href: "/fondos/", label: "Fondos" }
-  : { href: "/", label: "Portada" };
+const primaryEntry = { href: "/", label: "Portada" };
 ---
 
 <!doctype html>
