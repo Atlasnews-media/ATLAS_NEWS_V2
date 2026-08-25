@@ -4,7 +4,7 @@ summary: "El IPP de Industrias subió 1,9% en julio y acumuló 10,9% en el año.
 publishedAt: "2026-08-25T06:00:00-04:00"
 cutoffAt: "2026-08-25T06:00:00-04:00"
 section: "national"
-status: "draft"
+status: "published"
 tags:
   - chile
   - precios-productor
