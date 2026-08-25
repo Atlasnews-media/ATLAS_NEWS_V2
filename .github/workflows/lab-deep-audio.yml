@@ -7,6 +7,10 @@ on:
         description: "Fecha de inputs LAB (AAAA-MM-DD); vacío usa la más reciente"
         required: false
         type: string
+      confirm_publish:
+        description: "Escribe PUBLICAR para ejecutar la única corrida y publicar LAB"
+        required: true
+        type: string
 
 permissions:
   contents: read
@@ -18,6 +22,15 @@ jobs:
     timeout-minutes: 30
 
     steps:
+      - name: Guard de ejecución
+        shell: bash
+        run: |
+          set -euo pipefail
+          if [[ "${{ inputs.confirm_publish }}" != "PUBLICAR" ]]; then
+            echo "Ejecución detenida: confirm_publish debe ser PUBLICAR." >&2
+            exit 1
+          fi
+
       - name: Descargar repositorio privado
         uses: actions/checkout@v5
 
@@ -81,19 +94,40 @@ jobs:
           source "$RUNNER_TEMP/kokoro-exp2-venv/bin/activate"
           python scripts/lab-generate-deep-audio.py
 
-      - name: Publicar audio LAB y medir push real
+      - name: Preparar snapshot LAB y benchmark
         env:
-          GIT_SSH_COMMAND: ssh -i ~/.ssh/atlas_news_pages -o IdentitiesOnly=yes
+          ATLAS_PUBLIC_REPO_DIR: ${{ runner.temp }}/atlas-news-public
         run: |
           set -euo pipefail
-          cd "$RUNNER_TEMP/atlas-news-public"
+          mkdir -p "$ATLAS_PUBLIC_REPO_DIR/lab"
+          cp lab/exp2/public-lab-index.html "$ATLAS_PUBLIC_REPO_DIR/lab/index.html"
+
+          benchmark="$ATLAS_PUBLIC_REPO_DIR/lab/audio/exp2-benchmark.json"
+          tmp=$(mktemp)
+          jq '.status="published" | .benchmarkFinalizationExcluded=true | .publishSeconds=null | .totalSeconds=null' \
+            "$benchmark" > "$tmp"
+          mv "$tmp" "$benchmark"
+
+      - name: Publicar LAB en un solo push y medir
+        env:
+          GIT_SSH_COMMAND: ssh -i ~/.ssh/atlas_news_pages -o IdentitiesOnly=yes
+          ATLAS_PUBLIC_REPO_DIR: ${{ runner.temp }}/atlas-news-public
+        run: |
+          set -euo pipefail
+          cd "$ATLAS_PUBLIC_REPO_DIR"
           git config user.name "ATLAS NEWS LAB"
           git config user.email "actions@users.noreply.github.com"
-          git add lab/audio/exp2-national.mp3 lab/audio/exp2-markets.mp3 lab/audio/exp2-benchmark.json
+          git add lab/index.html lab/audio/exp2-national.mp3 lab/audio/exp2-markets.mp3 lab/audio/exp2-benchmark.json
+
+          if git diff --cached --quiet; then
+            echo "LAB exp2 ya coincide con la salida pública; no se hace push."
+            exit 0
+          fi
+
           git commit -m "LAB exp2 — conversación profunda ${{ steps.dialogue_plan.outputs.exp2_date }}"
+          git pull --rebase origin main
 
           publish_start_ms=$(date +%s%3N)
-          git pull --rebase origin main
           git push origin main
           publish_end_ms=$(date +%s%3N)
 
@@ -102,17 +136,13 @@ jobs:
           total_ms=$((publish_end_ms - ATLAS_LAB_RUN_START_MS))
           total_seconds=$(awk "BEGIN {printf \"%.3f\", $total_ms/1000}")
 
-          tmp=$(mktemp)
-          jq \
-            --argjson publish "$publish_seconds" \
-            --argjson total "$total_seconds" \
-            '.publishSeconds=$publish | .totalSeconds=$total | .status="published" | .benchmarkFinalizationExcluded=true' \
-            lab/audio/exp2-benchmark.json > "$tmp"
-          mv "$tmp" lab/audio/exp2-benchmark.json
-
-          git add lab/audio/exp2-benchmark.json
-          git commit -m "LAB exp2 — benchmark final ${{ steps.dialogue_plan.outputs.exp2_date }}"
-          git pull --rebase origin main
-          git push origin main
-
-          echo "LAB exp2 publicado. Tiempo hasta primer push: ${total_seconds}s; push de audio: ${publish_seconds}s."
+          echo "LAB exp2 publicado con UN solo push público."
+          echo "publish_seconds=${publish_seconds}"
+          echo "total_wall_seconds=${total_seconds}"
+          {
+            echo "## LAB exp2 — benchmark final"
+            echo "- publish_seconds: ${publish_seconds}"
+            echo "- total_wall_seconds: ${total_seconds}"
+            echo "- benchmark público: /lab/audio/exp2-benchmark.json"
+            echo "- nota: publish_seconds y total_wall_seconds se conservan en este log para evitar un segundo push."
+          } >> "$GITHUB_STEP_SUMMARY"
