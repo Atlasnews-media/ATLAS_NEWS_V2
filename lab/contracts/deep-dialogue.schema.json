@@ -1,0 +1,121 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://atlas.news/lab/contracts/deep-dialogue.schema.json",
+  "title": "ATLAS NEWS Deep Dialogue",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "scriptVersion",
+    "date",
+    "section",
+    "sourceIds",
+    "topicsChosen",
+    "discarded",
+    "dialogue",
+    "wordCount",
+    "estimatedDurationSeconds"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "type": "integer",
+      "const": 1
+    },
+    "scriptVersion": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "date": {
+      "type": "string",
+      "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+    },
+    "section": {
+      "type": "string",
+      "enum": ["national", "markets"]
+    },
+    "sourceIds": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["general", "national", "markets"],
+      "properties": {
+        "general": {
+          "type": "string",
+          "minLength": 1
+        },
+        "national": {
+          "type": ["string", "null"]
+        },
+        "markets": {
+          "type": ["string", "null"]
+        }
+      }
+    },
+    "topicsChosen": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 3,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "minLength": 3,
+        "maxLength": 180
+      }
+    },
+    "discarded": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "minLength": 3,
+        "maxLength": 180
+      }
+    },
+    "dialogue": {
+      "type": "array",
+      "minItems": 6,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["speaker", "text"],
+        "properties": {
+          "speaker": {
+            "type": "string",
+            "enum": ["A", "B"]
+          },
+          "text": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 900
+          }
+        }
+      }
+    },
+    "wordCount": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "estimatedDurationSeconds": {
+      "type": "integer",
+      "minimum": 30
+    },
+    "voices": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["A", "B"],
+      "properties": {
+        "A": {
+          "type": "string",
+          "minLength": 1
+        },
+        "B": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "notes": {
+      "type": "string",
+      "maxLength": 600
+    }
+  }
+}
