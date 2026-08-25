@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="robots" content="noindex, nofollow, noarchive" />
+    <meta name="theme-color" content="#f2efe5" />
+    <title>ATLAS NEWS LAB</title>
+    <style>
+      :root{--paper:#f2efe5;--ink:#161611;--ink-soft:#4b493f;--accent:#8e2f24;--serif:Georgia,"Times New Roman",serif;--display:"Old English Text MT","UnifrakturCook",Georgia,serif;--sans:"Arial Narrow","Roboto Condensed",Arial,sans-serif;color-scheme:light;font-family:var(--serif);background:var(--paper);color:var(--ink)}*{box-sizing:border-box}html{background:#d9d4c8;min-width:20rem}body{margin:0;min-height:100vh;background:radial-gradient(circle at 18% 12%,#ffffff6b,transparent 32rem),repeating-linear-gradient(0deg,transparent 0 3px,#16161104 3px 4px),var(--paper);color:#151515}.lab-shell{width:min(64rem,calc(100% - 2rem));margin:0 auto;padding:clamp(4rem,12vw,8rem) 0}.lab-kicker,.lab-status,.voice-label{margin:0;font:800 .72rem/1.2 var(--sans);letter-spacing:.12em;text-transform:uppercase}.lab-status{color:var(--accent)}h1{margin:.75rem 0 1rem;font:700 clamp(3rem,10vw,7rem)/.9 var(--display);letter-spacing:-.04em}h2{margin:.5rem 0 .6rem;font:700 clamp(2rem,5vw,3.6rem)/.95 var(--serif);letter-spacing:-.03em}h3{margin:.35rem 0 1rem;font:700 1.6rem/1 var(--serif)}.lab-copy,.experiment-copy,.deep-copy{max-width:42rem;margin:0;font:1.15rem/1.65 var(--serif)}.deep-copy{min-height:7.5rem;margin-bottom:1rem;font-size:1rem}.lab-rule{margin:2.5rem 0 2rem;border-top:4px double currentColor}.voice-grid,.deep-grid{display:grid;gap:1rem;margin-top:2rem}.voice-grid{grid-template-columns:repeat(3,minmax(0,1fr))}.deep-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.voice-card,.deep-card,.benchmark{padding:1.25rem;border:1px solid currentColor;background:#ffffff2e}audio{width:100%}.card-metrics,.benchmark-grid{margin:1.25rem 0 0}.card-metrics div,.benchmark-grid div{display:flex;justify-content:space-between;gap:1rem;padding:.55rem 0;border-top:1px solid #15151538}.card-metrics dt,.benchmark-grid dt{font:700 .8rem/1.2 var(--sans);letter-spacing:.06em;text-transform:uppercase}.card-metrics dd,.benchmark-grid dd{margin:0;font:700 .95rem/1.2 var(--serif)}.benchmark{margin-top:1rem}.benchmark-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0 1.2rem}.benchmark-note{margin:1rem 0 0;color:var(--ink-soft);font:.95rem/1.5 var(--serif)}@media(max-width:54rem){.voice-grid,.deep-grid,.benchmark-grid{grid-template-columns:1fr}.deep-copy{min-height:0}}
+    </style>
+  </head>
+  <body>
+    <main class="lab-shell">
+      <p class="lab-kicker">ATLAS NEWS · LAB</p>
+      <h1>Zona experimental</h1>
+      <p class="lab-copy">Espacio de prueba para cambios editoriales, visuales, sonoros y funcionales antes de incorporarlos a ATLAS NEWS.</p>
+      <div class="lab-rule" aria-hidden="true"></div>
+      <section aria-labelledby="exp1-title">
+        <p class="lab-status">Experimento 1 · Kokoro</p>
+        <h2 id="exp1-title">Comparación de voces</h2>
+        <p class="experiment-copy">Mismo guion estático del briefing. La única variable es la voz.</p>
+        <div class="voice-grid">
+          <article class="voice-card"><p class="voice-label">A · em_alex</p><h3>Alex</h3><audio controls preload="metadata"><source src="/lab/audio/exp1-em_alex.mp3" type="audio/mpeg" /></audio></article>
+          <article class="voice-card"><p class="voice-label">B · em_santa</p><h3>Santa</h3><audio controls preload="metadata"><source src="/lab/audio/exp1-em_santa.mp3" type="audio/mpeg" /></audio></article>
+          <article class="voice-card"><p class="voice-label">C · af_heart</p><h3>Heart</h3><audio controls preload="metadata"><source src="/lab/audio/exp1-af_heart.mp3" type="audio/mpeg" /></audio></article>
+        </div>
+      </section>
+      <div class="lab-rule" aria-hidden="true"></div>
+      <section aria-labelledby="exp2-title">
+        <p class="lab-status">Experimento 2 · Conversación profunda</p>
+        <h2 id="exp2-title">Dos voces, una idea que vale discutir</h2>
+        <p class="experiment-copy">Nacional y Mercados dejan de leerse como resumen: una voz conduce y la otra pregunta, desafía y aterriza. Kokoro sigue siendo el motor de voz.</p>
+        <div class="deep-grid">
+          <article class="deep-card">
+            <p class="voice-label">Nacional · Voz A + Voz B</p><h3>Nacional</h3>
+            <p class="deep-copy">Costos de productor, cobre y la pregunta central: si producir cuesta más, ¿quién absorbe la diferencia?</p>
+            <audio controls preload="metadata"><source src="/lab/audio/exp2-national.mp3" type="audio/mpeg" /></audio>
+            <dl class="card-metrics"><div><dt>Audio</dt><dd data-exp2="national-audio">pendiente</dd></div><div><dt>TTS</dt><dd data-exp2="national-tts">pendiente</dd></div><div><dt>Palabras</dt><dd data-exp2="national-words">426</dd></div></dl>
+          </article>
+          <article class="deep-card">
+            <p class="voice-label">Mercados · Voz A + Voz B</p><h3>Mercados</h3>
+            <p class="deep-copy">Irán pierde prima automática y Nvidia pasa a ser una prueba del retorno económico de la inversión en inteligencia artificial.</p>
+            <audio controls preload="metadata"><source src="/lab/audio/exp2-markets.mp3" type="audio/mpeg" /></audio>
+            <dl class="card-metrics"><div><dt>Audio</dt><dd data-exp2="markets-audio">pendiente</dd></div><div><dt>TTS</dt><dd data-exp2="markets-tts">pendiente</dd></div><div><dt>Palabras</dt><dd data-exp2="markets-words">516</dd></div></dl>
+          </article>
+        </div>
+        <aside class="benchmark" aria-labelledby="benchmark-title">
+          <p class="voice-label">Benchmark del runner</p><h3 id="benchmark-title">Costo real de la prueba</h3>
+          <dl class="benchmark-grid"><div><dt>Setup</dt><dd data-exp2="setup">pendiente</dd></div><div><dt>Carga Kokoro</dt><dd data-exp2="kokoro-load">pendiente</dd></div><div><dt>Encode</dt><dd data-exp2="encode">pendiente</dd></div><div><dt>Publicación</dt><dd data-exp2="publish">pendiente</dd></div><div><dt>Total</dt><dd data-exp2="total">pendiente</dd></div><div><dt>Caché Kokoro</dt><dd data-exp2="cache">pendiente</dd></div></dl>
+          <p class="benchmark-note" data-exp2="status">Aún no existe una corrida medida del Experimento 2.</p>
+        </aside>
+      </section>
+    </main>
+    <script>
+      const seconds=(value)=>typeof value==="number"?`${value.toFixed(1)} s`:"pendiente";const setMetric=(key,value)=>{const node=document.querySelector(`[data-exp2="${key}"]`);if(node)node.textContent=value};fetch("/lab/audio/exp2-benchmark.json",{cache:"no-store"}).then((response)=>{if(!response.ok)throw new Error("benchmark no disponible");return response.json()}).then((data)=>{setMetric("national-audio",seconds(data.sections?.national?.audioSeconds));setMetric("national-tts",seconds(data.nationalTtsSeconds));setMetric("national-words",String(data.sections?.national?.wordCount??"—"));setMetric("markets-audio",seconds(data.sections?.markets?.audioSeconds));setMetric("markets-tts",seconds(data.marketsTtsSeconds));setMetric("markets-words",String(data.sections?.markets?.wordCount??"—"));setMetric("setup",seconds(data.setupSeconds));setMetric("kokoro-load",seconds(data.kokoroLoadSeconds));setMetric("encode",seconds(data.encodeSeconds));setMetric("publish",seconds(data.publishSeconds));setMetric("total",seconds(data.totalSeconds??data.totalSecondsBeforePublish));setMetric("cache",data.kokoroCacheHit?"hit":"miss");setMetric("status",data.status==="published"?`Corrida ${data.date} medida y publicada en LAB.`:`Corrida ${data.date} generada; la medición final de publicación queda en el log del único run.`)}).catch(()=>setMetric("status","Aún no existe una corrida medida del Experimento 2."));
+    </script>
+  </body>
+</html>
