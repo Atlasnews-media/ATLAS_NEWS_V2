@@ -107,7 +107,7 @@ Estos tiempos son sólo estimaciones editoriales de duración del contenido; no 
 
 Para cerrar Fase 2 falta exactamente una acción controlada: ejecutar manualmente `LAB — audio profundo A/B` desde la rama `lab/deep-audio-stage1`.
 
-La corrida deberá entregar los dos MP3 y el benchmark real. No se abre PR ni se fusiona la rama antes de revisar ese resultado.
+La corrida deberá entregar los dos MP3 y el benchmark real. No se debe mantener un PR abierto ni fusionar la rama antes de revisar ese resultado.
 
 ## Seguridad productiva
 
@@ -117,3 +117,11 @@ La corrida deberá entregar los dos MP3 y el benchmark real. No se abre PR ni se
 - No se modificaron las páginas productivas Nacional/Mercados.
 - No se agregó Podcastfy ni nuevas dependencias permanentes.
 - No existe programación automática para Experimento 2.
+
+## Incidencia operacional durante la construcción
+
+Durante la operación del conector GitHub se abrieron por error seis Pull Requests draft transitorios sobre la rama de LAB y se cerraron inmediatamente sin merge. Como `publish-site.yml` valida todo Pull Request contra `main`, esos eventos dispararon seis validaciones no deseadas del workflow `Publicar ATLAS NEWS` (runs 444–449).
+
+Todos los runs terminaron en `success`, sin publicación, sin merge y sin generación de audio. Sus tiempos de pared observados fueron aproximadamente 89 s, 75 s, 79 s, 77 s, 63 s y 79 s; suma aproximada: 462 s (7 min 42 s). Este consumo no corresponde al Experimento 2 y debe excluirse de su benchmark.
+
+Después del cierre de esos PRs, los commits posteriores de la rama LAB no tienen PR abierto y no disparan validaciones automáticas.
