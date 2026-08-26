@@ -4,7 +4,7 @@ summary: "Energ√≠a pierde prima y favorece a importadores, mientras la tecnolog√
 publishedAt: "2026-08-26T06:30:00-04:00"
 cutoffAt: "2026-08-26T06:28:00-04:00"
 section: "markets"
-status: "draft"
+status: "published"
 tags:
   - mercados-globales
   - rotacion-sectorial
