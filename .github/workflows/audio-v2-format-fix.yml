@@ -1,0 +1,41 @@
+name: Audio V2 Format Fix
+
+on:
+  push:
+    branches: [audio/v2-automation]
+
+permissions:
+  contents: write
+
+jobs:
+  format:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+        with:
+          ref: audio/v2-automation
+
+      - name: Setup Node
+        uses: actions/setup-node@v6
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Format Audio V2 planner
+        run: npx prettier --write scripts/prepare-audio-v2.mjs
+
+      - name: Commit formatted planner
+        run: |
+          if git diff --quiet -- scripts/prepare-audio-v2.mjs; then
+            echo "Planner already formatted."
+            exit 0
+          fi
+          git config user.name "ATLAS NEWS Format Bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add scripts/prepare-audio-v2.mjs
+          git commit -m "Audio V2: aplica formato canónico"
+          git push origin HEAD:audio/v2-automation
