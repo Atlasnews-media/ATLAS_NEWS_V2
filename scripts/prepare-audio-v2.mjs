@@ -4,6 +4,7 @@ import path from "node:path";
 
 const root = new URL("../", import.meta.url);
 const ANALYSIS_SCRIPT_VERSION = 1;
+const PLAN_FILE = ".atlas-audio-v2-plan.json";
 
 function hashText(text) {
   return createHash("sha256").update(text).digest("hex");
@@ -27,20 +28,30 @@ async function readScript(filePath) {
 }
 
 async function setOutput(name, value) {
-  if (!process.env.GITHUB_OUTPUT) return;
-  await appendFile(process.env.GITHUB_OUTPUT, `${name}=${value}\n`);
+  if (!process.env.GITHUB_OUTPUT) {
+    return;
+  }
+
+  const line = `${name}=${value}\n`;
+  await appendFile(process.env.GITHUB_OUTPUT, line);
 }
 
 function productState(product) {
-  if (product.needsGeneration) return "generar";
-  return product.unavailableReason ?? "conservar";
+  if (product.needsGeneration) {
+    return "generar";
+  }
+
+  if (product.unavailableReason) {
+    return product.unavailableReason;
+  }
+
+  return "conservar";
 }
 
 const publicDir = process.env.ATLAS_PUBLIC_REPO_DIR;
 const coverPlanPath = process.env.ATLAS_COVER_PLAN;
-const outputPath =
-  process.env.ATLAS_AUDIO_V2_PLAN ??
-  path.resolve(process.cwd(), ".atlas-audio-v2-plan.json");
+const configuredPlanPath = process.env.ATLAS_AUDIO_V2_PLAN;
+const outputPath = configuredPlanPath || path.resolve(process.cwd(), PLAN_FILE);
 const simulateMarketsFailure =
   process.env.ATLAS_AUDIO_V2_SIMULATE_MARKETS_FAILURE === "true";
 
@@ -55,29 +66,25 @@ if (!coverPlan?.date || !coverPlan?.sourceIds?.general) {
 
 const date = coverPlan.date;
 const sourceIds = coverPlan.sourceIds;
-const analysisManifestPath = path.join(
-  publicDir,
-  "audio",
-  "analysis-latest.json",
-);
-const existingAnalysis = await readJson(analysisManifestPath);
+const manifestPath = path.join(publicDir, "audio", "analysis-latest.json");
+const existingAnalysis = await readJson(manifestPath);
 
 async function analysisProduct(section) {
   const sourceId = sourceIds[section] ?? null;
-  const scriptUrl = new URL(
-    `lab/audio-v2/${date}-${section}-dialogue.txt`,
-    root,
-  );
+  const fileName = `${date}-${section}-dialogue.txt`;
+  const scriptUrl = new URL(`lab/audio-v2/${fileName}`, root);
   const scriptPath = path.resolve(scriptUrl.pathname);
   const script = sourceId ? await readScript(scriptPath) : null;
   const scriptHash = script ? hashText(script) : null;
   const existing = existingAnalysis?.[section] ?? null;
-  const same =
-    existing?.status === "published" &&
-    existing?.sourceId === sourceId &&
-    existing?.scriptVersion === ANALYSIS_SCRIPT_VERSION &&
-    existing?.scriptHash === scriptHash &&
-    Boolean(existing?.path);
+
+  const sameSource = existing?.sourceId === sourceId;
+  const sameVersion =
+    existing?.scriptVersion === ANALYSIS_SCRIPT_VERSION;
+  const sameHash = existing?.scriptHash === scriptHash;
+  const hasPublishedPath =
+    existing?.status === "published" && Boolean(existing?.path);
+  const isCurrent = sameSource && sameVersion && sameHash && hasPublishedPath;
 
   let unavailableReason = null;
   if (!sourceId) {
@@ -86,6 +93,8 @@ async function analysisProduct(section) {
     unavailableReason = "script_missing";
   }
 
+  const needsGeneration = Boolean(sourceId && script && !isCurrent);
+
   return {
     section,
     sourceId,
@@ -93,7 +102,7 @@ async function analysisProduct(section) {
     script,
     scriptHash,
     scriptVersion: ANALYSIS_SCRIPT_VERSION,
-    needsGeneration: Boolean(sourceId && script && !same),
+    needsGeneration,
     unavailableReason,
   };
 }
@@ -108,23 +117,26 @@ const cover = {
   plan: coverPlan,
 };
 
+const products = {
+  cover,
+  national,
+  markets,
+};
+
 const plan = {
   schemaVersion: 1,
   date,
   sourceIds,
   simulateMarketsFailure,
-  products: {
-    cover,
-    national,
-    markets,
-  },
+  products,
 };
 
-plan.needsGeneration = Object.values(plan.products).some(
-  (product) => product.needsGeneration,
-);
+plan.needsGeneration = Object.values(products).some((product) => {
+  return product.needsGeneration;
+});
 
-await writeFile(outputPath, `${JSON.stringify(plan, null, 2)}\n`, "utf8");
+const serializedPlan = `${JSON.stringify(plan, null, 2)}\n`;
+await writeFile(outputPath, serializedPlan, "utf8");
 
 const nationalReady = Boolean(national.sourceId && national.script);
 const marketsReady = Boolean(markets.sourceId && markets.script);
