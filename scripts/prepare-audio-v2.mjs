@@ -114,6 +114,9 @@ plan.needsGeneration = Object.values(plan.products).some(
 
 await writeFile(outputPath, `${JSON.stringify(plan, null, 2)}\n`, "utf8");
 
+const nationalReady = Boolean(national.sourceId && national.script);
+const marketsReady = Boolean(markets.sourceId && markets.script);
+
 if (process.env.GITHUB_OUTPUT) {
   await appendFile(
     process.env.GITHUB_OUTPUT,
@@ -122,16 +125,22 @@ if (process.env.GITHUB_OUTPUT) {
   await appendFile(process.env.GITHUB_OUTPUT, `audio_date=${date}\n`);
   await appendFile(
     process.env.GITHUB_OUTPUT,
-    `national_ready=${national.sourceId && national.script ? "true" : "false"}\n`,
+    `national_ready=${nationalReady ? "true" : "false"}\n`,
   );
   await appendFile(
     process.env.GITHUB_OUTPUT,
-    `markets_ready=${markets.sourceId && markets.script ? "true" : "false"}\n`,
+    `markets_ready=${marketsReady ? "true" : "false"}\n`,
   );
 }
 
+const coverState = cover.needsGeneration ? "generar" : "conservar";
+const nationalState = national.needsGeneration
+  ? "generar"
+  : (national.unavailableReason ?? "conservar");
+const marketsState = markets.needsGeneration
+  ? "generar"
+  : (markets.unavailableReason ?? "conservar");
+
 console.log(
-  `Audio V2 ${date}: portada=${cover.needsGeneration ? "generar" : "conservar"}, ` +
-    `nacional=${national.needsGeneration ? "generar" : national.unavailableReason ?? "conservar"}, ` +
-    `mercados=${markets.needsGeneration ? "generar" : markets.unavailableReason ?? "conservar"}.`,
+  `Audio V2 ${date}: portada=${coverState}, nacional=${nationalState}, mercados=${marketsState}.`,
 );

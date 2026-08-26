@@ -42,7 +42,7 @@ const titleId = `section-analysis-audio-${section}`;
 
     fetch(`/audio/analysis-latest.json?v=${Date.now()}`, { cache: "no-store" })
       .then((response) => {
-        if (!response.ok) throw new Error("analysis audio metadata unavailable");
+        if (!response.ok) throw new Error("audio metadata unavailable");
         return response.json();
       })
       .then((metadata) => {
