@@ -26,19 +26,26 @@ async function readScript(filePath) {
   }
 }
 
+async function setOutput(name, value) {
+  if (!process.env.GITHUB_OUTPUT) return;
+  await appendFile(process.env.GITHUB_OUTPUT, `${name}=${value}\n`);
+}
+
+function productState(product) {
+  if (product.needsGeneration) return "generar";
+  return product.unavailableReason ?? "conservar";
+}
+
 const publicDir = process.env.ATLAS_PUBLIC_REPO_DIR;
 const coverPlanPath = process.env.ATLAS_COVER_PLAN;
 const outputPath =
   process.env.ATLAS_AUDIO_V2_PLAN ??
   path.resolve(process.cwd(), ".atlas-audio-v2-plan.json");
 const simulateMarketsFailure =
-  String(process.env.ATLAS_AUDIO_V2_SIMULATE_MARKETS_FAILURE ?? "false") ===
-  "true";
+  process.env.ATLAS_AUDIO_V2_SIMULATE_MARKETS_FAILURE === "true";
 
 if (!publicDir || !coverPlanPath) {
-  throw new Error(
-    "ATLAS_PUBLIC_REPO_DIR y ATLAS_COVER_PLAN son obligatorios para Audio V2.",
-  );
+  throw new Error("Falta configuración requerida de Audio V2.");
 }
 
 const coverPlan = await readJson(coverPlanPath);
@@ -57,9 +64,11 @@ const existingAnalysis = await readJson(analysisManifestPath);
 
 async function analysisProduct(section) {
   const sourceId = sourceIds[section] ?? null;
-  const scriptPath = path.resolve(
-    new URL(`lab/audio-v2/${date}-${section}-dialogue.txt`, root).pathname,
+  const scriptUrl = new URL(
+    `lab/audio-v2/${date}-${section}-dialogue.txt`,
+    root,
   );
+  const scriptPath = path.resolve(scriptUrl.pathname);
   const script = sourceId ? await readScript(scriptPath) : null;
   const scriptHash = script ? hashText(script) : null;
   const existing = existingAnalysis?.[section] ?? null;
@@ -70,6 +79,13 @@ async function analysisProduct(section) {
     existing?.scriptHash === scriptHash &&
     Boolean(existing?.path);
 
+  let unavailableReason = null;
+  if (!sourceId) {
+    unavailableReason = "source_missing";
+  } else if (!script) {
+    unavailableReason = "script_missing";
+  }
+
   return {
     section,
     sourceId,
@@ -78,11 +94,7 @@ async function analysisProduct(section) {
     scriptHash,
     scriptVersion: ANALYSIS_SCRIPT_VERSION,
     needsGeneration: Boolean(sourceId && script && !same),
-    unavailableReason: !sourceId
-      ? "source_missing"
-      : !script
-        ? "script_missing"
-        : null,
+    unavailableReason,
   };
 }
 
@@ -117,30 +129,15 @@ await writeFile(outputPath, `${JSON.stringify(plan, null, 2)}\n`, "utf8");
 const nationalReady = Boolean(national.sourceId && national.script);
 const marketsReady = Boolean(markets.sourceId && markets.script);
 
-if (process.env.GITHUB_OUTPUT) {
-  await appendFile(
-    process.env.GITHUB_OUTPUT,
-    `needs_generation=${plan.needsGeneration ? "true" : "false"}\n`,
-  );
-  await appendFile(process.env.GITHUB_OUTPUT, `audio_date=${date}\n`);
-  await appendFile(
-    process.env.GITHUB_OUTPUT,
-    `national_ready=${nationalReady ? "true" : "false"}\n`,
-  );
-  await appendFile(
-    process.env.GITHUB_OUTPUT,
-    `markets_ready=${marketsReady ? "true" : "false"}\n`,
-  );
-}
+await setOutput("needs_generation", String(plan.needsGeneration));
+await setOutput("audio_date", date);
+await setOutput("national_ready", String(nationalReady));
+await setOutput("markets_ready", String(marketsReady));
 
-const coverState = cover.needsGeneration ? "generar" : "conservar";
-const nationalState = national.needsGeneration
-  ? "generar"
-  : (national.unavailableReason ?? "conservar");
-const marketsState = markets.needsGeneration
-  ? "generar"
-  : (markets.unavailableReason ?? "conservar");
+const stateSummary = [
+  `portada=${productState(cover)}`,
+  `nacional=${productState(national)}`,
+  `mercados=${productState(markets)}`,
+].join(", ");
 
-console.log(
-  `Audio V2 ${date}: portada=${coverState}, nacional=${nationalState}, mercados=${marketsState}.`,
-);
+console.log(`Audio V2 ${date}: ${stateSummary}.`);
