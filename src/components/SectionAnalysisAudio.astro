@@ -2,30 +2,81 @@
 interface Props {
   title: string;
   summary: string;
-  src: string;
+  expectedSourceId?: string;
+  section: "national" | "markets";
   ariaLabel: string;
 }
 
-const { title, summary, src, ariaLabel } = Astro.props;
-const titleId = `section-analysis-audio-${title
-  .toLowerCase()
-  .normalize("NFD")
-  .replace(/[\u0300-\u036f]/g, "")
-  .replace(/[^a-z0-9]+/g, "-")
-  .replace(/^-|-$/g, "")}`;
+const { title, summary, expectedSourceId, section, ariaLabel } = Astro.props;
+const titleId = `section-analysis-audio-${section}`;
 ---
 
-<section class="section-analysis-audio" aria-labelledby={titleId}>
+<section
+  class="section-analysis-audio"
+  data-section-analysis-audio
+  data-section={section}
+  data-expected-source-id={expectedSourceId}
+  aria-labelledby={titleId}
+  hidden
+>
   <div class="audio-copy">
     <p class="audio-kicker" id={titleId}>{title}</p>
     <p>{summary}</p>
   </div>
   <div class="audio-player">
-    <audio controls preload="none" aria-label={ariaLabel}>
-      <source src={src} type="audio/mpeg" />
+    <audio
+      controls
+      preload="metadata"
+      data-analysis-player
+      aria-label={ariaLabel}
+    >
+      <source data-analysis-source type="audio/mpeg" />
     </audio>
   </div>
 </section>
+
+<script is:inline>
+  (() => {
+    const roots = document.querySelectorAll("[data-section-analysis-audio]");
+    if (!roots.length) return;
+
+    fetch(`/audio/analysis-latest.json?v=${Date.now()}`, { cache: "no-store" })
+      .then((response) => {
+        if (!response.ok) throw new Error("audio metadata unavailable");
+        return response.json();
+      })
+      .then((metadata) => {
+        roots.forEach((root) => {
+          const section = root.dataset.section;
+          const expectedSourceId = root.dataset.expectedSourceId;
+          const entry = metadata?.[section];
+
+          if (
+            !expectedSourceId ||
+            entry?.status !== "published" ||
+            entry?.sourceId !== expectedSourceId ||
+            !entry?.path
+          ) {
+            root.hidden = true;
+            return;
+          }
+
+          const player = root.querySelector("[data-analysis-player]");
+          const source = root.querySelector("[data-analysis-source]");
+          if (!player || !source) return;
+
+          source.src = entry.path;
+          player.load();
+          root.hidden = false;
+        });
+      })
+      .catch(() => {
+        roots.forEach((root) => {
+          root.hidden = true;
+        });
+      });
+  })();
+</script>
 
 <style>
   .section-analysis-audio {
@@ -36,6 +87,9 @@ const titleId = `section-analysis-audio-${title
     margin-top: 1.75rem;
     padding: 1.25rem 0 1.5rem;
     border-top: 1px solid var(--rule);
+  }
+  .section-analysis-audio[hidden] {
+    display: none;
   }
   .audio-kicker {
     margin: 0;

@@ -1,0 +1,156 @@
+name: AUDIO V2 — Nacional y Mercados
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "src/content/editions/**"
+      - "src/content/briefings/**"
+      - "lab/audio-v2/**"
+      - "scripts/prepare-audio-v2.mjs"
+      - "scripts/generate-audio-v2.py"
+      - ".github/workflows/audio-v2.yml"
+  workflow_dispatch:
+    inputs:
+      simulate_markets_failure:
+        description: "Simular fallo parcial de Mercados"
+        required: false
+        type: boolean
+        default: false
+
+permissions:
+  contents: read
+
+concurrency:
+  group: atlas-news-audio-v2
+  cancel-in-progress: false
+
+jobs:
+  audio-v2:
+    name: Generar Portada + Nacional + Mercados
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    env:
+      ATLAS_SOURCE_SHA: ${{ github.sha }}
+
+    steps:
+      - name: Descargar repositorio privado
+        uses: actions/checkout@v5
+        with:
+          fetch-depth: 1
+
+      - name: Preparar Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: 22
+
+      - name: Preparar acceso al repositorio público
+        env:
+          DEPLOY_KEY: ${{ secrets.ATLAS_PAGES_DEPLOY_KEY }}
+        run: |
+          install -m 700 -d ~/.ssh
+          printf '%s\n' "$DEPLOY_KEY" > ~/.ssh/atlas_news_pages
+          chmod 600 ~/.ssh/atlas_news_pages
+          ssh-keyscan -H github.com >> ~/.ssh/known_hosts
+
+      - name: Descargar repositorio público
+        env:
+          GIT_SSH_COMMAND: ssh -i ~/.ssh/atlas_news_pages -o IdentitiesOnly=yes
+        run: |
+          git clone --depth 1 git@github.com:EldeSiempre100/EldeSiempre100.github.io.git \
+            "$RUNNER_TEMP/atlas-news-public"
+
+      - name: Esperar publicación web verificada
+        env:
+          GIT_SSH_COMMAND: ssh -i ~/.ssh/atlas_news_pages -o IdentitiesOnly=yes
+        run: |
+          set -euo pipefail
+          atlas_public_dir="$RUNNER_TEMP/atlas-news-public"
+
+          for attempt in $(seq 1 24); do
+            cd "$atlas_public_dir"
+            git fetch --quiet origin main
+            git reset --hard origin/main >/dev/null
+
+            if jq -e --arg sha "$ATLAS_SOURCE_SHA" \
+              '.sourceCommit == $sha' status.json >/dev/null 2>&1; then
+              echo "Web verificada para sourceCommit $ATLAS_SOURCE_SHA."
+              exit 0
+            fi
+
+            echo "Esperando web canónica para $ATLAS_SOURCE_SHA ($attempt/24)..."
+            sleep 15
+          done
+
+          echo "La web no confirmó sourceCommit $ATLAS_SOURCE_SHA dentro de la ventana de espera." >&2
+          exit 1
+
+      - name: Planificar Portada sin regenerar por reloj
+        env:
+          ATLAS_PUBLIC_REPO_DIR: ${{ runner.temp }}/atlas-news-public
+          ATLAS_AUDIO_PLAN: ${{ runner.temp }}/atlas-cover-plan.json
+          ATLAS_AUDIO_VOICE: ef_dora
+        run: node scripts/prepare-daily-audio.mjs
+
+      - name: Planificar Audio V2 por sourceId
+        id: audio_v2_plan
+        env:
+          ATLAS_PUBLIC_REPO_DIR: ${{ runner.temp }}/atlas-news-public
+          ATLAS_COVER_PLAN: ${{ runner.temp }}/atlas-cover-plan.json
+          ATLAS_AUDIO_V2_PLAN: ${{ runner.temp }}/atlas-audio-v2-plan.json
+          ATLAS_AUDIO_V2_SIMULATE_MARKETS_FAILURE: ${{ github.event_name == 'workflow_dispatch' && inputs.simulate_markets_failure || false }}
+        run: node scripts/prepare-audio-v2.mjs
+
+      - name: Restaurar caché de Kokoro
+        if: steps.audio_v2_plan.outputs.needs_generation == 'true'
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/huggingface
+          key: kokoro-82m-v1-${{ runner.os }}
+
+      - name: Preparar Kokoro una sola vez
+        if: steps.audio_v2_plan.outputs.needs_generation == 'true'
+        run: |
+          set -euo pipefail
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq espeak-ng ffmpeg python3-venv
+          python3 -m venv "$RUNNER_TEMP/kokoro-v2-venv"
+          source "$RUNNER_TEMP/kokoro-v2-venv/bin/activate"
+          python -m pip install --quiet --upgrade pip
+          python -m pip install --quiet "kokoro==0.9.4" soundfile numpy
+
+      - name: Generar salidas válidas en staging
+        if: steps.audio_v2_plan.outputs.needs_generation == 'true'
+        env:
+          ATLAS_PUBLIC_REPO_DIR: ${{ runner.temp }}/atlas-news-public
+          ATLAS_AUDIO_V2_PLAN: ${{ runner.temp }}/atlas-audio-v2-plan.json
+          ATLAS_AUDIO_SPEED: "1.0"
+        run: |
+          set -euo pipefail
+          source "$RUNNER_TEMP/kokoro-v2-venv/bin/activate"
+          python scripts/generate-audio-v2.py
+
+      - name: Publicar Audio V2 en un único commit
+        if: steps.audio_v2_plan.outputs.needs_generation == 'true'
+        env:
+          GIT_SSH_COMMAND: ssh -i ~/.ssh/atlas_news_pages -o IdentitiesOnly=yes
+          AUDIO_DATE: ${{ steps.audio_v2_plan.outputs.audio_date }}
+        run: |
+          set -euo pipefail
+          cd "$RUNNER_TEMP/atlas-news-public"
+          git config user.name "ATLAS NEWS Audio V2"
+          git config user.email "actions@users.noreply.github.com"
+          git add audio/
+
+          if git diff --cached --quiet; then
+            echo "Audio V2 sin cambios públicos; no se crea commit."
+            exit 0
+          fi
+
+          git commit -m "Audio V2 — ${AUDIO_DATE}"
+          git pull --rebase origin main
+          git push origin main
+
+      - name: Confirmar idempotencia del plan
+        if: steps.audio_v2_plan.outputs.needs_generation != 'true'
+        run: echo "Audio V2 idempotente; Kokoro y publicación omitidos."
