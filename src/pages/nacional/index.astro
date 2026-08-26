@@ -5,9 +5,6 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
 import { formatEditorialDate, getPublishedNational } from "../../lib/content";
 
 const briefings = await getPublishedNational();
-const hasCurrentAudio =
-  briefings[0]?.id ===
-  "2026-08-25-national-costos-productor-suben-sin-validar-traspaso-al-ipc";
 ---
 
 <BaseLayout
@@ -24,11 +21,12 @@ const hasCurrentAudio =
     </p>
 
     {
-      hasCurrentAudio && (
+      briefings[0] && (
         <SectionAnalysisAudio
           title="Escuchar el análisis nacional"
           summary="Una conversación breve para entender qué hay detrás de las señales que importan en Chile."
-          src="/lab/audio/exp2-national-dialogue.mp3"
+          expectedSourceId={briefings[0].id}
+          section="national"
           ariaLabel="Análisis nacional de ATLAS NEWS"
         />
       )
