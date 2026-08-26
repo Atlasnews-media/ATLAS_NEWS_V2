@@ -3,14 +3,14 @@
     {
       "id": "oil-geopolitics-inflation",
       "topic": "Petróleo, geopolítica e inflación",
-      "thesis": "El shock energético ya no es solo prospectivo: petróleo elevado y restricciones persistentes están transmitiéndose a combustibles y consumo, manteniendo presión inflacionaria mientras Hormuz no se normalice.",
-      "status": "confirmed",
-      "last_evidence": "Al cierre del 21 de agosto, el Brent se aproximó a US$95 por barril y acumuló más de 5% semanal ante nuevas amenazas de sanciones contra Irán; la persistencia del shock confirma la transmisión ya observada a combustibles, costos y consumo.",
-      "effect": "El shock energético combina ahora riesgo inflacionario con erosión de consumo, limita apuestas agresivas de duración y favorece calidad de balance y coberturas frente a inflación y geopolítica.",
-      "base_scenario": "Prima energética elevada con transmisión parcial a precios finales y consumo, pero sin interrupción total de oferta.",
-      "invalidate_if": "La normalización física del tráfico por Hormuz y una caída sostenida del Brent revierten las alzas de combustibles y reducen su efecto sobre inflación y gasto.",
-      "watch": "Brent, tráfico y embarques por Hormuz y Bab el-Mandeb, precios de combustibles, consumo, inventarios estadounidenses, negociación Estados Unidos-Irán y expectativas de inflación.",
-      "last_publication": "/ediciones/2026-08-22-daily-mercado-exige-prima-por-capital/"
+      "thesis": "El shock energético sigue activo, pero la reanudación de conversaciones sobre Hormuz empieza a reducir su prima de mercado; la normalización solo quedará confirmada si mejora de forma sostenida el tráfico físico por el estrecho.",
+      "status": "weakened",
+      "last_evidence": "El 26 de agosto el Brent cayó por tercer día consecutivo y más de 2% hasta alrededor de US$86,45 por barril después de que Irán reanudara conversaciones con Omán sobre la gestión de Hormuz; el mercado empieza a descontar una eventual reapertura, aunque el tráfico físico todavía no se ha normalizado.",
+      "effect": "Reduce presión marginal sobre inflación y tasas, pero mantiene valor en coberturas y selectividad de duración mientras la reapertura no se confirme con flujos físicos sostenidos.",
+      "base_scenario": "Prima energética en retroceso gradual si avanzan las conversaciones, sin asumir todavía una normalización plena de oferta y transporte.",
+      "invalidate_if": "Las conversaciones fracasan, el tráfico vuelve a deteriorarse o el Brent recupera de forma sostenida los máximos recientes; una normalización física sostenida cerraría en cambio la tesis de shock energético persistente.",
+      "watch": "Brent, tráfico y embarques por Hormuz y Bab el-Mandeb, negociación Irán-Omán-Estados Unidos, precios de combustibles y expectativas de inflación.",
+      "last_publication": "/ediciones/2026-08-26-daily-mercado-retira-prima-energetica/"
     },
     {
       "id": "us-employment-fed-rates",
