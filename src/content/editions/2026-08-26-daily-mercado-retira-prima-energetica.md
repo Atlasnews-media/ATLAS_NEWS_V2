@@ -4,7 +4,7 @@ summary: "El Brent cae por tercer día ante nuevas conversaciones sobre Hormuz y
 publishedAt: "2026-08-26T06:00:00-04:00"
 cutoffAt: "2026-08-26T06:00:00-04:00"
 type: "daily"
-status: "draft"
+status: "published"
 tags:
   - mercados-globales
   - energia
