@@ -4,7 +4,7 @@ summary: "Las ventas minoristas crecieron 3,4% anual en julio, pero cayeron 6,5%
 publishedAt: "2026-08-26T06:15:00-04:00"
 cutoffAt: "2026-08-26T06:13:00-04:00"
 section: "national"
-status: "draft"
+status: "published"
 tags:
   - chile
   - consumo
