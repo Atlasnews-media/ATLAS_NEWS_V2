@@ -1,6 +1,15 @@
-name: AUDIO V2 — prueba controlada
+name: AUDIO V2 — Nacional y Mercados
 
 on:
+  push:
+    branches: [main]
+    paths:
+      - "src/content/editions/**"
+      - "src/content/briefings/**"
+      - "lab/audio-v2/**"
+      - "scripts/prepare-audio-v2.mjs"
+      - "scripts/generate-audio-v2.py"
+      - ".github/workflows/audio-v2.yml"
   workflow_dispatch:
     inputs:
       simulate_markets_failure:
@@ -13,7 +22,7 @@ permissions:
   contents: read
 
 concurrency:
-  group: atlas-news-production
+  group: atlas-news-audio-v2
   cancel-in-progress: false
 
 jobs:
@@ -51,6 +60,31 @@ jobs:
           git clone --depth 1 git@github.com:EldeSiempre100/EldeSiempre100.github.io.git \
             "$RUNNER_TEMP/atlas-news-public"
 
+      - name: Esperar publicación web verificada
+        env:
+          GIT_SSH_COMMAND: ssh -i ~/.ssh/atlas_news_pages -o IdentitiesOnly=yes
+        run: |
+          set -euo pipefail
+          atlas_public_dir="$RUNNER_TEMP/atlas-news-public"
+
+          for attempt in $(seq 1 24); do
+            cd "$atlas_public_dir"
+            git fetch --quiet origin main
+            git reset --hard origin/main >/dev/null
+
+            if jq -e --arg sha "$ATLAS_SOURCE_SHA" \
+              '.sourceCommit == $sha' status.json >/dev/null 2>&1; then
+              echo "Web verificada para sourceCommit $ATLAS_SOURCE_SHA."
+              exit 0
+            fi
+
+            echo "Esperando web canónica para $ATLAS_SOURCE_SHA ($attempt/24)..."
+            sleep 15
+          done
+
+          echo "La web no confirmó sourceCommit $ATLAS_SOURCE_SHA dentro de la ventana de espera." >&2
+          exit 1
+
       - name: Planificar Portada sin regenerar por reloj
         env:
           ATLAS_PUBLIC_REPO_DIR: ${{ runner.temp }}/atlas-news-public
@@ -64,7 +98,7 @@ jobs:
           ATLAS_PUBLIC_REPO_DIR: ${{ runner.temp }}/atlas-news-public
           ATLAS_COVER_PLAN: ${{ runner.temp }}/atlas-cover-plan.json
           ATLAS_AUDIO_V2_PLAN: ${{ runner.temp }}/atlas-audio-v2-plan.json
-          ATLAS_AUDIO_V2_SIMULATE_MARKETS_FAILURE: ${{ inputs.simulate_markets_failure }}
+          ATLAS_AUDIO_V2_SIMULATE_MARKETS_FAILURE: ${{ github.event_name == 'workflow_dispatch' && inputs.simulate_markets_failure || false }}
         run: node scripts/prepare-audio-v2.mjs
 
       - name: Restaurar caché de Kokoro
