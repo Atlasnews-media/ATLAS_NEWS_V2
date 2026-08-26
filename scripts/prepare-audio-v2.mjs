@@ -61,7 +61,9 @@ if (!publicDir || !coverPlanPath) {
 
 const coverPlan = await readJson(coverPlanPath);
 if (!coverPlan?.date || !coverPlan?.sourceIds?.general) {
-  throw new Error("El plan de Portada no contiene una edición publicada válida.");
+  throw new Error(
+    "El plan de Portada no contiene una edición publicada válida.",
+  );
 }
 
 const date = coverPlan.date;
@@ -79,8 +81,7 @@ async function analysisProduct(section) {
   const existing = existingAnalysis?.[section] ?? null;
 
   const sameSource = existing?.sourceId === sourceId;
-  const sameVersion =
-    existing?.scriptVersion === ANALYSIS_SCRIPT_VERSION;
+  const sameVersion = existing?.scriptVersion === ANALYSIS_SCRIPT_VERSION;
   const sameHash = existing?.scriptHash === scriptHash;
   const hasPublishedPath =
     existing?.status === "published" && Boolean(existing?.path);
