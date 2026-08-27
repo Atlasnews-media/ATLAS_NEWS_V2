@@ -4,7 +4,7 @@ summary: "La guía de Nvidia eleva la visibilidad del gasto en IA hasta 2028 y e
 publishedAt: "2026-08-27T06:30:00-04:00"
 cutoffAt: "2026-08-27T06:30:00-04:00"
 section: "markets"
-status: "draft"
+status: "published"
 tags:
   - mercados-globales
   - inteligencia-artificial
