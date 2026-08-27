@@ -4,7 +4,7 @@ summary: "El Banco Central renovó por US$11.800 millones su Línea de Crédito 
 publishedAt: "2026-08-27T06:15:00-04:00"
 cutoffAt: "2026-08-27T06:15:00-04:00"
 section: "national"
-status: "draft"
+status: "published"
 tags:
   - chile
   - estabilidad-financiera
