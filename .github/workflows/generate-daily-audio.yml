@@ -58,6 +58,7 @@ jobs:
           ATLAS_PUBLIC_REPO_DIR: ${{ runner.temp }}/atlas-news-public
           ATLAS_AUDIO_PLAN: ${{ runner.temp }}/atlas-audio-plan.json
           ATLAS_AUDIO_VOICE: ef_dora
+          ATLAS_AUDIO_OWNER: manual-legacy
         run: node scripts/prepare-daily-audio.mjs
 
       - name: Registrar inicio de generación de audio
