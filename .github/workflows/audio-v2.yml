@@ -22,6 +22,7 @@ permissions:
   contents: read
 
 concurrency:
+  # Comparte lock con el flujo LEGACY manual para impedir dos escritores de audio.
   group: atlas-news-audio-v2
   cancel-in-progress: false
 
@@ -131,6 +132,7 @@ jobs:
           python scripts/generate-audio-v2.py
 
       - name: Publicar Audio V2 en un único commit
+        id: publish
         if: steps.audio_v2_plan.outputs.needs_generation == 'true'
         env:
           GIT_SSH_COMMAND: ssh -i ~/.ssh/atlas_news_pages -o IdentitiesOnly=yes
@@ -144,12 +146,78 @@ jobs:
 
           if git diff --cached --quiet; then
             echo "Audio V2 sin cambios públicos; no se crea commit."
+            echo "public_commit=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
             exit 0
           fi
 
           git commit -m "Audio V2 — ${AUDIO_DATE}"
-          git pull --rebase origin main
-          git push origin main
+
+          # Un cambio no-audio del sitio puede llegar mientras Kokoro sintetiza.
+          # Rebasamos antes del push y admitimos un único retry determinista si
+          # aparece otro fast-forward entre pull y push. Un conflicto real de
+          # audio sigue fallando de forma explícita.
+          for attempt in 1 2; do
+            git pull --rebase origin main
+            if git push origin main; then
+              echo "public_commit=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
+              exit 0
+            fi
+
+            if [[ "$attempt" -eq 2 ]]; then
+              echo "No fue posible publicar Audio V2 tras un retry controlado." >&2
+              exit 1
+            fi
+
+            echo "El repositorio público avanzó durante el push; reintentando una sola vez..."
+          done
+
+      - name: Verificar publicación remota de Audio V2
+        if: steps.audio_v2_plan.outputs.needs_generation == 'true'
+        env:
+          GIT_SSH_COMMAND: ssh -i ~/.ssh/atlas_news_pages -o IdentitiesOnly=yes
+          AUDIO_DATE: ${{ steps.audio_v2_plan.outputs.audio_date }}
+          AUDIO_PUBLIC_COMMIT: ${{ steps.publish.outputs.public_commit }}
+        run: |
+          set -euo pipefail
+          cd "$RUNNER_TEMP/atlas-news-public"
+          git fetch --quiet origin main
+
+          if [[ -z "$AUDIO_PUBLIC_COMMIT" ]]; then
+            echo "No existe commit público reportado por la etapa de publicación." >&2
+            exit 1
+          fi
+
+          git merge-base --is-ancestor "$AUDIO_PUBLIC_COMMIT" origin/main
+
+          analysis_manifest="$RUNNER_TEMP/analysis-latest-remote.json"
+          cover_manifest="$RUNNER_TEMP/latest-remote.json"
+          git show origin/main:audio/analysis-latest.json > "$analysis_manifest"
+          git show origin/main:audio/latest.json > "$cover_manifest"
+
+          jq -e --arg date "$AUDIO_DATE" --arg sha "$ATLAS_SOURCE_SHA" '
+            .date == $date and
+            .sourceCommit == $sha and
+            (.national | type == "object") and
+            (.markets | type == "object")
+          ' "$analysis_manifest" >/dev/null
+
+          jq -e --arg date "$AUDIO_DATE" '
+            .date == $date and .status == "published"
+          ' "$cover_manifest" >/dev/null
+
+          for key in national markets; do
+            status="$(jq -r --arg key "$key" '.[$key].status // "missing"' "$analysis_manifest")"
+            if [[ "$status" == "published" ]]; then
+              path="$(jq -r --arg key "$key" '.[$key].path' "$analysis_manifest")"
+              if [[ -z "$path" || "$path" == "null" ]]; then
+                echo "$key figura published pero no tiene path." >&2
+                exit 1
+              fi
+              git cat-file -e "origin/main:${path#/}"
+            fi
+          done
+
+          echo "Audio V2 verificado en origin/main para ${AUDIO_DATE} y sourceCommit ${ATLAS_SOURCE_SHA}."
 
       - name: Confirmar idempotencia del plan
         if: steps.audio_v2_plan.outputs.needs_generation != 'true'

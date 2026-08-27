@@ -1,27 +1,21 @@
-name: Generar audio ATLAS NEWS diariamente
+name: LEGACY — Audio Portada manual
 
 on:
-  schedule:
-    # Ejecuta todos los días a las 7:30 AM hora de Santiago (America/Santiago)
-    # Cron UTC: 11:30 UTC = 7:30 AM CLST (UTC-4 en verano) o 6:30 AM CLDT (UTC-3 en invierno)
-    # Usando 11:30 UTC para ajustarse a CLST (horario estándar)
-    - cron: "30 11 * * *"
-  push:
-    branches:
-      - main
-    paths:
-      - "scripts/prepare-daily-audio.mjs"
-      - "scripts/generate-daily-audio.py"
-      - ".github/workflows/generate-daily-audio.yml"
+  # Flujo de contingencia solamente. Audio V2 es el único escritor automático
+  # de Portada + Nacional + Mercados en producción.
   workflow_dispatch:
 
 permissions:
   contents: read
   id-token: write
 
+concurrency:
+  group: atlas-news-audio-v2
+  cancel-in-progress: false
+
 jobs:
   generate-daily-audio:
-    name: Generar y publicar audio diario
+    name: Generar y publicar audio diario manual
     runs-on: ubuntu-latest
     timeout-minutes: 30
     env:
@@ -115,6 +109,7 @@ jobs:
             echo "El audio público ya está actualizado."
           else
             git commit -m "Publica audio ATLAS NEWS — ${{ steps.audio_plan.outputs.audio_date }}"
+            git pull --rebase origin main
             git push origin main
           fi
 
