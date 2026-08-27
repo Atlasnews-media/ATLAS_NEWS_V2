@@ -27,14 +27,14 @@
     {
       "id": "ai-monetization-selectivity",
       "topic": "Inteligencia artificial y selectividad bursátil",
-      "thesis": "La inteligencia artificial sostiene crecimiento estructural, pero tasas largas elevadas y su creciente intensidad de capital convierten financiamiento, monetización y generación de caja en filtros decisivos de valorización.",
+      "thesis": "Nvidia confirma que la monetización de IA puede absorber capital caro en los líderes con escala y demanda visible, pero financiamiento, márgenes y generación de caja siguen siendo filtros decisivos para el resto del ecosistema.",
       "status": "confirmed",
-      "last_evidence": "El 24 de agosto Alibaba cayó cerca de 9% tras anunciar una colocación de US$10.200 millones mientras el mercado cuestionó el retorno de su gasto en IA, y Samsung perdió más de 8% pese a un plan récord de retorno al accionista; además, grandes clientes de Nvidia fueron informados de posibles alzas superiores a 15% en servidores de IA por mayores costos de memoria.",
-      "effect": "Favorece compañías capaces de financiar inversión con caja y monetización visible, y aumenta el riesgo de compresión de múltiplos en modelos dependientes de deuda, nuevas emisiones o capex todavía no rentabilizado.",
-      "base_scenario": "Crecimiento tecnológico acompañado por utilidades, pero con mayor disciplina sobre retorno del capital y estructura de financiamiento.",
-      "invalidate_if": "Las tasas largas caen de forma sostenida o la monetización de IA se amplía suficientemente para absorber el aumento de capex y costos de infraestructura sin deteriorar balances ni retornos.",
+      "last_evidence": "Nvidia reportó ingresos trimestrales de US$96.220 millones y proyectó US$108.000 millones para el tercer trimestre; además espera un crecimiento cercano a 70% para el año fiscal que termina en enero de 2028, muy por encima de la expectativa de mercado cercana a 44%, pese a restricciones de memoria y presión de costos.",
+      "effect": "Fortalece la exposición selectiva a líderes capaces de convertir demanda de IA en ingresos, márgenes y caja, sin eliminar el riesgo de compresión en compañías dependientes de deuda, emisiones o capex todavía no rentabilizado.",
+      "base_scenario": "Crecimiento tecnológico acompañado por monetización efectiva en líderes, con mayor dispersión según retorno del capital y estructura de financiamiento.",
+      "invalidate_if": "Los márgenes o el flujo de caja se deterioran materialmente por costos de infraestructura y financiamiento, o la demanda de IA desacelera lo suficiente para que el crecimiento deje de compensar la intensidad de capital.",
       "watch": "Resultados, márgenes, flujo de caja, emisiones de deuda y acciones, gasto de capital, costos de servidores y memoria, utilización de infraestructura y Treasury a diez y treinta años.",
-      "last_publication": "/ediciones/2026-08-24-daily-mercado-exige-retorno-capital-antes-nvidia/"
+      "last_publication": "/ediciones/2026-08-27-daily-nvidia-valida-demanda-ia-con-capital-caro/"
     },
     {
       "id": "chile-inflation-activity-rates",
