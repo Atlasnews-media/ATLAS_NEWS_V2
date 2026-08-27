@@ -7,6 +7,7 @@ on:
       - "src/content/editions/**"
       - "src/content/briefings/**"
       - "lab/audio-v2/**"
+      - "scripts/prepare-daily-audio.mjs"
       - "scripts/prepare-audio-v2.mjs"
       - "scripts/generate-audio-v2.py"
       - ".github/workflows/audio-v2.yml"
@@ -91,6 +92,7 @@ jobs:
           ATLAS_PUBLIC_REPO_DIR: ${{ runner.temp }}/atlas-news-public
           ATLAS_AUDIO_PLAN: ${{ runner.temp }}/atlas-cover-plan.json
           ATLAS_AUDIO_VOICE: ef_dora
+          ATLAS_AUDIO_OWNER: audio-v2
         run: node scripts/prepare-daily-audio.mjs
 
       - name: Planificar Audio V2 por sourceId

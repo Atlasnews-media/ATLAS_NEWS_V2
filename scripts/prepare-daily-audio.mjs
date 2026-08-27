@@ -256,6 +256,9 @@ const planPath =
   process.env.ATLAS_AUDIO_PLAN ??
   path.resolve(process.cwd(), ".atlas-audio-plan.json");
 const voice = process.env.ATLAS_AUDIO_VOICE ?? "ef_dora";
+const audioOwner = process.env.ATLAS_AUDIO_OWNER ?? null;
+const ownerAllowsGeneration =
+  audioOwner === "audio-v2" || audioOwner === "manual-legacy";
 
 if (!latestDaily) {
   const plan = { needsGeneration: false, reason: "no_published_daily" };
@@ -413,7 +416,7 @@ const estimatedDurationSeconds = Math.max(
 );
 const plan = {
   scriptVersion: SCRIPT_VERSION,
-  needsGeneration: !sameSources,
+  needsGeneration: ownerAllowsGeneration && !sameSources,
   date,
   title: `ATLAS NEWS — Resumen diario — ${formatSpanishDate(date)}`,
   summary: `Una cápsula con las señales principales de General${national ? ", Nacional" : ""}${markets ? " y Mercados" : ""}.`,
@@ -441,7 +444,9 @@ if (process.env.GITHUB_OUTPUT) {
 }
 
 console.log(
-  plan.needsGeneration
-    ? `Audio ${date}: generación requerida (${completeness}/3, ${wordCount} palabras, objetivo ${TARGET_MIN_WORDS}-${TARGET_MAX_WORDS}).`
-    : `Audio ${date}: ya coincide con las piezas publicadas y el guion v${SCRIPT_VERSION}; se conserva el archivo vigente.`,
+  !ownerAllowsGeneration && !sameSources
+    ? `Audio ${date}: generación delegada al owner Audio V2; este proceso sólo planifica.`
+    : plan.needsGeneration
+      ? `Audio ${date}: generación requerida (${completeness}/3, ${wordCount} palabras, objetivo ${TARGET_MIN_WORDS}-${TARGET_MAX_WORDS}).`
+      : `Audio ${date}: ya coincide con las piezas publicadas y el guion v${SCRIPT_VERSION}; se conserva el archivo vigente.`,
 );
