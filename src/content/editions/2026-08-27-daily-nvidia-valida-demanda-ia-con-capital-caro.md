@@ -4,7 +4,7 @@ summary: "Nvidia superó las expectativas y proyectó un crecimiento cercano a 7
 publishedAt: "2026-08-27T06:00:00-04:00"
 cutoffAt: "2026-08-27T06:00:00-04:00"
 type: "daily"
-status: "draft"
+status: "published"
 tags:
   - mercados-globales
   - inteligencia-artificial
