@@ -15,26 +15,26 @@
     {
       "id": "us-employment-fed-rates",
       "topic": "Empleo de Estados Unidos y Reserva Federal",
-      "thesis": "Inflación más benigna, empleo débil y menor consumo favorecen una pausa de la Fed en septiembre, pero las minutas de julio muestran que la preocupación inflacionaria y el riesgo de futuras alzas siguen activos.",
-      "status": "changed",
-      "last_evidence": "Las minutas publicadas el 19 de agosto mostraron mayor preocupación por inflación persistente y tres votos por subir 25 puntos base en julio; los datos posteriores de inflación, empleo y consumo reducen la urgencia, pero revelan un FOMC más dividido de lo que sugería la reacción reciente del mercado.",
-      "effect": "Favorece duración corta e intermedia por el enfriamiento de actividad, pero limita apuestas agresivas por una trayectoria continua de bajas y aumenta la sensibilidad a PCE, empleo y energía.",
-      "base_scenario": "Fed sin cambios en septiembre, con sesgo dependiente de datos y riesgo de futuras alzas si la inflación vuelve a persistir.",
+      "thesis": "La pausa de septiembre sigue siendo el escenario central, pero un PCE de 3,7% y nuevas advertencias de funcionarios confirman que la Fed todavía enfrenta inflación suficientemente persistente para mantener abiertas futuras alzas.",
+      "status": "confirmed",
+      "last_evidence": "El PCE de julio se ubicó en 3,7% anual; varios funcionarios reiteraron el 27 de agosto que siguen abiertos a subir tasas, mientras los futuros mantienen cerca de 35% de probabilidad de alza en septiembre y descuentan al menos un aumento hacia diciembre.",
+      "effect": "Favorece duración corta e intermedia por la pausa probable, pero limita apuestas agresivas por bajas de tasas y mantiene alta la sensibilidad de bonos, dólar y acciones de crecimiento a la comunicación de Jackson Hole.",
+      "base_scenario": "Fed sin cambios en septiembre, con sesgo dependiente de datos y riesgo de futuras alzas si la inflación no converge con mayor claridad.",
       "invalidate_if": "La inflación y el empleo se debilitan suficientemente para cerrar el riesgo de nuevas alzas, o una reaceleración inflacionaria devuelve una subida inmediata al escenario dominante.",
-      "watch": "PCE, empleo, PMI de agosto, mensajes de Jackson Hole, curva de dos a treinta años, petróleo y expectativas de inflación.",
-      "last_publication": "/ediciones/2026-08-20-daily-tesoro-alivia-curva-no-resuelve-riesgo/"
+      "watch": "Mensajes de Jackson Hole, PCE, empleo, curva de dos a treinta años, dólar, petróleo y expectativas de inflación.",
+      "last_publication": "/ediciones/2026-08-28-daily-ia-sostiene-mercado-disciplina-capital/"
     },
     {
       "id": "ai-monetization-selectivity",
       "topic": "Inteligencia artificial y selectividad bursátil",
-      "thesis": "Nvidia confirma que la monetización de IA puede absorber capital caro en los líderes con escala y demanda visible, pero financiamiento, márgenes y generación de caja siguen siendo filtros decisivos para el resto del ecosistema.",
-      "status": "confirmed",
-      "last_evidence": "Nvidia reportó ingresos trimestrales de US$96.220 millones y proyectó US$108.000 millones para el tercer trimestre; además espera un crecimiento cercano a 70% para el año fiscal que termina en enero de 2028, muy por encima de la expectativa de mercado cercana a 44%, pese a restricciones de memoria y presión de costos.",
-      "effect": "Fortalece la exposición selectiva a líderes capaces de convertir demanda de IA en ingresos, márgenes y caja, sin eliminar el riesgo de compresión en compañías dependientes de deuda, emisiones o capex todavía no rentabilizado.",
-      "base_scenario": "Crecimiento tecnológico acompañado por monetización efectiva en líderes, con mayor dispersión según retorno del capital y estructura de financiamiento.",
-      "invalidate_if": "Los márgenes o el flujo de caja se deterioran materialmente por costos de infraestructura y financiamiento, o la demanda de IA desacelera lo suficiente para que el crecimiento deje de compensar la intensidad de capital.",
-      "watch": "Resultados, márgenes, flujo de caja, emisiones de deuda y acciones, gasto de capital, costos de servidores y memoria, utilización de infraestructura y Treasury a diez y treinta años.",
-      "last_publication": "/ediciones/2026-08-27-daily-nvidia-valida-demanda-ia-con-capital-caro/"
+      "thesis": "Nvidia confirma demanda y monetización de IA, pero la pausa de un programa de apoyo financiero a nubes pequeñas muestra que la transparencia de la demanda y la disciplina de capital pasan a ser filtros explícitos junto con márgenes y caja.",
+      "status": "changed",
+      "last_evidence": "Tras subir 8,7% por una guía que validó la demanda de IA, Nvidia pausó parte de un programa que facilitaba financiamiento a pequeñas nubes y contemplaba recomprar capacidad no utilizada, en medio de escrutinio por posibles estructuras circulares y control excesivo sobre clientes.",
+      "effect": "Fortalece la exposición selectiva a líderes con demanda final y caja visibles, mientras aumenta el descuento exigido a modelos dependientes de garantías, deuda o demanda apoyada por el propio proveedor.",
+      "base_scenario": "Crecimiento tecnológico acompañado por monetización efectiva en líderes, con mayor dispersión según retorno del capital, transparencia de la demanda y estructura de financiamiento.",
+      "invalidate_if": "La financiación apoyada por proveedores demuestra ser marginal y transparente sin afectar calidad de demanda, o los márgenes y el flujo de caja se deterioran materialmente pese al crecimiento de ingresos.",
+      "watch": "Resultados, márgenes, flujo de caja, emisiones de deuda y acciones, garantías y apoyo financiero a clientes, utilización de infraestructura y Treasury a diez y treinta años.",
+      "last_publication": "/ediciones/2026-08-28-daily-ia-sostiene-mercado-disciplina-capital/"
     },
     {
       "id": "chile-inflation-activity-rates",
