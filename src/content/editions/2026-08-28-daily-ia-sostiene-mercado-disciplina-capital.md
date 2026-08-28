@@ -4,7 +4,7 @@ summary: "Nvidia impulsó al Nasdaq tras validar la demanda de IA, pero la pausa
 publishedAt: "2026-08-28T05:58:00-04:00"
 cutoffAt: "2026-08-28T05:58:00-04:00"
 type: "daily"
-status: "draft"
+status: "published"
 tags:
   - mercados-globales
   - inteligencia-artificial
