@@ -4,7 +4,7 @@ summary: "La propuesta obligaría a participantes voluntarios a cotizar precios 
 publishedAt: "2026-08-28T06:15:00-04:00"
 cutoffAt: "2026-08-28T06:12:00-04:00"
 section: "national"
-status: "draft"
+status: "published"
 tags:
   - chile
   - renta-fija
