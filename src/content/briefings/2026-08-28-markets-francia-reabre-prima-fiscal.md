@@ -4,7 +4,7 @@ summary: "Las acciones francesas rebotan tras el castigo previo, pero crecimient
 publishedAt: "2026-08-28T07:10:00-04:00"
 cutoffAt: "2026-08-28T07:10:00-04:00"
 section: "markets"
-status: "draft"
+status: "published"
 tags:
   - mercados-globales
   - europa
