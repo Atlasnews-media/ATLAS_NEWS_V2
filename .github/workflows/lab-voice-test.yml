@@ -6,8 +6,6 @@ on:
       - "lab/exp1-voice-test.txt"
       - "lab/exp2-national-dialogue.txt"
       - "lab/exp2-markets-dialogue.txt"
-      - "lab/exp4-speech-current.txt"
-      - "lab/exp4-speech-normalized.txt"
       - "scripts/lab-generate-voice-test.py"
       - "src/pages/lab/index.astro"
       - ".github/workflows/lab-voice-test.yml"
@@ -18,8 +16,6 @@ on:
       - "lab/exp1-voice-test.txt"
       - "lab/exp2-national-dialogue.txt"
       - "lab/exp2-markets-dialogue.txt"
-      - "lab/exp4-speech-current.txt"
-      - "lab/exp4-speech-normalized.txt"
       - "scripts/lab-generate-voice-test.py"
       - "src/pages/lab/index.astro"
       - ".github/workflows/lab-voice-test.yml"
@@ -79,10 +75,10 @@ jobs:
           code=$?
           if [[ $code -eq 0 ]]; then
             printf '%s\n' \
-              '{"status":"success","experiments":["exp1","exp2","exp4"],"exp1Voices":["em_alex","em_santa","af_heart"],"exp2Voices":{"voice1":"ef_dora","voice2":"em_alex"},"exp2Outputs":["exp2-national-dialogue.mp3","exp2-markets-dialogue.mp3"],"exp4Voice":"ef_dora","exp4Outputs":["exp4-speech-current.mp3","exp4-speech-normalized.mp3"]}' \
+              '{"status":"success","experiments":["exp1","exp2"],"exp1Voices":["em_alex","em_santa","af_heart"],"exp2Voices":{"voice1":"ef_dora","voice2":"em_alex"},"exp2Outputs":["exp2-national-dialogue.mp3","exp2-markets-dialogue.mp3"]}' \
               > "$RUNNER_TEMP/atlas-news-public/lab/audio/status.json"
           else
-            tail -n 60 "$log" | python3 -c 'import json,sys; print(json.dumps({"status":"failure","experiments":["exp1","exp2","exp4"],"log":sys.stdin.read()}, ensure_ascii=False))' > "$RUNNER_TEMP/atlas-news-public/lab/audio/status.json"
+            tail -n 60 "$log" | python3 -c 'import json,sys; print(json.dumps({"status":"failure","experiments":["exp1","exp2"],"log":sys.stdin.read()}, ensure_ascii=False))' > "$RUNNER_TEMP/atlas-news-public/lab/audio/status.json"
           fi
           cat "$log"
           exit 0
@@ -99,7 +95,7 @@ jobs:
           if git diff --cached --quiet; then
             echo "Los resultados LAB ya estaban actualizados."
           else
-            git commit -m "LAB exp4 — speech normalizer A/B"
+            git commit -m "LAB exp2 — diálogos Nacional y Mercados"
             git pull --rebase origin main
             git push origin main
           fi
