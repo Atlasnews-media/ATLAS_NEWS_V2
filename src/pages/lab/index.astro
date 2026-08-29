@@ -113,53 +113,6 @@ import "../../styles/global.css";
         </p>
         <a class="lab-link" href="/fondos/">Abrir Fondos en LAB →</a>
       </section>
-
-      <div class="lab-rule" aria-hidden="true"></div>
-
-      <section class="experiment" aria-labelledby="exp4-title">
-        <p class="lab-status">Experimento 4 · Kokoro · Speech normalizer</p>
-        <h2 id="exp4-title">Números e inglés: antes vs. normalizado</h2>
-        <p class="experiment-copy">
-          Prueba aislada con información real de Mercados del 29 de agosto.
-          Ambos audios comunican lo mismo y usan Dora. La única diferencia es
-          el texto que recibe Kokoro: el primero conserva cifras y anglicismos;
-          el segundo usa una representación preparada exclusivamente para voz.
-        </p>
-
-        <div class="dialogue-grid">
-          <article class="voice-card">
-            <p class="voice-label">A · Actual · ef_dora</p>
-            <h3>Sin normalización</h3>
-            <p class="card-copy">
-              Conserva US$22.330 millones, 4,36%, large-cap, high yield,
-              Treasury, carry, beta, Jackson Hole y Warsh tal como aparecen en
-              un texto financiero escrito.
-            </p>
-            <audio controls preload="metadata">
-              <source
-                src="/lab/audio/exp4-speech-current.mp3"
-                type="audio/mpeg"
-              />
-            </audio>
-          </article>
-
-          <article class="voice-card">
-            <p class="voice-label">B · Normalizado · ef_dora</p>
-            <h3>Capa speech</h3>
-            <p class="card-copy">
-              Expande montos y porcentajes, desarrolla anglicismos cuando hay
-              equivalente natural y usa aproximación fonética sólo para nombres
-              propios difíciles. El texto editorial permanece intacto.
-            </p>
-            <audio controls preload="metadata">
-              <source
-                src="/lab/audio/exp4-speech-normalized.mp3"
-                type="audio/mpeg"
-              />
-            </audio>
-          </article>
-        </div>
-      </section>
     </main>
   </body>
 </html>
