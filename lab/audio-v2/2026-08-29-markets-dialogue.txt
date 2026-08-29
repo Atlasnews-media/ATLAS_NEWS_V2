@@ -1,0 +1,31 @@
+VOZ 1: Hoy hay una señal interesante que no se ve mirando solo el cierre del S&P 500. Antes de Nvidia y Jackson Hole, los inversionistas ya estaban reduciendo exposición a acciones estadounidenses, pero no estaban saliendo del riesgo de manera uniforme.
+VOZ 2: ¿Cómo se distingue una reducción de riesgo de una simple rotación?
+VOZ 1: Por los flujos. En la semana terminada el 26 de agosto salieron unos 22.330 millones de dólares de fondos de acciones de Estados Unidos, la mayor salida semanal desde marzo. Pero Europa recibió cerca de 7.920 millones y Asia unos 4.800 millones.
+VOZ 2: O sea, no fue vender acciones en general. Fue vender más Estados Unidos que el resto.
+VOZ 1: Exactamente. Y dentro de Estados Unidos también hubo una diferencia importante. Los fondos large-cap perdieron casi 24.730 millones de dólares, mientras mid-cap y small-cap recibieron entradas.
+VOZ 2: Eso suena contraintuitivo, porque las grandes compañías suelen ser las más líquidas y defensivas.
+VOZ 1: Sí, pero también eran donde estaba una parte importante de la concentración previa. Antes de dos eventos grandes, Nvidia y el discurso de Warsh, reducir large caps permitía bajar exposición al índice sin abandonar completamente el riesgo.
+VOZ 2: ¿Y tecnología? Porque Nvidia tuvo resultados muy fuertes esta semana.
+VOZ 1: Ahí aparece la segunda señal. Los fondos tecnológicos siguieron recibiendo dinero. A nivel global entraron unos 3.200 millones de dólares y en Estados Unidos alrededor de 1.810 millones. Eso significa que el mercado estaba reduciendo beta general, pero manteniendo convicción en la temática de IA.
+VOZ 2: Pero el viernes Nvidia cayó 4,6% después del discurso de Warsh. ¿No contradice esa convicción?
+VOZ 1: No necesariamente. Son ventanas distintas. Los flujos semanales se cortan al miércoles y el viernes llegó una nueva información: Warsh devolvió al mercado el riesgo de una subida de tasas en septiembre. El Treasury a dos años subió hacia 4,36% y la probabilidad de alza pasó desde cerca de 35% a más de 55%.
+VOZ 2: Entonces la pregunta ahora es si quienes compraron tecnología siguen dispuestos a mantenerla con una tasa de descuento más alta.
+VOZ 1: Esa es exactamente la prueba. Nvidia confirmó demanda de IA, pero Warsh elevó el costo de sostener activos de crecimiento. Si los flujos hacia tecnología continúan la próxima semana, la convicción temática habrá sobrevivido al shock monetario.
+VOZ 2: ¿Qué hicieron los inversionistas con los bonos?
+VOZ 1: También fueron selectivos. Los fondos globales de bonos recibieron más de 10.000 millones de dólares y los fondos de corto plazo captaron unos 6.290 millones, el mayor ingreso en siete semanas. En Estados Unidos, gobierno y Treasury de plazo corto a intermedio recibieron alrededor de 3.300 millones.
+VOZ 2: ¿Eso es una apuesta por tasas más bajas?
+VOZ 1: No necesariamente. Puede ser una búsqueda de carry con menos duración. El dato importante es que high yield tuvo salidas, mientras los bonos de mayor calidad y menor plazo recibían dinero.
+VOZ 2: O sea, quieren rendimiento, pero no todos los riesgos al mismo tiempo.
+VOZ 1: Exacto. Cobrar tasa sin asumir una duración muy larga y sin aumentar demasiado el riesgo crediticio. Warsh vuelve esa posición más interesante, porque sube el rendimiento disponible, pero también demuestra que el tramo corto puede perder precio si la Fed se vuelve más restrictiva.
+VOZ 2: ¿Y la caja? Si estaban preocupados, uno esperaría entradas a fondos monetarios.
+VOZ 1: Ocurrió lo contrario. Los fondos monetarios globales tuvieron salidas cercanas a 19.740 millones de dólares. Eso es importante: el dinero no se refugió masivamente en efectivo. Se redistribuyó.
+VOZ 2: ¿Hacia dónde más?
+VOZ 1: Oro y metales preciosos recibieron unos 4.210 millones de dólares, el mayor ingreso en seis meses, mientras los fondos de energía tuvieron su segunda semana consecutiva de salidas. También siguieron entrando recursos a acciones y bonos emergentes.
+VOZ 2: Entonces la conclusión no sería simplemente que el mercado está más defensivo.
+VOZ 1: No. La conclusión es más precisa: el mercado está vendiendo concentración y comprando selectividad. Reduce large caps estadounidenses, pero mantiene tecnología; compra Europa y Asia; compra bonos cortos de calidad; mantiene coberturas en metales preciosos y no se refugia completamente en caja.
+VOZ 2: ¿Qué puede invalidar esa lectura?
+VOZ 1: Si la próxima semana aparecen salidas simultáneas de Estados Unidos, Europa, Asia, tecnología y bonos de calidad, acompañadas por nuevas entradas fuertes a monetarios. Eso ya sería una reducción general del riesgo, no una rotación.
+VOZ 2: ¿Y qué hay que mirar primero?
+VOZ 1: Dos cosas. Primero, si los flujos hacia tecnología sobreviven a la reprecificación de tasas después de Warsh. Segundo, si Estados Unidos recupera capital ahora que ya pasaron Nvidia y Jackson Hole. Esos flujos van a decirnos si esta semana fue una cobertura táctica o el comienzo de una reasignación más persistente.
+VOZ 2: Entonces el dato más interesante no es otro nivel de Treasury o del dólar.
+VOZ 1: Correcto. Es quién sigue poniendo dinero dónde, después de que cambió el precio de la Fed. Esa es la señal que puede decirnos si el mercado está simplemente más caro o realmente está cambiando de régimen.

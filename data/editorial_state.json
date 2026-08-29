@@ -15,14 +15,14 @@
     {
       "id": "us-employment-fed-rates",
       "topic": "Empleo de Estados Unidos y Reserva Federal",
-      "thesis": "La pausa de septiembre sigue siendo el escenario central, pero un PCE de 3,7% y nuevas advertencias de funcionarios confirman que la Fed todavía enfrenta inflación suficientemente persistente para mantener abiertas futuras alzas.",
-      "status": "confirmed",
-      "last_evidence": "El PCE de julio se ubicó en 3,7% anual; varios funcionarios reiteraron el 27 de agosto que siguen abiertos a subir tasas, mientras los futuros mantienen cerca de 35% de probabilidad de alza en septiembre y descuentan al menos un aumento hacia diciembre.",
-      "effect": "Favorece duración corta e intermedia por la pausa probable, pero limita apuestas agresivas por bajas de tasas y mantiene alta la sensibilidad de bonos, dólar y acciones de crecimiento a la comunicación de Jackson Hole.",
-      "base_scenario": "Fed sin cambios en septiembre, con sesgo dependiente de datos y riesgo de futuras alzas si la inflación no converge con mayor claridad.",
-      "invalidate_if": "La inflación y el empleo se debilitan suficientemente para cerrar el riesgo de nuevas alzas, o una reaceleración inflacionaria devuelve una subida inmediata al escenario dominante.",
-      "watch": "Mensajes de Jackson Hole, PCE, empleo, curva de dos a treinta años, dólar, petróleo y expectativas de inflación.",
-      "last_publication": "/ediciones/2026-08-28-daily-ia-sostiene-mercado-disciplina-capital/"
+      "thesis": "La pausa de septiembre dejó de ser claramente dominante: Warsh devolvió al mercado un escenario casi binario entre mantener y subir al reafirmar la meta de 2% y condicionar la espera a una convergencia inflacionaria más convincente.",
+      "status": "changed",
+      "last_evidence": "El 28 de agosto Warsh dijo en Jackson Hole que la Fed tendrá más trabajo que hacer si la inflación subyacente no converge con suficiente claridad; la probabilidad de una subida en septiembre pasó desde cerca de 35% antes del discurso a más de 55% durante la sesión y el Treasury a dos años subió cerca de 13 pb a 4,36%.",
+      "effect": "Devuelve riesgo de tasa al tramo corto, fortalece el dólar y aumenta la sensibilidad de acciones de crecimiento y emergentes a los próximos datos de empleo e inflación de agosto.",
+      "base_scenario": "Septiembre vuelve a estar abierto entre pausa y subida, con una decisión altamente dependiente de los datos de empleo e inflación publicados antes de la reunión.",
+      "invalidate_if": "Los datos de agosto se debilitan lo suficiente para devolver una pausa clara al escenario dominante, o una nueva aceleración inflacionaria convierte la subida en escenario ampliamente mayoritario.",
+      "watch": "Empleo de agosto, inflación y PCE, Treasury a dos años, dólar, expectativas FedWatch y comunicación de miembros de la Fed.",
+      "last_publication": "/ediciones/2026-08-29-daily-fed-devuelve-riesgo-alza-septiembre/"
     },
     {
       "id": "ai-monetization-selectivity",
@@ -39,14 +39,14 @@
     {
       "id": "chile-inflation-activity-rates",
       "topic": "Inflación, actividad y tasas en Chile",
-      "thesis": "La inflación converge, pero el PIB del segundo trimestre confirma una actividad más débil; aumenta el argumento para normalizar la TPM mientras las tasas largas globales limitan la transmisión hacia el costo financiero de mayor plazo.",
-      "status": "changed",
-      "last_evidence": "El PIB chileno cayó 0,2% interanual en el segundo trimestre de 2026 y quedó plano frente al trimestre previo; minería cayó 6,4% y la inversión se estancó, debilitando la lectura más favorable sugerida por el Imacec de junio de 2,4%.",
-      "effect": "Refuerza el atractivo relativo de renta fija local por el canal de actividad y política monetaria, pero exige diferenciar tramos porque el costo global de capital sigue elevado.",
-      "base_scenario": "Inflación convergente, crecimiento débil y TPM cautelosa, con mayor espacio para normalización si la actividad no repunta y el shock energético no se intensifica.",
-      "invalidate_if": "Consumo, inversión y actividad recuperan fuerza de forma amplia o el shock energético vuelve a elevar inflación y expectativas, reduciendo el espacio para normalizar la TPM.",
-      "watch": "Imacec, consumo, inversión, empleo, curva local, dólar, inflación subyacente, comunicación del Banco Central y Treasury a diez y treinta años.",
-      "last_publication": "/ediciones/2026-08-19-daily-tasas-largas-reordenan-riesgo/"
+      "thesis": "La debilidad de actividad se extiende al mercado laboral: desempleo en 9,5%, ocupación cayendo y empleo formal retrocediendo refuerzan el argumento doméstico para normalizar la TPM, aunque una Fed más restrictiva limita el alivio financiero externo.",
+      "status": "confirmed",
+      "last_evidence": "El 28 de agosto el INE informó una tasa de desocupación de 9,5% en mayo-julio, 0,8 pp más que un año antes; los ocupados cayeron 0,2% y los asalariados formales 2,4%, mientras la tasa ajustada estacionalmente permaneció en 9,3% frente al trimestre móvil previo.",
+      "effect": "Refuerza el atractivo relativo de renta fija local por el canal de actividad, pero obliga a diferenciar tramos porque el endurecimiento de expectativas de la Fed y el dólar pueden limitar la transmisión hacia tasas largas chilenas.",
+      "base_scenario": "Actividad y empleo débiles con mayor espacio doméstico para normalización monetaria, condicionado por inflación y por un entorno externo de tasas todavía exigente.",
+      "invalidate_if": "Empleo, consumo e inversión recuperan fuerza de forma amplia o la inflación vuelve a acelerarse, reduciendo el espacio para normalizar la TPM.",
+      "watch": "Imacec de julio, empleo, salarios, consumo, inversión, curva local, dólar, inflación subyacente y comunicación del Banco Central.",
+      "last_publication": "/ediciones/2026-08-29-daily-fed-devuelve-riesgo-alza-septiembre/"
     }
   ]
 }
