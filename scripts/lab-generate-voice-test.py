@@ -14,6 +14,10 @@ DIALOGUE_SCRIPTS = {
     "exp2-national-dialogue": ROOT / "lab" / "exp2-national-dialogue.txt",
     "exp2-markets-dialogue": ROOT / "lab" / "exp2-markets-dialogue.txt",
 }
+EXP4_SCRIPTS = {
+    "exp4-speech-current": ROOT / "lab" / "exp4-speech-current.txt",
+    "exp4-speech-normalized": ROOT / "lab" / "exp4-speech-normalized.txt",
+}
 SAMPLE_RATE = 24_000
 TURN_PAUSE_SECONDS = 0.28
 
@@ -27,6 +31,8 @@ DIALOGUE_VOICES = {
     "VOZ 1": ("ef_dora", "e"),
     "VOZ 2": ("em_alex", "e"),
 }
+
+EXP4_VOICE = ("ef_dora", "e")
 
 out_dir = PUBLIC_DIR / "lab" / "audio"
 out_dir.mkdir(parents=True, exist_ok=True)
@@ -169,7 +175,24 @@ def generate_dialogue(stem, script_path):
     )
 
 
+def generate_exp4():
+    voice, lang_code = EXP4_VOICE
+    for stem, script_path in EXP4_SCRIPTS.items():
+        text = script_path.read_text(encoding="utf-8").strip()
+        if not text:
+            raise RuntimeError(f"El guion de exp4 está vacío: {script_path.name}")
+        samples = synthesize(text, voice, lang_code)
+        mp3_path = write_mp3(stem, samples)
+        duration = samples.size / SAMPLE_RATE
+        print(
+            f"LAB exp4 generado: {mp3_path.name} · voz {voice} · "
+            f"idioma {lang_code} · {duration:.1f}s"
+        )
+
+
 generate_exp1()
 
 for stem, script_path in DIALOGUE_SCRIPTS.items():
     generate_dialogue(stem, script_path)
+
+generate_exp4()
