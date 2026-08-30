@@ -47,6 +47,7 @@ jobs:
           markets_id=""
           branch="${GITHUB_HEAD_REF:-${GITHUB_REF_NAME}}"
           changed_files=""
+          full_gate=true
 
           if [[ "${GITHUB_EVENT_NAME}" == "pull_request" ]]; then
             if git rev-parse HEAD^2 >/dev/null 2>&1; then
@@ -60,6 +61,7 @@ jobs:
               edition_date="${BASH_REMATCH[1]}"
               edition_type="daily"
               edition_key="${edition_date}-daily"
+              full_gate=false
 
               expected_title="Paquete editorial matutino — ${edition_date}"
               if [[ "$PR_TITLE" != "$expected_title" ]]; then
@@ -91,6 +93,20 @@ jobs:
               if [[ -n "$markets_files" ]]; then
                 markets_id="$(basename "$markets_files" .md)"
               fi
+
+              if [[ "$general_count" -eq 1 && "$national_count" -eq 1 && "$markets_count" -eq 1 ]]; then
+                if grep -Eq '^status:[[:space:]]*"?published"?[[:space:]]*$' "$general_files" \
+                  && grep -Eq '^status:[[:space:]]*"?published"?[[:space:]]*$' "$national_files" \
+                  && grep -Eq '^status:[[:space:]]*"?published"?[[:space:]]*$' "$markets_files"; then
+                  full_gate=true
+                  echo "Morning Package final 3/3 publicado: habilitando gate global para HEAD $ATLAS_SOURCE_SHA."
+                else
+                  echo "Morning Package todavía intermedio: se ejecutarán sólo checks baratos."
+                fi
+              else
+                echo "Morning Package todavía incompleto: se ejecutarán sólo checks baratos."
+              fi
+
               track=true
             elif [[ "$branch" =~ ^editorial/([0-9]{4}-[0-9]{2}-[0-9]{2})-(daily|weekly)$ ]]; then
               edition_date="${BASH_REMATCH[1]}"
@@ -139,6 +155,7 @@ jobs:
           echo "national_id=$national_id" >> "$GITHUB_OUTPUT"
           echo "markets_id=$markets_id" >> "$GITHUB_OUTPUT"
           echo "branch=$branch" >> "$GITHUB_OUTPUT"
+          echo "full_gate=$full_gate" >> "$GITHUB_OUTPUT"
 
       - name: Registrar PR abierto en memoria operacional
         if: github.event_name == 'pull_request' && steps.edition.outputs.track == 'true'
@@ -195,23 +212,23 @@ jobs:
       - name: Instalar dependencias
         run: npm ci
 
-      - name: Probar el respaldo económico
+      - name: Validar contenido — check barato PR
         if: github.event_name == 'pull_request'
-        env:
-          ATLAS_INDICATORS_API_BASE: http://127.0.0.1:9
-          ATLAS_PUBLIC_SNAPSHOT_URL: http://127.0.0.1:9/snapshot.json
-        run: npm run update:indicators
-
-      - name: Actualizar indicadores económicos
-        run: npm run update:indicators
+        run: npm run validate:content
 
       - name: Comprobar formato técnico
         run: npm run format:check
 
+      - name: Actualizar indicadores económicos
+        if: github.event_name != 'pull_request' || steps.edition.outputs.full_gate == 'true'
+        run: npm run update:indicators
+
       - name: Validar y construir el sitio
+        if: github.event_name != 'pull_request' || steps.edition.outputs.full_gate == 'true'
         run: npm run build:site
 
       - name: Comprobar manifiesto de publicación
+        if: github.event_name != 'pull_request' || steps.edition.outputs.full_gate == 'true'
         run: |
           jq -e --arg sha "$ATLAS_SOURCE_SHA" '
             .schemaVersion == 1 and
@@ -224,12 +241,13 @@ jobs:
           ' dist/status.json > /dev/null
 
       - name: Probar el auditor contra el build
+        if: github.event_name != 'pull_request' || steps.edition.outputs.full_gate == 'true'
         env:
           ATLAS_PUBLIC_DIR: dist
         run: npm run audit:production
 
       - name: Registrar validación correcta
-        if: github.event_name == 'pull_request' && steps.edition.outputs.track == 'true'
+        if: github.event_name == 'pull_request' && steps.edition.outputs.track == 'true' && steps.edition.outputs.full_gate == 'true'
         continue-on-error: true
         env:
           EDITION_KEY: ${{ steps.edition.outputs.edition_key }}
@@ -357,51 +375,6 @@ jobs:
             --arg published_url "$public_url" \
             '{edition_key:$edition_key,edition_date:$edition_date,edition_type:$edition_type,status:$status,source_commit:$source_commit,public_commit:$public_commit,published_url:$published_url}' \
             | curl -fsSL -X POST "$ATLAS_STATE_ENDPOINT" -H "Authorization: Bearer $token" -H 'content-type: application/json' --data-binary @-
-
-      - name: Planificar edición sonora diaria
-        id: audio_plan
-        if: github.event_name != 'pull_request'
-        continue-on-error: true
-        env:
-          ATLAS_PUBLIC_REPO_DIR: ${{ runner.temp }}/atlas-news-public
-          ATLAS_AUDIO_PLAN: ${{ runner.temp }}/atlas-audio-plan.json
-          ATLAS_AUDIO_VOICE: ef_dora
-        run: node scripts/prepare-daily-audio.mjs
-
-      - name: Restaurar caché de Kokoro
-        if: github.event_name != 'pull_request' && steps.audio_plan.outputs.needs_generation == 'true'
-        continue-on-error: true
-        uses: actions/cache@v4
-        with:
-          path: ~/.cache/huggingface
-          key: kokoro-82m-v1-${{ runner.os }}
-
-      - name: Generar y publicar edición sonora con Kokoro
-        if: github.event_name != 'pull_request' && steps.audio_plan.outputs.needs_generation == 'true'
-        continue-on-error: true
-        env:
-          ATLAS_PUBLIC_REPO_DIR: ${{ runner.temp }}/atlas-news-public
-          ATLAS_AUDIO_PLAN: ${{ runner.temp }}/atlas-audio-plan.json
-          ATLAS_AUDIO_SPEED: "1.0"
-          GIT_SSH_COMMAND: ssh -i ~/.ssh/atlas_news_pages -o IdentitiesOnly=yes
-        run: |
-          set -euo pipefail
-          sudo apt-get update -qq
-          sudo apt-get install -y -qq espeak-ng ffmpeg python3-venv
-          python3 -m venv "$RUNNER_TEMP/kokoro-venv"
-          source "$RUNNER_TEMP/kokoro-venv/bin/activate"
-          python -m pip install --quiet --upgrade pip
-          python -m pip install --quiet "kokoro==0.9.4" soundfile
-          python scripts/generate-daily-audio.py
-
-          cd "$ATLAS_PUBLIC_REPO_DIR"
-          git add audio/
-          if git diff --cached --quiet; then
-            echo "El audio público ya está actualizado."
-          else
-            git commit -m "Publica audio ATLAS NEWS — ${{ steps.audio_plan.outputs.audio_date }}"
-            git push origin main
-          fi
 
       - name: Registrar fallo operacional
         if: failure() && steps.edition.outputs.track == 'true'
