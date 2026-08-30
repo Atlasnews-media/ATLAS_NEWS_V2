@@ -4,7 +4,7 @@ summary: "Dos fondos administrados por Toesca pasarán a controlar indirectament
 publishedAt: "2026-08-30T06:15:00-04:00"
 cutoffAt: "2026-08-30T06:15:00-04:00"
 section: "national"
-status: "draft"
+status: "published"
 tags:
   - chile
   - infraestructura
