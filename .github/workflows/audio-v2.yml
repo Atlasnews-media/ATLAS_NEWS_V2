@@ -7,10 +7,6 @@ on:
       - "src/content/editions/**"
       - "src/content/briefings/**"
       - "lab/audio-v2/**"
-      - "scripts/prepare-daily-audio.mjs"
-      - "scripts/prepare-audio-v2.mjs"
-      - "scripts/generate-audio-v2.py"
-      - ".github/workflows/audio-v2.yml"
   workflow_dispatch:
     inputs:
       simulate_markets_failure:
@@ -104,6 +100,60 @@ jobs:
           ATLAS_AUDIO_V2_SIMULATE_MARKETS_FAILURE: ${{ github.event_name == 'workflow_dispatch' && inputs.simulate_markets_failure || false }}
         run: node scripts/prepare-audio-v2.mjs
 
+      - name: Validar contrato estricto VOZ 1 / VOZ 2
+        env:
+          ATLAS_AUDIO_V2_PLAN: ${{ runner.temp }}/atlas-audio-v2-plan.json
+        run: node scripts/validate-audio-v2-dialogues.mjs
+
+      - name: Resolver síntesis o refresh de metadata
+        id: write_plan
+        env:
+          AUDIO_DATE: ${{ steps.audio_v2_plan.outputs.audio_date }}
+          NEEDS_GENERATION: ${{ steps.audio_v2_plan.outputs.needs_generation }}
+        run: |
+          set -euo pipefail
+          public_dir="$RUNNER_TEMP/atlas-news-public"
+          metadata_refresh=false
+          needs_write=false
+
+          if [[ "$NEEDS_GENERATION" == "true" ]]; then
+            needs_write=true
+          else
+            test -f "$public_dir/audio/latest.json"
+            test -f "$public_dir/audio/analysis-latest.json"
+
+            jq -e --arg date "$AUDIO_DATE" '.date == $date and .status == "published"' \
+              "$public_dir/audio/latest.json" >/dev/null
+            jq -e --arg date "$AUDIO_DATE" '.date == $date' \
+              "$public_dir/audio/analysis-latest.json" >/dev/null
+
+            cover_sha="$(jq -r '.sourceCommit // ""' "$public_dir/audio/latest.json")"
+            analysis_sha="$(jq -r '.sourceCommit // ""' "$public_dir/audio/analysis-latest.json")"
+
+            if [[ "$cover_sha" != "$ATLAS_SOURCE_SHA" || "$analysis_sha" != "$ATLAS_SOURCE_SHA" ]]; then
+              metadata_refresh=true
+              needs_write=true
+            fi
+          fi
+
+          echo "metadata_refresh=$metadata_refresh" >> "$GITHUB_OUTPUT"
+          echo "needs_write=$needs_write" >> "$GITHUB_OUTPUT"
+
+      - name: Actualizar manifests sin resintetizar
+        if: steps.audio_v2_plan.outputs.needs_generation != 'true' && steps.write_plan.outputs.metadata_refresh == 'true'
+        run: |
+          set -euo pipefail
+          public_dir="$RUNNER_TEMP/atlas-news-public"
+
+          for manifest in audio/latest.json audio/analysis-latest.json; do
+            tmp="$(mktemp)"
+            jq --arg sha "$ATLAS_SOURCE_SHA" '.sourceCommit = $sha' \
+              "$public_dir/$manifest" > "$tmp"
+            mv "$tmp" "$public_dir/$manifest"
+          done
+
+          echo "Audio V2: metadata actualizada a sourceCommit $ATLAS_SOURCE_SHA sin ejecutar Kokoro."
+
       - name: Restaurar caché de Kokoro
         if: steps.audio_v2_plan.outputs.needs_generation == 'true'
         uses: actions/cache@v4
@@ -135,7 +185,7 @@ jobs:
 
       - name: Publicar Audio V2 en un único commit
         id: publish
-        if: steps.audio_v2_plan.outputs.needs_generation == 'true'
+        if: steps.write_plan.outputs.needs_write == 'true'
         env:
           GIT_SSH_COMMAND: ssh -i ~/.ssh/atlas_news_pages -o IdentitiesOnly=yes
           AUDIO_DATE: ${{ steps.audio_v2_plan.outputs.audio_date }}
@@ -174,7 +224,7 @@ jobs:
           done
 
       - name: Verificar publicación remota de Audio V2
-        if: steps.audio_v2_plan.outputs.needs_generation == 'true'
+        if: steps.write_plan.outputs.needs_write == 'true'
         env:
           GIT_SSH_COMMAND: ssh -i ~/.ssh/atlas_news_pages -o IdentitiesOnly=yes
           AUDIO_DATE: ${{ steps.audio_v2_plan.outputs.audio_date }}
@@ -203,9 +253,18 @@ jobs:
             (.markets | type == "object")
           ' "$analysis_manifest" >/dev/null
 
-          jq -e --arg date "$AUDIO_DATE" '
-            .date == $date and .status == "published"
+          jq -e --arg date "$AUDIO_DATE" --arg sha "$ATLAS_SOURCE_SHA" '
+            .date == $date and
+            .status == "published" and
+            .sourceCommit == $sha
           ' "$cover_manifest" >/dev/null
+
+          cover_path="$(jq -r '.path // empty' "$cover_manifest")"
+          if [[ -z "$cover_path" ]]; then
+            echo "Portada figura published pero no tiene path." >&2
+            exit 1
+          fi
+          git cat-file -e "origin/main:${cover_path#/}"
 
           for key in national markets; do
             status="$(jq -r --arg key "$key" '.[$key].status // "missing"' "$analysis_manifest")"
@@ -222,5 +281,5 @@ jobs:
           echo "Audio V2 verificado en origin/main para ${AUDIO_DATE} y sourceCommit ${ATLAS_SOURCE_SHA}."
 
       - name: Confirmar idempotencia del plan
-        if: steps.audio_v2_plan.outputs.needs_generation != 'true'
+        if: steps.write_plan.outputs.needs_write != 'true'
         run: echo "Audio V2 idempotente; Kokoro y publicación omitidos."
