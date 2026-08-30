@@ -4,7 +4,7 @@ summary: "Brent cayó más de 5% en la semana, pero Rusia extendió su veto al d
 publishedAt: "2026-08-30T06:30:00-04:00"
 cutoffAt: "2026-08-30T06:29:00-04:00"
 section: "markets"
-status: "draft"
+status: "published"
 tags:
   - mercados-globales
   - energia
