@@ -4,7 +4,7 @@ summary: "La debilidad del yen y las intervenciones de Estados Unidos y Japón c
 publishedAt: "2026-08-30T06:02:00-04:00"
 cutoffAt: "2026-08-30T06:00:00-04:00"
 type: "daily"
-status: "draft"
+status: "published"
 tags:
   - mercados-globales
   - politica-monetaria
