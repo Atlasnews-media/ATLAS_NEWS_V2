@@ -219,6 +219,13 @@ jobs:
       - name: Comprobar formato técnico
         run: npm run format:check
 
+      - name: Probar el respaldo económico — sólo gate final PR
+        if: github.event_name == 'pull_request' && steps.edition.outputs.full_gate == 'true'
+        env:
+          ATLAS_INDICATORS_API_BASE: http://127.0.0.1:9
+          ATLAS_PUBLIC_SNAPSHOT_URL: http://127.0.0.1:9/snapshot.json
+        run: npm run update:indicators
+
       - name: Actualizar indicadores económicos
         if: github.event_name != 'pull_request' || steps.edition.outputs.full_gate == 'true'
         run: npm run update:indicators
