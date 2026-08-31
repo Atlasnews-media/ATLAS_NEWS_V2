@@ -4,7 +4,7 @@ summary: "El nuevo salto del petróleo lleva los rendimientos cortos de Alemania
 publishedAt: "2026-08-31T06:30:00-04:00"
 cutoffAt: "2026-08-31T06:30:00-04:00"
 section: "markets"
-status: "draft"
+status: "published"
 tags:
   - mercados-globales
   - renta-fija
