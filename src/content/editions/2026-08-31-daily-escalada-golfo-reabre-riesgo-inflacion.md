@@ -4,7 +4,7 @@ summary: "Nuevos ataques entre Estados Unidos e Irán hacen saltar el Brent sobr
 publishedAt: "2026-08-31T06:00:00-04:00"
 cutoffAt: "2026-08-31T06:00:00-04:00"
 type: "daily"
-status: "draft"
+status: "published"
 tags:
   - mercados-globales
   - fed
