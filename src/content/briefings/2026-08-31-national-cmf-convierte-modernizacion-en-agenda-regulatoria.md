@@ -4,7 +4,7 @@ summary: "La CMF separó medidas que comenzará a impulsar este año de reformas
 publishedAt: "2026-08-31T06:15:00-04:00"
 cutoffAt: "2026-08-31T06:13:00-04:00"
 section: "national"
-status: "draft"
+status: "published"
 tags:
   - chile
   - regulacion-financiera
