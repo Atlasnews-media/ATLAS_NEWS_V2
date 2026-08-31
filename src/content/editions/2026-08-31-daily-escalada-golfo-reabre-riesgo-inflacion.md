@@ -1,5 +1,5 @@
 ---
-title: "La escalada en el Golfo reabre el riesgo de inflación justo cuando la Fed evalúa subir"
+title: "La escalada en el Golfo reabre el riesgo de inflación justo cuando la Fed evalúa subir las tasas"
 summary: "Nuevos ataques entre Estados Unidos e Irán hacen saltar el Brent sobre US$91 y revierten parte del alivio energético de la semana pasada, complicando una Fed que ya volvió a considerar una subida en septiembre."
 publishedAt: "2026-08-31T06:00:00-04:00"
 cutoffAt: "2026-08-31T06:00:00-04:00"
