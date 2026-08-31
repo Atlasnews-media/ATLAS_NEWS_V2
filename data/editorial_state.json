@@ -3,14 +3,14 @@
     {
       "id": "oil-geopolitics-inflation",
       "topic": "Petróleo, geopolítica e inflación",
-      "thesis": "El shock energético sigue activo, pero la reanudación de conversaciones sobre Hormuz empieza a reducir su prima de mercado; la normalización solo quedará confirmada si mejora de forma sostenida el tráfico físico por el estrecho.",
-      "status": "weakened",
-      "last_evidence": "El 26 de agosto el Brent cayó por tercer día consecutivo y más de 2% hasta alrededor de US$86,45 por barril después de que Irán reanudara conversaciones con Omán sobre la gestión de Hormuz; el mercado empieza a descontar una eventual reapertura, aunque el tráfico físico todavía no se ha normalizado.",
-      "effect": "Reduce presión marginal sobre inflación y tasas, pero mantiene valor en coberturas y selectividad de duración mientras la reapertura no se confirme con flujos físicos sostenidos.",
-      "base_scenario": "Prima energética en retroceso gradual si avanzan las conversaciones, sin asumir todavía una normalización plena de oferta y transporte.",
-      "invalidate_if": "Las conversaciones fracasan, el tráfico vuelve a deteriorarse o el Brent recupera de forma sostenida los máximos recientes; una normalización física sostenida cerraría en cambio la tesis de shock energético persistente.",
-      "watch": "Brent, tráfico y embarques por Hormuz y Bab el-Mandeb, negociación Irán-Omán-Estados Unidos, precios de combustibles y expectativas de inflación.",
-      "last_publication": "/ediciones/2026-08-26-daily-mercado-retira-prima-energetica/"
+      "thesis": "La desescalada energética perdió tracción: nuevos ataques entre Estados Unidos e Irán reactivan el riesgo físico sobre Hormuz y devuelven presión inflacionaria justo cuando la Fed vuelve a considerar una subida en septiembre.",
+      "status": "changed",
+      "last_evidence": "El 31 de agosto el Brent saltó más de 3% hasta alrededor de US$91,25 después de que Estados Unidos atacara lanzadores iraníes en Larak e Irán respondiera contra fuerzas estadounidenses en Jordania, revirtiendo parte del alivio energético de la semana previa.",
+      "effect": "Reabre presión sobre inflación y tasas, reduce el margen para una lectura monetaria benigna y devuelve valor a coberturas mientras no exista una desescalada militar y marítima verificable.",
+      "base_scenario": "Prima energética nuevamente elevada y volátil mientras el conflicto permanezca activo, sin asumir todavía una interrupción adicional y sostenida de oferta.",
+      "invalidate_if": "Una desescalada verificable restaura tráfico sostenido por Hormuz y devuelve el Brent a la trayectoria descendente previa; una escalada que reduzca nuevamente los flujos físicos confirmaría un shock más severo.",
+      "watch": "Brent, tráfico y embarques por Hormuz, nuevas acciones militares Estados Unidos-Irán, sanciones, precios de combustibles y expectativas de inflación.",
+      "last_publication": "/ediciones/2026-08-31-daily-escalada-golfo-reabre-riesgo-inflacion/"
     },
     {
       "id": "us-employment-fed-rates",
