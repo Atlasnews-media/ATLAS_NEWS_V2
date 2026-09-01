@@ -4,7 +4,7 @@ summary: "El yen vuelve a cruzar 160 por dólar pese al JGB a 10 años en 3% y a
 publishedAt: "2026-09-01T06:30:00-04:00"
 cutoffAt: "2026-09-01T06:28:00-04:00"
 section: "markets"
-status: "draft"
+status: "published"
 tags:
   - mercados-globales
   - japon
