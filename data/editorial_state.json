@@ -15,14 +15,14 @@
     {
       "id": "us-employment-fed-rates",
       "topic": "Empleo de Estados Unidos y Reserva Federal",
-      "thesis": "La pausa de septiembre dejó de ser claramente dominante: Warsh devolvió al mercado un escenario casi binario entre mantener y subir al reafirmar la meta de 2% y condicionar la espera a una convergencia inflacionaria más convincente.",
-      "status": "changed",
-      "last_evidence": "El 28 de agosto Warsh dijo en Jackson Hole que la Fed tendrá más trabajo que hacer si la inflación subyacente no converge con suficiente claridad; la probabilidad de una subida en septiembre pasó desde cerca de 35% antes del discurso a más de 55% durante la sesión y el Treasury a dos años subió cerca de 13 pb a 4,36%.",
-      "effect": "Devuelve riesgo de tasa al tramo corto, fortalece el dólar y aumenta la sensibilidad de acciones de crecimiento y emergentes a los próximos datos de empleo e inflación de agosto.",
-      "base_scenario": "Septiembre vuelve a estar abierto entre pausa y subida, con una decisión altamente dependiente de los datos de empleo e inflación publicados antes de la reunión.",
-      "invalidate_if": "Los datos de agosto se debilitan lo suficiente para devolver una pausa clara al escenario dominante, o una nueva aceleración inflacionaria convierte la subida en escenario ampliamente mayoritario.",
-      "watch": "Empleo de agosto, inflación y PCE, Treasury a dos años, dólar, expectativas FedWatch y comunicación de miembros de la Fed.",
-      "last_publication": "/ediciones/2026-08-29-daily-fed-devuelve-riesgo-alza-septiembre/"
+      "thesis": "La pausa de septiembre dejó de ser claramente dominante y el riesgo de tasas se amplió: la reprecificación posterior a Jackson Hole ya alcanza la curva larga global, con el Treasury a diez años sobre 4,75% y Japón en 3% mientras la energía mantiene presión inflacionaria.",
+      "status": "confirmed",
+      "last_evidence": "El 1 de septiembre el Treasury a diez años operó cerca de 4,78%, máximo desde comienzos de 2025, mientras el JGB a diez años alcanzó 3% por primera vez desde 1996 y otras curvas soberanas también marcaron máximos de varios años.",
+      "effect": "Amplía el endurecimiento desde la expectativa de la próxima decisión de la Fed hacia el costo global del capital y aumenta la sensibilidad de duración, acciones de crecimiento y emergentes a empleo, inflación y energía.",
+      "base_scenario": "Septiembre sigue abierto entre pausa y subida, pero la prima de tasas largas puede permanecer elevada incluso si la Fed espera, mientras persistan inflación energética, oferta soberana y presión global sobre bonos.",
+      "invalidate_if": "Los datos de actividad e inflación se debilitan lo suficiente para revertir de forma sostenida la venta global de bonos, o una nueva aceleración inflacionaria convierte las subidas adicionales en escenario ampliamente mayoritario.",
+      "watch": "Empleo de agosto, ISM y JOLTS, inflación y PCE, Treasury a dos y diez años, JGB a diez años, dólar y comunicación de bancos centrales.",
+      "last_publication": "/ediciones/2026-09-01-daily-bonos-globales-reprecifican-inflacion/"
     },
     {
       "id": "ai-monetization-selectivity",
@@ -39,14 +39,14 @@
     {
       "id": "chile-inflation-activity-rates",
       "topic": "Inflación, actividad y tasas en Chile",
-      "thesis": "La debilidad de actividad se extiende al mercado laboral: desempleo en 9,5%, ocupación cayendo y empleo formal retrocediendo refuerzan el argumento doméstico para normalizar la TPM, aunque una Fed más restrictiva limita el alivio financiero externo.",
+      "thesis": "La debilidad de actividad se amplía desde empleo hacia industria y consumo: producción industrial y ventas minoristas perdieron fuerza en julio, aunque el fuerte componente meteorológico de minería exige esperar el Imacec para medir cuánto del deterioro es cíclico.",
       "status": "confirmed",
-      "last_evidence": "El 28 de agosto el INE informó una tasa de desocupación de 9,5% en mayo-julio, 0,8 pp más que un año antes; los ocupados cayeron 0,2% y los asalariados formales 2,4%, mientras la tasa ajustada estacionalmente permaneció en 9,3% frente al trimestre móvil previo.",
-      "effect": "Refuerza el atractivo relativo de renta fija local por el canal de actividad, pero obliga a diferenciar tramos porque el endurecimiento de expectativas de la Fed y el dólar pueden limitar la transmisión hacia tasas largas chilenas.",
-      "base_scenario": "Actividad y empleo débiles con mayor espacio doméstico para normalización monetaria, condicionado por inflación y por un entorno externo de tasas todavía exigente.",
-      "invalidate_if": "Empleo, consumo e inversión recuperan fuerza de forma amplia o la inflación vuelve a acelerarse, reduciendo el espacio para normalizar la TPM.",
-      "watch": "Imacec de julio, empleo, salarios, consumo, inversión, curva local, dólar, inflación subyacente y comunicación del Banco Central.",
-      "last_publication": "/ediciones/2026-08-29-daily-fed-devuelve-riesgo-alza-septiembre/"
+      "last_evidence": "El 31 de agosto el INE informó que la producción industrial cayó 5,1% interanual en julio, con minería -7,2% y manufactura -4,9%; las ventas minoristas crecieron solo 2,2% anual y cayeron 2,9% mensual desestacionalizado, tras el deterioro laboral ya observado.",
+      "effect": "Refuerza el argumento doméstico para una eventual normalización monetaria y el atractivo relativo de renta fija local, pero obliga a separar shocks mineros transitorios de una desaceleración más amplia y a considerar el endurecimiento de tasas globales.",
+      "base_scenario": "Actividad y empleo débiles con mayor espacio doméstico para normalización monetaria, condicionado por el Imacec, inflación y un entorno externo de tasas largas más exigente.",
+      "invalidate_if": "El Imacec y los próximos datos muestran que la debilidad estuvo concentrada en shocks mineros transitorios, o empleo, consumo e inversión recuperan fuerza de forma amplia; una reaceleración inflacionaria también reduciría el espacio monetario.",
+      "watch": "Imacec de julio, empleo, ventas, inversión, producción minera y manufacturera, curva local, dólar, inflación subyacente y comunicación del Banco Central.",
+      "last_publication": "/ediciones/2026-09-01-daily-bonos-globales-reprecifican-inflacion/"
     }
   ]
 }
