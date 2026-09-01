@@ -4,7 +4,7 @@ summary: "El salto simultáneo de las tasas largas en Estados Unidos, Japón y E
 publishedAt: "2026-09-01T06:00:00-04:00"
 cutoffAt: "2026-09-01T05:58:00-04:00"
 type: "daily"
-status: "draft"
+status: "published"
 tags:
   - mercados-globales
   - renta-fija
