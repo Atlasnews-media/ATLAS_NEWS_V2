@@ -4,7 +4,7 @@ summary: "Siete de ocho índices de ventas de servicios crecieron interanualment
 publishedAt: "2026-09-01T06:15:00-04:00"
 cutoffAt: "2026-09-01T06:14:00-04:00"
 section: "national"
-status: "draft"
+status: "published"
 tags:
   - chile
   - servicios
