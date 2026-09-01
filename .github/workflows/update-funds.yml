@@ -1,29 +1,6 @@
 name: Actualizar Fondos BEAGF
 
 on:
-  push:
-    branches: [main]
-    paths:
-      - ".github/workflows/update-funds.yml"
-      - "src/lib/funds/**"
-      - "scripts/funds/**"
-      - "package.json"
-      - "package-lock.json"
-  pull_request:
-    branches: [main]
-    paths:
-      - ".github/workflows/update-funds.yml"
-      - "src/lib/funds/**"
-      - "scripts/funds/**"
-      - "package.json"
-      - "package-lock.json"
-  schedule:
-    - cron: "0 9 * * *"
-      timezone: "America/Santiago"
-    - cron: "30 10 * * *"
-      timezone: "America/Santiago"
-    - cron: "0 11 * * *"
-      timezone: "America/Santiago"
   workflow_dispatch:
 
 permissions:
