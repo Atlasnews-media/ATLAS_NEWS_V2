@@ -4,7 +4,7 @@ summary: "La subida del JGB a 10 años por encima de 3% ya está cambiando flujo
 publishedAt: "2026-09-02T06:30:00-04:00"
 cutoffAt: "2026-09-02T06:28:00-04:00"
 section: "markets"
-status: "draft"
+status: "published"
 tags:
   - mercados-globales
   - japon
