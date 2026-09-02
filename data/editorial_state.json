@@ -3,26 +3,26 @@
     {
       "id": "oil-geopolitics-inflation",
       "topic": "Petróleo, geopolítica e inflación",
-      "thesis": "La desescalada energética perdió tracción: nuevos ataques entre Estados Unidos e Irán reactivan el riesgo físico sobre Hormuz y devuelven presión inflacionaria justo cuando la Fed vuelve a considerar una subida en septiembre.",
+      "thesis": "El shock energético volvió a escalar desde riesgo geopolítico hacia evidencia física sobre Hormuz: ataques a petroleros saudíes y nuevos intercambios militares llevan el Brent hacia US$95 y elevan la presión inflacionaria justo cuando el mercado vuelve a poner una subida de la Fed en septiembre como escenario central.",
       "status": "changed",
-      "last_evidence": "El 31 de agosto el Brent saltó más de 3% hasta alrededor de US$91,25 después de que Estados Unidos atacara lanzadores iraníes en Larak e Irán respondiera contra fuerzas estadounidenses en Jordania, revirtiendo parte del alivio energético de la semana previa.",
-      "effect": "Reabre presión sobre inflación y tasas, reduce el margen para una lectura monetaria benigna y devuelve valor a coberturas mientras no exista una desescalada militar y marítima verificable.",
-      "base_scenario": "Prima energética nuevamente elevada y volátil mientras el conflicto permanezca activo, sin asumir todavía una interrupción adicional y sostenida de oferta.",
-      "invalidate_if": "Una desescalada verificable restaura tráfico sostenido por Hormuz y devuelve el Brent a la trayectoria descendente previa; una escalada que reduzca nuevamente los flujos físicos confirmaría un shock más severo.",
-      "watch": "Brent, tráfico y embarques por Hormuz, nuevas acciones militares Estados Unidos-Irán, sanciones, precios de combustibles y expectativas de inflación.",
-      "last_publication": "/ediciones/2026-08-31-daily-escalada-golfo-reabre-riesgo-inflacion/"
+      "last_evidence": "El 2 de septiembre el Brent operó cerca de US$94,87 después de tocar US$95, mientras dos petroleros con crudo saudí fueron atacados en Hormuz y Estados Unidos e Irán protagonizaron su intercambio militar más intenso en semanas.",
+      "effect": "Convierte la prima energética en un canal físico de riesgo sobre oferta y transporte, refuerza la presión sobre tasas y reduce el margen para una lectura monetaria benigna mientras no exista normalización marítima verificable.",
+      "base_scenario": "Prima energética elevada y volátil con riesgo físico creciente sobre Hormuz, sin asumir todavía una interrupción sostenida adicional del flujo global de crudo.",
+      "invalidate_if": "Una desescalada verificable restaura tráfico sostenido por Hormuz y devuelve el Brent a una trayectoria descendente; nuevos ataques o menor tránsito confirmarían un shock más severo.",
+      "watch": "Brent, tráfico y embarques por Hormuz, ataques a buques, nuevas acciones militares Estados Unidos-Irán, sanciones, combustibles y expectativas de inflación.",
+      "last_publication": "/ediciones/2026-09-02-daily-fed-vuelve-a-poner-el-alza-en-el-centro/"
     },
     {
       "id": "us-employment-fed-rates",
       "topic": "Empleo de Estados Unidos y Reserva Federal",
-      "thesis": "La pausa de septiembre dejó de ser claramente dominante y el riesgo de tasas se amplió: la reprecificación posterior a Jackson Hole ya alcanza la curva larga global, con el Treasury a diez años sobre 4,75% y Japón en 3% mientras la energía mantiene presión inflacionaria.",
-      "status": "confirmed",
-      "last_evidence": "El 1 de septiembre el Treasury a diez años operó cerca de 4,78%, máximo desde comienzos de 2025, mientras el JGB a diez años alcanzó 3% por primera vez desde 1996 y otras curvas soberanas también marcaron máximos de varios años.",
-      "effect": "Amplía el endurecimiento desde la expectativa de la próxima decisión de la Fed hacia el costo global del capital y aumenta la sensibilidad de duración, acciones de crecimiento y emergentes a empleo, inflación y energía.",
-      "base_scenario": "Septiembre sigue abierto entre pausa y subida, pero la prima de tasas largas puede permanecer elevada incluso si la Fed espera, mientras persistan inflación energética, oferta soberana y presión global sobre bonos.",
-      "invalidate_if": "Los datos de actividad e inflación se debilitan lo suficiente para revertir de forma sostenida la venta global de bonos, o una nueva aceleración inflacionaria convierte las subidas adicionales en escenario ampliamente mayoritario.",
-      "watch": "Empleo de agosto, ISM y JOLTS, inflación y PCE, Treasury a dos y diez años, JGB a diez años, dólar y comunicación de bancos centrales.",
-      "last_publication": "/ediciones/2026-09-01-daily-bonos-globales-reprecifican-inflacion/"
+      "thesis": "La subida de septiembre pasó a ser el escenario mayoritario del mercado: el shock energético y la persistencia inflacionaria elevan a cerca de 68% la probabilidad de un alza de 25 pb, aun cuando manufactura y vacantes laborales muestran menor impulso.",
+      "status": "changed",
+      "last_evidence": "El 2 de septiembre los futuros de fondos federales implicaban cerca de 68% de probabilidad de una subida de 25 pb en septiembre, desde 37% una semana antes, mientras el Treasury a diez años tocó 4,8122%, máximo desde noviembre de 2023.",
+      "effect": "Devuelve riesgo directo de política monetaria al tramo corto y amplía el endurecimiento financiero hacia duración, acciones de crecimiento, crédito y emergentes antes de ADP y nóminas no agrícolas.",
+      "base_scenario": "Septiembre queda inclinado hacia una subida, pero los datos laborales de agosto aún pueden revertir la reprecificación si muestran un deterioro suficientemente claro.",
+      "invalidate_if": "ADP, nóminas u otros datos de actividad se debilitan lo suficiente para devolver de forma sostenida la pausa como escenario claramente dominante, o una nueva aceleración inflacionaria consolida aún más la subida.",
+      "watch": "ADP, nóminas no agrícolas, inflación y PCE, FedWatch, Treasury a dos y diez años, dólar y comunicación de la Fed.",
+      "last_publication": "/ediciones/2026-09-02-daily-fed-vuelve-a-poner-el-alza-en-el-centro/"
     },
     {
       "id": "ai-monetization-selectivity",
@@ -39,14 +39,14 @@
     {
       "id": "chile-inflation-activity-rates",
       "topic": "Inflación, actividad y tasas en Chile",
-      "thesis": "La debilidad de actividad se amplía desde empleo hacia industria y consumo: producción industrial y ventas minoristas perdieron fuerza en julio, aunque el fuerte componente meteorológico de minería exige esperar el Imacec para medir cuánto del deterioro es cíclico.",
+      "thesis": "El Imacec confirma que la debilidad de julio excedió minería: la actividad cayó 1,5% anual y el componente no minero 0,3%, aunque clima, mantenciones y menor ley del cobre todavía explican una parte relevante del deterioro.",
       "status": "confirmed",
-      "last_evidence": "El 31 de agosto el INE informó que la producción industrial cayó 5,1% interanual en julio, con minería -7,2% y manufactura -4,9%; las ventas minoristas crecieron solo 2,2% anual y cayeron 2,9% mensual desestacionalizado, tras el deterioro laboral ya observado.",
-      "effect": "Refuerza el argumento doméstico para una eventual normalización monetaria y el atractivo relativo de renta fija local, pero obliga a separar shocks mineros transitorios de una desaceleración más amplia y a considerar el endurecimiento de tasas globales.",
-      "base_scenario": "Actividad y empleo débiles con mayor espacio doméstico para normalización monetaria, condicionado por el Imacec, inflación y un entorno externo de tasas largas más exigente.",
-      "invalidate_if": "El Imacec y los próximos datos muestran que la debilidad estuvo concentrada en shocks mineros transitorios, o empleo, consumo e inversión recuperan fuerza de forma amplia; una reaceleración inflacionaria también reduciría el espacio monetario.",
-      "watch": "Imacec de julio, empleo, ventas, inversión, producción minera y manufacturera, curva local, dólar, inflación subyacente y comunicación del Banco Central.",
-      "last_publication": "/ediciones/2026-09-01-daily-bonos-globales-reprecifican-inflacion/"
+      "last_evidence": "El Banco Central informó que el Imacec de julio cayó 1,5% anual y 1,7% mensual desestacionalizado; el Imacec no minero retrocedió 0,3% anual y 0,5% mensual, con servicios -0,7% anual y comercio +0,7%.",
+      "effect": "Refuerza el argumento doméstico para una eventual normalización monetaria y el atractivo relativo de renta fija corta, pero obliga a separar debilidad cíclica de shocks climáticos y mineros y a considerar el endurecimiento externo de tasas.",
+      "base_scenario": "Actividad y empleo débiles con mayor espacio doméstico para normalización monetaria, condicionado por la reversión de shocks transitorios, inflación y un entorno externo más restrictivo.",
+      "invalidate_if": "Los próximos datos muestran una recuperación amplia al disiparse los shocks climáticos y mineros, o empleo, consumo e inversión recuperan fuerza; una reaceleración inflacionaria también reduciría el espacio monetario.",
+      "watch": "Imacec siguientes, empleo, ventas, inversión, minería y manufactura, curva local, dólar, inflación subyacente y comunicación del Banco Central.",
+      "last_publication": "/ediciones/2026-09-02-daily-fed-vuelve-a-poner-el-alza-en-el-centro/"
     }
   ]
 }
