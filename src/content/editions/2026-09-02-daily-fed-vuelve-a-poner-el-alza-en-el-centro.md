@@ -4,7 +4,7 @@ summary: "La escalada física en Hormuz lleva el Brent hacia US$95 y eleva a 68%
 publishedAt: "2026-09-02T05:58:00-04:00"
 cutoffAt: "2026-09-02T05:58:00-04:00"
 type: "daily"
-status: "draft"
+status: "published"
 tags:
   - mercados-globales
   - fed
