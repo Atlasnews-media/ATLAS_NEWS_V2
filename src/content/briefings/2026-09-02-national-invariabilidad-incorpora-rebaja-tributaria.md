@@ -4,7 +4,7 @@ summary: "Hacienda aclaró que los contratos de invariabilidad no congelarán la
 publishedAt: "2026-09-02T06:15:00-04:00"
 cutoffAt: "2026-09-02T06:12:00-04:00"
 section: "national"
-status: "draft"
+status: "published"
 tags:
   - chile
   - inversion
