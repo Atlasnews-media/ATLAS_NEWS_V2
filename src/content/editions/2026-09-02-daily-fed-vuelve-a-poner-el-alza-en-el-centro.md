@@ -43,9 +43,9 @@ marketSummary:
       value: "99,734"
       change: "+0,05%"
       category: "monedas"
-    - label: "MSCI global"
-      value: "Índice mundial"
-      change: "-0,2%"
+    - label: "S&P 500"
+      value: "7.631,47"
+      change: "-0,71%"
       category: "mercados"
 ---
 
