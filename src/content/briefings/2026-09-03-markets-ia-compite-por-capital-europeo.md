@@ -4,7 +4,7 @@ summary: "Los hyperscalers de EE.UU. ya concentran casi 10% de la nueva deuda co
 publishedAt: "2026-09-03T08:55:00-04:00"
 cutoffAt: "2026-09-03T08:50:00-04:00"
 section: "markets"
-status: "draft"
+status: "published"
 tags:
   - mercados-globales
   - inteligencia-artificial
