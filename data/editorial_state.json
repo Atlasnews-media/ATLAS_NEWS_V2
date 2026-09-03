@@ -15,14 +15,14 @@
     {
       "id": "us-employment-fed-rates",
       "topic": "Empleo de Estados Unidos y Reserva Federal",
-      "thesis": "La subida de septiembre pasó a ser el escenario mayoritario del mercado: el shock energético y la persistencia inflacionaria elevan a cerca de 68% la probabilidad de un alza de 25 pb, aun cuando manufactura y vacantes laborales muestran menor impulso.",
-      "status": "changed",
-      "last_evidence": "El 2 de septiembre los futuros de fondos federales implicaban cerca de 68% de probabilidad de una subida de 25 pb en septiembre, desde 37% una semana antes, mientras el Treasury a diez años tocó 4,8122%, máximo desde noviembre de 2023.",
-      "effect": "Devuelve riesgo directo de política monetaria al tramo corto y amplía el endurecimiento financiero hacia duración, acciones de crecimiento, crédito y emergentes antes de ADP y nóminas no agrícolas.",
-      "base_scenario": "Septiembre queda inclinado hacia una subida, pero los datos laborales de agosto aún pueden revertir la reprecificación si muestran un deterioro suficientemente claro.",
-      "invalidate_if": "ADP, nóminas u otros datos de actividad se debilitan lo suficiente para devolver de forma sostenida la pausa como escenario claramente dominante, o una nueva aceleración inflacionaria consolida aún más la subida.",
-      "watch": "ADP, nóminas no agrícolas, inflación y PCE, FedWatch, Treasury a dos y diez años, dólar y comunicación de la Fed.",
-      "last_publication": "/ediciones/2026-09-02-daily-fed-vuelve-a-poner-el-alza-en-el-centro/"
+      "thesis": "La subida de septiembre sigue siendo el escenario mayoritario, pero deja de consolidarse: ADP creó solo 38.000 empleos privados en agosto, bajo consenso, y redujo la probabilidad de alza desde cerca de 68% hacia 60%, devolviendo poder decisivo a las nóminas oficiales.",
+      "status": "weakened",
+      "last_evidence": "El 3 de septiembre el mercado asignaba cerca de 60% a una subida de la Fed en septiembre, desde alrededor de 68% el día anterior, después de que ADP reportara 38.000 empleos privados en agosto frente a 48.000 esperados.",
+      "effect": "Reduce parcialmente el endurecimiento incorporado en bonos y dólar y vuelve más simétrica la disyuntiva entre inflación energética y desaceleración laboral antes de las nóminas oficiales.",
+      "base_scenario": "Septiembre permanece inclinado hacia una subida, pero las nóminas oficiales pueden devolver la pausa al escenario dominante si confirman un enfriamiento laboral más amplio.",
+      "invalidate_if": "Las nóminas oficiales muestran fortaleza suficiente para invalidar la señal de ADP y reconstruyen una probabilidad claramente dominante de subida, o un deterioro laboral mayor devuelve de forma sostenida la pausa como escenario central.",
+      "watch": "Nóminas no agrícolas, desempleo, salarios, comunicación de Waller y Williams, inflación y PCE, FedWatch, Treasury a dos y diez años y dólar.",
+      "last_publication": "/ediciones/2026-09-03-daily-empleo-devuelve-duda-al-alza-fed/"
     },
     {
       "id": "ai-monetization-selectivity",
