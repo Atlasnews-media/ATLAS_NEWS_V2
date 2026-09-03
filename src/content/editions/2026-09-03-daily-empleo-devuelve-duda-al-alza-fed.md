@@ -4,7 +4,7 @@ summary: "ADP mostró solo 38.000 empleos privados en agosto, por debajo del con
 publishedAt: "2026-09-03T06:00:00-04:00"
 cutoffAt: "2026-09-03T05:58:00-04:00"
 type: "daily"
-status: "draft"
+status: "published"
 tags:
   - mercados-globales
   - reserva-federal
