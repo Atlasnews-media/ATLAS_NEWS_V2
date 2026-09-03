@@ -4,7 +4,7 @@ summary: "Desde septiembre, las personas de 75 años o más que cumplen los requ
 publishedAt: "2026-09-03T08:45:00-04:00"
 cutoffAt: "2026-09-03T08:40:00-04:00"
 section: "national"
-status: "draft"
+status: "published"
 tags:
   - chile
   - pensiones
