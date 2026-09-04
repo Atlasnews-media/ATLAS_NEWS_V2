@@ -4,7 +4,7 @@ summary: "Christopher Waller enfrió las apuestas de alza y devolvió septiembre
 publishedAt: "2026-09-04T05:58:00-04:00"
 cutoffAt: "2026-09-04T05:58:00-04:00"
 type: "daily"
-status: "draft"
+status: "published"
 tags:
   - mercados-globales
   - fed
