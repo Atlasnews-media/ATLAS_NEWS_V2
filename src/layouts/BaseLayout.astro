@@ -43,6 +43,14 @@ const sourceCommit = (
   "local"
 ).slice(0, 7);
 
+const siteOrigin = Astro.site ?? Astro.url.origin;
+const canonicalUrl = new URL(Astro.url.pathname, siteOrigin).href;
+const socialImageUrl = new URL("/brand/atlas-icon.png", siteOrigin).href;
+const isArticle = /^\/(ediciones|nacional|mercados|lecturas)\/[^/]+\/?$/.test(
+  Astro.url.pathname,
+);
+const socialType = isArticle ? "article" : "website";
+
 const primaryEntry = { href: "/", label: "Portada" };
 ---
 
@@ -55,6 +63,21 @@ const primaryEntry = { href: "/", label: "Portada" };
     <meta name="generator" content={Astro.generator} />
     <meta name="theme-color" content="#f2efe5" />
     <meta name="atlas-source-commit" content={sourceCommit} />
+    <meta property="og:site_name" content="ATLAS NEWS" />
+    <meta property="og:locale" content="es_CL" />
+    <meta property="og:type" content={socialType} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:image" content={socialImageUrl} />
+    <meta property="og:image:width" content="1172" />
+    <meta property="og:image:height" content="1172" />
+    <meta property="og:image:alt" content="ATLAS NEWS" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={socialImageUrl} />
+    <link rel="canonical" href={canonicalUrl} />
     <link rel="icon" href="/favicon.ico" sizes="any" />
     <link
       rel="icon"
