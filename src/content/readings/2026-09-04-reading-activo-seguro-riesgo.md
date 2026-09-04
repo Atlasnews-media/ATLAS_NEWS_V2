@@ -2,7 +2,7 @@
 title: "Cuando el activo seguro vuelve a pagar: la nueva vara para asumir riesgo"
 summary: "El Treasury estadounidense a 10 años vuelve a ofrecer una rentabilidad cercana a 4,8%, mientras el rendimiento por dividendos del S&P 500 ronda 1%. No significa que los bonos hayan reemplazado a las acciones. Significa que quien asume riesgo vuelve a exigir una compensación clara por hacerlo."
 publishedAt: "2026-09-04T11:05:00-04:00"
-status: "draft"
+status: "published"
 tags:
   - lectura-seleccionada
   - estados-unidos
