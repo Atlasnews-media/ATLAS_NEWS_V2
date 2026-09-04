@@ -58,16 +58,36 @@ const {
     <button class="share-action share-native" type="button" data-share-native>
       Compartir…
     </button>
-    <a class="share-action" data-share-whatsapp target="_blank" rel="noopener noreferrer">
+    <a
+      class="share-action"
+      data-share-whatsapp
+      target="_blank"
+      rel="noopener noreferrer"
+    >
       WhatsApp
     </a>
-    <a class="share-action" data-share-facebook target="_blank" rel="noopener noreferrer">
+    <a
+      class="share-action"
+      data-share-facebook
+      target="_blank"
+      rel="noopener noreferrer"
+    >
       Facebook
     </a>
-    <a class="share-action" data-share-linkedin target="_blank" rel="noopener noreferrer">
+    <a
+      class="share-action"
+      data-share-linkedin
+      target="_blank"
+      rel="noopener noreferrer"
+    >
       LinkedIn
     </a>
-    <a class="share-action" data-share-x target="_blank" rel="noopener noreferrer">
+    <a
+      class="share-action"
+      data-share-x
+      target="_blank"
+      rel="noopener noreferrer"
+    >
       X
     </a>
     <button class="share-action" type="button" data-share-copy>
@@ -100,66 +120,74 @@ const {
     textarea.remove();
   };
 
-  document.querySelectorAll<HTMLElement>("[data-share-tools]").forEach((root) => {
-    const url = window.location.href;
-    const title = root.dataset.shareTitle || document.title;
-    const summary = root.dataset.shareSummary || "";
-    const encodedUrl = encodeURIComponent(url);
+  document
+    .querySelectorAll<HTMLElement>("[data-share-tools]")
+    .forEach((root) => {
+      const url = window.location.href;
+      const title = root.dataset.shareTitle || document.title;
+      const summary = root.dataset.shareSummary || "";
+      const encodedUrl = encodeURIComponent(url);
 
-    setShareHref(
-      root,
-      "[data-share-whatsapp]",
-      `https://wa.me/?text=${encodeURIComponent(`${title}\n${url}`)}`,
-    );
-    setShareHref(
-      root,
-      "[data-share-facebook]",
-      `https://www.facebook.com/sharer/sharer.php?u=${encodedUrl}`,
-    );
-    setShareHref(
-      root,
-      "[data-share-linkedin]",
-      `https://www.linkedin.com/sharing/share-offsite/?url=${encodedUrl}`,
-    );
-    setShareHref(
-      root,
-      "[data-share-x]",
-      `https://twitter.com/intent/tweet?text=${encodeURIComponent(title)}&url=${encodedUrl}`,
-    );
+      setShareHref(
+        root,
+        "[data-share-whatsapp]",
+        `https://wa.me/?text=${encodeURIComponent(`${title}\n${url}`)}`,
+      );
+      setShareHref(
+        root,
+        "[data-share-facebook]",
+        `https://www.facebook.com/sharer/sharer.php?u=${encodedUrl}`,
+      );
+      setShareHref(
+        root,
+        "[data-share-linkedin]",
+        `https://www.linkedin.com/sharing/share-offsite/?url=${encodedUrl}`,
+      );
+      setShareHref(
+        root,
+        "[data-share-x]",
+        `https://twitter.com/intent/tweet?text=${encodeURIComponent(title)}&url=${encodedUrl}`,
+      );
 
-    const nativeButton = root.querySelector<HTMLButtonElement>("[data-share-native]");
-    if (nativeButton) {
-      if (typeof navigator.share === "function") {
-        nativeButton.addEventListener("click", async () => {
-          try {
-            await navigator.share({ title, text: summary, url });
-          } catch (error) {
-            if (error instanceof DOMException && error.name === "AbortError") return;
-            console.warn("No fue posible abrir el menú de compartir.", error);
-          }
-        });
-      } else {
-        nativeButton.hidden = true;
-      }
-    }
-
-    const copyButton = root.querySelector<HTMLButtonElement>("[data-share-copy]");
-    const status = root.querySelector<HTMLElement>("[data-share-status]");
-    copyButton?.addEventListener("click", async () => {
-      try {
-        await copyText(url);
-        if (status) {
-          status.textContent = "Enlace copiado";
-          window.setTimeout(() => {
-            status.textContent = "";
-          }, 2200);
+      const nativeButton = root.querySelector<HTMLButtonElement>(
+        "[data-share-native]",
+      );
+      if (nativeButton) {
+        if (typeof navigator.share === "function") {
+          nativeButton.addEventListener("click", async () => {
+            try {
+              await navigator.share({ title, text: summary, url });
+            } catch (error) {
+              if (error instanceof DOMException && error.name === "AbortError") {
+                return;
+              }
+              console.warn("No fue posible abrir el menú de compartir.", error);
+            }
+          });
+        } else {
+          nativeButton.hidden = true;
         }
-      } catch (error) {
-        console.warn("No fue posible copiar el enlace.", error);
-        if (status) status.textContent = "No se pudo copiar";
       }
+
+      const copyButton = root.querySelector<HTMLButtonElement>(
+        "[data-share-copy]",
+      );
+      const status = root.querySelector<HTMLElement>("[data-share-status]");
+      copyButton?.addEventListener("click", async () => {
+        try {
+          await copyText(url);
+          if (status) {
+            status.textContent = "Enlace copiado";
+            window.setTimeout(() => {
+              status.textContent = "";
+            }, 2200);
+          }
+        } catch (error) {
+          console.warn("No fue posible copiar el enlace.", error);
+          if (status) status.textContent = "No se pudo copiar";
+        }
+      });
     });
-  });
 </script>
 
 <style>
