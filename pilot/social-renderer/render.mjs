@@ -62,7 +62,7 @@ async function main(){
   if(!main||!sub) throw new Error('Real reading metadata was not parsed');
   const browser=await chromium.launch({headless:true}); const page=await browser.newPage();
 
-  const cardInner=`<div class="kicker">LECTURA DEL DÍA</div><div data-fit style="position:absolute;left:60px;top:255px;width:820px;z-index:2"><div style="font-size:82px;line-height:.9;font-weight:700;letter-spacing:-4px">${escapeHtml(main)}</div><div style="font-size:42px;line-height:1.06;margin-top:18px">${escapeHtml(sub)}</div></div><img class="mark" src="${MARK}" style="right:55px;top:175px;width:350px;height:470px"><div class="rule"></div>`;
+  const cardInner=`<div class="kicker">LECTURA DEL DÍA</div><div data-fit style="position:absolute;left:60px;top:255px;width:820px;z-index:2"><div style="font-size:82px;line-height:.9;font-weight:700;letter-spacing:-4px">${escapeHtml(main)}</div><div style="font-size:42px;line-height:1.06;margin-top:18px">${escapeHtml(sub)}</div></div><img class="mark" src="${MARK}" style="right:55px;top:180px;width:320px;height:420px"><div class="rule"></div>`;
   const cardPre=path.join(TMP,'social-background.png'); const tc=performance.now(); await screenshot(page,documentHtml(cardInner,1200,630,date),cardPre,1200,630); const cardHtmlMs=performance.now()-tc;
   const to=performance.now();
   const og=await generateOpenGraphImage({title:' ',description:'',bgImage:{path:cardPre,fit:'fill'},padding:1,font:{title:{size:1,color:[242,239,229]},description:{size:1,color:[242,239,229]}},cacheDir:path.join(TMP,'og-cache')});
