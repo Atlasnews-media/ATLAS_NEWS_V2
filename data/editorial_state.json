@@ -15,14 +15,14 @@
     {
       "id": "us-employment-fed-rates",
       "topic": "Empleo de Estados Unidos y Reserva Federal",
-      "thesis": "La subida de septiembre sigue siendo el escenario mayoritario, pero deja de consolidarse: ADP creó solo 38.000 empleos privados en agosto, bajo consenso, y redujo la probabilidad de alza desde cerca de 68% hacia 60%, devolviendo poder decisivo a las nóminas oficiales.",
+      "thesis": "Septiembre vuelve a ser una decisión realmente abierta: Waller se mostró dispuesto a mantener la tasa si la inflación sigue moderándose y el mercado redujo la probabilidad de alza desde cerca de 63% hacia 50% antes de las nóminas oficiales.",
       "status": "weakened",
-      "last_evidence": "El 3 de septiembre el mercado asignaba cerca de 60% a una subida de la Fed en septiembre, desde alrededor de 68% el día anterior, después de que ADP reportara 38.000 empleos privados en agosto frente a 48.000 esperados.",
-      "effect": "Reduce parcialmente el endurecimiento incorporado en bonos y dólar y vuelve más simétrica la disyuntiva entre inflación energética y desaceleración laboral antes de las nóminas oficiales.",
-      "base_scenario": "Septiembre permanece inclinado hacia una subida, pero las nóminas oficiales pueden devolver la pausa al escenario dominante si confirman un enfriamiento laboral más amplio.",
-      "invalidate_if": "Las nóminas oficiales muestran fortaleza suficiente para invalidar la señal de ADP y reconstruyen una probabilidad claramente dominante de subida, o un deterioro laboral mayor devuelve de forma sostenida la pausa como escenario central.",
-      "watch": "Nóminas no agrícolas, desempleo, salarios, comunicación de Waller y Williams, inflación y PCE, FedWatch, Treasury a dos y diez años y dólar.",
-      "last_publication": "/ediciones/2026-09-03-daily-empleo-devuelve-duda-al-alza-fed/"
+      "last_evidence": "El 3 de septiembre Christopher Waller pidió dar oportunidad a la desinflación y dejó explícitamente abierta una pausa; tras sus comentarios, la probabilidad de una subida en septiembre cayó desde aproximadamente 63% hacia 50%, mientras el Treasury a diez años retrocedió desde 4,818% hacia 4,744%.",
+      "effect": "Debilita un paso más la tesis de alza inmediata y devuelve el poder decisivo a empleo e inflación, reduciendo parte de la presión sobre bonos y dólar sin eliminar el riesgo asociado al petróleo elevado.",
+      "base_scenario": "La reunión de septiembre está equilibrada entre pausa y subida; las nóminas oficiales y la inflación de agosto deben romper ese equilibrio.",
+      "invalidate_if": "Las nóminas o la inflación sorprenden con fuerza suficiente para reconstruir una mayoría clara a favor de subir, o una desaceleración laboral e inflacionaria convierte de forma sostenida la pausa en escenario dominante.",
+      "watch": "Nóminas no agrícolas, desempleo, salarios, inflación de agosto, comunicación de Waller y Williams, FedWatch, Treasury a dos y diez años y dólar.",
+      "last_publication": "/ediciones/2026-09-04-daily-septiembre-vuelve-a-ser-un-cincuenta-cincuenta/"
     },
     {
       "id": "ai-monetization-selectivity",
