@@ -4,7 +4,7 @@ summary: "Noruega propone reducir cerca de US$80.000 millones en Treasuries mien
 publishedAt: "2026-09-04T06:30:00-04:00"
 cutoffAt: "2026-09-04T06:28:00-04:00"
 section: "markets"
-status: "draft"
+status: "published"
 tags:
   - mercados-globales
   - renta-fija
