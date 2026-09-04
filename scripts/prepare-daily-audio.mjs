@@ -468,6 +468,8 @@ if (process.env.GITHUB_OUTPUT) {
 
 console.log(
   !ownerAllowsGeneration && !sameSources
-    ? `Audio ${date}: generación delegada al owner Audio V2; este proceso solo preparó el guion.`
-    : `Audio ${date}: ${plan.needsGeneration ? "requiere generación" : "sin cambios"}.`,
+    ? `Audio ${date}: generación delegada al owner Audio V2; este proceso sólo planifica.`
+    : plan.needsGeneration
+      ? `Audio ${date}: generación requerida (${completeness}/3, ${wordCount} palabras, objetivo ${TARGET_MIN_WORDS}-${TARGET_MAX_WORDS}).`
+      : `Audio ${date}: ya coincide con las piezas publicadas y el guion v${SCRIPT_VERSION}; se conserva el archivo vigente.`,
 );
