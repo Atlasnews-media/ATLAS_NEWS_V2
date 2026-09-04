@@ -151,7 +151,7 @@ function speechText(value) {
     .replace(/\bFed\b/g, "Reserva Federal")
     .replace(/\bTreasury\b/gi, "bono del Tesoro estadounidense")
     .replace(/US\$/g, "dólares ")
-    .replace(/\$\s*([0-9][\d.]*)/g, "$1 pesos")
+    .replace(/\$\s*([0-9]+(?:\.[0-9]{3})*(?:,[0-9]+)?)/g, "$1 pesos")
     .replace(/(\d+),(\d)0%/g, "$1,$2%")
     .replace(/(\d+),00%/g, "$1%")
     .replace(/(\d[\d.,]*)%/g, "$1 por ciento")
