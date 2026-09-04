@@ -10,7 +10,7 @@ import path from "node:path";
 const root = new URL("../", import.meta.url);
 const editionDir = new URL("src/content/editions/", root);
 const briefingDir = new URL("src/content/briefings/", root);
-const SCRIPT_VERSION = 5;
+const SCRIPT_VERSION = 6;
 const TARGET_MIN_WORDS = 550;
 const TARGET_MAX_WORDS = 650;
 
@@ -152,6 +152,9 @@ function speechText(value) {
     .replace(/\bTreasury\b/gi, "bono del Tesoro estadounidense")
     .replace(/US\$/g, "dólares ")
     .replace(/\$\s*([0-9]+(?:\.[0-9]{3})*(?:,[0-9]+)?)/g, "$1 pesos")
+    .replace(/\b\d{1,3}(?:\.\d{3})+(?:,\d+)?\b/g, (value) =>
+      value.replace(/\./g, ""),
+    )
     .replace(/(\d+),(\d)0%/g, "$1,$2%")
     .replace(/(\d+),00%/g, "$1%")
     .replace(/(\d[\d.,]*)%/g, "$1 por ciento")
