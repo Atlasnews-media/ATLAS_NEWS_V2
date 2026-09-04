@@ -12,13 +12,6 @@ on:
         description: "Type exactly: PUBLICACIÓN DISPONIBLE / VERIFICADA"
         required: true
         type: string
-  pull_request:
-    branches:
-      - integration/social-renderer-post-publish
-    types: [opened]
-    paths:
-      - "tools/social-renderer/**"
-      - ".github/workflows/social-renderer-post-publish.yml"
 
 permissions:
   contents: read
@@ -29,14 +22,11 @@ concurrency:
 
 jobs:
   render:
-    if: >-
-      (github.event_name == 'workflow_dispatch' && inputs.publication_status == 'PUBLICACIÓN DISPONIBLE / VERIFICADA') ||
-      (github.event_name == 'pull_request' && github.event.pull_request.draft == true && github.event.pull_request.body == 'PUBLICACIÓN DISPONIBLE / VERIFICADA' && github.head_ref == 'test/social-renderer-controlled-run')
     runs-on: ubuntu-latest
     timeout-minutes: 5
     env:
-      SOCIAL_CONTRACT: ${{ github.event_name == 'workflow_dispatch' && inputs.contract || 'tools/social-renderer/contracts/2026-09-04-reading-activo-seguro-riesgo.json' }}
-      SOCIAL_PUBLICATION_STATUS: ${{ github.event_name == 'workflow_dispatch' && inputs.publication_status || github.event.pull_request.body }}
+      SOCIAL_CONTRACT: ${{ inputs.contract }}
+      SOCIAL_PUBLICATION_STATUS: ${{ inputs.publication_status }}
     steps:
       - name: Verify explicit post-publication gate
         shell: bash
@@ -46,7 +36,7 @@ jobs:
             exit 2
           fi
 
-      - name: Checkout staged integration code
+      - name: Checkout staged integration branch
         uses: actions/checkout@v4
 
       - name: Setup Node
