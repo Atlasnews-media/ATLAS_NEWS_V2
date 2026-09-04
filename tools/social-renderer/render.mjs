@@ -150,7 +150,8 @@ function baseCss(w, h) {
   .kicker{display:flex;align-items:center;gap:20px;margin-top:24px;font-size:24px;letter-spacing:3px;font-weight:700;color:${BLUE};text-transform:uppercase;position:relative;z-index:2}
   .kicker:after{content:'';height:2px;background:${BLUE};flex:1}
   .mark{position:absolute;object-fit:contain;z-index:1}
-  .icon{width:76px;height:76px;color:${NAVY}.icon svg{width:100%;height:100%;fill:none;stroke:currentColor;stroke-width:3.2;stroke-linecap:round;stroke-linejoin:round}}
+  .icon{width:76px;height:76px;color:${NAVY}}
+  .icon svg{width:100%;height:100%;fill:none;stroke:currentColor;stroke-width:3.2;stroke-linecap:round;stroke-linejoin:round}
   .social-footer{position:absolute;left:60px;right:60px;bottom:30px;height:76px;border-top:5px double ${NAVY};padding-top:22px;display:flex;justify-content:space-between;align-items:flex-start;z-index:3}
   .social-footer .brandline{font-size:14px;letter-spacing:5px;font-weight:700;white-space:nowrap}
   .social-footer .counter{height:40px;min-width:96px;border-left:2px solid ${NAVY};padding-left:28px;text-align:right;font-size:21px;letter-spacing:3px;line-height:40px}
