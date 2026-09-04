@@ -1,0 +1,258 @@
+---
+title: "Cuando el activo seguro vuelve a pagar: la nueva vara para asumir riesgo"
+summary: "El Treasury estadounidense a 10 años vuelve a ofrecer una rentabilidad cercana a 4,8%, mientras el rendimiento por dividendos del S&P 500 ronda 1%. No significa que los bonos hayan reemplazado a las acciones. Significa que quien asume riesgo vuelve a exigir una compensación clara por hacerlo."
+publishedAt: "2026-09-04T11:05:00-04:00"
+status: "draft"
+tags:
+  - lectura-seleccionada
+  - estados-unidos
+  - treasury
+  - tasas
+  - renta-fija
+  - renta-variable
+  - costo-capital
+  - riesgo
+source:
+  name: "Reuters — Yields rise, stocks mostly ease after solid U.S. jobs report"
+  url: "https://www.reuters.com/world/china/global-markets-wrapup-1-2026-09-04/"
+author: "ATLAS NEWS"
+demo: false
+---
+
+## Tesis principal
+
+Durante buena parte de la última década ocurrió algo poco habitual: los instrumentos considerados más seguros ofrecían rentabilidades muy bajas.
+
+El bono del Tesoro estadounidense a diez años —una de las referencias más utilizadas en los mercados financieros— tuvo una rentabilidad promedio inferior al 1% durante 2020. Incluso en 2021 promedió alrededor de 1,45%, según la [Reserva Federal de St. Louis](https://fred.stlouisfed.org/data/RIFLGFCY10NA).
+
+En ese escenario, quien quería obtener un retorno mayor tenía pocos caminos: aceptar más plazo, prestar dinero a empresas, comprar acciones, invertir en propiedades o asumir alguna otra forma de riesgo.
+
+Hoy el escenario es muy diferente.
+
+El Treasury a diez años se mueve cerca de **4,8%**, después de que los sólidos datos de empleo publicados este viernes volvieran a elevar las tasas estadounidenses. [Reuters](https://www.reuters.com/world/china/global-markets-wrapup-1-2026-09-04/) situó el rendimiento cerca de 4,77% tras conocerse el informe laboral de agosto.
+
+Esto cambia una parte fundamental de la decisión de inversión.
+
+Ya no basta con preguntarse:
+
+**¿cuánto puede rentar este activo?**
+
+Ahora también hay que preguntarse:
+
+**¿cuánto más puede rentar que una alternativa mucho más segura?**
+
+Ese cambio parece pequeño, pero afecta prácticamente todo el sistema financiero.
+
+## El regreso de una alternativa
+
+Una forma sencilla de entenderlo es imaginar a un inversionista que dispone de capital y debe decidir qué hacer con él.
+
+Puede comprar una acción. Puede financiar una empresa. Puede invertir en un proyecto. Puede asumir riesgo de crédito. O puede comprar deuda del gobierno estadounidense.
+
+Cuando esta última alternativa entregaba 1% o menos, renunciar a ella no era especialmente costoso.
+
+Con una tasa cercana a 4,8%, la situación cambia.
+
+El inversionista ya dispone de una referencia mucho más exigente antes de asumir riesgos adicionales.
+
+Esto no significa que un Treasury sea completamente libre de riesgo. Su precio puede moverse y un inversionista puede sufrir pérdidas si necesita venderlo antes de su vencimiento. La inflación también puede reducir el poder adquisitivo del retorno recibido.
+
+Pero tiene una característica importante: **no incorpora el mismo riesgo empresarial que una acción o un bono corporativo**.
+
+Por eso funciona como una especie de punto de partida.
+
+Si esa base paga muy poco, resulta relativamente fácil justificar alternativas más riesgosas.
+
+Si esa base paga bastante, la alternativa riesgosa debe ofrecer algo claramente mejor.
+
+## Qué significa que “el riesgo vuelva a tener precio”
+
+Aquí aparece un concepto financiero que suele expresarse como **prima por riesgo**.
+
+El nombre puede parecer más complejo de lo que realmente es.
+
+La prima por riesgo es simplemente **la compensación adicional que una persona exige por aceptar incertidumbre**.
+
+Si una alternativa relativamente segura puede entregar cerca de 4,8%, difícilmente tendría sentido aceptar mucho más riesgo para esperar exactamente el mismo retorno.
+
+El inversionista querrá algo adicional.
+
+En términos simples:
+
+**retorno de la alternativa segura  
++ compensación por asumir riesgo  
+= retorno que debería justificar una inversión más riesgosa**
+
+No existe una cifra universal para esa compensación. Depende del activo, del plazo, de la situación económica y de cuánto riesgo esté dispuesto a aceptar cada inversionista.
+
+Lo importante es que el primer número de esa ecuación volvió a ser relevante.
+
+## La comparación con las acciones
+
+Aquí aparece uno de los datos que motivó esta lectura.
+
+Actualmente, el rendimiento por dividendos del S&P 500 se encuentra cerca de **1%**, mientras el Treasury a diez años se sitúa alrededor de 4,8%. La estimación disponible al 3 de septiembre situaba el dividend yield del índice cerca de 1,04%, según [Multpl](https://www.multpl.com/s-p-500-dividend-yield/table/by-month).
+
+La diferencia llama inmediatamente la atención.
+
+Pero hay que interpretarla correctamente.
+
+El **rendimiento por dividendos** muestra cuánto dinero distribuyen las empresas a sus accionistas en relación con el precio de sus acciones.
+
+No representa todo lo que puede ganar quien compra una acción.
+
+Una empresa también puede aumentar sus utilidades, recomprar acciones, incrementar sus dividendos en el futuro o simplemente aumentar su valor en bolsa.
+
+Por eso comparar directamente un dividendo de 1% con un Treasury de 4,8% y concluir que el bono es “mejor” sería un error.
+
+Son instrumentos distintos y ofrecen cosas distintas.
+
+La comparación sirve para otra cosa.
+
+Muestra **cuánto ha aumentado el costo de oportunidad de asumir riesgo**.
+
+Para justificar una acción cuyo dividendo actual es relativamente bajo, el inversionista debe confiar en algo adicional: crecimiento, mayores utilidades futuras, aumento del dividendo o una valorización superior de la empresa.
+
+En otras palabras, la empresa debe entregar una historia suficientemente buena para competir contra una alternativa que ya paga cerca de 4,8%.
+
+## La vara también sube para las empresas
+
+El mismo mecanismo funciona fuera de la bolsa.
+
+Imagine una empresa evaluando construir una nueva fábrica.
+
+El proyecto requiere una inversión importante y se espera que genere un retorno de 6% anual.
+
+Si conseguir capital cuesta muy poco, ese proyecto puede resultar atractivo.
+
+Pero si financiarse se vuelve significativamente más caro, un retorno de 6% puede dejar de ser suficiente.
+
+La fábrica no necesariamente es un mal proyecto.
+
+Simplemente **la vara cambió**.
+
+Esto ayuda a entender una de las consecuencias más importantes de las tasas altas: algunos proyectos que parecían atractivos cuando el dinero era barato dejan de serlo cuando el capital vuelve a tener un costo importante.
+
+Las empresas deben entonces escoger con mayor cuidado dónde invertir.
+
+Los proyectos con mejores perspectivas pueden seguir adelante.
+
+Los más débiles pueden postergarse, reducirse o desaparecer.
+
+## Eso puede mejorar la disciplina, pero también tiene costos
+
+Existe una interpretación positiva de este proceso.
+
+Cuando conseguir financiamiento es extremadamente barato durante mucho tiempo, incluso proyectos de baja rentabilidad pueden encontrar capital.
+
+Una tasa de referencia más alta obliga a seleccionar mejor.
+
+Pero sería incompleto concluir que las tasas altas son simplemente “buenas” porque generan disciplina.
+
+También tienen costos.
+
+Un financiamiento más caro puede reducir la construcción de viviendas, encarecer créditos, disminuir inversión empresarial y aumentar la presión sobre compañías muy endeudadas.
+
+Por eso el efecto económico es doble.
+
+**Las tasas altas pueden mejorar la selección de inversiones y, al mismo tiempo, enfriar actividades que sí serían productivas.**
+
+La diferencia depende de cuánto suben las tasas, por cuánto tiempo permanecen elevadas y de la capacidad de hogares y empresas para adaptarse.
+
+## El cambio para quien tiene ahorro
+
+El efecto más visible ocurre probablemente en el otro extremo de la ecuación.
+
+Durante los años de tasas cercanas a cero, un inversionista conservador tenía pocas posibilidades de generar ingresos significativos sin asumir algún riesgo adicional.
+
+Hoy vuelve a existir una alternativa.
+
+Eso ayuda a explicar por qué la renta fija ha recuperado relevancia en las carteras y por qué una parte del capital puede permanecer allí durante más tiempo.
+
+No necesariamente porque exista miedo a las acciones.
+
+Simplemente porque **esperar también vuelve a pagar**.
+
+Y cuando esperar genera retorno, aumenta la exigencia para abandonar esa posición.
+
+Es un mecanismo parecido al que ATLAS NEWS observó anteriormente en Chile con los depósitos a plazo: cuando una alternativa sencilla entrega un retorno razonable y conocido, convencer al inversionista de asumir mayor volatilidad requiere una compensación suficientemente visible.
+
+## Qué cambia para Chile
+
+Esta discusión ocurre en Estados Unidos, pero su efecto no termina allí.
+
+Un inversionista internacional que analiza comprar un bono chileno, financiar una empresa local o invertir en activos emergentes puede comparar esas oportunidades con lo que obtiene en Estados Unidos.
+
+Si un Treasury entrega alrededor de 4,8%, cualquier alternativa adicional debe justificar los riesgos que incorpora: moneda, crédito, liquidez o incertidumbre económica.
+
+Eso no significa que las tasas chilenas deban seguir automáticamente a las estadounidenses.
+
+Chile tiene su propia inflación, política monetaria, situación fiscal y ciclo económico.
+
+Pero sí significa que **el precio mundial del capital establece una referencia que Chile no puede ignorar**.
+
+Es precisamente la conexión que hemos venido observando durante las últimas semanas: el Banco Central puede influir con mucha fuerza sobre el costo del dinero de corto plazo en Chile, pero una parte importante del financiamiento de largo plazo también depende de lo que ocurre afuera.
+
+## La pregunta importante ya no es qué activo paga más
+
+La discusión puede parecer inicialmente una competencia entre bonos y acciones.
+
+No lo es.
+
+La pregunta relevante es otra:
+
+**¿cuánto retorno adicional debería ofrecer una inversión para justificar el riesgo que exige asumir?**
+
+Cuando la referencia segura estaba cerca de cero, esa pregunta tenía menos peso.
+
+Con tasas cercanas a 5%, vuelve al centro de la decisión.
+
+Eso afecta al ahorrante que elige dónde mantener su dinero.
+
+Afecta al inversionista que decide cuánto pagar por una acción.
+
+Afecta a una empresa que evalúa una inversión.
+
+Y afecta incluso a los gobiernos, que deben competir por el mismo capital para financiar su deuda.
+
+El cambio profundo no consiste simplemente en que los bonos estén pagando más.
+
+Consiste en que **el capital volvió a tener una alternativa**.
+
+Y cuando existe una alternativa razonablemente atractiva, asumir riesgo deja de ser una decisión automática.
+
+## Por qué fue seleccionada
+
+La comparación entre el rendimiento de los Treasury y los dividendos de las empresas del S&P 500 ofrece una imagen muy clara del cambio ocurrido en los mercados.
+
+Pero el dato más interesante no es determinar exactamente cuántas empresas entregan hoy un dividendo superior al Treasury a diez años.
+
+La información relevante está detrás de esa comparación.
+
+Durante años, una rentabilidad muy baja de los bonos soberanos empujó capital hacia inversiones más riesgosas en búsqueda de retorno.
+
+Hoy esa presión es mucho menor.
+
+El inversionista puede obtener nuevamente una rentabilidad significativa sin asumir directamente el riesgo de una empresa.
+
+Eso modifica el precio que estará dispuesto a pagar por otros activos y el retorno que exigirá para financiarlos.
+
+La secuencia puede resumirse así:
+
+**sube la rentabilidad de la alternativa segura → aumenta lo que se exige para asumir riesgo → sube la vara para acciones, empresas y proyectos → el capital se vuelve más selectivo.**
+
+Esta es la razón por la que las tasas largas importan mucho más allá del mercado de bonos.
+
+No solo determinan cuánto gana quien compra renta fija.
+
+También ayudan a determinar **qué inversiones logran competir por el capital disponible**.
+
+## Contexto y límites
+
+Esta lectura utiliza el Treasury estadounidense a diez años como referencia de bajo riesgo crediticio, no como un activo completamente libre de riesgo. Su precio puede caer si las tasas suben y el instrumento se vende antes de su vencimiento; además, la inflación afecta el valor real de los pagos recibidos.
+
+La comparación con el rendimiento por dividendos del S&P 500 tampoco representa una comparación completa entre bonos y acciones. El retorno de una acción puede provenir de dividendos, crecimiento de utilidades, recompras y cambios en su precio.
+
+Por la misma razón, un rendimiento por dividendos inferior al Treasury no significa que una acción esté necesariamente cara ni que deba ofrecer un retorno inferior. Solo muestra que una parte importante del retorno esperado debe provenir de otras fuentes.
+
+Las tasas de mercado también cambian diariamente. El [Departamento del Tesoro de Estados Unidos](https://home.treasury.gov/resource-center/data-chart-center/interest-rates/TextView?field_tdr_date_value=2026&type=daily_treasury_yield_curve) registró el Treasury a diez años en **4,77%** el 3 de septiembre. Tras el informe laboral del 4 de septiembre, Reuters volvió a situarlo cerca de ese nivel.
