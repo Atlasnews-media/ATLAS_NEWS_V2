@@ -10,7 +10,7 @@ import path from "node:path";
 const root = new URL("../", import.meta.url);
 const editionDir = new URL("src/content/editions/", root);
 const briefingDir = new URL("src/content/briefings/", root);
-const SCRIPT_VERSION = 4;
+const SCRIPT_VERSION = 5;
 const TARGET_MIN_WORDS = 550;
 const TARGET_MAX_WORDS = 650;
 
@@ -151,6 +151,7 @@ function speechText(value) {
     .replace(/\bFed\b/g, "Reserva Federal")
     .replace(/\bTreasury\b/gi, "bono del Tesoro estadounidense")
     .replace(/US\$/g, "dólares ")
+    .replace(/\$\s*([0-9][\d.]*)/g, "$1 pesos")
     .replace(/(\d+),(\d)0%/g, "$1,$2%")
     .replace(/(\d+),00%/g, "$1%")
     .replace(/(\d[\d.,]*)%/g, "$1 por ciento")
@@ -202,6 +203,24 @@ function tokenSet(text) {
   );
 }
 
+function numberSet(text) {
+  return new Set(
+    speechText(text)
+      .match(/\b\d[\d.,]*\b/g)
+      ?.map((value) => value.replace(/[.,]/g, "")) ?? [],
+  );
+}
+
+function sharedNumberCount(left, right) {
+  const leftNumbers = numberSet(left);
+  const rightNumbers = numberSet(right);
+  let overlap = 0;
+  for (const value of leftNumbers) {
+    if (rightNumbers.has(value)) overlap += 1;
+  }
+  return overlap;
+}
+
 function nearDuplicate(text, accepted) {
   const incoming = tokenSet(text);
   if (incoming.size < 4) return false;
@@ -213,7 +232,11 @@ function nearDuplicate(text, accepted) {
     for (const token of incoming) {
       if (current.has(token)) overlap += 1;
     }
-    return overlap / Math.min(incoming.size, current.size) >= 0.72;
+    const lexicalOverlap = overlap / Math.min(incoming.size, current.size);
+    if (lexicalOverlap >= 0.72) return true;
+
+    const numericOverlap = sharedNumberCount(text, existing);
+    return numericOverlap >= 2 && lexicalOverlap >= 0.4;
   });
 }
 
@@ -445,8 +468,6 @@ if (process.env.GITHUB_OUTPUT) {
 
 console.log(
   !ownerAllowsGeneration && !sameSources
-    ? `Audio ${date}: generación delegada al owner Audio V2; este proceso sólo planifica.`
-    : plan.needsGeneration
-      ? `Audio ${date}: generación requerida (${completeness}/3, ${wordCount} palabras, objetivo ${TARGET_MIN_WORDS}-${TARGET_MAX_WORDS}).`
-      : `Audio ${date}: ya coincide con las piezas publicadas y el guion v${SCRIPT_VERSION}; se conserva el archivo vigente.`,
+    ? `Audio ${date}: generación delegada al owner Audio V2; este proceso solo preparó el guion.`
+    : `Audio ${date}: ${plan.needsGeneration ? "requiere generación" : "sin cambios"}.`,
 );
