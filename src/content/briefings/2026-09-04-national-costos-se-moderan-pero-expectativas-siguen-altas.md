@@ -4,7 +4,7 @@ summary: "La EDEP muestra menor presión de costos y precios, pero ventas y már
 publishedAt: "2026-09-04T06:20:00-04:00"
 cutoffAt: "2026-09-04T06:18:00-04:00"
 section: "national"
-status: "draft"
+status: "published"
 tags:
   - chile
   - inflacion
