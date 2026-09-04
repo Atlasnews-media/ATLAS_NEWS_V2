@@ -18,6 +18,13 @@ const {
   demo = false,
   tags,
 } = Astro.props;
+
+const pageUrl = Astro.url.href;
+const encodedUrl = encodeURIComponent(pageUrl);
+const whatsappHref = `https://wa.me/?text=${encodeURIComponent(`${title}\n${pageUrl}`)}`;
+const facebookHref = `https://www.facebook.com/sharer/sharer.php?u=${encodedUrl}`;
+const linkedinHref = `https://www.linkedin.com/sharing/share-offsite/?url=${encodedUrl}`;
+const xHref = `https://twitter.com/intent/tweet?text=${encodeURIComponent(title)}&url=${encodedUrl}`;
 ---
 
 <header class="article-header">
@@ -47,7 +54,105 @@ const {
       {tags.map((tag) => <li>{tag}</li>)}
     </ul>
   </div>
+  <div class="share-tools" aria-label="Compartir publicación">
+    <span class="share-label">Compartir</span>
+    <button
+      class="share-action share-native"
+      type="button"
+      data-share-native
+      data-share-title={title}
+      data-share-summary={summary}
+    >
+      Compartir…
+    </button>
+    <a
+      class="share-action"
+      href={whatsappHref}
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      WhatsApp
+    </a>
+    <a
+      class="share-action"
+      href={facebookHref}
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      Facebook
+    </a>
+    <a
+      class="share-action"
+      href={linkedinHref}
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      LinkedIn
+    </a>
+    <a
+      class="share-action"
+      href={xHref}
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      X
+    </a>
+    <button class="share-action" type="button" data-share-copy>
+      Copiar enlace
+    </button>
+    <span class="share-status" data-share-status aria-live="polite"></span>
+  </div>
 </header>
+
+<script>
+  const nativeButton = document.querySelector("[data-share-native]");
+
+  if (nativeButton instanceof HTMLButtonElement) {
+    if (typeof navigator.share === "function") {
+      nativeButton.addEventListener("click", async () => {
+        try {
+          await navigator.share({
+            title: nativeButton.dataset.shareTitle,
+            text: nativeButton.dataset.shareSummary,
+            url: window.location.href,
+          });
+        } catch {
+          // Cancelar el menú de compartir no requiere una acción adicional.
+        }
+      });
+    } else {
+      nativeButton.hidden = true;
+    }
+  }
+
+  const copyButton = document.querySelector("[data-share-copy]");
+  const status = document.querySelector("[data-share-status]");
+
+  if (copyButton instanceof HTMLButtonElement) {
+    copyButton.addEventListener("click", async () => {
+      if (!navigator.clipboard) {
+        if (status instanceof HTMLElement) {
+          status.textContent = "Copia no disponible";
+        }
+        return;
+      }
+
+      try {
+        await navigator.clipboard.writeText(window.location.href);
+        if (status instanceof HTMLElement) {
+          status.textContent = "Enlace copiado";
+          window.setTimeout(() => {
+            status.textContent = "";
+          }, 2200);
+        }
+      } catch {
+        if (status instanceof HTMLElement) {
+          status.textContent = "No se pudo copiar";
+        }
+      }
+    });
+  }
+</script>
 
 <style>
   .article-header {
@@ -126,6 +231,54 @@ const {
     font: 0.67rem/1.2 var(--sans);
     text-transform: uppercase;
   }
+  .share-tools {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.45rem;
+    margin-top: 1.4rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--rule);
+    font: 800 0.66rem/1 var(--sans);
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+  .share-label {
+    margin-right: 0.25rem;
+    color: var(--ink-soft);
+  }
+  .share-action {
+    appearance: none;
+    display: inline-flex;
+    align-items: center;
+    min-height: 2rem;
+    padding: 0.45rem 0.58rem;
+    border: 1px solid var(--rule);
+    border-radius: 0;
+    color: var(--ink);
+    background: transparent;
+    font: inherit;
+    letter-spacing: inherit;
+    text-decoration: none;
+    text-transform: inherit;
+    cursor: pointer;
+  }
+  .share-action:hover,
+  .share-action:focus-visible {
+    color: var(--paper);
+    background: var(--ink);
+    outline: none;
+  }
+  .share-native {
+    border-color: var(--accent);
+    color: var(--accent);
+  }
+  .share-status {
+    min-height: 1em;
+    color: var(--accent);
+    font-weight: 700;
+    text-transform: none;
+  }
 
   @media (max-width: 42rem) {
     .meta strong {
@@ -138,6 +291,20 @@ const {
     }
     .tags {
       justify-content: flex-start;
+    }
+    .share-tools {
+      align-items: stretch;
+    }
+    .share-label {
+      width: 100%;
+      margin-bottom: 0.15rem;
+    }
+    .share-action {
+      justify-content: center;
+      flex: 1 1 auto;
+    }
+    .share-status {
+      width: 100%;
     }
   }
 </style>
