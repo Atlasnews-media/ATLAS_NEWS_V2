@@ -18,6 +18,13 @@ const {
   demo = false,
   tags,
 } = Astro.props;
+
+const pageUrl = Astro.url.href;
+const encodedUrl = encodeURIComponent(pageUrl);
+const whatsappHref = `https://wa.me/?text=${encodeURIComponent(`${title}\n${pageUrl}`)}`;
+const facebookHref = `https://www.facebook.com/sharer/sharer.php?u=${encodedUrl}`;
+const linkedinHref = `https://www.linkedin.com/sharing/share-offsite/?url=${encodedUrl}`;
+const xHref = `https://twitter.com/intent/tweet?text=${encodeURIComponent(title)}&url=${encodedUrl}`;
 ---
 
 <header class="article-header">
@@ -47,20 +54,20 @@ const {
       {tags.map((tag) => <li>{tag}</li>)}
     </ul>
   </div>
-  <div
-    class="share-tools"
-    data-share-tools
-    data-share-title={title}
-    data-share-summary={summary}
-    aria-label="Compartir publicación"
-  >
+  <div class="share-tools" aria-label="Compartir publicación">
     <span class="share-label">Compartir</span>
-    <button class="share-action share-native" type="button" data-share-native>
+    <button
+      class="share-action share-native"
+      type="button"
+      data-share-native
+      data-share-title={title}
+      data-share-summary={summary}
+    >
       Compartir…
     </button>
     <a
       class="share-action"
-      data-share-whatsapp
+      href={whatsappHref}
       target="_blank"
       rel="noopener noreferrer"
     >
@@ -68,7 +75,7 @@ const {
     </a>
     <a
       class="share-action"
-      data-share-facebook
+      href={facebookHref}
       target="_blank"
       rel="noopener noreferrer"
     >
@@ -76,7 +83,7 @@ const {
     </a>
     <a
       class="share-action"
-      data-share-linkedin
+      href={linkedinHref}
       target="_blank"
       rel="noopener noreferrer"
     >
@@ -84,7 +91,7 @@ const {
     </a>
     <a
       class="share-action"
-      data-share-x
+      href={xHref}
       target="_blank"
       rel="noopener noreferrer"
     >
@@ -98,96 +105,53 @@ const {
 </header>
 
 <script>
-  const setShareHref = (root: HTMLElement, selector: string, href: string) => {
-    const link = root.querySelector<HTMLAnchorElement>(selector);
-    if (link) link.href = href;
-  };
+  const nativeButton = document.querySelector("[data-share-native]");
 
-  const copyText = async (text: string) => {
-    if (navigator.clipboard && window.isSecureContext) {
-      await navigator.clipboard.writeText(text);
-      return;
-    }
-
-    const textarea = document.createElement("textarea");
-    textarea.value = text;
-    textarea.setAttribute("readonly", "");
-    textarea.style.position = "fixed";
-    textarea.style.opacity = "0";
-    document.body.appendChild(textarea);
-    textarea.select();
-    document.execCommand("copy");
-    textarea.remove();
-  };
-
-  document
-    .querySelectorAll<HTMLElement>("[data-share-tools]")
-    .forEach((root) => {
-      const url = window.location.href;
-      const title = root.dataset.shareTitle || document.title;
-      const summary = root.dataset.shareSummary || "";
-      const encodedUrl = encodeURIComponent(url);
-
-      setShareHref(
-        root,
-        "[data-share-whatsapp]",
-        `https://wa.me/?text=${encodeURIComponent(`${title}\n${url}`)}`,
-      );
-      setShareHref(
-        root,
-        "[data-share-facebook]",
-        `https://www.facebook.com/sharer/sharer.php?u=${encodedUrl}`,
-      );
-      setShareHref(
-        root,
-        "[data-share-linkedin]",
-        `https://www.linkedin.com/sharing/share-offsite/?url=${encodedUrl}`,
-      );
-      setShareHref(
-        root,
-        "[data-share-x]",
-        `https://twitter.com/intent/tweet?text=${encodeURIComponent(title)}&url=${encodedUrl}`,
-      );
-
-      const nativeButton = root.querySelector<HTMLButtonElement>(
-        "[data-share-native]",
-      );
-      if (nativeButton) {
-        if (typeof navigator.share === "function") {
-          nativeButton.addEventListener("click", async () => {
-            try {
-              await navigator.share({ title, text: summary, url });
-            } catch (error) {
-              if (error instanceof DOMException && error.name === "AbortError") {
-                return;
-              }
-              console.warn("No fue posible abrir el menú de compartir.", error);
-            }
-          });
-        } else {
-          nativeButton.hidden = true;
-        }
-      }
-
-      const copyButton = root.querySelector<HTMLButtonElement>(
-        "[data-share-copy]",
-      );
-      const status = root.querySelector<HTMLElement>("[data-share-status]");
-      copyButton?.addEventListener("click", async () => {
+  if (nativeButton instanceof HTMLButtonElement) {
+    if (typeof navigator.share === "function") {
+      nativeButton.addEventListener("click", async () => {
         try {
-          await copyText(url);
-          if (status) {
-            status.textContent = "Enlace copiado";
-            window.setTimeout(() => {
-              status.textContent = "";
-            }, 2200);
-          }
-        } catch (error) {
-          console.warn("No fue posible copiar el enlace.", error);
-          if (status) status.textContent = "No se pudo copiar";
+          await navigator.share({
+            title: nativeButton.dataset.shareTitle,
+            text: nativeButton.dataset.shareSummary,
+            url: window.location.href,
+          });
+        } catch {
+          // Cancelar el menú de compartir no requiere una acción adicional.
         }
       });
+    } else {
+      nativeButton.hidden = true;
+    }
+  }
+
+  const copyButton = document.querySelector("[data-share-copy]");
+  const status = document.querySelector("[data-share-status]");
+
+  if (copyButton instanceof HTMLButtonElement) {
+    copyButton.addEventListener("click", async () => {
+      if (!navigator.clipboard) {
+        if (status instanceof HTMLElement) {
+          status.textContent = "Copia no disponible";
+        }
+        return;
+      }
+
+      try {
+        await navigator.clipboard.writeText(window.location.href);
+        if (status instanceof HTMLElement) {
+          status.textContent = "Enlace copiado";
+          window.setTimeout(() => {
+            status.textContent = "";
+          }, 2200);
+        }
+      } catch {
+        if (status instanceof HTMLElement) {
+          status.textContent = "No se pudo copiar";
+        }
+      }
     });
+  }
 </script>
 
 <style>
