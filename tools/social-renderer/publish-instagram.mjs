@@ -117,6 +117,49 @@ async function assertPublicImages(imageUrls) {
   }
 }
 
+async function assertCanonicalPublished(canonicalUrl) {
+  let lastStatus = null;
+  let lastError = null;
+  for (let attempt = 1; attempt <= 3; attempt += 1) {
+    try {
+      const response = await fetch(canonicalUrl, {
+        method: "GET",
+        redirect: "follow",
+      });
+      lastStatus = response.status;
+      await response.arrayBuffer();
+      if (response.ok) return;
+    } catch (error) {
+      lastError = error;
+    }
+    await new Promise((resolve) => setTimeout(resolve, attempt * 1000));
+  }
+  const detail = lastError?.message || `HTTP ${lastStatus || "unknown"}`;
+  throw new Error(
+    `Post-publication guard failed: canonicalUrl is not publicly reachable: ${detail}`,
+  );
+}
+
+async function verifyPublishedMedia(mediaId) {
+  let lastError = null;
+  for (let attempt = 1; attempt <= 6; attempt += 1) {
+    try {
+      const candidate = await api(
+        `/${encodeURIComponent(mediaId)}?fields=id,permalink,media_type,timestamp,caption`,
+      );
+      if (String(candidate.permalink || "").trim()) return candidate;
+      lastError = new Error("permalink missing from publication metadata");
+    } catch (error) {
+      lastError = error;
+    }
+    await new Promise((resolve) => setTimeout(resolve, attempt * 1500));
+  }
+  return {
+    verified: null,
+    error: lastError?.message || "publication metadata unavailable",
+  };
+}
+
 async function main() {
   if (PUBLICATION_STATUS !== REQUIRED_PUBLICATION_STATUS) {
     throw new Error(
@@ -144,6 +187,8 @@ async function main() {
   const canonical = new URL(canonicalUrl);
   if (canonical.protocol !== "https:")
     throw new Error("contract.canonicalUrl must use https");
+
+  await assertCanonicalPublished(canonicalUrl);
 
   const me = await api("/me?fields=id,username");
   const igUserId = required(me.id, "Instagram user id");
@@ -206,20 +251,14 @@ async function main() {
   );
   const mediaId = required(published.id, "published media id");
 
-  let verified = { id: mediaId };
-  try {
-    verified = await api(
-      `/${encodeURIComponent(mediaId)}?fields=id,permalink,media_type,timestamp,caption`,
-    );
-  } catch (error) {
-    console.warn(
-      `Post-publish verification metadata unavailable: ${error.message}`,
-    );
-  }
+  const verification = await verifyPublishedMedia(mediaId);
+  const verified = verification.verified || null;
+  const isVerified = Boolean(verified?.permalink);
 
   await fs.mkdir(OUT, { recursive: true });
   const result = {
-    status: "PUBLISHED",
+    status: isVerified ? "PUBLISHED_VERIFIED" : "PUBLISHED_UNVERIFIED",
+    verificationError: isVerified ? null : verification.error,
     apiVersion: API_VERSION,
     igUserId,
     username,
@@ -230,9 +269,9 @@ async function main() {
     childContainerIds: childIds,
     carouselContainerId: carouselId,
     mediaId,
-    permalink: verified.permalink || null,
-    mediaType: verified.media_type || "CAROUSEL",
-    publishedAt: verified.timestamp || new Date().toISOString(),
+    permalink: verified?.permalink || null,
+    mediaType: verified?.media_type || "CAROUSEL",
+    publishedAt: verified?.timestamp || new Date().toISOString(),
     imageUrls,
     githubRunId: process.env.GITHUB_RUN_ID || null,
     githubRunAttempt: process.env.GITHUB_RUN_ATTEMPT || null,
@@ -254,6 +293,12 @@ async function main() {
       2,
     ),
   );
+
+  if (!isVerified) {
+    throw new Error(
+      `Instagram media ${mediaId} was published but could not be verified with a permalink. Evidence status: PUBLISHED_UNVERIFIED.`,
+    );
+  }
 }
 
 main().catch((error) => {
