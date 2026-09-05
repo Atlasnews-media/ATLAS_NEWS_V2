@@ -1,0 +1,51 @@
+name: Temporary — format Social Renderer
+
+on:
+  push:
+    branches:
+      - integration/instagram-carousel-publish
+
+permissions:
+  contents: write
+
+jobs:
+  format:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Checkout branch
+        uses: actions/checkout@v5
+        with:
+          ref: ${{ github.ref_name }}
+
+      - name: Setup Node
+        uses: actions/setup-node@v6
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install root dependencies
+        run: npm ci
+
+      - name: Format Social Renderer technical files
+        run: >-
+          npx prettier --write
+          tools/social-renderer/render.mjs
+          tools/social-renderer/publish-instagram.mjs
+          tools/social-renderer/contracts/2026-09-04-reading-activo-seguro-riesgo.json
+
+      - name: Commit formatting if required
+        shell: bash
+        run: |
+          set -euo pipefail
+          if git diff --quiet; then
+            echo "No formatting changes required."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add tools/social-renderer/render.mjs \
+            tools/social-renderer/publish-instagram.mjs \
+            tools/social-renderer/contracts/2026-09-04-reading-activo-seguro-riesgo.json
+          git commit -m "style: format Social Renderer technical files [skip ci]"
+          git push origin HEAD:${{ github.ref_name }}
