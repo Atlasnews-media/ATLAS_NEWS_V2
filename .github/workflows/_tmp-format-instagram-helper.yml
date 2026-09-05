@@ -1,0 +1,29 @@
+name: TEMP — Format Instagram helper
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - tools/social-renderer/prepare-daily-contract.mjs
+      - .github/workflows/_tmp-format-instagram-helper.yml
+
+permissions:
+  contents: read
+
+jobs:
+  format:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - name: Emit exact Prettier output
+        run: |
+          npx prettier tools/social-renderer/prepare-daily-contract.mjs --write
+          echo "FORMAT_BASE64_BEGIN"
+          base64 -w0 tools/social-renderer/prepare-daily-contract.mjs
+          echo
+          echo "FORMAT_BASE64_END"
