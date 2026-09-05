@@ -30,7 +30,8 @@ async function loadManifest(): Promise<SocialImageManifest> {
         )
           return false;
         return (
-          typeof imageUrl === "string" && imageUrl.startsWith(SOCIAL_IMAGE_PREFIX)
+          typeof imageUrl === "string" &&
+          imageUrl.startsWith(SOCIAL_IMAGE_PREFIX)
         );
       }),
     );
