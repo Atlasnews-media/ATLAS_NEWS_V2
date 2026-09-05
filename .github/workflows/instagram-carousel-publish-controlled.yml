@@ -22,6 +22,7 @@ on:
         default: "v23.0"
 
 permissions:
+  actions: write
   contents: read
 
 concurrency:
@@ -144,7 +145,7 @@ jobs:
             git@github.com:EldeSiempre100/EldeSiempre100.github.io.git \
             _social_assets
 
-      - name: Stage carousel images on public HTTPS URLs
+      - name: Stage carousel and SHARE card on public HTTPS URLs
         id: stage
         shell: bash
         env:
@@ -155,16 +156,42 @@ jobs:
           mkdir -p "_social_assets/$stage_dir"
           cp tools/social-renderer/output/atlas-news-instagram-carousel-0*.png "_social_assets/$stage_dir/"
 
+          canonical_url="$(jq -er '.canonicalUrl | select(type == "string" and length > 0)' "$SOCIAL_CONTRACT")"
+          canonical_path="$(node -e '
+            const u = new URL(process.argv[1]);
+            if (u.hostname.toLowerCase() !== "eldesiempre100.github.io") process.exit(2);
+            const p = u.pathname.endsWith("/") ? u.pathname : `${u.pathname}/`;
+            if (!/^\/(ediciones|nacional|mercados|lecturas)\/[^/]+\/$/.test(p)) process.exit(3);
+            process.stdout.write(p);
+          ' "$canonical_url")"
+          share_dir="share/${canonical_path#/}"
+          share_file="${share_dir}atlas-news-social-card-1200x630.png"
+          mkdir -p "_social_assets/$share_dir"
+          cp tools/social-renderer/output/atlas-news-social-card-1200x630.png "_social_assets/$share_file"
+
+          share_url="https://raw.githubusercontent.com/EldeSiempre100/EldeSiempre100.github.io/social-assets/${share_file}"
+          manifest="_social_assets/share/manifest.json"
+          if [ ! -f "$manifest" ]; then
+            printf '{}\n' > "$manifest"
+          fi
+          manifest_tmp="$(mktemp)"
+          jq --arg path "$canonical_path" --arg url "$share_url" \
+            '.[$path] = $url | to_entries | sort_by(.key) | from_entries' \
+            "$manifest" > "$manifest_tmp"
+          mv "$manifest_tmp" "$manifest"
+
           cd _social_assets
           git config user.name "ATLAS NEWS Social Publisher"
           git config user.email "actions@users.noreply.github.com"
-          git add "$stage_dir"
-          git commit -m "social-assets: stage Instagram carousel ${GITHUB_RUN_ID}-${GITHUB_RUN_ATTEMPT}"
+          git add "$stage_dir" "$share_file" share/manifest.json
+          git commit -m "social-assets: stage carousel + SHARE card ${GITHUB_RUN_ID}-${GITHUB_RUN_ATTEMPT}"
           git push origin HEAD:social-assets
 
           base_url="https://raw.githubusercontent.com/EldeSiempre100/EldeSiempre100.github.io/social-assets/${stage_dir}"
           echo "SOCIAL_IMAGE_BASE_URL=$base_url" >> "$GITHUB_ENV"
           echo "stage_dir=$stage_dir" >> "$GITHUB_OUTPUT"
+          echo "share_path=$canonical_path" >> "$GITHUB_OUTPUT"
+          echo "share_image_url=$share_url" >> "$GITHUB_OUTPUT"
 
       - name: Confirm staged images are publicly fetchable
         shell: bash
@@ -187,6 +214,31 @@ jobs:
               exit 10
             }
           done
+
+          share_url="${{ steps.stage.outputs.share_image_url }}"
+          share_ok=0
+          for attempt in 1 2 3 4 5 6; do
+            code="$(curl -L -sS -o /tmp/atlas-share.png -w '%{http_code}' "$share_url" || true)"
+            type="$(file -b --mime-type /tmp/atlas-share.png 2>/dev/null || true)"
+            if [ "$code" = "200" ] && [ "$type" = "image/png" ]; then
+              share_ok=1
+              break
+            fi
+            sleep "$attempt"
+          done
+          test "$share_ok" = "1" || {
+            echo "Public SHARE card staging failed for $share_url"
+            exit 11
+          }
+
+      - name: Request non-blocking SHARE metadata refresh
+        continue-on-error: true
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          gh workflow run publish-site.yml --ref main
+          echo "Requested site refresh so Open Graph can adopt the verified 1200x630 SHARE card."
 
       - name: Publish controlled Instagram carousel
         working-directory: tools/social-renderer
