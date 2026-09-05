@@ -36,16 +36,117 @@ async function markSkipped(reason) {
   console.log(JSON.stringify({ eligible: false, reason }, null, 2));
 }
 
+function git(args, options = {}) {
+  return execFileSync("git", args, {
+    cwd: ROOT,
+    encoding: "utf8",
+    ...options,
+  }).trim();
+}
+
+function commitParents(commit) {
+  const raw = git(["cat-file", "-p", commit]);
+  return raw
+    .split(/\r?\n/)
+    .map((line) => line.match(/^parent ([0-9a-f]{40})$/)?.[1])
+    .filter(Boolean);
+}
+
+function hasCommit(commit) {
+  try {
+    git(["cat-file", "-e", `${commit}^{commit}`], { stdio: "ignore" });
+    return true;
+  } catch {
+    return false;
+  }
+}
+
+function fetchCommit(commit, depth = 2) {
+  if (hasCommit(commit)) return;
+  git(["fetch", "--no-tags", `--depth=${depth}`, "origin", commit], {
+    stdio: "ignore",
+  });
+  if (!hasCommit(commit)) {
+    throw new Error(`Fail-closed: Git commit ${commit} is not available locally`);
+  }
+}
+
 function changedFiles(commit) {
-  const result = execFileSync(
-    "git",
-    ["diff-tree", "--root", "--no-commit-id", "--name-only", "-r", commit],
-    { cwd: ROOT, encoding: "utf8" },
-  );
+  const [firstParent] = commitParents(commit);
+  if (!firstParent) {
+    const result = git([
+      "diff-tree",
+      "--root",
+      "--no-commit-id",
+      "--name-only",
+      "-r",
+      commit,
+    ]);
+    return result
+      .split(/\r?\n/)
+      .map((line) => line.trim())
+      .filter(Boolean);
+  }
+
+  fetchCommit(firstParent);
+  const result = git(["diff", "--name-only", firstParent, commit]);
   return result
     .split(/\r?\n/)
     .map((line) => line.trim())
     .filter(Boolean);
+}
+
+function isAncestor(ancestor, descendant) {
+  try {
+    git(["merge-base", "--is-ancestor", ancestor, descendant], {
+      stdio: "ignore",
+    });
+    return true;
+  } catch {
+    return false;
+  }
+}
+
+function fetchPublicCommitHistory(commit) {
+  if (hasCommit(commit) && isAncestor(SOURCE_COMMIT, commit)) return;
+
+  try {
+    git(["fetch", "--no-tags", "--depth=128", "origin", commit], {
+      stdio: "ignore",
+    });
+  } catch {
+    git(["fetch", "--no-tags", "--depth=128", "origin", "main"], {
+      stdio: "ignore",
+    });
+  }
+
+  if (!hasCommit(commit)) {
+    throw new Error(
+      `Fail-closed: public status commit ${commit} cannot be verified in origin`,
+    );
+  }
+}
+
+function assertPublicStatus(status, editionId) {
+  const publicCommit = required(status?.sourceCommit, "public status sourceCommit");
+  if (!/^[0-9a-f]{40}$/i.test(publicCommit)) {
+    throw new Error("Fail-closed: public status sourceCommit is not a full SHA");
+  }
+  if (status?.latestDaily?.id !== editionId) {
+    throw new Error(
+      `Fail-closed: public latestDaily ${status?.latestDaily?.id || "<missing>"} does not match ${editionId}`,
+    );
+  }
+  if (publicCommit === SOURCE_COMMIT) return "exact-source-commit";
+
+  fetchPublicCommitHistory(publicCommit);
+  if (!isAncestor(SOURCE_COMMIT, publicCommit)) {
+    throw new Error(
+      `Fail-closed: public status commit ${publicCommit} is not a descendant of source ${SOURCE_COMMIT}`,
+    );
+  }
+
+  return "verified-descendant-preserving-latest-daily";
 }
 
 function yamlScalar(raw) {
@@ -176,7 +277,7 @@ async function main() {
   }
 
   const dailyFiles = changedFiles(SOURCE_COMMIT).filter((file) =>
-    /^src\/content\/editions\/\d{4}-\d{2}-\d{2}-daily-[^/]+\.md$/.test(file),
+    /^src\/content\/editions\/\d{4}-\d{2}-\d{2}-daily-[^/]+\.mdx?$/.test(file),
   );
   if (dailyFiles.length === 0) {
     await markSkipped("no-new-daily-edition-in-source-commit");
@@ -189,7 +290,7 @@ async function main() {
   }
 
   const sourceId = dailyFiles[0];
-  const editionId = path.basename(sourceId, ".md");
+  const editionId = path.basename(sourceId).replace(/\.mdx?$/, "");
   if (editionId.startsWith("2026-09-05-")) {
     await markSkipped("blocked-edition-date-2026-09-05");
     return;
@@ -197,16 +298,7 @@ async function main() {
 
   const statusUrl = `${STATUS_URL}${STATUS_URL.includes("?") ? "&" : "?"}source=${SOURCE_COMMIT}`;
   const status = await fetchJson(statusUrl);
-  if (status?.sourceCommit !== SOURCE_COMMIT) {
-    throw new Error(
-      `Fail-closed: public status sourceCommit ${status?.sourceCommit || "<missing>"} does not match ${SOURCE_COMMIT}`,
-    );
-  }
-  if (status?.latestDaily?.id !== editionId) {
-    throw new Error(
-      `Fail-closed: public latestDaily ${status?.latestDaily?.id || "<missing>"} does not match ${editionId}`,
-    );
-  }
+  const publicationEvidence = assertPublicStatus(status, editionId);
 
   const markdown = await fs.readFile(path.join(ROOT, sourceId), "utf8");
   const parts = markdown.split(/^---\s*$/m);
@@ -308,6 +400,7 @@ async function main() {
         editionId,
         canonicalUrl,
         contractPath: OUTPUT_RELATIVE,
+        publicationEvidence,
       },
       null,
       2,
