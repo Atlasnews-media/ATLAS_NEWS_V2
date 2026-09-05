@@ -90,7 +90,7 @@ const xHref = `https://twitter.com/intent/tweet?text=${encodeURIComponent(title)
       LinkedIn
     </a>
     <a
-      class="share-action"
+      class="share-action share-x"
       href={xHref}
       target="_blank"
       rel="noopener noreferrer"
@@ -279,8 +279,14 @@ const xHref = `https://twitter.com/intent/tweet?text=${encodeURIComponent(title)
     font-weight: 700;
     text-transform: none;
   }
+  .share-status:empty {
+    display: none;
+  }
 
   @media (max-width: 42rem) {
+    .article-header {
+      padding-bottom: 1rem;
+    }
     .meta strong {
       width: 100%;
       margin-left: 0;
@@ -302,6 +308,9 @@ const xHref = `https://twitter.com/intent/tweet?text=${encodeURIComponent(title)
     .share-action {
       justify-content: center;
       flex: 1 1 auto;
+    }
+    .share-x {
+      min-width: 5rem;
     }
     .share-status {
       width: 100%;
