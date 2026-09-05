@@ -67,7 +67,9 @@ function fetchCommit(commit, depth = 2) {
     stdio: "ignore",
   });
   if (!hasCommit(commit)) {
-    throw new Error(`Fail-closed: Git commit ${commit} is not available locally`);
+    throw new Error(
+      `Fail-closed: Git commit ${commit} is not available locally`,
+    );
   }
 }
 
@@ -128,9 +130,14 @@ function fetchPublicCommitHistory(commit) {
 }
 
 function assertPublicStatus(status, editionId) {
-  const publicCommit = required(status?.sourceCommit, "public status sourceCommit");
+  const publicCommit = required(
+    status?.sourceCommit,
+    "public status sourceCommit",
+  );
   if (!/^[0-9a-f]{40}$/i.test(publicCommit)) {
-    throw new Error("Fail-closed: public status sourceCommit is not a full SHA");
+    throw new Error(
+      "Fail-closed: public status sourceCommit is not a full SHA",
+    );
   }
   if (status?.latestDaily?.id !== editionId) {
     throw new Error(
