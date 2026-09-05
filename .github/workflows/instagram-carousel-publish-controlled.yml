@@ -7,7 +7,6 @@ on:
         description: "Path to an approved Social Content Contract v1 JSON"
         required: true
         type: string
-        default: "tools/social-renderer/contracts/2026-09-04-reading-activo-seguro-riesgo.json"
       publication_status:
         description: "Type exactly: PUBLICACIÓN DISPONIBLE / VERIFICADA"
         required: true
@@ -23,7 +22,7 @@ on:
         default: "v23.0"
 
 permissions:
-  contents: write
+  contents: read
 
 concurrency:
   group: instagram-carousel-publish
@@ -43,6 +42,8 @@ jobs:
     steps:
       - name: Verify explicit publication gates and secret presence
         shell: bash
+        env:
+          ATLAS_PAGES_DEPLOY_KEY: ${{ secrets.ATLAS_PAGES_DEPLOY_KEY }}
         run: |
           set -euo pipefail
           test "$SOCIAL_PUBLICATION_STATUS" = "PUBLICACIÓN DISPONIBLE / VERIFICADA" || {
@@ -57,11 +58,41 @@ jobs:
             echo "Fail-closed: INSTAGRAM_ACCESS_TOKEN repository secret is missing."
             exit 4
           }
+          test -n "$ATLAS_PAGES_DEPLOY_KEY" || {
+            echo "Fail-closed: ATLAS_PAGES_DEPLOY_KEY repository secret is missing."
+            exit 5
+          }
 
       - name: Checkout integration code
         uses: actions/checkout@v4
         with:
           fetch-depth: 1
+
+      - name: Verify explicit contract and published canonical URL
+        shell: bash
+        run: |
+          set -euo pipefail
+          test -n "$SOCIAL_CONTRACT" || {
+            echo "Fail-closed: an approved contract path must be selected explicitly."
+            exit 6
+          }
+          test -f "$SOCIAL_CONTRACT" || {
+            echo "Fail-closed: contract does not exist: $SOCIAL_CONTRACT"
+            exit 7
+          }
+          canonical_url="$(jq -er '.canonicalUrl | select(type == "string" and length > 0)' "$SOCIAL_CONTRACT")"
+          case "$canonical_url" in
+            https://*) ;;
+            *)
+              echo "Fail-closed: contract canonicalUrl must use HTTPS."
+              exit 8
+              ;;
+          esac
+          code="$(curl -L -sS -o /dev/null -w '%{http_code}' --retry 2 --connect-timeout 10 --max-time 30 "$canonical_url" || true)"
+          test "$code" = "200" || {
+            echo "Fail-closed: canonicalUrl is not publicly reachable with HTTP 200."
+            exit 9
+          }
 
       - name: Setup Node
         uses: actions/setup-node@v4
@@ -94,17 +125,30 @@ jobs:
         working-directory: tools/social-renderer
         run: npm run render
 
-      - name: Checkout public social-assets branch
-        uses: actions/checkout@v4
-        with:
-          ref: social-assets
-          path: _social_assets
-          fetch-depth: 1
-          token: ${{ github.token }}
+      - name: Prepare access to public social host
+        env:
+          DEPLOY_KEY: ${{ secrets.ATLAS_PAGES_DEPLOY_KEY }}
+        run: |
+          set -euo pipefail
+          install -m 700 -d ~/.ssh
+          printf '%s\n' "$DEPLOY_KEY" > ~/.ssh/atlas_news_pages
+          chmod 600 ~/.ssh/atlas_news_pages
+          ssh-keyscan -H github.com >> ~/.ssh/known_hosts
+
+      - name: Checkout public social-assets host
+        env:
+          GIT_SSH_COMMAND: ssh -i ~/.ssh/atlas_news_pages -o IdentitiesOnly=yes
+        run: |
+          set -euo pipefail
+          git clone --depth 1 --branch social-assets \
+            git@github.com:EldeSiempre100/EldeSiempre100.github.io.git \
+            _social_assets
 
       - name: Stage carousel images on public HTTPS URLs
         id: stage
         shell: bash
+        env:
+          GIT_SSH_COMMAND: ssh -i ~/.ssh/atlas_news_pages -o IdentitiesOnly=yes
         run: |
           set -euo pipefail
           stage_dir="instagram-staging/${GITHUB_RUN_ID}-${GITHUB_RUN_ATTEMPT}"
@@ -112,13 +156,13 @@ jobs:
           cp tools/social-renderer/output/atlas-news-instagram-carousel-0*.png "_social_assets/$stage_dir/"
 
           cd _social_assets
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git config user.name "ATLAS NEWS Social Publisher"
+          git config user.email "actions@users.noreply.github.com"
           git add "$stage_dir"
           git commit -m "social-assets: stage Instagram carousel ${GITHUB_RUN_ID}-${GITHUB_RUN_ATTEMPT}"
           git push origin HEAD:social-assets
 
-          base_url="https://raw.githubusercontent.com/${GITHUB_REPOSITORY}/social-assets/${stage_dir}"
+          base_url="https://raw.githubusercontent.com/EldeSiempre100/EldeSiempre100.github.io/social-assets/${stage_dir}"
           echo "SOCIAL_IMAGE_BASE_URL=$base_url" >> "$GITHUB_ENV"
           echo "stage_dir=$stage_dir" >> "$GITHUB_OUTPUT"
 
@@ -140,7 +184,7 @@ jobs:
             done
             test "$ok" = "1" || {
               echo "Public staging failed for $url"
-              exit 5
+              exit 10
             }
           done
 
@@ -149,14 +193,28 @@ jobs:
         run: npm run publish:instagram
 
       - name: Persist non-secret publication evidence
-        if: success()
+        if: always()
         shell: bash
+        env:
+          GIT_SSH_COMMAND: ssh -i ~/.ssh/atlas_news_pages -o IdentitiesOnly=yes
         run: |
           set -euo pipefail
+          evidence="tools/social-renderer/output/instagram-publish.json"
+          if [ ! -f "$evidence" ]; then
+            echo "No Instagram publication evidence file was produced."
+            exit 0
+          fi
           stage_dir="${{ steps.stage.outputs.stage_dir }}"
-          cp tools/social-renderer/output/instagram-publish.json "_social_assets/$stage_dir/instagram-publish.json"
+          test -n "$stage_dir" || {
+            echo "No public staging directory exists; evidence remains in the Actions artifact only."
+            exit 0
+          }
+          cp "$evidence" "_social_assets/$stage_dir/instagram-publish.json"
           cd _social_assets
           git add "$stage_dir/instagram-publish.json"
+          if git diff --cached --quiet; then
+            exit 0
+          fi
           git commit -m "social-assets: record Instagram publication ${GITHUB_RUN_ID}-${GITHUB_RUN_ATTEMPT}"
           git push origin HEAD:social-assets
 
