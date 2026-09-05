@@ -63,6 +63,13 @@ const xHref = `https://twitter.com/intent/tweet?text=${encodeURIComponent(title)
       data-share-title={title}
       data-share-summary={summary}
     >
+      <img
+        class="share-icon"
+        src="/share-icons/share.svg"
+        alt=""
+        width="24"
+        height="24"
+      />
       Compartir…
     </button>
     <a
@@ -71,6 +78,13 @@ const xHref = `https://twitter.com/intent/tweet?text=${encodeURIComponent(title)
       target="_blank"
       rel="noopener noreferrer"
     >
+      <img
+        class="share-icon"
+        src="/share-icons/whatsapp.svg"
+        alt=""
+        width="24"
+        height="24"
+      />
       WhatsApp
     </a>
     <a
@@ -79,6 +93,13 @@ const xHref = `https://twitter.com/intent/tweet?text=${encodeURIComponent(title)
       target="_blank"
       rel="noopener noreferrer"
     >
+      <img
+        class="share-icon"
+        src="/share-icons/facebook.svg"
+        alt=""
+        width="24"
+        height="24"
+      />
       Facebook
     </a>
     <a
@@ -87,6 +108,13 @@ const xHref = `https://twitter.com/intent/tweet?text=${encodeURIComponent(title)
       target="_blank"
       rel="noopener noreferrer"
     >
+      <img
+        class="share-icon"
+        src="/share-icons/linkedin.svg"
+        alt=""
+        width="24"
+        height="24"
+      />
       LinkedIn
     </a>
     <a
@@ -95,9 +123,23 @@ const xHref = `https://twitter.com/intent/tweet?text=${encodeURIComponent(title)
       target="_blank"
       rel="noopener noreferrer"
     >
+      <img
+        class="share-icon"
+        src="/share-icons/x.svg"
+        alt=""
+        width="24"
+        height="24"
+      />
       X
     </a>
     <button class="share-action" type="button" data-share-copy>
+      <img
+        class="share-icon"
+        src="/share-icons/link.svg"
+        alt=""
+        width="24"
+        height="24"
+      />
       Copiar enlace
     </button>
     <span class="share-status" data-share-status aria-live="polite"></span>
@@ -251,6 +293,7 @@ const xHref = `https://twitter.com/intent/tweet?text=${encodeURIComponent(title)
     appearance: none;
     display: inline-flex;
     align-items: center;
+    gap: 0.42rem;
     min-height: 2rem;
     padding: 0.45rem 0.58rem;
     border: 1px solid var(--rule);
@@ -263,11 +306,20 @@ const xHref = `https://twitter.com/intent/tweet?text=${encodeURIComponent(title)
     text-transform: inherit;
     cursor: pointer;
   }
+  .share-icon {
+    width: 1.05rem;
+    height: 1.05rem;
+    flex: 0 0 auto;
+  }
   .share-action:hover,
   .share-action:focus-visible {
     color: var(--paper);
     background: var(--ink);
     outline: none;
+  }
+  .share-action:hover .share-icon,
+  .share-action:focus-visible .share-icon {
+    filter: brightness(0) invert(1);
   }
   .share-native {
     border-color: var(--accent);
