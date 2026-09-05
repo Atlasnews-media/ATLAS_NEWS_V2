@@ -147,7 +147,9 @@ async function verifyPublishedMedia(mediaId) {
       const candidate = await api(
         `/${encodeURIComponent(mediaId)}?fields=id,permalink,media_type,timestamp,caption`,
       );
-      if (String(candidate.permalink || "").trim()) return candidate;
+      if (String(candidate.permalink || "").trim()) {
+        return { verified: candidate, error: null };
+      }
       lastError = new Error("permalink missing from publication metadata");
     } catch (error) {
       lastError = error;
