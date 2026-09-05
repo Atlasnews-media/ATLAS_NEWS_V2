@@ -1,98 +1,144 @@
-import fs from 'node:fs/promises';
-import path from 'node:path';
-import { performance } from 'node:perf_hooks';
-import { chromium } from 'playwright';
-import { generateOpenGraphImage } from 'astro-og-canvas';
+import fs from "node:fs/promises";
+import path from "node:path";
+import { performance } from "node:perf_hooks";
+import { chromium } from "playwright";
+import { generateOpenGraphImage } from "astro-og-canvas";
 
-const ROOT = path.resolve(process.cwd(), '../..');
-const OUT = path.resolve(process.cwd(), 'output');
-const TMP = path.resolve(process.cwd(), '.tmp');
-const CONTRACT_INPUT = process.env.SOCIAL_CONTRACT || process.argv[2] || '';
-const PUBLICATION_STATUS = process.env.SOCIAL_PUBLICATION_STATUS || '';
-const REQUIRED_PUBLICATION_STATUS = 'PUBLICACIÓN DISPONIBLE / VERIFICADA';
-const MARK_PATH = path.resolve(process.cwd(), 'assets/atlas-mark.svg');
-const PAPER = '#f2efe5';
-const NAVY = '#0a3554';
-const BLUE = '#1b5d93';
-const BRAND_LINE = 'MERCADOS · ECONOMÍA · CONTEXTO';
+const ROOT = path.resolve(process.cwd(), "../..");
+const OUT = path.resolve(process.cwd(), "output");
+const TMP = path.resolve(process.cwd(), ".tmp");
+const CONTRACT_INPUT = process.env.SOCIAL_CONTRACT || process.argv[2] || "";
+const PUBLICATION_STATUS = process.env.SOCIAL_PUBLICATION_STATUS || "";
+const REQUIRED_PUBLICATION_STATUS = "PUBLICACIÓN DISPONIBLE / VERIFICADA";
+const MARK_PATH = path.resolve(process.cwd(), "assets/atlas-mark.svg");
+const PAPER = "#f2efe5";
+const NAVY = "#0a3554";
+const BLUE = "#1b5d93";
+const BRAND_LINE = "MERCADOS · ECONOMÍA · CONTEXTO";
 
 const ICONS = Object.freeze({
-  'trend-up': '<svg viewBox="0 0 64 64" aria-hidden="true"><path d="M10 46 27 29l11 11 16-22"/><path d="M40 18h14v14"/></svg>',
-  'cash-card': '<svg viewBox="0 0 64 64" aria-hidden="true"><rect x="9" y="16" width="46" height="32" rx="3"/><path d="M9 26h46M18 39h13"/></svg>',
-  'risk-triangle': '<svg viewBox="0 0 64 64" aria-hidden="true"><path d="M32 10 56 52H8Z"/><path d="M32 25v13M32 45h.01"/></svg>',
-  'portfolio-grid': '<svg viewBox="0 0 64 64" aria-hidden="true"><rect x="10" y="13" width="44" height="38" rx="2"/><path d="M25 13v38M39 13v38M10 31h44"/></svg>',
-  'decision-check': '<svg viewBox="0 0 64 64" aria-hidden="true"><rect x="10" y="11" width="44" height="42" rx="4"/><path d="m19 33 9 9 18-21"/></svg>',
-  'context-target': '<svg viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="22"/><circle cx="32" cy="32" r="11"/><circle cx="32" cy="32" r="2"/></svg>',
+  "trend-up":
+    '<svg viewBox="0 0 64 64" aria-hidden="true"><path d="M10 46 27 29l11 11 16-22"/><path d="M40 18h14v14"/></svg>',
+  "cash-card":
+    '<svg viewBox="0 0 64 64" aria-hidden="true"><rect x="9" y="16" width="46" height="32" rx="3"/><path d="M9 26h46M18 39h13"/></svg>',
+  "risk-triangle":
+    '<svg viewBox="0 0 64 64" aria-hidden="true"><path d="M32 10 56 52H8Z"/><path d="M32 25v13M32 45h.01"/></svg>',
+  "portfolio-grid":
+    '<svg viewBox="0 0 64 64" aria-hidden="true"><rect x="10" y="13" width="44" height="38" rx="2"/><path d="M25 13v38M39 13v38M10 31h44"/></svg>',
+  "decision-check":
+    '<svg viewBox="0 0 64 64" aria-hidden="true"><rect x="10" y="11" width="44" height="42" rx="4"/><path d="m19 33 9 9 18-21"/></svg>',
+  "context-target":
+    '<svg viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="22"/><circle cx="32" cy="32" r="11"/><circle cx="32" cy="32" r="2"/></svg>',
 });
 
-function escapeHtml(value = '') {
-  return String(value).replace(/[&<>\"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+function escapeHtml(value = "") {
+  return String(value).replace(
+    /[&<>\"]/g,
+    (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[c],
+  );
 }
 
 function assertPlainObject(value, label) {
-  if (!value || typeof value !== 'object' || Array.isArray(value)) throw new Error(`${label} must be an object`);
+  if (!value || typeof value !== "object" || Array.isArray(value))
+    throw new Error(`${label} must be an object`);
 }
 
 function assertExactKeys(value, allowed, label) {
   for (const key of Object.keys(value)) {
-    if (!allowed.includes(key)) throw new Error(`${label} contains unsupported field: ${key}`);
+    if (!allowed.includes(key))
+      throw new Error(`${label} contains unsupported field: ${key}`);
   }
 }
 
 function assertString(value, label) {
-  if (typeof value !== 'string' || !value.trim()) throw new Error(`${label} is required`);
+  if (typeof value !== "string" || !value.trim())
+    throw new Error(`${label} is required`);
   return value.trim();
 }
 
 function validateContract(raw) {
-  assertPlainObject(raw, 'contract');
+  assertPlainObject(raw, "contract");
   const allowed = [
-    'version', 'sourceCommit', 'sourceId', 'canonicalUrl', 'publishedDate', 'productType',
-    'sectionLabel', 'title', 'dek', 'ideaCentral', 'ideaSupport', 'keyPoints', 'impactItems',
+    "version",
+    "sourceCommit",
+    "sourceId",
+    "canonicalUrl",
+    "publishedDate",
+    "productType",
+    "sectionLabel",
+    "title",
+    "dek",
+    "ideaCentral",
+    "ideaSupport",
+    "keyPoints",
+    "impactItems",
   ];
-  assertExactKeys(raw, allowed, 'contract');
+  assertExactKeys(raw, allowed, "contract");
 
   const contract = {
-    version: String(raw.version ?? '').trim(),
-    sourceCommit: raw.sourceCommit ? assertString(raw.sourceCommit, 'sourceCommit') : '',
-    sourceId: raw.sourceId ? assertString(raw.sourceId, 'sourceId') : '',
-    canonicalUrl: assertString(raw.canonicalUrl, 'canonicalUrl'),
-    publishedDate: assertString(raw.publishedDate, 'publishedDate'),
-    productType: assertString(raw.productType, 'productType'),
-    sectionLabel: assertString(raw.sectionLabel, 'sectionLabel'),
-    title: assertString(raw.title, 'title'),
-    dek: assertString(raw.dek, 'dek'),
-    ideaCentral: assertString(raw.ideaCentral, 'ideaCentral'),
-    ideaSupport: assertString(raw.ideaSupport, 'ideaSupport'),
+    version: String(raw.version ?? "").trim(),
+    sourceCommit: raw.sourceCommit
+      ? assertString(raw.sourceCommit, "sourceCommit")
+      : "",
+    sourceId: raw.sourceId ? assertString(raw.sourceId, "sourceId") : "",
+    canonicalUrl: assertString(raw.canonicalUrl, "canonicalUrl"),
+    publishedDate: assertString(raw.publishedDate, "publishedDate"),
+    productType: assertString(raw.productType, "productType"),
+    sectionLabel: assertString(raw.sectionLabel, "sectionLabel"),
+    title: assertString(raw.title, "title"),
+    dek: assertString(raw.dek, "dek"),
+    ideaCentral: assertString(raw.ideaCentral, "ideaCentral"),
+    ideaSupport: assertString(raw.ideaSupport, "ideaSupport"),
     keyPoints: raw.keyPoints,
     impactItems: raw.impactItems,
   };
 
-  if (contract.version !== '1') throw new Error(`Unsupported Social Content Contract version: ${contract.version || '<missing>'}`);
-  if (!contract.sourceCommit && !contract.sourceId) throw new Error('sourceCommit or sourceId is required');
-  if (contract.sourceCommit && !/^[0-9a-f]{7,40}$/i.test(contract.sourceCommit)) throw new Error('sourceCommit must be a Git commit SHA');
+  if (contract.version !== "1")
+    throw new Error(
+      `Unsupported Social Content Contract version: ${contract.version || "<missing>"}`,
+    );
+  if (!contract.sourceCommit && !contract.sourceId)
+    throw new Error("sourceCommit or sourceId is required");
+  if (contract.sourceCommit && !/^[0-9a-f]{7,40}$/i.test(contract.sourceCommit))
+    throw new Error("sourceCommit must be a Git commit SHA");
 
   let canonical;
-  try { canonical = new URL(contract.canonicalUrl); } catch { throw new Error('canonicalUrl must be a valid URL'); }
-  if (canonical.protocol !== 'https:') throw new Error('canonicalUrl must use https');
+  try {
+    canonical = new URL(contract.canonicalUrl);
+  } catch {
+    throw new Error("canonicalUrl must be a valid URL");
+  }
+  if (canonical.protocol !== "https:")
+    throw new Error("canonicalUrl must use https");
 
   const published = new Date(contract.publishedDate);
-  if (Number.isNaN(published.valueOf())) throw new Error('publishedDate must be a valid date');
-  if (published.valueOf() > Date.now()) throw new Error('publishedDate cannot be in the future');
+  if (Number.isNaN(published.valueOf()))
+    throw new Error("publishedDate must be a valid date");
+  if (published.valueOf() > Date.now())
+    throw new Error("publishedDate cannot be in the future");
 
-  if (!Array.isArray(contract.keyPoints) || contract.keyPoints.length !== 3) throw new Error('keyPoints must contain exactly 3 items');
+  if (!Array.isArray(contract.keyPoints) || contract.keyPoints.length !== 3)
+    throw new Error("keyPoints must contain exactly 3 items");
   contract.keyPoints = contract.keyPoints.map((item, index) => {
     assertPlainObject(item, `keyPoints[${index}]`);
-    assertExactKeys(item, ['iconKey', 'text'], `keyPoints[${index}]`);
+    assertExactKeys(item, ["iconKey", "text"], `keyPoints[${index}]`);
     const iconKey = assertString(item.iconKey, `keyPoints[${index}].iconKey`);
     if (!ICONS[iconKey]) throw new Error(`Unsupported iconKey: ${iconKey}`);
-    return { iconKey, text: assertString(item.text, `keyPoints[${index}].text`) };
+    return {
+      iconKey,
+      text: assertString(item.text, `keyPoints[${index}].text`),
+    };
   });
 
-  if (!Array.isArray(contract.impactItems) || contract.impactItems.length !== 3) throw new Error('impactItems must contain exactly 3 items');
+  if (!Array.isArray(contract.impactItems) || contract.impactItems.length !== 3)
+    throw new Error("impactItems must contain exactly 3 items");
   contract.impactItems = contract.impactItems.map((item, index) => {
     assertPlainObject(item, `impactItems[${index}]`);
-    assertExactKeys(item, ['iconKey', 'label', 'text'], `impactItems[${index}]`);
+    assertExactKeys(
+      item,
+      ["iconKey", "label", "text"],
+      `impactItems[${index}]`,
+    );
     const iconKey = assertString(item.iconKey, `impactItems[${index}].iconKey`);
     if (!ICONS[iconKey]) throw new Error(`Unsupported iconKey: ${iconKey}`);
     return {
@@ -106,32 +152,61 @@ function validateContract(raw) {
 }
 
 function resolveContract(input) {
-  if (!input) throw new Error('SOCIAL_CONTRACT is required');
-  const normalized = input.replaceAll('\\', '/');
-  if (!normalized.endsWith('.json') || normalized.startsWith('/') || normalized.includes('..')) {
+  if (!input) throw new Error("SOCIAL_CONTRACT is required");
+  const normalized = input.replaceAll("\\", "/");
+  if (
+    !normalized.endsWith(".json") ||
+    normalized.startsWith("/") ||
+    normalized.includes("..")
+  ) {
     throw new Error(`Unsafe contract path: ${input}`);
   }
   const absolute = path.resolve(ROOT, normalized);
-  const relative = path.relative(ROOT, absolute).replaceAll(path.sep, '/');
-  if (relative !== normalized) throw new Error(`Unsafe contract path: ${input}`);
+  const relative = path.relative(ROOT, absolute).replaceAll(path.sep, "/");
+  if (relative !== normalized)
+    throw new Error(`Unsafe contract path: ${input}`);
   return { absolute, relative };
 }
 
 function dateLabel(iso) {
   const d = new Date(iso);
-  const m = ['ENE', 'FEB', 'MAR', 'ABR', 'MAY', 'JUN', 'JUL', 'AGO', 'SEP', 'OCT', 'NOV', 'DIC'];
-  return `${String(d.getDate()).padStart(2,'0')} ${m[d.getMonth()]} ${d.getFullYear()}`;
+  const m = [
+    "ENE",
+    "FEB",
+    "MAR",
+    "ABR",
+    "MAY",
+    "JUN",
+    "JUL",
+    "AGO",
+    "SEP",
+    "OCT",
+    "NOV",
+    "DIC",
+  ];
+  return `${String(d.getDate()).padStart(2, "0")} ${m[d.getMonth()]} ${d.getFullYear()}`;
 }
 
 async function localCanvasFont() {
   const candidates = [
-    { path: '/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf', family: 'DejaVu Sans' },
-    { path: '/usr/share/fonts/truetype/liberation2/LiberationSans-Regular.ttf', family: 'Liberation Sans' },
+    {
+      path: "/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf",
+      family: "DejaVu Sans",
+    },
+    {
+      path: "/usr/share/fonts/truetype/liberation2/LiberationSans-Regular.ttf",
+      family: "Liberation Sans",
+    },
   ];
   for (const candidate of candidates) {
-    try { await fs.access(candidate.path); return candidate; } catch { /* next local font */ }
+    try {
+      await fs.access(candidate.path);
+      return candidate;
+    } catch {
+      /* next local font */
+    }
   }
-  throw new Error('No approved runner-local font found for astro-og-canvas');
+  throw new Error("No approved runner-local font found for astro-og-canvas");
 }
 
 function baseCss(w, h) {
@@ -172,54 +247,72 @@ function iconSvg(iconKey) {
 }
 
 function documentHtml(inner, w, h, date, mark) {
-  return `<!doctype html><html><head><meta charset="utf-8"><style>${baseCss(w,h)}</style></head><body><div class="page" id="root">${header(mark,date)}${inner}</div></body></html>`;
+  return `<!doctype html><html><head><meta charset="utf-8"><style>${baseCss(w, h)}</style></head><body><div class="page" id="root">${header(mark, date)}${inner}</div></body></html>`;
 }
 
 async function screenshot(page, html, file, w, h) {
   await page.setViewportSize({ width: w, height: h });
-  await page.setContent(html, { waitUntil: 'load' });
+  await page.setContent(html, { waitUntil: "load" });
   await page.evaluate(() => document.fonts.ready);
   const overflow = await page.evaluate(() => {
-    const root = document.getElementById('root').getBoundingClientRect();
-    return [...document.querySelectorAll('[data-fit]')].map((el) => {
-      const r = el.getBoundingClientRect();
-      return {
-        target: el.textContent?.trim().slice(0,70) || el.getAttribute('class') || el.tagName,
-        ok: r.left >= root.left - 1 && r.top >= root.top - 1 && r.right <= root.right + 1 && r.bottom <= root.bottom + 1,
-      };
-    }).filter((x) => !x.ok);
+    const root = document.getElementById("root").getBoundingClientRect();
+    return [...document.querySelectorAll("[data-fit]")]
+      .map((el) => {
+        const r = el.getBoundingClientRect();
+        return {
+          target:
+            el.textContent?.trim().slice(0, 70) ||
+            el.getAttribute("class") ||
+            el.tagName,
+          ok:
+            r.left >= root.left - 1 &&
+            r.top >= root.top - 1 &&
+            r.right <= root.right + 1 &&
+            r.bottom <= root.bottom + 1,
+        };
+      })
+      .filter((x) => !x.ok);
   });
-  if (overflow.length) throw new Error(`Clipping/overflow: ${JSON.stringify(overflow)}`);
-  await page.screenshot({ path: file, type: 'png' });
+  if (overflow.length)
+    throw new Error(`Clipping/overflow: ${JSON.stringify(overflow)}`);
+  await page.screenshot({ path: file, type: "png" });
 }
 
 function validatePng(fileName, buffer) {
-  if (buffer.toString('hex',0,8) !== '89504e470d0a1a0a') throw new Error(`${fileName} is not PNG`);
+  if (buffer.toString("hex", 0, 8) !== "89504e470d0a1a0a")
+    throw new Error(`${fileName} is not PNG`);
   const w = buffer.readUInt32BE(16);
   const h = buffer.readUInt32BE(20);
-  const expected = fileName.includes('social-card') ? [1200,630] : [1080,1350];
-  if (w !== expected[0] || h !== expected[1]) throw new Error(`${fileName} dimensions ${w}x${h}`);
+  const expected = fileName.includes("social-card")
+    ? [1200, 630]
+    : [1080, 1350];
+  if (w !== expected[0] || h !== expected[1])
+    throw new Error(`${fileName} dimensions ${w}x${h}`);
 }
 
 async function main() {
   if (PUBLICATION_STATUS !== REQUIRED_PUBLICATION_STATUS) {
-    throw new Error(`Post-publication guard failed: expected "${REQUIRED_PUBLICATION_STATUS}"`);
+    throw new Error(
+      `Post-publication guard failed: expected "${REQUIRED_PUBLICATION_STATUS}"`,
+    );
   }
 
   const contractPath = resolveContract(CONTRACT_INPUT);
-  const raw = JSON.parse(await fs.readFile(contractPath.absolute, 'utf8'));
+  const raw = JSON.parse(await fs.readFile(contractPath.absolute, "utf8"));
   const contract = validateContract(raw);
 
-  await fs.rm(OUT, { recursive:true, force:true });
-  await fs.rm(TMP, { recursive:true, force:true });
-  await fs.mkdir(OUT, { recursive:true });
-  await fs.mkdir(TMP, { recursive:true });
+  await fs.rm(OUT, { recursive: true, force: true });
+  await fs.rm(TMP, { recursive: true, force: true });
+  await fs.mkdir(OUT, { recursive: true });
+  await fs.mkdir(TMP, { recursive: true });
 
-  const mark = 'data:image/svg+xml;base64,' + Buffer.from(await fs.readFile(MARK_PATH, 'utf8')).toString('base64');
+  const mark =
+    "data:image/svg+xml;base64," +
+    Buffer.from(await fs.readFile(MARK_PATH, "utf8")).toString("base64");
   const date = dateLabel(contract.publishedDate);
   const canvasFont = await localCanvasFont();
   const t0 = performance.now();
-  const browser = await chromium.launch({ headless:true });
+  const browser = await chromium.launch({ headless: true });
   const page = await browser.newPage();
 
   const cardInner = `
@@ -231,23 +324,39 @@ async function main() {
     <img class="mark" data-fit src="${mark}" style="right:55px;top:180px;width:320px;height:420px">
     <div style="position:absolute;left:60px;right:60px;bottom:34px;border-top:5px double ${NAVY};height:1px;z-index:2"></div>`;
 
-  const cardPre = path.join(TMP, 'social-background.png');
+  const cardPre = path.join(TMP, "social-background.png");
   const cardStart = performance.now();
-  await screenshot(page, documentHtml(cardInner,1200,630,date,mark), cardPre,1200,630);
+  await screenshot(
+    page,
+    documentHtml(cardInner, 1200, 630, date, mark),
+    cardPre,
+    1200,
+    630,
+  );
   const cardHtmlMs = performance.now() - cardStart;
 
   const ogOptions = {
-    title:' ', description:'', bgImage:{ path:cardPre, fit:'fill' }, padding:1,
-    fonts:[canvasFont.path],
-    font:{
-      title:{ size:1, color:[242,239,229], families:[canvasFont.family] },
-      description:{ size:1, color:[242,239,229], families:[canvasFont.family] },
+    title: " ",
+    description: "",
+    bgImage: { path: cardPre, fit: "fill" },
+    padding: 1,
+    fonts: [canvasFont.path],
+    font: {
+      title: { size: 1, color: [242, 239, 229], families: [canvasFont.family] },
+      description: {
+        size: 1,
+        color: [242, 239, 229],
+        families: [canvasFont.family],
+      },
     },
-    cacheDir:path.join(TMP,'og-cache'),
+    cacheDir: path.join(TMP, "og-cache"),
   };
   const ogStart = performance.now();
   const og = await generateOpenGraphImage(ogOptions);
-  await fs.writeFile(path.join(OUT,'atlas-news-social-card-1200x630.png'), Buffer.from(await new Response(og).arrayBuffer()));
+  await fs.writeFile(
+    path.join(OUT, "atlas-news-social-card-1200x630.png"),
+    Buffer.from(await new Response(og).arrayBuffer()),
+  );
   const ogMaterializeMs = performance.now() - ogStart;
   const ogWarmStart = performance.now();
   await generateOpenGraphImage(ogOptions);
@@ -280,7 +389,7 @@ async function main() {
     <div class="kicker">QUÉ CAMBIÓ</div>
     <div data-fit style="position:absolute;left:60px;right:60px;top:335px;z-index:2">
       <div style="font-size:112px;line-height:.88;font-weight:700;letter-spacing:-5px">Qué cambió</div>
-      ${contract.keyPoints.map(point).join('')}
+      ${contract.keyPoints.map(point).join("")}
     </div>
     ${footer(3)}`;
 
@@ -293,7 +402,7 @@ async function main() {
     <div class="kicker">POR QUÉ IMPORTA</div>
     <div data-fit style="position:absolute;left:60px;right:60px;top:335px;z-index:2">
       <div style="font-size:108px;line-height:.88;font-weight:700;letter-spacing:-5px">Por qué importa</div>
-      ${contract.impactItems.map(impact).join('')}
+      ${contract.impactItems.map(impact).join("")}
     </div>
     ${footer(4)}`;
 
@@ -309,37 +418,48 @@ async function main() {
     <img class="mark" data-fit src="${mark}" style="right:45px;bottom:145px;width:390px;height:570px">
     ${footer(5)}`;
 
-  const slides = [slide1,slide2,slide3,slide4,slide5];
+  const slides = [slide1, slide2, slide3, slide4, slide5];
   const carouselStart = performance.now();
-  for (let i=0; i<slides.length; i++) {
-    await screenshot(page, documentHtml(slides[i],1080,1350,date,mark), path.join(OUT,`atlas-news-instagram-carousel-0${i+1}.png`),1080,1350);
+  for (let i = 0; i < slides.length; i++) {
+    await screenshot(
+      page,
+      documentHtml(slides[i], 1080, 1350, date, mark),
+      path.join(OUT, `atlas-news-instagram-carousel-0${i + 1}.png`),
+      1080,
+      1350,
+    );
   }
   const carouselRenderMs = performance.now() - carouselStart;
   await browser.close();
 
   const files = (await fs.readdir(OUT)).sort();
-  if (files.length !== 6) throw new Error(`Expected 6 PNGs before benchmark, got ${files.length}`);
-  for (const file of files) validatePng(file, await fs.readFile(path.join(OUT,file)));
+  if (files.length !== 6)
+    throw new Error(`Expected 6 PNGs before benchmark, got ${files.length}`);
+  for (const file of files)
+    validatePng(file, await fs.readFile(path.join(OUT, file)));
 
   const metrics = {
-    contractVersion:contract.version,
-    contractPath:contractPath.relative,
-    sourceCommit:contract.sourceCommit || null,
-    sourceId:contract.sourceId || null,
-    canonicalUrl:contract.canonicalUrl,
-    publicationStatus:PUBLICATION_STATUS,
-    productType:contract.productType,
-    title:contract.title,
-    cardHtmlMs:Math.round(cardHtmlMs),
-    ogMaterializeMs:Math.round(ogMaterializeMs),
-    ogCacheHitMs:Math.round(ogCacheHitMs),
-    carouselRenderMs:Math.round(carouselRenderMs),
-    totalRendererMs:Math.round(performance.now()-t0),
-    githubRunId:process.env.GITHUB_RUN_ID || null,
-    outputs:files,
+    contractVersion: contract.version,
+    contractPath: contractPath.relative,
+    sourceCommit: contract.sourceCommit || null,
+    sourceId: contract.sourceId || null,
+    canonicalUrl: contract.canonicalUrl,
+    publicationStatus: PUBLICATION_STATUS,
+    productType: contract.productType,
+    title: contract.title,
+    cardHtmlMs: Math.round(cardHtmlMs),
+    ogMaterializeMs: Math.round(ogMaterializeMs),
+    ogCacheHitMs: Math.round(ogCacheHitMs),
+    carouselRenderMs: Math.round(carouselRenderMs),
+    totalRendererMs: Math.round(performance.now() - t0),
+    githubRunId: process.env.GITHUB_RUN_ID || null,
+    outputs: files,
   };
-  await fs.writeFile(path.join(OUT,'benchmark.json'), JSON.stringify(metrics,null,2));
-  console.log(JSON.stringify(metrics,null,2));
+  await fs.writeFile(
+    path.join(OUT, "benchmark.json"),
+    JSON.stringify(metrics, null, 2),
+  );
+  console.log(JSON.stringify(metrics, null, 2));
 }
 
 main().catch((error) => {

@@ -11,13 +11,34 @@
   "ideaCentral": "Si el activo seguro vuelve a pagar, el riesgo ya no puede justificarse solo por falta de alternativas.",
   "ideaSupport": "Cuando los retornos libres de riesgo mejoran, la exigencia para invertir en activos más volátiles también sube.",
   "keyPoints": [
-    { "iconKey": "trend-up", "text": "Tasas más altas elevan el piso de retorno." },
-    { "iconKey": "cash-card", "text": "El cash y la renta fija vuelven a competir." },
-    { "iconKey": "risk-triangle", "text": "La prima exigida para asumir riesgo aumenta." }
+    {
+      "iconKey": "trend-up",
+      "text": "Tasas más altas elevan el piso de retorno."
+    },
+    {
+      "iconKey": "cash-card",
+      "text": "El cash y la renta fija vuelven a competir."
+    },
+    {
+      "iconKey": "risk-triangle",
+      "text": "La prima exigida para asumir riesgo aumenta."
+    }
   ],
   "impactItems": [
-    { "iconKey": "portfolio-grid", "label": "Carteras", "text": "obliga a revisar el balance entre seguridad y riesgo." },
-    { "iconKey": "decision-check", "label": "Decisiones", "text": "subir el estándar para entrar a activos más inciertos." },
-    { "iconKey": "context-target", "label": "Contexto", "text": "entender mejor cuándo el premio compensa el riesgo." }
+    {
+      "iconKey": "portfolio-grid",
+      "label": "Carteras",
+      "text": "obliga a revisar el balance entre seguridad y riesgo."
+    },
+    {
+      "iconKey": "decision-check",
+      "label": "Decisiones",
+      "text": "subir el estándar para entrar a activos más inciertos."
+    },
+    {
+      "iconKey": "context-target",
+      "label": "Contexto",
+      "text": "entender mejor cuándo el premio compensa el riesgo."
+    }
   ]
 }
