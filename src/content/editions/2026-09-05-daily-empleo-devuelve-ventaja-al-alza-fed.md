@@ -4,7 +4,7 @@ summary: "Las nóminas de agosto superaron ampliamente el consenso y devolvieron
 publishedAt: "2026-09-05T06:00:00-04:00"
 cutoffAt: "2026-09-05T05:58:00-04:00"
 type: "daily"
-status: "draft"
+status: "published"
 tags:
   - mercados-globales
   - fed
