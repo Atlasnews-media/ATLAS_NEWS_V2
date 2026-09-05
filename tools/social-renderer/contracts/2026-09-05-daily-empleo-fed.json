@@ -1,0 +1,44 @@
+{
+  "version": "1",
+  "sourceCommit": "74e4d789383cce8d3b7a75679ecb263576d3ac70",
+  "sourceId": "src/content/editions/2026-09-05-daily-empleo-devuelve-ventaja-al-alza-fed.md",
+  "canonicalUrl": "https://eldesiempre100.github.io/ediciones/2026-09-05-daily-empleo-devuelve-ventaja-al-alza-fed/",
+  "publishedDate": "2026-09-05T06:00:00-04:00",
+  "productType": "daily",
+  "sectionLabel": "PORTADA · HECHO CENTRAL",
+  "title": "El empleo devuelve ventaja al alza de la Fed",
+  "dek": "La inflación debe confirmarla",
+  "ideaCentral": "Las nóminas de agosto superaron ampliamente el consenso y devolvieron mayoría al escenario de una subida de la Fed en septiembre.",
+  "ideaSupport": "Salarios moderados y el próximo IPC impiden dar la decisión por cerrada.",
+  "keyPoints": [
+    {
+      "iconKey": "trend-up",
+      "text": "EE.UU. creó 162.000 empleos en agosto frente a 56.000 esperados."
+    },
+    {
+      "iconKey": "cash-card",
+      "text": "La probabilidad de una subida en septiembre regresó hacia 60%."
+    },
+    {
+      "iconKey": "risk-triangle",
+      "text": "La inflación de agosto será la siguiente prueba decisiva para la Fed."
+    }
+  ],
+  "impactItems": [
+    {
+      "iconKey": "portfolio-grid",
+      "label": "Carry",
+      "text": "El carry corto conserva valor."
+    },
+    {
+      "iconKey": "decision-check",
+      "label": "Duración",
+      "text": "La duración vuelve a requerir mayor margen de seguridad hasta conocer inflación."
+    },
+    {
+      "iconKey": "context-target",
+      "label": "Acciones",
+      "text": "Calidad de caja y capacidad de financiar crecimiento siguen importando más."
+    }
+  ]
+}
