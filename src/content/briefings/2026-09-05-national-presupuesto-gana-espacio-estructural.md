@@ -4,7 +4,7 @@ summary: "Dipres elevó el precio de referencia del cobre a US$5,37 la libra y m
 publishedAt: "2026-09-05T06:15:00-04:00"
 cutoffAt: "2026-09-05T06:15:00-04:00"
 section: "national"
-status: "draft"
+status: "published"
 tags:
   - chile
   - presupuesto-2027
