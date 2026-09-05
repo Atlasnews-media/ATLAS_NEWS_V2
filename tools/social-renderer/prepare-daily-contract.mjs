@@ -224,7 +224,9 @@ async function main() {
   const statusValue = required(scalar(frontmatterLines, "status"), "status");
   const type = required(scalar(frontmatterLines, "type"), "type");
   if (statusValue !== "published" || type !== "daily") {
-    throw new Error("Fail-closed: source edition is not a published daily edition");
+    throw new Error(
+      "Fail-closed: source edition is not a published daily edition",
+    );
   }
 
   const sourceHighlights = highlights(frontmatterLines);
@@ -238,7 +240,9 @@ async function main() {
   }
 
   const summarySentences = sentences(summary);
-  const centralSectionSentences = sentences(sectionBody(markdown, "Hecho central"));
+  const centralSectionSentences = sentences(
+    sectionBody(markdown, "Hecho central"),
+  );
   const ideaCentral = required(
     summarySentences[0] || centralSectionSentences[0],
     "ideaCentral",
@@ -256,7 +260,9 @@ async function main() {
     );
   }
 
-  const fallbackDek = sourceHighlights.map((item) => item.label).join(" · ");
+  const fallbackDek = sourceHighlights
+    .map((item) => item.label)
+    .join(" · ");
   const headline = headlineParts(rawTitle, fallbackDek);
   const canonicalUrl = `https://eldesiempre100.github.io/ediciones/${editionId}/`;
   await assertPublic(`${canonicalUrl}?source=${SOURCE_COMMIT}`);
