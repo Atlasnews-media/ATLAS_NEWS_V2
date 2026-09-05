@@ -6,6 +6,7 @@ import {
   getPublishedDailies,
   getPublishedEditions,
 } from "../lib/content";
+import { socialImageFor } from "../lib/social-images";
 
 declare const process: {
   env: Record<string, string | undefined>;
@@ -45,10 +46,18 @@ const sourceCommit = (
 
 const siteOrigin = Astro.site ?? Astro.url.origin;
 const canonicalUrl = new URL(Astro.url.pathname, siteOrigin).href;
-const socialImageUrl = new URL("/brand/atlas-icon.png", siteOrigin).href;
 const isArticle = /^\/(ediciones|nacional|mercados|lecturas)\/[^/]+\/?$/.test(
   Astro.url.pathname,
 );
+const generatedSocialImage = isArticle
+  ? await socialImageFor(Astro.url.pathname)
+  : null;
+const socialImageUrl = generatedSocialImage
+  ? generatedSocialImage
+  : new URL("/brand/atlas-icon.png", siteOrigin).href;
+const socialImageWidth = generatedSocialImage ? "1200" : "1172";
+const socialImageHeight = generatedSocialImage ? "630" : "1172";
+const socialImageAlt = generatedSocialImage ? `${title} — ATLAS NEWS` : "ATLAS NEWS";
 const socialType = isArticle ? "article" : "website";
 
 const primaryEntry = { href: "/", label: "Portada" };
@@ -70,9 +79,10 @@ const primaryEntry = { href: "/", label: "Portada" };
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonicalUrl} />
     <meta property="og:image" content={socialImageUrl} />
-    <meta property="og:image:width" content="1172" />
-    <meta property="og:image:height" content="1172" />
-    <meta property="og:image:alt" content="ATLAS NEWS" />
+    <meta property="og:image:type" content="image/png" />
+    <meta property="og:image:width" content={socialImageWidth} />
+    <meta property="og:image:height" content={socialImageHeight} />
+    <meta property="og:image:alt" content={socialImageAlt} />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
