@@ -1,6 +1,8 @@
 import { defineConfig } from "astro/config";
 
-const analyticsWebsiteId = process.env.ATLAS_UMAMI_WEBSITE_ID?.trim();
+const analyticsWebsiteId =
+  process.env.ATLAS_UMAMI_WEBSITE_ID?.trim() ||
+  "e34fdb19-91b3-41d5-82ad-a577498b31ca";
 const analyticsScriptUrl =
   process.env.ATLAS_UMAMI_SCRIPT_URL?.trim() ||
   "https://cloud.umami.is/script.js";
