@@ -1,0 +1,173 @@
+name: Instagram Carousel — Controlled publish
+
+on:
+  workflow_dispatch:
+    inputs:
+      contract:
+        description: "Path to an approved Social Content Contract v1 JSON"
+        required: true
+        type: string
+        default: "tools/social-renderer/contracts/2026-09-04-reading-activo-seguro-riesgo.json"
+      publication_status:
+        description: "Type exactly: PUBLICACIÓN DISPONIBLE / VERIFICADA"
+        required: true
+        type: string
+      publish_confirmation:
+        description: "Type exactly: PUBLICAR CARRUSEL / AUTORIZADO"
+        required: true
+        type: string
+      api_version:
+        description: "Instagram Graph API version"
+        required: true
+        type: string
+        default: "v23.0"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: instagram-carousel-publish
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    env:
+      SOCIAL_CONTRACT: ${{ inputs.contract }}
+      SOCIAL_PUBLICATION_STATUS: ${{ inputs.publication_status }}
+      INSTAGRAM_PUBLISH_CONFIRMATION: ${{ inputs.publish_confirmation }}
+      INSTAGRAM_API_VERSION: ${{ inputs.api_version }}
+      INSTAGRAM_EXPECTED_USERNAME: _atlas_news
+      INSTAGRAM_ACCESS_TOKEN: ${{ secrets.INSTAGRAM_ACCESS_TOKEN }}
+    steps:
+      - name: Verify explicit publication gates and secret presence
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$SOCIAL_PUBLICATION_STATUS" = "PUBLICACIÓN DISPONIBLE / VERIFICADA" || {
+            echo "Fail-closed: Atlas News publication is not explicitly verified."
+            exit 2
+          }
+          test "$INSTAGRAM_PUBLISH_CONFIRMATION" = "PUBLICAR CARRUSEL / AUTORIZADO" || {
+            echo "Fail-closed: Instagram publication is not explicitly authorized."
+            exit 3
+          }
+          test -n "$INSTAGRAM_ACCESS_TOKEN" || {
+            echo "Fail-closed: INSTAGRAM_ACCESS_TOKEN repository secret is missing."
+            exit 4
+          }
+
+      - name: Checkout integration code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22.19.0
+
+      - name: Restore renderer dependencies
+        id: deps-cache
+        uses: actions/cache@v4
+        with:
+          path: tools/social-renderer/node_modules
+          key: ${{ runner.os }}-node-22.19-social-renderer-${{ hashFiles('tools/social-renderer/package.json') }}
+
+      - name: Restore Chromium cache
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/ms-playwright
+          key: ${{ runner.os }}-social-renderer-playwright-1.62.1
+
+      - name: Install isolated renderer dependencies
+        if: steps.deps-cache.outputs.cache-hit != 'true'
+        working-directory: tools/social-renderer
+        run: npm install --no-audit --no-fund --no-package-lock
+
+      - name: Ensure Chromium
+        working-directory: tools/social-renderer
+        run: npx playwright install chromium
+
+      - name: Render approved social contract
+        working-directory: tools/social-renderer
+        run: npm run render
+
+      - name: Checkout public social-assets branch
+        uses: actions/checkout@v4
+        with:
+          ref: social-assets
+          path: _social_assets
+          fetch-depth: 1
+          token: ${{ github.token }}
+
+      - name: Stage carousel images on public HTTPS URLs
+        id: stage
+        shell: bash
+        run: |
+          set -euo pipefail
+          stage_dir="instagram-staging/${GITHUB_RUN_ID}-${GITHUB_RUN_ATTEMPT}"
+          mkdir -p "_social_assets/$stage_dir"
+          cp tools/social-renderer/output/atlas-news-instagram-carousel-0*.png "_social_assets/$stage_dir/"
+
+          cd _social_assets
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add "$stage_dir"
+          git commit -m "social-assets: stage Instagram carousel ${GITHUB_RUN_ID}-${GITHUB_RUN_ATTEMPT}"
+          git push origin HEAD:social-assets
+
+          base_url="https://raw.githubusercontent.com/${GITHUB_REPOSITORY}/social-assets/${stage_dir}"
+          echo "SOCIAL_IMAGE_BASE_URL=$base_url" >> "$GITHUB_ENV"
+          echo "stage_dir=$stage_dir" >> "$GITHUB_OUTPUT"
+
+      - name: Confirm staged images are publicly fetchable
+        shell: bash
+        run: |
+          set -euo pipefail
+          for n in 01 02 03 04 05; do
+            url="$SOCIAL_IMAGE_BASE_URL/atlas-news-instagram-carousel-${n}.png"
+            ok=0
+            for attempt in 1 2 3 4 5 6; do
+              code="$(curl -L -sS -o "/tmp/atlas-${n}.png" -w '%{http_code}' "$url" || true)"
+              type="$(file -b --mime-type "/tmp/atlas-${n}.png" 2>/dev/null || true)"
+              if [ "$code" = "200" ] && [ "$type" = "image/png" ]; then
+                ok=1
+                break
+              fi
+              sleep "$attempt"
+            done
+            test "$ok" = "1" || {
+              echo "Public staging failed for $url"
+              exit 5
+            }
+          done
+
+      - name: Publish controlled Instagram carousel
+        working-directory: tools/social-renderer
+        run: npm run publish:instagram
+
+      - name: Persist non-secret publication evidence
+        if: success()
+        shell: bash
+        run: |
+          set -euo pipefail
+          stage_dir="${{ steps.stage.outputs.stage_dir }}"
+          cp tools/social-renderer/output/instagram-publish.json "_social_assets/$stage_dir/instagram-publish.json"
+          cd _social_assets
+          git add "$stage_dir/instagram-publish.json"
+          git commit -m "social-assets: record Instagram publication ${GITHUB_RUN_ID}-${GITHUB_RUN_ATTEMPT}"
+          git push origin HEAD:social-assets
+
+      - name: Upload controlled-publication evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: atlas-news-instagram-publish-${{ github.run_id }}-${{ github.run_attempt }}
+          path: |
+            tools/social-renderer/output/*.png
+            tools/social-renderer/output/benchmark.json
+            tools/social-renderer/output/instagram-publish.json
+          if-no-files-found: warn
+          retention-days: 14
