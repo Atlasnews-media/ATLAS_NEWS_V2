@@ -1,0 +1,329 @@
+name: Instagram Carousel — Automatic post-publish
+
+on:
+  workflow_run:
+    workflows: ["Publicar ATLAS NEWS"]
+    types: [completed]
+
+permissions:
+  actions: write
+  contents: read
+
+concurrency:
+  group: instagram-carousel-automatic
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    if: >-
+      github.event.workflow_run.conclusion == 'success' &&
+      github.event.workflow_run.event == 'push' &&
+      github.event.workflow_run.head_branch == 'main'
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    env:
+      ATLAS_SOURCE_COMMIT: ${{ github.event.workflow_run.head_sha }}
+      ATLAS_PUBLIC_STATUS_URL: https://eldesiempre100.github.io/status.json
+      ATLAS_BLOCKED_SOURCE_COMMIT: 74e4d789383cce8d3b7a75679ecb263576d3ac70
+      INSTAGRAM_API_VERSION: v23.0
+      INSTAGRAM_EXPECTED_USERNAME: _atlas_news
+
+    steps:
+      - name: Checkout exact published source
+        uses: actions/checkout@v5
+        with:
+          ref: ${{ github.event.workflow_run.head_sha }}
+          fetch-depth: 2
+
+      - name: Resolve verified new daily edition and build contract
+        id: contract
+        run: node tools/social-renderer/prepare-daily-contract.mjs
+
+      - name: Record non-edition no-op
+        if: steps.contract.outputs.eligible != 'true'
+        run: |
+          {
+            echo "### Instagram E2E — no-op seguro"
+            echo "Source commit: \`${ATLAS_SOURCE_COMMIT}\`"
+            echo "Reason: \`${{ steps.contract.outputs.reason }}\`"
+            echo "No se renderizó ni se contactó a Meta."
+          } >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Verify required secrets for eligible edition
+        if: steps.contract.outputs.eligible == 'true'
+        env:
+          INSTAGRAM_ACCESS_TOKEN: ${{ secrets.INSTAGRAM_ACCESS_TOKEN }}
+          ATLAS_PAGES_DEPLOY_KEY: ${{ secrets.ATLAS_PAGES_DEPLOY_KEY }}
+        run: |
+          set -euo pipefail
+          test -n "$INSTAGRAM_ACCESS_TOKEN" || {
+            echo "Fail-closed: INSTAGRAM_ACCESS_TOKEN is missing."
+            exit 4
+          }
+          test -n "$ATLAS_PAGES_DEPLOY_KEY" || {
+            echo "Fail-closed: ATLAS_PAGES_DEPLOY_KEY is missing."
+            exit 5
+          }
+
+      - name: Prepare access to public social host
+        if: steps.contract.outputs.eligible == 'true'
+        env:
+          DEPLOY_KEY: ${{ secrets.ATLAS_PAGES_DEPLOY_KEY }}
+        run: |
+          set -euo pipefail
+          install -m 700 -d ~/.ssh
+          printf '%s\n' "$DEPLOY_KEY" > ~/.ssh/atlas_news_pages
+          chmod 600 ~/.ssh/atlas_news_pages
+          ssh-keyscan -H github.com >> ~/.ssh/known_hosts
+
+      - name: Checkout public social-assets host
+        if: steps.contract.outputs.eligible == 'true'
+        env:
+          GIT_SSH_COMMAND: ssh -i ~/.ssh/atlas_news_pages -o IdentitiesOnly=yes
+        run: |
+          set -euo pipefail
+          git clone --depth 1 --branch social-assets \
+            git@github.com:EldeSiempre100/EldeSiempre100.github.io.git \
+            _social_assets
+
+      - name: Enforce sourceCommit idempotency before render or Meta
+        if: steps.contract.outputs.eligible == 'true'
+        id: idempotency
+        env:
+          SOURCE_COMMIT: ${{ steps.contract.outputs.source_commit }}
+        run: |
+          set -euo pipefail
+          evidence="_social_assets/instagram-published/${SOURCE_COMMIT}.json"
+          if [ ! -f "$evidence" ]; then
+            echo "already_published=false" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+
+          jq -e --arg source "$SOURCE_COMMIT" '
+            .sourceCommit == $source and
+            .status == "PUBLISHED_VERIFIED" and
+            (.permalink | type == "string" and length > 0)
+          ' "$evidence" > /dev/null || {
+            echo "Fail-closed: sourceCommit evidence exists but is invalid: $evidence"
+            exit 12
+          }
+
+          echo "already_published=true" >> "$GITHUB_OUTPUT"
+          permalink="$(jq -r '.permalink' "$evidence")"
+          {
+            echo "### Instagram E2E — idempotent no-op"
+            echo "Source commit ya publicado: \`${SOURCE_COMMIT}\`"
+            echo "Permalink: ${permalink}"
+            echo "No se volvió a renderizar ni se contactó a Meta."
+          } >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Setup Node
+        if: steps.contract.outputs.eligible == 'true' && steps.idempotency.outputs.already_published != 'true'
+        uses: actions/setup-node@v6
+        with:
+          node-version: 22.19.0
+
+      - name: Restore renderer dependencies
+        if: steps.contract.outputs.eligible == 'true' && steps.idempotency.outputs.already_published != 'true'
+        id: deps-cache
+        uses: actions/cache@v4
+        with:
+          path: tools/social-renderer/node_modules
+          key: ${{ runner.os }}-node-22.19-social-renderer-${{ hashFiles('tools/social-renderer/package.json') }}
+
+      - name: Restore Chromium cache
+        if: steps.contract.outputs.eligible == 'true' && steps.idempotency.outputs.already_published != 'true'
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/ms-playwright
+          key: ${{ runner.os }}-social-renderer-playwright-1.62.1
+
+      - name: Install isolated renderer dependencies
+        if: steps.contract.outputs.eligible == 'true' && steps.idempotency.outputs.already_published != 'true' && steps.deps-cache.outputs.cache-hit != 'true'
+        working-directory: tools/social-renderer
+        run: npm install --no-audit --no-fund --no-package-lock
+
+      - name: Ensure Chromium
+        if: steps.contract.outputs.eligible == 'true' && steps.idempotency.outputs.already_published != 'true'
+        working-directory: tools/social-renderer
+        run: npx playwright install chromium
+
+      - name: Render verified published copy once
+        if: steps.contract.outputs.eligible == 'true' && steps.idempotency.outputs.already_published != 'true'
+        working-directory: tools/social-renderer
+        env:
+          SOCIAL_CONTRACT: ${{ steps.contract.outputs.contract_path }}
+          SOCIAL_PUBLICATION_STATUS: PUBLICACIÓN DISPONIBLE / VERIFICADA
+        run: npm run render
+
+      - name: Validate exactly five carousel assets from the same sourceCommit
+        if: steps.contract.outputs.eligible == 'true' && steps.idempotency.outputs.already_published != 'true'
+        working-directory: tools/social-renderer
+        env:
+          SOURCE_COMMIT: ${{ steps.contract.outputs.source_commit }}
+        run: |
+          set -euo pipefail
+          count="$(find output -maxdepth 1 -type f -name 'atlas-news-instagram-carousel-0*.png' | wc -l | tr -d ' ')"
+          test "$count" = "5" || {
+            echo "Fail-closed: expected exactly 5 carousel PNGs, found $count."
+            exit 13
+          }
+          for n in 01 02 03 04 05; do
+            test -f "output/atlas-news-instagram-carousel-${n}.png"
+          done
+          jq -e --arg source "$SOURCE_COMMIT" '
+            .sourceCommit == $source and
+            (.outputs | length == 6)
+          ' output/benchmark.json > /dev/null || {
+            echo "Fail-closed: renderer benchmark/sourceCommit mismatch."
+            exit 14
+          }
+
+      - name: Stage carousel and SHARE card on public HTTPS URLs
+        if: steps.contract.outputs.eligible == 'true' && steps.idempotency.outputs.already_published != 'true'
+        id: stage
+        env:
+          GIT_SSH_COMMAND: ssh -i ~/.ssh/atlas_news_pages -o IdentitiesOnly=yes
+          SOURCE_COMMIT: ${{ steps.contract.outputs.source_commit }}
+          CANONICAL_URL: ${{ steps.contract.outputs.canonical_url }}
+        run: |
+          set -euo pipefail
+          stage_dir="instagram-staging/${SOURCE_COMMIT}"
+          rm -rf "_social_assets/$stage_dir"
+          mkdir -p "_social_assets/$stage_dir"
+          cp tools/social-renderer/output/atlas-news-instagram-carousel-0*.png "_social_assets/$stage_dir/"
+
+          canonical_path="$(node -e '
+            const u = new URL(process.argv[1]);
+            if (u.hostname.toLowerCase() !== "eldesiempre100.github.io") process.exit(2);
+            const p = u.pathname.endsWith("/") ? u.pathname : `${u.pathname}/`;
+            if (!/^\/(ediciones|nacional|mercados|lecturas)\/[^/]+\/$/.test(p)) process.exit(3);
+            process.stdout.write(p);
+          ' "$CANONICAL_URL")"
+          share_dir="share/${canonical_path#/}"
+          share_file="${share_dir}atlas-news-social-card-1200x630.png"
+          mkdir -p "_social_assets/$share_dir"
+          cp tools/social-renderer/output/atlas-news-social-card-1200x630.png "_social_assets/$share_file"
+
+          share_url="https://raw.githubusercontent.com/EldeSiempre100/EldeSiempre100.github.io/social-assets/${share_file}"
+          manifest="_social_assets/share/manifest.json"
+          if [ ! -f "$manifest" ]; then
+            printf '{}\n' > "$manifest"
+          fi
+          manifest_tmp="$(mktemp)"
+          jq --arg path "$canonical_path" --arg url "$share_url" \
+            '.[$path] = $url | to_entries | sort_by(.key) | from_entries' \
+            "$manifest" > "$manifest_tmp"
+          mv "$manifest_tmp" "$manifest"
+
+          cd _social_assets
+          git config user.name "ATLAS NEWS Social Publisher"
+          git config user.email "actions@users.noreply.github.com"
+          git add "$stage_dir" "$share_file" share/manifest.json
+          if git diff --cached --quiet; then
+            echo "Public social assets already match this sourceCommit."
+          else
+            git commit -m "social-assets: stage automatic carousel ${SOURCE_COMMIT::7}"
+            git push origin HEAD:social-assets
+          fi
+
+          base_url="https://raw.githubusercontent.com/EldeSiempre100/EldeSiempre100.github.io/social-assets/${stage_dir}"
+          echo "SOCIAL_IMAGE_BASE_URL=$base_url" >> "$GITHUB_ENV"
+          echo "stage_dir=$stage_dir" >> "$GITHUB_OUTPUT"
+          echo "share_path=$canonical_path" >> "$GITHUB_OUTPUT"
+          echo "share_image_url=$share_url" >> "$GITHUB_OUTPUT"
+
+      - name: Confirm staged images are publicly fetchable
+        if: steps.contract.outputs.eligible == 'true' && steps.idempotency.outputs.already_published != 'true'
+        run: |
+          set -euo pipefail
+          for n in 01 02 03 04 05; do
+            url="$SOCIAL_IMAGE_BASE_URL/atlas-news-instagram-carousel-${n}.png"
+            ok=0
+            for attempt in 1 2 3 4 5 6; do
+              code="$(curl -L -sS -o "/tmp/atlas-${n}.png" -w '%{http_code}' "$url" || true)"
+              type="$(file -b --mime-type "/tmp/atlas-${n}.png" 2>/dev/null || true)"
+              if [ "$code" = "200" ] && [ "$type" = "image/png" ]; then
+                ok=1
+                break
+              fi
+              sleep "$attempt"
+            done
+            test "$ok" = "1" || {
+              echo "Fail-closed: public staging failed for $url"
+              exit 15
+            }
+          done
+
+      - name: Publish automatic Instagram carousel
+        if: steps.contract.outputs.eligible == 'true' && steps.idempotency.outputs.already_published != 'true'
+        working-directory: tools/social-renderer
+        env:
+          SOCIAL_CONTRACT: ${{ steps.contract.outputs.contract_path }}
+          SOCIAL_PUBLICATION_STATUS: PUBLICACIÓN DISPONIBLE / VERIFICADA
+          INSTAGRAM_PUBLISH_CONFIRMATION: PUBLICAR CARRUSEL / AUTORIZADO
+          INSTAGRAM_ACCESS_TOKEN: ${{ secrets.INSTAGRAM_ACCESS_TOKEN }}
+          SOCIAL_IMAGE_BASE_URL: ${{ env.SOCIAL_IMAGE_BASE_URL }}
+        run: npm run publish:instagram
+
+      - name: Persist PUBLISHED_VERIFIED evidence keyed by sourceCommit
+        if: steps.contract.outputs.eligible == 'true' && steps.idempotency.outputs.already_published != 'true'
+        env:
+          GIT_SSH_COMMAND: ssh -i ~/.ssh/atlas_news_pages -o IdentitiesOnly=yes
+          SOURCE_COMMIT: ${{ steps.contract.outputs.source_commit }}
+          CANONICAL_URL: ${{ steps.contract.outputs.canonical_url }}
+        run: |
+          set -euo pipefail
+          evidence="tools/social-renderer/output/instagram-publish.json"
+          jq -e --arg canonical "$CANONICAL_URL" '
+            .status == "PUBLISHED_VERIFIED" and
+            .username == "_atlas_news" and
+            .canonicalUrl == $canonical and
+            (.permalink | type == "string" and length > 0)
+          ' "$evidence" > /dev/null || {
+            echo "Fail-closed: Instagram publication evidence is not PUBLISHED_VERIFIED."
+            exit 16
+          }
+
+          mkdir -p _social_assets/instagram-published
+          enriched="$(mktemp)"
+          jq --arg source "$SOURCE_COMMIT" '. + {sourceCommit:$source}' "$evidence" > "$enriched"
+          cp "$enriched" "_social_assets/instagram-published/${SOURCE_COMMIT}.json"
+          cp "$enriched" "_social_assets/${{ steps.stage.outputs.stage_dir }}/instagram-publish.json"
+
+          cd _social_assets
+          git add "instagram-published/${SOURCE_COMMIT}.json" \
+            "${{ steps.stage.outputs.stage_dir }}/instagram-publish.json"
+          git commit -m "social-assets: record verified Instagram ${SOURCE_COMMIT::7}"
+          git push origin HEAD:social-assets
+
+          permalink="$(jq -r '.permalink' "instagram-published/${SOURCE_COMMIT}.json")"
+          {
+            echo "### Instagram E2E — PUBLISHED_VERIFIED"
+            echo "Source commit: \`${SOURCE_COMMIT}\`"
+            echo "Cuenta: \`_atlas_news\`"
+            echo "Permalink: ${permalink}"
+          } >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Request non-blocking SHARE metadata refresh after verified Instagram publish
+        if: steps.contract.outputs.eligible == 'true' && steps.idempotency.outputs.already_published != 'true'
+        continue-on-error: true
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          gh workflow run publish-site.yml --ref main
+          echo "Requested one non-blocking metadata refresh; its workflow_dispatch event cannot retrigger Instagram automation."
+
+      - name: Upload E2E evidence
+        if: always() && steps.contract.outputs.eligible == 'true' && steps.idempotency.outputs.already_published != 'true'
+        uses: actions/upload-artifact@v4
+        with:
+          name: atlas-news-instagram-auto-${{ github.run_id }}-${{ github.run_attempt }}
+          path: |
+            tools/social-renderer/.generated/daily-contract.json
+            tools/social-renderer/output/*.png
+            tools/social-renderer/output/benchmark.json
+            tools/social-renderer/output/instagram-publish.json
+          if-no-files-found: warn
+          retention-days: 14
