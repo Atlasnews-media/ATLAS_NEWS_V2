@@ -25,7 +25,9 @@ async function loadManifest(): Promise<SocialImageManifest> {
 
     return Object.fromEntries(
       Object.entries(raw).filter(([pathname, imageUrl]) => {
-        if (!/^\/(ediciones|nacional|mercados|lecturas)\/[^/]+\/$/.test(pathname))
+        if (
+          !/^\/(ediciones|nacional|mercados|lecturas)\/[^/]+\/$/.test(pathname)
+        )
           return false;
         return (
           typeof imageUrl === "string" && imageUrl.startsWith(SOCIAL_IMAGE_PREFIX)
