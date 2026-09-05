@@ -1,0 +1,16 @@
+{
+  "name": "atlas-news-social-renderer",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=22.19 <23"
+  },
+  "scripts": {
+    "render": "node render.mjs",
+    "publish:instagram": "node publish-instagram.mjs"
+  },
+  "dependencies": {
+    "astro-og-canvas": "0.13.1",
+    "playwright": "1.62.1"
+  }
+}

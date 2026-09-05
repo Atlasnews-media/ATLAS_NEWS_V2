@@ -1,0 +1,81 @@
+name: Social Renderer — Post-publish (staged)
+
+on:
+  workflow_dispatch:
+    inputs:
+      contract:
+        description: "Path to an approved Social Content Contract v1 JSON"
+        required: true
+        type: string
+        default: "tools/social-renderer/contracts/2026-09-04-reading-activo-seguro-riesgo.json"
+      publication_status:
+        description: "Type exactly: PUBLICACIÓN DISPONIBLE / VERIFICADA"
+        required: true
+        type: string
+
+permissions:
+  contents: read
+
+concurrency:
+  group: social-renderer-post-publish
+  cancel-in-progress: false
+
+jobs:
+  render:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    env:
+      SOCIAL_CONTRACT: ${{ inputs.contract }}
+      SOCIAL_PUBLICATION_STATUS: ${{ inputs.publication_status }}
+    steps:
+      - name: Verify explicit post-publication gate
+        shell: bash
+        run: |
+          if [ "$SOCIAL_PUBLICATION_STATUS" != "PUBLICACIÓN DISPONIBLE / VERIFICADA" ]; then
+            echo "Social Renderer fail-closed: publication is not explicitly verified."
+            exit 2
+          fi
+
+      - name: Checkout staged integration branch
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22.19.0
+
+      - name: Restore renderer dependencies
+        id: deps-cache
+        uses: actions/cache@v4
+        with:
+          path: tools/social-renderer/node_modules
+          key: ${{ runner.os }}-node-22.19-social-renderer-${{ hashFiles('tools/social-renderer/package.json') }}
+
+      - name: Restore Chromium cache
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/ms-playwright
+          key: ${{ runner.os }}-social-renderer-playwright-1.62.1
+
+      - name: Install isolated renderer dependencies
+        if: steps.deps-cache.outputs.cache-hit != 'true'
+        working-directory: tools/social-renderer
+        run: npm install --no-audit --no-fund --no-package-lock
+
+      - name: Ensure Chromium
+        working-directory: tools/social-renderer
+        run: npx playwright install chromium
+
+      - name: Render approved social contract
+        working-directory: tools/social-renderer
+        run: npm run render
+
+      - name: Upload social artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: atlas-news-social-renderer-${{ github.run_id }}-${{ github.run_attempt }}
+          path: |
+            tools/social-renderer/output/*.png
+            tools/social-renderer/output/benchmark.json
+          if-no-files-found: error
+          retention-days: 7
