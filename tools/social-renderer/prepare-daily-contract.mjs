@@ -115,9 +115,8 @@ function sentences(text) {
   const clean = plainText(text);
   if (!clean) return [];
   const segmenter = new Intl.Segmenter("es", { granularity: "sentence" });
-  return Array.from(
-    segmenter.segment(clean),
-    ({ segment }) => segment.trim(),
+  return Array.from(segmenter.segment(clean), ({ segment }) =>
+    segment.trim(),
   ).filter((segment) => segment.length >= 12);
 }
 
@@ -260,9 +259,7 @@ async function main() {
     );
   }
 
-  const fallbackDek = sourceHighlights
-    .map((item) => item.label)
-    .join(" · ");
+  const fallbackDek = sourceHighlights.map((item) => item.label).join(" · ");
   const headline = headlineParts(rawTitle, fallbackDek);
   const canonicalUrl = `https://eldesiempre100.github.io/ediciones/${editionId}/`;
   await assertPublic(`${canonicalUrl}?source=${SOURCE_COMMIT}`);
