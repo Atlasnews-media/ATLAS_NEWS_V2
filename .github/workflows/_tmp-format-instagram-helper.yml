@@ -20,10 +20,12 @@ jobs:
           node-version: 22
           cache: npm
       - run: npm ci
-      - name: Emit exact Prettier output
-        run: |
-          npx prettier tools/social-renderer/prepare-daily-contract.mjs --write
-          echo "FORMAT_BASE64_BEGIN"
-          base64 -w0 tools/social-renderer/prepare-daily-contract.mjs
-          echo
-          echo "FORMAT_BASE64_END"
+      - name: Format exact helper
+        run: npx prettier tools/social-renderer/prepare-daily-contract.mjs --write
+      - name: Upload exact formatted helper
+        uses: actions/upload-artifact@v4
+        with:
+          name: formatted-instagram-helper
+          path: tools/social-renderer/prepare-daily-contract.mjs
+          if-no-files-found: error
+          retention-days: 1
