@@ -4,7 +4,7 @@ summary: "Los fondos monetarios globales captaron US$46.100 millones en la seman
 publishedAt: "2026-09-05T06:25:00-04:00"
 cutoffAt: "2026-09-05T06:25:00-04:00"
 section: "markets"
-status: "draft"
+status: "published"
 tags:
   - mercados-globales
   - flujos
