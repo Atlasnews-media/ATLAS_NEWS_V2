@@ -115,9 +115,10 @@ function sentences(text) {
   const clean = plainText(text);
   if (!clean) return [];
   const segmenter = new Intl.Segmenter("es", { granularity: "sentence" });
-  return Array.from(segmenter.segment(clean), ({ segment }) => segment.trim()).filter(
-    (segment) => segment.length >= 12,
-  );
+  return Array.from(
+    segmenter.segment(clean),
+    ({ segment }) => segment.trim(),
+  ).filter((segment) => segment.length >= 12);
 }
 
 function headlineParts(title, fallbackDek) {
@@ -210,7 +211,8 @@ async function main() {
 
   const markdown = await fs.readFile(path.join(ROOT, sourceId), "utf8");
   const parts = markdown.split(/^---\s*$/m);
-  if (parts.length < 3) throw new Error(`Invalid Markdown frontmatter: ${sourceId}`);
+  if (parts.length < 3)
+    throw new Error(`Invalid Markdown frontmatter: ${sourceId}`);
   const frontmatterLines = parts[1].split(/\r?\n/);
 
   const rawTitle = required(scalar(frontmatterLines, "title"), "title");
