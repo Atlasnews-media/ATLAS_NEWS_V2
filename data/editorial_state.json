@@ -15,14 +15,14 @@
     {
       "id": "us-employment-fed-rates",
       "topic": "Empleo de Estados Unidos y Reserva Federal",
-      "thesis": "Septiembre vuelve a ser una decisión realmente abierta: Waller se mostró dispuesto a mantener la tasa si la inflación sigue moderándose y el mercado redujo la probabilidad de alza desde cerca de 63% hacia 50% antes de las nóminas oficiales.",
-      "status": "weakened",
-      "last_evidence": "El 3 de septiembre Christopher Waller pidió dar oportunidad a la desinflación y dejó explícitamente abierta una pausa; tras sus comentarios, la probabilidad de una subida en septiembre cayó desde aproximadamente 63% hacia 50%, mientras el Treasury a diez años retrocedió desde 4,818% hacia 4,744%.",
-      "effect": "Debilita un paso más la tesis de alza inmediata y devuelve el poder decisivo a empleo e inflación, reduciendo parte de la presión sobre bonos y dólar sin eliminar el riesgo asociado al petróleo elevado.",
-      "base_scenario": "La reunión de septiembre está equilibrada entre pausa y subida; las nóminas oficiales y la inflación de agosto deben romper ese equilibrio.",
-      "invalidate_if": "Las nóminas o la inflación sorprenden con fuerza suficiente para reconstruir una mayoría clara a favor de subir, o una desaceleración laboral e inflacionaria convierte de forma sostenida la pausa en escenario dominante.",
-      "watch": "Nóminas no agrícolas, desempleo, salarios, inflación de agosto, comunicación de Waller y Williams, FedWatch, Treasury a dos y diez años y dólar.",
-      "last_publication": "/ediciones/2026-09-04-daily-septiembre-vuelve-a-ser-un-cincuenta-cincuenta/"
+      "thesis": "Las nóminas oficiales de agosto contradijeron la señal débil de ADP y devolvieron ventaja a una subida de la Fed en septiembre, aunque la moderación salarial deja a la inflación como prueba necesaria para consolidar ese escenario.",
+      "status": "changed",
+      "last_evidence": "El 4 de septiembre las nóminas no agrícolas aumentaron 162.000 frente a 56.000 esperadas, el desempleo permaneció en 4,1% y junio-julio fueron revisados al alza; la probabilidad de subida regresó hacia 60%, mientras los salarios desaceleraron a 3,1% anual.",
+      "effect": "Revierte el equilibrio previo entre pausa y subida y devuelve mayoría al escenario restrictivo, pero evita cerrar septiembre porque la inflación salarial no se aceleró y el IPC sigue siendo decisivo.",
+      "base_scenario": "La reunión de septiembre vuelve a inclinarse hacia una subida de 25 puntos base, condicionada a que la inflación de agosto no entregue una moderación suficiente para justificar una pausa.",
+      "invalidate_if": "La inflación de agosto se modera de forma suficientemente clara para devolver la pausa a una posición dominante, o nueva evidencia laboral contradice la fortaleza observada en las nóminas oficiales.",
+      "watch": "IPC y PPI de agosto, salarios, solicitudes de desempleo, comunicación de la Fed, FedWatch, Treasury a dos y diez años y dólar.",
+      "last_publication": "/ediciones/2026-09-05-daily-empleo-devuelve-ventaja-al-alza-fed/"
     },
     {
       "id": "ai-monetization-selectivity",
