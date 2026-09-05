@@ -14,6 +14,10 @@ DIALOGUE_SCRIPTS = {
     "exp2-national-dialogue": ROOT / "lab" / "exp2-national-dialogue.txt",
     "exp2-markets-dialogue": ROOT / "lab" / "exp2-markets-dialogue.txt",
 }
+PRONUNCIATION_SCRIPTS = {
+    "exp5-pronunciation-current": ROOT / "lab" / "exp5-pronunciation-current.txt",
+    "exp5-pronunciation-lexicon": ROOT / "lab" / "exp5-pronunciation-lexicon.txt",
+}
 SAMPLE_RATE = 24_000
 TURN_PAUSE_SECONDS = 0.28
 
@@ -169,7 +173,24 @@ def generate_dialogue(stem, script_path):
     )
 
 
+def generate_pronunciation_sample(stem, script_path):
+    text = script_path.read_text(encoding="utf-8").strip()
+    if not text:
+        raise RuntimeError(f"La muestra de pronunciación está vacía: {script_path.name}")
+
+    samples = synthesize(text, "ef_dora", "e")
+    mp3_path = write_mp3(stem, samples)
+    duration = samples.size / SAMPLE_RATE
+    print(
+        f"LAB AUD-PRON-01 generado: {mp3_path.name} · ef_dora/e · "
+        f"{duration:.1f}s"
+    )
+
+
 generate_exp1()
 
 for stem, script_path in DIALOGUE_SCRIPTS.items():
     generate_dialogue(stem, script_path)
+
+for stem, script_path in PRONUNCIATION_SCRIPTS.items():
+    generate_pronunciation_sample(stem, script_path)
