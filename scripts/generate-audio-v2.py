@@ -17,6 +17,20 @@ SAMPLE_RATE = 24_000
 TURN_PAUSE_SECONDS = 0.28
 MIN_AUDIO_BYTES = 10_000
 MIN_DURATION_SECONDS = 5.0
+SPEECH_NORMALIZER_VERSION = 1
+
+# Lexicón editorial pequeño y explícito. Solo transforma el texto que recibe
+# Kokoro; nunca modifica contenido publicado ni guiones fuente.
+PRONUNCIATION_LEXICON = {
+    "Powell": "Páuel",
+    "Wall Street": "Uól Strít",
+    "BlackRock": "Blák Rok",
+    "Bloomberg": "Blúmberg",
+    "OpenAI": "Óupen Éi Ái",
+    "Nvidia": "Envídia",
+    "Jackson Hole": "Yákson Jóul",
+    "Warsh": "Uórsh",
+}
 
 DIALOGUE_VOICES = {
     "VOZ 1": ("ef_dora", "e"),
@@ -30,11 +44,26 @@ def pipeline_for(lang_code: str):
     return pipelines.setdefault(lang_code, KPipeline(lang_code=lang_code))
 
 
+def normalize_for_speech(text: str) -> str:
+    normalized = str(text)
+    for term, spoken in sorted(
+        PRONUNCIATION_LEXICON.items(), key=lambda item: len(item[0]), reverse=True
+    ):
+        normalized = re.sub(
+            rf"\b{re.escape(term)}\b",
+            lambda _: spoken,
+            normalized,
+            flags=re.IGNORECASE,
+        )
+    return normalized
+
+
 def synthesize(text: str, voice: str, lang_code: str = "e") -> np.ndarray:
     chunks = []
     pipeline = pipeline_for(lang_code)
+    speech_text = normalize_for_speech(text)
     for _, _, audio in pipeline(
-        text,
+        speech_text,
         voice=voice,
         speed=float(os.environ.get("ATLAS_AUDIO_SPEED", "1.0")),
         split_pattern=r"\n+",
@@ -192,6 +221,7 @@ with tempfile.TemporaryDirectory(prefix="atlas-audio-v2-") as temp_dir_name:
         cover_metadata = {
             "schemaVersion": 1,
             "scriptVersion": cover_plan.get("scriptVersion", 1),
+            "speechNormalizerVersion": SPEECH_NORMALIZER_VERSION,
             "status": "published",
             "date": date,
             "title": cover_plan["title"],
@@ -214,6 +244,7 @@ with tempfile.TemporaryDirectory(prefix="atlas-audio-v2-") as temp_dir_name:
         "date": date,
         "generatedAt": now,
         "sourceCommit": source_commit,
+        "speechNormalizerVersion": SPEECH_NORMALIZER_VERSION,
     }
 
     for section in ("national", "markets"):
@@ -268,6 +299,7 @@ with tempfile.TemporaryDirectory(prefix="atlas-audio-v2-") as temp_dir_name:
                 "bytes": size_bytes,
                 "scriptVersion": product["scriptVersion"],
                 "scriptHash": product["scriptHash"],
+                "speechNormalizerVersion": SPEECH_NORMALIZER_VERSION,
                 "engine": "Kokoro-82M",
                 "voices": {"voice1": "ef_dora", "voice2": "em_alex"},
                 "language": "es",
