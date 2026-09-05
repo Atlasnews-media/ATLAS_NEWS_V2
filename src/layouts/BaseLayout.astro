@@ -57,7 +57,9 @@ const socialImageUrl = generatedSocialImage
   : new URL("/brand/atlas-icon.png", siteOrigin).href;
 const socialImageWidth = generatedSocialImage ? "1200" : "1172";
 const socialImageHeight = generatedSocialImage ? "630" : "1172";
-const socialImageAlt = generatedSocialImage ? `${title} — ATLAS NEWS` : "ATLAS NEWS";
+const socialImageAlt = generatedSocialImage
+  ? `${title} — ATLAS NEWS`
+  : "ATLAS NEWS";
 const socialType = isArticle ? "article" : "website";
 
 const primaryEntry = { href: "/", label: "Portada" };
