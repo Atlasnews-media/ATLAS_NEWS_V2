@@ -239,7 +239,7 @@ const hasAnalysisContent = Boolean(latestNational || latestMarkets);
   .lead-story h1 {
     max-width: 70rem;
     margin: 0.65rem 0 1.5rem;
-    font-size: clamp(2.8rem, 5.8vw, 5.8rem);
+    font-size: clamp(3.5rem, 4.5vw, 4rem);
     line-height: 0.89;
     letter-spacing: -0.05em;
     text-wrap: balance;
@@ -374,9 +374,22 @@ const hasAnalysisContent = Boolean(latestNational || latestMarkets);
     text-transform: uppercase;
   }
 
-  @media (max-width: 58rem) {
+  @media (min-width: 42.01rem) and (max-width: 58rem) {
     .lead-grid {
-      grid-template-columns: minmax(0, 2fr) minmax(13rem, 1fr);
+      grid-template-columns: 1fr;
+    }
+    .lead-story {
+      padding-right: 0;
+      border-right: 0;
+    }
+    .lead-story h1 {
+      font-size: clamp(2.9rem, 6.2vw, 3.4rem);
+      line-height: 0.92;
+      letter-spacing: -0.04em;
+    }
+    .edition-rail {
+      padding-left: 0;
+      border-top: 1px solid var(--rule);
     }
   }
   @media (max-width: 42rem) {
