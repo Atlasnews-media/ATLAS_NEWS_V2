@@ -1,0 +1,44 @@
+{
+  "version": "1",
+  "sourceCommit": "d12f185b8d17dc8cb614be2874423c6d14846de2",
+  "sourceId": "src/content/editions/2026-09-06-daily-hormuz-convierte-riesgo-energetico-en-restriccion-fisica.md",
+  "canonicalUrl": "https://eldesiempre100.github.io/ediciones/2026-09-06-daily-hormuz-convierte-riesgo-energetico-en-restriccion-fisica/",
+  "publishedDate": "2026-09-06T06:08:00-03:00",
+  "productType": "daily",
+  "sectionLabel": "PORTADA · HECHO CENTRAL",
+  "title": "Hormuz convierte el riesgo energético en una restricción física",
+  "dek": "Riesgo físico · Oferta limitada · Fed condicionada",
+  "ideaCentral": "Ataques directos de Estados Unidos e Irán sobre buques y petroleros elevan el riesgo de transporte en Hormuz; el mercado llega al lunes con una prima energética más difícil de tratar como transitoria.",
+  "ideaSupport": "El hecho nuevo del fin de semana es que el conflicto entre Estados Unidos e Irán alcanzó directamente a los buques que transportan crudo.",
+  "keyPoints": [
+    {
+      "iconKey": "trend-up",
+      "text": "Estados Unidos atacó tres petroleros iraníes tras misiles contra buques de su Armada; el conflicto alcanzó directamente el transporte de crudo."
+    },
+    {
+      "iconKey": "cash-card",
+      "text": "OPEC+ se inclina a mantener sin cambios su política de octubre, con producción ya restringida por la guerra y el tránsito por Hormuz."
+    },
+    {
+      "iconKey": "risk-triangle",
+      "text": "El empleo fuerte dejó una subida de septiembre como escenario mayoritario; un shock energético persistente elevaría el costo de pausar."
+    }
+  ],
+  "impactItems": [
+    {
+      "iconKey": "portfolio-grid",
+      "label": "Carteras",
+      "text": "Para wealth management, el cambio eleva el valor de distinguir inflación transitoria de inflación asociada a restricciones de oferta persistentes."
+    },
+    {
+      "iconKey": "decision-check",
+      "label": "Decisiones",
+      "text": "Un episodio militar aislado puede revertirse rápido; una ruta estratégica donde buques comerciales pasan a ser objetivos exige una prima más duradera y puede trasladarse a combustibles, expectativas de inflación y curvas soberanas."
+    },
+    {
+      "iconKey": "context-target",
+      "label": "Contexto",
+      "text": "En renta fija, el carry corto conserva atractivo, pero una reapertura con energía más cara puede limitar el alivio de duración incluso si los próximos datos de inflación moderan."
+    }
+  ]
+}
