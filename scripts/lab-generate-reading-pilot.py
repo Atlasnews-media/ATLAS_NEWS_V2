@@ -27,7 +27,6 @@ SPEECH_NORMALIZER_VERSION = "reading-pilot-1"
 PRONUNCIATION_LEXICON = {
     "ATLAS NEWS": "Atlas Niús",
     "Treasury": "Tréshuri",
-    "Treasury": "Tréshuri",
     "Reuters": "Róiters",
     "Saint Louis": "Séint Lúis",
 }
