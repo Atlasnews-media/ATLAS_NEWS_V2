@@ -10,7 +10,7 @@ import path from "node:path";
 const root = new URL("../", import.meta.url);
 const editionDir = new URL("src/content/editions/", root);
 const briefingDir = new URL("src/content/briefings/", root);
-const SCRIPT_VERSION = 6;
+const SCRIPT_VERSION = 7;
 const TARGET_MIN_WORDS = 550;
 const TARGET_MAX_WORDS = 650;
 
@@ -136,28 +136,13 @@ function newestFirst(a, b) {
   return Date.parse(b.publishedAt ?? "") - Date.parse(a.publishedAt ?? "");
 }
 
+// El guion conserva el texto editorial. La normalización lingüística común
+// para Portada, Nacional y Mercados se aplica en Audio V2 justo antes de Kokoro.
 function speechText(value) {
   return String(value ?? "")
     .replace(/\[([^\]]+)\]\([^)]+\)/g, "$1")
     .replace(/\*\*([^*]+)\*\*/g, "$1")
     .replace(/[`_*#>]/g, "")
-    .replace(/\bEE\.\s?UU\.\b/g, "Estados Unidos")
-    .replace(/\bS&P\s*500\b/gi, "ese y pe quinientos")
-    .replace(/\bTPM\b/g, "tasa de política monetaria")
-    .replace(/\bIPC\b/g, "índice de precios al consumidor")
-    .replace(/\bIPoM\b/g, "Informe de Política Monetaria")
-    .replace(/\bEEE\b/g, "Encuesta de Expectativas Económicas")
-    .replace(/\bEOF\b/g, "Encuesta de Operadores Financieros")
-    .replace(/\bFed\b/g, "Reserva Federal")
-    .replace(/\bTreasury\b/gi, "bono del Tesoro estadounidense")
-    .replace(/US\$/g, "dólares ")
-    .replace(/\$\s*([0-9]+(?:\.[0-9]{3})*(?:,[0-9]+)?)/g, "$1 pesos")
-    .replace(/\b\d{1,3}(?:\.\d{3})+(?:,\d+)?\b/g, (value) =>
-      value.replace(/\./g, ""),
-    )
-    .replace(/(\d+),(\d)0%/g, "$1,$2%")
-    .replace(/(\d+),00%/g, "$1%")
-    .replace(/(\d[\d.,]*)%/g, "$1 por ciento")
     .replace(/\s+/g, " ")
     .trim();
 }
@@ -165,11 +150,14 @@ function speechText(value) {
 function formatSpanishDate(date) {
   const parsed = new Date(`${date}T12:00:00-04:00`);
   return new Intl.DateTimeFormat("es-CL", {
+    weekday: "long",
     day: "numeric",
     month: "long",
     year: "numeric",
     timeZone: "America/Santiago",
-  }).format(parsed);
+  })
+    .format(parsed)
+    .replace(",", "");
 }
 
 function countWords(text) {
@@ -430,7 +418,7 @@ addSegment(
 addSegment(
   parts,
   accepted,
-  "Ese es el briefing de ATLAS NEWS para comenzar el día. En la portada quedan disponibles la edición General y los desarrollos completos de Nacional y Mercados, con sus fuentes y riesgos.",
+  "Ese es el briefing de ATLAS NEWS para comenzar el día. En la portada quedan disponibles la nota principal y los desarrollos completos de Nacional y Mercados, con sus fuentes y riesgos.",
   { force: true },
 );
 

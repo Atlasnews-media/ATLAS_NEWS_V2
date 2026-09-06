@@ -1,0 +1,132 @@
+{
+  "version": 3,
+  "revision": 1,
+  "status": "foundation",
+  "source": "ATLAS NEWS V2 — MATRIZ DE PRONUNCIACIÓN TTS",
+  "policy": {
+    "scope": "speech_text_only",
+    "requiresHumanApproval": true,
+    "sheetDirectToProduction": false,
+    "revisionRule": "Toda modificación de una entrada aprobada requiere incrementar revision antes de producción.",
+    "note": "Sólo entran aquí reglas ya usadas en producción o aprobadas explícitamente para Audio V2. La matriz completa permanece como backlog de QA."
+  },
+  "entries": [
+    {
+      "term": "Powell",
+      "type": "pronunciation",
+      "speech": "Páuel",
+      "approved": true
+    },
+    {
+      "term": "Wall Street",
+      "type": "pronunciation",
+      "speech": "Uól Strít",
+      "approved": true
+    },
+    {
+      "term": "BlackRock",
+      "type": "pronunciation",
+      "speech": "Blák Rok",
+      "approved": true
+    },
+    {
+      "term": "Bloomberg",
+      "type": "pronunciation",
+      "speech": "Blúmberg",
+      "approved": true
+    },
+    {
+      "term": "OpenAI",
+      "type": "pronunciation",
+      "speech": "Óupen Éi Ái",
+      "approved": true
+    },
+    {
+      "term": "Nvidia",
+      "variants": ["NVIDIA"],
+      "type": "pronunciation",
+      "speech": "Envídia",
+      "approved": true
+    },
+    {
+      "term": "Jackson Hole",
+      "type": "pronunciation",
+      "speech": "Yákson Jóul",
+      "approved": true
+    },
+    {
+      "term": "Warsh",
+      "type": "pronunciation",
+      "speech": "Uórsh",
+      "approved": true
+    },
+    {
+      "term": "J.P. Morgan",
+      "variants": ["JPMorgan", "JP Morgan"],
+      "type": "pronunciation",
+      "speech": "Yéi pí Morgan",
+      "approved": true
+    },
+    {
+      "term": "Treasuries",
+      "type": "pronunciation",
+      "speech": "Tréchuri",
+      "approved": true
+    },
+    {
+      "term": "Treasury",
+      "type": "normalization",
+      "speech": "bono del Tesoro estadounidense",
+      "approved": true
+    },
+    {
+      "term": "Fed",
+      "type": "normalization",
+      "speech": "Reserva Federal",
+      "approved": true
+    },
+    {
+      "term": "S&P 500",
+      "type": "normalization",
+      "speech": "ese y pe quinientos",
+      "approved": true
+    },
+    {
+      "term": "EE.UU.",
+      "variants": ["EE. UU."],
+      "type": "normalization",
+      "speech": "Estados Unidos",
+      "approved": true
+    },
+    {
+      "term": "TPM",
+      "type": "spanish",
+      "speech": "tasa de política monetaria",
+      "approved": true
+    },
+    {
+      "term": "IPC",
+      "type": "spanish",
+      "speech": "índice de precios al consumidor",
+      "approved": true
+    },
+    {
+      "term": "IPoM",
+      "type": "spanish",
+      "speech": "Informe de Política Monetaria",
+      "approved": true
+    },
+    {
+      "term": "EEE",
+      "type": "spanish",
+      "speech": "Encuesta de Expectativas Económicas",
+      "approved": true
+    },
+    {
+      "term": "EOF",
+      "type": "spanish",
+      "speech": "Encuesta de Operadores Financieros",
+      "approved": true
+    }
+  ]
+}

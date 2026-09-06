@@ -11,26 +11,25 @@ import numpy as np
 import soundfile as sf
 from kokoro import KPipeline
 
+from audio_speech import (
+    LEXICON_REVISION,
+    LEXICON_VERSION,
+    is_question,
+    normalize_for_speech,
+)
+
 PLAN_PATH = Path(os.environ["ATLAS_AUDIO_V2_PLAN"])
 PUBLIC_DIR = Path(os.environ["ATLAS_PUBLIC_REPO_DIR"])
 SAMPLE_RATE = 24_000
 TURN_PAUSE_SECONDS = 0.28
+QUESTION_TURN_PAUSE_SECONDS = 0.42
+QUESTION_SPEED = float(os.environ.get("ATLAS_AUDIO_QUESTION_SPEED", "0.92"))
+QUESTION_TAIL_SECONDS = 0.65
+QUESTION_TAIL_GAIN = 1.12
 MIN_AUDIO_BYTES = 10_000
 MIN_DURATION_SECONDS = 5.0
-SPEECH_NORMALIZER_VERSION = 1
-
-# Lexicón editorial pequeño y explícito. Solo transforma el texto que recibe
-# Kokoro; nunca modifica contenido publicado ni guiones fuente.
-PRONUNCIATION_LEXICON = {
-    "Powell": "Páuel",
-    "Wall Street": "Uól Strít",
-    "BlackRock": "Blák Rok",
-    "Bloomberg": "Blúmberg",
-    "OpenAI": "Óupen Éi Ái",
-    "Nvidia": "Envídia",
-    "Jackson Hole": "Yákson Jóul",
-    "Warsh": "Uórsh",
-}
+SPEECH_NORMALIZER_VERSION = 3
+QUESTION_PROSODY_VERSION = 1
 
 DIALOGUE_VOICES = {
     "VOZ 1": ("ef_dora", "e"),
@@ -44,28 +43,25 @@ def pipeline_for(lang_code: str):
     return pipelines.setdefault(lang_code, KPipeline(lang_code=lang_code))
 
 
-def normalize_for_speech(text: str) -> str:
-    normalized = str(text)
-    for term, spoken in sorted(
-        PRONUNCIATION_LEXICON.items(), key=lambda item: len(item[0]), reverse=True
-    ):
-        normalized = re.sub(
-            rf"\b{re.escape(term)}\b",
-            lambda _: spoken,
-            normalized,
-            flags=re.IGNORECASE,
-        )
-    return normalized
-
-
-def synthesize(text: str, voice: str, lang_code: str = "e") -> np.ndarray:
+def synthesize(
+    text: str,
+    voice: str,
+    lang_code: str = "e",
+    reference_date: str | None = None,
+    speed_override: float | None = None,
+) -> np.ndarray:
     chunks = []
     pipeline = pipeline_for(lang_code)
-    speech_text = normalize_for_speech(text)
+    speech_text = normalize_for_speech(text, reference_date)
+    speed = (
+        speed_override
+        if speed_override is not None
+        else float(os.environ.get("ATLAS_AUDIO_SPEED", "1.0"))
+    )
     for _, _, audio in pipeline(
         speech_text,
         voice=voice,
-        speed=float(os.environ.get("ATLAS_AUDIO_SPEED", "1.0")),
+        speed=speed,
         split_pattern=r"\n+",
     ):
         if audio is None:
@@ -115,16 +111,52 @@ def parse_dialogue(text: str):
     return turns
 
 
-def synthesize_dialogue(text: str) -> np.ndarray:
+def emphasize_question_tail(samples: np.ndarray) -> np.ndarray:
+    if samples.size == 0:
+        return samples
+    output = samples.astype(np.float32, copy=True)
+    tail_samples = min(
+        output.size,
+        int(SAMPLE_RATE * QUESTION_TAIL_SECONDS),
+    )
+    if tail_samples <= 1:
+        return output
+    ramp = np.linspace(1.0, QUESTION_TAIL_GAIN, tail_samples, dtype=np.float32)
+    output[-tail_samples:] *= ramp
+    peak = float(np.max(np.abs(output)))
+    if peak > 0.99:
+        output *= 0.99 / peak
+    return output
+
+
+def synthesize_dialogue(text: str, reference_date: str) -> np.ndarray:
     turns = parse_dialogue(text)
-    silence = np.zeros(int(SAMPLE_RATE * TURN_PAUSE_SECONDS), dtype=np.float32)
+    normal_silence = np.zeros(
+        int(SAMPLE_RATE * TURN_PAUSE_SECONDS), dtype=np.float32
+    )
+    question_silence = np.zeros(
+        int(SAMPLE_RATE * QUESTION_TURN_PAUSE_SECONDS), dtype=np.float32
+    )
     parts = []
+    previous_was_question = False
+
     for index, (speaker, content) in enumerate(turns):
         voice, lang_code = DIALOGUE_VOICES[speaker]
-        samples = synthesize(content, voice, lang_code)
+        alex_question = speaker == "VOZ 2" and is_question(content)
+        samples = synthesize(
+            content,
+            voice,
+            lang_code,
+            reference_date=reference_date,
+            speed_override=QUESTION_SPEED if alex_question else None,
+        )
+        if alex_question:
+            samples = emphasize_question_tail(samples)
         if index:
-            parts.append(silence)
+            parts.append(question_silence if previous_was_question else normal_silence)
         parts.append(samples)
+        previous_was_question = alex_question
+
     return np.concatenate(parts)
 
 
@@ -190,6 +222,11 @@ plan = json.loads(PLAN_PATH.read_text(encoding="utf-8"))
 if not plan.get("needsGeneration"):
     print("Audio V2 omitido: no hay síntesis pendiente.")
     raise SystemExit(0)
+if (
+    plan.get("lexiconVersion") != LEXICON_VERSION
+    or plan.get("lexiconRevision") != LEXICON_REVISION
+):
+    raise RuntimeError("El plan de Audio V2 no coincide con la revisión del Lexicon V3.")
 
 audio_dir = PUBLIC_DIR / "audio"
 audio_dir.mkdir(parents=True, exist_ok=True)
@@ -212,7 +249,12 @@ with tempfile.TemporaryDirectory(prefix="atlas-audio-v2-") as temp_dir_name:
         if not cover_text:
             raise RuntimeError("El guion de Portada está vacío.")
         cover_voice = str(cover_plan.get("voice") or "ef_dora")
-        samples = synthesize(cover_text, cover_voice, "e")
+        samples = synthesize(
+            cover_text,
+            cover_voice,
+            "e",
+            reference_date=date,
+        )
         cover_filename = f"{date}-resumen-diario.mp3"
         cover_temp = temp_dir / cover_filename
         write_mp3(cover_temp, samples)
@@ -222,6 +264,9 @@ with tempfile.TemporaryDirectory(prefix="atlas-audio-v2-") as temp_dir_name:
             "schemaVersion": 1,
             "scriptVersion": cover_plan.get("scriptVersion", 1),
             "speechNormalizerVersion": SPEECH_NORMALIZER_VERSION,
+            "lexiconVersion": LEXICON_VERSION,
+            "lexiconRevision": LEXICON_REVISION,
+            "questionProsodyVersion": QUESTION_PROSODY_VERSION,
             "status": "published",
             "date": date,
             "title": cover_plan["title"],
@@ -245,6 +290,9 @@ with tempfile.TemporaryDirectory(prefix="atlas-audio-v2-") as temp_dir_name:
         "generatedAt": now,
         "sourceCommit": source_commit,
         "speechNormalizerVersion": SPEECH_NORMALIZER_VERSION,
+        "lexiconVersion": LEXICON_VERSION,
+        "lexiconRevision": LEXICON_REVISION,
+        "questionProsodyVersion": QUESTION_PROSODY_VERSION,
     }
 
     for section in ("national", "markets"):
@@ -265,6 +313,8 @@ with tempfile.TemporaryDirectory(prefix="atlas-audio-v2-") as temp_dir_name:
                 and existing.get("status") == "published"
                 and existing.get("sourceId") == product.get("sourceId")
                 and existing.get("scriptHash") == product.get("scriptHash")
+                and existing.get("lexiconVersion") == LEXICON_VERSION
+                and existing.get("lexiconRevision") == LEXICON_REVISION
             ):
                 analysis_manifest[section] = existing
             else:
@@ -284,7 +334,7 @@ with tempfile.TemporaryDirectory(prefix="atlas-audio-v2-") as temp_dir_name:
             script = str(product.get("script") or "").strip()
             if not script:
                 raise RuntimeError(f"Guion {section} vacío.")
-            samples = synthesize_dialogue(script)
+            samples = synthesize_dialogue(script, reference_date=date)
             filename = f"{date}-{section}-analysis.mp3"
             temp_path = temp_dir / filename
             write_mp3(temp_path, samples)
@@ -300,6 +350,9 @@ with tempfile.TemporaryDirectory(prefix="atlas-audio-v2-") as temp_dir_name:
                 "scriptVersion": product["scriptVersion"],
                 "scriptHash": product["scriptHash"],
                 "speechNormalizerVersion": SPEECH_NORMALIZER_VERSION,
+                "lexiconVersion": LEXICON_VERSION,
+                "lexiconRevision": LEXICON_REVISION,
+                "questionProsodyVersion": QUESTION_PROSODY_VERSION,
                 "engine": "Kokoro-82M",
                 "voices": {"voice1": "ef_dora", "voice2": "em_alex"},
                 "language": "es",
@@ -312,6 +365,8 @@ with tempfile.TemporaryDirectory(prefix="atlas-audio-v2-") as temp_dir_name:
                 "error": str(exc)[:240],
                 "scriptVersion": product.get("scriptVersion"),
                 "scriptHash": product.get("scriptHash"),
+                "lexiconVersion": LEXICON_VERSION,
+                "lexiconRevision": LEXICON_REVISION,
             }
             print(f"Audio V2 {section}: unavailable · {exc}")
 
