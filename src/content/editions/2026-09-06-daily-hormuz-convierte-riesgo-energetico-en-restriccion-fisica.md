@@ -4,7 +4,7 @@ summary: "Ataques directos de Estados Unidos e Irán sobre buques y petroleros e
 publishedAt: "2026-09-06T06:08:00-03:00"
 cutoffAt: "2026-09-06T06:05:00-03:00"
 type: "daily"
-status: "draft"
+status: "published"
 tags:
   - mercados-globales
   - energia
