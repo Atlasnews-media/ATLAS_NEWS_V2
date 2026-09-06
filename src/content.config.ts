@@ -26,9 +26,7 @@ const marketSummarySchema = z.object({
 });
 
 const readingAudioSchema = z.object({
-  src: z
-    .string()
-    .regex(/^\/audio\/readings\/[a-z0-9-]+\.mp3$/),
+  src: z.string().regex(/^\/audio\/readings\/[a-z0-9-]+\.mp3$/),
   durationLabel: z.string().min(3).max(16),
   voice: z.string().min(2).max(32),
 });

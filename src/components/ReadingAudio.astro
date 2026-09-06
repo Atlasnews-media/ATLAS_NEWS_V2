@@ -1,0 +1,81 @@
+---
+interface Props {
+  audio?: {
+    src: string;
+    durationLabel: string;
+    voice: string;
+  };
+}
+
+const { audio } = Astro.props;
+---
+
+<section
+  class="reading-audio"
+  aria-label="Audio de la Lectura Seleccionada"
+  hidden={!audio}
+>
+  <div class="audio-copy">
+    <p class="audio-kicker">Escuchar esta lectura</p>
+    <p>
+      Narrada por {audio?.voice} · {audio?.durationLabel}
+    </p>
+  </div>
+  <div class="audio-player">
+    <audio
+      controls
+      preload="metadata"
+      aria-label="Lectura Seleccionada de ATLAS NEWS"
+    >
+      <source src={audio?.src} type="audio/mpeg" />
+    </audio>
+  </div>
+</section>
+
+<style>
+  .reading-audio {
+    max-width: 52rem;
+    margin: 2.25rem auto 0;
+    padding: 1.1rem 0 1.25rem;
+    border-top: 4px double var(--rule);
+    border-bottom: 1px solid var(--rule);
+  }
+  .reading-audio[hidden] {
+    display: none;
+  }
+  .audio-copy {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-bottom: 0.8rem;
+  }
+  .audio-kicker {
+    margin: 0;
+    font: 800 0.72rem/1.2 var(--sans);
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+  }
+  .audio-copy > p:last-child {
+    margin: 0;
+    color: var(--ink-soft);
+    font: 400 0.86rem/1.4 var(--sans);
+  }
+  .audio-player {
+    min-width: 0;
+  }
+  audio {
+    display: block;
+    width: 100%;
+    min-height: 2.6rem;
+  }
+
+  @media (max-width: 42rem) {
+    .audio-copy {
+      display: block;
+    }
+    .audio-copy > p:last-child {
+      margin-top: 0.25rem;
+    }
+  }
+</style>
