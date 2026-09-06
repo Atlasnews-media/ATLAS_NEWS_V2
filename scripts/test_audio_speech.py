@@ -25,6 +25,15 @@ check(
     "2026-09-06",
 )
 check(
+    "Para la reapertura del lunes hay una señal previa; el sábado apareció información nueva.",
+    "Para la reapertura de mañana lunes hay una señal previa; ayer sábado apareció información nueva.",
+    "2026-09-06",
+)
+check(
+    "JPMorgan mira Treasuries mientras el Treasury a dos años reacciona.",
+    "Yéi pí Morgan mira Tréchuri mientras el bono del Tesoro estadounidense a dos años reacciona.",
+)
+check(
     "El lunes pasado cambió la curva.",
     "El lunes pasado cambió la curva.",
     "2026-09-06",
