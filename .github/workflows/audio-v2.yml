@@ -7,6 +7,9 @@ on:
       - "src/content/editions/**"
       - "src/content/briefings/**"
       - "lab/audio-v2/**"
+      - "config/audio/**"
+      - "scripts/audio_speech.py"
+      - "scripts/test_audio_speech.py"
       - "scripts/prepare-daily-audio.mjs"
       - "scripts/prepare-audio-v2.mjs"
       - "scripts/generate-audio-v2.py"
@@ -45,6 +48,9 @@ jobs:
         uses: actions/setup-node@v6
         with:
           node-version: 22
+
+      - name: Validar normalización y Lexicon V3
+        run: python3 scripts/test_audio_speech.py
 
       - name: Preparar acceso al repositorio público
         env:
