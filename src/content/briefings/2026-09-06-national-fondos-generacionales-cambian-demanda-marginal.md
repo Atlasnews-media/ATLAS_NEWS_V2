@@ -4,7 +4,7 @@ summary: "El nuevo régimen previsional no implica una revalorización automáti
 publishedAt: "2026-09-06T06:18:00-03:00"
 cutoffAt: "2026-09-06T06:15:00-03:00"
 section: "national"
-status: "draft"
+status: "published"
 tags:
   - chile
   - pensiones
