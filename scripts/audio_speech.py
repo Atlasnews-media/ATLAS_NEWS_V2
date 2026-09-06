@@ -139,7 +139,7 @@ def normalize_numbers_and_symbols(text: str) -> str:
 def normalize_for_speech(text: str, reference_date: str | None = None) -> str:
     normalized = str(text)
     normalized = re.sub(r"\[([^\]]+)\]\([^)]+\)", r"\1", normalized)
-    normalized = re.sub(r"\*\*([^*]+)\*\*/", r"\1", normalized)
+    normalized = re.sub(r"\*\*([^*]+)\*\*", r"\1", normalized)
     normalized = re.sub(r"[`_*#>]", "", normalized)
     normalized = normalize_public_section_names(normalized)
     normalized = normalize_relative_days(normalized, reference_date)
