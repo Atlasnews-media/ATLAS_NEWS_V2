@@ -5,6 +5,15 @@ import path from "node:path";
 const root = new URL("../", import.meta.url);
 const ANALYSIS_SCRIPT_VERSION = 2;
 const PLAN_FILE = ".atlas-audio-v2-plan.json";
+const lexiconConfig = JSON.parse(
+  await readFile(new URL("config/audio/lexicon-v3.json", root), "utf8"),
+);
+const LEXICON_VERSION = Number(lexiconConfig.version ?? 0);
+const LEXICON_REVISION = Number(lexiconConfig.revision ?? 0);
+
+if (LEXICON_VERSION !== 3 || LEXICON_REVISION < 1) {
+  throw new Error("Lexicon V3 inválido para planificación de Audio V2.");
+}
 
 function hashText(text) {
   return createHash("sha256").update(text).digest("hex");
@@ -69,7 +78,16 @@ if (!coverPlan?.date || !coverPlan?.sourceIds?.general) {
 const date = coverPlan.date;
 const sourceIds = coverPlan.sourceIds;
 const manifestPath = path.join(publicDir, "audio", "analysis-latest.json");
+const coverManifestPath = path.join(publicDir, "audio", "latest.json");
 const existingAnalysis = await readJson(manifestPath);
+const existingCover = await readJson(coverManifestPath);
+
+function sameLexicon(existing) {
+  return (
+    existing?.lexiconVersion === LEXICON_VERSION &&
+    existing?.lexiconRevision === LEXICON_REVISION
+  );
+}
 
 async function analysisProduct(section) {
   const sourceId = sourceIds[section] ?? null;
@@ -85,7 +103,12 @@ async function analysisProduct(section) {
   const sameHash = existing?.scriptHash === scriptHash;
   const hasPublishedPath =
     existing?.status === "published" && Boolean(existing?.path);
-  const isCurrent = sameSource && sameVersion && sameHash && hasPublishedPath;
+  const isCurrent =
+    sameSource &&
+    sameVersion &&
+    sameHash &&
+    sameLexicon(existing) &&
+    hasPublishedPath;
 
   let unavailableReason = null;
   if (!sourceId) {
@@ -103,6 +126,8 @@ async function analysisProduct(section) {
     script,
     scriptHash,
     scriptVersion: ANALYSIS_SCRIPT_VERSION,
+    lexiconVersion: LEXICON_VERSION,
+    lexiconRevision: LEXICON_REVISION,
     needsGeneration,
     unavailableReason,
   };
@@ -110,11 +135,14 @@ async function analysisProduct(section) {
 
 const national = await analysisProduct("national");
 const markets = await analysisProduct("markets");
+const coverLexiconCurrent = sameLexicon(existingCover);
 const cover = {
   section: "cover",
   sourceId: sourceIds.general,
   scriptVersion: coverPlan.scriptVersion ?? 1,
-  needsGeneration: Boolean(coverPlan.needsGeneration),
+  lexiconVersion: LEXICON_VERSION,
+  lexiconRevision: LEXICON_REVISION,
+  needsGeneration: Boolean(coverPlan.needsGeneration || !coverLexiconCurrent),
   plan: coverPlan,
 };
 
@@ -128,6 +156,8 @@ const plan = {
   schemaVersion: 1,
   date,
   sourceIds,
+  lexiconVersion: LEXICON_VERSION,
+  lexiconRevision: LEXICON_REVISION,
   simulateMarketsFailure,
   products,
 };
