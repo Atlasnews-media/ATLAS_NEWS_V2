@@ -3,14 +3,14 @@
     {
       "id": "oil-geopolitics-inflation",
       "topic": "Petróleo, geopolítica e inflación",
-      "thesis": "El shock energético volvió a escalar desde riesgo geopolítico hacia evidencia física sobre Hormuz: ataques a petroleros saudíes y nuevos intercambios militares llevan el Brent hacia US$95 y elevan la presión inflacionaria justo cuando el mercado vuelve a poner una subida de la Fed en septiembre como escenario central.",
-      "status": "changed",
-      "last_evidence": "El 2 de septiembre el Brent operó cerca de US$94,87 después de tocar US$95, mientras dos petroleros con crudo saudí fueron atacados en Hormuz y Estados Unidos e Irán protagonizaron su intercambio militar más intenso en semanas.",
-      "effect": "Convierte la prima energética en un canal físico de riesgo sobre oferta y transporte, refuerza la presión sobre tasas y reduce el margen para una lectura monetaria benigna mientras no exista normalización marítima verificable.",
-      "base_scenario": "Prima energética elevada y volátil con riesgo físico creciente sobre Hormuz, sin asumir todavía una interrupción sostenida adicional del flujo global de crudo.",
-      "invalidate_if": "Una desescalada verificable restaura tráfico sostenido por Hormuz y devuelve el Brent a una trayectoria descendente; nuevos ataques o menor tránsito confirmarían un shock más severo.",
-      "watch": "Brent, tráfico y embarques por Hormuz, ataques a buques, nuevas acciones militares Estados Unidos-Irán, sanciones, combustibles y expectativas de inflación.",
-      "last_publication": "/ediciones/2026-09-02-daily-fed-vuelve-a-poner-el-alza-en-el-centro/"
+      "thesis": "El shock energético escaló desde ataques puntuales en Hormuz hacia enfrentamientos directos sobre los propios activos marítimos: Estados Unidos atacó tres petroleros iraníes tras misiles contra buques de su Armada, elevando la probabilidad de una restricción física persistente sobre transporte y oferta.",
+      "status": "confirmed",
+      "last_evidence": "El 5 de septiembre fuerzas estadounidenses atacaron tres petroleros iraníes después de lanzamientos de misiles contra dos buques de la Armada; Irán informó a su vez ataques contra petroleros y embarcaciones vinculadas a Estados Unidos, sin bajas estadounidenses reportadas.",
+      "effect": "Confirma que la prima energética ya tiene un canal físico sobre transporte marítimo y aumenta el riesgo de persistencia inflacionaria justo cuando la Fed vuelve a inclinarse hacia una subida en septiembre.",
+      "base_scenario": "Prima energética elevada y volátil con riesgo físico persistente sobre Hormuz, sin asumir todavía una interrupción total del flujo global de crudo.",
+      "invalidate_if": "Una desescalada verificable restaura tráfico sostenido por Hormuz y reduce de forma persistente la prima energética; menor tránsito o nuevos ataques confirmarían un shock más severo.",
+      "watch": "Tráfico y embarques por Hormuz, ataques a buques, seguros marítimos, Brent, decisión y producción OPEC+, nuevas acciones militares Estados Unidos-Irán y expectativas de inflación.",
+      "last_publication": "/ediciones/2026-09-06-daily-hormuz-convierte-riesgo-energetico-en-restriccion-fisica/"
     },
     {
       "id": "us-employment-fed-rates",
