@@ -1,11 +1,6 @@
 name: LAB — audio Lectura Seleccionada con Alex
 
 on:
-  pull_request:
-    paths:
-      - "lab/reading-pilot-2026-09-04-activo-seguro-alex.txt"
-      - "scripts/lab-generate-reading-pilot.py"
-      - ".github/workflows/lab-reading-audio-pilot.yml"
   workflow_dispatch:
 
 permissions:
