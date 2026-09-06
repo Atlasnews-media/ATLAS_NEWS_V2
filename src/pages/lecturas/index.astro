@@ -1,5 +1,6 @@
 ---
 import ContentCard from "../../components/ContentCard.astro";
+import ReadingAudio from "../../components/ReadingAudio.astro";
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import { formatEditorialDate, getPublishedReadings } from "../../lib/content";
 
@@ -23,6 +24,9 @@ function readingEyebrow(tags: string[]) {
       Textos elegidos por su capacidad de aportar contexto, método o una
       perspectiva verificable.
     </p>
+
+    {readings[0] && <ReadingAudio audio={readings[0].data.audio} />}
+
     <div class="reading-list">
       {
         readings.map((reading) => (
