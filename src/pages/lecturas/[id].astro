@@ -1,6 +1,7 @@
 ---
 import { render } from "astro:content";
 import ArticleHeader from "../../components/ArticleHeader.astro";
+import ReadingAudio from "../../components/ReadingAudio.astro";
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import {
   formatEditorialDate,
@@ -36,6 +37,7 @@ const { Content } = await render(reading);
       demo={reading.data.demo}
       tags={reading.data.tags}
     />
+    <ReadingAudio audio={reading.data.audio} />
     <article class="prose"><Content /></article>
     <p class="source">
       <strong>Fuente original:</strong>
