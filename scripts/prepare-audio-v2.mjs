@@ -3,7 +3,7 @@ import { appendFile, readFile, writeFile } from "node:fs/promises";
 import path from "node:path";
 
 const root = new URL("../", import.meta.url);
-const ANALYSIS_SCRIPT_VERSION = 1;
+const ANALYSIS_SCRIPT_VERSION = 2;
 const PLAN_FILE = ".atlas-audio-v2-plan.json";
 
 function hashText(text) {
