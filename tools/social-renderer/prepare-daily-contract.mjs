@@ -37,11 +37,12 @@ async function markSkipped(reason) {
 }
 
 function git(args, options = {}) {
-  return execFileSync("git", args, {
+  const result = execFileSync("git", args, {
     cwd: ROOT,
     encoding: "utf8",
     ...options,
-  }).trim();
+  });
+  return String(result ?? "").trim();
 }
 
 function commitParents(commit) {
