@@ -1,11 +1,13 @@
 {
   "version": 3,
+  "revision": 1,
   "status": "foundation",
   "source": "ATLAS NEWS V2 — MATRIZ DE PRONUNCIACIÓN TTS",
   "policy": {
     "scope": "speech_text_only",
     "requiresHumanApproval": true,
     "sheetDirectToProduction": false,
+    "revisionRule": "Toda modificación de una entrada aprobada requiere incrementar revision antes de producción.",
     "note": "Sólo entran aquí reglas ya usadas en producción o aprobadas explícitamente para Audio V2. La matriz completa permanece como backlog de QA."
   },
   "entries": [
