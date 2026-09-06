@@ -4,6 +4,9 @@ from datetime import date as date_type, timedelta
 from pathlib import Path
 
 LEXICON_PATH = Path(__file__).resolve().parent.parent / "config" / "audio" / "lexicon-v3.json"
+LEXICON_PAYLOAD = json.loads(LEXICON_PATH.read_text(encoding="utf-8"))
+LEXICON_VERSION = int(LEXICON_PAYLOAD.get("version") or 0)
+LEXICON_REVISION = int(LEXICON_PAYLOAD.get("revision") or 0)
 DAY_NAMES = (
     "lunes",
     "martes",
@@ -15,10 +18,11 @@ DAY_NAMES = (
 )
 
 
-def load_lexicon(path: Path = LEXICON_PATH):
-    payload = json.loads(path.read_text(encoding="utf-8"))
-    if payload.get("version") != 3:
+def load_lexicon(payload=LEXICON_PAYLOAD):
+    if int(payload.get("version") or 0) != 3:
         raise RuntimeError("Lexicon V3 inválido: version debe ser 3.")
+    if int(payload.get("revision") or 0) < 1:
+        raise RuntimeError("Lexicon V3 inválido: revision debe ser >= 1.")
 
     entries = []
     for entry in payload.get("entries", []):
