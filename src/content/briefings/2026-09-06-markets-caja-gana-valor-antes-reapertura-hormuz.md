@@ -4,7 +4,7 @@ summary: "Los flujos ya mostraban preferencia por liquidez y menor duración ant
 publishedAt: "2026-09-06T06:27:00-03:00"
 cutoffAt: "2026-09-06T06:24:00-03:00"
 section: "markets"
-status: "draft"
+status: "published"
 tags:
   - mercados-globales
   - flujos
