@@ -11,7 +11,12 @@ import numpy as np
 import soundfile as sf
 from kokoro import KPipeline
 
-from audio_speech import is_question, normalize_for_speech
+from audio_speech import (
+    LEXICON_REVISION,
+    LEXICON_VERSION,
+    is_question,
+    normalize_for_speech,
+)
 
 PLAN_PATH = Path(os.environ["ATLAS_AUDIO_V2_PLAN"])
 PUBLIC_DIR = Path(os.environ["ATLAS_PUBLIC_REPO_DIR"])
@@ -24,7 +29,6 @@ QUESTION_TAIL_GAIN = 1.12
 MIN_AUDIO_BYTES = 10_000
 MIN_DURATION_SECONDS = 5.0
 SPEECH_NORMALIZER_VERSION = 3
-LEXICON_VERSION = 3
 QUESTION_PROSODY_VERSION = 1
 
 DIALOGUE_VOICES = {
@@ -218,6 +222,11 @@ plan = json.loads(PLAN_PATH.read_text(encoding="utf-8"))
 if not plan.get("needsGeneration"):
     print("Audio V2 omitido: no hay síntesis pendiente.")
     raise SystemExit(0)
+if (
+    plan.get("lexiconVersion") != LEXICON_VERSION
+    or plan.get("lexiconRevision") != LEXICON_REVISION
+):
+    raise RuntimeError("El plan de Audio V2 no coincide con la revisión del Lexicon V3.")
 
 audio_dir = PUBLIC_DIR / "audio"
 audio_dir.mkdir(parents=True, exist_ok=True)
@@ -256,6 +265,7 @@ with tempfile.TemporaryDirectory(prefix="atlas-audio-v2-") as temp_dir_name:
             "scriptVersion": cover_plan.get("scriptVersion", 1),
             "speechNormalizerVersion": SPEECH_NORMALIZER_VERSION,
             "lexiconVersion": LEXICON_VERSION,
+            "lexiconRevision": LEXICON_REVISION,
             "questionProsodyVersion": QUESTION_PROSODY_VERSION,
             "status": "published",
             "date": date,
@@ -281,6 +291,7 @@ with tempfile.TemporaryDirectory(prefix="atlas-audio-v2-") as temp_dir_name:
         "sourceCommit": source_commit,
         "speechNormalizerVersion": SPEECH_NORMALIZER_VERSION,
         "lexiconVersion": LEXICON_VERSION,
+        "lexiconRevision": LEXICON_REVISION,
         "questionProsodyVersion": QUESTION_PROSODY_VERSION,
     }
 
@@ -302,6 +313,8 @@ with tempfile.TemporaryDirectory(prefix="atlas-audio-v2-") as temp_dir_name:
                 and existing.get("status") == "published"
                 and existing.get("sourceId") == product.get("sourceId")
                 and existing.get("scriptHash") == product.get("scriptHash")
+                and existing.get("lexiconVersion") == LEXICON_VERSION
+                and existing.get("lexiconRevision") == LEXICON_REVISION
             ):
                 analysis_manifest[section] = existing
             else:
@@ -338,6 +351,7 @@ with tempfile.TemporaryDirectory(prefix="atlas-audio-v2-") as temp_dir_name:
                 "scriptHash": product["scriptHash"],
                 "speechNormalizerVersion": SPEECH_NORMALIZER_VERSION,
                 "lexiconVersion": LEXICON_VERSION,
+                "lexiconRevision": LEXICON_REVISION,
                 "questionProsodyVersion": QUESTION_PROSODY_VERSION,
                 "engine": "Kokoro-82M",
                 "voices": {"voice1": "ef_dora", "voice2": "em_alex"},
@@ -351,6 +365,8 @@ with tempfile.TemporaryDirectory(prefix="atlas-audio-v2-") as temp_dir_name:
                 "error": str(exc)[:240],
                 "scriptVersion": product.get("scriptVersion"),
                 "scriptHash": product.get("scriptHash"),
+                "lexiconVersion": LEXICON_VERSION,
+                "lexiconRevision": LEXICON_REVISION,
             }
             print(f"Audio V2 {section}: unavailable · {exc}")
 
