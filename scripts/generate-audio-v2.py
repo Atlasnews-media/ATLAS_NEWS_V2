@@ -11,6 +11,7 @@ import numpy as np
 import soundfile as sf
 from kokoro import KPipeline
 
+from audio_question_prosody import raise_terminal_pitch
 from audio_speech import (
     LEXICON_REVISION,
     LEXICON_VERSION,
@@ -26,10 +27,19 @@ QUESTION_TURN_PAUSE_SECONDS = 0.42
 QUESTION_SPEED = float(os.environ.get("ATLAS_AUDIO_QUESTION_SPEED", "0.92"))
 QUESTION_TAIL_SECONDS = 0.65
 QUESTION_TAIL_GAIN = 1.12
+QUESTION_PITCH_SEMITONES = float(
+    os.environ.get("ATLAS_AUDIO_QUESTION_PITCH_SEMITONES", "1.5")
+)
+QUESTION_PITCH_TAIL_SECONDS = float(
+    os.environ.get("ATLAS_AUDIO_QUESTION_PITCH_TAIL_SECONDS", "0.65")
+)
+QUESTION_PITCH_CROSSFADE_SECONDS = float(
+    os.environ.get("ATLAS_AUDIO_QUESTION_PITCH_CROSSFADE_SECONDS", "0.10")
+)
 MIN_AUDIO_BYTES = 10_000
 MIN_DURATION_SECONDS = 5.0
 SPEECH_NORMALIZER_VERSION = 3
-QUESTION_PROSODY_VERSION = 1
+QUESTION_PROSODY_VERSION = 2
 
 DIALOGUE_VOICES = {
     "VOZ 1": ("ef_dora", "e"),
@@ -152,6 +162,13 @@ def synthesize_dialogue(text: str, reference_date: str) -> np.ndarray:
         )
         if alex_question:
             samples = emphasize_question_tail(samples)
+            samples = raise_terminal_pitch(
+                samples,
+                SAMPLE_RATE,
+                semitones=QUESTION_PITCH_SEMITONES,
+                tail_seconds=QUESTION_PITCH_TAIL_SECONDS,
+                crossfade_seconds=QUESTION_PITCH_CROSSFADE_SECONDS,
+            )
         if index:
             parts.append(question_silence if previous_was_question else normal_silence)
         parts.append(samples)
