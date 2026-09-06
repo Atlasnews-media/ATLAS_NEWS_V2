@@ -1,0 +1,91 @@
+name: AUD-READ-01 — promover audio aprobado
+
+on:
+  pull_request:
+    paths:
+      - "src/content/readings/2026-09-04-reading-activo-seguro-riesgo.md"
+      - ".github/workflows/aud-read-01-promote.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  promote-approved-pilot:
+    name: Promover audio aprobado a ruta estable
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+
+    steps:
+      - name: Preparar acceso al repositorio público
+        env:
+          DEPLOY_KEY: ${{ secrets.ATLAS_PAGES_DEPLOY_KEY }}
+        run: |
+          set -euo pipefail
+          install -m 700 -d ~/.ssh
+          printf '%s\n' "$DEPLOY_KEY" > ~/.ssh/atlas_news_pages
+          chmod 600 ~/.ssh/atlas_news_pages
+          ssh-keyscan -H github.com >> ~/.ssh/known_hosts
+
+      - name: Descargar repositorio público
+        env:
+          GIT_SSH_COMMAND: ssh -i ~/.ssh/atlas_news_pages -o IdentitiesOnly=yes
+        run: |
+          set -euo pipefail
+          git clone --depth 1 git@github.com:EldeSiempre100/EldeSiempre100.github.io.git \
+            "$RUNNER_TEMP/atlas-news-public"
+
+      - name: Validar evidencia LAB y preparar ruta estable
+        run: |
+          set -euo pipefail
+          cd "$RUNNER_TEMP/atlas-news-public"
+
+          lab_mp3="lab/audio/reading-pilot-2026-09-04-activo-seguro-alex.mp3"
+          lab_json="lab/audio/reading-pilot-2026-09-04-activo-seguro-alex.json"
+          target_mp3="audio/readings/2026-09-04-reading-activo-seguro-riesgo.mp3"
+          target_json="audio/readings/2026-09-04-reading-activo-seguro-riesgo.json"
+
+          test -s "$lab_mp3"
+          test -s "$lab_json"
+          jq -e '
+            (.pilotId == "AUD-READ-01") and
+            (.status == "pilot_generated") and
+            (.sourceId == "2026-09-04-reading-activo-seguro-riesgo") and
+            (.sourceCommit == "07aa0935e886941c2b70a170eec82b4624c9045c") and
+            (.sourceBlobSha == "6a7053fc37e873dfed99313705970cce24bcb384") and
+            (.voice == "em_alex") and
+            (.production == false) and
+            ((.sha256 | type) == "string") and
+            ((.sha256 | length) == 64)
+          ' "$lab_json" > /dev/null
+
+          expected="$(jq -r '.sha256' "$lab_json")"
+          actual="$(sha256sum "$lab_mp3" | awk '{print $1}')"
+          test "$expected" = "$actual"
+
+          mkdir -p audio/readings
+          cp "$lab_mp3" "$target_mp3"
+          jq '
+            .status = "published" |
+            .production = true |
+            .path = "/audio/readings/2026-09-04-reading-activo-seguro-riesgo.mp3" |
+            .promotedFrom = "/lab/audio/reading-pilot-2026-09-04-activo-seguro-alex.mp3"
+          ' "$lab_json" > "$target_json"
+
+      - name: Publicar audio estable de la Lectura Seleccionada
+        env:
+          GIT_SSH_COMMAND: ssh -i ~/.ssh/atlas_news_pages -o IdentitiesOnly=yes
+        run: |
+          set -euo pipefail
+          cd "$RUNNER_TEMP/atlas-news-public"
+          git config user.name "ATLAS NEWS AUDIO"
+          git config user.email "actions@users.noreply.github.com"
+          git add \
+            audio/readings/2026-09-04-reading-activo-seguro-riesgo.mp3 \
+            audio/readings/2026-09-04-reading-activo-seguro-riesgo.json
+          if git diff --cached --quiet; then
+            echo "Audio aprobado ya estaba publicado en la ruta estable."
+            exit 0
+          fi
+          git commit -m "AUD-READ-01 — promover Lectura Seleccionada con Alex"
+          git pull --rebase origin main
+          git push origin main

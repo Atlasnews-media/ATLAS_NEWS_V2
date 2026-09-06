@@ -25,6 +25,14 @@ const marketSummarySchema = z.object({
   items: z.array(marketItemSchema).min(3).max(6),
 });
 
+const readingAudioSchema = z.object({
+  src: z
+    .string()
+    .regex(/^\/audio\/readings\/[a-z0-9-]+\.mp3$/),
+  durationLabel: z.string().min(3).max(16),
+  voice: z.string().min(2).max(32),
+});
+
 const editionSchema = z
   .object({
     title: z.string().min(8).max(140),
@@ -86,6 +94,7 @@ const readingSchema = z.object({
   tags: z.array(z.string().min(2)).min(1),
   source: sourceSchema,
   author: z.string().min(2).optional(),
+  audio: readingAudioSchema.optional(),
   demo: z.boolean().default(false),
 });
 

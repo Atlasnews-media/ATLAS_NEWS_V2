@@ -36,6 +36,22 @@ const { Content } = await render(reading);
       demo={reading.data.demo}
       tags={reading.data.tags}
     />
+    {
+      reading.data.audio && (
+        <section class="reading-audio" aria-label="Audio de la Lectura Seleccionada">
+          <div class="reading-audio__copy">
+            <p class="reading-audio__eyebrow">Escuchar esta lectura</p>
+            <p class="reading-audio__meta">
+              Narrada por {reading.data.audio.voice} · {reading.data.audio.durationLabel}
+            </p>
+          </div>
+          <audio controls preload="metadata">
+            <source src={reading.data.audio.src} type="audio/mpeg" />
+            Tu navegador no puede reproducir este audio.
+          </audio>
+        </section>
+      )
+    }
     <article class="prose"><Content /></article>
     <p class="source">
       <strong>Fuente original:</strong>
@@ -48,6 +64,39 @@ const { Content } = await render(reading);
   .article-page {
     width: min(88rem, calc(100% - 2rem));
     margin: 0 auto;
+  }
+  .reading-audio {
+    max-width: 52rem;
+    margin: 2.25rem auto 0;
+    padding: 1.1rem 0 1.25rem;
+    border-top: 4px double var(--rule);
+    border-bottom: 1px solid var(--rule);
+  }
+  .reading-audio__copy {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-bottom: 0.8rem;
+  }
+  .reading-audio__eyebrow,
+  .reading-audio__meta {
+    margin: 0;
+    font-family: var(--sans);
+  }
+  .reading-audio__eyebrow {
+    font-size: 0.78rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .reading-audio__meta {
+    color: var(--muted);
+    font-size: 0.86rem;
+  }
+  .reading-audio audio {
+    display: block;
+    width: 100%;
   }
   .prose {
     max-width: 52rem;
@@ -85,6 +134,12 @@ const { Content } = await render(reading);
   @media (max-width: 42rem) {
     .article-page {
       width: min(100% - 1.25rem, 88rem);
+    }
+    .reading-audio__copy {
+      display: block;
+    }
+    .reading-audio__meta {
+      margin-top: 0.25rem;
     }
   }
 </style>
