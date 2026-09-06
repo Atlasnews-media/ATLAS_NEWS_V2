@@ -56,6 +56,13 @@ def normalize_lexicon(text: str) -> str:
     return normalized
 
 
+def _preserve_initial_case(match: re.Match, replacement: str) -> str:
+    original = match.group(0)
+    if original and original[0].isupper():
+        return replacement[0].upper() + replacement[1:]
+    return replacement
+
+
 def normalize_public_section_names(text: str) -> str:
     normalized = str(text)
     replacements = (
@@ -65,15 +72,17 @@ def normalize_public_section_names(text: str) -> str:
         (r"\bla\s+General\b", "la Portada"),
     )
     for pattern, replacement in replacements:
-        normalized = re.sub(pattern, replacement, normalized, flags=re.IGNORECASE)
+        normalized = re.sub(
+            pattern,
+            lambda match, value=replacement: _preserve_initial_case(match, value),
+            normalized,
+            flags=re.IGNORECASE,
+        )
     return normalized
 
 
 def _relative_replacement(match: re.Match, replacement: str) -> str:
-    original = match.group(0)
-    if original and original[0].isupper():
-        return replacement[0].upper() + replacement[1:]
-    return replacement
+    return _preserve_initial_case(match, replacement)
 
 
 def normalize_relative_days(text: str, reference_date: str | None) -> str:
@@ -130,7 +139,7 @@ def normalize_numbers_and_symbols(text: str) -> str:
 def normalize_for_speech(text: str, reference_date: str | None = None) -> str:
     normalized = str(text)
     normalized = re.sub(r"\[([^\]]+)\]\([^)]+\)", r"\1", normalized)
-    normalized = re.sub(r"\*\*([^*]+)\*\*", r"\1", normalized)
+    normalized = re.sub(r"\*\*([^*]+)\*\*/", r"\1", normalized)
     normalized = re.sub(r"[`_*#>]", "", normalized)
     normalized = normalize_public_section_names(normalized)
     normalized = normalize_relative_days(normalized, reference_date)
