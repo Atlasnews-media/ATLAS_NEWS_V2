@@ -1,10 +1,10 @@
 ---
 title: "IVA a la vivienda apunta al stock: el alivio de precio no resuelve por sí solo la demanda"
 summary: "Hacienda precisó que la exención transitoria puede reducir hasta cerca de 14% el precio de viviendas nuevas elegibles desde noviembre y cubrir operaciones retroactivas, pero su adopción será opcional para inmobiliarias."
-publishedAt: "2026-09-07T06:02:00-03:00"
+publishedAt: "2026-09-07T06:59:49-03:00"
 cutoffAt: "2026-09-07T06:01:00-03:00"
 section: "national"
-status: "draft"
+status: "published"
 tags:
   - chile
   - vivienda
