@@ -3,14 +3,14 @@
     {
       "id": "oil-geopolitics-inflation",
       "topic": "Petróleo, geopolítica e inflación",
-      "thesis": "El shock energético escaló desde ataques puntuales en Hormuz hacia enfrentamientos directos sobre los propios activos marítimos: Estados Unidos atacó tres petroleros iraníes tras misiles contra buques de su Armada, elevando la probabilidad de una restricción física persistente sobre transporte y oferta.",
+      "thesis": "El shock energético ya combina ataques directos sobre activos marítimos con una restricción operativa observable: el tráfico de commodities por Hormuz cayó a su menor ritmo desde mayo y una nueva zona restringida anunciada por Irán aumenta el riesgo sobre navegación y oferta transportable.",
       "status": "confirmed",
-      "last_evidence": "El 5 de septiembre fuerzas estadounidenses atacaron tres petroleros iraníes después de lanzamientos de misiles contra dos buques de la Armada; Irán informó a su vez ataques contra petroleros y embarcaciones vinculadas a Estados Unidos, sin bajas estadounidenses reportadas.",
-      "effect": "Confirma que la prima energética ya tiene un canal físico sobre transporte marítimo y aumenta el riesgo de persistencia inflacionaria justo cuando la Fed vuelve a inclinarse hacia una subida en septiembre.",
-      "base_scenario": "Prima energética elevada y volátil con riesgo físico persistente sobre Hormuz, sin asumir todavía una interrupción total del flujo global de crudo.",
-      "invalidate_if": "Una desescalada verificable restaura tráfico sostenido por Hormuz y reduce de forma persistente la prima energética; menor tránsito o nuevos ataques confirmarían un shock más severo.",
-      "watch": "Tráfico y embarques por Hormuz, ataques a buques, seguros marítimos, Brent, decisión y producción OPEC+, nuevas acciones militares Estados Unidos-Irán y expectativas de inflación.",
-      "last_publication": "/ediciones/2026-09-06-daily-hormuz-convierte-riesgo-energetico-en-restriccion-fisica/"
+      "last_evidence": "Al 7 de septiembre el promedio de cruces de buques de commodities por Hormuz cayó a 10 diarios en diez días, mínimo desde mayo; el sábado cruzaron solo dos, no salían VLCC desde el miércoles e Irán anunció una nueva zona restringida en el Golfo.",
+      "effect": "Confirma que la prima energética tiene un canal físico persistente sobre transporte marítimo y eleva el riesgo de transmisión hacia combustibles, fletes y expectativas de inflación.",
+      "base_scenario": "Prima energética elevada y volátil con restricción parcial del tráfico por Hormuz, sin asumir todavía una interrupción total del flujo global de crudo.",
+      "invalidate_if": "Una recuperación sostenida del tráfico y de las salidas de VLCC por Hormuz, junto con una caída persistente de la prima energética, debilitaría la tesis; nuevos mínimos de tránsito o restricciones formales la reforzarían.",
+      "watch": "Tráfico y embarques por Hormuz, salida de VLCC, alcance de la zona restringida iraní, seguros marítimos, Brent, producción OPEC+ y expectativas de inflación.",
+      "last_publication": "/ediciones/2026-09-07-daily-hormuz-pasa-de-riesgo-a-restriccion-operativa/"
     },
     {
       "id": "us-employment-fed-rates",
