@@ -1,10 +1,10 @@
 ---
 title: "Europa ya cobra la prima energética antes de que Wall Street pueda responder"
 summary: "Con Estados Unidos cerrado, Europa y Asia están haciendo el primer ajuste al nuevo riesgo de Hormuz: energía gana, importadores sufren y las expectativas de alzas de tasas absorben el shock antes de la reapertura de Treasuries."
-publishedAt: "2026-09-07T06:04:00-03:00"
+publishedAt: "2026-09-07T07:00:17-03:00"
 cutoffAt: "2026-09-07T06:03:00-03:00"
 section: "markets"
-status: "draft"
+status: "published"
 tags:
   - mercados-globales
   - energia
