@@ -27,9 +27,9 @@ El body debe estar vacío.
 5. **Orden humana mínima.** Sólo fecha. El branch se deriva como `run/instagram-YYYY-MM-DD`; el contrato se deriva buscando exactamente un `tools/social-renderer/contracts/YYYY-MM-DD-daily-*.json` en esa rama. `publication_status`, `publish_confirmation` y `api_version` están hardcoded/allowlisted.
 6. **Sin secretos de publicación.** El bridge no recibe `INSTAGRAM_ACCESS_TOKEN` ni `ATLAS_PAGES_DEPLOY_KEY`. Permisos: `actions: write` + `contents: read` únicamente.
 7. **Pre-dispatch completo.** Confirma rama, contrato único, sourceCommit/sourceId coherentes, canonical HTTPS de la edición con HTTP 200, ausencia de evidencia `PUBLISHED_VERIFIED` para la canonical y ausencia de otro run controlado queued/in_progress/waiting/requested para la misma rama.
-8. **Idempotencia.** `GITHUB_RUN_ATTEMPT != 1` falla cerrado. Un bridge previo exitoso con la misma fecha bloquea una nueva orden. Concurrency se fija por número de Issue. No existe rerun automático.
+8. **Idempotencia irreversible por fecha.** `GITHUB_RUN_ATTEMPT != 1` falla cerrado. La concurrency se serializa por el título exacto normalizado `ATLAS INSTAGRAM RECOVERY YYYY-MM-DD`, por lo que dos Issues de la misma fecha comparten el mismo grupo. Un bridge previo exitoso con la misma fecha bloquea una nueva orden. El momento en que `gh workflow run` es aceptado por GitHub constituye el estado irreversible `DISPATCHED`; cualquier fallo posterior para resolver el controlled run ID es best-effort y no convierte el bridge en reintentable. No existe rerun automático.
 9. **Workflow controlado intacto.** El bridge sólo lo invoca con sus cuatro inputs existentes; no modifica sus gates, secrets, renderer, staging, validación 5/5 ni publicación Meta.
-10. **Trazabilidad.** El bridge resuelve y deja en Step Summary: Issue, actor, fecha, branch, contrato y controlled run ID. El cierre operacional posterior debe enlazar ese run con permalink + `PUBLISHED_VERIFIED`, o registrar STOP.
+10. **Trazabilidad.** El bridge intenta resolver y deja en Step Summary: Issue, actor, fecha, branch, contrato, estado de aceptación del dispatch y controlled run ID cuando esté disponible. Si el run ID no se resuelve inmediatamente, queda `UNRESOLVED_AFTER_ACCEPTED_DISPATCH` para revisión manual, sin habilitar un segundo dispatch. El cierre operacional posterior debe enlazar ese run con permalink + `PUBLISHED_VERIFIED`, o registrar STOP.
 
 ## Fail-closed
 
@@ -46,8 +46,9 @@ El bridge termina sin dispatch ante cualquiera de estas condiciones:
 - canonical no pública con HTTP 200;
 - evidencia previa `PUBLISHED_VERIFIED` para la canonical;
 - otro controlled run activo para la rama;
-- orden previa de bridge ya despachada con éxito;
-- imposibilidad de resolver el controlled run ID luego de que GitHub acepte el dispatch.
+- orden previa de bridge ya despachada con éxito.
+
+Una vez que GitHub acepta `gh workflow run`, la orden ya está `DISPATCHED`. La resolución del controlled run ID pasa a ser best-effort: si no puede resolverse dentro de la ventana breve del bridge, se registra `UNRESOLVED_AFTER_ACCEPTED_DISPATCH` y se exige revisión manual de trazabilidad; no se habilita otra orden para la misma fecha.
 
 ## Evidencia de publicación previa
 

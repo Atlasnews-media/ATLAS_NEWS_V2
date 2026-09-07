@@ -11,7 +11,7 @@ permissions:
   contents: read
 
 concurrency:
-  group: instagram-recovery-${{ github.event.issue.number }}
+  group: instagram-recovery-${{ github.event.issue.title }}
   cancel-in-progress: false
 
 jobs:
@@ -140,7 +140,7 @@ jobs:
           )"
 
           if [ "$prior_count" != "0" ]; then
-            echo "Fail-closed: a previous bridge order for this date already dispatched successfully."
+            echo "Fail-closed: a previous bridge order for this date already reached irreversible DISPATCHED state."
             exit 10
           fi
 
@@ -210,39 +210,53 @@ jobs:
             -f "publish_confirmation=$PUBLISH_CONFIRMATION" \
             -f "api_version=$API_VERSION"
 
+          # From this point the order is irreversibly DISPATCHED. Any trace lookup
+          # below is best-effort and must never make this bridge retryable.
+          echo "dispatch_accepted=true" >> "$GITHUB_OUTPUT"
+          echo "DISPATCHED: GitHub accepted the controlled workflow_dispatch."
+
           controlled_run_id=""
           for attempt in 1 2 3 4 5 6; do
-            controlled_run_id="$(
+            runs_json="$(
               gh run list \
                 --workflow "$CONTROLLED_WORKFLOW" \
                 --branch "$RECOVERY_BRANCH" \
                 --event workflow_dispatch \
                 --limit 10 \
-                --json databaseId,createdAt \
-                | jq -r --arg before "$before" '[.[] | select(.createdAt >= $before)] | sort_by(.createdAt) | last | .databaseId // empty'
+                --json databaseId,createdAt 2>/dev/null || printf '[]'
+            )"
+            controlled_run_id="$(
+              printf '%s' "$runs_json" \
+                | jq -r --arg before "$before" '[.[] | select(.createdAt >= $before)] | sort_by(.createdAt) | last | .databaseId // empty' 2>/dev/null \
+                || true
             )"
             [ -n "$controlled_run_id" ] && break
             sleep "$attempt"
           done
 
           if [ -z "$controlled_run_id" ]; then
-            echo "Dispatch was accepted but controlled run ID could not be resolved yet. STOP for manual trace review."
-            exit 13
+            controlled_run_id="UNRESOLVED_AFTER_ACCEPTED_DISPATCH"
+            echo "Warning: dispatch was accepted but controlled run ID could not be resolved yet. DISPATCHED remains irreversible; manual trace review required."
           fi
 
           echo "controlled_run_id=$controlled_run_id" >> "$GITHUB_OUTPUT"
           echo "Issue #${{ github.event.issue.number }} -> dispatch -> controlled run ${controlled_run_id}"
-          echo "Run: https://github.com/${GITHUB_REPOSITORY}/actions/runs/${controlled_run_id}"
+          if [[ "$controlled_run_id" =~ ^[0-9]+$ ]]; then
+            echo "Run: https://github.com/${GITHUB_REPOSITORY}/actions/runs/${controlled_run_id}"
+          fi
 
       - name: Emit non-secret trace summary
+        if: always()
+        continue-on-error: true
         shell: bash
         env:
           RECOVERY_DATE: ${{ steps.order.outputs.recovery_date }}
           RECOVERY_BRANCH: ${{ steps.order.outputs.branch }}
           CONTRACT: ${{ steps.contract.outputs.contract }}
+          DISPATCH_ACCEPTED: ${{ steps.dispatch.outputs.dispatch_accepted }}
           CONTROLLED_RUN_ID: ${{ steps.dispatch.outputs.controlled_run_id }}
         run: |
-          set -euo pipefail
+          set +e
           {
             echo "## Instagram recovery dispatch"
             echo "- Issue: #${{ github.event.issue.number }}"
@@ -251,10 +265,12 @@ jobs:
             echo "- Branch: ${RECOVERY_BRANCH}"
             echo "- Contract: ${CONTRACT}"
             echo "- Controlled workflow: ${CONTROLLED_WORKFLOW}"
-            echo "- Controlled run: ${CONTROLLED_RUN_ID}"
+            echo "- Dispatch accepted: ${DISPATCH_ACCEPTED:-false}"
+            echo "- Controlled run: ${CONTROLLED_RUN_ID:-not-resolved}"
             echo "- Publication status input: hardcoded/allowlisted"
             echo "- Publish confirmation input: hardcoded/allowlisted"
             echo "- API version: ${API_VERSION}"
             echo "- Meta/deploy secrets in bridge: none"
             echo "- Automatic rerun: forbidden"
           } >> "$GITHUB_STEP_SUMMARY"
+          exit 0
