@@ -1,10 +1,10 @@
 ---
 title: "Hormuz pasa de riesgo a restricción operativa y sostiene la presión inflacionaria"
 summary: "El tráfico de commodities por Hormuz cayó a su menor nivel desde mayo y la nueva zona restringida anunciada por Irán convierte la escalada marítima en una restricción operativa observable para energía y tasas."
-publishedAt: "2026-09-07T06:00:00-03:00"
+publishedAt: "2026-09-07T06:59:12-03:00"
 cutoffAt: "2026-09-07T05:59:00-03:00"
 type: "daily"
-status: "draft"
+status: "published"
 tags:
   - mercados-globales
   - energia
