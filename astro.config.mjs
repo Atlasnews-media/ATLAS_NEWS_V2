@@ -41,6 +41,87 @@ function atlasWebAnalytics() {
   tracker.dataset.doNotTrack = "true";
   tracker.dataset.excludeSearch = "true";
   tracker.dataset.excludeHash = "true";
+
+  const sectionForPath = () => {
+    const segments = window.location.pathname.split("/").filter(Boolean);
+    return segments[0] || "portada";
+  };
+
+  const contentIdForAnchor = (anchor) => {
+    const segments = anchor.pathname.split("/").filter(Boolean);
+    return segments[segments.length - 1] || "portada";
+  };
+
+  const track = (name, data = {}) => {
+    const umami = window.umami;
+    if (!umami || typeof umami.track !== "function") return;
+    umami.track(name, data);
+  };
+
+  const shareChannel = (element) => {
+    if (element.matches("[data-share-native]")) return "native";
+    if (element.matches("[data-share-copy]")) return "copy_link";
+
+    const href = element.getAttribute("href") || "";
+    if (href.includes("wa.me")) return "whatsapp";
+    if (href.includes("facebook.com")) return "facebook";
+    if (href.includes("linkedin.com")) return "linkedin";
+    if (href.includes("twitter.com") || href.includes("x.com")) return "x";
+    return "other";
+  };
+
+  const setupInteractionTracking = () => {
+    document.addEventListener("click", (event) => {
+      if (!(event.target instanceof Element)) return;
+
+      const target = event.target.closest("a, button");
+      if (!target) return;
+
+      const section = sectionForPath();
+
+      if (target.matches(".share-tools .share-action")) {
+        track("share_click", {
+          section,
+          channel: shareChannel(target),
+        });
+        return;
+      }
+
+      if (
+        target instanceof HTMLAnchorElement &&
+        (target.closest(".card") ||
+          target.matches(".lead-link, .closing-link"))
+      ) {
+        track("article_click", {
+          section,
+          content_id: contentIdForAnchor(target),
+        });
+        return;
+      }
+
+      if (
+        target instanceof HTMLAnchorElement &&
+        target.pathname.replace(/\\/+$/, "") === "/archivo"
+      ) {
+        track("archive_open", { section });
+      }
+    });
+
+    document.querySelectorAll("[data-audio-player]").forEach((player) => {
+      if (!(player instanceof HTMLAudioElement)) return;
+
+      player.addEventListener(
+        "play",
+        () => track("audio_play", { section: sectionForPath() }),
+        { once: true },
+      );
+      player.addEventListener("ended", () => {
+        track("audio_complete", { section: sectionForPath() });
+      });
+    });
+  };
+
+  tracker.addEventListener("load", setupInteractionTracking, { once: true });
   document.head.appendChild(tracker);
 })();`,
         );
