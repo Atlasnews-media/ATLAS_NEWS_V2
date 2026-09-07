@@ -1,0 +1,260 @@
+name: Instagram Recovery — Issue dispatcher
+
+run-name: Instagram recovery bridge · ${{ github.event.issue.title }}
+
+on:
+  issues:
+    types: [opened]
+
+permissions:
+  actions: write
+  contents: read
+
+concurrency:
+  group: instagram-recovery-${{ github.event.issue.number }}
+  cancel-in-progress: false
+
+jobs:
+  dispatch:
+    if: github.event.issue.user.login == github.repository_owner
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    env:
+      GH_TOKEN: ${{ github.token }}
+      ISSUE_TITLE: ${{ github.event.issue.title }}
+      ISSUE_BODY: ${{ github.event.issue.body }}
+      CONTROLLED_WORKFLOW: instagram-carousel-publish-controlled.yml
+      PUBLICATION_STATUS: PUBLICACIÓN DISPONIBLE / VERIFICADA
+      PUBLISH_CONFIRMATION: PUBLICAR CARRUSEL / AUTORIZADO
+      API_VERSION: v23.0
+    steps:
+      - name: Validate immutable recovery order
+        id: order
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          if [ "${GITHUB_RUN_ATTEMPT}" != "1" ]; then
+            echo "Fail-closed: bridge reruns are not allowed."
+            exit 2
+          fi
+
+          if [ -n "${ISSUE_BODY//[[:space:]]/}" ]; then
+            echo "Fail-closed: recovery Issue body must be empty."
+            exit 3
+          fi
+
+          if [[ ! "$ISSUE_TITLE" =~ ^ATLAS\ INSTAGRAM\ RECOVERY\ ([0-9]{4}-[0-9]{2}-[0-9]{2})$ ]]; then
+            echo "Fail-closed: title must be exactly 'ATLAS INSTAGRAM RECOVERY YYYY-MM-DD'."
+            exit 4
+          fi
+
+          recovery_date="${BASH_REMATCH[1]}"
+          if ! date -d "$recovery_date" '+%Y-%m-%d' | grep -qx "$recovery_date"; then
+            echo "Fail-closed: invalid recovery date."
+            exit 5
+          fi
+
+          branch="run/instagram-${recovery_date}"
+          echo "recovery_date=$recovery_date" >> "$GITHUB_OUTPUT"
+          echo "branch=$branch" >> "$GITHUB_OUTPUT"
+
+      - name: Checkout bridge code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Resolve and validate recovery branch and contract
+        id: contract
+        shell: bash
+        env:
+          RECOVERY_DATE: ${{ steps.order.outputs.recovery_date }}
+          RECOVERY_BRANCH: ${{ steps.order.outputs.branch }}
+        run: |
+          set -euo pipefail
+
+          git fetch --no-tags origin "refs/heads/${RECOVERY_BRANCH}:refs/remotes/origin/${RECOVERY_BRANCH}"
+
+          mapfile -t contracts < <(
+            git ls-tree -r --name-only "origin/${RECOVERY_BRANCH}" tools/social-renderer/contracts \
+              | grep -E "^tools/social-renderer/contracts/${RECOVERY_DATE}-daily-[A-Za-z0-9._-]+\\.json$" || true
+          )
+
+          if [ "${#contracts[@]}" -ne 1 ]; then
+            echo "Fail-closed: expected exactly one approved daily contract for ${RECOVERY_DATE}; found ${#contracts[@]}."
+            exit 6
+          fi
+
+          contract="${contracts[0]}"
+          git show "origin/${RECOVERY_BRANCH}:${contract}" > /tmp/recovery-contract.json
+
+          canonical_url="$(jq -er '.canonicalUrl | select(type == "string" and length > 0)' /tmp/recovery-contract.json)"
+          source_commit="$(jq -er '.sourceCommit | select(type == "string" and test("^[0-9a-f]{40}$"))' /tmp/recovery-contract.json)"
+          source_id="$(jq -er '.sourceId | select(type == "string" and length > 0)' /tmp/recovery-contract.json)"
+
+          case "$canonical_url" in
+            "https://eldesiempre100.github.io/ediciones/${RECOVERY_DATE}-"*/ ) ;;
+            *)
+              echo "Fail-closed: canonical URL does not match the requested daily edition."
+              exit 7
+              ;;
+          esac
+
+          case "$source_id" in
+            "src/content/editions/${RECOVERY_DATE}-daily-"*.md ) ;;
+            *)
+              echo "Fail-closed: sourceId does not match the requested daily edition."
+              exit 8
+              ;;
+          esac
+
+          git fetch --no-tags origin "$source_commit"
+          git cat-file -e "${source_commit}:${source_id}"
+
+          code="$(curl -L -sS -o /dev/null -w '%{http_code}' --retry 2 --connect-timeout 10 --max-time 30 "$canonical_url" || true)"
+          if [ "$code" != "200" ]; then
+            echo "Fail-closed: canonical publication is not publicly reachable with HTTP 200."
+            exit 9
+          fi
+
+          echo "contract=$contract" >> "$GITHUB_OUTPUT"
+          echo "canonical_url=$canonical_url" >> "$GITHUB_OUTPUT"
+          echo "source_commit=$source_commit" >> "$GITHUB_OUTPUT"
+
+      - name: Reject duplicate bridge order
+        shell: bash
+        env:
+          RECOVERY_DATE: ${{ steps.order.outputs.recovery_date }}
+        run: |
+          set -euo pipefail
+
+          expected_title="Instagram recovery bridge · ATLAS INSTAGRAM RECOVERY ${RECOVERY_DATE}"
+          prior_count="$(
+            gh run list \
+              --workflow instagram-recovery-issue-dispatcher.yml \
+              --event issues \
+              --limit 100 \
+              --json databaseId,displayTitle,status,conclusion \
+              | jq --arg title "$expected_title" --argjson current "$GITHUB_RUN_ID" \
+                '[.[] | select(.databaseId != $current and .displayTitle == $title and .conclusion == "success")] | length'
+          )"
+
+          if [ "$prior_count" != "0" ]; then
+            echo "Fail-closed: a previous bridge order for this date already dispatched successfully."
+            exit 10
+          fi
+
+      - name: Confirm no PUBLISHED_VERIFIED evidence exists
+        shell: bash
+        env:
+          CANONICAL_URL: ${{ steps.contract.outputs.canonical_url }}
+        run: |
+          set -euo pipefail
+
+          git clone --quiet --depth 1 --branch social-assets \
+            https://github.com/EldeSiempre100/EldeSiempre100.github.io.git \
+            /tmp/atlas-social-assets
+
+          found=0
+          while IFS= read -r evidence; do
+            if jq -e --arg canonical "$CANONICAL_URL" \
+              '.status == "PUBLISHED_VERIFIED" and .canonicalUrl == $canonical and (.permalink | type == "string" and startswith("https://www.instagram.com/"))' \
+              "$evidence" >/dev/null 2>&1; then
+              echo "Existing verified Instagram publication evidence: $evidence"
+              found=1
+              break
+            fi
+          done < <(find /tmp/atlas-social-assets/instagram-staging -type f -name instagram-publish.json 2>/dev/null | sort)
+
+          if [ "$found" = "1" ]; then
+            echo "Fail-closed: PUBLISHED_VERIFIED already exists for this canonical URL."
+            exit 11
+          fi
+
+      - name: Confirm no controlled recovery run is active
+        shell: bash
+        env:
+          RECOVERY_BRANCH: ${{ steps.order.outputs.branch }}
+        run: |
+          set -euo pipefail
+
+          active_count="$(
+            gh run list \
+              --workflow "$CONTROLLED_WORKFLOW" \
+              --branch "$RECOVERY_BRANCH" \
+              --limit 100 \
+              --json status,event,headBranch \
+              | jq '[.[] | select(.event == "workflow_dispatch" and (.status == "queued" or .status == "in_progress" or .status == "waiting" or .status == "requested"))] | length'
+          )"
+
+          if [ "$active_count" != "0" ]; then
+            echo "Fail-closed: another controlled recovery run is already active for ${RECOVERY_BRANCH}."
+            exit 12
+          fi
+
+      - name: Dispatch the single allowlisted controlled workflow
+        id: dispatch
+        shell: bash
+        env:
+          RECOVERY_BRANCH: ${{ steps.order.outputs.branch }}
+          CONTRACT: ${{ steps.contract.outputs.contract }}
+        run: |
+          set -euo pipefail
+
+          before="$(date -u '+%Y-%m-%dT%H:%M:%SZ')"
+
+          gh workflow run "$CONTROLLED_WORKFLOW" \
+            --ref "$RECOVERY_BRANCH" \
+            -f "contract=$CONTRACT" \
+            -f "publication_status=$PUBLICATION_STATUS" \
+            -f "publish_confirmation=$PUBLISH_CONFIRMATION" \
+            -f "api_version=$API_VERSION"
+
+          controlled_run_id=""
+          for attempt in 1 2 3 4 5 6; do
+            controlled_run_id="$(
+              gh run list \
+                --workflow "$CONTROLLED_WORKFLOW" \
+                --branch "$RECOVERY_BRANCH" \
+                --event workflow_dispatch \
+                --limit 10 \
+                --json databaseId,createdAt \
+                | jq -r --arg before "$before" '[.[] | select(.createdAt >= $before)] | sort_by(.createdAt) | last | .databaseId // empty'
+            )"
+            [ -n "$controlled_run_id" ] && break
+            sleep "$attempt"
+          done
+
+          if [ -z "$controlled_run_id" ]; then
+            echo "Dispatch was accepted but controlled run ID could not be resolved yet. STOP for manual trace review."
+            exit 13
+          fi
+
+          echo "controlled_run_id=$controlled_run_id" >> "$GITHUB_OUTPUT"
+          echo "Issue #${{ github.event.issue.number }} -> dispatch -> controlled run ${controlled_run_id}"
+          echo "Run: https://github.com/${GITHUB_REPOSITORY}/actions/runs/${controlled_run_id}"
+
+      - name: Emit non-secret trace summary
+        shell: bash
+        env:
+          RECOVERY_DATE: ${{ steps.order.outputs.recovery_date }}
+          RECOVERY_BRANCH: ${{ steps.order.outputs.branch }}
+          CONTRACT: ${{ steps.contract.outputs.contract }}
+          CONTROLLED_RUN_ID: ${{ steps.dispatch.outputs.controlled_run_id }}
+        run: |
+          set -euo pipefail
+          {
+            echo "## Instagram recovery dispatch"
+            echo "- Issue: #${{ github.event.issue.number }}"
+            echo "- Actor: ${{ github.event.issue.user.login }}"
+            echo "- Date: ${RECOVERY_DATE}"
+            echo "- Branch: ${RECOVERY_BRANCH}"
+            echo "- Contract: ${CONTRACT}"
+            echo "- Controlled workflow: ${CONTROLLED_WORKFLOW}"
+            echo "- Controlled run: ${CONTROLLED_RUN_ID}"
+            echo "- Publication status input: hardcoded/allowlisted"
+            echo "- Publish confirmation input: hardcoded/allowlisted"
+            echo "- API version: ${API_VERSION}"
+            echo "- Meta/deploy secrets in bridge: none"
+            echo "- Automatic rerun: forbidden"
+          } >> "$GITHUB_STEP_SUMMARY"
