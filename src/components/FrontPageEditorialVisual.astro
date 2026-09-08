@@ -13,9 +13,7 @@ const visualAllowed = (() => {
   if (!visualSrc) return false;
   try {
     const hostname = new URL(visualSrc).hostname;
-    return (
-      hostname === "upload.wikimedia.org" || hostname === "commons.wikimedia.org"
-    );
+    return ["upload.wikimedia.org", "commons.wikimedia.org"].includes(hostname);
   } catch {
     return false;
   }
