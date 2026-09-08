@@ -8,78 +8,41 @@ interface Props {
 const { editionId } = Astro.props;
 const edition = await getEntry("editions", editionId);
 const visual = edition?.data.editorialVisual;
+const visualSrc = visual?.src ?? "";
+const visualAllowed = (() => {
+  if (!visualSrc) return false;
+  try {
+    return new URL(visualSrc).hostname === "upload.wikimedia.org";
+  } catch {
+    return false;
+  }
+})();
 ---
 
-<figure
-  class="front-page-editorial-visual"
-  data-front-page-editorial-visual
-  data-image-src={visual?.src ?? ""}
-  hidden
->
-  <img
-    data-front-page-editorial-image
-    alt={visual?.alt ?? ""}
-    loading="lazy"
-    decoding="async"
-  />
-  <figcaption>
-    <span data-front-page-editorial-credit>
-      {visual ? `${visual.source} · ${visual.author} · ${visual.license}` : ""}
-    </span>
-    <a
-      data-front-page-editorial-source
-      href={visual?.sourceUrl ?? ""}
-      target="_blank"
-      rel="noopener noreferrer">Fuente</a
-    >
-  </figcaption>
-</figure>
-
-<script>
-  const editorialVisual = document.querySelector(
-    "[data-front-page-editorial-visual]",
-  );
-  const editorialImage = document.querySelector(
-    "[data-front-page-editorial-image]",
-  );
-
-  const loadEditorialVisual = () => {
-    if (
-      !(editorialVisual instanceof HTMLElement) ||
-      !(editorialImage instanceof HTMLImageElement)
-    ) {
-      return;
-    }
-
-    const imageSrc = editorialVisual.dataset.imageSrc;
-    if (!imageSrc) return;
-
-    try {
-      const imageUrl = new URL(imageSrc, window.location.origin);
-      if (imageUrl.hostname !== "upload.wikimedia.org") return;
-
-      editorialImage.addEventListener(
-        "load",
-        () => {
-          editorialVisual.hidden = false;
-        },
-        { once: true },
-      );
-      editorialImage.addEventListener(
-        "error",
-        () => editorialImage.removeAttribute("src"),
-        { once: true },
-      );
-      editorialImage.src = imageUrl.href;
-    } catch {
-      // Fail-open: la portada conserva el layout actual.
-    }
-  };
-
-  if (window.matchMedia("(min-width: 42.01rem)").matches) {
-    loadEditorialVisual();
-  }
-</script>
+{
+  visual && visualAllowed && (
+    <figure class="front-page-editorial-visual" data-front-page-editorial-visual>
+      <img
+        src={visualSrc}
+        alt={visual.alt ?? ""}
+        loading="eager"
+        decoding="async"
+        referrerpolicy="no-referrer"
+        onerror="this.closest('[data-front-page-editorial-visual]')?.remove()"
+      />
+      <figcaption>
+        <span>
+          {`${visual.source} · ${visual.author} · ${visual.license}`}
+        </span>
+        <a
+          href={visual.sourceUrl ?? ""}
+          target="_blank"
+          rel="noopener noreferrer">Fuente</a
+        >
+      </figcaption>
+    </figure>
+  )
+}
 
 <style>
   .front-page-editorial-visual {
