@@ -52,6 +52,10 @@ export function getPublishedDailies(editions: Edition[]): Edition[] {
   return editions.filter(({ data }) => data.type === "daily");
 }
 
+export async function getPublishedInternational(): Promise<Edition[]> {
+  return getPublishedDailies(await getPublishedEditions());
+}
+
 export async function getLatestDaily(): Promise<Edition | undefined> {
   return getPublishedDailies(await getPublishedEditions())[0];
 }
