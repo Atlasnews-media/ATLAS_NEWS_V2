@@ -1,5 +1,6 @@
 ---
 import ContentCard from "../../components/ContentCard.astro";
+import SectionAnalysisAudio from "../../components/SectionAnalysisAudio.astro";
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import {
   formatEditorialDate,
@@ -7,6 +8,9 @@ import {
 } from "../../lib/content";
 
 const editions = await getPublishedInternational();
+const internationalAudioSourceId =
+  "2026-09-08-daily-shock-energetico-amplia-su-alcance";
+const currentInternationalHasAudio = editions[0]?.id === internationalAudioSourceId;
 ---
 
 <BaseLayout
@@ -20,6 +24,19 @@ const editions = await getPublishedInternational();
       Los hechos internacionales que marcan la edición diaria de ATLAS NEWS, con
       su contexto, implicancias y señales a observar.
     </p>
+
+    {
+      currentInternationalHasAudio && (
+        <SectionAnalysisAudio
+          title="Escuchar el análisis internacional"
+          summary="Una conversación breve para entender qué hay detrás de las señales que están moviendo al mundo."
+          expectedSourceId={internationalAudioSourceId}
+          section="international"
+          ariaLabel="Análisis internacional de ATLAS NEWS"
+          directPath="/lab/audio/international-2026-09-08-alex.mp3"
+        />
+      )
+    }
 
     {
       editions.length > 0 ? (
