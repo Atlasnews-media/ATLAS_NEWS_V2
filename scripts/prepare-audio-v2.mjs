@@ -4,7 +4,6 @@ import path from "node:path";
 
 const root = new URL("../", import.meta.url);
 const ANALYSIS_SCRIPT_VERSION = 3;
-const SPEECH_NORMALIZER_VERSION = 4;
 const PLAN_FILE = ".atlas-audio-v2-plan.json";
 const lexiconConfig = JSON.parse(
   await readFile(new URL("config/audio/lexicon-v3.json", root), "utf8"),
@@ -90,10 +89,6 @@ function sameLexicon(existing) {
   );
 }
 
-function sameSpeechNormalizer(existing) {
-  return existing?.speechNormalizerVersion === SPEECH_NORMALIZER_VERSION;
-}
-
 async function analysisProduct(section) {
   const sourceId = sourceIds[section] ?? null;
   const fileName = `${date}-${section}-dialogue.txt`;
@@ -113,7 +108,6 @@ async function analysisProduct(section) {
     sameVersion &&
     sameHash &&
     sameLexicon(existing) &&
-    sameSpeechNormalizer(existing) &&
     hasPublishedPath;
 
   let unavailableReason = null;
@@ -132,7 +126,6 @@ async function analysisProduct(section) {
     script,
     scriptHash,
     scriptVersion: ANALYSIS_SCRIPT_VERSION,
-    speechNormalizerVersion: SPEECH_NORMALIZER_VERSION,
     lexiconVersion: LEXICON_VERSION,
     lexiconRevision: LEXICON_REVISION,
     needsGeneration,
@@ -143,19 +136,13 @@ async function analysisProduct(section) {
 const national = await analysisProduct("national");
 const markets = await analysisProduct("markets");
 const coverLexiconCurrent = sameLexicon(existingCover);
-const coverSpeechNormalizerCurrent = sameSpeechNormalizer(existingCover);
 const cover = {
   section: "cover",
   sourceId: sourceIds.general,
   scriptVersion: coverPlan.scriptVersion ?? 1,
-  speechNormalizerVersion: SPEECH_NORMALIZER_VERSION,
   lexiconVersion: LEXICON_VERSION,
   lexiconRevision: LEXICON_REVISION,
-  needsGeneration: Boolean(
-    coverPlan.needsGeneration ||
-      !coverLexiconCurrent ||
-      !coverSpeechNormalizerCurrent,
-  ),
+  needsGeneration: Boolean(coverPlan.needsGeneration || !coverLexiconCurrent),
   plan: coverPlan,
 };
 
@@ -169,7 +156,6 @@ const plan = {
   schemaVersion: 1,
   date,
   sourceIds,
-  speechNormalizerVersion: SPEECH_NORMALIZER_VERSION,
   lexiconVersion: LEXICON_VERSION,
   lexiconRevision: LEXICON_REVISION,
   simulateMarketsFailure,
