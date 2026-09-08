@@ -21,7 +21,10 @@ const visualAllowed = (() => {
 
 {
   visual && visualAllowed && (
-    <figure class="front-page-editorial-visual" data-front-page-editorial-visual>
+    <figure
+      class="front-page-editorial-visual"
+      data-front-page-editorial-visual
+    >
       <img
         src={visualSrc}
         alt={visual.alt ?? ""}
@@ -31,14 +34,14 @@ const visualAllowed = (() => {
         onerror="this.closest('[data-front-page-editorial-visual]')?.remove()"
       />
       <figcaption>
-        <span>
-          {`${visual.source} · ${visual.author} · ${visual.license}`}
-        </span>
+        <span>{`${visual.source} · ${visual.author} · ${visual.license}`}</span>
         <a
           href={visual.sourceUrl ?? ""}
           target="_blank"
-          rel="noopener noreferrer">Fuente</a
+          rel="noopener noreferrer"
         >
+          Fuente
+        </a>
       </figcaption>
     </figure>
   )
