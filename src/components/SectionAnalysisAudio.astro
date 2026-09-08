@@ -3,19 +3,11 @@ interface Props {
   title: string;
   summary: string;
   expectedSourceId?: string;
-  section: "national" | "markets" | "international";
+  section: "national" | "markets";
   ariaLabel: string;
-  directPath?: string;
 }
 
-const {
-  title,
-  summary,
-  expectedSourceId,
-  section,
-  ariaLabel,
-  directPath,
-} = Astro.props;
+const { title, summary, expectedSourceId, section, ariaLabel } = Astro.props;
 const titleId = `section-analysis-audio-${section}`;
 ---
 
@@ -24,7 +16,6 @@ const titleId = `section-analysis-audio-${section}`;
   data-section-analysis-audio
   data-section={section}
   data-expected-source-id={expectedSourceId}
-  data-direct-path={directPath}
   aria-labelledby={titleId}
   hidden
 >
@@ -46,30 +37,8 @@ const titleId = `section-analysis-audio-${section}`;
 
 <script is:inline>
   (() => {
-    const roots = Array.from(
-      document.querySelectorAll("[data-section-analysis-audio]"),
-    );
+    const roots = document.querySelectorAll("[data-section-analysis-audio]");
     if (!roots.length) return;
-
-    const metadataRoots = [];
-
-    roots.forEach((root) => {
-      const directPath = root.dataset.directPath;
-      if (!directPath) {
-        metadataRoots.push(root);
-        return;
-      }
-
-      const player = root.querySelector("[data-analysis-player]");
-      const source = root.querySelector("[data-analysis-source]");
-      if (!player || !source) return;
-
-      source.src = directPath;
-      player.load();
-      root.hidden = false;
-    });
-
-    if (!metadataRoots.length) return;
 
     fetch(`/audio/analysis-latest.json?v=${Date.now()}`, { cache: "no-store" })
       .then((response) => {
@@ -77,7 +46,7 @@ const titleId = `section-analysis-audio-${section}`;
         return response.json();
       })
       .then((metadata) => {
-        metadataRoots.forEach((root) => {
+        roots.forEach((root) => {
           const section = root.dataset.section;
           const expectedSourceId = root.dataset.expectedSourceId;
           const entry = metadata?.[section];
@@ -102,7 +71,7 @@ const titleId = `section-analysis-audio-${section}`;
         });
       })
       .catch(() => {
-        metadataRoots.forEach((root) => {
+        roots.forEach((root) => {
           root.hidden = true;
         });
       });
