@@ -9,20 +9,20 @@ const readings = await getPublishedReadings();
 function readingEyebrow(tags: string[]) {
   if (tags.includes("radar-ipsa")) return "Radar IPSA";
   if (tags.includes("buzon-editorial")) return "Buzón editorial";
-  return "Lectura seleccionada";
+  return "Contingencia";
 }
 ---
 
 <BaseLayout
-  title="Lecturas seleccionadas — ATLAS NEWS"
-  description="Selección editorial de lecturas de ATLAS NEWS."
+  title="Contingencia — ATLAS NEWS"
+  description="Publicaciones eventuales de Contingencia de ATLAS NEWS."
 >
   <main class="page-shell">
-    <p class="page-kicker">Curaduría</p>
-    <h1 class="page-title">Lecturas seleccionadas</h1>
+    <p class="page-kicker">Cobertura eventual</p>
+    <h1 class="page-title">Contingencia</h1>
     <p class="page-intro">
-      Textos elegidos por su capacidad de aportar contexto, método o una
-      perspectiva verificable.
+      Publicaciones activadas cuando un hecho requiere contexto adicional, una
+      lectura especial o seguimiento fuera del flujo diario.
     </p>
 
     {readings[0] && <ReadingAudio audio={readings[0].data.audio} />}

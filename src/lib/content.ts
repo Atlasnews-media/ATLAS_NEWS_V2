@@ -52,6 +52,10 @@ export function getPublishedDailies(editions: Edition[]): Edition[] {
   return editions.filter(({ data }) => data.type === "daily");
 }
 
+export async function getPublishedInternational(): Promise<Edition[]> {
+  return getPublishedDailies(await getPublishedEditions());
+}
+
 export async function getLatestDaily(): Promise<Edition | undefined> {
   return getPublishedDailies(await getPublishedEditions())[0];
 }
@@ -89,7 +93,7 @@ export function formatEditorialDateTime(date: Date): string {
 }
 
 export function editionTypeLabel(type: Edition["data"]["type"]): string {
-  return type === "daily" ? "Edición diaria" : "Panorama semanal";
+  return type === "daily" ? "Internacional" : "Panorama semanal";
 }
 
 export function editionDisplayLabel(

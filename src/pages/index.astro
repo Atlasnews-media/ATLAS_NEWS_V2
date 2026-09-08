@@ -2,12 +2,10 @@
 import ContentCard from "../components/ContentCard.astro";
 import DailyAudio from "../components/DailyAudio.astro";
 import EconomicIndicators from "../components/EconomicIndicators.astro";
-import FrontPageEditorialVisual from "../components/FrontPageEditorialVisual.astro";
 import MarketPulse from "../components/MarketPulse.astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
 import {
   dailyIssueNumber,
-  editionDisplayLabel,
   formatEditorialDate,
   formatIssueNumber,
   getLatestDaily,
@@ -35,7 +33,7 @@ const hasAnalysisContent = Boolean(latestNational || latestMarkets);
 
 <BaseLayout
   title="ATLAS NEWS — Portada"
-  description="ATLAS NEWS — Inteligencia financiera, contexto y criterio editorial. Portada general con profundidad en Chile, mercados y lecturas seleccionadas."
+  description="ATLAS NEWS — Inteligencia financiera, contexto y criterio editorial. Portada general con titulares de Internacional, Nacional y Mercados."
 >
   <main class="front-page">
     <div class="issue-line">
@@ -55,25 +53,44 @@ const hasAnalysisContent = Boolean(latestNational || latestMarkets);
 
     {
       latestDaily ? (
-        <section class="lead-grid" aria-labelledby="edicion-principal">
-          <article class="lead-story">
-            <p class="kicker">Hecho central</p>
-            <h1 id="edicion-principal">
-              <a href={`/ediciones/${latestDaily.id}/`}>
-                {latestDaily.data.title}
-              </a>
+        <section class="lead-grid" aria-labelledby="titulares">
+          <article class="lead-story headline-board">
+            <h1 id="titulares" class="headline-board-title">
+              Titulares
             </h1>
-            <p class="standfirst">{latestDaily.data.summary}</p>
-            <div class="lead-meta">
-              <span>
-                {editionDisplayLabel(latestDaily, currentIssueNumber)}
-              </span>
-              {latestDaily.data.demo && <strong>Edición demostrativa</strong>}
+
+            <div class="headline-list">
+              <section class="headline-item">
+                <p class="headline-label">Internacional</p>
+                <h2>
+                  <a href={`/ediciones/${latestDaily.id}/`}>
+                    {latestDaily.data.title}
+                  </a>
+                </h2>
+              </section>
+
+              {latestNational && (
+                <section class="headline-item">
+                  <p class="headline-label">Nacional</p>
+                  <h2>
+                    <a href={`/nacional/${latestNational.id}/`}>
+                      {latestNational.data.title}
+                    </a>
+                  </h2>
+                </section>
+              )}
+
+              {latestMarkets && (
+                <section class="headline-item">
+                  <p class="headline-label">Mercados</p>
+                  <h2>
+                    <a href={`/mercados/${latestMarkets.id}/`}>
+                      {latestMarkets.data.title}
+                    </a>
+                  </h2>
+                </section>
+              )}
             </div>
-            <a class="lead-link" href={`/ediciones/${latestDaily.id}/`}>
-              Abrir la edición completa <span aria-hidden="true">→</span>
-            </a>
-            <FrontPageEditorialVisual editionId={latestDaily.id} />
           </article>
 
           <aside class="edition-rail" aria-label="Claves de la edición">
@@ -165,7 +182,7 @@ const hasAnalysisContent = Boolean(latestNational || latestMarkets);
               <p class="kicker">Qué observar</p>
               <h2>Las señales que pueden cambiar la lectura</h2>
               <p class="closing-summary">
-                Cada edición separa el hecho central, las implicancias y las
+                Cada edición separa los hechos, las implicancias y las
                 condiciones que podrían invalidar la interpretación inicial.
               </p>
             </>
@@ -176,7 +193,7 @@ const hasAnalysisContent = Boolean(latestNational || latestMarkets);
         {
           latestReading ? (
             <>
-              <p class="kicker">Última lectura</p>
+              <p class="kicker">Última contingencia</p>
               <h2>
                 <a href={`/lecturas/${latestReading.id}/`}>
                   {latestReading.data.title}
@@ -184,13 +201,13 @@ const hasAnalysisContent = Boolean(latestNational || latestMarkets);
               </h2>
               <p class="closing-summary">{latestReading.data.summary}</p>
               <a class="closing-link" href={`/lecturas/${latestReading.id}/`}>
-                Abrir lectura <span aria-hidden="true">→</span>
+                Abrir contingencia <span aria-hidden="true">→</span>
               </a>
             </>
           ) : (
             <>
-              <p class="kicker">Última lectura</p>
-              <h2>Próxima lectura seleccionada en preparación</h2>
+              <p class="kicker">Contingencia</p>
+              <h2>Próxima contingencia en preparación</h2>
             </>
           )
         }
@@ -231,51 +248,46 @@ const hasAnalysisContent = Boolean(latestNational || latestMarkets);
     border-right: 1px solid var(--rule);
   }
   .kicker,
-  .rail-title {
+  .rail-title,
+  .headline-board-title,
+  .headline-label {
     margin: 0;
     color: var(--accent);
     font: 800 0.72rem/1.2 var(--sans);
     letter-spacing: 0.16em;
     text-transform: uppercase;
   }
-  .lead-story h1 {
-    max-width: 70rem;
-    margin: 0.65rem 0 1.5rem;
-    font-size: clamp(3.5rem, 4.5vw, 4rem);
-    line-height: 0.89;
-    letter-spacing: -0.05em;
+  .headline-board-title {
+    color: var(--accent);
+  }
+  .headline-list {
+    margin-top: 0.8rem;
+  }
+  .headline-item {
+    padding: 1.05rem 0 1.2rem;
+    border-top: 1px solid var(--rule);
+  }
+  .headline-item:first-child {
+    border-top: 0;
+  }
+  .headline-label {
+    margin-bottom: 0.35rem;
+    color: var(--ink-soft);
+    letter-spacing: 0.11em;
+  }
+  .headline-item h2 {
+    max-width: 64rem;
+    margin: 0;
+    font-size: clamp(1.7rem, 2.25vw, 2.45rem);
+    line-height: 0.98;
+    letter-spacing: -0.035em;
     text-wrap: balance;
   }
-  .lead-story h1 a {
+  .headline-item h2 a {
     text-decoration: none;
   }
-  .lead-story h1 a:hover {
+  .headline-item h2 a:hover {
     color: var(--accent);
-  }
-  .standfirst {
-    max-width: 55rem;
-    margin: 0;
-    color: var(--ink-soft);
-    font-size: clamp(1.2rem, 2vw, 1.58rem);
-    line-height: 1.42;
-  }
-  .lead-meta {
-    display: flex;
-    gap: 1rem;
-    margin-top: 1.5rem;
-    font: 800 0.68rem/1.2 var(--sans);
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-  }
-  .lead-meta strong {
-    color: var(--accent);
-  }
-  .lead-link {
-    display: inline-block;
-    margin-top: 2rem;
-    font: 800 0.72rem/1.2 var(--sans);
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
   }
   .edition-rail {
     padding: clamp(2rem, 5vw, 4.5rem) 0 3rem clamp(1.25rem, 3vw, 2.25rem);
@@ -384,10 +396,8 @@ const hasAnalysisContent = Boolean(latestNational || latestMarkets);
       padding-right: 0;
       border-right: 0;
     }
-    .lead-story h1 {
-      font-size: clamp(2.9rem, 6.2vw, 3.4rem);
-      line-height: 0.92;
-      letter-spacing: -0.04em;
+    .headline-item h2 {
+      font-size: clamp(1.75rem, 4.2vw, 2.25rem);
     }
     .edition-rail {
       padding-left: 0;
@@ -411,10 +421,13 @@ const hasAnalysisContent = Boolean(latestNational || latestMarkets);
       padding-right: 0;
       border-right: 0;
     }
-    .lead-story h1 {
-      font-size: clamp(2.15rem, 8.8vw, 2.9rem);
-      line-height: 0.95;
-      letter-spacing: -0.035em;
+    .headline-item {
+      padding: 0.9rem 0 1rem;
+    }
+    .headline-item h2 {
+      font-size: clamp(1.55rem, 6.6vw, 2rem);
+      line-height: 1;
+      letter-spacing: -0.03em;
     }
     .edition-rail {
       padding-left: 0;

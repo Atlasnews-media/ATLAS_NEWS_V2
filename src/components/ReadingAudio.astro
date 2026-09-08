@@ -12,19 +12,15 @@ const { audio } = Astro.props;
 
 <section
   class="reading-audio"
-  aria-label="Audio de la Lectura Seleccionada"
+  aria-label="Audio de Contingencia"
   hidden={!audio}
 >
   <div class="audio-copy">
-    <p class="audio-kicker">Escuchar la lectura seleccionada</p>
-    <p>Una lectura en audio para recorrer el texto seleccionado.</p>
+    <p class="audio-kicker">Escuchar Contingencia</p>
+    <p>Una versión en audio para recorrer esta publicación eventual.</p>
   </div>
   <div class="audio-player">
-    <audio
-      controls
-      preload="metadata"
-      aria-label="Lectura Seleccionada de ATLAS NEWS"
-    >
+    <audio controls preload="metadata" aria-label="Contingencia de ATLAS NEWS">
       <source src={audio?.src} type="audio/mpeg" />
     </audio>
   </div>

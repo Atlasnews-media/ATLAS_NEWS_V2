@@ -1,0 +1,80 @@
+---
+import ContentCard from "../../components/ContentCard.astro";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import {
+  formatEditorialDate,
+  getPublishedInternational,
+} from "../../lib/content";
+
+const editions = await getPublishedInternational();
+---
+
+<BaseLayout
+  title="Internacional — ATLAS NEWS"
+  description="Seguimiento internacional de ATLAS NEWS: hechos globales, transmisión económica y riesgos que condicionan la jornada."
+>
+  <main class="page-shell">
+    <p class="page-kicker">Contexto global</p>
+    <h1 class="page-title">Internacional</h1>
+    <p class="page-intro">
+      Los hechos internacionales que marcan la edición diaria de ATLAS NEWS, con
+      su contexto, implicancias y señales a observar.
+    </p>
+
+    {
+      editions.length > 0 ? (
+        <div class="briefing-list">
+          {editions.map((edition) => (
+            <ContentCard
+              href={`/ediciones/${edition.id}/`}
+              eyebrow="Internacional"
+              title={edition.data.title}
+              summary={edition.data.summary}
+              date={formatEditorialDate(edition.data.publishedAt)}
+              demo={edition.data.demo}
+            />
+          ))}
+        </div>
+      ) : (
+        <p class="empty-state">
+          Aún no hay publicaciones internacionales disponibles.
+        </p>
+      )
+    }
+  </main>
+</BaseLayout>
+
+<style>
+  .briefing-list {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    border-top: 5px double var(--rule);
+  }
+  .briefing-list :global(.card) {
+    padding: 1.75rem;
+    border-top-width: 1px;
+  }
+  .briefing-list :global(.card:nth-child(odd)) {
+    padding-left: 0;
+    border-right: 1px solid var(--rule);
+  }
+  .empty-state {
+    margin-top: 2rem;
+    padding: 2rem 0;
+    border-top: 5px double var(--rule);
+    border-bottom: 1px solid var(--rule);
+    color: var(--ink-soft);
+    font: 0.95rem/1.5 var(--sans);
+  }
+  @media (max-width: 42rem) {
+    .briefing-list {
+      grid-template-columns: 1fr;
+    }
+    .briefing-list :global(.card),
+    .briefing-list :global(.card:nth-child(odd)) {
+      padding-right: 0;
+      padding-left: 0;
+      border-right: 0;
+    }
+  }
+</style>
