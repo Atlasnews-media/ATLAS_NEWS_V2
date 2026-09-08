@@ -56,7 +56,7 @@ const [editions, national, markets, readings] = await Promise.all([
               <a href={`/nacional/${briefing.id}/`}>{briefing.data.title}</a>
               <span>Nacional</span>
             </li>
-          ))}
+          ))
         }
       </ol>
     </section>
@@ -71,7 +71,7 @@ const [editions, national, markets, readings] = await Promise.all([
               <a href={`/mercados/${briefing.id}/`}>{briefing.data.title}</a>
               <span>Mercados</span>
             </li>
-          ))}
+          ))
         }
       </ol>
     </section>
