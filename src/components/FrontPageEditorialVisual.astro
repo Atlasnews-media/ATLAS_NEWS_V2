@@ -18,17 +18,14 @@ const visual = edition?.data.editorialVisual;
       data-src={visual.src}
       hidden
     >
-      <img
-        data-front-page-editorial-image
-        alt={visual.alt}
-        loading="lazy"
-        decoding="async"
-      />
+      <img data-front-page-editorial-image alt={visual.alt} loading="lazy" decoding="async" />
       <figcaption>
         <span>{visual.source} · {visual.author} · {visual.license}</span>
-        <a href={visual.sourceUrl} target="_blank" rel="noopener noreferrer">
-          Fuente
-        </a>
+        <a
+          href={visual.sourceUrl}
+          target="_blank"
+          rel="noopener noreferrer">Fuente</a
+        >
       </figcaption>
     </figure>
   )
