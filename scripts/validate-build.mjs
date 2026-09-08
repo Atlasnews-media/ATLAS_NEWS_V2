@@ -301,7 +301,7 @@ const latestDaily = publishedDailies.at(-1);
 const latestNational = publishedNational.at(-1);
 const latestMarkets = publishedMarkets.at(-1);
 const currentIssueNumber = publishedDailies.length;
-const currentIssueLabel = `N° ${String(currentIssueNumber).padStart(3, "0")}`;
+const currentIssueLabel = `N.º ${String(currentIssueNumber).padStart(3, "0")}`;
 
 if (latestDaily) {
   if (!homeText.includes(normalizeText(latestDaily.title))) {
