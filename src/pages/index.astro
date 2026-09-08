@@ -191,7 +191,7 @@ const hasAnalysisContent = Boolean(latestNational || latestMarkets);
         {
           latestReading ? (
             <>
-              <p class="kicker">Última lectura</p>
+              <p class="kicker">Última contingencia</p>
               <h2>
                 <a href={`/lecturas/${latestReading.id}/`}>
                   {latestReading.data.title}
@@ -199,13 +199,13 @@ const hasAnalysisContent = Boolean(latestNational || latestMarkets);
               </h2>
               <p class="closing-summary">{latestReading.data.summary}</p>
               <a class="closing-link" href={`/lecturas/${latestReading.id}/`}>
-                Abrir lectura <span aria-hidden="true">→</span>
+                Abrir contingencia <span aria-hidden="true">→</span>
               </a>
             </>
           ) : (
             <>
-              <p class="kicker">Última lectura</p>
-              <h2>Próxima lectura seleccionada en preparación</h2>
+              <p class="kicker">Contingencia</p>
+              <h2>Próxima contingencia en preparación</h2>
             </>
           )
         }
