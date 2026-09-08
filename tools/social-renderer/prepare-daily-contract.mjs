@@ -13,10 +13,46 @@ const BLOCKED_SOURCE_COMMIT =
 const OUTPUT_RELATIVE =
   process.env.ATLAS_SOCIAL_CONTRACT_OUTPUT ||
   "tools/social-renderer/.generated/daily-contract.json";
+const STATUS_READINESS_TIMEOUT_MS = positiveIntegerEnv(
+  "ATLAS_PUBLIC_STATUS_TIMEOUT_MS",
+  45000,
+);
+const STATUS_FETCH_TIMEOUT_MS = positiveIntegerEnv(
+  "ATLAS_PUBLIC_STATUS_FETCH_TIMEOUT_MS",
+  8000,
+);
+const STATUS_RETRY_DELAYS_MS = integerListEnv(
+  "ATLAS_PUBLIC_STATUS_RETRY_DELAYS_MS",
+  [0, 3000, 5000, 8000, 12000],
+);
+const TRANSIENT_STATUS_CODES = new Set([404, 429, 500, 502, 503]);
 
 const KEY_ICONS = ["trend-up", "cash-card", "risk-triangle"];
 const IMPACT_ICONS = ["portfolio-grid", "decision-check", "context-target"];
 const IMPACT_LABELS = ["Carteras", "Decisiones", "Contexto"];
+
+function positiveIntegerEnv(name, fallback) {
+  const raw = String(process.env[name] || "").trim();
+  if (!raw) return fallback;
+  const value = Number(raw);
+  if (!Number.isSafeInteger(value) || value <= 0) {
+    throw new Error(`${name} must be a positive integer`);
+  }
+  return value;
+}
+
+function integerListEnv(name, fallback) {
+  const raw = String(process.env[name] || "").trim();
+  if (!raw) return fallback;
+  const values = raw.split(",").map((item) => Number(item.trim()));
+  if (
+    values.length === 0 ||
+    values.some((value) => !Number.isSafeInteger(value) || value < 0)
+  ) {
+    throw new Error(`${name} must be a comma-separated list of integers >= 0`);
+  }
+  return values;
+}
 
 function required(value, label) {
   const text = String(value || "").trim();
@@ -130,31 +166,209 @@ function fetchPublicCommitHistory(commit) {
   }
 }
 
-function assertPublicStatus(status, editionId) {
-  const publicCommit = required(
-    status?.sourceCommit,
-    "public status sourceCommit",
+function readinessUrl(attempt) {
+  const url = new URL(STATUS_URL);
+  url.searchParams.set("source", SOURCE_COMMIT);
+  url.searchParams.set("readiness", `${Date.now()}-${attempt}`);
+  return url.toString();
+}
+
+function sleep(ms) {
+  return new Promise((resolve) => setTimeout(resolve, ms));
+}
+
+function retryDelay(attempt) {
+  const index = Math.min(attempt - 1, STATUS_RETRY_DELAYS_MS.length - 1);
+  return STATUS_RETRY_DELAYS_MS[index] ?? 0;
+}
+
+function editionDate(editionId) {
+  const match = String(editionId || "").match(/^(\d{4}-\d{2}-\d{2})-daily-/);
+  return match?.[1] || "";
+}
+
+function isSupersededEdition(observedEdition, expectedEdition) {
+  const observedDate = editionDate(observedEdition);
+  const expectedDate = editionDate(expectedEdition);
+  return Boolean(
+    observedDate && expectedDate && observedDate > expectedDate,
   );
-  if (!/^[0-9a-f]{40}$/i.test(publicCommit)) {
-    throw new Error(
-      "Fail-closed: public status sourceCommit is not a full SHA",
-    );
-  }
-  if (status?.latestDaily?.id !== editionId) {
-    throw new Error(
-      `Fail-closed: public latestDaily ${status?.latestDaily?.id || "<missing>"} does not match ${editionId}`,
-    );
-  }
-  if (publicCommit === SOURCE_COMMIT) return "exact-source-commit";
+}
 
-  fetchPublicCommitHistory(publicCommit);
-  if (!isAncestor(SOURCE_COMMIT, publicCommit)) {
-    throw new Error(
-      `Fail-closed: public status commit ${publicCommit} is not a descendant of source ${SOURCE_COMMIT}`,
-    );
+function logReadinessAttempt({
+  attempt,
+  expectedEdition,
+  observedCommit = "<missing>",
+  observedEdition = "<missing>",
+  state,
+  detail = "",
+}) {
+  console.log(
+    JSON.stringify({
+      attempt,
+      timestamp: new Date().toISOString(),
+      expectedCommit: SOURCE_COMMIT,
+      observedCommit,
+      expectedEdition,
+      observedEdition,
+      state,
+      ...(detail ? { detail } : {}),
+    }),
+  );
+}
+
+async function fetchPublicStatusAttempt(attempt) {
+  const url = readinessUrl(attempt);
+  const controller = new AbortController();
+  const timer = setTimeout(() => controller.abort(), STATUS_FETCH_TIMEOUT_MS);
+  try {
+    const response = await fetch(url, {
+      headers: {
+        Accept: "application/json",
+        "Cache-Control": "no-cache",
+        Pragma: "no-cache",
+      },
+      signal: controller.signal,
+    });
+
+    if (TRANSIENT_STATUS_CODES.has(response.status)) {
+      return { kind: "transient", detail: `HTTP ${response.status}` };
+    }
+    if (!response.ok) {
+      return { kind: "invalid", detail: `HTTP ${response.status}` };
+    }
+
+    let status;
+    try {
+      status = await response.json();
+    } catch (error) {
+      return {
+        kind: "invalid",
+        detail: `invalid JSON: ${error?.message || error}`,
+      };
+    }
+
+    const observedCommit = String(status?.sourceCommit || "").trim();
+    const observedEdition = String(status?.latestDaily?.id || "").trim();
+    if (!/^[0-9a-f]{40}$/i.test(observedCommit)) {
+      return {
+        kind: "invalid",
+        observedCommit: observedCommit || "<missing>",
+        observedEdition: observedEdition || "<missing>",
+        detail: "sourceCommit missing or not a full SHA",
+      };
+    }
+    if (!observedEdition) {
+      return {
+        kind: "invalid",
+        observedCommit,
+        observedEdition: "<missing>",
+        detail: "latestDaily.id missing",
+      };
+    }
+
+    return { kind: "ok", status, observedCommit, observedEdition };
+  } catch (error) {
+    return {
+      kind: "transient",
+      detail: `${error?.name || "NetworkError"}: ${error?.message || error}`,
+    };
+  } finally {
+    clearTimeout(timer);
+  }
+}
+
+async function waitForPublicStatus(expectedEdition) {
+  const deadline = Date.now() + STATUS_READINESS_TIMEOUT_MS;
+  let attempt = 0;
+  let lastObservedCommit = "<missing>";
+  let lastObservedEdition = "<missing>";
+
+  while (Date.now() < deadline) {
+    attempt += 1;
+    if (attempt > 1) {
+      const delay = retryDelay(attempt);
+      const remaining = deadline - Date.now();
+      if (remaining <= 0) break;
+      await sleep(Math.min(delay, remaining));
+      if (Date.now() >= deadline) break;
+    }
+
+    const result = await fetchPublicStatusAttempt(attempt);
+    lastObservedCommit = result.observedCommit || lastObservedCommit;
+    lastObservedEdition = result.observedEdition || lastObservedEdition;
+
+    if (result.kind === "invalid") {
+      logReadinessAttempt({
+        attempt,
+        expectedEdition,
+        observedCommit: result.observedCommit,
+        observedEdition: result.observedEdition,
+        state: "PUBLIC_STATUS_INVALID",
+        detail: result.detail,
+      });
+      throw new Error(`PUBLIC_STATUS_INVALID: ${result.detail}`);
+    }
+
+    if (result.kind === "transient") {
+      logReadinessAttempt({
+        attempt,
+        expectedEdition,
+        observedCommit: lastObservedCommit,
+        observedEdition: lastObservedEdition,
+        state: "WAITING_PUBLIC_STATUS",
+        detail: result.detail,
+      });
+      continue;
+    }
+
+    const { status, observedCommit, observedEdition } = result;
+    if (
+      observedCommit === SOURCE_COMMIT &&
+      observedEdition === expectedEdition
+    ) {
+      logReadinessAttempt({
+        attempt,
+        expectedEdition,
+        observedCommit,
+        observedEdition,
+        state: "READY",
+      });
+      return { status, evidence: "exact-public-identity" };
+    }
+
+    if (isSupersededEdition(observedEdition, expectedEdition)) {
+      logReadinessAttempt({
+        attempt,
+        expectedEdition,
+        observedCommit,
+        observedEdition,
+        state: "SUPERSEDED_BY_NEWER_RELEASE",
+      });
+      throw new Error(
+        `SUPERSEDED_BY_NEWER_RELEASE: observed ${observedEdition} while waiting for ${expectedEdition}`,
+      );
+    }
+
+    logReadinessAttempt({
+      attempt,
+      expectedEdition,
+      observedCommit,
+      observedEdition,
+      state: "WAITING_PUBLIC_STATUS",
+    });
   }
 
-  return "verified-descendant-preserving-latest-daily";
+  logReadinessAttempt({
+    attempt,
+    expectedEdition,
+    observedCommit: lastObservedCommit,
+    observedEdition: lastObservedEdition,
+    state: "PUBLIC_STATUS_TIMEOUT",
+  });
+  throw new Error(
+    `PUBLIC_STATUS_TIMEOUT: public identity did not converge within ${STATUS_READINESS_TIMEOUT_MS}ms`,
+  );
 }
 
 function yamlScalar(raw) {
@@ -242,21 +456,6 @@ function headlineParts(title, fallbackDek) {
   return { title, dek: fallbackDek };
 }
 
-async function fetchJson(url) {
-  const controller = new AbortController();
-  const timer = setTimeout(() => controller.abort(), 12000);
-  try {
-    const response = await fetch(url, {
-      headers: { Accept: "application/json", "Cache-Control": "no-cache" },
-      signal: controller.signal,
-    });
-    if (!response.ok) throw new Error(`HTTP ${response.status} for ${url}`);
-    return await response.json();
-  } finally {
-    clearTimeout(timer);
-  }
-}
-
 async function assertPublic(url) {
   const controller = new AbortController();
   const timer = setTimeout(() => controller.abort(), 15000);
@@ -304,9 +503,8 @@ async function main() {
     return;
   }
 
-  const statusUrl = `${STATUS_URL}${STATUS_URL.includes("?") ? "&" : "?"}source=${SOURCE_COMMIT}`;
-  const status = await fetchJson(statusUrl);
-  const publicationEvidence = assertPublicStatus(status, editionId);
+  const { evidence: publicationEvidence } =
+    await waitForPublicStatus(editionId);
 
   const markdown = await fs.readFile(path.join(ROOT, sourceId), "utf8");
   const parts = markdown.split(/^---\s*$/m);
