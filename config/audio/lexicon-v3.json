@@ -1,6 +1,7 @@
 {
   "version": 3,
-  "revision": 1,
+  "revision": 2,
+  "numericNormalizerVersion": 4,
   "status": "foundation",
   "source": "ATLAS NEWS V2 — MATRIZ DE PRONUNCIACIÓN TTS",
   "policy": {
@@ -8,7 +9,7 @@
     "requiresHumanApproval": true,
     "sheetDirectToProduction": false,
     "revisionRule": "Toda modificación de una entrada aprobada requiere incrementar revision antes de producción.",
-    "note": "Sólo entran aquí reglas ya usadas en producción o aprobadas explícitamente para Audio V2. La matriz completa permanece como backlog de QA."
+    "note": "Lexicon V3 conserva palabras, siglas y pronunciaciones aprobadas. Numeric Normalizer V4 opera como capa separada sobre speech_text; revision 2 invalida una sola vez los audios previos para activar la nueva oralización desde 2026-09-08."
   },
   "entries": [
     {
