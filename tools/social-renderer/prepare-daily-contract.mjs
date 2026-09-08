@@ -159,174 +159,117 @@ function readinessUrl(attempt) {
   return url.toString();
 }
 
-function retryDelay(attempt) {
-  return Math.min(STATUS_RETRY_BASE_MS * (attempt - 1), STATUS_RETRY_MAX_MS);
-}
-
-function isSupersededEdition(observedEdition, expectedEdition) {
-  const observed = String(observedEdition || "").slice(0, 10);
-  const expected = String(expectedEdition || "").slice(0, 10);
-  return (
-    /^\d{4}-\d{2}-\d{2}$/.test(observed) &&
-    /^\d{4}-\d{2}-\d{2}$/.test(expected) &&
-    observed > expected
-  );
-}
-
-function logReadiness({
-  attempt,
-  expectedEdition,
-  observedCommit = "<missing>",
-  observedEdition = "<missing>",
-  state,
-  detail = "",
-}) {
+function logReadiness(attempt, expectedEdition, observed, state, detail = "") {
   console.log(
     JSON.stringify({
       attempt,
       timestamp: new Date().toISOString(),
       expectedCommit: SOURCE_COMMIT,
-      observedCommit,
+      observedCommit: observed?.commit || "<missing>",
       expectedEdition,
-      observedEdition,
+      observedEdition: observed?.edition || "<missing>",
       state,
       ...(detail ? { detail } : {}),
     }),
   );
 }
 
-async function fetchPublicStatus(attempt) {
-  const controller = new AbortController();
-  const timer = setTimeout(() => controller.abort(), STATUS_FETCH_TIMEOUT_MS);
-  try {
-    const response = await fetch(readinessUrl(attempt), {
-      headers: { Accept: "application/json", "Cache-Control": "no-cache" },
-      signal: controller.signal,
-    });
-    if (TRANSIENT_STATUS_CODES.has(response.status)) {
-      return { transient: true, detail: `HTTP ${response.status}` };
-    }
-    if (!response.ok) {
-      throw new Error(`PUBLIC_STATUS_INVALID: HTTP ${response.status}`);
-    }
-    try {
-      return { status: await response.json() };
-    } catch (error) {
-      throw new Error(`PUBLIC_STATUS_INVALID: invalid JSON: ${error?.message || error}`);
-    }
-  } catch (error) {
-    if (String(error?.message || "").startsWith("PUBLIC_STATUS_INVALID:")) {
-      throw error;
-    }
-    return {
-      transient: true,
-      detail: `${error?.name || "NetworkError"}: ${error?.message || error}`,
-    };
-  } finally {
-    clearTimeout(timer);
+function statusIdentity(status) {
+  const commit = String(status?.sourceCommit || "").trim();
+  const edition = String(status?.latestDaily?.id || "").trim();
+  if (!/^[0-9a-f]{40}$/i.test(commit) || !edition) {
+    throw new Error(
+      "PUBLIC_STATUS_INVALID: sourceCommit/latestDaily.id missing or invalid",
+    );
   }
+  return { commit, edition };
+}
+
+function isSupersededEdition(observed, expected) {
+  const observedDate = String(observed || "").slice(0, 10);
+  const expectedDate = String(expected || "").slice(0, 10);
+  return (
+    /^\d{4}-\d{2}-\d{2}$/.test(observedDate) &&
+    /^\d{4}-\d{2}-\d{2}$/.test(expectedDate) &&
+    observedDate > expectedDate
+  );
+}
+
+function isTransientStatusError(error) {
+  const message = String(error?.message || error);
+  return (
+    /HTTP (404|429|500|502|503)\b/.test(message) ||
+    error?.name === "AbortError" ||
+    error?.name === "TypeError"
+  );
 }
 
 async function waitForPublicStatus(expectedEdition) {
   const deadline = Date.now() + STATUS_READINESS_TIMEOUT_MS;
   let attempt = 0;
-  let observedCommit = "<missing>";
-  let observedEdition = "<missing>";
+  let observed = null;
 
   while (Date.now() < deadline) {
     attempt += 1;
-    if (attempt > 1) {
-      const delay = Math.min(retryDelay(attempt), deadline - Date.now());
-      if (delay > 0) await new Promise((resolve) => setTimeout(resolve, delay));
-      if (Date.now() >= deadline) break;
-    }
-
-    let result;
     try {
-      result = await fetchPublicStatus(attempt);
+      const status = await fetchJson(readinessUrl(attempt));
+      observed = statusIdentity(status);
+
+      if (
+        observed.commit === SOURCE_COMMIT &&
+        observed.edition === expectedEdition
+      ) {
+        logReadiness(attempt, expectedEdition, observed, "READY");
+        return "exact-public-identity";
+      }
+
+      if (isSupersededEdition(observed.edition, expectedEdition)) {
+        logReadiness(
+          attempt,
+          expectedEdition,
+          observed,
+          "SUPERSEDED_BY_NEWER_RELEASE",
+        );
+        throw new Error(
+          `SUPERSEDED_BY_NEWER_RELEASE: observed ${observed.edition} while waiting for ${expectedEdition}`,
+        );
+      }
+
+      logReadiness(attempt, expectedEdition, observed, "WAITING_PUBLIC_STATUS");
     } catch (error) {
-      logReadiness({
+      if (String(error?.message || "").startsWith("SUPERSEDED_BY_NEWER_RELEASE:")) {
+        throw error;
+      }
+      if (!isTransientStatusError(error)) {
+        logReadiness(
+          attempt,
+          expectedEdition,
+          observed,
+          "PUBLIC_STATUS_INVALID",
+          error?.message || String(error),
+        );
+        throw error;
+      }
+      logReadiness(
         attempt,
         expectedEdition,
-        observedCommit,
-        observedEdition,
-        state: "PUBLIC_STATUS_INVALID",
-        detail: error?.message || String(error),
-      });
-      throw error;
-    }
-
-    if (result.transient) {
-      logReadiness({
-        attempt,
-        expectedEdition,
-        observedCommit,
-        observedEdition,
-        state: "WAITING_PUBLIC_STATUS",
-        detail: result.detail,
-      });
-      continue;
-    }
-
-    observedCommit = String(result.status?.sourceCommit || "").trim();
-    observedEdition = String(result.status?.latestDaily?.id || "").trim();
-    if (!/^[0-9a-f]{40}$/i.test(observedCommit) || !observedEdition) {
-      logReadiness({
-        attempt,
-        expectedEdition,
-        observedCommit: observedCommit || "<missing>",
-        observedEdition: observedEdition || "<missing>",
-        state: "PUBLIC_STATUS_INVALID",
-        detail: "sourceCommit/latestDaily.id missing or invalid",
-      });
-      throw new Error(
-        "PUBLIC_STATUS_INVALID: sourceCommit/latestDaily.id missing or invalid",
+        observed,
+        "WAITING_PUBLIC_STATUS",
+        error?.message || String(error),
       );
     }
 
-    if (
-      observedCommit === SOURCE_COMMIT &&
-      observedEdition === expectedEdition
-    ) {
-      logReadiness({
-        attempt,
-        expectedEdition,
-        observedCommit,
-        observedEdition,
-        state: "READY",
-      });
-      return "exact-public-identity";
-    }
-
-    if (isSupersededEdition(observedEdition, expectedEdition)) {
-      logReadiness({
-        attempt,
-        expectedEdition,
-        observedCommit,
-        observedEdition,
-        state: "SUPERSEDED_BY_NEWER_RELEASE",
-      });
-      throw new Error(
-        `SUPERSEDED_BY_NEWER_RELEASE: observed ${observedEdition} while waiting for ${expectedEdition}`,
-      );
-    }
-
-    logReadiness({
-      attempt,
-      expectedEdition,
-      observedCommit,
-      observedEdition,
-      state: "WAITING_PUBLIC_STATUS",
-    });
+    const remaining = deadline - Date.now();
+    if (remaining <= 0) break;
+    const delay = Math.min(
+      STATUS_RETRY_BASE_MS * attempt,
+      STATUS_RETRY_MAX_MS,
+      remaining,
+    );
+    if (delay > 0) await new Promise((resolve) => setTimeout(resolve, delay));
   }
 
-  logReadiness({
-    attempt,
-    expectedEdition,
-    observedCommit,
-    observedEdition,
-    state: "PUBLIC_STATUS_TIMEOUT",
-  });
+  logReadiness(attempt, expectedEdition, observed, "PUBLIC_STATUS_TIMEOUT");
   throw new Error(
     `PUBLIC_STATUS_TIMEOUT: public identity did not converge within ${STATUS_READINESS_TIMEOUT_MS}ms`,
   );
@@ -415,6 +358,21 @@ function headlineParts(title, fallbackDek) {
     }
   }
   return { title, dek: fallbackDek };
+}
+
+async function fetchJson(url) {
+  const controller = new AbortController();
+  const timer = setTimeout(() => controller.abort(), STATUS_FETCH_TIMEOUT_MS);
+  try {
+    const response = await fetch(url, {
+      headers: { Accept: "application/json", "Cache-Control": "no-cache" },
+      signal: controller.signal,
+    });
+    if (!response.ok) throw new Error(`HTTP ${response.status} for ${url}`);
+    return await response.json();
+  } finally {
+    clearTimeout(timer);
+  }
 }
 
 async function assertPublic(url) {
