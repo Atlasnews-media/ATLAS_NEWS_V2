@@ -154,7 +154,7 @@ const cover = {
   needsGeneration: Boolean(
     coverPlan.needsGeneration ||
       !coverLexiconCurrent ||
-      !coverSpeechNormalizerCurrent
+      !coverSpeechNormalizerCurrent,
   ),
   plan: coverPlan,
 };
