@@ -12,7 +12,10 @@ const visualSrc = visual?.src ?? "";
 const visualAllowed = (() => {
   if (!visualSrc) return false;
   try {
-    return new URL(visualSrc).hostname === "upload.wikimedia.org";
+    const hostname = new URL(visualSrc).hostname;
+    return (
+      hostname === "upload.wikimedia.org" || hostname === "commons.wikimedia.org"
+    );
   } catch {
     return false;
   }
