@@ -132,7 +132,6 @@ const primaryEntry = { href: "/", label: "Portada" };
         <a href="/nacional/">Nacional</a>
         <a href="/mercados/">Mercados</a>
         <a href="/lecturas/">Contingencia</a>
-        <a href="/archivo/">Archivo</a>
       </nav>
     </header>
     <div id="contenido"><slot /></div>
@@ -141,7 +140,7 @@ const primaryEntry = { href: "/", label: "Portada" };
         <a class="footer-brand" href="/">ATLAS NEWS</a>
         <p>
           Información y análisis editorial. No constituye una recomendación de
-          inversión.
+          inversión.<br /><a class="footer-archive-link" href="/archivo/">Archivo</a>
         </p>
         <p>
           <a href="/estado/">Estado de publicación</a><br />Santiago de Chile ·
@@ -271,7 +270,8 @@ const primaryEntry = { href: "/", label: "Portada" };
   .footer-meta > p:last-child {
     text-align: right;
   }
-  .footer-meta > p:last-child a {
+  .footer-meta > p:last-child a,
+  .footer-archive-link {
     font-weight: 800;
     text-underline-offset: 0.15em;
   }
