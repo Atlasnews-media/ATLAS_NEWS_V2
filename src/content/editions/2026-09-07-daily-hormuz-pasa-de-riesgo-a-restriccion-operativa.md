@@ -42,6 +42,13 @@ marketSummary:
       value: "10 buques/día"
       change: "mín. mayo"
       category: "mercados"
+editorialVisual:
+  src: "https://upload.wikimedia.org/wikipedia/commons/5/5c/USS_Hawes_%28FFG-53%29%2C_USS_William_H._Standley_%28CG-32%29_and_USS_Guadalcanal_%28LPH-7%29_escort_tanker_Gas_King_in_the_Persian_Gullf_on_21_October_1987_%286432283%29.jpg"
+  alt: "Convoy de buques escoltando al petrolero Gas King en el Golfo Pérsico en 1987."
+  source: "Wikimedia Commons / U.S. National Archives"
+  sourceUrl: "https://commons.wikimedia.org/wiki/File:USS_Hawes_(FFG-53),_USS_William_H._Standley_(CG-32)_and_USS_Guadalcanal_(LPH-7)_escort_tanker_Gas_King_in_the_Persian_Gullf_on_21_October_1987_(6432283).jpg"
+  author: "PH2 Elliott, U.S. Navy"
+  license: "Public domain — U.S. federal government work"
 ---
 
 ## Hecho central

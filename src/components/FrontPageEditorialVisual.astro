@@ -1,0 +1,107 @@
+---
+import { getEntry } from "astro:content";
+
+interface Props {
+  editionId: string;
+}
+
+const { editionId } = Astro.props;
+const edition = await getEntry("editions", editionId);
+const visual = edition?.data.editorialVisual;
+---
+
+{
+  visual && (
+    <figure
+      class="front-page-editorial-visual"
+      data-front-page-editorial-visual
+      data-src={visual.src}
+      hidden
+    >
+      <img
+        data-front-page-editorial-image
+        alt={visual.alt}
+        loading="lazy"
+        decoding="async"
+      />
+      <figcaption>
+        <span>{visual.source} · {visual.author} · {visual.license}</span>
+        <a href={visual.sourceUrl} target="_blank" rel="noopener noreferrer">
+          Fuente
+        </a>
+      </figcaption>
+    </figure>
+  )
+}
+
+<script>
+  const editorialVisual = document.querySelector(
+    "[data-front-page-editorial-visual]",
+  );
+  const editorialImage = document.querySelector(
+    "[data-front-page-editorial-image]",
+  );
+
+  if (
+    window.matchMedia("(min-width: 42.01rem)").matches &&
+    editorialVisual instanceof HTMLElement &&
+    editorialImage instanceof HTMLImageElement
+  ) {
+    const src = editorialVisual.dataset.src;
+    if (src) {
+      try {
+        const imageUrl = new URL(src, window.location.origin);
+        if (imageUrl.hostname === "upload.wikimedia.org") {
+          editorialImage.addEventListener(
+            "load",
+            () => {
+              editorialVisual.hidden = false;
+            },
+            { once: true },
+          );
+          editorialImage.addEventListener(
+            "error",
+            () => editorialImage.removeAttribute("src"),
+            { once: true },
+          );
+          editorialImage.src = imageUrl.href;
+        }
+      } catch {
+        // Fail-open: no asset request and no layout impact.
+      }
+    }
+  }
+</script>
+
+<style>
+  .front-page-editorial-visual {
+    max-width: 34rem;
+    margin: 1.5rem 0 0;
+    padding-top: 1rem;
+    border-top: 1px solid var(--rule);
+  }
+  .front-page-editorial-visual img {
+    display: block;
+    width: 100%;
+    max-height: 18rem;
+    object-fit: cover;
+    filter: sepia(0.72) contrast(0.92);
+  }
+  .front-page-editorial-visual figcaption {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.25rem 0.45rem;
+    margin-top: 0.45rem;
+    color: var(--ink-soft);
+    font: 600 0.6rem/1.35 var(--sans);
+  }
+  .front-page-editorial-visual figcaption a {
+    color: inherit;
+  }
+
+  @media (max-width: 42rem) {
+    .front-page-editorial-visual {
+      display: none;
+    }
+  }
+</style>
