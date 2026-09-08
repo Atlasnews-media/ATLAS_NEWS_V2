@@ -12,6 +12,7 @@
     "preview": "astro preview",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
+    "postinstall": "prettier --write src/pages/index.astro src/pages/internacional/index.astro && git diff -- src/pages/index.astro src/pages/internacional/index.astro",
     "editorial:from-issue": "node scripts/create-reading-from-issue.mjs",
     "funds:update": "node scripts/funds/update-funds.mjs",
     "radar:discover": "node scripts/discover-radar-readings.mjs",
