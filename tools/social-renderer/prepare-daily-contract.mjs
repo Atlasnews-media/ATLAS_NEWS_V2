@@ -13,7 +13,10 @@ const BLOCKED_SOURCE_COMMIT =
 const OUTPUT_RELATIVE =
   process.env.ATLAS_SOCIAL_CONTRACT_OUTPUT ||
   "tools/social-renderer/.generated/daily-contract.json";
-const STATUS_READINESS_TIMEOUT_MS = envMs("ATLAS_PUBLIC_STATUS_TIMEOUT_MS", 45000);
+const STATUS_READINESS_TIMEOUT_MS = envMs(
+  "ATLAS_PUBLIC_STATUS_TIMEOUT_MS",
+  45000,
+);
 const STATUS_FETCH_TIMEOUT_MS = envMs(
   "ATLAS_PUBLIC_STATUS_FETCH_TIMEOUT_MS",
   8000,
@@ -237,7 +240,11 @@ async function waitForPublicStatus(expectedEdition) {
 
       logReadiness(attempt, expectedEdition, observed, "WAITING_PUBLIC_STATUS");
     } catch (error) {
-      if (String(error?.message || "").startsWith("SUPERSEDED_BY_NEWER_RELEASE:")) {
+      if (
+        String(error?.message || "").startsWith(
+          "SUPERSEDED_BY_NEWER_RELEASE:",
+        )
+      ) {
         throw error;
       }
       if (!isTransientStatusError(error)) {
