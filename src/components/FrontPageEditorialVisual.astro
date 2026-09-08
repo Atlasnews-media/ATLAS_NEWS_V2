@@ -1,0 +1,148 @@
+---
+interface Props {
+  editionId: string;
+}
+
+const { editionId } = Astro.props;
+---
+
+<figure
+  class="front-page-editorial-visual"
+  data-front-page-editorial-visual
+  data-edition-id={editionId}
+  hidden
+>
+  <img data-front-page-editorial-image alt="" loading="lazy" decoding="async" />
+  <figcaption>
+    <span data-front-page-editorial-credit></span>
+    <a
+      data-front-page-editorial-source
+      href=""
+      target="_blank"
+      rel="noopener noreferrer">Fuente</a
+    >
+  </figcaption>
+</figure>
+
+<script>
+  const editorialVisual = document.querySelector(
+    "[data-front-page-editorial-visual]",
+  );
+  const editorialImage = document.querySelector(
+    "[data-front-page-editorial-image]",
+  );
+  const editorialCredit = document.querySelector(
+    "[data-front-page-editorial-credit]",
+  );
+  const editorialSource = document.querySelector(
+    "[data-front-page-editorial-source]",
+  );
+
+  const loadEditorialVisual = async () => {
+    if (
+      !(editorialVisual instanceof HTMLElement) ||
+      !(editorialImage instanceof HTMLImageElement) ||
+      !(editorialCredit instanceof HTMLElement) ||
+      !(editorialSource instanceof HTMLAnchorElement)
+    ) {
+      return;
+    }
+
+    const editionId = editorialVisual.dataset.editionId;
+    if (!editionId) return;
+
+    try {
+      const response = await fetch("/front-page-editorial/manifest.json");
+      if (!response.ok) return;
+
+      const manifest = await response.json();
+      if (!manifest || !Array.isArray(manifest.entries)) return;
+
+      const entry = manifest.entries.find(
+        (candidate: unknown) =>
+          typeof candidate === "object" &&
+          candidate !== null &&
+          "editionId" in candidate &&
+          candidate.editionId === editionId,
+      );
+
+      if (
+        !entry ||
+        typeof entry.imageSrc !== "string" ||
+        typeof entry.sourceUrl !== "string" ||
+        typeof entry.source !== "string" ||
+        typeof entry.author !== "string" ||
+        typeof entry.license !== "string"
+      ) {
+        return;
+      }
+
+      const imageUrl = new URL(entry.imageSrc, window.location.origin);
+      const sourceUrl = new URL(entry.sourceUrl);
+      if (
+        imageUrl.hostname !== "upload.wikimedia.org" ||
+        sourceUrl.hostname !== "commons.wikimedia.org"
+      ) {
+        return;
+      }
+
+      editorialImage.addEventListener(
+        "load",
+        () => {
+          editorialVisual.hidden = false;
+        },
+        { once: true },
+      );
+      editorialImage.addEventListener(
+        "error",
+        () => editorialImage.removeAttribute("src"),
+        { once: true },
+      );
+
+      editorialImage.alt =
+        typeof entry.imageAlt === "string" ? entry.imageAlt : "";
+      editorialCredit.textContent = `${entry.source} · ${entry.author} · ${entry.license}`;
+      editorialSource.href = sourceUrl.href;
+      editorialImage.src = imageUrl.href;
+    } catch {
+      // Fail-open: la portada conserva exactamente el layout actual.
+    }
+  };
+
+  if (window.matchMedia("(min-width: 42.01rem)").matches) {
+    void loadEditorialVisual();
+  }
+</script>
+
+<style>
+  .front-page-editorial-visual {
+    max-width: 34rem;
+    margin: 1.5rem 0 0;
+    padding-top: 1rem;
+    border-top: 1px solid var(--rule);
+  }
+  .front-page-editorial-visual img {
+    display: block;
+    width: 100%;
+    max-height: 18rem;
+    object-fit: contain;
+    filter: sepia(0.22) contrast(0.96);
+  }
+  .front-page-editorial-visual figcaption {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.25rem 0.45rem;
+    margin-top: 0.45rem;
+    color: var(--ink-soft);
+    font: 600 0.6rem/1.35 var(--sans);
+  }
+  .front-page-editorial-visual figcaption a {
+    color: inherit;
+  }
+
+  @media (max-width: 42rem) {
+    .front-page-editorial-visual {
+      display: none;
+    }
+  }
+</style>

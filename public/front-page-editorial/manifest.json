@@ -1,0 +1,19 @@
+{
+  "version": 1,
+  "entries": [
+    {
+      "editionId": "2026-09-06-daily-hormuz-convierte-riesgo-energetico-en-restriccion-fisica",
+      "editionSourceCommit": "d12f185b8d17dc8cb614be2874423c6d14846de2",
+      "surface": "front-page",
+      "imageSrc": "https://upload.wikimedia.org/wikipedia/commons/7/76/Chilean_printing_press.jpg",
+      "imageAlt": "Prensa histórica utilizada para imprimir La Aurora de Chile.",
+      "source": "Wikimedia Commons",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Chilean_printing_press.jpg",
+      "author": "Roberto Hernández C. (1930)",
+      "license": "Dominio público en Chile (patrimonio cultural común); atribución requerida",
+      "licenseUrl": "https://commons.wikimedia.org/wiki/File:Chilean_printing_press.jpg",
+      "transformation": "Presentación CSS con sepia suave; archivo original sin recorte ni modificación persistente",
+      "usedAt": "2026-09-06"
+    }
+  ]
+}
