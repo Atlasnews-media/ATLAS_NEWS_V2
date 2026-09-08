@@ -15,6 +15,7 @@ from audio_question_prosody import raise_terminal_pitch
 from audio_speech import (
     LEXICON_REVISION,
     LEXICON_VERSION,
+    SPEECH_NORMALIZER_VERSION,
     is_question,
     normalize_for_speech,
 )
@@ -38,7 +39,6 @@ QUESTION_PITCH_CROSSFADE_SECONDS = float(
 )
 MIN_AUDIO_BYTES = 10_000
 MIN_DURATION_SECONDS = 5.0
-SPEECH_NORMALIZER_VERSION = 3
 QUESTION_PROSODY_VERSION = 2
 
 DIALOGUE_VOICES = {
@@ -242,8 +242,11 @@ if not plan.get("needsGeneration"):
 if (
     plan.get("lexiconVersion") != LEXICON_VERSION
     or plan.get("lexiconRevision") != LEXICON_REVISION
+    or plan.get("speechNormalizerVersion") != SPEECH_NORMALIZER_VERSION
 ):
-    raise RuntimeError("El plan de Audio V2 no coincide con la revisión del Lexicon V3.")
+    raise RuntimeError(
+        "El plan de Audio V2 no coincide con Lexicon V3 o con el normalizador de voz."
+    )
 
 audio_dir = PUBLIC_DIR / "audio"
 audio_dir.mkdir(parents=True, exist_ok=True)
@@ -330,6 +333,7 @@ with tempfile.TemporaryDirectory(prefix="atlas-audio-v2-") as temp_dir_name:
                 and existing.get("status") == "published"
                 and existing.get("sourceId") == product.get("sourceId")
                 and existing.get("scriptHash") == product.get("scriptHash")
+                and existing.get("speechNormalizerVersion") == SPEECH_NORMALIZER_VERSION
                 and existing.get("lexiconVersion") == LEXICON_VERSION
                 and existing.get("lexiconRevision") == LEXICON_REVISION
             ):
@@ -382,6 +386,7 @@ with tempfile.TemporaryDirectory(prefix="atlas-audio-v2-") as temp_dir_name:
                 "error": str(exc)[:240],
                 "scriptVersion": product.get("scriptVersion"),
                 "scriptHash": product.get("scriptHash"),
+                "speechNormalizerVersion": SPEECH_NORMALIZER_VERSION,
                 "lexiconVersion": LEXICON_VERSION,
                 "lexiconRevision": LEXICON_REVISION,
             }

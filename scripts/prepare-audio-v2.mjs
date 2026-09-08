@@ -4,6 +4,7 @@ import path from "node:path";
 
 const root = new URL("../", import.meta.url);
 const ANALYSIS_SCRIPT_VERSION = 3;
+const SPEECH_NORMALIZER_VERSION = 4;
 const PLAN_FILE = ".atlas-audio-v2-plan.json";
 const lexiconConfig = JSON.parse(
   await readFile(new URL("config/audio/lexicon-v3.json", root), "utf8"),
@@ -156,6 +157,7 @@ const plan = {
   schemaVersion: 1,
   date,
   sourceIds,
+  speechNormalizerVersion: SPEECH_NORMALIZER_VERSION,
   lexiconVersion: LEXICON_VERSION,
   lexiconRevision: LEXICON_REVISION,
   simulateMarketsFailure,

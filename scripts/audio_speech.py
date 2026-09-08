@@ -7,6 +7,7 @@ LEXICON_PATH = Path(__file__).resolve().parent.parent / "config" / "audio" / "le
 LEXICON_PAYLOAD = json.loads(LEXICON_PATH.read_text(encoding="utf-8"))
 LEXICON_VERSION = int(LEXICON_PAYLOAD.get("version") or 0)
 LEXICON_REVISION = int(LEXICON_PAYLOAD.get("revision") or 0)
+SPEECH_NORMALIZER_VERSION = 4
 DAY_NAMES = (
     "lunes",
     "martes",
@@ -16,6 +17,60 @@ DAY_NAMES = (
     "sábado",
     "domingo",
 )
+
+_SMALL_NUMBERS = {
+    0: "cero",
+    1: "uno",
+    2: "dos",
+    3: "tres",
+    4: "cuatro",
+    5: "cinco",
+    6: "seis",
+    7: "siete",
+    8: "ocho",
+    9: "nueve",
+    10: "diez",
+    11: "once",
+    12: "doce",
+    13: "trece",
+    14: "catorce",
+    15: "quince",
+    16: "dieciséis",
+    17: "diecisiete",
+    18: "dieciocho",
+    19: "diecinueve",
+    20: "veinte",
+    21: "veintiuno",
+    22: "veintidós",
+    23: "veintitrés",
+    24: "veinticuatro",
+    25: "veinticinco",
+    26: "veintiséis",
+    27: "veintisiete",
+    28: "veintiocho",
+    29: "veintinueve",
+}
+_TENS = {
+    30: "treinta",
+    40: "cuarenta",
+    50: "cincuenta",
+    60: "sesenta",
+    70: "setenta",
+    80: "ochenta",
+    90: "noventa",
+}
+_HUNDREDS = {
+    100: "cien",
+    200: "doscientos",
+    300: "trescientos",
+    400: "cuatrocientos",
+    500: "quinientos",
+    600: "seiscientos",
+    700: "setecientos",
+    800: "ochocientos",
+    900: "novecientos",
+}
+_NUMBER_TOKEN = r"[+-]?(?:\d{1,3}(?:\.\d{3})+|\d+)(?:,\d+)?"
 
 
 def load_lexicon(payload=LEXICON_PAYLOAD):
@@ -121,22 +176,168 @@ def normalize_relative_days(text: str, reference_date: str | None) -> str:
     return normalized
 
 
+def _apocope_masculine(words: str) -> str:
+    if words.endswith("veintiuno"):
+        return words[:-9] + "veintiún"
+    if words.endswith(" y uno"):
+        return words[:-6] + " y un"
+    if words.endswith("uno"):
+        return words[:-3] + "un"
+    return words
+
+
+def _integer_to_words(value: int) -> str:
+    if value < 0:
+        return f"menos {_integer_to_words(-value)}"
+    if value < 30:
+        return _SMALL_NUMBERS[value]
+    if value < 100:
+        tens = (value // 10) * 10
+        remainder = value % 10
+        if remainder == 0:
+            return _TENS[tens]
+        return f"{_TENS[tens]} y {_SMALL_NUMBERS[remainder]}"
+    if value < 1_000:
+        if value in _HUNDREDS:
+            return _HUNDREDS[value]
+        hundreds = (value // 100) * 100
+        remainder = value % 100
+        prefix = "ciento" if hundreds == 100 else _HUNDREDS[hundreds]
+        return f"{prefix} {_integer_to_words(remainder)}"
+    if value < 1_000_000:
+        thousands, remainder = divmod(value, 1_000)
+        prefix = "mil" if thousands == 1 else f"{_integer_to_words(thousands)} mil"
+        if remainder == 0:
+            return prefix
+        return f"{prefix} {_integer_to_words(remainder)}"
+    if value < 1_000_000_000:
+        millions, remainder = divmod(value, 1_000_000)
+        prefix = (
+            "un millón"
+            if millions == 1
+            else f"{_apocope_masculine(_integer_to_words(millions))} millones"
+        )
+        if remainder == 0:
+            return prefix
+        return f"{prefix} {_integer_to_words(remainder)}"
+    if value < 1_000_000_000_000:
+        billions, remainder = divmod(value, 1_000_000_000)
+        prefix = (
+            "mil millones"
+            if billions == 1
+            else f"{_apocope_masculine(_integer_to_words(billions))} mil millones"
+        )
+        if remainder == 0:
+            return prefix
+        return f"{prefix} {_integer_to_words(remainder)}"
+    return str(value)
+
+
+def _number_token_to_words(token: str, masculine: bool = False) -> str:
+    raw = str(token).strip()
+    sign = ""
+    if raw.startswith("+"):
+        sign = "más "
+        raw = raw[1:]
+    elif raw.startswith("-"):
+        sign = "menos "
+        raw = raw[1:]
+
+    if "," in raw:
+        integer_part, decimal_part = raw.split(",", 1)
+    else:
+        integer_part, decimal_part = raw, ""
+
+    integer_value = int(integer_part.replace(".", ""))
+    integer_words = _integer_to_words(integer_value)
+    decimal_part = decimal_part.rstrip("0")
+
+    if decimal_part:
+        if len(decimal_part) == 1:
+            decimal_words = _SMALL_NUMBERS[int(decimal_part)]
+        elif decimal_part.startswith("0"):
+            decimal_words = " ".join(
+                _SMALL_NUMBERS[int(digit)] for digit in decimal_part
+            )
+        else:
+            decimal_words = _integer_to_words(int(decimal_part))
+        return f"{sign}{integer_words} coma {decimal_words}"
+
+    if masculine:
+        integer_words = _apocope_masculine(integer_words)
+    return f"{sign}{integer_words}"
+
+
+def _normalize_usd(match: re.Match) -> str:
+    number = match.group("number")
+    scale = (match.group("scale") or "").lower()
+    spoken_number = _number_token_to_words(number, masculine=True)
+    if scale:
+        unit = "millón" if scale == "millón" else "millones"
+        return f"{spoken_number} {unit} de dólares"
+    return f"{spoken_number} dólares"
+
+
+def _normalize_clock(match: re.Match) -> str:
+    hour = int(match.group("hour"))
+    minute = int(match.group("minute"))
+    hour_words = _integer_to_words(hour)
+    if minute == 0:
+        return f"{hour_words} horas"
+    return f"{hour_words} {_integer_to_words(minute)} horas"
+
+
 def normalize_numbers_and_symbols(text: str) -> str:
     normalized = str(text)
-    normalized = re.sub(r"US\$", "dólares ", normalized, flags=re.IGNORECASE)
+
+    # Divisas estadounidenses: US$99, USD $99, US$11.120 millones.
     normalized = re.sub(
-        r"\$\s*([0-9]+(?:\.[0-9]{3})*(?:,[0-9]+)?)",
-        r"\1 pesos",
+        rf"(?:\bUSD\s*\$?|\bUS\s*\$)\s*(?P<number>{_NUMBER_TOKEN})(?:\s+(?P<scale>millón|millones))?",
+        _normalize_usd,
+        normalized,
+        flags=re.IGNORECASE,
+    )
+
+    # Horas HH:MM. Mantiene el texto editorial intacto y oraliza sólo speech_text.
+    normalized = re.sub(
+        r"(?<!\d)(?P<hour>[01]?\d|2[0-3]):(?P<minute>[0-5]\d)(?!\d)",
+        _normalize_clock,
         normalized,
     )
+
+    # Pesos escritos con símbolo local.
     normalized = re.sub(
-        r"\b\d{1,3}(?:\.\d{3})+(?:,\d+)?\b",
-        lambda match: match.group(0).replace(".", ""),
+        rf"\$\s*(?P<number>{_NUMBER_TOKEN})",
+        lambda match: (
+            f"{_number_token_to_words(match.group('number'), masculine=True)} pesos"
+        ),
         normalized,
     )
-    normalized = re.sub(r"(\d+),(\d)0%", r"\1,\2%", normalized)
-    normalized = re.sub(r"(\d+),00%", r"\1%", normalized)
-    normalized = re.sub(r"(\d[\d.,]*)%", r"\1 por ciento", normalized)
+
+    # Monedas ya expresadas en palabras dentro de guiones de diálogo.
+    normalized = re.sub(
+        rf"(?<!\d)(?P<number>{_NUMBER_TOKEN})\s+(?P<unit>dólares|pesos)\b",
+        lambda match: (
+            f"{_number_token_to_words(match.group('number'), masculine=True)} "
+            f"{match.group('unit')}"
+        ),
+        normalized,
+        flags=re.IGNORECASE,
+    )
+
+    # Porcentajes: 8,7% -> ocho coma siete por ciento.
+    normalized = re.sub(
+        rf"(?<!\d)(?P<number>{_NUMBER_TOKEN})\s*%",
+        lambda match: f"{_number_token_to_words(match.group('number'))} por ciento",
+        normalized,
+    )
+
+    # Otros números con formato español que Kokoro suele segmentar mal.
+    normalized = re.sub(
+        r"(?<!\d)([+-]?(?:\d{1,3}(?:\.\d{3})+(?:,\d+)?|\d+,\d+))(?!\d)",
+        lambda match: _number_token_to_words(match.group(1)),
+        normalized,
+    )
     return normalized
 
 
