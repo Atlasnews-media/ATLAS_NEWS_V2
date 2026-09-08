@@ -241,9 +241,7 @@ async function waitForPublicStatus(expectedEdition) {
       logReadiness(attempt, expectedEdition, observed, "WAITING_PUBLIC_STATUS");
     } catch (error) {
       if (
-        String(error?.message || "").startsWith(
-          "SUPERSEDED_BY_NEWER_RELEASE:",
-        )
+        String(error?.message || "").startsWith("SUPERSEDED_BY_NEWER_RELEASE:")
       ) {
         throw error;
       }
