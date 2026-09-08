@@ -4,6 +4,22 @@ on:
   workflow_run:
     workflows: ["Publicar ATLAS NEWS"]
     types: [completed]
+  workflow_dispatch:
+    inputs:
+      source_commit:
+        description: Internal source commit for automatic retry/watchdog
+        required: true
+        type: string
+      retry_depth:
+        description: Internal bounded retry depth
+        required: true
+        default: "0"
+        type: string
+      retry_reason:
+        description: Internal retry/watchdog reason
+        required: true
+        default: automatic-recovery
+        type: string
 
 permissions:
   actions: write
@@ -16,37 +32,164 @@ concurrency:
 jobs:
   publish:
     if: >-
-      github.event.workflow_run.conclusion == 'success' &&
+      github.event_name == 'workflow_dispatch' ||
+      (github.event.workflow_run.conclusion == 'success' &&
       github.event.workflow_run.event == 'push' &&
-      github.event.workflow_run.head_branch == 'main'
+      github.event.workflow_run.head_branch == 'main')
     runs-on: ubuntu-latest
-    timeout-minutes: 12
+    timeout-minutes: 15
     env:
-      ATLAS_SOURCE_COMMIT: ${{ github.event.workflow_run.head_sha }}
+      ATLAS_SOURCE_COMMIT: ${{ github.event_name == 'workflow_run' && github.event.workflow_run.head_sha || inputs.source_commit }}
+      ATLAS_RETRY_DEPTH: ${{ github.event_name == 'workflow_dispatch' && inputs.retry_depth || '0' }}
+      ATLAS_RETRY_REASON: ${{ github.event_name == 'workflow_dispatch' && inputs.retry_reason || 'publisher-workflow-run' }}
       ATLAS_PUBLIC_STATUS_URL: https://eldesiempre100.github.io/status.json
       ATLAS_BLOCKED_SOURCE_COMMIT: 74e4d789383cce8d3b7a75679ecb263576d3ac70
       INSTAGRAM_API_VERSION: v23.0
       INSTAGRAM_EXPECTED_USERNAME: _atlas_news
+      GH_TOKEN: ${{ github.token }}
 
     steps:
       - name: Checkout exact published source
         uses: actions/checkout@v5
         with:
-          ref: ${{ github.event.workflow_run.head_sha }}
-          fetch-depth: 2
+          ref: ${{ github.event_name == 'workflow_run' && github.event.workflow_run.head_sha || inputs.source_commit }}
+          fetch-depth: 128
+
+      - name: Resolve expected daily identity
+        id: expected
+        run: |
+          set -euo pipefail
+          [[ "$ATLAS_SOURCE_COMMIT" =~ ^[0-9a-f]{40}$ ]] || {
+            echo "Fail-closed: source commit is not a full SHA."
+            exit 20
+          }
+
+          parent="$(git rev-list --parents -n 1 "$ATLAS_SOURCE_COMMIT" | awk '{print $2}')"
+          if [[ -z "$parent" ]]; then
+            changed="$(git diff-tree --root --no-commit-id --name-only -r "$ATLAS_SOURCE_COMMIT")"
+          else
+            changed="$(git diff --name-only "$parent" "$ATLAS_SOURCE_COMMIT")"
+          fi
+
+          mapfile -t daily_files < <(
+            printf '%s\n' "$changed" |
+              grep -E '^src/content/editions/[0-9]{4}-[0-9]{2}-[0-9]{2}-daily-[^/]+\.mdx?$' || true
+          )
+
+          if [[ "${#daily_files[@]}" -eq 0 ]]; then
+            echo "eligible=false" >> "$GITHUB_OUTPUT"
+            echo "reason=no-new-daily-edition-in-source-commit" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+
+          if [[ "${#daily_files[@]}" -ne 1 ]]; then
+            echo "Fail-closed: expected exactly one daily edition; found ${#daily_files[@]}."
+            exit 21
+          fi
+
+          source_id="${daily_files[0]}"
+          edition_id="$(basename "$source_id")"
+          edition_id="${edition_id%.md}"
+          edition_id="${edition_id%.mdx}"
+          canonical="https://eldesiempre100.github.io/ediciones/${edition_id}/"
+
+          echo "eligible=true" >> "$GITHUB_OUTPUT"
+          echo "source_id=$source_id" >> "$GITHUB_OUTPUT"
+          echo "edition_id=$edition_id" >> "$GITHUB_OUTPUT"
+          echo "canonical=$canonical" >> "$GITHUB_OUTPUT"
+          echo "Expected sourceCommit=${ATLAS_SOURCE_COMMIT} latestDaily.id=${edition_id} canonical=${canonical}"
+
+      - name: Wait for public publication readiness
+        if: steps.expected.outputs.eligible == 'true'
+        id: readiness
+        env:
+          EXPECTED_EDITION: ${{ steps.expected.outputs.edition_id }}
+        run: |
+          set -euo pipefail
+          timeout_seconds=60
+          started="$(date +%s)"
+          attempt=0
+
+          while true; do
+            attempt=$((attempt + 1))
+            timestamp="$(date -u +%Y-%m-%dT%H:%M:%SZ)"
+            url="${ATLAS_PUBLIC_STATUS_URL}?source=${ATLAS_SOURCE_COMMIT}&readiness=${GITHUB_RUN_ID}-${attempt}-$(date +%s)"
+            body="$(mktemp)"
+            code="$(curl -L -sS -o "$body" -w '%{http_code}' -H 'Accept: application/json' -H 'Cache-Control: no-cache' "$url" || true)"
+
+            if [[ "$code" = "200" ]]; then
+              if ! jq -e . "$body" >/dev/null 2>&1; then
+                echo "attempt=${attempt} timestamp=${timestamp} expectedCommit=${ATLAS_SOURCE_COMMIT} expectedEdition=${EXPECTED_EDITION} state=PUBLIC_STATUS_INVALID detail=invalid-json"
+                exit 22
+              fi
+
+              observed_commit="$(jq -r '.sourceCommit // empty' "$body")"
+              observed_edition="$(jq -r '.latestDaily.id // empty' "$body")"
+              if [[ ! "$observed_commit" =~ ^[0-9a-f]{40}$ ]] || [[ -z "$observed_edition" ]]; then
+                echo "attempt=${attempt} timestamp=${timestamp} expectedCommit=${ATLAS_SOURCE_COMMIT} observedCommit=${observed_commit:-<missing>} expectedEdition=${EXPECTED_EDITION} observedEdition=${observed_edition:-<missing>} state=PUBLIC_STATUS_INVALID"
+                exit 23
+              fi
+
+              if [[ "$observed_edition" = "$EXPECTED_EDITION" ]]; then
+                if [[ "$observed_commit" = "$ATLAS_SOURCE_COMMIT" ]]; then
+                  echo "attempt=${attempt} timestamp=${timestamp} expectedCommit=${ATLAS_SOURCE_COMMIT} observedCommit=${observed_commit} expectedEdition=${EXPECTED_EDITION} observedEdition=${observed_edition} state=READY"
+                  echo "ready=true" >> "$GITHUB_OUTPUT"
+                  echo "mode=exact" >> "$GITHUB_OUTPUT"
+                  break
+                fi
+
+                git fetch --no-tags --depth=128 origin "$observed_commit" >/dev/null 2>&1 || true
+                if git cat-file -e "${observed_commit}^{commit}" 2>/dev/null && git merge-base --is-ancestor "$ATLAS_SOURCE_COMMIT" "$observed_commit"; then
+                  echo "attempt=${attempt} timestamp=${timestamp} expectedCommit=${ATLAS_SOURCE_COMMIT} observedCommit=${observed_commit} expectedEdition=${EXPECTED_EDITION} observedEdition=${observed_edition} state=READY detail=verified-descendant-public-deploy"
+                  echo "ready=true" >> "$GITHUB_OUTPUT"
+                  echo "mode=verified-descendant" >> "$GITHUB_OUTPUT"
+                  break
+                fi
+              fi
+
+              observed_date="${observed_edition:0:10}"
+              expected_date="${EXPECTED_EDITION:0:10}"
+              if [[ "$observed_date" =~ ^[0-9]{4}-[0-9]{2}-[0-9]{2}$ ]] &&
+                 [[ "$expected_date" =~ ^[0-9]{4}-[0-9]{2}-[0-9]{2}$ ]] &&
+                 [[ "$observed_date" > "$expected_date" ]]; then
+                echo "attempt=${attempt} timestamp=${timestamp} expectedCommit=${ATLAS_SOURCE_COMMIT} observedCommit=${observed_commit} expectedEdition=${EXPECTED_EDITION} observedEdition=${observed_edition} state=SUPERSEDED_BY_NEWER_RELEASE"
+                echo "ready=false" >> "$GITHUB_OUTPUT"
+                echo "superseded=true" >> "$GITHUB_OUTPUT"
+                exit 0
+              fi
+
+              echo "attempt=${attempt} timestamp=${timestamp} expectedCommit=${ATLAS_SOURCE_COMMIT} observedCommit=${observed_commit} expectedEdition=${EXPECTED_EDITION} observedEdition=${observed_edition} state=WAITING_PUBLIC_STATUS"
+            elif [[ "$code" = "404" || "$code" = "429" || "$code" = "500" || "$code" = "502" || "$code" = "503" || "$code" = "000" ]]; then
+              echo "attempt=${attempt} timestamp=${timestamp} expectedCommit=${ATLAS_SOURCE_COMMIT} expectedEdition=${EXPECTED_EDITION} state=WAITING_PUBLIC_STATUS detail=HTTP-${code}"
+            else
+              echo "attempt=${attempt} timestamp=${timestamp} expectedCommit=${ATLAS_SOURCE_COMMIT} expectedEdition=${EXPECTED_EDITION} state=PUBLIC_STATUS_INVALID detail=HTTP-${code}"
+              exit 24
+            fi
+
+            elapsed=$(( $(date +%s) - started ))
+            if (( elapsed >= timeout_seconds )); then
+              echo "attempt=${attempt} timestamp=${timestamp} expectedCommit=${ATLAS_SOURCE_COMMIT} expectedEdition=${EXPECTED_EDITION} state=PUBLIC_STATUS_TIMEOUT"
+              exit 25
+            fi
+
+            delay=$((attempt * 3))
+            if (( delay > 12 )); then delay=12; fi
+            sleep "$delay"
+          done
 
       - name: Resolve verified new daily edition and build contract
+        if: steps.expected.outputs.eligible == 'true' && steps.readiness.outputs.ready == 'true'
         id: contract
         run: node tools/social-renderer/prepare-daily-contract.mjs
 
-      - name: Record non-edition no-op
-        if: steps.contract.outputs.eligible != 'true'
+      - name: Record automatic safe no-op
+        if: steps.expected.outputs.eligible != 'true' || steps.readiness.outputs.superseded == 'true' || steps.contract.outputs.eligible == 'false'
         run: |
           {
-            echo "### Instagram E2E — no-op seguro"
+            echo "### Instagram Automatic — no-op seguro"
             echo "Source commit: \`${ATLAS_SOURCE_COMMIT}\`"
-            echo "Reason: \`${{ steps.contract.outputs.reason }}\`"
-            echo "No se renderizó ni se contactó a Meta."
+            echo "Reason: \`${{ steps.expected.outputs.reason || steps.contract.outputs.reason || 'superseded-by-newer-release' }}\`"
+            echo "No se renderizó ni se creó una publicación en Meta."
           } >> "$GITHUB_STEP_SUMMARY"
 
       - name: Verify required secrets for eligible edition
@@ -57,11 +200,11 @@ jobs:
         run: |
           set -euo pipefail
           test -n "$INSTAGRAM_ACCESS_TOKEN" || {
-            echo "Fail-closed: INSTAGRAM_ACCESS_TOKEN is missing."
+            echo "BLOCKED_EXTERNAL: INSTAGRAM_ACCESS_TOKEN is missing."
             exit 4
           }
           test -n "$ATLAS_PAGES_DEPLOY_KEY" || {
-            echo "Fail-closed: ATLAS_PAGES_DEPLOY_KEY is missing."
+            echo "BLOCKED_EXTERNAL: ATLAS_PAGES_DEPLOY_KEY is missing."
             exit 5
           }
 
@@ -101,9 +244,9 @@ jobs:
 
           jq -e --arg source "$SOURCE_COMMIT" '
             .sourceCommit == $source and
-            .status == "PUBLISHED_VERIFIED" and
+            (.status == "PUBLISHED_VERIFIED" or .status == "ALREADY_PUBLISHED_VERIFIED") and
             (.permalink | type == "string" and length > 0)
-          ' "$evidence" > /dev/null || {
+          ' "$evidence" >/dev/null || {
             echo "Fail-closed: sourceCommit evidence exists but is invalid: $evidence"
             exit 12
           }
@@ -111,20 +254,141 @@ jobs:
           echo "already_published=true" >> "$GITHUB_OUTPUT"
           permalink="$(jq -r '.permalink' "$evidence")"
           {
-            echo "### Instagram E2E — idempotent no-op"
-            echo "Source commit ya publicado: \`${SOURCE_COMMIT}\`"
+            echo "### Instagram Automatic — ALREADY_PUBLISHED_VERIFIED"
+            echo "Source commit: \`${SOURCE_COMMIT}\`"
             echo "Permalink: ${permalink}"
-            echo "No se volvió a renderizar ni se contactó a Meta."
+            echo "No se volvió a renderizar ni se creó una publicación en Meta."
+          } >> "$GITHUB_STEP_SUMMARY"
+
+      - name: VERIFY_FIRST against previous ambiguous or existing Instagram media
+        if: steps.contract.outputs.eligible == 'true' && steps.idempotency.outputs.already_published != 'true'
+        id: verify_first
+        env:
+          INSTAGRAM_ACCESS_TOKEN: ${{ secrets.INSTAGRAM_ACCESS_TOKEN }}
+          CANONICAL_URL: ${{ steps.contract.outputs.canonical_url }}
+          SOURCE_COMMIT: ${{ steps.contract.outputs.source_commit }}
+          SOURCE_ID: ${{ steps.contract.outputs.source_id }}
+        run: |
+          set -euo pipefail
+          mkdir -p tools/social-renderer/output
+          pending="_social_assets/instagram-pending/${SOURCE_COMMIT}.json"
+
+          api_get() {
+            local path="$1"
+            curl -fsSL \
+              -H "Authorization: Bearer ${INSTAGRAM_ACCESS_TOKEN}" \
+              -H 'User-Agent: ATLAS-NEWS-Social-Distribution/1.0' \
+              "https://graph.instagram.com/${INSTAGRAM_API_VERSION}${path}"
+          }
+
+          me="$(api_get '/me?fields=id,username')" || {
+            echo "BLOCKED_EXTERNAL: cannot verify Instagram account."
+            exit 31
+          }
+          ig_user_id="$(jq -r '.id // empty' <<<"$me")"
+          username="$(jq -r '.username // empty' <<<"$me")"
+          test "$username" = "$INSTAGRAM_EXPECTED_USERNAME" || {
+            echo "BLOCKED_EXTERNAL: wrong Instagram account ${username:-<missing>}."
+            exit 32
+          }
+
+          if [[ -f "$pending" ]]; then
+            media_id="$(jq -r '.mediaId // empty' "$pending")"
+            test -n "$media_id" || {
+              echo "Fail-closed: ambiguous evidence exists without mediaId."
+              exit 33
+            }
+
+            for attempt in 1 2 3 4 5 6; do
+              candidate="$(api_get "/${media_id}?fields=id,permalink,media_type,timestamp,caption" 2>/dev/null || true)"
+              permalink="$(jq -r '.permalink // empty' <<<"${candidate:-{}}" 2>/dev/null || true)"
+              if [[ -n "$permalink" ]]; then
+                jq -n \
+                  --arg status "ALREADY_PUBLISHED_VERIFIED" \
+                  --arg username "$username" \
+                  --arg sourceId "$SOURCE_ID" \
+                  --arg canonicalUrl "$CANONICAL_URL" \
+                  --arg mediaId "$media_id" \
+                  --arg permalink "$permalink" \
+                  '{status:$status,username:$username,sourceId:$sourceId,canonicalUrl:$canonicalUrl,mediaId:$mediaId,permalink:$permalink,verificationSource:"pending-media-id"}' \
+                  > tools/social-renderer/output/instagram-publish.json
+                echo "already_published_verified=true" >> "$GITHUB_OUTPUT"
+                echo "VERIFY_FIRST state=ALREADY_PUBLISHED_VERIFIED mediaId=${media_id} permalink=${permalink}"
+                exit 0
+              fi
+              sleep 5
+            done
+
+            echo "BLOCKED_EXTERNAL: previous Meta result remains ambiguous for mediaId=${media_id}; refusing duplicate publication."
+            exit 34
+          fi
+
+          recent="$(api_get "/${ig_user_id}/media?fields=id,caption,permalink,timestamp&limit=25")" || {
+            echo "BLOCKED_EXTERNAL: cannot verify recent Instagram media."
+            exit 35
+          }
+          duplicate="$(jq -c --arg canonical "$CANONICAL_URL" '.data[]? | select((.caption // "") | contains($canonical)) | select((.permalink // "") != "")' <<<"$recent" | head -n 1)"
+
+          if [[ -n "$duplicate" ]]; then
+            media_id="$(jq -r '.id' <<<"$duplicate")"
+            permalink="$(jq -r '.permalink' <<<"$duplicate")"
+            jq -n \
+              --arg status "ALREADY_PUBLISHED_VERIFIED" \
+              --arg username "$username" \
+              --arg sourceId "$SOURCE_ID" \
+              --arg canonicalUrl "$CANONICAL_URL" \
+              --arg mediaId "$media_id" \
+              --arg permalink "$permalink" \
+              '{status:$status,username:$username,sourceId:$sourceId,canonicalUrl:$canonicalUrl,mediaId:$mediaId,permalink:$permalink,verificationSource:"recent-media-canonical"}' \
+              > tools/social-renderer/output/instagram-publish.json
+            echo "already_published_verified=true" >> "$GITHUB_OUTPUT"
+            echo "VERIFY_FIRST state=ALREADY_PUBLISHED_VERIFIED mediaId=${media_id} permalink=${permalink}"
+            exit 0
+          fi
+
+          echo "already_published_verified=false" >> "$GITHUB_OUTPUT"
+          echo "VERIFY_FIRST state=NO_EXISTING_PUBLICATION"
+
+      - name: Persist recovered ALREADY_PUBLISHED_VERIFIED evidence
+        if: steps.verify_first.outputs.already_published_verified == 'true'
+        env:
+          GIT_SSH_COMMAND: ssh -i ~/.ssh/atlas_news_pages -o IdentitiesOnly=yes
+          SOURCE_COMMIT: ${{ steps.contract.outputs.source_commit }}
+        run: |
+          set -euo pipefail
+          mkdir -p _social_assets/instagram-published
+          evidence="tools/social-renderer/output/instagram-publish.json"
+          enriched="$(mktemp)"
+          jq --arg source "$SOURCE_COMMIT" '. + {sourceCommit:$source}' "$evidence" > "$enriched"
+          cp "$enriched" "_social_assets/instagram-published/${SOURCE_COMMIT}.json"
+          rm -f "_social_assets/instagram-pending/${SOURCE_COMMIT}.json"
+
+          cd _social_assets
+          git config user.name "ATLAS NEWS Social Publisher"
+          git config user.email "actions@users.noreply.github.com"
+          git add "instagram-published/${SOURCE_COMMIT}.json"
+          git add -u "instagram-pending/${SOURCE_COMMIT}.json" 2>/dev/null || true
+          if ! git diff --cached --quiet; then
+            git commit -m "social-assets: recover verified Instagram ${SOURCE_COMMIT::7}"
+            git push origin HEAD:social-assets
+          fi
+
+          permalink="$(jq -r '.permalink' "instagram-published/${SOURCE_COMMIT}.json")"
+          {
+            echo "### Instagram Automatic — ALREADY_PUBLISHED_VERIFIED"
+            echo "Source commit: \`${SOURCE_COMMIT}\`"
+            echo "Permalink: ${permalink}"
+            echo "Recovered automatically without creating a duplicate."
           } >> "$GITHUB_STEP_SUMMARY"
 
       - name: Setup Node
-        if: steps.contract.outputs.eligible == 'true' && steps.idempotency.outputs.already_published != 'true'
+        if: steps.contract.outputs.eligible == 'true' && steps.idempotency.outputs.already_published != 'true' && steps.verify_first.outputs.already_published_verified != 'true'
         uses: actions/setup-node@v6
         with:
           node-version: 22.19.0
 
       - name: Restore renderer dependencies
-        if: steps.contract.outputs.eligible == 'true' && steps.idempotency.outputs.already_published != 'true'
+        if: steps.contract.outputs.eligible == 'true' && steps.idempotency.outputs.already_published != 'true' && steps.verify_first.outputs.already_published_verified != 'true'
         id: deps-cache
         uses: actions/cache@v4
         with:
@@ -132,24 +396,24 @@ jobs:
           key: ${{ runner.os }}-node-22.19-social-renderer-${{ hashFiles('tools/social-renderer/package.json') }}
 
       - name: Restore Chromium cache
-        if: steps.contract.outputs.eligible == 'true' && steps.idempotency.outputs.already_published != 'true'
+        if: steps.contract.outputs.eligible == 'true' && steps.idempotency.outputs.already_published != 'true' && steps.verify_first.outputs.already_published_verified != 'true'
         uses: actions/cache@v4
         with:
           path: ~/.cache/ms-playwright
           key: ${{ runner.os }}-social-renderer-playwright-1.62.1
 
       - name: Install isolated renderer dependencies
-        if: steps.contract.outputs.eligible == 'true' && steps.idempotency.outputs.already_published != 'true' && steps.deps-cache.outputs.cache-hit != 'true'
+        if: steps.contract.outputs.eligible == 'true' && steps.idempotency.outputs.already_published != 'true' && steps.verify_first.outputs.already_published_verified != 'true' && steps.deps-cache.outputs.cache-hit != 'true'
         working-directory: tools/social-renderer
         run: npm install --no-audit --no-fund --no-package-lock
 
       - name: Ensure Chromium
-        if: steps.contract.outputs.eligible == 'true' && steps.idempotency.outputs.already_published != 'true'
+        if: steps.contract.outputs.eligible == 'true' && steps.idempotency.outputs.already_published != 'true' && steps.verify_first.outputs.already_published_verified != 'true'
         working-directory: tools/social-renderer
         run: npx playwright install chromium
 
       - name: Render verified published copy once
-        if: steps.contract.outputs.eligible == 'true' && steps.idempotency.outputs.already_published != 'true'
+        if: steps.contract.outputs.eligible == 'true' && steps.idempotency.outputs.already_published != 'true' && steps.verify_first.outputs.already_published_verified != 'true'
         working-directory: tools/social-renderer
         env:
           SOCIAL_CONTRACT: ${{ steps.contract.outputs.contract_path }}
@@ -157,7 +421,7 @@ jobs:
         run: npm run render
 
       - name: Validate exactly five carousel assets from the same sourceCommit
-        if: steps.contract.outputs.eligible == 'true' && steps.idempotency.outputs.already_published != 'true'
+        if: steps.contract.outputs.eligible == 'true' && steps.idempotency.outputs.already_published != 'true' && steps.verify_first.outputs.already_published_verified != 'true'
         working-directory: tools/social-renderer
         env:
           SOURCE_COMMIT: ${{ steps.contract.outputs.source_commit }}
@@ -174,13 +438,13 @@ jobs:
           jq -e --arg source "$SOURCE_COMMIT" '
             .sourceCommit == $source and
             (.outputs | length == 6)
-          ' output/benchmark.json > /dev/null || {
+          ' output/benchmark.json >/dev/null || {
             echo "Fail-closed: renderer benchmark/sourceCommit mismatch."
             exit 14
           }
 
       - name: Stage carousel and SHARE card on public HTTPS URLs
-        if: steps.contract.outputs.eligible == 'true' && steps.idempotency.outputs.already_published != 'true'
+        if: steps.contract.outputs.eligible == 'true' && steps.idempotency.outputs.already_published != 'true' && steps.verify_first.outputs.already_published_verified != 'true'
         id: stage
         env:
           GIT_SSH_COMMAND: ssh -i ~/.ssh/atlas_news_pages -o IdentitiesOnly=yes
@@ -234,7 +498,7 @@ jobs:
           echo "share_image_url=$share_url" >> "$GITHUB_OUTPUT"
 
       - name: Confirm staged images are publicly fetchable
-        if: steps.contract.outputs.eligible == 'true' && steps.idempotency.outputs.already_published != 'true'
+        if: steps.contract.outputs.eligible == 'true' && steps.idempotency.outputs.already_published != 'true' && steps.verify_first.outputs.already_published_verified != 'true'
         run: |
           set -euo pipefail
           for n in 01 02 03 04 05; do
@@ -255,8 +519,26 @@ jobs:
             }
           done
 
+      - name: Revalidate public identity immediately before Meta
+        if: steps.contract.outputs.eligible == 'true' && steps.idempotency.outputs.already_published != 'true' && steps.verify_first.outputs.already_published_verified != 'true'
+        run: node tools/social-renderer/prepare-daily-contract.mjs
+
+      - name: Check competing automatic runs before Meta
+        if: steps.contract.outputs.eligible == 'true' && steps.idempotency.outputs.already_published != 'true' && steps.verify_first.outputs.already_published_verified != 'true'
+        run: |
+          set -euo pipefail
+          runs="$(gh run list --workflow instagram-carousel-publish-automatic.yml --limit 30 --json databaseId,status)"
+          competing="$(jq --argjson current "$GITHUB_RUN_ID" '[.[] | select(.databaseId != $current and (.status == "in_progress" or .status == "waiting" or .status == "requested"))] | length' <<<"$runs")"
+          test "$competing" = "0" || {
+            echo "Fail-closed: another automatic Instagram run is active (${competing})."
+            exit 36
+          }
+          echo "Active-run guard: no competing automatic run before Meta."
+
       - name: Publish automatic Instagram carousel
-        if: steps.contract.outputs.eligible == 'true' && steps.idempotency.outputs.already_published != 'true'
+        id: meta_publish
+        continue-on-error: true
+        if: steps.contract.outputs.eligible == 'true' && steps.idempotency.outputs.already_published != 'true' && steps.verify_first.outputs.already_published_verified != 'true'
         working-directory: tools/social-renderer
         env:
           SOCIAL_CONTRACT: ${{ steps.contract.outputs.contract_path }}
@@ -266,8 +548,47 @@ jobs:
           SOCIAL_IMAGE_BASE_URL: ${{ env.SOCIAL_IMAGE_BASE_URL }}
         run: npm run publish:instagram
 
+      - name: Persist ambiguous Meta result for future VERIFY_FIRST
+        if: steps.meta_publish.outcome == 'failure'
+        env:
+          GIT_SSH_COMMAND: ssh -i ~/.ssh/atlas_news_pages -o IdentitiesOnly=yes
+          SOURCE_COMMIT: ${{ steps.contract.outputs.source_commit }}
+        run: |
+          set -euo pipefail
+          evidence="tools/social-renderer/output/instagram-publish.json"
+          if [[ ! -f "$evidence" ]]; then
+            echo "No ambiguous Meta evidence file exists; retry/watchdog will start from preflight."
+            exit 0
+          fi
+
+          if ! jq -e '.status == "PUBLISHED_UNVERIFIED" and (.mediaId | type == "string" and length > 0)' "$evidence" >/dev/null 2>&1; then
+            echo "Meta failure did not produce a PUBLISHED_UNVERIFIED mediaId; no pending marker written."
+            exit 0
+          fi
+
+          mkdir -p _social_assets/instagram-pending
+          enriched="$(mktemp)"
+          jq --arg source "$SOURCE_COMMIT" '. + {sourceCommit:$source}' "$evidence" > "$enriched"
+          cp "$enriched" "_social_assets/instagram-pending/${SOURCE_COMMIT}.json"
+
+          cd _social_assets
+          git config user.name "ATLAS NEWS Social Publisher"
+          git config user.email "actions@users.noreply.github.com"
+          git add "instagram-pending/${SOURCE_COMMIT}.json"
+          if ! git diff --cached --quiet; then
+            git commit -m "social-assets: record ambiguous Instagram ${SOURCE_COMMIT::7}"
+            git push origin HEAD:social-assets
+          fi
+          echo "VERIFY_FIRST marker persisted for sourceCommit=${SOURCE_COMMIT}."
+
+      - name: Fail closed after unsuccessful Meta publish attempt
+        if: steps.meta_publish.outcome == 'failure'
+        run: |
+          echo "Instagram publish attempt failed; automatic recovery is required."
+          exit 40
+
       - name: Persist PUBLISHED_VERIFIED evidence keyed by sourceCommit
-        if: steps.contract.outputs.eligible == 'true' && steps.idempotency.outputs.already_published != 'true'
+        if: steps.meta_publish.outcome == 'success'
         env:
           GIT_SSH_COMMAND: ssh -i ~/.ssh/atlas_news_pages -o IdentitiesOnly=yes
           SOURCE_COMMIT: ${{ steps.contract.outputs.source_commit }}
@@ -280,7 +601,7 @@ jobs:
             .username == "_atlas_news" and
             .canonicalUrl == $canonical and
             (.permalink | type == "string" and length > 0)
-          ' "$evidence" > /dev/null || {
+          ' "$evidence" >/dev/null || {
             echo "Fail-closed: Instagram publication evidence is not PUBLISHED_VERIFIED."
             exit 16
           }
@@ -290,10 +611,12 @@ jobs:
           jq --arg source "$SOURCE_COMMIT" '. + {sourceCommit:$source}' "$evidence" > "$enriched"
           cp "$enriched" "_social_assets/instagram-published/${SOURCE_COMMIT}.json"
           cp "$enriched" "_social_assets/${{ steps.stage.outputs.stage_dir }}/instagram-publish.json"
+          rm -f "_social_assets/instagram-pending/${SOURCE_COMMIT}.json"
 
           cd _social_assets
           git add "instagram-published/${SOURCE_COMMIT}.json" \
             "${{ steps.stage.outputs.stage_dir }}/instagram-publish.json"
+          git add -u "instagram-pending/${SOURCE_COMMIT}.json" 2>/dev/null || true
           git commit -m "social-assets: record verified Instagram ${SOURCE_COMMIT::7}"
           git push origin HEAD:social-assets
 
@@ -306,10 +629,8 @@ jobs:
           } >> "$GITHUB_STEP_SUMMARY"
 
       - name: Request non-blocking SHARE metadata refresh after verified Instagram publish
-        if: steps.contract.outputs.eligible == 'true' && steps.idempotency.outputs.already_published != 'true'
+        if: steps.meta_publish.outcome == 'success'
         continue-on-error: true
-        env:
-          GH_TOKEN: ${{ github.token }}
         run: |
           set -euo pipefail
           gh workflow run publish-site.yml --ref main
@@ -327,3 +648,33 @@ jobs:
             tools/social-renderer/output/instagram-publish.json
           if-no-files-found: warn
           retention-days: 14
+
+  autorecover:
+    needs: publish
+    if: always() && needs.publish.result == 'failure'
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    env:
+      GH_TOKEN: ${{ github.token }}
+      SOURCE_COMMIT: ${{ github.event_name == 'workflow_run' && github.event.workflow_run.head_sha || inputs.source_commit }}
+      RETRY_DEPTH: ${{ github.event_name == 'workflow_dispatch' && inputs.retry_depth || '0' }}
+
+    steps:
+      - name: Dispatch bounded automatic retry
+        run: |
+          set -euo pipefail
+          depth="${RETRY_DEPTH:-0}"
+          [[ "$depth" =~ ^[0-9]+$ ]] || depth=0
+
+          if (( depth >= 2 )); then
+            echo "Immediate retry budget exhausted at depth=${depth}. Watchdog remains responsible for automatic recovery."
+            exit 0
+          fi
+
+          next=$((depth + 1))
+          gh workflow run instagram-carousel-publish-automatic.yml \
+            --ref main \
+            -f source_commit="$SOURCE_COMMIT" \
+            -f retry_depth="$next" \
+            -f retry_reason="autoretry:${GITHUB_RUN_ID}"
+          echo "Automatic retry dispatched sourceCommit=${SOURCE_COMMIT} retryDepth=${next}."
