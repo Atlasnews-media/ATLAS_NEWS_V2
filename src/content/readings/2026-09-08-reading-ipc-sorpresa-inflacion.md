@@ -2,7 +2,7 @@
 title: "IPC 0,6%: la sorpresa fue grande, pero no toda la inflación cuenta la misma historia"
 summary: "El IPC de agosto duplicó la expectativa del mercado y llevó la inflación anual a 4,1%. Alimentos y transporte explicaron gran parte del salto, mientras el IPC sin volátiles avanzó solo 0,1%. La diferencia importa para leer qué hará el Banco Central y qué riesgos siguen abiertos."
 publishedAt: "2026-09-08T09:30:00-03:00"
-status: "draft"
+status: "published"
 tags:
   - lectura-seleccionada
   - chile
