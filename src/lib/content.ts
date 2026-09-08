@@ -93,7 +93,7 @@ export function formatEditorialDateTime(date: Date): string {
 }
 
 export function editionTypeLabel(type: Edition["data"]["type"]): string {
-  return type === "daily" ? "Edición diaria" : "Panorama semanal";
+  return type === "daily" ? "Internacional" : "Panorama semanal";
 }
 
 export function editionDisplayLabel(
