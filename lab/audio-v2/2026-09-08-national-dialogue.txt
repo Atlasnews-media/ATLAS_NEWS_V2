@@ -1,0 +1,17 @@
+VOZ 1: La señal local de esta mañana está en una combinación poco intuitiva: la economía viene débil, pero los salarios reales de quienes sí están ocupados están creciendo con fuerza.
+VOZ 2: ¿Cuánto crecieron?
+VOZ 1: En julio, las remuneraciones reales aumentaron 4,1% frente a un año antes y acumularon 2,8% en 2026. En términos nominales, las remuneraciones subieron 7,8% anual.
+VOZ 2: Eso suena positivo para consumo. ¿Dónde está la tensión?
+VOZ 1: En el costo para las empresas. El Índice de Costos Laborales aumentó 8,7% anual y el costo medio por hora total llegó a 8.743 pesos, 9,2% más que hace un año. Comercio, manufactura y construcción fueron los sectores que más aportaron al aumento.
+VOZ 2: Entonces, ¿salarios más altos significan automáticamente más inflación?
+VOZ 1: No. Ese salto causal sería demasiado rápido. La pregunta es cuánto de ese costo se absorbe en productividad o márgenes y cuánto termina trasladándose a precios finales.
+VOZ 2: Y justo hoy tenemos una forma de mirar esa transmisión.
+VOZ 1: Exactamente. El INE publica el IPC de agosto a las ocho de la mañana. Más que quedarnos solo con la cifra mensual, conviene mirar servicios y categorías intensivas en trabajo. Ahí podemos encontrar señales sobre si los mayores costos laborales están apareciendo en precios.
+VOZ 2: ¿Cómo encaja esto con un desempleo de 9,5% y un Imacec débil?
+VOZ 1: Esa es la parte importante. El mercado laboral agregado sigue frágil, pero los trabajadores ocupados recuperan poder adquisitivo. Ambas cosas pueden coexistir. Para los hogares con empleo, el ingreso real es un amortiguador. Para las empresas, el costo laboral puede ser una presión sobre margen y contratación.
+VOZ 2: ¿Y para la decisión del Banco Central de esta tarde?
+VOZ 1: No conviene anticiparla. El comunicado se conoce desde las seis de la tarde. Lo que sí sabemos es que el Consejo tendrá que balancear una actividad débil con costos internos que aceleran y un entorno externo donde la energía volvió a encarecerse.
+VOZ 2: Entonces la clave de hoy no es adivinar la TPM.
+VOZ 1: Correcto. La clave es observar transmisión. Si el IPC muestra moderación amplia, la presión de costos todavía puede estar siendo absorbida. Si servicios permanecen firmes, la lectura cambia y obliga a ser más prudentes con una normalización monetaria rápida.
+VOZ 2: ¿Qué deberíamos seguir después?
+VOZ 1: Empleo, avisos laborales y próximos datos de remuneraciones. Si los salarios reales siguen creciendo pero la creación de puestos no mejora, tendremos una economía con mayor ingreso entre ocupados, pero con acceso al empleo todavía restringido. Esa divergencia importa tanto para consumo como para política monetaria.

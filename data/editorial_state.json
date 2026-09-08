@@ -3,14 +3,14 @@
     {
       "id": "oil-geopolitics-inflation",
       "topic": "Petróleo, geopolítica e inflación",
-      "thesis": "El shock energético ya combina ataques directos sobre activos marítimos con una restricción operativa observable: el tráfico de commodities por Hormuz cayó a su menor ritmo desde mayo y una nueva zona restringida anunciada por Irán aumenta el riesgo sobre navegación y oferta transportable.",
-      "status": "confirmed",
-      "last_evidence": "Al 7 de septiembre el promedio de cruces de buques de commodities por Hormuz cayó a 10 diarios en diez días, mínimo desde mayo; el sábado cruzaron solo dos, no salían VLCC desde el miércoles e Irán anunció una nueva zona restringida en el Golfo.",
-      "effect": "Confirma que la prima energética tiene un canal físico persistente sobre transporte marítimo y eleva el riesgo de transmisión hacia combustibles, fletes y expectativas de inflación.",
-      "base_scenario": "Prima energética elevada y volátil con restricción parcial del tráfico por Hormuz, sin asumir todavía una interrupción total del flujo global de crudo.",
-      "invalidate_if": "Una recuperación sostenida del tráfico y de las salidas de VLCC por Hormuz, junto con una caída persistente de la prima energética, debilitaría la tesis; nuevos mínimos de tránsito o restricciones formales la reforzarían.",
-      "watch": "Tráfico y embarques por Hormuz, salida de VLCC, alcance de la zona restringida iraní, seguros marítimos, Brent, producción OPEC+ y expectativas de inflación.",
-      "last_publication": "/ediciones/2026-09-07-daily-hormuz-pasa-de-riesgo-a-restriccion-operativa/"
+      "thesis": "El shock energético ya no se concentra en navegación por Hormuz: los ataques hutíes sobre infraestructura energética saudí amplían el riesgo hacia capacidad física de producción y procesamiento, mientras el tránsito marítimo sigue restringido.",
+      "status": "changed",
+      "last_evidence": "El 8 de septiembre ataques hutíes dañaron instalaciones energéticas saudíes y provocaron cierres parciales; el Brent avanzó más de 2% hacia US$99, después de que el tráfico por Hormuz ya hubiera caído a mínimos desde mayo.",
+      "effect": "Amplía el canal inflacionario desde transporte y seguros marítimos hacia disponibilidad física de oferta, elevando el riesgo de persistencia en combustibles, fletes y expectativas de inflación.",
+      "base_scenario": "Prima energética elevada y volátil con restricciones de tránsito y riesgo directo sobre infraestructura, sin asumir todavía una interrupción generalizada de la producción del Golfo.",
+      "invalidate_if": "Una reparación rápida de la capacidad saudí afectada, recuperación sostenida del tráfico por Hormuz y caída persistente de la prima energética debilitarían la tesis; nuevos daños físicos o cierres la reforzarían.",
+      "watch": "Capacidad saudí fuera de servicio, reparaciones, tráfico y embarques por Hormuz, seguros marítimos, Brent, producción OPEC+ y expectativas de inflación.",
+      "last_publication": "/ediciones/2026-09-08-daily-shock-energetico-amplia-su-alcance/"
     },
     {
       "id": "us-employment-fed-rates",
