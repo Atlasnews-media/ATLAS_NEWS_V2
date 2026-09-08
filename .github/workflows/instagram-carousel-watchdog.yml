@@ -1,0 +1,138 @@
+name: Instagram Carousel — Watchdog
+
+on:
+  schedule:
+    - cron: "17,47 * * * *"
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/instagram-carousel-publish-automatic.yml"
+      - ".github/workflows/instagram-carousel-watchdog.yml"
+
+permissions:
+  actions: write
+  contents: read
+
+concurrency:
+  group: instagram-carousel-watchdog
+  cancel-in-progress: false
+
+jobs:
+  reconcile:
+    runs-on: ubuntu-latest
+    timeout-minutes: 4
+    env:
+      GH_TOKEN: ${{ github.token }}
+      STATUS_URL: https://eldesiempre100.github.io/status.json
+      PUBLIC_REPO: EldeSiempre100/EldeSiempre100.github.io
+      AUTOMATIC_WORKFLOW: instagram-carousel-publish-automatic.yml
+
+    steps:
+      - name: Resolve latest public daily edition
+        id: latest
+        run: |
+          set -euo pipefail
+          status_url="${STATUS_URL}?watchdog=${GITHUB_RUN_ID}-$(date +%s)"
+          status="$(curl -fsSL -H 'Cache-Control: no-cache' "$status_url")"
+
+          edition_id="$(jq -r '.latestDaily.id // empty' <<<"$status")"
+          test -n "$edition_id" || {
+            echo "No published daily edition is available; watchdog no-op."
+            echo "eligible=false" >> "$GITHUB_OUTPUT"
+            exit 0
+          }
+
+          source_path=""
+          source_commit=""
+          for extension in md mdx; do
+            candidate="src/content/editions/${edition_id}.${extension}"
+            candidate_commit="$(gh api "/repos/${GITHUB_REPOSITORY}/commits?path=${candidate}&sha=main&per_page=1" --jq '.[0].sha // empty')"
+            if [[ -n "$candidate_commit" ]]; then
+              source_path="$candidate"
+              source_commit="$candidate_commit"
+              break
+            fi
+          done
+
+          test -n "$source_commit" || {
+            echo "Fail-closed: cannot resolve source commit for ${edition_id}." >&2
+            exit 21
+          }
+          [[ "$source_commit" =~ ^[0-9a-f]{40}$ ]] || {
+            echo "Fail-closed: resolved source commit is not a full SHA." >&2
+            exit 22
+          }
+
+          canonical="https://eldesiempre100.github.io/ediciones/${edition_id}/"
+          code="$(curl -L -sS -o /dev/null -w '%{http_code}' -H 'Cache-Control: no-cache' "${canonical}?watchdog=${GITHUB_RUN_ID}" || true)"
+          test "$code" = "200" || {
+            echo "Fail-closed: latest daily canonical is not HTTP 200: ${canonical}" >&2
+            exit 23
+          }
+
+          echo "eligible=true" >> "$GITHUB_OUTPUT"
+          echo "edition_id=$edition_id" >> "$GITHUB_OUTPUT"
+          echo "source_path=$source_path" >> "$GITHUB_OUTPUT"
+          echo "source_commit=$source_commit" >> "$GITHUB_OUTPUT"
+          echo "canonical=$canonical" >> "$GITHUB_OUTPUT"
+
+          echo "Watchdog latestDaily=${edition_id} sourceCommit=${source_commit} canonical=${canonical}"
+
+      - name: Check verified Instagram evidence
+        if: steps.latest.outputs.eligible == 'true'
+        id: evidence
+        env:
+          SOURCE_COMMIT: ${{ steps.latest.outputs.source_commit }}
+        run: |
+          set -euo pipefail
+          evidence_url="https://raw.githubusercontent.com/${PUBLIC_REPO}/social-assets/instagram-published/${SOURCE_COMMIT}.json?watchdog=${GITHUB_RUN_ID}-$(date +%s)"
+          tmp="$(mktemp)"
+          code="$(curl -L -sS -o "$tmp" -w '%{http_code}' -H 'Cache-Control: no-cache' "$evidence_url" || true)"
+
+          if [[ "$code" = "200" ]] && jq -e '
+            (.status == "PUBLISHED_VERIFIED" or .status == "ALREADY_PUBLISHED_VERIFIED") and
+            (.permalink | type == "string" and length > 0)
+          ' "$tmp" >/dev/null 2>&1; then
+            permalink="$(jq -r '.permalink' "$tmp")"
+            echo "published=true" >> "$GITHUB_OUTPUT"
+            echo "Watchdog state=ALREADY_PUBLISHED_VERIFIED permalink=${permalink}"
+            exit 0
+          fi
+
+          echo "published=false" >> "$GITHUB_OUTPUT"
+          echo "Watchdog state=MISSING_VERIFIED_SOCIAL_EVIDENCE"
+
+      - name: Check active automatic runs
+        if: steps.latest.outputs.eligible == 'true' && steps.evidence.outputs.published != 'true'
+        id: active
+        run: |
+          set -euo pipefail
+          runs="$(gh run list --workflow "$AUTOMATIC_WORKFLOW" --limit 30 --json databaseId,status)"
+          active_count="$(jq '[.[] | select(.status == "in_progress" or .status == "queued" or .status == "waiting" or .status == "requested")] | length' <<<"$runs")"
+          echo "count=$active_count" >> "$GITHUB_OUTPUT"
+          echo "Watchdog activeAutomaticRuns=${active_count}"
+
+      - name: Auto-dispatch pending Instagram edition
+        if: >-
+          steps.latest.outputs.eligible == 'true' &&
+          steps.evidence.outputs.published != 'true' &&
+          steps.active.outputs.count == '0'
+        env:
+          SOURCE_COMMIT: ${{ steps.latest.outputs.source_commit }}
+          EDITION_ID: ${{ steps.latest.outputs.edition_id }}
+        run: |
+          set -euo pipefail
+          gh workflow run "$AUTOMATIC_WORKFLOW" \
+            --ref main \
+            -f source_commit="$SOURCE_COMMIT" \
+            -f retry_depth="0" \
+            -f retry_reason="watchdog:${EDITION_ID}"
+          echo "Watchdog state=AUTO_DISPATCHED sourceCommit=${SOURCE_COMMIT} edition=${EDITION_ID}"
+
+      - name: Record active-run no-op
+        if: >-
+          steps.latest.outputs.eligible == 'true' &&
+          steps.evidence.outputs.published != 'true' &&
+          steps.active.outputs.count != '0'
+        run: |
+          echo "Watchdog state=RUN_ALREADY_ACTIVE count=${{ steps.active.outputs.count }}"
