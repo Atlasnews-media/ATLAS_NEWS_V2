@@ -36,8 +36,8 @@ const currentDate = new Intl.DateTimeFormat("es-CL", {
   timeZone: "America/Santiago",
 }).format(headerDate);
 const issueLabel = currentIssueNumber
-  ? `Vol. I · ${formatIssueNumber(currentIssueNumber)}`
-  : "Vol. I · Edición en preparación";
+  ? `Edición • ${formatIssueNumber(currentIssueNumber)}`
+  : "Edición • En preparación";
 const sourceCommit = (
   process.env.ATLAS_SOURCE_SHA ??
   process.env.GITHUB_SHA ??
