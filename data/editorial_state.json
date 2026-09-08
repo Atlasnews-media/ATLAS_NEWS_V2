@@ -39,14 +39,14 @@
     {
       "id": "chile-inflation-activity-rates",
       "topic": "Inflación, actividad y tasas en Chile",
-      "thesis": "El Imacec confirma que la debilidad de julio excedió minería: la actividad cayó 1,5% anual y el componente no minero 0,3%, aunque clima, mantenciones y menor ley del cobre todavía explican una parte relevante del deterioro.",
-      "status": "confirmed",
-      "last_evidence": "El Banco Central informó que el Imacec de julio cayó 1,5% anual y 1,7% mensual desestacionalizado; el Imacec no minero retrocedió 0,3% anual y 0,5% mensual, con servicios -0,7% anual y comercio +0,7%.",
-      "effect": "Refuerza el argumento doméstico para una eventual normalización monetaria y el atractivo relativo de renta fija corta, pero obliga a separar debilidad cíclica de shocks climáticos y mineros y a considerar el endurecimiento externo de tasas.",
-      "base_scenario": "Actividad y empleo débiles con mayor espacio doméstico para normalización monetaria, condicionado por la reversión de shocks transitorios, inflación y un entorno externo más restrictivo.",
-      "invalidate_if": "Los próximos datos muestran una recuperación amplia al disiparse los shocks climáticos y mineros, o empleo, consumo e inversión recuperan fuerza; una reaceleración inflacionaria también reduciría el espacio monetario.",
-      "watch": "Imacec siguientes, empleo, ventas, inversión, minería y manufactura, curva local, dólar, inflación subyacente y comunicación del Banco Central.",
-      "last_publication": "/ediciones/2026-09-02-daily-fed-vuelve-a-poner-el-alza-en-el-centro/"
+      "thesis": "El IPC de agosto sorprendió al alza y redujo el espacio para una normalización monetaria rápida: la inflación general fue 0,6% mensual y 4,1% anual, aunque el IPC sin volátiles de 0,1% muestra que la presión persistente no aceleró al mismo ritmo.",
+      "status": "changed",
+      "last_evidence": "El INE informó un IPC de agosto de 0,6% mensual, frente a 0,3% esperado por operadores; alimentos y transporte aportaron 0,518 puntos porcentuales, mientras el IPC sin volátiles subió 0,1%. La inflación anual llegó a 4,1% y el Imacec de julio había caído 1,5% anual.",
+      "effect": "La sorpresa inflacionaria eleva la barra para recortar la TPM pese a la debilidad de actividad. La divergencia entre IPC general y sin volátiles favorece mantener cautela antes de interpretar el dato como una reaceleración generalizada, mientras el nuevo shock petrolero aumenta el riesgo hacia adelante.",
+      "base_scenario": "TPM en 4,5% por más tiempo mientras el Banco Central evalúa si la presión de agosto se disipa o se transmite a precios más persistentes; actividad débil sigue limitando la necesidad de endurecer, pero inflación general y energía reducen el espacio para relajar pronto.",
+      "invalidate_if": "Una secuencia de IPC sin volátiles contenidos junto con reversión de alimentos, transporte y petróleo devolvería espacio para normalización; una aceleración persistente de medidas subyacentes o nuevas presiones energéticas reforzaría el sesgo restrictivo.",
+      "watch": "Comunicado RPM del 8 de septiembre, IPoM del 9 de septiembre, IPC sin volátiles, alimentos, combustibles, Brent, expectativas de inflación, Imacec, empleo y curva local.",
+      "last_publication": "/lecturas/2026-09-08-reading-ipc-sorpresa-inflacion/"
     }
   ]
 }
