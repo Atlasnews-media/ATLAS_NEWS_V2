@@ -187,6 +187,12 @@ function dateLabel(iso) {
   return `${String(d.getDate()).padStart(2, "0")} ${m[d.getMonth()]} ${d.getFullYear()}`;
 }
 
+function adaptiveHeadlineSize(text, normal, minimum, threshold) {
+  const length = Array.from(String(text || "").trim()).length;
+  if (length <= threshold) return normal;
+  return Math.max(minimum, Math.round((normal * threshold) / length));
+}
+
 async function localCanvasFont() {
   const candidates = [
     {
@@ -310,6 +316,8 @@ async function main() {
     "data:image/svg+xml;base64," +
     Buffer.from(await fs.readFile(MARK_PATH, "utf8")).toString("base64");
   const date = dateLabel(contract.publishedDate);
+  const cardTitleSize = adaptiveHeadlineSize(contract.title, 82, 58, 62);
+  const slideTitleSize = adaptiveHeadlineSize(contract.title, 132, 86, 62);
   const canvasFont = await localCanvasFont();
   const t0 = performance.now();
   const browser = await chromium.launch({ headless: true });
@@ -318,7 +326,7 @@ async function main() {
   const cardInner = `
     <div class="kicker">${escapeHtml(contract.sectionLabel)}</div>
     <div data-fit style="position:absolute;left:60px;top:255px;width:810px;z-index:2">
-      <div style="font-size:82px;line-height:.9;font-weight:700;letter-spacing:-4px">${escapeHtml(contract.title)}</div>
+      <div style="font-size:${cardTitleSize}px;line-height:.9;font-weight:700;letter-spacing:-4px">${escapeHtml(contract.title)}</div>
       <div style="font-size:42px;line-height:1.06;margin-top:18px">${escapeHtml(contract.dek)}</div>
     </div>
     <img class="mark" data-fit src="${mark}" style="right:55px;top:180px;width:320px;height:420px">
@@ -365,7 +373,7 @@ async function main() {
   const slide1 = `
     <div class="kicker">${escapeHtml(contract.sectionLabel)}</div>
     <div data-fit style="position:absolute;left:60px;top:340px;width:900px;z-index:2">
-      <div style="font-size:132px;line-height:.86;font-weight:700;letter-spacing:-6px;width:850px">${escapeHtml(contract.title)}</div>
+      <div style="font-size:${slideTitleSize}px;line-height:.86;font-weight:700;letter-spacing:-6px;width:850px">${escapeHtml(contract.title)}</div>
       <div style="font-size:60px;line-height:1.02;margin-top:34px;width:600px">${escapeHtml(contract.dek)}</div>
     </div>
     <img class="mark" data-fit src="${mark}" style="right:55px;bottom:138px;width:425px;height:600px">
@@ -447,6 +455,8 @@ async function main() {
     publicationStatus: PUBLICATION_STATUS,
     productType: contract.productType,
     title: contract.title,
+    cardTitleSize,
+    slideTitleSize,
     cardHtmlMs: Math.round(cardHtmlMs),
     ogMaterializeMs: Math.round(ogMaterializeMs),
     ogCacheHitMs: Math.round(ogCacheHitMs),
