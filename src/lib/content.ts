@@ -70,7 +70,7 @@ export function dailyIssueNumber(
 }
 
 export function formatIssueNumber(issueNumber: number): string {
-  return `N° ${String(issueNumber).padStart(3, "0")}`;
+  return `N.º ${String(issueNumber).padStart(3, "0")}`;
 }
 
 export function formatEditorialDate(date: Date): string {
