@@ -20,7 +20,7 @@ const [editions, national, markets, readings] = await Promise.all([
 
 <BaseLayout
   title="Archivo — ATLAS NEWS"
-  description="Archivo cronológico de ediciones, Nacional, Mercados y Lecturas de ATLAS NEWS."
+  description="Archivo cronológico de ediciones, Nacional, Mercados y Contingencia de ATLAS NEWS."
 >
   <main class="page-shell">
     <p class="page-kicker">Historia editorial</p>
@@ -56,7 +56,7 @@ const [editions, national, markets, readings] = await Promise.all([
               <a href={`/nacional/${briefing.id}/`}>{briefing.data.title}</a>
               <span>Nacional</span>
             </li>
-          ))
+          ))}
         }
       </ol>
     </section>
@@ -71,20 +71,20 @@ const [editions, national, markets, readings] = await Promise.all([
               <a href={`/mercados/${briefing.id}/`}>{briefing.data.title}</a>
               <span>Mercados</span>
             </li>
-          ))
+          ))}
         }
       </ol>
     </section>
 
-    <section aria-labelledby="archivo-lecturas">
-      <h2 id="archivo-lecturas">Lecturas</h2>
+    <section aria-labelledby="archivo-contingencia">
+      <h2 id="archivo-contingencia">Contingencia</h2>
       <ol>
         {
           readings.map((reading) => (
             <li>
               <time>{formatEditorialDate(reading.data.publishedAt)}</time>
               <a href={`/lecturas/${reading.id}/`}>{reading.data.title}</a>
-              <span>Lectura seleccionada</span>
+              <span>Contingencia</span>
             </li>
           ))
         }
