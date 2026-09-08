@@ -1,10 +1,10 @@
 ---
 title: "El shock energético amplía su alcance y vuelve a endurecer el mapa de inflación"
 summary: "Los ataques hutíes sobre infraestructura energética saudí llevan el riesgo desde el tránsito por Hormuz hacia capacidad física de oferta, con Brent cerca de US$99 y mercados nuevamente defensivos antes de la inflación de EE.UU."
-publishedAt: "2026-09-08T06:01:58-03:00"
+publishedAt: "2026-09-08T07:03:58-03:00"
 cutoffAt: "2026-09-08T06:01:45-03:00"
 type: "daily"
-status: "draft"
+status: "published"
 tags:
   - mercados-globales
   - energia

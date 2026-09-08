@@ -1,10 +1,10 @@
 ---
 title: "Salarios reales mejoran, pero el costo laboral acelera antes del IPC"
 summary: "Las remuneraciones reales crecieron 4,1% anual en julio mientras los costos laborales nominales subieron 8,7%. La combinación mejora poder de compra, pero introduce una presión de costos que vuelve más informativa la composición del IPC de agosto."
-publishedAt: "2026-09-08T06:02:48-03:00"
+publishedAt: "2026-09-08T07:03:58-03:00"
 cutoffAt: "2026-09-08T06:02:38-03:00"
 section: "national"
-status: "draft"
+status: "published"
 tags:
   - chile
   - salarios

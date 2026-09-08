@@ -1,10 +1,10 @@
 ---
 title: "Cobre récord y energía cerca de US$100 reordenan las primas entre activos"
 summary: "El cobre supera US$14.500 por tonelada mientras el Brent se acerca a US$100. Dos shocks de oferta distintos favorecen productores de materias primas, presionan duración y castigan a importadores de energía."
-publishedAt: "2026-09-08T06:03:24-03:00"
+publishedAt: "2026-09-08T07:03:58-03:00"
 cutoffAt: "2026-09-08T06:03:14-03:00"
 section: "markets"
-status: "draft"
+status: "published"
 tags:
   - mercados-globales
   - commodities
