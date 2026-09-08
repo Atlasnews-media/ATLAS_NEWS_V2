@@ -49,11 +49,11 @@ jobs:
       GH_TOKEN: ${{ github.token }}
 
     steps:
-      - name: Checkout exact published source
+      - name: Checkout automatic runtime and source history
         uses: actions/checkout@v5
         with:
-          ref: ${{ github.event_name == 'workflow_run' && github.event.workflow_run.head_sha || inputs.source_commit }}
-          fetch-depth: 128
+          ref: ${{ github.event_name == 'workflow_run' && github.event.workflow_run.head_sha || 'main' }}
+          fetch-depth: 0
 
       - name: Resolve expected daily identity
         id: expected
@@ -98,6 +98,24 @@ jobs:
           echo "edition_id=$edition_id" >> "$GITHUB_OUTPUT"
           echo "canonical=$canonical" >> "$GITHUB_OUTPUT"
           echo "Expected sourceCommit=${ATLAS_SOURCE_COMMIT} latestDaily.id=${edition_id} canonical=${canonical}"
+
+      - name: Assert edition content matches source commit
+        if: steps.expected.outputs.eligible == 'true'
+        env:
+          SOURCE_ID: ${{ steps.expected.outputs.source_id }}
+        run: |
+          set -euo pipefail
+          test -f "$SOURCE_ID" || {
+            echo "Fail-closed: edition file is missing from automatic runtime: $SOURCE_ID"
+            exit 26
+          }
+          source_blob="$(git rev-parse "${ATLAS_SOURCE_COMMIT}:${SOURCE_ID}")"
+          runtime_blob="$(git hash-object "$SOURCE_ID")"
+          test "$source_blob" = "$runtime_blob" || {
+            echo "Fail-closed: edition content drifted after sourceCommit; refusing recovery with different editorial bytes."
+            exit 27
+          }
+          echo "Edition content identity verified: sourceCommit=${ATLAS_SOURCE_COMMIT} sourceId=${SOURCE_ID} blob=${source_blob}."
 
       - name: Wait for public publication readiness
         if: steps.expected.outputs.eligible == 'true'
@@ -527,7 +545,7 @@ jobs:
         if: steps.contract.outputs.eligible == 'true' && steps.idempotency.outputs.already_published != 'true' && steps.verify_first.outputs.already_published_verified != 'true'
         run: |
           set -euo pipefail
-          runs="$(gh run list --workflow instagram-carousel-publish-automatic.yml --limit 30 --json databaseId,status)"
+          runs="$(gh run list --repo "$GITHUB_REPOSITORY" --workflow instagram-carousel-publish-automatic.yml --limit 30 --json databaseId,status)"
           competing="$(jq --argjson current "$GITHUB_RUN_ID" '[.[] | select(.databaseId != $current and (.status == "in_progress" or .status == "waiting" or .status == "requested"))] | length' <<<"$runs")"
           test "$competing" = "0" || {
             echo "Fail-closed: another automatic Instagram run is active (${competing})."
@@ -633,7 +651,7 @@ jobs:
         continue-on-error: true
         run: |
           set -euo pipefail
-          gh workflow run publish-site.yml --ref main
+          gh workflow run publish-site.yml --repo "$GITHUB_REPOSITORY" --ref main
           echo "Requested one non-blocking metadata refresh; its workflow_dispatch event cannot retrigger Instagram automation."
 
       - name: Upload E2E evidence
@@ -673,6 +691,7 @@ jobs:
 
           next=$((depth + 1))
           gh workflow run instagram-carousel-publish-automatic.yml \
+            --repo "$GITHUB_REPOSITORY" \
             --ref main \
             -f source_commit="$SOURCE_COMMIT" \
             -f retry_depth="$next" \
