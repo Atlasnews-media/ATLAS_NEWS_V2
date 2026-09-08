@@ -25,6 +25,15 @@ const marketSummarySchema = z.object({
   items: z.array(marketItemSchema).min(3).max(6),
 });
 
+const editorialVisualSchema = z.object({
+  src: z.url(),
+  alt: z.string().min(12).max(220),
+  source: z.string().min(2).max(80),
+  sourceUrl: z.url(),
+  author: z.string().min(2).max(120),
+  license: z.string().min(2).max(160),
+});
+
 const readingAudioSchema = z.object({
   src: z.string().regex(/^\/audio\/readings\/[a-z0-9-]+\.mp3$/),
   durationLabel: z.string().min(3).max(16),
@@ -45,6 +54,7 @@ const editionSchema = z
     demo: z.boolean().default(false),
     highlights: z.array(highlightSchema).length(3).optional(),
     marketSummary: marketSummarySchema.optional(),
+    editorialVisual: editorialVisualSchema.optional(),
   })
   .superRefine((edition, context) => {
     if (

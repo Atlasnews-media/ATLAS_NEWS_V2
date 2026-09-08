@@ -2,6 +2,7 @@
 import ContentCard from "../components/ContentCard.astro";
 import DailyAudio from "../components/DailyAudio.astro";
 import EconomicIndicators from "../components/EconomicIndicators.astro";
+import FrontPageEditorialVisual from "../components/FrontPageEditorialVisual.astro";
 import MarketPulse from "../components/MarketPulse.astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
 import {
@@ -72,6 +73,7 @@ const hasAnalysisContent = Boolean(latestNational || latestMarkets);
             <a class="lead-link" href={`/ediciones/${latestDaily.id}/`}>
               Abrir la edición completa <span aria-hidden="true">→</span>
             </a>
+            <FrontPageEditorialVisual editionId={latestDaily.id} />
           </article>
 
           <aside class="edition-rail" aria-label="Claves de la edición">
