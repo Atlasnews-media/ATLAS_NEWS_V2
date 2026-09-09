@@ -21,7 +21,7 @@ author: "ATLAS NEWS"
 demo: false
 ---
 
-## Qué cambió en este IPoM
+## Tesis principal
 
 El Informe de Política Monetaria de septiembre actualiza cómo el Banco Central está viendo la economía chilena con la información disponible hasta ahora.
 
@@ -172,6 +172,12 @@ Al mismo tiempo, el escenario de inflación se mantiene prácticamente sin cambi
 Por eso la fotografía que entrega el IPoM tiene dos partes: **una actividad que resultó más débil que la prevista en junio y una inflación que, hasta ahora, ha evolucionado aproximadamente dentro de la trayectoria que el Banco Central anticipaba**.
 
 La política monetaria tendrá que seguir equilibrando ambas señales.
+
+## Por qué fue seleccionada
+
+El IPoM reúne y ordena varias señales que se han conocido durante las últimas semanas: menor actividad, debilidad del mercado laboral, caída de la confianza, presión de los combustibles e inflación todavía sobre la meta.
+
+Su valor no está solamente en una nueva cifra de crecimiento, sino en mostrar cómo el Banco Central incorpora esa información a su escenario y qué elementos mantiene sin cambios. Entender esa diferencia permite leer las proyecciones como lo que son: una evaluación actualizada y condicionada por la información disponible, no una certeza sobre el futuro.
 
 ## Contexto y límites
 
