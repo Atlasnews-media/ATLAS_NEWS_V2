@@ -2,7 +2,7 @@
 title: "IPoM de septiembre: el Banco Central revisa su escenario para 2026 y mantiene la trayectoria de inflación"
 summary: "El Banco Central redujo su proyección de crecimiento para 2026, pero mantuvo casi sin cambios su escenario de inflación. El informe explica por qué la actividad se debilitó, qué parte corresponde a oferta y demanda, y cómo esa combinación condiciona las próximas decisiones de tasa."
 publishedAt: "2026-09-09T11:55:00-03:00"
-status: "draft"
+status: "published"
 tags:
   - lectura-seleccionada
   - contingencia
