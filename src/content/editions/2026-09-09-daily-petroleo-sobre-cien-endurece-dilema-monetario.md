@@ -1,10 +1,10 @@
 ---
 title: "El petróleo sobre US$100 endurece el dilema monetario global"
 summary: "Brent supera US$100 tras una nueva escalada militar y convierte el shock energético en una restricción más concreta para bancos centrales, justo antes de datos decisivos de inflación."
-publishedAt: "2026-09-09T06:00:35-03:00"
+publishedAt: "2026-09-09T06:59:21-03:00"
 cutoffAt: "2026-09-09T06:00:18-03:00"
 type: "daily"
-status: "draft"
+status: "published"
 tags:
   - mercados-globales
   - energia
