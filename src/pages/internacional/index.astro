@@ -5,12 +5,15 @@ import {
   formatEditorialDate,
   getPublishedInternational,
 } from "../../lib/content";
+import internationalLatest from "../../../config/audio/international-latest.json";
 
 const editions = await getPublishedInternational();
-const internationalAudioSourceId =
-  "2026-09-08-daily-shock-energetico-amplia-su-alcance";
-const currentInternationalHasAudio =
-  editions[0]?.id === internationalAudioSourceId;
+const currentInternational = editions[0];
+const activeInternationalAudio =
+  currentInternational &&
+  internationalLatest.sourceId === currentInternational.id
+    ? internationalLatest.audio
+    : undefined;
 ---
 
 <BaseLayout
@@ -26,7 +29,7 @@ const currentInternationalHasAudio =
     </p>
 
     {
-      currentInternationalHasAudio && (
+      activeInternationalAudio && (
         <section
           class="international-analysis-audio"
           aria-labelledby="international-analysis-audio-title"
@@ -46,10 +49,7 @@ const currentInternationalHasAudio =
               preload="metadata"
               aria-label="Análisis internacional de ATLAS NEWS"
             >
-              <source
-                src="/lab/audio/international-2026-09-08-alex.mp3"
-                type="audio/mpeg"
-              />
+              <source src={activeInternationalAudio.src} type="audio/mpeg" />
             </audio>
           </div>
         </section>
