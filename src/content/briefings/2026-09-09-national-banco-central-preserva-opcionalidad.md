@@ -1,10 +1,10 @@
 ---
 title: "El Banco Central preserva opcionalidad antes de recalibrar su escenario"
 summary: "La pausa unánime no equivale a inmovilidad: inflación volátil, actividad débil y petróleo sobre US$100 obligan al Banco Central a mantener abiertas trayectorias distintas antes del IPoM."
-publishedAt: "2026-09-09T06:01:34-03:00"
+publishedAt: "2026-09-09T06:59:21-03:00"
 cutoffAt: "2026-09-09T06:01:20-03:00"
 section: "national"
-status: "draft"
+status: "published"
 tags:
   - chile
   - banco-central
