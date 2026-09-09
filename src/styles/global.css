@@ -113,6 +113,44 @@ a:focus-visible {
   .page-shell {
     width: min(100% - 1.25rem, 88rem);
   }
+
+  /* Portada: convertir Titulares en un índice móvil compacto y navegable. */
+  .front-page .headline-list {
+    margin-top: 0.45rem !important;
+  }
+  .front-page .headline-item {
+    padding: 0.62rem 0 0.68rem !important;
+  }
+  .front-page .headline-item .headline-label {
+    margin-bottom: 0.22rem !important;
+    font-size: 0.66rem !important;
+  }
+  .front-page .headline-item h2 {
+    font-size: clamp(1.22rem, 5.15vw, 1.58rem) !important;
+    line-height: 0.98 !important;
+    letter-spacing: -0.025em !important;
+  }
+  .front-page .headline-item h2 a {
+    display: block;
+    text-decoration: none;
+  }
+  .front-page .headline-item h2 a::after {
+    display: block;
+    margin-top: 0.42rem;
+    color: var(--accent);
+    font: 800 0.58rem/1.2 var(--sans);
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+  }
+  .front-page .headline-item:nth-child(1) h2 a::after {
+    content: "Ir a Internacional →";
+  }
+  .front-page .headline-item:nth-child(2) h2 a::after {
+    content: "Ir a Nacional →";
+  }
+  .front-page .headline-item:nth-child(3) h2 a::after {
+    content: "Ir a Mercados →";
+  }
 }
 
 @media (max-width: 36rem) {
