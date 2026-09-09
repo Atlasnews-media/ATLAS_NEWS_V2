@@ -1,10 +1,10 @@
 ---
 title: "Yen y petróleo endurecen simultáneamente las condiciones de mercado"
 summary: "Brent sobre US$100 y un yen en máximos de siete meses están cerrando dos fuentes de liquidez a la vez: energía barata y financiamiento en yenes, mientras las bolsas muestran dispersión antes del IPC de EE.UU."
-publishedAt: "2026-09-09T06:02:18-03:00"
+publishedAt: "2026-09-09T06:59:21-03:00"
 cutoffAt: "2026-09-09T06:02:05-03:00"
 section: "markets"
-status: "draft"
+status: "published"
 tags:
   - mercados
   - divisas
