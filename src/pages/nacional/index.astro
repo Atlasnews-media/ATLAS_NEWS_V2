@@ -78,6 +78,9 @@ const briefings = await getPublishedNational();
     font: 0.95rem/1.5 var(--sans);
   }
   @media (max-width: 42rem) {
+    .page-intro {
+      display: none;
+    }
     .briefing-list {
       grid-template-columns: 1fr;
     }
