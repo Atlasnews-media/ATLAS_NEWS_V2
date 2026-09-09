@@ -69,6 +69,10 @@ function formatValue(indicator: EconomicIndicator) {
   return `${value}${formatTrend(indicator)}`;
 }
 
+function mobileLabel(label: string) {
+  return label === "Dólar observado" ? "Dólar" : label;
+}
+
 const asOfLabel = formatDate(economicIndicatorsSnapshot.asOf);
 const freshnessLabel =
   economicIndicatorsSnapshot.status === "stale"
@@ -89,7 +93,12 @@ const freshnessLabel =
     {
       economicIndicatorsSnapshot.indicators.map((indicator) => (
         <div class="economic-strip__item">
-          <dt>{indicator.label}</dt>
+          <dt>
+            <span class="economic-strip__label-full">{indicator.label}</span>
+            <span class="economic-strip__label-mobile">
+              {mobileLabel(indicator.label)}
+            </span>
+          </dt>
           <dd title={`Dato efectivo al ${formatDate(indicator.effectiveDate)}`}>
             {formatValue(indicator)}
           </dd>
@@ -171,6 +180,10 @@ const freshnessLabel =
     white-space: nowrap;
   }
 
+  .economic-strip__label-mobile {
+    display: none;
+  }
+
   .economic-strip__item dd {
     margin: 0;
     font-family: var(--serif);
@@ -204,12 +217,27 @@ const freshnessLabel =
   }
 
   @media (max-width: 36rem) {
+    .economic-strip {
+      padding-top: 0.45rem;
+      padding-bottom: 0.5rem;
+    }
+
     .economic-strip__context {
       display: grid;
     }
 
     .economic-strip__grid {
       grid-template-columns: repeat(2, minmax(0, 1fr));
+      margin-top: 0.35rem;
+      margin-bottom: 0.28rem;
+    }
+
+    .economic-strip__item {
+      display: flex;
+      align-items: baseline;
+      gap: 0.3rem;
+      min-width: 0;
+      padding: 0.38rem 0.45rem;
     }
 
     .economic-strip__item:nth-child(4) {
@@ -224,11 +252,34 @@ const freshnessLabel =
       border-top: 1px solid var(--rule);
     }
 
+    .economic-strip__item dt {
+      flex: 0 0 auto;
+      margin: 0;
+      font-size: 0.49rem;
+      letter-spacing: 0.045em;
+    }
+
+    .economic-strip__label-full {
+      display: none;
+    }
+
+    .economic-strip__label-mobile {
+      display: inline;
+    }
+
+    .economic-strip__item dd {
+      min-width: 0;
+      margin-left: auto;
+      font-size: 0.72rem;
+      line-height: 1;
+      letter-spacing: -0.015em;
+    }
+
     .economic-strip__source {
       display: block;
-      font-size: 0.5rem;
-      line-height: 1.2;
-      letter-spacing: 0.03em;
+      font-size: 0.48rem;
+      line-height: 1.15;
+      letter-spacing: 0.025em;
       text-align: right;
     }
   }
