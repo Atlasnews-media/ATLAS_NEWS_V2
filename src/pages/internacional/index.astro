@@ -10,7 +10,8 @@ import internationalLatest from "../../../config/audio/international-latest.json
 const editions = await getPublishedInternational();
 const currentInternational = editions[0];
 const activeInternationalAudio =
-  currentInternational && internationalLatest.sourceId === currentInternational.id
+  currentInternational &&
+  internationalLatest.sourceId === currentInternational.id
     ? internationalLatest.audio
     : undefined;
 ---
