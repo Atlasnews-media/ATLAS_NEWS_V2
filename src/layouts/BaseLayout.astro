@@ -346,11 +346,18 @@ const primaryEntry = { href: "/", label: "Portada" };
       text-align: center;
     }
     .site-header nav a {
+      position: relative;
       min-width: 0;
+      white-space: nowrap;
     }
     .site-header nav a + a::before {
-      margin-right: 0.25rem;
-      font-size: 0.26rem;
+      position: absolute;
+      top: 50%;
+      left: -0.1rem;
+      margin: 0;
+      font-size: 0.24rem;
+      line-height: 1;
+      transform: translate(-50%, -50%);
     }
     .footer-meta {
       grid-template-columns: 1fr;
