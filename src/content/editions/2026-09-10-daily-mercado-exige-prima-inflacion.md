@@ -1,10 +1,10 @@
 ---
 title: "El mercado exige prima de inflación incluso en modo refugio"
 summary: "Los Treasuries largos subieron pese al retroceso bursátil y a una recompra del Tesoro: el shock energético ya no se traduce en refugio limpio, sino en mayor prima de inflación y duración."
-publishedAt: "2026-09-10T06:01:40-03:00"
+publishedAt: "2026-09-10T07:01:19-03:00"
 cutoffAt: "2026-09-10T06:01:20-03:00"
 type: "daily"
-status: "draft"
+status: "published"
 tags:
   - mercados-globales
   - tasas
