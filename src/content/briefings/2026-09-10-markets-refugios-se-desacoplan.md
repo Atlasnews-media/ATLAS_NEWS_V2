@@ -1,10 +1,10 @@
 ---
 title: "Los refugios se desacoplan: suben los yields, el dólar cede y el oro resiste"
 summary: "La aversión al riesgo ya no produce una sola operación defensiva: bonos largos pierden, el dólar no captura el alza de tasas y oro y yen absorben parte de la demanda de cobertura."
-publishedAt: "2026-09-10T06:02:55-03:00"
+publishedAt: "2026-09-10T07:01:48-03:00"
 cutoffAt: "2026-09-10T06:02:48-03:00"
 section: "markets"
-status: "draft"
+status: "published"
 tags:
   - mercados
   - tasas
