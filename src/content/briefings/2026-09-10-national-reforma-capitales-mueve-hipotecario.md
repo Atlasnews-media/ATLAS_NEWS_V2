@@ -1,10 +1,10 @@
 ---
 title: "La reforma de capitales mueve el problema hipotecario desde la tasa hacia la liquidez"
 summary: "Fonavi y el nuevo ahorro para vivienda buscan reconstruir financiamiento hipotecario de largo plazo; el efecto sería gradual y depende de escala, riesgo y tramitación legislativa."
-publishedAt: "2026-09-10T06:02:55-03:00"
+publishedAt: "2026-09-10T07:01:37-03:00"
 cutoffAt: "2026-09-10T06:02:05-03:00"
 section: "national"
-status: "draft"
+status: "published"
 tags:
   - chile
   - mercado-de-capitales
