@@ -2,6 +2,7 @@
 import ContentCard from "../components/ContentCard.astro";
 import DailyAudio from "../components/DailyAudio.astro";
 import EconomicIndicators from "../components/EconomicIndicators.astro";
+import EditorialDoubleRule from "../components/EditorialDoubleRule.astro";
 import MarketPulse from "../components/MarketPulse.astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
 import {
@@ -53,58 +54,63 @@ const hasAnalysisContent = Boolean(latestNational || latestMarkets);
 
     {
       latestDaily ? (
-        <section class="lead-grid" aria-labelledby="titulares">
-          <article class="lead-story headline-board">
-            <h1 id="titulares" class="headline-board-title">
-              Titulares
-            </h1>
+        <>
+          <EditorialDoubleRule />
+          <section class="lead-grid" aria-labelledby="titulares">
+            <article class="lead-story headline-board">
+              <h1 id="titulares" class="headline-board-title">
+                Titulares
+              </h1>
 
-            <div class="headline-list">
-              <section class="headline-item">
-                <p class="headline-label">Internacional</p>
-                <h2>
-                  <a href={`/ediciones/${latestDaily.id}/`}>
-                    {latestDaily.data.title}
-                  </a>
-                </h2>
-              </section>
-
-              {latestNational && (
+              <div class="headline-list">
                 <section class="headline-item">
-                  <p class="headline-label">Nacional</p>
+                  <p class="headline-label">Internacional</p>
                   <h2>
-                    <a href={`/nacional/${latestNational.id}/`}>
-                      {latestNational.data.title}
+                    <a href={`/ediciones/${latestDaily.id}/`}>
+                      {latestDaily.data.title}
                     </a>
                   </h2>
                 </section>
-              )}
 
-              {latestMarkets && (
-                <section class="headline-item">
-                  <p class="headline-label">Mercados</p>
-                  <h2>
-                    <a href={`/mercados/${latestMarkets.id}/`}>
-                      {latestMarkets.data.title}
-                    </a>
-                  </h2>
-                </section>
-              )}
-            </div>
-          </article>
+                {latestNational && (
+                  <section class="headline-item">
+                    <p class="headline-label">Nacional</p>
+                    <h2>
+                      <a href={`/nacional/${latestNational.id}/`}>
+                        {latestNational.data.title}
+                      </a>
+                    </h2>
+                  </section>
+                )}
 
-          <aside class="edition-rail" aria-label="Claves de la edición">
-            <p class="rail-title">En una mirada</p>
-            <ol>
-              {latestDaily.data.highlights?.map((highlight) => (
-                <li>
-                  <strong>{highlight.label}</strong>
-                  <span>{highlight.text}</span>
-                </li>
-              ))}
-            </ol>
-          </aside>
-        </section>
+                {latestMarkets && (
+                  <section class="headline-item">
+                    <p class="headline-label">Mercados</p>
+                    <h2>
+                      <a href={`/mercados/${latestMarkets.id}/`}>
+                        {latestMarkets.data.title}
+                      </a>
+                    </h2>
+                  </section>
+                )}
+              </div>
+            </article>
+
+            <EditorialDoubleRule />
+
+            <aside class="edition-rail" aria-label="Claves de la edición">
+              <p class="rail-title">En una mirada</p>
+              <ol>
+                {latestDaily.data.highlights?.map((highlight) => (
+                  <li>
+                    <strong>{highlight.label}</strong>
+                    <span>{highlight.text}</span>
+                  </li>
+                ))}
+              </ol>
+            </aside>
+          </section>
+        </>
       ) : (
         <section class="empty">
           <h1>La próxima edición está en preparación</h1>
@@ -414,12 +420,23 @@ const hasAnalysisContent = Boolean(latestNational || latestMarkets);
     .issue-line p:last-child {
       display: none;
     }
+    :global(.editorial-double-rule) + .lead-grid {
+      margin-top: 16px;
+    }
     .lead-grid {
       grid-template-columns: 1fr;
     }
+    .lead-grid > :global(.editorial-double-rule) {
+      grid-column: 1 / -1;
+    }
     .lead-story {
+      padding-top: 0;
       padding-right: 0;
       border-right: 0;
+    }
+    .headline-board-title {
+      margin-top: 0;
+      margin-bottom: 0;
     }
     .headline-item {
       padding: 0.9rem 0 1rem;
@@ -431,7 +448,7 @@ const hasAnalysisContent = Boolean(latestNational || latestMarkets);
     }
     .edition-rail {
       padding-left: 0;
-      border-top: 1px solid var(--rule);
+      border-top: 0;
     }
     .columns,
     .closing-grid {
