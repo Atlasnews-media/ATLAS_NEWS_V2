@@ -1,4 +1,6 @@
 ---
+import AtlasAudioPlayer from "./AtlasAudioPlayer.astro";
+
 interface Props {
   title: string;
   summary: string;
@@ -24,14 +26,11 @@ const titleId = `section-analysis-audio-${section}`;
     <p>{summary}</p>
   </div>
   <div class="audio-player">
-    <audio
-      controls
+    <AtlasAudioPlayer
       preload="metadata"
-      data-analysis-player
-      aria-label={ariaLabel}
-    >
-      <source data-analysis-source type="audio/mpeg" />
-    </audio>
+      ariaLabel={ariaLabel}
+      engineRole="analysis"
+    />
   </div>
 </section>
 
@@ -61,8 +60,8 @@ const titleId = `section-analysis-audio-${section}`;
             return;
           }
 
-          const player = root.querySelector("[data-analysis-player]");
-          const source = root.querySelector("[data-analysis-source]");
+          const player = root.querySelector("[data-atlas-audio-engine]");
+          const source = root.querySelector("[data-atlas-audio-source]");
           if (!player || !source) return;
 
           source.src = entry.path;
@@ -106,11 +105,6 @@ const titleId = `section-analysis-audio-${section}`;
   }
   .audio-player {
     min-width: 0;
-  }
-  audio {
-    display: block;
-    width: 100%;
-    min-height: 2.6rem;
   }
 
   @media (max-width: 42rem) {
