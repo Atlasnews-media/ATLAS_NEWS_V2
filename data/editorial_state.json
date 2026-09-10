@@ -3,14 +3,14 @@
     {
       "id": "oil-geopolitics-inflation",
       "topic": "Petróleo, geopolítica e inflación",
-      "thesis": "El shock energético ya combina restricciones severas de tránsito, ataques sobre infraestructura y destrucción de tanqueros; Brent sobre US$100 confirma que el riesgo físico está entrando en precios y estrecha el margen de los bancos centrales para mirar a través de la energía.",
+      "thesis": "El shock energético ya combina restricciones severas de tránsito, ataques sobre infraestructura y destrucción de tanqueros; la caída de inventarios y los cierres de producción previstos hacia fin de año confirman que el riesgo físico está adquiriendo persistencia macroeconómica.",
       "status": "confirmed",
-      "last_evidence": "El 9 de septiembre Brent superó US$100 por primera vez desde julio; Estados Unidos informó la destrucción de cinco tanqueros iraníes, Irán dijo haber atacado diez barcos y una base estadounidense en Jordania, mientras los flujos recientes por Hormuz cayeron por debajo de 2 millones de barriles diarios.",
-      "effect": "Confirma el canal inflacionario desde transporte, seguros y disponibilidad física de oferta, elevando el riesgo de persistencia en combustibles y expectativas de inflación y reduciendo el espacio para relajación monetaria.",
-      "base_scenario": "Prima energética elevada y volátil con restricciones de tránsito y riesgo directo sobre infraestructura y transporte, sin asumir todavía una interrupción generalizada de toda la producción del Golfo.",
-      "invalidate_if": "Recuperación sostenida del tráfico por Hormuz y rutas alternativas, reparación de capacidad afectada y caída persistente de la prima energética debilitarían la tesis; nuevos daños físicos o cierres la reforzarían.",
-      "watch": "Capacidad saudí operativa, rutas alternativas, tráfico y embarques por Hormuz, seguros marítimos, Brent, producción OPEC+ y expectativas de inflación.",
-      "last_publication": "/ediciones/2026-09-09-daily-petroleo-sobre-cien-endurece-dilema-monetario/"
+      "last_evidence": "El 9 de septiembre la EIA estimó que los inventarios globales de petróleo han caído cerca de 400 millones de barriles en 2026 y proyectó cierres de producción de Medio Oriente cercanos a 5,7 millones de barriles diarios en el cuarto trimestre; Brent cerró sobre US$101.",
+      "effect": "Confirma que el canal inflacionario no depende solo de titulares militares: menor disponibilidad física, inventarios en descenso y disrupciones persistentes elevan el riesgo de costos y reducen el espacio para relajación monetaria.",
+      "base_scenario": "Prima energética elevada y volátil con restricciones de tránsito, cierres materiales de producción e inventarios globales descendentes durante el resto de 2026, sin asumir una interrupción total de la producción del Golfo.",
+      "invalidate_if": "Recuperación sostenida del tráfico por Hormuz y rutas alternativas, reapertura de producción y reconstrucción persistente de inventarios debilitarían la tesis; nuevos daños físicos o cierres la reforzarían.",
+      "watch": "Cierres de producción regionales, inventarios globales, tráfico y embarques por Hormuz, seguros marítimos, Brent, producción OPEC+ y expectativas de inflación.",
+      "last_publication": "/ediciones/2026-09-10-daily-mercado-exige-prima-inflacion/"
     },
     {
       "id": "us-employment-fed-rates",
