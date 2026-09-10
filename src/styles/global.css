@@ -126,7 +126,7 @@ a:focus-visible {
     font-size: 0.66rem !important;
   }
   .front-page .headline-item h2 {
-    font-size: clamp(1.22rem, 5.15vw, 1.58rem) !important;
+    font-size: clamp(1.38rem, 5.8vw, 1.78rem) !important;
     line-height: 0.98 !important;
     letter-spacing: -0.025em !important;
   }
