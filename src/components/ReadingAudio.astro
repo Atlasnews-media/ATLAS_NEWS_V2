@@ -1,4 +1,6 @@
 ---
+import AtlasAudioPlayer from "./AtlasAudioPlayer.astro";
+
 interface Props {
   audio?: {
     src: string;
@@ -23,9 +25,11 @@ const { audio } = Astro.props;
     </p>
   </div>
   <div class="audio-player">
-    <audio controls preload="metadata" aria-label="Contingencia de ATLAS NEWS">
-      <source src={audio?.src} type="audio/mpeg" />
-    </audio>
+    <AtlasAudioPlayer
+      src={audio?.src}
+      preload="metadata"
+      ariaLabel="Contingencia de ATLAS NEWS"
+    />
   </div>
 </section>
 
@@ -60,11 +64,6 @@ const { audio } = Astro.props;
   }
   .audio-player {
     min-width: 0;
-  }
-  audio {
-    display: block;
-    width: 100%;
-    min-height: 2.6rem;
   }
 
   @media (max-width: 42rem) {

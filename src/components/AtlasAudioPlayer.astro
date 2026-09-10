@@ -1,0 +1,305 @@
+---
+interface Props {
+  src?: string;
+  preload?: "none" | "metadata" | "auto";
+  ariaLabel: string;
+  engineRole?: "daily" | "analysis";
+}
+
+const { src, preload = "metadata", ariaLabel, engineRole } = Astro.props;
+const engineAttributes: Record<string, string> = {};
+if (engineRole === "daily") engineAttributes["data-audio-player"] = "";
+if (engineRole === "analysis") engineAttributes["data-analysis-player"] = "";
+---
+
+<div class="atlas-audio-player" data-atlas-audio data-playing="false">
+  <button
+    class="atlas-audio-toggle"
+    type="button"
+    data-atlas-audio-toggle
+    aria-label={`Reproducir ${ariaLabel}`}
+    aria-pressed="false"
+  >
+    <span data-atlas-audio-icon aria-hidden="true">▶</span>
+  </button>
+
+  <span class="atlas-audio-time" data-atlas-audio-current>00:00</span>
+
+  <input
+    class="atlas-audio-progress"
+    data-atlas-audio-progress
+    type="range"
+    min="0"
+    max="1000"
+    step="1"
+    value="0"
+    aria-label={`Posición de ${ariaLabel}`}
+    disabled
+  />
+
+  <span class="atlas-audio-duration" data-atlas-audio-duration>--:--</span>
+
+  <audio
+    class="atlas-audio-engine"
+    preload={preload}
+    aria-label={ariaLabel}
+    data-atlas-audio-engine
+    {...engineAttributes}
+  >
+    <source src={src} data-atlas-audio-source type="audio/mpeg" />
+  </audio>
+</div>
+
+<script>
+  const formatAtlasAudioTime = (seconds: number) => {
+    if (!Number.isFinite(seconds) || seconds < 0) return "--:--";
+    const wholeSeconds = Math.floor(seconds);
+    const minutes = Math.floor(wholeSeconds / 60);
+    const remainder = wholeSeconds % 60;
+    return `${String(minutes).padStart(2, "0")}:${String(remainder).padStart(2, "0")}`;
+  };
+
+  const initAtlasAudioPlayer = (root: Element) => {
+    if (
+      !(root instanceof HTMLElement) ||
+      root.dataset.atlasAudioReady === "true"
+    ) {
+      return;
+    }
+
+    const audio = root.querySelector("[data-atlas-audio-engine]");
+    const toggle = root.querySelector("[data-atlas-audio-toggle]");
+    const icon = root.querySelector("[data-atlas-audio-icon]");
+    const current = root.querySelector("[data-atlas-audio-current]");
+    const duration = root.querySelector("[data-atlas-audio-duration]");
+    const progress = root.querySelector("[data-atlas-audio-progress]");
+
+    if (
+      !(audio instanceof HTMLAudioElement) ||
+      !(toggle instanceof HTMLButtonElement) ||
+      !(icon instanceof HTMLElement) ||
+      !(current instanceof HTMLElement) ||
+      !(duration instanceof HTMLElement) ||
+      !(progress instanceof HTMLInputElement)
+    ) {
+      return;
+    }
+
+    root.dataset.atlasAudioReady = "true";
+
+    const originalLabel =
+      audio.getAttribute("aria-label") || "audio de ATLAS NEWS";
+
+    const setPlaying = (playing: boolean) => {
+      root.dataset.playing = String(playing);
+      icon.textContent = playing ? "Ⅱ" : "▶";
+      toggle.setAttribute(
+        "aria-label",
+        `${playing ? "Pausar" : "Reproducir"} ${originalLabel}`,
+      );
+      toggle.setAttribute("aria-pressed", String(playing));
+    };
+
+    const syncDuration = () => {
+      const total = audio.duration;
+      const ready = Number.isFinite(total) && total > 0;
+      duration.textContent = ready ? formatAtlasAudioTime(total) : "--:--";
+      progress.disabled = !ready;
+    };
+
+    const syncProgress = () => {
+      const total = audio.duration;
+      const elapsed = Number.isFinite(audio.currentTime)
+        ? audio.currentTime
+        : 0;
+      current.textContent = formatAtlasAudioTime(elapsed);
+
+      const ratio = Number.isFinite(total) && total > 0 ? elapsed / total : 0;
+      const value = Math.max(0, Math.min(1000, Math.round(ratio * 1000)));
+      progress.value = String(value);
+      progress.style.setProperty("--audio-progress", `${value / 10}%`);
+    };
+
+    toggle.addEventListener("click", async () => {
+      if (audio.paused || audio.ended) {
+        if (audio.ended) audio.currentTime = 0;
+        try {
+          await audio.play();
+        } catch {
+          setPlaying(false);
+        }
+      } else {
+        audio.pause();
+      }
+    });
+
+    progress.addEventListener("input", () => {
+      if (!Number.isFinite(audio.duration) || audio.duration <= 0) return;
+      audio.currentTime = (Number(progress.value) / 1000) * audio.duration;
+      syncProgress();
+    });
+
+    audio.addEventListener("loadedmetadata", () => {
+      syncDuration();
+      syncProgress();
+    });
+    audio.addEventListener("durationchange", syncDuration);
+    audio.addEventListener("timeupdate", syncProgress);
+    audio.addEventListener("play", () => setPlaying(true));
+    audio.addEventListener("pause", () => setPlaying(false));
+    audio.addEventListener("ended", () => {
+      setPlaying(false);
+      syncProgress();
+    });
+    audio.addEventListener("emptied", () => {
+      current.textContent = "00:00";
+      duration.textContent = "--:--";
+      progress.value = "0";
+      progress.style.setProperty("--audio-progress", "0%");
+      progress.disabled = true;
+      setPlaying(false);
+    });
+
+    setPlaying(false);
+    syncDuration();
+    syncProgress();
+  };
+
+  document.querySelectorAll("[data-atlas-audio]").forEach(initAtlasAudioPlayer);
+</script>
+
+<style>
+  .atlas-audio-player {
+    display: grid;
+    grid-template-columns: 2.25rem 3.15rem minmax(0, 1fr) 3.15rem;
+    gap: 0.65rem;
+    align-items: center;
+    width: 100%;
+    min-width: 0;
+    max-width: 100%;
+    padding: 0.55rem 0;
+    border-top: 1px solid var(--rule);
+    border-bottom: 1px solid var(--rule);
+    color: var(--ink);
+    font-family: var(--sans);
+  }
+
+  .atlas-audio-engine {
+    display: none;
+  }
+
+  .atlas-audio-toggle {
+    display: grid;
+    width: 2.25rem;
+    height: 2.25rem;
+    padding: 0;
+    place-items: center;
+    border: 1px solid var(--rule);
+    border-radius: 0;
+    color: var(--ink);
+    background: transparent;
+    font: 800 0.9rem/1 var(--sans);
+    cursor: pointer;
+  }
+
+  .atlas-audio-toggle:hover,
+  .atlas-audio-toggle:focus-visible,
+  .atlas-audio-player[data-playing="true"] .atlas-audio-toggle {
+    color: var(--accent);
+    border-color: var(--accent);
+  }
+
+  .atlas-audio-toggle:focus-visible,
+  .atlas-audio-progress:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+  }
+
+  .atlas-audio-time,
+  .atlas-audio-duration {
+    color: var(--ink-soft);
+    font: 800 0.68rem/1 var(--sans);
+    font-variant-numeric: tabular-nums;
+    letter-spacing: 0.04em;
+    white-space: nowrap;
+  }
+
+  .atlas-audio-duration {
+    text-align: right;
+  }
+
+  .atlas-audio-progress {
+    --audio-progress: 0%;
+
+    width: 100%;
+    min-width: 0;
+    height: 1.4rem;
+    margin: 0;
+    padding: 0;
+    appearance: none;
+    -webkit-appearance: none;
+    background: transparent;
+    cursor: pointer;
+  }
+
+  .atlas-audio-progress:disabled {
+    cursor: default;
+    opacity: 0.5;
+  }
+
+  .atlas-audio-progress::-webkit-slider-runnable-track {
+    height: 1px;
+    background: linear-gradient(
+      to right,
+      var(--accent) 0 var(--audio-progress),
+      var(--rule) var(--audio-progress) 100%
+    );
+  }
+
+  .atlas-audio-progress::-webkit-slider-thumb {
+    width: 0.7rem;
+    height: 0.7rem;
+    margin-top: -0.32rem;
+    appearance: none;
+    -webkit-appearance: none;
+    border: 1px solid var(--rule);
+    border-radius: 50%;
+    background: var(--paper);
+  }
+
+  .atlas-audio-progress::-moz-range-track {
+    height: 1px;
+    background: var(--rule);
+  }
+
+  .atlas-audio-progress::-moz-range-progress {
+    height: 1px;
+    background: var(--accent);
+  }
+
+  .atlas-audio-progress::-moz-range-thumb {
+    width: 0.7rem;
+    height: 0.7rem;
+    border: 1px solid var(--rule);
+    border-radius: 50%;
+    background: var(--paper);
+  }
+
+  @media (max-width: 42rem) {
+    .atlas-audio-player {
+      grid-template-columns: 2.1rem 2.85rem minmax(0, 1fr) 2.85rem;
+      gap: 0.45rem;
+      padding: 0.45rem 0;
+    }
+
+    .atlas-audio-toggle {
+      width: 2.1rem;
+      height: 2.1rem;
+    }
+
+    .atlas-audio-time,
+    .atlas-audio-duration {
+      font-size: 0.64rem;
+    }
+  }
+</style>

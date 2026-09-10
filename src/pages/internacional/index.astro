@@ -1,4 +1,5 @@
 ---
+import AtlasAudioPlayer from "../../components/AtlasAudioPlayer.astro";
 import ContentCard from "../../components/ContentCard.astro";
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import {
@@ -44,13 +45,11 @@ const activeInternationalAudio =
             </p>
           </div>
           <div class="audio-player">
-            <audio
-              controls
+            <AtlasAudioPlayer
+              src={activeInternationalAudio.src}
               preload="metadata"
-              aria-label="Análisis internacional de ATLAS NEWS"
-            >
-              <source src={activeInternationalAudio.src} type="audio/mpeg" />
-            </audio>
+              ariaLabel="Análisis internacional de ATLAS NEWS"
+            />
           </div>
         </section>
       )
@@ -104,11 +103,6 @@ const activeInternationalAudio =
   }
   .audio-player {
     min-width: 0;
-  }
-  audio {
-    display: block;
-    width: 100%;
-    min-height: 2.6rem;
   }
   .briefing-list {
     display: grid;
