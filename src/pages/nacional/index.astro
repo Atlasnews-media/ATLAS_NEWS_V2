@@ -3,6 +3,7 @@ import ContentCard from "../../components/ContentCard.astro";
 import SectionAnalysisAudio from "../../components/SectionAnalysisAudio.astro";
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import { formatEditorialDate, getPublishedNational } from "../../lib/content";
+import { resolveFrontPageVisual } from "../../lib/front-page-visuals";
 
 const briefings = await getPublishedNational();
 ---
@@ -11,7 +12,7 @@ const briefings = await getPublishedNational();
   title="Nacional — ATLAS NEWS"
   description="Análisis de profundidad sobre economía, política, regulación y asuntos públicos de Chile."
 >
-  <main class="page-shell">
+  <main class="page-shell section-page">
     <p class="page-kicker">Profundidad Chile</p>
     <h1 class="page-title">Nacional</h1>
     <p class="page-intro">
@@ -43,6 +44,13 @@ const briefings = await getPublishedNational();
               summary={briefing.data.summary}
               date={formatEditorialDate(briefing.data.publishedAt)}
               demo={briefing.data.demo}
+              visual={resolveFrontPageVisual({
+                section: "national",
+                id: briefing.id,
+                title: briefing.data.title,
+                tags: briefing.data.tags,
+                editorialVisual: briefing.data.editorialVisual,
+              })}
             />
           ))}
         </div>
@@ -62,7 +70,7 @@ const briefings = await getPublishedNational();
     border-top: 5px double var(--rule);
   }
   .briefing-list :global(.card) {
-    padding: 1.75rem;
+    padding: 1.4rem 1.4rem 1.5rem;
     border-top-width: 1px;
   }
   .briefing-list :global(.card:nth-child(odd)) {
