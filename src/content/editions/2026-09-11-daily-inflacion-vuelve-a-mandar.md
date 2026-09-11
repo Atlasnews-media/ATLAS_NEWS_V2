@@ -1,10 +1,10 @@
 ---
 title: "La inflación vuelve a mandar y deja a la Fed frente a una prueba decisiva"
 summary: "El PPI de agosto y el nuevo salto del petróleo elevaron las probabilidades de una subida de la Fed; el IPC de hoy decidirá si esa repricing se consolida o retrocede."
-publishedAt: "2026-09-11T06:03:40-03:00"
+publishedAt: "2026-09-11T06:57:51-03:00"
 cutoffAt: "2026-09-11T06:03:20-03:00"
 type: "daily"
-status: "draft"
+status: "published"
 tags:
   - mercados-globales
   - inflacion
