@@ -1,0 +1,575 @@
+---
+import marketPulse from "../../../data/market-pulse.json";
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+
+type MarketTrend = "up" | "down" | "flat";
+
+type MarketAsset = {
+  id: string;
+  label: string;
+  group: string;
+  value: number | null;
+  unit: string;
+  changePercent: number | null;
+  trend: MarketTrend;
+  effectiveAt: string | null;
+  provider: string;
+  sourceUrl: string;
+  status?: string;
+  displayEligible?: boolean;
+  staleReason?: string;
+};
+
+type MarketRow = {
+  id: string;
+  label?: string;
+};
+
+type MarketSection = {
+  title: string;
+  rows: MarketRow[];
+};
+
+const snapshot = marketPulse as {
+  status: string;
+  generatedAt: string | null;
+  assets: MarketAsset[];
+};
+
+const assetById = new Map(snapshot.assets.map((asset) => [asset.id, asset]));
+const sections: MarketSection[] = [
+  {
+    title: "Índices",
+    rows: [
+      { id: "sp500" },
+      { id: "nasdaq", label: "Nasdaq" },
+      { id: "dow" },
+      { id: "stoxx50" },
+    ],
+  },
+  {
+    title: "Tasas",
+    rows: [
+      { id: "ust10y", label: "UST 10Y" },
+      { id: "tpm" },
+    ],
+  },
+  {
+    title: "Divisas",
+    rows: [{ id: "usdclp" }, { id: "eurusd" }, { id: "usdjpy" }],
+  },
+  {
+    title: "Materias primas",
+    rows: [
+      { id: "brent" },
+      { id: "gold" },
+      { id: "copper" },
+      { id: "bitcoin" },
+    ],
+  },
+  {
+    title: "Chile",
+    rows: [{ id: "ipsa" }, { id: "uf" }, { id: "eurclp" }],
+  },
+];
+
+const decimal0 = new Intl.NumberFormat("es-CL", {
+  maximumFractionDigits: 0,
+});
+const decimal2 = new Intl.NumberFormat("es-CL", {
+  minimumFractionDigits: 2,
+  maximumFractionDigits: 2,
+});
+const decimal4 = new Intl.NumberFormat("es-CL", {
+  minimumFractionDigits: 2,
+  maximumFractionDigits: 4,
+});
+const variation = new Intl.NumberFormat("es-CL", {
+  minimumFractionDigits: 2,
+  maximumFractionDigits: 2,
+  signDisplay: "always",
+});
+
+function isDisplayable(asset?: MarketAsset) {
+  return Boolean(
+    asset &&
+      asset.displayEligible !== false &&
+      typeof asset.value === "number" &&
+      Number.isFinite(asset.value),
+  );
+}
+
+function formatValue(asset?: MarketAsset) {
+  if (!isDisplayable(asset)) return "—";
+
+  const value = asset!.value as number;
+  switch (asset!.unit) {
+    case "points":
+      return decimal0.format(value);
+    case "percent":
+      return `${decimal2.format(value)}%`;
+    case "clp":
+      return asset!.id === "uf"
+        ? `$${decimal2.format(value)}`
+        : `$${decimal0.format(value)}`;
+    case "ratio":
+      return decimal4.format(value);
+    case "usd-per-barrel":
+      return `US$${decimal2.format(value)}`;
+    case "usd-per-ounce":
+      return `US$${decimal0.format(value)}`;
+    case "usd-per-pound":
+      return `US$${decimal2.format(value)}/lb`;
+    case "usd":
+      return `US$${decimal0.format(value)}`;
+    default:
+      return decimal2.format(value);
+  }
+}
+
+function formatChange(asset?: MarketAsset) {
+  if (!asset || asset.displayEligible === false) return "sin dato vigente";
+  if (!isDisplayable(asset)) return "sin dato";
+  if (asset.changePercent === null || !Number.isFinite(asset.changePercent)) {
+    if (asset.id === "uf") return "dato diario";
+    if (asset.trend === "flat") return "sin cambio";
+    return "sin variación";
+  }
+  return `${variation.format(asset.changePercent)}%`;
+}
+
+function direction(asset?: MarketAsset): MarketTrend | "stale" {
+  if (!asset || asset.displayEligible === false || !isDisplayable(asset)) {
+    return "stale";
+  }
+  return asset.trend ?? "flat";
+}
+
+function arrowFor(asset?: MarketAsset) {
+  const state = direction(asset);
+  if (state === "up") return "↑";
+  if (state === "down") return "↓";
+  return "●";
+}
+
+const generatedAt = snapshot.generatedAt ? new Date(snapshot.generatedAt) : null;
+const generatedDate =
+  generatedAt && Number.isFinite(generatedAt.valueOf())
+    ? new Intl.DateTimeFormat("es-CL", {
+        day: "2-digit",
+        month: "short",
+        year: "numeric",
+        timeZone: "America/Santiago",
+      })
+        .format(generatedAt)
+        .replaceAll(".", "")
+        .toUpperCase()
+    : "SIN CORTE";
+const generatedTime =
+  generatedAt && Number.isFinite(generatedAt.valueOf())
+    ? new Intl.DateTimeFormat("es-CL", {
+        hour: "2-digit",
+        minute: "2-digit",
+        hour12: false,
+        timeZone: "America/Santiago",
+      }).format(generatedAt)
+    : "—";
+
+const sourceLabels = new Map([
+  ["mindicador", "Mi Indicador"],
+  ["stooq", "Stooq"],
+  ["yahoo-public-chart", "Yahoo Finance"],
+  ["frankfurter-ecb", "Frankfurter / BCE"],
+  ["coingecko-public", "CoinGecko"],
+]);
+const activeProviders = Array.from(
+  new Set(
+    snapshot.assets
+      .filter((asset) => isDisplayable(asset))
+      .map((asset) => sourceLabels.get(asset.provider) ?? asset.provider),
+  ),
+);
+const staleCount = snapshot.assets.filter(
+  (asset) => asset.displayEligible === false,
+).length;
+---
+
+<BaseLayout
+  title="Índices de mercado — ATLAS NEWS"
+  description="Tablero de referencia de ATLAS NEWS con índices, tasas, divisas, materias primas y datos de Chile."
+>
+  <main class="market-indices-page page-shell">
+    <header class="indices-heading">
+      <div>
+        <p class="page-kicker">Mercados</p>
+        <h1>Índices de mercado</h1>
+      </div>
+      <div class="update-stamp" aria-label="Última actualización de los datos">
+        <strong>Última actualización</strong>
+        <span>{generatedDate} · {generatedTime}</span>
+        {staleCount > 0 && <small>{staleCount} dato excluido por vigencia</small>}
+      </div>
+    </header>
+
+    <div class="market-table" aria-label="Índices de mercado de ATLAS NEWS">
+      {
+        sections.map((section) => (
+          <section class="market-section" aria-labelledby={`section-${section.title}`}>
+            <div class="section-row section-header">
+              <h2 id={`section-${section.title}`}>{section.title}</h2>
+              <span>Nivel</span>
+              <span>Variación</span>
+            </div>
+
+            {section.rows.map((row) => {
+              const asset = assetById.get(row.id);
+              const state = direction(asset);
+              return (
+                <div class="section-row data-row" data-state={state}>
+                  <div class="asset-name">
+                    <span>{row.label ?? asset?.label ?? row.id}</span>
+                    {asset?.displayEligible === false && (
+                      <small>{asset.staleReason ?? "dato fuera de vigencia"}</small>
+                    )}
+                  </div>
+                  <strong class="asset-value">{formatValue(asset)}</strong>
+                  <div class="asset-change">
+                    <span class="arrow" aria-hidden="true">{arrowFor(asset)}</span>
+                    <span>{formatChange(asset)}</span>
+                  </div>
+                </div>
+              );
+            })}
+          </section>
+        ))
+      }
+    </div>
+
+    <footer class="indices-source">
+      <p>
+        Fuentes: {activeProviders.length > 0
+          ? activeProviders.join(" · ")
+          : "sin fuentes cargadas"}.
+      </p>
+      <p>
+        Corte automático: {generatedDate} · {generatedTime} · Hora de Chile.
+      </p>
+    </footer>
+  </main>
+</BaseLayout>
+
+<style>
+  .market-indices-page {
+    padding-top: clamp(1rem, 2vw, 1.6rem);
+  }
+
+  .indices-heading {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 1.25rem;
+    align-items: end;
+    padding: 0.25rem 0 1.05rem;
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .indices-heading .page-kicker {
+    display: none;
+  }
+
+  .indices-heading h1 {
+    margin: 0;
+    font-size: clamp(3rem, 6vw, 5.6rem);
+    font-weight: 700;
+    line-height: 0.9;
+    letter-spacing: -0.055em;
+  }
+
+  .update-stamp {
+    display: grid;
+    gap: 0.14rem;
+    min-width: 13rem;
+    padding-bottom: 0.18rem;
+    text-align: right;
+    text-transform: uppercase;
+  }
+
+  .update-stamp strong,
+  .update-stamp span,
+  .update-stamp small {
+    font-family: var(--sans);
+  }
+
+  .update-stamp strong {
+    font-size: 0.68rem;
+    letter-spacing: 0.06em;
+  }
+
+  .update-stamp span {
+    font-size: 0.76rem;
+    font-weight: 800;
+    letter-spacing: 0.025em;
+  }
+
+  .update-stamp small {
+    color: var(--ink-soft);
+    font-size: 0.56rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+  }
+
+  .market-table {
+    border-bottom: 4px double var(--rule);
+  }
+
+  .market-section {
+    border-top: 4px double var(--rule);
+  }
+
+  .market-section:first-child {
+    border-top: 0;
+  }
+
+  .section-row {
+    display: grid;
+    grid-template-columns: minmax(0, 1.55fr) minmax(7.5rem, 0.55fr) minmax(9.5rem, 0.7fr);
+    gap: clamp(0.65rem, 2vw, 1.4rem);
+    align-items: baseline;
+    min-width: 0;
+  }
+
+  .section-header {
+    padding: 0.55rem 0 0.38rem;
+    border-bottom: 1px solid rgb(35 35 29 / 32%);
+  }
+
+  .section-header h2,
+  .section-header span {
+    margin: 0;
+  }
+
+  .section-header h2 {
+    color: var(--accent);
+    font: 700 clamp(1.15rem, 2vw, 1.65rem)/1 var(--serif);
+    text-transform: uppercase;
+  }
+
+  .section-header span {
+    color: var(--ink);
+    font: 800 0.66rem/1.2 var(--sans);
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+
+  .section-header span:last-child {
+    text-align: center;
+  }
+
+  .data-row {
+    padding: 0.4rem 0 0.46rem;
+    border-bottom: 1px solid rgb(35 35 29 / 14%);
+  }
+
+  .market-section .data-row:last-child {
+    border-bottom: 0;
+  }
+
+  .asset-name,
+  .asset-value,
+  .asset-change {
+    min-width: 0;
+  }
+
+  .asset-name {
+    display: grid;
+    gap: 0.08rem;
+    font-size: clamp(1.02rem, 2vw, 1.35rem);
+    line-height: 1.05;
+  }
+
+  .asset-name small {
+    overflow: hidden;
+    color: var(--ink-soft);
+    font: 700 0.48rem/1.25 var(--sans);
+    letter-spacing: 0.025em;
+    text-overflow: ellipsis;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+
+  .asset-value {
+    font-size: clamp(1.02rem, 2vw, 1.35rem);
+    font-variant-numeric: tabular-nums;
+    font-weight: 400;
+    white-space: nowrap;
+  }
+
+  .asset-change {
+    display: grid;
+    grid-template-columns: 1.1rem minmax(0, 1fr);
+    gap: 0.45rem;
+    align-items: baseline;
+    justify-self: stretch;
+    font-size: clamp(0.95rem, 1.8vw, 1.25rem);
+    font-variant-numeric: tabular-nums;
+  }
+
+  .arrow {
+    font-family: var(--sans);
+    font-weight: 700;
+    text-align: center;
+  }
+
+  .data-row[data-state="down"] .asset-change {
+    color: var(--accent);
+  }
+
+  .data-row[data-state="flat"] .asset-change,
+  .data-row[data-state="stale"] .asset-change {
+    color: #68665e;
+  }
+
+  .data-row[data-state="stale"] .asset-name,
+  .data-row[data-state="stale"] .asset-value {
+    color: var(--ink-soft);
+  }
+
+  .indices-source {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem 2rem;
+    padding: 0.85rem 0 0;
+    font-size: 0.72rem;
+    line-height: 1.35;
+  }
+
+  .indices-source p {
+    margin: 0;
+  }
+
+  .indices-source p:last-child {
+    text-align: right;
+  }
+
+  @media (max-width: 42rem) {
+    .market-indices-page {
+      padding-top: 0.75rem;
+    }
+
+    .indices-heading {
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 0.7rem;
+      padding-bottom: 0.65rem;
+    }
+
+    .indices-heading h1 {
+      font-size: clamp(2.45rem, 11vw, 3.45rem);
+      line-height: 0.93;
+    }
+
+    .update-stamp {
+      min-width: 7.7rem;
+      padding-bottom: 0.08rem;
+    }
+
+    .update-stamp strong {
+      font-size: 0.5rem;
+    }
+
+    .update-stamp span {
+      font-size: 0.56rem;
+    }
+
+    .update-stamp small {
+      max-width: 8rem;
+      justify-self: end;
+      font-size: 0.44rem;
+      line-height: 1.1;
+    }
+
+    .section-row {
+      grid-template-columns: minmax(0, 1.35fr) minmax(5.3rem, 0.7fr) minmax(6.3rem, 0.8fr);
+      gap: 0.42rem;
+    }
+
+    .section-header {
+      padding: 0.48rem 0 0.28rem;
+    }
+
+    .section-header h2 {
+      font-size: clamp(1rem, 4.5vw, 1.22rem);
+    }
+
+    .section-header span {
+      font-size: 0.48rem;
+      letter-spacing: 0.035em;
+    }
+
+    .data-row {
+      padding: 0.36rem 0 0.39rem;
+    }
+
+    .asset-name,
+    .asset-value,
+    .asset-change {
+      font-size: clamp(0.93rem, 4.2vw, 1.12rem);
+    }
+
+    .asset-name small {
+      max-width: 10rem;
+      font-size: 0.4rem;
+    }
+
+    .asset-change {
+      grid-template-columns: 0.8rem minmax(0, 1fr);
+      gap: 0.18rem;
+    }
+
+    .indices-source {
+      display: grid;
+      gap: 0.25rem;
+      padding-top: 0.6rem;
+      font-size: 0.54rem;
+    }
+
+    .indices-source p:last-child {
+      text-align: left;
+    }
+  }
+
+  @media (max-width: 24rem) {
+    .indices-heading {
+      grid-template-columns: 1fr;
+    }
+
+    .update-stamp {
+      justify-items: start;
+      min-width: 0;
+      text-align: left;
+    }
+
+    .update-stamp small {
+      justify-self: start;
+    }
+
+    .section-row {
+      grid-template-columns: minmax(0, 1.25fr) minmax(4.7rem, 0.7fr) minmax(5.9rem, 0.8fr);
+    }
+  }
+</style>
+
+<style is:global>
+  body:has(.market-indices-page) .site-header nav a[href="/mercados/"] {
+    position: relative;
+    color: var(--accent);
+  }
+
+  body:has(.market-indices-page) .site-header nav a[href="/mercados/"]::after {
+    position: absolute;
+    right: 12%;
+    bottom: -1px;
+    left: 12%;
+    height: 0.25rem;
+    background: var(--accent);
+    content: "";
+  }
+</style>
