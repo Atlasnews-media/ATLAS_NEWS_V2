@@ -6,8 +6,8 @@ src/content/editions/*.md
 src/content/briefings/*.md
 src/content/readings/*.md
 data/editorial_state.json
-# TEMP LAB: retirar antes de cualquier merge
-src/pages/lab/calendario-economico.astro
+# CALENDARIO: vista heredada auditada migrada a componente sin refactor funcional
+src/components/calendar/EconomicCalendarView.astro
 src/pages/lab/calendario-probe.json.ts
 src/lib/chile-calendar.ts
 scripts/probe-calendar.mjs
