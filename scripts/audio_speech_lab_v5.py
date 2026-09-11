@@ -4,18 +4,9 @@ from audio_speech import normalize_for_speech
 
 LAB_SPOKEN_FORM_VERSION = 5
 
-_ARTICLE_MAP = {
-    "la": "el",
-    "una": "un",
-    "esa": "ese",
-    "esta": "este",
-    "aquella": "aquel",
-    "el": "el",
-    "un": "un",
-    "ese": "ese",
-    "este": "este",
-    "aquel": "aquel",
-}
+_FEMININE_ARTICLES = {"la", "una", "esa", "esta", "aquella"}
+_MASCULINE_ARTICLES = {"el", "un", "ese", "este", "aquel"}
+_ALL_ARTICLES = _FEMININE_ARTICLES | _MASCULINE_ARTICLES
 
 
 def _match_case(source: str, replacement: str) -> str:
@@ -36,29 +27,49 @@ def adapt_financial_terms_lab(text: str):
 
     def replace_article_repricing(match: re.Match) -> str:
         article = match.group("article")
-        context = (match.group("context") or "").lower()
-        mapped = _match_case(article, _ARTICLE_MAP[article.lower()])
+        article_lower = article.lower()
+        context = (match.group("context") or match.group("context_market") or "").lower()
+
+        if article_lower not in _ALL_ARTICLES:
+            return match.group(0)
+
+        feminine = article_lower in _FEMININE_ARTICLES
         if context == "tasas":
-            wording = "reajuste de expectativas sobre las tasas"
+            wording = (
+                "revisión de expectativas sobre las tasas"
+                if feminine
+                else "reajuste de expectativas sobre las tasas"
+            )
             rule = "repricing_rates_article"
         elif context in {"inflacion", "inflación"}:
-            wording = "reajuste de expectativas de inflación"
+            wording = (
+                "revisión de expectativas de inflación"
+                if feminine
+                else "reajuste de expectativas de inflación"
+            )
             rule = "repricing_inflation_article"
         elif context == "mercado":
-            wording = "reajuste de precios del mercado"
+            wording = (
+                "revisión de precios del mercado"
+                if feminine
+                else "reajuste de precios del mercado"
+            )
             rule = "repricing_market_article"
         else:
-            wording = "reajuste de expectativas"
+            wording = (
+                "revisión de expectativas"
+                if feminine
+                else "reajuste de expectativas"
+            )
             rule = "repricing_article"
-        target = f"{mapped} {wording}"
+
+        target = f"{article} {wording}"
         return _record(changes, rule, match.group(0), target)
 
     normalized = re.sub(
         r"\b(?P<article>la|una|esa|esta|aquella|el|un|ese|este|aquel)\s+repricing"
         r"(?:\s+de\s+(?P<context>tasas|inflaci[oó]n)|\s+del\s+(?P<context_market>mercado))?\b",
-        lambda match: replace_article_repricing(
-            _RepricingMatchAdapter(match)
-        ),
+        replace_article_repricing,
         normalized,
         flags=re.IGNORECASE,
     )
@@ -99,18 +110,6 @@ def adapt_financial_terms_lab(text: str):
         normalized = re.sub(pattern, replace, normalized, flags=re.IGNORECASE)
 
     return normalized, changes
-
-
-class _RepricingMatchAdapter:
-    """Expose a unified context group for the article-aware repricing rule."""
-
-    def __init__(self, match: re.Match):
-        self.match = match
-
-    def group(self, name_or_index):
-        if name_or_index == "context":
-            return self.match.group("context") or self.match.group("context_market")
-        return self.match.group(name_or_index)
 
 
 def normalize_for_speech_lab_v5(text: str, reference_date: str | None = None):
