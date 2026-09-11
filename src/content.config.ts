@@ -104,6 +104,7 @@ const readingSchema = z.object({
   source: sourceSchema,
   author: z.string().min(2).optional(),
   audio: readingAudioSchema.optional(),
+  editorialVisual: editorialVisualSchema.optional(),
   demo: z.boolean().default(false),
 });
 
