@@ -216,9 +216,7 @@ async function diarioFinancieroIpsaQuote() {
       "(KHTML, like Gecko) Chrome/123.0 Safari/537.36",
   });
   const text = htmlToText(html);
-  const match = text.match(
-    /(?:S&P|SP)\s+IPSA\s+(-?[\d.,]+)\s+(-?[\d.,]+)/i,
-  );
+  const match = text.match(/(?:S&P|SP)\s+IPSA\s+(-?[\d.,]+)\s+(-?[\d.,]+)/i);
 
   if (!match) {
     throw new Error("Diario Financiero no expuso SP IPSA en el HTML público.");
