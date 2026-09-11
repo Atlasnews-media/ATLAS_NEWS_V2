@@ -1,0 +1,191 @@
+---
+interface EditorialVisual {
+  src: string;
+  alt: string;
+  source: string;
+  sourceUrl: string;
+  author: string;
+  license: string;
+}
+
+interface Props {
+  label: string;
+  title: string;
+  href: string;
+  cta: string;
+  visual?: EditorialVisual;
+  eager?: boolean;
+}
+
+const { label, title, href, cta, visual, eager = false } = Astro.props;
+
+const visualAllowed = (() => {
+  if (!visual) return false;
+
+  try {
+    const hostname = new URL(visual.src).hostname;
+    return ["upload.wikimedia.org", "commons.wikimedia.org"].includes(hostname);
+  } catch {
+    return false;
+  }
+})();
+---
+
+<section class="headline-item" data-has-visual={visualAllowed ? "true" : "false"}>
+  <div class="headline-copy">
+    <p class="headline-label">{label}</p>
+    <h2><a href={href}>{title}</a></h2>
+    <a class="headline-cta" href={href}>
+      {cta} <span aria-hidden="true">→</span>
+    </a>
+  </div>
+
+  {
+    visual && visualAllowed && (
+      <figure class="headline-visual">
+        <img
+          src={visual.src}
+          alt={visual.alt}
+          loading={eager ? "eager" : "lazy"}
+          decoding="async"
+          referrerpolicy="no-referrer"
+        />
+        <figcaption>
+          {visual.source} · {visual.author} · {visual.license}
+        </figcaption>
+      </figure>
+    )
+  }
+</section>
+
+<style>
+  .headline-item {
+    position: relative;
+    padding: 1.05rem 0 1.2rem;
+    border-top: 1px solid var(--rule);
+  }
+  .headline-item:first-child {
+    border-top: 0;
+  }
+  .headline-copy {
+    position: relative;
+    z-index: 2;
+  }
+  .headline-label {
+    margin: 0 0 0.35rem;
+    color: var(--ink-soft);
+    font: 800 0.72rem/1.2 var(--sans);
+    letter-spacing: 0.11em;
+    text-transform: uppercase;
+  }
+  h2 {
+    max-width: 64rem;
+    margin: 0;
+    font-size: clamp(1.7rem, 2.25vw, 2.45rem);
+    line-height: 0.98;
+    letter-spacing: -0.035em;
+    text-wrap: balance;
+  }
+  h2 a {
+    text-decoration: none;
+  }
+  h2 a:hover {
+    color: var(--accent);
+  }
+  .headline-cta {
+    display: inline-block;
+    margin-top: 0.7rem;
+    color: var(--accent);
+    font: 800 0.68rem/1.2 var(--sans);
+    letter-spacing: 0.08em;
+    text-decoration: none;
+    text-transform: uppercase;
+  }
+  .headline-cta:hover {
+    text-decoration: underline;
+    text-underline-offset: 0.2em;
+  }
+  .headline-visual {
+    display: none;
+  }
+
+  @media (min-width: 42.01rem) and (max-width: 58rem) {
+    h2 {
+      font-size: clamp(1.75rem, 4.2vw, 2.25rem);
+    }
+  }
+
+  @media (max-width: 42rem) {
+    .headline-item {
+      min-height: 10.75rem;
+      padding: 1rem 0 1.05rem;
+      overflow: hidden;
+      isolation: isolate;
+    }
+    .headline-copy {
+      width: 73%;
+    }
+    .headline-item[data-has-visual="false"] .headline-copy {
+      width: 100%;
+    }
+    .headline-label {
+      margin-bottom: 0.55rem;
+      color: var(--accent);
+      font-size: 0.7rem;
+      letter-spacing: 0.12em;
+    }
+    h2 {
+      font-size: clamp(1.62rem, 6.9vw, 2.05rem);
+      line-height: 0.96;
+      letter-spacing: -0.035em;
+      text-wrap: pretty;
+    }
+    .headline-cta {
+      margin-top: 0.65rem;
+      font-size: 0.64rem;
+      letter-spacing: 0.07em;
+    }
+    .headline-visual {
+      position: absolute;
+      z-index: 0;
+      top: 0;
+      right: -0.65rem;
+      bottom: 0;
+      display: block;
+      width: 49%;
+      margin: 0;
+      overflow: hidden;
+      pointer-events: none;
+    }
+    .headline-visual img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      opacity: 0.76;
+      filter: saturate(0.72) sepia(0.12) contrast(0.92) brightness(1.06);
+      -webkit-mask-image: linear-gradient(
+        to right,
+        transparent 0%,
+        rgba(0, 0, 0, 0.38) 28%,
+        #000 63%
+      );
+      mask-image: linear-gradient(
+        to right,
+        transparent 0%,
+        rgba(0, 0, 0, 0.38) 28%,
+        #000 63%
+      );
+    }
+    figcaption {
+      position: absolute;
+      right: 0.4rem;
+      bottom: 0.25rem;
+      max-width: 78%;
+      color: var(--ink-soft);
+      font: 600 0.42rem/1.15 var(--sans);
+      text-align: right;
+      opacity: 0.72;
+    }
+  }
+</style>
