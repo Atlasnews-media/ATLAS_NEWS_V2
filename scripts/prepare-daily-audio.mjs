@@ -10,9 +10,9 @@ import path from "node:path";
 const root = new URL("../", import.meta.url);
 const editionDir = new URL("src/content/editions/", root);
 const briefingDir = new URL("src/content/briefings/", root);
-const SCRIPT_VERSION = 7;
-const TARGET_MIN_WORDS = 550;
-const TARGET_MAX_WORDS = 650;
+const SCRIPT_VERSION = 8;
+const TARGET_MIN_WORDS = 350;
+const TARGET_MAX_WORDS = 450;
 
 function frontmatter(text) {
   return text.match(/^---\s*\r?\n([\s\S]*?)\r?\n---/)?.[1] ?? "";
@@ -224,10 +224,10 @@ function nearDuplicate(text, accepted) {
       if (current.has(token)) overlap += 1;
     }
     const lexicalOverlap = overlap / Math.min(incoming.size, current.size);
-    if (lexicalOverlap >= 0.72) return true;
+    if (lexicalOverlap >= 0.62) return true;
 
     const numericOverlap = sharedNumberCount(text, existing);
-    return numericOverlap >= 2 && lexicalOverlap >= 0.4;
+    return numericOverlap >= 1 && lexicalOverlap >= 0.3;
   });
 }
 
@@ -330,27 +330,30 @@ const sameSources =
   existing?.sourceIds?.national === sourceIds.national &&
   existing?.sourceIds?.markets === sourceIds.markets;
 
+// Portada V8 funciona como review: orienta y deriva a las cápsulas especializadas.
+// Por eso prioriza consecuencias y evolución sobre repetir el desarrollo completo.
 const generalCandidates = [
+  ...sentencesFrom(latestDaily, ["Hecho central", "Por qué importa"]),
   ...latestDaily.highlights.map(({ text }) => text),
-  ...sentencesFrom(latestDaily, [
-    "Hecho central",
-    "Por qué importa",
-    "En una mirada",
-  ]),
+  ...sentencesFrom(latestDaily, ["En una mirada"]),
 ];
 const nationalCandidates = national
   ? [
+      ...sentencesFrom(national, ["Implicancias y riesgos", "Desarrollo"]),
       ...national.highlights.map(({ text }) => text),
-      ...sentencesFrom(national, ["Desarrollo", "Implicancias y riesgos"]),
     ]
   : [];
 const marketsCandidates = markets
   ? [
-      ...markets.highlights.map(({ text }) => text),
       ...sentencesFrom(markets, ["Desarrollo", "Implicancias y riesgos"]),
+      ...markets.highlights.map(({ text }) => text),
     ]
   : [];
-const observationCandidates = sentencesFrom(latestDaily, ["Qué observar"]);
+const observationCandidates = [
+  ...sentencesFrom(latestDaily, ["Qué observar"]),
+  ...sentencesFrom(markets, ["Qué observar"]),
+  ...sentencesFrom(national, ["Qué observar"]),
+];
 
 const parts = [];
 const accepted = [];
@@ -366,7 +369,7 @@ addEditorialSection(
   "La señal central.",
   latestDaily.summary?.replace(/^La semana abre\b/i, "La jornada abre"),
   generalCandidates,
-  145,
+  90,
 );
 if (national) {
   addEditorialSection(
@@ -375,7 +378,7 @@ if (national) {
     "En Chile.",
     national.summary,
     nationalCandidates,
-    125,
+    65,
   );
 }
 if (markets) {
@@ -385,20 +388,21 @@ if (markets) {
     "Ahora, mercados.",
     markets.summary,
     marketsCandidates,
-    125,
+    65,
   );
 }
 addEditorialSection(
   parts,
   accepted,
-  "Qué observar hoy y durante los próximos días.",
-  "La agenda importa porque puede confirmar o invalidar la lectura con la que comienza la jornada.",
+  "Qué seguir durante la jornada.",
+  null,
   observationCandidates,
-  110,
+  55,
 );
 
 if (countWords(parts.join(" ")) < TARGET_MIN_WORDS) {
   const reserve = [
+    ...observationCandidates,
     ...generalCandidates,
     ...nationalCandidates,
     ...marketsCandidates,
@@ -412,13 +416,13 @@ if (countWords(parts.join(" ")) < TARGET_MIN_WORDS) {
 addSegment(
   parts,
   accepted,
-  "La idea para comenzar el día es quedarse con la señal central y observar si los próximos datos la confirman o la contradicen.",
+  "La idea para comenzar el día es quedarse con esta señal central y seguir cómo evoluciona durante la jornada, a medida que entren nuevos datos y reaccione el mercado.",
   { force: true },
 );
 addSegment(
   parts,
   accepted,
-  "Ese es el briefing de ATLAS NEWS para comenzar el día. En la portada quedan disponibles la nota principal y los desarrollos completos de Nacional y Mercados, con sus fuentes y riesgos.",
+  "Ese es el briefing de ATLAS NEWS para comenzar el día. Para profundizar, en Internacional, Nacional y Mercados están disponibles las cápsulas de audio de cada sección, junto con sus desarrollos completos, fuentes y riesgos.",
   { force: true },
 );
 
@@ -433,7 +437,7 @@ const plan = {
   needsGeneration: ownerAllowsGeneration && !sameSources,
   date,
   title: `ATLAS NEWS — Resumen diario — ${formatSpanishDate(date)}`,
-  summary: `Una cápsula con las señales principales de General${national ? ", Nacional" : ""}${markets ? " y Mercados" : ""}.`,
+  summary: `Un review breve de las señales principales de General${national ? ", Nacional" : ""}${markets ? " y Mercados" : ""}.`,
   voice,
   engine: "Kokoro-82M",
   language: "es",
