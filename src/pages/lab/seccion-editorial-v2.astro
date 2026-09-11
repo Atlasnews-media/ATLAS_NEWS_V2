@@ -1,7 +1,8 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
 
-const heroImage = "https://commons.wikimedia.org/wiki/Special:FilePath/USS_Hawes_%28FFG-53%29%2C_USS_William_H._Standley_%28CG-32%29_and_USS_Guadalcanal_%28LPH-7%29_escort_tanker_Gas_King_in_the_Persian_Gullf_on_21_October_1987_%286432283%29.jpg?width=1280";
+const heroImage =
+  "https://commons.wikimedia.org/wiki/Special:FilePath/USS_Hawes_%28FFG-53%29%2C_USS_William_H._Standley_%28CG-32%29_and_USS_Guadalcanal_%28LPH-7%29_escort_tanker_Gas_King_in_the_Persian_Gullf_on_21_October_1987_%286432283%29.jpg?width=1280";
 ---
 
 <BaseLayout
@@ -21,23 +22,38 @@ const heroImage = "https://commons.wikimedia.org/wiki/Special:FilePath/USS_Hawes
 
     <section class="lead-story">
       <figure>
-        <img src={heroImage} alt="Buques escoltando un petrolero en el Golfo Pérsico." />
-        <figcaption>Archivo editorial · Wikimedia Commons / U.S. National Archives</figcaption>
+        <img
+          src={heroImage}
+          alt="Buques escoltando un petrolero en el Golfo Pérsico."
+        />
+        <figcaption>
+          Archivo editorial · Wikimedia Commons / U.S. National Archives
+        </figcaption>
       </figure>
       <div class="lead-copy">
         <p class="eyebrow">Internacional · principal</p>
-        <h2>La inflación vuelve a mandar y obliga al mercado a recalibrar el riesgo</h2>
+        <h2>
+          La inflación vuelve a mandar y obliga al mercado a recalibrar el
+          riesgo
+        </h2>
         <p class="deck">
-          Una señal de precios, tasas y energía vuelve a concentrar la atención. Este texto es de prueba y busca mostrar jerarquía, ritmo y densidad visual.
+          Una señal de precios, tasas y energía vuelve a concentrar la atención.
+          Este texto es de prueba y busca mostrar jerarquía, ritmo y densidad
+          visual.
         </p>
-        <a href="/lab/noticia-editorial-v2/">Leer análisis <span aria-hidden="true">→</span></a>
+        <a href="/lab/noticia-editorial-v2/"
+          >Leer análisis <span aria-hidden="true">→</span></a
+        >
       </div>
     </section>
 
     <section class="audio-strip" aria-label="Audio de prueba">
       <div>
         <p class="audio-kicker">Escuchar el análisis internacional</p>
-        <p>Una conversación breve para entender qué hay detrás de las señales que están moviendo al mundo.</p>
+        <p>
+          Una conversación breve para entender qué hay detrás de las señales que
+          están moviendo al mundo.
+        </p>
       </div>
       <div class="fake-player">
         <span class="play">▶</span>
@@ -50,21 +66,42 @@ const heroImage = "https://commons.wikimedia.org/wiki/Special:FilePath/USS_Hawes
     <section class="news-list" aria-label="Más noticias">
       <article class="news-card">
         <p class="eyebrow">Internacional</p>
-        <h2>El mercado exige prima de inflación incluso cuando busca refugio</h2>
-        <p>Las tasas largas y los activos defensivos se mueven con una lectura menos limpia que en episodios anteriores.</p>
-        <div class="meta"><span>11 sep 2026</span><span>Continuar leyendo →</span></div>
+        <h2>
+          El mercado exige prima de inflación incluso cuando busca refugio
+        </h2>
+        <p>
+          Las tasas largas y los activos defensivos se mueven con una lectura
+          menos limpia que en episodios anteriores.
+        </p>
+        <div class="meta">
+          <span>11 sep 2026</span><span>Continuar leyendo →</span>
+        </div>
       </article>
       <article class="news-card">
         <p class="eyebrow">Internacional</p>
-        <h2>Europa intenta aislar crecimiento débil de la presión energética</h2>
-        <p>Datos mixtos y costos externos mantienen abierta una discusión que ya no cabe en una sola variable.</p>
-        <div class="meta"><span>10 sep 2026</span><span>Continuar leyendo →</span></div>
+        <h2>
+          Europa intenta aislar crecimiento débil de la presión energética
+        </h2>
+        <p>
+          Datos mixtos y costos externos mantienen abierta una discusión que ya
+          no cabe en una sola variable.
+        </p>
+        <div class="meta">
+          <span>10 sep 2026</span><span>Continuar leyendo →</span>
+        </div>
       </article>
       <article class="news-card">
         <p class="eyebrow">Internacional</p>
-        <h2>Asia entra a la sesión con monedas tensas y menor apetito por duración</h2>
-        <p>El dólar vuelve a ordenar parte de la lectura mientras las curvas soberanas muestran mayor dispersión.</p>
-        <div class="meta"><span>9 sep 2026</span><span>Continuar leyendo →</span></div>
+        <h2>
+          Asia entra a la sesión con monedas tensas y menor apetito por duración
+        </h2>
+        <p>
+          El dólar vuelve a ordenar parte de la lectura mientras las curvas
+          soberanas muestran mayor dispersión.
+        </p>
+        <div class="meta">
+          <span>9 sep 2026</span><span>Continuar leyendo →</span>
+        </div>
       </article>
     </section>
   </main>
