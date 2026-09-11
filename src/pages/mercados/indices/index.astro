@@ -90,9 +90,9 @@ const variation = new Intl.NumberFormat("es-CL", {
 function isDisplayable(asset?: MarketAsset) {
   return Boolean(
     asset &&
-    asset.displayEligible !== false &&
-    typeof asset.value === "number" &&
-    Number.isFinite(asset.value),
+      asset.displayEligible !== false &&
+      typeof asset.value === "number" &&
+      Number.isFinite(asset.value),
   );
 }
 
@@ -199,10 +199,7 @@ const staleCount = snapshot.assets.filter(
 >
   <main class="market-indices-page page-shell">
     <header class="indices-heading">
-      <div>
-        <p class="page-kicker">Mercados</p>
-        <h1>Índices de mercado</h1>
-      </div>
+      <h1>Índices de mercado</h1>
       <div class="update-stamp" aria-label="Última actualización de los datos">
         <strong>Última actualización</strong>
         <span>{generatedDate} · {generatedTime}</span>
@@ -272,25 +269,21 @@ const staleCount = snapshot.assets.filter(
 
 <style>
   .market-indices-page {
-    padding-top: clamp(1rem, 2vw, 1.6rem);
+    padding-top: clamp(0.6rem, 1.2vw, 0.96rem);
   }
 
   .indices-heading {
     display: grid;
     grid-template-columns: minmax(0, 1fr) auto;
-    gap: 1.25rem;
+    gap: 0.75rem;
     align-items: end;
-    padding: 0.25rem 0 1.05rem;
+    padding: 0.15rem 0 0.63rem;
     border-bottom: 1px solid var(--rule);
-  }
-
-  .indices-heading .page-kicker {
-    display: none;
   }
 
   .indices-heading h1 {
     margin: 0;
-    font-size: clamp(3rem, 6vw, 5.6rem);
+    font-size: clamp(1.8rem, 3.6vw, 3.36rem);
     font-weight: 700;
     line-height: 0.9;
     letter-spacing: -0.055em;
@@ -298,9 +291,9 @@ const staleCount = snapshot.assets.filter(
 
   .update-stamp {
     display: grid;
-    gap: 0.14rem;
-    min-width: 13rem;
-    padding-bottom: 0.18rem;
+    gap: 0.08rem;
+    min-width: 7.8rem;
+    padding-bottom: 0.11rem;
     text-align: right;
     text-transform: uppercase;
   }
@@ -312,19 +305,19 @@ const staleCount = snapshot.assets.filter(
   }
 
   .update-stamp strong {
-    font-size: 0.68rem;
+    font-size: 0.41rem;
     letter-spacing: 0.06em;
   }
 
   .update-stamp span {
-    font-size: 0.76rem;
+    font-size: 0.46rem;
     font-weight: 800;
     letter-spacing: 0.025em;
   }
 
   .update-stamp small {
     color: var(--ink-soft);
-    font-size: 0.56rem;
+    font-size: 0.34rem;
     font-weight: 700;
     letter-spacing: 0.04em;
   }
@@ -343,17 +336,17 @@ const staleCount = snapshot.assets.filter(
 
   .section-row {
     display: grid;
-    grid-template-columns: minmax(0, 1.55fr) minmax(7.5rem, 0.55fr) minmax(
-        9.5rem,
+    grid-template-columns: minmax(0, 1.55fr) minmax(4.5rem, 0.55fr) minmax(
+        5.7rem,
         0.7fr
       );
-    gap: clamp(0.65rem, 2vw, 1.4rem);
+    gap: clamp(0.39rem, 1.2vw, 0.84rem);
     align-items: baseline;
     min-width: 0;
   }
 
   .section-header {
-    padding: 0.55rem 0 0.38rem;
+    padding: 0.33rem 0 0.23rem;
     border-bottom: 1px solid rgb(35 35 29 / 32%);
   }
 
@@ -364,13 +357,13 @@ const staleCount = snapshot.assets.filter(
 
   .section-header h2 {
     color: var(--accent);
-    font: 700 clamp(1.15rem, 2vw, 1.65rem)/1 var(--serif);
+    font: 700 clamp(0.69rem, 1.2vw, 0.99rem)/1 var(--serif);
     text-transform: uppercase;
   }
 
   .section-header span {
     color: var(--ink);
-    font: 800 0.66rem/1.2 var(--sans);
+    font: 800 0.4rem/1.2 var(--sans);
     letter-spacing: 0.05em;
     text-transform: uppercase;
   }
@@ -380,7 +373,7 @@ const staleCount = snapshot.assets.filter(
   }
 
   .data-row {
-    padding: 0.4rem 0 0.46rem;
+    padding: 0.24rem 0 0.28rem;
     border-bottom: 1px solid rgb(35 35 29 / 14%);
   }
 
@@ -396,15 +389,15 @@ const staleCount = snapshot.assets.filter(
 
   .asset-name {
     display: grid;
-    gap: 0.08rem;
-    font-size: clamp(1.02rem, 2vw, 1.35rem);
+    gap: 0.05rem;
+    font-size: clamp(0.61rem, 1.2vw, 0.81rem);
     line-height: 1.05;
   }
 
   .asset-name small {
     overflow: hidden;
     color: var(--ink-soft);
-    font: 700 0.48rem/1.25 var(--sans);
+    font: 700 0.29rem/1.25 var(--sans);
     letter-spacing: 0.025em;
     text-overflow: ellipsis;
     text-transform: uppercase;
@@ -412,7 +405,7 @@ const staleCount = snapshot.assets.filter(
   }
 
   .asset-value {
-    font-size: clamp(1.02rem, 2vw, 1.35rem);
+    font-size: clamp(0.61rem, 1.2vw, 0.81rem);
     font-variant-numeric: tabular-nums;
     font-weight: 400;
     white-space: nowrap;
@@ -420,11 +413,11 @@ const staleCount = snapshot.assets.filter(
 
   .asset-change {
     display: grid;
-    grid-template-columns: 1.1rem minmax(0, 1fr);
-    gap: 0.45rem;
+    grid-template-columns: 0.66rem minmax(0, 1fr);
+    gap: 0.27rem;
     align-items: baseline;
     justify-self: stretch;
-    font-size: clamp(0.95rem, 1.8vw, 1.25rem);
+    font-size: clamp(0.57rem, 1.08vw, 0.75rem);
     font-variant-numeric: tabular-nums;
   }
 
@@ -451,9 +444,9 @@ const staleCount = snapshot.assets.filter(
   .indices-source {
     display: flex;
     justify-content: space-between;
-    gap: 1rem 2rem;
-    padding: 0.85rem 0 0;
-    font-size: 0.72rem;
+    gap: 0.6rem 1.2rem;
+    padding: 0.51rem 0 0;
+    font-size: 0.43rem;
     line-height: 1.35;
   }
 
@@ -467,86 +460,86 @@ const staleCount = snapshot.assets.filter(
 
   @media (max-width: 42rem) {
     .market-indices-page {
-      padding-top: 0.75rem;
+      padding-top: 0.45rem;
     }
 
     .indices-heading {
       grid-template-columns: minmax(0, 1fr) auto;
-      gap: 0.7rem;
-      padding-bottom: 0.65rem;
+      gap: 0.42rem;
+      padding-bottom: 0.39rem;
     }
 
     .indices-heading h1 {
-      font-size: clamp(2.45rem, 11vw, 3.45rem);
+      font-size: clamp(1.47rem, 6.6vw, 2.07rem);
       line-height: 0.93;
     }
 
     .update-stamp {
-      min-width: 7.7rem;
-      padding-bottom: 0.08rem;
+      min-width: 4.62rem;
+      padding-bottom: 0.05rem;
     }
 
     .update-stamp strong {
-      font-size: 0.5rem;
+      font-size: 0.3rem;
     }
 
     .update-stamp span {
-      font-size: 0.56rem;
+      font-size: 0.34rem;
     }
 
     .update-stamp small {
-      max-width: 8rem;
+      max-width: 4.8rem;
       justify-self: end;
-      font-size: 0.44rem;
+      font-size: 0.26rem;
       line-height: 1.1;
     }
 
     .section-row {
-      grid-template-columns: minmax(0, 1.35fr) minmax(5.3rem, 0.7fr) minmax(
-          6.3rem,
+      grid-template-columns: minmax(0, 1.35fr) minmax(3.18rem, 0.7fr) minmax(
+          3.78rem,
           0.8fr
         );
-      gap: 0.42rem;
+      gap: 0.25rem;
     }
 
     .section-header {
-      padding: 0.48rem 0 0.28rem;
+      padding: 0.29rem 0 0.17rem;
     }
 
     .section-header h2 {
-      font-size: clamp(1rem, 4.5vw, 1.22rem);
+      font-size: clamp(0.6rem, 2.7vw, 0.73rem);
     }
 
     .section-header span {
-      font-size: 0.48rem;
+      font-size: 0.29rem;
       letter-spacing: 0.035em;
     }
 
     .data-row {
-      padding: 0.36rem 0 0.39rem;
+      padding: 0.22rem 0 0.23rem;
     }
 
     .asset-name,
     .asset-value,
     .asset-change {
-      font-size: clamp(0.93rem, 4.2vw, 1.12rem);
+      font-size: clamp(0.56rem, 2.52vw, 0.67rem);
     }
 
     .asset-name small {
-      max-width: 10rem;
-      font-size: 0.4rem;
+      max-width: 6rem;
+      font-size: 0.24rem;
     }
 
     .asset-change {
-      grid-template-columns: 0.8rem minmax(0, 1fr);
-      gap: 0.18rem;
+      grid-template-columns: 0.48rem minmax(0, 1fr);
+      gap: 0.11rem;
     }
 
     .indices-source {
       display: grid;
-      gap: 0.25rem;
-      padding-top: 0.6rem;
-      font-size: 0.54rem;
+      gap: 0.15rem;
+      padding-top: 0.36rem;
+      font-size: 0.32rem;
     }
 
     .indices-source p:last-child {
@@ -570,27 +563,10 @@ const staleCount = snapshot.assets.filter(
     }
 
     .section-row {
-      grid-template-columns: minmax(0, 1.25fr) minmax(4.7rem, 0.7fr) minmax(
-          5.9rem,
+      grid-template-columns: minmax(0, 1.25fr) minmax(2.82rem, 0.7fr) minmax(
+          3.54rem,
           0.8fr
         );
     }
-  }
-</style>
-
-<style is:global>
-  body:has(.market-indices-page) .site-header nav a[href="/mercados/"] {
-    position: relative;
-    color: var(--accent);
-  }
-
-  body:has(.market-indices-page) .site-header nav a[href="/mercados/"]::after {
-    position: absolute;
-    right: 12%;
-    bottom: -1px;
-    left: 12%;
-    height: 0.25rem;
-    background: var(--accent);
-    content: "";
   }
 </style>
