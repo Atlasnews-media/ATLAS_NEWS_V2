@@ -188,6 +188,18 @@ a:focus-visible {
     line-height: 1.1;
     letter-spacing: 0.055em;
   }
+  body:has(.calendar-entry) .lead-story {
+    padding-bottom: 0.95rem;
+  }
+  body:has(.calendar-entry) .edition-rail {
+    padding-top: 1.05rem;
+  }
+  body:has(.calendar-entry) .rail-title {
+    color: var(--ink);
+    font: 700 clamp(1.38rem, 5.8vw, 1.78rem) / 0.98 var(--serif);
+    letter-spacing: -0.025em;
+    text-transform: none;
+  }
 }
 
 @media (max-width: 36rem) {
