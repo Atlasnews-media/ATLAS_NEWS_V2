@@ -19,7 +19,28 @@ const MONTHS = [
   "diciembre",
 ] as const;
 
-const MONTH_NUMBER = new Map(MONTHS.map((month, index) => [month, index + 1]));
+const MONTH_NUMBER = new Map(
+  MONTHS.map((month, index) => [month, index + 1]),
+);
+
+const BCCH_SAME_DAY_TITLES = [
+  "Comercio exterior semanal",
+  "Posiciones y flujos de no residentes en el mercado local",
+  "Planilla de liquidez internacional",
+  "Cuenta financiera y deuda externa",
+  "Boletín Estadístico",
+  "Indicadores de Coyuntura Semanal (ICS)",
+  "Indicadores de dinámica de empresas (IDE)",
+  "Índice de Ventas Online del Comercio Minorista (IVOCM)",
+  "Índice de ventas online del comercio minorista (IVOCM)",
+  "Índice mensual de avisos laborales de Internet (IALI)",
+  "Indicador de compraventas por actividad económica (CVAE)",
+  "Indicadores de compraventa regional (ICVR)",
+  "Indicadores de crédito comercial entre empresas (ICCE)",
+  "Índice mensual de Ventas Diarias del Comercio Minorista (IVDCM)",
+  "Encuesta de Determinantes y Expectativas de Precios (EDEP)",
+  "Encuesta de Operadores Financieros (EOF)",
+];
 
 export type ChileCalendarEvent = {
   id: string;
@@ -71,11 +92,16 @@ function decodeHtml(value: string): string {
   };
 
   return value
-    .replace(/&#(\d+);/g, (_, code: string) => String.fromCodePoint(Number(code)))
+    .replace(/&#(\d+);/g, (_, code: string) =>
+      String.fromCodePoint(Number(code)),
+    )
     .replace(/&#x([0-9a-f]+);/gi, (_, code: string) =>
       String.fromCodePoint(Number.parseInt(code, 16)),
     )
-    .replace(/&([a-zA-Z]+);/g, (entity, name: string) => named[name] ?? entity);
+    .replace(
+      /&([a-zA-Z]+);/g,
+      (entity, name: string) => named[name] ?? entity,
+    );
 }
 
 function cleanText(html: string): string {
@@ -118,15 +144,18 @@ function localDateKey(date: Date): string {
     month: "2-digit",
     day: "2-digit",
   }).formatToParts(date);
-  const map = Object.fromEntries(parts.map((part) => [part.type, part.value]));
+  const map = Object.fromEntries(
+    parts.map((part) => [part.type, part.value]),
+  );
   return `${map.year}-${map.month}-${map.day}`;
 }
 
 function localYear(date: Date): number {
   return Number(
-    new Intl.DateTimeFormat("en", { timeZone: TIME_ZONE, year: "numeric" }).format(
-      date,
-    ),
+    new Intl.DateTimeFormat("en", {
+      timeZone: TIME_ZONE,
+      year: "numeric",
+    }).format(date),
   );
 }
 
@@ -149,7 +178,9 @@ function monthBlocks(
 
   for (let index = 0; index < matches.length; index += 1) {
     const match = matches[index];
-    const monthName = match[1].toLocaleLowerCase("es-CL") as (typeof MONTHS)[number];
+    const monthName = match[1].toLocaleLowerCase(
+      "es-CL",
+    ) as (typeof MONTHS)[number];
     const month = MONTH_NUMBER.get(monthName);
     if (!month || match.index === undefined) continue;
 
@@ -200,11 +231,14 @@ function parseIne(html: string, year: number): ChileCalendarEvent[] {
   const marker = text.search(/Agenda Estadística 20\d{2}/i);
   if (marker === -1) return [];
 
-  const detectedYear = Number(text.slice(marker, marker + 80).match(/20\d{2}/)?.[0] ?? year);
+  const detectedYear = Number(
+    text.slice(marker, marker + 80).match(/20\d{2}/)?.[0] ?? year,
+  );
   const events: ChileCalendarEvent[] = [];
 
   for (const block of monthBlocks(text, marker, "ine")) {
-    const pattern = /\b(\d{1,2})\s+(\d{2}:\d{2})\s+(.+?)(?=\s+\d{1,2}\s+\d{2}:\d{2}\s+|$)/g;
+    const pattern =
+      /\b(\d{1,2})\s+(\d{2}:\d{2})\s+(.+?)(?=\s+\d{1,2}\s+\d{2}:\d{2}\s+|$)/g;
     for (const match of block.body.matchAll(pattern)) {
       const day = Number(match[1]);
       if (day < 1 || day > 31) continue;
@@ -226,6 +260,20 @@ function parseIne(html: string, year: number): ChileCalendarEvent[] {
   return events;
 }
 
+function escapeRegex(value: string): string {
+  return value.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+}
+
+function splitBcchTitles(value: string): string[] {
+  const alternatives = BCCH_SAME_DAY_TITLES.map(escapeRegex).join("|");
+  const boundary = new RegExp(`(?=${alternatives})`, "g");
+
+  return value
+    .split(boundary)
+    .map((title) => title.trim())
+    .filter(Boolean);
+}
+
 function splitBcchGroups(body: string): Array<{ day: number; name: string }> {
   const boundary = /\b(3[01]|[12]\d|[1-9])\s+(?=[A-ZÁÉÍÓÚÑ])/g;
   const matches = [...body.matchAll(boundary)];
@@ -237,9 +285,12 @@ function splitBcchGroups(body: string): Array<{ day: number; name: string }> {
     const next = matches[index + 1];
     const start = match.index + match[0].length;
     const end = next?.index ?? body.length;
-    const name = body.slice(start, end).trim();
-    if (!name || name.length > 420) continue;
-    groups.push({ day: Number(match[1]), name });
+    const joinedName = body.slice(start, end).trim();
+    if (!joinedName || joinedName.length > 420) continue;
+
+    for (const name of splitBcchTitles(joinedName)) {
+      groups.push({ day: Number(match[1]), name });
+    }
   }
 
   return groups;
@@ -282,7 +333,10 @@ function dedupe(events: ChileCalendarEvent[]): ChileCalendarEvent[] {
   });
 }
 
-function selectEvents(events: ChileCalendarEvent[], now: Date): ChileCalendarEvent[] {
+function selectEvents(
+  events: ChileCalendarEvent[],
+  now: Date,
+): ChileCalendarEvent[] {
   const today = localDateKey(now);
   const future = dedupe(events).filter((event) => event.date >= today);
   const byDate = new Map<string, ChileCalendarEvent[]>();
@@ -297,7 +351,9 @@ function selectEvents(events: ChileCalendarEvent[], now: Date): ChileCalendarEve
   const dates = [...byDate.keys()].sort();
   for (const date of dates) {
     const dayEvents = (byDate.get(date) ?? []).sort(
-      (a, b) => b.score - a.score || (a.time ?? "99:99").localeCompare(b.time ?? "99:99"),
+      (a, b) =>
+        b.score - a.score ||
+        (a.time ?? "99:99").localeCompare(b.time ?? "99:99"),
     );
 
     for (const event of dayEvents) {
@@ -309,7 +365,9 @@ function selectEvents(events: ChileCalendarEvent[], now: Date): ChileCalendarEve
   return selected;
 }
 
-export async function loadChileCalendar(now = new Date()): Promise<ChileCalendarResult> {
+export async function loadChileCalendar(
+  now = new Date(),
+): Promise<ChileCalendarResult> {
   const year = localYear(now);
   const [ine, bancoCentral] = await Promise.all([
     fetchSource(INE_URL),
