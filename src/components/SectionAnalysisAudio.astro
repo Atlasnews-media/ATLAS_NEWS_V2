@@ -36,44 +36,103 @@ const titleId = `section-analysis-audio-${section}`;
 
 <script is:inline>
   (() => {
-    const roots = document.querySelectorAll("[data-section-analysis-audio]");
+    const roots = [
+      ...document.querySelectorAll("[data-section-analysis-audio]"),
+    ];
     if (!roots.length) return;
 
-    fetch(`/audio/analysis-latest.json?v=${Date.now()}`, { cache: "no-store" })
-      .then((response) => {
-        if (!response.ok) throw new Error("audio metadata unavailable");
-        return response.json();
-      })
-      .then((metadata) => {
-        roots.forEach((root) => {
-          const section = root.dataset.section;
-          const expectedSourceId = root.dataset.expectedSourceId;
-          const entry = metadata?.[section];
+    const watcherKey = "atlasAnalysisAudioWatcher";
+    if (document.documentElement.dataset[watcherKey] === "true") return;
+    document.documentElement.dataset[watcherKey] = "true";
 
-          if (
-            !expectedSourceId ||
-            entry?.status !== "published" ||
-            entry?.sourceId !== expectedSourceId ||
-            !entry?.path
-          ) {
-            root.hidden = true;
-            return;
-          }
+    const retryIntervalMs = 30_000;
+    const maxAttempts = 40;
+    let attempt = 0;
+    let retryTimer;
 
-          const player = root.querySelector("[data-atlas-audio-engine]");
-          const source = root.querySelector("[data-atlas-audio-source]");
-          if (!player || !source) return;
+    const applyMetadata = (metadata) => {
+      let allReady = true;
 
+      roots.forEach((root) => {
+        const section = root.dataset.section;
+        const expectedSourceId = root.dataset.expectedSourceId;
+        const entry = metadata?.[section];
+        const ready = Boolean(
+          expectedSourceId &&
+          entry?.status === "published" &&
+          entry?.sourceId === expectedSourceId &&
+          entry?.path,
+        );
+
+        if (!ready) {
+          allReady = false;
+          root.hidden = true;
+          return;
+        }
+
+        const player = root.querySelector("[data-atlas-audio-engine]");
+        const source = root.querySelector("[data-atlas-audio-source]");
+        if (!player || !source) {
+          allReady = false;
+          return;
+        }
+
+        if (source.getAttribute("src") !== entry.path) {
           source.src = entry.path;
           player.load();
-          root.hidden = false;
-        });
-      })
-      .catch(() => {
-        roots.forEach((root) => {
-          root.hidden = true;
-        });
+        }
+        root.hidden = false;
       });
+
+      return allReady;
+    };
+
+    const scheduleRetry = () => {
+      if (attempt >= maxAttempts || retryTimer) return;
+      retryTimer = window.setTimeout(() => {
+        retryTimer = undefined;
+        void checkAudio();
+      }, retryIntervalMs);
+    };
+
+    const checkAudio = async () => {
+      attempt += 1;
+      try {
+        const response = await fetch(
+          `/audio/analysis-latest.json?v=${Date.now()}`,
+          { cache: "no-store" },
+        );
+        if (!response.ok) throw new Error("audio metadata unavailable");
+
+        const metadata = await response.json();
+        if (applyMetadata(metadata)) return;
+      } catch {
+        // Si el audio ya estaba visible, un fallo transitorio no debe ocultarlo.
+        roots.forEach((root) => {
+          if (!root.querySelector("[data-atlas-audio-source][src]")) {
+            root.hidden = true;
+          }
+        });
+      }
+
+      scheduleRetry();
+    };
+
+    document.addEventListener("visibilitychange", () => {
+      if (
+        document.visibilityState === "visible" &&
+        attempt < maxAttempts &&
+        !roots.every((root) => !root.hidden)
+      ) {
+        if (retryTimer) {
+          window.clearTimeout(retryTimer);
+          retryTimer = undefined;
+        }
+        void checkAudio();
+      }
+    });
+
+    void checkAudio();
   })();
 </script>
 
