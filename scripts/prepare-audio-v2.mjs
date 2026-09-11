@@ -224,7 +224,9 @@ plan.needsGeneration = Object.values(products).some((product) => {
 const serializedPlan = `${JSON.stringify(plan, null, 2)}\n`;
 await writeFile(outputPath, serializedPlan, "utf8");
 
-const internationalReady = Boolean(international.sourceId && international.script);
+const internationalReady = Boolean(
+  international.sourceId && international.script,
+);
 const nationalReady = Boolean(national.sourceId && national.script);
 const marketsReady = Boolean(markets.sourceId && markets.script);
 

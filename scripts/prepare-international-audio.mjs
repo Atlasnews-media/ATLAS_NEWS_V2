@@ -166,6 +166,10 @@ function formatSpanishDate(date) {
     .replace(",", "");
 }
 
+function sectionParagraphs(record, heading) {
+  return record.sections.get(normalizeHeading(heading)) ?? [];
+}
+
 const files = (await readdir(editionDir, { withFileTypes: true }))
   .filter((entry) => entry.isFile() && /\.mdx?$/.test(entry.name))
   .map((entry) => entry.name);
@@ -193,7 +197,9 @@ const latestDaily = editions
   )[0];
 
 if (!latestDaily) {
-  throw new Error("No existe una edición Internacional publicada para generar audio.");
+  throw new Error(
+    "No existe una edición Internacional publicada para generar audio.",
+  );
 }
 
 const date = latestDaily.id.slice(0, 10);
@@ -219,32 +225,31 @@ function addSection(label, paragraphs, targetWords) {
   }
 }
 
-add(
-  `ATLAS NEWS. Análisis internacional del ${formatSpanishDate(date)}.`,
-  { force: true },
-);
+add(`ATLAS NEWS. Análisis internacional del ${formatSpanishDate(date)}.`, {
+  force: true,
+});
 add("El hecho central.", { force: true });
 add(latestDaily.summary);
 for (const item of latestDaily.highlights) add(item.text);
 addSection(
   "Qué está cambiando.",
   [
-    ...(latestDaily.sections.get(normalizeHeading("Hecho central")) ?? []),
-    ...(latestDaily.sections.get(normalizeHeading("En una mirada")) ?? []),
-    ...(latestDaily.sections.get(normalizeHeading("Por qué importa")) ?? []),
+    ...sectionParagraphs(latestDaily, "Hecho central"),
+    ...sectionParagraphs(latestDaily, "En una mirada"),
+    ...sectionParagraphs(latestDaily, "Por qué importa"),
   ],
   190,
 );
 addSection(
   "Qué observar ahora.",
-  latestDaily.sections.get(normalizeHeading("Qué observar")) ?? [],
+  sectionParagraphs(latestDaily, "Qué observar"),
   90,
 );
 
 if (countWords(parts.join(" ")) < TARGET_MIN_WORDS) {
   const reserve = [
-    ...(latestDaily.sections.get(normalizeHeading("Mercados globales")) ?? []),
-    ...(latestDaily.sections.get(normalizeHeading("Tasas, monedas y commodities")) ?? []),
+    ...sectionParagraphs(latestDaily, "Mercados globales"),
+    ...sectionParagraphs(latestDaily, "Tasas, monedas y commodities"),
   ];
   for (const sentence of sentenceList(reserve)) {
     add(sentence);
