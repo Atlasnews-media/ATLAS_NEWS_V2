@@ -63,6 +63,12 @@ const socialImageAlt = generatedSocialImage
 const socialType = isArticle ? "article" : "website";
 
 const primaryEntry = { href: "/", label: "Portada" };
+const isPrimarySectionLanding = [
+  "/internacional/",
+  "/nacional/",
+  "/mercados/",
+  "/lecturas/",
+].includes(Astro.url.pathname);
 ---
 
 <!doctype html>
@@ -107,7 +113,7 @@ const primaryEntry = { href: "/", label: "Portada" };
     <link rel="manifest" href="/site.webmanifest" />
     <title>{title}</title>
   </head>
-  <body>
+  <body class={isPrimarySectionLanding ? "primary-section-page" : undefined}>
     <a class="skip-link" href="#contenido">Saltar al contenido</a>
     <header class="site-header">
       <div class="edition-bar">
@@ -223,34 +229,53 @@ const primaryEntry = { href: "/", label: "Portada" };
   }
   .edition-bar,
   .site-header nav {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 0.75rem 1.25rem;
     font: 800 0.72rem/1.2 var(--sans);
     letter-spacing: 0.08em;
     text-transform: uppercase;
   }
   .edition-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem 1.25rem;
     padding: 0.5rem 0;
     border-top: 3px double var(--rule);
     border-bottom: 1px solid var(--rule);
   }
   .site-header nav {
-    justify-content: center;
-    padding: 0.7rem 0;
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 0;
+    justify-content: stretch;
+    padding: 0;
     border-top: 1px solid var(--rule);
     border-bottom: 4px double var(--rule);
   }
   .site-header nav a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 0;
+    min-height: 3.3rem;
+    padding: 0.8rem 0.55rem;
+    border-left: 1px solid rgba(31, 29, 23, 0.16);
     color: inherit;
+    text-align: center;
     text-decoration: none;
+    white-space: nowrap;
+    transition: background-color 140ms ease;
+  }
+  .site-header nav a:first-child {
+    border-left: 0;
   }
   .site-header nav a + a::before {
-    margin-right: 1.25rem;
-    content: "◆";
-    font-size: 0.42rem;
-    vertical-align: middle;
+    content: none;
+  }
+  .site-header nav a:hover {
+    background: rgba(31, 29, 23, 0.035);
+  }
+  .primary-section-page .page-title {
+    font-size: clamp(2.55rem, 7.5vw, 6.375rem);
   }
   .site-footer {
     margin-top: 5rem;
@@ -317,6 +342,24 @@ const primaryEntry = { href: "/", label: "Portada" };
     text-underline-offset: 0.18em;
   }
 
+  @media (max-width: 42rem) {
+    .site-header nav {
+      height: auto;
+      min-height: 0;
+      align-items: stretch;
+      gap: 0;
+      font-size: 0.46rem;
+      line-height: 1;
+    }
+    .site-header nav a {
+      box-sizing: border-box;
+      align-self: stretch;
+      height: auto;
+      min-height: 1.62rem;
+      padding: 0.18rem 0.04rem;
+    }
+  }
+
   @media (max-width: 36rem) {
     .site-header,
     .site-footer {
@@ -339,19 +382,12 @@ const primaryEntry = { href: "/", label: "Portada" };
       font-size: clamp(2.25rem, 12vw, 4.15rem);
     }
     .site-header nav {
-      display: grid;
-      grid-template-columns: repeat(5, minmax(0, 1fr));
-      gap: 0.2rem;
-      font-size: 0.52rem;
       text-align: center;
     }
     .site-header nav a {
       position: relative;
       min-width: 0;
       white-space: nowrap;
-    }
-    .site-header nav a + a::before {
-      content: none;
     }
     .footer-meta {
       grid-template-columns: 1fr;
