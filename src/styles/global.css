@@ -80,7 +80,7 @@ a:focus-visible {
 .page-shell {
   width: min(88rem, calc(100% - 2rem));
   margin: 0 auto;
-  padding: clamp(2.5rem, 6vw, 5rem) 0;
+  padding: clamp(1.25rem, 3vw, 2.5rem) 0 clamp(2.5rem, 6vw, 5rem);
 }
 .page-kicker {
   margin: 0;
@@ -112,6 +112,7 @@ a:focus-visible {
 @media (max-width: 42rem) {
   .page-shell {
     width: min(100% - 1.25rem, 88rem);
+    padding-top: 1rem;
   }
 
   /* Portada V2: titulares compactos, navegables y con jerarquía aprobada. */
