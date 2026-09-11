@@ -247,11 +247,9 @@ addSection(
 if (countWords(parts.join(" ")) < TARGET_MIN_WORDS) {
   const reserve = [
     ...(latestDaily.sections.get(normalizeHeading("Mercados globales")) ?? []),
-    ...(
-      latestDaily.sections.get(
-        normalizeHeading("Tasas, monedas y commodities"),
-      ) ?? []
-    ),
+    ...(latestDaily.sections.get(
+      normalizeHeading("Tasas, monedas y commodities"),
+    ) ?? []),
   ];
   for (const sentence of sentenceList(reserve)) {
     add(sentence);
