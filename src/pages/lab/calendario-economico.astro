@@ -53,9 +53,8 @@ function nationalWhen(event: (typeof nationalEvents)[number]) {
       <h1>Calendario del día</h1>
       <p id="calendar-date" class="calendar-date">Agenda de hoy</p>
       <p class="calendar-intro">
-        Hasta cinco hitos por bloque. Internacional y Mercados se recuperan desde
-        calendario público; Nacional se construye directamente desde INE y Banco
-        Central de Chile.
+        Selección automática con eventos únicos y criterio de diversidad regional.
+        Nacional se construye desde INE y Banco Central de Chile.
       </p>
     </header>
 
@@ -137,18 +136,23 @@ function nationalWhen(event: (typeof nationalEvents)[number]) {
   <script>
     type ApiEvent = {
       id: string;
+      eventId?: string;
       time: string;
+      period?: string;
       name?: string;
       countryCode?: string;
+      currency?: string;
       importance?: string;
       timeMode?: string;
       sourceUrl?: string;
       sector?: string;
       type?: string;
+      source?: string;
     };
 
     type CalendarParams = Record<string, string | number | null | undefined>;
     type RenderOptions = { empty?: string };
+    type Region = "americas" | "europe" | "asia-pacific" | "other";
 
     const API = "https://biquote.io/api/calendar";
     const TIME_ZONE = "America/Santiago";
@@ -200,7 +204,11 @@ function nationalWhen(event: (typeof nationalEvents)[number]) {
       "centralbank",
       "central-bank",
       "commodities",
-      "housing",
+      "credit",
+      "banking",
+      "finance",
+      "stocks",
+      "equities",
     ]);
 
     function element(selector: string): HTMLElement {
@@ -248,6 +256,39 @@ function nationalWhen(event: (typeof nationalEvents)[number]) {
       }).format(date);
     }
 
+    function normalizeName(value: string): string {
+      return value
+        .normalize("NFD")
+        .replace(/[\u0300-\u036f]/g, "")
+        .toLowerCase()
+        .replace(/[^a-z0-9]+/g, " ")
+        .trim();
+    }
+
+    function eventKey(event: ApiEvent): string {
+      if (event.eventId) return event.eventId;
+      const period = event.period?.slice(0, 10) ?? localDateKey(new Date(event.time));
+      return `${event.countryCode ?? ""}|${normalizeName(event.name ?? "")}|${period}`;
+    }
+
+    function dedupe(events: ApiEvent[]): ApiEvent[] {
+      const unique = new Map<string, ApiEvent>();
+      [...events]
+        .sort((a, b) => score(b) - score(a))
+        .forEach((event) => {
+          const key = eventKey(event);
+          if (!unique.has(key)) unique.set(key, event);
+        });
+      return [...unique.values()];
+    }
+
+    function regionFor(code = ""): Region {
+      if (["US", "CA", "BR", "MX"].includes(code)) return "americas";
+      if (["EU", "GB", "DE", "FR", "CH"].includes(code)) return "europe";
+      if (["JP", "CN", "KR", "AU"].includes(code)) return "asia-pacific";
+      return "other";
+    }
+
     function score(event: ApiEvent): number {
       const impact = impactScores[String(event.importance ?? "").toLowerCase()] ?? 0;
       const exact = event.timeMode === "exact" ? 2 : 0;
@@ -255,17 +296,88 @@ function nationalWhen(event: (typeof nationalEvents)[number]) {
       return impact + exact + major;
     }
 
-    function choose(events: ApiEvent[], limit = MAX_ITEMS): ApiEvent[] {
-      return [...events]
-        .sort(
-          (a, b) =>
-            score(b) - score(a) ||
-            new Date(a.time).getTime() - new Date(b.time).getTime(),
-        )
-        .slice(0, limit)
+    function byPriority(events: ApiEvent[]): ApiEvent[] {
+      return [...events].sort(
+        (a, b) =>
+          score(b) - score(a) ||
+          new Date(a.time).getTime() - new Date(b.time).getTime(),
+      );
+    }
+
+    function chooseInternational(events: ApiEvent[]): ApiEvent[] {
+      const candidates = byPriority(
+        dedupe(events).filter((event) => event.type !== "holiday"),
+      );
+      const selected: ApiEvent[] = [];
+      const selectedKeys = new Set<string>();
+      const countryCounts = new Map<string, number>();
+
+      for (const region of ["americas", "europe", "asia-pacific"] as Region[]) {
+        const event = candidates.find(
+          (candidate) =>
+            regionFor(candidate.countryCode) === region &&
+            !selectedKeys.has(eventKey(candidate)),
+        );
+        if (!event) continue;
+        selected.push(event);
+        selectedKeys.add(eventKey(event));
+        const code = event.countryCode ?? "";
+        countryCounts.set(code, (countryCounts.get(code) ?? 0) + 1);
+      }
+
+      for (const event of candidates) {
+        if (selected.length >= MAX_ITEMS) break;
+        const key = eventKey(event);
+        if (selectedKeys.has(key)) continue;
+        const code = event.countryCode ?? "";
+        const cap = code === "US" ? 3 : 2;
+        if ((countryCounts.get(code) ?? 0) >= cap) continue;
+        selected.push(event);
+        selectedKeys.add(key);
+        countryCounts.set(code, (countryCounts.get(code) ?? 0) + 1);
+      }
+
+      return selected.sort(
+        (a, b) => new Date(a.time).getTime() - new Date(b.time).getTime(),
+      );
+    }
+
+    function chooseMarkets(events: ApiEvent[], blockedKeys: Set<string>): ApiEvent[] {
+      const marketOnly = dedupe(events).filter((event) => {
+        if (blockedKeys.has(eventKey(event))) return false;
+        const type = String(event.type ?? "").toLowerCase();
+        const sector = String(event.sector ?? "").toLowerCase();
+        return type === "event" || type === "holiday" || marketSectors.has(sector);
+      });
+
+      return byPriority(marketOnly)
+        .slice(0, MAX_ITEMS)
         .sort(
           (a, b) => new Date(a.time).getTime() - new Date(b.time).getTime(),
         );
+    }
+
+    function displayName(event: ApiEvent): string {
+      const raw = event.name ?? "Evento económico";
+      const exact: Record<string, string> = {
+        "gdp m/m": "PIB mensual",
+        "gdp y/y": "PIB anual",
+        "cpi m/m": "IPC mensual",
+        "cpi y/y": "IPC anual",
+        "core cpi m/m": "IPC subyacente mensual",
+        "core cpi y/y": "IPC subyacente anual",
+        "ecb president lagarde speech": "Discurso de Christine Lagarde — BCE",
+      };
+      const normalized = normalizeName(raw).replaceAll(" ", " ");
+      const direct = exact[raw.toLowerCase()];
+      if (direct) return direct;
+      if (normalized === "gdp m m") return "PIB mensual";
+      if (normalized === "gdp y y") return "PIB anual";
+      if (normalized === "cpi m m") return "IPC mensual";
+      if (normalized === "cpi y y") return "IPC anual";
+      if (normalized === "core cpi m m") return "IPC subyacente mensual";
+      if (normalized === "core cpi y y") return "IPC subyacente anual";
+      return raw;
     }
 
     function escapeHtml(value: unknown): string {
@@ -291,7 +403,7 @@ function nationalWhen(event: (typeof nationalEvents)[number]) {
         <article class="event-row">
           <time datetime="${escapeHtml(event.time)}">${escapeHtml(when)}</time>
           <div class="event-copy">
-            <h3>${escapeHtml(event.name ?? "Evento económico")}</h3>
+            <h3>${escapeHtml(displayName(event))}</h3>
             <p>${sourceLabel(event)}</p>
           </div>
         </article>`;
@@ -358,54 +470,35 @@ function nationalWhen(event: (typeof nationalEvents)[number]) {
             from,
             to: tomorrow,
             countries: "US,EU,GB,JP,CN,CA,AU",
-            importance: "high",
-            limit: 300,
+            importance: "medium",
+            limit: 500,
           }),
         ]);
 
         const internationalToday = internationalRaw.filter(
           (event) => localDateKey(new Date(event.time)) === todayKey,
         );
-        const international = choose(internationalToday);
-        const internationalIds = new Set(international.map((event) => event.id));
+        const marketToday = marketRaw.filter(
+          (event) => localDateKey(new Date(event.time)) === todayKey,
+        );
 
-        const marketCandidates = marketRaw.filter((event) => {
-          const isToday = localDateKey(new Date(event.time)) === todayKey;
-          const sector = String(event.sector ?? "").toLowerCase();
-          const marketSpecific =
-            event.type === "event" ||
-            event.type === "holiday" ||
-            marketSectors.has(sector);
-          return isToday && !internationalIds.has(event.id) && marketSpecific;
-        });
-
-        let markets = choose(marketCandidates);
-        if (markets.length < MAX_ITEMS) {
-          const used = new Set([
-            ...internationalIds,
-            ...markets.map((event) => event.id),
-          ]);
-          const fallback = marketRaw.filter(
-            (event) =>
-              localDateKey(new Date(event.time)) === todayKey &&
-              !used.has(event.id),
-          );
-          markets = [
-            ...markets,
-            ...choose(fallback, MAX_ITEMS - markets.length),
-          ].slice(0, MAX_ITEMS);
-        }
+        const international = chooseInternational(internationalToday);
+        const internationalKeys = new Set(
+          international.map((event) => eventKey(event)),
+        );
+        const markets = chooseMarkets(marketToday, internationalKeys);
 
         render(element("#international-list"), international, {
           empty:
             "Sin publicaciones internacionales relevantes recuperadas para hoy.",
         });
         render(element("#markets-list"), markets, {
-          empty: "Sin hitos de mercado recuperados para hoy.",
+          empty:
+            "Sin hitos específicamente financieros recuperados para hoy. No se rellena con datos macro repetidos.",
         });
 
         element("#api-status").innerHTML =
-          '<span class="status-dot" aria-hidden="true"></span> Internacional en vivo · Chile desde fuentes oficiales';
+          '<span class="status-dot" aria-hidden="true"></span> Internacional deduplicado · Mercados filtrado · Chile oficial';
         element("#updated-at").textContent = `Última consulta: ${new Intl.DateTimeFormat(
           "es-CL",
           {
@@ -430,7 +523,7 @@ function nationalWhen(event: (typeof nationalEvents)[number]) {
 
 <style>
   .calendar-lab {
-    padding-top: 1rem;
+    padding-top: 0.7rem;
   }
 
   .lab-bar,
@@ -438,17 +531,17 @@ function nationalWhen(event: (typeof nationalEvents)[number]) {
   .calendar-source {
     display: flex;
     justify-content: space-between;
-    gap: 1rem;
+    gap: 0.75rem;
   }
 
   .lab-bar {
     align-items: center;
-    padding: 0.7rem 0;
+    padding: 0.55rem 0;
     border-top: 1px solid var(--rule);
     border-bottom: 1px solid var(--rule);
     color: var(--accent);
-    font: 800 0.72rem/1.2 var(--sans);
-    letter-spacing: 0.12em;
+    font: 800 0.64rem/1.2 var(--sans);
+    letter-spacing: 0.1em;
     text-transform: uppercase;
   }
 
@@ -459,93 +552,93 @@ function nationalWhen(event: (typeof nationalEvents)[number]) {
 
   .lab-bar a,
   .event-copy a {
-    text-underline-offset: 0.18em;
+    text-underline-offset: 0.15em;
   }
 
   .calendar-heading {
-    padding: clamp(2rem, 4vw, 3.75rem) 0 2rem;
+    padding: clamp(1.45rem, 3vw, 2.6rem) 0 1.35rem;
     border-bottom: 3px double var(--rule);
   }
 
   .calendar-heading h1 {
-    margin: 0.35rem 0 0;
-    font-size: clamp(3.2rem, 9vw, 8rem);
-    line-height: 0.87;
-    letter-spacing: -0.06em;
+    margin: 0.25rem 0 0;
+    font-size: clamp(2.8rem, 7.5vw, 6rem);
+    line-height: 0.9;
+    letter-spacing: -0.055em;
   }
 
   .calendar-date {
-    margin: 1rem 0 0;
+    margin: 0.75rem 0 0;
     color: var(--ink-soft);
-    font-size: clamp(1.05rem, 2vw, 1.3rem);
+    font-size: clamp(0.92rem, 1.6vw, 1.05rem);
     text-transform: capitalize;
   }
 
   .calendar-intro {
-    max-width: 50rem;
-    margin: 0.6rem 0 0;
+    max-width: 48rem;
+    margin: 0.45rem 0 0;
     color: var(--ink-soft);
-    font-size: 0.98rem;
-    line-height: 1.45;
+    font-size: 0.84rem;
+    line-height: 1.4;
   }
 
   .api-status {
-    min-height: 2.65rem;
-    padding: 0.65rem 0;
+    min-height: 2.15rem;
+    padding: 0.5rem 0;
     border-bottom: 1px solid var(--rule);
     color: var(--ink-soft);
-    font: 700 0.68rem/1.2 var(--sans);
-    letter-spacing: 0.06em;
+    font: 700 0.6rem/1.2 var(--sans);
+    letter-spacing: 0.055em;
     text-transform: uppercase;
   }
 
   :global(.status-dot) {
     display: inline-block;
-    width: 0.48rem;
-    height: 0.48rem;
-    margin-right: 0.45rem;
+    width: 0.4rem;
+    height: 0.4rem;
+    margin-right: 0.38rem;
     border-radius: 50%;
     background: var(--accent);
   }
 
   .calendar-section {
-    margin-top: 2rem;
+    margin-top: 1.35rem;
     border-bottom: 3px double var(--rule);
   }
 
   .section-heading {
     align-items: baseline;
-    padding-bottom: 0.55rem;
+    padding-bottom: 0.4rem;
     border-bottom: 1px solid var(--rule);
   }
 
   .section-heading h2 {
     margin: 0;
     color: var(--accent);
-    font: 800 clamp(1.15rem, 2.8vw, 1.55rem)/1 var(--sans);
-    letter-spacing: 0.18em;
+    font: 800 clamp(0.95rem, 1.8vw, 1.15rem)/1 var(--sans);
+    letter-spacing: 0.16em;
     text-transform: uppercase;
   }
 
   .section-heading span {
     color: var(--ink-soft);
-    font: 700 0.65rem/1.2 var(--sans);
-    letter-spacing: 0.08em;
+    font: 700 0.58rem/1.2 var(--sans);
+    letter-spacing: 0.07em;
     text-transform: uppercase;
   }
 
   .event-list {
-    min-height: 5rem;
+    min-height: 3.5rem;
   }
 
   :global(.event-row),
   :global(.event-empty) {
     display: grid;
-    grid-template-columns: minmax(5.5rem, 0.7fr) minmax(0, 5fr);
-    gap: 1rem;
+    grid-template-columns: minmax(4.5rem, 0.52fr) minmax(0, 5.5fr);
+    gap: 0.7rem;
     align-items: center;
-    padding: 0.85rem 0;
-    border-bottom: 1px solid rgb(35 35 29 / 55%);
+    padding: 0.55rem 0;
+    border-bottom: 1px solid rgb(35 35 29 / 48%);
   }
 
   :global(.event-row:last-child),
@@ -554,72 +647,79 @@ function nationalWhen(event: (typeof nationalEvents)[number]) {
   }
 
   :global(.event-row > time) {
-    font: 700 clamp(1.15rem, 2.5vw, 1.55rem)/1 var(--serif);
+    font: 700 clamp(0.92rem, 1.6vw, 1.08rem)/1 var(--serif);
     font-variant-numeric: tabular-nums;
   }
 
   :global(.event-copy) {
     display: grid;
-    grid-template-columns: minmax(0, 1fr) minmax(7rem, 0.35fr);
-    gap: 1rem;
+    grid-template-columns: minmax(0, 1fr) minmax(5.5rem, 0.24fr);
+    gap: 0.7rem;
     align-items: baseline;
   }
 
   :global(.event-copy h3) {
     margin: 0;
-    font: 700 clamp(1.05rem, 2.3vw, 1.45rem)/1.12 var(--serif);
+    font: 700 clamp(0.9rem, 1.5vw, 1.06rem)/1.1 var(--serif);
   }
 
   :global(.event-copy p) {
     margin: 0;
     color: var(--ink-soft);
-    font: 0.8rem/1.25 var(--serif);
+    font: 0.66rem/1.2 var(--serif);
   }
 
   :global(.event-empty strong) {
-    font-size: 1.4rem;
+    font-size: 1rem;
   }
 
   :global(.event-empty p) {
     margin: 0;
     color: var(--ink-soft);
+    font-size: 0.74rem;
     font-style: italic;
   }
 
   .calendar-source {
-    padding-top: 1rem;
+    padding-top: 0.75rem;
     color: var(--ink-soft);
-    font: 0.65rem/1.4 var(--sans);
-    letter-spacing: 0.04em;
+    font: 0.56rem/1.35 var(--sans);
+    letter-spacing: 0.035em;
     text-transform: uppercase;
   }
 
   @media (max-width: 42rem) {
     .calendar-lab {
-      padding-top: 0.7rem;
+      padding-top: 0.45rem;
     }
 
     .calendar-heading {
-      padding-top: 1.6rem;
+      padding-top: 1.15rem;
+      padding-bottom: 1rem;
     }
 
     .calendar-heading h1 {
-      font-size: clamp(3rem, 15vw, 5rem);
+      font-size: clamp(2.65rem, 12.8vw, 4.2rem);
     }
 
     .calendar-intro {
-      font-size: 0.88rem;
+      font-size: 0.76rem;
+      line-height: 1.35;
+    }
+
+    .calendar-section {
+      margin-top: 1.05rem;
     }
 
     :global(.event-row),
     :global(.event-empty) {
-      grid-template-columns: 4.6rem minmax(0, 1fr);
-      gap: 0.65rem;
-      padding: 0.75rem 0;
+      grid-template-columns: 3.9rem minmax(0, 1fr);
+      gap: 0.5rem;
+      padding: 0.5rem 0;
     }
 
     :global(.event-row > time) {
-      font-size: 1rem;
+      font-size: 0.86rem;
     }
 
     :global(.event-copy) {
@@ -627,21 +727,26 @@ function nationalWhen(event: (typeof nationalEvents)[number]) {
     }
 
     :global(.event-copy h3) {
-      font-size: 1.08rem;
-      line-height: 1.08;
+      font-size: 0.94rem;
+      line-height: 1.06;
     }
 
     :global(.event-copy p) {
-      margin-top: 0.25rem;
-      font-size: 0.72rem;
+      margin-top: 0.16rem;
+      font-size: 0.62rem;
+    }
+
+    .section-heading h2 {
+      font-size: 0.96rem;
     }
 
     .calendar-source {
       display: block;
+      font-size: 0.54rem;
     }
 
     .calendar-source p + p {
-      margin-top: 0.5rem;
+      margin-top: 0.35rem;
     }
   }
 </style>
