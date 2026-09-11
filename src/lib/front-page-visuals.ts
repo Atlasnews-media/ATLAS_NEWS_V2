@@ -198,8 +198,7 @@ export function resolveFrontPageVisual({
   const candidates = scored
     .filter(({ score }) => score === bestScore)
     .map(({ visual }) => visual);
-  const selected =
-    candidates[stableHash(id) % candidates.length] ?? pool[0];
+  const selected = candidates[stableHash(id) % candidates.length] ?? pool[0];
 
   return stripKeywords(selected);
 }
