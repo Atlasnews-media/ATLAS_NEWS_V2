@@ -3,6 +3,7 @@ import ContentCard from "../components/ContentCard.astro";
 import DailyAudio from "../components/DailyAudio.astro";
 import EconomicIndicators from "../components/EconomicIndicators.astro";
 import EditorialDoubleRule from "../components/EditorialDoubleRule.astro";
+import FrontPageHeadline from "../components/FrontPageHeadline.astro";
 import MarketPulse from "../components/MarketPulse.astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
 import {
@@ -15,6 +16,7 @@ import {
   getPublishedEditions,
   getPublishedReadings,
 } from "../lib/content";
+import { resolveFrontPageVisual } from "../lib/front-page-visuals";
 
 const [latestDaily, editions, latestNational, latestMarkets, readings] =
   await Promise.all([
@@ -30,13 +32,43 @@ const currentIssueNumber = latestDaily
 const latestReading = readings[0];
 const latestWeekly = editions.find(({ data }) => data.type === "weekly");
 const hasAnalysisContent = Boolean(latestNational || latestMarkets);
+
+const dailyVisual = latestDaily
+  ? resolveFrontPageVisual({
+      section: "international",
+      id: latestDaily.id,
+      title: latestDaily.data.title,
+      tags: latestDaily.data.tags,
+      editorialVisual: latestDaily.data.editorialVisual,
+    })
+  : undefined;
+
+const nationalVisual = latestNational
+  ? resolveFrontPageVisual({
+      section: "national",
+      id: latestNational.id,
+      title: latestNational.data.title,
+      tags: latestNational.data.tags,
+      editorialVisual: latestNational.data.editorialVisual,
+    })
+  : undefined;
+
+const marketsVisual = latestMarkets
+  ? resolveFrontPageVisual({
+      section: "markets",
+      id: latestMarkets.id,
+      title: latestMarkets.data.title,
+      tags: latestMarkets.data.tags,
+      editorialVisual: latestMarkets.data.editorialVisual,
+    })
+  : undefined;
 ---
 
 <BaseLayout
   title="ATLAS NEWS — Portada"
   description="ATLAS NEWS — Inteligencia financiera, contexto y criterio editorial. Portada general con titulares de Internacional, Nacional y Mercados."
 >
-  <main class="front-page">
+  <main class="front-page front-page--v2">
     <div class="issue-line">
       <p>Portada</p>
       <p>
@@ -63,36 +95,49 @@ const hasAnalysisContent = Boolean(latestNational || latestMarkets);
               </h1>
 
               <div class="headline-list">
-                <section class="headline-item">
-                  <p class="headline-label">Internacional</p>
-                  <h2>
-                    <a href={`/ediciones/${latestDaily.id}/`}>
-                      {latestDaily.data.title}
-                    </a>
-                  </h2>
-                </section>
+                <FrontPageHeadline
+                  label="Internacional"
+                  title={latestDaily.data.title}
+                  href={`/ediciones/${latestDaily.id}/`}
+                  cta="Ir a Internacional"
+                  visual={dailyVisual}
+                  eager
+                />
 
                 {latestNational && (
-                  <section class="headline-item">
-                    <p class="headline-label">Nacional</p>
-                    <h2>
-                      <a href={`/nacional/${latestNational.id}/`}>
-                        {latestNational.data.title}
-                      </a>
-                    </h2>
-                  </section>
+                  <FrontPageHeadline
+                    label="Nacional"
+                    title={latestNational.data.title}
+                    href={`/nacional/${latestNational.id}/`}
+                    cta="Ir a Nacional"
+                    visual={nationalVisual}
+                  />
                 )}
 
                 {latestMarkets && (
-                  <section class="headline-item">
-                    <p class="headline-label">Mercados</p>
-                    <h2>
-                      <a href={`/mercados/${latestMarkets.id}/`}>
-                        {latestMarkets.data.title}
-                      </a>
-                    </h2>
-                  </section>
+                  <FrontPageHeadline
+                    label="Mercados"
+                    title={latestMarkets.data.title}
+                    href={`/mercados/${latestMarkets.id}/`}
+                    cta="Ir a Mercados"
+                    visual={marketsVisual}
+                  />
                 )}
+              </div>
+
+              <div
+                class="calendar-entry"
+                aria-label="Ir a calendario económico de hoy, próximamente"
+              >
+                <span
+                  class="calendar-link"
+                  role="link"
+                  aria-disabled="true"
+                  tabindex="-1"
+                >
+                  Ir a calendario económico de hoy
+                  <span aria-hidden="true">→</span>
+                </span>
               </div>
             </article>
 
@@ -255,45 +300,30 @@ const hasAnalysisContent = Boolean(latestNational || latestMarkets);
   }
   .kicker,
   .rail-title,
-  .headline-board-title,
-  .headline-label {
+  .headline-board-title {
     margin: 0;
     color: var(--accent);
     font: 800 0.72rem/1.2 var(--sans);
     letter-spacing: 0.16em;
     text-transform: uppercase;
   }
-  .headline-board-title {
-    color: var(--accent);
-  }
   .headline-list {
     margin-top: 0.8rem;
   }
-  .headline-item {
-    padding: 1.05rem 0 1.2rem;
-    border-top: 1px solid var(--rule);
+  .calendar-entry {
+    margin-top: 0.2rem;
+    padding: 1rem 0 0.2rem;
+    border-top: 4px double var(--rule);
   }
-  .headline-item:first-child {
-    border-top: 0;
-  }
-  .headline-label {
-    margin-bottom: 0.35rem;
-    color: var(--ink-soft);
-    letter-spacing: 0.11em;
-  }
-  .headline-item h2 {
-    max-width: 64rem;
-    margin: 0;
-    font-size: clamp(1.7rem, 2.25vw, 2.45rem);
-    line-height: 0.98;
-    letter-spacing: -0.035em;
-    text-wrap: balance;
-  }
-  .headline-item h2 a {
-    text-decoration: none;
-  }
-  .headline-item h2 a:hover {
+  .calendar-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
     color: var(--accent);
+    font: 800 0.68rem/1.2 var(--sans);
+    letter-spacing: 0.08em;
+    text-decoration: none;
+    text-transform: uppercase;
   }
   .edition-rail {
     padding: clamp(2rem, 5vw, 4.5rem) 0 3rem clamp(1.25rem, 3vw, 2.25rem);
@@ -394,6 +424,38 @@ const hasAnalysisContent = Boolean(latestNational || latestMarkets);
     text-transform: uppercase;
   }
 
+  :global(.site-header nav) {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 0;
+    justify-content: stretch;
+    padding: 0;
+    border-top: 1px solid var(--rule);
+    border-bottom: 4px double var(--rule);
+  }
+  :global(.site-header nav a) {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 0;
+    min-height: 3.3rem;
+    padding: 0.8rem 0.55rem;
+    border-left: 1px solid rgba(31, 29, 23, 0.16);
+    text-align: center;
+    white-space: nowrap;
+    transition: background-color 140ms ease;
+  }
+  :global(.site-header nav a:first-child) {
+    border-left: 0;
+    background: rgba(31, 29, 23, 0.045);
+  }
+  :global(.site-header nav a + a::before) {
+    content: none;
+  }
+  :global(.site-header nav a:hover) {
+    background: rgba(31, 29, 23, 0.035);
+  }
+
   @media (min-width: 42.01rem) and (max-width: 58rem) {
     .lead-grid {
       grid-template-columns: 1fr;
@@ -401,9 +463,6 @@ const hasAnalysisContent = Boolean(latestNational || latestMarkets);
     .lead-story {
       padding-right: 0;
       border-right: 0;
-    }
-    .headline-item h2 {
-      font-size: clamp(1.75rem, 4.2vw, 2.25rem);
     }
     .edition-rail {
       padding-left: 0;
@@ -415,10 +474,22 @@ const hasAnalysisContent = Boolean(latestNational || latestMarkets);
       width: min(100% - 1.25rem, 88rem);
     }
     .issue-line {
-      grid-template-columns: 1fr auto;
-    }
-    .issue-line p:last-child {
       display: none;
+    }
+    :global(.site-header nav) {
+      height: auto;
+      min-height: 0;
+      align-items: stretch;
+      gap: 0;
+      font-size: 0.46rem;
+      line-height: 1;
+    }
+    :global(.site-header nav a) {
+      box-sizing: border-box;
+      height: auto;
+      min-height: 1.62rem;
+      padding: 0.18rem 0.04rem;
+      align-self: stretch;
     }
     :global(.editorial-double-rule) + .lead-grid {
       margin-top: 16px;
@@ -432,23 +503,38 @@ const hasAnalysisContent = Boolean(latestNational || latestMarkets);
     .lead-story {
       padding-top: 0;
       padding-right: 0;
+      padding-bottom: 0.95rem;
       border-right: 0;
     }
     .headline-board-title {
       margin-top: 0;
       margin-bottom: 0;
     }
-    .headline-item {
-      padding: 0.9rem 0 1rem;
+    .headline-list {
+      margin-top: 0.75rem;
     }
-    .headline-item h2 {
-      font-size: clamp(1.55rem, 6.6vw, 2rem);
-      line-height: 1;
-      letter-spacing: -0.03em;
+    .calendar-entry {
+      margin-top: 0;
+      padding: 0.9rem 0 0.4rem;
+    }
+    .calendar-link {
+      width: 100%;
+      justify-content: space-between;
+      gap: 0.75rem;
+      font-size: clamp(0.82rem, 3.25vw, 0.94rem);
+      line-height: 1.1;
+      letter-spacing: 0.055em;
     }
     .edition-rail {
+      padding-top: 1.05rem;
       padding-left: 0;
       border-top: 0;
+    }
+    .rail-title {
+      color: var(--ink);
+      font: 700 clamp(1.38rem, 5.8vw, 1.78rem) / 0.98 var(--serif);
+      letter-spacing: -0.025em;
+      text-transform: none;
     }
     .columns,
     .closing-grid {
