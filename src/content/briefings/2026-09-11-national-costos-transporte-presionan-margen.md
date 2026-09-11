@@ -22,6 +22,13 @@ highlights:
   - label: "Transmisión"
     text: "La primera tensión aparece en costos y márgenes; aún no prueba una nueva trayectoria persistente del IPC."
 demo: false
+editorialVisual:
+  src: "https://commons.wikimedia.org/wiki/Special:FilePath/CL-san-antonio-hafen.jpg?width=1280"
+  alt: "Vista del puerto de San Antonio en Chile, con infraestructura portuaria y movimiento de carga."
+  source: "Wikimedia Commons"
+  sourceUrl: "https://commons.wikimedia.org/wiki/File:CL-san-antonio-hafen.jpg"
+  author: "Balou46"
+  license: "CC BY-SA 4.0"
 ---
 
 ## Desarrollo
