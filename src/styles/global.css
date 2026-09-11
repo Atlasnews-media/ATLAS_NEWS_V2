@@ -47,7 +47,7 @@ body::before {
   pointer-events: none;
   content: "";
   opacity: 0.18;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.14'/%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter id='n'%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.14'/%3E%3C/svg%3E");
   mix-blend-mode: multiply;
 }
 
@@ -150,6 +150,35 @@ a:focus-visible {
   }
   .front-page .headline-item:nth-child(3) h2 a::after {
     content: "Ir a Mercados →";
+  }
+
+  /* LAB Portada V2: BaseLayout se inyecta después del CSS de la página.
+     Este scope único recupera la navegación editorial compacta sin tocar producción. */
+  body:has(.calendar-entry) .site-header nav {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    align-items: stretch;
+    justify-content: stretch;
+    gap: 0;
+    height: auto;
+    min-height: 0;
+    padding: 0;
+    font-size: 0.46rem;
+    line-height: 1;
+  }
+  body:has(.calendar-entry) .site-header nav a {
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    align-self: stretch;
+    min-width: 0;
+    height: auto;
+    min-height: 1.62rem;
+    padding: 0.18rem 0.04rem;
+  }
+  body:has(.calendar-entry) .site-header nav a + a::before {
+    content: none;
   }
 }
 
