@@ -189,7 +189,8 @@ export function resolveFrontPageVisual({
   const scored = pool.map((visual) => ({
     visual,
     score: visual.keywords.reduce(
-      (total, keyword) => total + (haystack.includes(normalize(keyword)) ? 1 : 0),
+      (total, keyword) =>
+        total + (haystack.includes(normalize(keyword)) ? 1 : 0),
       0,
     ),
   }));
@@ -197,7 +198,8 @@ export function resolveFrontPageVisual({
   const candidates = scored
     .filter(({ score }) => score === bestScore)
     .map(({ visual }) => visual);
-  const selected = candidates[stableHash(id) % candidates.length] ?? pool[0];
+  const selected =
+    candidates[stableHash(id) % candidates.length] ?? pool[0];
 
   return stripKeywords(selected);
 }
