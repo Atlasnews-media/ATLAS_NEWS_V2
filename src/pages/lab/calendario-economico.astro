@@ -43,8 +43,7 @@ function nationalWhen(event: (typeof nationalEvents)[number]) {
   description="LAB aislado de ATLAS NEWS para probar un calendario económico diario alimentado por fuentes automáticas y oficiales."
 >
   <main class="calendar-lab page-shell">
-    <div class="lab-bar">
-      <p>LAB · CALENDARIO ECONÓMICO</p>
+    <div class="lab-bar lab-bar--single">
       <a href="/">Volver a portada</a>
     </div>
 
@@ -536,7 +535,7 @@ function nationalWhen(event: (typeof nationalEvents)[number]) {
 
   .lab-bar {
     align-items: center;
-    padding: 0.55rem 0;
+    padding: 0.48rem 0;
     border-top: 1px solid var(--rule);
     border-bottom: 1px solid var(--rule);
     color: var(--accent);
@@ -545,7 +544,10 @@ function nationalWhen(event: (typeof nationalEvents)[number]) {
     text-transform: uppercase;
   }
 
-  .lab-bar p,
+  .lab-bar--single {
+    justify-content: flex-end;
+  }
+
   .calendar-source p {
     margin: 0;
   }
@@ -556,19 +558,19 @@ function nationalWhen(event: (typeof nationalEvents)[number]) {
   }
 
   .calendar-heading {
-    padding: clamp(1.45rem, 3vw, 2.6rem) 0 1.35rem;
+    padding: clamp(1.2rem, 2.5vw, 2rem) 0 1.2rem;
     border-bottom: 3px double var(--rule);
   }
 
   .calendar-heading h1 {
-    margin: 0.25rem 0 0;
-    font-size: clamp(2.8rem, 7.5vw, 6rem);
-    line-height: 0.9;
-    letter-spacing: -0.055em;
+    margin: 0.22rem 0 0;
+    font-size: clamp(2.55rem, 5.8vw, 4.8rem);
+    line-height: 0.92;
+    letter-spacing: -0.05em;
   }
 
   .calendar-date {
-    margin: 0.75rem 0 0;
+    margin: 0.72rem 0 0;
     color: var(--ink-soft);
     font-size: clamp(0.92rem, 1.6vw, 1.05rem);
     text-transform: capitalize;
@@ -694,12 +696,13 @@ function nationalWhen(event: (typeof nationalEvents)[number]) {
     }
 
     .calendar-heading {
-      padding-top: 1.15rem;
-      padding-bottom: 1rem;
+      padding-top: 1rem;
+      padding-bottom: 0.95rem;
     }
 
     .calendar-heading h1 {
-      font-size: clamp(2.65rem, 12.8vw, 4.2rem);
+      font-size: clamp(2.25rem, 9.6vw, 3.45rem);
+      line-height: 0.94;
     }
 
     .calendar-intro {
