@@ -33,7 +33,7 @@ Para formular el titular de una edición General, responder: **¿Cuál es la pri
 
 ## Preparación de archivos
 
-1. Escribir el titular, resumen y cuerpo completo; en ediciones, incorporar además los tres destacados requeridos.
+1. Escribir el titular, resumen y cuerpo completo; en ediciones General diarias, incorporar además entre cuatro y seis destacados para la portada, variando la cantidad según la densidad real de la edición.
 2. Incorporar fecha de publicación y hora de corte con zona horaria de Santiago cuando corresponda.
 3. Declarar las fuentes públicas verificables en el frontmatter correspondiente.
 4. Cuando existan entre tres y seis cifras de mercado verificadas dentro del cuerpo de una edición General, resumirlas también en el campo opcional `marketSummary`. Cada cifra debe conservar nombre, valor, variación cuando corresponda, categoría y la misma fecha de corte.
@@ -48,6 +48,8 @@ Para formular el titular de una edición General, responder: **¿Cuál es la pri
 6. En Nacional y Mercados, desarrollar análisis propio de la vertical y evitar clonar párrafos de la edición General.
 7. Crear inicialmente todo contenido automatizado con `status: draft`.
 8. No agregar una sección duplicada de fuentes cuando el sitio ya la construye desde el frontmatter.
+
+Los `highlights` de la General diaria se generan a partir de la misma investigación verificada y del mismo cuerpo editorial. No abren una segunda búsqueda ni introducen hechos nuevos. Deben priorizar las señales que más valor entregan al lector, evitar relleno y variar tanto su selección como su cantidad entre cuatro y seis según la edición; no deben repetir por rutina una secuencia fija de categorías.
 
 Cuando un mercado esté cerrado, utilizar el último cierre disponible con su fecha correspondiente y no presentarlo como una cotización del día.
 

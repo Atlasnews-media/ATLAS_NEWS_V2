@@ -330,13 +330,15 @@ async function main() {
 
   const sourceHighlights = highlights(frontmatterLines);
   if (
-    sourceHighlights.length !== 3 ||
+    sourceHighlights.length < 3 ||
+    sourceHighlights.length > 6 ||
     sourceHighlights.some((item) => !item.label || !item.text)
   ) {
     throw new Error(
-      "Fail-closed: automatic social contract requires exactly 3 published highlights",
+      "Fail-closed: automatic social contract requires between 3 and 6 published highlights",
     );
   }
+  const socialHighlights = sourceHighlights.slice(0, 3);
 
   const summarySentences = sentences(summary);
   const centralSectionSentences = sentences(
@@ -359,7 +361,7 @@ async function main() {
     );
   }
 
-  const fallbackDek = sourceHighlights.map((item) => item.label).join(" · ");
+  const fallbackDek = socialHighlights.map((item) => item.label).join(" · ");
   const headline = headlineParts(rawTitle, fallbackDek);
   const canonicalUrl = `https://eldesiempre100.github.io/ediciones/${editionId}/`;
   await assertPublic(`${canonicalUrl}?source=${SOURCE_COMMIT}`);
@@ -376,7 +378,7 @@ async function main() {
     dek: headline.dek,
     ideaCentral,
     ideaSupport,
-    keyPoints: sourceHighlights.map((item, index) => ({
+    keyPoints: socialHighlights.map((item, index) => ({
       iconKey: KEY_ICONS[index],
       text: item.text,
     })),

@@ -52,7 +52,7 @@ const editionSchema = z
     sources: z.array(sourceSchema).min(1),
     featured: z.boolean().default(false),
     demo: z.boolean().default(false),
-    highlights: z.array(highlightSchema).length(3).optional(),
+    highlights: z.array(highlightSchema).min(3).max(6).optional(),
     marketSummary: marketSummarySchema.optional(),
     editorialVisual: editorialVisualSchema.optional(),
   })

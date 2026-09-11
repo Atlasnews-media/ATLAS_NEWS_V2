@@ -16,7 +16,9 @@ Una edición diaria o semanal debe incluir los siguientes metadatos:
 | `sources`       | Al menos una fuente con nombre y URL válida  |
 | `featured`      | Indicador booleano; por defecto `false`      |
 | `editionNumber` | Entero positivo opcional                     |
-| `highlights`    | Tres claves breves para la portada           |
+| `highlights`    | Entre 3 y 6 claves breves para la portada    |
+
+En nuevas ediciones General diarias, `highlights` debe contener entre cuatro y seis claves según la densidad informativa real. La cantidad no es fija y no debe completarse con relleno. Cada clave debe derivar de la misma investigación verificada y del mismo cuerpo editorial de la edición. Las ediciones históricas y otros tipos de edición pueden conservar tres claves sin migración retroactiva.
 
 El cuerpo debe respetar este orden editorial:
 
