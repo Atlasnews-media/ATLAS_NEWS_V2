@@ -32,11 +32,17 @@ function cleanText(html) {
     .replace(/<[^>]+>/g, " ")
     .replace(/&nbsp;/gi, " ")
     .replace(/&amp;/gi, "&")
+    .replace(/&#225;|&aacute;/gi, "á")
+    .replace(/&#233;|&eacute;/gi, "é")
+    .replace(/&#237;|&iacute;/gi, "í")
+    .replace(/&#243;|&oacute;/gi, "ó")
+    .replace(/&#250;|&uacute;/gi, "ú")
+    .replace(/&#241;|&ntilde;/gi, "ñ")
     .replace(/\s+/g, " ")
     .trim();
 }
 
-function excerpt(text, needle, radius = 180) {
+function excerpt(text, needle, radius = 500) {
   const index = text
     .toLocaleLowerCase("es-CL")
     .indexOf(needle.toLocaleLowerCase("es-CL"));
@@ -45,6 +51,13 @@ function excerpt(text, needle, radius = 180) {
     Math.max(0, index - radius),
     index + needle.length + radius,
   );
+}
+
+function interestingLinks(html) {
+  return [...html.matchAll(/href=["']([^"']+)["']/gi)]
+    .map((match) => match[1])
+    .filter((href) => /agenda|estad|2026|\.pdf|\.xlsx|\.csv/i.test(href))
+    .slice(0, 30);
 }
 
 const now = new Date();
@@ -108,14 +121,18 @@ const payload = {
       error: ineResult.error,
       bytes: ineResult.body.length,
       foundAgenda2026: ineText.includes("Agenda Estadística 2026"),
-      sample: excerpt(ineText, "Índices de Inventarios"),
+      agendaExcerpt: excerpt(ineText, "Agenda Estadística 2026", 1400),
+      septemberExcerpt: excerpt(ineText, "septiembre", 1400),
+      interestingLinks: interestingLinks(ineResult.body),
     },
     bancoCentral: {
       status: bcchResult.status,
       error: bcchResult.error,
       bytes: bcchResult.body.length,
       foundCalendar: bcchText.includes("Calendario Estadístico"),
+      septemberExcerpt: excerpt(bcchText, "Septiembre", 2600),
       sample: excerpt(bcchText, "Encuesta de Expectativas Económicas"),
+      interestingLinks: interestingLinks(bcchResult.body),
     },
   },
 };
