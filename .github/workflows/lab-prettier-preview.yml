@@ -7,19 +7,29 @@ on:
       - ".github/workflows/lab-prettier-preview.yml"
 
 permissions:
-  contents: read
+  contents: write
 
 jobs:
   format-preview:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v5
+        with:
+          ref: lab/portada-mobile-v2-preview
       - uses: actions/setup-node@v6
         with:
           node-version: 22
           cache: npm
       - run: npm ci
-      - name: Format preview locally
+      - name: Format preview
         run: npx prettier --write src/pages/lab/portada-v2.astro
-      - name: Emit formatted preview as base64
-        run: base64 -w 0 src/pages/lab/portada-v2.astro
+      - name: Commit formatted preview
+        run: |
+          if git diff --quiet -- src/pages/lab/portada-v2.astro; then
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add src/pages/lab/portada-v2.astro
+          git commit -m "LAB: format portada V2 preview"
+          git push origin HEAD:lab/portada-mobile-v2-preview
