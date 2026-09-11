@@ -188,7 +188,11 @@ async function yahooQuote(symbol) {
 
 function parseChileanNumber(value) {
   if (typeof value !== "string") return null;
-  const normalized = value.trim().replaceAll("$", "").replaceAll(".", "").replace(",", ".");
+  const normalized = value
+    .trim()
+    .replaceAll("$", "")
+    .replaceAll(".", "")
+    .replace(",", ".");
   const number = Number(normalized);
   return Number.isFinite(number) ? number : null;
 }
