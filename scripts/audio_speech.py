@@ -7,7 +7,7 @@ LEXICON_PATH = Path(__file__).resolve().parent.parent / "config" / "audio" / "le
 LEXICON_PAYLOAD = json.loads(LEXICON_PATH.read_text(encoding="utf-8"))
 LEXICON_VERSION = int(LEXICON_PAYLOAD.get("version") or 0)
 LEXICON_REVISION = int(LEXICON_PAYLOAD.get("revision") or 0)
-SPEECH_NORMALIZER_VERSION = 4
+SPEECH_NORMALIZER_VERSION = 5
 DAY_NAMES = (
     "lunes",
     "martes",
@@ -120,6 +120,32 @@ def _preserve_initial_case(match: re.Match, replacement: str) -> str:
     if original and original[0].isupper():
         return replacement[0].upper() + replacement[1:]
     return replacement
+
+
+def normalize_financial_spoken_form(text: str) -> str:
+    """Adapta términos financieros al español hablado sin tocar display_text."""
+    normalized = str(text)
+    contextual_rules = (
+        (r"\brepricing\s+de\s+tasas\b", "reajuste de expectativas sobre las tasas"),
+        (r"\brepricing\s+de\s+duraci[oó]n\b", "reajuste de expectativas de larga duración"),
+        (r"\bcross[- ]asset\b", "entre distintas clases de activos"),
+    )
+    for pattern, replacement in contextual_rules:
+        normalized = re.sub(pattern, replacement, normalized, flags=re.IGNORECASE)
+
+    article_rules = (
+        (r"\b(el|un|este|ese)\s+repricing\b", r"\1 reajuste de expectativas"),
+        (r"\b(la|una|esta|esa)\s+repricing\b", r"\1 revisión de expectativas"),
+    )
+    for pattern, replacement in article_rules:
+        normalized = re.sub(pattern, replacement, normalized, flags=re.IGNORECASE)
+
+    return re.sub(
+        r"\brepricing\b",
+        "reajuste de expectativas",
+        normalized,
+        flags=re.IGNORECASE,
+    )
 
 
 def normalize_public_section_names(text: str) -> str:
@@ -347,6 +373,7 @@ def normalize_for_speech(text: str, reference_date: str | None = None) -> str:
     normalized = re.sub(r"\*\*([^*]+)\*\*", r"\1", normalized)
     normalized = re.sub(r"[`_*#>]", "", normalized)
     normalized = normalize_public_section_names(normalized)
+    normalized = normalize_financial_spoken_form(normalized)
     normalized = normalize_relative_days(normalized, reference_date)
     normalized = normalize_lexicon(normalized)
     normalized = normalize_numbers_and_symbols(normalized)

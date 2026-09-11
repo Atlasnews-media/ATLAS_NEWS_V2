@@ -4,7 +4,7 @@ import path from "node:path";
 
 const root = new URL("../", import.meta.url);
 const ANALYSIS_SCRIPT_VERSION = 3;
-const SPEECH_NORMALIZER_VERSION = 4;
+const SPEECH_NORMALIZER_VERSION = 5;
 const PLAN_FILE = ".atlas-audio-v2-plan.json";
 const lexiconConfig = JSON.parse(
   await readFile(new URL("config/audio/lexicon-v3.json", root), "utf8"),
@@ -111,6 +111,7 @@ function currentAnalysisState({ sourceId, script, scriptVersion, section }) {
     sameSource &&
     sameVersion &&
     sameHash &&
+    existing?.speechNormalizerVersion === SPEECH_NORMALIZER_VERSION &&
     sameLexicon(existing) &&
     hasPublishedPath;
 
@@ -195,7 +196,11 @@ const cover = {
   scriptVersion: coverPlan.scriptVersion ?? 1,
   lexiconVersion: LEXICON_VERSION,
   lexiconRevision: LEXICON_REVISION,
-  needsGeneration: Boolean(coverPlan.needsGeneration || !coverLexiconCurrent),
+  needsGeneration: Boolean(
+    coverPlan.needsGeneration ||
+      !coverLexiconCurrent ||
+      existingCover?.speechNormalizerVersion !== SPEECH_NORMALIZER_VERSION,
+  ),
   plan: coverPlan,
 };
 
