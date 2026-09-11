@@ -186,6 +186,57 @@ async function yahooQuote(symbol) {
   };
 }
 
+function parseChileanNumber(value) {
+  if (typeof value !== "string") return null;
+  const normalized = value
+    .trim()
+    .replaceAll("$", "")
+    .replaceAll(".", "")
+    .replace(",", ".");
+  const number = Number(normalized);
+  return Number.isFinite(number) ? number : null;
+}
+
+function htmlToText(html) {
+  return html
+    .replace(/<(script|style)\b[^>]*>[\s\S]*?<\/\1>/gi, " ")
+    .replace(/<[^>]+>/g, " ")
+    .replace(/&nbsp;|&#160;/gi, " ")
+    .replace(/&amp;/gi, "&")
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
+async function diarioFinancieroIpsaQuote() {
+  const sourceUrl = "https://www.df.cl/marketdata/bolsas";
+  const html = await fetchText(sourceUrl, {
+    accept: "text/html,application/xhtml+xml,*/*",
+    "user-agent":
+      "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 " +
+      "(KHTML, like Gecko) Chrome/123.0 Safari/537.36",
+  });
+  const text = htmlToText(html);
+  const match = text.match(/(?:S&P|SP)\s+IPSA\s+(-?[\d.,]+)\s+(-?[\d.,]+)/i);
+
+  if (!match) {
+    throw new Error("Diario Financiero no expuso SP IPSA en el HTML público.");
+  }
+
+  const value = parseChileanNumber(match[1]);
+  const changePercent = parseChileanNumber(match[2]);
+  if (!Number.isFinite(value) || value <= 0) {
+    throw new Error("Diario Financiero entregó un valor IPSA no utilizable.");
+  }
+
+  return {
+    value,
+    changePercent,
+    effectiveAt: new Date().toISOString(),
+    provider: "diario-financiero-public",
+    sourceUrl,
+  };
+}
+
 async function frankfurterFx() {
   const end = new Date();
   const start = new Date(end.getTime() - 10 * 86_400_000);
@@ -273,10 +324,23 @@ async function quoteWithFallback(primary, fallback) {
   }
 }
 
+async function ipsaQuote() {
+  return quoteWithFallback(
+    () => diarioFinancieroIpsaQuote(),
+    () =>
+      quoteWithFallback(
+        () => stooqQuote("^ipsa"),
+        () => yahooQuote("^IPSA"),
+      ),
+  );
+}
+
 async function externalAsset(definition) {
-  const primary = definition.stooq
-    ? () => stooqQuote(definition.stooq)
-    : () => yahooQuote(definition.yahoo);
+  const primary = definition.fetch
+    ? definition.fetch
+    : definition.stooq
+      ? () => stooqQuote(definition.stooq)
+      : () => yahooQuote(definition.yahoo);
   const fallback =
     definition.stooq && definition.yahoo
       ? () => yahooQuote(definition.yahoo)
@@ -356,8 +420,7 @@ const externalDefinitions = [
     label: "IPSA",
     group: "chile",
     unit: "points",
-    stooq: "^ipsa",
-    yahoo: "^IPSA",
+    fetch: ipsaQuote,
   },
   {
     id: "ust10y",
