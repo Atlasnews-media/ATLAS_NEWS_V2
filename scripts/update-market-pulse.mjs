@@ -1,7 +1,10 @@
 import { mkdir, readFile, writeFile } from "node:fs/promises";
 
 const root = new URL("../", import.meta.url);
-const economicSnapshotPath = new URL("src/data/economic-indicators.json", root);
+const economicSnapshotPath = new URL(
+  "src/data/economic-indicators.json",
+  root,
+);
 const marketSnapshotPath = new URL("src/data/market-pulse.json", root);
 const publicDataDirectory = new URL("public/data/", root);
 const publicSnapshotPath = new URL("public/data/market-pulse.json", root);
@@ -17,7 +20,9 @@ function dateKey(value = new Date()) {
     month: "2-digit",
     day: "2-digit",
   }).formatToParts(value);
-  const map = Object.fromEntries(parts.map((part) => [part.type, part.value]));
+  const map = Object.fromEntries(
+    parts.map((part) => [part.type, part.value]),
+  );
   return `${map.year}-${map.month}-${map.day}`;
 }
 
@@ -98,7 +103,9 @@ function parseStooqCsv(csv, symbol) {
     throw new Error(`${symbol}: respuesta Stooq sin serie válida.`);
   }
 
-  const headers = rows[0].split(",").map((value) => value.trim().toLowerCase());
+  const headers = rows[0]
+    .split(",")
+    .map((value) => value.trim().toLowerCase());
   const dateIndex = headers.indexOf("date");
   const closeIndex = headers.indexOf("close");
   if (dateIndex < 0 || closeIndex < 0) {
@@ -157,9 +164,8 @@ async function yahooQuote(symbol) {
     throw new Error(`${symbol}: Yahoo no entregó metadata.`);
   }
 
-  const closes = (result?.indicators?.quote?.[0]?.close ?? []).filter((value) =>
-    Number.isFinite(value),
-  );
+  const rawCloses = result?.indicators?.quote?.[0]?.close ?? [];
+  const closes = rawCloses.filter((value) => Number.isFinite(value));
   const value = Number.isFinite(meta.regularMarketPrice)
     ? meta.regularMarketPrice
     : closes.at(-1);
@@ -205,13 +211,13 @@ async function frankfurterFx() {
   const previousDate = dates.at(-2);
   const current = payload.rates[currentDate];
   const previous = payload.rates[previousDate];
-
   const eurUsd = 1 / Number(current?.EUR);
   const previousEurUsd = 1 / Number(previous?.EUR);
   const usdJpy = Number(current?.JPY);
   const previousUsdJpy = Number(previous?.JPY);
+  const fxValues = [eurUsd, previousEurUsd, usdJpy, previousUsdJpy];
 
-  if (![eurUsd, previousEurUsd, usdJpy, previousUsdJpy].every(Number.isFinite)) {
+  if (!fxValues.every(Number.isFinite)) {
     throw new Error("Frankfurter entregó tasas incompletas.");
   }
 
@@ -277,14 +283,14 @@ async function quoteWithFallback(primary, fallback) {
 }
 
 async function externalAsset(definition) {
-  const quote = await quoteWithFallback(
-    definition.stooq
-      ? () => stooqQuote(definition.stooq)
-      : () => yahooQuote(definition.yahoo),
+  const primary = definition.stooq
+    ? () => stooqQuote(definition.stooq)
+    : () => yahooQuote(definition.yahoo);
+  const fallback =
     definition.stooq && definition.yahoo
       ? () => yahooQuote(definition.yahoo)
-      : null,
-  );
+      : null;
+  const quote = await quoteWithFallback(primary, fallback);
 
   return makeAsset({
     id: definition.id,
@@ -299,9 +305,12 @@ async function externalAsset(definition) {
   });
 }
 
-function economicAsset(snapshot, code, definition) {
-  const indicator = snapshot.indicators?.find((item) => item.code === code);
+function economicAsset(snapshot, definition) {
+  const indicator = snapshot.indicators?.find(
+    (item) => item.code === definition.code,
+  );
   if (!indicator || !Number.isFinite(indicator.value)) return null;
+
   return makeAsset({
     id: definition.id,
     label: definition.label,
@@ -383,18 +392,48 @@ const externalDefinitions = [
 ];
 
 const economicDefinitions = [
-  ["dolar", { id: "usdclp", label: "USD/CLP", group: "fx", unit: "clp" }],
-  ["euro", { id: "eurclp", label: "EUR/CLP", group: "fx", unit: "clp" }],
-  ["tpm", { id: "tpm", label: "TPM Chile", group: "rates", unit: "percent" }],
-  ["uf", { id: "uf", label: "UF", group: "chile", unit: "clp" }],
-  ["cobre", { id: "copper", label: "Cobre", group: "commodities", unit: "usd-per-pound" }],
+  {
+    code: "dolar",
+    id: "usdclp",
+    label: "USD/CLP",
+    group: "fx",
+    unit: "clp",
+  },
+  {
+    code: "euro",
+    id: "eurclp",
+    label: "EUR/CLP",
+    group: "fx",
+    unit: "clp",
+  },
+  {
+    code: "tpm",
+    id: "tpm",
+    label: "TPM Chile",
+    group: "rates",
+    unit: "percent",
+  },
+  {
+    code: "uf",
+    id: "uf",
+    label: "UF",
+    group: "chile",
+    unit: "clp",
+  },
+  {
+    code: "cobre",
+    id: "copper",
+    label: "Cobre",
+    group: "commodities",
+    unit: "usd-per-pound",
+  },
 ];
 
 const economicSnapshot = JSON.parse(
   await readFile(economicSnapshotPath, "utf8"),
 );
 const assets = economicDefinitions
-  .map(([code, definition]) => economicAsset(economicSnapshot, code, definition))
+  .map((definition) => economicAsset(economicSnapshot, definition))
   .filter(Boolean);
 const diagnostics = [];
 
@@ -406,7 +445,11 @@ externalResults.forEach((result, index) => {
   const definition = externalDefinitions[index];
   if (result.status === "fulfilled") {
     assets.push(result.value);
-    diagnostics.push({ id: definition.id, ok: true, provider: result.value.provider });
+    diagnostics.push({
+      id: definition.id,
+      ok: true,
+      provider: result.value.provider,
+    });
   } else {
     diagnostics.push({
       id: definition.id,
@@ -419,7 +462,11 @@ externalResults.forEach((result, index) => {
 try {
   const fx = await frankfurterFx();
   assets.push(...fx);
-  diagnostics.push({ id: "fx-global", ok: true, provider: "frankfurter-ecb" });
+  diagnostics.push({
+    id: "fx-global",
+    ok: true,
+    provider: "frankfurter-ecb",
+  });
 } catch (error) {
   diagnostics.push({ id: "fx-global", ok: false, error: error.message });
 }
