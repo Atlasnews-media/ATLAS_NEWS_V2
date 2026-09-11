@@ -43,10 +43,6 @@ function nationalWhen(event: (typeof nationalEvents)[number]) {
   description="LAB aislado de ATLAS NEWS para probar un calendario económico diario alimentado por fuentes automáticas y oficiales."
 >
   <main class="calendar-lab page-shell">
-    <div class="lab-bar lab-bar--single">
-      <a href="/">Volver a portada</a>
-    </div>
-
     <header class="calendar-heading">
       <p class="page-kicker">Agenda económica automática</p>
       <h1>Calendario del día</h1>
@@ -437,7 +433,6 @@ function nationalWhen(event: (typeof nationalEvents)[number]) {
           url.searchParams.set(key, String(value));
         }
       });
-
       const response = await fetch(url, {
         headers: { Accept: "application/json" },
       });
