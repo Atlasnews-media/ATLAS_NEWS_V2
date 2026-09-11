@@ -1,4 +1,9 @@
-import { appendFile, readdir, readFile, writeFile } from "node:fs/promises";
+import {
+  appendFile,
+  readdir,
+  readFile,
+  writeFile,
+} from "node:fs/promises";
 import path from "node:path";
 
 const root = new URL("../", import.meta.url);
@@ -193,7 +198,9 @@ const latestDaily = editions
   )[0];
 
 if (!latestDaily) {
-  throw new Error("No existe una edición Internacional publicada para generar audio.");
+  throw new Error(
+    "No existe una edición Internacional publicada para generar audio.",
+  );
 }
 
 const date = latestDaily.id.slice(0, 10);
