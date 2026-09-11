@@ -1,0 +1,25 @@
+name: LAB Prettier Preview
+
+on:
+  pull_request:
+    paths:
+      - "src/pages/lab/portada-v2.astro"
+      - ".github/workflows/lab-prettier-preview.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  format-preview:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - name: Format preview locally
+        run: npx prettier --write src/pages/lab/portada-v2.astro
+      - name: Emit formatted preview as base64
+        run: base64 -w 0 src/pages/lab/portada-v2.astro
