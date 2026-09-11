@@ -475,12 +475,16 @@ const marketsVisual = {
       display: none;
     }
     :global(.site-header nav) {
+      height: 2.05rem;
+      min-height: 0;
       gap: 0;
-      font-size: 0.52rem;
+      font-size: 0.49rem;
+      line-height: 1;
     }
     :global(.site-header nav a) {
-      min-height: 2.2rem;
-      padding: 0.25rem 0.08rem;
+      height: 2.05rem;
+      min-height: 0;
+      padding: 0 0.05rem;
     }
     :global(.editorial-double-rule) + .lead-grid {
       margin-top: 16px;
@@ -505,10 +509,15 @@ const marketsVisual = {
     }
     .calendar-entry {
       margin-top: 0;
-      padding-top: 0.9rem;
+      padding: 1.1rem 0 0.45rem;
     }
     .calendar-link {
-      font-size: 0.64rem;
+      width: 100%;
+      justify-content: space-between;
+      gap: 0.75rem;
+      font-size: clamp(0.95rem, 3.9vw, 1.08rem);
+      line-height: 1.15;
+      letter-spacing: 0.06em;
     }
     .edition-rail {
       padding-left: 0;
