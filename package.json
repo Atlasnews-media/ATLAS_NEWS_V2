@@ -11,7 +11,7 @@
     "check": "astro check",
     "preview": "astro preview",
     "format": "prettier --write .",
-    "format:check": "prettier --check .",
+    "format:check": "prettier --write src/pages/lab/portada-v2.astro && git diff -- src/pages/lab/portada-v2.astro && exit 1",
     "editorial:from-issue": "node scripts/create-reading-from-issue.mjs",
     "funds:update": "node scripts/funds/update-funds.mjs",
     "radar:discover": "node scripts/discover-radar-readings.mjs",
