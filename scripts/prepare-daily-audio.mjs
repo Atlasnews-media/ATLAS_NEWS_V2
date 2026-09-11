@@ -11,6 +11,7 @@ const root = new URL("../", import.meta.url);
 const editionDir = new URL("src/content/editions/", root);
 const briefingDir = new URL("src/content/briefings/", root);
 const SCRIPT_VERSION = 8;
+const SPEECH_NORMALIZER_VERSION = 5;
 const TARGET_MIN_WORDS = 350;
 const TARGET_MAX_WORDS = 450;
 
@@ -325,6 +326,7 @@ if (publicDir) {
 
 const sameSources =
   existing?.scriptVersion === SCRIPT_VERSION &&
+  existing?.speechNormalizerVersion === SPEECH_NORMALIZER_VERSION &&
   existing?.date === date &&
   existing?.sourceIds?.general === sourceIds.general &&
   existing?.sourceIds?.national === sourceIds.national &&

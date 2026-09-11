@@ -11,10 +11,36 @@ def check(source: str, expected: str, reference_date: str | None = None):
         raise AssertionError(f"{source!r} -> {actual!r}; esperado {expected!r}")
 
 
-if SPEECH_NORMALIZER_VERSION != 4:
-    raise AssertionError("El normalizador numérico debe publicar versión 4.")
+if SPEECH_NORMALIZER_VERSION != 5:
+    raise AssertionError("Speech Normalizer debe publicar versión 5.")
 
 check("Powell habló en Wall Street.", "Páuel habló en Uól Strít.")
+# Golden tests Speech V5: verbalización financiera controlada.
+check(
+    "El IPC decidirá si esa repricing se consolida.",
+    "El índice de precios al consumidor decidirá si esa revisión de expectativas se consolida.",
+)
+check(
+    "Si el repricing de tasas continúa, los rendimientos largos seguirán bajo presión.",
+    "Si el reajuste de expectativas sobre las tasas continúa, los rendimientos largos seguirán bajo presión.",
+)
+check(
+    "Si la repricing de tasas continúa, el mercado ajustará precios.",
+    "Si la revisión de expectativas sobre las tasas continúa, el mercado ajustará precios.",
+)
+check(
+    "Si el repricing de duración continúa, los bonos reaccionarán.",
+    "Si el reajuste de expectativas de larga duración continúa, los bonos reaccionarán.",
+)
+check(
+    "La repricing de duración puede amplificarse.",
+    "La revisión de expectativas de larga duración puede amplificarse.",
+)
+check(
+    "El endurecimiento cross-asset refleja mayor prima por riesgo.",
+    "El endurecimiento entre distintas clases de activos refleja mayor prima por riesgo.",
+)
+
 check("JPMorgan publicó su visión.", "Yéi pí Morgan publicó su visión.")
 check("J.P. Morgan publicó su visión.", "Yéi pí Morgan publicó su visión.")
 check("Los Treasuries reaccionaron.", "Los Tréchuri reaccionaron.")
@@ -95,4 +121,4 @@ if not is_question("¿Qué significa esto?"):
 if is_question("Esto es una afirmación."):
     raise AssertionError("Se clasificó una afirmación como pregunta.")
 
-print("Audio speech V4: golden tests OK")
+print("Audio speech V5: golden tests OK")
