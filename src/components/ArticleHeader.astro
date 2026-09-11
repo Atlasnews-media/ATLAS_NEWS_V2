@@ -48,25 +48,32 @@ const linkedinHref = `https://www.linkedin.com/sharing/share-offsite/?url=${enco
 const xHref = `https://twitter.com/intent/tweet?text=${encodeURIComponent(title)}&url=${encodedUrl}`;
 ---
 
-<header class="article-header" data-has-visual={visualAllowed ? "true" : "false"}>
-  {visual && visualAllowed && (
-    <figure class="article-visual" aria-hidden="true">
-      <img
-        src={visual.src}
-        alt=""
-        loading="eager"
-        decoding="async"
-        referrerpolicy="no-referrer"
-      />
-      <figcaption>
-        {visual.source} · {visual.author} · {visual.license}
-      </figcaption>
-    </figure>
-  )}
+<header
+  class="article-header"
+  data-has-visual={visualAllowed ? "true" : "false"}
+>
+  {
+    visual && visualAllowed && (
+      <figure class="article-visual" aria-hidden="true">
+        <img
+          src={visual.src}
+          alt=""
+          loading="eager"
+          decoding="async"
+          referrerpolicy="no-referrer"
+        />
+        <figcaption>
+          {visual.source} · {visual.author} · {visual.license}
+        </figcaption>
+      </figure>
+    )
+  }
 
   <div class="article-header-copy">
     <div class="meta">
-      <span>{eyebrow}</span><span aria-hidden="true">◆</span><span>ATLAS NEWS</span>
+      <span>{eyebrow}</span><span aria-hidden="true">◆</span><span
+        >ATLAS NEWS</span
+      >
       {demo && <strong>Contenido de demostración</strong>}
     </div>
     <h1>{title}</h1>
@@ -96,27 +103,83 @@ const xHref = `https://twitter.com/intent/tweet?text=${encodeURIComponent(title)
         data-share-title={title}
         data-share-summary={summary}
       >
-        <img class="share-icon" src="/share-icons/share.svg" alt="" width="24" height="24" />
+        <img
+          class="share-icon"
+          src="/share-icons/share.svg"
+          alt=""
+          width="24"
+          height="24"
+        />
         Compartir…
       </button>
-      <a class="share-action" href={whatsappHref} target="_blank" rel="noopener noreferrer">
-        <img class="share-icon" src="/share-icons/whatsapp.svg" alt="" width="24" height="24" />
+      <a
+        class="share-action"
+        href={whatsappHref}
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <img
+          class="share-icon"
+          src="/share-icons/whatsapp.svg"
+          alt=""
+          width="24"
+          height="24"
+        />
         WhatsApp
       </a>
-      <a class="share-action" href={facebookHref} target="_blank" rel="noopener noreferrer">
-        <img class="share-icon" src="/share-icons/facebook.svg" alt="" width="24" height="24" />
+      <a
+        class="share-action"
+        href={facebookHref}
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <img
+          class="share-icon"
+          src="/share-icons/facebook.svg"
+          alt=""
+          width="24"
+          height="24"
+        />
         Facebook
       </a>
-      <a class="share-action" href={linkedinHref} target="_blank" rel="noopener noreferrer">
-        <img class="share-icon" src="/share-icons/linkedin.svg" alt="" width="24" height="24" />
+      <a
+        class="share-action"
+        href={linkedinHref}
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <img
+          class="share-icon"
+          src="/share-icons/linkedin.svg"
+          alt=""
+          width="24"
+          height="24"
+        />
         LinkedIn
       </a>
-      <a class="share-action share-x" href={xHref} target="_blank" rel="noopener noreferrer">
-        <img class="share-icon" src="/share-icons/x.svg" alt="" width="24" height="24" />
+      <a
+        class="share-action share-x"
+        href={xHref}
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <img
+          class="share-icon"
+          src="/share-icons/x.svg"
+          alt=""
+          width="24"
+          height="24"
+        />
         X
       </a>
       <button class="share-action" type="button" data-share-copy>
-        <img class="share-icon" src="/share-icons/link.svg" alt="" width="24" height="24" />
+        <img
+          class="share-icon"
+          src="/share-icons/link.svg"
+          alt=""
+          width="24"
+          height="24"
+        />
         Copiar enlace
       </button>
       <span class="share-status" data-share-status aria-live="polite"></span>
@@ -151,7 +214,8 @@ const xHref = `https://twitter.com/intent/tweet?text=${encodeURIComponent(title)
   if (copyButton instanceof HTMLButtonElement) {
     copyButton.addEventListener("click", async () => {
       if (!navigator.clipboard) {
-        if (status instanceof HTMLElement) status.textContent = "Copia no disponible";
+        if (status instanceof HTMLElement)
+          status.textContent = "Copia no disponible";
         return;
       }
 
@@ -164,7 +228,8 @@ const xHref = `https://twitter.com/intent/tweet?text=${encodeURIComponent(title)
           }, 2200);
         }
       } catch {
-        if (status instanceof HTMLElement) status.textContent = "No se pudo copiar";
+        if (status instanceof HTMLElement)
+          status.textContent = "No se pudo copiar";
       }
     });
   }
@@ -192,8 +257,20 @@ const xHref = `https://twitter.com/intent/tweet?text=${encodeURIComponent(title)
     margin: 0;
     overflow: hidden;
     pointer-events: none;
-    -webkit-mask-image: linear-gradient(to bottom, transparent 0%, #000 12%, #000 88%, transparent 100%);
-    mask-image: linear-gradient(to bottom, transparent 0%, #000 12%, #000 88%, transparent 100%);
+    -webkit-mask-image: linear-gradient(
+      to bottom,
+      transparent 0%,
+      #000 12%,
+      #000 88%,
+      transparent 100%
+    );
+    mask-image: linear-gradient(
+      to bottom,
+      transparent 0%,
+      #000 12%,
+      #000 88%,
+      transparent 100%
+    );
   }
   .article-visual img {
     width: 100%;
@@ -202,8 +279,20 @@ const xHref = `https://twitter.com/intent/tweet?text=${encodeURIComponent(title)
     object-position: center;
     opacity: 0.42;
     filter: saturate(0.65) sepia(0.12) contrast(0.9) brightness(1.08);
-    -webkit-mask-image: linear-gradient(to right, transparent 0%, rgba(0,0,0,.25) 22%, rgba(0,0,0,.72) 58%, #000 100%);
-    mask-image: linear-gradient(to right, transparent 0%, rgba(0,0,0,.25) 22%, rgba(0,0,0,.72) 58%, #000 100%);
+    -webkit-mask-image: linear-gradient(
+      to right,
+      transparent 0%,
+      rgba(0, 0, 0, 0.25) 22%,
+      rgba(0, 0, 0, 0.72) 58%,
+      #000 100%
+    );
+    mask-image: linear-gradient(
+      to right,
+      transparent 0%,
+      rgba(0, 0, 0, 0.25) 22%,
+      rgba(0, 0, 0, 0.72) 58%,
+      #000 100%
+    );
   }
   .article-visual figcaption {
     position: absolute;
@@ -269,9 +358,15 @@ const xHref = `https://twitter.com/intent/tweet?text=${encodeURIComponent(title)
     font: 0.7rem/1.35 var(--sans);
     text-transform: uppercase;
   }
-  dl div { gap: 0.35rem; }
-  dt { font-weight: 800; }
-  dd { margin: 0; }
+  dl div {
+    gap: 0.35rem;
+  }
+  dt {
+    font-weight: 800;
+  }
+  dd {
+    margin: 0;
+  }
   .tags {
     justify-content: flex-end;
     gap: 0.35rem;
@@ -330,7 +425,9 @@ const xHref = `https://twitter.com/intent/tweet?text=${encodeURIComponent(title)
     outline: none;
   }
   .share-action:hover .share-icon,
-  .share-action:focus-visible .share-icon { filter: brightness(0) invert(1); }
+  .share-action:focus-visible .share-icon {
+    filter: brightness(0) invert(1);
+  }
   .share-native {
     border-color: var(--accent);
     color: var(--accent);
@@ -341,7 +438,9 @@ const xHref = `https://twitter.com/intent/tweet?text=${encodeURIComponent(title)
     font-weight: 700;
     text-transform: none;
   }
-  .share-status:empty { display: none; }
+  .share-status:empty {
+    display: none;
+  }
 
   @media (max-width: 42rem) {
     .article-header {
@@ -355,8 +454,20 @@ const xHref = `https://twitter.com/intent/tweet?text=${encodeURIComponent(title)
     }
     .article-visual img {
       opacity: 0.34;
-      -webkit-mask-image: linear-gradient(to right, transparent 0%, rgba(0,0,0,.18) 30%, rgba(0,0,0,.64) 72%, #000 100%);
-      mask-image: linear-gradient(to right, transparent 0%, rgba(0,0,0,.18) 30%, rgba(0,0,0,.64) 72%, #000 100%);
+      -webkit-mask-image: linear-gradient(
+        to right,
+        transparent 0%,
+        rgba(0, 0, 0, 0.18) 30%,
+        rgba(0, 0, 0, 0.64) 72%,
+        #000 100%
+      );
+      mask-image: linear-gradient(
+        to right,
+        transparent 0%,
+        rgba(0, 0, 0, 0.18) 30%,
+        rgba(0, 0, 0, 0.64) 72%,
+        #000 100%
+      );
     }
     .article-header[data-has-visual="true"] h1,
     .article-header[data-has-visual="true"] .summary {
@@ -381,7 +492,9 @@ const xHref = `https://twitter.com/intent/tweet?text=${encodeURIComponent(title)
       gap: 0.55rem;
       margin-top: 0.85rem;
     }
-    .tags { justify-content: flex-start; }
+    .tags {
+      justify-content: flex-start;
+    }
     .share-tools {
       align-items: stretch;
       margin-top: 0.75rem;
@@ -397,8 +510,14 @@ const xHref = `https://twitter.com/intent/tweet?text=${encodeURIComponent(title)
       min-height: 1.85rem;
       padding: 0.36rem 0.44rem;
     }
-    .share-x { min-width: 5rem; }
-    .share-status { width: 100%; }
-    .article-visual figcaption { display: none; }
+    .share-x {
+      min-width: 5rem;
+    }
+    .share-status {
+      width: 100%;
+    }
+    .article-visual figcaption {
+      display: none;
+    }
   }
 </style>
