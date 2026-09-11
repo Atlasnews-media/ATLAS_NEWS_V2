@@ -49,10 +49,7 @@ const sections: MarketSection[] = [
   },
   {
     title: "Tasas",
-    rows: [
-      { id: "ust10y", label: "UST 10Y" },
-      { id: "tpm" },
-    ],
+    rows: [{ id: "ust10y", label: "UST 10Y" }, { id: "tpm" }],
   },
   {
     title: "Divisas",
@@ -93,9 +90,9 @@ const variation = new Intl.NumberFormat("es-CL", {
 function isDisplayable(asset?: MarketAsset) {
   return Boolean(
     asset &&
-      asset.displayEligible !== false &&
-      typeof asset.value === "number" &&
-      Number.isFinite(asset.value),
+    asset.displayEligible !== false &&
+    typeof asset.value === "number" &&
+    Number.isFinite(asset.value),
   );
 }
 
@@ -152,7 +149,9 @@ function arrowFor(asset?: MarketAsset) {
   return "●";
 }
 
-const generatedAt = snapshot.generatedAt ? new Date(snapshot.generatedAt) : null;
+const generatedAt = snapshot.generatedAt
+  ? new Date(snapshot.generatedAt)
+  : null;
 const generatedDate =
   generatedAt && Number.isFinite(generatedAt.valueOf())
     ? new Intl.DateTimeFormat("es-CL", {
@@ -207,14 +206,21 @@ const staleCount = snapshot.assets.filter(
       <div class="update-stamp" aria-label="Última actualización de los datos">
         <strong>Última actualización</strong>
         <span>{generatedDate} · {generatedTime}</span>
-        {staleCount > 0 && <small>{staleCount} dato excluido por vigencia</small>}
+        {
+          staleCount > 0 && (
+            <small>{staleCount} dato excluido por vigencia</small>
+          )
+        }
       </div>
     </header>
 
     <div class="market-table" aria-label="Índices de mercado de ATLAS NEWS">
       {
         sections.map((section) => (
-          <section class="market-section" aria-labelledby={`section-${section.title}`}>
+          <section
+            class="market-section"
+            aria-labelledby={`section-${section.title}`}
+          >
             <div class="section-row section-header">
               <h2 id={`section-${section.title}`}>{section.title}</h2>
               <span>Nivel</span>
@@ -229,12 +235,16 @@ const staleCount = snapshot.assets.filter(
                   <div class="asset-name">
                     <span>{row.label ?? asset?.label ?? row.id}</span>
                     {asset?.displayEligible === false && (
-                      <small>{asset.staleReason ?? "dato fuera de vigencia"}</small>
+                      <small>
+                        {asset.staleReason ?? "dato fuera de vigencia"}
+                      </small>
                     )}
                   </div>
                   <strong class="asset-value">{formatValue(asset)}</strong>
                   <div class="asset-change">
-                    <span class="arrow" aria-hidden="true">{arrowFor(asset)}</span>
+                    <span class="arrow" aria-hidden="true">
+                      {arrowFor(asset)}
+                    </span>
                     <span>{formatChange(asset)}</span>
                   </div>
                 </div>
@@ -247,9 +257,11 @@ const staleCount = snapshot.assets.filter(
 
     <footer class="indices-source">
       <p>
-        Fuentes: {activeProviders.length > 0
-          ? activeProviders.join(" · ")
-          : "sin fuentes cargadas"}.
+        Fuentes: {
+          activeProviders.length > 0
+            ? activeProviders.join(" · ")
+            : "sin fuentes cargadas"
+        }.
       </p>
       <p>
         Corte automático: {generatedDate} · {generatedTime} · Hora de Chile.
@@ -331,7 +343,10 @@ const staleCount = snapshot.assets.filter(
 
   .section-row {
     display: grid;
-    grid-template-columns: minmax(0, 1.55fr) minmax(7.5rem, 0.55fr) minmax(9.5rem, 0.7fr);
+    grid-template-columns: minmax(0, 1.55fr) minmax(7.5rem, 0.55fr) minmax(
+        9.5rem,
+        0.7fr
+      );
     gap: clamp(0.65rem, 2vw, 1.4rem);
     align-items: baseline;
     min-width: 0;
@@ -487,7 +502,10 @@ const staleCount = snapshot.assets.filter(
     }
 
     .section-row {
-      grid-template-columns: minmax(0, 1.35fr) minmax(5.3rem, 0.7fr) minmax(6.3rem, 0.8fr);
+      grid-template-columns: minmax(0, 1.35fr) minmax(5.3rem, 0.7fr) minmax(
+          6.3rem,
+          0.8fr
+        );
       gap: 0.42rem;
     }
 
@@ -552,7 +570,10 @@ const staleCount = snapshot.assets.filter(
     }
 
     .section-row {
-      grid-template-columns: minmax(0, 1.25fr) minmax(4.7rem, 0.7fr) minmax(5.9rem, 0.8fr);
+      grid-template-columns: minmax(0, 1.25fr) minmax(4.7rem, 0.7fr) minmax(
+          5.9rem,
+          0.8fr
+        );
     }
   }
 </style>
