@@ -6,11 +6,10 @@ interface Props {
 }
 
 const { expectedDate } = Astro.props;
-const isLab = Astro.url.pathname.startsWith("/lab/");
 ---
 
 <section
-  class:list={["daily-audio", { "daily-audio--lab": isLab }]}
+  class="daily-audio"
   data-daily-audio
   data-expected-date={expectedDate}
   aria-labelledby="daily-audio-title"
@@ -108,7 +107,7 @@ const isLab = Astro.url.pathname.startsWith("/lab/");
       border-bottom: 0;
     }
 
-    .daily-audio--lab .audio-kicker {
+    .audio-kicker {
       font-size: 0.61rem;
       line-height: 1.35;
       letter-spacing: 0.12em;

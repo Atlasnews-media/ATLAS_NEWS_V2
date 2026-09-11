@@ -10,15 +10,10 @@ const { src, preload = "metadata", ariaLabel, engineRole } = Astro.props;
 const engineAttributes: Record<string, string> = {};
 if (engineRole === "daily") engineAttributes["data-audio-player"] = "";
 if (engineRole === "analysis") engineAttributes["data-analysis-player"] = "";
-
-const minimalControls = Astro.url.pathname.startsWith("/lab/");
 ---
 
 <div
-  class:list={[
-    "atlas-audio-player",
-    { "atlas-audio-player--minimal": minimalControls },
-  ]}
+  class="atlas-audio-player atlas-audio-player--minimal"
   data-atlas-audio
   data-playing="false"
 >

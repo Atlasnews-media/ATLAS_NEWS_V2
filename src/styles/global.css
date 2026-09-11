@@ -114,7 +114,7 @@ a:focus-visible {
     width: min(100% - 1.25rem, 88rem);
   }
 
-  /* Portada: convertir Titulares en un índice móvil compacto y navegable. */
+  /* Portada V2: titulares compactos, navegables y con jerarquía aprobada. */
   .front-page .headline-list {
     margin-top: 0.45rem !important;
   }
@@ -126,7 +126,7 @@ a:focus-visible {
     font-size: 0.66rem !important;
   }
   .front-page .headline-item h2 {
-    font-size: clamp(1.38rem, 5.8vw, 1.78rem) !important;
+    font-size: clamp(1.173rem, 4.93vw, 1.513rem) !important;
     line-height: 0.98 !important;
     letter-spacing: -0.025em !important;
   }
@@ -150,58 +150,6 @@ a:focus-visible {
   }
   .front-page .headline-item:nth-child(3) h2 a::after {
     content: "Ir a Mercados →";
-  }
-
-  /* LAB Portada V2: BaseLayout se inyecta después del CSS de la página.
-     Este scope único recupera la navegación editorial compacta sin tocar producción. */
-  body:has(.calendar-entry) .site-header nav {
-    display: grid;
-    grid-template-columns: repeat(5, minmax(0, 1fr));
-    align-items: stretch;
-    justify-content: stretch;
-    gap: 0;
-    height: auto;
-    min-height: 0;
-    padding: 0;
-    font-size: 0.46rem;
-    line-height: 1;
-  }
-  body:has(.calendar-entry) .site-header nav a {
-    box-sizing: border-box;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    align-self: stretch;
-    min-width: 0;
-    height: auto;
-    min-height: 1.62rem;
-    padding: 0.18rem 0.04rem;
-  }
-  body:has(.calendar-entry) .site-header nav a + a::before {
-    content: none;
-  }
-  body:has(.calendar-entry) .front-page .headline-item h2 {
-    font-size: clamp(1.173rem, 4.93vw, 1.513rem) !important;
-  }
-  body:has(.calendar-entry) .calendar-entry {
-    padding: 0.9rem 0 0.4rem;
-  }
-  body:has(.calendar-entry) .calendar-link {
-    font-size: clamp(0.82rem, 3.25vw, 0.94rem);
-    line-height: 1.1;
-    letter-spacing: 0.055em;
-  }
-  body:has(.calendar-entry) .lead-story {
-    padding-bottom: 0.95rem;
-  }
-  body:has(.calendar-entry) .edition-rail {
-    padding-top: 1.05rem;
-  }
-  body:has(.calendar-entry) .rail-title {
-    color: var(--ink);
-    font: 700 clamp(1.38rem, 5.8vw, 1.78rem) / 0.98 var(--serif);
-    letter-spacing: -0.025em;
-    text-transform: none;
   }
 }
 

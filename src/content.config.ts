@@ -81,6 +81,7 @@ const briefingSchema = z
     tags: z.array(z.string().min(2)).min(1),
     sources: z.array(sourceSchema).min(1),
     highlights: z.array(highlightSchema).length(3).optional(),
+    editorialVisual: editorialVisualSchema.optional(),
     demo: z.boolean().default(false),
   })
   .superRefine((briefing, context) => {
