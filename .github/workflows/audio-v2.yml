@@ -15,6 +15,13 @@ on:
       - "scripts/prepare-audio-v2.mjs"
       - "scripts/generate-audio-v2.py"
       - ".github/workflows/audio-v2.yml"
+  schedule:
+    # Red de seguridad diaria: si el disparo por push falla o queda incompleto,
+    # estos barridos idempotentes recuperan y verifican el audio publicado.
+    - cron: "30 7 * * *"
+      timezone: "America/Santiago"
+    - cron: "0 9 * * *"
+      timezone: "America/Santiago"
   workflow_dispatch:
     inputs:
       simulate_markets_failure:
