@@ -1,4 +1,13 @@
 ---
+interface EditorialVisual {
+  src: string;
+  alt: string;
+  source: string;
+  sourceUrl: string;
+  author: string;
+  license: string;
+}
+
 interface Props {
   eyebrow: string;
   title: string;
@@ -7,6 +16,7 @@ interface Props {
   cutoff?: string;
   demo?: boolean;
   tags: string[];
+  visual?: EditorialVisual;
 }
 
 const {
@@ -17,7 +27,18 @@ const {
   cutoff,
   demo = false,
   tags,
+  visual,
 } = Astro.props;
+
+const visualAllowed = (() => {
+  if (!visual) return false;
+  try {
+    const hostname = new URL(visual.src).hostname;
+    return ["upload.wikimedia.org", "commons.wikimedia.org"].includes(hostname);
+  } catch {
+    return false;
+  }
+})();
 
 const pageUrl = Astro.url.href;
 const encodedUrl = encodeURIComponent(pageUrl);
@@ -27,122 +48,79 @@ const linkedinHref = `https://www.linkedin.com/sharing/share-offsite/?url=${enco
 const xHref = `https://twitter.com/intent/tweet?text=${encodeURIComponent(title)}&url=${encodedUrl}`;
 ---
 
-<header class="article-header">
-  <div class="meta">
-    <span>{eyebrow}</span><span aria-hidden="true">◆</span><span
-      >ATLAS NEWS</span
-    >
-    {demo && <strong>Contenido de demostración</strong>}
-  </div>
-  <h1>{title}</h1>
-  <p class="summary">{summary}</p>
-  <div class="publication-data">
-    <dl>
-      <div><dt>Publicado</dt><dd>{date}</dd></div>
-      {
-        cutoff && (
-          <div>
-            <>
+<header class="article-header" data-has-visual={visualAllowed ? "true" : "false"}>
+  {visual && visualAllowed && (
+    <figure class="article-visual" aria-hidden="true">
+      <img
+        src={visual.src}
+        alt=""
+        loading="eager"
+        decoding="async"
+        referrerpolicy="no-referrer"
+      />
+      <figcaption>
+        {visual.source} · {visual.author} · {visual.license}
+      </figcaption>
+    </figure>
+  )}
+
+  <div class="article-header-copy">
+    <div class="meta">
+      <span>{eyebrow}</span><span aria-hidden="true">◆</span><span>ATLAS NEWS</span>
+      {demo && <strong>Contenido de demostración</strong>}
+    </div>
+    <h1>{title}</h1>
+    <p class="summary">{summary}</p>
+    <div class="publication-data">
+      <dl>
+        <div><dt>Publicado</dt><dd>{date}</dd></div>
+        {
+          cutoff && (
+            <div>
               <dt>Cierre</dt>
               <dd>{cutoff}</dd>
-            </>
-          </div>
-        )
-      }
-    </dl>
-    <ul class="tags" aria-label="Etiquetas">
-      {tags.map((tag) => <li>{tag}</li>)}
-    </ul>
-  </div>
-  <div class="share-tools" aria-label="Compartir publicación">
-    <span class="share-label">Compartir</span>
-    <button
-      class="share-action share-native"
-      type="button"
-      data-share-native
-      data-share-title={title}
-      data-share-summary={summary}
-    >
-      <img
-        class="share-icon"
-        src="/share-icons/share.svg"
-        alt=""
-        width="24"
-        height="24"
-      />
-      Compartir…
-    </button>
-    <a
-      class="share-action"
-      href={whatsappHref}
-      target="_blank"
-      rel="noopener noreferrer"
-    >
-      <img
-        class="share-icon"
-        src="/share-icons/whatsapp.svg"
-        alt=""
-        width="24"
-        height="24"
-      />
-      WhatsApp
-    </a>
-    <a
-      class="share-action"
-      href={facebookHref}
-      target="_blank"
-      rel="noopener noreferrer"
-    >
-      <img
-        class="share-icon"
-        src="/share-icons/facebook.svg"
-        alt=""
-        width="24"
-        height="24"
-      />
-      Facebook
-    </a>
-    <a
-      class="share-action"
-      href={linkedinHref}
-      target="_blank"
-      rel="noopener noreferrer"
-    >
-      <img
-        class="share-icon"
-        src="/share-icons/linkedin.svg"
-        alt=""
-        width="24"
-        height="24"
-      />
-      LinkedIn
-    </a>
-    <a
-      class="share-action share-x"
-      href={xHref}
-      target="_blank"
-      rel="noopener noreferrer"
-    >
-      <img
-        class="share-icon"
-        src="/share-icons/x.svg"
-        alt=""
-        width="24"
-        height="24"
-      />
-      X
-    </a>
-    <button class="share-action" type="button" data-share-copy>
-      <img
-        class="share-icon"
-        src="/share-icons/link.svg"
-        alt=""
-        width="24"
-        height="24"
-      />
-      Copiar enlace
-    </button>
-    <span class="share-status" data-share-status aria-live="polite"></span>
+            </div>
+          )
+        }
+      </dl>
+      <ul class="tags" aria-label="Etiquetas">
+        {tags.map((tag) => <li>{tag}</li>)}
+      </ul>
+    </div>
+    <div class="share-tools" aria-label="Compartir publicación">
+      <span class="share-label">Compartir</span>
+      <button
+        class="share-action share-native"
+        type="button"
+        data-share-native
+        data-share-title={title}
+        data-share-summary={summary}
+      >
+        <img class="share-icon" src="/share-icons/share.svg" alt="" width="24" height="24" />
+        Compartir…
+      </button>
+      <a class="share-action" href={whatsappHref} target="_blank" rel="noopener noreferrer">
+        <img class="share-icon" src="/share-icons/whatsapp.svg" alt="" width="24" height="24" />
+        WhatsApp
+      </a>
+      <a class="share-action" href={facebookHref} target="_blank" rel="noopener noreferrer">
+        <img class="share-icon" src="/share-icons/facebook.svg" alt="" width="24" height="24" />
+        Facebook
+      </a>
+      <a class="share-action" href={linkedinHref} target="_blank" rel="noopener noreferrer">
+        <img class="share-icon" src="/share-icons/linkedin.svg" alt="" width="24" height="24" />
+        LinkedIn
+      </a>
+      <a class="share-action share-x" href={xHref} target="_blank" rel="noopener noreferrer">
+        <img class="share-icon" src="/share-icons/x.svg" alt="" width="24" height="24" />
+        X
+      </a>
+      <button class="share-action" type="button" data-share-copy>
+        <img class="share-icon" src="/share-icons/link.svg" alt="" width="24" height="24" />
+        Copiar enlace
+      </button>
+      <span class="share-status" data-share-status aria-live="polite"></span>
+    </div>
   </div>
 </header>
 
@@ -173,9 +151,7 @@ const xHref = `https://twitter.com/intent/tweet?text=${encodeURIComponent(title)
   if (copyButton instanceof HTMLButtonElement) {
     copyButton.addEventListener("click", async () => {
       if (!navigator.clipboard) {
-        if (status instanceof HTMLElement) {
-          status.textContent = "Copia no disponible";
-        }
+        if (status instanceof HTMLElement) status.textContent = "Copia no disponible";
         return;
       }
 
@@ -188,9 +164,7 @@ const xHref = `https://twitter.com/intent/tweet?text=${encodeURIComponent(title)
           }, 2200);
         }
       } catch {
-        if (status instanceof HTMLElement) {
-          status.textContent = "No se pudo copiar";
-        }
+        if (status instanceof HTMLElement) status.textContent = "No se pudo copiar";
       }
     });
   }
@@ -198,8 +172,52 @@ const xHref = `https://twitter.com/intent/tweet?text=${encodeURIComponent(title)
 
 <style>
   .article-header {
-    padding: clamp(2.5rem, 6vw, 5rem) 0 2rem;
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+    padding: clamp(1.4rem, 4vw, 2.8rem) 0 1.5rem;
     border-bottom: 4px double var(--rule);
+  }
+  .article-header-copy {
+    position: relative;
+    z-index: 2;
+  }
+  .article-visual {
+    position: absolute;
+    z-index: 0;
+    top: 1rem;
+    right: -0.5rem;
+    bottom: 1rem;
+    width: min(34%, 24rem);
+    margin: 0;
+    overflow: hidden;
+    pointer-events: none;
+    -webkit-mask-image: linear-gradient(to bottom, transparent 0%, #000 12%, #000 88%, transparent 100%);
+    mask-image: linear-gradient(to bottom, transparent 0%, #000 12%, #000 88%, transparent 100%);
+  }
+  .article-visual img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    opacity: 0.42;
+    filter: saturate(0.65) sepia(0.12) contrast(0.9) brightness(1.08);
+    -webkit-mask-image: linear-gradient(to right, transparent 0%, rgba(0,0,0,.25) 22%, rgba(0,0,0,.72) 58%, #000 100%);
+    mask-image: linear-gradient(to right, transparent 0%, rgba(0,0,0,.25) 22%, rgba(0,0,0,.72) 58%, #000 100%);
+  }
+  .article-visual figcaption {
+    position: absolute;
+    right: 0.25rem;
+    bottom: 0.2rem;
+    max-width: 82%;
+    color: var(--ink-soft);
+    font: 600 0.42rem/1.15 var(--sans);
+    text-align: right;
+    opacity: 0.62;
+  }
+  .article-header[data-has-visual="true"] h1,
+  .article-header[data-has-visual="true"] .summary {
+    max-width: 68%;
   }
   .meta {
     display: flex;
@@ -219,7 +237,7 @@ const xHref = `https://twitter.com/intent/tweet?text=${encodeURIComponent(title)
   }
   h1 {
     max-width: 76rem;
-    margin: 1.25rem 0 1.5rem;
+    margin: 0.9rem 0 1rem;
     font-size: clamp(2.25rem, 6.375vw, 5.625rem);
     line-height: 0.88;
     letter-spacing: -0.055em;
@@ -229,15 +247,15 @@ const xHref = `https://twitter.com/intent/tweet?text=${encodeURIComponent(title)
     max-width: 58rem;
     margin: 0;
     color: var(--ink-soft);
-    font-size: clamp(1.18rem, 2.5vw, 1.62rem);
-    line-height: 1.4;
+    font-size: clamp(1.08rem, 2.2vw, 1.45rem);
+    line-height: 1.38;
   }
   .publication-data {
     display: flex;
     align-items: end;
     justify-content: space-between;
     gap: 1rem;
-    margin-top: 2rem;
+    margin-top: 1.25rem;
   }
   dl,
   dl div,
@@ -246,42 +264,36 @@ const xHref = `https://twitter.com/intent/tweet?text=${encodeURIComponent(title)
     flex-wrap: wrap;
   }
   dl {
-    gap: 0.6rem 2rem;
+    gap: 0.45rem 1.4rem;
     margin: 0;
-    font: 0.72rem/1.4 var(--sans);
+    font: 0.7rem/1.35 var(--sans);
     text-transform: uppercase;
   }
-  dl div {
-    gap: 0.35rem;
-  }
-  dt {
-    font-weight: 800;
-  }
-  dd {
-    margin: 0;
-  }
+  dl div { gap: 0.35rem; }
+  dt { font-weight: 800; }
+  dd { margin: 0; }
   .tags {
     justify-content: flex-end;
-    gap: 0.4rem;
+    gap: 0.35rem;
     margin: 0;
     padding: 0;
     list-style: none;
   }
   .tags li {
-    padding: 0.22rem 0.45rem;
+    padding: 0.18rem 0.4rem;
     border: 1px solid var(--rule);
-    font: 0.67rem/1.2 var(--sans);
+    font: 0.62rem/1.2 var(--sans);
     text-transform: uppercase;
   }
   .share-tools {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-    gap: 0.45rem;
-    margin-top: 1.4rem;
-    padding-top: 1rem;
+    gap: 0.4rem;
+    margin-top: 0.9rem;
+    padding-top: 0.8rem;
     border-top: 1px solid var(--rule);
-    font: 800 0.66rem/1 var(--sans);
+    font: 800 0.62rem/1 var(--sans);
     letter-spacing: 0.04em;
     text-transform: uppercase;
   }
@@ -293,9 +305,9 @@ const xHref = `https://twitter.com/intent/tweet?text=${encodeURIComponent(title)
     appearance: none;
     display: inline-flex;
     align-items: center;
-    gap: 0.42rem;
-    min-height: 2rem;
-    padding: 0.45rem 0.58rem;
+    gap: 0.38rem;
+    min-height: 1.9rem;
+    padding: 0.4rem 0.52rem;
     border: 1px solid var(--rule);
     border-radius: 0;
     color: var(--ink);
@@ -307,8 +319,8 @@ const xHref = `https://twitter.com/intent/tweet?text=${encodeURIComponent(title)
     cursor: pointer;
   }
   .share-icon {
-    width: 1.05rem;
-    height: 1.05rem;
+    width: 1rem;
+    height: 1rem;
     flex: 0 0 auto;
   }
   .share-action:hover,
@@ -318,9 +330,7 @@ const xHref = `https://twitter.com/intent/tweet?text=${encodeURIComponent(title)
     outline: none;
   }
   .share-action:hover .share-icon,
-  .share-action:focus-visible .share-icon {
-    filter: brightness(0) invert(1);
-  }
+  .share-action:focus-visible .share-icon { filter: brightness(0) invert(1); }
   .share-native {
     border-color: var(--accent);
     color: var(--accent);
@@ -331,41 +341,64 @@ const xHref = `https://twitter.com/intent/tweet?text=${encodeURIComponent(title)
     font-weight: 700;
     text-transform: none;
   }
-  .share-status:empty {
-    display: none;
-  }
+  .share-status:empty { display: none; }
 
   @media (max-width: 42rem) {
     .article-header {
-      padding-bottom: 1rem;
+      padding: 0.72rem 0 0.85rem;
+    }
+    .article-visual {
+      top: 0.35rem;
+      right: -0.55rem;
+      bottom: 0.65rem;
+      width: 38%;
+    }
+    .article-visual img {
+      opacity: 0.34;
+      -webkit-mask-image: linear-gradient(to right, transparent 0%, rgba(0,0,0,.18) 30%, rgba(0,0,0,.64) 72%, #000 100%);
+      mask-image: linear-gradient(to right, transparent 0%, rgba(0,0,0,.18) 30%, rgba(0,0,0,.64) 72%, #000 100%);
+    }
+    .article-header[data-has-visual="true"] h1,
+    .article-header[data-has-visual="true"] .summary {
+      max-width: 84%;
     }
     .meta strong {
       width: 100%;
       margin-left: 0;
     }
+    h1 {
+      margin: 0.58rem 0 0.72rem;
+      font-size: clamp(2.15rem, 9.2vw, 2.85rem);
+      line-height: 0.92;
+    }
+    .summary {
+      font-size: 0.98rem;
+      line-height: 1.34;
+    }
     .publication-data {
       align-items: flex-start;
       flex-direction: column;
+      gap: 0.55rem;
+      margin-top: 0.85rem;
     }
-    .tags {
-      justify-content: flex-start;
-    }
+    .tags { justify-content: flex-start; }
     .share-tools {
       align-items: stretch;
+      margin-top: 0.75rem;
+      padding-top: 0.65rem;
     }
     .share-label {
       width: 100%;
-      margin-bottom: 0.15rem;
+      margin-bottom: 0.1rem;
     }
     .share-action {
       justify-content: center;
       flex: 1 1 auto;
+      min-height: 1.85rem;
+      padding: 0.36rem 0.44rem;
     }
-    .share-x {
-      min-width: 5rem;
-    }
-    .share-status {
-      width: 100%;
-    }
+    .share-x { min-width: 5rem; }
+    .share-status { width: 100%; }
+    .article-visual figcaption { display: none; }
   }
 </style>
