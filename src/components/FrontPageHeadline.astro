@@ -34,6 +34,7 @@ const visualAllowed = (() => {
 <section
   class="headline-item"
   data-has-visual={visualAllowed ? "true" : "false"}
+  data-explicit-cta="true"
 >
   <div class="headline-copy">
     <p class="headline-label">{label}</p>
@@ -69,6 +70,10 @@ const visualAllowed = (() => {
   }
   .headline-item:first-child {
     border-top: 0;
+  }
+  .headline-item[data-explicit-cta="true"] h2 a::after {
+    display: none !important;
+    content: none !important;
   }
   .headline-copy {
     position: relative;
