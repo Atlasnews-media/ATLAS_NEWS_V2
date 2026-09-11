@@ -151,6 +151,35 @@ a:focus-visible {
   .front-page .headline-item:nth-child(3) h2 a::after {
     content: "Ir a Mercados →";
   }
+
+  /* LAB Portada V2: BaseLayout se inyecta después del CSS de la página.
+     Este scope único recupera la navegación editorial compacta sin tocar producción. */
+  body:has(.calendar-entry) .site-header nav {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    align-items: stretch;
+    justify-content: stretch;
+    gap: 0;
+    height: auto;
+    min-height: 0;
+    padding: 0;
+    font-size: 0.46rem;
+    line-height: 1;
+  }
+  body:has(.calendar-entry) .site-header nav a {
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    align-self: stretch;
+    min-width: 0;
+    height: auto;
+    min-height: 1.62rem;
+    padding: 0.18rem 0.04rem;
+  }
+  body:has(.calendar-entry) .site-header nav a + a::before {
+    content: none;
+  }
 }
 
 @media (max-width: 36rem) {
