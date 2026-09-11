@@ -44,18 +44,12 @@ function nationalWhen(event: (typeof nationalEvents)[number]) {
 >
   <main class="calendar-lab page-shell">
     <header class="calendar-heading">
-      <p class="page-kicker">Agenda económica automática</p>
-      <h1>Calendario del día</h1>
-      <p id="calendar-date" class="calendar-date">Agenda de hoy</p>
+      <p class="page-kicker">Agenda económica</p>
+      <h1>Calendario del Día</h1>
       <p class="calendar-intro">
-        Selección automática con eventos únicos y criterio de diversidad regional.
-        Nacional se construye desde INE y Banco Central de Chile.
+        <em>Hechos que pueden mover mercados y marcar la agenda económica de hoy.</em>
       </p>
     </header>
-
-    <div id="api-status" class="api-status" role="status" aria-live="polite">
-      Consultando agenda internacional…
-    </div>
 
     <section class="calendar-section" aria-labelledby="international-title">
       <div class="section-heading">
@@ -239,16 +233,6 @@ function nationalWhen(event: (typeof nationalEvents)[number]) {
         minute: "2-digit",
         hour12: false,
       }).format(new Date(value));
-    }
-
-    function longToday(date: Date): string {
-      return new Intl.DateTimeFormat("es-CL", {
-        timeZone: TIME_ZONE,
-        weekday: "long",
-        day: "numeric",
-        month: "long",
-        year: "numeric",
-      }).format(date);
     }
 
     function normalizeName(value: string): string {
@@ -446,8 +430,6 @@ function nationalWhen(event: (typeof nationalEvents)[number]) {
     async function loadCalendar(): Promise<void> {
       const now = new Date();
       const todayKey = localDateKey(now);
-      element("#calendar-date").textContent = longToday(now);
-
       const from = addDays(now, -1).toISOString();
       const tomorrow = addDays(now, 2).toISOString();
 
@@ -491,8 +473,6 @@ function nationalWhen(event: (typeof nationalEvents)[number]) {
             "Sin hitos específicamente financieros recuperados para hoy. No se rellena con datos macro repetidos.",
         });
 
-        element("#api-status").innerHTML =
-          '<span class="status-dot" aria-hidden="true"></span> Internacional deduplicado · Mercados filtrado · Chile oficial';
         element("#updated-at").textContent = `Última consulta: ${new Intl.DateTimeFormat(
           "es-CL",
           {
@@ -506,8 +486,6 @@ function nationalWhen(event: (typeof nationalEvents)[number]) {
         const message = "No fue posible consultar la API en este momento.";
         render(element("#international-list"), [], { empty: message });
         render(element("#markets-list"), [], { empty: message });
-        element("#api-status").textContent =
-          "Fuente internacional temporalmente no disponible · Chile conserva sus fuentes oficiales";
       }
     }
 
@@ -520,7 +498,6 @@ function nationalWhen(event: (typeof nationalEvents)[number]) {
     padding-top: 0.7rem;
   }
 
-  .lab-bar,
   .section-heading,
   .calendar-source {
     display: flex;
@@ -528,74 +505,43 @@ function nationalWhen(event: (typeof nationalEvents)[number]) {
     gap: 0.75rem;
   }
 
-  .lab-bar {
-    align-items: center;
-    padding: 0.48rem 0;
-    border-top: 1px solid var(--rule);
-    border-bottom: 1px solid var(--rule);
-    color: var(--accent);
-    font: 800 0.64rem/1.2 var(--sans);
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-  }
-
-  .lab-bar--single {
-    justify-content: flex-end;
-  }
-
   .calendar-source p {
     margin: 0;
   }
 
-  .lab-bar a,
   .event-copy a {
     text-underline-offset: 0.15em;
   }
 
   .calendar-heading {
-    padding: clamp(1.2rem, 2.5vw, 2rem) 0 1.2rem;
+    padding: clamp(1.15rem, 2.4vw, 1.9rem) 0 1.25rem;
     border-bottom: 3px double var(--rule);
   }
 
-  .calendar-heading h1 {
-    margin: 0.22rem 0 0;
-    font-size: clamp(2.55rem, 5.8vw, 4.8rem);
-    line-height: 0.92;
-    letter-spacing: -0.05em;
+  .calendar-heading .page-kicker {
+    color: var(--accent);
+    font-size: clamp(0.86rem, 1.35vw, 1.05rem);
+    letter-spacing: 0;
+    text-transform: none;
   }
 
-  .calendar-date {
-    margin: 0.72rem 0 0;
-    color: var(--ink-soft);
-    font-size: clamp(0.92rem, 1.6vw, 1.05rem);
-    text-transform: capitalize;
+  .calendar-heading h1 {
+    margin: 0.35rem 0 0;
+    font-size: clamp(2.7rem, 5.2vw, 4.35rem);
+    line-height: 0.94;
+    letter-spacing: -0.045em;
   }
 
   .calendar-intro {
-    max-width: 48rem;
-    margin: 0.45rem 0 0;
+    max-width: 56rem;
+    margin: 1rem 0 0;
     color: var(--ink-soft);
-    font-size: 0.84rem;
-    line-height: 1.4;
+    font-size: clamp(1rem, 1.8vw, 1.28rem);
+    line-height: 1.38;
   }
 
-  .api-status {
-    min-height: 2.15rem;
-    padding: 0.5rem 0;
-    border-bottom: 1px solid var(--rule);
-    color: var(--ink-soft);
-    font: 700 0.6rem/1.2 var(--sans);
-    letter-spacing: 0.055em;
-    text-transform: uppercase;
-  }
-
-  :global(.status-dot) {
-    display: inline-block;
-    width: 0.4rem;
-    height: 0.4rem;
-    margin-right: 0.38rem;
-    border-radius: 50%;
-    background: var(--accent);
+  .calendar-intro em {
+    font-style: italic;
   }
 
   .calendar-section {
@@ -691,17 +637,22 @@ function nationalWhen(event: (typeof nationalEvents)[number]) {
     }
 
     .calendar-heading {
-      padding-top: 1rem;
-      padding-bottom: 0.95rem;
+      padding-top: 0.9rem;
+      padding-bottom: 1rem;
+    }
+
+    .calendar-heading .page-kicker {
+      font-size: 0.92rem;
     }
 
     .calendar-heading h1 {
-      font-size: clamp(2.25rem, 9.6vw, 3.45rem);
-      line-height: 0.94;
+      font-size: clamp(2.2rem, 9vw, 3.15rem);
+      line-height: 0.95;
     }
 
     .calendar-intro {
-      font-size: 0.76rem;
+      margin-top: 0.85rem;
+      font-size: 1rem;
       line-height: 1.35;
     }
 
