@@ -3,6 +3,7 @@ import ContentCard from "../../components/ContentCard.astro";
 import ReadingAudio from "../../components/ReadingAudio.astro";
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import { formatEditorialDate, getPublishedReadings } from "../../lib/content";
+import { resolveFrontPageVisual } from "../../lib/front-page-visuals";
 import contingencyLatest from "../../../config/audio/contingency-latest.json";
 
 const readings = await getPublishedReadings();
@@ -24,7 +25,7 @@ function readingEyebrow(tags: string[]) {
   title="Contingencia — ATLAS NEWS"
   description="Publicaciones eventuales de Contingencia de ATLAS NEWS."
 >
-  <main class="page-shell">
+  <main class="page-shell section-page">
     <p class="page-kicker">Cobertura eventual</p>
     <h1 class="page-title">Contingencia</h1>
     <p class="page-intro">
@@ -44,8 +45,15 @@ function readingEyebrow(tags: string[]) {
             summary={reading.data.summary}
             date={formatEditorialDate(reading.data.publishedAt)}
             demo={reading.data.demo}
+            visual={resolveFrontPageVisual({
+              section: "national",
+              id: reading.id,
+              title: reading.data.title,
+              tags: reading.data.tags,
+              editorialVisual: reading.data.editorialVisual,
+            })}
           />
-        ))
+        ))}
       }
     </div>
   </main>
@@ -57,7 +65,7 @@ function readingEyebrow(tags: string[]) {
     border-top: 5px double var(--rule);
   }
   .reading-list :global(.card) {
-    padding: 2rem 0;
+    padding: 1.15rem 0 1.2rem;
   }
   @media (max-width: 42rem) {
     .page-intro {
