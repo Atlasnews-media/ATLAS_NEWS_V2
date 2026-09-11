@@ -392,6 +392,38 @@ const marketsVisual = {
     text-transform: uppercase;
   }
 
+  :global(.site-header nav) {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 0;
+    justify-content: stretch;
+    padding: 0;
+    border-top: 1px solid var(--rule);
+    border-bottom: 4px double var(--rule);
+  }
+  :global(.site-header nav a) {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 0;
+    min-height: 3.3rem;
+    padding: 0.8rem 0.55rem;
+    border-left: 1px solid rgba(31, 29, 23, 0.16);
+    text-align: center;
+    white-space: nowrap;
+    transition: background-color 140ms ease;
+  }
+  :global(.site-header nav a:first-child) {
+    border-left: 0;
+    background: rgba(31, 29, 23, 0.045);
+  }
+  :global(.site-header nav a + a::before) {
+    content: none;
+  }
+  :global(.site-header nav a:hover) {
+    background: rgba(31, 29, 23, 0.035);
+  }
+
   @media (min-width: 42.01rem) and (max-width: 58rem) {
     .lead-grid {
       grid-template-columns: 1fr;
@@ -411,6 +443,14 @@ const marketsVisual = {
     }
     .issue-line {
       display: none;
+    }
+    :global(.site-header nav) {
+      gap: 0;
+      font-size: 0.52rem;
+    }
+    :global(.site-header nav a) {
+      min-height: 2.9rem;
+      padding: 0.7rem 0.12rem;
     }
     :global(.editorial-double-rule) + .lead-grid {
       margin-top: 16px;
