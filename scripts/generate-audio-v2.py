@@ -315,7 +315,7 @@ with tempfile.TemporaryDirectory(prefix="atlas-audio-v2-") as temp_dir_name:
         "questionProsodyVersion": QUESTION_PROSODY_VERSION,
     }
 
-    for section in ("national", "markets"):
+    for section in ("international", "national", "markets"):
         product = plan["products"][section]
         existing = existing_analysis.get(section)
 
@@ -355,13 +355,25 @@ with tempfile.TemporaryDirectory(prefix="atlas-audio-v2-") as temp_dir_name:
             script = str(product.get("script") or "").strip()
             if not script:
                 raise RuntimeError(f"Guion {section} vacío.")
-            samples = synthesize_dialogue(script, reference_date=date)
+
+            if section == "international":
+                voice = str(product.get("voice") or "em_alex")
+                samples = synthesize(
+                    script,
+                    voice,
+                    "e",
+                    reference_date=date,
+                )
+            else:
+                voice = None
+                samples = synthesize_dialogue(script, reference_date=date)
+
             filename = f"{date}-{section}-analysis.mp3"
             temp_path = temp_dir / filename
             write_mp3(temp_path, samples)
             duration, size_bytes = probe_mp3(temp_path)
             staged_files.append((temp_path, audio_dir / filename))
-            analysis_manifest[section] = {
+            entry = {
                 "status": "published",
                 "sourceId": product["sourceId"],
                 "path": f"/audio/{filename}",
@@ -375,9 +387,13 @@ with tempfile.TemporaryDirectory(prefix="atlas-audio-v2-") as temp_dir_name:
                 "lexiconRevision": LEXICON_REVISION,
                 "questionProsodyVersion": QUESTION_PROSODY_VERSION,
                 "engine": "Kokoro-82M",
-                "voices": {"voice1": "ef_dora", "voice2": "em_alex"},
                 "language": "es",
             }
+            if section == "international":
+                entry["voice"] = voice
+            else:
+                entry["voices"] = {"voice1": "ef_dora", "voice2": "em_alex"}
+            analysis_manifest[section] = entry
         except Exception as exc:
             analysis_manifest[section] = {
                 "status": "unavailable",
@@ -410,6 +426,7 @@ with tempfile.TemporaryDirectory(prefix="atlas-audio-v2-") as temp_dir_name:
 print(
     "Audio V2 preparado: "
     f"portada={'nueva' if cover_metadata else 'conservada'}, "
+    f"internacional={analysis_manifest['international']['status']}, "
     f"nacional={analysis_manifest['national']['status']}, "
     f"mercados={analysis_manifest['markets']['status']}."
 )
