@@ -1,10 +1,10 @@
 ---
 title: "El IPC decidirá si el Treasury rompe 5% o si el mercado desarma parte del shock"
 summary: "Petróleo, PPI y tasas ya se movieron en la misma dirección; el dato de precios al consumidor determinará si el endurecimiento cross-asset se consolida o corrige."
-publishedAt: "2026-09-11T06:05:10-03:00"
+publishedAt: "2026-09-11T06:58:13-03:00"
 cutoffAt: "2026-09-11T06:04:55-03:00"
 section: "markets"
-status: "draft"
+status: "published"
 tags:
   - mercados
   - tasas
