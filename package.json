@@ -11,7 +11,7 @@
     "check": "astro check",
     "preview": "astro preview",
     "format": "prettier --write .",
-    "format:check": "prettier --check .",
+    "format:check": "prettier --check . || (prettier scripts/prepare-international-audio.mjs --write && git diff -- scripts/prepare-international-audio.mjs && exit 1)",
     "editorial:from-issue": "node scripts/create-reading-from-issue.mjs",
     "funds:update": "node scripts/funds/update-funds.mjs",
     "radar:discover": "node scripts/discover-radar-readings.mjs",
