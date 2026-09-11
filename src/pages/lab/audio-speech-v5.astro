@@ -1,0 +1,217 @@
+---
+import "../../styles/global.css";
+---
+
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="robots" content="noindex, nofollow, noarchive" />
+    <meta name="theme-color" content="#f2efe5" />
+    <title>ATLAS NEWS LAB · Speech Normalizer V5</title>
+  </head>
+  <body>
+    <main class="lab-shell">
+      <p class="lab-kicker">ATLAS NEWS · AUDIO LAB</p>
+      <h1>Speech Normalizer V5</h1>
+      <p class="lead">
+        Prueba aislada de verbalización financiera antes de Kokoro. El texto
+        editorial permanece intacto; solo cambia la cadena que recibe la voz.
+      </p>
+
+      <div class="rule" aria-hidden="true"></div>
+
+      <section>
+        <p class="status">Muestra del 11 de septiembre · Dora · LAB</p>
+        <h2>Mismo texto, dos tratamientos</h2>
+        <p>
+          La comparación usa exactamente la misma voz y velocidad. La única
+          diferencia es la capa oral experimental aplicada antes del
+          normalizador productivo.
+        </p>
+
+        <div class="comparison-grid">
+          <article class="audio-card">
+            <p class="card-kicker">A · Actual</p>
+            <h3>Speech V4</h3>
+            <p class="card-copy">
+              Kokoro recibe los anglicismos tal como aparecen en el guion.
+            </p>
+            <audio controls preload="metadata">
+              <source
+                src="/lab/audio/speech-v5-current.mp3"
+                type="audio/mpeg"
+              />
+            </audio>
+          </article>
+
+          <article class="audio-card audio-card--candidate">
+            <p class="card-kicker">B · Propuesta</p>
+            <h3>Speech V5 LAB</h3>
+            <p class="card-copy">
+              La forma hablada adapta términos financieros aprobados antes de
+              enviarlos a Kokoro.
+            </p>
+            <audio controls preload="metadata">
+              <source
+                src="/lab/audio/speech-v5-proposed.mp3"
+                type="audio/mpeg"
+              />
+            </audio>
+          </article>
+        </div>
+      </section>
+
+      <div class="rule" aria-hidden="true"></div>
+
+      <section>
+        <p class="status">Qué se está probando</p>
+        <h2>Transformaciones de esta muestra</h2>
+        <div class="examples">
+          <p><strong>esa repricing</strong> → esa revisión de expectativas</p>
+          <p>
+            <strong>el repricing de tasas</strong> → el reajuste de expectativas sobre
+            las tasas
+          </p>
+          <p>
+            <strong>cross-asset</strong> → entre distintas clases de activos
+          </p>
+        </div>
+        <p class="note">
+          El prototipo preserva el género gramatical cuando el anglicismo viene
+          acompañado por artículo. No cambia titulares, notas, sourceId, Lexicon
+          V3 ni Numeric Normalizer V4.
+        </p>
+      </section>
+
+      <div class="rule" aria-hidden="true"></div>
+
+      <section>
+        <p class="status">Contrato</p>
+        <h2>Esto todavía no es producción</h2>
+        <p>
+          La prueba vive aislada en LAB. Sirve para escuchar si la adaptación
+          oral mejora realmente la experiencia antes de decidir si corresponde
+          integrarla al pipeline de Audio V2.
+        </p>
+        <a class="lab-link" href="/lab/">← Volver a ATLAS NEWS LAB</a>
+      </section>
+    </main>
+  </body>
+</html>
+
+<style>
+  :global(body) {
+    margin: 0;
+    background: #f2efe5;
+    color: #151515;
+  }
+
+  .lab-shell {
+    width: min(64rem, calc(100% - 2rem));
+    margin: 0 auto;
+    padding: clamp(3.5rem, 10vw, 7rem) 0;
+  }
+
+  .lab-kicker,
+  .status,
+  .card-kicker {
+    margin: 0;
+    font: 800 0.72rem/1.2 var(--sans);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  h1 {
+    margin: 0.75rem 0 1rem;
+    font: 700 clamp(2.7rem, 9vw, 6.5rem)/0.92 var(--display);
+    letter-spacing: -0.04em;
+  }
+
+  h2 {
+    margin: 0.45rem 0 0.8rem;
+    font: 700 clamp(1.7rem, 4vw, 2.8rem)/1 var(--display);
+  }
+
+  h3 {
+    margin: 0.4rem 0 0.65rem;
+    font: 700 1.45rem/1 var(--display);
+  }
+
+  p {
+    font: 400 1rem/1.6 var(--serif);
+  }
+
+  .lead {
+    max-width: 44rem;
+    font-size: 1.12rem;
+  }
+
+  .rule {
+    height: 4px;
+    margin: 2.5rem 0;
+    border-top: 1px solid #151515;
+    border-bottom: 1px solid #151515;
+  }
+
+  .comparison-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1rem;
+    margin-top: 1.5rem;
+  }
+
+  .audio-card {
+    border: 1px solid #151515;
+    padding: 1.25rem;
+    background: rgba(255, 255, 255, 0.18);
+  }
+
+  .audio-card--candidate {
+    border-top: 5px solid #a71920;
+  }
+
+  .card-copy {
+    min-height: 3.2rem;
+  }
+
+  audio {
+    width: 100%;
+    margin-top: 0.8rem;
+  }
+
+  .examples {
+    margin: 1.2rem 0;
+    padding: 1rem 1.2rem;
+    border-left: 4px solid #a71920;
+    background: rgba(255, 255, 255, 0.22);
+  }
+
+  .examples p {
+    margin: 0.45rem 0;
+  }
+
+  .note {
+    max-width: 48rem;
+  }
+
+  .lab-link {
+    display: inline-block;
+    margin-top: 1rem;
+    color: inherit;
+    font: 800 0.86rem/1.2 var(--sans);
+    text-decoration-thickness: 2px;
+    text-underline-offset: 0.2em;
+  }
+
+  @media (max-width: 700px) {
+    .comparison-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .card-copy {
+      min-height: 0;
+    }
+  }
+</style>
