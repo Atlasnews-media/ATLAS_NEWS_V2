@@ -122,6 +122,18 @@ const marketsVisual = {
                   />
                 )}
               </div>
+
+              <div class="calendar-entry" aria-label="Calendario Económico del día, próximamente">
+                <span
+                  class="calendar-link"
+                  role="link"
+                  aria-disabled="true"
+                  tabindex="-1"
+                >
+                  Calendario Económico del día
+                  <span aria-hidden="true">→</span>
+                </span>
+              </div>
             </article>
 
             <EditorialDoubleRule />
@@ -292,6 +304,19 @@ const marketsVisual = {
   }
   .headline-list {
     margin-top: 0.8rem;
+  }
+  .calendar-entry {
+    margin-top: 0.2rem;
+    padding: 1rem 0 0.2rem;
+    border-top: 4px double var(--rule);
+  }
+  .calendar-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    color: var(--accent);
+    font: 800 0.78rem/1.2 var(--sans);
+    letter-spacing: 0.04em;
   }
   .edition-rail {
     padding: clamp(2rem, 5vw, 4.5rem) 0 3rem clamp(1.25rem, 3vw, 2.25rem);
@@ -472,6 +497,12 @@ const marketsVisual = {
     }
     .headline-list {
       margin-top: 0.75rem;
+    }
+    .calendar-entry {
+      padding-top: 0.9rem;
+    }
+    .calendar-link {
+      font-size: 0.7rem;
     }
     .edition-rail {
       padding-left: 0;
