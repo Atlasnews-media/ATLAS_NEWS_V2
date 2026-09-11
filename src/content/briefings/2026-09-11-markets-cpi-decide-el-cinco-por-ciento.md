@@ -24,6 +24,13 @@ highlights:
   - label: "Petróleo"
     text: "Brent cerró en US$107,63 tras subir 6,3%; energía ya está condicionando expectativas monetarias."
 demo: false
+editorialVisual:
+  src: "https://commons.wikimedia.org/wiki/Special:FilePath/No_Known_Restrictions_Trading_Floor%2C_New_York_Stock_Exchange_%28Highsmith_LOC%29_%286718386525%29.jpg?width=1280"
+  alt: "Piso de operaciones de la Bolsa de Nueva York fotografiado por Carol M. Highsmith."
+  source: "Library of Congress / Wikimedia Commons"
+  sourceUrl: "https://commons.wikimedia.org/wiki/File:No_Known_Restrictions_Trading_Floor,_New_York_Stock_Exchange_(Highsmith_LOC)_(6718386525).jpg"
+  author: "Carol M. Highsmith"
+  license: "Dominio público — sin restricciones conocidas de publicación"
 ---
 
 ## Desarrollo
