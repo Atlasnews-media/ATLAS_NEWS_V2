@@ -129,8 +129,18 @@ const isPrimarySectionLanding = [
           width="1172"
           height="1172"
         />
-        <a class="brand" href="/" aria-label="ATLAS NEWS, portada">ATLAS NEWS</a
-        >
+        <div class="brand-copy">
+          <a class="brand" href="/" aria-label="ATLAS NEWS, portada"
+            >ATLAS NEWS</a
+          >
+          <p class="brand-subtitle" aria-label="Economía, Mercados, Contexto">
+            <span>Economía</span>
+            <span aria-hidden="true">•</span>
+            <span>Mercados</span>
+            <span aria-hidden="true">•</span>
+            <span>Contexto</span>
+          </p>
+        </div>
       </div>
       <nav aria-label="Navegación principal">
         <a href={primaryEntry.href}>{primaryEntry.label}</a>
@@ -211,6 +221,12 @@ const isPrimarySectionLanding = [
     gap: clamp(0.65rem, 1.5vw, 1.25rem);
     margin: 0.45rem 0 0.8rem;
   }
+  .brand-copy {
+    display: flex;
+    min-width: 0;
+    flex-direction: column;
+    align-items: center;
+  }
   .brand-mark {
     display: block;
     flex: 0 0 auto;
@@ -225,6 +241,17 @@ const isPrimarySectionLanding = [
     letter-spacing: -0.04em;
     text-align: center;
     text-decoration: none;
+    white-space: nowrap;
+  }
+  .brand-subtitle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: clamp(0.35rem, 0.85vw, 0.75rem);
+    margin: 0.22rem 0 0;
+    color: inherit;
+    font: 400 clamp(0.82rem, 2vw, 1.35rem)/1 var(--serif);
+    letter-spacing: 0.01em;
     white-space: nowrap;
   }
   .edition-bar,
@@ -380,6 +407,11 @@ const isPrimarySectionLanding = [
       flex: 0 1 auto;
       max-width: 100%;
       font-size: clamp(2.25rem, 12vw, 4.15rem);
+    }
+    .brand-subtitle {
+      gap: clamp(0.22rem, 1.6vw, 0.38rem);
+      margin-top: 0.12rem;
+      font-size: clamp(0.62rem, 3vw, 0.78rem);
     }
     .site-header nav {
       text-align: center;
