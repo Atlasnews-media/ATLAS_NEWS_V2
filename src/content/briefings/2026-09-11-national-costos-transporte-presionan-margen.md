@@ -1,10 +1,10 @@
 ---
 title: "El costo del transporte muestra dónde empieza a sentirse el shock externo en Chile"
 summary: "El índice sectorial subió 0,7% en agosto y los combustibles volvieron a ajustarse al alza, una combinación que presiona márgenes antes de convertirse necesariamente en inflación persistente."
-publishedAt: "2026-09-11T06:04:35-03:00"
+publishedAt: "2026-09-11T06:58:04-03:00"
 cutoffAt: "2026-09-11T06:04:15-03:00"
 section: "national"
-status: "draft"
+status: "published"
 tags:
   - chile
   - inflacion
