@@ -17,7 +17,7 @@
     "radar:discover": "node scripts/discover-radar-readings.mjs",
     "status:generate": "node scripts/generate-publication-status.mjs",
     "test:funds": "node scripts/funds/run-finance-tests.mjs && node --test scripts/funds/snapshot.test.mjs",
-    "update:indicators": "node scripts/update-economic-indicators.mjs && node scripts/enrich-economic-trends.mjs",
+    "update:indicators": "node scripts/update-economic-indicators.mjs && node scripts/enrich-economic-trends.mjs && node scripts/probe-calendar.mjs",
     "validate:content": "node scripts/validate-content.mjs",
     "validate:build": "node scripts/validate-build.mjs"
   },
