@@ -6,3 +6,12 @@ src/content/editions/*.md
 src/content/briefings/*.md
 src/content/readings/*.md
 data/editorial_state.json
+# TEMP LAB: retirar antes de cualquier merge
+src/pages/lab/calendario-economico.astro
+src/pages/lab/calendario-probe.json.ts
+src/lib/chile-calendar.ts
+scripts/probe-calendar.mjs
+# TEMP LAB: baseline previo que hoy bloquea prettier; no modificar estos archivos aquí
+src/pages/lab/portada-v2.astro
+scripts/prepare-audio-v2.mjs
+scripts/prepare-international-audio.mjs

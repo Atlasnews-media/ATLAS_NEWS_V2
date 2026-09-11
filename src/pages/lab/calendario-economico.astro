@@ -1,0 +1,647 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { loadChileCalendar } from "../../lib/chile-calendar";
+
+const chileCalendar = await loadChileCalendar();
+const nationalEvents = chileCalendar.events;
+const TIME_ZONE = "America/Santiago";
+
+const todayParts = new Intl.DateTimeFormat("en-CA", {
+  timeZone: TIME_ZONE,
+  year: "numeric",
+  month: "2-digit",
+  day: "2-digit",
+}).formatToParts(new Date());
+const todayMap = Object.fromEntries(
+  todayParts.map((part) => [part.type, part.value]),
+);
+const chileTodayKey = `${todayMap.year}-${todayMap.month}-${todayMap.day}`;
+const shortMonths = [
+  "ENE",
+  "FEB",
+  "MAR",
+  "ABR",
+  "MAY",
+  "JUN",
+  "JUL",
+  "AGO",
+  "SEP",
+  "OCT",
+  "NOV",
+  "DIC",
+];
+
+function nationalWhen(event: (typeof nationalEvents)[number]) {
+  if (event.date === chileTodayKey && event.time) return event.time;
+  const [, month, day] = event.date.split("-").map(Number);
+  return `${String(day).padStart(2, "0")} ${shortMonths[month - 1]}`;
+}
+---
+
+<BaseLayout
+  title="ATLAS NEWS — Calendario económico LAB"
+  description="LAB aislado de ATLAS NEWS para probar un calendario económico diario alimentado por fuentes automáticas y oficiales."
+>
+  <main class="calendar-lab page-shell">
+    <div class="lab-bar">
+      <p>LAB · CALENDARIO ECONÓMICO</p>
+      <a href="/">Volver a portada</a>
+    </div>
+
+    <header class="calendar-heading">
+      <p class="page-kicker">Agenda económica automática</p>
+      <h1>Calendario del día</h1>
+      <p id="calendar-date" class="calendar-date">Agenda de hoy</p>
+      <p class="calendar-intro">
+        Hasta cinco hitos por bloque. Internacional y Mercados se recuperan desde
+        calendario público; Nacional se construye directamente desde INE y Banco
+        Central de Chile.
+      </p>
+    </header>
+
+    <div id="api-status" class="api-status" role="status" aria-live="polite">
+      Consultando agenda internacional…
+    </div>
+
+    <section class="calendar-section" aria-labelledby="international-title">
+      <div class="section-heading">
+        <h2 id="international-title">Internacional</h2>
+        <span>Hoy</span>
+      </div>
+      <div id="international-list" class="event-list" aria-busy="true"></div>
+    </section>
+
+    <section class="calendar-section" aria-labelledby="national-title">
+      <div class="section-heading">
+        <h2 id="national-title">Nacional</h2>
+        <span>
+          {chileCalendar.todayCount > 0 && !chileCalendar.usesFuture
+            ? "Hoy"
+            : "Hoy + próximos"}
+        </span>
+      </div>
+      <div class="event-list">
+        {
+          nationalEvents.length > 0 ? (
+            nationalEvents.map((event) => (
+              <article class="event-row">
+                <time datetime={event.date}>{nationalWhen(event)}</time>
+                <div class="event-copy">
+                  <h3>{event.name}</h3>
+                  <p>
+                    <a href={event.sourceUrl} target="_blank" rel="noreferrer">
+                      {event.sourceName}
+                    </a>
+                  </p>
+                </div>
+              </article>
+            ))
+          ) : (
+            <div class="event-empty">
+              <strong>—</strong>
+              <p>No fue posible recuperar la agenda oficial de Chile.</p>
+            </div>
+          )
+        }
+      </div>
+    </section>
+
+    <section class="calendar-section" aria-labelledby="markets-title">
+      <div class="section-heading">
+        <h2 id="markets-title">Mercados</h2>
+        <span>Agenda relevante</span>
+      </div>
+      <div id="markets-list" class="event-list" aria-busy="true"></div>
+    </section>
+
+    <footer class="calendar-source">
+      <p>
+        Fuentes del LAB: <a
+          href="https://biquote.io/docs/"
+          target="_blank"
+          rel="noreferrer">BiQuote</a
+        > · <a
+          href="https://www.ine.gob.cl/inicio/agendaestadistica"
+          target="_blank"
+          rel="noreferrer">INE</a
+        > · <a
+          href="https://www.bcentral.cl/es/calendario-estadistico"
+          target="_blank"
+          rel="noreferrer">Banco Central de Chile</a
+        >.
+      </p>
+      <p id="updated-at">Última consulta: —</p>
+    </footer>
+  </main>
+
+  <script>
+    type ApiEvent = {
+      id: string;
+      time: string;
+      name?: string;
+      countryCode?: string;
+      importance?: string;
+      timeMode?: string;
+      sourceUrl?: string;
+      sector?: string;
+      type?: string;
+    };
+
+    type CalendarParams = Record<string, string | number | null | undefined>;
+    type RenderOptions = { empty?: string };
+
+    const API = "https://biquote.io/api/calendar";
+    const TIME_ZONE = "America/Santiago";
+    const MAX_ITEMS = 5;
+    const MAJOR_COUNTRIES = [
+      "US",
+      "EU",
+      "GB",
+      "JP",
+      "CN",
+      "DE",
+      "FR",
+      "CA",
+      "AU",
+      "BR",
+      "MX",
+      "KR",
+      "CH",
+    ];
+
+    const countryLabels: Record<string, string> = {
+      US: "EE.UU.",
+      EU: "Eurozona",
+      GB: "Reino Unido",
+      JP: "Japón",
+      CN: "China",
+      DE: "Alemania",
+      FR: "Francia",
+      CA: "Canadá",
+      AU: "Australia",
+      BR: "Brasil",
+      MX: "México",
+      KR: "Corea del Sur",
+      CH: "Suiza",
+    };
+
+    const impactScores: Record<string, number> = {
+      high: 30,
+      medium: 20,
+      med: 20,
+      low: 10,
+    };
+
+    const marketSectors = new Set([
+      "rates",
+      "bonds",
+      "energy",
+      "money",
+      "centralbank",
+      "central-bank",
+      "commodities",
+      "housing",
+    ]);
+
+    function element(selector: string): HTMLElement {
+      const target = document.querySelector<HTMLElement>(selector);
+      if (!target) throw new Error(`Elemento no encontrado: ${selector}`);
+      return target;
+    }
+
+    function localDateKey(date: Date): string {
+      const parts = new Intl.DateTimeFormat("en-CA", {
+        timeZone: TIME_ZONE,
+        year: "numeric",
+        month: "2-digit",
+        day: "2-digit",
+      }).formatToParts(date);
+      const map = Object.fromEntries(
+        parts.map((part) => [part.type, part.value]),
+      );
+      return `${map.year}-${map.month}-${map.day}`;
+    }
+
+    function addDays(date: Date, days: number): Date {
+      const copy = new Date(date);
+      copy.setUTCDate(copy.getUTCDate() + days);
+      return copy;
+    }
+
+    function localTime(value: string, timeMode = "exact"): string {
+      if (timeMode !== "exact") return "—";
+      return new Intl.DateTimeFormat("es-CL", {
+        timeZone: TIME_ZONE,
+        hour: "2-digit",
+        minute: "2-digit",
+        hour12: false,
+      }).format(new Date(value));
+    }
+
+    function longToday(date: Date): string {
+      return new Intl.DateTimeFormat("es-CL", {
+        timeZone: TIME_ZONE,
+        weekday: "long",
+        day: "numeric",
+        month: "long",
+        year: "numeric",
+      }).format(date);
+    }
+
+    function score(event: ApiEvent): number {
+      const impact = impactScores[String(event.importance ?? "").toLowerCase()] ?? 0;
+      const exact = event.timeMode === "exact" ? 2 : 0;
+      const major = event.countryCode && MAJOR_COUNTRIES.includes(event.countryCode) ? 3 : 0;
+      return impact + exact + major;
+    }
+
+    function choose(events: ApiEvent[], limit = MAX_ITEMS): ApiEvent[] {
+      return [...events]
+        .sort(
+          (a, b) =>
+            score(b) - score(a) ||
+            new Date(a.time).getTime() - new Date(b.time).getTime(),
+        )
+        .slice(0, limit)
+        .sort(
+          (a, b) => new Date(a.time).getTime() - new Date(b.time).getTime(),
+        );
+    }
+
+    function escapeHtml(value: unknown): string {
+      return String(value ?? "")
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;")
+        .replaceAll('"', "&quot;")
+        .replaceAll("'", "&#039;");
+    }
+
+    function sourceLabel(event: ApiEvent): string {
+      const code = event.countryCode ?? "";
+      const country = countryLabels[code] ?? code ?? "—";
+      return event.sourceUrl
+        ? `<a href="${escapeHtml(event.sourceUrl)}" target="_blank" rel="noreferrer">${escapeHtml(country)}</a>`
+        : escapeHtml(country || "—");
+    }
+
+    function eventRow(event: ApiEvent): string {
+      const when = localTime(event.time, event.timeMode);
+      return `
+        <article class="event-row">
+          <time datetime="${escapeHtml(event.time)}">${escapeHtml(when)}</time>
+          <div class="event-copy">
+            <h3>${escapeHtml(event.name ?? "Evento económico")}</h3>
+            <p>${sourceLabel(event)}</p>
+          </div>
+        </article>`;
+    }
+
+    function emptyRow(message: string): string {
+      return `
+        <div class="event-empty">
+          <strong>—</strong>
+          <p>${escapeHtml(message)}</p>
+        </div>`;
+    }
+
+    function render(
+      target: HTMLElement,
+      events: ApiEvent[],
+      options: RenderOptions = {},
+    ): void {
+      target.innerHTML = events.length
+        ? events.map((event) => eventRow(event)).join("")
+        : emptyRow(
+            options.empty ??
+              "Sin eventos disponibles en la fuente para este bloque.",
+          );
+      target.setAttribute("aria-busy", "false");
+    }
+
+    async function fetchCalendar(params: CalendarParams): Promise<ApiEvent[]> {
+      const url = new URL(API);
+      Object.entries(params).forEach(([key, value]) => {
+        if (value !== undefined && value !== null && value !== "") {
+          url.searchParams.set(key, String(value));
+        }
+      });
+
+      const response = await fetch(url, {
+        headers: { Accept: "application/json" },
+      });
+      if (!response.ok) throw new Error(`API ${response.status}`);
+
+      const data: unknown = await response.json();
+      if (!Array.isArray(data)) throw new Error("Respuesta API inesperada");
+      return data as ApiEvent[];
+    }
+
+    async function loadCalendar(): Promise<void> {
+      const now = new Date();
+      const todayKey = localDateKey(now);
+      element("#calendar-date").textContent = longToday(now);
+
+      const from = addDays(now, -1).toISOString();
+      const tomorrow = addDays(now, 2).toISOString();
+
+      try {
+        const [internationalRaw, marketRaw] = await Promise.all([
+          fetchCalendar({
+            from,
+            to: tomorrow,
+            countries: MAJOR_COUNTRIES.join(","),
+            importance: "medium",
+            limit: 500,
+          }),
+          fetchCalendar({
+            from,
+            to: tomorrow,
+            countries: "US,EU,GB,JP,CN,CA,AU",
+            importance: "high",
+            limit: 300,
+          }),
+        ]);
+
+        const internationalToday = internationalRaw.filter(
+          (event) => localDateKey(new Date(event.time)) === todayKey,
+        );
+        const international = choose(internationalToday);
+        const internationalIds = new Set(international.map((event) => event.id));
+
+        const marketCandidates = marketRaw.filter((event) => {
+          const isToday = localDateKey(new Date(event.time)) === todayKey;
+          const sector = String(event.sector ?? "").toLowerCase();
+          const marketSpecific =
+            event.type === "event" ||
+            event.type === "holiday" ||
+            marketSectors.has(sector);
+          return isToday && !internationalIds.has(event.id) && marketSpecific;
+        });
+
+        let markets = choose(marketCandidates);
+        if (markets.length < MAX_ITEMS) {
+          const used = new Set([
+            ...internationalIds,
+            ...markets.map((event) => event.id),
+          ]);
+          const fallback = marketRaw.filter(
+            (event) =>
+              localDateKey(new Date(event.time)) === todayKey &&
+              !used.has(event.id),
+          );
+          markets = [
+            ...markets,
+            ...choose(fallback, MAX_ITEMS - markets.length),
+          ].slice(0, MAX_ITEMS);
+        }
+
+        render(element("#international-list"), international, {
+          empty:
+            "Sin publicaciones internacionales relevantes recuperadas para hoy.",
+        });
+        render(element("#markets-list"), markets, {
+          empty: "Sin hitos de mercado recuperados para hoy.",
+        });
+
+        element("#api-status").innerHTML =
+          '<span class="status-dot" aria-hidden="true"></span> Internacional en vivo · Chile desde fuentes oficiales';
+        element("#updated-at").textContent = `Última consulta: ${new Intl.DateTimeFormat(
+          "es-CL",
+          {
+            timeZone: TIME_ZONE,
+            dateStyle: "medium",
+            timeStyle: "short",
+          },
+        ).format(new Date())}`;
+      } catch (error) {
+        console.error(error);
+        const message = "No fue posible consultar la API en este momento.";
+        render(element("#international-list"), [], { empty: message });
+        render(element("#markets-list"), [], { empty: message });
+        element("#api-status").textContent =
+          "Fuente internacional temporalmente no disponible · Chile conserva sus fuentes oficiales";
+      }
+    }
+
+    void loadCalendar();
+  </script>
+</BaseLayout>
+
+<style>
+  .calendar-lab {
+    padding-top: 1rem;
+  }
+
+  .lab-bar,
+  .section-heading,
+  .calendar-source {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+
+  .lab-bar {
+    align-items: center;
+    padding: 0.7rem 0;
+    border-top: 1px solid var(--rule);
+    border-bottom: 1px solid var(--rule);
+    color: var(--accent);
+    font: 800 0.72rem/1.2 var(--sans);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  .lab-bar p,
+  .calendar-source p {
+    margin: 0;
+  }
+
+  .lab-bar a,
+  .event-copy a {
+    text-underline-offset: 0.18em;
+  }
+
+  .calendar-heading {
+    padding: clamp(2rem, 4vw, 3.75rem) 0 2rem;
+    border-bottom: 3px double var(--rule);
+  }
+
+  .calendar-heading h1 {
+    margin: 0.35rem 0 0;
+    font-size: clamp(3.2rem, 9vw, 8rem);
+    line-height: 0.87;
+    letter-spacing: -0.06em;
+  }
+
+  .calendar-date {
+    margin: 1rem 0 0;
+    color: var(--ink-soft);
+    font-size: clamp(1.05rem, 2vw, 1.3rem);
+    text-transform: capitalize;
+  }
+
+  .calendar-intro {
+    max-width: 50rem;
+    margin: 0.6rem 0 0;
+    color: var(--ink-soft);
+    font-size: 0.98rem;
+    line-height: 1.45;
+  }
+
+  .api-status {
+    min-height: 2.65rem;
+    padding: 0.65rem 0;
+    border-bottom: 1px solid var(--rule);
+    color: var(--ink-soft);
+    font: 700 0.68rem/1.2 var(--sans);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+
+  :global(.status-dot) {
+    display: inline-block;
+    width: 0.48rem;
+    height: 0.48rem;
+    margin-right: 0.45rem;
+    border-radius: 50%;
+    background: var(--accent);
+  }
+
+  .calendar-section {
+    margin-top: 2rem;
+    border-bottom: 3px double var(--rule);
+  }
+
+  .section-heading {
+    align-items: baseline;
+    padding-bottom: 0.55rem;
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .section-heading h2 {
+    margin: 0;
+    color: var(--accent);
+    font: 800 clamp(1.15rem, 2.8vw, 1.55rem)/1 var(--sans);
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+  }
+
+  .section-heading span {
+    color: var(--ink-soft);
+    font: 700 0.65rem/1.2 var(--sans);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .event-list {
+    min-height: 5rem;
+  }
+
+  :global(.event-row),
+  :global(.event-empty) {
+    display: grid;
+    grid-template-columns: minmax(5.5rem, 0.7fr) minmax(0, 5fr);
+    gap: 1rem;
+    align-items: center;
+    padding: 0.85rem 0;
+    border-bottom: 1px solid rgb(35 35 29 / 55%);
+  }
+
+  :global(.event-row:last-child),
+  :global(.event-empty:last-child) {
+    border-bottom: 0;
+  }
+
+  :global(.event-row > time) {
+    font: 700 clamp(1.15rem, 2.5vw, 1.55rem)/1 var(--serif);
+    font-variant-numeric: tabular-nums;
+  }
+
+  :global(.event-copy) {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(7rem, 0.35fr);
+    gap: 1rem;
+    align-items: baseline;
+  }
+
+  :global(.event-copy h3) {
+    margin: 0;
+    font: 700 clamp(1.05rem, 2.3vw, 1.45rem)/1.12 var(--serif);
+  }
+
+  :global(.event-copy p) {
+    margin: 0;
+    color: var(--ink-soft);
+    font: 0.8rem/1.25 var(--serif);
+  }
+
+  :global(.event-empty strong) {
+    font-size: 1.4rem;
+  }
+
+  :global(.event-empty p) {
+    margin: 0;
+    color: var(--ink-soft);
+    font-style: italic;
+  }
+
+  .calendar-source {
+    padding-top: 1rem;
+    color: var(--ink-soft);
+    font: 0.65rem/1.4 var(--sans);
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+
+  @media (max-width: 42rem) {
+    .calendar-lab {
+      padding-top: 0.7rem;
+    }
+
+    .calendar-heading {
+      padding-top: 1.6rem;
+    }
+
+    .calendar-heading h1 {
+      font-size: clamp(3rem, 15vw, 5rem);
+    }
+
+    .calendar-intro {
+      font-size: 0.88rem;
+    }
+
+    :global(.event-row),
+    :global(.event-empty) {
+      grid-template-columns: 4.6rem minmax(0, 1fr);
+      gap: 0.65rem;
+      padding: 0.75rem 0;
+    }
+
+    :global(.event-row > time) {
+      font-size: 1rem;
+    }
+
+    :global(.event-copy) {
+      display: block;
+    }
+
+    :global(.event-copy h3) {
+      font-size: 1.08rem;
+      line-height: 1.08;
+    }
+
+    :global(.event-copy p) {
+      margin-top: 0.25rem;
+      font-size: 0.72rem;
+    }
+
+    .calendar-source {
+      display: block;
+    }
+
+    .calendar-source p + p {
+      margin-top: 0.5rem;
+    }
+  }
+</style>
