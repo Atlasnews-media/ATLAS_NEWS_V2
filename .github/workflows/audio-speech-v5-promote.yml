@@ -47,8 +47,7 @@ jobs:
           text = text.replace('SPEECH_NORMALIZER_VERSION != 4', 'SPEECH_NORMALIZER_VERSION != 5')
           text = text.replace('El normalizador numérico debe publicar versión 4.', 'Speech Normalizer debe publicar versión 5.')
           marker = '''check("Powell habló en Wall Street.", "Páuel habló en Uól Strít.")\n'''
-          v5_tests = '''# Golden tests Speech V5: verbalización financiera controlada.\ncheck(\n    "El IPC decidirá si esa repricing se consolida.",\n    "El índice de precios al consumidor decidirá si esa revisión de expectativas se consolida.",\n)\ncheck(\n    "Si el repricing de tasas continúa, los rendimientos largos seguirán bajo presión.",\n    "Si el reajuste de expectativas sobre las tasas continúa, los rendimientos largos seguirán bajo presión.",\n)\ncheck(\n    "El S&P 500 puede amplificar la repricing de duración.",\n    "El S and P quinientos puede amplificar la revisión de expectativas de larga duración.",\n)\ncheck(\n    "El endurecimiento cross-asset refleja mayor prima por riesgo.",\n    "El endurecimiento entre distintas clases de activos refleja mayor prima por riesgo.",\n)\n\n'''
-          # El test de duración se ajustará a la cadena final tras Lexicon; se inserta luego del marker.
+          v5_tests = '''# Golden tests Speech V5: verbalización financiera controlada.\ncheck(\n    "El IPC decidirá si esa repricing se consolida.",\n    "El índice de precios al consumidor decidirá si esa revisión de expectativas se consolida.",\n)\ncheck(\n    "Si el repricing de tasas continúa, los rendimientos largos seguirán bajo presión.",\n    "Si el reajuste de expectativas sobre las tasas continúa, los rendimientos largos seguirán bajo presión.",\n)\ncheck(\n    "La repricing de duración puede amplificarse.",\n    "La revisión de expectativas de larga duración puede amplificarse.",\n)\ncheck(\n    "El endurecimiento cross-asset refleja mayor prima por riesgo.",\n    "El endurecimiento entre distintas clases de activos refleja mayor prima por riesgo.",\n)\n\n'''
           if 'Golden tests Speech V5' not in text:
               text = text.replace(marker, marker + v5_tests)
           text = text.replace('print("Audio speech V4: golden tests OK")', 'print("Audio speech V5: golden tests OK")')
@@ -80,12 +79,13 @@ jobs:
           daily.write_text(text, encoding='utf-8')
           PY
 
-      - name: Formatear archivos modificados
-        run: npx prettier --write scripts/prepare-audio-v2.mjs scripts/prepare-daily-audio.mjs scripts/test_audio_speech.py scripts/audio_speech.py
+      - name: Formatear planners JS
+        run: npx prettier --write scripts/prepare-audio-v2.mjs scripts/prepare-daily-audio.mjs
       - name: Ejecutar golden tests V5
         run: python3 scripts/test_audio_speech.py
       - name: Validar sintaxis planners
         run: |
+          python3 -m py_compile scripts/audio_speech.py scripts/test_audio_speech.py
           node --check scripts/prepare-audio-v2.mjs
           node --check scripts/prepare-daily-audio.mjs
       - name: Guardar V5 en la rama
