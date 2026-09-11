@@ -9,6 +9,7 @@ permissions:
 
 jobs:
   format:
+    # Temporal: se elimina antes del merge.
     if: github.actor != 'github-actions[bot]'
     runs-on: ubuntu-latest
     steps:
