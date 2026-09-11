@@ -189,11 +189,14 @@ const editions = await Promise.all(
 const latestDaily = editions
   .filter(({ status, type }) => status === "published" && type === "daily")
   .sort(
-    (a, b) => Date.parse(b.publishedAt ?? "") - Date.parse(a.publishedAt ?? ""),
+    (a, b) =>
+      Date.parse(b.publishedAt ?? "") - Date.parse(a.publishedAt ?? ""),
   )[0];
 
 if (!latestDaily) {
-  throw new Error("No existe una edición Internacional publicada para generar audio.");
+  throw new Error(
+    "No existe una edición Internacional publicada para generar audio.",
+  );
 }
 
 const date = latestDaily.id.slice(0, 10);
@@ -244,7 +247,11 @@ addSection(
 if (countWords(parts.join(" ")) < TARGET_MIN_WORDS) {
   const reserve = [
     ...(latestDaily.sections.get(normalizeHeading("Mercados globales")) ?? []),
-    ...(latestDaily.sections.get(normalizeHeading("Tasas, monedas y commodities")) ?? []),
+    ...(
+      latestDaily.sections.get(
+        normalizeHeading("Tasas, monedas y commodities"),
+      ) ?? []
+    ),
   ];
   for (const sentence of sentenceList(reserve)) {
     add(sentence);
