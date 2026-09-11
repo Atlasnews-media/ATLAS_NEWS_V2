@@ -125,7 +125,7 @@ const marketsVisual = {
 
               <div
                 class="calendar-entry"
-                aria-label="Calendario Económico del día, próximamente"
+                aria-label="Ir a calendario económico de hoy, próximamente"
               >
                 <span
                   class="calendar-link"
@@ -133,7 +133,7 @@ const marketsVisual = {
                   aria-disabled="true"
                   tabindex="-1"
                 >
-                  Calendario Económico del día
+                  Ir a calendario económico de hoy
                   <span aria-hidden="true">→</span>
                 </span>
               </div>
@@ -318,8 +318,10 @@ const marketsVisual = {
     align-items: center;
     gap: 0.45rem;
     color: var(--accent);
-    font: 800 0.78rem/1.2 var(--sans);
-    letter-spacing: 0.04em;
+    font: 800 0.68rem/1.2 var(--sans);
+    letter-spacing: 0.08em;
+    text-decoration: none;
+    text-transform: uppercase;
   }
   .edition-rail {
     padding: clamp(2rem, 5vw, 4.5rem) 0 3rem clamp(1.25rem, 3vw, 2.25rem);
@@ -477,8 +479,8 @@ const marketsVisual = {
       font-size: 0.52rem;
     }
     :global(.site-header nav a) {
-      min-height: 2.9rem;
-      padding: 0.7rem 0.12rem;
+      min-height: 2.2rem;
+      padding: 0.25rem 0.08rem;
     }
     :global(.editorial-double-rule) + .lead-grid {
       margin-top: 16px;
@@ -502,10 +504,11 @@ const marketsVisual = {
       margin-top: 0.75rem;
     }
     .calendar-entry {
+      margin-top: 0;
       padding-top: 0.9rem;
     }
     .calendar-link {
-      font-size: 0.7rem;
+      font-size: 0.64rem;
     }
     .edition-rail {
       padding-left: 0;
