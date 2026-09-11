@@ -31,7 +31,10 @@ const visualAllowed = (() => {
 })();
 ---
 
-<section class="headline-item" data-has-visual={visualAllowed ? "true" : "false"}>
+<section
+  class="headline-item"
+  data-has-visual={visualAllowed ? "true" : "false"}
+>
   <div class="headline-copy">
     <p class="headline-label">{label}</p>
     <h2><a href={href}>{title}</a></h2>
