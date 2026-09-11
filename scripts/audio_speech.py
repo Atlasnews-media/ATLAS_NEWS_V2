@@ -125,9 +125,34 @@ def _preserve_initial_case(match: re.Match, replacement: str) -> str:
 def normalize_financial_spoken_form(text: str) -> str:
     """Adapta términos financieros al español hablado sin tocar display_text."""
     normalized = str(text)
+
+    article_context_rules = (
+        (
+            r"\b(el|un|este|ese)\s+repricing\s+de\s+tasas\b",
+            r"\1 reajuste de expectativas sobre las tasas",
+        ),
+        (
+            r"\b(la|una|esta|esa)\s+repricing\s+de\s+tasas\b",
+            r"\1 revisión de expectativas sobre las tasas",
+        ),
+        (
+            r"\b(el|un|este|ese)\s+repricing\s+de\s+duraci[oó]n\b",
+            r"\1 reajuste de expectativas de larga duración",
+        ),
+        (
+            r"\b(la|una|esta|esa)\s+repricing\s+de\s+duraci[oó]n\b",
+            r"\1 revisión de expectativas de larga duración",
+        ),
+    )
+    for pattern, replacement in article_context_rules:
+        normalized = re.sub(pattern, replacement, normalized, flags=re.IGNORECASE)
+
     contextual_rules = (
         (r"\brepricing\s+de\s+tasas\b", "reajuste de expectativas sobre las tasas"),
-        (r"\brepricing\s+de\s+duraci[oó]n\b", "reajuste de expectativas de larga duración"),
+        (
+            r"\brepricing\s+de\s+duraci[oó]n\b",
+            "reajuste de expectativas de larga duración",
+        ),
         (r"\bcross[- ]asset\b", "entre distintas clases de activos"),
     )
     for pattern, replacement in contextual_rules:

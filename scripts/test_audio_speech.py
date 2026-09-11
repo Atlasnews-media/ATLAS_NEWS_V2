@@ -25,8 +25,16 @@ check(
     "Si el reajuste de expectativas sobre las tasas continúa, los rendimientos largos seguirán bajo presión.",
 )
 check(
+    "Si la repricing de tasas continúa, el mercado ajustará precios.",
+    "Si la revisión de expectativas sobre las tasas continúa, el mercado ajustará precios.",
+)
+check(
+    "Si el repricing de duración continúa, los bonos reaccionarán.",
+    "Si el reajuste de expectativas de larga duración continúa, los bonos reaccionarán.",
+)
+check(
     "La repricing de duración puede amplificarse.",
-    "La reajuste de expectativas de larga duración puede amplificarse.",
+    "La revisión de expectativas de larga duración puede amplificarse.",
 )
 check(
     "El endurecimiento cross-asset refleja mayor prima por riesgo.",
