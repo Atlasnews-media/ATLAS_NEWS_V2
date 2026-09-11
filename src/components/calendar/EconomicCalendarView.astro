@@ -1,0 +1,701 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { loadChileCalendar } from "../../lib/chile-calendar";
+
+const chileCalendar = await loadChileCalendar();
+const nationalEvents = chileCalendar.events;
+const TIME_ZONE = "America/Santiago";
+
+const todayParts = new Intl.DateTimeFormat("en-CA", {
+  timeZone: TIME_ZONE,
+  year: "numeric",
+  month: "2-digit",
+  day: "2-digit",
+}).formatToParts(new Date());
+const todayMap = Object.fromEntries(
+  todayParts.map((part) => [part.type, part.value]),
+);
+const chileTodayKey = `${todayMap.year}-${todayMap.month}-${todayMap.day}`;
+const shortMonths = [
+  "ENE",
+  "FEB",
+  "MAR",
+  "ABR",
+  "MAY",
+  "JUN",
+  "JUL",
+  "AGO",
+  "SEP",
+  "OCT",
+  "NOV",
+  "DIC",
+];
+
+function nationalWhen(event: (typeof nationalEvents)[number]) {
+  if (event.date === chileTodayKey && event.time) return event.time;
+  const [, month, day] = event.date.split("-").map(Number);
+  return `${String(day).padStart(2, "0")} ${shortMonths[month - 1]}`;
+}
+---
+
+<BaseLayout
+  title="ATLAS NEWS — Calendario económico LAB"
+  description="LAB aislado de ATLAS NEWS para probar un calendario económico diario alimentado por fuentes automáticas y oficiales."
+>
+  <main class="calendar-lab page-shell">
+    <header class="calendar-heading">
+      <p class="page-kicker">Agenda económica</p>
+      <h1>Calendario del Día</h1>
+      <p class="calendar-intro">
+        <em>Hechos que pueden mover mercados y marcar la agenda económica de hoy.</em>
+      </p>
+    </header>
+
+    <section class="calendar-section" aria-labelledby="international-title">
+      <div class="section-heading">
+        <h2 id="international-title">Internacional</h2>
+        <span>Hoy</span>
+      </div>
+      <div id="international-list" class="event-list" aria-busy="true"></div>
+    </section>
+
+    <section class="calendar-section" aria-labelledby="national-title">
+      <div class="section-heading">
+        <h2 id="national-title">Nacional</h2>
+        <span>
+          {chileCalendar.todayCount > 0 && !chileCalendar.usesFuture
+            ? "Hoy"
+            : "Hoy + próximos"}
+        </span>
+      </div>
+      <div class="event-list">
+        {
+          nationalEvents.length > 0 ? (
+            nationalEvents.map((event) => (
+              <article class="event-row">
+                <time datetime={event.date}>{nationalWhen(event)}</time>
+                <div class="event-copy">
+                  <h3>{event.name}</h3>
+                  <p>
+                    <a href={event.sourceUrl} target="_blank" rel="noreferrer">
+                      {event.sourceName}
+                    </a>
+                  </p>
+                </div>
+              </article>
+            ))
+          ) : (
+            <div class="event-empty">
+              <strong>—</strong>
+              <p>No fue posible recuperar la agenda oficial de Chile.</p>
+            </div>
+          )
+        }
+      </div>
+    </section>
+
+    <section class="calendar-section" aria-labelledby="markets-title">
+      <div class="section-heading">
+        <h2 id="markets-title">Mercados</h2>
+        <span>Agenda relevante</span>
+      </div>
+      <div id="markets-list" class="event-list" aria-busy="true"></div>
+    </section>
+
+    <footer class="calendar-source">
+      <p>
+        Fuentes del LAB: <a
+          href="https://biquote.io/docs/"
+          target="_blank"
+          rel="noreferrer">BiQuote</a
+        > · <a
+          href="https://www.ine.gob.cl/inicio/agendaestadistica"
+          target="_blank"
+          rel="noreferrer">INE</a
+        > · <a
+          href="https://www.bcentral.cl/es/calendario-estadistico"
+          target="_blank"
+          rel="noreferrer">Banco Central de Chile</a
+        >.
+      </p>
+      <p id="updated-at">Última consulta: —</p>
+    </footer>
+  </main>
+
+  <script>
+    type ApiEvent = {
+      id: string;
+      eventId?: string;
+      time: string;
+      period?: string;
+      name?: string;
+      countryCode?: string;
+      currency?: string;
+      importance?: string;
+      timeMode?: string;
+      sourceUrl?: string;
+      sector?: string;
+      type?: string;
+      source?: string;
+    };
+
+    type CalendarParams = Record<string, string | number | null | undefined>;
+    type RenderOptions = { empty?: string };
+    type Region = "americas" | "europe" | "asia-pacific" | "other";
+
+    const API = "https://biquote.io/api/calendar";
+    const TIME_ZONE = "America/Santiago";
+    const MAX_ITEMS = 5;
+    const MAJOR_COUNTRIES = [
+      "US",
+      "EU",
+      "GB",
+      "JP",
+      "CN",
+      "DE",
+      "FR",
+      "CA",
+      "AU",
+      "BR",
+      "MX",
+      "KR",
+      "CH",
+    ];
+
+    const countryLabels: Record<string, string> = {
+      US: "EE.UU.",
+      EU: "Eurozona",
+      GB: "Reino Unido",
+      JP: "Japón",
+      CN: "China",
+      DE: "Alemania",
+      FR: "Francia",
+      CA: "Canadá",
+      AU: "Australia",
+      BR: "Brasil",
+      MX: "México",
+      KR: "Corea del Sur",
+      CH: "Suiza",
+    };
+
+    const impactScores: Record<string, number> = {
+      high: 30,
+      medium: 20,
+      med: 20,
+      low: 10,
+    };
+
+    const marketSectors = new Set([
+      "rates",
+      "bonds",
+      "energy",
+      "money",
+      "centralbank",
+      "central-bank",
+      "commodities",
+      "credit",
+      "banking",
+      "finance",
+      "stocks",
+      "equities",
+    ]);
+
+    function element(selector: string): HTMLElement {
+      const target = document.querySelector<HTMLElement>(selector);
+      if (!target) throw new Error(`Elemento no encontrado: ${selector}`);
+      return target;
+    }
+
+    function localDateKey(date: Date): string {
+      const parts = new Intl.DateTimeFormat("en-CA", {
+        timeZone: TIME_ZONE,
+        year: "numeric",
+        month: "2-digit",
+        day: "2-digit",
+      }).formatToParts(date);
+      const map = Object.fromEntries(
+        parts.map((part) => [part.type, part.value]),
+      );
+      return `${map.year}-${map.month}-${map.day}`;
+    }
+
+    function addDays(date: Date, days: number): Date {
+      const copy = new Date(date);
+      copy.setUTCDate(copy.getUTCDate() + days);
+      return copy;
+    }
+
+    function localTime(value: string, timeMode = "exact"): string {
+      if (timeMode !== "exact") return "—";
+      return new Intl.DateTimeFormat("es-CL", {
+        timeZone: TIME_ZONE,
+        hour: "2-digit",
+        minute: "2-digit",
+        hour12: false,
+      }).format(new Date(value));
+    }
+
+    function normalizeName(value: string): string {
+      return value
+        .normalize("NFD")
+        .replace(/[\u0300-\u036f]/g, "")
+        .toLowerCase()
+        .replace(/[^a-z0-9]+/g, " ")
+        .trim();
+    }
+
+    function eventKey(event: ApiEvent): string {
+      if (event.eventId) return event.eventId;
+      const period = event.period?.slice(0, 10) ?? localDateKey(new Date(event.time));
+      return `${event.countryCode ?? ""}|${normalizeName(event.name ?? "")}|${period}`;
+    }
+
+    function dedupe(events: ApiEvent[]): ApiEvent[] {
+      const unique = new Map<string, ApiEvent>();
+      [...events]
+        .sort((a, b) => score(b) - score(a))
+        .forEach((event) => {
+          const key = eventKey(event);
+          if (!unique.has(key)) unique.set(key, event);
+        });
+      return [...unique.values()];
+    }
+
+    function regionFor(code = ""): Region {
+      if (["US", "CA", "BR", "MX"].includes(code)) return "americas";
+      if (["EU", "GB", "DE", "FR", "CH"].includes(code)) return "europe";
+      if (["JP", "CN", "KR", "AU"].includes(code)) return "asia-pacific";
+      return "other";
+    }
+
+    function score(event: ApiEvent): number {
+      const impact = impactScores[String(event.importance ?? "").toLowerCase()] ?? 0;
+      const exact = event.timeMode === "exact" ? 2 : 0;
+      const major = event.countryCode && MAJOR_COUNTRIES.includes(event.countryCode) ? 3 : 0;
+      return impact + exact + major;
+    }
+
+    function byPriority(events: ApiEvent[]): ApiEvent[] {
+      return [...events].sort(
+        (a, b) =>
+          score(b) - score(a) ||
+          new Date(a.time).getTime() - new Date(b.time).getTime(),
+      );
+    }
+
+    function chooseInternational(events: ApiEvent[]): ApiEvent[] {
+      const candidates = byPriority(
+        dedupe(events).filter((event) => event.type !== "holiday"),
+      );
+      const selected: ApiEvent[] = [];
+      const selectedKeys = new Set<string>();
+      const countryCounts = new Map<string, number>();
+
+      for (const region of ["americas", "europe", "asia-pacific"] as Region[]) {
+        const event = candidates.find(
+          (candidate) =>
+            regionFor(candidate.countryCode) === region &&
+            !selectedKeys.has(eventKey(candidate)),
+        );
+        if (!event) continue;
+        selected.push(event);
+        selectedKeys.add(eventKey(event));
+        const code = event.countryCode ?? "";
+        countryCounts.set(code, (countryCounts.get(code) ?? 0) + 1);
+      }
+
+      for (const event of candidates) {
+        if (selected.length >= MAX_ITEMS) break;
+        const key = eventKey(event);
+        if (selectedKeys.has(key)) continue;
+        const code = event.countryCode ?? "";
+        const cap = code === "US" ? 3 : 2;
+        if ((countryCounts.get(code) ?? 0) >= cap) continue;
+        selected.push(event);
+        selectedKeys.add(key);
+        countryCounts.set(code, (countryCounts.get(code) ?? 0) + 1);
+      }
+
+      return selected.sort(
+        (a, b) => new Date(a.time).getTime() - new Date(b.time).getTime(),
+      );
+    }
+
+    function chooseMarkets(events: ApiEvent[], blockedKeys: Set<string>): ApiEvent[] {
+      const marketOnly = dedupe(events).filter((event) => {
+        if (blockedKeys.has(eventKey(event))) return false;
+        const type = String(event.type ?? "").toLowerCase();
+        const sector = String(event.sector ?? "").toLowerCase();
+        return type === "event" || type === "holiday" || marketSectors.has(sector);
+      });
+
+      return byPriority(marketOnly)
+        .slice(0, MAX_ITEMS)
+        .sort(
+          (a, b) => new Date(a.time).getTime() - new Date(b.time).getTime(),
+        );
+    }
+
+    function displayName(event: ApiEvent): string {
+      const raw = event.name ?? "Evento económico";
+      const exact: Record<string, string> = {
+        "gdp m/m": "PIB mensual",
+        "gdp y/y": "PIB anual",
+        "cpi m/m": "IPC mensual",
+        "cpi y/y": "IPC anual",
+        "core cpi m/m": "IPC subyacente mensual",
+        "core cpi y/y": "IPC subyacente anual",
+        "ecb president lagarde speech": "Discurso de Christine Lagarde — BCE",
+      };
+      const normalized = normalizeName(raw).replaceAll(" ", " ");
+      const direct = exact[raw.toLowerCase()];
+      if (direct) return direct;
+      if (normalized === "gdp m m") return "PIB mensual";
+      if (normalized === "gdp y y") return "PIB anual";
+      if (normalized === "cpi m m") return "IPC mensual";
+      if (normalized === "cpi y y") return "IPC anual";
+      if (normalized === "core cpi m m") return "IPC subyacente mensual";
+      if (normalized === "core cpi y y") return "IPC subyacente anual";
+      return raw;
+    }
+
+    function escapeHtml(value: unknown): string {
+      return String(value ?? "")
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;")
+        .replaceAll('"', "&quot;")
+        .replaceAll("'", "&#039;");
+    }
+
+    function sourceLabel(event: ApiEvent): string {
+      const code = event.countryCode ?? "";
+      const country = countryLabels[code] ?? code ?? "—";
+      return event.sourceUrl
+        ? `<a href="${escapeHtml(event.sourceUrl)}" target="_blank" rel="noreferrer">${escapeHtml(country)}</a>`
+        : escapeHtml(country || "—");
+    }
+
+    function eventRow(event: ApiEvent): string {
+      const when = localTime(event.time, event.timeMode);
+      return `
+        <article class="event-row">
+          <time datetime="${escapeHtml(event.time)}">${escapeHtml(when)}</time>
+          <div class="event-copy">
+            <h3>${escapeHtml(displayName(event))}</h3>
+            <p>${sourceLabel(event)}</p>
+          </div>
+        </article>`;
+    }
+
+    function emptyRow(message: string): string {
+      return `
+        <div class="event-empty">
+          <strong>—</strong>
+          <p>${escapeHtml(message)}</p>
+        </div>`;
+    }
+
+    function render(
+      target: HTMLElement,
+      events: ApiEvent[],
+      options: RenderOptions = {},
+    ): void {
+      target.innerHTML = events.length
+        ? events.map((event) => eventRow(event)).join("")
+        : emptyRow(
+            options.empty ??
+              "Sin eventos disponibles en la fuente para este bloque.",
+          );
+      target.setAttribute("aria-busy", "false");
+    }
+
+    async function fetchCalendar(params: CalendarParams): Promise<ApiEvent[]> {
+      const url = new URL(API);
+      Object.entries(params).forEach(([key, value]) => {
+        if (value !== undefined && value !== null && value !== "") {
+          url.searchParams.set(key, String(value));
+        }
+      });
+      const response = await fetch(url, {
+        headers: { Accept: "application/json" },
+      });
+      if (!response.ok) throw new Error(`API ${response.status}`);
+
+      const data: unknown = await response.json();
+      if (!Array.isArray(data)) throw new Error("Respuesta API inesperada");
+      return data as ApiEvent[];
+    }
+
+    async function loadCalendar(): Promise<void> {
+      const now = new Date();
+      const todayKey = localDateKey(now);
+      const from = addDays(now, -1).toISOString();
+      const tomorrow = addDays(now, 2).toISOString();
+
+      try {
+        const [internationalRaw, marketRaw] = await Promise.all([
+          fetchCalendar({
+            from,
+            to: tomorrow,
+            countries: MAJOR_COUNTRIES.join(","),
+            importance: "medium",
+            limit: 500,
+          }),
+          fetchCalendar({
+            from,
+            to: tomorrow,
+            countries: "US,EU,GB,JP,CN,CA,AU",
+            importance: "medium",
+            limit: 500,
+          }),
+        ]);
+
+        const internationalToday = internationalRaw.filter(
+          (event) => localDateKey(new Date(event.time)) === todayKey,
+        );
+        const marketToday = marketRaw.filter(
+          (event) => localDateKey(new Date(event.time)) === todayKey,
+        );
+
+        const international = chooseInternational(internationalToday);
+        const internationalKeys = new Set(
+          international.map((event) => eventKey(event)),
+        );
+        const markets = chooseMarkets(marketToday, internationalKeys);
+
+        render(element("#international-list"), international, {
+          empty:
+            "Sin publicaciones internacionales relevantes recuperadas para hoy.",
+        });
+        render(element("#markets-list"), markets, {
+          empty:
+            "Sin hitos específicamente financieros recuperados para hoy. No se rellena con datos macro repetidos.",
+        });
+
+        element("#updated-at").textContent = `Última consulta: ${new Intl.DateTimeFormat(
+          "es-CL",
+          {
+            timeZone: TIME_ZONE,
+            dateStyle: "medium",
+            timeStyle: "short",
+          },
+        ).format(new Date())}`;
+      } catch (error) {
+        console.error(error);
+        const message = "No fue posible consultar la API en este momento.";
+        render(element("#international-list"), [], { empty: message });
+        render(element("#markets-list"), [], { empty: message });
+      }
+    }
+
+    void loadCalendar();
+  </script>
+</BaseLayout>
+
+<style>
+  .calendar-lab {
+    padding-top: 0.7rem;
+  }
+
+  .section-heading,
+  .calendar-source {
+    display: flex;
+    justify-content: space-between;
+    gap: 0.75rem;
+  }
+
+  .calendar-source p {
+    margin: 0;
+  }
+
+  .event-copy a {
+    text-underline-offset: 0.15em;
+  }
+
+  .calendar-heading {
+    padding: clamp(1.15rem, 2.4vw, 1.9rem) 0 1.25rem;
+    border-bottom: 3px double var(--rule);
+  }
+
+  .calendar-heading .page-kicker {
+    color: var(--accent);
+    font-size: clamp(0.86rem, 1.35vw, 1.05rem);
+    letter-spacing: 0;
+    text-transform: none;
+  }
+
+  .calendar-heading h1 {
+    margin: 0.35rem 0 0;
+    font-size: clamp(2.7rem, 5.2vw, 4.35rem);
+    line-height: 0.94;
+    letter-spacing: -0.045em;
+  }
+
+  .calendar-intro {
+    max-width: 56rem;
+    margin: 1rem 0 0;
+    color: var(--ink-soft);
+    font-size: clamp(1rem, 1.8vw, 1.28rem);
+    line-height: 1.38;
+  }
+
+  .calendar-intro em {
+    font-style: italic;
+  }
+
+  .calendar-section {
+    margin-top: 1.35rem;
+    border-bottom: 3px double var(--rule);
+  }
+
+  .section-heading {
+    align-items: baseline;
+    padding-bottom: 0.4rem;
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .section-heading h2 {
+    margin: 0;
+    color: var(--accent);
+    font: 800 clamp(0.95rem, 1.8vw, 1.15rem)/1 var(--sans);
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+  }
+
+  .section-heading span {
+    color: var(--ink-soft);
+    font: 700 0.58rem/1.2 var(--sans);
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+  }
+
+  .event-list {
+    min-height: 3.5rem;
+  }
+
+  :global(.event-row),
+  :global(.event-empty) {
+    display: grid;
+    grid-template-columns: minmax(4.5rem, 0.52fr) minmax(0, 5.5fr);
+    gap: 0.7rem;
+    align-items: center;
+    padding: 0.55rem 0;
+    border-bottom: 1px solid rgb(35 35 29 / 48%);
+  }
+
+  :global(.event-row:last-child),
+  :global(.event-empty:last-child) {
+    border-bottom: 0;
+  }
+
+  :global(.event-row > time) {
+    font: 700 clamp(0.92rem, 1.6vw, 1.08rem)/1 var(--serif);
+    font-variant-numeric: tabular-nums;
+  }
+
+  :global(.event-copy) {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(5.5rem, 0.24fr);
+    gap: 0.7rem;
+    align-items: baseline;
+  }
+
+  :global(.event-copy h3) {
+    margin: 0;
+    font: 700 clamp(0.9rem, 1.5vw, 1.06rem)/1.1 var(--serif);
+  }
+
+  :global(.event-copy p) {
+    margin: 0;
+    color: var(--ink-soft);
+    font: 0.66rem/1.2 var(--serif);
+  }
+
+  :global(.event-empty strong) {
+    font-size: 1rem;
+  }
+
+  :global(.event-empty p) {
+    margin: 0;
+    color: var(--ink-soft);
+    font-size: 0.74rem;
+    font-style: italic;
+  }
+
+  .calendar-source {
+    padding-top: 0.75rem;
+    color: var(--ink-soft);
+    font: 0.56rem/1.35 var(--sans);
+    letter-spacing: 0.035em;
+    text-transform: uppercase;
+  }
+
+  @media (max-width: 42rem) {
+    .calendar-lab {
+      padding-top: 0.45rem;
+    }
+
+    .calendar-heading {
+      padding-top: 0.9rem;
+      padding-bottom: 1rem;
+    }
+
+    .calendar-heading .page-kicker {
+      font-size: 0.92rem;
+    }
+
+    .calendar-heading h1 {
+      font-size: clamp(2.2rem, 9vw, 3.15rem);
+      line-height: 0.95;
+    }
+
+    .calendar-intro {
+      margin-top: 0.85rem;
+      font-size: 1rem;
+      line-height: 1.35;
+    }
+
+    .calendar-section {
+      margin-top: 1.05rem;
+    }
+
+    :global(.event-row),
+    :global(.event-empty) {
+      grid-template-columns: 3.9rem minmax(0, 1fr);
+      gap: 0.5rem;
+      padding: 0.5rem 0;
+    }
+
+    :global(.event-row > time) {
+      font-size: 0.86rem;
+    }
+
+    :global(.event-copy) {
+      display: block;
+    }
+
+    :global(.event-copy h3) {
+      font-size: 0.94rem;
+      line-height: 1.06;
+    }
+
+    :global(.event-copy p) {
+      margin-top: 0.16rem;
+      font-size: 0.62rem;
+    }
+
+    .section-heading h2 {
+      font-size: 0.96rem;
+    }
+
+    .calendar-source {
+      display: block;
+      font-size: 0.54rem;
+    }
+
+    .calendar-source p + p {
+      margin-top: 0.35rem;
+    }
+  }
+</style>

@@ -1,0 +1,26 @@
+---
+import EconomicCalendarView from "../../components/calendar/EconomicCalendarView.astro";
+---
+
+<EconomicCalendarView />
+
+<script is:inline>
+  document.title = "ATLAS NEWS — Calendario económico";
+  document
+    .querySelector('meta[name="description"]')
+    ?.setAttribute(
+      "content",
+      "Calendario económico diario de ATLAS NEWS con agenda internacional, nacional y de mercados.",
+    );
+  document
+    .querySelector('meta[property="og:title"]')
+    ?.setAttribute("content", "ATLAS NEWS — Calendario económico");
+
+  const sourceParagraph = document.querySelector(".calendar-source p");
+  if (sourceParagraph instanceof HTMLParagraphElement) {
+    sourceParagraph.innerHTML = sourceParagraph.innerHTML.replace(
+      "Fuentes del LAB:",
+      "Fuentes:",
+    );
+  }
+</script>
