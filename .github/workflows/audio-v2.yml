@@ -1,4 +1,4 @@
-name: AUDIO V2 — Nacional y Mercados
+name: AUDIO V2 — Internacional, Nacional y Mercados
 
 on:
   push:
@@ -11,6 +11,7 @@ on:
       - "scripts/audio_speech.py"
       - "scripts/test_audio_speech.py"
       - "scripts/prepare-daily-audio.mjs"
+      - "scripts/prepare-international-audio.mjs"
       - "scripts/prepare-audio-v2.mjs"
       - "scripts/generate-audio-v2.py"
       - ".github/workflows/audio-v2.yml"
@@ -32,7 +33,7 @@ concurrency:
 
 jobs:
   audio-v2:
-    name: Generar Portada + Nacional + Mercados
+    name: Generar Portada + Internacional + Nacional + Mercados
     runs-on: ubuntu-latest
     timeout-minutes: 35
     env:
@@ -101,11 +102,17 @@ jobs:
           ATLAS_AUDIO_OWNER: audio-v2
         run: node scripts/prepare-daily-audio.mjs
 
+      - name: Planificar Internacional con Alex
+        env:
+          ATLAS_INTERNATIONAL_PLAN: ${{ runner.temp }}/atlas-international-plan.json
+        run: node scripts/prepare-international-audio.mjs
+
       - name: Planificar Audio V2 por sourceId
         id: audio_v2_plan
         env:
           ATLAS_PUBLIC_REPO_DIR: ${{ runner.temp }}/atlas-news-public
           ATLAS_COVER_PLAN: ${{ runner.temp }}/atlas-cover-plan.json
+          ATLAS_INTERNATIONAL_PLAN: ${{ runner.temp }}/atlas-international-plan.json
           ATLAS_AUDIO_V2_PLAN: ${{ runner.temp }}/atlas-audio-v2-plan.json
           ATLAS_AUDIO_V2_SIMULATE_MARKETS_FAILURE: ${{ github.event_name == 'workflow_dispatch' && inputs.simulate_markets_failure || false }}
         run: node scripts/prepare-audio-v2.mjs
@@ -160,10 +167,6 @@ jobs:
 
           git commit -m "Audio V2 — ${AUDIO_DATE}"
 
-          # Un cambio no-audio del sitio puede llegar mientras Kokoro sintetiza.
-          # Rebasamos antes del push y admitimos un único retry determinista si
-          # aparece otro fast-forward entre pull y push. Un conflicto real de
-          # audio sigue fallando de forma explícita.
           for attempt in 1 2; do
             git pull --rebase origin main
             if git push origin main; then
@@ -205,6 +208,7 @@ jobs:
           jq -e --arg date "$AUDIO_DATE" --arg sha "$ATLAS_SOURCE_SHA" '
             .date == $date and
             .sourceCommit == $sha and
+            (.international | type == "object") and
             (.national | type == "object") and
             (.markets | type == "object")
           ' "$analysis_manifest" >/dev/null
@@ -213,7 +217,7 @@ jobs:
             .date == $date and .status == "published"
           ' "$cover_manifest" >/dev/null
 
-          for key in national markets; do
+          for key in international national markets; do
             status="$(jq -r --arg key "$key" '.[$key].status // "missing"' "$analysis_manifest")"
             if [[ "$status" == "published" ]]; then
               path="$(jq -r --arg key "$key" '.[$key].path' "$analysis_manifest")"
