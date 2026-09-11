@@ -32,6 +32,7 @@ const {
 
 const visualAllowed = (() => {
   if (!visual) return false;
+  if (visual.src.startsWith("/images/editorial/")) return true;
   try {
     const hostname = new URL(visual.src).hostname;
     return ["upload.wikimedia.org", "commons.wikimedia.org"].includes(hostname);
@@ -59,10 +60,10 @@ const visualAllowed = (() => {
 
   {
     visualAllowed && visual && (
-      <figure class="card-visual">
+      <figure class="card-visual" aria-hidden="true">
         <img
           src={visual.src}
-          alt={visual.alt}
+          alt=""
           loading="lazy"
           decoding="async"
           referrerpolicy="no-referrer"
@@ -129,8 +130,8 @@ const visualAllowed = (() => {
   .card-footer {
     display: flex;
     flex-wrap: wrap;
-    align-items: baseline;
-    gap: 0.45rem 1rem;
+    align-items: center;
+    gap: 0.55rem 1.15rem;
     margin-top: 0.95rem;
   }
   time {
@@ -139,7 +140,6 @@ const visualAllowed = (() => {
   }
   .read {
     display: inline-block;
-    margin-top: 0;
     color: var(--accent);
     font: 800 0.68rem/1.2 var(--sans);
     letter-spacing: 0.1em;
@@ -157,10 +157,11 @@ const visualAllowed = (() => {
 
   @media (max-width: 42rem) {
     .card {
+      min-height: 12rem;
       padding: 0.95rem 0 1rem;
     }
     .card.has-visual .card-copy {
-      width: 84%;
+      width: 86%;
     }
     .card.has-visual h2,
     .card.has-visual p {
@@ -177,16 +178,20 @@ const visualAllowed = (() => {
       line-height: 1.42;
     }
     .card-footer {
-      margin-top: 0.72rem;
+      gap: 0.45rem 1.25rem;
+      margin-top: 0.9rem;
+    }
+    .read {
+      margin-left: 0;
     }
     .card-visual {
       position: absolute;
-      z-index: 0;
+      z-index: 1;
       top: 0.7rem;
       right: -0.4rem;
       bottom: 0.7rem;
       display: block;
-      width: 39%;
+      width: 42%;
       margin: 0;
       overflow: hidden;
       pointer-events: none;
