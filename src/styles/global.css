@@ -180,6 +180,9 @@ a:focus-visible {
   body:has(.calendar-entry) .site-header nav a + a::before {
     content: none;
   }
+  body:has(.calendar-entry) .front-page .headline-item h2 {
+    font-size: clamp(1.173rem, 4.93vw, 1.513rem) !important;
+  }
   body:has(.calendar-entry) .calendar-entry {
     padding: 0.9rem 0 0.4rem;
   }
