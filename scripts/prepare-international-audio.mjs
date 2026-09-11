@@ -1,9 +1,4 @@
-import {
-  appendFile,
-  readdir,
-  readFile,
-  writeFile,
-} from "node:fs/promises";
+import { appendFile, readdir, readFile, writeFile } from "node:fs/promises";
 import path from "node:path";
 
 const root = new URL("../", import.meta.url);
@@ -17,7 +12,7 @@ function frontmatter(text) {
 }
 
 function markdownBody(text) {
-  return text.replace(/^---\s*\r?\n[\s\S]*?\r?\n---\s*/, "").trim();
+  return text.replace(/^---\s*\r?\n[\s\S]*?)\r?\n---\s*/, "").trim();
 }
 
 function parseScalar(value) {
@@ -171,6 +166,10 @@ function formatSpanishDate(date) {
     .replace(",", "");
 }
 
+function sectionParagraphs(record, heading) {
+  return record.sections.get(normalizeHeading(heading)) ?? [];
+}
+
 const files = (await readdir(editionDir, { withFileTypes: true }))
   .filter((entry) => entry.isFile() && /\.mdx?$/.test(entry.name))
   .map((entry) => entry.name);
@@ -236,22 +235,22 @@ for (const item of latestDaily.highlights) add(item.text);
 addSection(
   "Qué está cambiando.",
   [
-    ...(latestDaily.sections.get(normalizeHeading("Hecho central")) ?? []),
-    ...(latestDaily.sections.get(normalizeHeading("En una mirada")) ?? []),
-    ...(latestDaily.sections.get(normalizeHeading("Por qué importa")) ?? []),
+    ...sectionParagraphs(latestDaily, "Hecho central"),
+    ...sectionParagraphs(latestDaily, "En una mirada"),
+    ...sectionParagraphs(latestDaily, "Por qué importa"),
   ],
   190,
 );
 addSection(
   "Qué observar ahora.",
-  latestDaily.sections.get(normalizeHeading("Qué observar")) ?? [],
+  sectionParagraphs(latestDaily, "Qué observar"),
   90,
 );
 
 if (countWords(parts.join(" ")) < TARGET_MIN_WORDS) {
   const reserve = [
-    ...(latestDaily.sections.get(normalizeHeading("Mercados globales")) ?? []),
-    ...(latestDaily.sections.get(normalizeHeading("Tasas, monedas y commodities")) ?? []),
+    ...sectionParagraphs(latestDaily, "Mercados globales"),
+    ...sectionParagraphs(latestDaily, "Tasas, monedas y commodities"),
   ];
   for (const sentence of sentenceList(reserve)) {
     add(sentence);
