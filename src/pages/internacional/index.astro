@@ -6,6 +6,7 @@ import {
   formatEditorialDate,
   getPublishedInternational,
 } from "../../lib/content";
+import { resolveFrontPageVisual } from "../../lib/front-page-visuals";
 
 const editions = await getPublishedInternational();
 const currentInternational = editions[0];
@@ -15,7 +16,7 @@ const currentInternational = editions[0];
   title="Internacional — ATLAS NEWS"
   description="Seguimiento internacional de ATLAS NEWS: hechos globales, transmisión económica y riesgos que condicionan la jornada."
 >
-  <main class="page-shell">
+  <main class="page-shell section-page">
     <p class="page-kicker">Contexto global</p>
     <h1 class="page-title">Internacional</h1>
     <p class="page-intro">
@@ -46,6 +47,13 @@ const currentInternational = editions[0];
               summary={edition.data.summary}
               date={formatEditorialDate(edition.data.publishedAt)}
               demo={edition.data.demo}
+              visual={resolveFrontPageVisual({
+                section: "international",
+                id: edition.id,
+                title: edition.data.title,
+                tags: edition.data.tags,
+                editorialVisual: edition.data.editorialVisual,
+              })}
             />
           ))}
         </div>
@@ -65,7 +73,7 @@ const currentInternational = editions[0];
     border-top: 5px double var(--rule);
   }
   .briefing-list :global(.card) {
-    padding: 1.75rem;
+    padding: 1.4rem 1.4rem 1.5rem;
     border-top-width: 1px;
   }
   .briefing-list :global(.card:nth-child(odd)) {
