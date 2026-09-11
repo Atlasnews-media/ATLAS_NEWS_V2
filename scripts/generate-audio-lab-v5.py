@@ -75,10 +75,10 @@ write_mp3(PROPOSED_MP3, synthesize(pipeline, proposed_speech))
 change_lines = "\n".join(
     f"- `{item['source']}` → `{item['target']}` (`{item['rule']}`)" for item in changes
 )
-REPORT_PATH.write_text(
-    f"""# ATLAS NEWS — LAB Speech Normalizer V5\n\n"
+report = (
+    "# ATLAS NEWS — LAB Speech Normalizer V5\n\n"
     f"Fecha: {REFERENCE_DATE}\n"
-    f"Estado: LAB / NO PRODUCTIVO\n"
+    "Estado: LAB / NO PRODUCTIVO\n"
     f"Voz: `{VOICE}`\n"
     f"Normalizador productivo de base: V{SPEECH_NORMALIZER_VERSION}\n"
     f"Adaptador oral experimental: V{LAB_SPOKEN_FORM_VERSION}\n\n"
@@ -95,8 +95,8 @@ REPORT_PATH.write_text(
     "- No modifica `scripts/audio_speech.py`.\n"
     "- No modifica Lexicon V3 ni Numeric Normalizer V4.\n"
     "- Solo prueba verbalización financiera controlada antes de Kokoro.\n"
-    "- Ningún cambio queda autorizado para producción por esta prueba.\n",
-    encoding="utf-8",
+    "- Ningún cambio queda autorizado para producción por esta prueba.\n"
 )
+REPORT_PATH.write_text(report, encoding="utf-8")
 
 print(f"LAB V5 generado: {CURRENT_MP3.name} / {PROPOSED_MP3.name}")
