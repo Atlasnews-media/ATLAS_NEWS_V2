@@ -82,6 +82,7 @@ const briefingSchema = z
     sources: z.array(sourceSchema).min(1),
     highlights: z.array(highlightSchema).length(3).optional(),
     demo: z.boolean().default(false),
+    editorialVisual: editorialVisualSchema.optional(),
   })
   .superRefine((briefing, context) => {
     if (briefing.cutoffAt > briefing.publishedAt) {
