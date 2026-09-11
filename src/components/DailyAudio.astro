@@ -101,16 +101,17 @@ const { expectedDate } = Astro.props;
 
   @media (max-width: 42rem) {
     .daily-audio {
-      grid-template-columns: 1fr;
-      gap: 0.7rem;
-      padding: 1rem 0;
+      grid-template-columns: auto minmax(0, 1fr);
+      gap: 0.8rem;
+      padding: 0.62rem 0;
       border-bottom: 0;
     }
 
     .audio-kicker {
       font-size: 0.61rem;
-      line-height: 1.35;
+      line-height: 1.2;
       letter-spacing: 0.12em;
+      white-space: nowrap;
     }
 
     .audio-copy > p:last-child {
