@@ -475,16 +475,19 @@ const marketsVisual = {
       display: none;
     }
     :global(.site-header nav) {
-      height: 2.05rem;
+      height: auto;
       min-height: 0;
+      align-items: stretch;
       gap: 0;
       font-size: 0.49rem;
       line-height: 1;
     }
     :global(.site-header nav a) {
-      height: 2.05rem;
-      min-height: 0;
-      padding: 0 0.05rem;
+      box-sizing: border-box;
+      height: auto;
+      min-height: 1.9rem;
+      padding: 0.32rem 0.05rem;
+      align-self: stretch;
     }
     :global(.editorial-double-rule) + .lead-grid {
       margin-top: 16px;
