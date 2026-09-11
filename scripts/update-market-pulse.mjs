@@ -1,10 +1,7 @@
 import { mkdir, readFile, writeFile } from "node:fs/promises";
 
 const root = new URL("../", import.meta.url);
-const economicSnapshotPath = new URL(
-  "src/data/economic-indicators.json",
-  root,
-);
+const economicSnapshotPath = new URL("src/data/economic-indicators.json", root);
 const marketSnapshotPath = new URL("src/data/market-pulse.json", root);
 const publicDataDirectory = new URL("public/data/", root);
 const publicSnapshotPath = new URL("public/data/market-pulse.json", root);
@@ -20,9 +17,7 @@ function dateKey(value = new Date()) {
     month: "2-digit",
     day: "2-digit",
   }).formatToParts(value);
-  const map = Object.fromEntries(
-    parts.map((part) => [part.type, part.value]),
-  );
+  const map = Object.fromEntries(parts.map((part) => [part.type, part.value]));
   return `${map.year}-${map.month}-${map.day}`;
 }
 
@@ -60,9 +55,7 @@ function makeAsset({
     group,
     value: Number.isFinite(value) ? value : null,
     unit,
-    changePercent: Number.isFinite(changePercent)
-      ? round(changePercent)
-      : null,
+    changePercent: Number.isFinite(changePercent) ? round(changePercent) : null,
     trend: trendFor(changePercent),
     effectiveAt,
     provider,
@@ -103,9 +96,7 @@ function parseStooqCsv(csv, symbol) {
     throw new Error(`${symbol}: respuesta Stooq sin serie válida.`);
   }
 
-  const headers = rows[0]
-    .split(",")
-    .map((value) => value.trim().toLowerCase());
+  const headers = rows[0].split(",").map((value) => value.trim().toLowerCase());
   const dateIndex = headers.indexOf("date");
   const closeIndex = headers.indexOf("close");
   if (dateIndex < 0 || closeIndex < 0) {
