@@ -11,7 +11,7 @@
     "check": "astro check",
     "preview": "astro preview",
     "format": "prettier --write .",
-    "format:check": "prettier --write src/lib/front-page-visuals.ts && git diff -- src/lib/front-page-visuals.ts && exit 1",
+    "format:check": "prettier --check .",
     "editorial:from-issue": "node scripts/create-reading-from-issue.mjs",
     "funds:update": "node scripts/funds/update-funds.mjs",
     "market:update": "node scripts/update-market-pulse.mjs && node scripts/validate-market-pulse-freshness.mjs",
