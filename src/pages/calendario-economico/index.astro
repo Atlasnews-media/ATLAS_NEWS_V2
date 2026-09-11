@@ -1,0 +1,62 @@
+---
+import EconomicCalendarView from "../../components/calendar/EconomicCalendarView.astro";
+---
+
+<EconomicCalendarView />
+
+<script is:inline>
+  (() => {
+    const normalizeProductCopy = () => {
+      document.title = "ATLAS NEWS — Calendario económico";
+
+      const description = document.querySelector('meta[name="description"]');
+      if (description) {
+        description.setAttribute(
+          "content",
+          "Calendario económico diario de ATLAS NEWS con agenda internacional, nacional y de mercados.",
+        );
+      }
+
+      const canonical = document.querySelector('link[rel="canonical"]');
+      if (canonical) {
+        canonical.setAttribute(
+          "href",
+          new URL("/calendario-economico/", window.location.origin).href,
+        );
+      }
+
+      const openGraphUrl = document.querySelector('meta[property="og:url"]');
+      if (openGraphUrl) {
+        openGraphUrl.setAttribute(
+          "content",
+          new URL("/calendario-economico/", window.location.origin).href,
+        );
+      }
+
+      const openGraphTitle = document.querySelector('meta[property="og:title"]');
+      if (openGraphTitle) {
+        openGraphTitle.setAttribute(
+          "content",
+          "ATLAS NEWS — Calendario económico",
+        );
+      }
+
+      const sourceParagraph = document.querySelector(".calendar-source p");
+      if (sourceParagraph?.firstChild?.nodeType === Node.TEXT_NODE) {
+        sourceParagraph.firstChild.textContent =
+          sourceParagraph.firstChild.textContent?.replace(
+            "Fuentes del LAB:",
+            "Fuentes:",
+          ) ?? sourceParagraph.firstChild.textContent;
+      }
+    };
+
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", normalizeProductCopy, {
+        once: true,
+      });
+    } else {
+      normalizeProductCopy();
+    }
+  })();
+</script>
