@@ -1,4 +1,13 @@
 ---
+interface EditorialVisual {
+  src: string;
+  alt: string;
+  source: string;
+  sourceUrl: string;
+  author: string;
+  license: string;
+}
+
 interface Props {
   href: string;
   eyebrow: string;
@@ -7,6 +16,7 @@ interface Props {
   date: string;
   demo?: boolean;
   compact?: boolean;
+  visual?: EditorialVisual;
 }
 
 const {
@@ -17,20 +27,50 @@ const {
   date,
   demo = false,
   compact = false,
+  visual,
 } = Astro.props;
+
+const visualAllowed = (() => {
+  if (!visual) return false;
+  try {
+    const hostname = new URL(visual.src).hostname;
+    return ["upload.wikimedia.org", "commons.wikimedia.org"].includes(hostname);
+  } catch {
+    return false;
+  }
+})();
 ---
 
-<article class:list={["card", { compact }]}>
-  <div class="meta">
-    <span>{eyebrow}</span>
-    {demo && <span class="demo">Demostración</span>}
+<article class:list={["card", { compact, "has-visual": visualAllowed }]}>
+  <div class="card-copy">
+    <div class="meta">
+      <span>{eyebrow}</span>
+      {demo && <span class="demo">Demostración</span>}
+    </div>
+    <h2><a href={href}>{title}</a></h2>
+    <p>{summary}</p>
+    <div class="card-footer">
+      <time>{date}</time>
+      <a class="read" href={href} aria-label={`Leer ${title}`}
+        >Continuar leyendo <span aria-hidden="true">→</span></a
+      >
+    </div>
   </div>
-  <h2><a href={href}>{title}</a></h2>
-  <p>{summary}</p>
-  <time>{date}</time>
-  <a class="read" href={href} aria-label={`Leer ${title}`}
-    >Continuar leyendo <span aria-hidden="true">→</span></a
-  >
+
+  {
+    visualAllowed && visual && (
+      <figure class="card-visual">
+        <img
+          src={visual.src}
+          alt={visual.alt}
+          loading="lazy"
+          decoding="async"
+          referrerpolicy="no-referrer"
+        />
+        <figcaption>{visual.source} · {visual.author}</figcaption>
+      </figure>
+    )
+  }
 </article>
 
 <style>
@@ -38,6 +78,12 @@ const {
     position: relative;
     padding: 1.25rem 0 1.5rem;
     border-top: 2px solid var(--rule);
+    overflow: hidden;
+    isolation: isolate;
+  }
+  .card-copy {
+    position: relative;
+    z-index: 2;
   }
   .meta {
     display: flex;
@@ -78,21 +124,114 @@ const {
     font-size: 1rem;
     line-height: 1.48;
   }
+  .card-footer {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 0.45rem 1rem;
+    margin-top: 0.95rem;
+  }
   time {
     font: 0.72rem/1.2 var(--sans);
     text-transform: uppercase;
   }
   .read {
     display: inline-block;
-    margin-top: 1rem;
+    margin-top: 0;
+    color: var(--accent);
     font: 800 0.68rem/1.2 var(--sans);
     letter-spacing: 0.1em;
     text-transform: uppercase;
+  }
+  .card-visual {
+    display: none;
   }
   .compact h2 {
     font-size: clamp(1.35rem, 2.6vw, 1.85rem);
   }
   .compact p {
     font-size: 0.94rem;
+  }
+
+  @media (max-width: 42rem) {
+    .card {
+      padding: 0.95rem 0 1rem;
+    }
+    .card.has-visual .card-copy {
+      width: 84%;
+    }
+    .card.has-visual h2,
+    .card.has-visual p {
+      max-width: none;
+    }
+    h2 {
+      margin: 0.48rem 0 0.52rem;
+      font-size: clamp(1.58rem, 7vw, 2.12rem);
+      line-height: 0.97;
+    }
+    p {
+      margin: 0.52rem 0;
+      font-size: 0.96rem;
+      line-height: 1.42;
+    }
+    .card-footer {
+      margin-top: 0.72rem;
+    }
+    .card-visual {
+      position: absolute;
+      z-index: 0;
+      top: 0.7rem;
+      right: -0.4rem;
+      bottom: 0.7rem;
+      display: block;
+      width: 39%;
+      margin: 0;
+      overflow: hidden;
+      pointer-events: none;
+      -webkit-mask-image: linear-gradient(
+        to bottom,
+        transparent 0%,
+        #000 10%,
+        #000 90%,
+        transparent 100%
+      );
+      mask-image: linear-gradient(
+        to bottom,
+        transparent 0%,
+        #000 10%,
+        #000 90%,
+        transparent 100%
+      );
+    }
+    .card-visual img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      opacity: 0.72;
+      filter: saturate(0.7) sepia(0.1) contrast(0.92) brightness(1.06);
+      -webkit-mask-image: linear-gradient(
+        to right,
+        transparent 0%,
+        rgba(0, 0, 0, 0.34) 24%,
+        #000 60%
+      );
+      mask-image: linear-gradient(
+        to right,
+        transparent 0%,
+        rgba(0, 0, 0, 0.34) 24%,
+        #000 60%
+      );
+    }
+    figcaption {
+      position: absolute;
+      right: 0.38rem;
+      bottom: 0.2rem;
+      max-width: 82%;
+      color: var(--ink-soft);
+      font: 600 0.4rem/1.1 var(--sans);
+      text-align: right;
+      opacity: 0.68;
+    }
   }
 </style>
