@@ -48,6 +48,8 @@ type SourceResult = {
   body: string;
 };
 
+type CalendarKind = "ine" | "bcch";
+
 function decodeHtml(value: string): string {
   const named: Record<string, string> = {
     amp: "&",
@@ -128,9 +130,20 @@ function localYear(date: Date): number {
   );
 }
 
-function monthBlocks(text: string, startAt: number): Array<{ month: number; body: string }> {
+function monthBlocks(
+  text: string,
+  startAt: number,
+  kind: CalendarKind,
+): Array<{ month: number; body: string }> {
   const source = text.slice(Math.max(0, startAt));
-  const monthPattern = new RegExp(`\\b(${MONTHS.join("|")})\\b`, "gi");
+  const headingLookahead =
+    kind === "ine"
+      ? "(?=\\s+\\d{1,2}\\s+\\d{2}:\\d{2}\\b)"
+      : "(?=\\s+(?:3[01]|[12]\\d|[1-9])\\s+[A-ZÁÉÍÓÚÑ])";
+  const monthPattern = new RegExp(
+    `\\b(${MONTHS.join("|")})\\b${headingLookahead}`,
+    "gi",
+  );
   const matches = [...source.matchAll(monthPattern)];
   const blocks: Array<{ month: number; body: string }> = [];
 
@@ -190,7 +203,7 @@ function parseIne(html: string, year: number): ChileCalendarEvent[] {
   const detectedYear = Number(text.slice(marker, marker + 80).match(/20\d{2}/)?.[0] ?? year);
   const events: ChileCalendarEvent[] = [];
 
-  for (const block of monthBlocks(text, marker)) {
+  for (const block of monthBlocks(text, marker, "ine")) {
     const pattern = /\b(\d{1,2})\s+(\d{2}:\d{2})\s+(.+?)(?=\s+\d{1,2}\s+\d{2}:\d{2}\s+|$)/g;
     for (const match of block.body.matchAll(pattern)) {
       const day = Number(match[1]);
@@ -238,7 +251,7 @@ function parseBcch(html: string, year: number): ChileCalendarEvent[] {
   if (marker === -1) return [];
 
   const events: ChileCalendarEvent[] = [];
-  for (const block of monthBlocks(text, marker)) {
+  for (const block of monthBlocks(text, marker, "bcch")) {
     for (const group of splitBcchGroups(block.body)) {
       const date = dateKey(year, block.month, group.day);
       events.push({
