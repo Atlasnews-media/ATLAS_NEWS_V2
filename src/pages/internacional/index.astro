@@ -1,20 +1,14 @@
 ---
-import AtlasAudioPlayer from "../../components/AtlasAudioPlayer.astro";
 import ContentCard from "../../components/ContentCard.astro";
+import SectionAnalysisAudio from "../../components/SectionAnalysisAudio.astro";
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import {
   formatEditorialDate,
   getPublishedInternational,
 } from "../../lib/content";
-import internationalLatest from "../../../config/audio/international-latest.json";
 
 const editions = await getPublishedInternational();
 const currentInternational = editions[0];
-const activeInternationalAudio =
-  currentInternational &&
-  internationalLatest.sourceId === currentInternational.id
-    ? internationalLatest.audio
-    : undefined;
 ---
 
 <BaseLayout
@@ -30,28 +24,14 @@ const activeInternationalAudio =
     </p>
 
     {
-      activeInternationalAudio && (
-        <section
-          class="international-analysis-audio"
-          aria-labelledby="international-analysis-audio-title"
-        >
-          <div class="audio-copy">
-            <p class="audio-kicker" id="international-analysis-audio-title">
-              Escuchar el análisis internacional
-            </p>
-            <p>
-              Una conversación breve para entender qué hay detrás de las señales
-              que están moviendo al mundo.
-            </p>
-          </div>
-          <div class="audio-player">
-            <AtlasAudioPlayer
-              src={activeInternationalAudio.src}
-              preload="metadata"
-              ariaLabel="Análisis internacional de ATLAS NEWS"
-            />
-          </div>
-        </section>
+      currentInternational && (
+        <SectionAnalysisAudio
+          title="Escuchar el análisis internacional"
+          summary="Una conversación breve para entender qué hay detrás de las señales que están moviendo al mundo."
+          expectedSourceId={currentInternational.id}
+          section="international"
+          ariaLabel="Análisis internacional de ATLAS NEWS"
+        />
       )
     }
 
@@ -79,31 +59,6 @@ const activeInternationalAudio =
 </BaseLayout>
 
 <style>
-  .international-analysis-audio {
-    display: grid;
-    grid-template-columns: minmax(0, 1.4fr) minmax(18rem, 1fr);
-    gap: clamp(1.25rem, 4vw, 3rem);
-    align-items: center;
-    margin-top: 1.75rem;
-    padding: 1.25rem 0 1.5rem;
-    border-top: 1px solid var(--rule);
-  }
-  .audio-kicker {
-    margin: 0;
-    color: var(--accent);
-    font: 800 0.72rem/1.2 var(--sans);
-    letter-spacing: 0.16em;
-    text-transform: uppercase;
-  }
-  .audio-copy > p:last-child {
-    max-width: 45rem;
-    margin: 0.55rem 0 0;
-    color: var(--ink-soft);
-    line-height: 1.4;
-  }
-  .audio-player {
-    min-width: 0;
-  }
   .briefing-list {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -128,12 +83,6 @@ const activeInternationalAudio =
   @media (max-width: 42rem) {
     .page-intro {
       display: none;
-    }
-    .international-analysis-audio {
-      grid-template-columns: 1fr;
-      gap: 1rem;
-      margin-top: 1.35rem;
-      padding: 1.1rem 0 1.25rem;
     }
     .briefing-list {
       grid-template-columns: 1fr;
