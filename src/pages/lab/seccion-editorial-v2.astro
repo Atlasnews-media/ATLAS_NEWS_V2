@@ -1,0 +1,301 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+
+const heroImage = "https://commons.wikimedia.org/wiki/Special:FilePath/USS_Hawes_%28FFG-53%29%2C_USS_William_H._Standley_%28CG-32%29_and_USS_Guadalcanal_%28LPH-7%29_escort_tanker_Gas_King_in_the_Persian_Gullf_on_21_October_1987_%286432283%29.jpg?width=1280";
+---
+
+<BaseLayout
+  title="LAB — Sección editorial V2 — ATLAS NEWS"
+  description="Prototipo visual de página de sección para ATLAS NEWS."
+>
+  <main class="lab-section">
+    <div class="lab-note">LAB · PROTOTIPO VISUAL · NO PRODUCCIÓN</div>
+
+    <header class="section-masthead">
+      <p class="kicker">Contexto global</p>
+      <div class="title-row">
+        <h1>Internacional</h1>
+        <span>Edición N.º 040</span>
+      </div>
+    </header>
+
+    <section class="lead-story">
+      <figure>
+        <img src={heroImage} alt="Buques escoltando un petrolero en el Golfo Pérsico." />
+        <figcaption>Archivo editorial · Wikimedia Commons / U.S. National Archives</figcaption>
+      </figure>
+      <div class="lead-copy">
+        <p class="eyebrow">Internacional · principal</p>
+        <h2>La inflación vuelve a mandar y obliga al mercado a recalibrar el riesgo</h2>
+        <p class="deck">
+          Una señal de precios, tasas y energía vuelve a concentrar la atención. Este texto es de prueba y busca mostrar jerarquía, ritmo y densidad visual.
+        </p>
+        <a href="/lab/noticia-editorial-v2/">Leer análisis <span aria-hidden="true">→</span></a>
+      </div>
+    </section>
+
+    <section class="audio-strip" aria-label="Audio de prueba">
+      <div>
+        <p class="audio-kicker">Escuchar el análisis internacional</p>
+        <p>Una conversación breve para entender qué hay detrás de las señales que están moviendo al mundo.</p>
+      </div>
+      <div class="fake-player">
+        <span class="play">▶</span>
+        <span>00:00</span>
+        <span class="track"></span>
+        <span>02:52</span>
+      </div>
+    </section>
+
+    <section class="news-list" aria-label="Más noticias">
+      <article class="news-card">
+        <p class="eyebrow">Internacional</p>
+        <h2>El mercado exige prima de inflación incluso cuando busca refugio</h2>
+        <p>Las tasas largas y los activos defensivos se mueven con una lectura menos limpia que en episodios anteriores.</p>
+        <div class="meta"><span>11 sep 2026</span><span>Continuar leyendo →</span></div>
+      </article>
+      <article class="news-card">
+        <p class="eyebrow">Internacional</p>
+        <h2>Europa intenta aislar crecimiento débil de la presión energética</h2>
+        <p>Datos mixtos y costos externos mantienen abierta una discusión que ya no cabe en una sola variable.</p>
+        <div class="meta"><span>10 sep 2026</span><span>Continuar leyendo →</span></div>
+      </article>
+      <article class="news-card">
+        <p class="eyebrow">Internacional</p>
+        <h2>Asia entra a la sesión con monedas tensas y menor apetito por duración</h2>
+        <p>El dólar vuelve a ordenar parte de la lectura mientras las curvas soberanas muestran mayor dispersión.</p>
+        <div class="meta"><span>9 sep 2026</span><span>Continuar leyendo →</span></div>
+      </article>
+    </section>
+  </main>
+</BaseLayout>
+
+<style>
+  .lab-section {
+    width: min(88rem, calc(100% - 2rem));
+    margin: 0 auto;
+    padding: 0.9rem 0 4rem;
+  }
+  .lab-note {
+    margin-bottom: 0.9rem;
+    padding: 0.35rem 0;
+    border-bottom: 1px solid var(--rule);
+    color: var(--ink-soft);
+    font: 800 0.58rem/1.2 var(--sans);
+    letter-spacing: 0.12em;
+  }
+  .section-masthead {
+    padding: 0.9rem 0 1.15rem;
+    border-bottom: 4px double var(--rule);
+  }
+  .kicker,
+  .eyebrow,
+  .audio-kicker {
+    margin: 0;
+    color: var(--accent);
+    font: 800 0.72rem/1.2 var(--sans);
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+  }
+  .title-row {
+    display: flex;
+    align-items: end;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+  h1 {
+    margin: 0.22rem 0 0;
+    font-size: clamp(3rem, 7vw, 6.5rem);
+    line-height: 0.86;
+    letter-spacing: -0.055em;
+  }
+  .title-row span {
+    padding-bottom: 0.35rem;
+    font: 700 0.68rem/1 var(--sans);
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+  }
+  .lead-story {
+    display: grid;
+    grid-template-columns: minmax(0, 1.08fr) minmax(0, 0.92fr);
+    gap: clamp(1.4rem, 4vw, 3.5rem);
+    padding: 1.3rem 0 1.5rem;
+    border-bottom: 1px solid var(--rule);
+  }
+  figure {
+    margin: 0;
+  }
+  figure img {
+    display: block;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+    filter: saturate(0.72) sepia(0.1) contrast(0.93);
+  }
+  figcaption {
+    margin-top: 0.35rem;
+    color: var(--ink-soft);
+    font: 0.55rem/1.25 var(--sans);
+  }
+  .lead-copy {
+    align-self: center;
+  }
+  .lead-copy h2 {
+    max-width: 42rem;
+    margin: 0.5rem 0 0.8rem;
+    font-size: clamp(2.1rem, 4.8vw, 4.4rem);
+    line-height: 0.91;
+    letter-spacing: -0.045em;
+  }
+  .deck {
+    margin: 0;
+    color: var(--ink-soft);
+    font-size: clamp(1rem, 1.8vw, 1.28rem);
+    line-height: 1.42;
+  }
+  .lead-copy a {
+    display: inline-block;
+    margin-top: 1rem;
+    color: var(--accent);
+    font: 800 0.68rem/1.2 var(--sans);
+    letter-spacing: 0.09em;
+    text-decoration: none;
+    text-transform: uppercase;
+  }
+  .audio-strip {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 1.2rem;
+    align-items: center;
+    padding: 1rem 0 1.15rem;
+    border-bottom: 4px double var(--rule);
+  }
+  .audio-strip p:last-child {
+    margin: 0.42rem 0 0;
+    color: var(--ink-soft);
+    line-height: 1.35;
+  }
+  .fake-player {
+    display: grid;
+    grid-template-columns: auto auto 1fr auto;
+    gap: 0.65rem;
+    align-items: center;
+    font: 700 0.7rem/1 var(--sans);
+  }
+  .play {
+    font-size: 0.9rem;
+  }
+  .track {
+    height: 1px;
+    background: var(--rule);
+  }
+  .news-list {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    border-bottom: 1px solid var(--rule);
+  }
+  .news-card {
+    padding: 1.25rem;
+    border-right: 1px solid var(--rule);
+  }
+  .news-card:first-child {
+    padding-left: 0;
+  }
+  .news-card:last-child {
+    padding-right: 0;
+    border-right: 0;
+  }
+  .news-card h2 {
+    margin: 0.5rem 0 0.65rem;
+    font-size: clamp(1.5rem, 2.5vw, 2.25rem);
+    line-height: 0.97;
+    letter-spacing: -0.03em;
+  }
+  .news-card > p:not(.eyebrow) {
+    margin: 0;
+    color: var(--ink-soft);
+    line-height: 1.42;
+  }
+  .meta {
+    display: flex;
+    justify-content: space-between;
+    gap: 0.75rem;
+    margin-top: 1rem;
+    font: 800 0.6rem/1.2 var(--sans);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+
+  @media (max-width: 42rem) {
+    .lab-section {
+      width: min(100% - 1.25rem, 88rem);
+      padding-top: 0.45rem;
+    }
+    .lab-note {
+      margin-bottom: 0.45rem;
+    }
+    .section-masthead {
+      padding: 0.55rem 0 0.75rem;
+    }
+    h1 {
+      font-size: clamp(2.75rem, 13vw, 4rem);
+    }
+    .title-row span {
+      display: none;
+    }
+    .lead-story {
+      grid-template-columns: 1fr;
+      gap: 0.75rem;
+      padding: 0.85rem 0 1rem;
+    }
+    figure {
+      margin: 0 -0.15rem;
+    }
+    figure img {
+      aspect-ratio: 16 / 8.4;
+    }
+    figcaption {
+      padding: 0 0.15rem;
+      font-size: 0.48rem;
+    }
+    .lead-copy h2 {
+      margin-top: 0.38rem;
+      font-size: clamp(2rem, 9vw, 2.8rem);
+      line-height: 0.91;
+    }
+    .deck {
+      font-size: 1rem;
+    }
+    .audio-strip {
+      grid-template-columns: 1fr;
+      gap: 0.7rem;
+      padding: 0.85rem 0 0.95rem;
+    }
+    .audio-strip p:last-child {
+      font-size: 0.93rem;
+    }
+    .news-list {
+      grid-template-columns: 1fr;
+    }
+    .news-card,
+    .news-card:first-child,
+    .news-card:last-child {
+      padding: 1rem 0 1.05rem;
+      border-right: 0;
+      border-bottom: 1px solid var(--rule);
+    }
+    .news-card:last-child {
+      border-bottom: 0;
+    }
+    .news-card h2 {
+      margin: 0.42rem 0 0.5rem;
+      font-size: clamp(1.65rem, 7vw, 2.15rem);
+    }
+    .news-card > p:not(.eyebrow) {
+      font-size: 0.96rem;
+    }
+    .meta {
+      margin-top: 0.75rem;
+    }
+  }
+</style>
