@@ -12,7 +12,7 @@ function frontmatter(text) {
 }
 
 function markdownBody(text) {
-  return text.replace(/^---\s*\r?\n[\s\S]*?)\r?\n---\s*/, "").trim();
+  return text.replace(/^---\s*\r?\n[\s\S]*?\r?\n---\s*/, "").trim();
 }
 
 function parseScalar(value) {
