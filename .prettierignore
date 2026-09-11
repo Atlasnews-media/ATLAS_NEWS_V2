@@ -6,3 +6,5 @@ src/content/editions/*.md
 src/content/briefings/*.md
 src/content/readings/*.md
 data/editorial_state.json
+# TEMP LAB: retirar antes de cualquier merge
+src/pages/lab/calendario-economico.astro
