@@ -75,6 +75,7 @@ jobs:
           fi
 
           git commit -m "LAB Audio — preview Kokoro Speech V5 [skip ci]"
+          git pull --rebase origin "${GITHUB_REF_NAME}"
           git push origin "HEAD:${GITHUB_REF_NAME}"
 
       - name: Adjuntar comparación
