@@ -437,7 +437,11 @@ function stableHash(value: string) {
 }
 
 function stripCatalogMetadata(visual: CatalogVisual): EditorialVisual {
-  const { keywords: _keywords, fallback: _fallback, ...editorialVisual } = visual;
+  const {
+    keywords: _keywords,
+    fallback: _fallback,
+    ...editorialVisual
+  } = visual;
   return editorialVisual;
 }
 
