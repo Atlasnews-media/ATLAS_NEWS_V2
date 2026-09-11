@@ -67,11 +67,6 @@ const marketsVisual = {
   description="Preview de laboratorio del rediseño visual de la portada móvil de ATLAS NEWS."
 >
   <main class="front-page">
-    <div class="lab-preview-bar">
-      <span>LAB · Preview Portada V2</span>
-      <a href="/lab/">Volver al LAB</a>
-    </div>
-
     <div class="issue-line">
       <p>Portada</p>
       <p>
@@ -260,21 +255,6 @@ const marketsVisual = {
     width: min(88rem, calc(100% - 2rem));
     margin: 0 auto;
   }
-  .lab-preview-bar {
-    display: flex;
-    justify-content: space-between;
-    gap: 1rem;
-    padding: 0.55rem 0;
-    color: var(--accent);
-    border-bottom: 1px solid var(--rule);
-    font: 800 0.64rem/1.2 var(--sans);
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-  }
-  .lab-preview-bar a {
-    color: inherit;
-    text-underline-offset: 0.2em;
-  }
   .issue-line {
     display: grid;
     grid-template-columns: 1fr auto 1fr;
@@ -429,13 +409,7 @@ const marketsVisual = {
     .front-page {
       width: min(100% - 1.25rem, 88rem);
     }
-    .lab-preview-bar {
-      font-size: 0.58rem;
-    }
     .issue-line {
-      grid-template-columns: 1fr auto;
-    }
-    .issue-line p:last-child {
       display: none;
     }
     :global(.editorial-double-rule) + .lead-grid {
