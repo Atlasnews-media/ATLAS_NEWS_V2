@@ -225,10 +225,9 @@ function addSection(label, paragraphs, targetWords) {
   }
 }
 
-add(
-  `ATLAS NEWS. Análisis internacional del ${formatSpanishDate(date)}.`,
-  { force: true },
-);
+add(`ATLAS NEWS. Análisis internacional del ${formatSpanishDate(date)}.`, {
+  force: true,
+});
 add("El hecho central.", { force: true });
 add(latestDaily.summary);
 for (const item of latestDaily.highlights) add(item.text);
