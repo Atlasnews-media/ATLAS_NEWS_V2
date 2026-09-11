@@ -90,9 +90,9 @@ const variation = new Intl.NumberFormat("es-CL", {
 function isDisplayable(asset?: MarketAsset) {
   return Boolean(
     asset &&
-      asset.displayEligible !== false &&
-      typeof asset.value === "number" &&
-      Number.isFinite(asset.value),
+    asset.displayEligible !== false &&
+    typeof asset.value === "number" &&
+    Number.isFinite(asset.value),
   );
 }
 
