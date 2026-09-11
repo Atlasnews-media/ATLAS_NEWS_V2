@@ -36,7 +36,9 @@ const titleId = `section-analysis-audio-${section}`;
 
 <script is:inline>
   (() => {
-    const roots = [...document.querySelectorAll("[data-section-analysis-audio]")];
+    const roots = [
+      ...document.querySelectorAll("[data-section-analysis-audio]"),
+    ];
     if (!roots.length) return;
 
     const watcherKey = "atlasAnalysisAudioWatcher";
@@ -57,9 +59,9 @@ const titleId = `section-analysis-audio-${section}`;
         const entry = metadata?.[section];
         const ready = Boolean(
           expectedSourceId &&
-            entry?.status === "published" &&
-            entry?.sourceId === expectedSourceId &&
-            entry?.path,
+          entry?.status === "published" &&
+          entry?.sourceId === expectedSourceId &&
+          entry?.path,
         );
 
         if (!ready) {
