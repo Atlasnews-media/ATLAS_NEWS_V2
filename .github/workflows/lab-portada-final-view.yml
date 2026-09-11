@@ -17,6 +17,11 @@ jobs:
       - uses: actions/checkout@v5
         with:
           ref: lab/portada-v2-final-view
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
       - name: Limpiar chrome LAB y redundancia móvil
         run: |
           python - <<'PY'
