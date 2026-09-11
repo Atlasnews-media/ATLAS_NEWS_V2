@@ -24,6 +24,11 @@ def _match_case(source: str, replacement: str) -> str:
     return replacement
 
 
+def _record(changes: list[dict], rule: str, source: str, target: str) -> str:
+    changes.append({"rule": rule, "source": source, "target": target})
+    return target
+
+
 def adapt_financial_terms_lab(text: str):
     """LAB-only spoken-form adapter. Never mutates editorial/display text."""
     normalized = str(text)
@@ -31,121 +36,81 @@ def adapt_financial_terms_lab(text: str):
 
     def replace_article_repricing(match: re.Match) -> str:
         article = match.group("article")
-        mapped = _ARTICLE_MAP[article.lower()]
-        mapped = _match_case(article, mapped)
-        replacement = f"{mapped} reajuste de expectativas"
-        changes.append(
-            {
-                "rule": "repricing_article",
-                "source": match.group(0),
-                "target": replacement,
-            }
-        )
-        return replacement
+        context = (match.group("context") or "").lower()
+        mapped = _match_case(article, _ARTICLE_MAP[article.lower()])
+        if context == "tasas":
+            wording = "reajuste de expectativas sobre las tasas"
+            rule = "repricing_rates_article"
+        elif context in {"inflacion", "inflación"}:
+            wording = "reajuste de expectativas de inflación"
+            rule = "repricing_inflation_article"
+        elif context == "mercado":
+            wording = "reajuste de precios del mercado"
+            rule = "repricing_market_article"
+        else:
+            wording = "reajuste de expectativas"
+            rule = "repricing_article"
+        target = f"{mapped} {wording}"
+        return _record(changes, rule, match.group(0), target)
 
     normalized = re.sub(
-        r"\b(?P<article>la|una|esa|esta|aquella|el|un|ese|este|aquel)\s+repricing\b",
-        replace_article_repricing,
+        r"\b(?P<article>la|una|esa|esta|aquella|el|un|ese|este|aquel)\s+repricing"
+        r"(?:\s+de\s+(?P<context>tasas|inflaci[oó]n)|\s+del\s+(?P<context_market>mercado))?\b",
+        lambda match: replace_article_repricing(
+            _RepricingMatchAdapter(match)
+        ),
         normalized,
         flags=re.IGNORECASE,
     )
 
-    def replace_rates(match: re.Match) -> str:
-        replacement = "reajuste de expectativas sobre las tasas"
-        replacement = _match_case(match.group(0), replacement)
-        changes.append(
-            {
-                "rule": "repricing_rates",
-                "source": match.group(0),
-                "target": replacement,
-            }
-        )
-        return replacement
-
-    normalized = re.sub(
-        r"\brepricing\s+de\s+tasas\b",
-        replace_rates,
-        normalized,
-        flags=re.IGNORECASE,
+    contextual_rules = (
+        (
+            "repricing_rates",
+            r"\brepricing\s+de\s+tasas\b",
+            "reajuste de expectativas sobre las tasas",
+        ),
+        (
+            "repricing_inflation",
+            r"\brepricing\s+de\s+inflaci[oó]n\b",
+            "reajuste de expectativas de inflación",
+        ),
+        (
+            "repricing_market",
+            r"\brepricing\s+del\s+mercado\b",
+            "reajuste de precios del mercado",
+        ),
+        (
+            "repricing_bare",
+            r"\brepricing\b",
+            "reajuste de expectativas",
+        ),
+        (
+            "cross_asset",
+            r"\bcross[-\s]?asset\b",
+            "entre distintas clases de activos",
+        ),
     )
 
-    def replace_inflation(match: re.Match) -> str:
-        replacement = "reajuste de expectativas de inflación"
-        replacement = _match_case(match.group(0), replacement)
-        changes.append(
-            {
-                "rule": "repricing_inflation",
-                "source": match.group(0),
-                "target": replacement,
-            }
-        )
-        return replacement
+    for rule, pattern, replacement in contextual_rules:
+        def replace(match: re.Match, *, rule=rule, replacement=replacement) -> str:
+            target = _match_case(match.group(0), replacement)
+            return _record(changes, rule, match.group(0), target)
 
-    normalized = re.sub(
-        r"\brepricing\s+de\s+inflaci[oó]n\b",
-        replace_inflation,
-        normalized,
-        flags=re.IGNORECASE,
-    )
-
-    def replace_market(match: re.Match) -> str:
-        replacement = "reajuste de precios del mercado"
-        replacement = _match_case(match.group(0), replacement)
-        changes.append(
-            {
-                "rule": "repricing_market",
-                "source": match.group(0),
-                "target": replacement,
-            }
-        )
-        return replacement
-
-    normalized = re.sub(
-        r"\brepricing\s+del\s+mercado\b",
-        replace_market,
-        normalized,
-        flags=re.IGNORECASE,
-    )
-
-    def replace_bare_repricing(match: re.Match) -> str:
-        replacement = "reajuste de expectativas"
-        replacement = _match_case(match.group(0), replacement)
-        changes.append(
-            {
-                "rule": "repricing_bare",
-                "source": match.group(0),
-                "target": replacement,
-            }
-        )
-        return replacement
-
-    normalized = re.sub(
-        r"\brepricing\b",
-        replace_bare_repricing,
-        normalized,
-        flags=re.IGNORECASE,
-    )
-
-    def replace_cross_asset(match: re.Match) -> str:
-        replacement = "entre distintas clases de activos"
-        replacement = _match_case(match.group(0), replacement)
-        changes.append(
-            {
-                "rule": "cross_asset",
-                "source": match.group(0),
-                "target": replacement,
-            }
-        )
-        return replacement
-
-    normalized = re.sub(
-        r"\bcross[-\s]?asset\b",
-        replace_cross_asset,
-        normalized,
-        flags=re.IGNORECASE,
-    )
+        normalized = re.sub(pattern, replace, normalized, flags=re.IGNORECASE)
 
     return normalized, changes
+
+
+class _RepricingMatchAdapter:
+    """Expose a unified context group for the article-aware repricing rule."""
+
+    def __init__(self, match: re.Match):
+        self.match = match
+
+    def group(self, name_or_index):
+        if name_or_index == "context":
+            return self.match.group("context") or self.match.group("context_market")
+        return self.match.group(name_or_index)
 
 
 def normalize_for_speech_lab_v5(text: str, reference_date: str | None = None):
