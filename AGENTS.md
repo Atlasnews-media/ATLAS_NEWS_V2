@@ -73,6 +73,16 @@ Mantener un periódico financiero digital donde el código, los datos y el conte
 - Los Pull Requests validan y no despliegan producción.
 - La memoria operacional de Supabase conserva una sola secuencia de estado para el paquete matutino, identificada por la edición General diaria; Nacional y Mercados no crean estados operacionales independientes.
 
+## Gate de integración técnica
+
+- Todo cambio en componentes, layouts, páginas, estilos, scripts, workflows, configuración, esquema o herramientas del repositorio se considera cambio técnico.
+- Los cambios técnicos deben partir desde el `main` remoto vigente, viajar por una rama separada y entrar mediante Pull Request. No escribir cambios técnicos directamente sobre `main`.
+- Antes de fusionar un cambio técnico, la validación canónica del HEAD exacto del Pull Request debe estar en estado terminal y verde. `queued`, `in_progress`, `cancelled` o un SHA anterior no habilitan el merge.
+- Si una corrección produce un nuevo commit, el gate se reinicia sobre el nuevo HEAD y solo ese SHA puede autorizarse para merge.
+- Tras el merge, verificar el workflow de producción disparado por el nuevo `main` y confirmar la versión pública. Un fallo de despliegue conserva la última versión pública válida y bloquea nuevos cambios técnicos hasta recuperar un `main` verde.
+- El Morning Package editorial mantiene su flujo y su propio Pull Request diario; esta regla no autoriza a modificarlo ni a convertir un fallo técnico en una reescritura editorial.
+- Cuando la configuración administrativa de GitHub lo permita, este mismo contrato debe reflejarse además como protección mecánica de `main` mediante required checks o ruleset equivalente.
+
 ## Autonomía editorial
 
 - Las ediciones diaria y semanal, Nacional, Mercados y las Lecturas solicitadas directamente deben completar su ciclo sin aprobación humana rutinaria cuando el flujo correspondiente esté habilitado.
