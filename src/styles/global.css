@@ -180,15 +180,6 @@ a:focus-visible {
   body:has(.calendar-entry) .site-header nav a + a::before {
     content: none;
   }
-  body:has(.calendar-entry) .front-page .headline-item {
-    height: fit-content !important;
-    min-height: 0 !important;
-    padding: 0.44rem 0 0.28rem !important;
-  }
-  body:has(.calendar-entry) .front-page .headline-item .headline-cta {
-    margin-top: 0.34rem !important;
-    margin-bottom: 0 !important;
-  }
   body:has(.calendar-entry) .calendar-entry {
     padding: 0.9rem 0 0.4rem;
   }
