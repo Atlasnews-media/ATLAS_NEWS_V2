@@ -40,6 +40,13 @@ marketSummary:
       value: "US$107,63"
       change: "+6,3%"
       category: "commodities"
+editorialVisual:
+  src: "https://commons.wikimedia.org/wiki/Special:FilePath/Eccles_Building_%2826088200676%29.jpg?width=1280"
+  alt: "Entrada principal del edificio Marriner S. Eccles de la Reserva Federal en Washington, D.C."
+  source: "Wikimedia Commons / Federal Reserve"
+  sourceUrl: "https://commons.wikimedia.org/wiki/File:Eccles_Building_(26088200676).jpg"
+  author: "Federalreserve"
+  license: "Dominio público — obra del Board of Governors of the Federal Reserve System"
 ---
 
 ## Hecho central
