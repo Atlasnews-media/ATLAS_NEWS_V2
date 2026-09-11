@@ -10,9 +10,18 @@ const { src, preload = "metadata", ariaLabel, engineRole } = Astro.props;
 const engineAttributes: Record<string, string> = {};
 if (engineRole === "daily") engineAttributes["data-audio-player"] = "";
 if (engineRole === "analysis") engineAttributes["data-analysis-player"] = "";
+
+const minimalControls = Astro.url.pathname.startsWith("/lab/");
 ---
 
-<div class="atlas-audio-player" data-atlas-audio data-playing="false">
+<div
+  class:list={[
+    "atlas-audio-player",
+    { "atlas-audio-player--minimal": minimalControls },
+  ]}
+  data-atlas-audio
+  data-playing="false"
+>
   <button
     class="atlas-audio-toggle"
     type="button"
@@ -215,6 +224,50 @@ if (engineRole === "analysis") engineAttributes["data-analysis-player"] = "";
     outline-offset: 3px;
   }
 
+  .atlas-audio-player--minimal {
+    grid-template-columns: 1.25rem 3.15rem minmax(0, 1fr) 3.15rem;
+  }
+
+  .atlas-audio-player--minimal .atlas-audio-toggle {
+    width: 1.25rem;
+    height: 2.25rem;
+    border: 0;
+    color: var(--ink);
+    background: transparent;
+  }
+
+  .atlas-audio-player--minimal .atlas-audio-toggle:hover,
+  .atlas-audio-player--minimal .atlas-audio-toggle:focus-visible,
+  .atlas-audio-player--minimal[data-playing="true"] .atlas-audio-toggle {
+    color: var(--ink);
+    border-color: transparent;
+  }
+
+  .atlas-audio-player--minimal [data-atlas-audio-icon] {
+    display: block;
+    width: 0;
+    height: 0;
+    overflow: visible;
+    border-top: 0.42rem solid transparent;
+    border-bottom: 0.42rem solid transparent;
+    border-left: 0.68rem solid var(--ink);
+    font-size: 0;
+    line-height: 0;
+  }
+
+  .atlas-audio-player--minimal[data-playing="true"] [data-atlas-audio-icon] {
+    width: auto;
+    height: auto;
+    border: 0;
+    color: var(--ink);
+    font: 800 0.86rem/1 var(--sans);
+    line-height: 1;
+  }
+
+  .atlas-audio-player--minimal .atlas-audio-toggle:focus-visible {
+    outline-color: var(--ink);
+  }
+
   .atlas-audio-time,
   .atlas-audio-duration {
     color: var(--ink-soft);
@@ -294,6 +347,15 @@ if (engineRole === "analysis") engineAttributes["data-analysis-player"] = "";
 
     .atlas-audio-toggle {
       width: 2.1rem;
+      height: 2.1rem;
+    }
+
+    .atlas-audio-player--minimal {
+      grid-template-columns: 1.15rem 2.85rem minmax(0, 1fr) 2.85rem;
+    }
+
+    .atlas-audio-player--minimal .atlas-audio-toggle {
+      width: 1.15rem;
       height: 2.1rem;
     }
 
