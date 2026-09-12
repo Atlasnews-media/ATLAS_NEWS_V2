@@ -426,6 +426,33 @@ body:has(.calendar-lab) .calendar-source {
   }
 }
 
+/* Tablet: conserva la composición editorial, pero eleva la escala de lectura. */
+@media (min-width: 42.01rem) and (max-width: 70rem) {
+  html {
+    font-size: 112.5%;
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+  }
+
+  .page-shell {
+    width: min(100% - 2.5rem, 88rem);
+  }
+
+  .page-intro {
+    max-width: 44rem;
+    margin-bottom: 3rem;
+  }
+
+  body .site-header .edition-bar,
+  body .site-header nav {
+    font-size: 0.76rem;
+  }
+
+  body .site-footer {
+    font-size: 0.78rem;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
