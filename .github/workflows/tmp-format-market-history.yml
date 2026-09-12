@@ -1,0 +1,23 @@
+name: TMP format market history
+
+on:
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  format-market-history:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - name: Formatear archivos nuevos
+        run: npx prettier --write src/components/MarketHistoryChart.astro src/pages/mercados/indices/index.astro
+      - name: Mostrar diff exacto
+        run: git diff -- src/components/MarketHistoryChart.astro src/pages/mercados/indices/index.astro
