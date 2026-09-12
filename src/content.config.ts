@@ -13,6 +13,10 @@ const highlightSchema = z.object({
   text: z.string().min(12).max(160),
 });
 
+const frontPageHighlightSchema = highlightSchema.extend({
+  label: z.string().min(2).max(72),
+});
+
 const marketItemSchema = z.object({
   label: z.string().min(2).max(32),
   value: z.string().min(1).max(32),
@@ -52,7 +56,7 @@ const editionSchema = z
     sources: z.array(sourceSchema).min(1),
     featured: z.boolean().default(false),
     demo: z.boolean().default(false),
-    highlights: z.array(highlightSchema).min(3).max(6).optional(),
+    highlights: z.array(frontPageHighlightSchema).min(3).max(6).optional(),
     marketSummary: marketSummarySchema.optional(),
     editorialVisual: editorialVisualSchema.optional(),
   })
