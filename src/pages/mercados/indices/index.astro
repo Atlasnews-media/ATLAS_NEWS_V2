@@ -113,9 +113,9 @@ const variation = new Intl.NumberFormat("es-CL", {
 function isDisplayable(asset?: MarketAsset) {
   return Boolean(
     asset &&
-      asset.displayEligible !== false &&
-      typeof asset.value === "number" &&
-      Number.isFinite(asset.value),
+    asset.displayEligible !== false &&
+    typeof asset.value === "number" &&
+    Number.isFinite(asset.value),
   );
 }
 
@@ -170,7 +170,9 @@ function arrowFor(asset?: MarketAsset) {
   return "●";
 }
 
-const generatedAt = snapshot.generatedAt ? new Date(snapshot.generatedAt) : null;
+const generatedAt = snapshot.generatedAt
+  ? new Date(snapshot.generatedAt)
+  : null;
 const generatedDate =
   generatedAt && Number.isFinite(generatedAt.valueOf())
     ? new Intl.DateTimeFormat("es-CL", {
