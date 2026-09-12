@@ -3,26 +3,26 @@
     {
       "id": "oil-geopolitics-inflation",
       "topic": "Petróleo, geopolítica e inflación",
-      "thesis": "El shock energético ya combina restricciones severas de tránsito, ataques sobre infraestructura y destrucción de tanqueros; la caída de inventarios y los cierres de producción previstos hacia fin de año confirman que el riesgo físico está adquiriendo persistencia macroeconómica.",
+      "thesis": "El shock energético ya compromete tanto rutas primarias como infraestructura de bypass: al cierre severo de Hormuz se suma el cierre del oleoducto saudí Este-Oeste tras un ataque, reduciendo la redundancia logística y reforzando la persistencia macroeconómica del riesgo físico.",
       "status": "confirmed",
-      "last_evidence": "El 9 de septiembre la EIA estimó que los inventarios globales de petróleo han caído cerca de 400 millones de barriles en 2026 y proyectó cierres de producción de Medio Oriente cercanos a 5,7 millones de barriles diarios en el cuarto trimestre; Brent cerró sobre US$101.",
-      "effect": "Confirma que el canal inflacionario no depende solo de titulares militares: menor disponibilidad física, inventarios en descenso y disrupciones persistentes elevan el riesgo de costos y reducen el espacio para relajación monetaria.",
-      "base_scenario": "Prima energética elevada y volátil con restricciones de tránsito, cierres materiales de producción e inventarios globales descendentes durante el resto de 2026, sin asumir una interrupción total de la producción del Golfo.",
-      "invalidate_if": "Recuperación sostenida del tráfico por Hormuz y rutas alternativas, reapertura de producción y reconstrucción persistente de inventarios debilitarían la tesis; nuevos daños físicos o cierres la reforzarían.",
-      "watch": "Cierres de producción regionales, inventarios globales, tráfico y embarques por Hormuz, seguros marítimos, Brent, producción OPEC+ y expectativas de inflación.",
-      "last_publication": "/ediciones/2026-09-10-daily-mercado-exige-prima-inflacion/"
+      "last_evidence": "El 12 de septiembre Arabia Saudita cerró el oleoducto Este-Oeste tras un ataque con drones; la infraestructura puede transportar entre 4 y 5 millones de barriles diarios hacia el mar Rojo y funciona como alternativa a Hormuz. La duración del cierre y el daño siguen bajo evaluación.",
+      "effect": "Refuerza el canal inflacionario porque la disrupción deja de concentrarse en un único estrecho y alcanza infraestructura destinada a desviar exportaciones; aumenta la sensibilidad de precios, fletes y expectativas a nuevos daños físicos.",
+      "base_scenario": "Prima energética elevada y volátil con restricciones de tránsito, cierres materiales de producción y menor redundancia logística durante el resto de 2026, sin asumir una interrupción total de la producción del Golfo.",
+      "invalidate_if": "Reapertura rápida y sostenida del oleoducto Este-Oeste junto con recuperación del tráfico por Hormuz, producción y reconstrucción de inventarios debilitarían la tesis; nuevos daños a rutas alternativas la reforzarían.",
+      "watch": "Duración del cierre del oleoducto Este-Oeste, daño físico, cierres de producción regionales, tráfico por Hormuz y Bab el-Mandeb, seguros marítimos, Brent e inventarios globales.",
+      "last_publication": "/ediciones/2026-09-12-daily-shock-energetico-pierde-via-de-escape/"
     },
     {
       "id": "us-employment-fed-rates",
       "topic": "Empleo de Estados Unidos y Reserva Federal",
-      "thesis": "Las nóminas fuertes de agosto y el repunte de la inflación mayorista alinean empleo y precios hacia una subida de la Fed en septiembre; el IPC pasa a ser la última prueba capaz de revertir esa mayoría de mercado.",
+      "thesis": "Las nóminas fuertes, el PPI y un IPC subyacente más firme de lo esperado alinean empleo y precios hacia una subida de la Fed en septiembre; la pausa deja de ser el escenario dominante y el foco pasa a la magnitud y persistencia del endurecimiento.",
       "status": "confirmed",
-      "last_evidence": "El 10 de septiembre el PPI de agosto subió 0,4% mensual y 5,4% interanual, mientras el nuevo salto del petróleo llevó la probabilidad implícita de una subida de septiembre hacia 70%-74% antes del IPC.",
-      "effect": "Confirma el sesgo restrictivo que habían devuelto las nóminas oficiales y reduce el espacio de la pausa; la decisión aún no queda cerrada porque el IPC puede mostrar una moderación subyacente suficiente para deshacer parte de la repricing.",
-      "base_scenario": "La reunión de septiembre se inclina hacia una subida de 25 puntos base, condicionada a que el IPC de agosto no entregue una moderación suficientemente clara para devolver la pausa a una posición dominante.",
-      "invalidate_if": "El IPC de agosto muestra una moderación subyacente clara que devuelve la pausa a una posición dominante, o nueva evidencia laboral contradice la fortaleza observada en las nóminas oficiales.",
-      "watch": "IPC de agosto, salarios, solicitudes de desempleo, comunicación de la Fed, FedWatch, Treasury a dos y diez años y dólar.",
-      "last_publication": "/ediciones/2026-09-11-daily-inflacion-vuelve-a-mandar/"
+      "last_evidence": "El 11 de septiembre el IPC de agosto subió 0,4% mensual y 3,4% interanual; el núcleo avanzó 0,3% mensual, sobre el 0,2% esperado, y la probabilidad implícita de una subida de 25 puntos base terminó cerca de 87%, desde aproximadamente 72% antes del dato.",
+      "effect": "El IPC no entregó la moderación necesaria para devolver la pausa a una posición dominante; junto con empleo y PPI, consolida un sesgo restrictivo mientras el shock energético mantiene riesgo alcista sobre inflación futura.",
+      "base_scenario": "La reunión de septiembre se inclina claramente hacia una subida de 25 puntos base; la discusión se desplaza hacia cuánto endurecimiento adicional será necesario si energía y servicios mantienen presión sobre precios.",
+      "invalidate_if": "Una desaceleración posterior clara de inflación subyacente y energía, deterioro laboral material o comunicación explícita de la Fed que devuelva la pausa a una posición dominante.",
+      "watch": "Decisión y proyecciones de la Fed, inflación subyacente, salarios, solicitudes de desempleo, Treasury a dos y diez años, petróleo y dólar.",
+      "last_publication": "/ediciones/2026-09-12-daily-shock-energetico-pierde-via-de-escape/"
     },
     {
       "id": "ai-monetization-selectivity",
