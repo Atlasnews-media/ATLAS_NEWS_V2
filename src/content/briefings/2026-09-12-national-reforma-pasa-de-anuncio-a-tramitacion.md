@@ -17,11 +17,11 @@ sources:
   - name: "BioBioChile — Inicio de tramitación de Fonavi"
     url: "https://www.biobiochile.cl/noticias/economia/actualidad-economica/2026/09/11/fonavi-ejecutivo-ingresa-reforma-que-busca-financiar-viviendas-y-ampliar-acceso-a-credito-hipotecario.shtml"
 highlights:
-  - label: "La reforma ya tiene tramitación"
+  - label: "Reforma ya en tramitación"
     text: "La Comisión de Hacienda continuará la exposición del Ejecutivo el 22 de septiembre bajo urgencia Suma."
-  - label: "Fonavi apunta a 150 mil viviendas"
+  - label: "Fonavi apunta a 150 mil"
     text: "El diseño busca movilizar crédito hipotecario a 30 años y 10% de pie mediante compra de cartera originada por la banca."
-  - label: "El foco pasa del anuncio al diseño"
+  - label: "Del anuncio al diseño"
     text: "La discusión relevante será cuánto capital moviliza, qué riesgo retiene la banca y cómo se resguardan las cuentas fiscales."
 demo: false
 ---

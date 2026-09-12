@@ -22,11 +22,11 @@ sources:
   - name: "AP — US market close"
     url: "https://apnews.com/article/67a463295d9ea178d7802ca4338a6eb5"
 highlights:
-  - label: "El rebote no llegó a los bonos"
+  - label: "Rebote sin bonos"
     text: "El S&P 500 ganó 0,9%, pero el Treasury a diez años cerró cerca de 4,97% después de tocar 4,9915%."
-  - label: "El petróleo dejó una semana de dos dígitos intradía"
+  - label: "Brent conserva el alza"
     text: "Brent retrocedió a US$104,61 el viernes, aunque conservó más de 8% semanal tras rozar US$110."
-  - label: "El fin de semana cambia el próximo precio"
+  - label: "El ataque queda al lunes"
     text: "El cierre del oleoducto saudí Este-Oeste ocurrió después del mercado y deberá incorporarse en la reapertura del lunes."
 demo: false
 ---
