@@ -1,0 +1,23 @@
+name: TMP format indicators
+
+on:
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  format-indicators:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - name: Formatear componente
+        run: npx prettier --write src/components/EconomicIndicators.astro
+      - name: Mostrar diff exacto
+        run: git diff -- src/components/EconomicIndicators.astro
