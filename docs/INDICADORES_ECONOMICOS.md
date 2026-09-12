@@ -13,6 +13,15 @@ La barra económica utiliza seis series:
 
 La actualización ocurre durante la construcción estática. El navegador no consulta proveedores externos.
 
+## Presentación en portada
+
+El bloque de Indicadores Económicos mantiene cuatro filas de datos distribuidas en dos columnas. Debajo se agregan exactamente dos filas de ancho completo, integradas como continuación del mismo cuadro:
+
+- Calendario Económico;
+- Índices de Mercado.
+
+Estas dos filas no deben dividirse en cuatro celdas ni repetirse fuera del bloque. Tampoco deben conservar las dobles líneas heredadas de los accesos antiguos de portada.
+
 ## Flujo de datos
 
 ```text
