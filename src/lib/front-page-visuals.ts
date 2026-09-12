@@ -602,6 +602,28 @@ function stableHash(value: string) {
   return hash >>> 0;
 }
 
+const FRONT_PAGE_SECTIONS: FrontPageSection[] = [
+  "international",
+  "national",
+  "markets",
+];
+
+function sectionOwnsSharedVisual(
+  section: FrontPageSection,
+  visual: CatalogVisual,
+) {
+  const eligibleSections = FRONT_PAGE_SECTIONS.filter((candidateSection) =>
+    VISUAL_CATALOG[candidateSection].some(
+      (candidate) => candidate.src === visual.src,
+    ),
+  );
+
+  if (eligibleSections.length <= 1) return true;
+
+  const ownerIndex = stableHash(visual.src) % eligibleSections.length;
+  return eligibleSections[ownerIndex] === section;
+}
+
 function stripCatalogMetadata(visual: CatalogVisual): EditorialVisual {
   const {
     keywords: _keywords,
@@ -620,7 +642,11 @@ export function resolveFrontPageVisual({
 }: ResolveVisualInput): EditorialVisual {
   if (editorialVisual) return editorialVisual;
 
-  const pool = VISUAL_CATALOG[section];
+  const catalogPool = VISUAL_CATALOG[section];
+  const ownedPool = catalogPool.filter((visual) =>
+    sectionOwnsSharedVisual(section, visual),
+  );
+  const pool = ownedPool.length > 0 ? ownedPool : catalogPool;
   const haystack = normalize(`${title} ${tags.join(" ")}`);
   const scored = pool.map((visual) => ({
     visual,
