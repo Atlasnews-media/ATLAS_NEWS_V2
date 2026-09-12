@@ -47,7 +47,7 @@ body::before {
   pointer-events: none;
   content: "";
   opacity: 0.18;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.14'/%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter id='n'/%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.14'/%3E%3C/svg%3E");
   mix-blend-mode: multiply;
 }
 
@@ -639,8 +639,8 @@ body:has(.calendar-lab) .calendar-source {
     grid-row: span 2;
     min-width: 0;
     padding: 0.8rem 0 1.2rem;
-    border-right: 1px solid var(--rule);
     padding-right: 1.05rem;
+    border-right: 1px solid var(--rule);
   }
 
   body .front-page.front-page--v2 .headline-board-title {
@@ -666,8 +666,8 @@ body:has(.calendar-lab) .calendar-source {
   body .front-page.front-page--v2 .headline-list .headline-item:first-child {
     grid-column: 1;
     grid-row: 1 / span 2;
-    padding-left: 0 !important;
     padding-right: 0.9rem !important;
+    padding-left: 0 !important;
     border-top: 0;
     border-right: 1px solid var(--rule);
   }
@@ -875,8 +875,8 @@ body:has(.calendar-lab) .calendar-source {
   body.primary-section-page .reading-list .card:first-child {
     grid-column: span 7;
     min-height: 18rem;
-    padding-left: 0 !important;
     padding-right: 1.15rem !important;
+    padding-left: 0 !important;
   }
 
   body.primary-section-page .briefing-list .card:nth-child(2),
@@ -896,8 +896,14 @@ body:has(.calendar-lab) .calendar-source {
     width: 66% !important;
   }
 
-  body.primary-section-page .briefing-list .card:first-child.has-visual .card-copy,
-  body.primary-section-page .reading-list .card:first-child.has-visual .card-copy {
+  body.primary-section-page
+    .briefing-list
+    .card:first-child.has-visual
+    .card-copy,
+  body.primary-section-page
+    .reading-list
+    .card:first-child.has-visual
+    .card-copy {
     width: 61% !important;
   }
 
@@ -913,8 +919,20 @@ body:has(.calendar-lab) .calendar-source {
     margin: 0 !important;
     overflow: hidden !important;
     pointer-events: none !important;
-    -webkit-mask-image: linear-gradient(to bottom, transparent 0%, #000 8%, #000 92%, transparent 100%) !important;
-    mask-image: linear-gradient(to bottom, transparent 0%, #000 8%, #000 92%, transparent 100%) !important;
+    -webkit-mask-image: linear-gradient(
+      to bottom,
+      transparent 0%,
+      #000 8%,
+      #000 92%,
+      transparent 100%
+    ) !important;
+    mask-image: linear-gradient(
+      to bottom,
+      transparent 0%,
+      #000 8%,
+      #000 92%,
+      transparent 100%
+    ) !important;
   }
 
   body.primary-section-page .briefing-list .card:first-child .card-visual,
@@ -930,8 +948,18 @@ body:has(.calendar-lab) .calendar-source {
     object-position: center !important;
     opacity: 0.68 !important;
     filter: saturate(0.72) sepia(0.1) contrast(0.94) brightness(1.04) !important;
-    -webkit-mask-image: linear-gradient(to right, transparent 0%, rgba(0,0,0,.38) 22%, #000 58%) !important;
-    mask-image: linear-gradient(to right, transparent 0%, rgba(0,0,0,.38) 22%, #000 58%) !important;
+    -webkit-mask-image: linear-gradient(
+      to right,
+      transparent 0%,
+      rgba(0, 0, 0, 0.38) 22%,
+      #000 58%
+    ) !important;
+    mask-image: linear-gradient(
+      to right,
+      transparent 0%,
+      rgba(0, 0, 0, 0.38) 22%,
+      #000 58%
+    ) !important;
   }
 
   body.primary-section-page .briefing-list .card h2,
