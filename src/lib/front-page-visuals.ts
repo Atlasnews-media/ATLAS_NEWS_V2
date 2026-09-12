@@ -166,6 +166,24 @@ function commonsVisual({
   };
 }
 
+function catalogVisual(
+  file: string,
+  alt: string,
+  keywords: string[],
+): CatalogVisual {
+  return commonsVisual({
+    file,
+    alt,
+    author: "Crédito en ficha de origen",
+    license: "Ver ficha de origen",
+    keywords,
+  });
+}
+
+function catalogBatch(files: string[], alt: string, keywords: string[]) {
+  return files.map((file) => catalogVisual(file, alt, keywords));
+}
+
 const FED_ECCLES = commonsVisual({
   file: "Eccles Building (26088200676).jpg",
   alt: "Entrada principal del edificio Marriner S. Eccles de la Reserva Federal en Washington, D.C.",
@@ -221,6 +239,18 @@ const FED_FOMC_2014_ALT = commonsVisual({
   keywords: FED_KEYWORDS,
 });
 
+const FED_EXTRA = catalogBatch(
+  [
+    "CB PC 032013 16066 (8577655358).jpg",
+    "CB PC 121212 DE 5197 (8548486247).jpg",
+    "CP FOMC Group 7.5x10 11142022 DSCF5769 (52563724010).jpg",
+    "FOMC D4A2699 (14306047845).jpg",
+    "FOMC D4A4501 (11439897774).jpg",
+  ],
+  "Reserva Federal, FOMC o conducción de la política monetaria de Estados Unidos.",
+  FED_KEYWORDS,
+);
+
 const TREASURY_BUILDING = commonsVisual({
   file: "US Treasury Building.jpg",
   alt: "Edificio del Departamento del Tesoro de Estados Unidos en Washington, D.C.",
@@ -239,6 +269,21 @@ const TREASURY_BUILDING_OFFICIAL = commonsVisual({
   keywords: TREASURY_KEYWORDS,
 });
 
+const TREASURY_EXTRA = catalogBatch(
+  [
+    "Us-treasury-building.jpg",
+    "Department of the Treasury (15176010162).jpg",
+    "Department of the Treasury (53840295873).jpg",
+    "D.C., Washington, Treasury Building, 1898, Exterior LCCN96510891.jpg",
+    "D.C., Washington, Treasury Building, 1901, exterior LCCN96510935.jpg",
+    "D.C., Washington, Treasury Building, 1910, exterior LCCN96510906.jpg",
+    "D.C., Washington, Treasury Building, 1918, exterior showing Liberty Loan thermometer LCCN96510391.jpg",
+    "D.C., Washington, Treasury Building, exterior LCCN96510901.jpg",
+  ],
+  "Departamento del Tesoro de Estados Unidos o contexto de deuda y renta fija.",
+  TREASURY_KEYWORDS,
+);
+
 const GULF_CONVOY = commonsVisual({
   file: "USS Hawes (FFG-53), USS William H. Standley (CG-32) and USS Guadalcanal (LPH-7) escort tanker Gas King in the Persian Gullf on 21 October 1987 (6432283).jpg",
   alt: "Convoy de buques escoltando al petrolero Gas King en el Golfo Pérsico.",
@@ -256,6 +301,23 @@ const GULF_OIL_TERMINAL = commonsVisual({
   license: "Dominio público — gobierno federal de EE.UU.",
   keywords: ENERGY_KEYWORDS,
 });
+
+const ENERGY_EXTRA = catalogBatch(
+  [
+    "US Navy 030629-N-4790M-003 Commercial oil tanker AbQaiq readies itself to receive oil at Mina-Al-Bkar Oil terminal (MABOT), an off shore Iraqi oil installation.jpg",
+    "US Navy 030629-N-4790M-006 Commercial oil tanker AbQaiq readies itself to receive oil at Mina-Al-Bkar Oil terminal (MABOT), an off shore Iraqi oil installation.jpg",
+    "US Navy 041207-N-6932B-014 The oil tanker Omala is one of hundreds of oil tankers from around the world that receives its payload from Iraq's Al Basrah Oil Terminal (ABOT).jpg",
+    "US Navy 030628-N-6077T-006 Commercial oil tanker AbQaiq is helped into position by tugboats prior to receiving crude oil.jpg",
+    "US Navy 030628-N-6077T-005 Commercial oil tanker AbQaiq readies itself to receive oil at Mina-Al-Bkar Oil terminal (MABOT) an off shore Iraqi oil installation.jpg",
+    "US Navy 051019-N-5088T-002 An F-14D Tomcat banks over an oil tanker while conducting a sunset maritime security mission over the Persian Gulf.jpg",
+    "US Navy 041020-N-1348L-037 The guided missile destroyer USS Preble (DDG 88) patrols the waters surrounding the Al Basrah Oil Terminal (ABOT) as a super tanker takes-on crude oil.jpg",
+    "US Navy 041020-N-1348L-054 The U.S. Coast Guard cutter Monomoy (WPB 1326) patrols the waters surrounding the Al Basrah Oil Terminal (ABOT) as a super tanker takes-on crude oil.jpg",
+    "Oil tanker Abqaiq in 2003.jpg",
+    "US Navy 030629-N-4790M-004 USS Chosin (CG 65) enforces an exclusionary perimeter as commercial oil tanker AbQaiq readies itself to receive oil at Mina-Al-Bkar Oil terminal (MABOT), an off shore Iraqi oil installation.jpg",
+  ],
+  "Petróleo, buques tanque, terminales energéticos o transporte de crudo.",
+  ENERGY_KEYWORDS,
+);
 
 const NYSE_HIGHSMITH = commonsVisual({
   file: "No Known Restrictions Trading Floor, New York Stock Exchange (Highsmith LOC) (6718386525).jpg",
@@ -292,6 +354,21 @@ const NYSE_WALL_STREET = commonsVisual({
   keywords: EQUITY_KEYWORDS,
 });
 
+const EQUITY_EXTRA = catalogBatch(
+  [
+    "Stockexchange.jpg",
+    "NewYorkStockExchangeWallStreetManhattan.jpg",
+    "New York Stock Exchange (NYSE) in Wall Street.jpg",
+    "Wall Street - New York Stock Exchange.jpg",
+    "New York Stock Exchange, Wall Street.jpg",
+    "0603 KRBN-RobertEngle-JonDemske-10.jpg",
+    "0603 KRBN-RobertEngle-JonDemske-11.jpg",
+    "0603-Kraneshares KRBN-RobertEngle-JonDemske-12.jpg",
+  ],
+  "Bolsa de Nueva York, Wall Street o actividad del mercado accionario.",
+  EQUITY_KEYWORDS,
+);
+
 const PORT_SAN_ANTONIO = commonsVisual({
   file: "CL-san-antonio-hafen.jpg",
   alt: "Vista del puerto de San Antonio en Chile, con infraestructura portuaria y movimiento de carga.",
@@ -315,6 +392,20 @@ const PORT_SAN_ANTONIO_CONTAINERS = commonsVisual({
   license: "CC BY-SA 3.0",
   keywords: PORT_KEYWORDS,
 });
+
+const PORT_EXTRA = catalogBatch(
+  [
+    "San Antonio, Valparaiso Region, Chile - panoramio.jpg",
+    "SanAntonio11.jpg",
+    "Sanantonio3.jpg",
+    "SanAntonioChile.jpg",
+    "Santoniodelmar.jpg",
+    "Seguridad en el mar - Flickr - moralescv.jpg",
+    "Trabaenelpuerto.jpg",
+  ],
+  "Puerto de San Antonio, logística, comercio exterior o actividad portuaria en Chile.",
+  PORT_KEYWORDS,
+);
 
 const SANTIAGO_SKYLINE = commonsVisual({
   file: "Skyline of Santiago, Chile.jpg",
@@ -342,6 +433,22 @@ const SANTIAGO_COSTANERA_CURRENT = commonsVisual({
   keywords: CHILE_ACTIVITY_KEYWORDS,
 });
 
+const SANTIAGO_EXTRA = catalogBatch(
+  [
+    "Santiago Panorama.jpg",
+    "Santiago Skyline.jpg",
+    "Skyline of Santiago with San Cristóbal hill at the back (Northeast view 01).JPG",
+    "Skyline of Santiago with San Cristóbal hill at the back (Northeast view 02).JPG",
+    "Skyline of Santiago with San Cristóbal hill at the back (Northeast view Panorama 01 - Flat projection).jpg",
+    "Skyline of Santiago with San Cristóbal hill at the back (Northeast view Panorama 02 - Sphere projection).jpg",
+    "Skyline of Santiago with San Cristóbal hill at the back (Northeast view Panorama 03 - Flat projection).jpg",
+    "Stgo Abril.jpg",
+    "Torre-winter14 (16743359948).jpg",
+  ],
+  "Santiago de Chile, actividad económica, inversión, consumo o entorno empresarial.",
+  CHILE_ACTIVITY_KEYWORDS,
+);
+
 const BCCH_BUILDING = commonsVisual({
   file: "BancoCentralChile.JPG",
   alt: "Fachada del edificio del Banco Central de Chile en Santiago.",
@@ -360,6 +467,23 @@ const BCCH_EXTERIOR = commonsVisual({
   fallback: true,
 });
 
+const BCCH_EXTRA = catalogBatch(
+  [
+    "Banco Central (3973681254).jpg",
+    "Fachada Banco Central (40807089604).jpg",
+    "Fachada Banco Central.jpg",
+    "Entrada Banco Central (34887472275).jpg",
+    "Detalle escudo Banco Central (34724274142).jpg",
+    "Edificio 1930 (27130012215).jpg",
+    "Edificio del Banco 1930 (26524138444).jpg",
+    "Sala de Consejo (26986595781).jpg",
+    "Hall Primer Piso (26779571090).jpg",
+    "Barras de oro (26960782102).jpg",
+  ],
+  "Banco Central de Chile, política monetaria, reservas o contexto financiero local.",
+  BCCH_KEYWORDS,
+);
+
 const COPPER_MINE = commonsVisual({
   file: "Chile copper mine.JPG",
   alt: "Vista aérea de una mina de cobre en Chile.",
@@ -376,49 +500,91 @@ const COPPER_CHUQUICAMATA = commonsVisual({
   keywords: COPPER_KEYWORDS,
 });
 
+const COPPER_EXTRA = catalogBatch(
+  [
+    "Escondida Copper Mine, Atacama Desert, Chile 2009-12-09 lrg.jpg",
+    "Escondida Copper Mine, Atacama Desert, Chile 2009-12-09.jpg",
+    "Chiquicamata Mine, Chile (ASTER).jpg",
+    "Escondida Mine, Chile (ASTER).jpg",
+    "Escond-swir (ASTER).jpg",
+    "Chuquicamata copper mine - Chuquicamata-Kupfermine.jpg",
+    "Mina de Chuquicamata, Calama, Chile, 2016-02-01, DD 121.JPG",
+    "Chilean Miners.jpg",
+  ],
+  "Cobre, minería chilena, Chuquicamata, Escondida o producción de commodities.",
+  COPPER_KEYWORDS,
+);
+
+const FED_VISUALS = [
+  FED_ECCLES,
+  FED_FOMC_2016,
+  FED_FOMC_2014,
+  FED_BOARD_2014,
+  FED_RULES_2014,
+  FED_FOMC_2014_ALT,
+  ...FED_EXTRA,
+];
+
+const TREASURY_VISUALS = [
+  TREASURY_BUILDING,
+  TREASURY_BUILDING_OFFICIAL,
+  ...TREASURY_EXTRA,
+];
+
+const ENERGY_VISUALS = [GULF_CONVOY, GULF_OIL_TERMINAL, ...ENERGY_EXTRA];
+
+const EQUITY_VISUALS = [
+  NYSE_HIGHSMITH,
+  NYSE_HISTORIC_FLOOR,
+  NYSE_EXTERIOR,
+  NYSE_WALL_STREET,
+  ...EQUITY_EXTRA,
+];
+
+const PORT_VISUALS = [
+  PORT_SAN_ANTONIO,
+  PORT_SAN_ANTONIO_PANORAMA,
+  PORT_SAN_ANTONIO_CONTAINERS,
+  ...PORT_EXTRA,
+];
+
+const SANTIAGO_VISUALS = [
+  SANTIAGO_SKYLINE,
+  SANTIAGO_COSTANERA,
+  SANTIAGO_COSTANERA_CURRENT,
+  ...SANTIAGO_EXTRA,
+];
+
+const BCCH_VISUALS = [BCCH_BUILDING, BCCH_EXTERIOR, ...BCCH_EXTRA];
+const COPPER_VISUALS = [COPPER_MINE, COPPER_CHUQUICAMATA, ...COPPER_EXTRA];
+
 const VISUAL_CATALOG: Record<FrontPageSection, CatalogVisual[]> = {
   international: [
-    FED_ECCLES,
-    FED_FOMC_2016,
-    FED_FOMC_2014,
-    FED_BOARD_2014,
-    FED_RULES_2014,
-    FED_FOMC_2014_ALT,
-    TREASURY_BUILDING,
-    TREASURY_BUILDING_OFFICIAL,
-    GULF_CONVOY,
-    GULF_OIL_TERMINAL,
-    NYSE_EXTERIOR,
-    NYSE_WALL_STREET,
+    ...FED_VISUALS,
+    ...TREASURY_VISUALS,
+    ...ENERGY_VISUALS,
+    ...EQUITY_VISUALS,
   ],
   national: [
-    PORT_SAN_ANTONIO,
-    PORT_SAN_ANTONIO_PANORAMA,
-    PORT_SAN_ANTONIO_CONTAINERS,
-    SANTIAGO_SKYLINE,
-    SANTIAGO_COSTANERA,
-    SANTIAGO_COSTANERA_CURRENT,
-    BCCH_BUILDING,
-    BCCH_EXTERIOR,
-    COPPER_MINE,
-    COPPER_CHUQUICAMATA,
+    ...PORT_VISUALS,
+    ...SANTIAGO_VISUALS,
+    ...BCCH_VISUALS,
+    ...COPPER_VISUALS,
   ],
   markets: [
-    NYSE_HIGHSMITH,
-    NYSE_HISTORIC_FLOOR,
-    NYSE_EXTERIOR,
-    NYSE_WALL_STREET,
-    FED_ECCLES,
-    FED_FOMC_2016,
-    FED_FOMC_2014,
-    TREASURY_BUILDING,
-    TREASURY_BUILDING_OFFICIAL,
-    GULF_CONVOY,
-    GULF_OIL_TERMINAL,
-    COPPER_MINE,
-    COPPER_CHUQUICAMATA,
+    ...EQUITY_VISUALS,
+    ...FED_VISUALS,
+    ...TREASURY_VISUALS,
+    ...ENERGY_VISUALS,
+    ...COPPER_VISUALS,
   ],
 };
+
+export const FRONT_PAGE_VISUAL_CATALOG_SIZE = new Set(
+  Object.values(VISUAL_CATALOG)
+    .flat()
+    .map(({ src }) => src),
+).size;
 
 function normalize(value: string) {
   return value
