@@ -1,8 +1,29 @@
 ---
-import {
-  economicIndicatorsSnapshot,
-  type EconomicIndicator,
-} from "../data/economic-indicators";
+import marketPulse from "../data/market-pulse.json";
+import { economicIndicatorsSnapshot } from "../data/economic-indicators";
+
+type Trend = "up" | "down" | "flat";
+
+type MarketAsset = {
+  id: string;
+  value: number | null;
+  unit: string;
+  changePercent: number | null;
+  trend: Trend;
+  effectiveAt: string | null;
+  displayEligible?: boolean;
+};
+
+type DisplayIndicator = {
+  id: string;
+  label: string;
+  value: number | null;
+  unit: string;
+  effectiveAt: string | null;
+  changePercent: number | null;
+  trend: Trend;
+  displayEligible?: boolean;
+};
 
 const dateFormatter = new Intl.DateTimeFormat("es-CL", {
   day: "numeric",
@@ -21,11 +42,7 @@ const clpIntegerFormatter = new Intl.NumberFormat("es-CL", {
   currency: "CLP",
   maximumFractionDigits: 0,
 });
-const percentFormatter = new Intl.NumberFormat("es-CL", {
-  minimumFractionDigits: 2,
-  maximumFractionDigits: 2,
-});
-const decimalFormatter = new Intl.NumberFormat("es-CL", {
+const decimal2Formatter = new Intl.NumberFormat("es-CL", {
   minimumFractionDigits: 2,
   maximumFractionDigits: 2,
 });
@@ -34,46 +51,115 @@ const variationFormatter = new Intl.NumberFormat("es-CL", {
   maximumFractionDigits: 2,
 });
 
-function formatDate(date: string) {
-  return dateFormatter.format(new Date(`${date}T12:00:00-04:00`));
+const snapshot = marketPulse as {
+  generatedAt: string | null;
+  assets: MarketAsset[];
+};
+
+const economicByCode = new Map(
+  economicIndicatorsSnapshot.indicators.map((indicator) => [
+    indicator.code,
+    indicator,
+  ]),
+);
+const marketById = new Map(snapshot.assets.map((asset) => [asset.id, asset]));
+
+function normalizeEconomic(
+  code: string,
+  label: string,
+): DisplayIndicator | null {
+  const indicator = economicByCode.get(code);
+  if (!indicator) return null;
+
+  return {
+    id: code,
+    label,
+    value: indicator.value,
+    unit: indicator.unit,
+    effectiveAt: indicator.effectiveDate,
+    changePercent: indicator.changePercent ?? null,
+    trend: indicator.trend ?? "flat",
+  };
 }
 
-function formatTrend(indicator: EconomicIndicator) {
-  if (indicator.changePercent === undefined || !indicator.trend) {
-    return "";
+function normalizeMarket(id: string, label: string): DisplayIndicator {
+  const asset = marketById.get(id);
+  return {
+    id,
+    label,
+    value: asset?.value ?? null,
+    unit: asset?.unit ?? "points",
+    effectiveAt: asset?.effectiveAt ?? null,
+    changePercent: asset?.changePercent ?? null,
+    trend: asset?.trend ?? "flat",
+    displayEligible: asset?.displayEligible,
+  };
+}
+
+const indicators: DisplayIndicator[] = [
+  normalizeEconomic("uf", "UF"),
+  normalizeEconomic("dolar", "Dólar"),
+  normalizeEconomic("euro", "Euro"),
+  normalizeEconomic("utm", "UTM"),
+  normalizeMarket("brent", "Brent Oil"),
+  normalizeEconomic("cobre", "Cobre"),
+  normalizeMarket("ipsa", "IPSA"),
+  normalizeMarket("sp500", "S&P 500"),
+].filter((indicator): indicator is DisplayIndicator => Boolean(indicator));
+
+function formatDate(date: string) {
+  const normalized = date.includes("T") ? date : `${date}T12:00:00-04:00`;
+  return dateFormatter.format(new Date(normalized));
+}
+
+function isDisplayable(indicator: DisplayIndicator) {
+  return (
+    indicator.displayEligible !== false &&
+    typeof indicator.value === "number" &&
+    Number.isFinite(indicator.value)
+  );
+}
+
+function formatValue(indicator: DisplayIndicator) {
+  if (!isDisplayable(indicator)) return "—";
+
+  const value = indicator.value as number;
+  switch (indicator.unit) {
+    case "clp":
+      return clpFormatter.format(value);
+    case "clp-integer":
+      return clpIntegerFormatter.format(value);
+    case "percent":
+      return `${decimal2Formatter.format(value)}%`;
+    case "usd-per-pound":
+      return `US$${decimal2Formatter.format(value)}/lb`;
+    case "usd-per-barrel":
+      return `US$${decimal2Formatter.format(value)}`;
+    case "points":
+      return decimal2Formatter.format(value);
+    default:
+      return decimal2Formatter.format(value);
+  }
+}
+
+function formatTrend(indicator: DisplayIndicator) {
+  if (
+    !isDisplayable(indicator) ||
+    indicator.changePercent === null ||
+    !Number.isFinite(indicator.changePercent)
+  ) {
+    return null;
   }
 
   const arrow =
     indicator.trend === "up" ? "▲" : indicator.trend === "down" ? "▼" : "→";
-  return ` ${arrow} ${variationFormatter.format(Math.abs(indicator.changePercent))}%`;
+  const change = variationFormatter.format(Math.abs(indicator.changePercent));
+  return `${arrow} ${change}%`;
 }
 
-function formatValue(indicator: EconomicIndicator) {
-  let value: string;
-
-  switch (indicator.unit) {
-    case "clp":
-      value = clpFormatter.format(indicator.value);
-      break;
-    case "clp-integer":
-      value = clpIntegerFormatter.format(indicator.value);
-      break;
-    case "percent":
-      value = `${percentFormatter.format(indicator.value)}%`;
-      break;
-    case "usd-per-pound":
-      value = `US$${decimalFormatter.format(indicator.value)}/lb`;
-      break;
-  }
-
-  return `${value}${formatTrend(indicator)}`;
-}
-
-function mobileLabel(label: string) {
-  return label === "Dólar observado" ? "Dólar" : label;
-}
-
-const asOfLabel = formatDate(economicIndicatorsSnapshot.asOf);
+const marketGeneratedDate = snapshot.generatedAt?.slice(0, 10) ?? null;
+const asOf = marketGeneratedDate ?? economicIndicatorsSnapshot.asOf;
+const asOfLabel = formatDate(asOf);
 const freshnessLabel =
   economicIndicatorsSnapshot.status === "stale"
     ? "Último dato disponible"
@@ -91,30 +177,39 @@ const freshnessLabel =
 
   <dl class="economic-strip__grid">
     {
-      economicIndicatorsSnapshot.indicators.map((indicator) => (
-        <div class="economic-strip__item">
-          <dt>
-            <span class="economic-strip__label-full">{indicator.label}</span>
-            <span class="economic-strip__label-mobile">
-              {mobileLabel(indicator.label)}
-            </span>
-          </dt>
-          <dd title={`Dato efectivo al ${formatDate(indicator.effectiveDate)}`}>
-            {formatValue(indicator)}
-          </dd>
-        </div>
-      ))
+      indicators.map((indicator) => {
+        const trend = formatTrend(indicator);
+        return (
+          <div class="economic-strip__item">
+            <dt>{indicator.label}</dt>
+            <dd
+              title={
+                indicator.effectiveAt
+                  ? `Dato efectivo al ${formatDate(indicator.effectiveAt)}`
+                  : undefined
+              }
+            >
+              <span class="economic-strip__value">
+                {formatValue(indicator)}
+              </span>
+              {trend && (
+                <span
+                  class="economic-strip__trend"
+                  data-trend={indicator.trend}
+                >
+                  {trend}
+                </span>
+              )}
+            </dd>
+          </div>
+        );
+      })
     }
   </dl>
 
   <p class="economic-strip__source">
-    Fuente: <a href={economicIndicatorsSnapshot.sourceUrl}>
-      {economicIndicatorsSnapshot.sourceName}
-    </a>
-    <span aria-hidden="true"> · </span>
-    {freshnessLabel}: <time datetime={economicIndicatorsSnapshot.asOf}>
-      {asOfLabel}
-    </time>
+    Fuentes: {economicIndicatorsSnapshot.sourceName} · Índices de mercado ATLAS ·
+    {freshnessLabel}: <time datetime={asOf}>{asOfLabel}</time>
   </p>
 </section>
 
@@ -146,12 +241,13 @@ const freshnessLabel =
   }
 
   .economic-strip__source {
+    justify-content: flex-end;
     color: var(--ink-soft);
   }
 
   .economic-strip__grid {
     display: grid;
-    grid-template-columns: repeat(6, minmax(0, 1fr));
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     margin: 0.45rem 0 0.35rem;
     padding: 0;
     border-top: 1px solid var(--rule);
@@ -159,33 +255,39 @@ const freshnessLabel =
   }
 
   .economic-strip__item {
+    display: flex;
+    align-items: baseline;
+    gap: 0.45rem;
     min-width: 0;
-    padding: 0.45rem 0.65rem;
+    padding: 0.48rem 0.65rem;
+  }
+
+  .economic-strip__item:nth-child(even) {
     border-left: 1px solid var(--rule);
   }
 
-  .economic-strip__item:first-child {
-    border-left: 0;
+  .economic-strip__item:nth-child(n + 3) {
+    border-top: 1px solid var(--rule);
   }
 
   .economic-strip__item dt {
-    overflow: hidden;
-    margin: 0 0 0.18rem;
-    font-size: 0.55rem;
+    flex: 0 0 auto;
+    margin: 0;
+    font-size: 0.63rem;
     font-weight: 800;
     line-height: 1.2;
-    letter-spacing: 0.08em;
-    text-overflow: ellipsis;
+    letter-spacing: 0.065em;
     text-transform: uppercase;
     white-space: nowrap;
   }
 
-  .economic-strip__label-mobile {
-    display: none;
-  }
-
   .economic-strip__item dd {
-    margin: 0;
+    display: flex;
+    align-items: baseline;
+    justify-content: flex-end;
+    gap: 0.34rem;
+    min-width: 0;
+    margin: 0 0 0 auto;
     font-family: var(--serif);
     font-size: clamp(0.8rem, 1.35vw, 1rem);
     font-variant-numeric: tabular-nums;
@@ -194,26 +296,20 @@ const freshnessLabel =
     white-space: nowrap;
   }
 
-  .economic-strip__source {
-    justify-content: flex-end;
+  .economic-strip__trend {
+    font-size: 0.86em;
   }
 
-  .economic-strip__source a {
-    text-underline-offset: 0.12em;
+  .economic-strip__trend[data-trend="up"] {
+    color: #17623d;
   }
 
-  @media (max-width: 64rem) {
-    .economic-strip__grid {
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-    }
+  .economic-strip__trend[data-trend="down"] {
+    color: #9b1f1f;
+  }
 
-    .economic-strip__item:nth-child(4) {
-      border-left: 0;
-    }
-
-    .economic-strip__item:nth-child(n + 4) {
-      border-top: 1px solid var(--rule);
-    }
+  .economic-strip__trend[data-trend="flat"] {
+    color: var(--ink-soft);
   }
 
   @media (max-width: 36rem) {
@@ -227,59 +323,36 @@ const freshnessLabel =
     }
 
     .economic-strip__grid {
-      grid-template-columns: repeat(2, minmax(0, 1fr));
       margin-top: 0.35rem;
       margin-bottom: 0.28rem;
     }
 
     .economic-strip__item {
-      display: flex;
-      align-items: baseline;
       gap: 0.3rem;
-      min-width: 0;
       padding: 0.38rem 0.45rem;
     }
 
-    .economic-strip__item:nth-child(4) {
-      border-left: 1px solid var(--rule);
-    }
-
-    .economic-strip__item:nth-child(odd) {
-      border-left: 0;
-    }
-
-    .economic-strip__item:nth-child(n + 3) {
-      border-top: 1px solid var(--rule);
-    }
-
     .economic-strip__item dt {
-      flex: 0 0 auto;
-      margin: 0;
-      font-size: 0.49rem;
+      font-size: 0.57rem;
       letter-spacing: 0.045em;
     }
 
-    .economic-strip__label-full {
-      display: none;
-    }
-
-    .economic-strip__label-mobile {
-      display: inline;
-    }
-
     .economic-strip__item dd {
-      min-width: 0;
-      margin-left: auto;
+      gap: 0.25rem;
       font-size: 0.72rem;
       line-height: 1;
       letter-spacing: -0.015em;
     }
 
+    .economic-strip__trend {
+      font-size: 0.9em;
+    }
+
     .economic-strip__source {
       display: block;
-      font-size: 0.48rem;
-      line-height: 1.15;
-      letter-spacing: 0.025em;
+      font-size: 0.46rem;
+      line-height: 1.2;
+      letter-spacing: 0.02em;
       text-align: right;
     }
   }
