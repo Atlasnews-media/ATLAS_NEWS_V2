@@ -318,6 +318,18 @@ async function main() {
   const date = dateLabel(contract.publishedDate);
   const cardTitleSize = adaptiveHeadlineSize(contract.title, 82, 58, 62);
   const slideTitleSize = adaptiveHeadlineSize(contract.title, 132, 86, 62);
+  const ideaCentralSize = adaptiveHeadlineSize(
+    contract.ideaCentral,
+    84,
+    54,
+    108,
+  );
+  const ideaSupportSize = adaptiveHeadlineSize(
+    contract.ideaSupport,
+    43,
+    34,
+    220,
+  );
   const canvasFont = await localCanvasFont();
   const t0 = performance.now();
   const browser = await chromium.launch({ headless: true });
@@ -382,8 +394,8 @@ async function main() {
   const slide2 = `
     <div class="kicker">IDEA CENTRAL</div>
     <div data-fit style="position:absolute;left:60px;top:340px;width:890px;z-index:2">
-      <div style="font-size:84px;line-height:.9;font-weight:700;letter-spacing:-3px">${escapeHtml(contract.ideaCentral)}</div>
-      <div style="font-size:43px;line-height:1.12;margin-top:50px;width:770px">${escapeHtml(contract.ideaSupport)}</div>
+      <div style="font-size:${ideaCentralSize}px;line-height:.9;font-weight:700;letter-spacing:-3px">${escapeHtml(contract.ideaCentral)}</div>
+      <div style="font-size:${ideaSupportSize}px;line-height:1.12;margin-top:50px;width:770px">${escapeHtml(contract.ideaSupport)}</div>
     </div>
     <img class="mark" data-fit src="${mark}" style="right:55px;bottom:145px;width:275px;height:405px">
     ${footer(2)}`;
@@ -457,6 +469,8 @@ async function main() {
     title: contract.title,
     cardTitleSize,
     slideTitleSize,
+    ideaCentralSize,
+    ideaSupportSize,
     cardHtmlMs: Math.round(cardHtmlMs),
     ogMaterializeMs: Math.round(ogMaterializeMs),
     ogCacheHitMs: Math.round(ogCacheHitMs),
