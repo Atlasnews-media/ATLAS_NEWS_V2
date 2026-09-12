@@ -312,6 +312,46 @@ const freshnessLabel =
     color: var(--ink-soft);
   }
 
+  @media (min-width: 70.01rem) {
+    .economic-strip {
+      padding-top: 0.48rem;
+      padding-bottom: 0.55rem;
+    }
+
+    .economic-strip__grid {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      margin-top: 0.34rem;
+      margin-bottom: 0.26rem;
+    }
+
+    .economic-strip__item {
+      padding: 0.36rem 0.48rem;
+      border-top: 0 !important;
+      border-left: 1px solid var(--rule);
+    }
+
+    .economic-strip__item:nth-child(4n + 1) {
+      border-left: 0;
+    }
+
+    .economic-strip__item:nth-child(n + 5) {
+      border-top: 1px solid var(--rule) !important;
+    }
+
+    .economic-strip__item dt {
+      font-size: 0.59rem;
+    }
+
+    .economic-strip__item dd {
+      gap: 0.24rem;
+      font-size: 0.82rem;
+    }
+
+    .economic-strip__source {
+      font-size: 0.48rem;
+    }
+  }
+
   @media (max-width: 36rem) {
     .economic-strip {
       padding-top: 0.45rem;
