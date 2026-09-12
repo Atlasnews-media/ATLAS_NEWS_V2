@@ -6,7 +6,7 @@
   --rule: #23231d;
   --accent: #8e2f24;
   --serif: Georgia, "Times New Roman", serif;
-  --display: "Old English Text MT", "UnifrakturCook", Georgia, serif;
+  --display: Georgia, "Times New Roman", serif;
   --sans: "Arial Narrow", "Roboto Condensed", Arial, sans-serif;
   color-scheme: light;
   font-family: var(--serif);
@@ -446,6 +446,98 @@ body:has(.calendar-lab) .calendar-source {
   body .site-header .edition-bar,
   body .site-header nav {
     font-size: 0.76rem;
+  }
+
+  body .site-footer {
+    font-size: 0.78rem;
+  }
+}
+
+/* Desktop: identidad vigente y escala editorial propia, sin tocar móvil/tablet. */
+@media (min-width: 70.01rem) {
+  html {
+    font-size: 118.75%;
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+  }
+
+  body .site-header {
+    padding-top: 0.75rem;
+  }
+
+  body .site-header .edition-bar,
+  body .site-header nav {
+    font-size: 0.76rem;
+  }
+
+  body .site-header .edition-bar {
+    padding: 0.44rem 0;
+  }
+
+  body .site-header .brand-lockup {
+    gap: clamp(0.75rem, 1.2vw, 1rem);
+    margin: 0.34rem 0 0.62rem;
+  }
+
+  body .site-header .brand-mark {
+    width: clamp(3rem, 3.6vw, 4rem);
+  }
+
+  body .site-header .brand {
+    font-size: clamp(5.25rem, 7.5vw, 7rem);
+    line-height: 0.88;
+    letter-spacing: -0.045em;
+  }
+
+  body .site-header .brand-subtitle {
+    gap: clamp(0.4rem, 0.65vw, 0.62rem);
+    margin-top: 0.14rem;
+    font-size: clamp(0.9rem, 1.15vw, 1.15rem);
+  }
+
+  body .site-header nav a {
+    min-height: 3rem;
+    padding: 0.62rem 0.55rem;
+  }
+
+  body.primary-section-page .page-title {
+    font-size: clamp(3.6rem, 6.2vw, 5.6rem);
+    line-height: 0.9;
+  }
+
+  body .page-intro {
+    max-width: 52rem;
+    font-size: clamp(1.16rem, 1.55vw, 1.34rem);
+  }
+
+  body:has(.calendar-lab) .section-heading span,
+  body:has(.calendar-lab) .calendar-source {
+    font-size: 0.62rem;
+  }
+
+  body:has(.calendar-lab) .event-copy p {
+    font-size: 0.7rem;
+  }
+
+  body .market-indices-page .update-stamp strong {
+    font-size: 0.56rem;
+  }
+
+  body .market-indices-page .update-stamp span {
+    font-size: 0.62rem;
+  }
+
+  body .market-indices-page .update-stamp small,
+  body .market-indices-page .asset-name small {
+    font-size: 0.48rem;
+  }
+
+  body .market-indices-page .section-header span {
+    font-size: 0.62rem;
+  }
+
+  body .market-indices-page .indices-source {
+    font-size: 0.62rem;
   }
 
   body .site-footer {
