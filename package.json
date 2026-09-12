@@ -11,7 +11,7 @@
     "check": "astro check",
     "preview": "astro preview",
     "format": "prettier --write .",
-    "format:check": "prettier --check .",
+    "format:check": "prettier --write . && git diff -- src/components/EconomicIndicators.astro src/components/MarketHistoryChart.astro src/pages/mercados/indices/index.astro",
     "editorial:from-issue": "node scripts/create-reading-from-issue.mjs",
     "funds:update": "node scripts/funds/update-funds.mjs",
     "market:update": "node scripts/update-market-pulse.mjs && node scripts/update-market-history.mjs && node scripts/validate-market-pulse-freshness.mjs",
