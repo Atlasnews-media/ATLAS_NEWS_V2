@@ -1,4 +1,6 @@
 ---
+import marketPulse from "../data/market-pulse.json";
+
 interface MarketItem {
   label: string;
   value: string;
@@ -6,17 +8,104 @@ interface MarketItem {
   category: "monedas" | "mercados" | "commodities" | "tasas";
 }
 
+interface MarketAsset {
+  id: string;
+  label: string;
+  value: number | null;
+  unit: string;
+  changePercent: number | null;
+  trend: "up" | "down" | "flat";
+  displayEligible?: boolean;
+}
+
 interface Props {
   asOf: Date;
   items: MarketItem[];
 }
 
-const { asOf, items } = Astro.props;
-const asOfLabel = new Intl.DateTimeFormat("es-CL", {
-  dateStyle: "medium",
-  timeStyle: "short",
-  timeZone: "America/Santiago",
-}).format(asOf);
+const snapshot = marketPulse as {
+  generatedAt: string | null;
+  assets: MarketAsset[];
+};
+
+const assetById = new Map(snapshot.assets.map((asset) => [asset.id, asset]));
+
+const decimal2 = new Intl.NumberFormat("es-CL", {
+  minimumFractionDigits: 2,
+  maximumFractionDigits: 2,
+});
+const variation = new Intl.NumberFormat("es-CL", {
+  minimumFractionDigits: 2,
+  maximumFractionDigits: 2,
+  signDisplay: "always",
+});
+
+function isDisplayable(asset?: MarketAsset) {
+  return Boolean(
+    asset &&
+      asset.displayEligible !== false &&
+      typeof asset.value === "number" &&
+      Number.isFinite(asset.value),
+  );
+}
+
+function formatValue(asset?: MarketAsset) {
+  if (!isDisplayable(asset)) return "—";
+
+  const value = asset!.value as number;
+  switch (asset!.unit) {
+    case "points":
+      return decimal2.format(value);
+    case "percent":
+      return `${decimal2.format(value)}%`;
+    case "clp":
+      return `$${decimal2.format(value)}`;
+    case "usd-per-barrel":
+      return `US$${decimal2.format(value)}`;
+    case "usd-per-pound":
+      return `US$${decimal2.format(value)}/lb`;
+    default:
+      return decimal2.format(value);
+  }
+}
+
+function formatChange(asset?: MarketAsset) {
+  if (
+    !isDisplayable(asset) ||
+    asset?.changePercent === null ||
+    !Number.isFinite(asset?.changePercent)
+  ) {
+    return undefined;
+  }
+  return `${variation.format(asset.changePercent)}%`;
+}
+
+const items: MarketItem[] = [
+  { id: "sp500", label: "S&P 500", category: "mercados" },
+  { id: "ust10y", label: "Treasury 10Y", category: "tasas" },
+  { id: "brent", label: "Brent", category: "commodities" },
+  { id: "usdclp", label: "USD/CLP", category: "monedas" },
+  { id: "ipsa", label: "IPSA", category: "mercados" },
+  { id: "copper", label: "Cobre", category: "commodities" },
+].map(({ id, label, category }) => {
+  const asset = assetById.get(id);
+  return {
+    label,
+    value: formatValue(asset),
+    change: formatChange(asset),
+    category,
+  };
+});
+
+const generatedAt = snapshot.generatedAt ? new Date(snapshot.generatedAt) : null;
+const asOfLabel =
+  generatedAt && Number.isFinite(generatedAt.valueOf())
+    ? new Intl.DateTimeFormat("es-CL", {
+        dateStyle: "medium",
+        timeStyle: "short",
+        timeZone: "America/Santiago",
+      }).format(generatedAt)
+    : "sin corte disponible";
 
 function changeDirection(change?: string) {
   if (!change) return "flat";
@@ -30,7 +119,7 @@ function changeDirection(change?: string) {
 <div class="market-pulse">
   <p class="market-kicker">Pulso de mercado</p>
   <h2>Datos clave de la edición</h2>
-  <ul aria-label="Resumen de mercado de la edición vigente">
+  <ul aria-label="Resumen de mercado con datos del tablero de índices">
     {
       items.map((item) => (
         <li>
@@ -48,9 +137,7 @@ function changeDirection(change?: string) {
       ))
     }
   </ul>
-  <p class="market-meta">
-    Datos según la edición vigente · Corte {asOfLabel}
-  </p>
+  <p class="market-meta">Datos de mercado · Corte {asOfLabel}</p>
 </div>
 
 <style>
