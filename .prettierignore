@@ -24,3 +24,8 @@ scripts/prepare-audio-v2.mjs
 scripts/prepare-international-audio.mjs
 # DESKTOP V1: hoja editorial extensa validada por build/auditor; evitar churn cosmético del formatter
 src/styles/global.css
+# SOCIAL CAROUSEL V2: runtime aislado; el workflow social valida y ejecuta estos scripts fail-closed
+# Evitar churn cosmético en el gate general del sitio para no acoplar distribución social al core.
+tools/social-renderer/upgrade-daily-contract-v2.mjs
+tools/social-renderer/render-v2.mjs
+tools/social-renderer/publish-instagram-v2.mjs
