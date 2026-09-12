@@ -7,7 +7,7 @@
     "dev": "astro dev",
     "audit:production": "node scripts/audit-publication.mjs",
     "build": "npm run update:indicators && npm run build:site",
-    "build:site": "npm run validate:content && npm run status:generate && astro check && astro build && npm run optimize:runtime && npm run validate:visuals && npm run validate:build",
+    "build:site": "npm run sync:visual-locks && npm run validate:content && npm run status:generate && astro check && astro build && npm run write:visual-locks && npm run optimize:runtime && npm run validate:visuals && npm run validate:build",
     "check": "astro check",
     "preview": "astro preview",
     "format": "prettier --write .",
@@ -19,12 +19,14 @@
     "preupdate:indicators": "npm run validate:publication-provenance",
     "radar:discover": "node scripts/discover-radar-readings.mjs",
     "status:generate": "node scripts/generate-publication-status.mjs",
+    "sync:visual-locks": "node scripts/sync-visual-locks.mjs",
     "test:funds": "node scripts/funds/run-finance-tests.mjs && node --test scripts/funds/snapshot.test.mjs",
     "update:indicators": "node scripts/update-economic-indicators.mjs && node scripts/enrich-economic-trends.mjs && node scripts/update-market-pulse.mjs && node scripts/validate-market-pulse-freshness.mjs && node scripts/probe-calendar.mjs",
     "validate:content": "node scripts/validate-content.mjs",
     "validate:publication-provenance": "bash scripts/validate-publication-provenance.sh",
     "validate:visuals": "node scripts/validate-front-page-visuals.mjs",
-    "validate:build": "node scripts/validate-build.mjs"
+    "validate:build": "node scripts/validate-build.mjs",
+    "write:visual-locks": "node scripts/write-visual-locks.mjs"
   },
   "dependencies": {
     "astro": "latest",
