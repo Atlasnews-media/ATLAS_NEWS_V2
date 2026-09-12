@@ -435,4 +435,169 @@ const isPrimarySectionLanding = [
       width: 2.5rem;
     }
   }
+
+  /* En una mirada: una sola voz tipográfica institucional en todas las vistas. */
+  .front-page.front-page--v2 .edition-rail li::before,
+  .front-page.front-page--v2 .edition-rail strong,
+  .front-page.front-page--v2 .edition-rail span {
+    font-family: var(--serif) !important;
+  }
+  .front-page.front-page--v2 .edition-rail strong {
+    font-weight: 700 !important;
+    letter-spacing: 0.035em !important;
+  }
+
+  /* Tablet: escala editorial propia y refuerzos de legibilidad. */
+  @media (min-width: 42.01rem) and (max-width: 70rem) {
+    html {
+      font-size: 140% !important;
+      -webkit-text-size-adjust: 100%;
+      text-size-adjust: 100%;
+    }
+
+    .page-shell {
+      width: min(100% - 1.75rem, 88rem) !important;
+    }
+
+    .site-header .brand-mark {
+      width: clamp(3.25rem, 7vw, 4.25rem) !important;
+    }
+
+    .front-page .economic-strip {
+      padding-top: 0.75rem !important;
+      padding-bottom: 0.85rem !important;
+    }
+    .front-page .economic-strip__context {
+      font-size: 0.78rem !important;
+    }
+    .front-page .economic-strip__item {
+      padding: 0.58rem 0.75rem !important;
+    }
+    .front-page .economic-strip__item dt {
+      font-size: 0.76rem !important;
+    }
+    .front-page .economic-strip__item dd {
+      font-size: 1.06rem !important;
+    }
+    .front-page .economic-strip__source {
+      font-size: 0.5rem !important;
+    }
+
+    .front-page .headline-board-title {
+      font-size: 0.9rem !important;
+    }
+    .front-page .headline-item .headline-label {
+      font-size: 0.8rem !important;
+    }
+    .front-page .headline-item .headline-cta {
+      font-size: 0.76rem !important;
+    }
+    .front-page .calendar-entry {
+      padding-top: 1.15rem !important;
+      padding-bottom: 0.45rem !important;
+    }
+    .front-page .calendar-link {
+      font-size: 0.86rem !important;
+      line-height: 1.15 !important;
+    }
+
+    body.primary-section-page .card.has-visual .card-copy {
+      width: 78% !important;
+    }
+    body.primary-section-page .card-visual {
+      position: absolute !important;
+      z-index: 1 !important;
+      top: 0.7rem !important;
+      right: -0.35rem !important;
+      bottom: 0.7rem !important;
+      display: block !important;
+      width: 40% !important;
+      margin: 0 !important;
+      overflow: hidden !important;
+      pointer-events: none !important;
+      -webkit-mask-image: linear-gradient(
+        to bottom,
+        transparent 0%,
+        #000 10%,
+        #000 90%,
+        transparent 100%
+      ) !important;
+      mask-image: linear-gradient(
+        to bottom,
+        transparent 0%,
+        #000 10%,
+        #000 90%,
+        transparent 100%
+      ) !important;
+    }
+    body.primary-section-page .card-visual img {
+      display: block !important;
+      width: 100% !important;
+      height: 100% !important;
+      object-fit: cover !important;
+      object-position: center !important;
+      opacity: 0.72 !important;
+      filter: saturate(0.7) sepia(0.1) contrast(0.92) brightness(1.06) !important;
+      -webkit-mask-image: linear-gradient(
+        to right,
+        transparent 0%,
+        rgba(0, 0, 0, 0.34) 24%,
+        #000 60%
+      ) !important;
+      mask-image: linear-gradient(
+        to right,
+        transparent 0%,
+        rgba(0, 0, 0, 0.34) 24%,
+        #000 60%
+      ) !important;
+    }
+    body.primary-section-page .card-visual figcaption {
+      position: absolute !important;
+      right: 0.38rem !important;
+      bottom: 0.2rem !important;
+      max-width: 82% !important;
+      color: var(--ink-soft) !important;
+      font: 600 0.36rem/1.1 var(--sans) !important;
+      text-align: right !important;
+      opacity: 0.66 !important;
+    }
+
+    .market-indices-page .indices-heading h1 {
+      font-size: 2.2rem !important;
+    }
+    .market-indices-page .update-stamp strong {
+      font-size: 0.48rem !important;
+    }
+    .market-indices-page .update-stamp span {
+      font-size: 0.56rem !important;
+    }
+    .market-indices-page .update-stamp small {
+      font-size: 0.4rem !important;
+    }
+    .market-indices-page .section-header {
+      padding-top: 0.44rem !important;
+      padding-bottom: 0.34rem !important;
+    }
+    .market-indices-page .section-header h2 {
+      font-size: 0.85rem !important;
+    }
+    .market-indices-page .section-header span {
+      font-size: 0.62rem !important;
+    }
+    .market-indices-page .data-row {
+      padding-top: 0.44rem !important;
+      padding-bottom: 0.48rem !important;
+    }
+    .market-indices-page .asset-name,
+    .market-indices-page .asset-value,
+    .market-indices-page .asset-change {
+      font-size: 1.05rem !important;
+    }
+    .market-indices-page .asset-name small {
+      font-size: 0.42rem !important;
+    }
+    .market-indices-page .indices-source {
+      font-size: 0.5rem !important;
+    }
+  }
 </style>
