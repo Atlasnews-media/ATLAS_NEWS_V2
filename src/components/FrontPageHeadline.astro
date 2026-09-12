@@ -175,16 +175,35 @@ const visualAllowed = (() => {
     opacity: 0.62;
   }
 
+  @media (min-width: 42.01rem) {
+    .headline-item[data-has-visual="true"] .headline-copy {
+      width: 72%;
+    }
+    .headline-visual {
+      z-index: 1;
+      top: 8%;
+      right: -0.15rem;
+      bottom: 8%;
+      width: 31%;
+    }
+    .headline-visual img {
+      opacity: 0.68;
+    }
+  }
+
   @media (min-width: 42.01rem) and (max-width: 58rem) {
     h2 {
       font-size: clamp(1.75rem, 4.2vw, 2.25rem);
     }
+    .headline-item[data-has-visual="true"] .headline-copy {
+      width: 70%;
+    }
     .headline-visual {
       right: -0.2rem;
-      width: 32%;
+      width: 34%;
     }
     .headline-visual img {
-      opacity: 0.62;
+      opacity: 0.74;
     }
   }
 
