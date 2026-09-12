@@ -99,6 +99,23 @@ const { expectedDate } = Astro.props;
     min-width: 0;
   }
 
+  @media (min-width: 70.01rem) {
+    .daily-audio {
+      grid-template-columns: minmax(12rem, 0.42fr) minmax(0, 1.58fr);
+      gap: 0.9rem;
+      padding: 0.62rem 0 0.68rem;
+    }
+
+    .audio-kicker {
+      font-size: 0.64rem;
+      letter-spacing: 0.12em;
+    }
+
+    .audio-copy > p:last-child {
+      display: none;
+    }
+  }
+
   @media (max-width: 42rem) {
     .daily-audio {
       grid-template-columns: 1fr;
