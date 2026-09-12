@@ -178,6 +178,7 @@ const sourceLabels = new Map([
   ["mindicador", "Mi Indicador"],
   ["stooq", "Stooq"],
   ["yahoo-public-chart", "Yahoo Finance"],
+  ["diario-financiero-public", "Diario Financiero"],
   ["frankfurter-ecb", "Frankfurter / BCE"],
   ["coingecko-public", "CoinGecko"],
 ]);
@@ -346,7 +347,7 @@ const staleCount = snapshot.assets.filter(
   }
 
   .section-header {
-    padding: 0.33rem 0 0.23rem;
+    padding: 0.36rem 0 0.27rem;
     border-bottom: 1px solid rgb(35 35 29 / 32%);
   }
 
@@ -357,13 +358,13 @@ const staleCount = snapshot.assets.filter(
 
   .section-header h2 {
     color: var(--accent);
-    font: 700 clamp(0.69rem, 1.2vw, 0.99rem)/1 var(--serif);
+    font: 700 clamp(0.74rem, 1.28vw, 1.05rem)/1 var(--serif);
     text-transform: uppercase;
   }
 
   .section-header span {
     color: var(--ink);
-    font: 800 0.4rem/1.2 var(--sans);
+    font: 800 0.48rem/1.2 var(--sans);
     letter-spacing: 0.05em;
     text-transform: uppercase;
   }
@@ -373,7 +374,7 @@ const staleCount = snapshot.assets.filter(
   }
 
   .data-row {
-    padding: 0.24rem 0 0.28rem;
+    padding: 0.28rem 0 0.32rem;
     border-bottom: 1px solid rgb(35 35 29 / 14%);
   }
 
@@ -390,14 +391,14 @@ const staleCount = snapshot.assets.filter(
   .asset-name {
     display: grid;
     gap: 0.05rem;
-    font-size: clamp(0.61rem, 1.2vw, 0.81rem);
+    font-size: clamp(0.69rem, 1.36vw, 0.92rem);
     line-height: 1.05;
   }
 
   .asset-name small {
     overflow: hidden;
     color: var(--ink-soft);
-    font: 700 0.29rem/1.25 var(--sans);
+    font: 700 0.32rem/1.25 var(--sans);
     letter-spacing: 0.025em;
     text-overflow: ellipsis;
     text-transform: uppercase;
@@ -405,7 +406,7 @@ const staleCount = snapshot.assets.filter(
   }
 
   .asset-value {
-    font-size: clamp(0.61rem, 1.2vw, 0.81rem);
+    font-size: clamp(0.69rem, 1.36vw, 0.92rem);
     font-variant-numeric: tabular-nums;
     font-weight: 400;
     white-space: nowrap;
@@ -413,11 +414,11 @@ const staleCount = snapshot.assets.filter(
 
   .asset-change {
     display: grid;
-    grid-template-columns: 0.66rem minmax(0, 1fr);
-    gap: 0.27rem;
+    grid-template-columns: 0.72rem minmax(0, 1fr);
+    gap: 0.29rem;
     align-items: baseline;
     justify-self: stretch;
-    font-size: clamp(0.57rem, 1.08vw, 0.75rem);
+    font-size: clamp(0.65rem, 1.23vw, 0.86rem);
     font-variant-numeric: tabular-nums;
   }
 
@@ -425,6 +426,10 @@ const staleCount = snapshot.assets.filter(
     font-family: var(--sans);
     font-weight: 700;
     text-align: center;
+  }
+
+  .data-row[data-state="up"] .asset-change {
+    color: #2f5d46;
   }
 
   .data-row[data-state="down"] .asset-change {
@@ -445,8 +450,8 @@ const staleCount = snapshot.assets.filter(
     display: flex;
     justify-content: space-between;
     gap: 0.6rem 1.2rem;
-    padding: 0.51rem 0 0;
-    font-size: 0.43rem;
+    padding: 0.56rem 0 0;
+    font-size: 0.47rem;
     line-height: 1.35;
   }
 
@@ -503,43 +508,43 @@ const staleCount = snapshot.assets.filter(
     }
 
     .section-header {
-      padding: 0.29rem 0 0.17rem;
+      padding: 0.33rem 0 0.2rem;
     }
 
     .section-header h2 {
-      font-size: clamp(0.6rem, 2.7vw, 0.73rem);
+      font-size: clamp(0.68rem, 3vw, 0.82rem);
     }
 
     .section-header span {
-      font-size: 0.29rem;
+      font-size: 0.36rem;
       letter-spacing: 0.035em;
     }
 
     .data-row {
-      padding: 0.22rem 0 0.23rem;
+      padding: 0.25rem 0 0.27rem;
     }
 
     .asset-name,
     .asset-value,
     .asset-change {
-      font-size: clamp(0.56rem, 2.52vw, 0.67rem);
+      font-size: clamp(0.68rem, 3.05vw, 0.8rem);
     }
 
     .asset-name small {
       max-width: 6rem;
-      font-size: 0.24rem;
+      font-size: 0.27rem;
     }
 
     .asset-change {
-      grid-template-columns: 0.48rem minmax(0, 1fr);
-      gap: 0.11rem;
+      grid-template-columns: 0.55rem minmax(0, 1fr);
+      gap: 0.14rem;
     }
 
     .indices-source {
       display: grid;
       gap: 0.15rem;
-      padding-top: 0.36rem;
-      font-size: 0.32rem;
+      padding-top: 0.4rem;
+      font-size: 0.37rem;
     }
 
     .indices-source p:last-child {
