@@ -5,7 +5,9 @@ const eventName = process.env.GITHUB_EVENT_NAME ?? "";
 const ref = process.env.GITHUB_REF ?? "";
 
 if (!inGitHubActions) {
-  console.log("[publication-integrity] Entorno local: gate de procedencia omitido.");
+  console.log(
+    "[publication-integrity] Entorno local: gate de procedencia omitido.",
+  );
   process.exit(0);
 }
 
