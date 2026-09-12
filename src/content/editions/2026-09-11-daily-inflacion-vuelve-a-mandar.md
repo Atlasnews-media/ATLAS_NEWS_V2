@@ -37,7 +37,7 @@ marketSummary:
       change: "+~12 pb"
       category: "tasas"
     - label: "Brent"
-      value: "US$107,63"
+      value: 'US$107,63'
       change: "+6,3%"
       category: "commodities"
 ---
