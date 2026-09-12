@@ -94,7 +94,7 @@ async function applyLockToContent(key, visual) {
 
   const block = editorialVisualBlock(visual);
   const frontmatter = `---\n${match[1].trimEnd()}\n${block}\n---`;
-  const updated = content.replace(frontmatterPattern, frontmatter);
+  const updated = content.replace(frontmatterPattern, () => frontmatter);
   await writeFile(path, updated, "utf8");
   return true;
 }
