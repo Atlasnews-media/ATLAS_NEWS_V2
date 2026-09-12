@@ -46,8 +46,9 @@ function yFor(value: number) {
 }
 
 const linePath = cleanPoints
-  .map((point, index) =>
-    `${index === 0 ? "M" : "L"}${xFor(index).toFixed(2)},${yFor(point.value).toFixed(2)}`,
+  .map(
+    (point, index) =>
+      `${index === 0 ? "M" : "L"}${xFor(index).toFixed(2)},${yFor(point.value).toFixed(2)}`,
   )
   .join(" ");
 const firstX = cleanPoints.length > 0 ? xFor(0) : LEFT;
@@ -149,7 +150,11 @@ const gradientId = `history-fill-${id}`;
       <strong>{lastPoint ? formatValue(lastPoint.value) : "—"}</strong>
       <span>
         <b aria-hidden="true">{arrow}</b>
-        {change30d === null ? "sin variación" : `${signed2.format(change30d)}% 30D`}
+        {
+          change30d === null
+            ? "sin variación"
+            : `${signed2.format(change30d)}% 30D`
+        }
       </span>
     </div>
   </header>
@@ -165,7 +170,11 @@ const gradientId = `history-fill-${id}`;
           <defs>
             <linearGradient id={gradientId} x1="0" y1="0" x2="0" y2="1">
               <stop offset="0%" stop-color="currentColor" stop-opacity="0.12" />
-              <stop offset="100%" stop-color="currentColor" stop-opacity="0.015" />
+              <stop
+                offset="100%"
+                stop-color="currentColor"
+                stop-opacity="0.015"
+              />
             </linearGradient>
           </defs>
 
