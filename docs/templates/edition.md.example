@@ -13,16 +13,18 @@ sources:
 featured: false
 demo: false
 # General diaria: usar entre 4 y 6 claves según la densidad real; no fijar una cantidad por rutina.
+# Cada label debe entenderse por sí solo como microtitular: qué pasó o qué implica, en lenguaje común.
+# Prueba de aceptación: ¿un lector interesado en economía, no especialista, entiende la idea sin leer text?
 highlights:
-  - label: "Primera clave"
+  - label: "Primera idea explicada en lenguaje común"
     text: "Síntesis breve del primer dato que debe aparecer en la portada."
-  - label: "Segunda clave"
+  - label: "Segunda señal con sujeto y consecuencia claros"
     text: "Síntesis breve del segundo dato que debe aparecer en la portada."
-  - label: "Tercera clave"
+  - label: "Tercera idea comprensible sin leer la explicación"
     text: "Síntesis breve del tercer dato que debe aparecer en la portada."
-  - label: "Cuarta clave"
+  - label: "Cuarta señal relevante explicada de forma directa"
     text: "Síntesis breve de otra señal relevante ya respaldada por la investigación de la edición."
-  - label: "Quinta clave"
+  - label: "Quinta clave solo si agrega comprensión real"
     text: "Síntesis breve de una señal adicional solo cuando agrega valor real al lector."
 marketSummary:
   asOf: "2026-08-03T08:00:00-04:00"
