@@ -1,22 +1,16 @@
 ---
 import marketPulse from "../data/market-pulse.json";
-import {
-  economicIndicatorsSnapshot,
-  type EconomicIndicator,
-} from "../data/economic-indicators";
+import { economicIndicatorsSnapshot } from "../data/economic-indicators";
 
 type Trend = "up" | "down" | "flat";
 
 type MarketAsset = {
   id: string;
-  label: string;
   value: number | null;
   unit: string;
   changePercent: number | null;
   trend: Trend;
   effectiveAt: string | null;
-  provider: string;
-  sourceUrl: string;
   displayEligible?: boolean;
 };
 
@@ -159,18 +153,12 @@ function formatTrend(indicator: DisplayIndicator) {
 
   const arrow =
     indicator.trend === "up" ? "▲" : indicator.trend === "down" ? "▼" : "→";
-  return `${arrow} ${variationFormatter.format(
-    Math.abs(indicator.changePercent),
-  )}%`;
+  const change = variationFormatter.format(Math.abs(indicator.changePercent));
+  return `${arrow} ${change}%`;
 }
 
-const marketGeneratedDate = snapshot.generatedAt
-  ? snapshot.generatedAt.slice(0, 10)
-  : null;
-const asOf = [economicIndicatorsSnapshot.asOf, marketGeneratedDate]
-  .filter((date): date is string => Boolean(date))
-  .sort()
-  .at(-1) ?? economicIndicatorsSnapshot.asOf;
+const marketGeneratedDate = snapshot.generatedAt?.slice(0, 10) ?? null;
+const asOf = marketGeneratedDate ?? economicIndicatorsSnapshot.asOf;
 const asOfLabel = formatDate(asOf);
 const freshnessLabel =
   economicIndicatorsSnapshot.status === "stale"
@@ -218,12 +206,7 @@ const freshnessLabel =
   </dl>
 
   <p class="economic-strip__source">
-    Fuentes: <a href={economicIndicatorsSnapshot.sourceUrl}>
-      {economicIndicatorsSnapshot.sourceName}
-    </a>
-    <span aria-hidden="true"> · </span>
-    <a href="/mercados/indices/">Índices de mercado ATLAS</a>
-    <span aria-hidden="true"> · </span>
+    Fuentes: {economicIndicatorsSnapshot.sourceName} · Índices de mercado ATLAS ·
     {freshnessLabel}: <time datetime={asOf}>{asOfLabel}</time>
   </p>
 </section>
@@ -258,10 +241,6 @@ const freshnessLabel =
   .economic-strip__source {
     justify-content: flex-end;
     color: var(--ink-soft);
-  }
-
-  .economic-strip__source a {
-    text-underline-offset: 0.12em;
   }
 
   .economic-strip__grid {
