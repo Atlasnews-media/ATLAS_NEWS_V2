@@ -16,7 +16,7 @@ if (eventName === "pull_request") {
   process.exit(0);
 }
 
-if (!['push', 'workflow_dispatch'].includes(eventName)) {
+if (!["push", "workflow_dispatch"].includes(eventName)) {
   throw new Error(
     `[publication-integrity] Evento no autorizado para publicación: ${eventName || "desconocido"}.`,
   );
