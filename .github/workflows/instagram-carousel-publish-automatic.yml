@@ -198,7 +198,11 @@ jobs:
       - name: Resolve verified new daily edition and build contract
         if: steps.expected.outputs.eligible == 'true' && steps.readiness.outputs.ready == 'true'
         id: contract
-        run: node tools/social-renderer/prepare-daily-contract.mjs
+        run: |
+          node tools/social-renderer/prepare-daily-contract.mjs
+          if [ -f tools/social-renderer/.generated/daily-contract.json ]; then
+            node tools/social-renderer/upgrade-daily-contract-v2.mjs
+          fi
 
       - name: Record automatic safe no-op
         if: steps.expected.outputs.eligible != 'true' || steps.readiness.outputs.superseded == 'true' || steps.contract.outputs.eligible == 'false'
@@ -436,9 +440,9 @@ jobs:
         env:
           SOCIAL_CONTRACT: ${{ steps.contract.outputs.contract_path }}
           SOCIAL_PUBLICATION_STATUS: PUBLICACIÓN DISPONIBLE / VERIFICADA
-        run: npm run render
+        run: node render-v2.mjs
 
-      - name: Validate exactly five carousel assets from the same sourceCommit
+      - name: Validate exactly seven carousel assets from the same sourceCommit
         if: steps.contract.outputs.eligible == 'true' && steps.idempotency.outputs.already_published != 'true' && steps.verify_first.outputs.already_published_verified != 'true'
         working-directory: tools/social-renderer
         env:
@@ -446,16 +450,17 @@ jobs:
         run: |
           set -euo pipefail
           count="$(find output -maxdepth 1 -type f -name 'atlas-news-instagram-carousel-0*.png' | wc -l | tr -d ' ')"
-          test "$count" = "5" || {
-            echo "Fail-closed: expected exactly 5 carousel PNGs, found $count."
+          test "$count" = "7" || {
+            echo "Fail-closed: expected exactly 7 carousel PNGs, found $count."
             exit 13
           }
-          for n in 01 02 03 04 05; do
+          for n in 01 02 03 04 05 06 07; do
             test -f "output/atlas-news-instagram-carousel-${n}.png"
           done
           jq -e --arg source "$SOURCE_COMMIT" '
             .sourceCommit == $source and
-            (.outputs | length == 6)
+            .carouselSlides == 7 and
+            (.outputs | length == 8)
           ' output/benchmark.json >/dev/null || {
             echo "Fail-closed: renderer benchmark/sourceCommit mismatch."
             exit 14
@@ -519,7 +524,7 @@ jobs:
         if: steps.contract.outputs.eligible == 'true' && steps.idempotency.outputs.already_published != 'true' && steps.verify_first.outputs.already_published_verified != 'true'
         run: |
           set -euo pipefail
-          for n in 01 02 03 04 05; do
+          for n in 01 02 03 04 05 06 07; do
             url="$SOCIAL_IMAGE_BASE_URL/atlas-news-instagram-carousel-${n}.png"
             ok=0
             for attempt in 1 2 3 4 5 6; do
@@ -539,7 +544,9 @@ jobs:
 
       - name: Revalidate public identity immediately before Meta
         if: steps.contract.outputs.eligible == 'true' && steps.idempotency.outputs.already_published != 'true' && steps.verify_first.outputs.already_published_verified != 'true'
-        run: node tools/social-renderer/prepare-daily-contract.mjs
+        run: |
+          node tools/social-renderer/prepare-daily-contract.mjs
+          node tools/social-renderer/upgrade-daily-contract-v2.mjs
 
       - name: Check competing automatic runs before Meta
         if: steps.contract.outputs.eligible == 'true' && steps.idempotency.outputs.already_published != 'true' && steps.verify_first.outputs.already_published_verified != 'true'
@@ -564,7 +571,7 @@ jobs:
           INSTAGRAM_PUBLISH_CONFIRMATION: PUBLICAR CARRUSEL / AUTORIZADO
           INSTAGRAM_ACCESS_TOKEN: ${{ secrets.INSTAGRAM_ACCESS_TOKEN }}
           SOCIAL_IMAGE_BASE_URL: ${{ env.SOCIAL_IMAGE_BASE_URL }}
-        run: npm run publish:instagram
+        run: node publish-instagram-v2.mjs
 
       - name: Persist ambiguous Meta result for future VERIFY_FIRST
         if: steps.meta_publish.outcome == 'failure'
