@@ -374,7 +374,7 @@ const staleCount = snapshot.assets.filter(
   }
 
   .data-row {
-    padding: 0.28rem 0 0.32rem;
+    padding: 0.31rem 0 0.35rem;
     border-bottom: 1px solid rgb(35 35 29 / 14%);
   }
 
@@ -391,14 +391,14 @@ const staleCount = snapshot.assets.filter(
   .asset-name {
     display: grid;
     gap: 0.05rem;
-    font-size: clamp(0.69rem, 1.36vw, 0.92rem);
+    font-size: clamp(0.76rem, 1.48vw, 1rem);
     line-height: 1.05;
   }
 
   .asset-name small {
     overflow: hidden;
     color: var(--ink-soft);
-    font: 700 0.32rem/1.25 var(--sans);
+    font: 700 0.34rem/1.25 var(--sans);
     letter-spacing: 0.025em;
     text-overflow: ellipsis;
     text-transform: uppercase;
@@ -406,7 +406,7 @@ const staleCount = snapshot.assets.filter(
   }
 
   .asset-value {
-    font-size: clamp(0.69rem, 1.36vw, 0.92rem);
+    font-size: clamp(0.76rem, 1.48vw, 1rem);
     font-variant-numeric: tabular-nums;
     font-weight: 400;
     white-space: nowrap;
@@ -414,11 +414,11 @@ const staleCount = snapshot.assets.filter(
 
   .asset-change {
     display: grid;
-    grid-template-columns: 0.72rem minmax(0, 1fr);
-    gap: 0.29rem;
+    grid-template-columns: 0.78rem minmax(0, 1fr);
+    gap: 0.3rem;
     align-items: baseline;
     justify-self: stretch;
-    font-size: clamp(0.65rem, 1.23vw, 0.86rem);
+    font-size: clamp(0.74rem, 1.42vw, 0.96rem);
     font-variant-numeric: tabular-nums;
   }
 
@@ -521,23 +521,23 @@ const staleCount = snapshot.assets.filter(
     }
 
     .data-row {
-      padding: 0.25rem 0 0.27rem;
+      padding: 0.29rem 0 0.31rem;
     }
 
     .asset-name,
     .asset-value,
     .asset-change {
-      font-size: clamp(0.68rem, 3.05vw, 0.8rem);
+      font-size: clamp(0.78rem, 3.5vw, 0.92rem);
     }
 
     .asset-name small {
       max-width: 6rem;
-      font-size: 0.27rem;
+      font-size: 0.29rem;
     }
 
     .asset-change {
-      grid-template-columns: 0.55rem minmax(0, 1fr);
-      gap: 0.14rem;
+      grid-template-columns: 0.6rem minmax(0, 1fr);
+      gap: 0.15rem;
     }
 
     .indices-source {
