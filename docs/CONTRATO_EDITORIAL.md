@@ -20,6 +20,14 @@ Una edición diaria o semanal debe incluir los siguientes metadatos:
 
 En nuevas ediciones General diarias, `highlights` debe contener entre cuatro y seis claves según la densidad informativa real. La cantidad no es fija y no debe completarse con relleno. Cada clave debe derivar de la misma investigación verificada y del mismo cuerpo editorial de la edición. Las ediciones históricas y otros tipos de edición pueden conservar tres claves sin migración retroactiva.
 
+### Comprensibilidad de “En una mirada”
+
+En una edición General diaria, cada `highlights[].label` funciona como un microtitular de comprensión inmediata, no como una categoría, código interno ni abreviatura de mesa. Debe expresar por sí solo qué pasó o qué implica, con lenguaje común para un lector interesado en economía pero no especialista.
+
+Regla de aceptación: **¿un lector interesado en economía, pero no especialista, entiende la idea principal del título sin leer el texto inferior?** Si la respuesta es no, se reescribe únicamente el `label` usando la misma información ya verificada en `text` y en el cuerpo de la edición. No se abre una segunda búsqueda, no se genera una pieza nueva y no se modifican titulares de artículos ni las verticales Nacional, Mercados o Internacional.
+
+Preferir una formulación con sujeto + hecho o consecuencia. Evitar etiquetas telegráficas o verbos técnicos sin referente claro, por ejemplo `Mercado repricia` o `Chile transmite`, cuando no explican por sí solos qué cambia. Los labels de la General pueden usar hasta 72 caracteres para privilegiar comprensión sobre brevedad artificial.
+
 El cuerpo debe respetar este orden editorial:
 
 1. Hecho central.
