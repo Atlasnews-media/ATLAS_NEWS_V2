@@ -70,24 +70,27 @@ function formatValue(asset?: MarketAsset) {
 }
 
 function formatChange(asset?: MarketAsset) {
+  const changePercent = asset?.changePercent;
   if (
     !isDisplayable(asset) ||
-    asset?.changePercent === null ||
-    !Number.isFinite(asset?.changePercent)
+    typeof changePercent !== "number" ||
+    !Number.isFinite(changePercent)
   ) {
     return undefined;
   }
-  return `${variation.format(asset.changePercent)}%`;
+  return `${variation.format(changePercent)}%`;
 }
 
-const items: MarketItem[] = [
-  { id: "sp500", label: "S&P 500", category: "mercados" },
-  { id: "ust10y", label: "Treasury 10Y", category: "tasas" },
-  { id: "brent", label: "Brent", category: "commodities" },
-  { id: "usdclp", label: "USD/CLP", category: "monedas" },
-  { id: "ipsa", label: "IPSA", category: "mercados" },
-  { id: "copper", label: "Cobre", category: "commodities" },
-].map(({ id, label, category }) => {
+const items: MarketItem[] = (
+  [
+    { id: "sp500", label: "S&P 500", category: "mercados" },
+    { id: "ust10y", label: "Treasury 10Y", category: "tasas" },
+    { id: "brent", label: "Brent", category: "commodities" },
+    { id: "usdclp", label: "USD/CLP", category: "monedas" },
+    { id: "ipsa", label: "IPSA", category: "mercados" },
+    { id: "copper", label: "Cobre", category: "commodities" },
+  ] as const
+).map(({ id, label, category }) => {
   const asset = assetById.get(id);
   return {
     label,
