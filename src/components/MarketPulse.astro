@@ -43,9 +43,9 @@ const variation = new Intl.NumberFormat("es-CL", {
 function isDisplayable(asset?: MarketAsset) {
   return Boolean(
     asset &&
-      asset.displayEligible !== false &&
-      typeof asset.value === "number" &&
-      Number.isFinite(asset.value),
+    asset.displayEligible !== false &&
+    typeof asset.value === "number" &&
+    Number.isFinite(asset.value),
   );
 }
 
@@ -81,16 +81,16 @@ function formatChange(asset?: MarketAsset) {
   return `${variation.format(changePercent)}%`;
 }
 
-const items: MarketItem[] = (
-  [
-    { id: "sp500", label: "S&P 500", category: "mercados" },
-    { id: "ust10y", label: "Treasury 10Y", category: "tasas" },
-    { id: "brent", label: "Brent", category: "commodities" },
-    { id: "usdclp", label: "USD/CLP", category: "monedas" },
-    { id: "ipsa", label: "IPSA", category: "mercados" },
-    { id: "copper", label: "Cobre", category: "commodities" },
-  ] as const
-).map(({ id, label, category }) => {
+const selectedItems = [
+  { id: "sp500", label: "S&P 500", category: "mercados" },
+  { id: "ust10y", label: "Treasury 10Y", category: "tasas" },
+  { id: "brent", label: "Brent", category: "commodities" },
+  { id: "usdclp", label: "USD/CLP", category: "monedas" },
+  { id: "ipsa", label: "IPSA", category: "mercados" },
+  { id: "copper", label: "Cobre", category: "commodities" },
+] as const;
+
+const items: MarketItem[] = selectedItems.map(({ id, label, category }) => {
   const asset = assetById.get(id);
   return {
     label,
@@ -100,7 +100,9 @@ const items: MarketItem[] = (
   };
 });
 
-const generatedAt = snapshot.generatedAt ? new Date(snapshot.generatedAt) : null;
+const generatedAt = snapshot.generatedAt
+  ? new Date(snapshot.generatedAt)
+  : null;
 const asOfLabel =
   generatedAt && Number.isFinite(generatedAt.valueOf())
     ? new Intl.DateTimeFormat("es-CL", {
