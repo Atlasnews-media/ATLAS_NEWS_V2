@@ -70,9 +70,6 @@ const sections: MarketSection[] = [
   },
 ];
 
-const decimal0 = new Intl.NumberFormat("es-CL", {
-  maximumFractionDigits: 0,
-});
 const decimal2 = new Intl.NumberFormat("es-CL", {
   minimumFractionDigits: 2,
   maximumFractionDigits: 2,
@@ -80,6 +77,9 @@ const decimal2 = new Intl.NumberFormat("es-CL", {
 const decimal4 = new Intl.NumberFormat("es-CL", {
   minimumFractionDigits: 2,
   maximumFractionDigits: 4,
+});
+const decimal0 = new Intl.NumberFormat("es-CL", {
+  maximumFractionDigits: 0,
 });
 const variation = new Intl.NumberFormat("es-CL", {
   minimumFractionDigits: 2,
@@ -90,9 +90,9 @@ const variation = new Intl.NumberFormat("es-CL", {
 function isDisplayable(asset?: MarketAsset) {
   return Boolean(
     asset &&
-    asset.displayEligible !== false &&
-    typeof asset.value === "number" &&
-    Number.isFinite(asset.value),
+      asset.displayEligible !== false &&
+      typeof asset.value === "number" &&
+      Number.isFinite(asset.value),
   );
 }
 
@@ -102,13 +102,11 @@ function formatValue(asset?: MarketAsset) {
   const value = asset!.value as number;
   switch (asset!.unit) {
     case "points":
-      return decimal0.format(value);
+      return decimal2.format(value);
     case "percent":
       return `${decimal2.format(value)}%`;
     case "clp":
-      return asset!.id === "uf"
-        ? `$${decimal2.format(value)}`
-        : `$${decimal0.format(value)}`;
+      return `$${decimal2.format(value)}`;
     case "ratio":
       return decimal4.format(value);
     case "usd-per-barrel":
@@ -358,7 +356,7 @@ const staleCount = snapshot.assets.filter(
 
   .section-header h2 {
     color: var(--accent);
-    font: 700 clamp(0.74rem, 1.28vw, 1.05rem)/1 var(--serif);
+    font: 700 clamp(0.74rem, 1.28vw, 1.05rem) / 1 var(--serif);
     text-transform: uppercase;
   }
 
@@ -391,8 +389,12 @@ const staleCount = snapshot.assets.filter(
   .asset-name {
     display: grid;
     gap: 0.05rem;
+    font-family: var(--sans);
     font-size: clamp(0.76rem, 1.48vw, 1rem);
+    font-weight: 800;
     line-height: 1.05;
+    letter-spacing: 0.055em;
+    text-transform: uppercase;
   }
 
   .asset-name small {
@@ -406,9 +408,10 @@ const staleCount = snapshot.assets.filter(
   }
 
   .asset-value {
+    font-family: var(--serif);
     font-size: clamp(0.76rem, 1.48vw, 1rem);
     font-variant-numeric: tabular-nums;
-    font-weight: 400;
+    font-weight: 700;
     white-space: nowrap;
   }
 
@@ -418,22 +421,24 @@ const staleCount = snapshot.assets.filter(
     gap: 0.3rem;
     align-items: baseline;
     justify-self: stretch;
+    font-family: var(--serif);
     font-size: clamp(0.74rem, 1.42vw, 0.96rem);
     font-variant-numeric: tabular-nums;
+    font-weight: 700;
   }
 
   .arrow {
-    font-family: var(--sans);
+    font-family: var(--serif);
     font-weight: 700;
     text-align: center;
   }
 
   .data-row[data-state="up"] .asset-change {
-    color: #2f5d46;
+    color: #17623d;
   }
 
   .data-row[data-state="down"] .asset-change {
-    color: var(--accent);
+    color: #9b1f1f;
   }
 
   .data-row[data-state="flat"] .asset-change,
@@ -528,6 +533,10 @@ const staleCount = snapshot.assets.filter(
     .asset-value,
     .asset-change {
       font-size: clamp(0.78rem, 3.5vw, 0.92rem);
+    }
+
+    .asset-name {
+      letter-spacing: 0.045em;
     }
 
     .asset-name small {
