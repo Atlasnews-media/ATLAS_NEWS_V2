@@ -1,0 +1,40 @@
+{
+  "sourceCommit": "atlas-real-contract-demo-20260912",
+  "canonicalUrl": "https://atlas.news/analisis/mercados-y-crecimiento",
+  "publishedDate": "2026-09-12",
+  "title": "Los mercados reprecian el costo del crecimiento",
+  "dek": "La nueva señal cambia las expectativas para empresas, hogares y bancos.",
+  "ideaCentral": "El movimiento no es aislado: refleja una revisión más amplia del escenario económico.",
+  "ideaSupport": "La lectura clave está en cómo se transmite a decisiones de inversión y consumo.",
+  "keyPoints": [
+    {
+      "iconKey": "signal",
+      "text": "La primera señal aparece en el precio del financiamiento y reduce el margen de maniobra."
+    },
+    {
+      "iconKey": "company",
+      "text": "Las empresas ajustan planes mientras esperan mayor claridad sobre la demanda."
+    },
+    {
+      "iconKey": "household",
+      "text": "Los hogares reciben el impacto a través del crédito, el empleo y los precios."
+    }
+  ],
+  "impactItems": [
+    {
+      "iconKey": "investment",
+      "label": "Inversión",
+      "text": "Puede cambiar las decisiones de inversión durante los próximos meses."
+    },
+    {
+      "iconKey": "sectors",
+      "label": "Sectores",
+      "text": "Redefine qué sectores tienen capacidad para absorber el nuevo escenario."
+    },
+    {
+      "iconKey": "outlook",
+      "label": "Perspectiva",
+      "text": "La pregunta central es si el ajuste será transitorio o estructural."
+    }
+  ]
+}
