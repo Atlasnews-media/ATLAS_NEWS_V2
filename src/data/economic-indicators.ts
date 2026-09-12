@@ -29,5 +29,7 @@ export interface EconomicIndicatorsSnapshot {
   indicators: EconomicIndicator[];
 }
 
-export const economicIndicatorsSnapshot =
-  snapshot as EconomicIndicatorsSnapshot;
+export const economicIndicatorsSnapshot = {
+  ...(snapshot as EconomicIndicatorsSnapshot),
+  sourceName: "Mi Indicador",
+};
