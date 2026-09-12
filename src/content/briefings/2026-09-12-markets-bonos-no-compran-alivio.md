@@ -1,10 +1,10 @@
 ---
 title: "Las acciones compran alivio, pero los bonos no lo confirman"
 summary: "Wall Street rebotó cuando el crudo retrocedió el viernes, pero el Treasury a diez años quedó cerca de 5%. El ataque posterior al oleoducto saudí pone a prueba esa divergencia."
-publishedAt: "2026-09-12T05:59:31-03:00"
+publishedAt: "2026-09-12T09:03:16-03:00"
 cutoffAt: "2026-09-12T05:59:20-03:00"
 section: "markets"
-status: "draft"
+status: "published"
 tags:
   - mercados
   - renta-fija

@@ -1,10 +1,10 @@
 ---
 title: "La reforma de capitales pasa del anuncio a una tramitación con calendario"
 summary: "El ingreso formal de la reforma y la citación de Hacienda para continuar su discusión convierten a Fonavi y AVV en una agenda legislativa concreta; ahora importan diseño, riesgo fiscal y ejecución."
-publishedAt: "2026-09-12T05:58:55-03:00"
+publishedAt: "2026-09-12T09:03:16-03:00"
 cutoffAt: "2026-09-12T05:58:45-03:00"
 section: "national"
-status: "draft"
+status: "published"
 tags:
   - chile
   - mercado-de-capitales

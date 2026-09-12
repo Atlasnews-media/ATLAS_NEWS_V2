@@ -1,10 +1,10 @@
 ---
 title: "El shock energético pierde una vía de escape y endurece el escenario de tasas"
 summary: "El ataque que obligó a cerrar el oleoducto saudí Este-Oeste reduce una ruta alternativa a Hormuz justo cuando el IPC de Estados Unidos consolidó una subida de la Fed como escenario dominante."
-publishedAt: "2026-09-12T05:57:50-03:00"
+publishedAt: "2026-09-12T09:03:16-03:00"
 cutoffAt: "2026-09-12T05:57:40-03:00"
 type: "daily"
-status: "draft"
+status: "published"
 tags:
   - mercados-globales
   - inflacion
