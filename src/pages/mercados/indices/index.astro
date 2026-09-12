@@ -1,4 +1,5 @@
 ---
+import MarketHistoryChart from "../../../components/MarketHistoryChart.astro";
 import marketPulse from "../../../data/market-pulse.json";
 import BaseLayout from "../../../layouts/BaseLayout.astro";
 
@@ -30,13 +31,35 @@ type MarketSection = {
   rows: MarketRow[];
 };
 
+type MarketHistoryPoint = {
+  date: string;
+  value: number;
+};
+
+type MarketHistorySeries = {
+  id: string;
+  label: string;
+  unit: string;
+  provider: string;
+  sourceUrl: string;
+  points: MarketHistoryPoint[];
+};
+
 const snapshot = marketPulse as {
   status: string;
   generatedAt: string | null;
   assets: MarketAsset[];
+  historyWindowDays?: number;
+  historyGeneratedAt?: string | null;
+  history?: MarketHistorySeries[];
 };
 
 const assetById = new Map(snapshot.assets.map((asset) => [asset.id, asset]));
+const historyById = new Map(
+  (snapshot.history ?? []).map((series) => [series.id, series]),
+);
+const historyOrder = ["usdclp", "copper", "sp500", "brent"];
+
 const sections: MarketSection[] = [
   {
     title: "Índices",
@@ -90,9 +113,9 @@ const variation = new Intl.NumberFormat("es-CL", {
 function isDisplayable(asset?: MarketAsset) {
   return Boolean(
     asset &&
-    asset.displayEligible !== false &&
-    typeof asset.value === "number" &&
-    Number.isFinite(asset.value),
+      asset.displayEligible !== false &&
+      typeof asset.value === "number" &&
+      Number.isFinite(asset.value),
   );
 }
 
@@ -147,9 +170,7 @@ function arrowFor(asset?: MarketAsset) {
   return "●";
 }
 
-const generatedAt = snapshot.generatedAt
-  ? new Date(snapshot.generatedAt)
-  : null;
+const generatedAt = snapshot.generatedAt ? new Date(snapshot.generatedAt) : null;
 const generatedDate =
   generatedAt && Number.isFinite(generatedAt.valueOf())
     ? new Intl.DateTimeFormat("es-CL", {
@@ -190,6 +211,10 @@ const activeProviders = Array.from(
 const staleCount = snapshot.assets.filter(
   (asset) => asset.displayEligible === false,
 ).length;
+const historyAvailable = historyOrder.filter((id) => {
+  const series = historyById.get(id);
+  return Boolean(series && series.points?.length >= 2);
+}).length;
 ---
 
 <BaseLayout
@@ -250,6 +275,49 @@ const staleCount = snapshot.assets.filter(
         ))
       }
     </div>
+
+    <section class="market-history" aria-labelledby="market-history-title">
+      <header class="market-history__heading">
+        <div>
+          <p>Evolución reciente</p>
+          <h2 id="market-history-title">Últimos 30 días</h2>
+        </div>
+        <span>
+          Cierres diarios disponibles · {historyAvailable}/4 series cargadas
+        </span>
+      </header>
+
+      <div class="market-history__series">
+        {
+          historyOrder.map((id) => {
+            const series = historyById.get(id);
+            const asset = assetById.get(id);
+
+            if (series && series.points?.length >= 2) {
+              return (
+                <MarketHistoryChart
+                  id={series.id}
+                  label={series.label}
+                  unit={series.unit}
+                  provider={series.provider}
+                  points={series.points}
+                />
+              );
+            }
+
+            return (
+              <article class="market-history__unavailable">
+                <div>
+                  <h3>{asset?.label ?? id}</h3>
+                  <p>Últimos 30 días · cierre diario disponible</p>
+                </div>
+                <span>Serie temporal no disponible en este corte.</span>
+              </article>
+            );
+          })
+        }
+      </div>
+    </section>
 
     <footer class="indices-source">
       <p>
@@ -451,6 +519,86 @@ const staleCount = snapshot.assets.filter(
     color: var(--ink-soft);
   }
 
+  .market-history {
+    margin-top: 0.7rem;
+    border-bottom: 4px double var(--rule);
+  }
+
+  .market-history__heading {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 0.75rem;
+    align-items: end;
+    padding: 0 0 0.46rem;
+    border-bottom: 4px double var(--rule);
+  }
+
+  .market-history__heading p,
+  .market-history__heading h2,
+  .market-history__heading span,
+  .market-history__unavailable h3,
+  .market-history__unavailable p,
+  .market-history__unavailable span {
+    margin: 0;
+  }
+
+  .market-history__heading p {
+    margin-bottom: 0.12rem;
+    color: var(--accent);
+    font: 700 0.52rem/1 var(--serif);
+    letter-spacing: 0.045em;
+    text-transform: uppercase;
+  }
+
+  .market-history__heading h2 {
+    font: 700 clamp(1.08rem, 2.25vw, 1.62rem)/0.95 var(--serif);
+    letter-spacing: -0.025em;
+  }
+
+  .market-history__heading span {
+    padding-bottom: 0.04rem;
+    color: var(--ink-soft);
+    font: 700 0.4rem/1.3 var(--sans);
+    letter-spacing: 0.035em;
+    text-align: right;
+    text-transform: uppercase;
+  }
+
+  .market-history__series {
+    display: grid;
+  }
+
+  .market-history__unavailable {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 0.75rem;
+    align-items: center;
+    padding: 0.68rem 0;
+    border-top: 1px solid rgb(35 35 29 / 28%);
+  }
+
+  .market-history__unavailable:first-child {
+    border-top: 0;
+  }
+
+  .market-history__unavailable h3 {
+    font: 800 clamp(0.78rem, 1.5vw, 1rem)/1 var(--sans);
+    letter-spacing: 0.055em;
+    text-transform: uppercase;
+  }
+
+  .market-history__unavailable p,
+  .market-history__unavailable span {
+    color: var(--ink-soft);
+    font: 700 0.4rem/1.3 var(--sans);
+  }
+
+  .market-history__unavailable p {
+    margin-top: 0.13rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+
   .indices-source {
     display: flex;
     justify-content: space-between;
@@ -549,6 +697,43 @@ const staleCount = snapshot.assets.filter(
       gap: 0.15rem;
     }
 
+    .market-history {
+      margin-top: 0.56rem;
+    }
+
+    .market-history__heading {
+      gap: 0.42rem;
+      padding-bottom: 0.35rem;
+    }
+
+    .market-history__heading p {
+      font-size: 0.42rem;
+    }
+
+    .market-history__heading h2 {
+      font-size: clamp(1rem, 5vw, 1.32rem);
+    }
+
+    .market-history__heading span {
+      max-width: 7.2rem;
+      font-size: 0.32rem;
+      line-height: 1.2;
+    }
+
+    .market-history__unavailable {
+      gap: 0.4rem;
+      padding: 0.58rem 0;
+    }
+
+    .market-history__unavailable h3 {
+      font-size: clamp(0.78rem, 3.5vw, 0.92rem);
+    }
+
+    .market-history__unavailable p,
+    .market-history__unavailable span {
+      font-size: 0.34rem;
+    }
+
     .indices-source {
       display: grid;
       gap: 0.15rem;
@@ -581,6 +766,16 @@ const staleCount = snapshot.assets.filter(
           3.54rem,
           0.8fr
         );
+    }
+
+    .market-history__heading,
+    .market-history__unavailable {
+      grid-template-columns: 1fr;
+    }
+
+    .market-history__heading span {
+      max-width: none;
+      text-align: left;
     }
   }
 </style>
