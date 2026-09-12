@@ -1,0 +1,261 @@
+name: Reel Maker V2 — post-publication artifact
+
+on:
+  workflow_run:
+    workflows: ["Publicar ATLAS NEWS"]
+    types: [completed]
+  pull_request:
+    branches: [main]
+    paths:
+      - ".github/workflows/reel-maker-v2.yml"
+      - "tools/reel_maker/**"
+  workflow_dispatch:
+    inputs:
+      source_commit:
+        description: "Commit de una edición diaria ya publicada; vacío = última edición publicada"
+        required: false
+        default: ""
+        type: string
+
+permissions:
+  contents: read
+
+concurrency:
+  group: >-
+    reel-maker-v2-${{
+      github.event_name == 'pull_request' && format('pr-{0}', github.event.pull_request.number) ||
+      github.event_name == 'workflow_run' && github.event.workflow_run.head_sha ||
+      inputs.source_commit || github.run_id
+    }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
+jobs:
+  build-reel:
+    name: Generar Reel desde edición web verificada
+    if: >-
+      github.event_name == 'pull_request' ||
+      github.event_name == 'workflow_dispatch' ||
+      (github.event_name == 'workflow_run' &&
+       github.event.workflow_run.conclusion == 'success' &&
+       github.event.workflow_run.event == 'push' &&
+       github.event.workflow_run.head_branch == 'main' &&
+       startsWith(github.event.workflow_run.display_title, 'Paquete editorial matutino — '))
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    env:
+      ATLAS_PUBLIC_STATUS_URL: https://eldesiempre100.github.io/status.json
+
+    steps:
+      - name: Checkout final-distribution runtime and source history
+        uses: actions/checkout@v5
+        with:
+          ref: ${{ github.event_name == 'workflow_run' && github.event.workflow_run.head_sha || github.event_name == 'pull_request' && github.event.pull_request.head.sha || 'main' }}
+          fetch-depth: 0
+
+      - name: Resolve published daily sourceCommit
+        id: source
+        shell: bash
+        env:
+          INPUT_SOURCE_COMMIT: ${{ inputs.source_commit || '' }}
+          WORKFLOW_SOURCE_COMMIT: ${{ github.event_name == 'workflow_run' && github.event.workflow_run.head_sha || '' }}
+        run: |
+          set -euo pipefail
+          source_commit=""
+          source_id=""
+          edition_id=""
+
+          if [[ "${GITHUB_EVENT_NAME}" == "workflow_run" ]]; then
+            source_commit="$WORKFLOW_SOURCE_COMMIT"
+          elif [[ "${GITHUB_EVENT_NAME}" == "workflow_dispatch" && -n "$INPUT_SOURCE_COMMIT" ]]; then
+            source_commit="$INPUT_SOURCE_COMMIT"
+          else
+            git fetch --no-tags origin main:refs/remotes/origin/main
+            status="$(curl -fsSL -H 'Accept: application/json' -H 'Cache-Control: no-cache' \
+              "${ATLAS_PUBLIC_STATUS_URL}?reel-pr=${GITHUB_RUN_ID}-$(date +%s)")"
+            edition_id="$(jq -er '.latestDaily.id | select(type == "string" and length > 0)' <<<"$status")"
+            for ext in md mdx; do
+              candidate="src/content/editions/${edition_id}.${ext}"
+              if git cat-file -e "origin/main:${candidate}" 2>/dev/null; then
+                source_id="$candidate"
+                break
+              fi
+            done
+            test -n "$source_id" || {
+              echo "Fail-closed: latest published daily file is not present on origin/main: $edition_id"
+              exit 20
+            }
+            source_commit="$(git log -1 --format=%H origin/main -- "$source_id")"
+          fi
+
+          [[ "$source_commit" =~ ^[0-9a-f]{40}$ ]] || {
+            echo "Fail-closed: sourceCommit is not a full SHA: ${source_commit:-<missing>}"
+            exit 21
+          }
+          git cat-file -e "${source_commit}^{commit}" 2>/dev/null || git fetch --no-tags --depth=128 origin "$source_commit"
+          parent="$(git rev-list --parents -n 1 "$source_commit" | awk '{print $2}')"
+          if [[ -z "$parent" ]]; then
+            changed="$(git diff-tree --root --no-commit-id --name-only -r "$source_commit")"
+          else
+            changed="$(git diff --name-only "$parent" "$source_commit")"
+          fi
+          mapfile -t daily_files < <(
+            printf '%s\n' "$changed" |
+              grep -E '^src/content/editions/[0-9]{4}-[0-9]{2}-[0-9]{2}-daily-[^/]+\.mdx?$' || true
+          )
+          if [[ "${#daily_files[@]}" -ne 1 ]]; then
+            echo "Fail-closed: sourceCommit must introduce exactly one daily edition; found ${#daily_files[@]}."
+            exit 22
+          fi
+
+          resolved_source_id="${daily_files[0]}"
+          resolved_edition_id="$(basename "$resolved_source_id")"
+          resolved_edition_id="${resolved_edition_id%.md}"
+          resolved_edition_id="${resolved_edition_id%.mdx}"
+          if [[ -n "$source_id" && "$source_id" != "$resolved_source_id" ]]; then
+            echo "Fail-closed: public latestDaily and sourceCommit resolve different edition files."
+            exit 23
+          fi
+          if [[ -n "$edition_id" && "$edition_id" != "$resolved_edition_id" ]]; then
+            echo "Fail-closed: public latestDaily and sourceCommit resolve different edition IDs."
+            exit 24
+          fi
+
+          echo "source_commit=$source_commit" >> "$GITHUB_OUTPUT"
+          echo "source_id=$resolved_source_id" >> "$GITHUB_OUTPUT"
+          echo "edition_id=$resolved_edition_id" >> "$GITHUB_OUTPUT"
+          echo "Resolved Reel sourceCommit=$source_commit edition=$resolved_edition_id"
+
+      - name: Wait for verified public edition
+        shell: bash
+        env:
+          SOURCE_COMMIT: ${{ steps.source.outputs.source_commit }}
+          EXPECTED_EDITION: ${{ steps.source.outputs.edition_id }}
+        run: |
+          set -euo pipefail
+          timeout_seconds=60
+          started="$(date +%s)"
+          attempt=0
+          while true; do
+            attempt=$((attempt + 1))
+            body="$(mktemp)"
+            url="${ATLAS_PUBLIC_STATUS_URL}?reel=${SOURCE_COMMIT}&attempt=${attempt}&run=${GITHUB_RUN_ID}-$(date +%s)"
+            code="$(curl -L -sS -o "$body" -w '%{http_code}' -H 'Accept: application/json' -H 'Cache-Control: no-cache' "$url" || true)"
+            if [[ "$code" = "200" ]] && jq -e . "$body" >/dev/null 2>&1; then
+              observed_commit="$(jq -r '.sourceCommit // empty' "$body")"
+              observed_edition="$(jq -r '.latestDaily.id // empty' "$body")"
+              if [[ "$observed_edition" = "$EXPECTED_EDITION" && "$observed_commit" =~ ^[0-9a-f]{40}$ ]]; then
+                if [[ "$observed_commit" = "$SOURCE_COMMIT" ]]; then
+                  echo "Public edition READY on exact sourceCommit."
+                  break
+                fi
+                git fetch --no-tags --depth=128 origin "$observed_commit" >/dev/null 2>&1 || true
+                if git cat-file -e "${observed_commit}^{commit}" 2>/dev/null && \
+                   git merge-base --is-ancestor "$SOURCE_COMMIT" "$observed_commit"; then
+                  echo "Public edition READY on verified descendant commit."
+                  break
+                fi
+              fi
+            fi
+            if (( $(date +%s) - started >= timeout_seconds )); then
+              echo "Fail-closed: public edition readiness timeout for $EXPECTED_EDITION / $SOURCE_COMMIT."
+              exit 25
+            fi
+            delay=$((attempt * 3)); if (( delay > 12 )); then delay=12; fi
+            sleep "$delay"
+          done
+
+      - name: Regenerate canonical social contract
+        id: contract
+        env:
+          ATLAS_SOURCE_COMMIT: ${{ steps.source.outputs.source_commit }}
+          ATLAS_PUBLIC_STATUS_URL: ${{ env.ATLAS_PUBLIC_STATUS_URL }}
+        run: node tools/social-renderer/prepare-daily-contract.mjs
+
+      - name: Verify contract identity before Reel Maker
+        env:
+          SOURCE_COMMIT: ${{ steps.source.outputs.source_commit }}
+          SOURCE_ID: ${{ steps.source.outputs.source_id }}
+          EDITION_ID: ${{ steps.source.outputs.edition_id }}
+        run: |
+          set -euo pipefail
+          contract="tools/social-renderer/.generated/daily-contract.json"
+          jq -e --arg source "$SOURCE_COMMIT" --arg source_id "$SOURCE_ID" --arg edition "$EDITION_ID" '
+            .sourceCommit == $source and
+            .sourceId == $source_id and
+            .canonicalUrl == ("https://eldesiempre100.github.io/ediciones/" + $edition + "/") and
+            (.keyPoints | length == 3) and
+            (.impactItems | length == 3)
+          ' "$contract" >/dev/null || {
+            echo "Fail-closed: canonical social contract does not match verified public edition."
+            exit 26
+          }
+
+      - name: Verify Reel Maker runtime
+        run: |
+          set -euo pipefail
+          python3 --version
+          ffmpeg -version | head -n 1
+          ffprobe -version | head -n 1
+          fc-match 'DejaVu Serif' | head -n 1
+          python3 -m py_compile tools/reel_maker/model.py tools/reel_maker/validate.py tools/reel_maker/reel_maker.py
+
+      - name: Generate seven validated scenes and MP4
+        run: |
+          set -euo pipefail
+          rm -rf tools/reel_maker/output
+          python3 tools/reel_maker/reel_maker.py \
+            tools/social-renderer/.generated/daily-contract.json \
+            --output-dir tools/reel_maker/output \
+            --keep-plates
+
+      - name: Validate Reel artifact identity and seven plates
+        env:
+          SOURCE_COMMIT: ${{ steps.source.outputs.source_commit }}
+        run: |
+          set -euo pipefail
+          output="tools/reel_maker/output/atlas-news-reel-${SOURCE_COMMIT}.mp4"
+          report="tools/reel_maker/output/visual-validation.json"
+          plates="tools/reel_maker/output/atlas-news-plates-${SOURCE_COMMIT}"
+          test -f "$output"
+          test -f "$report"
+          test "$(find "$plates" -maxdepth 1 -type f -name 'scene-*.png' | wc -l | tr -d ' ')" = "7"
+          test "$(find "$plates" -maxdepth 1 -type f -name 'scene-*.svg' | wc -l | tr -d ' ')" = "7"
+          jq -e --arg source "$SOURCE_COMMIT" '
+            .sourceCommit == $source and
+            .status == "PASS" and
+            (.scenes | length == 7) and
+            ([.scenes[].status] | all(. == "PASS")) and
+            ([.scenes[].animated.status] | all(. == "PASS")) and
+            .video.codec == "h264" and
+            .video.width == "1080" and
+            .video.height == "1920" and
+            .video.pix_fmt == "yuv420p" and
+            .video.r_frame_rate == "30/1"
+          ' "$report" >/dev/null
+
+      - name: Summarize isolated Phase 4 result
+        env:
+          SOURCE_COMMIT: ${{ steps.source.outputs.source_commit }}
+        run: |
+          {
+            echo "### Reel Maker V2 — PASS"
+            echo "sourceCommit: \`${SOURCE_COMMIT}\`"
+            echo "Consumer: edición web ya publicada y verificada"
+            echo "Scenes: 7 / 7 visualmente validadas"
+            echo "Output: \`atlas-news-reel-${SOURCE_COMMIT}.mp4\`"
+            echo "No Meta API / no Reel publish / no dependency on Instagram."
+          } >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Upload Reel Maker evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: atlas-news-reel-maker-${{ steps.source.outputs.source_commit || github.run_id }}
+          path: |
+            tools/social-renderer/.generated/daily-contract.json
+            tools/reel_maker/output/atlas-news-reel-*.mp4
+            tools/reel_maker/output/visual-validation.json
+            tools/reel_maker/output/atlas-news-plates-*/scene-*.png
+            tools/reel_maker/output/atlas-news-plates-*/scene-*.svg
+          if-no-files-found: warn
+          retention-days: 14
