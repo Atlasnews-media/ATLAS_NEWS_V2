@@ -102,8 +102,8 @@ const { expectedDate } = Astro.props;
   @media (max-width: 42rem) {
     .daily-audio {
       grid-template-columns: 1fr;
-      gap: 0.7rem;
-      padding: 1rem 0;
+      gap: 0.3rem;
+      padding: 0.58rem 0 0.62rem;
       border-bottom: 0;
     }
 
@@ -115,6 +115,10 @@ const { expectedDate } = Astro.props;
 
     .audio-copy > p:last-child {
       display: none;
+    }
+
+    .audio-player {
+      width: 100%;
     }
   }
 </style>
