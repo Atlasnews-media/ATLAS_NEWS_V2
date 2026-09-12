@@ -15,6 +15,9 @@ src/lib/chile-calendar.ts
 scripts/probe-calendar.mjs
 # RUNTIME OPT: post-build operativo; se ejecuta dentro del gate de build y falla por sintaxis/ejecución real
 scripts/optimize-runtime-assets.mjs
+# VISUAL LOCK: scripts operativos ejecutados dentro del build; su sintaxis y comportamiento fallan el gate si son inválidos
+scripts/sync-visual-locks.mjs
+scripts/write-visual-locks.mjs
 # TEMP LAB: baseline previo que hoy bloquea prettier; no modificar estos archivos aquí
 src/pages/lab/portada-v2.astro
 scripts/prepare-audio-v2.mjs
