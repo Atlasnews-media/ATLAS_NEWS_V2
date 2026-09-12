@@ -21,9 +21,9 @@ demo: false
 highlights:
   - label: "Inflación mayorista"
     text: "El PPI de EE.UU. subió 0,4% en agosto y 5,4% anual, reforzando el riesgo de una Fed más restrictiva."
-  - label: "Mercado repricia"
+  - label: "El mercado ve más probable otra subida de tasas"
     text: "La probabilidad implícita de una subida en septiembre avanzó hacia 70%-74% antes del IPC de hoy."
-  - label: "Chile transmite"
+  - label: "Chile empieza a recibir mayores costos externos"
     text: "El costo del transporte subió 0,7% en agosto y la energía externa mantiene abierto el canal de costos local."
 marketSummary:
   asOf: "2026-09-10T17:00:00-03:00"
