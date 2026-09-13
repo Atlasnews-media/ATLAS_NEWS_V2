@@ -199,20 +199,23 @@ jobs:
             sudo apt-get update -qq
             sudo apt-get install -y -qq --no-install-recommends ffmpeg fonts-dejavu-core
           fi
+          test -s tools/reel_maker/assets/atlas-news-theme.mp3
           ffmpeg -version | head -n 1
           ffprobe -version | head -n 1
           fc-match 'DejaVu Serif' | head -n 1
 
-      - name: Generate seven validated scenes and MP4
+      - name: Generate seven validated scenes and MP4 with institutional theme
         run: |
           set -euo pipefail
           rm -rf tools/reel_maker/output
           python3 tools/reel_maker/reel_maker.py \
             tools/social-renderer/.generated/daily-contract.json \
             --output-dir tools/reel_maker/output \
+            --music tools/reel_maker/assets/atlas-news-theme.mp3 \
+            --music-volume 0.20 \
             --keep-plates
 
-      - name: Validate Reel artifact identity and seven plates
+      - name: Validate Reel artifact identity, audio and seven plates
         env:
           SOURCE_COMMIT: ${{ steps.source.outputs.source_commit }}
         run: |
@@ -236,6 +239,12 @@ jobs:
             .video.pix_fmt == "yuv420p" and
             .video.r_frame_rate == "30/1"
           ' "$report" >/dev/null
+          audio_codec="$(ffprobe -v error -select_streams a:0 -show_entries stream=codec_name -of default=noprint_wrappers=1:nokey=1 "$output")"
+          test "$audio_codec" = "aac" || {
+            echo "Fail-closed: Reel final sin audio AAC; codec=${audio_codec:-<missing>}"
+            exit 27
+          }
+          echo "Reel audio verified: AAC institutional theme."
 
       - name: Summarize isolated Phase 4 result
         env:
@@ -246,6 +255,7 @@ jobs:
             echo "sourceCommit: \`${SOURCE_COMMIT}\`"
             echo "Consumer: edición web ya publicada y verificada"
             echo "Scenes: 7 / 7 visualmente validadas"
+            echo "Audio: tema institucional embebido y verificado en AAC"
             echo "Output: \`atlas-news-reel-${SOURCE_COMMIT}.mp4\`"
             echo "No Meta API / no Reel publish / no dependency on Instagram."
           } >> "$GITHUB_STEP_SUMMARY"
