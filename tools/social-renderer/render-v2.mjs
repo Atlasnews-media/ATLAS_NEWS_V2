@@ -336,11 +336,11 @@ async function main() {
 
   const closing = `${v2Header(date, 7)}
     <div class="kicker">CIERRE DE EDICIÓN</div>
-    <div data-fit data-content-limit="820" style="position:absolute;left:48px;right:48px;top:245px;z-index:6">
-      <div style="font-size:104px;line-height:.91;font-weight:700;letter-spacing:-4px;max-width:900px">Lee la edición completa en Atlas News</div>
-      <div style="font-size:38px;line-height:1.12;color:${MUTED};margin-top:35px;max-width:720px">Portada, claves del día, análisis internacional, señales para Chile y movimientos de mercado en una sola lectura editorial.</div>
-      <div style="display:inline-block;margin-top:42px;padding:20px 34px;border:3px solid ${RED};border-radius:28px;color:${RED};font-size:30px;font-weight:700">Disponible en Atlas News →</div>
-      <div style="font-size:31px;margin-top:24px">eldesiempre100.github.io</div>
+    <div data-fit data-content-limit="820" style="position:absolute;left:48px;right:48px;top:225px;z-index:6">
+      <div style="font-size:88px;line-height:.91;font-weight:700;letter-spacing:-4px;max-width:900px">Lee la edición completa en Atlas News</div>
+      <div style="font-size:34px;line-height:1.12;color:${MUTED};margin-top:28px;max-width:720px">Portada, claves del día, análisis internacional, señales para Chile y movimientos de mercado en una sola lectura editorial.</div>
+      <div style="display:inline-block;margin-top:28px;padding:16px 30px;border:3px solid ${RED};border-radius:28px;color:${RED};font-size:27px;font-weight:700">Disponible en Atlas News →</div>
+      <div style="font-size:28px;margin-top:18px">eldesiempre100.github.io</div>
     </div>
     ${imagePane(coverVisuals[1], "position:absolute;left:0;width:58%;bottom:82px;height:405px;z-index:2", true)}
     ${imagePane(coverVisuals[2], "position:absolute;right:0;width:48%;bottom:82px;height:500px;z-index:3", true)}

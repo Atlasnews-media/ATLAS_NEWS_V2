@@ -230,9 +230,9 @@ def plate(index: int, spec: tuple[str, str, str], contract: Contract, image: Pat
     if index == 1:
         title_base, body_base, title_lines, body_lines = 78, 44, 6, 8
     elif index == 2:
-        title_base, body_base, title_lines, body_lines = 62, 40, 7, 10
+        title_base, body_base, title_lines, body_lines = 62, 40, 9, 10
     elif index == 6:
-        title_base, body_base, title_lines, body_lines = 70, 36, 4, 16
+        title_base, body_base, title_lines, body_lines = 70, 36, 4, 22
     elif index == 7:
         title_base, body_base, title_lines, body_lines = 88, 46, 3, 6
     else:
