@@ -10,10 +10,10 @@ import path from "node:path";
 const root = new URL("../", import.meta.url);
 const editionDir = new URL("src/content/editions/", root);
 const briefingDir = new URL("src/content/briefings/", root);
-const SCRIPT_VERSION = 9;
+const SCRIPT_VERSION = 10;
 const SPEECH_NORMALIZER_VERSION = 5;
-const TARGET_MIN_WORDS = 260;
-const TARGET_MAX_WORDS = 340;
+const TARGET_MIN_WORDS = 340;
+const TARGET_MAX_WORDS = 440;
 
 function frontmatter(text) {
   return text.match(/^---\s*\r?\n([\s\S]*?)\r?\n---/)?.[1] ?? "";
@@ -260,6 +260,149 @@ function addContribution(
   }
 }
 
+function formatMarketNumber(value, maxDigits = 2) {
+  return new Intl.NumberFormat("es-CL", {
+    minimumFractionDigits: 0,
+    maximumFractionDigits: maxDigits,
+  }).format(Math.abs(Number(value)));
+}
+
+function marketMove(asset, { up, down }) {
+  const change = Number(asset?.changePercent);
+  if (!Number.isFinite(change)) return null;
+  if (Math.abs(change) < 0.01) return "se mantiene sin cambios";
+  return `${change > 0 ? up : down} ${formatMarketNumber(change)}%`;
+}
+
+function joinSpanish(items) {
+  const values = items.filter(Boolean);
+  if (values.length <= 1) return values[0] ?? "";
+  if (values.length === 2) return `${values[0]} y ${values[1]}`;
+  return `${values.slice(0, -1).join(", ")} y ${values.at(-1)}`;
+}
+
+function standoutLabel(id) {
+  return {
+    nasdaq: "el Nasdaq",
+    dow: "el Dow Jones",
+    stoxx50: "el Euro Stoxx 50",
+    gold: "el oro",
+    eurusd: "el euro frente al dólar",
+    usdjpy: "el dólar frente al yen",
+    bitcoin: "Bitcoin",
+  }[id];
+}
+
+async function buildMarketPulseSpeech(publicDir) {
+  if (!publicDir) return null;
+
+  try {
+    const snapshot = JSON.parse(
+      await readFile(path.join(publicDir, "data", "market-pulse.json"), "utf8"),
+    );
+    const assets = (snapshot.assets ?? []).filter(
+      (asset) => asset?.status === "current",
+    );
+    const byId = new Map(assets.map((asset) => [asset.id, asset]));
+    const sentences = [];
+
+    const dollarMove = marketMove(byId.get("usdclp"), {
+      up: "sube",
+      down: "baja",
+    });
+    if (dollarMove) {
+      sentences.push(
+        `Con los últimos datos disponibles, el dólar ${dollarMove} frente al peso chileno.`,
+      );
+    } else {
+      sentences.push(
+        "Con los últimos datos disponibles, revisamos el pulso de los mercados.",
+      );
+    }
+
+    const ipsaMove = marketMove(byId.get("ipsa"), {
+      up: "avanza",
+      down: "retrocede",
+    });
+    const spMove = marketMove(byId.get("sp500"), {
+      up: "sube",
+      down: "cae",
+    });
+    const brentMove = marketMove(byId.get("brent"), {
+      up: "avanza",
+      down: "retrocede",
+    });
+    const equityEnergy = [
+      ipsaMove ? `el IPSA ${ipsaMove}` : null,
+      spMove ? `el S&P 500 ${spMove}` : null,
+      brentMove ? `el Brent ${brentMove}` : null,
+    ];
+    if (equityEnergy.some(Boolean)) {
+      const joined = joinSpanish(equityEnergy);
+      sentences.push(`${joined[0].toUpperCase()}${joined.slice(1)}.`);
+    }
+
+    const copperMove = marketMove(byId.get("copper"), {
+      up: "sube",
+      down: "baja",
+    });
+    if (copperMove) {
+      sentences.push(`El cobre, en tanto, ${copperMove}.`);
+    }
+
+    const treasury = byId.get("ust10y");
+    if (Number.isFinite(Number(treasury?.value))) {
+      sentences.push(
+        `El Treasury de Estados Unidos a diez años se ubica en ${formatMarketNumber(treasury.value)}%.`,
+      );
+    }
+
+    const standout = assets
+      .filter((asset) =>
+        [
+          "nasdaq",
+          "dow",
+          "stoxx50",
+          "gold",
+          "eurusd",
+          "usdjpy",
+          "bitcoin",
+        ].includes(asset.id),
+      )
+      .filter(
+        (asset) =>
+          Number.isFinite(Number(asset.changePercent)) &&
+          Math.abs(Number(asset.changePercent)) >= 1,
+      )
+      .sort(
+        (left, right) =>
+          Math.abs(Number(right.changePercent)) -
+          Math.abs(Number(left.changePercent)),
+      )[0];
+
+    if (standout) {
+      const label = standoutLabel(standout.id);
+      const move = marketMove(standout, {
+        up: "avanza",
+        down: "retrocede",
+      });
+      if (label && move) {
+        sentences.push(`Entre los movimientos destacados, ${label} ${move}.`);
+      }
+    }
+
+    sentences.push(
+      "Ese es el punto de partida de los mercados para esta jornada.",
+    );
+    return sentences.join(" ");
+  } catch (error) {
+    console.warn(
+      `Pulso de mercados omitido: ${error?.message ?? String(error)}`,
+    );
+    return null;
+  }
+}
+
 const editions = await records(editionDir);
 const briefings = await records(briefingDir);
 const international = editions
@@ -339,7 +482,7 @@ const sameSources =
   existing?.sourceIds?.national === sourceIds.national &&
   existing?.sourceIds?.markets === sourceIds.markets;
 
-// Portada V9 es un briefing transversal. Cada sección aporta una contribución
+// Portada V10 es un briefing transversal con pulso cuantitativo de mercados. Cada sección aporta una contribución
 // breve e incremental; ninguna se desarrolla como cápsula completa.
 const internationalCandidates = [
   ...sentencesFrom(international, ["Hecho central", "Por qué importa"]),
@@ -379,6 +522,11 @@ addSegment(
   `ATLAS NEWS. Briefing de la mañana del ${formatSpanishDate(date)}. Estas son las señales que conviene tener presentes hoy.`,
   { force: true },
 );
+
+const marketPulseSpeech = await buildMarketPulseSpeech(publicDir);
+if (marketPulseSpeech) {
+  addSegment(parts, accepted, marketPulseSpeech, { force: true });
+}
 
 addContribution(
   parts,
@@ -457,7 +605,8 @@ const plan = {
   needsGeneration: ownerAllowsGeneration && !sameSources,
   date,
   title: `ATLAS NEWS — Resumen diario — ${formatSpanishDate(date)}`,
-  summary: "Un briefing transversal de Internacional, Nacional y Mercados.",
+  summary:
+    "Un briefing transversal de Internacional, Nacional y Mercados, con pulso cuantitativo de apertura.",
   voice,
   engine: "Kokoro-82M",
   language: "es",
