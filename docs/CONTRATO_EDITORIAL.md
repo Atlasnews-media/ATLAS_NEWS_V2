@@ -20,6 +20,16 @@ Una edición diaria o semanal debe incluir los siguientes metadatos:
 
 En nuevas ediciones General diarias, `highlights` debe contener entre cuatro y seis claves según la densidad informativa real. La cantidad no es fija y no debe completarse con relleno. Cada clave debe derivar de la misma investigación verificada y del mismo cuerpo editorial de la edición. Las ediciones históricas y otros tipos de edición pueden conservar tres claves sin migración retroactiva.
 
+### Alcance editorial de General diaria
+
+General conserva su identidad técnica, colección, schema y estructura actuales, pero editorialmente cubre exclusivamente información internacional. Su investigación debe barrer el mundo según relevancia —incluyendo, cuando corresponda, América del Norte, América Latina fuera de Chile, Europa, Asia, Medio Oriente, África y Oceanía— y no concentrarse por rutina en Estados Unidos.
+
+General no incorpora noticias domésticas chilenas, agenda legislativa local, decisiones o anuncios de autoridades chilenas, regulación nacional, datos macroeconómicos domésticos ni hechos empresariales exclusivamente locales. Esos hechos pertenecen a Nacional.
+
+El encabezado técnico `## Chile` se conserva exactamente. Dentro de General, esa sección se utiliza únicamente para explicar el canal de transmisión hacia Chile de los hechos internacionales ya investigados por General. No abre una segunda investigación local ni introduce hechos domésticos nuevos para completar la sección.
+
+Nacional es el propietario editorial exclusivo de los hechos locales de Chile. Mercados es el propietario editorial de precios, activos, flujos, posicionamiento y dinámica cross-asset. General puede mencionar reacciones de mercado cuando sean necesarias para comprender el hecho internacional y su relevancia, pero no sustituye la profundización propia de Mercados.
+
 ### Comprensibilidad de “En una mirada”
 
 En una edición General diaria, cada `highlights[].label` funciona como un microtitular de comprensión inmediata, no como una categoría, código interno ni abreviatura de mesa. Debe expresar por sí solo qué pasó o qué implica, con lenguaje común para un lector interesado en economía pero no especialista.
@@ -38,7 +48,7 @@ El cuerpo debe respetar este orden editorial:
 6. Tasas, monedas y commodities.
 7. Qué observar.
 
-Una sección puede indicar explícitamente que no hubo cambios materiales. No debe inventarse contenido para completar una sección.
+Una sección puede indicar explícitamente que no hubo cambios materiales. No debe inventarse contenido para completar una sección. En General, `## Chile` debe limitarse al canal de transmisión de la evidencia internacional ya investigada; si no existe una transmisión material, puede declararlo brevemente sin incorporar noticias locales.
 
 El archivo Markdown es la publicación definitiva. El cuerpo se renderiza en el sitio en el mismo orden y con el mismo texto recibido: no existe una etapa posterior de resumen, reescritura o adaptación. Los metadatos solo controlan portada, archivo, fechas, etiquetas y fuentes.
 
@@ -65,7 +75,7 @@ Las piezas de Nacional y Mercados comparten la colección `briefings` y deben in
 | `highlights`  | Opcional; si existe, exactamente tres claves |
 | `demo`        | Debe ser `false`                             |
 
-El cuerpo debe desarrollar análisis propio de la vertical. Los hechos y fuentes pueden coincidir con la edición General, pero el texto no debe duplicar sus párrafos. La edición General informa la señal principal; Nacional y Mercados profundizan su contexto, transmisión, consecuencias, riesgos y variables de seguimiento.
+El cuerpo debe desarrollar análisis propio de la vertical. Los hechos y fuentes pueden coincidir con la edición General cuando exista una conexión internacional pertinente, pero el texto no debe duplicar sus párrafos. Nacional es el propietario exclusivo de hechos domésticos chilenos y profundiza contexto, transmisión y consecuencias locales. Mercados es el propietario de precios, activos, flujos, posicionamiento y dinámica cross-asset. General conserva la señal internacional y no absorbe el desarrollo propio de estas verticales.
 
 Los nombres deben respetar la sección declarada:
 
@@ -89,7 +99,7 @@ Debe contener exactamente una edición General diaria para esa fecha. Puede cont
 
 Los tres archivos comienzan como `draft`. La promoción a `published`, cuando corresponda, se realiza en la misma rama y sin reescribir el cuerpo.
 
-La memoria editorial `data/editorial_state.json` puede ser leída por las tres piezas, pero dentro del paquete matutino solo la edición General puede modificarla. Nacional y Mercados no escriben memoria editorial de forma independiente.
+La memoria editorial `data/editorial_state.json` puede ser leída por las tres piezas, pero dentro del paquete matutino solo la edición General puede modificarla. General solo evalúa y actualiza hilos efectivamente investigados dentro de su alcance internacional en esa ejecución; los demás hilos permanecen intactos. Nacional y Mercados no escriben memoria editorial de forma independiente.
 
 ## Lecturas seleccionadas
 

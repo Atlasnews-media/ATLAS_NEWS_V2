@@ -12,18 +12,20 @@ sources:
     url: "https://example.com/fuente"
 featured: false
 demo: false
+# General diaria: alcance editorial 100% internacional; barrer mundo según relevancia, no solo EE.UU.
+# No incorporar noticias domésticas chilenas. Nacional es propietario exclusivo de hechos locales.
 # General diaria: usar entre 4 y 6 claves según la densidad real; no fijar una cantidad por rutina.
 # Cada label debe entenderse por sí solo como microtitular: qué pasó o qué implica, en lenguaje común.
 # Prueba de aceptación: ¿un lector interesado en economía, no especialista, entiende la idea sin leer text?
 highlights:
   - label: "Primera idea explicada en lenguaje común"
-    text: "Síntesis breve del primer dato que debe aparecer en la portada."
+    text: "Síntesis breve del primer dato internacional que debe aparecer en la portada."
   - label: "Segunda señal con sujeto y consecuencia claros"
-    text: "Síntesis breve del segundo dato que debe aparecer en la portada."
+    text: "Síntesis breve de otra señal internacional ya respaldada por la investigación."
   - label: "Tercera idea comprensible sin leer la explicación"
-    text: "Síntesis breve del tercer dato que debe aparecer en la portada."
+    text: "Síntesis breve de una tercera clave internacional relevante para la edición."
   - label: "Cuarta señal relevante explicada de forma directa"
-    text: "Síntesis breve de otra señal relevante ya respaldada por la investigación de la edición."
+    text: "Síntesis breve de otra señal internacional respaldada por la misma investigación."
   - label: "Quinta clave solo si agrega comprensión real"
     text: "Síntesis breve de una señal adicional solo cuando agrega valor real al lector."
 marketSummary:
@@ -43,14 +45,28 @@ marketSummary:
 
 ## Hecho central
 
+<!-- Hecho internacional de mayor relevancia de la edición. -->
+
 ## En una mirada
+
+<!-- Entre 4 y 6 claves internacionales derivadas de la misma investigación. -->
 
 ## Por qué importa
 
+<!-- Consecuencias macroeconómicas, financieras o geopolíticas del hecho internacional. -->
+
 ## Mercados globales
+
+<!-- Reacción global necesaria para comprender la señal; la profundización cross-asset pertenece a Mercados. -->
 
 ## Chile
 
+<!-- Solo canal de transmisión hacia Chile de los hechos internacionales ya investigados. No incorporar noticias domésticas chilenas ni abrir una búsqueda local. -->
+
 ## Tasas, monedas y commodities
 
+<!-- Contexto internacional pertinente para la tesis de la edición. -->
+
 ## Qué observar
+
+<!-- Catalizadores internacionales que podrían confirmar, debilitar o cambiar la lectura. -->

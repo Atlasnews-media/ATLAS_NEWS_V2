@@ -10,7 +10,19 @@ El Markdown terminado es la publicación. GPT debe escribirlo para el lector fin
 
 La investigación se realiza una sola vez por publicación. El contenido público utiliza exactamente esa investigación y no inicia una segunda búsqueda durante la etapa editorial.
 
-Para formular el titular de una edición General, responder: **¿Cuál es la principal conclusión de mercado que surge del conjunto completo del informe?** El titular debe reflejar esa conclusión y no simplemente la primera noticia o el activo más repetido.
+Para formular el titular de una edición General, responder: **¿Cuál es la principal conclusión internacional de relevancia económica o financiera que surge del conjunto completo del informe?** El titular debe reflejar esa conclusión y no simplemente la primera noticia, Estados Unidos por defecto o el activo más repetido.
+
+### Alcance editorial de General diaria
+
+General conserva su nombre, archivo `daily`, colección, schema, encabezados técnicos y lugar dentro del Morning Package, pero editorialmente cubre exclusivamente información internacional.
+
+La investigación de General debe barrer el mundo según relevancia y no limitarse por rutina a Estados Unidos. Debe considerar, cuando exista información material, América del Norte, América Latina fuera de Chile, Europa, Asia, Medio Oriente, África y Oceanía, priorizando los hechos internacionales con mayor impacto económico, financiero o geopolítico.
+
+General no investiga ni incorpora noticias domésticas chilenas, agenda legislativa local, anuncios o decisiones de autoridades chilenas, regulación nacional, datos macroeconómicos domésticos ni hechos empresariales exclusivamente locales. Esos hechos pertenecen a Nacional.
+
+El encabezado `## Chile` se conserva exactamente por contrato técnico. En General se utiliza únicamente para explicar cómo los hechos internacionales ya investigados pueden transmitirse hacia Chile. No abre una segunda búsqueda local y no introduce noticias domésticas nuevas para completar la sección. Si no existe un canal de transmisión material, debe indicarse brevemente sin rellenar con información local.
+
+Nacional es el propietario editorial exclusivo de los hechos domésticos de Chile. Mercados es el propietario editorial de precios, activos, flujos, posicionamiento y dinámica cross-asset. General puede mencionar una reacción de mercado cuando sea necesaria para comprender el hecho internacional y su relevancia, pero no sustituye la profundización propia de Mercados.
 
 ## Fuente de verdad y roles
 
@@ -37,7 +49,7 @@ Para formular el titular de una edición General, responder: **¿Cuál es la pri
 2. Incorporar fecha de publicación y hora de corte con zona horaria de Santiago cuando corresponda.
 3. Declarar las fuentes públicas verificables en el frontmatter correspondiente.
 4. Cuando existan entre tres y seis cifras de mercado verificadas dentro del cuerpo de una edición General, resumirlas también en el campo opcional `marketSummary`. Cada cifra debe conservar nombre, valor, variación cuando corresponda, categoría y la misma fecha de corte.
-5. En ediciones General, escribir el cuerpo en este orden:
+5. En ediciones General, escribir el cuerpo en este orden, conservando exactamente estos encabezados técnicos:
    - Hecho central.
    - En una mirada.
    - Por qué importa.
@@ -45,11 +57,11 @@ Para formular el titular de una edición General, responder: **¿Cuál es la pri
    - Chile.
    - Tasas, monedas y commodities.
    - Qué observar.
-6. En Nacional y Mercados, desarrollar análisis propio de la vertical y evitar clonar párrafos de la edición General.
+6. En General, todo el cuerpo debe derivar de la investigación internacional. `Chile` solo explica transmisión de esa evidencia internacional. En Nacional, desarrollar exclusivamente los hechos locales de Chile. En Mercados, desarrollar precios, activos, flujos, posicionamiento y dinámica cross-asset. Las verticales deben evitar clonar párrafos de General.
 7. Crear inicialmente todo contenido automatizado con `status: draft`.
 8. No agregar una sección duplicada de fuentes cuando el sitio ya la construye desde el frontmatter.
 
-Los `highlights` de la General diaria se generan a partir de la misma investigación verificada y del mismo cuerpo editorial. No abren una segunda búsqueda ni introducen hechos nuevos. Deben priorizar las señales que más valor entregan al lector, evitar relleno y variar tanto su selección como su cantidad entre cuatro y seis según la edición; no deben repetir por rutina una secuencia fija de categorías.
+Los `highlights` de la General diaria se generan a partir de la misma investigación internacional verificada y del mismo cuerpo editorial. No abren una segunda búsqueda ni introducen hechos nuevos. Deben priorizar las señales que más valor entregan al lector, evitar relleno y variar tanto su selección como su cantidad entre cuatro y seis según la edición; no deben repetir por rutina una secuencia fija de categorías.
 
 Cuando un mercado esté cerrado, utilizar el último cierre disponible con su fecha correspondiente y no presentarlo como una cotización del día.
 
@@ -63,11 +75,11 @@ Las plantillas canónicas están en `docs/templates/edition.md.example` y `docs/
 
 `data/editorial_state.json` conserva solo hilos activos. Cada hilo contiene `id`, `topic`, `thesis`, `status`, `last_evidence`, `effect`, `base_scenario`, `invalidate_if`, `watch` y `last_publication`. El estado debe ser `new`, `continues`, `confirmed`, `weakened`, `changed`, `contradicted` o `closed`.
 
-La edición General contrasta los hilos pertinentes y tiene autoridad para actualizar la memoria cuando exista un cambio sustantivo. Nacional y Mercados pueden leer la memoria para mantener continuidad editorial, pero no la modifican de forma independiente. El panorama semanal puede leer todos los hilos activos; una Lectura puede integrar, reformular o cerrar un hilo.
+La edición General contrasta únicamente los hilos efectivamente investigados dentro de su alcance internacional en esa ejecución y tiene autoridad para actualizar la memoria cuando exista un cambio sustantivo en esos hilos. Los hilos no investigados por General permanecen intactos. Nacional y Mercados pueden leer la memoria para mantener continuidad editorial, pero no la modifican de forma independiente. El panorama semanal puede leer todos los hilos activos; una Lectura puede integrar, reformular o cerrar un hilo.
 
-`data/editorial_state.json` se modifica únicamente cuando la nueva edición General, panorama semanal o Lectura autorizada cambia sustantivamente un hilo. Si no existe cambio, permanece idéntico. Nunca se debe inventar una modificación para satisfacer un workflow.
+`data/editorial_state.json` se modifica únicamente cuando la nueva edición General, panorama semanal o Lectura autorizada cambia sustantivamente un hilo que efectivamente evaluó. Si no existe cambio, permanece idéntico. Nunca se debe inventar una modificación para satisfacer un workflow ni actualizar un hilo doméstico únicamente porque Nacional haya encontrado evidencia local.
 
-Dentro del paquete matutino, si la memoria cambia, la actualización viaja junto con General, Nacional y Mercados en la misma rama y Pull Request. Si Nacional o Mercados discrepan o amplían una tesis, esa información puede alimentar la evaluación de General, pero no produce un commit de memoria separado.
+Dentro del paquete matutino, si la memoria cambia, la actualización viaja junto con General, Nacional y Mercados en la misma rama y Pull Request. Nacional y Mercados no producen commits de memoria separados ni trasladan a General hechos que esta no haya investigado para forzar una actualización de `editorial_state.json`.
 
 ## Paquete editorial matutino
 
@@ -87,9 +99,9 @@ No crear ramas o PR separados para Nacional y Mercados. Los tres contenidos comp
 1. Leer `AGENTS.md`, `docs/CONTRATO_EDITORIAL.md`, las plantillas pertinentes y `data/editorial_state.json` desde el `main` remoto vigente.
 2. Comprobar que no exista otra edición General diaria publicada o en preparación para la misma fecha.
 3. Crear o reutilizar únicamente la rama `editorial/AAAA-MM-DD-morning` para el paquete de esa fecha.
-4. Preparar General como `draft` y evaluar la memoria editorial pertinente.
+4. Preparar General como `draft` con alcance exclusivamente internacional y evaluar solo la memoria editorial de los hilos efectivamente investigados por General.
 5. Preparar Nacional y Mercados como `draft` cuando estén disponibles; ambas pueden leer la memoria vigente, pero no escribirla.
-6. Actualizar `data/editorial_state.json` solo desde la evaluación de General y únicamente cuando exista un cambio editorial sustantivo.
+6. Actualizar `data/editorial_state.json` solo desde la evaluación de General, únicamente respecto de hilos efectivamente investigados y solo cuando exista un cambio editorial sustantivo.
 7. Incluir todos los archivos disponibles en la misma rama.
 8. Abrir o actualizar un único Pull Request normal, no Draft PR, titulado exactamente `Paquete editorial matutino — AAAA-MM-DD` contra `main`.
 9. No fusionar durante la etapa de generación.
@@ -111,7 +123,7 @@ Los fallos mecánicos reparables se corrigen en los mismos archivos y rama, sin 
 
 Si no existe un fallo objetivo persistente:
 
-1. Confirmar que General evaluó la memoria. Si cambió, verificar que `data/editorial_state.json` acompañe el paquete y que los hilos no afectados permanezcan intactos.
+1. Confirmar que General evaluó únicamente la memoria correspondiente a los hilos efectivamente investigados. Si cambió, verificar que `data/editorial_state.json` acompañe el paquete y que los hilos no afectados permanezcan intactos.
 2. Confirmar que Nacional y Mercados, si existen, no hayan escrito memoria de forma independiente.
 3. Cambiar `status: draft` por `status: published` en los contenidos válidos del mismo paquete sin reescribir el cuerpo.
 4. Crear un único commit de promoción editorial.
