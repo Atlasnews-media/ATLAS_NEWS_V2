@@ -195,14 +195,14 @@ jobs:
             .sourceCommit == $source and
             .sourceId == $source_id and
             .canonicalUrl == ("https://eldesiempre100.github.io/ediciones/" + $edition + "/") and
-            (.keyPoints | length == 3) and
-            (.impactItems | length == 3)
+            .version == "2" and
+            (.highlights | length == 5)
           ' "$contract" >/dev/null || {
-            echo "Fail-closed: canonical social contract does not match verified public edition."
+            echo "Fail-closed: canonical social contract does not match verified five-news public edition."
             exit 26
           }
 
-      - name: Verify Reel Maker runtime
+      - name: Verify Reel Maker runtime and institutional audio
         run: |
           set -euo pipefail
           python3 --version
@@ -211,20 +211,28 @@ jobs:
             sudo apt-get update -qq
             sudo apt-get install -y -qq --no-install-recommends ffmpeg fonts-dejavu-core
           fi
+          test -s tools/reel_maker/assets/atlas-news-theme.mp3
+          input_audio_codec="$(ffprobe -v error -select_streams a:0 -show_entries stream=codec_name -of default=noprint_wrappers=1:nokey=1 tools/reel_maker/assets/atlas-news-theme.mp3)"
+          test "$input_audio_codec" = "mp3" || {
+            echo "Fail-closed: institutional audio is not a readable MP3; codec=${input_audio_codec:-<missing>}"
+            exit 27
+          }
           ffmpeg -version | head -n 1
           ffprobe -version | head -n 1
           fc-match 'DejaVu Serif' | head -n 1
 
-      - name: Generate seven validated scenes and MP4
+      - name: Generate seven validated scenes and MP4 with audio
         run: |
           set -euo pipefail
           rm -rf tools/reel_maker/output
           python3 tools/reel_maker/reel_maker.py \
             tools/social-renderer/.generated/daily-contract.json \
             --output-dir tools/reel_maker/output \
+            --music tools/reel_maker/assets/atlas-news-theme.mp3 \
+            --music-volume 0.20 \
             --keep-plates
 
-      - name: Validate Reel artifact identity and seven plates
+      - name: Validate Reel artifact identity, seven plates and AAC audio
         env:
           SOURCE_COMMIT: ${{ steps.source.outputs.source_commit }}
         run: |
@@ -250,6 +258,12 @@ jobs:
             .video.pix_fmt == "yuv420p" and
             .video.r_frame_rate == "30/1"
           ' "$report" >/dev/null
+          audio_codec="$(ffprobe -v error -select_streams a:0 -show_entries stream=codec_name -of default=noprint_wrappers=1:nokey=1 "$output")"
+          test "$audio_codec" = "aac" || {
+            echo "Fail-closed: Reel final sin audio AAC; codec=${audio_codec:-<missing>}"
+            exit 28
+          }
+          echo "Reel audio verified: AAC."
 
       - name: Summarize isolated Phase 4 result
         env:
@@ -263,6 +277,7 @@ jobs:
             echo "sourceCommit: \`${source_commit}\`"
             echo "Consumer: edición web ya publicada y verificada / fixture determinístico en PR"
             echo "Scenes: 7 / 7 visualmente validadas"
+            echo "Audio: embebido y verificado como AAC"
             echo "Output: \`atlas-news-reel-${source_commit}.mp4\`"
             echo "No Meta API / no Reel publish / no dependency on Instagram."
           } >> "$GITHUB_STEP_SUMMARY"
