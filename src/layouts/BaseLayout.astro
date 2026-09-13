@@ -63,6 +63,18 @@ const socialImageAlt = generatedSocialImage
 const socialType = isArticle ? "article" : "website";
 
 const primaryEntry = { href: "/", label: "Portada" };
+const primaryNavEntries = [
+  primaryEntry,
+  { href: "/internacional/", label: "Internacional" },
+  { href: "/nacional/", label: "Nacional" },
+  { href: "/mercados/", label: "Mercados" },
+  { href: "/lecturas/", label: "Contingencia" },
+];
+const activePrimaryHref = primaryNavEntries.some(
+  ({ href }) => href === Astro.url.pathname,
+)
+  ? Astro.url.pathname
+  : null;
 const isPrimarySectionLanding = [
   "/internacional/",
   "/nacional/",
@@ -143,11 +155,17 @@ const isPrimarySectionLanding = [
         </div>
       </div>
       <nav aria-label="Navegación principal">
-        <a href={primaryEntry.href}>{primaryEntry.label}</a>
-        <a href="/internacional/">Internacional</a>
-        <a href="/nacional/">Nacional</a>
-        <a href="/mercados/">Mercados</a>
-        <a href="/lecturas/">Contingencia</a>
+        {
+          primaryNavEntries.map(({ href, label }) => (
+            <a
+              href={href}
+              class={activePrimaryHref === href ? "is-active" : undefined}
+              aria-current={activePrimaryHref === href ? "page" : undefined}
+            >
+              {label}
+            </a>
+          ))
+        }
       </nav>
     </header>
     <div id="contenido"><slot /></div>
@@ -297,6 +315,9 @@ const isPrimarySectionLanding = [
   }
   .site-header nav a + a::before {
     content: none;
+  }
+  .site-header nav a.is-active {
+    background: rgba(31, 29, 23, 0.045);
   }
   .site-header nav a:hover {
     background: rgba(31, 29, 23, 0.035);
