@@ -10,10 +10,10 @@ import path from "node:path";
 const root = new URL("../", import.meta.url);
 const editionDir = new URL("src/content/editions/", root);
 const briefingDir = new URL("src/content/briefings/", root);
-const SCRIPT_VERSION = 8;
+const SCRIPT_VERSION = 9;
 const SPEECH_NORMALIZER_VERSION = 5;
-const TARGET_MIN_WORDS = 350;
-const TARGET_MAX_WORDS = 450;
+const TARGET_MIN_WORDS = 260;
+const TARGET_MAX_WORDS = 340;
 
 function frontmatter(text) {
   return text.match(/^---\s*\r?\n([\s\S]*?)\r?\n---/)?.[1] ?? "";
@@ -137,8 +137,8 @@ function newestFirst(a, b) {
   return Date.parse(b.publishedAt ?? "") - Date.parse(a.publishedAt ?? "");
 }
 
-// El guion conserva el texto editorial. La normalización lingüística común
-// para Portada, Nacional y Mercados se aplica en Audio V2 justo antes de Kokoro.
+// El guion conserva el texto editorial. Speech Normalizer V5 adapta la forma
+// hablada justo antes de Kokoro sin modificar el contenido publicado.
 function speechText(value) {
   return String(value ?? "")
     .replace(/\[([^\]]+)\]\([^)]+\)/g, "$1")
@@ -225,10 +225,10 @@ function nearDuplicate(text, accepted) {
       if (current.has(token)) overlap += 1;
     }
     const lexicalOverlap = overlap / Math.min(incoming.size, current.size);
-    if (lexicalOverlap >= 0.62) return true;
+    if (lexicalOverlap >= 0.58) return true;
 
     const numericOverlap = sharedNumberCount(text, existing);
-    return numericOverlap >= 1 && lexicalOverlap >= 0.3;
+    return numericOverlap >= 1 && lexicalOverlap >= 0.26;
   });
 }
 
@@ -242,27 +242,27 @@ function addSegment(parts, accepted, text, { force = false } = {}) {
   return true;
 }
 
-function addEditorialSection(
+function addContribution(
   parts,
   accepted,
   label,
   summary,
   candidates,
-  targetWords,
+  { maxSentences = 1 } = {},
 ) {
   addSegment(parts, accepted, label, { force: true });
   addSegment(parts, accepted, summary);
-  const startWords = countWords(parts.join(" "));
 
+  let added = 0;
   for (const candidate of candidates) {
-    addSegment(parts, accepted, candidate);
-    if (countWords(parts.join(" ")) - startWords >= targetWords) break;
+    if (addSegment(parts, accepted, candidate)) added += 1;
+    if (added >= maxSentences) break;
   }
 }
 
 const editions = await records(editionDir);
 const briefings = await records(briefingDir);
-const latestDaily = editions
+const international = editions
   .filter(({ status, type }) => status === "published" && type === "daily")
   .sort(newestFirst)[0];
 
@@ -275,17 +275,17 @@ const audioOwner = process.env.ATLAS_AUDIO_OWNER ?? null;
 const ownerAllowsGeneration =
   audioOwner === "audio-v2" || audioOwner === "manual-legacy";
 
-if (!latestDaily) {
-  const plan = { needsGeneration: false, reason: "no_published_daily" };
+if (!international) {
+  const plan = { needsGeneration: false, reason: "no_published_international" };
   await writeFile(planPath, `${JSON.stringify(plan, null, 2)}\n`, "utf8");
   if (process.env.GITHUB_OUTPUT) {
     await appendFile(process.env.GITHUB_OUTPUT, "needs_generation=false\n");
   }
-  console.log("Audio diario omitido: no existe una edición General publicada.");
+  console.log("Audio diario omitido: no existe una edición Internacional publicada.");
   process.exit(0);
 }
 
-const date = latestDaily.id.slice(0, 10);
+const date = international.id.slice(0, 10);
 const national = briefings
   .filter(
     ({ id, status, section }) =>
@@ -303,13 +303,16 @@ const markets = briefings
   )
   .sort(newestFirst)[0];
 
+// `general` se conserva temporalmente como alias compatible con consumidores
+// existentes. La fuente editorial de esa pieza ya se declara como Internacional.
 const sourceIds = {
-  general: latestDaily.id,
+  international: international.id,
+  general: international.id,
   national: national?.id ?? null,
   markets: markets?.id ?? null,
 };
 const completeness =
-  Number(Boolean(latestDaily)) +
+  Number(Boolean(international)) +
   Number(Boolean(national)) +
   Number(Boolean(markets));
 
@@ -324,20 +327,22 @@ if (publicDir) {
   }
 }
 
+const existingInternationalId =
+  existing?.sourceIds?.international ?? existing?.sourceIds?.general ?? null;
 const sameSources =
   existing?.scriptVersion === SCRIPT_VERSION &&
   existing?.speechNormalizerVersion === SPEECH_NORMALIZER_VERSION &&
   existing?.date === date &&
-  existing?.sourceIds?.general === sourceIds.general &&
+  existingInternationalId === sourceIds.international &&
   existing?.sourceIds?.national === sourceIds.national &&
   existing?.sourceIds?.markets === sourceIds.markets;
 
-// Portada V8 funciona como review: orienta y deriva a las cápsulas especializadas.
-// Por eso prioriza consecuencias y evolución sobre repetir el desarrollo completo.
-const generalCandidates = [
-  ...sentencesFrom(latestDaily, ["Hecho central", "Por qué importa"]),
-  ...latestDaily.highlights.map(({ text }) => text),
-  ...sentencesFrom(latestDaily, ["En una mirada"]),
+// Portada V9 es un briefing transversal. Cada sección aporta una contribución
+// breve e incremental; ninguna se desarrolla como cápsula completa.
+const internationalCandidates = [
+  ...sentencesFrom(international, ["Hecho central", "Por qué importa"]),
+  ...international.highlights.map(({ text }) => text),
+  ...sentencesFrom(international, ["En una mirada"]),
 ];
 const nationalCandidates = national
   ? [
@@ -351,11 +356,18 @@ const marketsCandidates = markets
       ...markets.highlights.map(({ text }) => text),
     ]
   : [];
+
+const internationalWatch = sentencesFrom(international, ["Qué observar"]);
+const nationalWatch = sentencesFrom(national, ["Qué observar"]);
+const marketsWatch = sentencesFrom(markets, ["Qué observar"]);
 const observationCandidates = [
-  ...sentencesFrom(latestDaily, ["Qué observar"]),
-  ...sentencesFrom(markets, ["Qué observar"]),
-  ...sentencesFrom(national, ["Qué observar"]),
-];
+  internationalWatch[0],
+  nationalWatch[0],
+  marketsWatch[0],
+  ...internationalWatch.slice(1),
+  ...nationalWatch.slice(1),
+  ...marketsWatch.slice(1),
+].filter(Boolean);
 
 const parts = [];
 const accepted = [];
@@ -365,56 +377,60 @@ addSegment(
   `ATLAS NEWS. Briefing de la mañana del ${formatSpanishDate(date)}. Estas son las señales que conviene tener presentes hoy.`,
   { force: true },
 );
-addEditorialSection(
+
+addContribution(
   parts,
   accepted,
   "La señal central.",
-  latestDaily.summary?.replace(/^La semana abre\b/i, "La jornada abre"),
-  generalCandidates,
-  90,
+  international.summary?.replace(/^La semana abre\b/i, "La jornada abre"),
+  internationalCandidates,
 );
+
 if (national) {
-  addEditorialSection(
+  addContribution(
     parts,
     accepted,
     "En Chile.",
     national.summary,
     nationalCandidates,
-    65,
   );
 }
+
 if (markets) {
-  addEditorialSection(
+  addContribution(
     parts,
     accepted,
     "Ahora, mercados.",
     markets.summary,
     marketsCandidates,
-    65,
   );
 }
-addEditorialSection(
+
+addContribution(
   parts,
   accepted,
   "Qué seguir durante la jornada.",
   null,
   observationCandidates,
-  55,
+  { maxSentences: 2 },
 );
 
+// Si el briefing queda demasiado corto, se agrega como máximo una segunda
+// contribución por sección, siempre pasando por el filtro de no repetición.
 if (countWords(parts.join(" ")) < TARGET_MIN_WORDS) {
   const reserve = [
-    ...observationCandidates,
-    ...generalCandidates,
-    ...nationalCandidates,
-    ...marketsCandidates,
-  ];
+    internationalCandidates[1],
+    nationalCandidates[1],
+    marketsCandidates[1],
+  ].filter(Boolean);
+
   for (const candidate of reserve) {
     addSegment(parts, accepted, candidate);
     if (countWords(parts.join(" ")) >= TARGET_MIN_WORDS) break;
   }
 }
 
+// Inicio y cierre se mantienen exactamente iguales a V8.
 addSegment(
   parts,
   accepted,
@@ -439,7 +455,7 @@ const plan = {
   needsGeneration: ownerAllowsGeneration && !sameSources,
   date,
   title: `ATLAS NEWS — Resumen diario — ${formatSpanishDate(date)}`,
-  summary: `Un review breve de las señales principales de General${national ? ", Nacional" : ""}${markets ? " y Mercados" : ""}.`,
+  summary: "Un briefing transversal de Internacional, Nacional y Mercados.",
   voice,
   engine: "Kokoro-82M",
   language: "es",
@@ -468,5 +484,5 @@ console.log(
     ? `Audio ${date}: generación delegada al owner Audio V2; este proceso sólo planifica.`
     : plan.needsGeneration
       ? `Audio ${date}: generación requerida (${completeness}/3, ${wordCount} palabras, objetivo ${TARGET_MIN_WORDS}-${TARGET_MAX_WORDS}).`
-      : `Audio ${date}: ya coincide con las piezas publicadas y el guion v${SCRIPT_VERSION}; se conserva el archivo vigente.`,
+      : `Audio ${date}: ya coincide con Internacional, Nacional y Mercados y el guion v${SCRIPT_VERSION}; se conserva el archivo vigente.`,
 );
