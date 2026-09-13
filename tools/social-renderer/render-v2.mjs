@@ -295,6 +295,9 @@ async function main() {
   const date = dateLabel(contract.publishedDate);
   const cardVisualKeys = contract.highlights.map(visualKey);
   const visuals = await Promise.all(cardVisualKeys.map(materializeVisual));
+  const mainVisual = await materializeVisual(
+    visualKey({ label: contract.title, text: contract.dek }),
+  );
   const keyed = new Map(cardVisualKeys.map((key, i) => [key, visuals[i]]));
   const unique = [...new Set(cardVisualKeys)];
   const coverKeys = ["fed", "chile", "equity"].filter((key) => keyed.has(key));
@@ -317,17 +320,30 @@ async function main() {
     <div style="position:absolute;left:60px;right:60px;bottom:30px;border-top:2px solid ${INK};z-index:4"></div>`;
   await screenshot(page, htmlPage(ogHtml, 1200, 630), path.join(OUT, "atlas-news-social-card-1200x630.png"), 1200, 630);
 
+  const coverDate = new Intl.DateTimeFormat("es-CL", {
+    weekday: "long",
+    day: "2-digit",
+    month: "long",
+    year: "numeric",
+    timeZone: "America/Santiago",
+  })
+    .format(new Date(contract.publishedDate))
+    .toUpperCase();
   const cover = `
-    ${imagePane(coverVisuals[0], "position:absolute;left:0;right:0;top:0;height:420px;z-index:2", true)}
-    <div style="position:absolute;left:0;right:0;top:395px;height:415px;background:linear-gradient(180deg,rgba(244,240,230,.05),${PAPER} 12%,${PAPER} 88%,rgba(244,240,230,.05));z-index:4;border-top:5px double ${INK};border-bottom:5px double ${INK}"></div>
-    <div data-fit style="position:absolute;left:48px;right:48px;top:485px;height:230px;display:flex;align-items:center;justify-content:center;gap:34px;z-index:6">
-      <img src="${mark}" style="width:105px;height:155px;object-fit:contain">
-      <div><div style="font-size:118px;line-height:.82;font-weight:700;letter-spacing:-6px;color:${INK}">ATLAS NEWS</div><div style="font-size:32px;line-height:1;margin-top:20px;text-align:center;letter-spacing:2px">${BRAND_LINE}</div></div>
+    <div data-fit style="position:absolute;left:48px;right:48px;top:35px;height:73px;border-top:5px double ${INK};border-bottom:2px solid ${INK};display:flex;align-items:center;justify-content:space-between;font:700 21px/1 Arial,sans-serif;letter-spacing:1.8px;z-index:8">
+      <span>EDICIÓN · 1/7</span><span>${escapeHtml(coverDate)}</span>
     </div>
-    <div style="position:absolute;right:48px;top:445px;color:${RED};font-size:25px;letter-spacing:2px;z-index:7">1/7</div>
-    ${imagePane(coverVisuals[1], "position:absolute;left:0;width:51%;bottom:0;height:570px;z-index:2", true)}
-    ${imagePane(coverVisuals[2], "position:absolute;right:0;width:51%;bottom:0;height:570px;z-index:3", true)}
-    <div style="position:absolute;left:0;right:0;bottom:0;height:570px;background:linear-gradient(${PAPER} 0%,rgba(244,240,230,.45) 14%,transparent 42%);z-index:4;pointer-events:none"></div>`;
+    ${imagePane(mainVisual, "position:absolute;left:0;right:0;top:108px;height:427px;z-index:2", true)}
+    <div style="position:absolute;left:0;right:0;top:108px;height:427px;background:linear-gradient(180deg,rgba(244,240,230,.18) 0%,transparent 22%,transparent 62%,${PAPER} 100%);z-index:3;pointer-events:none"></div>
+    <div style="position:absolute;left:48px;right:48px;top:505px;height:268px;background:rgba(244,240,230,.97);border-top:5px double ${INK};border-bottom:5px double ${INK};z-index:6"></div>
+    <div data-fit style="position:absolute;left:48px;right:48px;top:520px;height:230px;display:flex;align-items:center;justify-content:center;gap:28px;z-index:7">
+      <img src="${mark}" style="width:102px;height:150px;object-fit:contain">
+      <div><div style="font-size:116px;line-height:.82;font-weight:700;letter-spacing:-6px;color:${INK};white-space:nowrap">ATLAS NEWS</div><div style="font-size:31px;line-height:1;margin-top:18px;text-align:center;letter-spacing:2px">${BRAND_LINE}</div></div>
+    </div>
+    ${imagePane(coverVisuals[1], "position:absolute;left:0;width:57%;top:760px;bottom:0;z-index:2", true)}
+    ${imagePane(coverVisuals[2], "position:absolute;right:0;width:60%;top:760px;bottom:0;z-index:3", true)}
+    <div style="position:absolute;left:0;right:0;top:745px;height:180px;background:linear-gradient(${PAPER} 0%,rgba(244,240,230,.68) 30%,transparent 100%);z-index:4;pointer-events:none"></div>
+    <div style="position:absolute;left:40%;width:23%;top:760px;bottom:0;background:linear-gradient(90deg,transparent 0%,rgba(244,240,230,.52) 48%,transparent 100%);z-index:4;pointer-events:none"></div>`;
 
   const slides = [cover];
   for (let i = 0; i < contract.highlights.length; i += 1) {

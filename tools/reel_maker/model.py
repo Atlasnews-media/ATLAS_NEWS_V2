@@ -22,31 +22,47 @@ class Contract:
     published_date: str
     title: str
     dek: str
-    idea_central: str
-    idea_support: str
-    key_points: list[dict[str, str]]
-    impact_items: list[dict[str, str]]
+    highlights: list[dict[str, str]]
 
     @classmethod
     def load(cls, path: str | Path) -> "Contract":
         raw: dict[str, Any] = json.loads(Path(path).read_text(encoding="utf-8"))
-        required = (
-            "sourceCommit", "canonicalUrl", "publishedDate", "title", "dek",
-            "ideaCentral", "ideaSupport", "keyPoints", "impactItems",
-        )
+        required = ("sourceCommit", "canonicalUrl", "publishedDate", "title", "dek")
         missing = [key for key in required if key not in raw]
         if missing:
             raise ValueError("Contrato ATLAS incompleto; faltan: " + ", ".join(missing))
-        if not isinstance(raw["keyPoints"], list) or len(raw["keyPoints"]) != 3:
-            raise ValueError("keyPoints debe contener exactamente 3 elementos")
-        if not isinstance(raw["impactItems"], list) or len(raw["impactItems"]) != 3:
-            raise ValueError("impactItems debe contener exactamente 3 elementos")
-        for item in raw["keyPoints"]:
-            if not isinstance(item, dict) or not all(k in item for k in ("iconKey", "text")):
-                raise ValueError("Cada keyPoint debe tener iconKey y text")
-        for item in raw["impactItems"]:
-            if not isinstance(item, dict) or not all(k in item for k in ("iconKey", "label", "text")):
-                raise ValueError("Cada impactItem debe tener iconKey, label y text")
+
+        version = str(raw.get("version", "1"))
+        if version == "2":
+            raw_highlights = raw.get("highlights")
+        elif version == "1":
+            source_id = str(raw.get("sourceId", "")).strip()
+            if not source_id:
+                raise ValueError("Contrato v1 requiere sourceId para recuperar las 5 noticias publicadas")
+            source = (Path.cwd() / source_id).resolve()
+            root = Path.cwd().resolve()
+            if root not in source.parents:
+                raise ValueError("sourceId inseguro en contrato v1")
+            raw_highlights = _published_highlights(source)
+        else:
+            raise ValueError(f"Versión de contrato social no soportada: {version}")
+
+        if not isinstance(raw_highlights, list) or len(raw_highlights) != 5:
+            found = len(raw_highlights) if isinstance(raw_highlights, list) else 0
+            raise ValueError(f"Reel Maker requiere exactamente 5 noticias publicadas; encontradas {found}")
+        highlights: list[dict[str, str]] = []
+        for index, item in enumerate(raw_highlights):
+            if not isinstance(item, dict) or not all(k in item for k in ("label", "text")):
+                raise ValueError(f"Cada highlight debe tener label y text: índice {index}")
+            label = str(item["label"]).strip()
+            text = str(item["text"]).strip()
+            if not label or not text:
+                raise ValueError(f"highlight vacío: índice {index}")
+            if len(label) > 72:
+                raise ValueError(f"highlight[{index}].label excede 72 caracteres")
+            if len(text) > 180:
+                raise ValueError(f"highlight[{index}].text excede 180 caracteres")
+            highlights.append({"label": label, "text": text})
         canonical = str(raw["canonicalUrl"]).strip()
         parsed = urlparse(canonical)
         if parsed.scheme != "https" or not parsed.netloc:
@@ -60,14 +76,46 @@ class Contract:
             published_date=str(raw["publishedDate"]),
             title=str(raw["title"]),
             dek=str(raw["dek"]),
-            idea_central=str(raw["ideaCentral"]),
-            idea_support=str(raw["ideaSupport"]),
-            key_points=[{"iconKey": str(x["iconKey"]), "text": str(x["text"])} for x in raw["keyPoints"]],
-            impact_items=[
-                {"iconKey": str(x["iconKey"]), "label": str(x["label"]), "text": str(x["text"])}
-                for x in raw["impactItems"]
-            ],
+            highlights=highlights,
         )
+
+
+def _yaml_scalar(raw: str) -> str:
+    value = raw.strip()
+    if value.startswith('"') and value.endswith('"'):
+        return str(json.loads(value))
+    if value.startswith("'") and value.endswith("'"):
+        return value[1:-1].replace("''", "'")
+    return value
+
+
+def _published_highlights(source: Path) -> list[dict[str, str]]:
+    if not source.is_file():
+        raise FileNotFoundError(f"Edición publicada no encontrada: {source}")
+    text = source.read_text(encoding="utf-8")
+    parts = text.split("---", 2)
+    if len(parts) < 3:
+        raise ValueError(f"Frontmatter inválido en edición: {source}")
+    lines = parts[1].splitlines()
+    try:
+        start = lines.index("highlights:")
+    except ValueError:
+        return []
+    items: list[dict[str, str]] = []
+    current: dict[str, str] | None = None
+    for line in lines[start + 1 :]:
+        if line and not line.startswith(" "):
+            break
+        stripped = line.strip()
+        if stripped.startswith("- label:"):
+            if current:
+                items.append(current)
+            current = {"label": _yaml_scalar(stripped.split(":", 1)[1]), "text": ""}
+        elif stripped.startswith("text:") and current is not None:
+            current["text"] = _yaml_scalar(stripped.split(":", 1)[1])
+    if current:
+        items.append(current)
+    return [item for item in items if item.get("label") and item.get("text")]
 
 
 @dataclass(frozen=True)
@@ -212,16 +260,11 @@ def frame(index: int, contract: Contract) -> str:
 
 def scene_specs(contract: Contract) -> list[tuple[str, str, str]]:
     host = urlparse(contract.canonical_url).hostname or "eldesiempre100.github.io"
-    impacts = "\n".join(f'{item["label"]} — {item["text"]}' for item in contract.impact_items)
-    return [
-        ("Titular", contract.title, contract.dek),
-        ("Idea central", contract.idea_central, contract.idea_support),
-        ("Clave 1", "Clave 1", contract.key_points[0]["text"]),
-        ("Clave 2", "Clave 2", contract.key_points[1]["text"]),
-        ("Clave 3", "Clave 3", contract.key_points[2]["text"]),
-        ("Impacto", "Por qué importa", impacts),
-        ("Cierre", "ATLAS NEWS", f"Lee la edición completa en\n{host}"),
-    ]
+    specs: list[tuple[str, str, str]] = [("Titular", contract.title, contract.dek)]
+    for index, item in enumerate(contract.highlights, 1):
+        specs.append((f"En una mirada {index}", item["label"], item["text"]))
+    specs.append(("Cierre", "ATLAS NEWS", f"Lee la edición completa en\n{host}"))
+    return specs
 
 
 def plate(index: int, spec: tuple[str, str, str], contract: Contract, image: Path | None, guard: int) -> tuple[str, dict[str, Any]]:
@@ -229,22 +272,20 @@ def plate(index: int, spec: tuple[str, str, str], contract: Contract, image: Pat
     width = W - SAFE_L - SAFE_R - 24 - guard
     if index == 1:
         title_base, body_base, title_lines, body_lines = 78, 44, 6, 8
-    elif index == 2:
-        title_base, body_base, title_lines, body_lines = 62, 40, 9, 10
-    elif index == 6:
-        title_base, body_base, title_lines, body_lines = 70, 36, 4, 22
+    elif 2 <= index <= 6:
+        title_base, body_base, title_lines, body_lines = 70, 42, 6, 11
     elif index == 7:
         title_base, body_base, title_lines, body_lines = 88, 46, 3, 6
     else:
-        title_base, body_base, title_lines, body_lines = 72, 46, 4, 9
+        raise ValueError(f"Escena inesperada: {index}")
 
-    title = fit(heading, title_base, 46, width, title_lines, f"Escena {index} título", "700", 1.10)
+    title = fit(heading, title_base, 44, width, title_lines, f"Escena {index} título", "700", 1.10)
     title_y = CONTENT_TOP
     body_y = int(title_y + title.height + 74)
-    body_layout = fit(body, body_base, 32, width, body_lines, f"Escena {index} cuerpo", "400", 1.18)
+    body_layout = fit(body, body_base, 30, width, body_lines, f"Escena {index} cuerpo", "400", 1.18)
     if body_y + body_layout.height > CONTENT_BOTTOM:
         replacement: Layout | None = None
-        for size in range(body_layout.size - 2, 30, -2):
+        for size in range(body_layout.size - 2, 28, -2):
             try:
                 candidate = Layout(size, wrap(body, size, width, body_lines, f"Escena {index} cuerpo", "400"), 1.18)
             except ValueError:

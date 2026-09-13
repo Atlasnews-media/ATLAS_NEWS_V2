@@ -52,7 +52,16 @@ jobs:
           ref: ${{ github.event_name == 'workflow_run' && github.event.workflow_run.head_sha || github.event_name == 'pull_request' && github.event.pull_request.head.sha || 'main' }}
           fetch-depth: 0
 
+      - name: Prepare deterministic five-news PR contract
+        if: github.event_name == 'pull_request'
+        run: |
+          set -euo pipefail
+          mkdir -p tools/social-renderer/.generated
+          cp tools/reel_maker/daily-contract.example.json tools/social-renderer/.generated/daily-contract.json
+          jq -e '.version == "2" and (.highlights | length == 5)' tools/social-renderer/.generated/daily-contract.json >/dev/null
+
       - name: Resolve published daily sourceCommit
+        if: github.event_name != 'pull_request'
         id: source
         shell: bash
         env:
@@ -126,6 +135,7 @@ jobs:
           echo "Resolved Reel sourceCommit=$source_commit edition=$resolved_edition_id"
 
       - name: Wait for verified public edition
+        if: github.event_name != 'pull_request'
         shell: bash
         env:
           SOURCE_COMMIT: ${{ steps.source.outputs.source_commit }}
@@ -165,6 +175,7 @@ jobs:
           done
 
       - name: Regenerate canonical social contract
+        if: github.event_name != 'pull_request'
         id: contract
         env:
           ATLAS_SOURCE_COMMIT: ${{ steps.source.outputs.source_commit }}
@@ -172,6 +183,7 @@ jobs:
         run: node tools/social-renderer/prepare-daily-contract.mjs
 
       - name: Verify contract identity before Reel Maker
+        if: github.event_name != 'pull_request'
         env:
           SOURCE_COMMIT: ${{ steps.source.outputs.source_commit }}
           SOURCE_ID: ${{ steps.source.outputs.source_id }}
@@ -217,14 +229,16 @@ jobs:
           SOURCE_COMMIT: ${{ steps.source.outputs.source_commit }}
         run: |
           set -euo pipefail
-          output="tools/reel_maker/output/atlas-news-reel-${SOURCE_COMMIT}.mp4"
+          contract="tools/social-renderer/.generated/daily-contract.json"
+          source_commit="${SOURCE_COMMIT:-$(jq -r '.sourceCommit' "$contract")}"
+          output="tools/reel_maker/output/atlas-news-reel-${source_commit}.mp4"
           report="tools/reel_maker/output/visual-validation.json"
-          plates="tools/reel_maker/output/atlas-news-plates-${SOURCE_COMMIT}"
+          plates="tools/reel_maker/output/atlas-news-plates-${source_commit}"
           test -f "$output"
           test -f "$report"
           test "$(find "$plates" -maxdepth 1 -type f -name 'scene-*.png' | wc -l | tr -d ' ')" = "7"
           test "$(find "$plates" -maxdepth 1 -type f -name 'scene-*.svg' | wc -l | tr -d ' ')" = "7"
-          jq -e --arg source "$SOURCE_COMMIT" '
+          jq -e --arg source "$source_commit" '
             .sourceCommit == $source and
             .status == "PASS" and
             (.scenes | length == 7) and
@@ -241,12 +255,15 @@ jobs:
         env:
           SOURCE_COMMIT: ${{ steps.source.outputs.source_commit }}
         run: |
+          set -euo pipefail
+          contract="tools/social-renderer/.generated/daily-contract.json"
+          source_commit="${SOURCE_COMMIT:-$(jq -r '.sourceCommit' "$contract")}"
           {
             echo "### Reel Maker V2 — PASS"
-            echo "sourceCommit: \`${SOURCE_COMMIT}\`"
-            echo "Consumer: edición web ya publicada y verificada"
+            echo "sourceCommit: \`${source_commit}\`"
+            echo "Consumer: edición web ya publicada y verificada / fixture determinístico en PR"
             echo "Scenes: 7 / 7 visualmente validadas"
-            echo "Output: \`atlas-news-reel-${SOURCE_COMMIT}.mp4\`"
+            echo "Output: \`atlas-news-reel-${source_commit}.mp4\`"
             echo "No Meta API / no Reel publish / no dependency on Instagram."
           } >> "$GITHUB_STEP_SUMMARY"
 
