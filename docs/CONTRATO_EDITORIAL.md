@@ -16,7 +16,7 @@ Una edición diaria o semanal debe incluir los siguientes metadatos:
 | `sources`       | Al menos una fuente con nombre y URL válida  |
 | `featured`      | Indicador booleano; por defecto `false`      |
 | `editionNumber` | Entero positivo opcional                     |
-| `highlights`    | Entre 3 y 6 claves por compatibilidad técnica |
+| `highlights`    | Entre 3 y 6 claves breves para la portada    |
 
 En toda nueva edición General diaria, `highlights` debe contener **exactamente cinco** claves. Ni cuatro ni seis son válidos para una nueva General diaria. Las cinco claves deben derivar de la misma investigación internacional verificada y del mismo cuerpo editorial de la edición; esos mismos cinco elementos alimentan Portada y los consumidores sociales posteriores. Ningún proceso downstream debe inventar, completar o sustituir un highlight con contenido de otras secciones. El schema mantiene el rango histórico de 3 a 6 únicamente por compatibilidad con ediciones anteriores y otros tipos de edición; esa flexibilidad técnica no modifica el contrato funcional de nuevas General diarias.
 
