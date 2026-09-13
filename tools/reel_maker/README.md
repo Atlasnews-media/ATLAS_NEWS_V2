@@ -27,6 +27,8 @@ Desde la raíz del repositorio:
 python3 tools/reel_maker/reel_maker.py \
   tools/social-renderer/.generated/daily-contract.json \
   --output-dir tools/reel_maker/output \
+  --music tools/reel_maker/assets/atlas-news-theme.mp3 \
+  --music-volume 0.20 \
   --keep-plates
 ```
 
@@ -37,6 +39,12 @@ tools/reel_maker/output/atlas-news-reel-<sourceCommit>.mp4
 ```
 
 `--keep-plates` conserva las siete láminas en SVG y PNG para revisión visual. Los archivos generados son artefactos de ejecución y no se suben a `main`.
+
+## Música institucional
+
+El workflow automático usa `tools/reel_maker/assets/atlas-news-theme.mp3`, un corte de aproximadamente 19,6 segundos proporcionado por Dirección para ATLAS NEWS. Reel Maker lo mezcla al 20% de volumen y FFmpeg lo embebe en el MP4 final como AAC. No descarga música ni depende de servicios externos durante la ejecución.
+
+La música es una capa de salida de Reel Maker: si el workflow falla, no bloquea ni revierte la edición web, Audio V2 o el carrusel de Instagram.
 
 ## Estructura de 7 escenas
 
@@ -72,7 +80,8 @@ El MP4 final falla si no cumple:
 - 1080 × 1920;
 - 30 fps;
 - `yuv420p`;
-- duración aproximada de `7 × --duration`.
+- duración aproximada de `7 × --duration`;
+- stream de audio AAC cuando se usa el tema institucional automático.
 
 Por defecto cada escena dura 2,8 s y el Reel dura aproximadamente 19,6 s.
 
