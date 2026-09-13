@@ -14,7 +14,8 @@ featured: false
 demo: false
 # General diaria: alcance editorial 100% internacional; barrer mundo según relevancia, no solo EE.UU.
 # No incorporar noticias domésticas chilenas. Nacional es propietario exclusivo de hechos locales.
-# General diaria: usar entre 4 y 6 claves según la densidad real; no fijar una cantidad por rutina.
+# Nueva General diaria: usar EXACTAMENTE 5 claves. Ni 4 ni 6.
+# Los mismos 5 highlights alimentan Portada y consumidores posteriores; ningún downstream completa faltantes desde otras secciones.
 # Cada label debe entenderse por sí solo como microtitular: qué pasó o qué implica, en lenguaje común.
 # Prueba de aceptación: ¿un lector interesado en economía, no especialista, entiende la idea sin leer text?
 highlights:
@@ -26,8 +27,8 @@ highlights:
     text: "Síntesis breve de una tercera clave internacional relevante para la edición."
   - label: "Cuarta señal relevante explicada de forma directa"
     text: "Síntesis breve de otra señal internacional respaldada por la misma investigación."
-  - label: "Quinta clave solo si agrega comprensión real"
-    text: "Síntesis breve de una señal adicional solo cuando agrega valor real al lector."
+  - label: "Quinta clave internacional de la misma investigación"
+    text: "Síntesis breve de la quinta señal internacional que completa el contrato canónico de la edición."
 marketSummary:
   asOf: "2026-08-03T08:00:00-04:00"
   items:
@@ -49,11 +50,11 @@ marketSummary:
 
 ## En una mirada
 
-<!-- Entre 4 y 6 claves internacionales derivadas de la misma investigación. -->
+<!-- Exactamente 5 claves internacionales derivadas de la misma investigación. -->
 
 ## Por qué importa
 
-<!-- Consecuencias macroeconómicas, financieras o geopolíticas del hecho internacional. -->
+<!-- Al menos 3 frases completas y publicables sobre consecuencias macroeconómicas, financieras o geopolíticas del hecho internacional. -->
 
 ## Mercados globales
 
