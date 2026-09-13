@@ -38,38 +38,6 @@ function parseHighlights(frontmatterLines) {
   return items.filter((item) => item.label && item.text);
 }
 
-function sectionBody(markdown, heading) {
-  const lines = markdown.split(/\r?\n/);
-  const target = `## ${heading}`;
-  const start = lines.findIndex((line) => line.trim() === target);
-  if (start < 0) return "";
-  const selected = [];
-  for (let i = start + 1; i < lines.length; i += 1) {
-    if (/^##\s+/.test(lines[i])) break;
-    selected.push(lines[i]);
-  }
-  return selected.join("\n").trim();
-}
-
-function plainText(markdown) {
-  return String(markdown || "")
-    .replace(/\[([^\]]+)\]\([^\)]+\)/g, "$1")
-    .replace(/[*_`>#]/g, "")
-    .replace(/\s+/g, " ")
-    .trim();
-}
-
-function firstSentence(markdown) {
-  const clean = plainText(markdown);
-  if (!clean) return "";
-  const segmenter = new Intl.Segmenter("es", { granularity: "sentence" });
-  return (
-    Array.from(segmenter.segment(clean), ({ segment }) => segment.trim()).find(
-      (segment) => segment.length >= 12,
-    ) || ""
-  );
-}
-
 function compact(text, max, label) {
   const clean = String(text || "").replace(/\s+/g, " ").trim();
   if (!clean) throw new Error(`${label} is required`);
@@ -77,20 +45,10 @@ function compact(text, max, label) {
   const cut = clean.slice(0, max - 1);
   const boundary = cut.lastIndexOf(" ");
   const shortened = `${cut.slice(0, boundary > max * 0.65 ? boundary : cut.length).trim()}…`;
-  console.warn(`[social-v2] ${label} compacted from ${clean.length} to ${shortened.length} chars`);
+  console.warn(
+    `[social-v2] ${label} compacted from ${clean.length} to ${shortened.length} chars`,
+  );
   return shortened;
-}
-
-function fallbackCards(markdown) {
-  const candidates = [
-    ["Qué observar", sectionBody(markdown, "Qué observar")],
-    ["Chile", sectionBody(markdown, "Chile")],
-    ["Mercados globales", sectionBody(markdown, "Mercados globales")],
-    ["Hecho central", sectionBody(markdown, "Hecho central")],
-  ];
-  return candidates
-    .map(([label, body]) => ({ label, text: firstSentence(body) }))
-    .filter((item) => item.text);
 }
 
 async function main() {
@@ -115,33 +73,21 @@ async function main() {
 
   const markdown = await fs.readFile(sourcePath, "utf8");
   const parts = markdown.split(/^---\s*$/m);
-  if (parts.length < 3) throw new Error(`Invalid Markdown frontmatter: ${v1.sourceId}`);
+  if (parts.length < 3)
+    throw new Error(`Invalid Markdown frontmatter: ${v1.sourceId}`);
   const frontmatterLines = parts[1].split(/\r?\n/);
   const publishedHighlights = parseHighlights(frontmatterLines);
 
-  const cards = publishedHighlights.slice(0, 5).map((item, index) => ({
+  if (publishedHighlights.length !== 5) {
+    throw new Error(
+      `Fail-closed: seven-slide carousel requires exactly the 5 published General highlights; found ${publishedHighlights.length}`,
+    );
+  }
+
+  const cards = publishedHighlights.map((item, index) => ({
     label: compact(item.label, 72, `highlights[${index}].label`),
     text: compact(item.text, 180, `highlights[${index}].text`),
   }));
-
-  if (cards.length < 5) {
-    const seen = new Set(cards.map((item) => item.label.toLowerCase()));
-    for (const item of fallbackCards(markdown)) {
-      if (cards.length >= 5) break;
-      if (seen.has(item.label.toLowerCase())) continue;
-      cards.push({
-        label: compact(item.label, 72, `fallback[${cards.length}].label`),
-        text: compact(item.text, 180, `fallback[${cards.length}].text`),
-      });
-      seen.add(item.label.toLowerCase());
-    }
-  }
-
-  if (cards.length !== 5) {
-    throw new Error(
-      `Fail-closed: seven-slide carousel requires 5 content cards; resolved ${cards.length}`,
-    );
-  }
 
   const v2 = {
     version: "2",

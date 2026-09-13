@@ -330,12 +330,11 @@ async function main() {
 
   const sourceHighlights = highlights(frontmatterLines);
   if (
-    sourceHighlights.length < 3 ||
-    sourceHighlights.length > 6 ||
+    sourceHighlights.length !== 5 ||
     sourceHighlights.some((item) => !item.label || !item.text)
   ) {
     throw new Error(
-      "Fail-closed: automatic social contract requires between 3 and 6 published highlights",
+      `Fail-closed: automatic social contract requires exactly 5 published highlights; found ${sourceHighlights.length}`,
     );
   }
   const socialHighlights = sourceHighlights.slice(0, 3);

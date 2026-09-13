@@ -58,6 +58,20 @@ function frontmatterText(text) {
   return text.match(/^---\s*\r?\n([\s\S]*?)\r?\n---/)?.[1] ?? "";
 }
 
+function frontmatterHighlightCount(frontmatter) {
+  const lines = String(frontmatter || "").split(/\r?\n/);
+  const start = lines.findIndex((line) => line === "highlights:");
+  if (start < 0) return 0;
+
+  let count = 0;
+  for (let i = start + 1; i < lines.length; i += 1) {
+    const line = lines[i];
+    if (line && !line.startsWith(" ")) break;
+    if (/^\s{2}- label:\s*.+$/.test(line)) count += 1;
+  }
+  return count;
+}
+
 function parseYamlScalar(value) {
   const trimmed = value.trim();
   try {
@@ -209,6 +223,19 @@ async function validateFile(
     );
   }
 
+  const isNewGeneralDaily =
+    filename.includes("-daily-") &&
+    Boolean(filenameDate) &&
+    filenameDate >= "2026-09-14";
+  if (isNewGeneralDaily) {
+    const highlightCount = frontmatterHighlightCount(frontmatter);
+    if (highlightCount !== 5) {
+      errors.push(
+        `la General diaria desde 2026-09-14 debe contener exactamente cinco highlights; detectados: ${highlightCount}`,
+      );
+    }
+  }
+
   const status = frontmatterValue(text, "status");
   if (!status || !["draft", "published"].includes(status))
     errors.push("status no es válido");
@@ -217,7 +244,7 @@ async function validateFile(
     filename.includes("-daily-") &&
     !text.includes("\nhighlights:")
   ) {
-    errors.push("la edición diaria publicada no contiene tres destacados");
+    errors.push("la edición diaria publicada no contiene highlights");
   }
 
   const pendingVerification = frontmatter.includes("pendiente-verificacion");
