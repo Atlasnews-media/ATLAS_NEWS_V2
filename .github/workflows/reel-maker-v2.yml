@@ -1,9 +1,14 @@
-name: Reel Maker V2 — post-publication artifact
+name: Reel Maker V2 — post-publication
 
 on:
   workflow_run:
     workflows: ["Publicar ATLAS NEWS"]
     types: [completed]
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/reel-maker-v2.yml"
+      - "tools/reel_maker/**"
   pull_request:
     branches: [main]
     paths:
@@ -20,36 +25,41 @@ on:
 permissions:
   contents: read
 
+env:
+  ATLAS_PUBLIC_STATUS_URL: https://eldesiempre100.github.io/status.json
+  INSTAGRAM_API_VERSION: v23.0
+  INSTAGRAM_EXPECTED_USERNAME: _atlas_news
+
 concurrency:
   group: >-
     reel-maker-v2-${{
       github.event_name == 'pull_request' && format('pr-{0}', github.event.pull_request.number) ||
       github.event_name == 'workflow_run' && github.event.workflow_run.head_sha ||
+      github.event_name == 'push' && github.sha ||
       inputs.source_commit || github.run_id
     }}
   cancel-in-progress: ${{ github.event_name == 'pull_request' }}
 
 jobs:
   build-reel:
-    name: Generar Reel desde edición web verificada
+    name: Generar y distribuir Reel desde edición web verificada
     if: >-
       github.event_name == 'pull_request' ||
       github.event_name == 'workflow_dispatch' ||
+      github.event_name == 'push' ||
       (github.event_name == 'workflow_run' &&
        github.event.workflow_run.conclusion == 'success' &&
        github.event.workflow_run.event == 'push' &&
        github.event.workflow_run.head_branch == 'main' &&
        startsWith(github.event.workflow_run.display_title, 'Paquete editorial matutino — '))
     runs-on: ubuntu-latest
-    timeout-minutes: 8
-    env:
-      ATLAS_PUBLIC_STATUS_URL: https://eldesiempre100.github.io/status.json
+    timeout-minutes: 12
 
     steps:
       - name: Checkout final-distribution runtime and source history
         uses: actions/checkout@v5
         with:
-          ref: ${{ github.event_name == 'workflow_run' && github.event.workflow_run.head_sha || github.event_name == 'pull_request' && github.event.pull_request.head.sha || 'main' }}
+          ref: ${{ github.event_name == 'workflow_run' && github.event.workflow_run.head_sha || github.event_name == 'pull_request' && github.event.pull_request.head.sha || github.event_name == 'push' && github.sha || 'main' }}
           fetch-depth: 0
 
       - name: Resolve published daily sourceCommit
@@ -190,11 +200,12 @@ jobs:
             exit 26
           }
 
-      - name: Verify Reel Maker runtime
+      - name: Verify Reel Maker and publisher runtime
         run: |
           set -euo pipefail
           python3 --version
           python3 -m py_compile tools/reel_maker/model.py tools/reel_maker/validate.py tools/reel_maker/reel_maker.py
+          node --check tools/reel_maker/publish-instagram-reel.mjs
           if ! command -v ffmpeg >/dev/null 2>&1 || ! command -v ffprobe >/dev/null 2>&1; then
             sudo apt-get update -qq
             sudo apt-get install -y -qq --no-install-recommends ffmpeg fonts-dejavu-core
@@ -237,17 +248,223 @@ jobs:
             .video.r_frame_rate == "30/1"
           ' "$report" >/dev/null
 
-      - name: Summarize isolated Phase 4 result
+      - name: Verify publication secrets
+        if: github.event_name != 'pull_request'
+        env:
+          INSTAGRAM_ACCESS_TOKEN: ${{ secrets.INSTAGRAM_ACCESS_TOKEN }}
+          ATLAS_PAGES_DEPLOY_KEY: ${{ secrets.ATLAS_PAGES_DEPLOY_KEY }}
+        run: |
+          set -euo pipefail
+          test -n "$INSTAGRAM_ACCESS_TOKEN" || { echo "BLOCKED_EXTERNAL: INSTAGRAM_ACCESS_TOKEN is missing."; exit 30; }
+          test -n "$ATLAS_PAGES_DEPLOY_KEY" || { echo "BLOCKED_EXTERNAL: ATLAS_PAGES_DEPLOY_KEY is missing."; exit 31; }
+
+      - name: Prepare public social-assets access
+        if: github.event_name != 'pull_request'
+        env:
+          DEPLOY_KEY: ${{ secrets.ATLAS_PAGES_DEPLOY_KEY }}
+        run: |
+          set -euo pipefail
+          install -m 700 -d ~/.ssh
+          printf '%s\n' "$DEPLOY_KEY" > ~/.ssh/atlas_news_pages
+          chmod 600 ~/.ssh/atlas_news_pages
+          ssh-keyscan -H github.com >> ~/.ssh/known_hosts
+
+      - name: Checkout public social-assets host
+        if: github.event_name != 'pull_request'
+        env:
+          GIT_SSH_COMMAND: ssh -i ~/.ssh/atlas_news_pages -o IdentitiesOnly=yes
+        run: |
+          set -euo pipefail
+          git clone --depth 1 --branch social-assets \
+            git@github.com:EldeSiempre100/EldeSiempre100.github.io.git \
+            _social_assets
+
+      - name: Enforce Reel sourceCommit idempotency
+        if: github.event_name != 'pull_request'
+        id: reel_idempotency
+        env:
+          SOURCE_COMMIT: ${{ steps.source.outputs.source_commit }}
+        run: |
+          set -euo pipefail
+          evidence="_social_assets/instagram-reel-published/${SOURCE_COMMIT}.json"
+          if [ ! -f "$evidence" ]; then
+            echo "already_published=false" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          jq -e --arg source "$SOURCE_COMMIT" '
+            .sourceCommit == $source and
+            (.status == "PUBLISHED_VERIFIED" or .status == "ALREADY_PUBLISHED_VERIFIED") and
+            (.permalink | type == "string" and length > 0)
+          ' "$evidence" >/dev/null || {
+            echo "Fail-closed: Reel evidence exists but is invalid: $evidence"
+            exit 32
+          }
+          echo "already_published=true" >> "$GITHUB_OUTPUT"
+          permalink="$(jq -r '.permalink' "$evidence")"
+          {
+            echo "### Reel Maker V2 — ALREADY_PUBLISHED_VERIFIED"
+            echo "sourceCommit: \`${SOURCE_COMMIT}\`"
+            echo "Permalink: ${permalink}"
+            echo "No duplicate Reel was created."
+          } >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Stage Reel MP4 on public HTTPS URL
+        if: github.event_name != 'pull_request' && steps.reel_idempotency.outputs.already_published != 'true'
+        id: stage_reel
+        env:
+          GIT_SSH_COMMAND: ssh -i ~/.ssh/atlas_news_pages -o IdentitiesOnly=yes
+          SOURCE_COMMIT: ${{ steps.source.outputs.source_commit }}
+        run: |
+          set -euo pipefail
+          stage_dir="reel-staging/${SOURCE_COMMIT}"
+          file="atlas-news-reel-${SOURCE_COMMIT}.mp4"
+          mkdir -p "_social_assets/$stage_dir"
+          cp "tools/reel_maker/output/$file" "_social_assets/$stage_dir/$file"
+
+          cd _social_assets
+          git config user.name "ATLAS NEWS Reel Publisher"
+          git config user.email "actions@users.noreply.github.com"
+          git add "$stage_dir/$file"
+          if ! git diff --cached --quiet; then
+            git commit -m "social-assets: stage Reel ${SOURCE_COMMIT::7}"
+            git push origin HEAD:social-assets
+          fi
+
+          video_url="https://raw.githubusercontent.com/EldeSiempre100/EldeSiempre100.github.io/social-assets/${stage_dir}/${file}"
+          echo "REEL_VIDEO_URL=$video_url" >> "$GITHUB_ENV"
+          echo "stage_dir=$stage_dir" >> "$GITHUB_OUTPUT"
+          echo "video_url=$video_url" >> "$GITHUB_OUTPUT"
+
+      - name: Confirm staged Reel is publicly fetchable
+        if: github.event_name != 'pull_request' && steps.reel_idempotency.outputs.already_published != 'true'
+        run: |
+          set -euo pipefail
+          ok=0
+          for attempt in 1 2 3 4 5 6 7 8; do
+            code="$(curl -L -sS --range 0-4095 -o /tmp/atlas-reel.mp4 -w '%{http_code}' "$REEL_VIDEO_URL" || true)"
+            size="$(wc -c < /tmp/atlas-reel.mp4 2>/dev/null || echo 0)"
+            if { [ "$code" = "200" ] || [ "$code" = "206" ]; } && [ "$size" -gt 0 ]; then
+              ok=1
+              break
+            fi
+            sleep "$attempt"
+          done
+          test "$ok" = "1" || { echo "Fail-closed: public Reel staging failed for $REEL_VIDEO_URL"; exit 33; }
+
+      - name: Revalidate public identity immediately before Meta Reel
+        if: github.event_name != 'pull_request' && steps.reel_idempotency.outputs.already_published != 'true'
+        env:
+          ATLAS_SOURCE_COMMIT: ${{ steps.source.outputs.source_commit }}
+        run: |
+          set -euo pipefail
+          node tools/social-renderer/prepare-daily-contract.mjs
+          jq -e --arg source "$ATLAS_SOURCE_COMMIT" '.sourceCommit == $source' tools/social-renderer/.generated/daily-contract.json >/dev/null
+
+      - name: Publish verified Instagram Reel
+        id: meta_reel
+        continue-on-error: true
+        if: github.event_name != 'pull_request' && steps.reel_idempotency.outputs.already_published != 'true'
+        working-directory: tools/reel_maker
+        env:
+          SOCIAL_CONTRACT: tools/social-renderer/.generated/daily-contract.json
+          SOCIAL_PUBLICATION_STATUS: PUBLICACIÓN DISPONIBLE / VERIFICADA
+          INSTAGRAM_REEL_PUBLISH_CONFIRMATION: PUBLICAR REEL / AUTORIZADO
+          INSTAGRAM_ACCESS_TOKEN: ${{ secrets.INSTAGRAM_ACCESS_TOKEN }}
+          REEL_VIDEO_URL: ${{ env.REEL_VIDEO_URL }}
+          REEL_STATE_ROOT: ${{ github.workspace }}/_social_assets
+        run: node publish-instagram-reel.mjs
+
+      - name: Persist ambiguous Reel result for VERIFY_FIRST
+        if: steps.meta_reel.outcome == 'failure'
+        env:
+          GIT_SSH_COMMAND: ssh -i ~/.ssh/atlas_news_pages -o IdentitiesOnly=yes
+          SOURCE_COMMIT: ${{ steps.source.outputs.source_commit }}
+        run: |
+          set -euo pipefail
+          evidence="tools/reel_maker/output/instagram-reel-publish.json"
+          if [[ ! -f "$evidence" ]]; then
+            echo "No ambiguous Reel evidence exists; no pending marker written."
+            exit 0
+          fi
+          if ! jq -e '.status == "PUBLISHED_UNVERIFIED" and (.mediaId | type == "string" and length > 0)' "$evidence" >/dev/null 2>&1; then
+            echo "Reel failure did not produce PUBLISHED_UNVERIFIED mediaId; no pending marker written."
+            exit 0
+          fi
+          mkdir -p _social_assets/instagram-reel-pending
+          enriched="$(mktemp)"
+          jq --arg source "$SOURCE_COMMIT" '. + {sourceCommit:$source}' "$evidence" > "$enriched"
+          cp "$enriched" "_social_assets/instagram-reel-pending/${SOURCE_COMMIT}.json"
+          cd _social_assets
+          git config user.name "ATLAS NEWS Reel Publisher"
+          git config user.email "actions@users.noreply.github.com"
+          git add "instagram-reel-pending/${SOURCE_COMMIT}.json"
+          if ! git diff --cached --quiet; then
+            git commit -m "social-assets: record ambiguous Reel ${SOURCE_COMMIT::7}"
+            git push origin HEAD:social-assets
+          fi
+
+      - name: Fail closed after unsuccessful Reel publish
+        if: steps.meta_reel.outcome == 'failure'
+        run: |
+          echo "Instagram Reel publish attempt failed; recovery is required."
+          exit 40
+
+      - name: Persist PUBLISHED_VERIFIED Reel evidence
+        if: steps.meta_reel.outcome == 'success' && steps.reel_idempotency.outputs.already_published != 'true'
+        env:
+          GIT_SSH_COMMAND: ssh -i ~/.ssh/atlas_news_pages -o IdentitiesOnly=yes
+          SOURCE_COMMIT: ${{ steps.source.outputs.source_commit }}
+          CANONICAL_URL: https://eldesiempre100.github.io/ediciones/${{ steps.source.outputs.edition_id }}/
+          STAGE_DIR: ${{ steps.stage_reel.outputs.stage_dir }}
+        run: |
+          set -euo pipefail
+          evidence="tools/reel_maker/output/instagram-reel-publish.json"
+          jq -e --arg canonical "$CANONICAL_URL" '
+            (.status == "PUBLISHED_VERIFIED" or .status == "ALREADY_PUBLISHED_VERIFIED") and
+            .username == "_atlas_news" and
+            .canonicalUrl == $canonical and
+            (.permalink | type == "string" and length > 0)
+          ' "$evidence" >/dev/null || {
+            echo "Fail-closed: Reel publication evidence is not verified."
+            exit 41
+          }
+          mkdir -p _social_assets/instagram-reel-published
+          enriched="$(mktemp)"
+          jq --arg source "$SOURCE_COMMIT" '. + {sourceCommit:$source}' "$evidence" > "$enriched"
+          cp "$enriched" "_social_assets/instagram-reel-published/${SOURCE_COMMIT}.json"
+          cp "$enriched" "_social_assets/${STAGE_DIR}/instagram-reel-publish.json"
+          rm -f "_social_assets/instagram-reel-pending/${SOURCE_COMMIT}.json"
+
+          cd _social_assets
+          git config user.name "ATLAS NEWS Reel Publisher"
+          git config user.email "actions@users.noreply.github.com"
+          git add "instagram-reel-published/${SOURCE_COMMIT}.json" "${STAGE_DIR}/instagram-reel-publish.json"
+          git add -u "instagram-reel-pending/${SOURCE_COMMIT}.json" 2>/dev/null || true
+          if ! git diff --cached --quiet; then
+            git commit -m "social-assets: record verified Reel ${SOURCE_COMMIT::7}"
+            git push origin HEAD:social-assets
+          fi
+          permalink="$(jq -r '.permalink' "instagram-reel-published/${SOURCE_COMMIT}.json")"
+          {
+            echo "### Reel Maker V2 — PUBLISHED_VERIFIED"
+            echo "sourceCommit: \`${SOURCE_COMMIT}\`"
+            echo "Scenes: 7 / 7 visualmente validadas"
+            echo "Cuenta: \`_atlas_news\`"
+            echo "Permalink: ${permalink}"
+          } >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Summarize isolated Phase 4 artifact
+        if: github.event_name == 'pull_request'
         env:
           SOURCE_COMMIT: ${{ steps.source.outputs.source_commit }}
         run: |
           {
-            echo "### Reel Maker V2 — PASS"
+            echo "### Reel Maker V2 — PR PASS"
             echo "sourceCommit: \`${SOURCE_COMMIT}\`"
             echo "Consumer: edición web ya publicada y verificada"
             echo "Scenes: 7 / 7 visualmente validadas"
             echo "Output: \`atlas-news-reel-${SOURCE_COMMIT}.mp4\`"
-            echo "No Meta API / no Reel publish / no dependency on Instagram."
+            echo "Meta publish intentionally skipped on pull_request."
           } >> "$GITHUB_STEP_SUMMARY"
 
       - name: Upload Reel Maker evidence
@@ -259,6 +476,7 @@ jobs:
             tools/social-renderer/.generated/daily-contract.json
             tools/reel_maker/output/atlas-news-reel-*.mp4
             tools/reel_maker/output/visual-validation.json
+            tools/reel_maker/output/instagram-reel-publish.json
             tools/reel_maker/output/atlas-news-plates-*/scene-*.png
             tools/reel_maker/output/atlas-news-plates-*/scene-*.svg
           if-no-files-found: warn
