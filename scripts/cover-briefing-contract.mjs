@@ -26,9 +26,7 @@ export function cleanSpeechText(value) {
 }
 
 export function countWords(text) {
-  return cleanSpeechText(text)
-    .split(/\s+/)
-    .filter(Boolean).length;
+  return cleanSpeechText(text).split(/\s+/).filter(Boolean).length;
 }
 
 export function sentenceList(text) {
@@ -165,7 +163,11 @@ function duplicatePairs(blocks) {
   const names = ["central", "chile", "markets", "watch"];
   const pairs = [];
   for (let leftIndex = 0; leftIndex < names.length; leftIndex += 1) {
-    for (let rightIndex = leftIndex + 1; rightIndex < names.length; rightIndex += 1) {
+    for (
+      let rightIndex = leftIndex + 1;
+      rightIndex < names.length;
+      rightIndex += 1
+    ) {
       const leftName = names[leftIndex];
       const rightName = names[rightIndex];
       for (const leftSentence of sentenceList(blocks[leftName])) {
@@ -253,7 +255,10 @@ export function validateCoverContract({
     );
   }
 
-  const qualityScore = Math.max(0, 100 - errors.length * 18 - warnings.length * 4);
+  const qualityScore = Math.max(
+    0,
+    100 - errors.length * 18 - warnings.length * 4,
+  );
   return {
     version: COVER_CONTRACT_VERSION,
     valid: errors.length === 0 && qualityScore >= 80,

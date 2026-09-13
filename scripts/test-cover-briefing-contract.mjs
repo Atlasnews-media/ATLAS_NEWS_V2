@@ -37,7 +37,10 @@ const goodBlocks = {
 };
 
 const goodScript = Object.values(goodBlocks).join(" ");
-const good = validateCoverContract({ blocks: goodBlocks, fullScript: goodScript });
+const good = validateCoverContract({
+  blocks: goodBlocks,
+  fullScript: goodScript,
+});
 assert.equal(good.errors.length, 0, good.errors.join("\n"));
 assert.equal(good.valid, true);
 

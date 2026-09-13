@@ -217,7 +217,8 @@ function marketEffectiveDate(asset) {
 function dateDistanceInDays(left, right) {
   const leftTime = Date.parse(`${left}T12:00:00Z`);
   const rightTime = Date.parse(`${right}T12:00:00Z`);
-  if (!Number.isFinite(leftTime) || !Number.isFinite(rightTime)) return Infinity;
+  if (!Number.isFinite(leftTime) || !Number.isFinite(rightTime))
+    return Infinity;
   return Math.abs(Math.round((leftTime - rightTime) / 86_400_000));
 }
 
@@ -234,7 +235,8 @@ function usableMarketAsset(asset, editionDate) {
 function relativeToPreviousSession(asset) {
   const change = Number(asset?.changePercent);
   if (!Number.isFinite(change)) return null;
-  if (Math.abs(change) < 0.01) return "sin cambios frente a la jornada hábil anterior";
+  if (Math.abs(change) < 0.01)
+    return "sin cambios frente a la jornada hábil anterior";
   return change > 0
     ? `un ${formatMarketNumber(change)}% por encima de la jornada hábil anterior`
     : `un ${formatMarketNumber(change)}% por debajo de la jornada hábil anterior`;
@@ -243,7 +245,8 @@ function relativeToPreviousSession(asset) {
 function variationPhrase(asset) {
   const change = Number(asset?.changePercent);
   if (!Number.isFinite(change)) return null;
-  if (Math.abs(change) < 0.01) return "sin cambios frente a la jornada hábil anterior";
+  if (Math.abs(change) < 0.01)
+    return "sin cambios frente a la jornada hábil anterior";
   return change > 0
     ? `con un avance de ${formatMarketNumber(change)}%`
     : `con un retroceso de ${formatMarketNumber(change)}%`;
@@ -533,9 +536,24 @@ const sameSources =
 const snapshot = await buildMarketSnapshot(publicDir, date);
 
 const centralCandidates = [
-  ...sentencesFrom(international, ["Hecho central"], "international", "fact_context"),
-  ...sentencesFrom(international, ["Por qué importa"], "international", "mechanism_implication"),
-  ...sentencesFrom(international, ["En una mirada"], "international", "reserve"),
+  ...sentencesFrom(
+    international,
+    ["Hecho central"],
+    "international",
+    "fact_context",
+  ),
+  ...sentencesFrom(
+    international,
+    ["Por qué importa"],
+    "international",
+    "mechanism_implication",
+  ),
+  ...sentencesFrom(
+    international,
+    ["En una mirada"],
+    "international",
+    "reserve",
+  ),
   ...highlightCandidates(international, "international", "reserve"),
 ];
 
@@ -620,7 +638,11 @@ if (snapshot) scriptParts.push(snapshot);
 scriptParts.push("La señal central.", centralSelection.text);
 if (national) scriptParts.push("En Chile.", chileSelection.text);
 if (markets) scriptParts.push("Ahora, mercados.", marketsSelection.text);
-scriptParts.push("Qué seguir durante la jornada.", watchSelection.text, closing);
+scriptParts.push(
+  "Qué seguir durante la jornada.",
+  watchSelection.text,
+  closing,
+);
 const script = scriptParts.filter(Boolean).join("\n\n");
 
 const blocks = {
@@ -643,8 +665,7 @@ const estimatedDurationSeconds = Math.max(
   60,
   Math.round((wordCount / 125) * 60),
 );
-const needsGeneration =
-  ownerAllowsGeneration && !sameSources && contract.valid;
+const needsGeneration = ownerAllowsGeneration && !sameSources && contract.valid;
 const plan = {
   scriptVersion: SCRIPT_VERSION,
   speechNormalizerVersion: SPEECH_NORMALIZER_VERSION,
