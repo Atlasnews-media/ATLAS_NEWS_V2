@@ -60,6 +60,33 @@ jobs:
           cp tools/reel_maker/daily-contract.example.json tools/social-renderer/.generated/daily-contract.json
           jq -e '.version == "2" and (.highlights | length == 5)' tools/social-renderer/.generated/daily-contract.json >/dev/null
 
+      - name: Setup Node for no-publish carousel proof
+        if: github.event_name == 'pull_request'
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22.19.0
+
+      - name: Render and validate five-news carousel without Meta
+        if: github.event_name == 'pull_request'
+        working-directory: tools/social-renderer
+        env:
+          SOCIAL_CONTRACT: tools/social-renderer/.generated/daily-contract.json
+          SOCIAL_PUBLICATION_STATUS: PUBLICACIÓN DISPONIBLE / VERIFICADA
+        run: |
+          set -euo pipefail
+          npm install --no-audit --no-fund --no-package-lock
+          npx playwright install chromium
+          rm -rf output
+          node render-v2.mjs
+          test "$(find output -maxdepth 1 -type f -name 'atlas-news-instagram-carousel-*.png' | wc -l | tr -d ' ')" = "7"
+          jq -e '
+            .contractVersion == "2" and
+            .highlightCards == 5 and
+            .carouselSlides == 7 and
+            (.outputs | map(select(test("atlas-news-instagram-carousel-[0-9]{2}\\.png$"))) | length) == 7
+          ' output/benchmark.json >/dev/null
+          echo "Carousel proof PASS: 5 highlights -> 7 slides; no Meta API invoked."
+
       - name: Resolve published daily sourceCommit
         if: github.event_name != 'pull_request'
         id: source
@@ -289,6 +316,8 @@ jobs:
           name: atlas-news-reel-maker-${{ steps.source.outputs.source_commit || github.run_id }}
           path: |
             tools/social-renderer/.generated/daily-contract.json
+            tools/social-renderer/output/atlas-news-instagram-carousel-*.png
+            tools/social-renderer/output/benchmark.json
             tools/reel_maker/output/atlas-news-reel-*.mp4
             tools/reel_maker/output/visual-validation.json
             tools/reel_maker/output/atlas-news-plates-*/scene-*.png
