@@ -181,6 +181,12 @@ function interleaveFirstThenRest(groups) {
   return [...first, ...rest];
 }
 
+function finiteNumber(value) {
+  if (value === null || value === undefined || value === "") return null;
+  const numeric = Number(value);
+  return Number.isFinite(numeric) ? numeric : null;
+}
+
 function formatMarketNumber(value, maxDigits = 2) {
   return new Intl.NumberFormat("es-CL", {
     minimumFractionDigits: 0,
@@ -189,8 +195,8 @@ function formatMarketNumber(value, maxDigits = 2) {
 }
 
 function formatPesos(value) {
-  const numeric = Number(value);
-  if (!Number.isFinite(numeric)) return null;
+  const numeric = finiteNumber(value);
+  if (numeric === null) return null;
   const whole = Math.trunc(numeric);
   const cents = Math.round((numeric - whole) * 100);
   const wholeText = new Intl.NumberFormat("es-CL", {
@@ -233,8 +239,8 @@ function usableMarketAsset(asset, editionDate) {
 }
 
 function relativeToPreviousSession(asset) {
-  const change = Number(asset?.changePercent);
-  if (!Number.isFinite(change)) return null;
+  const change = finiteNumber(asset?.changePercent);
+  if (change === null) return null;
   if (Math.abs(change) < 0.01)
     return "sin cambios frente a la jornada hábil anterior";
   return change > 0
@@ -243,8 +249,8 @@ function relativeToPreviousSession(asset) {
 }
 
 function variationPhrase(asset) {
-  const change = Number(asset?.changePercent);
-  if (!Number.isFinite(change)) return null;
+  const change = finiteNumber(asset?.changePercent);
+  if (change === null) return null;
   if (Math.abs(change) < 0.01)
     return "sin cambios frente a la jornada hábil anterior";
   return change > 0
@@ -253,8 +259,8 @@ function variationPhrase(asset) {
 }
 
 function marketMove(asset, { up, down }) {
-  const change = Number(asset?.changePercent);
-  if (!Number.isFinite(change)) return null;
+  const change = finiteNumber(asset?.changePercent);
+  if (change === null) return null;
   if (Math.abs(change) < 0.01) return "se mantiene sin cambios";
   return `${change > 0 ? up : down} ${formatMarketNumber(change)}%`;
 }
@@ -303,22 +309,60 @@ function mergeEconomicIndicators(assets, economicSnapshot) {
     const economic = byCode.get(code);
     if (!economic) continue;
     const existing = byId.get(assetId) ?? { id: assetId, status: "stale" };
+    const economicValue = finiteNumber(economic.value);
+    const economicChange = finiteNumber(economic.changePercent);
     const merged = {
       ...existing,
-      value: Number.isFinite(Number(economic.value))
-        ? Number(economic.value)
-        : existing.value,
+      value: economicValue ?? existing.value,
       effectiveAt:
         economicEffectiveAt(economic.effectiveDate) ?? existing.effectiveAt,
     };
-    if (Number.isFinite(Number(economic.changePercent))) {
-      merged.changePercent = Number(economic.changePercent);
+    if (economicChange !== null) {
+      merged.changePercent = economicChange;
       merged.trend = economic.trend ?? merged.trend;
     }
     byId.set(assetId, merged);
   }
 
   return [...byId.values()];
+}
+
+function deriveHistoryChanges(assets, history) {
+  const historyById = new Map(
+    (history ?? []).map((series) => [series.id, series]),
+  );
+
+  return (assets ?? []).map((asset) => {
+    if (finiteNumber(asset?.changePercent) !== null) return asset;
+
+    const currentValue = finiteNumber(asset?.value);
+    const effectiveDate = marketEffectiveDate(asset);
+    if (currentValue === null || !effectiveDate) return asset;
+
+    const previous = (historyById.get(asset.id)?.points ?? [])
+      .filter(
+        (point) =>
+          typeof point?.date === "string" &&
+          point.date < effectiveDate &&
+          finiteNumber(point?.value) !== null,
+      )
+      .sort((left, right) => right.date.localeCompare(left.date))[0];
+    const previousValue = finiteNumber(previous?.value);
+    if (previousValue === null || previousValue === 0) return asset;
+
+    const rawChange = (currentValue / previousValue - 1) * 100;
+    const changePercent = Math.round(rawChange * 100) / 100;
+    return {
+      ...asset,
+      changePercent,
+      trend:
+        Math.abs(changePercent) < 0.01
+          ? "flat"
+          : changePercent > 0
+            ? "up"
+            : "down",
+    };
+  });
 }
 
 async function buildMarketSnapshot(publicDir, editionDate) {
@@ -340,15 +384,15 @@ async function buildMarketSnapshot(publicDir, editionDate) {
       economicSnapshot = null;
     }
 
-    const assets = mergeEconomicIndicators(
-      marketSnapshot.assets ?? [],
-      economicSnapshot,
+    const assets = deriveHistoryChanges(
+      mergeEconomicIndicators(marketSnapshot.assets ?? [], economicSnapshot),
+      marketSnapshot.history ?? [],
     ).filter((asset) => usableMarketAsset(asset, editionDate));
     const byId = new Map(assets.map((asset) => [asset.id, asset]));
     const sentences = [];
 
     const dollar = byId.get("usdclp");
-    if (Number.isFinite(Number(dollar?.value))) {
+    if (finiteNumber(dollar?.value) !== null) {
       const relative = relativeToPreviousSession(dollar);
       sentences.push(
         `En monedas, el dólar observado marcó ${formatPesos(dollar.value)}${relative ? `, ${relative}` : ""}.`,
@@ -356,7 +400,7 @@ async function buildMarketSnapshot(publicDir, editionDate) {
     }
 
     const euro = byId.get("eurclp");
-    if (Number.isFinite(Number(euro?.value))) {
+    if (finiteNumber(euro?.value) !== null) {
       const variation = variationPhrase(euro);
       sentences.push(
         `El euro se ubicó en ${formatPesos(euro.value)}${variation ? `, ${variation}` : ""}.`,
@@ -364,7 +408,7 @@ async function buildMarketSnapshot(publicDir, editionDate) {
     }
 
     const uf = byId.get("uf");
-    if (Number.isFinite(Number(uf?.value))) {
+    if (finiteNumber(uf?.value) !== null) {
       sentences.push(`La UF vigente alcanza los ${formatPesos(uf.value)}.`);
     }
 
@@ -397,7 +441,7 @@ async function buildMarketSnapshot(publicDir, editionDate) {
     if (copperMove) sentences.push(`El cobre, en tanto, ${copperMove}.`);
 
     const treasury = byId.get("ust10y");
-    if (Number.isFinite(Number(treasury?.value))) {
+    if (finiteNumber(treasury?.value) !== null) {
       sentences.push(
         `El Treasury a diez años se ubica en ${formatMarketNumber(treasury.value)}%.`,
       );
@@ -417,13 +461,13 @@ async function buildMarketSnapshot(publicDir, editionDate) {
       )
       .filter(
         (asset) =>
-          Number.isFinite(Number(asset.changePercent)) &&
-          Math.abs(Number(asset.changePercent)) >= 1,
+          finiteNumber(asset.changePercent) !== null &&
+          Math.abs(finiteNumber(asset.changePercent)) >= 1,
       )
       .sort(
         (left, right) =>
-          Math.abs(Number(right.changePercent)) -
-          Math.abs(Number(left.changePercent)),
+          Math.abs(finiteNumber(right.changePercent) ?? 0) -
+          Math.abs(finiteNumber(left.changePercent) ?? 0),
       )[0];
 
     if (standout) {
@@ -630,7 +674,7 @@ const watchSelection = composeEditorialBlock(
 
 const opening = `ATLAS NEWS. Briefing de la mañana del ${formatSpanishDate(date)}. Estas son las señales que conviene tener presentes hoy.`;
 const closing = cleanSpeechText(
-  "La idea para comenzar el día es quedarse con esta señal central y seguir cómo evoluciona durante la jornada, a medida que entren nuevos datos y reaccione el mercado. Ese es el briefing de ATLAS NEWS para comenzar el día. Para profundizar, en Internacional, Nacional y Mercados están disponibles las cápsulas de audio de cada sección, junto con sus desarrollos completos, fuentes y riesgos.",
+  "La idea para comenzar el día es quedarse con esta señal central y seguir las variables que pueden confirmarla o cambiarla durante la jornada. Ese es el briefing de ATLAS NEWS. Para profundizar, Internacional, Nacional y Mercados mantienen sus cápsulas de audio, desarrollos completos, fuentes y riesgos.",
 );
 
 const scriptParts = [opening];
