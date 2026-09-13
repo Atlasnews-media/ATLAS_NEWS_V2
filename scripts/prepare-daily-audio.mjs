@@ -281,7 +281,9 @@ if (!international) {
   if (process.env.GITHUB_OUTPUT) {
     await appendFile(process.env.GITHUB_OUTPUT, "needs_generation=false\n");
   }
-  console.log("Audio diario omitido: no existe una edición Internacional publicada.");
+  console.log(
+    "Audio diario omitido: no existe una edición Internacional publicada.",
+  );
   process.exit(0);
 }
 
