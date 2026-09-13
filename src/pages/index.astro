@@ -359,7 +359,7 @@ const marketsVisual = latestMarkets
   }
   .edition-rail li {
     display: grid;
-    grid-template-columns: clamp(3rem, 5vw, 4.5rem) minmax(0, 1fr);
+    grid-template-columns: clamp(3.5rem, 5vw, 4.5rem) minmax(0, 1fr);
     padding: clamp(1rem, 1.7vw, 1.35rem) 0;
     border-top: 1px solid var(--rule);
     counter-increment: point;
@@ -370,7 +370,8 @@ const marketsVisual = latestMarkets
   .edition-rail li::before {
     content: "0" counter(point);
     color: var(--accent);
-    font: 700 clamp(0.9rem, 1.35vw, 1.1rem) / 1.2 var(--serif);
+    font: 700 clamp(1.55rem, 2.6vw, 2rem) / 1 var(--serif);
+    font-variant-numeric: tabular-nums;
   }
   .edition-rail strong,
   .edition-rail span {
@@ -559,11 +560,12 @@ const marketsVisual = latestMarkets
       letter-spacing: -0.03em;
     }
     .edition-rail li {
-      grid-template-columns: 2.65rem minmax(0, 1fr);
+      grid-template-columns: 3.4rem minmax(0, 1fr);
       padding: 0.82rem 0 0.9rem;
     }
     .edition-rail li::before {
-      font-size: 0.82rem;
+      font-size: clamp(1.45rem, 6vw, 1.65rem);
+      line-height: 1;
     }
     .edition-rail strong {
       margin-bottom: 0.28rem;
