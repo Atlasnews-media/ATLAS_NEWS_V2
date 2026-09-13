@@ -6,6 +6,7 @@ import {
   validateCoverContract,
 } from "./cover-briefing-contract.mjs";
 
+// Este test viaja con el compositor para evitar regresiones silenciosas de Portada.
 function repeated(text, minimumWords) {
   const sentence = `${text} Esta frase aporta contexto adicional verificable sin repetir la fotografía cuantitativa inicial.`;
   const parts = [];
