@@ -4,6 +4,9 @@ on:
   push:
     branches:
       - feat/audio-cover-v12-editorial-contract
+  pull_request:
+    branches:
+      - main
 
 permissions:
   contents: read
