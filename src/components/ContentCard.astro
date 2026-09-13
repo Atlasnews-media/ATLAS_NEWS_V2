@@ -17,6 +17,7 @@ interface Props {
   demo?: boolean;
   compact?: boolean;
   visual?: EditorialVisual;
+  visualAlways?: boolean;
 }
 
 const {
@@ -28,6 +29,7 @@ const {
   demo = false,
   compact = false,
   visual,
+  visualAlways = false,
 } = Astro.props;
 
 const visualAllowed = (() => {
@@ -42,7 +44,16 @@ const visualAllowed = (() => {
 })();
 ---
 
-<article class:list={["card", { compact, "has-visual": visualAllowed }]}>
+<article
+  class:list={[
+    "card",
+    {
+      compact,
+      "has-visual": visualAllowed,
+      "visual-always": visualAllowed && visualAlways,
+    },
+  ]}
+>
   <div class="card-copy">
     <div class="meta">
       <span>{eyebrow}</span>
@@ -146,7 +157,70 @@ const visualAllowed = (() => {
     text-transform: uppercase;
   }
   .card-visual {
+    position: absolute;
+    z-index: 1;
+    top: 0.8rem;
+    right: -0.4rem;
+    bottom: 0.8rem;
     display: none;
+    width: 36%;
+    margin: 0;
+    overflow: hidden;
+    pointer-events: none;
+    -webkit-mask-image: linear-gradient(
+      to bottom,
+      transparent 0%,
+      #000 10%,
+      #000 90%,
+      transparent 100%
+    );
+    mask-image: linear-gradient(
+      to bottom,
+      transparent 0%,
+      #000 10%,
+      #000 90%,
+      transparent 100%
+    );
+  }
+  .card-visual img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    opacity: 0.68;
+    filter: saturate(0.7) sepia(0.1) contrast(0.92) brightness(1.06);
+    -webkit-mask-image: linear-gradient(
+      to right,
+      transparent 0%,
+      rgba(0, 0, 0, 0.34) 24%,
+      #000 60%
+    );
+    mask-image: linear-gradient(
+      to right,
+      transparent 0%,
+      rgba(0, 0, 0, 0.34) 24%,
+      #000 60%
+    );
+  }
+  figcaption {
+    position: absolute;
+    right: 0.38rem;
+    bottom: 0.2rem;
+    max-width: 82%;
+    color: var(--ink-soft);
+    font: 600 0.44rem/1.1 var(--sans);
+    text-align: right;
+    opacity: 0.68;
+  }
+  .visual-always .card-visual {
+    display: block;
+  }
+  .visual-always.has-visual .card-copy {
+    width: 72%;
+  }
+  .visual-always.has-visual h2,
+  .visual-always.has-visual p {
+    max-width: none;
   }
   .compact h2 {
     font-size: clamp(1.35rem, 2.6vw, 1.85rem);
@@ -160,7 +234,8 @@ const visualAllowed = (() => {
       min-height: 12rem;
       padding: 0.95rem 0 1rem;
     }
-    .card.has-visual .card-copy {
+    .card.has-visual .card-copy,
+    .card.visual-always.has-visual .card-copy {
       width: 86%;
     }
     .card.has-visual h2,
@@ -184,61 +259,18 @@ const visualAllowed = (() => {
     .read {
       margin-left: 0;
     }
-    .card-visual {
-      position: absolute;
-      z-index: 1;
+    .card-visual,
+    .visual-always .card-visual {
       top: 0.7rem;
-      right: -0.4rem;
       bottom: 0.7rem;
       display: block;
       width: 42%;
-      margin: 0;
-      overflow: hidden;
-      pointer-events: none;
-      -webkit-mask-image: linear-gradient(
-        to bottom,
-        transparent 0%,
-        #000 10%,
-        #000 90%,
-        transparent 100%
-      );
-      mask-image: linear-gradient(
-        to bottom,
-        transparent 0%,
-        #000 10%,
-        #000 90%,
-        transparent 100%
-      );
     }
     .card-visual img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: center;
       opacity: 0.72;
-      filter: saturate(0.7) sepia(0.1) contrast(0.92) brightness(1.06);
-      -webkit-mask-image: linear-gradient(
-        to right,
-        transparent 0%,
-        rgba(0, 0, 0, 0.34) 24%,
-        #000 60%
-      );
-      mask-image: linear-gradient(
-        to right,
-        transparent 0%,
-        rgba(0, 0, 0, 0.34) 24%,
-        #000 60%
-      );
     }
     figcaption {
-      position: absolute;
-      right: 0.38rem;
-      bottom: 0.2rem;
-      max-width: 82%;
-      color: var(--ink-soft);
-      font: 600 0.4rem/1.1 var(--sans);
-      text-align: right;
-      opacity: 0.68;
+      font-size: 0.4rem;
     }
   }
 </style>

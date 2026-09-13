@@ -185,6 +185,8 @@ const marketsVisual = latestMarkets
                 summary={latestNational.data.summary}
                 date={formatEditorialDate(latestNational.data.publishedAt)}
                 demo={latestNational.data.demo}
+                visual={nationalVisual}
+                visualAlways
                 compact
               />
             )}
@@ -196,6 +198,8 @@ const marketsVisual = latestMarkets
                 summary={latestMarkets.data.summary}
                 date={formatEditorialDate(latestMarkets.data.publishedAt)}
                 demo={latestMarkets.data.demo}
+                visual={marketsVisual}
+                visualAlways
                 compact
               />
             )}
