@@ -14,10 +14,14 @@ def check(source: str, expected: str, reference_date: str | None = None):
 
 if SPEECH_NORMALIZER_VERSION != 5:
     raise AssertionError("Speech Normalizer debe publicar versión 5.")
-if LEXICON_REVISION != 3:
-    raise AssertionError("Lexicon V3 debe publicar revisión 3.")
+if LEXICON_REVISION != 4:
+    raise AssertionError("Lexicon V3 debe publicar revisión 4.")
 
 check("Powell habló en Wall Street.", "Páuel habló en Uól Strít.")
+check(
+    "Para wealth management, la novedad reduce el valor de una apuesta simple.",
+    "Para Uélth Mánichment, la novedad reduce el valor de una apuesta simple.",
+)
 check("El Dow Jones retrocede 1,86%.", "El Dáu Yóuns retrocede uno coma ochenta y seis por ciento.")
 # Golden tests Speech V5: verbalización financiera controlada.
 check(

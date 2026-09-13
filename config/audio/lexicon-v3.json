@@ -1,6 +1,6 @@
 {
   "version": 3,
-  "revision": 3,
+  "revision": 4,
   "numericNormalizerVersion": 4,
   "status": "foundation",
   "source": "ATLAS NEWS V2 — MATRIZ DE PRONUNCIACIÓN TTS",
@@ -9,7 +9,7 @@
     "requiresHumanApproval": true,
     "sheetDirectToProduction": false,
     "revisionRule": "Toda modificación de una entrada aprobada requiere incrementar revision antes de producción.",
-    "note": "Lexicon V3 conserva palabras, siglas y pronunciaciones aprobadas. Numeric Normalizer V4 opera como capa separada sobre speech_text; revision 3 incorpora la pronunciación aprobada de Dow Jones y fuerza una sola regeneración controlada de Audio V2."
+    "note": "Lexicon V3 conserva palabras, siglas y pronunciaciones aprobadas. Numeric Normalizer V4 opera como capa separada sobre speech_text; revision 4 incorpora la pronunciación de Wealth Management detectada en escucha humana y fuerza una sola regeneración controlada de Audio V2."
   },
   "entries": [
     {
@@ -22,6 +22,12 @@
       "term": "Wall Street",
       "type": "pronunciation",
       "speech": "Uól Strít",
+      "approved": true
+    },
+    {
+      "term": "wealth management",
+      "type": "pronunciation",
+      "speech": "Uélth Mánichment",
       "approved": true
     },
     {
