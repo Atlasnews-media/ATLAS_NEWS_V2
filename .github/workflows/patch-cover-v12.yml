@@ -1,0 +1,285 @@
+name: Patch Cover V12
+
+on:
+  push:
+    branches:
+      - feat/audio-cover-v12-editorial-contract
+
+permissions:
+  contents: write
+
+jobs:
+  patch-and-smoke:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          ref: feat/audio-cover-v12-editorial-contract
+          fetch-depth: 0
+
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 22
+          cache: npm
+
+      - run: npm ci
+
+      - name: Aplicar correcciones detectadas por smoke real
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+
+          path = Path("scripts/prepare-daily-audio.mjs")
+          text = path.read_text()
+
+          old = '''function relativeToPreviousSession(asset) {
+            const change = Number(asset?.changePercent);
+            if (!Number.isFinite(change)) return null;
+            if (Math.abs(change) < 0.01)
+              return "sin cambios frente a la jornada hábil anterior";
+            return change > 0
+              ? `un ${formatMarketNumber(change)}% por encima de la jornada hábil anterior`
+              : `un ${formatMarketNumber(change)}% por debajo de la jornada hábil anterior`;
+          }
+
+          function variationPhrase(asset) {
+            const change = Number(asset?.changePercent);
+            if (!Number.isFinite(change)) return null;
+            if (Math.abs(change) < 0.01)
+              return "sin cambios frente a la jornada hábil anterior";
+            return change > 0
+              ? `con un avance de ${formatMarketNumber(change)}%`
+              : `con un retroceso de ${formatMarketNumber(change)}%`;
+          }
+
+          function marketMove(asset, { up, down }) {
+            const change = Number(asset?.changePercent);
+            if (!Number.isFinite(change)) return null;
+            if (Math.abs(change) < 0.01) return "se mantiene sin cambios";
+            return `${change > 0 ? up : down} ${formatMarketNumber(change)}%`;
+          }
+          '''
+          new = '''function finiteNumber(value) {
+            if (value === null || value === undefined || value === "") return null;
+            const numeric = Number(value);
+            return Number.isFinite(numeric) ? numeric : null;
+          }
+
+          function relativeToPreviousSession(asset) {
+            const change = finiteNumber(asset?.changePercent);
+            if (change === null) return null;
+            if (Math.abs(change) < 0.01)
+              return "sin cambios frente a la jornada hábil anterior";
+            return change > 0
+              ? `un ${formatMarketNumber(change)}% por encima de la jornada hábil anterior`
+              : `un ${formatMarketNumber(change)}% por debajo de la jornada hábil anterior`;
+          }
+
+          function variationPhrase(asset) {
+            const change = finiteNumber(asset?.changePercent);
+            if (change === null) return null;
+            if (Math.abs(change) < 0.01)
+              return "sin cambios frente a la jornada hábil anterior";
+            return change > 0
+              ? `con un avance de ${formatMarketNumber(change)}%`
+              : `con un retroceso de ${formatMarketNumber(change)}%`;
+          }
+
+          function marketMove(asset, { up, down }) {
+            const change = finiteNumber(asset?.changePercent);
+            if (change === null) return null;
+            if (Math.abs(change) < 0.01) return "se mantiene sin cambios";
+            return `${change > 0 ? up : down} ${formatMarketNumber(change)}%`;
+          }
+          '''
+          if old not in text:
+            raise SystemExit("No se encontró bloque de variaciones esperado")
+          text = text.replace(old, new, 1)
+
+          old = '''    const merged = {
+              ...existing,
+              value: Number.isFinite(Number(economic.value))
+                ? Number(economic.value)
+                : existing.value,
+              effectiveAt:
+                economicEffectiveAt(economic.effectiveDate) ?? existing.effectiveAt,
+            };
+            if (Number.isFinite(Number(economic.changePercent))) {
+              merged.changePercent = Number(economic.changePercent);
+              merged.trend = economic.trend ?? merged.trend;
+            }
+            byId.set(assetId, merged);
+          }
+
+          return [...byId.values()];
+          }
+
+          async function buildMarketSnapshot(publicDir, editionDate) {
+          '''
+          new = '''    const economicValue = finiteNumber(economic.value);
+            const economicChange = finiteNumber(economic.changePercent);
+            const merged = {
+              ...existing,
+              value: economicValue ?? existing.value,
+              effectiveAt:
+                economicEffectiveAt(economic.effectiveDate) ?? existing.effectiveAt,
+            };
+            if (economicChange !== null) {
+              merged.changePercent = economicChange;
+              merged.trend = economic.trend ?? merged.trend;
+            }
+            byId.set(assetId, merged);
+          }
+
+          return [...byId.values()];
+          }
+
+          function deriveHistoryChanges(assets, history) {
+            const historyById = new Map(
+              (history ?? []).map((series) => [series.id, series]),
+            );
+
+            return (assets ?? []).map((asset) => {
+              if (finiteNumber(asset?.changePercent) !== null) return asset;
+
+              const currentValue = finiteNumber(asset?.value);
+              const effectiveDate = marketEffectiveDate(asset);
+              if (currentValue === null || !effectiveDate) return asset;
+
+              const previous = (historyById.get(asset.id)?.points ?? [])
+                .filter(
+                  (point) =>
+                    typeof point?.date === "string" &&
+                    point.date < effectiveDate &&
+                    finiteNumber(point?.value) !== null,
+                )
+                .sort((left, right) => right.date.localeCompare(left.date))[0];
+              const previousValue = finiteNumber(previous?.value);
+              if (previousValue === null || previousValue === 0) return asset;
+
+              const rawChange = (currentValue / previousValue - 1) * 100;
+              const changePercent = Math.round(rawChange * 100) / 100;
+              return {
+                ...asset,
+                changePercent,
+                trend:
+                  Math.abs(changePercent) < 0.01
+                    ? "flat"
+                    : changePercent > 0
+                      ? "up"
+                      : "down",
+              };
+            });
+          }
+
+          async function buildMarketSnapshot(publicDir, editionDate) {
+          '''
+          if old not in text:
+            raise SystemExit("No se encontró bloque mergeEconomicIndicators esperado")
+          text = text.replace(old, new, 1)
+
+          old = '''    const assets = mergeEconomicIndicators(
+              marketSnapshot.assets ?? [],
+              economicSnapshot,
+            ).filter((asset) => usableMarketAsset(asset, editionDate));
+          '''
+          new = '''    const assets = deriveHistoryChanges(
+              mergeEconomicIndicators(marketSnapshot.assets ?? [], economicSnapshot),
+              marketSnapshot.history ?? [],
+            ).filter((asset) => usableMarketAsset(asset, editionDate));
+          '''
+          if old not in text:
+            raise SystemExit("No se encontró construcción de assets esperada")
+          text = text.replace(old, new, 1)
+
+          text = text.replace(
+            'if (Number.isFinite(Number(dollar?.value))) {',
+            'if (finiteNumber(dollar?.value) !== null) {',
+            1,
+          )
+          text = text.replace(
+            'if (Number.isFinite(Number(euro?.value))) {',
+            'if (finiteNumber(euro?.value) !== null) {',
+            1,
+          )
+          text = text.replace(
+            'if (Number.isFinite(Number(uf?.value))) {',
+            'if (finiteNumber(uf?.value) !== null) {',
+            1,
+          )
+          text = text.replace(
+            'if (Number.isFinite(Number(treasury?.value))) {',
+            'if (finiteNumber(treasury?.value) !== null) {',
+            1,
+          )
+          text = text.replace(
+            '''        (asset) =>
+                  Number.isFinite(Number(asset.changePercent)) &&
+                  Math.abs(Number(asset.changePercent)) >= 1,
+              )
+              .sort(
+                (left, right) =>
+                  Math.abs(Number(right.changePercent)) -
+                  Math.abs(Number(left.changePercent)),
+              )[0];''',
+            '''        (asset) =>
+                  finiteNumber(asset.changePercent) !== null &&
+                  Math.abs(finiteNumber(asset.changePercent)) >= 1,
+              )
+              .sort(
+                (left, right) =>
+                  Math.abs(finiteNumber(right.changePercent) ?? 0) -
+                  Math.abs(finiteNumber(left.changePercent) ?? 0),
+              )[0];''',
+            1,
+          )
+
+          old_closing = '''  "La idea para comenzar el día es quedarse con esta señal central y seguir cómo evoluciona durante la jornada, a medida que entren nuevos datos y reaccione el mercado. Ese es el briefing de ATLAS NEWS para comenzar el día. Para profundizar, en Internacional, Nacional y Mercados están disponibles las cápsulas de audio de cada sección, junto con sus desarrollos completos, fuentes y riesgos.",'''
+          new_closing = '''  "La idea para comenzar el día es quedarse con esta señal central y seguir las variables que pueden confirmarla o cambiarla durante la jornada. Ese es el briefing de ATLAS NEWS. Para profundizar, Internacional, Nacional y Mercados mantienen sus cápsulas de audio, desarrollos completos, fuentes y riesgos.",'''
+          if old_closing not in text:
+            raise SystemExit("No se encontró cierre V12 esperado")
+          text = text.replace(old_closing, new_closing, 1)
+
+          path.write_text(text)
+          PY
+
+      - name: Formatear y validar
+        run: |
+          npx prettier --write scripts/prepare-daily-audio.mjs
+          npm run format:check
+
+      - name: Clonar snapshot público vigente
+        run: git clone --depth=1 https://github.com/EldeSiempre100/EldeSiempre100.github.io.git "$RUNNER_TEMP/atlas-news-public"
+
+      - name: Smoke del compositor corregido
+        env:
+          ATLAS_PUBLIC_REPO_DIR: ${{ runner.temp }}/atlas-news-public
+          ATLAS_AUDIO_PLAN: ${{ runner.temp }}/atlas-cover-v12-final.json
+          ATLAS_AUDIO_OWNER: audio-v2
+          ATLAS_AUDIO_VOICE: ef_dora
+        run: |
+          node scripts/prepare-daily-audio.mjs
+          node --input-type=module <<'NODE'
+          import { readFile } from "node:fs/promises";
+          const plan = JSON.parse(await readFile(process.env.ATLAS_AUDIO_PLAN, "utf8"));
+          if (!plan.contract?.valid) throw new Error((plan.contract?.errors ?? []).join(" | "));
+          if (!plan.script.includes("dólar observado marcó 937 pesos con 17 centavos, un 1,21% por encima")) throw new Error("No se recuperó la variación hábil del dólar.");
+          if (!plan.script.includes("El euro se ubicó en 1.088 pesos con 97 centavos, con un avance de 1,04%")) throw new Error("Euro incompleto.");
+          if (!plan.script.includes("La UF vigente alcanza los 40.910 pesos con 10 centavos")) throw new Error("UF incompleta.");
+          if (plan.script.includes("En el último registro disponible")) throw new Error("Persistió disclaimer de apertura.");
+          if (plan.script.includes("Treasury de Estados Unidos")) throw new Error("Persistió redundancia de Treasury.");
+          if (plan.wordCount < 650 || plan.wordCount > 750) throw new Error(`Extensión fuera de objetivo: ${plan.wordCount}`);
+          console.log(JSON.stringify({ wordCount: plan.wordCount, estimatedDurationSeconds: plan.estimatedDurationSeconds, contract: plan.contract }, null, 2));
+          console.log("\n--- GUIÓN FINAL V12 ---\n");
+          console.log(plan.script);
+          NODE
+
+      - name: Guardar ajuste y retirar helpers temporales
+        run: |
+          rm .github/workflows/patch-cover-v12.yml .github/workflows/smoke-cover-v12.yml
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add scripts/prepare-daily-audio.mjs .github/workflows/patch-cover-v12.yml .github/workflows/smoke-cover-v12.yml
+          git commit -m "Audio Portada V12 — cerrar smoke editorial"
+          git push origin HEAD:feat/audio-cover-v12-editorial-contract
