@@ -10,10 +10,10 @@ import path from "node:path";
 const root = new URL("../", import.meta.url);
 const editionDir = new URL("src/content/editions/", root);
 const briefingDir = new URL("src/content/briefings/", root);
-const SCRIPT_VERSION = 10;
+const SCRIPT_VERSION = 11;
 const SPEECH_NORMALIZER_VERSION = 5;
 const TARGET_MIN_WORDS = 340;
-const TARGET_MAX_WORDS = 440;
+const TARGET_MAX_WORDS = 520;
 
 function frontmatter(text) {
   return text.match(/^---\s*\r?\n([\s\S]*?)\r?\n---/)?.[1] ?? "";
@@ -267,6 +267,36 @@ function formatMarketNumber(value, maxDigits = 2) {
   }).format(Math.abs(Number(value)));
 }
 
+function formatMarketMoney(value) {
+  return new Intl.NumberFormat("es-CL", {
+    minimumFractionDigits: 2,
+    maximumFractionDigits: 2,
+  }).format(Number(value));
+}
+
+function marketEffectiveDate(asset) {
+  if (!asset?.effectiveAt) return null;
+  const parsed = new Date(asset.effectiveAt);
+  if (Number.isNaN(parsed.getTime())) return null;
+  const parts = new Intl.DateTimeFormat("en-CA", {
+    timeZone: "America/Santiago",
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit",
+  }).formatToParts(parsed);
+  const map = Object.fromEntries(parts.map((part) => [part.type, part.value]));
+  return `${map.year}-${map.month}-${map.day}`;
+}
+
+function marketVariation(asset) {
+  const change = Number(asset?.changePercent);
+  if (!Number.isFinite(change)) return null;
+  if (Math.abs(change) < 0.01) {
+    return "sin una variación relevante frente a la jornada hábil anterior";
+  }
+  return `con una variación ${change > 0 ? "positiva" : "negativa"} de ${formatMarketNumber(change)}% frente a la jornada hábil anterior`;
+}
+
 function marketMove(asset, { up, down }) {
   const change = Number(asset?.changePercent);
   if (!Number.isFinite(change)) return null;
@@ -293,7 +323,7 @@ function standoutLabel(id) {
   }[id];
 }
 
-async function buildMarketPulseSpeech(publicDir) {
+async function buildMarketPulseSpeech(publicDir, editionDate) {
   if (!publicDir) return null;
 
   try {
@@ -306,17 +336,43 @@ async function buildMarketPulseSpeech(publicDir) {
     const byId = new Map(assets.map((asset) => [asset.id, asset]));
     const sentences = [];
 
-    const dollarMove = marketMove(byId.get("usdclp"), {
-      up: "sube",
-      down: "baja",
-    });
-    if (dollarMove) {
+    const dollar = byId.get("usdclp");
+    const dollarValue = Number(dollar?.value);
+    const dollarVariation = marketVariation(dollar);
+    const dollarIsCurrentSession = marketEffectiveDate(dollar) === editionDate;
+    const dollarOpen = Number(dollar?.openValue ?? dollar?.open);
+
+    if (Number.isFinite(dollarValue)) {
+      const prefix = dollarIsCurrentSession
+        ? "Con los últimos datos disponibles"
+        : "En el último registro disponible";
+      const pricePhrase =
+        dollarIsCurrentSession && Number.isFinite(dollarOpen)
+          ? `el dólar abrió la jornada en ${formatMarketMoney(dollarOpen)} pesos`
+          : `el dólar ${dollarIsCurrentSession ? "se ubica" : "quedó"} en ${formatMarketMoney(dollarValue)} pesos`;
       sentences.push(
-        `Con los últimos datos disponibles, el dólar ${dollarMove} frente al peso chileno.`,
+        `${prefix}, ${pricePhrase}${dollarVariation ? `, ${dollarVariation}` : ""}.`,
       );
     } else {
       sentences.push(
         "Con los últimos datos disponibles, revisamos el pulso de los mercados.",
+      );
+    }
+
+    const euro = byId.get("eurclp");
+    const euroValue = Number(euro?.value);
+    const euroVariation = marketVariation(euro);
+    if (Number.isFinite(euroValue)) {
+      const euroSameSession = marketEffectiveDate(euro) === editionDate;
+      sentences.push(
+        `${euroSameSession ? "El euro se ubica" : "En ese mismo registro, el euro quedó"} en ${formatMarketMoney(euroValue)} pesos${euroVariation ? `, ${euroVariation}` : ""}.`,
+      );
+    }
+
+    const uf = byId.get("uf");
+    if (Number.isFinite(Number(uf?.value))) {
+      sentences.push(
+        `La UF vigente se ubica en ${formatMarketMoney(uf.value)} pesos.`,
       );
     }
 
@@ -391,8 +447,15 @@ async function buildMarketPulseSpeech(publicDir) {
       }
     }
 
+    const hasCurrentSession = [
+      byId.get("usdclp"),
+      byId.get("ipsa"),
+      byId.get("sp500"),
+    ].some((asset) => marketEffectiveDate(asset) === editionDate);
     sentences.push(
-      "Ese es el punto de partida de los mercados para esta jornada.",
+      hasCurrentSession
+        ? "Esa es la fotografía de los mercados con la que comienza esta jornada."
+        : "Esa es la última fotografía disponible de los mercados.",
     );
     return sentences.join(" ");
   } catch (error) {
@@ -482,7 +545,7 @@ const sameSources =
   existing?.sourceIds?.national === sourceIds.national &&
   existing?.sourceIds?.markets === sourceIds.markets;
 
-// Portada V10 es un briefing transversal con pulso cuantitativo de mercados. Cada sección aporta una contribución
+// Portada V11 es un briefing transversal con pulso cuantitativo ampliado. Cada sección aporta una contribución
 // breve e incremental; ninguna se desarrolla como cápsula completa.
 const internationalCandidates = [
   ...sentencesFrom(international, ["Hecho central", "Por qué importa"]),
@@ -523,7 +586,7 @@ addSegment(
   { force: true },
 );
 
-const marketPulseSpeech = await buildMarketPulseSpeech(publicDir);
+const marketPulseSpeech = await buildMarketPulseSpeech(publicDir, date);
 if (marketPulseSpeech) {
   addSegment(parts, accepted, marketPulseSpeech, { force: true });
 }
@@ -606,7 +669,7 @@ const plan = {
   date,
   title: `ATLAS NEWS — Resumen diario — ${formatSpanishDate(date)}`,
   summary:
-    "Un briefing transversal de Internacional, Nacional y Mercados, con pulso cuantitativo de apertura.",
+    "Un briefing transversal de Internacional, Nacional y Mercados, con pulso cuantitativo ampliado de apertura.",
   voice,
   engine: "Kokoro-82M",
   language: "es",
