@@ -1,10 +1,10 @@
 ---
 title: "El shock energético entra en una fase de doble vulnerabilidad logística"
 summary: "Un nuevo ataque a un buque en Hormuz coincide con el cierre del principal bypass saudí y confirma que el riesgo energético ya afecta simultáneamente rutas primarias y alternativas de exportación."
-publishedAt: "2026-09-13T06:00:41-03:00"
+publishedAt: "2026-09-13T07:00:11-03:00"
 cutoffAt: "2026-09-13T06:00:35-03:00"
 type: "daily"
-status: "draft"
+status: "published"
 tags:
   - internacional
   - energia
