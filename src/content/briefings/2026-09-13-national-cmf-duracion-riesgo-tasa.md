@@ -1,7 +1,7 @@
 ---
 title: "La CMF incorpora duración como alternativa para medir riesgo de tasa en bancos"
 summary: "La nueva norma permite usar el método de duración en el cálculo del riesgo general de tasa dentro de los APRM y entra en vigencia en octubre, ajustando la forma en que los bancos pueden medir sensibilidad a movimientos de tasas."
-publishedAt: "2026-09-13T06:04:00-03:00"
+publishedAt: "2026-09-13T06:11:27-03:00"
 cutoffAt: "2026-09-13T06:03:55-03:00"
 section: "national"
 status: "draft"
@@ -14,11 +14,11 @@ sources:
     url: "https://cmfchile.cl/portal/prensa/625/w4-article-113429.html"
     publishedAt: "2026-09-11T00:00:00-03:00"
 highlights:
-  - label: "Duración entra al cálculo"
+  - label: "Duración en APRM"
     text: "La CMF habilitó el método de duración como alternativa para medir riesgo general de tasa en los APRM bancarios."
   - label: "Vigencia desde octubre"
     text: "La modificación regulatoria comenzará a regir en octubre de 2026 y cuenta con acuerdo previo favorable del Banco Central."
-  - label: "Derivados siguen en consulta"
+  - label: "Derivados en consulta"
     text: "La CMF abrió además una consulta de tres semanas sobre criterios de exclusión de derivados en el cálculo regulatorio."
 demo: false
 ---
