@@ -1,40 +1,33 @@
 {
-  "sourceCommit": "atlas-real-contract-demo-20260912",
-  "canonicalUrl": "https://atlas.news/analisis/mercados-y-crecimiento",
-  "publishedDate": "2026-09-12",
+  "version": "2",
+  "sourceCommit": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+  "sourceId": "src/content/editions/example.md",
+  "canonicalUrl": "https://eldesiempre100.github.io/ediciones/example/",
+  "publishedDate": "2026-09-13T07:00:00-03:00",
+  "productType": "daily",
+  "sectionLabel": "General",
   "title": "Los mercados reprecian el costo del crecimiento",
   "dek": "La nueva señal cambia las expectativas para empresas, hogares y bancos.",
-  "ideaCentral": "El movimiento no es aislado: refleja una revisión más amplia del escenario económico.",
-  "ideaSupport": "La lectura clave está en cómo se transmite a decisiones de inversión y consumo.",
-  "keyPoints": [
+  "highlights": [
     {
-      "iconKey": "signal",
-      "text": "La primera señal aparece en el precio del financiamiento y reduce el margen de maniobra."
+      "label": "El costo financiero vuelve al centro",
+      "text": "Las tasas largas suben y estrechan el margen para nuevas decisiones de inversión."
     },
     {
-      "iconKey": "company",
-      "text": "Las empresas ajustan planes mientras esperan mayor claridad sobre la demanda."
+      "label": "Las empresas revisan sus planes",
+      "text": "El mayor costo de financiamiento obliga a priorizar proyectos y conservar liquidez."
     },
     {
-      "iconKey": "household",
-      "text": "Los hogares reciben el impacto a través del crédito, el empleo y los precios."
-    }
-  ],
-  "impactItems": [
-    {
-      "iconKey": "investment",
-      "label": "Inversión",
-      "text": "Puede cambiar las decisiones de inversión durante los próximos meses."
+      "label": "Los hogares sienten el ajuste",
+      "text": "Crédito, empleo y precios transmiten el cambio de escenario a las decisiones cotidianas."
     },
     {
-      "iconKey": "sectors",
-      "label": "Sectores",
-      "text": "Redefine qué sectores tienen capacidad para absorber el nuevo escenario."
+      "label": "Los mercados distinguen sectores",
+      "text": "La reacción no es uniforme y premia balances capaces de absorber un escenario más exigente."
     },
     {
-      "iconKey": "outlook",
-      "label": "Perspectiva",
-      "text": "La pregunta central es si el ajuste será transitorio o estructural."
+      "label": "La duración del ajuste importa",
+      "text": "La pregunta central es si el movimiento será transitorio o se convertirá en una nueva referencia."
     }
   ]
 }
