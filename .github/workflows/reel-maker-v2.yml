@@ -69,7 +69,6 @@ jobs:
           elif [[ "${GITHUB_EVENT_NAME}" == "workflow_dispatch" && -n "$INPUT_SOURCE_COMMIT" ]]; then
             source_commit="$INPUT_SOURCE_COMMIT"
           else
-            git fetch --no-tags origin main:refs/remotes/origin/main
             status="$(curl -fsSL -H 'Accept: application/json' -H 'Cache-Control: no-cache' \
               "${ATLAS_PUBLIC_STATUS_URL}?reel-pr=${GITHUB_RUN_ID}-$(date +%s)")"
             edition_id="$(jq -er '.latestDaily.id | select(type == "string" and length > 0)' <<<"$status")"
