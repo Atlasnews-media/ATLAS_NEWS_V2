@@ -143,6 +143,107 @@ const COPPER_KEYWORDS = [
   "codelco",
 ];
 
+const ECB_KEYWORDS = [
+  "bce",
+  "banco central europeo",
+  "ecb",
+  "eurozona",
+  "euro",
+  "lagarde",
+  "frankfurt",
+  "inflacion europea",
+  "tasas europa",
+  "politica monetaria europea",
+];
+
+const CHINA_KEYWORDS = [
+  "china",
+  "beijing",
+  "pekin",
+  "shanghai",
+  "pboC",
+  "banco popular de china",
+  "yuan",
+  "renminbi",
+  "asia",
+  "crecimiento chino",
+  "exportaciones chinas",
+];
+
+const GLOBAL_TRADE_KEYWORDS = [
+  "comercio global",
+  "comercio mundial",
+  "cadena de suministro",
+  "cadenas de suministro",
+  "contenedores",
+  "logistica",
+  "fletes",
+  "shipping",
+  "transporte maritimo",
+  "puerto",
+  "puertos",
+  "singapur",
+  "hamburgo",
+];
+
+const FX_KEYWORDS = [
+  "divisas",
+  "forex",
+  "euro",
+  "dolar",
+  "yen",
+  "yuan",
+  "tipo de cambio",
+  "moneda",
+  "monedas",
+  "dxy",
+];
+
+const GOLD_KEYWORDS = [
+  "oro",
+  "gold",
+  "metales preciosos",
+  "refugio",
+  "activo refugio",
+  "lingote",
+  "lingotes",
+];
+
+const CHILE_INSTITUTION_KEYWORDS = [
+  "gobierno",
+  "la moneda",
+  "presidencia",
+  "presidente",
+  "hacienda",
+  "ministerio de hacienda",
+  "congreso",
+  "senado",
+  "camara",
+  "reforma",
+  "proyecto de ley",
+  "ley",
+  "fiscal",
+  "presupuesto",
+  "tributaria",
+  "pensiones",
+  "regulacion",
+];
+
+const CHILE_URBAN_KEYWORDS = [
+  "empleo",
+  "vivienda",
+  "inmobiliario",
+  "departamentos",
+  "construccion",
+  "consumo",
+  "transporte",
+  "metro",
+  "actividad",
+  "santiago",
+  "ciudad",
+  "infraestructura",
+];
+
 function commonsVisual({
   file,
   alt,
@@ -515,6 +616,120 @@ const COPPER_EXTRA = catalogBatch(
   COPPER_KEYWORDS,
 );
 
+const ECB_BUILDING = commonsVisual({
+  file: "European Central Bank building.jpg",
+  alt: "Edificio sede del Banco Central Europeo en Fráncfort, Alemania.",
+  author: "Tobiasi0",
+  license: "CC BY-SA 4.0",
+  keywords: ECB_KEYWORDS,
+});
+
+const ECB_SKYTOWER = commonsVisual({
+  file: "Frankfurt am Main, Seat of the European Central Bank (Skytower (ECB)).jpg",
+  alt: "Sede del Banco Central Europeo y su torre en Fráncfort, Alemania.",
+  author: "Dr. Thomas Liptak",
+  license: "CC BY-SA 4.0",
+  keywords: ECB_KEYWORDS,
+});
+
+const PBOC_HEADQUARTER = commonsVisual({
+  file: "People's Bank of China Headquarter, Beijing.jpg",
+  alt: "Sede del Banco Popular de China en Pekín.",
+  author: "Max12Max",
+  license: "CC BY-SA 4.0",
+  keywords: CHINA_KEYWORDS,
+});
+
+const PBOC_NEW_HEADQUARTER = commonsVisual({
+  file: "Beijing PBC NewHQ.jpg",
+  alt: "Edificio del Banco Popular de China en el distrito financiero de Pekín.",
+  author: "Boubloub",
+  license: "CC0 1.0",
+  keywords: CHINA_KEYWORDS,
+});
+
+const SHANGHAI_PUDONG = commonsVisual({
+  file: "Shanghai skyline Pudong.jpg",
+  alt: "Skyline financiero de Pudong en Shanghái, China.",
+  author: "Ernest Jourdier",
+  license: "CC BY 4.0",
+  keywords: CHINA_KEYWORDS,
+});
+
+const SINGAPORE_PORT = commonsVisual({
+  file: "Port of Singapore (3777500194).jpg",
+  alt: "Vista elevada del puerto de Singapur con grúas y terminales de contenedores.",
+  author: "DearEdward",
+  license: "CC BY 2.0",
+  keywords: GLOBAL_TRADE_KEYWORDS,
+});
+
+const HAMBURG_CONTAINER_SHIP = commonsVisual({
+  file: "Container ship MSC Tokyo - IMO 9318046 - moored at Container Terminal Burchardkai, Hamburg-9507.jpg",
+  alt: "Buque portacontenedores MSC Tokyo atracado en una terminal del puerto de Hamburgo.",
+  author: "Raimond Spekking",
+  license: "CC BY-SA 4.0",
+  keywords: GLOBAL_TRADE_KEYWORDS,
+});
+
+const EURO_BANKNOTES = commonsVisual({
+  file: "All Euro banknotes.png",
+  alt: "Conjunto de billetes de euro de distintas denominaciones y series.",
+  author: "Bericht",
+  license: "CC0 1.0",
+  keywords: FX_KEYWORDS,
+});
+
+const GOLD_BULLION = commonsVisual({
+  file: "Gold bullion bars.jpg",
+  alt: "Conjunto de lingotes de oro apilados.",
+  source: "Wikimedia Commons / Pixabay",
+  author: "Stevebidmead",
+  license: "CC0 1.0",
+  keywords: GOLD_KEYWORDS,
+});
+
+const LA_MONEDA = commonsVisual({
+  file: "Palacio de la Moneda, Santiago, Chile.JPG",
+  alt: "Palacio de La Moneda, sede del Gobierno de Chile en Santiago.",
+  author: "Enrique alfonso silva",
+  license: "CC BY-SA 3.0",
+  keywords: CHILE_INSTITUTION_KEYWORDS,
+});
+
+const CONGRESO_NACIONAL = commonsVisual({
+  file: "Edificio del Congreso Nacional de Chile (Valparaíso).jpg",
+  alt: "Edificio del Congreso Nacional de Chile en Valparaíso.",
+  author: "ShootingStarMax",
+  license: "CC BY-SA 4.0",
+  keywords: CHILE_INSTITUTION_KEYWORDS,
+});
+
+const HACIENDA_HISTORIC = commonsVisual({
+  file: "Edificio del Ministerio de Hacienda Chile (1932).JPG",
+  alt: "Edificio del Ministerio de Hacienda de Chile en una imagen histórica del Barrio Cívico.",
+  source: "Memoria Chilena / Wikimedia Commons",
+  author: "En Viaje / Empresa de los Ferrocarriles del Estado",
+  license: "Dominio público",
+  keywords: CHILE_INSTITUTION_KEYWORDS,
+});
+
+const SANTIAGO_METRO = commonsVisual({
+  file: "Metro de Santiago - Estación Escuela Militar.jpg",
+  alt: "Andén de la estación Escuela Militar del Metro de Santiago.",
+  author: "Corsario CL",
+  license: "CC BY-SA 4.0",
+  keywords: CHILE_URBAN_KEYWORDS,
+});
+
+const SANTIAGO_CENTER_BUILDINGS = commonsVisual({
+  file: "Edificios Santiago centro.jpg",
+  alt: "Edificios residenciales y urbanos en el centro de Santiago de Chile.",
+  author: "Promeroy",
+  license: "CC BY-SA 4.0",
+  keywords: CHILE_URBAN_KEYWORDS,
+});
+
 const FED_VISUALS = [
   FED_ECCLES,
   FED_FOMC_2016,
@@ -557,6 +772,13 @@ const SANTIAGO_VISUALS = [
 
 const BCCH_VISUALS = [BCCH_BUILDING, BCCH_EXTERIOR, ...BCCH_EXTRA];
 const COPPER_VISUALS = [COPPER_MINE, COPPER_CHUQUICAMATA, ...COPPER_EXTRA];
+const ECB_VISUALS = [ECB_BUILDING, ECB_SKYTOWER];
+const CHINA_VISUALS = [PBOC_HEADQUARTER, PBOC_NEW_HEADQUARTER, SHANGHAI_PUDONG];
+const GLOBAL_TRADE_VISUALS = [SINGAPORE_PORT, HAMBURG_CONTAINER_SHIP];
+const FX_VISUALS = [EURO_BANKNOTES];
+const GOLD_VISUALS = [GOLD_BULLION];
+const CHILE_INSTITUTION_VISUALS = [LA_MONEDA, CONGRESO_NACIONAL, HACIENDA_HISTORIC];
+const CHILE_URBAN_VISUALS = [SANTIAGO_METRO, SANTIAGO_CENTER_BUILDINGS];
 
 const VISUAL_CATALOG: Record<FrontPageSection, CatalogVisual[]> = {
   international: [
@@ -564,12 +786,17 @@ const VISUAL_CATALOG: Record<FrontPageSection, CatalogVisual[]> = {
     ...TREASURY_VISUALS,
     ...ENERGY_VISUALS,
     ...EQUITY_VISUALS,
+    ...ECB_VISUALS,
+    ...CHINA_VISUALS,
+    ...GLOBAL_TRADE_VISUALS,
   ],
   national: [
     ...PORT_VISUALS,
     ...SANTIAGO_VISUALS,
     ...BCCH_VISUALS,
     ...COPPER_VISUALS,
+    ...CHILE_INSTITUTION_VISUALS,
+    ...CHILE_URBAN_VISUALS,
   ],
   markets: [
     ...EQUITY_VISUALS,
@@ -577,6 +804,11 @@ const VISUAL_CATALOG: Record<FrontPageSection, CatalogVisual[]> = {
     ...TREASURY_VISUALS,
     ...ENERGY_VISUALS,
     ...COPPER_VISUALS,
+    ...ECB_VISUALS,
+    ...CHINA_VISUALS,
+    ...GLOBAL_TRADE_VISUALS,
+    ...FX_VISUALS,
+    ...GOLD_VISUALS,
   ],
 };
 
