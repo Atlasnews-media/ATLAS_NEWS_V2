@@ -38,23 +38,13 @@ async function readScript(filePath) {
 }
 
 async function setOutput(name, value) {
-  if (!process.env.GITHUB_OUTPUT) {
-    return;
-  }
-
-  const line = `${name}=${value}\n`;
-  await appendFile(process.env.GITHUB_OUTPUT, line);
+  if (!process.env.GITHUB_OUTPUT) return;
+  await appendFile(process.env.GITHUB_OUTPUT, `${name}=${value}\n`);
 }
 
 function productState(product) {
-  if (product.needsGeneration) {
-    return "generar";
-  }
-
-  if (product.unavailableReason) {
-    return product.unavailableReason;
-  }
-
+  if (product.needsGeneration) return "generar";
+  if (product.unavailableReason) return product.unavailableReason;
   return "conservar";
 }
 
@@ -116,11 +106,8 @@ function currentAnalysisState({ sourceId, script, scriptVersion, section }) {
     hasPublishedPath;
 
   let unavailableReason = null;
-  if (!sourceId) {
-    unavailableReason = "source_missing";
-  } else if (!script) {
-    unavailableReason = "script_missing";
-  }
+  if (!sourceId) unavailableReason = "source_missing";
+  else if (!script) unavailableReason = "script_missing";
 
   return {
     scriptHash,
@@ -190,6 +177,7 @@ const international = internationalProduct();
 const national = await dialogueProduct("national");
 const markets = await dialogueProduct("markets");
 const coverLexiconCurrent = sameLexicon(existingCover);
+const coverContractValid = coverPlan?.contract?.valid !== false;
 const cover = {
   section: "cover",
   sourceId: sourceIds.general,
@@ -197,10 +185,12 @@ const cover = {
   lexiconVersion: LEXICON_VERSION,
   lexiconRevision: LEXICON_REVISION,
   needsGeneration: Boolean(
-    coverPlan.needsGeneration ||
-      !coverLexiconCurrent ||
-      existingCover?.speechNormalizerVersion !== SPEECH_NORMALIZER_VERSION,
+    coverContractValid &&
+      (coverPlan.needsGeneration ||
+        !coverLexiconCurrent ||
+        existingCover?.speechNormalizerVersion !== SPEECH_NORMALIZER_VERSION),
   ),
+  unavailableReason: coverContractValid ? null : "cover_contract_failed",
   plan: coverPlan,
 };
 
@@ -222,12 +212,11 @@ const plan = {
   products,
 };
 
-plan.needsGeneration = Object.values(products).some((product) => {
-  return product.needsGeneration;
-});
+plan.needsGeneration = Object.values(products).some(
+  (product) => product.needsGeneration,
+);
 
-const serializedPlan = `${JSON.stringify(plan, null, 2)}\n`;
-await writeFile(outputPath, serializedPlan, "utf8");
+await writeFile(outputPath, `${JSON.stringify(plan, null, 2)}\n`, "utf8");
 
 const internationalReady = Boolean(
   international.sourceId && international.script,
