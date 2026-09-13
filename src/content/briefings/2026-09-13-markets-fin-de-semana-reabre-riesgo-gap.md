@@ -1,7 +1,7 @@
 ---
 title: "El fin de semana vuelve obsoleto parte del alivio del viernes"
 summary: "Wall Street y el petróleo cerraron el viernes antes del nuevo ataque en Hormuz, por lo que la próxima apertura deberá absorber un riesgo energético adicional que aún no está reflejado en los cierres globales."
-publishedAt: "2026-09-13T06:05:22-03:00"
+publishedAt: "2026-09-13T06:09:34-03:00"
 cutoffAt: "2026-09-13T06:05:15-03:00"
 section: "markets"
 status: "draft"
@@ -23,7 +23,7 @@ sources:
     url: "https://www.reuters.com/world/asia-pacific/speculators-turn-net-long-yen-first-time-since-february-2026-09-13/"
     publishedAt: "2026-09-13T03:07:00Z"
 highlights:
-  - label: "El cierre del viernes quedó viejo"
+  - label: "El viernes quedó viejo"
     text: "El rebote de acciones y la caída del Brent ocurrieron antes del nuevo ataque dominical a un buque en Hormuz."
   - label: "El 10 años rozó 5%"
     text: "El Treasury a diez años llegó a 4,9915% el viernes, dejando poca holgura frente a otra sorpresa inflacionaria por energía."
