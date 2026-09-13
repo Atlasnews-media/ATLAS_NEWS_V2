@@ -1,6 +1,6 @@
 {
   "version": 3,
-  "revision": 2,
+  "revision": 3,
   "numericNormalizerVersion": 4,
   "status": "foundation",
   "source": "ATLAS NEWS V2 — MATRIZ DE PRONUNCIACIÓN TTS",
@@ -9,7 +9,7 @@
     "requiresHumanApproval": true,
     "sheetDirectToProduction": false,
     "revisionRule": "Toda modificación de una entrada aprobada requiere incrementar revision antes de producción.",
-    "note": "Lexicon V3 conserva palabras, siglas y pronunciaciones aprobadas. Numeric Normalizer V4 opera como capa separada sobre speech_text; revision 2 invalida una sola vez los audios previos para activar la nueva oralización desde 2026-09-08."
+    "note": "Lexicon V3 conserva palabras, siglas y pronunciaciones aprobadas. Numeric Normalizer V4 opera como capa separada sobre speech_text; revision 3 incorpora la pronunciación aprobada de Dow Jones y fuerza una sola regeneración controlada de Audio V2."
   },
   "entries": [
     {
@@ -66,6 +66,12 @@
       "variants": ["JPMorgan", "JP Morgan"],
       "type": "pronunciation",
       "speech": "Yéi pí Morgan",
+      "approved": true
+    },
+    {
+      "term": "Dow Jones",
+      "type": "pronunciation",
+      "speech": "Dáu Yóuns",
       "approved": true
     },
     {
