@@ -1,4 +1,5 @@
 from audio_speech import (
+    LEXICON_REVISION,
     SPEECH_NORMALIZER_VERSION,
     is_question,
     normalize_for_speech,
@@ -13,8 +14,11 @@ def check(source: str, expected: str, reference_date: str | None = None):
 
 if SPEECH_NORMALIZER_VERSION != 5:
     raise AssertionError("Speech Normalizer debe publicar versión 5.")
+if LEXICON_REVISION != 3:
+    raise AssertionError("Lexicon V3 debe publicar revisión 3.")
 
 check("Powell habló en Wall Street.", "Páuel habló en Uól Strít.")
+check("El Dow Jones retrocede 1,86%.", "El Dáu Yóuns retrocede uno coma ochenta y seis por ciento.")
 # Golden tests Speech V5: verbalización financiera controlada.
 check(
     "El IPC decidirá si esa repricing se consolida.",
