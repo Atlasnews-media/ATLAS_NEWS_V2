@@ -37,6 +37,27 @@
       text-transform: uppercase;
     }
 
+    :global(.front-page .lead-grid > .editorial-double-rule) {
+      height: 4px;
+      border-top: 4px double var(--rule);
+      border-bottom: 0;
+    }
+
+    :global(.front-page .lead-grid .edition-rail) {
+      padding-top: 0;
+      border-top: 0;
+    }
+
+    :global(.front-page .lead-grid .edition-rail .rail-title) {
+      margin: 0;
+      padding: 0.65rem 0;
+      border-bottom: 1px solid var(--rule);
+      color: var(--ink);
+      font: 800 1.2rem/1 var(--sans);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
     :global(.front-page .lead-grid) {
       border-bottom: 0;
     }
