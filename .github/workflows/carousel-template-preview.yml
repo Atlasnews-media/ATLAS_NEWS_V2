@@ -5,7 +5,7 @@ on:
     branches: [main]
     paths:
       - ".github/workflows/carousel-template-preview.yml"
-      - "tools/social-renderer/render-carousel-five.mjs"
+      - "tools/social-renderer/render-carousel-five-v2.mjs"
       - "tools/social-renderer/contracts/2026-09-12-daily-carousel-preview.json"
       - "tools/social-renderer/assets/CARRUSEL_1.png"
       - "tools/social-renderer/assets/CARRUSEL_2.png"
@@ -53,7 +53,7 @@ jobs:
           SOCIAL_CONTRACT: tools/social-renderer/contracts/2026-09-12-daily-carousel-preview.json
           SOCIAL_PUBLICATION_STATUS: PUBLICACIÓN DISPONIBLE / VERIFICADA
           SOCIAL_EDITION_NUMBER: "041"
-        run: node render-carousel-five.mjs
+        run: node render-carousel-five-v2.mjs
 
       - name: Validate preview artifact
         working-directory: tools/social-renderer
@@ -65,7 +65,9 @@ jobs:
             .carouselSlides == 5 and
             .editionNumber == "041" and
             .publishedDate == "12 SEPT 2026" and
+            .uniqueVisuals == 5 and
             (.visualKeys | length == 5) and
+            ((.visualKeys | unique | length) == 5) and
             (.outputs | length == 5) and
             (.templates | length == 5)
           ' output-template/template-validation.json >/dev/null
