@@ -7,8 +7,8 @@ const OUT = path.resolve(process.cwd(), "output-template");
 const CONTRACT_INPUT = process.env.SOCIAL_CONTRACT || process.argv[2] || "";
 const PUBLICATION_STATUS = process.env.SOCIAL_PUBLICATION_STATUS || "";
 const REQUIRED_PUBLICATION_STATUS = "PUBLICACIÓN DISPONIBLE / VERIFICADA";
-const W = 1080;
-const H = 1350;
+const W = 1254;
+const H = 1254;
 const INK = "#17130f";
 const RED = "#9d3027";
 
@@ -166,34 +166,34 @@ async function main() {
   await fs.rm(OUT, { recursive: true, force: true });
   await fs.mkdir(OUT, { recursive: true });
 
-  const titleSize = fit(contract.title, 72, 46, 70);
-  const dekSize = fit(contract.dek, 36, 28, 125);
-  const ideaSize = fit(contract.ideaCentral, 58, 40, 125);
-  const supportSize = fit(contract.ideaSupport, 34, 27, 190);
-  const pointsSize = fit(contract.keyPoints.map((x) => x.text).join(" "), 36, 29, 210);
-  const impactSize = fit(contract.impactItems.map((x) => `${x.label} ${x.text}`).join(" "), 34, 27, 250);
+  const titleSize = fit(contract.title, 76, 48, 70);
+  const dekSize = fit(contract.dek, 38, 29, 125);
+  const ideaSize = fit(contract.ideaCentral, 62, 42, 125);
+  const supportSize = fit(contract.ideaSupport, 36, 28, 190);
+  const pointsSize = fit(contract.keyPoints.map((x) => x.text).join(" "), 38, 30, 210);
+  const impactSize = fit(contract.impactItems.map((x) => `${x.label} ${x.text}`).join(" "), 36, 28, 250);
 
   const slide1 = `
-    <div class="copy" data-fit data-bottom-limit="1110" style="left:82px;right:82px;top:300px">
+    <div class="copy" data-fit data-bottom-limit="1050" style="left:96px;right:96px;top:300px">
       <div class="headline" style="font-size:${titleSize}px">${escapeHtml(contract.title)}</div>
       <div class="rule"></div>
-      <div class="body" style="font-size:${dekSize}px;max-width:790px">${escapeHtml(contract.dek)}</div>
+      <div class="body" style="font-size:${dekSize}px;max-width:900px">${escapeHtml(contract.dek)}</div>
     </div>`;
 
   const slide2 = `
-    <div class="copy" data-fit data-bottom-limit="1120" style="left:82px;right:82px;top:315px">
+    <div class="copy" data-fit data-bottom-limit="1055" style="left:96px;right:96px;top:310px">
       <div class="headline" style="font-size:${ideaSize}px">${escapeHtml(contract.ideaCentral)}</div>
       <div class="rule"></div>
-      <div class="body" style="font-size:${supportSize}px;max-width:820px">${escapeHtml(contract.ideaSupport)}</div>
+      <div class="body" style="font-size:${supportSize}px;max-width:930px">${escapeHtml(contract.ideaSupport)}</div>
     </div>`;
 
   const slide3 = `
-    <div class="copy body" data-fit data-bottom-limit="1135" style="left:86px;right:86px;top:315px;font-size:${pointsSize}px">
+    <div class="copy body" data-fit data-bottom-limit="1065" style="left:100px;right:100px;top:310px;font-size:${pointsSize}px">
       ${contract.keyPoints.map((item) => `<div class="point">${escapeHtml(item.text)}</div>`).join("")}
     </div>`;
 
   const slide4 = `
-    <div class="copy body" data-fit data-bottom-limit="1135" style="left:86px;right:86px;top:315px;font-size:${impactSize}px">
+    <div class="copy body" data-fit data-bottom-limit="1065" style="left:100px;right:100px;top:310px;font-size:${impactSize}px">
       ${contract.impactItems.map((item) => `<div class="impact"><b>${escapeHtml(item.label)}.</b> ${escapeHtml(item.text)}</div>`).join("")}
     </div>`;
 
@@ -231,6 +231,8 @@ async function main() {
     sourceId: contract.sourceId || null,
     canonicalUrl: contract.canonicalUrl,
     carouselSlides: 5,
+    width: W,
+    height: H,
     templates: TEMPLATE_PATHS.map((file) => path.relative(ROOT, file).replaceAll(path.sep, "/")),
     outputs,
     status: "PASS",
