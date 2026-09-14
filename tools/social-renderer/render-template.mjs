@@ -6,6 +6,7 @@ const ROOT = path.resolve(process.cwd(), "../..");
 const OUT = path.resolve(process.cwd(), "output-template");
 const CONTRACT_INPUT = process.env.SOCIAL_CONTRACT || process.argv[2] || "";
 const PUBLICATION_STATUS = process.env.SOCIAL_PUBLICATION_STATUS || "";
+const EDITION_INPUT = String(process.env.SOCIAL_EDITION_NUMBER || "").trim();
 const REQUIRED_PUBLICATION_STATUS = "PUBLICACIÓN DISPONIBLE / VERIFICADA";
 const W = 1254;
 const H = 1254;
@@ -86,6 +87,20 @@ function fit(text, normal, minimum, threshold) {
   return Math.max(minimum, Math.round((normal * threshold) / length));
 }
 
+function dateLabel(iso) {
+  const d = new Date(iso);
+  if (Number.isNaN(d.valueOf())) throw new Error("publishedDate must be valid");
+  const m = ["ENE", "FEB", "MAR", "ABR", "MAY", "JUN", "JUL", "AGO", "SEPT", "OCT", "NOV", "DIC"];
+  return `${String(d.getDate()).padStart(2, "0")} ${m[d.getMonth()]} ${d.getFullYear()}`;
+}
+
+function editionLabel(value) {
+  if (!/^[1-9][0-9]*$/.test(value)) {
+    throw new Error("SOCIAL_EDITION_NUMBER must be a positive integer");
+  }
+  return value.padStart(3, "0");
+}
+
 function pngDimensions(buffer) {
   if (buffer.toString("hex", 0, 8) !== "89504e470d0a1a0a") {
     throw new Error("Template is not PNG");
@@ -106,7 +121,7 @@ async function loadTemplates() {
   return result;
 }
 
-function pageHtml(template, inner) {
+function pageHtml(template, inner, edition, date) {
   return `<!doctype html><html><head><meta charset="utf-8"><style>
     *{box-sizing:border-box} html,body{margin:0;width:${W}px;height:${H}px;overflow:hidden}
     body{font-family:Georgia,'Times New Roman',serif;color:${INK};background:#f4f0e6}
@@ -120,8 +135,10 @@ function pageHtml(template, inner) {
     .point:last-child{border-bottom:none;margin-bottom:0}
     .impact{padding:0 0 24px 0;margin:0 0 24px 0;border-bottom:1px solid rgba(23,19,15,.22)}
     .impact:last-child{border-bottom:none;margin-bottom:0}
+    .edition-value{position:absolute;z-index:3;left:946px;top:42px;color:${RED};font-size:18px;font-weight:700;letter-spacing:1px}
+    .date-value{position:absolute;z-index:3;left:1033px;top:42px;color:${INK};font-size:16px;font-weight:600;letter-spacing:2.1px;white-space:nowrap}
     [data-fit]{overflow-wrap:anywhere}
-  </style></head><body><div class="page" id="root"><img class="template" src="${template}">${inner}</div></body></html>`;
+  </style></head><body><div class="page" id="root"><img class="template" src="${template}"><div class="edition-value">${edition}</div><div class="date-value">${date}</div>${inner}</div></body></html>`;
 }
 
 async function screenshot(page, html, file) {
@@ -162,6 +179,8 @@ async function main() {
   const contractPath = resolveContract(CONTRACT_INPUT);
   const contract = validateContract(JSON.parse(await fs.readFile(contractPath.absolute, "utf8")));
   const templates = await loadTemplates();
+  const edition = editionLabel(EDITION_INPUT);
+  const date = dateLabel(contract.publishedDate);
 
   await fs.rm(OUT, { recursive: true, force: true });
   await fs.mkdir(OUT, { recursive: true });
@@ -206,7 +225,7 @@ async function main() {
     for (let i = 0; i < slides.length; i += 1) {
       await screenshot(
         page,
-        pageHtml(templates[i], slides[i]),
+        pageHtml(templates[i], slides[i], edition, date),
         path.join(OUT, `atlas-news-instagram-carousel-0${i + 1}.png`),
       );
     }
@@ -233,6 +252,8 @@ async function main() {
     carouselSlides: 5,
     width: W,
     height: H,
+    editionNumber: edition,
+    publishedDate: date,
     templates: TEMPLATE_PATHS.map((file) => path.relative(ROOT, file).replaceAll(path.sep, "/")),
     outputs,
     status: "PASS",
