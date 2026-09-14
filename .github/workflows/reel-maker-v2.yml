@@ -13,6 +13,10 @@ on:
       - "reference-assets/02_noticia_base.png"
       - "reference-assets/03_cierre_base.png"
       - "reference-assets/primary_assessment.mp3"
+      - "reference-assets/architect_of_momentum.mp3"
+      - "reference-assets/market_intelligence.mp3"
+      - "reference-assets/midnight_exchange.mp3"
+      - "reference-assets/the_morning_brief.mp3"
       - "src/lib/front-page-visuals.ts"
   workflow_dispatch:
     inputs:
@@ -226,7 +230,7 @@ jobs:
             }
           fi
 
-      - name: Verify Reel Maker runtime
+      - name: Verify Reel Maker runtime and audio catalog
         run: |
           set -euo pipefail
           python3 --version
@@ -238,8 +242,29 @@ jobs:
           test -f reference-assets/01_portada_base.png
           test -f reference-assets/02_noticia_base.png
           test -f reference-assets/03_cierre_base.png
-          test -f reference-assets/primary_assessment.mp3
-          ffprobe -v error -show_entries format=duration -of default=nw=1:nk=1 reference-assets/primary_assessment.mp3
+          for track in \
+            primary_assessment.mp3 \
+            architect_of_momentum.mp3 \
+            market_intelligence.mp3 \
+            midnight_exchange.mp3 \
+            the_morning_brief.mp3; do
+            test -f "reference-assets/$track"
+            ffprobe -v error -show_entries format=duration -of default=nw=1:nk=1 "reference-assets/$track" >/dev/null
+          done
+          python3 - <<'PY'
+          from tools.reel_maker.reel_maker import AUDIO_ROTATION_VERSION, rotation_track_name
+          expected = {
+              41: "primary_assessment.mp3",
+              42: "architect_of_momentum.mp3",
+              43: "market_intelligence.mp3",
+              44: "midnight_exchange.mp3",
+              45: "the_morning_brief.mp3",
+              46: "primary_assessment.mp3",
+          }
+          assert AUDIO_ROTATION_VERSION == "audio-rotation-v1"
+          assert {edition: rotation_track_name(edition) for edition in expected} == expected
+          print("audio-rotation-v1 deterministic sequence PASS")
+          PY
           ffmpeg -version | head -n 1
           fc-match 'Liberation Serif' | head -n 1
 
@@ -279,7 +304,16 @@ jobs:
             .video.height == "1920" and
             .video.pix_fmt == "yuv420p" and
             .video.r_frame_rate == "30/1" and
-            .video.audio_codec == "aac"
+            .video.audio_codec == "aac" and
+            .audio.selectorVersion == "audio-rotation-v1" and
+            .audio.selectionEdition == .editionNumber and
+            (.audio.selectedTrack | type == "string" and length > 4) and
+            (.audio.resolvedTrack | type == "string" and length > 4) and
+            (.audio.trackSha256 | test("^[0-9a-f]{64}$")) and
+            (.audio.fallbackUsed | type == "boolean") and
+            (.audio.sourceDuration | type == "number" and . > 0) and
+            .audio.crossfadeSeconds == 0.9 and
+            .audio.outputCodec == "aac"
           ' "$report" >/dev/null
 
       - name: Summarize isolated Phase 4 result
@@ -290,13 +324,18 @@ jobs:
           contract="$ATLAS_REEL_CONTRACT"
           source_commit="${SOURCE_COMMIT:-$(jq -r '.sourceCommit' "$contract")}"
           edition_number="$(jq -r '.editionNumber' "$contract")"
+          report="tools/reel_maker/output/visual-validation.json"
+          selected_track="$(jq -r '.audio.selectedTrack' "$report")"
+          resolved_track="$(jq -r '.audio.resolvedTrack' "$report")"
+          fallback="$(jq -r '.audio.fallbackUsed' "$report")"
+          selector="$(jq -r '.audio.selectorVersion' "$report")"
           {
             echo "### Reel Maker V2 — PASS"
             echo "sourceCommit: \`${source_commit}\`"
             echo "Edition: \`${edition_number}\`"
             echo "Scenes: 7 / 7 — portada + 5 highlights + cierre"
             echo "Templates: official reference-assets bases"
-            echo "Audio: ATLAS Reel composition / AAC"
+            echo "Audio: \`${resolved_track}\` · ${selector} · selected=\`${selected_track}\` · fallback=${fallback}"
             echo "Output: \`atlas-news-reel-${source_commit}.mp4\`"
             echo "Isolation: no social-renderer mutation / no Meta publish."
           } >> "$GITHUB_STEP_SUMMARY"

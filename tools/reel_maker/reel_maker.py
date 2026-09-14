@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
-"""ATLAS NEWS Reel Maker V2 — official templates, 5 highlights, MP4 + theme."""
+"""ATLAS NEWS Reel Maker V2 — official templates, 5 highlights, MP4 + deterministic theme."""
 from __future__ import annotations
 
-import argparse, json, re, shutil, subprocess, tempfile, unicodedata, urllib.parse, urllib.request
+import argparse, hashlib, json, re, shutil, subprocess, tempfile, unicodedata, urllib.parse, urllib.request
 from dataclasses import dataclass
 from datetime import date
 from pathlib import Path
@@ -16,7 +16,15 @@ COVER = TEMPLATES / "01_portada_base.png"
 NEWS = TEMPLATES / "02_noticia_base.png"
 CLOSE = TEMPLATES / "03_cierre_base.png"
 CATALOG = ROOT / "src/lib/front-page-visuals.ts"
-MUSIC = ROOT / "reference-assets/primary_assessment.mp3"
+AUDIO_ROTATION_VERSION = "audio-rotation-v1"
+MUSIC_TRACKS = (
+    "primary_assessment.mp3",
+    "architect_of_momentum.mp3",
+    "market_intelligence.mp3",
+    "midnight_exchange.mp3",
+    "the_morning_brief.mp3",
+)
+FALLBACK_MUSIC = TEMPLATES / MUSIC_TRACKS[0]
 INK, RED = (17,17,17,255), (198,26,35,255)
 MONTHS = ["", "ENE","FEB","MAR","ABR","MAY","JUN","JUL","AGO","SEPT","OCT","NOV","DIC"]
 
@@ -30,6 +38,53 @@ def ffprobe(path:Path) -> dict:
         "ffprobe","-v","error","-show_entries",
         "stream=codec_type,codec_name,width,height,pix_fmt,r_frame_rate,bit_rate:format=duration",
         "-of","json",str(path)], text=True))
+
+
+def audio_duration(path:Path) -> float:
+    value=subprocess.check_output([
+        "ffprobe","-v","error","-show_entries","format=duration",
+        "-of","default=nw=1:nk=1",str(path)],text=True).strip()
+    duration=float(value)
+    if duration<=0: raise ValueError(f"Duración de audio inválida: {path}")
+    return duration
+
+
+def sha256_file(path:Path) -> str:
+    digest=hashlib.sha256()
+    with path.open("rb") as handle:
+        for chunk in iter(lambda: handle.read(1024*1024), b""): digest.update(chunk)
+    return digest.hexdigest()
+
+
+def rotation_track_name(edition:int) -> str:
+    return MUSIC_TRACKS[(edition-41)%len(MUSIC_TRACKS)]
+
+
+def resolve_music(edition:int, override:str|None=None) -> tuple[Path,dict]:
+    selected=Path(override).expanduser().resolve() if override else TEMPLATES/rotation_track_name(edition)
+    selector="manual-override" if override else AUDIO_ROTATION_VERSION
+    resolved=selected; fallback=False
+    try:
+        if not selected.is_file(): raise FileNotFoundError(selected)
+        duration=audio_duration(selected)
+    except Exception as exc:
+        if selected==FALLBACK_MUSIC:
+            raise RuntimeError(f"Audio fallback inválido: {selected}") from exc
+        resolved=FALLBACK_MUSIC; fallback=True
+        if not resolved.is_file(): raise FileNotFoundError(f"Audio fallback faltante: {resolved}") from exc
+        try: duration=audio_duration(resolved)
+        except Exception as fallback_exc: raise RuntimeError(f"Audio fallback inválido: {resolved}") from fallback_exc
+    return resolved,{
+        "selectorVersion":selector,
+        "selectedTrack":selected.name,
+        "resolvedTrack":resolved.name,
+        "trackSha256":sha256_file(resolved),
+        "selectionEdition":edition,
+        "fallbackUsed":fallback,
+        "sourceDuration":round(duration,3),
+        "crossfadeSeconds":0.9,
+        "outputCodec":"aac",
+    }
 
 
 def font(size:int, bold:bool=False):
@@ -176,7 +231,7 @@ def animate(png:Path, clip:Path, seconds:float):
 
 
 def music_bed(src:Path, dst:Path, total:float):
-    dur=float(subprocess.check_output(["ffprobe","-v","error","-show_entries","format=duration","-of","default=nw=1:nk=1",str(src)],text=True).strip()); cross=.9
+    dur=audio_duration(src); cross=.9
     repeats=1; effective=dur
     while effective<total+.25: repeats+=1; effective+=dur-cross
     cmd=["ffmpeg","-y","-hide_banner","-loglevel","error"]; [cmd.extend(["-i",str(src)]) for _ in range(repeats)]
@@ -187,12 +242,10 @@ def music_bed(src:Path, dst:Path, total:float):
 
 
 def main():
-    ap=argparse.ArgumentParser(); ap.add_argument("contract"); ap.add_argument("--output-dir",default="tools/reel_maker/output"); ap.add_argument("--keep-plates",action="store_true"); ap.add_argument("--duration",type=float,default=None); ap.add_argument("--music",default=str(MUSIC)); args=ap.parse_args()
+    ap=argparse.ArgumentParser(); ap.add_argument("contract"); ap.add_argument("--output-dir",default="tools/reel_maker/output"); ap.add_argument("--keep-plates",action="store_true"); ap.add_argument("--duration",type=float,default=None); ap.add_argument("--music",default=None); args=ap.parse_args()
     for tool in ("ffmpeg","ffprobe","fc-match"):
         if not shutil.which(tool): raise RuntimeError(f"Falta {tool}")
-    music=Path(args.music).expanduser().resolve()
-    if not music.is_file(): raise FileNotFoundError(f"Audio oficial faltante: {music}")
-    c=load_contract(Path(args.contract)); out=Path(args.output_dir); out.mkdir(parents=True,exist_ok=True); durations=[args.duration]*7 if args.duration else list(DURATIONS); total=sum(durations)
+    c=load_contract(Path(args.contract)); music,audio_meta=resolve_music(c.edition,args.music); out=Path(args.output_dir); out.mkdir(parents=True,exist_ok=True); durations=[args.duration]*7 if args.duration else list(DURATIONS); total=sum(durations)
     with tempfile.TemporaryDirectory(prefix="atlas-reel-") as td:
         t=Path(td); pngdir=t/"png"; clipdir=t/"clips"; pngdir.mkdir(); clipdir.mkdir(); images,manifest=download_visuals(c,t/"images")
         metas=[]
@@ -205,7 +258,7 @@ def main():
         probe=ffprobe(final); v=next(x for x in probe["streams"] if x["codec_type"]=="video"); a=next((x for x in probe["streams"] if x["codec_type"]=="audio"),None); actual=float(probe["format"]["duration"])
         ok=v.get("codec_name")=="h264" and v.get("width")==W and v.get("height")==H and v.get("pix_fmt")=="yuv420p" and v.get("r_frame_rate")=="30/1" and a and a.get("codec_name")=="aac" and abs(actual-total)<.6
         if not ok: raise RuntimeError("Validación técnica MP4 fallida")
-        report={"sourceCommit":c.source_commit,"editionNumber":c.edition,"publishedDate":c.published_date,"scenes":metas,"sceneDurations":durations,"expectedDuration":total,"video":{"codec":"h264","width":str(W),"height":str(H),"pix_fmt":"yuv420p","r_frame_rate":"30/1","audio_codec":"aac","duration":f"{actual:.3f}"},"visualSources":manifest,"status":"PASS"}
+        report={"sourceCommit":c.source_commit,"editionNumber":c.edition,"publishedDate":c.published_date,"scenes":metas,"sceneDurations":durations,"expectedDuration":total,"video":{"codec":"h264","width":str(W),"height":str(H),"pix_fmt":"yuv420p","r_frame_rate":"30/1","audio_codec":"aac","duration":f"{actual:.3f}"},"audio":audio_meta,"visualSources":manifest,"status":"PASS"}
         (out/"visual-validation.json").write_text(json.dumps(report,ensure_ascii=False,indent=2)+"\n",encoding="utf-8"); (out/"visual-sources.json").write_text(json.dumps(manifest,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
         if args.keep_plates:
             plates=out/f"atlas-news-plates-{c.source_commit}"; plates.mkdir(parents=True,exist_ok=True)

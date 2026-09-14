@@ -42,15 +42,50 @@ Las cinco noticias son exactamente los cinco `highlights` publicados. Reel Maker
 
 Para las escenas 2–6, Reel Maker reutiliza `src/lib/front-page-visuals.ts` como catálogo. Lee sus archivos y keywords, selecciona una imagen compatible con cada highlight y descarga la versión de Wikimedia Commons. Si una descarga externa falla, conserva la plantilla sin fotografía dinámica y deja evidencia en `visual-sources.json`; nunca altera la edición publicada.
 
-## Audio
+## Audio — rotación determinista
 
-La composición usada por el artifact vive en:
+El catálogo autorizado vive en `reference-assets` y contiene cinco pistas:
 
 ```text
-reference-assets/primary_assessment.mp3
+primary_assessment.mp3
+architect_of_momentum.mp3
+market_intelligence.mp3
+midnight_exchange.mp3
+the_morning_brief.mp3
 ```
 
-El Reel usa el tema completo y, si la pista es más corta que el video, concatena repeticiones completas con crossfade. No usa micro-loops. La salida final exige audio AAC.
+La regla canónica es `audio-rotation-v1`. La selección no es aleatoria ni depende de ejecuciones previas: se calcula por `editionNumber` con `(editionNumber - 41) mod 5`.
+
+```text
+041 → primary_assessment.mp3
+042 → architect_of_momentum.mp3
+043 → market_intelligence.mp3
+044 → midnight_exchange.mp3
+045 → the_morning_brief.mp3
+046 → primary_assessment.mp3
+```
+
+Por lo tanto, una misma edición siempre selecciona la misma pista y las ediciones consecutivas no repiten mientras la numeración sea consecutiva. La edición 041 conserva `primary_assessment.mp3`, preservando el comportamiento validado previamente.
+
+Antes de renderizar, Reel Maker valida la pista seleccionada con `ffprobe`. Si falta o no es decodificable, usa `primary_assessment.mp3` como fallback técnico. Si el fallback también falla, el Reel falla cerrado. El parámetro `--music` queda reservado como override explícito de operador/prueba y no participa en la rotación automática.
+
+Si la pista es más corta que el Reel, el renderer repite la canción completa y une cada repetición con crossfade de 0,9 s; no usa micro-loops. El audio se remuestrea a 48 kHz, se ajusta a volumen 0,84, se recorta a la duración exacta, incorpora fade-in/fade-out y se codifica a AAC.
+
+La evidencia `visual-validation.json` registra la identidad sonora exacta:
+
+```text
+audio.selectorVersion
+audio.selectedTrack
+audio.resolvedTrack
+audio.trackSha256
+audio.selectionEdition
+audio.fallbackUsed
+audio.sourceDuration
+audio.crossfadeSeconds
+audio.outputCodec
+```
+
+`selectedTrack` registra lo que decidió la regla; `resolvedTrack` registra lo que finalmente se utilizó. Así un fallback queda auditable sin perder la decisión original.
 
 ## Ritmo
 
@@ -92,7 +127,9 @@ El artifact falla si no cumple:
 - audio AAC;
 - edición positiva;
 - cinco highlights;
-- duración compatible con 5/6/6/6/6/6/5.
+- duración compatible con 5/6/6/6/6/6/5;
+- pista resuelta válida y trazable mediante SHA-256;
+- metadata `audio-rotation-v1` coherente con la edición.
 
 ## Aislamiento
 
