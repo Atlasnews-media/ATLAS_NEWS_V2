@@ -51,6 +51,7 @@ jobs:
         env:
           SOCIAL_CONTRACT: tools/social-renderer/contracts/2026-09-04-reading-activo-seguro-riesgo.json
           SOCIAL_PUBLICATION_STATUS: PUBLICACIÓN DISPONIBLE / VERIFICADA
+          SOCIAL_EDITION_NUMBER: "041"
         run: node render-template.mjs
 
       - name: Validate preview artifact
@@ -61,6 +62,7 @@ jobs:
           jq -e '
             .status == "PASS" and
             .carouselSlides == 5 and
+            .editionNumber == "041" and
             (.outputs | length == 5) and
             (.templates | length == 5)
           ' output-template/template-validation.json >/dev/null
