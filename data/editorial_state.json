@@ -39,14 +39,14 @@
     {
       "id": "chile-inflation-activity-rates",
       "topic": "Inflación, actividad y tasas en Chile",
-      "thesis": "El IPoM de septiembre confirma una combinación más compleja: la actividad de 2026 resultó más débil de lo previsto y el Banco Central redujo su rango de crecimiento a 0,25%-0,75%, mientras la trayectoria de inflación cambia poco y sigue convergiendo a 3% en el segundo trimestre de 2027; la TPM permanece en 4,5% y se evaluará reunión a reunión.",
-      "status": "changed",
-      "last_evidence": "El 9 de septiembre el Banco Central publicó el IPoM: redujo la proyección de crecimiento 2026 desde 1,0%-1,75% a 0,25%-0,75%, atribuyendo el cambio a menor dinamismo de la demanda, condiciones climáticas adversas y menor producción minera; mantuvo una inflación algo sobre 4% a fines de 2026 y convergencia a 3% en el segundo trimestre de 2027.",
-      "effect": "Desplaza el foco desde una lectura centrada sólo en la sorpresa del IPC hacia un escenario donde menor demanda y shocks de costos actúan en sentidos opuestos; aumenta la relevancia de la actividad y del mercado laboral sin eliminar el riesgo inflacionario de energía.",
-      "base_scenario": "Actividad débil durante 2026 con recuperación prevista desde 2027, inflación convergiendo gradualmente a 3% y TPM en 4,5% sin trayectoria predeterminada, evaluada reunión a reunión según actividad, inflación y riesgos externos.",
-      "invalidate_if": "Una debilidad de actividad significativamente más persistente, una recuperación mucho más rápida del gasto o una aceleración sostenida de la inflación subyacente obligarían a revisar el escenario; una caída durable de combustibles reduciría el riesgo de costos.",
-      "watch": "Consumo, inversión, empleo, confianza, producción minera, efectos climáticos, IPC sin volátiles, combustibles, Brent, expectativas de inflación y próximas RPM.",
-      "last_publication": "/lecturas/2026-09-09-reading-ipom-escenario-2026/"
+      "thesis": "Chile entra en una combinación de señales cruzadas: el crecimiento de 2026 fue revisado a 0,25%-0,75%, el IPC de agosto sorprendió con 0,6% mensual aunque el componente sin volátiles avanzó solo 0,1%, y el petróleo sobre US$108 junto con tasas globales más altas endurece el entorno externo; menor demanda y shocks de costos actúan en direcciones opuestas.",
+      "status": "confirmed",
+      "last_evidence": "Al 14 de septiembre, el IPoM mantenía la proyección de crecimiento 2026 en 0,25%-0,75% tras la sorpresa del IPC de agosto de 0,6% mensual y 4,1% anual; el IPC sin volátiles había subido 0,1% mensual y 3,3% anual, mientras el Brent volvió sobre US$108 y el Treasury estadounidense a diez años superó temporalmente 5%.",
+      "effect": "Confirma que el escenario chileno no puede leerse en una sola dirección: la debilidad de la demanda reduce presión interna, mientras energía y condiciones financieras externas mantienen riesgos alcistas sobre costos e inflación, sin fijar de antemano la próxima decisión de TPM.",
+      "base_scenario": "Actividad débil durante 2026, inflación subyacente más contenida que el índice general y riesgo de costos externos todavía elevado; la TPM permanece en 4,5% sin trayectoria predeterminada y la lectura depende de cuál de esas fuerzas gane persistencia.",
+      "invalidate_if": "Una aceleración sostenida de la inflación subyacente confirmaría una presión más amplia; una normalización durable del petróleo y de las tasas globales reduciría el riesgo externo; una recuperación clara de consumo, inversión y empleo debilitaría la tesis de demanda interna frágil.",
+      "watch": "Consumo, inversión, empleo, confianza, IPC sin volátiles, combustibles, Brent, Treasury a diez años, decisión de la Fed, expectativas de inflación y próximas RPM.",
+      "last_publication": "/lecturas/2026-09-14-reading-chile-cierra-semana-senales-cruzadas/"
     }
   ]
 }
