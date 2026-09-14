@@ -40,17 +40,17 @@ Las cinco noticias son exactamente los cinco `highlights` publicados. Reel Maker
 
 ## Banco visual
 
-Para las escenas 2–6, Reel Maker reutiliza `src/lib/front-page-visuals.ts` como catálogo. Lee sus archivos y keywords, selecciona de forma determinista una imagen compatible con cada highlight y descarga la versión de Wikimedia Commons. Si una descarga externa falla, conserva la plantilla sin fotografía dinámica y deja evidencia en `visual-sources.json`; nunca altera la edición publicada.
+Para las escenas 2–6, Reel Maker reutiliza `src/lib/front-page-visuals.ts` como catálogo. Lee sus archivos y keywords, selecciona una imagen compatible con cada highlight y descarga la versión de Wikimedia Commons. Si una descarga externa falla, conserva la plantilla sin fotografía dinámica y deja evidencia en `visual-sources.json`; nunca altera la edición publicada.
 
-## Audio oficial
+## Audio
 
-La pista aprobada se reconstruye de forma determinista durante el workflow desde los fragmentos de transporte en `tools/reel_maker/assets/theme/` y queda temporalmente en:
+La composición usada por el artifact vive en:
 
 ```text
-tools/reel_maker/.generated/atlas-news-theme.m4a
+reference-assets/primary_assessment.mp3
 ```
 
-El Reel usa el tema completo y, cuando necesita extenderlo, concatena repeticiones completas con crossfade. No usa micro-loops. La salida exige stream AAC.
+El Reel usa el tema completo y, si la pista es más corta que el video, concatena repeticiones completas con crossfade. No usa micro-loops. La salida final exige audio AAC.
 
 ## Ritmo
 
