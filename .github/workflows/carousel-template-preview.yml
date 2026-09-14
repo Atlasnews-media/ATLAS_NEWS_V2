@@ -1,0 +1,83 @@
+name: Carousel Template Preview — isolated artifact
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - ".github/workflows/carousel-template-preview.yml"
+      - "tools/social-renderer/render-carousel-five-v2.mjs"
+      - "tools/social-renderer/contracts/2026-09-12-daily-carousel-preview.json"
+      - "tools/social-renderer/assets/CARRUSEL_1.png"
+      - "tools/social-renderer/assets/CARRUSEL_2.png"
+      - "tools/social-renderer/assets/CARRUSEL_3.png"
+      - "tools/social-renderer/assets/CARRUSEL_4.png"
+      - "tools/social-renderer/assets/CARRUSEL_5.png"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  preview:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: Checkout preview branch
+        uses: actions/checkout@v5
+
+      - name: Setup Node
+        uses: actions/setup-node@v6
+        with:
+          node-version: 22.19.0
+
+      - name: Install renderer dependencies
+        working-directory: tools/social-renderer
+        run: npm install --no-audit --no-fund --no-package-lock
+
+      - name: Ensure Chromium
+        working-directory: tools/social-renderer
+        run: npx playwright install chromium
+
+      - name: Verify five official bases
+        working-directory: tools/social-renderer
+        run: |
+          set -euo pipefail
+          for n in 1 2 3 4 5; do
+            test -f "assets/CARRUSEL_${n}.png"
+          done
+
+      - name: Render five-slide carousel preview
+        working-directory: tools/social-renderer
+        env:
+          SOCIAL_CONTRACT: tools/social-renderer/contracts/2026-09-12-daily-carousel-preview.json
+          SOCIAL_PUBLICATION_STATUS: PUBLICACIÓN DISPONIBLE / VERIFICADA
+          SOCIAL_EDITION_NUMBER: "041"
+        run: node render-carousel-five-v2.mjs
+
+      - name: Validate preview artifact
+        working-directory: tools/social-renderer
+        run: |
+          set -euo pipefail
+          test "$(find output-template -maxdepth 1 -type f -name 'atlas-news-instagram-carousel-0*.png' | wc -l | tr -d ' ')" = "5"
+          jq -e '
+            .status == "PASS" and
+            .carouselSlides == 5 and
+            .editionNumber == "041" and
+            .publishedDate == "12 SEPT 2026" and
+            .uniqueVisuals == 5 and
+            (.visualKeys | length == 5) and
+            ((.visualKeys | unique | length) == 5) and
+            (.outputs | length == 5) and
+            (.templates | length == 5)
+          ' output-template/template-validation.json >/dev/null
+
+      - name: Upload visual evidence
+        uses: actions/upload-artifact@v4
+        with:
+          name: atlas-news-carousel-template-preview-${{ github.run_id }}
+          path: |
+            tools/social-renderer/output-template/atlas-news-instagram-carousel-0*.png
+            tools/social-renderer/output-template/template-validation.json
+          if-no-files-found: error
+          retention-days: 14
