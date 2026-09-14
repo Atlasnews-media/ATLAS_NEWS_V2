@@ -50,12 +50,16 @@ const VISUALS = Object.freeze({
 });
 
 function esc(value = "") {
-  return String(value).replace(/[&<>\"]/g, (c) => ({
-    "&": "&amp;",
-    "<": "&lt;",
-    ">": "&gt;",
-    '"': "&quot;",
-  })[c]);
+  return String(value).replace(
+    /[&<>\"]/g,
+    (c) =>
+      ({
+        "&": "&amp;",
+        "<": "&lt;",
+        ">": "&gt;",
+        '"': "&quot;",
+      })[c],
+  );
 }
 
 function required(value, label) {
@@ -65,8 +69,12 @@ function required(value, label) {
 }
 
 function validate(raw) {
-  if (!raw || typeof raw !== "object" || Array.isArray(raw)) throw new Error("contract must be an object");
-  if (String(raw.version) !== "1") throw new Error(`Five-slide carousel requires contract v1, got ${raw.version}`);
+  if (!raw || typeof raw !== "object" || Array.isArray(raw))
+    throw new Error("contract must be an object");
+  if (String(raw.version) !== "1")
+    throw new Error(
+      `Five-slide carousel requires contract v1, got ${raw.version}`,
+    );
   const contract = {
     version: "1",
     sourceCommit: String(raw.sourceCommit || "").trim(),
@@ -82,9 +90,13 @@ function validate(raw) {
     keyPoints: raw.keyPoints,
     impactItems: raw.impactItems,
   };
-  if (!Array.isArray(contract.keyPoints) || contract.keyPoints.length !== 3) throw new Error("keyPoints must contain exactly 3 items");
-  if (!Array.isArray(contract.impactItems) || contract.impactItems.length !== 3) throw new Error("impactItems must contain exactly 3 items");
-  contract.keyPoints = contract.keyPoints.map((item, i) => ({ text: required(item?.text, `keyPoints[${i}].text`) }));
+  if (!Array.isArray(contract.keyPoints) || contract.keyPoints.length !== 3)
+    throw new Error("keyPoints must contain exactly 3 items");
+  if (!Array.isArray(contract.impactItems) || contract.impactItems.length !== 3)
+    throw new Error("impactItems must contain exactly 3 items");
+  contract.keyPoints = contract.keyPoints.map((item, i) => ({
+    text: required(item?.text, `keyPoints[${i}].text`),
+  }));
   contract.impactItems = contract.impactItems.map((item, i) => ({
     label: required(item?.label, `impactItems[${i}].label`),
     text: required(item?.text, `impactItems[${i}].text`),
@@ -94,24 +106,46 @@ function validate(raw) {
 
 function resolveContract(input) {
   const normalized = required(input, "SOCIAL_CONTRACT").replaceAll("\\", "/");
-  if (!normalized.endsWith(".json") || normalized.startsWith("/") || normalized.includes("..")) throw new Error(`Unsafe contract path: ${input}`);
+  if (
+    !normalized.endsWith(".json") ||
+    normalized.startsWith("/") ||
+    normalized.includes("..")
+  )
+    throw new Error(`Unsafe contract path: ${input}`);
   const absolute = path.resolve(ROOT, normalized);
   const relative = path.relative(ROOT, absolute).replaceAll(path.sep, "/");
-  if (relative !== normalized) throw new Error(`Unsafe contract path: ${input}`);
+  if (relative !== normalized)
+    throw new Error(`Unsafe contract path: ${input}`);
   return { absolute, relative };
 }
 
 function normalize(value) {
-  return String(value || "").normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
+  return String(value || "")
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .toLowerCase();
 }
 
 function visualKey(text) {
   const hay = normalize(text);
   const has = (...words) => words.some((word) => hay.includes(normalize(word)));
-  if (has("hormuz", "saudita", "oleoducto", "petroleo", "brent", "crudo", "energia")) return "energy";
+  if (
+    has(
+      "hormuz",
+      "saudita",
+      "oleoducto",
+      "petroleo",
+      "brent",
+      "crudo",
+      "energia",
+    )
+  )
+    return "energy";
   if (has("fed", "inflacion", "ipc", "fomc", "tasa", "tasas")) return "fed";
-  if (has("wall street", "s&p", "nasdaq", "dow", "acciones", "bolsa")) return "equity";
-  if (has("treasury", "bonos", "renta fija", "duracion", "carry")) return "treasury";
+  if (has("wall street", "s&p", "nasdaq", "dow", "acciones", "bolsa"))
+    return "equity";
+  if (has("treasury", "bonos", "renta fija", "duracion", "carry"))
+    return "treasury";
   if (has("chile", "ipom", "santiago", "tpm", "banco central")) return "chile";
   if (has("puerto", "flete", "transporte", "contenedor")) return "port";
   return "treasury";
@@ -140,7 +174,9 @@ async function loadVisual(key) {
       dataUrl = `data:${response.headers.get("content-type") || "image/jpeg"};base64,${buffer.toString("base64")}`;
     }
   } catch (error) {
-    console.warn(`[carousel-five] visual fallback ${key}: ${error?.message || error}`);
+    console.warn(
+      `[carousel-five] visual fallback ${key}: ${error?.message || error}`,
+    );
   }
   const out = { ...visual, dataUrl };
   visualCache.set(key, out);
@@ -156,18 +192,33 @@ function fit(text, normal, minimum, threshold) {
 function dateLabel(iso) {
   const d = new Date(iso);
   if (Number.isNaN(d.valueOf())) throw new Error("publishedDate must be valid");
-  const months = ["ENE", "FEB", "MAR", "ABR", "MAY", "JUN", "JUL", "AGO", "SEPT", "OCT", "NOV", "DIC"];
+  const months = [
+    "ENE",
+    "FEB",
+    "MAR",
+    "ABR",
+    "MAY",
+    "JUN",
+    "JUL",
+    "AGO",
+    "SEPT",
+    "OCT",
+    "NOV",
+    "DIC",
+  ];
   return `${String(d.getDate()).padStart(2, "0")} ${months[d.getMonth()]} ${d.getFullYear()}`;
 }
 
 function editionLabel(value) {
   const normalized = String(value || "").replace(/^0+/, "") || "0";
-  if (!/^[1-9][0-9]*$/.test(normalized)) throw new Error("SOCIAL_EDITION_NUMBER must be a positive integer");
+  if (!/^[1-9][0-9]*$/.test(normalized))
+    throw new Error("SOCIAL_EDITION_NUMBER must be a positive integer");
   return normalized.padStart(3, "0");
 }
 
 function pngDimensions(buffer) {
-  if (buffer.toString("hex", 0, 8) !== "89504e470d0a1a0a") throw new Error("PNG expected");
+  if (buffer.toString("hex", 0, 8) !== "89504e470d0a1a0a")
+    throw new Error("PNG expected");
   return [buffer.readUInt32BE(16), buffer.readUInt32BE(20)];
 }
 
@@ -176,13 +227,22 @@ async function templates() {
   for (const file of TEMPLATE_PATHS) {
     const buffer = await fs.readFile(file);
     const [w, h] = pngDimensions(buffer);
-    if (w !== W || h !== H) throw new Error(`${path.basename(file)} must be ${W}x${H}, got ${w}x${h}`);
+    if (w !== W || h !== H)
+      throw new Error(
+        `${path.basename(file)} must be ${W}x${H}, got ${w}x${h}`,
+      );
     result.push(`data:image/png;base64,${buffer.toString("base64")}`);
   }
   return result;
 }
 
-function imageLayer(visual, top = 195, bottom = 70, width = 625, opacity = .9) {
+function imageLayer(
+  visual,
+  top = 195,
+  bottom = 70,
+  width = 625,
+  opacity = 0.9,
+) {
   if (!visual?.dataUrl) return "";
   return `<div class="visual" style="top:${top}px;bottom:${bottom}px;width:${width}px;opacity:${opacity}"><img src="${visual.dataUrl}"><div class="wash"></div><div class="credit">${esc(visual.credit)}</div></div>`;
 }
@@ -206,19 +266,34 @@ async function shot(page, markup, file) {
   await page.evaluate(() => document.fonts.ready);
   const bad = await page.evaluate(() => {
     const root = document.getElementById("root").getBoundingClientRect();
-    return [...document.querySelectorAll("[data-fit]")].map((el) => {
-      const r = el.getBoundingClientRect();
-      return { ok: r.left >= root.left - 1 && r.top >= root.top - 1 && r.right <= root.right + 1 && r.bottom <= root.bottom + 1, text: el.textContent?.trim().slice(0, 90) || el.className };
-    }).filter((x) => !x.ok);
+    return [...document.querySelectorAll("[data-fit]")]
+      .map((el) => {
+        const r = el.getBoundingClientRect();
+        return {
+          ok:
+            r.left >= root.left - 1 &&
+            r.top >= root.top - 1 &&
+            r.right <= root.right + 1 &&
+            r.bottom <= root.bottom + 1,
+          text: el.textContent?.trim().slice(0, 90) || el.className,
+        };
+      })
+      .filter((x) => !x.ok);
   });
-  if (bad.length) throw new Error(`Carousel layout guard failed: ${JSON.stringify(bad)}`);
+  if (bad.length)
+    throw new Error(`Carousel layout guard failed: ${JSON.stringify(bad)}`);
   await page.screenshot({ path: file, type: "png" });
 }
 
 async function main() {
-  if (PUBLICATION_STATUS !== REQUIRED_PUBLICATION_STATUS) throw new Error(`Post-publication guard failed: expected "${REQUIRED_PUBLICATION_STATUS}"`);
+  if (PUBLICATION_STATUS !== REQUIRED_PUBLICATION_STATUS)
+    throw new Error(
+      `Post-publication guard failed: expected "${REQUIRED_PUBLICATION_STATUS}"`,
+    );
   const contractPath = resolveContract(CONTRACT_INPUT);
-  const contract = validate(JSON.parse(await fs.readFile(contractPath.absolute, "utf8")));
+  const contract = validate(
+    JSON.parse(await fs.readFile(contractPath.absolute, "utf8")),
+  );
   const base = await templates();
   const edition = editionLabel(EDITION_INPUT);
   const date = dateLabel(contract.publishedDate);
@@ -232,28 +307,43 @@ async function main() {
     contract.impactItems.map((x) => `${x.label} ${x.text}`).join(" "),
   ];
   const keys = visualTexts.map(visualKey);
-  const [coverVisual, ideaVisual, changedVisual, impactVisual] = await Promise.all(keys.map(loadVisual));
+  const [coverVisual, ideaVisual, changedVisual, impactVisual] =
+    await Promise.all(keys.map(loadVisual));
 
   const titleSize = fit(contract.title, 79, 55, 80);
   const dekSize = fit(contract.dek, 36, 28, 150);
   const ideaSize = fit(contract.ideaCentral, 66, 46, 150);
   const supportSize = fit(contract.ideaSupport, 34, 27, 225);
-  const pointsSize = fit(contract.keyPoints.map((x) => x.text).join(" "), 46, 35, 270);
-  const impactSize = fit(contract.impactItems.map((x) => `${x.label} ${x.text}`).join(" "), 43, 32, 320);
+  const pointsSize = fit(
+    contract.keyPoints.map((x) => x.text).join(" "),
+    46,
+    35,
+    270,
+  );
+  const impactSize = fit(
+    contract.impactItems.map((x) => `${x.label} ${x.text}`).join(" "),
+    43,
+    32,
+    320,
+  );
 
   const slides = [
-    `${imageLayer(coverVisual, 190, 70, 640, .92)}<div class="copy" data-fit style="left:72px;top:250px;bottom:90px;width:805px"><div class="headline" style="font-size:${titleSize}px">${esc(contract.title)}</div><div class="rule"></div><div class="body" style="font-size:${dekSize}px;max-width:755px">${esc(contract.dek)}</div></div>`,
-    `${imageLayer(ideaVisual, 190, 70, 650, .91)}<div class="copy" data-fit style="left:72px;top:245px;bottom:88px;width:815px"><div class="headline" style="font-size:${ideaSize}px">${esc(contract.ideaCentral)}</div><div class="rule"></div><div class="body" style="font-size:${supportSize}px;max-width:760px">${esc(contract.ideaSupport)}</div></div>`,
-    `${imageLayer(changedVisual, 195, 70, 610, .88)}<div class="copy body" data-fit style="left:72px;top:245px;bottom:88px;width:800px;font-size:${pointsSize}px;font-weight:600;line-height:1.04">${contract.keyPoints.map((item) => `<div class="point">${esc(item.text)}</div>`).join("")}</div>`,
-    `${imageLayer(impactVisual, 190, 70, 625, .88)}<div class="copy body" data-fit style="left:72px;top:245px;bottom:88px;width:805px;font-size:${impactSize}px;line-height:1.05">${contract.impactItems.map((item) => `<div class="impact"><b>${esc(item.label)}.</b> ${esc(item.text)}</div>`).join("")}</div>`,
-    `${imageLayer(coverVisual, 135, 70, 620, .84)}`,
+    `${imageLayer(coverVisual, 190, 70, 640, 0.92)}<div class="copy" data-fit style="left:72px;top:250px;bottom:90px;width:805px"><div class="headline" style="font-size:${titleSize}px">${esc(contract.title)}</div><div class="rule"></div><div class="body" style="font-size:${dekSize}px;max-width:755px">${esc(contract.dek)}</div></div>`,
+    `${imageLayer(ideaVisual, 190, 70, 650, 0.91)}<div class="copy" data-fit style="left:72px;top:245px;bottom:88px;width:815px"><div class="headline" style="font-size:${ideaSize}px">${esc(contract.ideaCentral)}</div><div class="rule"></div><div class="body" style="font-size:${supportSize}px;max-width:760px">${esc(contract.ideaSupport)}</div></div>`,
+    `${imageLayer(changedVisual, 195, 70, 610, 0.88)}<div class="copy body" data-fit style="left:72px;top:245px;bottom:88px;width:800px;font-size:${pointsSize}px;font-weight:600;line-height:1.04">${contract.keyPoints.map((item) => `<div class="point">${esc(item.text)}</div>`).join("")}</div>`,
+    `${imageLayer(impactVisual, 190, 70, 625, 0.88)}<div class="copy body" data-fit style="left:72px;top:245px;bottom:88px;width:805px;font-size:${impactSize}px;line-height:1.05">${contract.impactItems.map((item) => `<div class="impact"><b>${esc(item.label)}.</b> ${esc(item.text)}</div>`).join("")}</div>`,
+    `${imageLayer(coverVisual, 135, 70, 620, 0.84)}`,
   ];
 
   const browser = await chromium.launch({ headless: true });
   const page = await browser.newPage();
   try {
     for (let i = 0; i < 5; i += 1) {
-      await shot(page, html(base[i], slides[i], edition, date), path.join(OUT, `atlas-news-instagram-carousel-0${i + 1}.png`));
+      await shot(
+        page,
+        html(base[i], slides[i], edition, date),
+        path.join(OUT, `atlas-news-instagram-carousel-0${i + 1}.png`),
+      );
     }
   } finally {
     await browser.close();
@@ -283,9 +373,14 @@ async function main() {
     publishedDate: date,
     visualKeys: [...keys, keys[0]],
     outputs,
-    templates: TEMPLATE_PATHS.map((file) => path.relative(ROOT, file).replaceAll(path.sep, "/")),
+    templates: TEMPLATE_PATHS.map((file) =>
+      path.relative(ROOT, file).replaceAll(path.sep, "/"),
+    ),
   };
-  await fs.writeFile(path.join(OUT, "template-validation.json"), `${JSON.stringify(report, null, 2)}\n`);
+  await fs.writeFile(
+    path.join(OUT, "template-validation.json"),
+    `${JSON.stringify(report, null, 2)}\n`,
+  );
   console.log(JSON.stringify(report, null, 2));
 }
 

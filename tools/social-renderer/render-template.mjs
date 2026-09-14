@@ -68,7 +68,9 @@ function validateContract(raw) {
     throw new Error("contract must be an object");
   }
   if (String(raw.version) !== "1") {
-    throw new Error(`Template carousel requires contract v1, got ${raw.version}`);
+    throw new Error(
+      `Template carousel requires contract v1, got ${raw.version}`,
+    );
   }
   const contract = {
     version: "1",
@@ -88,7 +90,10 @@ function validateContract(raw) {
   if (!Array.isArray(contract.keyPoints) || contract.keyPoints.length !== 3) {
     throw new Error("keyPoints must contain exactly 3 items");
   }
-  if (!Array.isArray(contract.impactItems) || contract.impactItems.length !== 3) {
+  if (
+    !Array.isArray(contract.impactItems) ||
+    contract.impactItems.length !== 3
+  ) {
     throw new Error("impactItems must contain exactly 3 items");
   }
   contract.keyPoints = contract.keyPoints.map((item, i) => ({
@@ -104,12 +109,17 @@ function validateContract(raw) {
 function resolveContract(input) {
   if (!input) throw new Error("SOCIAL_CONTRACT is required");
   const normalized = input.replaceAll("\\", "/");
-  if (!normalized.endsWith(".json") || normalized.startsWith("/") || normalized.includes("..")) {
+  if (
+    !normalized.endsWith(".json") ||
+    normalized.startsWith("/") ||
+    normalized.includes("..")
+  ) {
     throw new Error(`Unsafe contract path: ${input}`);
   }
   const absolute = path.resolve(ROOT, normalized);
   const relative = path.relative(ROOT, absolute).replaceAll(path.sep, "/");
-  if (relative !== normalized) throw new Error(`Unsafe contract path: ${input}`);
+  if (relative !== normalized)
+    throw new Error(`Unsafe contract path: ${input}`);
   return { absolute, relative };
 }
 
@@ -122,7 +132,20 @@ function fit(text, normal, minimum, threshold) {
 function dateLabel(iso) {
   const d = new Date(iso);
   if (Number.isNaN(d.valueOf())) throw new Error("publishedDate must be valid");
-  const m = ["ENE", "FEB", "MAR", "ABR", "MAY", "JUN", "JUL", "AGO", "SEPT", "OCT", "NOV", "DIC"];
+  const m = [
+    "ENE",
+    "FEB",
+    "MAR",
+    "ABR",
+    "MAY",
+    "JUN",
+    "JUL",
+    "AGO",
+    "SEPT",
+    "OCT",
+    "NOV",
+    "DIC",
+  ];
   return `${String(d.getDate()).padStart(2, "0")} ${m[d.getMonth()]} ${d.getFullYear()}`;
 }
 
@@ -144,10 +167,23 @@ function normalize(value) {
 function visualKey(text) {
   const hay = normalize(text);
   const has = (...words) => words.some((word) => hay.includes(normalize(word)));
-  if (has("hormuz", "saudita", "oleoducto", "petroleo", "brent", "crudo", "energia")) return "energy";
+  if (
+    has(
+      "hormuz",
+      "saudita",
+      "oleoducto",
+      "petroleo",
+      "brent",
+      "crudo",
+      "energia",
+    )
+  )
+    return "energy";
   if (has("fed", "inflacion", "ipc", "fomc", "tasa", "tasas")) return "fed";
-  if (has("wall street", "s&p", "nasdaq", "dow", "acciones", "bolsa")) return "equity";
-  if (has("treasury", "bonos", "renta fija", "duracion", "carry")) return "treasury";
+  if (has("wall street", "s&p", "nasdaq", "dow", "acciones", "bolsa"))
+    return "equity";
+  if (has("treasury", "bonos", "renta fija", "duracion", "carry"))
+    return "treasury";
   if (has("chile", "ipom", "santiago", "tpm", "banco central")) return "chile";
   if (has("puerto", "flete", "transporte", "contenedor")) return "port";
   return "treasury";
@@ -177,7 +213,9 @@ async function materializeVisual(key) {
       dataUrl = `data:${type};base64,${buffer.toString("base64")}`;
     }
   } catch (error) {
-    console.warn(`[carousel-template] visual fallback for ${key}: ${error?.message || error}`);
+    console.warn(
+      `[carousel-template] visual fallback for ${key}: ${error?.message || error}`,
+    );
   }
   const resolved = { ...visual, dataUrl };
   imageCache.set(key, resolved);
@@ -197,14 +235,19 @@ async function loadTemplates() {
     const buffer = await fs.readFile(file);
     const [width, height] = pngDimensions(buffer);
     if (width !== W || height !== H) {
-      throw new Error(`${path.basename(file)} must be ${W}x${H}, got ${width}x${height}`);
+      throw new Error(
+        `${path.basename(file)} must be ${W}x${H}, got ${width}x${height}`,
+      );
     }
     result.push(`data:image/png;base64,${buffer.toString("base64")}`);
   }
   return result;
 }
 
-function visualLayer(visual, { top = 210, bottom = 72, width = 610, opacity = 0.9 } = {}) {
+function visualLayer(
+  visual,
+  { top = 210, bottom = 72, width = 610, opacity = 0.9 } = {},
+) {
   if (!visual?.dataUrl) return "";
   return `
     <div class="visual-layer" style="top:${top}px;bottom:${bottom}px;width:${width}px;opacity:${opacity}">
@@ -259,25 +302,36 @@ async function screenshot(page, html, file) {
             r.bottom <= root.bottom + 1 &&
             (!bottomLimit || r.bottom <= root.top + bottomLimit),
           target: el.textContent?.trim().slice(0, 80) || el.className,
-          rect: [Math.round(r.left), Math.round(r.top), Math.round(r.right), Math.round(r.bottom)],
+          rect: [
+            Math.round(r.left),
+            Math.round(r.top),
+            Math.round(r.right),
+            Math.round(r.bottom),
+          ],
           bottomLimit,
         };
       })
       .filter((item) => !item.ok);
   });
   if (violations.length) {
-    throw new Error(`Template carousel layout guard failed: ${JSON.stringify(violations)}`);
+    throw new Error(
+      `Template carousel layout guard failed: ${JSON.stringify(violations)}`,
+    );
   }
   await page.screenshot({ path: file, type: "png" });
 }
 
 async function main() {
   if (PUBLICATION_STATUS !== REQUIRED_PUBLICATION_STATUS) {
-    throw new Error(`Post-publication guard failed: expected "${REQUIRED_PUBLICATION_STATUS}"`);
+    throw new Error(
+      `Post-publication guard failed: expected "${REQUIRED_PUBLICATION_STATUS}"`,
+    );
   }
 
   const contractPath = resolveContract(CONTRACT_INPUT);
-  const contract = validateContract(JSON.parse(await fs.readFile(contractPath.absolute, "utf8")));
+  const contract = validateContract(
+    JSON.parse(await fs.readFile(contractPath.absolute, "utf8")),
+  );
   const templates = await loadTemplates();
   const edition = editionLabel(EDITION_INPUT);
   const date = dateLabel(contract.publishedDate);
@@ -285,21 +339,41 @@ async function main() {
   await fs.rm(OUT, { recursive: true, force: true });
   await fs.mkdir(OUT, { recursive: true });
 
-  const coverVisual = await materializeVisual(visualKey(`${contract.title} ${contract.dek}`));
-  const ideaVisual = await materializeVisual(visualKey(`${contract.ideaCentral} ${contract.ideaSupport}`));
-  const changedVisual = await materializeVisual(visualKey(contract.keyPoints.map((x) => x.text).join(" ")));
-  const impactVisual = await materializeVisual(visualKey(contract.impactItems.map((x) => `${x.label} ${x.text}`).join(" ")));
+  const coverVisual = await materializeVisual(
+    visualKey(`${contract.title} ${contract.dek}`),
+  );
+  const ideaVisual = await materializeVisual(
+    visualKey(`${contract.ideaCentral} ${contract.ideaSupport}`),
+  );
+  const changedVisual = await materializeVisual(
+    visualKey(contract.keyPoints.map((x) => x.text).join(" ")),
+  );
+  const impactVisual = await materializeVisual(
+    visualKey(
+      contract.impactItems.map((x) => `${x.label} ${x.text}`).join(" "),
+    ),
+  );
   const closeVisual = coverVisual;
 
   const titleSize = fit(contract.title, 79, 56, 78);
   const dekSize = fit(contract.dek, 37, 28, 150);
   const ideaSize = fit(contract.ideaCentral, 67, 47, 145);
   const supportSize = fit(contract.ideaSupport, 35, 27, 220);
-  const pointsSize = fit(contract.keyPoints.map((x) => x.text).join(" "), 47, 36, 260);
-  const impactSize = fit(contract.impactItems.map((x) => `${x.label} ${x.text}`).join(" "), 44, 33, 310);
+  const pointsSize = fit(
+    contract.keyPoints.map((x) => x.text).join(" "),
+    47,
+    36,
+    260,
+  );
+  const impactSize = fit(
+    contract.impactItems.map((x) => `${x.label} ${x.text}`).join(" "),
+    44,
+    33,
+    310,
+  );
 
   const slide1 = `
-    ${visualLayer(coverVisual, { top: 205, bottom: 72, width: 630, opacity: .92 })}
+    ${visualLayer(coverVisual, { top: 205, bottom: 72, width: 630, opacity: 0.92 })}
     <div class="copy center-zone" data-fit data-bottom-limit="1120" style="left:72px;top:245px;bottom:115px;width:790px">
       <div class="headline" style="font-size:${titleSize}px">${escapeHtml(contract.title)}</div>
       <div class="rule"></div>
@@ -307,7 +381,7 @@ async function main() {
     </div>`;
 
   const slide2 = `
-    ${visualLayer(ideaVisual, { top: 205, bottom: 72, width: 650, opacity: .91 })}
+    ${visualLayer(ideaVisual, { top: 205, bottom: 72, width: 650, opacity: 0.91 })}
     <div class="copy center-zone" data-fit data-bottom-limit="1120" style="left:72px;top:245px;bottom:110px;width:805px">
       <div class="headline" style="font-size:${ideaSize}px">${escapeHtml(contract.ideaCentral)}</div>
       <div class="rule"></div>
@@ -315,18 +389,18 @@ async function main() {
     </div>`;
 
   const slide3 = `
-    ${visualLayer(changedVisual, { top: 210, bottom: 72, width: 600, opacity: .88 })}
+    ${visualLayer(changedVisual, { top: 210, bottom: 72, width: 600, opacity: 0.88 })}
     <div class="copy body center-zone" data-fit data-bottom-limit="1120" style="left:72px;top:245px;bottom:110px;width:780px;font-size:${pointsSize}px;font-weight:600;line-height:1.04">
       ${contract.keyPoints.map((item) => `<div class="point">${escapeHtml(item.text)}</div>`).join("")}
     </div>`;
 
   const slide4 = `
-    ${visualLayer(impactVisual, { top: 205, bottom: 72, width: 625, opacity: .88 })}
+    ${visualLayer(impactVisual, { top: 205, bottom: 72, width: 625, opacity: 0.88 })}
     <div class="copy body center-zone" data-fit data-bottom-limit="1120" style="left:72px;top:245px;bottom:110px;width:790px;font-size:${impactSize}px;line-height:1.06">
       ${contract.impactItems.map((item) => `<div class="impact"><b>${escapeHtml(item.label)}.</b> ${escapeHtml(item.text)}</div>`).join("")}
     </div>`;
 
-  const slide5 = `${visualLayer(closeVisual, { top: 145, bottom: 72, width: 620, opacity: .84 })}`;
+  const slide5 = `${visualLayer(closeVisual, { top: 145, bottom: 72, width: 620, opacity: 0.84 })}`;
   const slides = [slide1, slide2, slide3, slide4, slide5];
 
   const browser = await chromium.launch({ headless: true });
@@ -348,7 +422,8 @@ async function main() {
     const file = `atlas-news-instagram-carousel-0${i}.png`;
     const buffer = await fs.readFile(path.join(OUT, file));
     const [width, height] = pngDimensions(buffer);
-    if (width !== W || height !== H) throw new Error(`${file} dimensions ${width}x${height}`);
+    if (width !== W || height !== H)
+      throw new Error(`${file} dimensions ${width}x${height}`);
     outputs.push(file);
   }
 
@@ -368,14 +443,21 @@ async function main() {
       visualKey(`${contract.title} ${contract.dek}`),
       visualKey(`${contract.ideaCentral} ${contract.ideaSupport}`),
       visualKey(contract.keyPoints.map((x) => x.text).join(" ")),
-      visualKey(contract.impactItems.map((x) => `${x.label} ${x.text}`).join(" ")),
+      visualKey(
+        contract.impactItems.map((x) => `${x.label} ${x.text}`).join(" "),
+      ),
       visualKey(`${contract.title} ${contract.dek}`),
     ],
-    templates: TEMPLATE_PATHS.map((file) => path.relative(ROOT, file).replaceAll(path.sep, "/")),
+    templates: TEMPLATE_PATHS.map((file) =>
+      path.relative(ROOT, file).replaceAll(path.sep, "/"),
+    ),
     outputs,
     status: "PASS",
   };
-  await fs.writeFile(path.join(OUT, "template-validation.json"), `${JSON.stringify(report, null, 2)}\n`);
+  await fs.writeFile(
+    path.join(OUT, "template-validation.json"),
+    `${JSON.stringify(report, null, 2)}\n`,
+  );
   console.log(JSON.stringify(report, null, 2));
 }
 
