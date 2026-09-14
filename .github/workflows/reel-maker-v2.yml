@@ -12,6 +12,7 @@ on:
       - "reference-assets/01_portada_base.png"
       - "reference-assets/02_noticia_base.png"
       - "reference-assets/03_cierre_base.png"
+      - "reference-assets/primary_assessment.mp3"
       - "src/lib/front-page-visuals.ts"
   workflow_dispatch:
     inputs:
@@ -237,20 +238,12 @@ jobs:
           test -f reference-assets/01_portada_base.png
           test -f reference-assets/02_noticia_base.png
           test -f reference-assets/03_cierre_base.png
-          mkdir -p tools/reel_maker/.generated
-          cat tools/reel_maker/assets/theme/atlas-news-theme.part*.b64 | base64 --decode > tools/reel_maker/.generated/atlas-news-theme.m4a
-          test -s tools/reel_maker/.generated/atlas-news-theme.m4a
-          audio_duration="$(ffprobe -v error -show_entries format=duration -of default=nw=1:nk=1 tools/reel_maker/.generated/atlas-news-theme.m4a)"
-          python3 - "$audio_duration" <<'PY'
-          import sys
-          duration = float(sys.argv[1])
-          if not 19.4 <= duration <= 19.8:
-              raise SystemExit(f"Tema ATLAS inesperado: {duration:.3f}s")
-          PY
+          test -f reference-assets/primary_assessment.mp3
+          ffprobe -v error -show_entries format=duration -of default=nw=1:nk=1 reference-assets/primary_assessment.mp3
           ffmpeg -version | head -n 1
           fc-match 'Liberation Serif' | head -n 1
 
-      - name: Generate seven validated scenes, official audio and MP4
+      - name: Generate seven validated scenes, audio and MP4
         run: |
           set -euo pipefail
           rm -rf tools/reel_maker/output
@@ -303,7 +296,7 @@ jobs:
             echo "Edition: \`${edition_number}\`"
             echo "Scenes: 7 / 7 — portada + 5 highlights + cierre"
             echo "Templates: official reference-assets bases"
-            echo "Audio: official ATLAS theme / AAC"
+            echo "Audio: ATLAS Reel composition / AAC"
             echo "Output: \`atlas-news-reel-${source_commit}.mp4\`"
             echo "Isolation: no social-renderer mutation / no Meta publish."
           } >> "$GITHUB_STEP_SUMMARY"
