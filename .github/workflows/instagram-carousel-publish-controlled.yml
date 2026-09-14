@@ -1,283 +1,83 @@
-name: Instagram Carousel — Controlled publish
+name: Instagram Carousel — Controlled recovery V2
 
 on:
   workflow_dispatch:
     inputs:
-      contract:
-        description: "Path to an approved Social Content Contract v1 JSON"
+      source_commit:
+        description: "Full sourceCommit SHA of the published daily edition to recover"
         required: true
         type: string
-      publication_status:
-        description: "Type exactly: PUBLICACIÓN DISPONIBLE / VERIFICADA"
+      recovery_confirmation:
+        description: "Type exactly: RECUPERAR CARRUSEL V2 / AUTORIZADO"
         required: true
         type: string
-      publish_confirmation:
-        description: "Type exactly: PUBLICAR CARRUSEL / AUTORIZADO"
+      recovery_reason:
+        description: "Short operator reason recorded in the canonical V2 run"
         required: true
+        default: manual-controlled-recovery
         type: string
-      api_version:
-        description: "Instagram Graph API version"
-        required: true
-        type: string
-        default: "v23.0"
 
 permissions:
   actions: write
   contents: read
 
 concurrency:
-  group: instagram-carousel-publish
+  group: instagram-carousel-controlled-recovery
   cancel-in-progress: false
 
 jobs:
-  publish:
+  dispatch-canonical-v2:
     runs-on: ubuntu-latest
-    timeout-minutes: 12
+    timeout-minutes: 3
     env:
-      SOCIAL_CONTRACT: ${{ inputs.contract }}
-      SOCIAL_PUBLICATION_STATUS: ${{ inputs.publication_status }}
-      INSTAGRAM_PUBLISH_CONFIRMATION: ${{ inputs.publish_confirmation }}
-      INSTAGRAM_API_VERSION: ${{ inputs.api_version }}
-      INSTAGRAM_EXPECTED_USERNAME: _atlas_news
-      INSTAGRAM_ACCESS_TOKEN: ${{ secrets.INSTAGRAM_ACCESS_TOKEN }}
+      GH_TOKEN: ${{ github.token }}
+      SOURCE_COMMIT: ${{ inputs.source_commit }}
+      RECOVERY_CONFIRMATION: ${{ inputs.recovery_confirmation }}
+      RECOVERY_REASON: ${{ inputs.recovery_reason }}
+      CANONICAL_WORKFLOW: instagram-carousel-publish-automatic.yml
+
     steps:
-      - name: Verify explicit publication gates and secret presence
+      - name: Verify explicit recovery gate
         shell: bash
-        env:
-          ATLAS_PAGES_DEPLOY_KEY: ${{ secrets.ATLAS_PAGES_DEPLOY_KEY }}
         run: |
           set -euo pipefail
-          test "$SOCIAL_PUBLICATION_STATUS" = "PUBLICACIÓN DISPONIBLE / VERIFICADA" || {
-            echo "Fail-closed: Atlas News publication is not explicitly verified."
+
+          test "$RECOVERY_CONFIRMATION" = "RECUPERAR CARRUSEL V2 / AUTORIZADO" || {
+            echo "Fail-closed: controlled recovery was not explicitly authorized."
             exit 2
           }
-          test "$INSTAGRAM_PUBLISH_CONFIRMATION" = "PUBLICAR CARRUSEL / AUTORIZADO" || {
-            echo "Fail-closed: Instagram publication is not explicitly authorized."
+
+          [[ "$SOURCE_COMMIT" =~ ^[0-9a-f]{40}$ ]] || {
+            echo "Fail-closed: source_commit must be a full 40-character lowercase SHA."
             exit 3
           }
-          test -n "$INSTAGRAM_ACCESS_TOKEN" || {
-            echo "Fail-closed: INSTAGRAM_ACCESS_TOKEN repository secret is missing."
-            exit 4
-          }
-          test -n "$ATLAS_PAGES_DEPLOY_KEY" || {
-            echo "Fail-closed: ATLAS_PAGES_DEPLOY_KEY repository secret is missing."
-            exit 5
-          }
 
-      - name: Checkout integration code
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 1
-
-      - name: Verify explicit contract and published canonical URL
-        shell: bash
-        run: |
-          set -euo pipefail
-          test -n "$SOCIAL_CONTRACT" || {
-            echo "Fail-closed: an approved contract path must be selected explicitly."
-            exit 6
-          }
-          test -f "$SOCIAL_CONTRACT" || {
-            echo "Fail-closed: contract does not exist: $SOCIAL_CONTRACT"
-            exit 7
-          }
-          canonical_url="$(jq -er '.canonicalUrl | select(type == "string" and length > 0)' "$SOCIAL_CONTRACT")"
-          case "$canonical_url" in
-            https://*) ;;
-            *)
-              echo "Fail-closed: contract canonicalUrl must use HTTPS."
-              exit 8
-              ;;
-          esac
-          code="$(curl -L -sS -o /dev/null -w '%{http_code}' --retry 2 --connect-timeout 10 --max-time 30 "$canonical_url" || true)"
-          test "$code" = "200" || {
-            echo "Fail-closed: canonicalUrl is not publicly reachable with HTTP 200."
-            exit 9
-          }
-
-      - name: Setup Node
-        uses: actions/setup-node@v4
-        with:
-          node-version: 22.19.0
-
-      - name: Restore renderer dependencies
-        id: deps-cache
-        uses: actions/cache@v4
-        with:
-          path: tools/social-renderer/node_modules
-          key: ${{ runner.os }}-node-22.19-social-renderer-${{ hashFiles('tools/social-renderer/package.json') }}
-
-      - name: Restore Chromium cache
-        uses: actions/cache@v4
-        with:
-          path: ~/.cache/ms-playwright
-          key: ${{ runner.os }}-social-renderer-playwright-1.62.1
-
-      - name: Install isolated renderer dependencies
-        if: steps.deps-cache.outputs.cache-hit != 'true'
-        working-directory: tools/social-renderer
-        run: npm install --no-audit --no-fund --no-package-lock
-
-      - name: Ensure Chromium
-        working-directory: tools/social-renderer
-        run: npx playwright install chromium
-
-      - name: Render approved social contract
-        working-directory: tools/social-renderer
-        run: npm run render
-
-      - name: Prepare access to public social host
-        env:
-          DEPLOY_KEY: ${{ secrets.ATLAS_PAGES_DEPLOY_KEY }}
-        run: |
-          set -euo pipefail
-          install -m 700 -d ~/.ssh
-          printf '%s\n' "$DEPLOY_KEY" > ~/.ssh/atlas_news_pages
-          chmod 600 ~/.ssh/atlas_news_pages
-          ssh-keyscan -H github.com >> ~/.ssh/known_hosts
-
-      - name: Checkout public social-assets host
-        env:
-          GIT_SSH_COMMAND: ssh -i ~/.ssh/atlas_news_pages -o IdentitiesOnly=yes
-        run: |
-          set -euo pipefail
-          git clone --depth 1 --branch social-assets \
-            git@github.com:EldeSiempre100/EldeSiempre100.github.io.git \
-            _social_assets
-
-      - name: Stage carousel and SHARE card on public HTTPS URLs
-        id: stage
-        shell: bash
-        env:
-          GIT_SSH_COMMAND: ssh -i ~/.ssh/atlas_news_pages -o IdentitiesOnly=yes
-        run: |
-          set -euo pipefail
-          stage_dir="instagram-staging/${GITHUB_RUN_ID}-${GITHUB_RUN_ATTEMPT}"
-          mkdir -p "_social_assets/$stage_dir"
-          cp tools/social-renderer/output/atlas-news-instagram-carousel-0*.png "_social_assets/$stage_dir/"
-
-          canonical_url="$(jq -er '.canonicalUrl | select(type == "string" and length > 0)' "$SOCIAL_CONTRACT")"
-          canonical_path="$(node -e '
-            const u = new URL(process.argv[1]);
-            if (u.hostname.toLowerCase() !== "eldesiempre100.github.io") process.exit(2);
-            const p = u.pathname.endsWith("/") ? u.pathname : `${u.pathname}/`;
-            if (!/^\/(ediciones|nacional|mercados|lecturas)\/[^/]+\/$/.test(p)) process.exit(3);
-            process.stdout.write(p);
-          ' "$canonical_url")"
-          share_dir="share/${canonical_path#/}"
-          share_file="${share_dir}atlas-news-social-card-1200x630.png"
-          mkdir -p "_social_assets/$share_dir"
-          cp tools/social-renderer/output/atlas-news-social-card-1200x630.png "_social_assets/$share_file"
-
-          share_url="https://raw.githubusercontent.com/EldeSiempre100/EldeSiempre100.github.io/social-assets/${share_file}"
-          manifest="_social_assets/share/manifest.json"
-          if [ ! -f "$manifest" ]; then
-            printf '{}\n' > "$manifest"
-          fi
-          manifest_tmp="$(mktemp)"
-          jq --arg path "$canonical_path" --arg url "$share_url" \
-            '.[$path] = $url | to_entries | sort_by(.key) | from_entries' \
-            "$manifest" > "$manifest_tmp"
-          mv "$manifest_tmp" "$manifest"
-
-          cd _social_assets
-          git config user.name "ATLAS NEWS Social Publisher"
-          git config user.email "actions@users.noreply.github.com"
-          git add "$stage_dir" "$share_file" share/manifest.json
-          git commit -m "social-assets: stage carousel + SHARE card ${GITHUB_RUN_ID}-${GITHUB_RUN_ATTEMPT}"
-          git push origin HEAD:social-assets
-
-          base_url="https://raw.githubusercontent.com/EldeSiempre100/EldeSiempre100.github.io/social-assets/${stage_dir}"
-          echo "SOCIAL_IMAGE_BASE_URL=$base_url" >> "$GITHUB_ENV"
-          echo "stage_dir=$stage_dir" >> "$GITHUB_OUTPUT"
-          echo "share_path=$canonical_path" >> "$GITHUB_OUTPUT"
-          echo "share_image_url=$share_url" >> "$GITHUB_OUTPUT"
-
-      - name: Confirm staged images are publicly fetchable
-        shell: bash
-        run: |
-          set -euo pipefail
-          for n in 01 02 03 04 05; do
-            url="$SOCIAL_IMAGE_BASE_URL/atlas-news-instagram-carousel-${n}.png"
-            ok=0
-            for attempt in 1 2 3 4 5 6; do
-              code="$(curl -L -sS -o "/tmp/atlas-${n}.png" -w '%{http_code}' "$url" || true)"
-              type="$(file -b --mime-type "/tmp/atlas-${n}.png" 2>/dev/null || true)"
-              if [ "$code" = "200" ] && [ "$type" = "image/png" ]; then
-                ok=1
-                break
-              fi
-              sleep "$attempt"
-            done
-            test "$ok" = "1" || {
-              echo "Public staging failed for $url"
-              exit 10
+          gh api \
+            -H "Accept: application/vnd.github+json" \
+            "repos/${GITHUB_REPOSITORY}/commits/${SOURCE_COMMIT}" \
+            --jq '.sha' | grep -qx "$SOURCE_COMMIT" || {
+              echo "Fail-closed: source_commit is not a reachable commit in ${GITHUB_REPOSITORY}."
+              exit 4
             }
-          done
 
-          share_url="${{ steps.stage.outputs.share_image_url }}"
-          share_ok=0
-          for attempt in 1 2 3 4 5 6; do
-            code="$(curl -L -sS -o /tmp/atlas-share.png -w '%{http_code}' "$share_url" || true)"
-            type="$(file -b --mime-type /tmp/atlas-share.png 2>/dev/null || true)"
-            if [ "$code" = "200" ] && [ "$type" = "image/png" ]; then
-              share_ok=1
-              break
-            fi
-            sleep "$attempt"
-          done
-          test "$share_ok" = "1" || {
-            echo "Public SHARE card staging failed for $share_url"
-            exit 11
-          }
-
-      - name: Request non-blocking SHARE metadata refresh
-        continue-on-error: true
-        env:
-          GH_TOKEN: ${{ github.token }}
-        run: |
-          set -euo pipefail
-          gh workflow run publish-site.yml --ref main
-          echo "Requested site refresh so Open Graph can adopt the verified 1200x630 SHARE card."
-
-      - name: Publish controlled Instagram carousel
-        working-directory: tools/social-renderer
-        run: npm run publish:instagram
-
-      - name: Persist non-secret publication evidence
-        if: always()
+      - name: Dispatch canonical Instagram V2 pipeline
         shell: bash
-        env:
-          GIT_SSH_COMMAND: ssh -i ~/.ssh/atlas_news_pages -o IdentitiesOnly=yes
         run: |
           set -euo pipefail
-          evidence="tools/social-renderer/output/instagram-publish.json"
-          if [ ! -f "$evidence" ]; then
-            echo "No Instagram publication evidence file was produced."
-            exit 0
-          fi
-          stage_dir="${{ steps.stage.outputs.stage_dir }}"
-          test -n "$stage_dir" || {
-            echo "No public staging directory exists; evidence remains in the Actions artifact only."
-            exit 0
-          }
-          cp "$evidence" "_social_assets/$stage_dir/instagram-publish.json"
-          cd _social_assets
-          git add "$stage_dir/instagram-publish.json"
-          if git diff --cached --quiet; then
-            exit 0
-          fi
-          git commit -m "social-assets: record Instagram publication ${GITHUB_RUN_ID}-${GITHUB_RUN_ATTEMPT}"
-          git push origin HEAD:social-assets
 
-      - name: Upload controlled-publication evidence
-        if: always()
-        uses: actions/upload-artifact@v4
-        with:
-          name: atlas-news-instagram-publish-${{ github.run_id }}-${{ github.run_attempt }}
-          path: |
-            tools/social-renderer/output/*.png
-            tools/social-renderer/output/benchmark.json
-            tools/social-renderer/output/instagram-publish.json
-          if-no-files-found: warn
-          retention-days: 14
+          gh workflow run "$CANONICAL_WORKFLOW" \
+            --repo "$GITHUB_REPOSITORY" \
+            --ref main \
+            -f source_commit="$SOURCE_COMMIT" \
+            -f retry_depth="0" \
+            -f retry_reason="controlled:${RECOVERY_REASON}"
+
+          {
+            echo "### Instagram Controlled Recovery — V2 dispatched"
+            echo "Source commit: \`${SOURCE_COMMIT}\`"
+            echo "Canonical workflow: \`${CANONICAL_WORKFLOW}\`"
+            echo "Reason: \`${RECOVERY_REASON}\`"
+            echo ""
+            echo "This workflow does not render or publish to Meta directly."
+            echo "The canonical V2 pipeline owns readiness, 7-slide rendering, VERIFY_FIRST, sourceCommit idempotency, account verification and publication evidence."
+          } >> "$GITHUB_STEP_SUMMARY"
