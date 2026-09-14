@@ -1,5 +1,5 @@
 ---
-title: "Chile cierra la semana con menor crecimiento, inflación más alta y un frente externo más exigente"
+title: "Chile empieza la semana con menor crecimiento, inflación más alta y un frente externo más exigente"
 summary: "La proyección de crecimiento cayó, el IPC duplicó la expectativa del mercado y el petróleo volvió a subir. Las señales no apuntan todas en la misma dirección y hacen más complejo el escenario económico para Chile."
 publishedAt: "2026-09-14T17:59:00-03:00"
 status: "published"
