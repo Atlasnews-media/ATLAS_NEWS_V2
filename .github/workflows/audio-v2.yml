@@ -82,23 +82,90 @@ jobs:
         run: |
           set -euo pipefail
           atlas_public_dir="$RUNNER_TEMP/atlas-news-public"
+          expected_status="$RUNNER_TEMP/audio-v2-expected-status.json"
+
+          # La identidad de Audio es editorial. El SHA exacto prueba continuidad técnica,
+          # pero un descendiente sólo puede aceptarse si la edición sigue siendo la misma.
+          cd "$GITHUB_WORKSPACE"
+          ATLAS_SOURCE_SHA="$ATLAS_SOURCE_SHA" node scripts/generate-publication-status.mjs >/dev/null
+          cp public/status.json "$expected_status"
+
+          expected_date="$(jq -r '.morningPackage.date // empty' "$expected_status")"
+          expected_general="$(jq -r '.latestDaily.id // empty' "$expected_status")"
+          expected_national="$(jq -r '.latestNational.id // empty' "$expected_status")"
+          expected_markets="$(jq -r '.latestMarkets.id // empty' "$expected_status")"
+
+          if [[ -z "$expected_date" || -z "$expected_general" ]]; then
+            echo "No fue posible fijar la identidad editorial esperada para Audio V2." >&2
+            exit 1
+          fi
+
+          sensitive_re='^(src/content/editions/|src/content/briefings/|lab/audio-v2/|config/audio/|scripts/audio_speech\.py$|scripts/test_audio_speech\.py$|scripts/cover-briefing-contract\.mjs$|scripts/prepare-daily-audio\.mjs$|scripts/prepare-international-audio\.mjs$|scripts/prepare-audio-v2\.mjs$|scripts/generate-audio-v2\.py$|\.github/workflows/audio-v2\.yml$)'
 
           for attempt in $(seq 1 24); do
             cd "$atlas_public_dir"
             git fetch --quiet origin main
             git reset --hard origin/main >/dev/null
 
-            if jq -e --arg sha "$ATLAS_SOURCE_SHA" \
-              '.sourceCommit == $sha' status.json >/dev/null 2>&1; then
-              echo "Web verificada para sourceCommit $ATLAS_SOURCE_SHA."
+            observed_commit="$(jq -r '.sourceCommit // empty' status.json)"
+            observed_date="$(jq -r '.morningPackage.date // empty' status.json)"
+            observed_general="$(jq -r '.latestDaily.id // empty' status.json)"
+            observed_national="$(jq -r '.latestNational.id // empty' status.json)"
+            observed_markets="$(jq -r '.latestMarkets.id // empty' status.json)"
+
+            if [[ "$observed_date" != "$expected_date" || \
+                  "$observed_general" != "$expected_general" || \
+                  "$observed_national" != "$expected_national" || \
+                  "$observed_markets" != "$expected_markets" ]]; then
+              echo "La web visible no representa todavía la misma identidad editorial esperada ($attempt/24)."
+              sleep 15
+              continue
+            fi
+
+            if [[ "$observed_commit" == "$ATLAS_SOURCE_SHA" ]]; then
+              echo "Web verificada para sourceCommit exacto $ATLAS_SOURCE_SHA."
               exit 0
             fi
 
-            echo "Esperando web canónica para $ATLAS_SOURCE_SHA ($attempt/24)..."
-            sleep 15
+            if [[ ! "$observed_commit" =~ ^[0-9a-f]{40}$ ]]; then
+              echo "sourceCommit público no válido; esperando evidencia canónica ($attempt/24)."
+              sleep 15
+              continue
+            fi
+
+            cd "$GITHUB_WORKSPACE"
+            git fetch --quiet --no-tags --depth=128 origin "$observed_commit" >/dev/null 2>&1 || true
+
+            if ! git cat-file -e "${observed_commit}^{commit}" 2>/dev/null; then
+              echo "No fue posible resolver el commit público observado; esperando ($attempt/24)."
+              sleep 15
+              continue
+            fi
+
+            if ! git merge-base --is-ancestor "$ATLAS_SOURCE_SHA" "$observed_commit" 2>/dev/null; then
+              git fetch --quiet --no-tags --deepen=256 origin main >/dev/null 2>&1 || true
+            fi
+
+            if ! git merge-base --is-ancestor "$ATLAS_SOURCE_SHA" "$observed_commit" 2>/dev/null; then
+              echo "El sourceCommit público no es descendiente verificable del trigger de Audio; esperando ($attempt/24)."
+              sleep 15
+              continue
+            fi
+
+            changed_files="$(git diff --name-only "$ATLAS_SOURCE_SHA" "$observed_commit")"
+            sensitive_files="$(printf '%s\n' "$changed_files" | grep -E "$sensitive_re" || true)"
+            if [[ -n "$sensitive_files" ]]; then
+              echo "El descendiente público contiene cambios sensibles para Audio V2; no se acepta como avance técnico puro:"
+              printf '%s\n' "$sensitive_files"
+              sleep 15
+              continue
+            fi
+
+            echo "Web verificada sobre descendiente técnico $observed_commit de la misma edición; Audio conserva identidad editorial."
+            exit 0
           done
 
-          echo "La web no confirmó sourceCommit $ATLAS_SOURCE_SHA dentro de la ventana de espera." >&2
+          echo "La web no confirmó ni el SHA exacto ni un descendiente técnico seguro de la misma edición dentro de la ventana de espera." >&2
           exit 1
 
       - name: Planificar Portada sin regenerar por reloj
