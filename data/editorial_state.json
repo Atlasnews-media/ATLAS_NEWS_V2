@@ -3,14 +3,14 @@
     {
       "id": "oil-geopolitics-inflation",
       "topic": "Petróleo, geopolítica e inflación",
-      "thesis": "El shock energético ya compromete simultáneamente rutas primarias y de bypass: a la vulnerabilidad de Hormuz y al cierre del oleoducto saudí Este-Oeste se suma un nuevo ataque directo a un buque en el estrecho, reduciendo todavía más la redundancia logística y reforzando la persistencia macroeconómica del riesgo físico.",
+      "thesis": "El shock energético deja de ser una sucesión de incidentes y pasa a mostrar persistencia operativa: Hormuz mantiene tráfico deprimido, el principal bypass saudí sigue cerrado y la vía diplomática inmediata se posterga, reduciendo simultáneamente redundancia logística y probabilidad de desescalada rápida.",
       "status": "confirmed",
-      "last_evidence": "El 13 de septiembre UKMTO informó que un proyectil alcanzó un buque en tránsito por Hormuz, provocó un incendio y obligó a evacuar a la tripulación. El ataque ocurre mientras el oleoducto saudí Este-Oeste sigue cerrado tras el ataque con drones y había movido entre 4 y 5 millones de barriles diarios como principal alternativa al estrecho.",
-      "effect": "Confirma que la disrupción ya no se concentra en un único corredor: la ruta primaria y su principal bypass están expuestos simultáneamente, elevando el riesgo de transmisión persistente a combustibles, fletes y expectativas de inflación.",
-      "base_scenario": "Prima energética elevada y volátil con restricciones de tránsito, cierres materiales de producción y menor redundancia logística durante el resto de 2026, sin asumir una interrupción total de la producción del Golfo.",
-      "invalidate_if": "Reapertura rápida y sostenida del oleoducto Este-Oeste junto con recuperación segura del tráfico por Hormuz, producción y reconstrucción de inventarios debilitarían la tesis; nuevos daños simultáneos a rutas primarias y alternativas la reforzarían.",
-      "watch": "Duración del cierre del oleoducto Este-Oeste, tráfico y seguridad efectiva por Hormuz y Bab el-Mandeb, daños a buques e infraestructura, seguros marítimos, Brent e inventarios globales.",
-      "last_publication": "/ediciones/2026-09-13-daily-doble-vulnerabilidad-logistica-golfo/"
+      "last_evidence": "El 14 de septiembre los datos de navegación mostraron solo cuatro buques de materias primas saliendo y diez entrando al Golfo durante el fin de semana, frente a un promedio reciente de 14 tránsitos diarios; el oleoducto saudí Este-Oeste seguía cerrado y la reunión prevista entre países del Golfo e Irán fue postergada.",
+      "effect": "Confirma que la disrupción está persistiendo más allá del ataque inicial y que tanto la capacidad física alternativa como la salida diplomática inmediata son menores, elevando el riesgo de transmisión a combustibles, fletes, inflación y tasas globales.",
+      "base_scenario": "Prima energética elevada y volátil con restricciones de tránsito, menor redundancia logística y presión sobre expectativas de inflación durante el resto de 2026, sin asumir una interrupción total de la producción del Golfo.",
+      "invalidate_if": "Reapertura rápida y sostenida del oleoducto Este-Oeste junto con normalización verificable del tráfico por Hormuz y un mecanismo diplomático efectivo debilitarían la tesis; nuevas restricciones simultáneas la reforzarían.",
+      "watch": "Reapertura y capacidad del oleoducto Este-Oeste, tráfico efectivo por Hormuz, inventarios en Yanbu y puertos alternativos, seguros marítimos, nueva fecha de negociación regional, Brent y transmisión a inflación.",
+      "last_publication": "/ediciones/2026-09-14-daily-energia-se-convierte-en-riesgo-macro-global/"
     },
     {
       "id": "us-employment-fed-rates",
