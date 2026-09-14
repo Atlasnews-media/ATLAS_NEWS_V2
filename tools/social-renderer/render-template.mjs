@@ -95,10 +95,10 @@ function dateLabel(iso) {
 }
 
 function editionLabel(value) {
-  if (!/^[1-9][0-9]*$/.test(value)) {
+  if (!/^\d+$/.test(value) || Number(value) < 1) {
     throw new Error("SOCIAL_EDITION_NUMBER must be a positive integer");
   }
-  return value.padStart(3, "0");
+  return String(Number(value)).padStart(3, "0");
 }
 
 function pngDimensions(buffer) {
