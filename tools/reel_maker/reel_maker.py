@@ -16,7 +16,7 @@ COVER = TEMPLATES / "01_portada_base.png"
 NEWS = TEMPLATES / "02_noticia_base.png"
 CLOSE = TEMPLATES / "03_cierre_base.png"
 CATALOG = ROOT / "src/lib/front-page-visuals.ts"
-MUSIC = ROOT / "tools/reel_maker/.generated/atlas-news-theme.m4a"
+MUSIC = ROOT / "reference-assets/primary_assessment.mp3"
 INK, RED = (17,17,17,255), (198,26,35,255)
 MONTHS = ["", "ENE","FEB","MAR","ABR","MAY","JUN","JUL","AGO","SEPT","OCT","NOV","DIC"]
 
