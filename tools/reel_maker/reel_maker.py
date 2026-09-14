@@ -1,152 +1,215 @@
 #!/usr/bin/env python3
-"""ATLAS NEWS Reel Maker V2 — independent final consumer of Phase 4."""
+"""ATLAS NEWS Reel Maker V2 — official templates, 5 highlights, MP4 + theme."""
 from __future__ import annotations
 
-import argparse
-import json
-import logging
-import shutil
-import subprocess
-import tempfile
+import argparse, json, re, shutil, subprocess, tempfile, unicodedata, urllib.parse, urllib.request
+from dataclasses import dataclass
+from datetime import date
 from pathlib import Path
-from typing import Iterable
+from PIL import Image, ImageChops, ImageDraw, ImageEnhance, ImageFont, ImageOps
 
-from model import Contract, DURATION, plate, scene_specs
-from validate import animate, render_svg, require_tools, run, validate_clip, validate_mp4, validate_static
-
-LOG = logging.getLogger("atlas-news-reel-maker")
-
-
-def output_path(directory: Path, source_commit: str) -> Path:
-    safe = "".join(ch for ch in source_commit if ch.isalnum() or ch in "-_.")[:80] or "unknown-commit"
-    return directory / f"atlas-news-reel-{safe}.mp4"
-
-
-def build_from_contract(
-    contract_path: str | Path,
-    *,
-    output_dir: str | Path = "output",
-    images: Iterable[str | Path | None] | None = None,
-    music: str | Path | None = None,
-    duration: float = DURATION,
-    music_volume: float = 0.20,
-    keep_plates: bool = False,
-) -> Path:
-    require_tools()
-    if not 0.5 <= duration <= 15:
-        raise ValueError("duration por escena debe estar entre 0.5 y 15 segundos")
-    if not 0 <= music_volume <= 1:
-        raise ValueError("music_volume debe estar entre 0 y 1")
-
-    contract = Contract.load(contract_path)
-    out = Path(output_dir).expanduser().resolve()
-    out.mkdir(parents=True, exist_ok=True)
-    final = output_path(out, contract.source_commit)
-    image_values = list(images or [None] * 7)
-    if len(image_values) != 7:
-        raise ValueError("images debe contener exactamente 7 rutas o null")
-    image_paths = [Path(value).expanduser().resolve() if value else None for value in image_values]
-    music_path = Path(music).expanduser().resolve() if music else None
-    if music_path and not music_path.is_file():
-        raise FileNotFoundError(f"Audio no encontrado: {music_path}")
-
-    visual: list[dict] = []
-    total_duration = duration * 7
-    with tempfile.TemporaryDirectory(prefix="atlas-news-reel-") as temp_name:
-        temp = Path(temp_name)
-        plates, pngs, clips = temp / "plates", temp / "pngs", temp / "clips"
-        for directory in (plates, pngs, clips):
-            directory.mkdir()
-
-        for index, spec in enumerate(scene_specs(contract), 1):
-            last_error: Exception | None = None
-            for guard in range(0, 145, 12):
-                try:
-                    svg_text, meta = plate(index, spec, contract, image_paths[index - 1], guard)
-                    svg = plates / f"scene-{index:02d}.svg"
-                    png = pngs / f"scene-{index:02d}.png"
-                    clip = clips / f"scene-{index:02d}.mp4"
-                    svg.write_text(svg_text, encoding="utf-8")
-                    check = validate_static(svg, meta)
-                    render_svg(svg, png)
-                    animate(png, clip, duration)
-                    check["animated"] = validate_clip(clip, duration)
-                    check["widthGuard"] = guard
-                    visual.append(check)
-                    break
-                except ValueError as exc:
-                    last_error = exc
-            else:
-                raise ValueError(f"Escena {index} no supera validación visual tras reflow: {last_error}")
-
-        concat = temp / "concat.txt"
-        concat.write_text(
-            "\n".join(f"file '{path.as_posix()}'" for path in sorted(clips.iterdir())) + "\n",
-            encoding="utf-8",
-        )
-        silent = temp / "silent.mp4"
-        run([
-            "ffmpeg", "-y", "-hide_banner", "-loglevel", "error", "-f", "concat", "-safe", "0",
-            "-i", str(concat), "-c", "copy", "-movflags", "+faststart", str(silent),
-        ], True)
-        if music_path:
-            run([
-                "ffmpeg", "-y", "-hide_banner", "-loglevel", "error", "-i", str(silent),
-                "-stream_loop", "-1", "-i", str(music_path), "-filter_complex",
-                f"[1:a]volume={music_volume:.3f}[a]", "-map", "0:v:0", "-map", "[a]", "-shortest",
-                "-c:v", "copy", "-c:a", "aac", "-b:a", "192k", "-movflags", "+faststart", str(final),
-            ], True)
-        else:
-            shutil.copy2(silent, final)
-
-        tech = validate_mp4(final, total_duration)
-        report = {
-            "sourceCommit": contract.source_commit,
-            "canonicalUrl": contract.canonical_url,
-            "scenes": visual,
-            "video": tech,
-            "expectedDuration": round(total_duration, 3),
-            "status": "PASS",
-        }
-        (out / "visual-validation.json").write_text(
-            json.dumps(report, ensure_ascii=False, indent=2) + "\n", encoding="utf-8"
-        )
-        if keep_plates:
-            target = out / f"atlas-news-plates-{contract.source_commit}"
-            target.mkdir(parents=True, exist_ok=True)
-            for path in list(plates.glob("*.svg")) + list(pngs.glob("*.png")):
-                shutil.copy2(path, target / path.name)
-    return final
+ROOT = Path.cwd().resolve()
+W, H, FPS = 1080, 1920, 30
+DURATIONS = (5.0, 6.0, 6.0, 6.0, 6.0, 6.0, 5.0)
+TEMPLATES = ROOT / "reference-assets"
+COVER = TEMPLATES / "01_portada_base.png"
+NEWS = TEMPLATES / "02_noticia_base.png"
+CLOSE = TEMPLATES / "03_cierre_base.png"
+CATALOG = ROOT / "src/lib/front-page-visuals.ts"
+MUSIC = ROOT / "tools/reel_maker/.generated/atlas-news-theme.m4a"
+INK, RED = (17,17,17,255), (198,26,35,255)
+MONTHS = ["", "ENE","FEB","MAR","ABR","MAY","JUN","JUL","AGO","SEPT","OCT","NOV","DIC"]
 
 
-def main() -> int:
-    parser = argparse.ArgumentParser(description="ATLAS NEWS Reel Maker V2: contrato social -> 7 escenas -> MP4")
-    parser.add_argument("contract", nargs="?", default="tools/social-renderer/.generated/daily-contract.json")
-    parser.add_argument("--output-dir", default="output")
-    parser.add_argument("--images", nargs=7, metavar="IMG")
-    parser.add_argument("--music")
-    parser.add_argument("--music-volume", type=float, default=0.20)
-    parser.add_argument("--duration", type=float, default=DURATION)
-    parser.add_argument("--keep-plates", action="store_true")
-    parser.add_argument("--verbose", action="store_true")
-    args = parser.parse_args()
-    logging.basicConfig(level=logging.DEBUG if args.verbose else logging.INFO, format="%(levelname)s %(message)s")
+def run(cmd:list[str]) -> None:
+    subprocess.run(cmd, check=True, stdout=subprocess.DEVNULL, stderr=subprocess.PIPE)
+
+
+def ffprobe(path:Path) -> dict:
+    return json.loads(subprocess.check_output([
+        "ffprobe","-v","error","-show_entries",
+        "stream=codec_type,codec_name,width,height,pix_fmt,r_frame_rate,bit_rate:format=duration",
+        "-of","json",str(path)], text=True))
+
+
+def font(size:int, bold:bool=False):
+    pattern = "Liberation Serif:style=Bold" if bold else "Liberation Serif:style=Regular"
     try:
-        result = build_from_contract(
-            args.contract,
-            output_dir=args.output_dir,
-            images=args.images,
-            music=args.music,
-            duration=args.duration,
-            music_volume=args.music_volume,
-            keep_plates=args.keep_plates,
-        )
-        print(result)
-        return 0
-    except (ValueError, FileNotFoundError, RuntimeError, json.JSONDecodeError, subprocess.CalledProcessError) as exc:
-        LOG.error("%s", exc)
-        return 1
+        p = subprocess.check_output(["fc-match","-f","%{file}",pattern], text=True).strip()
+    except Exception:
+        p = ""
+    if not p or not Path(p).is_file():
+        p = "/usr/share/fonts/truetype/dejavu/DejaVuSerif-Bold.ttf" if bold else "/usr/share/fonts/truetype/dejavu/DejaVuSerif.ttf"
+    return ImageFont.truetype(p, size=size)
 
 
-if __name__ == "__main__":
-    raise SystemExit(main())
+def open_template(path:Path):
+    if not path.is_file(): raise FileNotFoundError(f"Plantilla faltante: {path}")
+    with Image.open(path) as im: rgba = im.convert("RGBA")
+    return ImageOps.fit(rgba, (W,H), method=Image.Resampling.LANCZOS)
+
+
+def spaced(draw, xy, text, fnt, fill, gap:int):
+    x,y = xy
+    for ch in text:
+        draw.text((x,y), ch, font=fnt, fill=fill)
+        b = draw.textbbox((0,0), ch, font=fnt); x += b[2]-b[0]+gap
+
+
+def width(draw, text, fnt):
+    b=draw.textbbox((0,0), text, font=fnt); return b[2]-b[0]
+
+
+def wrap(draw, text, fnt, maxw):
+    lines=[]; cur=""
+    for word in " ".join(str(text).split()).split():
+        cand = word if not cur else f"{cur} {word}"
+        if width(draw,cand,fnt) <= maxw: cur=cand
+        else:
+            if cur: lines.append(cur)
+            cur=word
+    if cur: lines.append(cur)
+    return lines
+
+
+def fit(draw, text, maxw, maxlines, base, minimum, bold):
+    for size in range(base, minimum-1, -2):
+        fnt=font(size,bold); lines=wrap(draw,text,fnt,maxw)
+        if 0 < len(lines) <= maxlines: return fnt,lines
+    raise ValueError(f"Texto no cabe: {text}")
+
+
+def draw_lines(draw, lines, xy, fnt, fill, gap=1.05):
+    x,y=xy; asc,des=fnt.getmetrics(); lh=int((asc+des)*gap); maxw=0
+    for i,line in enumerate(lines):
+        draw.text((x,y+i*lh), line, font=fnt, fill=fill)
+        maxw=max(maxw,width(draw,line,fnt))
+    return (x,y,x+maxw,y+(len(lines)-1)*lh+asc+des)
+
+
+def date_label(iso):
+    d=date.fromisoformat(iso[:10]); return f"{d.day:02d} {MONTHS[d.month]} {d.year}"
+
+
+def photo_overlay(canvas, path:Path|None):
+    if not path or not path.is_file(): return
+    with Image.open(path) as im: pic=im.convert("RGB")
+    pic=ImageOps.fit(pic,(780,1240),method=Image.Resampling.LANCZOS)
+    pic=ImageEnhance.Color(pic).enhance(.30); pic=ImageEnhance.Contrast(pic).enhance(.90)
+    pic=pic.convert("RGBA"); w,h=pic.size
+    xmask=Image.new("L",(w,1)); xmask.putdata([int(205*max(0,min(1,(x/(w-1)-.08)/.52))) for x in range(w)]); xmask=xmask.resize((w,h))
+    ymask=Image.new("L",(1,h)); ymask.putdata([int(255*min(1,(y/(h-1))/.10,(1-y/(h-1))/.14)) for y in range(h)]); ymask=ymask.resize((w,h))
+    canvas.paste(pic,(300,410),ImageChops.multiply(xmask,ymask))
+
+
+@dataclass
+class Contract:
+    source_commit:str; source_id:str; canonical_url:str; published_date:str; edition:int; highlights:list[dict]
+
+
+def load_contract(path:Path) -> Contract:
+    r=json.loads(path.read_text(encoding="utf-8")); hs=r.get("highlights")
+    if str(r.get("version"))!="2" or not isinstance(hs,list) or len(hs)!=5: raise ValueError("Contrato Reel requiere version 2 y 5 highlights")
+    ed=int(r.get("editionNumber",0));
+    if ed<1: raise ValueError("editionNumber inválido")
+    for i,x in enumerate(hs):
+        if not str(x.get("label","")).strip() or not str(x.get("text","")).strip(): raise ValueError(f"highlight {i+1} vacío")
+    return Contract(str(r["sourceCommit"]),str(r.get("sourceId","")),str(r["canonicalUrl"]),str(r["publishedDate"]),ed,hs)
+
+
+def render_scene(index:int, c:Contract, out:Path, image:Path|None=None):
+    ed=f"{c.edition:03d}"; d=date_label(c.published_date)
+    if index==1:
+        canvas=open_template(COVER); draw=ImageDraw.Draw(canvas)
+        draw.text((188,55),ed,font=font(29,True),fill=RED); draw.text((286,56),"•",font=font(25,True),fill=INK); spaced(draw,(326,55),d,font(25,True),INK,4)
+    elif index==7:
+        canvas=open_template(CLOSE); draw=ImageDraw.Draw(canvas)
+        draw.text((388,1094),ed,font=font(38,True),fill=RED); spaced(draw,(584,1096),d,font(34,True),INK,5)
+    else:
+        item=c.highlights[index-2]; canvas=open_template(NEWS); photo_overlay(canvas,image); draw=ImageDraw.Draw(canvas)
+        draw.text((132,598),str(index-1),font=font(172),fill=RED)
+        tf,tl=fit(draw,item["label"],920,3,78,52,True); tb=draw_lines(draw,tl,(70,830),tf,INK,1.02)
+        by=tb[3]+62; bf,bl=fit(draw,item["text"],920,6,56,38,False); bb=draw_lines(draw,bl,(70,by),bf,INK,1.10)
+        if bb[3]>1695: raise ValueError(f"Escena {index}: texto fuera de área")
+        draw.text((399,1768),ed,font=font(38,True),fill=RED); spaced(draw,(586,1771),d,font(34,True),INK,5)
+    canvas.convert("RGB").save(out,"PNG",optimize=True)
+
+
+def norm(s): return unicodedata.normalize("NFD",s).encode("ascii","ignore").decode().lower()
+
+def qstrings(s): return re.findall(r'"((?:\\.|[^"\\])*)"',s)
+
+def visual_catalog():
+    if not CATALOG.is_file(): return []
+    s=CATALOG.read_text(encoding="utf-8"); keys={}
+    for m in re.finditer(r"const\s+([A-Z0-9_]+_KEYWORDS)\s*=\s*\[(.*?)\];",s,re.S): keys[m.group(1)]=qstrings(m.group(2))
+    out=[]
+    for m in re.finditer(r"const\s+\w+\s*=\s*commonsVisual\(\{(.*?)\}\);",s,re.S):
+        b=m.group(1); fm=re.search(r'file:\s*"((?:\\.|[^"\\])*)"',b); km=re.search(r"keywords:\s*([A-Z0-9_]+_KEYWORDS)",b)
+        if fm and km: out.append((fm.group(1),keys.get(km.group(1),[]),bool(re.search(r"fallback:\s*true",b))))
+    for m in re.finditer(r"const\s+\w+\s*=\s*catalogBatch\(\s*\[(.*?)\]\s*,\s*\"(?:\\.|[^\"\\])*\"\s*,\s*([A-Z0-9_]+_KEYWORDS)",s,re.S):
+        for f in qstrings(m.group(1)): out.append((f,keys.get(m.group(2),[]),False))
+    seen=set(); return [x for x in out if not (x[0] in seen or seen.add(x[0]))]
+
+
+def download_visuals(c:Contract, folder:Path):
+    cat=visual_catalog(); paths=[None]; manifest=[]; used=set(); folder.mkdir(parents=True,exist_ok=True)
+    for n,item in enumerate(c.highlights,1):
+        hay=norm(item["label"]+" "+item["text"]); avail=[x for x in cat if x[0] not in used] or cat
+        scored=sorted(avail,key=lambda x:(-sum(norm(k) in hay for k in x[1]),x[0])); candidates=scored[:4]
+        path=None; chosen=None
+        for file,_,_ in candidates:
+            url="https://commons.wikimedia.org/wiki/Special:FilePath/"+urllib.parse.quote(file,safe="")+"?width=1280"
+            try:
+                req=urllib.request.Request(url,headers={"User-Agent":"ATLAS-NEWS-Reel-Maker/2.0","Accept":"image/*"})
+                with urllib.request.urlopen(req,timeout=5) as res: data=res.read(); ct=res.headers.get("Content-Type","")
+                if len(data)<4096 or "image" not in ct.lower(): continue
+                path=folder/f"scene-{n+1:02d}.img"; path.write_bytes(data); chosen=(file,url); used.add(file); break
+            except Exception: pass
+        paths.append(path); manifest.append({"scene":n+1,"highlight":item["label"],"file":chosen[0] if chosen else "","src":chosen[1] if chosen else "","status":"downloaded" if path else "fallback-template-only"})
+    paths.append(None); return paths,manifest
+
+
+def animate(png:Path, clip:Path, seconds:float):
+    fade=min(.20,seconds/4)
+    run(["ffmpeg","-y","-hide_banner","-loglevel","error","-loop","1","-i",str(png),"-t",f"{seconds:.3f}","-vf",f"fade=t=in:st=0:d={fade:.3f},fade=t=out:st={seconds-fade:.3f}:d={fade:.3f},format=yuv420p","-r",str(FPS),"-an","-c:v","libx264","-preset","ultrafast","-crf","18",str(clip)])
+
+
+def music_bed(src:Path, dst:Path, total:float):
+    dur=float(subprocess.check_output(["ffprobe","-v","error","-show_entries","format=duration","-of","default=nw=1:nk=1",str(src)],text=True).strip()); cross=.9
+    repeats=1; effective=dur
+    while effective<total+.25: repeats+=1; effective+=dur-cross
+    cmd=["ffmpeg","-y","-hide_banner","-loglevel","error"]; [cmd.extend(["-i",str(src)]) for _ in range(repeats)]
+    filters=[f"[{i}:a]aresample=48000,volume=0.84,asetpts=N/SR/TB[a{i}]" for i in range(repeats)]; cur="a0"
+    for i in range(1,repeats): filters.append(f"[{cur}][a{i}]acrossfade=d={cross}:c1=tri:c2=tri[x{i}]"); cur=f"x{i}"
+    filters.append(f"[{cur}]atrim=0:{total},afade=t=in:st=0:d=0.35,afade=t=out:st={max(0,total-1.4)}:d=1.4[aout]")
+    run(cmd+["-filter_complex",";".join(filters),"-map","[aout]","-c:a","aac","-b:a","192k",str(dst)])
+
+
+def main():
+    ap=argparse.ArgumentParser(); ap.add_argument("contract"); ap.add_argument("--output-dir",default="tools/reel_maker/output"); ap.add_argument("--keep-plates",action="store_true"); ap.add_argument("--duration",type=float,default=None); ap.add_argument("--music",default=str(MUSIC)); args=ap.parse_args()
+    for tool in ("ffmpeg","ffprobe","fc-match"):
+        if not shutil.which(tool): raise RuntimeError(f"Falta {tool}")
+    music=Path(args.music).expanduser().resolve()
+    if not music.is_file(): raise FileNotFoundError(f"Audio oficial faltante: {music}")
+    c=load_contract(Path(args.contract)); out=Path(args.output_dir); out.mkdir(parents=True,exist_ok=True); durations=[args.duration]*7 if args.duration else list(DURATIONS); total=sum(durations)
+    with tempfile.TemporaryDirectory(prefix="atlas-reel-") as td:
+        t=Path(td); pngdir=t/"png"; clipdir=t/"clips"; pngdir.mkdir(); clipdir.mkdir(); images,manifest=download_visuals(c,t/"images")
+        metas=[]
+        for i in range(1,8):
+            png=pngdir/f"scene-{i:02d}.png"; clip=clipdir/f"scene-{i:02d}.mp4"; render_scene(i,c,png,images[i-1]); animate(png,clip,durations[i-1]); metas.append({"scene":i,"status":"PASS","animated":{"status":"PASS"},"duration":durations[i-1]})
+        concat=t/"concat.txt"; concat.write_text("".join(f"file '{p.as_posix()}'\n" for p in sorted(clipdir.glob("*.mp4"))),encoding="utf-8"); silent=t/"silent.mp4"
+        run(["ffmpeg","-y","-hide_banner","-loglevel","error","-f","concat","-safe","0","-i",str(concat),"-c","copy",str(silent)])
+        bed=t/"bed.m4a"; music_bed(music,bed,total); final=out/f"atlas-news-reel-{c.source_commit}.mp4"
+        run(["ffmpeg","-y","-hide_banner","-loglevel","error","-i",str(silent),"-i",str(bed),"-map","0:v:0","-map","1:a:0","-c:v","copy","-c:a","aac","-b:a","192k","-shortest","-movflags","+faststart",str(final)])
+        probe=ffprobe(final); v=next(x for x in probe["streams"] if x["codec_type"]=="video"); a=next((x for x in probe["streams"] if x["codec_type"]=="audio"),None); actual=float(probe["format"]["duration"])
+        ok=v.get("codec_name")=="h264" and v.get("width")==W and v.get("height")==H and v.get("pix_fmt")=="yuv420p" and v.get("r_frame_rate")=="30/1" and a and a.get("codec_name")=="aac" and abs(actual-total)<.6
+        if not ok: raise RuntimeError("Validación técnica MP4 fallida")
+        report={"sourceCommit":c.source_commit,"editionNumber":c.edition,"publishedDate":c.published_date,"scenes":metas,"sceneDurations":durations,"expectedDuration":total,"video":{"codec":"h264","width":str(W),"height":str(H),"pix_fmt":"yuv420p","r_frame_rate":"30/1","audio_codec":"aac","duration":f"{actual:.3f}"},"visualSources":manifest,"status":"PASS"}
+        (out/"visual-validation.json").write_text(json.dumps(report,ensure_ascii=False,indent=2)+"\n",encoding="utf-8"); (out/"visual-sources.json").write_text(json.dumps(manifest,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
+        if args.keep_plates:
+            plates=out/f"atlas-news-plates-{c.source_commit}"; plates.mkdir(parents=True,exist_ok=True)
+            for p in pngdir.glob("*.png"): shutil.copy2(p,plates/p.name)
+        print(final)
+
+if __name__=="__main__": main()
