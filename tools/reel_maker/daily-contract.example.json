@@ -1,33 +1,34 @@
 {
   "version": "2",
-  "sourceCommit": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-  "sourceId": "src/content/editions/example.md",
-  "canonicalUrl": "https://eldesiempre100.github.io/ediciones/example/",
-  "publishedDate": "2026-09-13T07:00:00-03:00",
+  "sourceCommit": "924de6c458b580a59e2080681aa4dc757e61c079",
+  "sourceId": "src/content/editions/2026-09-12-daily-shock-energetico-pierde-via-de-escape.md",
+  "canonicalUrl": "https://eldesiempre100.github.io/ediciones/2026-09-12-daily-shock-energetico-pierde-via-de-escape/",
+  "publishedDate": "2026-09-12T09:03:16-03:00",
+  "editionNumber": 41,
   "productType": "daily",
   "sectionLabel": "General",
-  "title": "Los mercados reprecian el costo del crecimiento",
-  "dek": "La nueva señal cambia las expectativas para empresas, hogares y bancos.",
+  "title": "El shock energético pierde una vía de escape y endurece el escenario de tasas",
+  "dek": "El ataque que obligó a cerrar el oleoducto saudí Este-Oeste reduce una ruta alternativa a Hormuz justo cuando el IPC de Estados Unidos consolidó una subida de la Fed como escenario dominante.",
   "highlights": [
     {
-      "label": "El costo financiero vuelve al centro",
-      "text": "Las tasas largas suben y estrechan el margen para nuevas decisiones de inversión."
+      "label": "Arabia Saudita pierde una ruta alternativa a Hormuz",
+      "text": "Un ataque obligó a cerrar el oleoducto Este-Oeste, capaz de transportar entre 4 y 5 millones de barriles diarios."
     },
     {
-      "label": "Las empresas revisan sus planes",
-      "text": "El mayor costo de financiamiento obliga a priorizar proyectos y conservar liquidez."
+      "label": "La inflación deja a la Fed más cerca de subir",
+      "text": "El IPC subió 0,4% mensual y el núcleo 0,3%; el mercado elevó a cerca de 87% la probabilidad de una subida en septiembre."
     },
     {
-      "label": "Los hogares sienten el ajuste",
-      "text": "Crédito, empleo y precios transmiten el cambio de escenario a las decisiones cotidianas."
+      "label": "Wall Street rebota, pero no borra la semana negativa",
+      "text": "El S&P 500 ganó 0,9% el viernes, aunque terminó la semana con una caída de 0,8% y el Treasury a diez años rozó 5%."
     },
     {
-      "label": "Los mercados distinguen sectores",
-      "text": "La reacción no es uniforme y premia balances capaces de absorber un escenario más exigente."
+      "label": "El petróleo cede el viernes, pero acumula más de 8%",
+      "text": "Brent cerró en US$104,61 tras retroceder desde máximos, mientras las disrupciones físicas mantienen elevada la prima energética."
     },
     {
-      "label": "La duración del ajuste importa",
-      "text": "La pregunta central es si el movimiento será transitorio o se convertirá en una nueva referencia."
+      "label": "Chile enfrenta un shock externo más persistente",
+      "text": "Sin nueva cifra local material, el cambio relevante es externo: energía cara y tasas globales altas tensionan el escenario del IPoM."
     }
   ]
 }
