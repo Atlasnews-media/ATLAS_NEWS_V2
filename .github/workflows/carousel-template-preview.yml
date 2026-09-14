@@ -6,6 +6,7 @@ on:
     paths:
       - ".github/workflows/carousel-template-preview.yml"
       - "tools/social-renderer/render-template.mjs"
+      - "tools/social-renderer/contracts/2026-09-12-daily-carousel-preview.json"
       - "tools/social-renderer/assets/CARRUSEL_1.png"
       - "tools/social-renderer/assets/CARRUSEL_2.png"
       - "tools/social-renderer/assets/CARRUSEL_3.png"
@@ -49,7 +50,7 @@ jobs:
       - name: Render five-slide carousel preview
         working-directory: tools/social-renderer
         env:
-          SOCIAL_CONTRACT: tools/social-renderer/contracts/2026-09-04-reading-activo-seguro-riesgo.json
+          SOCIAL_CONTRACT: tools/social-renderer/contracts/2026-09-12-daily-carousel-preview.json
           SOCIAL_PUBLICATION_STATUS: PUBLICACIÓN DISPONIBLE / VERIFICADA
           SOCIAL_EDITION_NUMBER: "041"
         run: node render-template.mjs
@@ -63,6 +64,7 @@ jobs:
             .status == "PASS" and
             .carouselSlides == 5 and
             .editionNumber == "041" and
+            .publishedDate == "12 SEPT 2026" and
             (.outputs | length == 5) and
             (.templates | length == 5)
           ' output-template/template-validation.json >/dev/null
