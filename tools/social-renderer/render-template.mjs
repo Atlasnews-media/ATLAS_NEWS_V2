@@ -12,10 +12,42 @@ const W = 1254;
 const H = 1254;
 const INK = "#17130f";
 const RED = "#9d3027";
+const PAPER = "#f4f0e6";
 
 const TEMPLATE_PATHS = [1, 2, 3, 4, 5].map((n) =>
   path.resolve(process.cwd(), `assets/CARRUSEL_${n}.png`),
 );
+
+const VISUALS = Object.freeze({
+  energy: {
+    file: "US Navy 051111-N-8163B-032 An oil tanker docked to the Al Basrah Oil Terminal (ABOT) takes on crude oil in the Persian Gulf.jpg",
+    credit: "Wikimedia Commons · U.S. Navy · Dominio público",
+  },
+  oil: {
+    file: "US Navy 041207-N-6932B-014 The oil tanker Omala is one of hundreds of oil tankers from around the world that receives its payload from Iraq's Al Basrah Oil Terminal (ABOT).jpg",
+    credit: "Wikimedia Commons · U.S. Navy · Dominio público",
+  },
+  fed: {
+    file: "Eccles Building (26088200676).jpg",
+    credit: "Wikimedia Commons · Federalreserve · Dominio público",
+  },
+  equity: {
+    file: "Stock Exchange NYC.jpg",
+    credit: "Wikimedia Commons · Cody escadron delta · Dominio público",
+  },
+  treasury: {
+    file: "US Treasury Building.jpg",
+    credit: "Wikimedia Commons · Loren · Dominio público",
+  },
+  chile: {
+    file: "Vista del Costanera Center.jpg",
+    credit: "Wikimedia Commons · Rjcastillo · CC BY-SA 4.0",
+  },
+  port: {
+    file: "CL-san-antonio-hafen.jpg",
+    credit: "Wikimedia Commons · Balou46 · CC BY-SA 4.0",
+  },
+});
 
 function escapeHtml(value = "") {
   return String(value).replace(
@@ -95,10 +127,61 @@ function dateLabel(iso) {
 }
 
 function editionLabel(value) {
-  if (!/^\d+$/.test(value) || Number(value) < 1) {
+  const normalized = String(value || "").replace(/^0+/, "") || "0";
+  if (!/^[1-9][0-9]*$/.test(normalized)) {
     throw new Error("SOCIAL_EDITION_NUMBER must be a positive integer");
   }
-  return String(Number(value)).padStart(3, "0");
+  return normalized.padStart(3, "0");
+}
+
+function normalize(value) {
+  return String(value || "")
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .toLowerCase();
+}
+
+function visualKey(text) {
+  const hay = normalize(text);
+  const has = (...words) => words.some((word) => hay.includes(normalize(word)));
+  if (has("hormuz", "saudita", "oleoducto", "petroleo", "brent", "crudo", "energia")) return "energy";
+  if (has("fed", "inflacion", "ipc", "fomc", "tasa", "tasas")) return "fed";
+  if (has("wall street", "s&p", "nasdaq", "dow", "acciones", "bolsa")) return "equity";
+  if (has("treasury", "bonos", "renta fija", "duracion", "carry")) return "treasury";
+  if (has("chile", "ipom", "santiago", "tpm", "banco central")) return "chile";
+  if (has("puerto", "flete", "transporte", "contenedor")) return "port";
+  return "treasury";
+}
+
+function commonsUrl(file) {
+  return `https://commons.wikimedia.org/wiki/Special:FilePath/${encodeURIComponent(file)}?width=1400`;
+}
+
+const imageCache = new Map();
+async function materializeVisual(key) {
+  if (imageCache.has(key)) return imageCache.get(key);
+  const visual = VISUALS[key] || VISUALS.treasury;
+  let dataUrl = null;
+  try {
+    const controller = new AbortController();
+    const timer = setTimeout(() => controller.abort(), 12000);
+    const response = await fetch(commonsUrl(visual.file), {
+      redirect: "follow",
+      signal: controller.signal,
+      headers: { "User-Agent": "ATLAS-NEWS-Carousel/3.0" },
+    });
+    clearTimeout(timer);
+    if (response.ok) {
+      const type = response.headers.get("content-type") || "image/jpeg";
+      const buffer = Buffer.from(await response.arrayBuffer());
+      dataUrl = `data:${type};base64,${buffer.toString("base64")}`;
+    }
+  } catch (error) {
+    console.warn(`[carousel-template] visual fallback for ${key}: ${error?.message || error}`);
+  }
+  const resolved = { ...visual, dataUrl };
+  imageCache.set(key, resolved);
+  return resolved;
 }
 
 function pngDimensions(buffer) {
@@ -121,22 +204,39 @@ async function loadTemplates() {
   return result;
 }
 
+function visualLayer(visual, { top = 210, bottom = 72, width = 610, opacity = 0.9 } = {}) {
+  if (!visual?.dataUrl) return "";
+  return `
+    <div class="visual-layer" style="top:${top}px;bottom:${bottom}px;width:${width}px;opacity:${opacity}">
+      <img src="${visual.dataUrl}" alt="">
+      <div class="visual-wash"></div>
+      <div class="visual-credit">${escapeHtml(visual.credit)}</div>
+    </div>`;
+}
+
 function pageHtml(template, inner, edition, date) {
   return `<!doctype html><html><head><meta charset="utf-8"><style>
     *{box-sizing:border-box} html,body{margin:0;width:${W}px;height:${H}px;overflow:hidden}
-    body{font-family:Georgia,'Times New Roman',serif;color:${INK};background:#f4f0e6}
+    body{font-family:Georgia,'Times New Roman',serif;color:${INK};background:${PAPER}}
     .page{position:relative;width:${W}px;height:${H}px;overflow:hidden}
-    .template{position:absolute;inset:0;width:${W}px;height:${H}px;object-fit:fill}
-    .copy{position:absolute;z-index:2}
-    .headline{font-weight:700;letter-spacing:-2px;line-height:.96}
+    .template{position:absolute;inset:0;width:${W}px;height:${H}px;object-fit:fill;z-index:1}
+    .visual-layer{position:absolute;right:0;z-index:2;overflow:hidden;
+      -webkit-mask-image:linear-gradient(to right,transparent 0%,rgba(0,0,0,.18) 18%,rgba(0,0,0,.82) 44%,#000 66%,#000 100%);
+      mask-image:linear-gradient(to right,transparent 0%,rgba(0,0,0,.18) 18%,rgba(0,0,0,.82) 44%,#000 66%,#000 100%)}
+    .visual-layer img{width:100%;height:100%;object-fit:cover;filter:grayscale(.45) sepia(.08) contrast(.92) saturate(.72)}
+    .visual-wash{position:absolute;inset:0;background:linear-gradient(180deg,rgba(244,240,230,.10),rgba(244,240,230,.02) 54%,rgba(244,240,230,.20));pointer-events:none}
+    .visual-credit{position:absolute;right:12px;bottom:8px;max-width:70%;font:9px/1.1 Arial,sans-serif;color:rgba(35,31,27,.55);text-align:right}
+    .copy{position:absolute;z-index:4;text-align:left}
+    .center-zone{display:flex;flex-direction:column;justify-content:center}
+    .headline{font-weight:700;letter-spacing:-2.6px;line-height:.94}
     .body{line-height:1.12}
-    .rule{width:54px;border-top:2px solid ${RED};margin:26px 0}
-    .point{padding:0 0 22px 0;margin:0 0 22px 0;border-bottom:1px solid rgba(23,19,15,.22)}
+    .rule{width:58px;border-top:3px solid ${RED};margin:25px 0 26px}
+    .point{padding:0 0 24px 0;margin:0 0 24px 0;border-bottom:1px solid rgba(23,19,15,.22)}
     .point:last-child{border-bottom:none;margin-bottom:0}
-    .impact{padding:0 0 24px 0;margin:0 0 24px 0;border-bottom:1px solid rgba(23,19,15,.22)}
+    .impact{padding:0 0 25px 0;margin:0 0 25px 0;border-bottom:1px solid rgba(23,19,15,.22)}
     .impact:last-child{border-bottom:none;margin-bottom:0}
-    .edition-value{position:absolute;z-index:3;left:946px;top:42px;color:${RED};font-size:18px;font-weight:700;letter-spacing:1px}
-    .date-value{position:absolute;z-index:3;left:1033px;top:42px;color:${INK};font-size:16px;font-weight:600;letter-spacing:2.1px;white-space:nowrap}
+    .edition-value{position:absolute;z-index:5;left:946px;top:42px;color:${RED};font-size:18px;font-weight:700;letter-spacing:1px}
+    .date-value{position:absolute;z-index:5;left:1033px;top:42px;color:${INK};font-size:16px;font-weight:600;letter-spacing:2.1px;white-space:nowrap}
     [data-fit]{overflow-wrap:anywhere}
   </style></head><body><div class="page" id="root"><img class="template" src="${template}"><div class="edition-value">${edition}</div><div class="date-value">${date}</div>${inner}</div></body></html>`;
 }
@@ -185,38 +285,48 @@ async function main() {
   await fs.rm(OUT, { recursive: true, force: true });
   await fs.mkdir(OUT, { recursive: true });
 
-  const titleSize = fit(contract.title, 76, 48, 70);
-  const dekSize = fit(contract.dek, 38, 29, 125);
-  const ideaSize = fit(contract.ideaCentral, 62, 42, 125);
-  const supportSize = fit(contract.ideaSupport, 36, 28, 190);
-  const pointsSize = fit(contract.keyPoints.map((x) => x.text).join(" "), 38, 30, 210);
-  const impactSize = fit(contract.impactItems.map((x) => `${x.label} ${x.text}`).join(" "), 36, 28, 250);
+  const coverVisual = await materializeVisual(visualKey(`${contract.title} ${contract.dek}`));
+  const ideaVisual = await materializeVisual(visualKey(`${contract.ideaCentral} ${contract.ideaSupport}`));
+  const changedVisual = await materializeVisual(visualKey(contract.keyPoints.map((x) => x.text).join(" ")));
+  const impactVisual = await materializeVisual(visualKey(contract.impactItems.map((x) => `${x.label} ${x.text}`).join(" ")));
+  const closeVisual = coverVisual;
+
+  const titleSize = fit(contract.title, 79, 56, 78);
+  const dekSize = fit(contract.dek, 37, 28, 150);
+  const ideaSize = fit(contract.ideaCentral, 67, 47, 145);
+  const supportSize = fit(contract.ideaSupport, 35, 27, 220);
+  const pointsSize = fit(contract.keyPoints.map((x) => x.text).join(" "), 47, 36, 260);
+  const impactSize = fit(contract.impactItems.map((x) => `${x.label} ${x.text}`).join(" "), 44, 33, 310);
 
   const slide1 = `
-    <div class="copy" data-fit data-bottom-limit="1050" style="left:96px;right:96px;top:300px">
+    ${visualLayer(coverVisual, { top: 205, bottom: 72, width: 630, opacity: .92 })}
+    <div class="copy center-zone" data-fit data-bottom-limit="1120" style="left:72px;top:245px;bottom:115px;width:790px">
       <div class="headline" style="font-size:${titleSize}px">${escapeHtml(contract.title)}</div>
       <div class="rule"></div>
-      <div class="body" style="font-size:${dekSize}px;max-width:900px">${escapeHtml(contract.dek)}</div>
+      <div class="body" style="font-size:${dekSize}px;max-width:745px">${escapeHtml(contract.dek)}</div>
     </div>`;
 
   const slide2 = `
-    <div class="copy" data-fit data-bottom-limit="1055" style="left:96px;right:96px;top:310px">
+    ${visualLayer(ideaVisual, { top: 205, bottom: 72, width: 650, opacity: .91 })}
+    <div class="copy center-zone" data-fit data-bottom-limit="1120" style="left:72px;top:245px;bottom:110px;width:805px">
       <div class="headline" style="font-size:${ideaSize}px">${escapeHtml(contract.ideaCentral)}</div>
       <div class="rule"></div>
-      <div class="body" style="font-size:${supportSize}px;max-width:930px">${escapeHtml(contract.ideaSupport)}</div>
+      <div class="body" style="font-size:${supportSize}px;max-width:760px">${escapeHtml(contract.ideaSupport)}</div>
     </div>`;
 
   const slide3 = `
-    <div class="copy body" data-fit data-bottom-limit="1065" style="left:100px;right:100px;top:310px;font-size:${pointsSize}px">
+    ${visualLayer(changedVisual, { top: 210, bottom: 72, width: 600, opacity: .88 })}
+    <div class="copy body center-zone" data-fit data-bottom-limit="1120" style="left:72px;top:245px;bottom:110px;width:780px;font-size:${pointsSize}px;font-weight:600;line-height:1.04">
       ${contract.keyPoints.map((item) => `<div class="point">${escapeHtml(item.text)}</div>`).join("")}
     </div>`;
 
   const slide4 = `
-    <div class="copy body" data-fit data-bottom-limit="1065" style="left:100px;right:100px;top:310px;font-size:${impactSize}px">
+    ${visualLayer(impactVisual, { top: 205, bottom: 72, width: 625, opacity: .88 })}
+    <div class="copy body center-zone" data-fit data-bottom-limit="1120" style="left:72px;top:245px;bottom:110px;width:790px;font-size:${impactSize}px;line-height:1.06">
       ${contract.impactItems.map((item) => `<div class="impact"><b>${escapeHtml(item.label)}.</b> ${escapeHtml(item.text)}</div>`).join("")}
     </div>`;
 
-  const slide5 = ``;
+  const slide5 = `${visualLayer(closeVisual, { top: 145, bottom: 72, width: 620, opacity: .84 })}`;
   const slides = [slide1, slide2, slide3, slide4, slide5];
 
   const browser = await chromium.launch({ headless: true });
@@ -243,7 +353,7 @@ async function main() {
   }
 
   const report = {
-    renderer: "template-v1-preview",
+    renderer: "template-v2-five-slide-preview",
     contractVersion: contract.version,
     contractPath: contractPath.relative,
     sourceCommit: contract.sourceCommit || null,
@@ -254,6 +364,13 @@ async function main() {
     height: H,
     editionNumber: edition,
     publishedDate: date,
+    visualKeys: [
+      visualKey(`${contract.title} ${contract.dek}`),
+      visualKey(`${contract.ideaCentral} ${contract.ideaSupport}`),
+      visualKey(contract.keyPoints.map((x) => x.text).join(" ")),
+      visualKey(contract.impactItems.map((x) => `${x.label} ${x.text}`).join(" ")),
+      visualKey(`${contract.title} ${contract.dek}`),
+    ],
     templates: TEMPLATE_PATHS.map((file) => path.relative(ROOT, file).replaceAll(path.sep, "/")),
     outputs,
     status: "PASS",
