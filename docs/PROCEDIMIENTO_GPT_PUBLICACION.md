@@ -26,7 +26,7 @@ Nacional es el propietario editorial exclusivo de los hechos domésticos de Chil
 
 ## Fuente de verdad y roles
 
-- Repositorio privado: `EldeSiempre100/ATLAS_NEWS`.
+- Repositorio privado: `Atlasnews-media/ATLAS_NEWS_V2`.
 - Ediciones: `src/content/editions/`.
 - Nacional y Mercados: `src/content/briefings/`.
 - Lecturas: `src/content/readings/`.
