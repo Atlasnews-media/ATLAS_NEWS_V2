@@ -12,6 +12,60 @@ const DAY_MS = 86_400_000;
 const INDICATORS_API_BASE =
   process.env.ATLAS_INDICATORS_API_BASE ?? "https://mindicador.cl/api";
 
+// FASE 1 — recuperación controlada.
+// Último histórico válido publicado antes de los timeouts de MiIndicador.
+// Fuente canónica: producción V1 del 2026-09-15T03:12:26.447Z.
+// Este bloque es temporal y debe ser sustituido en FASE 2 por persistencia
+// automática del último histórico válido.
+const RESTORED_HISTORY = {
+  usdclp: [
+    { date: "2026-08-17", value: 913.15 },
+    { date: "2026-08-18", value: 914.19 },
+    { date: "2026-08-19", value: 922.12 },
+    { date: "2026-08-20", value: 920.26 },
+    { date: "2026-08-21", value: 923.23 },
+    { date: "2026-08-24", value: 918.17 },
+    { date: "2026-08-25", value: 914.64 },
+    { date: "2026-08-26", value: 911.43 },
+    { date: "2026-08-27", value: 918.42 },
+    { date: "2026-08-28", value: 925.25 },
+    { date: "2026-08-31", value: 929.18 },
+    { date: "2026-09-01", value: 933.4 },
+    { date: "2026-09-02", value: 936.86 },
+    { date: "2026-09-03", value: 936.32 },
+    { date: "2026-09-04", value: 933.47 },
+    { date: "2026-09-07", value: 934.35 },
+    { date: "2026-09-08", value: 933.82 },
+    { date: "2026-09-09", value: 926.94 },
+    { date: "2026-09-10", value: 925.97 },
+    { date: "2026-09-11", value: 937.17 },
+    { date: "2026-09-14", value: 940.91 },
+  ],
+  copper: [
+    { date: "2026-08-17", value: 6.53 },
+    { date: "2026-08-18", value: 6.61 },
+    { date: "2026-08-19", value: 6.62 },
+    { date: "2026-08-20", value: 6.46 },
+    { date: "2026-08-21", value: 6.52 },
+    { date: "2026-08-24", value: 6.4 },
+    { date: "2026-08-25", value: 6.48 },
+    { date: "2026-08-26", value: 6.51 },
+    { date: "2026-08-27", value: 6.58 },
+    { date: "2026-08-28", value: 6.56 },
+    { date: "2026-08-31", value: 6.56 },
+    { date: "2026-09-01", value: 6.55 },
+    { date: "2026-09-02", value: 6.55 },
+    { date: "2026-09-03", value: 6.53 },
+    { date: "2026-09-04", value: 6.49 },
+    { date: "2026-09-07", value: 6.53 },
+    { date: "2026-09-08", value: 6.57 },
+    { date: "2026-09-09", value: 6.62 },
+    { date: "2026-09-10", value: 6.69 },
+    { date: "2026-09-11", value: 6.72 },
+    { date: "2026-09-14", value: 6.45 },
+  ],
+};
+
 function dateKey(value = new Date()) {
   const parts = new Intl.DateTimeFormat("en-CA", {
     timeZone: TIME_ZONE,
@@ -242,13 +296,36 @@ results.forEach((result, index) => {
       provider: result.value.provider,
       observations: result.value.points.length,
     });
-  } else {
+    return;
+  }
+
+  const restoredPoints = normalizePoints(RESTORED_HISTORY[definition.id] ?? []);
+  if (restoredPoints.length >= 2) {
+    history.push({
+      id: definition.id,
+      label: definition.label,
+      unit: definition.unit,
+      provider: "mindicador",
+      sourceUrl: "https://mindicador.cl/",
+      points: restoredPoints,
+    });
     historyDiagnostics.push({
       id: definition.id,
-      ok: false,
-      error: result.reason?.message ?? String(result.reason),
+      ok: true,
+      provider: "mindicador",
+      observations: restoredPoints.length,
+      recovered: true,
+      recoveredFrom: "2026-09-15T03:12:26.447Z",
+      warning: result.reason?.message ?? String(result.reason),
     });
+    return;
   }
+
+  historyDiagnostics.push({
+    id: definition.id,
+    ok: false,
+    error: result.reason?.message ?? String(result.reason),
+  });
 });
 
 const enrichedSnapshot = {
@@ -272,4 +349,9 @@ console.log(
 );
 for (const item of historyDiagnostics.filter((entry) => !entry.ok)) {
   console.warn(`Histórico ${item.id}: ${item.error}`);
+}
+for (const item of historyDiagnostics.filter((entry) => entry.recovered)) {
+  console.warn(
+    `Histórico ${item.id}: restaurado desde último snapshot válido tras fallo del proveedor (${item.warning}).`,
+  );
 }
