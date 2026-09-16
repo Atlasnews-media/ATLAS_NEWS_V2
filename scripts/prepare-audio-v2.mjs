@@ -2,6 +2,8 @@ import { createHash } from "node:crypto";
 import { appendFile, readFile, writeFile } from "node:fs/promises";
 import path from "node:path";
 
+import { upgradeCoverPlanToV13 } from "./audio-cover-presentation.mjs";
+
 const root = new URL("../", import.meta.url);
 const ANALYSIS_SCRIPT_VERSION = 3;
 const SPEECH_NORMALIZER_VERSION = 5;
@@ -60,27 +62,33 @@ if (!publicDir || !coverPlanPath) {
   throw new Error("Falta configuración requerida de Audio V2.");
 }
 
-const coverPlan = await readJson(coverPlanPath);
+const coverPlanBase = await readJson(coverPlanPath);
 const internationalPlan = internationalPlanPath
   ? await readJson(internationalPlanPath)
   : null;
 
-if (!coverPlan?.date || !coverPlan?.sourceIds?.general) {
+if (!coverPlanBase?.date || !coverPlanBase?.sourceIds?.general) {
   throw new Error(
     "El plan de Portada no contiene una edición publicada válida.",
   );
 }
 
-const date = coverPlan.date;
+const date = coverPlanBase.date;
 const sourceIds = {
-  ...coverPlan.sourceIds,
+  ...coverPlanBase.sourceIds,
   international:
-    internationalPlan?.sourceId ?? coverPlan.sourceIds?.general ?? null,
+    internationalPlan?.sourceId ?? coverPlanBase.sourceIds?.general ?? null,
 };
 const manifestPath = path.join(publicDir, "audio", "analysis-latest.json");
 const coverManifestPath = path.join(publicDir, "audio", "latest.json");
 const existingAnalysis = await readJson(manifestPath);
 const existingCover = await readJson(coverManifestPath);
+const presentationInstant =
+  process.env.ATLAS_AUDIO_PRESENTATION_INSTANT ?? new Date().toISOString();
+const coverPlan = upgradeCoverPlanToV13(coverPlanBase, {
+  existingCover,
+  generatedAt: presentationInstant,
+});
 
 function sameLexicon(existing) {
   return (
