@@ -2,7 +2,9 @@ name: Instagram Carousel — Watchdog
 
 on:
   schedule:
-    - cron: "17,47 * * * *"
+    # Ventana matinal de recuperación: 5 chequeos programados por día.
+    # 10:17–14:17 UTC cubre aprox. 06:17–11:17 en Santiago según UTC-4/UTC-3.
+    - cron: "17 10-14 * * *"
   push:
     branches: [main]
     paths:

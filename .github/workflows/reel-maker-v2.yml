@@ -9,6 +9,15 @@ on:
     paths:
       - ".github/workflows/reel-maker-v2.yml"
       - "tools/reel_maker/**"
+      - "reference-assets/01_portada_base.png"
+      - "reference-assets/02_noticia_base.png"
+      - "reference-assets/03_cierre_base.png"
+      - "reference-assets/primary_assessment.mp3"
+      - "reference-assets/architect_of_momentum.mp3"
+      - "reference-assets/market_intelligence.mp3"
+      - "reference-assets/midnight_exchange.mp3"
+      - "reference-assets/the_morning_brief.mp3"
+      - "src/lib/front-page-visuals.ts"
   workflow_dispatch:
     inputs:
       source_commit:
@@ -38,12 +47,12 @@ jobs:
       (github.event_name == 'workflow_run' &&
        github.event.workflow_run.conclusion == 'success' &&
        github.event.workflow_run.event == 'push' &&
-       github.event.workflow_run.head_branch == 'main' &&
-       startsWith(github.event.workflow_run.display_title, 'Paquete editorial matutino — '))
+       github.event.workflow_run.head_branch == 'main')
     runs-on: ubuntu-latest
-    timeout-minutes: 8
+    timeout-minutes: 15
     env:
       ATLAS_PUBLIC_STATUS_URL: https://eldesiempre100.github.io/status.json
+      ATLAS_REEL_CONTRACT: tools/reel_maker/.generated/reel-contract.json
 
     steps:
       - name: Checkout final-distribution runtime and source history
@@ -56,9 +65,13 @@ jobs:
         if: github.event_name == 'pull_request'
         run: |
           set -euo pipefail
-          mkdir -p tools/social-renderer/.generated
-          cp tools/reel_maker/daily-contract.example.json tools/social-renderer/.generated/daily-contract.json
-          jq -e '.version == "2" and (.highlights | length == 5)' tools/social-renderer/.generated/daily-contract.json >/dev/null
+          mkdir -p tools/reel_maker/.generated
+          cp tools/reel_maker/daily-contract.example.json "$ATLAS_REEL_CONTRACT"
+          jq -e '
+            .version == "2" and
+            (.editionNumber | type == "number" and . >= 1) and
+            (.highlights | length == 5)
+          ' "$ATLAS_REEL_CONTRACT" >/dev/null
 
       - name: Resolve published daily sourceCommit
         if: github.event_name != 'pull_request'
@@ -73,14 +86,10 @@ jobs:
           source_id=""
           edition_id=""
 
-          if [[ "${GITHUB_EVENT_NAME}" == "workflow_run" ]]; then
-            source_commit="$WORKFLOW_SOURCE_COMMIT"
-          elif [[ "${GITHUB_EVENT_NAME}" == "workflow_dispatch" && -n "$INPUT_SOURCE_COMMIT" ]]; then
-            source_commit="$INPUT_SOURCE_COMMIT"
-          else
+          resolve_latest_public_daily() {
             git fetch --no-tags origin main:refs/remotes/origin/main
             status="$(curl -fsSL -H 'Accept: application/json' -H 'Cache-Control: no-cache' \
-              "${ATLAS_PUBLIC_STATUS_URL}?reel-pr=${GITHUB_RUN_ID}-$(date +%s)")"
+              "${ATLAS_PUBLIC_STATUS_URL}?reel=${GITHUB_RUN_ID}-$(date +%s)")"
             edition_id="$(jq -er '.latestDaily.id | select(type == "string" and length > 0)' <<<"$status")"
             for ext in md mdx; do
               candidate="src/content/editions/${edition_id}.${ext}"
@@ -94,11 +103,47 @@ jobs:
               exit 20
             }
             source_commit="$(git log -1 --format=%H origin/main -- "$source_id")"
+          }
+
+          if [[ "${GITHUB_EVENT_NAME}" == "workflow_run" ]]; then
+            candidate_commit="$WORKFLOW_SOURCE_COMMIT"
+            [[ "$candidate_commit" =~ ^[0-9a-f]{40}$ ]] || {
+              echo "Fail-closed: workflow head SHA is invalid: ${candidate_commit:-<missing>}"
+              exit 21
+            }
+            git cat-file -e "${candidate_commit}^{commit}" 2>/dev/null || git fetch --no-tags --depth=128 origin "$candidate_commit"
+            parent="$(git rev-list --parents -n 1 "$candidate_commit" | awk '{print $2}')"
+            if [[ -z "$parent" ]]; then
+              workflow_changed="$(git diff-tree --root --no-commit-id --name-only -r "$candidate_commit")"
+            else
+              workflow_changed="$(git diff --name-only "$parent" "$candidate_commit")"
+            fi
+            mapfile -t workflow_daily_files < <(
+              printf '%s\n' "$workflow_changed" |
+                grep -E '^src/content/editions/[0-9]{4}-[0-9]{2}-[0-9]{2}-daily-[^/]+\.mdx?$' || true
+            )
+            if [[ "${#workflow_daily_files[@]}" -eq 1 ]]; then
+              source_commit="$candidate_commit"
+            elif [[ "${#workflow_daily_files[@]}" -eq 0 ]] && grep -qx '.github/workflows/reel-maker-v2.yml' <<<"$workflow_changed"; then
+              echo "Reel Maker trigger fix detected; backfilling latest verified daily edition."
+              resolve_latest_public_daily
+            elif [[ "${#workflow_daily_files[@]}" -eq 0 ]]; then
+              echo "eligible=false" >> "$GITHUB_OUTPUT"
+              echo "Safe no-op: successful main publication did not introduce a daily edition."
+              exit 0
+            else
+              echo "Fail-closed: workflow source commit changed more than one daily edition."
+              exit 22
+            fi
+          elif [[ "${GITHUB_EVENT_NAME}" == "workflow_dispatch" && -n "$INPUT_SOURCE_COMMIT" ]]; then
+            source_commit="$INPUT_SOURCE_COMMIT"
+          else
+            resolve_latest_public_daily
           fi
 
           [[ "$source_commit" =~ ^[0-9a-f]{40}$ ]] || {
             echo "Fail-closed: sourceCommit is not a full SHA: ${source_commit:-<missing>}"
-            exit 21
+            exit 23
           }
           git cat-file -e "${source_commit}^{commit}" 2>/dev/null || git fetch --no-tags --depth=128 origin "$source_commit"
           parent="$(git rev-list --parents -n 1 "$source_commit" | awk '{print $2}')"
@@ -113,7 +158,7 @@ jobs:
           )
           if [[ "${#daily_files[@]}" -ne 1 ]]; then
             echo "Fail-closed: sourceCommit must introduce exactly one daily edition; found ${#daily_files[@]}."
-            exit 22
+            exit 24
           fi
 
           resolved_source_id="${daily_files[0]}"
@@ -122,27 +167,29 @@ jobs:
           resolved_edition_id="${resolved_edition_id%.mdx}"
           if [[ -n "$source_id" && "$source_id" != "$resolved_source_id" ]]; then
             echo "Fail-closed: public latestDaily and sourceCommit resolve different edition files."
-            exit 23
+            exit 25
           fi
           if [[ -n "$edition_id" && "$edition_id" != "$resolved_edition_id" ]]; then
             echo "Fail-closed: public latestDaily and sourceCommit resolve different edition IDs."
-            exit 24
+            exit 26
           fi
 
+          echo "eligible=true" >> "$GITHUB_OUTPUT"
           echo "source_commit=$source_commit" >> "$GITHUB_OUTPUT"
           echo "source_id=$resolved_source_id" >> "$GITHUB_OUTPUT"
           echo "edition_id=$resolved_edition_id" >> "$GITHUB_OUTPUT"
           echo "Resolved Reel sourceCommit=$source_commit edition=$resolved_edition_id"
 
       - name: Wait for verified public edition
-        if: github.event_name != 'pull_request'
+        if: github.event_name != 'pull_request' && steps.source.outputs.eligible == 'true'
+        id: public
         shell: bash
         env:
           SOURCE_COMMIT: ${{ steps.source.outputs.source_commit }}
           EXPECTED_EDITION: ${{ steps.source.outputs.edition_id }}
         run: |
           set -euo pipefail
-          timeout_seconds=60
+          timeout_seconds=75
           started="$(date +%s)"
           attempt=0
           while true; do
@@ -153,94 +200,138 @@ jobs:
             if [[ "$code" = "200" ]] && jq -e . "$body" >/dev/null 2>&1; then
               observed_commit="$(jq -r '.sourceCommit // empty' "$body")"
               observed_edition="$(jq -r '.latestDaily.id // empty' "$body")"
-              if [[ "$observed_edition" = "$EXPECTED_EDITION" && "$observed_commit" =~ ^[0-9a-f]{40}$ ]]; then
+              issue_number="$(jq -r '.latestDaily.issueNumber // empty' "$body")"
+              if [[ "$observed_edition" = "$EXPECTED_EDITION" && "$observed_commit" =~ ^[0-9a-f]{40}$ && "$issue_number" =~ ^[1-9][0-9]*$ ]]; then
                 if [[ "$observed_commit" = "$SOURCE_COMMIT" ]]; then
                   echo "Public edition READY on exact sourceCommit."
+                  echo "issue_number=$issue_number" >> "$GITHUB_OUTPUT"
                   break
                 fi
                 git fetch --no-tags --depth=128 origin "$observed_commit" >/dev/null 2>&1 || true
                 if git cat-file -e "${observed_commit}^{commit}" 2>/dev/null && \
                    git merge-base --is-ancestor "$SOURCE_COMMIT" "$observed_commit"; then
                   echo "Public edition READY on verified descendant commit."
+                  echo "issue_number=$issue_number" >> "$GITHUB_OUTPUT"
                   break
                 fi
               fi
             fi
             if (( $(date +%s) - started >= timeout_seconds )); then
               echo "Fail-closed: public edition readiness timeout for $EXPECTED_EDITION / $SOURCE_COMMIT."
-              exit 25
+              exit 27
             fi
             delay=$((attempt * 3)); if (( delay > 12 )); then delay=12; fi
             sleep "$delay"
           done
 
-      - name: Regenerate canonical social contract
-        if: github.event_name != 'pull_request'
-        id: contract
+      - name: Build Reel-only five-highlight contract
+        if: github.event_name != 'pull_request' && steps.source.outputs.eligible == 'true'
         env:
           ATLAS_SOURCE_COMMIT: ${{ steps.source.outputs.source_commit }}
-          ATLAS_PUBLIC_STATUS_URL: ${{ env.ATLAS_PUBLIC_STATUS_URL }}
-        run: node tools/social-renderer/prepare-daily-contract.mjs
+          ATLAS_SOURCE_ID: ${{ steps.source.outputs.source_id }}
+          ATLAS_EDITION_ID: ${{ steps.source.outputs.edition_id }}
+          ATLAS_EDITION_NUMBER: ${{ steps.public.outputs.issue_number }}
+          ATLAS_REEL_CONTRACT_OUTPUT: ${{ env.ATLAS_REEL_CONTRACT }}
+        run: python3 tools/reel_maker/prepare_reel_contract.py
 
-      - name: Verify contract identity before Reel Maker
-        if: github.event_name != 'pull_request'
+      - name: Verify Reel contract identity
+        if: github.event_name == 'pull_request' || steps.source.outputs.eligible == 'true'
         env:
           SOURCE_COMMIT: ${{ steps.source.outputs.source_commit }}
           SOURCE_ID: ${{ steps.source.outputs.source_id }}
           EDITION_ID: ${{ steps.source.outputs.edition_id }}
         run: |
           set -euo pipefail
-          contract="tools/social-renderer/.generated/daily-contract.json"
-          jq -e --arg source "$SOURCE_COMMIT" --arg source_id "$SOURCE_ID" --arg edition "$EDITION_ID" '
-            .sourceCommit == $source and
-            .sourceId == $source_id and
-            .canonicalUrl == ("https://eldesiempre100.github.io/ediciones/" + $edition + "/") and
-            (.keyPoints | length == 3) and
-            (.impactItems | length == 3)
-          ' "$contract" >/dev/null || {
-            echo "Fail-closed: canonical social contract does not match verified public edition."
-            exit 26
-          }
+          contract="$ATLAS_REEL_CONTRACT"
+          if [[ "$GITHUB_EVENT_NAME" == "pull_request" ]]; then
+            jq -e '
+              .version == "2" and
+              (.editionNumber | type == "number" and . >= 1) and
+              (.highlights | length == 5)
+            ' "$contract" >/dev/null
+          else
+            jq -e --arg source "$SOURCE_COMMIT" --arg source_id "$SOURCE_ID" --arg edition "$EDITION_ID" '
+              .version == "2" and
+              .sourceCommit == $source and
+              .sourceId == $source_id and
+              .canonicalUrl == ("https://eldesiempre100.github.io/ediciones/" + $edition + "/") and
+              (.editionNumber | type == "number" and . >= 1) and
+              (.highlights | length == 5)
+            ' "$contract" >/dev/null || {
+              echo "Fail-closed: Reel contract does not match verified public edition."
+              exit 28
+            }
+          fi
 
-      - name: Verify Reel Maker runtime
+      - name: Verify Reel Maker runtime and audio catalog
+        if: github.event_name == 'pull_request' || steps.source.outputs.eligible == 'true'
         run: |
           set -euo pipefail
           python3 --version
-          python3 -m py_compile tools/reel_maker/model.py tools/reel_maker/validate.py tools/reel_maker/reel_maker.py
-          if ! command -v ffmpeg >/dev/null 2>&1 || ! command -v ffprobe >/dev/null 2>&1; then
-            sudo apt-get update -qq
-            sudo apt-get install -y -qq --no-install-recommends ffmpeg fonts-dejavu-core
-          fi
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq --no-install-recommends ffmpeg fontconfig fonts-liberation python3-pil
+          python3 -m py_compile \
+            tools/reel_maker/prepare_reel_contract.py \
+            tools/reel_maker/reel_maker.py
+          test -f reference-assets/01_portada_base.png
+          test -f reference-assets/02_noticia_base.png
+          test -f reference-assets/03_cierre_base.png
+          for track in \
+            primary_assessment.mp3 \
+            architect_of_momentum.mp3 \
+            market_intelligence.mp3 \
+            midnight_exchange.mp3 \
+            the_morning_brief.mp3; do
+            test -f "reference-assets/$track"
+            ffprobe -v error -show_entries format=duration -of default=nw=1:nk=1 "reference-assets/$track" >/dev/null
+          done
+          python3 - <<'PY'
+          from tools.reel_maker.reel_maker import AUDIO_ROTATION_VERSION, rotation_track_name
+          expected = {
+              41: "primary_assessment.mp3",
+              42: "architect_of_momentum.mp3",
+              43: "market_intelligence.mp3",
+              44: "midnight_exchange.mp3",
+              45: "the_morning_brief.mp3",
+              46: "primary_assessment.mp3",
+          }
+          assert AUDIO_ROTATION_VERSION == "audio-rotation-v1"
+          assert {edition: rotation_track_name(edition) for edition in expected} == expected
+          print("audio-rotation-v1 deterministic sequence PASS")
+          PY
           ffmpeg -version | head -n 1
-          ffprobe -version | head -n 1
-          fc-match 'DejaVu Serif' | head -n 1
+          fc-match 'Liberation Serif' | head -n 1
 
-      - name: Generate seven validated scenes and MP4
+      - name: Generate seven validated scenes, audio and MP4
+        if: github.event_name == 'pull_request' || steps.source.outputs.eligible == 'true'
         run: |
           set -euo pipefail
           rm -rf tools/reel_maker/output
           python3 tools/reel_maker/reel_maker.py \
-            tools/social-renderer/.generated/daily-contract.json \
+            "$ATLAS_REEL_CONTRACT" \
             --output-dir tools/reel_maker/output \
             --keep-plates
 
-      - name: Validate Reel artifact identity and seven plates
+      - name: Validate Reel artifact identity, seven plates and audio
+        if: github.event_name == 'pull_request' || steps.source.outputs.eligible == 'true'
         env:
           SOURCE_COMMIT: ${{ steps.source.outputs.source_commit }}
         run: |
           set -euo pipefail
-          contract="tools/social-renderer/.generated/daily-contract.json"
+          contract="$ATLAS_REEL_CONTRACT"
           source_commit="${SOURCE_COMMIT:-$(jq -r '.sourceCommit' "$contract")}"
           output="tools/reel_maker/output/atlas-news-reel-${source_commit}.mp4"
           report="tools/reel_maker/output/visual-validation.json"
+          visual_sources="tools/reel_maker/output/visual-sources.json"
           plates="tools/reel_maker/output/atlas-news-plates-${source_commit}"
           test -f "$output"
           test -f "$report"
+          test -f "$visual_sources"
           test "$(find "$plates" -maxdepth 1 -type f -name 'scene-*.png' | wc -l | tr -d ' ')" = "7"
-          test "$(find "$plates" -maxdepth 1 -type f -name 'scene-*.svg' | wc -l | tr -d ' ')" = "7"
           jq -e --arg source "$source_commit" '
             .sourceCommit == $source and
             .status == "PASS" and
+            (.editionNumber | type == "number" and . >= 1) and
             (.scenes | length == 7) and
             ([.scenes[].status] | all(. == "PASS")) and
             ([.scenes[].animated.status] | all(. == "PASS")) and
@@ -248,35 +339,54 @@ jobs:
             .video.width == "1080" and
             .video.height == "1920" and
             .video.pix_fmt == "yuv420p" and
-            .video.r_frame_rate == "30/1"
+            .video.r_frame_rate == "30/1" and
+            .video.audio_codec == "aac" and
+            .audio.selectorVersion == "audio-rotation-v1" and
+            .audio.selectionEdition == .editionNumber and
+            (.audio.selectedTrack | type == "string" and length > 4) and
+            (.audio.resolvedTrack | type == "string" and length > 4) and
+            (.audio.trackSha256 | test("^[0-9a-f]{64}$")) and
+            (.audio.fallbackUsed | type == "boolean") and
+            (.audio.sourceDuration | type == "number" and . > 0) and
+            .audio.crossfadeSeconds == 0.9 and
+            .audio.outputCodec == "aac"
           ' "$report" >/dev/null
 
       - name: Summarize isolated Phase 4 result
+        if: github.event_name == 'pull_request' || steps.source.outputs.eligible == 'true'
         env:
           SOURCE_COMMIT: ${{ steps.source.outputs.source_commit }}
         run: |
           set -euo pipefail
-          contract="tools/social-renderer/.generated/daily-contract.json"
+          contract="$ATLAS_REEL_CONTRACT"
           source_commit="${SOURCE_COMMIT:-$(jq -r '.sourceCommit' "$contract")}"
+          edition_number="$(jq -r '.editionNumber' "$contract")"
+          report="tools/reel_maker/output/visual-validation.json"
+          selected_track="$(jq -r '.audio.selectedTrack' "$report")"
+          resolved_track="$(jq -r '.audio.resolvedTrack' "$report")"
+          fallback="$(jq -r '.audio.fallbackUsed' "$report")"
+          selector="$(jq -r '.audio.selectorVersion' "$report")"
           {
             echo "### Reel Maker V2 — PASS"
             echo "sourceCommit: \`${source_commit}\`"
-            echo "Consumer: edición web ya publicada y verificada / fixture determinístico en PR"
-            echo "Scenes: 7 / 7 visualmente validadas"
+            echo "Edition: \`${edition_number}\`"
+            echo "Scenes: 7 / 7 — portada + 5 highlights + cierre"
+            echo "Templates: official reference-assets bases"
+            echo "Audio: \`${resolved_track}\` · ${selector} · selected=\`${selected_track}\` · fallback=${fallback}"
             echo "Output: \`atlas-news-reel-${source_commit}.mp4\`"
-            echo "No Meta API / no Reel publish / no dependency on Instagram."
+            echo "Isolation: no social-renderer mutation / no Meta publish."
           } >> "$GITHUB_STEP_SUMMARY"
 
       - name: Upload Reel Maker evidence
-        if: always()
+        if: always() && (github.event_name == 'pull_request' || steps.source.outputs.eligible == 'true')
         uses: actions/upload-artifact@v4
         with:
           name: atlas-news-reel-maker-${{ steps.source.outputs.source_commit || github.run_id }}
           path: |
-            tools/social-renderer/.generated/daily-contract.json
+            tools/reel_maker/.generated/reel-contract.json
             tools/reel_maker/output/atlas-news-reel-*.mp4
             tools/reel_maker/output/visual-validation.json
+            tools/reel_maker/output/visual-sources.json
             tools/reel_maker/output/atlas-news-plates-*/scene-*.png
-            tools/reel_maker/output/atlas-news-plates-*/scene-*.svg
           if-no-files-found: warn
           retention-days: 14

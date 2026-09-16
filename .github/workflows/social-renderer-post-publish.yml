@@ -1,10 +1,10 @@
-name: Social Renderer — Post-publish (staged)
+name: LEGACY — Social Renderer V1 (artifact only, no publish)
 
 on:
   workflow_dispatch:
     inputs:
       contract:
-        description: "Path to an approved Social Content Contract v1 JSON"
+        description: "LEGACY artifact-only: path to an approved Social Content Contract v1 JSON"
         required: true
         type: string
         default: "tools/social-renderer/contracts/2026-09-04-reading-activo-seguro-riesgo.json"
@@ -28,6 +28,15 @@ jobs:
       SOCIAL_CONTRACT: ${{ inputs.contract }}
       SOCIAL_PUBLICATION_STATUS: ${{ inputs.publication_status }}
     steps:
+      - name: Record legacy artifact-only scope
+        run: |
+          {
+            echo "### LEGACY — Social Renderer V1"
+            echo "This workflow can only generate historical/staged artifacts."
+            echo "It has no Instagram/Meta publication capability and is not a recovery path."
+            echo "For manual Instagram recovery use: Instagram Carousel — Controlled recovery V2."
+          } >> "$GITHUB_STEP_SUMMARY"
+
       - name: Verify explicit post-publication gate
         shell: bash
         run: |
@@ -66,14 +75,14 @@ jobs:
         working-directory: tools/social-renderer
         run: npx playwright install chromium
 
-      - name: Render approved social contract
+      - name: Render approved legacy social contract
         working-directory: tools/social-renderer
         run: npm run render
 
-      - name: Upload social artifacts
+      - name: Upload legacy social artifacts
         uses: actions/upload-artifact@v4
         with:
-          name: atlas-news-social-renderer-${{ github.run_id }}-${{ github.run_attempt }}
+          name: atlas-news-social-renderer-legacy-${{ github.run_id }}-${{ github.run_attempt }}
           path: |
             tools/social-renderer/output/*.png
             tools/social-renderer/output/benchmark.json

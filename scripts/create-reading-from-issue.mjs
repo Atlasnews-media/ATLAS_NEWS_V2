@@ -221,7 +221,7 @@ const proposal = {
   issueUrl:
     typeof issue.url === "string"
       ? issue.url
-      : `https://github.com/EldeSiempre100/ATLAS_NEWS/issues/${issue.number}`,
+      : `https://github.com/Atlasnews-media/ATLAS_NEWS_V2/issues/${issue.number}`,
   sourceTitle: issueField(issue.body, "Título de la fuente"),
   sourceUrl: normalizeUrl(issueField(issue.body, "URL de la fuente")),
   sourceDate: issueField(issue.body, "Fecha de publicación"),

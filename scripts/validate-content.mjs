@@ -58,20 +58,6 @@ function frontmatterText(text) {
   return text.match(/^---\s*\r?\n([\s\S]*?)\r?\n---/)?.[1] ?? "";
 }
 
-function frontmatterHighlightCount(frontmatter) {
-  const lines = String(frontmatter || "").split(/\r?\n/);
-  const start = lines.findIndex((line) => line === "highlights:");
-  if (start < 0) return 0;
-
-  let count = 0;
-  for (let i = start + 1; i < lines.length; i += 1) {
-    const line = lines[i];
-    if (line && !line.startsWith(" ")) break;
-    if (/^\s{2}- label:\s*.+$/.test(line)) count += 1;
-  }
-  return count;
-}
-
 function parseYamlScalar(value) {
   const trimmed = value.trim();
   try {
@@ -79,6 +65,76 @@ function parseYamlScalar(value) {
   } catch {
     return trimmed.replace(/^["']|["']$/g, "");
   }
+}
+
+function frontmatterHighlights(frontmatter) {
+  const lines = String(frontmatter || "").split(/\r?\n/);
+  const start = lines.findIndex((line) => line === "highlights:");
+  if (start < 0) return [];
+
+  const highlights = [];
+  let current = null;
+  for (let i = start + 1; i < lines.length; i += 1) {
+    const line = lines[i];
+    if (line && !line.startsWith(" ")) break;
+
+    const labelMatch = line.match(/^\s{2}- label:\s*(.+)$/);
+    if (labelMatch) {
+      if (current) highlights.push(current);
+      current = { label: parseYamlScalar(labelMatch[1]), text: undefined };
+      continue;
+    }
+
+    const textMatch = line.match(/^\s{4}text:\s*(.+)$/);
+    if (textMatch && current) {
+      current.text = parseYamlScalar(textMatch[1]);
+    }
+  }
+  if (current) highlights.push(current);
+  return highlights;
+}
+
+function frontmatterHighlightCount(frontmatter) {
+  return frontmatterHighlights(frontmatter).length;
+}
+
+function validateHighlightContract(frontmatter, filename) {
+  if (!frontmatter.includes("\nhighlights:")) return [];
+
+  const highlights = frontmatterHighlights(frontmatter);
+  const errors = [];
+  const isEdition = editionFilenamePattern.test(filename);
+  const isBriefing = briefingFilenamePattern.test(filename);
+  if (!isEdition && !isBriefing) return errors;
+
+  if (isEdition && (highlights.length < 3 || highlights.length > 6)) {
+    errors.push(
+      `highlights debe contener entre 3 y 6 claves; detectadas: ${highlights.length}`,
+    );
+  }
+  if (isBriefing && highlights.length !== 3) {
+    errors.push(
+      `highlights de Nacional/Mercados debe contener exactamente 3 claves; detectadas: ${highlights.length}`,
+    );
+  }
+
+  const labelMax = isBriefing ? 24 : 72;
+  for (const [index, highlight] of highlights.entries()) {
+    const label = String(highlight.label ?? "");
+    const text = String(highlight.text ?? "");
+    if (label.length < 2 || label.length > labelMax) {
+      errors.push(
+        `highlights[${index}].label debe tener entre 2 y ${labelMax} caracteres; detectados: ${label.length}`,
+      );
+    }
+    if (text.length < 12 || text.length > 160) {
+      errors.push(
+        `highlights[${index}].text debe tener entre 12 y 160 caracteres; detectados: ${text.length}`,
+      );
+    }
+  }
+
+  return errors;
 }
 
 function normalizeSourceUrl(value) {
@@ -203,6 +259,8 @@ async function validateFile(
     if (!text.includes(`## ${heading}`))
       errors.push(`falta la sección \"${heading}\"`);
   }
+
+  errors.push(...validateHighlightContract(frontmatter, filename));
 
   const publishedAt = Date.parse(frontmatterValue(text, "publishedAt") ?? "");
   const cutoffAtValue = frontmatterValue(text, "cutoffAt");

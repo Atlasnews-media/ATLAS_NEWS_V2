@@ -308,6 +308,7 @@ jobs:
       - name: Verificar la versión pública
         if: github.event_name != 'pull_request'
         run: |
+          set -euo pipefail
           atlas_publish_dir="$RUNNER_TEMP/atlas-news-public"
           test -f "$atlas_publish_dir/status.json"
           jq -e --arg sha "$ATLAS_SOURCE_SHA" '.sourceCommit == $sha' \
@@ -331,7 +332,64 @@ jobs:
             grep -Fq "/mercados/$markets_id/" "$atlas_publish_dir/index.html"
           fi
 
-          echo "Versión pública verificada: $(git -C "$atlas_publish_dir" rev-parse HEAD)"
+          public_status_url="https://eldesiempre100.github.io/status.json"
+          public_base_url="https://eldesiempre100.github.io"
+          public_ready=false
+          routes=()
+          [[ -n "$latest_id" ]] && routes+=("/ediciones/$latest_id/")
+          [[ -n "$national_id" ]] && routes+=("/nacional/$national_id/")
+          [[ -n "$markets_id" ]] && routes+=("/mercados/$markets_id/")
+
+          for attempt in $(seq 1 15); do
+            body="$(mktemp)"
+            nonce="${GITHUB_RUN_ID}-${attempt}-$(date +%s)"
+            code="$(curl -L -sS -o "$body" -w '%{http_code}' \
+              -H 'Accept: application/json' \
+              -H 'Cache-Control: no-cache' \
+              "${public_status_url}?verify=${ATLAS_SOURCE_SHA}&readiness=${nonce}" || true)"
+
+            if [[ "$code" == "200" ]] && jq -e . "$body" >/dev/null 2>&1; then
+              observed_commit="$(jq -r '.sourceCommit // empty' "$body")"
+              observed_latest="$(jq -r '.latestDaily.id // empty' "$body")"
+              observed_national="$(jq -r '.latestNational.id // empty' "$body")"
+              observed_markets="$(jq -r '.latestMarkets.id // empty' "$body")"
+
+              if [[ "$observed_commit" == "$ATLAS_SOURCE_SHA" && \
+                    "$observed_latest" == "$latest_id" && \
+                    "$observed_national" == "$national_id" && \
+                    "$observed_markets" == "$markets_id" ]]; then
+                routes_ready=true
+                for route in "${routes[@]}"; do
+                  route_code="$(curl -L -sS -o /dev/null -w '%{http_code}' \
+                    -H 'Cache-Control: no-cache' \
+                    "${public_base_url}${route}?verify=${nonce}" || true)"
+                  if [[ "$route_code" != "200" ]]; then
+                    routes_ready=false
+                    break
+                  fi
+                done
+
+                if [[ "$routes_ready" == "true" ]]; then
+                  public_ready=true
+                  echo "GitHub Pages confirmó sourceCommit=${ATLAS_SOURCE_SHA} y rutas de la edición en intento ${attempt}."
+                  break
+                fi
+              fi
+
+              echo "Pages aún no confirma la edición esperada (${attempt}/15): sourceCommit=${observed_commit:-<missing>} latestDaily=${observed_latest:-<missing>}."
+            else
+              echo "Pages aún no entrega status.json válido (${attempt}/15): HTTP ${code}."
+            fi
+
+            sleep 8
+          done
+
+          if [[ "$public_ready" != "true" ]]; then
+            echo "GitHub Pages no confirmó la versión pública esperada dentro de la ventana de verificación." >&2
+            exit 1
+          fi
+
+          echo "Versión pública verificada en repositorio y GitHub Pages: $(git -C "$atlas_publish_dir" rev-parse HEAD)"
 
       - name: Registrar publicación verificada
         if: github.event_name == 'push' && steps.edition.outputs.track == 'true'
