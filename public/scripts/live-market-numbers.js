@@ -50,9 +50,7 @@
   let lastGeneratedAt = null;
   let timer = null;
 
-  const reducedMotion = window.matchMedia(
-    "(prefers-reduced-motion: reduce)",
-  );
+  const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
 
   function installStyles() {
     if (document.getElementById("atlas-live-market-styles")) return;
@@ -82,9 +80,9 @@
   function isDisplayable(asset) {
     return Boolean(
       asset &&
-        asset.displayEligible !== false &&
-        typeof asset.value === "number" &&
-        Number.isFinite(asset.value),
+      asset.displayEligible !== false &&
+      typeof asset.value === "number" &&
+      Number.isFinite(asset.value),
     );
   }
 
@@ -139,7 +137,8 @@
     if (row.matches(".economic-strip__item")) {
       label = row.querySelector("dt")?.textContent?.trim() ?? "";
     } else if (row.matches(".data-row")) {
-      label = row.querySelector(".asset-name > span")?.textContent?.trim() ?? "";
+      label =
+        row.querySelector(".asset-name > span")?.textContent?.trim() ?? "";
     } else {
       label = row.querySelector(".market-label")?.textContent?.trim() ?? "";
     }
@@ -244,9 +243,11 @@
     document.querySelectorAll(".update-stamp > span").forEach((node) => {
       node.textContent = `${cut.day} · ${cut.time}`;
     });
-    document.querySelectorAll(".indices-source p:last-child").forEach((node) => {
-      node.textContent = `Corte automático: ${cut.day} · ${cut.time} · Hora de Chile.`;
-    });
+    document
+      .querySelectorAll(".indices-source p:last-child")
+      .forEach((node) => {
+        node.textContent = `Corte automático: ${cut.day} · ${cut.time} · Hora de Chile.`;
+      });
     document.querySelectorAll(".market-meta").forEach((node) => {
       node.textContent = `Datos de mercado · Corte ${cut.day} · ${cut.time}`;
     });
@@ -285,10 +286,13 @@
   async function refresh() {
     if (document.hidden) return;
     try {
-      const response = await fetch(`/data/market-pulse.json?live=${Date.now()}`, {
-        cache: "no-store",
-        headers: { Accept: "application/json" },
-      });
+      const response = await fetch(
+        `/data/market-pulse.json?live=${Date.now()}`,
+        {
+          cache: "no-store",
+          headers: { Accept: "application/json" },
+        },
+      );
       if (!response.ok) return;
       const snapshot = await response.json();
       applySnapshot(snapshot);
