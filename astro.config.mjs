@@ -130,8 +130,28 @@ function atlasWebAnalytics() {
   };
 }
 
+function atlasLiveMarketNumbers() {
+  return {
+    name: "atlas-live-market-numbers",
+    hooks: {
+      "astro:config:setup": ({ injectScript }) => {
+        injectScript(
+          "head-inline",
+          `(() => {
+  if (document.querySelector("script[data-atlas-live-market]")) return;
+  const liveMarketScript = document.createElement("script");
+  liveMarketScript.src = "/scripts/live-market-numbers.js";
+  liveMarketScript.dataset.atlasLiveMarket = "true";
+  document.head.appendChild(liveMarketScript);
+})();`,
+        );
+      },
+    },
+  };
+}
+
 export default defineConfig({
   output: "static",
   site: "https://atlasnews-media.github.io",
-  integrations: [atlasWebAnalytics()],
+  integrations: [atlasWebAnalytics(), atlasLiveMarketNumbers()],
 });
