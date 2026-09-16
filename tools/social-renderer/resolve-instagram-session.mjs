@@ -26,7 +26,7 @@ async function requestJson(fetchImpl, url, token) {
   return { ok: response.ok, status: response.status, body };
 }
 
-function accountFromPage(page, expectedUsername) {
+function accountFromPage(page, expectedUsername, fallbackToken = "") {
   const instagram = page?.instagram_business_account;
   if (
     String(instagram?.username || "").toLowerCase() !==
@@ -34,7 +34,7 @@ function accountFromPage(page, expectedUsername) {
   ) {
     return null;
   }
-  const pageToken = String(page?.access_token || "").trim();
+  const pageToken = String(page?.access_token || fallbackToken || "").trim();
   const userId = String(instagram?.id || "").trim();
   if (!pageToken || !userId) return null;
   return {
@@ -80,20 +80,30 @@ export async function resolveInstagramSession({
   }
 
   const facebookBase = `https://graph.facebook.com/${version}`;
-  const fields = "id,name,access_token,instagram_business_account{id,username}";
+
+  // A token generated in Graph API Explorer can already be a Page token.
+  // In that case /me is the Page itself; asking that Page for an
+  // `access_token` field is invalid. Resolve its linked Instagram account
+  // first and reuse the supplied token as the Page token.
+  const pageSelfFields = "id,name,instagram_business_account{id,username}";
   const pageSelf = await requestJson(
     fetchImpl,
-    `${facebookBase}/me?fields=${encodeURIComponent(fields)}`,
+    `${facebookBase}/me?fields=${encodeURIComponent(pageSelfFields)}`,
     token,
   );
   if (pageSelf.ok) {
-    const account = accountFromPage(pageSelf.body, expected);
+    const account = accountFromPage(pageSelf.body, expected, token);
     if (account) return { ...account, graphBase: facebookBase };
   }
 
+  // Otherwise treat the supplied credential as a Facebook User token and
+  // resolve the Page token through /me/accounts, which is Meta's documented
+  // Facebook Login flow for Instagram Professional accounts.
+  const pageListFields =
+    "id,name,access_token,instagram_business_account{id,username}";
   const pages = await requestJson(
     fetchImpl,
-    `${facebookBase}/me/accounts?fields=${encodeURIComponent(fields)}&limit=100`,
+    `${facebookBase}/me/accounts?fields=${encodeURIComponent(pageListFields)}&limit=100`,
     token,
   );
   if (pages.ok && Array.isArray(pages.body?.data)) {
