@@ -29,7 +29,7 @@ jobs:
       - name: Descargar la versión pública
         run: |
           git clone --depth 1 \
-            https://github.com/EldeSiempre100/EldeSiempre100.github.io.git \
+            https://github.com/Atlasnews-media/Atlasnews-media.github.io.git \
             "$RUNNER_TEMP/atlas-news-public"
 
       - name: Comparar edición y versión
