@@ -356,7 +356,7 @@ async function main() {
       <div style="font-size:88px;line-height:.91;font-weight:700;letter-spacing:-4px;max-width:900px">Lee la edición completa en Atlas News</div>
       <div style="font-size:34px;line-height:1.12;color:${MUTED};margin-top:28px;max-width:720px">Portada, claves del día, análisis internacional, señales para Chile y movimientos de mercado en una sola lectura editorial.</div>
       <div style="display:inline-block;margin-top:28px;padding:16px 30px;border:3px solid ${RED};border-radius:28px;color:${RED};font-size:27px;font-weight:700">Disponible en Atlas News →</div>
-      <div style="font-size:28px;margin-top:18px">eldesiempre100.github.io</div>
+      <div style="font-size:28px;margin-top:18px">atlasnews-media.github.io</div>
     </div>
     ${imagePane(coverVisuals[1], "position:absolute;left:0;width:58%;bottom:82px;height:405px;z-index:2", true)}
     ${imagePane(coverVisuals[2], "position:absolute;right:0;width:48%;bottom:82px;height:500px;z-index:3", true)}
