@@ -1,7 +1,7 @@
 const INE_URL = "https://www.ine.gob.cl/inicio/agendaestadistica";
 const BCCH_URL = "https://www.bcentral.cl/es/calendario-estadistico";
 const TIME_ZONE = "America/Santiago";
-const MAX_ITEMS = 5;
+const MAX_ITEMS = 10;
 const TIMEOUT_MS = 12_000;
 
 const MONTHS = [
