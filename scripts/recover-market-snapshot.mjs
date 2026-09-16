@@ -30,11 +30,11 @@ const expectedAssetIds = new Set([
 function usable(asset) {
   return Boolean(
     asset &&
-      typeof asset.id === "string" &&
-      Number.isFinite(asset.value) &&
-      typeof asset.unit === "string" &&
-      typeof asset.effectiveAt === "string" &&
-      Number.isFinite(Date.parse(asset.effectiveAt)),
+    typeof asset.id === "string" &&
+    Number.isFinite(asset.value) &&
+    typeof asset.unit === "string" &&
+    typeof asset.effectiveAt === "string" &&
+    Number.isFinite(Date.parse(asset.effectiveAt)),
   );
 }
 

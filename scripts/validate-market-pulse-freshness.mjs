@@ -143,7 +143,9 @@ const snapshot = JSON.parse(await readFile(sourcePath, "utf8"));
 const now = new Date();
 const assets = (snapshot.assets ?? []).map((asset) => freshnessFor(asset, now));
 const staleAssets = assets.filter((asset) => asset.freshnessState === "stale");
-const delayedAssets = assets.filter((asset) => asset.freshnessState === "delayed");
+const delayedAssets = assets.filter(
+  (asset) => asset.freshnessState === "delayed",
+);
 const diagnostics = [...(snapshot.diagnostics ?? [])];
 
 for (const asset of staleAssets) {
