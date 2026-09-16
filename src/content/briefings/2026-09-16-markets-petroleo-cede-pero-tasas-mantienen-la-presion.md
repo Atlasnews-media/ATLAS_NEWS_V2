@@ -1,10 +1,10 @@
 ---
 title: "El petróleo cede, pero las tasas mantienen la presión sobre el riesgo global"
 summary: "El bypass saudí por Omán y un aumento inesperado de inventarios estadounidenses enfrían el petróleo, mientras los rendimientos soberanos siguen altos antes de la Fed: el alivio energético aún no se convierte en alivio financiero."
-publishedAt: "2026-09-16T06:34:00-03:00"
+publishedAt: "2026-09-16T07:00:38-03:00"
 cutoffAt: "2026-09-16T06:33:00-03:00"
 section: "markets"
-status: "draft"
+status: "published"
 tags:
   - mercados
   - tasas
