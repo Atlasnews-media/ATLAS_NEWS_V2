@@ -242,7 +242,9 @@ function validatePersistedHistory(snapshot, now = new Date()) {
     throw new Error("El snapshot público no contiene históricos.");
   }
 
-  const storedById = new Map(snapshot.history.map((entry) => [entry?.id, entry]));
+  const storedById = new Map(
+    snapshot.history.map((entry) => [entry?.id, entry]),
+  );
   const validById = new Map();
 
   for (const definition of definitions) {
@@ -270,7 +272,9 @@ function validatePersistedHistory(snapshot, now = new Date()) {
   }
 
   if (validById.size === 0) {
-    throw new Error("El snapshot público no contiene series históricas válidas.");
+    throw new Error(
+      "El snapshot público no contiene series históricas válidas.",
+    );
   }
 
   return validById;
