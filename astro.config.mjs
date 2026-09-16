@@ -20,7 +20,7 @@ function atlasWebAnalytics() {
         injectScript(
           "head-inline",
           `(() => {
-  const productionHost = "eldesiempre100.github.io";
+  const productionHost = "atlasnews-media.github.io";
   const pathname = window.location.pathname.replace(/\\/+$/, "") || "/";
   const excludedPrefixes = ["/estado", "/lab"];
 
@@ -132,6 +132,6 @@ function atlasWebAnalytics() {
 
 export default defineConfig({
   output: "static",
-  site: "https://eldesiempre100.github.io",
+  site: "https://atlasnews-media.github.io",
   integrations: [atlasWebAnalytics()],
 });
