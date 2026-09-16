@@ -230,6 +230,12 @@ jobs:
             exit 5
           }
 
+      - name: Resolve and verify Instagram authentication mode
+        if: steps.contract.outputs.eligible == 'true'
+        env:
+          INSTAGRAM_ACCESS_TOKEN: ${{ secrets.INSTAGRAM_ACCESS_TOKEN }}
+        run: node tools/social-renderer/resolve-instagram-session.mjs
+
       - name: Prepare access to public social host
         if: steps.contract.outputs.eligible == 'true'
         env:
@@ -286,7 +292,6 @@ jobs:
         if: steps.contract.outputs.eligible == 'true' && steps.idempotency.outputs.already_published != 'true'
         id: verify_first
         env:
-          INSTAGRAM_ACCESS_TOKEN: ${{ secrets.INSTAGRAM_ACCESS_TOKEN }}
           CANONICAL_URL: ${{ steps.contract.outputs.canonical_url }}
           SOURCE_COMMIT: ${{ steps.contract.outputs.source_commit }}
           SOURCE_ID: ${{ steps.contract.outputs.source_id }}
@@ -298,17 +303,13 @@ jobs:
           api_get() {
             local path="$1"
             curl -fsSL \
-              -H "Authorization: Bearer ${INSTAGRAM_ACCESS_TOKEN}" \
+              -H "Authorization: Bearer ${INSTAGRAM_SESSION_TOKEN}" \
               -H 'User-Agent: ATLAS-NEWS-Social-Distribution/1.0' \
-              "https://graph.instagram.com/${INSTAGRAM_API_VERSION}${path}"
+              "${INSTAGRAM_GRAPH_BASE}${path}"
           }
 
-          me="$(api_get '/me?fields=id,username')" || {
-            echo "BLOCKED_EXTERNAL: cannot verify Instagram account."
-            exit 31
-          }
-          ig_user_id="$(jq -r '.id // empty' <<<"$me")"
-          username="$(jq -r '.username // empty' <<<"$me")"
+          ig_user_id="$INSTAGRAM_USER_ID"
+          username="$INSTAGRAM_USERNAME"
           test "$username" = "$INSTAGRAM_EXPECTED_USERNAME" || {
             echo "BLOCKED_EXTERNAL: wrong Instagram account ${username:-<missing>}."
             exit 32
@@ -569,7 +570,6 @@ jobs:
           SOCIAL_CONTRACT: ${{ steps.contract.outputs.contract_path }}
           SOCIAL_PUBLICATION_STATUS: PUBLICACIÓN DISPONIBLE / VERIFICADA
           INSTAGRAM_PUBLISH_CONFIRMATION: PUBLICAR CARRUSEL / AUTORIZADO
-          INSTAGRAM_ACCESS_TOKEN: ${{ secrets.INSTAGRAM_ACCESS_TOKEN }}
           SOCIAL_IMAGE_BASE_URL: ${{ env.SOCIAL_IMAGE_BASE_URL }}
         run: node publish-instagram-v2.mjs
 

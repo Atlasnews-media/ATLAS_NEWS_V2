@@ -7,6 +7,7 @@ on:
       - ".github/workflows/instagram-reel-publish-live-test.yml"
       - "ops/instagram-reel-requests/2026-09-14.json"
       - "tools/reel_maker/**"
+      - "tools/social-renderer/resolve-instagram-session.mjs"
       - "reference-assets/01_portada_base.png"
       - "reference-assets/02_noticia_base.png"
       - "reference-assets/03_cierre_base.png"
@@ -118,6 +119,17 @@ jobs:
           fi
           echo "issue_number=$issue_number" >> "$GITHUB_OUTPUT"
 
+      - name: Verify secrets and Instagram account before rendering
+        if: github.event_name == 'push'
+        env:
+          INSTAGRAM_ACCESS_TOKEN: ${{ secrets.INSTAGRAM_ACCESS_TOKEN }}
+          ATLAS_PAGES_DEPLOY_KEY: ${{ secrets.ATLAS_PAGES_DEPLOY_KEY }}
+        run: |
+          set -euo pipefail
+          test -n "$INSTAGRAM_ACCESS_TOKEN" || { echo "BLOCKED_EXTERNAL: INSTAGRAM_ACCESS_TOKEN missing"; exit 30; }
+          test -n "$ATLAS_PAGES_DEPLOY_KEY" || { echo "BLOCKED_EXTERNAL: ATLAS_PAGES_DEPLOY_KEY missing"; exit 31; }
+          node tools/social-renderer/resolve-instagram-session.mjs
+
       - name: Install Reel Maker runtime
         run: |
           set -euo pipefail
@@ -159,16 +171,6 @@ jobs:
         if: github.event_name == 'pull_request'
         run: |
           echo "Reel live-test publisher validated on PR. Meta publication intentionally skipped."
-
-      - name: Verify Instagram and public-host secrets
-        if: github.event_name == 'push'
-        env:
-          INSTAGRAM_ACCESS_TOKEN: ${{ secrets.INSTAGRAM_ACCESS_TOKEN }}
-          ATLAS_PAGES_DEPLOY_KEY: ${{ secrets.ATLAS_PAGES_DEPLOY_KEY }}
-        run: |
-          set -euo pipefail
-          test -n "$INSTAGRAM_ACCESS_TOKEN" || { echo "BLOCKED_EXTERNAL: INSTAGRAM_ACCESS_TOKEN missing"; exit 30; }
-          test -n "$ATLAS_PAGES_DEPLOY_KEY" || { echo "BLOCKED_EXTERNAL: ATLAS_PAGES_DEPLOY_KEY missing"; exit 31; }
 
       - name: Prepare public social-assets host
         if: github.event_name == 'push'
@@ -235,19 +237,17 @@ jobs:
         if: github.event_name == 'push' && steps.idem.outputs.already_published != 'true'
         id: meta
         env:
-          INSTAGRAM_ACCESS_TOKEN: ${{ secrets.INSTAGRAM_ACCESS_TOKEN }}
           VIDEO_URL: ${{ steps.stage.outputs.video_url }}
           SOURCE_COMMIT: ${{ steps.source.outputs.source_commit }}
         run: |
           set -euo pipefail
           api_get() {
             local path="$1"
-            curl -fsSL -H "Authorization: Bearer ${INSTAGRAM_ACCESS_TOKEN}" -H 'User-Agent: ATLAS-NEWS-Reel/1.0' \
-              "https://graph.instagram.com/${INSTAGRAM_API_VERSION}${path}"
+            curl -fsSL -H "Authorization: Bearer ${INSTAGRAM_SESSION_TOKEN}" -H 'User-Agent: ATLAS-NEWS-Reel/1.0' \
+              "${INSTAGRAM_GRAPH_BASE}${path}"
           }
-          me="$(api_get '/me?fields=id,username')"
-          ig_user_id="$(jq -er '.id' <<<"$me")"
-          username="$(jq -er '.username' <<<"$me")"
+          ig_user_id="$INSTAGRAM_USER_ID"
+          username="$INSTAGRAM_USERNAME"
           [[ "$username" = "$INSTAGRAM_EXPECTED_USERNAME" ]] || {
             echo "BLOCKED_EXTERNAL: wrong Instagram account ${username}."
             exit 33
@@ -258,13 +258,13 @@ jobs:
           caption="$(printf 'ATLAS NEWS · EDICIÓN %s\n\n%s\n\nLee la edición completa en %s' "$edition_number" "$title" "$canonical")"
 
           create="$(curl -fsSL -X POST \
-            -H "Authorization: Bearer ${INSTAGRAM_ACCESS_TOKEN}" \
+            -H "Authorization: Bearer ${INSTAGRAM_SESSION_TOKEN}" \
             -H 'User-Agent: ATLAS-NEWS-Reel/1.0' \
             -F 'media_type=REELS' \
             -F "video_url=${VIDEO_URL}" \
             -F "caption=${caption}" \
             -F 'share_to_feed=true' \
-            "https://graph.instagram.com/${INSTAGRAM_API_VERSION}/${ig_user_id}/media")"
+            "${INSTAGRAM_GRAPH_BASE}/${ig_user_id}/media")"
           creation_id="$(jq -er '.id' <<<"$create")"
 
           finished=false
@@ -284,10 +284,10 @@ jobs:
           [[ "$finished" = "true" ]] || { echo "Meta Reel processing timeout"; exit 35; }
 
           published="$(curl -fsSL -X POST \
-            -H "Authorization: Bearer ${INSTAGRAM_ACCESS_TOKEN}" \
+            -H "Authorization: Bearer ${INSTAGRAM_SESSION_TOKEN}" \
             -H 'User-Agent: ATLAS-NEWS-Reel/1.0' \
             -F "creation_id=${creation_id}" \
-            "https://graph.instagram.com/${INSTAGRAM_API_VERSION}/${ig_user_id}/media_publish")"
+            "${INSTAGRAM_GRAPH_BASE}/${ig_user_id}/media_publish")"
           media_id="$(jq -er '.id' <<<"$published")"
           media="$(api_get "/${media_id}?fields=id,permalink,media_type,timestamp,caption")"
           permalink="$(jq -er '.permalink' <<<"$media")"
