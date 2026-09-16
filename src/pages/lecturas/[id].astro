@@ -46,10 +46,10 @@ const visual = resolveFrontPageVisual({
       tags={reading.data.tags}
       visual={visual}
     />
-    <article class="prose"><Content /></article>
     <div class="reading-audio-slot">
       <ReadingAudio audio={reading.data.audio} />
     </div>
+    <article class="prose"><Content /></article>
     <p class="source">
       <strong>Fuente original:</strong>
       <a href={reading.data.source.url}>{reading.data.source.name}</a>
@@ -62,9 +62,13 @@ const visual = resolveFrontPageVisual({
     width: min(88rem, calc(100% - 2rem));
     margin: 0 auto;
   }
+  .reading-audio-slot {
+    max-width: 52rem;
+    margin: 0 auto;
+  }
   .prose {
     max-width: 52rem;
-    margin: 2.5rem auto 2rem;
+    margin: 2rem auto 3.5rem;
     font-size: 1.1rem;
     line-height: 1.72;
   }
@@ -89,13 +93,9 @@ const visual = resolveFrontPageVisual({
     border-bottom: 2px solid var(--rule);
     font: 700 1.25rem/1.45 var(--serif);
   }
-  .reading-audio-slot {
-    max-width: 52rem;
-    margin: 0 auto;
-  }
   .source {
     max-width: 52rem;
-    margin: 0 auto 4rem;
+    margin: 4rem auto;
     padding-top: 1.5rem;
     border-top: 4px double var(--rule);
   }

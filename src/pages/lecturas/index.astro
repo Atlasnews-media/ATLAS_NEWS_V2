@@ -1,18 +1,10 @@
 ---
 import ContentCard from "../../components/ContentCard.astro";
-import ReadingAudio from "../../components/ReadingAudio.astro";
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import { formatEditorialDate, getPublishedReadings } from "../../lib/content";
 import { resolveFrontPageVisual } from "../../lib/front-page-visuals";
-import contingencyLatest from "../../../config/audio/contingency-latest.json";
 
 const readings = await getPublishedReadings();
-const currentReading = readings[0];
-const activeAudio = currentReading
-  ? contingencyLatest.sourceId === currentReading.id
-    ? contingencyLatest.audio
-    : currentReading.data.audio
-  : undefined;
 
 function readingEyebrow(tags: string[]) {
   if (tags.includes("radar-ipsa")) return "Radar IPSA";
@@ -32,8 +24,6 @@ function readingEyebrow(tags: string[]) {
       Publicaciones activadas cuando un hecho requiere contexto adicional, una
       lectura especial o seguimiento fuera del flujo diario.
     </p>
-
-    {currentReading && <ReadingAudio audio={activeAudio} />}
 
     <div class="reading-list">
       {
