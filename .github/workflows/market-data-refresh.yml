@@ -2,8 +2,13 @@ name: Actualizar datos de mercado
 
 on:
   schedule:
-    - cron: "*/15 11-23 * * 1-5"
+    - cron: "7,22,37,52 11-23 * * 1-5"
   workflow_dispatch:
+  push:
+    branches:
+      - main
+    paths:
+      - ".github/workflows/market-data-refresh.yml"
 
 permissions:
   contents: read
