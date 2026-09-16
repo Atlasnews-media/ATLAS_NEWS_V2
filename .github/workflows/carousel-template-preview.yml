@@ -81,3 +81,5 @@ jobs:
             tools/social-renderer/output-template/template-validation.json
           if-no-files-found: error
           retention-days: 14
+
+# E2E validation trigger — 2026-09-16 (PR only; do not merge)
