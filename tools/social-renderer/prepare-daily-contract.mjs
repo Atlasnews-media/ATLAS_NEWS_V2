@@ -6,7 +6,7 @@ const ROOT = path.resolve(process.cwd());
 const SOURCE_COMMIT = String(process.env.ATLAS_SOURCE_COMMIT || "").trim();
 const STATUS_URL =
   process.env.ATLAS_PUBLIC_STATUS_URL ||
-  "https://eldesiempre100.github.io/status.json";
+  "https://atlasnews-media.github.io/status.json";
 const BLOCKED_SOURCE_COMMIT =
   process.env.ATLAS_BLOCKED_SOURCE_COMMIT ||
   "74e4d789383cce8d3b7a75679ecb263576d3ac70";
@@ -362,7 +362,7 @@ async function main() {
 
   const fallbackDek = socialHighlights.map((item) => item.label).join(" · ");
   const headline = headlineParts(rawTitle, fallbackDek);
-  const canonicalUrl = `https://eldesiempre100.github.io/ediciones/${editionId}/`;
+  const canonicalUrl = `https://atlasnews-media.github.io/ediciones/${editionId}/`;
   await assertPublic(`${canonicalUrl}?source=${SOURCE_COMMIT}`);
 
   const contract = {
