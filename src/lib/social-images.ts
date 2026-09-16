@@ -1,9 +1,9 @@
 const SOCIAL_MANIFEST_URL =
-  "https://raw.githubusercontent.com/EldeSiempre100/EldeSiempre100.github.io/social-assets/share/manifest.json";
+  "https://raw.githubusercontent.com/Atlasnews-media/Atlasnews-media.github.io/social-assets/share/manifest.json";
 const SOCIAL_IMAGE_PREFIX =
-  "https://raw.githubusercontent.com/EldeSiempre100/EldeSiempre100.github.io/social-assets/share/";
+  "https://raw.githubusercontent.com/Atlasnews-media/Atlasnews-media.github.io/social-assets/share/";
 const SOCIAL_IMAGE_FALLBACK =
-  "https://eldesiempre100.github.io/brand/atlas-share.png";
+  "https://atlasnews-media.github.io/brand/atlas-share.png";
 
 type SocialImageManifest = Record<string, string>;
 
