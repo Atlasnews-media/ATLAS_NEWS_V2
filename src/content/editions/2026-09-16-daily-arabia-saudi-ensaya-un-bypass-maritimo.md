@@ -1,10 +1,10 @@
 ---
 title: "Arabia Saudita ensaya un bypass marítimo mientras Hormuz sigue casi paralizado"
 summary: "Riad empieza a transferir crudo frente a Omán para recuperar capacidad exportadora fuera de Hormuz, pero el tránsito por el estrecho sigue en mínimos y la amenaza hutí amplía el riesgo hacia el mar Rojo."
-publishedAt: "2026-09-16T05:59:53-03:00"
+publishedAt: "2026-09-16T07:00:01-03:00"
 cutoffAt: "2026-09-16T05:59:48-03:00"
 type: "daily"
-status: "draft"
+status: "published"
 tags:
   - internacional
   - energia
