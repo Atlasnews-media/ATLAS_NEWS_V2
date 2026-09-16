@@ -52,7 +52,7 @@ def sha256_file(path: Path) -> str:
 
 
 def validate_source(source_text: str) -> None:
-    if not re.search(r'^status:\s*["\']?published["\']?\s*$', source_text, re.M):
+    if not re.search(r'^status:\s*"?published"?\s*$', source_text, re.M):
         raise RuntimeError("La lectura de Contingencia no está publicada.")
     if not re.search(r'^\s*-\s*contingencia\s*$', source_text, re.M):
         raise RuntimeError("La lectura no está marcada como Contingencia.")
