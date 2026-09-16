@@ -145,7 +145,9 @@ function nationalWhen(event: (typeof nationalEvents)[number]) {
 
     const API = "https://biquote.io/api/calendar";
     const TIME_ZONE = "America/Santiago";
-    const MAX_ITEMS = 5;
+    const MAX_ITEMS = 10;
+    const US_COUNTRY_CAP = 6;
+    const OTHER_COUNTRY_CAP = 2;
     const MAJOR_COUNTRIES = [
       "US",
       "EU",
@@ -244,6 +246,17 @@ function nationalWhen(event: (typeof nationalEvents)[number]) {
         .trim();
     }
 
+    function isPolicyDecisionEvent(event: ApiEvent): boolean {
+      const name = normalizeName(event.name ?? "");
+      const sector = String(event.sector ?? "").toLowerCase();
+      const policySector = sector === "centralbank" || sector === "central-bank";
+      const policyName =
+        /\bfomc\b|interest rate decision|rate decision|monetary policy decision|monetary policy statement|policy rate|economic projections|dot plot/.test(
+          name,
+        );
+      return policyName || (policySector && /decision|statement|projection/.test(name));
+    }
+
     function eventKey(event: ApiEvent): string {
       if (event.eventId) return event.eventId;
       const period = event.period?.slice(0, 10) ?? localDateKey(new Date(event.time));
@@ -272,7 +285,9 @@ function nationalWhen(event: (typeof nationalEvents)[number]) {
       const impact = impactScores[String(event.importance ?? "").toLowerCase()] ?? 0;
       const exact = event.timeMode === "exact" ? 2 : 0;
       const major = event.countryCode && MAJOR_COUNTRIES.includes(event.countryCode) ? 3 : 0;
-      return impact + exact + major;
+      const usPriority = event.countryCode === "US" ? 5 : 0;
+      const policyDecision = isPolicyDecisionEvent(event) ? 40 : 0;
+      return impact + exact + major + usPriority + policyDecision;
     }
 
     function byPriority(events: ApiEvent[]): ApiEvent[] {
@@ -300,8 +315,10 @@ function nationalWhen(event: (typeof nationalEvents)[number]) {
         if (!event) continue;
         selected.push(event);
         selectedKeys.add(eventKey(event));
-        const code = event.countryCode ?? "";
-        countryCounts.set(code, (countryCounts.get(code) ?? 0) + 1);
+        if (!isPolicyDecisionEvent(event)) {
+          const code = event.countryCode ?? "";
+          countryCounts.set(code, (countryCounts.get(code) ?? 0) + 1);
+        }
       }
 
       for (const event of candidates) {
@@ -309,11 +326,14 @@ function nationalWhen(event: (typeof nationalEvents)[number]) {
         const key = eventKey(event);
         if (selectedKeys.has(key)) continue;
         const code = event.countryCode ?? "";
-        const cap = code === "US" ? 3 : 2;
-        if ((countryCounts.get(code) ?? 0) >= cap) continue;
+        const policyDecision = isPolicyDecisionEvent(event);
+        const cap = code === "US" ? US_COUNTRY_CAP : OTHER_COUNTRY_CAP;
+        if (!policyDecision && (countryCounts.get(code) ?? 0) >= cap) continue;
         selected.push(event);
         selectedKeys.add(key);
-        countryCounts.set(code, (countryCounts.get(code) ?? 0) + 1);
+        if (!policyDecision) {
+          countryCounts.set(code, (countryCounts.get(code) ?? 0) + 1);
+        }
       }
 
       return selected.sort(
