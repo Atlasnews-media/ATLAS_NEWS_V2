@@ -1,15 +1,18 @@
 import json
 import re
 import subprocess
+import sys
 from pathlib import Path
 
 import numpy as np
 import soundfile as sf
 from kokoro import KPipeline
 
+ROOT = Path(__file__).resolve().parents[2]
+sys.path.insert(0, str(ROOT))
+
 from scripts.audio_speech import normalize_for_speech
 
-ROOT = Path(__file__).resolve().parents[2]
 CONFIG_PATH = ROOT / "lab" / "audio-lexicon-v4" / "candidates.json"
 OUT_DIR = ROOT / "lab" / "audio-lexicon-v4" / "out"
 SAMPLE_RATE = 24_000
