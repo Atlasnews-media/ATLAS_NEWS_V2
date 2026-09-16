@@ -67,7 +67,9 @@ function chileClockParts(instant, timeZone = AUDIO_PRESENTATION_TIME_ZONE) {
     minute: "2-digit",
     hourCycle: "h23",
   }).formatToParts(parsed);
-  const byType = Object.fromEntries(parts.map((part) => [part.type, part.value]));
+  const byType = Object.fromEntries(
+    parts.map((part) => [part.type, part.value]),
+  );
   return { hour24: Number(byType.hour), minute: Number(byType.minute) };
 }
 
@@ -90,7 +92,11 @@ export function formatGenerationTimeSpeech(
 }
 
 export function formatDollarVariationSpeech(changePercent) {
-  if (changePercent === null || changePercent === undefined || changePercent === "") {
+  if (
+    changePercent === null ||
+    changePercent === undefined ||
+    changePercent === ""
+  ) {
     return null;
   }
   const change = Number(changePercent);
@@ -106,7 +112,8 @@ export function formatDollarVariationSpeech(changePercent) {
 }
 
 function upgradeDollarSentence(snapshot) {
-  const sentences = String(snapshot ?? "").match(/[^.!?]+[.!?]+|[^.!?]+$/g) ?? [];
+  const sentences =
+    String(snapshot ?? "").match(/[^.!?]+[.!?]+|[^.!?]+$/g) ?? [];
   return sentences
     .map((sentence) => {
       if (!/dólar observado/i.test(sentence)) return sentence.trim();
@@ -138,7 +145,9 @@ function parseCoverScript(script, { hasNational, hasMarkets }) {
   const expect = (label) => {
     const value = next();
     if (value !== label) {
-      throw new Error(`Portada V13: se esperaba bloque '${label}' y llegó '${value}'.`);
+      throw new Error(
+        `Portada V13: se esperaba bloque '${label}' y llegó '${value}'.`,
+      );
     }
   };
 
@@ -164,7 +173,9 @@ function parseCoverScript(script, { hasNational, hasMarkets }) {
   const watch = next();
   const closing = parts.join("\n\n").trim();
   if (!opening || !central || !watch || !closing) {
-    throw new Error("Portada V13: estructura V12 incompleta para promover presentación.");
+    throw new Error(
+      "Portada V13: estructura V12 incompleta para promover presentación.",
+    );
   }
 
   return { opening, snapshot, central, chile, markets, watch, closing };
@@ -230,12 +241,16 @@ export function upgradeCoverPlanToV13(
   });
   const wordCount = countWords(script);
   const generatedAtIso =
-    generatedAt instanceof Date ? generatedAt.toISOString() : new Date(generatedAt).toISOString();
+    generatedAt instanceof Date
+      ? generatedAt.toISOString()
+      : new Date(generatedAt).toISOString();
 
   return {
     ...plan,
     scriptVersion: AUDIO_COVER_SCRIPT_VERSION,
-    needsGeneration: Boolean(contract.valid && !sameEditorialIdentity(existingCover, plan)),
+    needsGeneration: Boolean(
+      contract.valid && !sameEditorialIdentity(existingCover, plan),
+    ),
     generationBlockedReason: contract.valid ? null : "cover_contract_failed",
     summary:
       "Briefing de Portada V13: snapshot con hora de corte hablada, dólar con dirección explícita, señal central, Chile, mercados y variables a seguir.",
