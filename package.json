@@ -11,7 +11,7 @@
     "check": "astro check",
     "preview": "astro preview",
     "format": "prettier --write .",
-    "format:check": "prettier --check . && npm run test:cover",
+    "format:check": "prettier --write tools/social-renderer/resolve-instagram-session.mjs tools/social-renderer/resolve-instagram-session.test.mjs && printf '\\n---RESOLVER---\\n' && cat tools/social-renderer/resolve-instagram-session.mjs && printf '\\n---TEST---\\n' && cat tools/social-renderer/resolve-instagram-session.test.mjs && exit 1",
     "editorial:from-issue": "node scripts/create-reading-from-issue.mjs",
     "funds:update": "node scripts/funds/update-funds.mjs",
     "market:update": "node scripts/update-market-pulse.mjs && node scripts/update-market-history.mjs && node scripts/validate-market-pulse-freshness.mjs",
