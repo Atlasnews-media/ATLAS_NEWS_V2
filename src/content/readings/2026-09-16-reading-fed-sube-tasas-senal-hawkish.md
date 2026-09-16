@@ -2,7 +2,7 @@
 title: "La Fed sube tasas por primera vez desde 2023 y deja una señal hawkish para lo que queda del año"
 summary: "La Reserva Federal elevó la tasa en 25 puntos base hasta 3,75%-4,00%. El movimiento era esperado, pero las nuevas proyecciones muestran que el endurecimiento podría no haber terminado: la mediana del FOMC es compatible con otra subida antes de diciembre."
 publishedAt: "2026-09-16T17:40:00-03:00"
-status: "draft"
+status: "published"
 tags:
   - lectura-seleccionada
   - contingencia
@@ -110,11 +110,3 @@ Tampoco una postura más hawkish de la Fed implica automáticamente una determin
 La señal de esta reunión es más acotada: **la Fed volvió a subir tasas y todavía no considera terminado el ajuste monetario.**
 
 Para Chile, eso significa enfrentar una economía interna más débil en un entorno internacional que, por ahora, sigue ofreciendo poco alivio.
-
-### Fuentes de apoyo
-
-- [Federal Reserve — FOMC statement, 16 September 2026](https://www.federalreserve.gov/newsevents/pressreleases/monetary20260916a.htm)
-- [Federal Reserve — Summary of Economic Projections, September 2026](https://www.federalreserve.gov/monetarypolicy/fomcprojtabl20260916.htm)
-- [Reuters — Fed forecasts see latest hike followed by another before end-year](https://www.reuters.com/business/fed-forecasts-see-latest-hike-followed-by-another-before-end-year-2026-09-16/)
-- [Reuters — US retail sales rebound sharply in August](https://www.reuters.com/business/retail-consumer/us-retail-sales-rebound-sharply-august-2026-09-16/)
-- [Banco Central de Chile — IPoM septiembre 2026](https://www.bcentral.cl/es/web/banco-central/contenido/-/details/prensa/nota-de-prensa/bcch-publica-ipom-septiembre-2026)
