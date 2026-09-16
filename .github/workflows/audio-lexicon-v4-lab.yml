@@ -1,0 +1,46 @@
+name: Lexicon V4 LAB — bypass A/B
+
+on:
+  push:
+    branches: ["lab/lexicon-v4-bypass"]
+    paths:
+      - "lab/audio-lexicon-v4/**"
+      - ".github/workflows/audio-lexicon-v4-lab.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  generate:
+    name: Generar A/B bypass — Dora y Alex
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+
+    steps:
+      - name: Descargar repositorio
+        uses: actions/checkout@v5
+
+      - name: Preparar dependencias de audio
+        run: |
+          set -euo pipefail
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq espeak-ng ffmpeg python3-venv
+          python3 -m venv "$RUNNER_TEMP/kokoro-lexicon-lab"
+          source "$RUNNER_TEMP/kokoro-lexicon-lab/bin/activate"
+          python -m pip install --quiet --upgrade pip
+          python -m pip install --quiet "kokoro==0.9.4" soundfile numpy
+
+      - name: Generar clips A/B
+        run: |
+          set -euo pipefail
+          source "$RUNNER_TEMP/kokoro-lexicon-lab/bin/activate"
+          python lab/audio-lexicon-v4/generate_lab.py
+
+      - name: Publicar artefacto LAB
+        uses: actions/upload-artifact@v4
+        with:
+          name: lexicon-v4-bypass-ab
+          path: lab/audio-lexicon-v4/out/
+          if-no-files-found: error
+          retention-days: 7
