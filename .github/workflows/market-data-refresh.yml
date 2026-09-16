@@ -1,0 +1,177 @@
+name: Actualizar datos de mercado
+
+on:
+  schedule:
+    - cron: "*/15 11-23 * * 1-5"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: atlas-news-production
+  cancel-in-progress: false
+
+jobs:
+  refresh-market-data:
+    name: Refrescar y publicar datos vivos
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+
+    steps:
+      - name: Descargar ATLAS NEWS V2
+        uses: actions/checkout@v5
+
+      - name: Resolver ventana operativa Chile
+        id: window
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          if [[ "${GITHUB_EVENT_NAME}" == "workflow_dispatch" ]]; then
+            echo "run=true" >> "$GITHUB_OUTPUT"
+            echo "Ejecución manual: se omite el gate horario."
+            exit 0
+          fi
+
+          local_day="$(TZ=America/Santiago date +%u)"
+          local_hour="$(TZ=America/Santiago date +%H)"
+          local_stamp="$(TZ=America/Santiago date '+%Y-%m-%d %H:%M:%S %Z')"
+
+          echo "Hora Chile: $local_stamp"
+
+          if (( 10#$local_day >= 1 && 10#$local_day <= 5 && 10#$local_hour >= 8 && 10#$local_hour < 20 )); then
+            echo "run=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "run=false" >> "$GITHUB_OUTPUT"
+            echo "Fuera de ventana operativa 08:00–19:59 America/Santiago."
+          fi
+
+      - name: Preparar Node.js
+        if: steps.window.outputs.run == 'true'
+        uses: actions/setup-node@v6
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Instalar dependencias
+        if: steps.window.outputs.run == 'true'
+        run: npm ci
+
+      - name: Actualizar corte de datos
+        if: steps.window.outputs.run == 'true'
+        run: npm run update:indicators
+
+      - name: Construir sitio sin regenerar la edición
+        if: steps.window.outputs.run == 'true'
+        run: npm run build:site
+
+      - name: Verificar unificación Portada / Índices
+        if: steps.window.outputs.run == 'true'
+        shell: bash
+        run: |
+          set -euo pipefail
+          test -f dist/data/economic-indicators.json
+          test -f dist/data/market-pulse.json
+          test -f dist/index.html
+          test -f dist/mercados/indices/index.html
+
+          node --input-type=module <<'NODE'
+          import { readFile } from "node:fs/promises";
+
+          const pulse = JSON.parse(await readFile("dist/data/market-pulse.json", "utf8"));
+          const portada = await readFile("dist/index.html", "utf8");
+          const indices = await readFile("dist/mercados/indices/index.html", "utf8");
+
+          const decimal2 = new Intl.NumberFormat("es-CL", {
+            minimumFractionDigits: 2,
+            maximumFractionDigits: 2,
+          });
+
+          function visibleValue(asset) {
+            if (!asset || asset.displayEligible === false || !Number.isFinite(asset.value)) {
+              return null;
+            }
+            if (asset.unit === "points") return decimal2.format(asset.value);
+            if (asset.unit === "usd-per-barrel") return `US$${decimal2.format(asset.value)}`;
+            return null;
+          }
+
+          const commonIds = ["sp500", "brent", "ipsa"];
+          let checked = 0;
+
+          for (const id of commonIds) {
+            const asset = pulse.assets?.find((candidate) => candidate.id === id);
+            const expected = visibleValue(asset);
+            if (!expected) continue;
+            checked += 1;
+            if (!portada.includes(expected)) {
+              throw new Error(`Portada no contiene el corte ${id}=${expected}.`);
+            }
+            if (!indices.includes(expected)) {
+              throw new Error(`Índices no contiene el corte ${id}=${expected}.`);
+            }
+          }
+
+          if (checked === 0) {
+            throw new Error("No hubo activos comunes vigentes para verificar Portada/Índices.");
+          }
+
+          console.log(`Consistencia Portada/Índices OK en ${checked} activo(s).`);
+          NODE
+
+      - name: Preparar acceso al repositorio público
+        if: steps.window.outputs.run == 'true'
+        env:
+          DEPLOY_KEY: ${{ secrets.ATLAS_PAGES_DEPLOY_KEY }}
+        run: |
+          set -euo pipefail
+          install -m 700 -d ~/.ssh
+          printf '%s\n' "$DEPLOY_KEY" > ~/.ssh/atlas_news_pages
+          chmod 600 ~/.ssh/atlas_news_pages
+          ssh-keyscan -H github.com >> ~/.ssh/known_hosts
+
+      - name: Publicar corte actualizado
+        if: steps.window.outputs.run == 'true'
+        env:
+          GIT_SSH_COMMAND: ssh -i ~/.ssh/atlas_news_pages -o IdentitiesOnly=yes
+        run: |
+          set -euo pipefail
+          atlas_publish_dir="$RUNNER_TEMP/atlas-news-public"
+          git clone --depth 1 git@github.com:Atlasnews-media/Atlasnews-media.github.io.git "$atlas_publish_dir"
+          rsync -a --delete --exclude='.git' --exclude='audio/' --exclude='data/funds-beagf.json' dist/ "$atlas_publish_dir/"
+          cd "$atlas_publish_dir"
+          git config user.name "ATLAS NEWS Data Refresh"
+          git config user.email "actions@users.noreply.github.com"
+          git add --all
+
+          if git diff --cached --quiet; then
+            echo "El corte público ya coincide con los datos generados."
+          else
+            git commit -m "Actualiza datos de mercado $(TZ=America/Santiago date '+%Y-%m-%d %H:%M')"
+            git push origin main
+          fi
+
+      - name: Verificar snapshot publicado
+        if: steps.window.outputs.run == 'true'
+        env:
+          GIT_SSH_COMMAND: ssh -i ~/.ssh/atlas_news_pages -o IdentitiesOnly=yes
+        shell: bash
+        run: |
+          set -euo pipefail
+          atlas_publish_dir="$RUNNER_TEMP/atlas-news-public"
+          source_cut="$(jq -r '.generatedAt' dist/data/market-pulse.json)"
+          public_cut="$(jq -r '.generatedAt' "$atlas_publish_dir/data/market-pulse.json")"
+
+          if [[ -z "$source_cut" || "$source_cut" == "null" ]]; then
+            echo "El snapshot generado no contiene generatedAt." >&2
+            exit 1
+          fi
+
+          if [[ "$source_cut" != "$public_cut" ]]; then
+            echo "El snapshot público no coincide con el corte generado." >&2
+            echo "origen=$source_cut público=$public_cut" >&2
+            exit 1
+          fi
+
+          echo "Snapshot público verificado: $public_cut"
