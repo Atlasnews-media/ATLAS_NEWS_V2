@@ -1,0 +1,362 @@
+/* ATLAS NEWS Web V2 — adaptación de contenidos al panel contextual de media pantalla.
+   Este archivo es inerte fuera del shell de portada y sólo entra en escritorio ancho. */
+
+@media (min-width: 80rem) {
+  .desktop-workspace-panel .page-shell,
+  .desktop-workspace-panel .article-page,
+  .desktop-workspace-panel .market-indices-page,
+  .desktop-workspace-panel .calendar-lab {
+    width: calc(100% - 1.7rem) !important;
+    max-width: none !important;
+    margin-right: auto !important;
+    margin-left: auto !important;
+  }
+
+  .desktop-workspace-panel .page-shell,
+  .desktop-workspace-panel .market-indices-page,
+  .desktop-workspace-panel .calendar-lab {
+    padding-top: 0.75rem !important;
+    padding-bottom: 2.4rem !important;
+  }
+
+  /* Secciones: Internacional, Nacional, Mercados y Contingencia. */
+  .desktop-workspace-panel .section-page {
+    padding-top: 0.78rem !important;
+  }
+
+  .desktop-workspace-panel .section-page > .page-kicker {
+    font-size: 0.62rem !important;
+    letter-spacing: 0.14em !important;
+  }
+
+  .desktop-workspace-panel .section-page > .page-title {
+    max-width: none !important;
+    margin: 0.16rem 0 0.32rem !important;
+    font-size: clamp(2.35rem, 3.25vw, 3.1rem) !important;
+    line-height: 0.92 !important;
+    letter-spacing: -0.045em !important;
+  }
+
+  .desktop-workspace-panel .section-page > .page-intro {
+    max-width: 42rem !important;
+    margin: 0 0 0.85rem !important;
+    font-size: 0.88rem !important;
+    line-height: 1.34 !important;
+  }
+
+  .desktop-workspaace-panel .section-analysis-audio,
+  .desktop-workspace-panel .reading-audio {
+    margin-top: 0.42rem !important;
+    padding: 0.62rem 0 0.72rem !important;
+  }
+
+  .desktop-workspace-panel .briefing-list,
+  .desktop-workspace-panel .reading-list {
+    display: block !important;
+    max-width: none !important;
+    border-top: 5px double var(--rule) !important;
+  }
+
+  .desktop-workspace-panel .briefing-list .card,
+  .desktop-workspace-panel .reading-list .card,
+  .desktop-workspace-panel .briefing-list .card:first-child,
+  .desktop-workspace-panel .briefing-list .card:nth-child(2),
+  .desktop-workspace-panel .reading-list .card:first-child,
+  .desktop-workspace-panel .reading-list .card:nth-child(2) {
+    min-height: 10.3rem !important;
+    padding: 0.78rem 0 0.88rem !important;
+    border-top: 1px solid var(--rule) !important;
+    border-right: 0 !important;
+  }
+
+  .desktop-workspace-panel .briefing-list .card:first-child,
+  .desktop-workspace-panel .reading-list .card:first-child {
+    border-top: 0 !important;
+  }
+
+  .desktop-workspace-panel .briefing-list .card.has-visual .card-copy,
+  .desktop-workspace-panel .reading-list .card.has-visual .card-copy,
+  .desktop-workspace-panel
+    .briefing-list
+    .card:first-child.has-visual
+    .card-copy,
+  .desktop-workspace-panel
+    .reading-list
+    .card:first-child.has-visual
+    .card-copy {
+    width: 69% !important;
+  }
+
+  .desktop-workspace-panel .briefing-list .card-visual,
+  .desktop-workspace-panel .reading-list .card-visual,
+  .desktop-workspace-panel .briefing-list .card:first-child .card-visual,
+  .desktop-workspace-panel .reading-list .card:first-child .card-visual {
+    top: 0.68rem !important;
+    right: -0.15rem !important;
+    bottom: 0.68rem !important;
+    display: block !important;
+    width: 34% !important;
+  }
+
+  .desktop-workspace-panel .briefing-list .card l2,
+  .desktop-workspace-panel .reading-list .card h2,
+  .desktop-workspace-panel .briefing-list .card:first-child h2,
+  .desktop-workspace-panel .reading-list .card:first-child h2 {
+    margin: 0.36rem 0 0.4rem !important;
+    font-size: clamp(1.2rem, 1.55vw, 1.48rem) !important;
+    line-height: 0.99 !important;
+  }
+
+  .desktop-workspace-panel .briefing-list .card p,
+  .desktop-workspace-panel .reading-list .card p {
+    max-width: 34rem !important;
+    margin: 0.4rem 0 !important;
+    font-size: 0.76rem !important;
+    line-height: 1.34 !important;
+  }
+
+  .desktop-workspace-panel .briefing-list .card .meta,
+  .desktop-workspace-panel .reading-list .card .meta,
+  .desktop-workspace-panel .briefing-list .card .card-footer,
+  .desktop-workspace-panel .reading-list .card .card-footer,
+  .desktop-workspace-panel .briefing-list .card .read,
+  .desktop-workspace-panel .reading-list .card .read,
+  .desktop-workspace-panel .briefing-list .card time,
+  .desktop-workspace-panel .reading-list .card time {
+    font-size: 0.54rem !important;
+  }
+
+  /* Índices: una única columna editorial, igual al concepto del mockup. */
+  .desktop-workspace-panel .market-indices-page {
+    padding-top: 0.65rem !important;
+  }
+
+  .desktop-workspace-panel .market-indices-page .indices-heading {
+    gap: 0.55rem !important;
+    padding: 0.1rem 0 0.52rem !important;
+  }
+
+  .desktop-workspace-panel .market-indices-page .indices-heading h1 {
+    font-size: clamp(2.3rem, 3.25vw, 3rem) !important;
+    line-height: 0.92 !important;
+  }
+
+  .desktop-workspace-panel .market-indices-page .update-stamp {
+    min-width: 7rem !important;
+  }
+
+  .desktop-workspace-panel .market-indices-page .update-stamp strong {
+    font-size: 0.47rem !important;
+  }
+
+  .desktop-workspace-panel .market-indices-page .update-stamp span {
+    font-size: 0.53rem !important;
+  }
+
+  .desktop-workspace-panel .market-indices-page .update-stamp small {
+    font-size: 0.36rem !important;
+  }
+
+  .desktop-workspace-panel .market-indices-page .market-table {
+    display: block !important;
+    border-bottom: 4px double var(--rule) !important;
+  }
+
+  .desktop-workspace-panel .market-indices-page .market-section,
+  .desktop-workspace-panel .market-indices-page .market-section:first-child,
+  .desktop-workspace-panel .market-indices-page .market-section:nth-child(2) {
+    border-top: 4px double var(--rule) !important;
+  }
+
+  .desktop-workspace-panel .market-indices-page .market-section:first-child {
+    border-top: 0 !important;
+  }
+
+  .desktop-workspace-panel .market-indices-page .section-header {
+    padding: 0.34rem 0 0.25rem !important;
+  }
+
+  .desktop-workspace-panel .market-indices-page .section-header h2 {
+    font-size: 0.88rem !important;
+  }
+
+  .desktop-workspace-panel .market-indices-page .section-header span {
+    font-size: 0.49rem !important;
+  }
+
+  .desktop-workspace-panel .market-indices-page .data-row {
+    padding: 0.29rem 0 0.34rem !important;
+  }
+
+  .desktop-workspace-panel .market-indices-page .asset-name,
+  .desktop-workspace-panel .market-indices-page .asset-value,
+  .desktop-workspace-panel .market-indices-page .asset-change {
+    font-size: clamp(0.78rem, 1.02vw, 0.94rem) !important;
+  }
+
+  .desktop-workspace-panel .market-indices-page .asset-name small {
+    font-size: 0.35rem !important;
+  }
+
+  .desktop-workspace-panel .market-indices-page .market-history {
+    margin-top: 0.62rem !important;
+  }
+
+  .desktop-workspace-panel .market-indices-page .market-history__heading h2 {
+    font-size: clamp(1.45rem, 2vw, 1.85rem) !important;
+  }
+
+  .desktop-workspace-panel .market-indices-page .market-history__heading span {
+    font-size: 0.38rem !important;
+  }
+
+  .desktop-workspace-panel .market-indices-page .indices-source {
+    gap: 0.35rem 0.8rem !important;
+    font-size: 0.42rem !important;
+  }
+
+  /* Calendario: lectura vertical compacta para media pantalla. */
+  .desktop-workspace-panel .calendar-lab {
+    padding-top: 0.55rem !important;
+  }
+
+  .desktop-workspace-panel .calendar-heading {
+    display: block !important;
+    padding: 0.25rem 0 0.62rem !important;
+  }
+
+  .desktop-workspace-panel .calendar-heading .page-kicker,
+  .desktop-workspace-panel .calendar-heading h1,
+  .desktop-workspace-panel .calendar-intro {
+    grid-column: auto !important;
+    grid-row: auto !important;
+  }
+
+  .desktop-workspace-panel .calendar-heading h1 {
+    max-width: none !important;
+    margin: 0.12rem 0 0.28rem !important;
+    font-size: clamp(2.25rem, 3.2vw, 2.95rem) !important;
+    line-height: 0.93 !important;
+  }
+
+  .desktop-workspace-panel .calendar-intro {
+    max-width: 38rem !important;
+    margin: 0 !important;
+    font-size: 0.84rem !important;
+    line-height: 1.25 !important;
+  }
+
+  .desktop-workspace-panel .calendar-section {
+    margin-top: 0.7rem !important;
+  }
+
+  .desktop-workspace-panel .calendar-section .section-header h2 {
+    font-size: 0.83rem !important;
+  }
+
+  .desktop-workspace-panel .calendar-section .section-header span {
+    font-size: 0.47rem !important;
+  }
+
+  .desktop-workspaace-panel .event-row,
+  .desktop-workspace-panel .event-empty {
+    grid-template-columns: 4.4rem minmax(0, 1fr) !important;
+    gap: 0.55rem !important;
+    padding: 0.36rem 0 !important;
+  }
+
+  .desktop-workspace-panel .event-row > time {
+    font-size: 0.78rem !important;
+  }
+
+  .desktop-workspace-panel .event-copy h3 {
+    font-size: 0.83rem !important;
+    line-height: 1.05 !important;
+  }
+
+  .desktop-workspaace-panel .event-copy p {
+    font-size: 0.51rem !important;
+  }
+
+  .desktop-workspaace-panel .calendar-source {
+    font-size: 0.45rem !important;
+  }
+
+  /* Artículos: lectura limpia en una sola columna; fuentes al final. */
+  .desktop-workspace-panel .article-page {
+    display: block !important;
+    padding-bottom: 2.4rem !important;
+  }
+
+  .desktop-workspaace-panel .article-page > .article-header {
+    display: block !important;
+    padding: 0.8rem 0 0.9rem !important;
+  }
+
+  .desktop-workspace-panel .article-page .article-header h1 {
+    max-width: 72% !important;
+    margin: 0.35rem 0 0.45rem !important;
+    font-size: clamp(2rem, 2.75vw, 2.65rem) !important;
+    line-height: 0.94 !important;
+  }
+
+  .desktop-workspaace-panel .article-page .article-header .summary {
+    max-width: 70% !important;
+    font-size: 0.86rem !important;
+    line-height: 1.35 !important;
+  }
+
+  .desktop-workspaace-panel .article-page .article-header .article-visual {
+    top: 0.6rem !important;
+    right: -0.1rem !important;
+    bottom: 0.75rem !important;
+    width: 31% !important;
+  }
+
+  .desktop-workspace-panel .article-page .article-header .meta,
+  .desktop-workspace-panel .article-page .publication-data,
+  .desktop-workspace-panel .article-page .share-tools {
+    font-size: 0.54rem !important;
+  }
+
+  .desktop-workspace-panel .article-page > .prose {
+    max-width: 40rem !important;
+    margin: 1.25rem auto 2rem !important;
+    padding-right: 0 !important;
+    font-size: 0.91rem !important;
+    line-height: 1.62 !important;
+  }
+
+  .desktop-workspace-panel .article-page > .prose h2 {
+    margin-top: 2rem !important;
+    font-size: 1.48rem !important;
+  }
+
+  .desktop-workspace-panel .article-page > .sources,
+  .desktop-workspace-panel .article-page > .return-link {
+    position: static !important;
+    max-width: 40rem !important;
+    margin: 1.4rem auto !important;
+    padding: 0.75rem 0 0 !important;
+    border-top: 4px double var(--rule) !important;
+    border-left: 0 !important;
+  }
+
+  .desktop-workspace-panel .article-page > .sources h2 {
+    font-size: 0.72rem !important;
+  }
+
+  .desktop-workspaace-panel .article-page > .sources li,
+  .desktop-workspaace-panel .article-page > .return-link {
+    font-size: 0.68rem !important;
+  }
+
+  /* Evita que los layouts desktop completos de V1 vuelvan a expandirse dentro
+    del panel al cargarse sus hojas de estilo propias. */
+  .desktop-workspace-panel .section-page .briefing-list,
+  .desktop-workspace-panel .section-page .reading-list,
+  .desktop-workspace-panel .market-indices-page .market-table,
+  .desktop-workspace-panel .article-page {
+    grid-template-columns: 1fr !important;
+  }
+}
