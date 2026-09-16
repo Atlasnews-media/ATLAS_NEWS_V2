@@ -287,10 +287,8 @@ const marketsVisual = latestMarkets
     <div class="desktop-workspace-panel__status" data-atlas-workspace-status>
       Cargando índices de mercado…
     </div>
-    <div
-      class="desktop-workspace-panel__content"
-      data-atlas-workspace-content
-    ></div>
+    <div class="desktop-workspace-panel__content" data-atlas-workspace-content>
+    </div>
     <noscript>
       <p class="desktop-workspace-panel__noscript">
         <a href="/mercados/indices/">Abrir índices de mercado</a>
@@ -334,7 +332,10 @@ const marketsVisual = latestMarkets
 
     const navPathFor = (pathname: string) => {
       if (pathname.startsWith("/nacional/")) return "/nacional/";
-      if (pathname.startsWith("/mercados/") && pathname !== DEFAULT_PANEL_PATH) {
+      if (
+        pathname.startsWith("/mercados/") &&
+        pathname !== DEFAULT_PANEL_PATH
+      ) {
         return "/mercados/";
       }
       if (pathname.startsWith("/lecturas/")) return "/lecturas/";
@@ -349,14 +350,14 @@ const marketsVisual = latestMarkets
 
     const syncPrimaryNavigation = (pathname: string) => {
       const activeHref = navPathFor(pathname);
-      document.querySelectorAll<HTMLAnchorElement>(".site-header nav a").forEach(
-        (link) => {
+      document
+        .querySelectorAll<HTMLAnchorElement>(".site-header nav a")
+        .forEach((link) => {
           const active = link.getAttribute("href") === activeHref;
           link.classList.toggle("is-active", active);
           if (active) link.setAttribute("aria-current", "page");
           else link.removeAttribute("aria-current");
-        },
-      );
+        });
     };
 
     const panelPathFromLocation = () => {
@@ -365,7 +366,10 @@ const marketsVisual = latestMarkets
 
       try {
         const url = new URL(requested, window.location.origin);
-        if (url.origin === window.location.origin && supportsPanelPath(url.pathname)) {
+        if (
+          url.origin === window.location.origin &&
+          supportsPanelPath(url.pathname)
+        ) {
           return url.pathname;
         }
       } catch {
@@ -405,14 +409,16 @@ const marketsVisual = latestMarkets
     };
 
     const activatePanelScripts = (root: HTMLElement) => {
-      root.querySelectorAll<HTMLScriptElement>("script").forEach((oldScript) => {
-        const script = document.createElement("script");
-        Array.from(oldScript.attributes).forEach(({ name, value }) => {
-          script.setAttribute(name, value);
+      root
+        .querySelectorAll<HTMLScriptElement>("script")
+        .forEach((oldScript) => {
+          const script = document.createElement("script");
+          Array.from(oldScript.attributes).forEach(({ name, value }) => {
+            script.setAttribute(name, value);
+          });
+          script.textContent = oldScript.textContent;
+          oldScript.replaceWith(script);
         });
-        script.textContent = oldScript.textContent;
-        oldScript.replaceWith(script);
-      });
     };
 
     const updateHistory = (requestedPath: string) => {
@@ -449,11 +455,17 @@ const marketsVisual = latestMarkets
       requestedPath: string,
       options: { pushHistory?: boolean } = {},
     ) => {
-      if (!panel || !panelContent || !panelStatus || !desktopWorkspace.matches) {
+      if (
+        !panel ||
+        !panelContent ||
+        !panelStatus ||
+        !desktopWorkspace.matches
+      ) {
         return;
       }
 
-      const targetPath = requestedPath === "/" ? DEFAULT_PANEL_PATH : requestedPath;
+      const targetPath =
+        requestedPath === "/" ? DEFAULT_PANEL_PATH : requestedPath;
       if (!supportsPanelPath(targetPath)) return;
 
       activeRequest?.abort();
@@ -477,10 +489,10 @@ const marketsVisual = latestMarkets
           sourceHtml,
           "text/html",
         );
-        const sourceContent = sourceDocument.querySelector<HTMLElement>(
-          "#contenido",
-        );
-        if (!sourceContent) throw new Error("Contenido de destino no disponible");
+        const sourceContent =
+          sourceDocument.querySelector<HTMLElement>("#contenido");
+        if (!sourceContent)
+          throw new Error("Contenido de destino no disponible");
 
         await ensurePanelStyles(sourceDocument);
         if (signal.aborted) return;
@@ -500,7 +512,8 @@ const marketsVisual = latestMarkets
           }),
         );
       } catch (error) {
-        if (error instanceof DOMException && error.name === "AbortError") return;
+        if (error instanceof DOMException && error.name === "AbortError")
+          return;
         showPanelError(targetPath);
       }
     };
@@ -525,7 +538,10 @@ const marketsVisual = latestMarkets
       if (!link || link.target || link.hasAttribute("download")) return;
 
       const url = new URL(link.href, window.location.href);
-      if (url.origin !== window.location.origin || !supportsPanelPath(url.pathname)) {
+      if (
+        url.origin !== window.location.origin ||
+        !supportsPanelPath(url.pathname)
+      ) {
         return;
       }
 
@@ -979,7 +995,10 @@ const marketsVisual = latestMarkets
       border-bottom: 1px solid var(--rule) !important;
     }
 
-    body:has(.desktop-workspace-panel) .front-page .headline-list .headline-item,
+    body:has(.desktop-workspace-panel)
+      .front-page
+      .headline-list
+      .headline-item,
     body:has(.desktop-workspace-panel)
       .front-page
       .headline-list

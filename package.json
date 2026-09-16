@@ -11,7 +11,7 @@
     "check": "astro check",
     "preview": "astro preview",
     "format": "prettier --write .",
-    "format:check": "prettier --write src/pages/index.astro src/styles/desktop-workspace-panel.css && echo INDEX_BEGIN && base64 -w 0 src/pages/index.astro && echo && echo INDEX_END && echo CSS_BEGIN && base64 -w 0 src/styles/desktop-workspace-panel.css && echo && echo CSS_END && exit 1",
+    "format:check": "prettier --check . && npm run test:cover",
     "editorial:from-issue": "node scripts/create-reading-from-issue.mjs",
     "funds:update": "node scripts/funds/update-funds.mjs",
     "market:update": "node scripts/update-market-pulse.mjs && node scripts/update-market-history.mjs && node scripts/validate-market-pulse-freshness.mjs",
