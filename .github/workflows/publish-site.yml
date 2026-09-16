@@ -269,7 +269,7 @@ jobs:
           GIT_SSH_COMMAND: ssh -i ~/.ssh/atlas_news_pages -o IdentitiesOnly=yes
         run: |
           atlas_publish_dir="$RUNNER_TEMP/atlas-news-public"
-          git clone --depth 1 git@github.com:EldeSiempre100/EldeSiempre100.github.io.git "$atlas_publish_dir"
+          git clone --depth 1 git@github.com:Atlasnews-media/Atlasnews-media.github.io.git "$atlas_publish_dir"
           rsync -a --delete --exclude='.git' --exclude='audio/' --exclude='data/funds-beagf.json' dist/ "$atlas_publish_dir/"
           cd "$atlas_publish_dir"
           git config user.name "ATLAS NEWS Publisher"
@@ -332,8 +332,8 @@ jobs:
             grep -Fq "/mercados/$markets_id/" "$atlas_publish_dir/index.html"
           fi
 
-          public_status_url="https://eldesiempre100.github.io/status.json"
-          public_base_url="https://eldesiempre100.github.io"
+          public_status_url="https://atlasnews-media.github.io/status.json"
+          public_base_url="https://atlasnews-media.github.io"
           public_ready=false
           routes=()
           [[ -n "$latest_id" ]] && routes+=("/ediciones/$latest_id/")
@@ -404,7 +404,7 @@ jobs:
         run: |
           token="$(curl -fsSL -H "Authorization: bearer $ACTIONS_ID_TOKEN_REQUEST_TOKEN" \
             "${ACTIONS_ID_TOKEN_REQUEST_URL}&audience=atlas-news-supabase" | jq -r '.value')"
-          public_url="https://eldesiempre100.github.io/ediciones/${EDITION_ID}/"
+          public_url="https://atlasnews-media.github.io/ediciones/${EDITION_ID}/"
           jq -n \
             --arg edition_key "$EDITION_KEY" \
             --arg edition_date "$EDITION_DATE" \
