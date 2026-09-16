@@ -3,14 +3,14 @@
     {
       "id": "oil-geopolitics-inflation",
       "topic": "Petróleo, geopolítica e inflación",
-      "thesis": "El shock energético confirma persistencia operativa y pierde simultáneamente dos vías de alivio: el tráfico por Hormuz vuelve a deteriorarse, el principal bypass saudí sigue cerrado y la negociación regional se posterga mientras aumentan los ataques hutíes.",
-      "status": "confirmed",
-      "last_evidence": "El 15 de septiembre datos de navegación citados por Reuters mostraron solo cuatro buques de materias primas atravesando Hormuz el lunes; el oleoducto saudí Este-Oeste seguía fuera de servicio y los países árabes del Golfo habían postergado conversaciones con Irán mientras los hutíes lanzaban nuevos ataques contra Arabia Saudita.",
-      "effect": "Confirma que la disrupción persiste y que la redundancia física y diplomática se debilitan al mismo tiempo, aumentando el riesgo de transmisión a combustibles, transporte, seguros, inflación y tasas globales.",
-      "base_scenario": "Prima energética elevada y volátil con restricciones de tránsito, menor redundancia logística y presión sobre expectativas de inflación durante el resto de 2026, sin asumir una interrupción total de la producción del Golfo.",
-      "invalidate_if": "Reapertura rápida y sostenida del oleoducto Este-Oeste junto con normalización verificable del tráfico por Hormuz y un mecanismo diplomático efectivo debilitarían la tesis; nuevas restricciones simultáneas la reforzarían.",
-      "watch": "Reapertura y capacidad del oleoducto Este-Oeste, tráfico efectivo por Hormuz, inventarios en Yanbu y puertos alternativos, seguros marítimos, nueva fecha de negociación regional, Brent y transmisión a inflación.",
-      "last_publication": "/ediciones/2026-09-15-daily-hormuz-pierde-dos-vias-de-alivio/"
+      "thesis": "El shock energético sigue activo, pero Arabia Saudita recupera una vía parcial de redundancia al desviar crudo mediante transferencias frente a Omán mientras Hormuz permanece con tránsito extraordinariamente bajo y la amenaza hutí se amplía.",
+      "status": "changed",
+      "last_evidence": "El 16 de septiembre Arabia Saudita ofreció crudo a compradores asiáticos mediante transferencias frente a Sohar, fuera de Hormuz; el martes se observaron sólo cuatro cruces por el estrecho frente a un promedio reciente de 18, y Riad informó la intercepción de un dron hutí al sur de La Meca.",
+      "effect": "La nueva ruta omaní reduce el riesgo inmediato de una caída saudí más severa, pero no normaliza el sistema: persisten restricciones de tránsito, vulnerabilidad logística y riesgo de transmisión a energía, transporte, seguros, inflación y tasas globales.",
+      "base_scenario": "Prima energética elevada y volátil con adaptación logística parcial de productores del Golfo, mientras Hormuz y el corredor del mar Rojo sigan expuestos a restricciones y ataques durante el resto de 2026.",
+      "invalidate_if": "Normalización sostenida del tráfico por Hormuz, reapertura estable del oleoducto Este-Oeste y ausencia de nuevas amenazas sobre rutas alternativas debilitarían la tesis; fallas del bypass omaní o nuevos ataques simultáneos la reforzarían.",
+      "watch": "Volumen efectivo transferido frente a Sohar, reapertura y capacidad del oleoducto Este-Oeste, tráfico por Hormuz, seguridad en Bab el-Mandeb y mar Rojo, seguros marítimos y transmisión a inflación.",
+      "last_publication": "/ediciones/2026-09-16-daily-arabia-saudi-ensaya-un-bypass-maritimo/"
     },
     {
       "id": "us-employment-fed-rates",
