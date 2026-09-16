@@ -26,8 +26,8 @@ jobs:
     timeout-minutes: 4
     env:
       GH_TOKEN: ${{ github.token }}
-      STATUS_URL: https://eldesiempre100.github.io/status.json
-      PUBLIC_REPO: EldeSiempre100/EldeSiempre100.github.io
+      STATUS_URL: https://atlasnews-media.github.io/status.json
+      PUBLIC_REPO: Atlasnews-media/Atlasnews-media.github.io
       AUTOMATIC_WORKFLOW: instagram-carousel-publish-automatic.yml
 
     steps:
@@ -73,7 +73,7 @@ jobs:
             exit 22
           }
 
-          canonical="https://eldesiempre100.github.io/ediciones/${edition_id}/"
+          canonical="https://atlasnews-media.github.io/ediciones/${edition_id}/"
           code="$(curl -L -sS -o /dev/null -w '%{http_code}' -H 'Cache-Control: no-cache' "${canonical}?watchdog=${GITHUB_RUN_ID}" || true)"
           test "$code" = "200" || {
             echo "Fail-closed: latest daily canonical is not HTTP 200: ${canonical}" >&2
