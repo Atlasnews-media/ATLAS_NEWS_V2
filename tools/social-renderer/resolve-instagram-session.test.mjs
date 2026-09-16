@@ -25,66 +25,34 @@ test("accepts an Instagram Login token", async () => {
   assert.equal(session.userId, "ig-1");
 });
 
-test("accepts a Facebook Page token directly", async () => {
-  const calls = [];
-  const session = await resolveInstagramSession({
-    accessToken: "facebook-page-token",
-    expectedUsername: "_atlas_news",
-    fetchImpl: async (url) => {
-      calls.push(url);
-      if (url.startsWith("https://graph.instagram.com/")) {
-        return response(401, {
-          error: { message: "Invalid OAuth access token" },
-        });
-      }
-      if (url.includes("/me?fields=")) {
-        return response(200, {
-          id: "page-1",
-          name: "ATLAS NEWS",
-          instagram_business_account: {
-            id: "ig-2",
-            username: "_atlas_news",
-          },
-        });
-      }
-      throw new Error(`Unexpected request: ${url}`);
-    },
-  });
-
-  assert.equal(session.mode, "facebook-login");
-  assert.equal(session.graphBase, "https://graph.facebook.com/v23.0");
-  assert.equal(session.accessToken, "facebook-page-token");
-  assert.equal(session.userId, "ig-2");
-  assert.equal(calls.length, 2);
-});
-
-test("resolves a Facebook User token to its Page token", async () => {
+test("resolves a Facebook User token through managed Page and IG id", async () => {
   const calls = [];
   const session = await resolveInstagramSession({
     accessToken: "facebook-user-token",
     expectedUsername: "_atlas_news",
-    fetchImpl: async (url) => {
-      calls.push(url);
+    fetchImpl: async (url, options) => {
+      calls.push({ url, options });
       if (url.startsWith("https://graph.instagram.com/")) {
-        return response(401, {
-          error: { message: "Invalid OAuth access token" },
+        return response(401, { error: { message: "Invalid OAuth access token" } });
+      }
+      if (url.includes("/me/accounts?")) {
+        return response(200, {
+          data: [
+            {
+              id: "page-1",
+              name: "ATLAS NEWS",
+              access_token: "facebook-page-token",
+              tasks: ["CREATE_CONTENT", "MANAGE"],
+              instagram_business_account: { id: "ig-2" },
+            },
+          ],
         });
       }
-      if (url.includes("/me?fields=")) {
-        return response(200, { id: "person-1", name: "Operator" });
+      if (url.includes("/ig-2?fields=id,username")) {
+        assert.equal(options.headers.Authorization, "Bearer facebook-page-token");
+        return response(200, { id: "ig-2", username: "_atlas_news" });
       }
-      return response(200, {
-        data: [
-          {
-            id: "page-1",
-            access_token: "facebook-page-token",
-            instagram_business_account: {
-              id: "ig-2",
-              username: "_atlas_news",
-            },
-          },
-        ],
-      });
+      throw new Error(`Unexpected request: ${url}`);
     },
   });
 
@@ -95,18 +63,67 @@ test("resolves a Facebook User token to its Page token", async () => {
   assert.equal(calls.length, 3);
 });
 
-test("fails closed when neither login mode reaches the expected account", async () => {
+test("accepts a Facebook Page token directly", async () => {
+  const calls = [];
+  const session = await resolveInstagramSession({
+    accessToken: "facebook-page-token",
+    expectedUsername: "_atlas_news",
+    fetchImpl: async (url, options) => {
+      calls.push({ url, options });
+      if (url.startsWith("https://graph.instagram.com/")) {
+        return response(401, { error: { message: "Invalid OAuth access token" } });
+      }
+      if (url.includes("/me/accounts?")) {
+        return response(400, { error: { message: "Not a User token" } });
+      }
+      if (url.endsWith("/me?fields=id,name")) {
+        return response(200, { id: "page-1", name: "ATLAS NEWS" });
+      }
+      if (url.includes("/page-1?fields=id,name,instagram_business_account")) {
+        return response(200, {
+          id: "page-1",
+          name: "ATLAS NEWS",
+          instagram_business_account: { id: "ig-2" },
+        });
+      }
+      if (url.includes("/ig-2?fields=id,username")) {
+        assert.equal(options.headers.Authorization, "Bearer facebook-page-token");
+        return response(200, { id: "ig-2", username: "_atlas_news" });
+      }
+      throw new Error(`Unexpected request: ${url}`);
+    },
+  });
+
+  assert.equal(session.mode, "facebook-login");
+  assert.equal(session.graphBase, "https://graph.facebook.com/v23.0");
+  assert.equal(session.accessToken, "facebook-page-token");
+  assert.equal(session.userId, "ig-2");
+  assert.equal(calls.length, 5);
+});
+
+test("fails closed with useful diagnostics when User token has no managed linked Page", async () => {
   await assert.rejects(
     resolveInstagramSession({
-      accessToken: "bad-token",
+      accessToken: "facebook-user-token",
       expectedUsername: "_atlas_news",
       fetchImpl: async (url) => {
         if (url.startsWith("https://graph.instagram.com/")) {
           return response(401, { error: { message: "Invalid token" } });
         }
-        return response(200, { data: [] });
+        if (url.includes("/me/accounts?")) {
+          return response(200, { data: [] });
+        }
+        if (url.endsWith("/me?fields=id,name")) {
+          return response(200, { id: "person-1", name: "Operator" });
+        }
+        if (url.includes("/person-1?fields=id,name,instagram_business_account")) {
+          return response(400, {
+            error: { message: "instagram_business_account is not a User field" },
+          });
+        }
+        throw new Error(`Unexpected request: ${url}`);
       },
     }),
-    /no Facebook Page connected/,
+    /managed-pages=0/,
   );
 });
