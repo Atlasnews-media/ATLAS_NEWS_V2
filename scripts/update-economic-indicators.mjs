@@ -16,7 +16,7 @@ const providerBaseUrl =
   process.env.ATLAS_INDICATORS_API_BASE ?? "https://mindicador.cl/api";
 const publishedSnapshotUrl =
   process.env.ATLAS_PUBLIC_SNAPSHOT_URL ??
-  "https://eldesiempre100.github.io/data/economic-indicators.json";
+  "https://atlasnews-media.github.io/data/economic-indicators.json";
 
 const dayInMilliseconds = 24 * 60 * 60 * 1000;
 const datePattern = /^\d{4}-\d{2}-\d{2}$/;
