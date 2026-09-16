@@ -158,7 +158,7 @@ El `push` resultante sobre `main` dispara automáticamente el workflow de produc
 
 1. construir el sitio una sola vez;
 2. generar y comprobar `status.json`;
-3. publicar la salida estática en `EldeSiempre100/EldeSiempre100.github.io` mediante un solo despliegue;
+3. publicar la salida estática en `Atlasnews-media/Atlasnews-media.github.io` mediante un solo despliegue;
 4. comprobar que `sourceCommit` coincida con el SHA aceptado en `main`;
 5. comprobar la edición General más reciente y, cuando existan, las últimas URLs de Nacional y Mercados;
 6. verificar la Portada y las rutas finales.
