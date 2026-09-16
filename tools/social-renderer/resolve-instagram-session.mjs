@@ -98,7 +98,8 @@ export async function resolveInstagramSession({
   // User token -> /me/accounts -> Page Access Token + instagram_business_account.id
   // -> query the IG user separately. Avoid requesting nested `username` from
   // /me/accounts because availability can vary by object/context.
-  const pageListFields = "id,name,access_token,tasks,instagram_business_account";
+  const pageListFields =
+    "id,name,access_token,tasks,instagram_business_account";
   const pages = await requestJson(
     fetchImpl,
     `${facebookBase}/me/accounts?fields=${encodeURIComponent(pageListFields)}&limit=100`,
@@ -119,7 +120,11 @@ export async function resolveInstagramSession({
   // A Graph API Explorer credential may already be a Page Access Token.
   // Identify /me safely first, then query that object as a Page. This avoids
   // asking a User object for Page-only fields and producing misleading #100s.
-  const me = await requestJson(fetchImpl, `${facebookBase}/me?fields=id,name`, token);
+  const me = await requestJson(
+    fetchImpl,
+    `${facebookBase}/me?fields=id,name`,
+    token,
+  );
   let pageSelf = null;
   if (me.ok && String(me.body?.id || "").trim()) {
     const objectId = String(me.body.id).trim();
