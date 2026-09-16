@@ -26,23 +26,36 @@ async function requestJson(fetchImpl, url, token) {
   return { ok: response.ok, status: response.status, body };
 }
 
-function accountFromPage(page, expectedUsername, fallbackToken = "") {
-  const instagram = page?.instagram_business_account;
-  if (
-    String(instagram?.username || "").toLowerCase() !==
-    expectedUsername.toLowerCase()
-  ) {
+async function resolvePageInstagramAccount({
+  fetchImpl,
+  facebookBase,
+  page,
+  expectedUsername,
+  fallbackToken = "",
+}) {
+  const pageToken = String(page?.access_token || fallbackToken || "").trim();
+  const instagramId = String(page?.instagram_business_account?.id || "").trim();
+  if (!pageToken || !instagramId) return null;
+
+  const instagram = await requestJson(
+    fetchImpl,
+    `${facebookBase}/${encodeURIComponent(instagramId)}?fields=id,username`,
+    pageToken,
+  );
+  if (!instagram.ok) return null;
+
+  const username = String(instagram.body?.username || "").trim();
+  const userId = String(instagram.body?.id || instagramId).trim();
+  if (!userId || username.toLowerCase() !== expectedUsername.toLowerCase()) {
     return null;
   }
-  const pageToken = String(page?.access_token || fallbackToken || "").trim();
-  const userId = String(instagram?.id || "").trim();
-  if (!pageToken || !userId) return null;
+
   return {
     mode: "facebook-login",
-    graphBase: null,
+    graphBase: facebookBase,
     accessToken: pageToken,
     userId,
-    username: instagram.username,
+    username,
   };
 }
 
@@ -81,26 +94,12 @@ export async function resolveInstagramSession({
 
   const facebookBase = `https://graph.facebook.com/${version}`;
 
-  // A token generated in Graph API Explorer can already be a Page token.
-  // In that case /me is the Page itself; asking that Page for an
-  // `access_token` field is invalid. Resolve its linked Instagram account
-  // first and reuse the supplied token as the Page token.
-  const pageSelfFields = "id,name,instagram_business_account{id,username}";
-  const pageSelf = await requestJson(
-    fetchImpl,
-    `${facebookBase}/me?fields=${encodeURIComponent(pageSelfFields)}`,
-    token,
-  );
-  if (pageSelf.ok) {
-    const account = accountFromPage(pageSelf.body, expected, token);
-    if (account) return { ...account, graphBase: facebookBase };
-  }
-
-  // Otherwise treat the supplied credential as a Facebook User token and
-  // resolve the Page token through /me/accounts, which is Meta's documented
-  // Facebook Login flow for Instagram Professional accounts.
+  // Meta's documented Facebook Login flow is:
+  // User token -> /me/accounts -> Page Access Token + instagram_business_account.id
+  // -> query the IG user separately. Avoid requesting nested `username` from
+  // /me/accounts because availability can vary by object/context.
   const pageListFields =
-    "id,name,access_token,instagram_business_account{id,username}";
+    "id,name,access_token,tasks,instagram_business_account";
   const pages = await requestJson(
     fetchImpl,
     `${facebookBase}/me/accounts?fields=${encodeURIComponent(pageListFields)}&limit=100`,
@@ -108,18 +107,58 @@ export async function resolveInstagramSession({
   );
   if (pages.ok && Array.isArray(pages.body?.data)) {
     for (const page of pages.body.data) {
-      const account = accountFromPage(page, expected);
-      if (account) return { ...account, graphBase: facebookBase };
+      const account = await resolvePageInstagramAccount({
+        fetchImpl,
+        facebookBase,
+        page,
+        expectedUsername: expected,
+      });
+      if (account) return account;
+    }
+  }
+
+  // A Graph API Explorer credential may already be a Page Access Token.
+  // Identify /me safely first, then query that object as a Page. This avoids
+  // asking a User object for Page-only fields and producing misleading #100s.
+  const me = await requestJson(
+    fetchImpl,
+    `${facebookBase}/me?fields=id,name`,
+    token,
+  );
+  let pageSelf = null;
+  if (me.ok && String(me.body?.id || "").trim()) {
+    const objectId = String(me.body.id).trim();
+    pageSelf = await requestJson(
+      fetchImpl,
+      `${facebookBase}/${encodeURIComponent(objectId)}?fields=id,name,instagram_business_account`,
+      token,
+    );
+    if (pageSelf.ok) {
+      const account = await resolvePageInstagramAccount({
+        fetchImpl,
+        facebookBase,
+        page: pageSelf.body,
+        expectedUsername: expected,
+        fallbackToken: token,
+      });
+      if (account) return account;
     }
   }
 
   const directMessage = direct.body?.error?.message || `HTTP ${direct.status}`;
-  const facebookMessage =
-    pages.body?.error?.message ||
-    pageSelf.body?.error?.message ||
-    `HTTP ${pages.status}`;
+  const pageCount =
+    pages.ok && Array.isArray(pages.body?.data) ? pages.body.data.length : null;
+  const pagesMessage = pages.ok
+    ? `managed-pages=${pageCount}`
+    : pages.body?.error?.message || `HTTP ${pages.status}`;
+  const selfMessage = pageSelf
+    ? pageSelf.ok
+      ? "self-object-has-no-linked-instagram"
+      : pageSelf.body?.error?.message || `HTTP ${pageSelf.status}`
+    : me.body?.error?.message || `HTTP ${me.status}`;
+
   throw new Error(
-    `Token rejected for Instagram Login (${directMessage}) and no Facebook Page connected to @${expected} was found (${facebookMessage}).`,
+    `Token rejected for Instagram Login (${directMessage}); Facebook resolution failed (${pagesMessage}; self=${selfMessage}). Expected linked professional account @${expected}.`,
   );
 }
 
