@@ -42,7 +42,7 @@ jobs:
 
           public_dir="$RUNNER_TEMP/atlas-news-public-readonly"
           new_snapshot="$GITHUB_WORKSPACE/.artifacts/funds/funds-beagf.json"
-          git clone --depth 1 https://github.com/EldeSiempre100/EldeSiempre100.github.io.git "$public_dir"
+          git clone --depth 1 https://github.com/Atlasnews-media/Atlasnews-media.github.io.git "$public_dir"
 
           target="$public_dir/data/funds-beagf.json"
           test -f "$target"
@@ -85,7 +85,7 @@ jobs:
           new_snapshot="$GITHUB_WORKSPACE/.artifacts/funds/funds-beagf.json"
           target_relative="data/funds-beagf.json"
 
-          git clone --depth 1 git@github.com:EldeSiempre100/EldeSiempre100.github.io.git "$public_dir"
+          git clone --depth 1 git@github.com:Atlasnews-media/Atlasnews-media.github.io.git "$public_dir"
           target="$public_dir/$target_relative"
 
           new_as_of="$(jq -r '.asOf' "$new_snapshot")"
