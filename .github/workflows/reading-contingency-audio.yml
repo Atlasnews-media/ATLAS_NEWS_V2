@@ -1,0 +1,185 @@
+name: AUDIO CONTINGENCIA — Dora
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "audio/scripts/readings/**"
+      - "src/content/readings/**"
+      - "scripts/generate-reading-audio.py"
+      - "scripts/audio_speech.py"
+      - "scripts/test_audio_speech.py"
+      - "config/audio/**"
+      - "src/components/ReadingAudio.astro"
+      - "src/pages/lecturas/[id].astro"
+      - ".github/workflows/reading-contingency-audio.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: atlas-news-reading-audio
+  cancel-in-progress: false
+
+jobs:
+  contingency-audio:
+    name: Generar audio de Contingencia con Dora
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    env:
+      ATLAS_SOURCE_SHA: ${{ github.sha }}
+
+    steps:
+      - name: Descargar repositorio
+        uses: actions/checkout@v5
+        with:
+          fetch-depth: 2
+
+      - name: Validar Speech V5 y Lexicon
+        run: python3 scripts/test_audio_speech.py
+
+      - name: Detectar lecturas de Contingencia con guion
+        id: readings
+        shell: bash
+        run: |
+          set -euo pipefail
+          ids_file="$RUNNER_TEMP/contingency-reading-ids.txt"
+          : > "$ids_file"
+
+          if [[ "$GITHUB_EVENT_NAME" == "workflow_dispatch" ]]; then
+            find audio/scripts/readings -maxdepth 1 -type f -name '*.txt' -printf '%f\n' 2>/dev/null \
+              | sed 's/\.txt$//' >> "$ids_file" || true
+          else
+            git diff-tree --no-commit-id --name-only -r HEAD \
+              | grep -E '^(audio/scripts/readings/.*\.txt|src/content/readings/.*\.md)$' \
+              | sed -E 's#^(audio/scripts/readings/|src/content/readings/)##; s/\.(txt|md)$//' \
+              >> "$ids_file" || true
+          fi
+
+          sort -u "$ids_file" -o "$ids_file"
+          filtered="$RUNNER_TEMP/contingency-reading-ids-filtered.txt"
+          : > "$filtered"
+          while IFS= read -r id; do
+            [[ -z "$id" ]] && continue
+            [[ -f "audio/scripts/readings/${id}.txt" ]] || continue
+            [[ -f "src/content/readings/${id}.md" ]] || continue
+            grep -Eq '^status:[[:space:]]*["'"']?published["'"']?[[:space:]]*$' "src/content/readings/${id}.md" || continue
+            grep -Eq '^[[:space:]]*-[[:space:]]*contingencia[[:space:]]*$' "src/content/readings/${id}.md" || continue
+            echo "$id" >> "$filtered"
+          done < "$ids_file"
+
+          if [[ ! -s "$filtered" ]]; then
+            echo "needs_generation=false" >> "$GITHUB_OUTPUT"
+            echo "No hay lecturas de Contingencia con guion para generar."
+            exit 0
+          fi
+
+          mv "$filtered" "$ids_file"
+          echo "needs_generation=true" >> "$GITHUB_OUTPUT"
+          echo "ids_file=$ids_file" >> "$GITHUB_OUTPUT"
+          echo "Lecturas detectadas:"
+          cat "$ids_file"
+
+      - name: Preparar acceso al repositorio público
+        if: steps.readings.outputs.needs_generation == 'true'
+        env:
+          DEPLOY_KEY: ${{ secrets.ATLAS_PAGES_DEPLOY_KEY }}
+        run: |
+          set -euo pipefail
+          install -m 700 -d ~/.ssh
+          printf '%s\n' "$DEPLOY_KEY" > ~/.ssh/atlas_news_pages
+          chmod 600 ~/.ssh/atlas_news_pages
+          ssh-keyscan -H github.com >> ~/.ssh/known_hosts
+
+      - name: Descargar repositorio público
+        if: steps.readings.outputs.needs_generation == 'true'
+        env:
+          GIT_SSH_COMMAND: ssh -i ~/.ssh/atlas_news_pages -o IdentitiesOnly=yes
+        run: |
+          git clone --depth 1 git@github.com:Atlasnews-media/Atlasnews-media.github.io.git \
+            "$RUNNER_TEMP/atlas-news-public"
+
+      - name: Restaurar caché Kokoro
+        if: steps.readings.outputs.needs_generation == 'true'
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/huggingface
+          key: kokoro-82m-v1-${{ runner.os }}
+
+      - name: Preparar Kokoro
+        if: steps.readings.outputs.needs_generation == 'true'
+        run: |
+          set -euo pipefail
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq espeak-ng ffmpeg python3-venv
+          python3 -m venv "$RUNNER_TEMP/kokoro-reading-venv"
+          source "$RUNNER_TEMP/kokoro-reading-venv/bin/activate"
+          python -m pip install --quiet --upgrade pip
+          python -m pip install --quiet "kokoro==0.9.4" soundfile numpy
+
+      - name: Generar audio de Contingencia
+        if: steps.readings.outputs.needs_generation == 'true'
+        env:
+          ATLAS_PUBLIC_REPO_DIR: ${{ runner.temp }}/atlas-news-public
+          IDS_FILE: ${{ steps.readings.outputs.ids_file }}
+        run: |
+          set -euo pipefail
+          source "$RUNNER_TEMP/kokoro-reading-venv/bin/activate"
+          while IFS= read -r reading_id; do
+            [[ -z "$reading_id" ]] && continue
+            echo "Generando ${reading_id}"
+            ATLAS_READING_ID="$reading_id" python scripts/generate-reading-audio.py
+          done < "$IDS_FILE"
+
+      - name: Publicar audio estable
+        if: steps.readings.outputs.needs_generation == 'true'
+        env:
+          GIT_SSH_COMMAND: ssh -i ~/.ssh/atlas_news_pages -o IdentitiesOnly=yes
+        run: |
+          set -euo pipefail
+          cd "$RUNNER_TEMP/atlas-news-public"
+          git config user.name "ATLAS NEWS AUDIO"
+          git config user.email "actions@users.noreply.github.com"
+          git add audio/readings/
+
+          if git diff --cached --quiet; then
+            echo "Audio de Contingencia ya estaba vigente; no se crea commit."
+            exit 0
+          fi
+
+          git commit -m "Audio Contingencia — Dora"
+          for attempt in 1 2; do
+            git pull --rebase origin main
+            if git push origin main; then
+              exit 0
+            fi
+            if [[ "$attempt" -eq 2 ]]; then
+              echo "No fue posible publicar el audio tras un retry controlado." >&2
+              exit 1
+            fi
+          done
+
+      - name: Verificar contrato publicado
+        if: steps.readings.outputs.needs_generation == 'true'
+        env:
+          IDS_FILE: ${{ steps.readings.outputs.ids_file }}
+        run: |
+          set -euo pipefail
+          cd "$RUNNER_TEMP/atlas-news-public"
+          while IFS= read -r reading_id; do
+            [[ -z "$reading_id" ]] && continue
+            metadata="audio/readings/${reading_id}.json"
+            mp3="audio/readings/${reading_id}.mp3"
+            test -s "$metadata"
+            test -s "$mp3"
+            jq -e --arg id "$reading_id" '
+              .status == "published" and
+              .production == true and
+              .audioType == "contingency" and
+              .sourceId == $id and
+              .voice == "ef_dora" and
+              .durationSeconds >= 100 and
+              .durationSeconds <= 220
+            ' "$metadata" >/dev/null
+          done < "$IDS_FILE"
