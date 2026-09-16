@@ -17,6 +17,10 @@ source:
   url: "https://www.federalreserve.gov/newsevents/pressreleases/monetary20260916a.htm"
   publishedAt: "2026-09-16T14:00:00-04:00"
 author: "ATLAS NEWS"
+audio:
+  src: "/audio/readings/2026-09-16-reading-fed-sube-tasas-senal-hawkish.mp3"
+  durationLabel: "3 min"
+  voice: "Dora"
 editorialVisual:
   src: "https://commons.wikimedia.org/wiki/Special:FilePath/Eccles%20Building%20%2826088200676%29.jpg?width=1280"
   alt: "Edificio Marriner S. Eccles, sede de la Reserva Federal de Estados Unidos en Washington."

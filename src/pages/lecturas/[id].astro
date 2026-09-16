@@ -1,6 +1,7 @@
 ---
 import { render } from "astro:content";
 import ArticleHeader from "../../components/ArticleHeader.astro";
+import ReadingAudio from "../../components/ReadingAudio.astro";
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import {
   formatEditorialDate,
@@ -46,6 +47,9 @@ const visual = resolveFrontPageVisual({
       visual={visual}
     />
     <article class="prose"><Content /></article>
+    <div class="reading-audio-slot">
+      <ReadingAudio audio={reading.data.audio} />
+    </div>
     <p class="source">
       <strong>Fuente original:</strong>
       <a href={reading.data.source.url}>{reading.data.source.name}</a>
@@ -60,7 +64,7 @@ const visual = resolveFrontPageVisual({
   }
   .prose {
     max-width: 52rem;
-    margin: 2.5rem auto 3.5rem;
+    margin: 2.5rem auto 2rem;
     font-size: 1.1rem;
     line-height: 1.72;
   }
@@ -85,9 +89,13 @@ const visual = resolveFrontPageVisual({
     border-bottom: 2px solid var(--rule);
     font: 700 1.25rem/1.45 var(--serif);
   }
+  .reading-audio-slot {
+    max-width: 52rem;
+    margin: 0 auto;
+  }
   .source {
     max-width: 52rem;
-    margin: 4rem auto;
+    margin: 0 auto 4rem;
     padding-top: 1.5rem;
     border-top: 4px double var(--rule);
   }

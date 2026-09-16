@@ -18,10 +18,10 @@ const { audio } = Astro.props;
   hidden={!audio}
 >
   <div class="audio-copy">
-    <p class="audio-kicker">Escuchar el análisis de Contingencia</p>
+    <p class="audio-kicker">Escuchar la Contingencia</p>
     <p>
-      Una conversación breve para entender qué hay detrás de las señales que
-      requieren contexto adicional.
+      Una síntesis breve de ATLAS NEWS para escuchar la noticia, sus señales y
+      sus límites.
     </p>
   </div>
   <div class="audio-player">
@@ -39,9 +39,9 @@ const { audio } = Astro.props;
     grid-template-columns: minmax(0, 1.4fr) minmax(18rem, 1fr);
     gap: clamp(1.25rem, 4vw, 3rem);
     align-items: center;
-    margin-top: 1.75rem;
+    margin: 0;
     padding: 1.25rem 0 1.5rem;
-    border-top: 1px solid var(--rule);
+    border-top: 4px double var(--rule);
   }
   .reading-audio[hidden] {
     display: none;
@@ -70,7 +70,6 @@ const { audio } = Astro.props;
     .reading-audio {
       grid-template-columns: 1fr;
       gap: 1rem;
-      margin-top: 1.35rem;
       padding: 1.1rem 0 1.25rem;
     }
   }
