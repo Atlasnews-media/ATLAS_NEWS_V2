@@ -259,7 +259,7 @@ def frame(index: int, contract: Contract) -> str:
 
 
 def scene_specs(contract: Contract) -> list[tuple[str, str, str]]:
-    host = urlparse(contract.canonical_url).hostname or "eldesiempre100.github.io"
+    host = urlparse(contract.canonical_url).hostname or "atlasnews-media.github.io"
     specs: list[tuple[str, str, str]] = [("Titular", contract.title, contract.dek)]
     for index, item in enumerate(contract.highlights, 1):
         specs.append((f"En una mirada {index}", item["label"], item["text"]))
