@@ -49,7 +49,7 @@ jobs:
         env:
           GIT_SSH_COMMAND: ssh -i ~/.ssh/atlas_news_pages -o IdentitiesOnly=yes
         run: |
-          git clone --depth 1 git@github.com:EldeSiempre100/EldeSiempre100.github.io.git \
+          git clone --depth 1 git@github.com:Atlasnews-media/Atlasnews-media.github.io.git \
             "$RUNNER_TEMP/atlas-news-public"
 
       - name: Planificar edición sonora diaria

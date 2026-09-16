@@ -51,7 +51,7 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 15
     env:
-      ATLAS_PUBLIC_STATUS_URL: https://eldesiempre100.github.io/status.json
+      ATLAS_PUBLIC_STATUS_URL: https://atlasnews-media.github.io/status.json
       ATLAS_REEL_CONTRACT: tools/reel_maker/.generated/reel-contract.json
 
     steps:
@@ -254,7 +254,7 @@ jobs:
               .version == "2" and
               .sourceCommit == $source and
               .sourceId == $source_id and
-              .canonicalUrl == ("https://eldesiempre100.github.io/ediciones/" + $edition + "/") and
+              .canonicalUrl == ("https://atlasnews-media.github.io/ediciones/" + $edition + "/") and
               (.editionNumber | type == "number" and . >= 1) and
               (.highlights | length == 5)
             ' "$contract" >/dev/null || {

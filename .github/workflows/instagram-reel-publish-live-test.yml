@@ -34,7 +34,7 @@ jobs:
     timeout-minutes: 20
     env:
       REQUEST_FILE: ops/instagram-reel-requests/2026-09-14.json
-      ATLAS_PUBLIC_STATUS_URL: https://eldesiempre100.github.io/status.json
+      ATLAS_PUBLIC_STATUS_URL: https://atlasnews-media.github.io/status.json
       ATLAS_REEL_CONTRACT: tools/reel_maker/.generated/reel-contract.json
       INSTAGRAM_API_VERSION: v23.0
       INSTAGRAM_EXPECTED_USERNAME: _atlas_news
@@ -181,7 +181,7 @@ jobs:
           chmod 600 ~/.ssh/atlas_news_pages
           ssh-keyscan -H github.com >> ~/.ssh/known_hosts
           GIT_SSH_COMMAND='ssh -i ~/.ssh/atlas_news_pages -o IdentitiesOnly=yes' \
-            git clone --depth 1 --branch social-assets git@github.com:EldeSiempre100/EldeSiempre100.github.io.git _social_assets
+            git clone --depth 1 --branch social-assets git@github.com:Atlasnews-media/Atlasnews-media.github.io.git _social_assets
           git -C _social_assets config user.name "github-actions[bot]"
           git -C _social_assets config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
@@ -217,7 +217,7 @@ jobs:
             git -C _social_assets commit -m "social-assets: stage Reel ${SOURCE_COMMIT::7}"
             git -C _social_assets push origin HEAD:social-assets
           fi
-          video_url="https://raw.githubusercontent.com/EldeSiempre100/EldeSiempre100.github.io/social-assets/${stage_dir}/atlas-news-reel.mp4"
+          video_url="https://raw.githubusercontent.com/Atlasnews-media/Atlasnews-media.github.io/social-assets/${stage_dir}/atlas-news-reel.mp4"
           for attempt in 1 2 3 4 5 6; do
             tmp="$(mktemp --suffix=.mp4)"
             code="$(curl -L -sS -o "$tmp" -w '%{http_code}' "$video_url" || true)"

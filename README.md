@@ -19,9 +19,9 @@ Ningún candidato de Radar o del Buzón se publica automáticamente.
 
 ## Sitio público
 
-- [Ver ATLAS NEWS](https://eldesiempre100.github.io/)
-- [Ver estado de publicación](https://eldesiempre100.github.io/estado/)
-- [Consultar manifiesto JSON](https://eldesiempre100.github.io/status.json)
+- [Ver ATLAS NEWS](https://atlasnews-media.github.io/)
+- [Ver estado de publicación](https://atlasnews-media.github.io/estado/)
+- [Consultar manifiesto JSON](https://atlasnews-media.github.io/status.json)
 
 El código y el contenido fuente permanecen en el repositorio privado. GitHub Actions publica únicamente la salida estática en `EldeSiempre100.github.io` después de validar cada cambio aceptado en `main`.
 

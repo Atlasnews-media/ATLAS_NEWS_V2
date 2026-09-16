@@ -122,7 +122,7 @@ def main() -> int:
         "version": "2",
         "sourceCommit": source_commit.lower(),
         "sourceId": source_id,
-        "canonicalUrl": f"https://eldesiempre100.github.io/ediciones/{edition_id}/",
+        "canonicalUrl": f"https://atlasnews-media.github.io/ediciones/{edition_id}/",
         "publishedDate": published_at,
         "editionNumber": issue_number,
         "productType": "daily",

@@ -42,7 +42,7 @@ jobs:
       ATLAS_SOURCE_COMMIT: ${{ github.event_name == 'workflow_run' && github.event.workflow_run.head_sha || inputs.source_commit }}
       ATLAS_RETRY_DEPTH: ${{ github.event_name == 'workflow_dispatch' && inputs.retry_depth || '0' }}
       ATLAS_RETRY_REASON: ${{ github.event_name == 'workflow_dispatch' && inputs.retry_reason || 'publisher-workflow-run' }}
-      ATLAS_PUBLIC_STATUS_URL: https://eldesiempre100.github.io/status.json
+      ATLAS_PUBLIC_STATUS_URL: https://atlasnews-media.github.io/status.json
       ATLAS_BLOCKED_SOURCE_COMMIT: 74e4d789383cce8d3b7a75679ecb263576d3ac70
       INSTAGRAM_API_VERSION: v23.0
       INSTAGRAM_EXPECTED_USERNAME: _atlas_news
@@ -91,7 +91,7 @@ jobs:
           edition_id="$(basename "$source_id")"
           edition_id="${edition_id%.md}"
           edition_id="${edition_id%.mdx}"
-          canonical="https://eldesiempre100.github.io/ediciones/${edition_id}/"
+          canonical="https://atlasnews-media.github.io/ediciones/${edition_id}/"
 
           echo "eligible=true" >> "$GITHUB_OUTPUT"
           echo "source_id=$source_id" >> "$GITHUB_OUTPUT"
@@ -248,7 +248,7 @@ jobs:
         run: |
           set -euo pipefail
           git clone --depth 1 --branch social-assets \
-            git@github.com:EldeSiempre100/EldeSiempre100.github.io.git \
+            git@github.com:Atlasnews-media/Atlasnews-media.github.io.git \
             _social_assets
 
       - name: Enforce sourceCommit idempotency before render or Meta
@@ -482,7 +482,7 @@ jobs:
 
           canonical_path="$(node -e '
             const u = new URL(process.argv[1]);
-            if (u.hostname.toLowerCase() !== "eldesiempre100.github.io") process.exit(2);
+            if (u.hostname.toLowerCase() !== "atlasnews-media.github.io") process.exit(2);
             const p = u.pathname.endsWith("/") ? u.pathname : `${u.pathname}/`;
             if (!/^\/(ediciones|nacional|mercados|lecturas)\/[^/]+\/$/.test(p)) process.exit(3);
             process.stdout.write(p);
@@ -492,7 +492,7 @@ jobs:
           mkdir -p "_social_assets/$share_dir"
           cp tools/social-renderer/output/atlas-news-social-card-1200x630.png "_social_assets/$share_file"
 
-          share_url="https://raw.githubusercontent.com/EldeSiempre100/EldeSiempre100.github.io/social-assets/${share_file}"
+          share_url="https://raw.githubusercontent.com/Atlasnews-media/Atlasnews-media.github.io/social-assets/${share_file}"
           manifest="_social_assets/share/manifest.json"
           if [ ! -f "$manifest" ]; then
             printf '{}\n' > "$manifest"
@@ -514,7 +514,7 @@ jobs:
             git push origin HEAD:social-assets
           fi
 
-          base_url="https://raw.githubusercontent.com/EldeSiempre100/EldeSiempre100.github.io/social-assets/${stage_dir}"
+          base_url="https://raw.githubusercontent.com/Atlasnews-media/Atlasnews-media.github.io/social-assets/${stage_dir}"
           echo "SOCIAL_IMAGE_BASE_URL=$base_url" >> "$GITHUB_ENV"
           echo "stage_dir=$stage_dir" >> "$GITHUB_OUTPUT"
           echo "share_path=$canonical_path" >> "$GITHUB_OUTPUT"

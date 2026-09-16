@@ -105,7 +105,7 @@ async function fetchWithTimeout(url) {
   return fetch(url, {
     headers: {
       Accept: "*/*",
-      "User-Agent": "ATLAS-NEWS/1.0 (+https://eldesiempre100.github.io/)",
+      "User-Agent": "ATLAS-NEWS/1.0 (+https://atlasnews-media.github.io/)",
     },
     redirect: "follow",
     signal: AbortSignal.timeout(FETCH_TIMEOUT_MS),

@@ -3,8 +3,8 @@ import { mkdir, readFile, writeFile } from "node:fs/promises";
 const CACHE_DIR = new URL("../.atlas-cache/", import.meta.url);
 const CACHE_PATH = new URL("front-page-visual-locks.json", CACHE_DIR);
 const SOURCES = [
-  "https://eldesiempre100.github.io/data/front-page-visual-locks.json",
-  "https://raw.githubusercontent.com/EldeSiempre100/EldeSiempre100.github.io/main/data/front-page-visual-locks.json",
+  "https://atlasnews-media.github.io/data/front-page-visual-locks.json",
+  "https://raw.githubusercontent.com/Atlasnews-media/Atlasnews-media.github.io/main/data/front-page-visual-locks.json",
 ];
 const TIMEOUT_MS = 4_000;
 const VISUAL_FIELDS = [

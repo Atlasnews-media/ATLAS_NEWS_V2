@@ -9,7 +9,7 @@ ATLAS NEWS utiliza GitHub como fuente editorial y GitHub Pages como alojamiento:
 3. Si cumple el contrato editorial y contiene fuentes primarias, se registra con estado `published`; si falta algún requisito, queda como `draft`.
 4. El cambio llega a la rama `main` del repositorio privado.
 5. GitHub Actions valida el contrato, ejecuta Astro y publica únicamente la salida web en el repositorio público.
-6. GitHub Pages actualiza `https://eldesiempre100.github.io/`.
+6. GitHub Pages actualiza `https://atlasnews-media.github.io/`.
 
 ## Separación de responsabilidades
 
