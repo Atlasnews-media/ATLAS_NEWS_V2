@@ -11,60 +11,9 @@ const HISTORY_DAYS = 30;
 const DAY_MS = 86_400_000;
 const INDICATORS_API_BASE =
   process.env.ATLAS_INDICATORS_API_BASE ?? "https://mindicador.cl/api";
-
-// FASE 1 — recuperación controlada.
-// Último histórico válido publicado antes de los timeouts de MiIndicador.
-// Fuente canónica: producción V1 del 2026-09-15T03:12:26.447Z.
-// Este bloque es temporal y debe ser sustituido en FASE 2 por persistencia
-// automática del último histórico válido.
-const RESTORED_HISTORY = {
-  usdclp: [
-    { date: "2026-08-17", value: 913.15 },
-    { date: "2026-08-18", value: 914.19 },
-    { date: "2026-08-19", value: 922.12 },
-    { date: "2026-08-20", value: 920.26 },
-    { date: "2026-08-21", value: 923.23 },
-    { date: "2026-08-24", value: 918.17 },
-    { date: "2026-08-25", value: 914.64 },
-    { date: "2026-08-26", value: 911.43 },
-    { date: "2026-08-27", value: 918.42 },
-    { date: "2026-08-28", value: 925.25 },
-    { date: "2026-08-31", value: 929.18 },
-    { date: "2026-09-01", value: 933.4 },
-    { date: "2026-09-02", value: 936.86 },
-    { date: "2026-09-03", value: 936.32 },
-    { date: "2026-09-04", value: 933.47 },
-    { date: "2026-09-07", value: 934.35 },
-    { date: "2026-09-08", value: 933.82 },
-    { date: "2026-09-09", value: 926.94 },
-    { date: "2026-09-10", value: 925.97 },
-    { date: "2026-09-11", value: 937.17 },
-    { date: "2026-09-14", value: 940.91 },
-  ],
-  copper: [
-    { date: "2026-08-17", value: 6.53 },
-    { date: "2026-08-18", value: 6.61 },
-    { date: "2026-08-19", value: 6.62 },
-    { date: "2026-08-20", value: 6.46 },
-    { date: "2026-08-21", value: 6.52 },
-    { date: "2026-08-24", value: 6.4 },
-    { date: "2026-08-25", value: 6.48 },
-    { date: "2026-08-26", value: 6.51 },
-    { date: "2026-08-27", value: 6.58 },
-    { date: "2026-08-28", value: 6.56 },
-    { date: "2026-08-31", value: 6.56 },
-    { date: "2026-09-01", value: 6.55 },
-    { date: "2026-09-02", value: 6.55 },
-    { date: "2026-09-03", value: 6.53 },
-    { date: "2026-09-04", value: 6.49 },
-    { date: "2026-09-07", value: 6.53 },
-    { date: "2026-09-08", value: 6.57 },
-    { date: "2026-09-09", value: 6.62 },
-    { date: "2026-09-10", value: 6.69 },
-    { date: "2026-09-11", value: 6.72 },
-    { date: "2026-09-14", value: 6.45 },
-  ],
-};
+const PUBLISHED_MARKET_SNAPSHOT_URL =
+  process.env.ATLAS_PUBLIC_MARKET_SNAPSHOT_URL ??
+  "https://atlasnews-media.github.io/data/market-pulse.json";
 
 function dateKey(value = new Date()) {
   const parts = new Intl.DateTimeFormat("en-CA", {
@@ -272,12 +221,85 @@ const definitions = [
   },
 ];
 
+function recoveredAt(snapshot) {
+  for (const value of [
+    snapshot?.historyGeneratedAt,
+    snapshot?.generatedAt,
+    snapshot?.freshnessCheckedAt,
+  ]) {
+    if (typeof value === "string" && Number.isFinite(Date.parse(value))) {
+      return value;
+    }
+  }
+  return null;
+}
+
+function validatePersistedHistory(snapshot, now = new Date()) {
+  if (!snapshot || typeof snapshot !== "object") {
+    throw new Error("El snapshot público no es un objeto válido.");
+  }
+  if (!Array.isArray(snapshot.history)) {
+    throw new Error("El snapshot público no contiene históricos.");
+  }
+
+  const storedById = new Map(snapshot.history.map((entry) => [entry?.id, entry]));
+  const validById = new Map();
+
+  for (const definition of definitions) {
+    const stored = storedById.get(definition.id);
+    if (!stored || stored.unit !== definition.unit) continue;
+
+    const points = normalizePoints(stored.points ?? [], now);
+    if (points.length < 2) continue;
+
+    validById.set(definition.id, {
+      id: definition.id,
+      label: definition.label,
+      unit: definition.unit,
+      provider:
+        typeof stored.provider === "string" && stored.provider.trim()
+          ? stored.provider
+          : "published-snapshot",
+      sourceUrl:
+        typeof stored.sourceUrl === "string" && stored.sourceUrl.trim()
+          ? stored.sourceUrl
+          : PUBLISHED_MARKET_SNAPSHOT_URL,
+      points,
+      recoveredFrom: recoveredAt(snapshot),
+    });
+  }
+
+  if (validById.size === 0) {
+    throw new Error("El snapshot público no contiene series históricas válidas.");
+  }
+
+  return validById;
+}
+
+async function loadPublishedHistory(now = new Date()) {
+  const separator = PUBLISHED_MARKET_SNAPSHOT_URL.includes("?") ? "&" : "?";
+  const snapshot = await fetchJson(
+    `${PUBLISHED_MARKET_SNAPSHOT_URL}${separator}historyFallback=${Date.now()}`,
+  );
+  return validatePersistedHistory(snapshot, now);
+}
+
 const snapshot = JSON.parse(await readFile(marketSnapshotPath, "utf8"));
 const results = await Promise.allSettled(
   definitions.map((definition) => definition.fetch()),
 );
 const history = [];
 const historyDiagnostics = [];
+
+let persistedHistory = new Map();
+let persistedHistoryError = null;
+if (results.some((result) => result.status === "rejected")) {
+  try {
+    persistedHistory = await loadPublishedHistory();
+  } catch (error) {
+    persistedHistoryError = error.message;
+  }
+}
 
 results.forEach((result, index) => {
   const definition = definitions[index];
@@ -299,32 +321,36 @@ results.forEach((result, index) => {
     return;
   }
 
-  const restoredPoints = normalizePoints(RESTORED_HISTORY[definition.id] ?? []);
-  if (restoredPoints.length >= 2) {
+  const persisted = persistedHistory.get(definition.id);
+  if (persisted) {
     history.push({
-      id: definition.id,
-      label: definition.label,
-      unit: definition.unit,
-      provider: "mindicador",
-      sourceUrl: "https://mindicador.cl/",
-      points: restoredPoints,
+      id: persisted.id,
+      label: persisted.label,
+      unit: persisted.unit,
+      provider: persisted.provider,
+      sourceUrl: persisted.sourceUrl,
+      points: persisted.points,
     });
     historyDiagnostics.push({
       id: definition.id,
       ok: true,
-      provider: "mindicador",
-      observations: restoredPoints.length,
+      provider: persisted.provider,
+      observations: persisted.points.length,
       recovered: true,
-      recoveredFrom: "2026-09-15T03:12:26.447Z",
+      recoverySource: "published-market-snapshot",
+      recoveredFrom: persisted.recoveredFrom,
       warning: result.reason?.message ?? String(result.reason),
     });
     return;
   }
 
+  const providerError = result.reason?.message ?? String(result.reason);
   historyDiagnostics.push({
     id: definition.id,
     ok: false,
-    error: result.reason?.message ?? String(result.reason),
+    error: persistedHistoryError
+      ? `${providerError} Persistencia: ${persistedHistoryError}`
+      : providerError,
   });
 });
 
@@ -352,6 +378,6 @@ for (const item of historyDiagnostics.filter((entry) => !entry.ok)) {
 }
 for (const item of historyDiagnostics.filter((entry) => entry.recovered)) {
   console.warn(
-    `Histórico ${item.id}: restaurado desde último snapshot válido tras fallo del proveedor (${item.warning}).`,
+    `Histórico ${item.id}: conservado desde el último snapshot público válido tras fallo del proveedor (${item.warning}).`,
   );
 }
