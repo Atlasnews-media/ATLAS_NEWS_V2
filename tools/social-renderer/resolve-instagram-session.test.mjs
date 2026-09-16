@@ -33,7 +33,9 @@ test("resolves a Facebook User token through managed Page and IG id", async () =
     fetchImpl: async (url, options) => {
       calls.push({ url, options });
       if (url.startsWith("https://graph.instagram.com/")) {
-        return response(401, { error: { message: "Invalid OAuth access token" } });
+        return response(401, {
+          error: { message: "Invalid OAuth access token" },
+        });
       }
       if (url.includes("/me/accounts?")) {
         return response(200, {
@@ -49,7 +51,10 @@ test("resolves a Facebook User token through managed Page and IG id", async () =
         });
       }
       if (url.includes("/ig-2?fields=id,username")) {
-        assert.equal(options.headers.Authorization, "Bearer facebook-page-token");
+        assert.equal(
+          options.headers.Authorization,
+          "Bearer facebook-page-token",
+        );
         return response(200, { id: "ig-2", username: "_atlas_news" });
       }
       throw new Error(`Unexpected request: ${url}`);
@@ -71,7 +76,9 @@ test("accepts a Facebook Page token directly", async () => {
     fetchImpl: async (url, options) => {
       calls.push({ url, options });
       if (url.startsWith("https://graph.instagram.com/")) {
-        return response(401, { error: { message: "Invalid OAuth access token" } });
+        return response(401, {
+          error: { message: "Invalid OAuth access token" },
+        });
       }
       if (url.includes("/me/accounts?")) {
         return response(400, { error: { message: "Not a User token" } });
@@ -87,7 +94,10 @@ test("accepts a Facebook Page token directly", async () => {
         });
       }
       if (url.includes("/ig-2?fields=id,username")) {
-        assert.equal(options.headers.Authorization, "Bearer facebook-page-token");
+        assert.equal(
+          options.headers.Authorization,
+          "Bearer facebook-page-token",
+        );
         return response(200, { id: "ig-2", username: "_atlas_news" });
       }
       throw new Error(`Unexpected request: ${url}`);
@@ -116,9 +126,13 @@ test("fails closed with useful diagnostics when User token has no managed linked
         if (url.endsWith("/me?fields=id,name")) {
           return response(200, { id: "person-1", name: "Operator" });
         }
-        if (url.includes("/person-1?fields=id,name,instagram_business_account")) {
+        if (
+          url.includes("/person-1?fields=id,name,instagram_business_account")
+        ) {
           return response(400, {
-            error: { message: "instagram_business_account is not a User field" },
+            error: {
+              message: "instagram_business_account is not a User field",
+            },
           });
         }
         throw new Error(`Unexpected request: ${url}`);
