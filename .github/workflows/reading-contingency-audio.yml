@@ -64,7 +64,7 @@ jobs:
             [[ -z "$id" ]] && continue
             [[ -f "audio/scripts/readings/${id}.txt" ]] || continue
             [[ -f "src/content/readings/${id}.md" ]] || continue
-            grep -Eq '^status:[[:space:]]*["'"']?published["'"']?[[:space:]]*$' "src/content/readings/${id}.md" || continue
+            grep -Eq '^status:[[:space:]]*"?published"?[[:space:]]*$' "src/content/readings/${id}.md" || continue
             grep -Eq '^[[:space:]]*-[[:space:]]*contingencia[[:space:]]*$' "src/content/readings/${id}.md" || continue
             echo "$id" >> "$filtered"
           done < "$ids_file"
