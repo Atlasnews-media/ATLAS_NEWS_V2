@@ -1,10 +1,10 @@
 ---
 title: "La reforma de capitales sale a buscar inversión antes de probar su efecto en Chile"
 summary: "ChileDay Londres convierte la reforma al mercado de capitales en una señal de atracción de inversión, pero su impacto económico dependerá de la tramitación y de que amplíe efectivamente el financiamiento local."
-publishedAt: "2026-09-16T06:28:00-03:00"
+publishedAt: "2026-09-16T07:00:22-03:00"
 cutoffAt: "2026-09-16T06:27:00-03:00"
 section: "national"
-status: "draft"
+status: "published"
 tags:
   - chile
   - mercado-de-capitales
