@@ -25,7 +25,40 @@ test("accepts an Instagram Login token", async () => {
   assert.equal(session.userId, "ig-1");
 });
 
-test("resolves a Facebook Login token to its Page token", async () => {
+test("accepts a Facebook Page token directly", async () => {
+  const calls = [];
+  const session = await resolveInstagramSession({
+    accessToken: "facebook-page-token",
+    expectedUsername: "_atlas_news",
+    fetchImpl: async (url) => {
+      calls.push(url);
+      if (url.startsWith("https://graph.instagram.com/")) {
+        return response(401, {
+          error: { message: "Invalid OAuth access token" },
+        });
+      }
+      if (url.includes("/me?fields=")) {
+        return response(200, {
+          id: "page-1",
+          name: "ATLAS NEWS",
+          instagram_business_account: {
+            id: "ig-2",
+            username: "_atlas_news",
+          },
+        });
+      }
+      throw new Error(`Unexpected request: ${url}`);
+    },
+  });
+
+  assert.equal(session.mode, "facebook-login");
+  assert.equal(session.graphBase, "https://graph.facebook.com/v23.0");
+  assert.equal(session.accessToken, "facebook-page-token");
+  assert.equal(session.userId, "ig-2");
+  assert.equal(calls.length, 2);
+});
+
+test("resolves a Facebook User token to its Page token", async () => {
   const calls = [];
   const session = await resolveInstagramSession({
     accessToken: "facebook-user-token",
