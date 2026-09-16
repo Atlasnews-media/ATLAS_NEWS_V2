@@ -15,6 +15,11 @@
       (link) => link.href,
     ),
   );
+  const loadedInlineStyles = new Set(
+    Array.from(document.querySelectorAll("style"))
+      .map((style) => style.textContent?.trim() ?? "")
+      .filter(Boolean),
+  );
 
   function installStyles() {
     if (document.getElementById("atlas-workspace-calendar-companion-styles")) {
@@ -29,6 +34,14 @@
           margin-top: 1.1rem;
           padding-top: 0.45rem;
           border-top: 5px double var(--rule);
+        }
+
+        .desktop-workspace-calendar-companion .calendar-section .section-heading h2 {
+          font-size: 0.83rem !important;
+        }
+
+        .desktop-workspace-calendar-companion .calendar-section .section-heading span {
+          font-size: 0.47rem !important;
         }
       }
     `;
@@ -58,6 +71,17 @@
         });
       })
       .filter(Boolean);
+
+    sourceDocument.querySelectorAll("head style").forEach((source) => {
+      const cssText = source.textContent?.trim() ?? "";
+      if (!cssText || loadedInlineStyles.has(cssText)) return;
+
+      loadedInlineStyles.add(cssText);
+      const style = document.createElement("style");
+      style.dataset.atlasWorkspaceCalendarStyle = "inline";
+      style.textContent = cssText;
+      document.head.appendChild(style);
+    });
 
     await Promise.all(pending);
   }
