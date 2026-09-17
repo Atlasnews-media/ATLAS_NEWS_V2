@@ -189,4 +189,15 @@ const groups = [
       line-height: 1.3;
     }
   }
+
+  @media (min-width: 80rem) {
+    :global(
+      body:has(.desktop-workspace-panel)
+        .front-page
+        .edition-rail
+        .rail-title
+    ) {
+      font-size: clamp(2.2rem, 4.4vw, 4.25rem) !important;
+    }
+  }
 </style>
