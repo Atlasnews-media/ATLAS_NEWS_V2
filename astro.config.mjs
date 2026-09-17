@@ -1,4 +1,4 @@
-import { defineConfig } from "astro/config";
+import { defineConfig, fontProviders } from "astro/config";
 
 const analyticsWebsiteId =
   process.env.ATLAS_UMAMI_WEBSITE_ID?.trim() ||
@@ -231,6 +231,19 @@ function atlasDesktopSharedTransitions() {
 
 export default defineConfig({
   output: "static",
+  fonts: [
+    {
+      name: "Roboto Condensed",
+      cssVariable: "--font-atlas-sans",
+      provider: fontProviders.fontsource(),
+      weights: [400, 700, 800],
+      styles: ["normal"],
+      subsets: ["latin"],
+      formats: ["woff2"],
+      fallbacks: ["Arial", "sans-serif"],
+      display: "swap",
+    },
+  ],
   site: "https://atlasnews-media.github.io",
   integrations: [
     atlasWebAnalytics(),
