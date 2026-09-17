@@ -7,6 +7,7 @@ on:
       - ".github/workflows/carousel-template-preview.yml"
       - "tools/social-renderer/render-carousel-five-v2.mjs"
       - "tools/social-renderer/prepare-daily-contract.mjs"
+      - "tools/social-renderer/resolve-instagram-session.mjs"
       - "tools/social-renderer/assets/CARRUSEL_1.png"
       - "tools/social-renderer/assets/CARRUSEL_2.png"
       - "tools/social-renderer/assets/CARRUSEL_3.png"
@@ -27,6 +28,8 @@ jobs:
       ATLAS_SOCIAL_CONTRACT_OUTPUT: tools/social-renderer/.generated/daily-contract.json
       SOCIAL_PUBLICATION_STATUS: PUBLICACIÓN DISPONIBLE / VERIFICADA
       SOCIAL_EDITION_NUMBER: "046"
+      INSTAGRAM_API_VERSION: v23.0
+      INSTAGRAM_EXPECTED_USERNAME: _atlas_news
 
     steps:
       - name: Checkout preview branch and source history
@@ -56,7 +59,6 @@ jobs:
           done
 
       - name: Build live five-slide contract for Edition 046
-        id: contract
         run: |
           set -euo pipefail
           node tools/social-renderer/prepare-daily-contract.mjs
@@ -96,7 +98,7 @@ jobs:
             (.templates | length == 5)
           ' output-template/template-validation.json >/dev/null
 
-      - name: Verify Instagram secret and account without publishing
+      - name: Resolve Instagram session exactly like production
         env:
           INSTAGRAM_ACCESS_TOKEN: ${{ secrets.INSTAGRAM_ACCESS_TOKEN }}
         run: |
@@ -105,22 +107,29 @@ jobs:
             echo "BLOCKED_EXTERNAL: INSTAGRAM_ACCESS_TOKEN is missing."
             exit 4
           }
-          me="$(curl -fsSL \
-            -H "Authorization: Bearer ${INSTAGRAM_ACCESS_TOKEN}" \
-            -H 'User-Agent: ATLAS-NEWS-Social-DryRun/1.0' \
-            'https://graph.instagram.com/v23.0/me?fields=id,username')" || {
-              echo "BLOCKED_EXTERNAL: Instagram token rejected by /me."
-              exit 5
-            }
-          jq -e '.id | type == "string" and length > 0' <<<"$me" >/dev/null
-          username="$(jq -r '.username // empty' <<<"$me")"
-          test "$username" = "_atlas_news" || {
-            echo "BLOCKED_EXTERNAL: wrong Instagram account ${username:-<missing>}."
+          node tools/social-renderer/resolve-instagram-session.mjs
+
+      - name: Verify resolved Instagram account without publishing
+        run: |
+          set -euo pipefail
+          test "$INSTAGRAM_USERNAME" = "$INSTAGRAM_EXPECTED_USERNAME" || {
+            echo "BLOCKED_EXTERNAL: wrong Instagram account ${INSTAGRAM_USERNAME:-<missing>}."
             exit 6
           }
-          echo "Instagram secret accepted for @_atlas_news. No POST request was sent to Meta."
+          response="$(curl -fsSL \
+            -H "Authorization: Bearer ${INSTAGRAM_SESSION_TOKEN}" \
+            -H 'User-Agent: ATLAS-NEWS-Social-DryRun/2.0' \
+            "${INSTAGRAM_GRAPH_BASE}/${INSTAGRAM_USER_ID}?fields=id,username")" || {
+              echo "BLOCKED_EXTERNAL: resolved Instagram session rejected by read-only account lookup."
+              exit 7
+            }
+          jq -e --arg id "$INSTAGRAM_USER_ID" --arg username "$INSTAGRAM_EXPECTED_USERNAME" '
+            (.id | tostring) == $id and (.username | ascii_downcase) == ($username | ascii_downcase)
+          ' <<<"$response" >/dev/null
+          echo "Instagram secret/session accepted for @_atlas_news via ${INSTAGRAM_AUTH_MODE}. No POST request was sent to Meta."
 
       - name: Upload dry-run evidence
+        if: always()
         uses: actions/upload-artifact@v4
         with:
           name: atlas-news-carousel-046-dry-run-${{ github.run_id }}
@@ -128,5 +137,5 @@ jobs:
             tools/social-renderer/.generated/daily-contract.json
             tools/social-renderer/output-template/atlas-news-instagram-carousel-0*.png
             tools/social-renderer/output-template/template-validation.json
-          if-no-files-found: error
+          if-no-files-found: warn
           retention-days: 14
