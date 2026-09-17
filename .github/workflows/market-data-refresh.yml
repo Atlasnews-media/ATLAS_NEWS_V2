@@ -1,5 +1,6 @@
 name: Actualizar datos de mercado
 
+# Scheduler resync marker: 2026-09-16
 on:
   schedule:
     - cron: "7,22,37,52 11-23 * * 1-5"
