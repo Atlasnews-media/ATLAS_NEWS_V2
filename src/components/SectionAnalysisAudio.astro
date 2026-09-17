@@ -64,9 +64,9 @@ const titleId = `section-analysis-audio-${section}`;
       const entry = section ? metadata?.[section] : undefined;
       const ready = Boolean(
         expectedSourceId &&
-          entry?.status === "published" &&
-          entry?.sourceId === expectedSourceId &&
-          entry?.path,
+        entry?.status === "published" &&
+        entry?.sourceId === expectedSourceId &&
+        entry?.path,
       );
 
       if (!ready) {
