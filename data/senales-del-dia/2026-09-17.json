@@ -11,8 +11,14 @@
         "development": "Anderon, filial de IBM, cerró el 16 de septiembre un acuerdo final con el Departamento de Comercio de Estados Unidos por una ayuda de hasta US$1.000 millones bajo la CHIPS and Science Act. Los recursos financiarán investigación y desarrollo para ampliar la capacidad estadounidense de fabricar obleas cuánticas. La compañía opera en Albany, Nueva York, una planta de 300 milímetros dedicada exclusivamente a este tipo de producción.\n\nIBM respalda además el proyecto con otros US$1.000 millones. La instalación ya procesa obleas y ofrece fabricación para matrices de qubits superconductores, componentes de entrada y salida cuántica y cadenas de lectura. El rasgo relevante es industrial: Anderon busca funcionar como fabricante para distintos clientes del ecosistema, no sólo como capacidad interna de IBM.\n\nLa señal importa porque la computación cuántica empieza a enfrentar un cuello de botella distinto al puramente científico: fabricar dispositivos con procesos repetibles y escala suficiente. Una planta compartida puede reducir la necesidad de que cada desarrollador construya infraestructura propia y acelerar pruebas de nuevos diseños. Eso no resuelve los desafíos técnicos de la computación cuántica ni garantiza adopción comercial masiva, pero sí crea una capa manufacturera capaz de ampliar el acceso a experimentación y producción.",
         "anchor": "anderon-ibm-chips-foundry-cuantica-albany",
         "sources": [
-          {"name": "U.S. Department of Commerce / NIST", "url": "https://www.nist.gov/news-events/news/2026/09/department-commerce-announces-finalization-chips-rd-award-anderon"},
-          {"name": "IBM Newsroom", "url": "https://newsroom.ibm.com/2026-09-16-anderon%2C-an-ibm-company%2C-finalizes-agreement-with-the-u-s-department-of-commerce-for-a-1-billion-chips-award-to-accelerate-r-d-for-u-s-based-pure-play-quantum-foundry"}
+          {
+            "name": "U.S. Department of Commerce / NIST",
+            "url": "https://www.nist.gov/news-events/news/2026/09/department-commerce-announces-finalization-chips-rd-award-anderon"
+          },
+          {
+            "name": "IBM Newsroom",
+            "url": "https://newsroom.ibm.com/2026-09-16-anderon%2C-an-ibm-company%2C-finalizes-agreement-with-the-u-s-department-of-commerce-for-a-1-billion-chips-award-to-accelerate-r-d-for-u-s-based-pure-play-quantum-foundry"
+          }
         ]
       },
       {
@@ -22,8 +28,14 @@
         "development": "La Organización Mundial del Comercio publicó el 15 de septiembre su Informe sobre el Comercio Mundial 2026 y puso cifras al costo potencial de una mayor fragmentación. En un escenario de cooperación multilateral reforzada, sus simulaciones estiman que el PIB global podría ser 2,9% mayor y las exportaciones 17,9% superiores hacia 2050 frente a la trayectoria base.\n\nEl contraste es amplio. Un mundo dividido en bloques geopolíticos reduciría el PIB global 5,1% y las exportaciones 18,6%, mientras un sistema reemplazado por una red de acuerdos de libre comercio sin la OMC recortaría esas variables 6,9% y 26,9%, respectivamente. La organización presenta estos resultados como escenarios de simulación, no como pronósticos, y vincula la necesidad de adaptación con digitalización, inteligencia artificial, cadenas globales de valor, políticas industriales y tensiones geopolíticas.\n\nLa relevancia está en el mecanismo: reglas comunes reducen incertidumbre, costos de transacción y discriminación entre socios; su erosión aumenta la exposición a acuerdos parciales y a negociación basada en poder relativo. Para empresas e inversionistas, eso afecta dónde producir, cómo diversificar proveedores y qué mercados considerar estables. El informe no anticipa qué camino seguirá el sistema, pero cuantifica la magnitud económica de las alternativas.",
         "anchor": "omc-escenarios-fragmentacion-comercio-2050",
         "sources": [
-          {"name": "World Trade Organization", "url": "https://www.wto.org/english/news_e/news26_e/wtr_15sep26_483_e.htm"},
-          {"name": "Reuters", "url": "https://www.reuters.com/world/africa/wto-says-global-trade-system-critical-juncture-urges-reform-2026-09-15/"}
+          {
+            "name": "World Trade Organization",
+            "url": "https://www.wto.org/english/news_e/news26_e/wtr_15sep26_483_e.htm"
+          },
+          {
+            "name": "Reuters",
+            "url": "https://www.reuters.com/world/africa/wto-says-global-trade-system-critical-juncture-urges-reform-2026-09-15/"
+          }
         ]
       }
     ],
@@ -35,8 +47,14 @@
         "development": "La Superintendencia de Electricidad y Combustibles formuló cargos el 14 de septiembre contra Enel Distribución Chile por eventuales incumplimientos ligados a medidores que podían registrar consumo aun sin cargas eléctricas conectadas. La investigación surgió tras denuncias de familias de Pudahuel. La SEC señaló que el universo informado por la empresa supera 56.000 medidores Nansen instalados; esa cifra no significa que todos hayan sido confirmados con la anomalía.\n\nEl regulador ordenó suspender la facturación asociada a los equipos con anomalías, evitar cortes de suministro por esas deudas y reemplazar los medidores observados. La formulación de cargos abre un procedimiento sancionatorio y Enel dispone de plazo para presentar descargos. La empresa sostuvo que los equipos cuentan con las certificaciones correspondientes y atribuyó los registros detectados a una combinación acotada entre arquitectura de medición y condiciones específicas de ciertas instalaciones interiores.\n\nEl caso es materialmente relevante para Enel Chile porque Enel Distribución Chile forma parte de sus filiales y concentra el negocio de distribución del grupo en la Región Metropolitana. El episodio abre una tarea operacional y regulatoria concreta: revisar casos, corregir equipos, analizar facturación y efectuar regularizaciones comerciales cuando correspondan. La magnitud financiera final no está determinada; lo verificable hoy es el procedimiento, las medidas exigidas por la SEC y un universo de equipos suficientemente amplio como para requerir seguimiento.",
         "anchor": "enel-medidores-nansen-cargos-sec-pudahuel",
         "sources": [
-          {"name": "Superintendencia de Electricidad y Combustibles", "url": "https://www.sec.cl/sec-formula-cargos-a-enel-por-medicion-irregular-que-podria-afectar-a-mas-de-56-mil-clientes/"},
-          {"name": "Enel Distribución Chile", "url": "https://www.enel.cl/es/conoce-enel/prensa/press-enel-distribucion/d202609-declaracion-enel-distribucion.html"}
+          {
+            "name": "Superintendencia de Electricidad y Combustibles",
+            "url": "https://www.sec.cl/sec-formula-cargos-a-enel-por-medicion-irregular-que-podria-afectar-a-mas-de-56-mil-clientes/"
+          },
+          {
+            "name": "Enel Distribución Chile",
+            "url": "https://www.enel.cl/es/conoce-enel/prensa/press-enel-distribucion/d202609-declaracion-enel-distribucion.html"
+          }
         ]
       },
       {
@@ -46,7 +64,10 @@
         "development": "La Comisión para el Mercado Financiero publicó el 15 de septiembre la versión definitiva de la normativa que fortalece la administración del consentimiento en el Registro de Deuda Consolidada, REDEC. El ajuste modifica la NCG N°540 después de dos consultas públicas y busca mejorar la protección del deudor, las prácticas de las entidades reportantes y la capacidad de supervisión del regulador.\n\nLa regla adopta un enfoque de neutralidad tecnológica y contempla una implementación gradual. El marco del REDEC exige consentimiento expreso para que una entidad acceda a información individual de deuda cuando no existe una obligación crediticia vigente con ese reportante; ese acceso tiene límites temporales y debe quedar respaldado. El objetivo práctico es que otorgamiento, conservación, uso y revocación del consentimiento puedan ser trazables y verificables.\n\nLa señal económica es menos visible que una tasa o un impuesto, pero afecta la infraestructura del crédito. Un registro consolidado puede mejorar la evaluación de endeudamiento sólo si el acceso a datos sensibles tiene reglas confiables y auditables. Para bancos y otros reportantes, la norma implica adecuar procesos y sistemas; para los deudores, refuerza control sobre quién consulta su información. Su efecto dependerá de la implementación efectiva y de la calidad de los datos que alimentan el registro.",
         "anchor": "cmf-redec-consentimiento-trazabilidad-ncg540",
         "sources": [
-          {"name": "Comisión para el Mercado Financiero", "url": "https://cmfchile.cl/portal/prensa/625/w4-article-113512.html"}
+          {
+            "name": "Comisión para el Mercado Financiero",
+            "url": "https://cmfchile.cl/portal/prensa/625/w4-article-113512.html"
+          }
         ]
       }
     ],
@@ -58,8 +79,14 @@
         "development": "El Banco Central publicó las Estadísticas del Mercado de Valores del segundo trimestre de 2026: el stock de títulos de deuda emitidos por residentes alcanzó $410.158 miles de millones, equivalente a 116,1% del PIB. De ese total, $280.083 miles de millones estaban emitidos en el mercado local, con un aumento trimestral de $13.647 miles de millones explicado principalmente por instrumentos de intermediación financiera y bonos de Gobierno.\n\nLa señal también aparece por el lado de los compradores. Los bancos mostraron el mayor incremento de tenencias, especialmente en PDBC y bonos gubernamentales. Los inversionistas extranjeros aumentaron su cartera de bonos públicos y corporativos. Fondos mutuos y de inversión incorporaron certificados de depósito y deuda corporativa y soberana, mientras los fondos de pensiones elevaron posiciones en bonos de empresas no financieras, bancos y PDBC.\n\nMás que un movimiento diario de precios, la publicación muestra cómo se está distribuyendo la demanda por deuda chilena. Una base de compradores que incluye bancos, fondos locales, pensiones y extranjeros amplía las fuentes de absorción de nuevas emisiones. Al mismo tiempo, una mayor presencia externa vuelve relevante seguir la sensibilidad de esas posiciones a cambios globales de riesgo y tasas. Es una fotografía del segundo trimestre, no una lectura en tiempo real, pero entrega evidencia concreta sobre profundidad y composición del mercado.",
         "anchor": "deuda-chilena-tenencias-extranjeras-segundo-trimestre-2026",
         "sources": [
-          {"name": "Banco Central de Chile", "url": "https://www.bcentral.cl/es/areas/estadisticas/estadisticas-del-mercado-de-valores-de-renta-fija-e-intermediacion-financiera"},
-          {"name": "Banco Central de Chile — Estadísticas del Mercado de Valores 2T 2026", "url": "https://www.bcentral.cl/web/banco-central/contenido/-/details/publicaciones/estadistica/emv-segundo-trimestre-2026"}
+          {
+            "name": "Banco Central de Chile",
+            "url": "https://www.bcentral.cl/es/areas/estadisticas/estadisticas-del-mercado-de-valores-de-renta-fija-e-intermediacion-financiera"
+          },
+          {
+            "name": "Banco Central de Chile — Estadísticas del Mercado de Valores 2T 2026",
+            "url": "https://www.bcentral.cl/web/banco-central/contenido/-/details/publicaciones/estadistica/emv-segundo-trimestre-2026"
+          }
         ]
       },
       {
@@ -69,8 +96,14 @@
         "development": "El Senado de Estados Unidos no logró el 15 de septiembre cerrar el debate para avanzar con H.R. 3633, conocido como Clarity Act, que buscaba establecer un marco federal para la regulación de activos digitales. La votación de cloture fue rechazada y no alcanzó el umbral de tres quintos requerido, dejando la iniciativa detenida por ahora y con una moción de reconsideración presentada.\n\nLa reacción de mercado fue inmediata. Reuters informó que bitcoin cayó más de 5% mientras se hacía evidente que la votación fracasaría, su mayor descenso diario desde junio. Las acciones de Coinbase y Circle llegaron a retroceder cerca de 10%. El movimiento fue específico al ecosistema cripto y no depende del shock petrolero, de Hormuz ni del ajuste de rendimientos soberanos que dominó la edición principal de Mercados.\n\nEl mecanismo es regulatorio: sin una ley aprobada por el Congreso, la industria mantiene mayor dependencia de reglas y decisiones de la SEC y la CFTC, que pueden ser modificadas por futuras administraciones o enfrentar litigios. Eso prolonga la incertidumbre sobre clasificación de activos, intermediación y estructura de mercado. La votación no elimina la posibilidad de retomar el proyecto, pero sí retrasó una vía legislativa que el sector consideraba central para dar estabilidad al marco regulatorio estadounidense.",
         "anchor": "clarity-act-senado-bitcoin-coinbase-circle",
         "sources": [
-          {"name": "U.S. Senate — Roll Call Vote 234", "url": "https://www.senate.gov/legislative/LIS/roll_call_votes/vote1192/vote_119_2_00234.htm"},
-          {"name": "Reuters", "url": "https://www.reuters.com/legal/government/us-senate-vote-advancing-landmark-crypto-bill-2026-09-15/"}
+          {
+            "name": "U.S. Senate — Roll Call Vote 234",
+            "url": "https://www.senate.gov/legislative/LIS/roll_call_votes/vote1192/vote_119_2_00234.htm"
+          },
+          {
+            "name": "Reuters",
+            "url": "https://www.reuters.com/legal/government/us-senate-vote-advancing-landmark-crypto-bill-2026-09-15/"
+          }
         ]
       }
     ]
