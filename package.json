@@ -18,6 +18,7 @@
     "optimize:runtime": "node scripts/optimize-runtime-assets.mjs",
     "preupdate:indicators": "npm run validate:publication-provenance",
     "radar:discover": "node scripts/discover-radar-readings.mjs",
+    "signals:validate": "node scripts/validate-daily-signals.mjs",
     "status:generate": "node scripts/generate-publication-status.mjs",
     "sync:visual-locks": "node scripts/sync-visual-locks.mjs",
     "test:cover": "node scripts/test-cover-briefing-contract.mjs && node scripts/test-audio-cover-presentation.mjs",
@@ -26,7 +27,7 @@
     "validate:content": "node scripts/validate-content.mjs",
     "validate:publication-provenance": "bash scripts/validate-publication-provenance.sh",
     "validate:visuals": "node scripts/validate-front-page-visuals.mjs",
-    "validate:build": "node scripts/validate-build.mjs",
+    "validate:build": "node scripts/validate-build.mjs && node scripts/validate-morning-publish-target.mjs",
     "write:visual-locks": "node scripts/write-visual-locks.mjs"
   },
   "dependencies": {
