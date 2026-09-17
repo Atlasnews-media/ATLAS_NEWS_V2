@@ -1,4 +1,6 @@
 ---
+import { ClientRouter } from "astro:transitions";
+import DailyAudio from "../components/DailyAudio.astro";
 import "../styles/global.css";
 import "../styles/desktop-workspace-panel.css";
 import {
@@ -47,6 +49,7 @@ const sourceCommit = (
 
 const siteOrigin = Astro.site ?? Astro.url.origin;
 const canonicalUrl = new URL(Astro.url.pathname, siteOrigin).href;
+const isHome = Astro.url.pathname === "/";
 const isArticle = /^\/(ediciones|nacional|mercados|lecturas)\/[^/]+\/?$/.test(
   Astro.url.pathname,
 );
@@ -85,7 +88,7 @@ const isPrimarySectionLanding = [
 ---
 
 <!doctype html>
-<html lang="es">
+<html lang="es" transition:animate="none">
   <head>
     <meta charset="UTF-8" />
     <meta name="description" content={description} />
@@ -125,6 +128,7 @@ const isPrimarySectionLanding = [
     <link rel="apple-touch-icon" href="/brand/apple-touch-icon.png" />
     <link rel="manifest" href="/site.webmanifest" />
     <title>{title}</title>
+    <ClientRouter fallback="swap" />
   </head>
   <body class={isPrimarySectionLanding ? "primary-section-page" : undefined}>
     <a class="skip-link" href="#contenido">Saltar al contenido</a>
@@ -169,6 +173,13 @@ const isPrimarySectionLanding = [
         }
       </nav>
     </header>
+    {
+      !isHome && (
+        <div class="persistent-daily-audio-shell">
+          <DailyAudio expectedDate={currentDaily?.id.slice(0, 10)} />
+        </div>
+      )
+    }
     <div id="contenido"><slot /></div>
     <footer class="site-footer">
       <div class="footer-meta">
@@ -219,12 +230,75 @@ const isPrimarySectionLanding = [
         </div>
       </div>
     </footer>
+    <script>
+      const desktopWorkspaceQuery = window.matchMedia("(min-width: 80rem)");
+      const workspacePrefixes = [
+        "/internacional/",
+        "/nacional/",
+        "/mercados/",
+        "/lecturas/",
+        "/calendario-economico/",
+        "/ediciones/",
+      ];
+
+      const supportsDesktopWorkspacePath = (pathname: string) =>
+        pathname === "/" ||
+        workspacePrefixes.some((prefix) => pathname.startsWith(prefix));
+
+      const syncDesktopWorkspaceRouterBypass = () => {
+        document
+          .querySelectorAll<HTMLAnchorElement>(
+            'a[data-atlas-workspace-router-bypass="true"]',
+          )
+          .forEach((link) => {
+            link.removeAttribute("data-astro-reload");
+            link.removeAttribute("data-atlas-workspace-router-bypass");
+          });
+
+        if (
+          !desktopWorkspaceQuery.matches ||
+          !document.querySelector("[data-atlas-workspace-panel]")
+        ) {
+          return;
+        }
+
+        document.querySelectorAll<HTMLAnchorElement>("a[href]").forEach((link) => {
+          if (link.target || link.hasAttribute("download")) return;
+
+          const url = new URL(link.href, window.location.href);
+          if (
+            url.origin !== window.location.origin ||
+            !supportsDesktopWorkspacePath(url.pathname)
+          ) {
+            return;
+          }
+
+          link.setAttribute("data-astro-reload", "");
+          link.dataset.atlasWorkspaceRouterBypass = "true";
+        });
+      };
+
+      syncDesktopWorkspaceRouterBypass();
+      document.addEventListener(
+        "astro:page-load",
+        syncDesktopWorkspaceRouterBypass,
+      );
+      document.addEventListener(
+        "atlas:desktop-panel-change",
+        syncDesktopWorkspaceRouterBypass,
+      );
+      desktopWorkspaceQuery.addEventListener(
+        "change",
+        syncDesktopWorkspaceRouterBypass,
+      );
+    </script>
   </body>
 </html>
 
 <style is:global>
   .site-header,
-  .site-footer {
+  .site-footer,
+  .persistent-daily-audio-shell {
     position: relative;
     z-index: 1;
     width: min(88rem, calc(100% - 2rem));
@@ -411,7 +485,8 @@ const isPrimarySectionLanding = [
 
   @media (max-width: 36rem) {
     .site-header,
-    .site-footer {
+    .site-footer,
+    .persistent-daily-audio-shell {
       width: min(100% - 1.25rem, 88rem);
     }
     .edition-bar span:last-child {
@@ -477,7 +552,8 @@ const isPrimarySectionLanding = [
       text-size-adjust: 100%;
     }
 
-    .page-shell {
+    .page-shell,
+    .persistent-daily-audio-shell {
       width: min(100% - 1.75rem, 88rem) !important;
     }
 
@@ -620,6 +696,12 @@ const isPrimarySectionLanding = [
     }
     .market-indices-page .indices-source {
       font-size: 0.5rem !important;
+    }
+  }
+
+  @media (min-width: 70.01rem) {
+    .persistent-daily-audio-shell {
+      width: min(96rem, calc(100% - 3rem));
     }
   }
 </style>
