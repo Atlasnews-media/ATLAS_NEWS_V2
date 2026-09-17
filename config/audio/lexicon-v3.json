@@ -1,15 +1,16 @@
 {
   "version": 3,
-  "revision": 4,
+  "revision": 5,
+  "release": "Lexicon V4",
   "numericNormalizerVersion": 4,
-  "status": "foundation",
+  "status": "production",
   "source": "ATLAS NEWS V2 — MATRIZ DE PRONUNCIACIÓN TTS",
   "policy": {
     "scope": "speech_text_only",
     "requiresHumanApproval": true,
     "sheetDirectToProduction": false,
     "revisionRule": "Toda modificación de una entrada aprobada requiere incrementar revision antes de producción.",
-    "note": "Lexicon V3 conserva palabras, siglas y pronunciaciones aprobadas. Numeric Normalizer V4 opera como capa separada sobre speech_text; revision 4 incorpora la pronunciación de Wealth Management detectada en escucha humana y fuerza una sola regeneración controlada de Audio V2."
+    "note": "Lexicon V4 mantiene el contrato productivo de Lexicon V3 y suma únicamente candidatos aprobados por escucha humana. Revision 5 incorpora bypass → bái pas, incluidas sus variantes BY PASS, by-pass y by pass, sin modificar display_text."
   },
   "entries": [
     {
@@ -139,6 +140,13 @@
       "term": "EOF",
       "type": "spanish",
       "speech": "Encuesta de Operadores Financieros",
+      "approved": true
+    },
+    {
+      "term": "bypass",
+      "variants": ["BY PASS", "by-pass", "by pass"],
+      "type": "pronunciation",
+      "speech": "bái pas",
       "approved": true
     }
   ]
