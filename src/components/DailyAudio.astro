@@ -13,6 +13,7 @@ const { expectedDate } = Astro.props;
   data-daily-audio
   data-expected-date={expectedDate}
   aria-labelledby="daily-audio-title"
+  transition:persist="atlas-daily-audio"
   hidden
 >
   <div class="audio-copy">
@@ -33,10 +34,17 @@ const { expectedDate } = Astro.props;
   </div>
 </section>
 
-<script is:inline>
+<script is:inline data-astro-rerun>
   (() => {
     const root = document.querySelector("[data-daily-audio]");
-    if (!root) return;
+    if (!(root instanceof HTMLElement)) return;
+
+    // Si Astro trasladó este mismo reproductor con transition:persist,
+    // no se vuelve a tocar el <audio>: así conserva reproducción y posición.
+    if (root.dataset.audioContentKey) {
+      root.hidden = false;
+      return;
+    }
 
     const expectedDate = root.dataset.expectedDate;
     if (!expectedDate) return;
@@ -58,14 +66,25 @@ const { expectedDate } = Astro.props;
         const player = root.querySelector("[data-atlas-audio-engine]");
         const source = root.querySelector("[data-atlas-audio-source]");
 
-        if (source && player) {
+        if (
+          !(player instanceof HTMLAudioElement) ||
+          !(source instanceof HTMLSourceElement)
+        ) {
+          return;
+        }
+
+        const contentKey = `${metadata.date}|${metadata.path}`;
+        const currentSource = source.getAttribute("src") ?? "";
+        if (currentSource !== metadata.path) {
           source.src = metadata.path;
           player.load();
         }
+
+        root.dataset.audioContentKey = contentKey;
         root.hidden = false;
       })
       .catch(() => {
-        root.hidden = true;
+        if (!root.dataset.audioContentKey) root.hidden = true;
       });
   })();
 </script>
