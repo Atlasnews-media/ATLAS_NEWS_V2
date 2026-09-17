@@ -307,5 +307,30 @@ const groups = readyArtifact
       font-size: clamp(1.65rem, 2.25vw, 2.05rem) !important;
       line-height: 1 !important;
     }
+
+    body:has(.desktop-workspace-panel)
+      .front-page.front-page--v2
+      .daily-signals__group
+      h3 {
+      font-size: 0.64rem !important;
+    }
+
+    body:has(.desktop-workspace-panel)
+      .front-page.front-page--v2
+      .daily-signals__item
+      strong {
+      margin-bottom: 0.2rem !important;
+      font: 800 0.7rem/1.05 var(--sans) !important;
+      letter-spacing: 0.08em !important;
+      text-transform: uppercase !important;
+    }
+
+    body:has(.desktop-workspace-panel)
+      .front-page.front-page--v2
+      .daily-signals__item
+      p {
+      font-size: 0.9rem !important;
+      line-height: 1.22 !important;
+    }
   }
 </style>
