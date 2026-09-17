@@ -1,0 +1,200 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://atlasnews-media.github.io/schemas/senales-del-dia-v1.schema.json",
+  "title": "ATLAS NEWS — Señales del día V1",
+  "oneOf": [
+    {
+      "$ref": "#/$defs/ready"
+    },
+    {
+      "$ref": "#/$defs/blocked"
+    }
+  ],
+  "$defs": {
+    "source": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["name", "url"],
+      "properties": {
+        "name": {
+          "type": "string",
+          "minLength": 2
+        },
+        "url": {
+          "type": "string",
+          "format": "uri",
+          "pattern": "^https://"
+        }
+      }
+    },
+    "baseItem": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "slot",
+        "headline",
+        "deck",
+        "development",
+        "anchor",
+        "sources"
+      ],
+      "properties": {
+        "slot": {
+          "type": "string"
+        },
+        "headline": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 72
+        },
+        "deck": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 180
+        },
+        "development": {
+          "type": "string",
+          "minLength": 1
+        },
+        "anchor": {
+          "type": "string",
+          "pattern": "^[a-z0-9][a-z0-9-]*$"
+        },
+        "sources": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/$defs/source"
+          }
+        }
+      }
+    },
+    "technology": {
+      "allOf": [
+        {"$ref": "#/$defs/baseItem"},
+        {
+          "properties": {
+            "slot": {"const": "technology"}
+          }
+        }
+      ]
+    },
+    "world": {
+      "allOf": [
+        {"$ref": "#/$defs/baseItem"},
+        {
+          "properties": {
+            "slot": {"const": "world"}
+          }
+        }
+      ]
+    },
+    "ipsaCompany": {
+      "allOf": [
+        {"$ref": "#/$defs/baseItem"},
+        {
+          "properties": {
+            "slot": {"const": "ipsa_company"}
+          }
+        }
+      ]
+    },
+    "policyEconomy": {
+      "allOf": [
+        {"$ref": "#/$defs/baseItem"},
+        {
+          "properties": {
+            "slot": {"const": "policy_economy"}
+          }
+        }
+      ]
+    },
+    "marketSignal1": {
+      "allOf": [
+        {"$ref": "#/$defs/baseItem"},
+        {
+          "properties": {
+            "slot": {"const": "market_signal_1"}
+          }
+        }
+      ]
+    },
+    "marketSignal2": {
+      "allOf": [
+        {"$ref": "#/$defs/baseItem"},
+        {
+          "properties": {
+            "slot": {"const": "market_signal_2"}
+          }
+        }
+      ]
+    },
+    "ready": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["status", "date", "contract", "sections"],
+      "properties": {
+        "status": {"const": "READY"},
+        "date": {
+          "type": "string",
+          "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+        },
+        "contract": {"const": "atlas-senales-del-dia-v1"},
+        "sections": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["international", "national", "markets"],
+          "properties": {
+            "international": {
+              "type": "array",
+              "minItems": 2,
+              "maxItems": 2,
+              "prefixItems": [
+                {"$ref": "#/$defs/technology"},
+                {"$ref": "#/$defs/world"}
+              ],
+              "items": false
+            },
+            "national": {
+              "type": "array",
+              "minItems": 2,
+              "maxItems": 2,
+              "prefixItems": [
+                {"$ref": "#/$defs/ipsaCompany"},
+                {"$ref": "#/$defs/policyEconomy"}
+              ],
+              "items": false
+            },
+            "markets": {
+              "type": "array",
+              "minItems": 2,
+              "maxItems": 2,
+              "prefixItems": [
+                {"$ref": "#/$defs/marketSignal1"},
+                {"$ref": "#/$defs/marketSignal2"}
+              ],
+              "items": false
+            }
+          }
+        }
+      }
+    },
+    "blocked": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["status", "date", "contract", "reason"],
+      "properties": {
+        "status": {"const": "BLOCKED"},
+        "date": {
+          "type": "string",
+          "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+        },
+        "contract": {"const": "atlas-senales-del-dia-v1"},
+        "reason": {
+          "type": "string",
+          "minLength": 12
+        }
+      }
+    }
+  }
+}
