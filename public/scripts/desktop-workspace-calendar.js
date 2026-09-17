@@ -36,6 +36,18 @@
           border-top: 5px double var(--rule);
         }
 
+        .desktop-workspace-panel .market-indices-page .indices-heading h1 {
+          font-size: clamp(2rem, 2.55vw, 2.5rem) !important;
+        }
+
+        .desktop-workspace-panel .calendar-heading h1 {
+          font-size: clamp(1.95rem, 2.5vw, 2.45rem) !important;
+        }
+
+        .front-page .headline-list .headline-item + .headline-item {
+          border-top: 1px solid var(--rule) !important;
+        }
+
         .desktop-workspace-calendar-companion .calendar-section .section-heading h2 {
           font-size: 0.83rem !important;
         }
