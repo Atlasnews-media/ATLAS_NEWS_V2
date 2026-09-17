@@ -17,12 +17,13 @@ const {
   sizes,
   loading = "lazy",
   decorative = false,
-  variant = "plain",
+  variant,
   class: className,
   fetchpriority = loading === "eager" ? "high" : "auto",
   onerror,
 } = Astro.props;
 
+const resolvedVariant = variant ?? (decorative ? "card" : "headline");
 const widths = [320, 480, 640, 800, 960, 1280];
 
 const commonsVariant = (width: number) => {
@@ -54,7 +55,11 @@ const srcset = variants.length ? variants.join(", ") : undefined;
 ---
 
 <img
-  class:list={["responsive-editorial-image", `is-${variant}`, className]}
+  class:list={[
+    "responsive-editorial-image",
+    `is-${resolvedVariant}`,
+    className,
+  ]}
   src={fallbackSrc}
   srcset={srcset}
   sizes={srcset ? sizes : undefined}
