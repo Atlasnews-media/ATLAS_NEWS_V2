@@ -4,7 +4,7 @@ summary: "El mercado absorbió la subida de la Fed con presión concentrada en t
 publishedAt: "2026-09-17T06:21:00-03:00"
 cutoffAt: "2026-09-17T06:20:00-03:00"
 section: "markets"
-status: "draft"
+status: "published"
 tags:
   - mercados
   - tasas

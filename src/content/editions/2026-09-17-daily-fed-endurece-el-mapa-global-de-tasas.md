@@ -4,7 +4,7 @@ summary: "La primera subida de la Fed en más de tres años reordena el escenari
 publishedAt: "2026-09-17T05:59:05-03:00"
 cutoffAt: "2026-09-17T05:58:03-03:00"
 type: "daily"
-status: "draft"
+status: "published"
 tags:
   - internacional
   - bancos-centrales
