@@ -6,7 +6,7 @@ on:
     paths:
       - ".github/workflows/carousel-template-preview.yml"
       - "tools/social-renderer/render-carousel-five-v2.mjs"
-      - "tools/social-renderer/contracts/2026-09-12-daily-carousel-preview.json"
+      - "tools/social-renderer/prepare-daily-contract.mjs"
       - "tools/social-renderer/assets/CARRUSEL_1.png"
       - "tools/social-renderer/assets/CARRUSEL_2.png"
       - "tools/social-renderer/assets/CARRUSEL_3.png"
@@ -21,10 +21,17 @@ jobs:
   preview:
     runs-on: ubuntu-latest
     timeout-minutes: 10
+    env:
+      ATLAS_SOURCE_COMMIT: 5acf20e9a60c1f7f1100168a5567576df9c5850e
+      ATLAS_PUBLIC_STATUS_URL: https://atlasnews-media.github.io/status.json
+      ATLAS_SOCIAL_CONTRACT_OUTPUT: tools/social-renderer/.generated/daily-contract.json
+      SOCIAL_PUBLICATION_STATUS: PUBLICACIÓN DISPONIBLE / VERIFICADA
 
     steps:
-      - name: Checkout preview branch
+      - name: Checkout preview branch and source history
         uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
 
       - name: Setup Node
         uses: actions/setup-node@v6
@@ -47,24 +54,45 @@ jobs:
             test -f "assets/CARRUSEL_${n}.png"
           done
 
-      - name: Render five-slide carousel preview
+      - name: Build live five-slide contract for Edition 046
+        id: contract
+        run: |
+          set -euo pipefail
+          node tools/social-renderer/prepare-daily-contract.mjs
+          test -f "$ATLAS_SOCIAL_CONTRACT_OUTPUT"
+          jq -e '
+            .version == "1" and
+            .sourceCommit == "5acf20e9a60c1f7f1100168a5567576df9c5850e" and
+            .publishedDate | startswith("2026-09-16")
+          ' "$ATLAS_SOCIAL_CONTRACT_OUTPUT" >/dev/null
+
+          status="$(curl -fsSL -H 'Accept: application/json' -H 'Cache-Control: no-cache' "${ATLAS_PUBLIC_STATUS_URL}?dryrun=${GITHUB_RUN_ID}-$(date +%s)")"
+          issue="$(jq -er '.latestDaily.issueNumber | select(type == "number" and . >= 1)' <<<"$status")"
+          edition_id="$(jq -er '.latestDaily.id | select(type == "string" and startswith("2026-09-16-daily-"))' <<<"$status")"
+          test "$issue" = "46"
+          echo "SOCIAL_EDITION_NUMBER=$(printf '%03d' "$issue")" >> "$GITHUB_ENV"
+          echo "edition_id=$edition_id" >> "$GITHUB_OUTPUT"
+          echo "issue_number=$issue" >> "$GITHUB_OUTPUT"
+
+      - name: Render current five-slide carousel
         working-directory: tools/social-renderer
         env:
-          SOCIAL_CONTRACT: tools/social-renderer/contracts/2026-09-12-daily-carousel-preview.json
-          SOCIAL_PUBLICATION_STATUS: PUBLICACIÓN DISPONIBLE / VERIFICADA
-          SOCIAL_EDITION_NUMBER: "041"
+          SOCIAL_CONTRACT: tools/social-renderer/.generated/daily-contract.json
         run: node render-carousel-five-v2.mjs
 
-      - name: Validate preview artifact
+      - name: Validate current carousel artifact
         working-directory: tools/social-renderer
         run: |
           set -euo pipefail
           test "$(find output-template -maxdepth 1 -type f -name 'atlas-news-instagram-carousel-0*.png' | wc -l | tr -d ' ')" = "5"
+          for n in 01 02 03 04 05; do
+            test -f "output-template/atlas-news-instagram-carousel-${n}.png"
+          done
           jq -e '
             .status == "PASS" and
             .carouselSlides == 5 and
-            .editionNumber == "041" and
-            .publishedDate == "12 SEPT 2026" and
+            .editionNumber == "046" and
+            .publishedDate == "16 SEPT 2026" and
             .uniqueVisuals == 5 and
             (.visualKeys | length == 5) and
             ((.visualKeys | unique | length) == 5) and
@@ -72,11 +100,36 @@ jobs:
             (.templates | length == 5)
           ' output-template/template-validation.json >/dev/null
 
-      - name: Upload visual evidence
+      - name: Verify Instagram secret and account without publishing
+        env:
+          INSTAGRAM_ACCESS_TOKEN: ${{ secrets.INSTAGRAM_ACCESS_TOKEN }}
+        run: |
+          set -euo pipefail
+          test -n "$INSTAGRAM_ACCESS_TOKEN" || {
+            echo "BLOCKED_EXTERNAL: INSTAGRAM_ACCESS_TOKEN is missing."
+            exit 4
+          }
+          me="$(curl -fsSL \
+            -H "Authorization: Bearer ${INSTAGRAM_ACCESS_TOKEN}" \
+            -H 'User-Agent: ATLAS-NEWS-Social-DryRun/1.0' \
+            'https://graph.instagram.com/v23.0/me?fields=id,username')" || {
+              echo "BLOCKED_EXTERNAL: Instagram token rejected by /me."
+              exit 5
+            }
+          jq -e '.id | type == "string" and length > 0' <<<"$me" >/dev/null
+          username="$(jq -r '.username // empty' <<<"$me")"
+          test "$username" = "_atlas_news" || {
+            echo "BLOCKED_EXTERNAL: wrong Instagram account ${username:-<missing>}."
+            exit 6
+          }
+          echo "Instagram secret accepted for @_atlas_news. No POST request was sent to Meta."
+
+      - name: Upload dry-run evidence
         uses: actions/upload-artifact@v4
         with:
-          name: atlas-news-carousel-template-preview-${{ github.run_id }}
+          name: atlas-news-carousel-046-dry-run-${{ github.run_id }}
           path: |
+            tools/social-renderer/.generated/daily-contract.json
             tools/social-renderer/output-template/atlas-news-instagram-carousel-0*.png
             tools/social-renderer/output-template/template-validation.json
           if-no-files-found: error
