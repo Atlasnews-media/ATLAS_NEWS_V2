@@ -9,6 +9,7 @@
   let request = null;
   let requestToken = 0;
   let observer = null;
+  let observedContent = null;
   let keyboardIntent = false;
 
   const loadedStyles = new Set(
@@ -277,10 +278,19 @@
     inspectPanel();
 
     const content = panelContent();
-    if (!content || observer) return;
+    if (!content) {
+      if (observer) observer.disconnect();
+      observer = null;
+      observedContent = null;
+      return;
+    }
+
+    if (observer && observedContent === content) return;
+    if (observer) observer.disconnect();
 
     observer = new MutationObserver(inspectPanel);
     observer.observe(content, { childList: true, subtree: false });
+    observedContent = content;
   }
 
   document.addEventListener("keydown", (event) => {
@@ -305,6 +315,8 @@
     focusPanelHeadingAfterKeyboardNavigation();
   });
 
+  document.addEventListener("astro:page-load", start);
+
   if (document.readyState === "loading") {
     document.addEventListener("DOMContentLoaded", start, { once: true });
   } else {
@@ -316,6 +328,8 @@
     () => {
       cancelPending();
       if (observer) observer.disconnect();
+      observer = null;
+      observedContent = null;
     },
     { once: true },
   );
