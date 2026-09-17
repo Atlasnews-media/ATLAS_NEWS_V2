@@ -3,26 +3,26 @@
     {
       "id": "oil-geopolitics-inflation",
       "topic": "Petróleo, geopolítica e inflación",
-      "thesis": "El shock energético sigue activo, pero Arabia Saudita recupera una vía parcial de redundancia al desviar crudo mediante transferencias frente a Omán mientras Hormuz permanece con tránsito extraordinariamente bajo y la amenaza hutí se amplía.",
-      "status": "changed",
-      "last_evidence": "El 16 de septiembre Arabia Saudita ofreció crudo a compradores asiáticos mediante transferencias frente a Sohar, fuera de Hormuz; el martes se observaron sólo cuatro cruces por el estrecho frente a un promedio reciente de 18, y Riad informó la intercepción de un dron hutí al sur de La Meca.",
-      "effect": "La nueva ruta omaní reduce el riesgo inmediato de una caída saudí más severa, pero no normaliza el sistema: persisten restricciones de tránsito, vulnerabilidad logística y riesgo de transmisión a energía, transporte, seguros, inflación y tasas globales.",
+      "thesis": "El shock energético sigue activo: el bypass saudí mediante Omán alivia parte del riesgo inmediato de oferta, pero el desplome del tránsito por Hormuz confirma que la redundancia logística todavía no equivale a normalización.",
+      "status": "confirmed",
+      "last_evidence": "El 17 de septiembre datos preliminares mostraron sólo tres cruces comerciales por Hormuz el miércoles, frente a 12 el martes y un promedio de diez días cercano a 17; al mismo tiempo, las transferencias saudíes frente a Sohar ayudaron a aliviar el temor inmediato de oferta.",
+      "effect": "La adaptación logística contiene el escenario extremo de escasez saudí, pero la baja circulación por Hormuz y la tensión regional mantienen riesgo sobre energía, transporte, seguros, inflación y tasas globales.",
       "base_scenario": "Prima energética elevada y volátil con adaptación logística parcial de productores del Golfo, mientras Hormuz y el corredor del mar Rojo sigan expuestos a restricciones y ataques durante el resto de 2026.",
       "invalidate_if": "Normalización sostenida del tráfico por Hormuz, reapertura estable del oleoducto Este-Oeste y ausencia de nuevas amenazas sobre rutas alternativas debilitarían la tesis; fallas del bypass omaní o nuevos ataques simultáneos la reforzarían.",
       "watch": "Volumen efectivo transferido frente a Sohar, reapertura y capacidad del oleoducto Este-Oeste, tráfico por Hormuz, seguridad en Bab el-Mandeb y mar Rojo, seguros marítimos y transmisión a inflación.",
-      "last_publication": "/ediciones/2026-09-16-daily-arabia-saudi-ensaya-un-bypass-maritimo/"
+      "last_publication": "/ediciones/2026-09-17-daily-fed-endurece-el-mapa-global-de-tasas/"
     },
     {
       "id": "us-employment-fed-rates",
       "topic": "Empleo de Estados Unidos y Reserva Federal",
-      "thesis": "Las nóminas fuertes, el PPI y un IPC subyacente más firme de lo esperado alinean empleo y precios hacia una subida de la Fed en septiembre; la pausa deja de ser el escenario dominante y el foco pasa a la magnitud y persistencia del endurecimiento.",
-      "status": "confirmed",
-      "last_evidence": "El 11 de septiembre el IPC de agosto subió 0,4% mensual y 3,4% interanual; el núcleo avanzó 0,3% mensual, sobre el 0,2% esperado, y la probabilidad implícita de una subida de 25 puntos base terminó cerca de 87%, desde aproximadamente 72% antes del dato.",
-      "effect": "El IPC no entregó la moderación necesaria para devolver la pausa a una posición dominante; junto con empleo y PPI, consolida un sesgo restrictivo mientras el shock energético mantiene riesgo alcista sobre inflación futura.",
-      "base_scenario": "La reunión de septiembre se inclina claramente hacia una subida de 25 puntos base; la discusión se desplaza hacia cuánto endurecimiento adicional será necesario si energía y servicios mantienen presión sobre precios.",
-      "invalidate_if": "Una desaceleración posterior clara de inflación subyacente y energía, deterioro laboral material o comunicación explícita de la Fed que devuelva la pausa a una posición dominante.",
-      "watch": "Decisión y proyecciones de la Fed, inflación subyacente, salarios, solicitudes de desempleo, Treasury a dos y diez años, petróleo y dólar.",
-      "last_publication": "/ediciones/2026-09-12-daily-shock-energetico-pierde-via-de-escape/"
+      "thesis": "La Fed materializó el giro restrictivo con su primera subida en más de tres años y dejó abierta la puerta a más endurecimiento; el foco pasa de si subiría en septiembre a la velocidad y persistencia del nuevo ciclo.",
+      "status": "changed",
+      "last_evidence": "El 16 de septiembre el FOMC votó 12-0 por elevar 25 puntos base el rango de fondos federales a 3,75%-4,00%, señalando que la inflación sigue elevada y que la acción busca un retorno más oportuno a la meta de 2%.",
+      "effect": "La subida confirma que empleo resiliente e inflación persistente superaron el umbral para volver a endurecer; ahora la incertidumbre relevante es cuántas alzas adicionales serán necesarias mientras energía mantiene riesgo alcista sobre precios.",
+      "base_scenario": "La Fed mantiene sesgo restrictivo tras la subida de septiembre, con al menos una nueva alza en 2026 como posibilidad central si inflación y actividad no se enfrían con claridad.",
+      "invalidate_if": "Una desaceleración clara y sostenida de inflación subyacente, deterioro laboral material o comunicación explícita de la Fed que cierre la puerta a nuevas alzas debilitarían la tesis.",
+      "watch": "Comunicación de la Fed, reunión de octubre, inflación subyacente, salarios, solicitudes de desempleo, Treasury a dos y diez años, petróleo y dólar.",
+      "last_publication": "/ediciones/2026-09-17-daily-fed-endurece-el-mapa-global-de-tasas/"
     },
     {
       "id": "ai-monetization-selectivity",
