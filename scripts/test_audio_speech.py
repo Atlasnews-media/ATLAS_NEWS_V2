@@ -14,8 +14,8 @@ def check(source: str, expected: str, reference_date: str | None = None):
 
 if SPEECH_NORMALIZER_VERSION != 5:
     raise AssertionError("Speech Normalizer debe publicar versión 5.")
-if LEXICON_REVISION != 4:
-    raise AssertionError("Lexicon V3 debe publicar revisión 4.")
+if LEXICON_REVISION != 5:
+    raise AssertionError("Lexicon productivo debe publicar revisión 5.")
 
 check("Powell habló en Wall Street.", "Páuel habló en Uól Strít.")
 check(
@@ -23,6 +23,16 @@ check(
     "Para Uélth Mánichment, la novedad reduce el valor de una apuesta simple.",
 )
 check("El Dow Jones retrocede 1,86%.", "El Dáu Yóuns retrocede uno coma ochenta y seis por ciento.")
+
+# Golden tests Lexicon V4: bypass aprobado por escucha humana.
+check(
+    "Arabia Saudita ensaya un bypass marítimo.",
+    "Arabia Saudita ensaya un bái pas marítimo.",
+)
+check("El BY PASS reduce la dependencia.", "El bái pas reduce la dependencia.")
+check("El by-pass logístico continúa.", "El bái pas logístico continúa.")
+check("El by pass alternativo funciona.", "El bái pas alternativo funciona.")
+
 # Golden tests Speech V5: verbalización financiera controlada.
 check(
     "El IPC decidirá si esa repricing se consolida.",
@@ -129,4 +139,4 @@ if not is_question("¿Qué significa esto?"):
 if is_question("Esto es una afirmación."):
     raise AssertionError("Se clasificó una afirmación como pregunta.")
 
-print("Audio speech V5: golden tests OK")
+print("Audio speech V5 + Lexicon V4: golden tests OK")
