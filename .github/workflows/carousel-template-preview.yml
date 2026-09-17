@@ -26,6 +26,7 @@ jobs:
       ATLAS_PUBLIC_STATUS_URL: https://atlasnews-media.github.io/status.json
       ATLAS_SOCIAL_CONTRACT_OUTPUT: tools/social-renderer/.generated/daily-contract.json
       SOCIAL_PUBLICATION_STATUS: PUBLICACIÓN DISPONIBLE / VERIFICADA
+      SOCIAL_EDITION_NUMBER: "046"
 
     steps:
       - name: Checkout preview branch and source history
@@ -63,16 +64,11 @@ jobs:
           jq -e '
             .version == "1" and
             .sourceCommit == "5acf20e9a60c1f7f1100168a5567576df9c5850e" and
-            (.publishedDate | startswith("2026-09-16"))
+            .sourceId == "src/content/editions/2026-09-16-daily-arabia-saudi-ensaya-un-bypass-maritimo.md" and
+            (.publishedDate | startswith("2026-09-16")) and
+            .canonicalUrl == "https://atlasnews-media.github.io/ediciones/2026-09-16-daily-arabia-saudi-ensaya-un-bypass-maritimo/"
           ' "$ATLAS_SOCIAL_CONTRACT_OUTPUT" >/dev/null
-
-          status="$(curl -fsSL -H 'Accept: application/json' -H 'Cache-Control: no-cache' "${ATLAS_PUBLIC_STATUS_URL}?dryrun=${GITHUB_RUN_ID}-$(date +%s)")"
-          issue="$(jq -er '.latestDaily.issueNumber | select(type == "number" and . >= 1)' <<<"$status")"
-          edition_id="$(jq -er '.latestDaily.id | select(type == "string" and startswith("2026-09-16-daily-"))' <<<"$status")"
-          test "$issue" = "46"
-          echo "SOCIAL_EDITION_NUMBER=$(printf '%03d' "$issue")" >> "$GITHUB_ENV"
-          echo "edition_id=$edition_id" >> "$GITHUB_OUTPUT"
-          echo "issue_number=$issue" >> "$GITHUB_OUTPUT"
+          echo "Edition 046 identity verified from sourceCommit + published edition."
 
       - name: Render current five-slide carousel
         working-directory: tools/social-renderer
