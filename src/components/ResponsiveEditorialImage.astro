@@ -5,7 +5,7 @@ interface Props {
   sizes: string;
   loading?: "eager" | "lazy";
   decorative?: boolean;
-  variant?: "headline" | "card" | "frontpage" | "plain";
+  variant?: "headline" | "card" | "article" | "frontpage" | "plain";
   class?: string;
   fetchpriority?: "high" | "low" | "auto";
   onerror?: string;
@@ -79,7 +79,8 @@ const srcset = variants.length ? variants.join(", ") : undefined;
   }
 
   .is-headline,
-  .is-card {
+  .is-card,
+  .is-article {
     height: 100%;
     object-fit: cover;
     object-position: center;
@@ -119,6 +120,25 @@ const srcset = variants.length ? variants.join(", ") : undefined;
     );
   }
 
+  .is-article {
+    opacity: 0.42;
+    filter: saturate(0.65) sepia(0.12) contrast(0.9) brightness(1.08);
+    -webkit-mask-image: linear-gradient(
+      to right,
+      transparent 0%,
+      rgba(0, 0, 0, 0.25) 22%,
+      rgba(0, 0, 0, 0.72) 58%,
+      #000 100%
+    );
+    mask-image: linear-gradient(
+      to right,
+      transparent 0%,
+      rgba(0, 0, 0, 0.25) 22%,
+      rgba(0, 0, 0, 0.72) 58%,
+      #000 100%
+    );
+  }
+
   .is-frontpage {
     max-height: 18rem;
     object-fit: cover;
@@ -143,6 +163,23 @@ const srcset = variants.length ? variants.join(", ") : undefined;
     }
     .is-card {
       opacity: 0.72;
+    }
+    .is-article {
+      opacity: 0.34;
+      -webkit-mask-image: linear-gradient(
+        to right,
+        transparent 0%,
+        rgba(0, 0, 0, 0.18) 30%,
+        rgba(0, 0, 0, 0.64) 72%,
+        #000 100%
+      );
+      mask-image: linear-gradient(
+        to right,
+        transparent 0%,
+        rgba(0, 0, 0, 0.18) 30%,
+        rgba(0, 0, 0, 0.64) 72%,
+        #000 100%
+      );
     }
   }
 </style>
