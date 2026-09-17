@@ -1,0 +1,66 @@
+---
+interface Props {
+  src: string;
+  alt?: string;
+  sizes: string;
+  loading?: "eager" | "lazy";
+  decorative?: boolean;
+  class?: string;
+  fetchpriority?: "high" | "low" | "auto";
+  onerror?: string;
+}
+
+const {
+  src,
+  alt = "",
+  sizes,
+  loading = "lazy",
+  decorative = false,
+  class: className,
+  fetchpriority = loading === "eager" ? "high" : "auto",
+  onerror,
+} = Astro.props;
+
+const widths = [320, 480, 640, 800, 960, 1280];
+
+const commonsVariant = (width: number) => {
+  try {
+    const url = new URL(src);
+    if (
+      url.hostname !== "commons.wikimedia.org" ||
+      !url.pathname.startsWith("/wiki/Special:FilePath/")
+    ) {
+      return null;
+    }
+
+    url.searchParams.set("width", String(width));
+    return url.href;
+  } catch {
+    return null;
+  }
+};
+
+const variants = widths
+  .map((width) => {
+    const url = commonsVariant(width);
+    return url ? `${url} ${width}w` : null;
+  })
+  .filter((entry): entry is string => Boolean(entry));
+
+const fallbackSrc = commonsVariant(1280) ?? src;
+const srcset = variants.length ? variants.join(", ") : undefined;
+---
+
+<img
+  class={className}
+  src={fallbackSrc}
+  srcset={srcset}
+  sizes={srcset ? sizes : undefined}
+  alt={decorative ? "" : alt}
+  aria-hidden={decorative ? "true" : undefined}
+  loading={loading}
+  decoding="async"
+  fetchpriority={fetchpriority}
+  referrerpolicy="no-referrer"
+  onerror={onerror}
+/>
