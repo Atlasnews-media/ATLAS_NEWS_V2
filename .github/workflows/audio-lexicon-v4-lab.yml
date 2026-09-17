@@ -2,14 +2,19 @@ name: Lexicon V4 LAB — bypass A/B
 
 on:
   push:
-    branches: ["lab/lexicon-v4-bypass"]
+    branches: ["main", "lab/lexicon-v4-bypass"]
     paths:
       - "lab/audio-lexicon-v4/**"
+      - "src/pages/lab/lexicon-v4.astro"
       - ".github/workflows/audio-lexicon-v4-lab.yml"
   workflow_dispatch:
 
 permissions:
   contents: read
+
+concurrency:
+  group: atlas-news-lexicon-v4-lab
+  cancel-in-progress: false
 
 jobs:
   generate:
@@ -44,3 +49,57 @@ jobs:
           path: lab/audio-lexicon-v4/out/
           if-no-files-found: error
           retention-days: 7
+
+      - name: Preparar acceso al repositorio público
+        if: github.ref == 'refs/heads/main'
+        env:
+          DEPLOY_KEY: ${{ secrets.ATLAS_PAGES_DEPLOY_KEY }}
+        run: |
+          set -euo pipefail
+          install -m 700 -d ~/.ssh
+          printf '%s\n' "$DEPLOY_KEY" > ~/.ssh/atlas_news_pages
+          chmod 600 ~/.ssh/atlas_news_pages
+          ssh-keyscan -H github.com >> ~/.ssh/known_hosts
+
+      - name: Descargar repositorio público
+        if: github.ref == 'refs/heads/main'
+        env:
+          GIT_SSH_COMMAND: ssh -i ~/.ssh/atlas_news_pages -o IdentitiesOnly=yes
+        run: |
+          set -euo pipefail
+          git clone --depth 1 git@github.com:Atlasnews-media/Atlasnews-media.github.io.git \
+            "$RUNNER_TEMP/atlas-news-public"
+
+      - name: Publicar clips en LAB web
+        if: github.ref == 'refs/heads/main'
+        env:
+          GIT_SSH_COMMAND: ssh -i ~/.ssh/atlas_news_pages -o IdentitiesOnly=yes
+        run: |
+          set -euo pipefail
+          public="$RUNNER_TEMP/atlas-news-public"
+          target="$public/lab/audio/lexicon-v4"
+          mkdir -p "$target"
+          cp lab/audio-lexicon-v4/out/*.mp3 "$target/"
+          cp lab/audio-lexicon-v4/out/manifest.json "$target/manifest.json"
+
+          cd "$public"
+          git config user.name "ATLAS NEWS AUDIO LAB"
+          git config user.email "actions@users.noreply.github.com"
+          git add lab/audio/lexicon-v4/
+
+          if git diff --cached --quiet; then
+            echo "Clips Lexicon V4 LAB ya estaban publicados."
+            exit 0
+          fi
+
+          git commit -m "LAB Lexicon V4 — publicar A/B bypass"
+          for attempt in 1 2; do
+            git pull --rebase origin main
+            if git push origin main; then
+              exit 0
+            fi
+            if [[ "$attempt" -eq 2 ]]; then
+              echo "No fue posible publicar los clips LAB tras un retry controlado." >&2
+              exit 1
+            fi
+          done
