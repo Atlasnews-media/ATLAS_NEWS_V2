@@ -189,21 +189,19 @@ function atlasDesktopSharedTransitions() {
   if (!document.querySelector("style[data-atlas-shared-transitions]")) {
     const style = document.createElement("style");
     style.dataset.atlasSharedTransitions = "true";
-    style.textContent = `
-      @media (min-width: 80rem) and (prefers-reduced-motion: no-preference) {
-        ::view-transition-group(*) {
-          animation-duration: 240ms;
-          animation-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
-        }
-      }
-      @media (max-width: 79.99rem), (prefers-reduced-motion: reduce) {
-        ::view-transition-group(*),
-        ::view-transition-old(*),
-        ::view-transition-new(*) {
-          animation: none !important;
-        }
-      }
-    `;
+    style.textContent = [
+      "@media (min-width: 80rem) and (prefers-reduced-motion: no-preference) {",
+      "  ::view-transition-group(*) {",
+      "    animation-duration: 240ms;",
+      "    animation-timing-function: cubic-bezier(0.22, 1, 0.36, 1);",
+      "  }",
+      "}",
+      "@media (max-width: 79.99rem), (prefers-reduced-motion: reduce) {",
+      "  ::view-transition-group(*),",
+      "  ::view-transition-old(*),",
+      "  ::view-transition-new(*) { animation: none !important; }",
+      "}",
+    ].join("\\n");
     document.head.appendChild(style);
   }
 
@@ -218,10 +216,10 @@ function atlasDesktopSharedTransitions() {
     const visual = event.newDocument.querySelector(".article-header .article-visual");
 
     if (title instanceof HTMLElement) {
-      title.style.viewTransitionName = `atlas-title-${key}`;
+      title.style.viewTransitionName = "atlas-title-" + key;
     }
     if (visual instanceof HTMLElement) {
-      visual.style.viewTransitionName = `atlas-visual-${key}`;
+      visual.style.viewTransitionName = "atlas-visual-" + key;
     }
   });
 })();`,
