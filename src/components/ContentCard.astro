@@ -1,4 +1,6 @@
 ---
+import ResponsiveEditorialImage from "./ResponsiveEditorialImage.astro";
+
 interface EditorialVisual {
   src: string;
   alt: string;
@@ -42,6 +44,13 @@ const visualAllowed = (() => {
     return false;
   }
 })();
+
+const transitionKey = new URL(href, Astro.url).pathname
+  .replace(/^\/+|\/+$/g, "")
+  .replace(/[^a-zA-Z0-9_-]+/g, "-")
+  .toLowerCase();
+const titleTransitionName = `atlas-title-${transitionKey}`;
+const visualTransitionName = `atlas-visual-${transitionKey}`;
 ---
 
 <article
@@ -59,7 +68,7 @@ const visualAllowed = (() => {
       <span>{eyebrow}</span>
       {demo && <span class="demo">Demostración</span>}
     </div>
-    <h2><a href={href}>{title}</a></h2>
+    <h2 transition:name={titleTransitionName}><a href={href}>{title}</a></h2>
     <p>{summary}</p>
     <div class="card-footer">
       <time>{date}</time>
@@ -71,13 +80,17 @@ const visualAllowed = (() => {
 
   {
     visualAllowed && visual && (
-      <figure class="card-visual" aria-hidden="true">
-        <img
+      <figure
+        class="card-visual"
+        aria-hidden="true"
+        transition:name={visualTransitionName}
+      >
+        <ResponsiveEditorialImage
           src={visual.src}
-          alt=""
+          decorative
+          sizes="(max-width: 42rem) 42vw, (max-width: 79.99rem) 36vw, 18vw"
           loading="lazy"
-          decoding="async"
-          referrerpolicy="no-referrer"
+          fetchpriority="low"
         />
         <figcaption>
           {visual.source} · {visual.author}
