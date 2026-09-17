@@ -63,7 +63,7 @@ jobs:
           jq -e '
             .version == "1" and
             .sourceCommit == "5acf20e9a60c1f7f1100168a5567576df9c5850e" and
-            .publishedDate | startswith("2026-09-16")
+            (.publishedDate | startswith("2026-09-16"))
           ' "$ATLAS_SOCIAL_CONTRACT_OUTPUT" >/dev/null
 
           status="$(curl -fsSL -H 'Accept: application/json' -H 'Cache-Control: no-cache' "${ATLAS_PUBLIC_STATUS_URL}?dryrun=${GITHUB_RUN_ID}-$(date +%s)")"
