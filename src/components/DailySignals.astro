@@ -250,9 +250,52 @@ const groups = readyArtifact
 </style>
 
 <style is:global>
+  .front-page.front-page--v2 .rail-title,
+  .front-page.front-page--v2 .daily-signals__title {
+    font: 800 clamp(2.2rem, 4.4vw, 4.25rem) / 0.95 var(--sans) !important;
+    letter-spacing: 0.06em !important;
+    text-transform: uppercase !important;
+  }
+
+  .front-page.front-page--v2 .edition-rail strong {
+    letter-spacing: -0.01em !important;
+    text-transform: none !important;
+  }
+
+  .front-page.front-page--v2 .edition-rail li::before {
+    font-size: clamp(1.25rem, 2.2vw, 1.55rem) !important;
+    line-height: 1 !important;
+  }
+
+  @media (max-width: 42rem) {
+    .front-page.front-page--v2 .rail-title,
+    .front-page.front-page--v2 .daily-signals__title {
+      font: 800 clamp(1.75rem, 7vw, 2.25rem) / 0.98 var(--sans) !important;
+      letter-spacing: 0.06em !important;
+    }
+
+    .front-page.front-page--v2 .edition-rail li::before {
+      font-size: clamp(1.15rem, 4.8vw, 1.35rem) !important;
+    }
+  }
+
+  @media (min-width: 70.01rem) {
+    body .front-page.front-page--v2 .rail-title,
+    body .front-page.front-page--v2 .daily-signals__title {
+      font-size: clamp(1.55rem, 2.1vw, 1.9rem) !important;
+      line-height: 1 !important;
+    }
+
+    body .front-page.front-page--v2 .edition-rail li::before {
+      font-size: 0.95rem !important;
+    }
+  }
+
   @media (min-width: 80rem) {
-    body:has(.desktop-workspace-panel) .front-page .edition-rail .rail-title {
-      font-size: clamp(2.2rem, 4.4vw, 4.25rem) !important;
+    body:has(.desktop-workspace-panel) .front-page .rail-title,
+    body:has(.desktop-workspace-panel) .front-page .daily-signals__title {
+      font-size: clamp(1.65rem, 2.25vw, 2.05rem) !important;
+      line-height: 1 !important;
     }
   }
 </style>
