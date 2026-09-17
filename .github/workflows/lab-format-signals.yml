@@ -1,0 +1,35 @@
+name: LAB format Signals
+
+on:
+  push:
+    branches:
+      - lab/senales-del-dia-v1
+
+permissions:
+  contents: write
+
+jobs:
+  format:
+    if: ${{ !contains(github.event.head_commit.message, 'chore(signals): apply prettier') }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          ref: lab/senales-del-dia-v1
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npx prettier --write src/components/DailySignals.astro data/senales-del-dia/2026-09-16.json
+      - name: Commit formatted files
+        run: |
+          git config user.name "ATLAS NEWS Lab Formatter"
+          git config user.email "actions@users.noreply.github.com"
+          git add src/components/DailySignals.astro data/senales-del-dia/2026-09-16.json
+          if git diff --cached --quiet; then
+            echo "No formatting changes needed."
+          else
+            git commit -m "chore(signals): apply prettier"
+            git push origin HEAD:lab/senales-del-dia-v1
+          fi
