@@ -20,10 +20,6 @@ jobs:
           node-version: 22
           cache: npm
       - run: npm ci
-      - name: Actualizar datos como producción
-        run: npm run update:indicators
-      - name: Normalizar sólo datos vivos generados para aislar el gate de Señales
-        run: npx prettier --write public/data/market-pulse.json src/data/market-pulse.json
       - name: Verificar formato y contratos existentes
         run: npm run format:check
       - name: Validar y construir sitio
