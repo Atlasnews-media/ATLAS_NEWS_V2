@@ -1,19 +1,71 @@
 ---
+import {
+  getLatestDaily,
+  getLatestMarkets,
+  getLatestNational,
+} from "../lib/content";
+
 interface SignalItem {
   label: string;
   text: string;
 }
 
-interface SignalGroup {
-  section: string;
-  items: SignalItem[];
+interface SignalSource {
+  data: {
+    title: string;
+    summary: string;
+    highlights?: SignalItem[];
+  };
 }
 
-interface Props {
-  groups: SignalGroup[];
+const [latestDaily, latestNational, latestMarkets] = await Promise.all([
+  getLatestDaily(),
+  getLatestNational(),
+  getLatestMarkets(),
+]);
+
+function signalPair(source?: SignalSource): SignalItem[] {
+  if (!source) {
+    return [
+      {
+        label: "Señal en preparación",
+        text: "Esta vertical todavía no ha publicado su primera señal del día.",
+      },
+      {
+        label: "Segunda señal en preparación",
+        text: "La segunda señal aparecerá cuando la vertical complete su edición.",
+      },
+    ];
+  }
+
+  const items = (source.data.highlights ?? [])
+    .slice(0, 2)
+    .map(({ label, text }) => ({ label, text }));
+
+  if (items.length === 0) {
+    items.push({ label: source.data.title, text: source.data.summary });
+  } else if (
+    items.length === 1 &&
+    items[0].label.trim() !== source.data.title.trim()
+  ) {
+    items.push({ label: source.data.title, text: source.data.summary });
+  }
+
+  while (items.length < 2) {
+    items.push({
+      label: "Señal adicional en preparación",
+      text: "La vertical aún no ha publicado una segunda señal independiente.",
+    });
+  }
+
+  return items.slice(0, 2);
 }
 
-const { groups } = Astro.props;
+const groups = [
+  { section: "Internacional", items: signalPair(latestDaily) },
+  { section: "Nacional", items: signalPair(latestNational) },
+  { section: "Mercados", items: signalPair(latestMarkets) },
+];
 ---
 
 <section class="daily-signals" aria-labelledby="senales-del-dia">
