@@ -6,6 +6,8 @@ src/content/editions/*.md
 src/content/briefings/*.md
 src/content/readings/*.md
 data/editorial_state.json
+# SEÑALES DEL DÍA: artefacto opcional fail-open. Su formato no puede bloquear el core.
+data/senales-del-dia/*.json
 # CALENDARIO: vista heredada auditada migrada a componente sin refactor funcional
 src/components/calendar/EconomicCalendarView.astro
 # Compatibilidad temporal de la antigua URL LAB hacia la ruta productiva
