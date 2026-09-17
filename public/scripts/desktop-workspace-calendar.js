@@ -30,18 +30,29 @@
     style.id = "atlas-workspace-calendar-companion-styles";
     style.textContent = `
       @media (min-width: 80rem) {
+        .desktop-workspace-panel {
+          --atlas-panel-title-size: clamp(1.95rem, 2.5vw, 2.45rem);
+          --atlas-panel-article-title-size: clamp(1.85rem, 2.35vw, 2.3rem);
+        }
+
         .desktop-workspace-calendar-companion {
           margin-top: 1.1rem;
           padding-top: 0.45rem;
           border-top: 5px double var(--rule);
         }
 
-        .desktop-workspace-panel .market-indices-page .indices-heading h1 {
-          font-size: clamp(2rem, 2.55vw, 2.5rem) !important;
+        .desktop-workspace-panel .section-page > .page-title,
+        .desktop-workspace-panel .market-indices-page .indices-heading h1,
+        .desktop-workspace-panel .calendar-heading h1 {
+          font-size: var(--atlas-panel-title-size) !important;
+          line-height: 0.94 !important;
+          letter-spacing: -0.04em !important;
         }
 
-        .desktop-workspace-panel .calendar-heading h1 {
-          font-size: clamp(1.95rem, 2.5vw, 2.45rem) !important;
+        .desktop-workspace-panel .article-page .article-header h1 {
+          font-size: var(--atlas-panel-article-title-size) !important;
+          line-height: 0.95 !important;
+          letter-spacing: -0.035em !important;
         }
 
         .front-page .headline-list .headline-item + .headline-item {
