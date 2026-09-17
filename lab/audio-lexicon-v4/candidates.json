@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "targetLexiconVersion": 4,
-  "status": "lab_only",
-  "productionTouched": false,
+  "status": "human_approved",
+  "productionTouched": true,
   "policy": {
     "displayTextUnchanged": true,
     "humanListeningRequired": true,
@@ -25,7 +25,7 @@
       "type": "pronunciation",
       "current": "bypass",
       "proposedSpeech": "bái pas",
-      "status": "listening_required",
+      "status": "approved_for_production",
       "samples": [
         "Arabia Saudita ensaya un bypass marítimo mientras Hormuz sigue casi paralizado.",
         "El bypass busca reducir la dependencia del estrecho.",
