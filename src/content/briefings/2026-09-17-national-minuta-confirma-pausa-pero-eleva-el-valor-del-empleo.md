@@ -4,7 +4,7 @@ summary: "El Banco Central calificó mantener la TPM como la opción claramente 
 publishedAt: "2026-09-17T06:19:00-03:00"
 cutoffAt: "2026-09-17T06:17:00-03:00"
 section: "national"
-status: "draft"
+status: "published"
 tags:
   - chile
   - politica-monetaria
