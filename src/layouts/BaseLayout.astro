@@ -262,20 +262,22 @@ const isPrimarySectionLanding = [
           return;
         }
 
-        document.querySelectorAll<HTMLAnchorElement>("a[href]").forEach((link) => {
-          if (link.target || link.hasAttribute("download")) return;
+        document
+          .querySelectorAll<HTMLAnchorElement>("a[href]")
+          .forEach((link) => {
+            if (link.target || link.hasAttribute("download")) return;
 
-          const url = new URL(link.href, window.location.href);
-          if (
-            url.origin !== window.location.origin ||
-            !supportsDesktopWorkspacePath(url.pathname)
-          ) {
-            return;
-          }
+            const url = new URL(link.href, window.location.href);
+            if (
+              url.origin !== window.location.origin ||
+              !supportsDesktopWorkspacePath(url.pathname)
+            ) {
+              return;
+            }
 
-          link.setAttribute("data-astro-reload", "");
-          link.dataset.atlasWorkspaceRouterBypass = "true";
-        });
+            link.setAttribute("data-astro-reload", "");
+            link.dataset.atlasWorkspaceRouterBypass = "true";
+          });
       };
 
       syncDesktopWorkspaceRouterBypass();
