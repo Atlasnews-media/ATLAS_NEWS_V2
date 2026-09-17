@@ -29,13 +29,10 @@ interface PublicSignal {
   text: string;
 }
 
-const signalFiles = import.meta.glob(
-  "../../data/senales-del-dia/*.json",
-  {
-    eager: true,
-    import: "default",
-  },
-) as Record<string, unknown>;
+const signalFiles = import.meta.glob("../../data/senales-del-dia/*.json", {
+  eager: true,
+  import: "default",
+}) as Record<string, unknown>;
 
 const latestDaily = await getLatestDaily();
 const expectedDate = latestDaily?.id.slice(0, 10);
@@ -96,7 +93,9 @@ const artifactEntry = expectedDate
   : undefined;
 
 const artifact = artifactEntry?.[1];
-const readyArtifact = isReadyArtifact(artifact, expectedDate) ? artifact : undefined;
+const readyArtifact = isReadyArtifact(artifact, expectedDate)
+  ? artifact
+  : undefined;
 
 function publicPair(items: CanonicalSignal[]): PublicSignal[] {
   return items.map((item) => ({
