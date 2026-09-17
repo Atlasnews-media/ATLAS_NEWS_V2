@@ -9,6 +9,7 @@
   let request = null;
   let requestToken = 0;
   let observer = null;
+  let keyboardIntent = false;
 
   const loadedStyles = new Set(
     Array.from(document.querySelectorAll('link[rel="stylesheet"]')).map(
@@ -47,12 +48,16 @@
           font-size: var(--atlas-panel-title-size) !important;
           line-height: 0.94 !important;
           letter-spacing: -0.04em !important;
+          overflow-wrap: break-word;
+          text-wrap: balance;
         }
 
         .desktop-workspace-panel .article-page .article-header h1 {
           font-size: var(--atlas-panel-article-title-size) !important;
           line-height: 0.95 !important;
           letter-spacing: -0.035em !important;
+          overflow-wrap: break-word;
+          text-wrap: balance;
         }
 
         .front-page .headline-list .headline-item + .headline-item {
@@ -65,6 +70,44 @@
 
         .desktop-workspace-calendar-companion .calendar-section .section-heading span {
           font-size: 0.47rem !important;
+        }
+
+        .desktop-workspace-panel a:focus-visible,
+        .desktop-workspace-panel button:focus-visible,
+        .front-page a:focus-visible,
+        .front-page button:focus-visible,
+        .site-header a:focus-visible,
+        .site-footer a:focus-visible {
+          outline: 2px solid var(--accent) !important;
+          outline-offset: 3px !important;
+        }
+      }
+
+      @media (min-width: 80rem) and (max-width: 85.375rem) {
+        .desktop-workspace-panel {
+          --atlas-panel-title-size: clamp(1.85rem, 2.3vw, 2.15rem);
+          --atlas-panel-article-title-size: clamp(1.78rem, 2.2vw, 2.05rem);
+        }
+
+        .desktop-workspace-panel .page-shell,
+        .desktop-workspace-panel .article-page,
+        .desktop-workspace-panel .market-indices-page,
+        .desktop-workspace-panel .calendar-lab {
+          width: calc(100% - 1.25rem) !important;
+        }
+
+        html:has(.desktop-workspace-panel)
+          body:has(.desktop-workspace-panel)
+          .site-header,
+        html:has(.desktop-workspace-panel)
+          body:has(.desktop-workspace-panel)
+          .site-footer,
+        html:has(.desktop-workspace-panel)
+          body:has(.desktop-workspace-panel)
+          .front-page {
+          width: calc(100% - 1.5rem) !important;
+          margin-right: 0.75rem !important;
+          margin-left: 0.75rem !important;
         }
       }
     `;
@@ -122,6 +165,36 @@
 
   function panelContent() {
     return document.querySelector("[data-atlas-workspace-content]");
+  }
+
+  function prepareAccessibility() {
+    const panel = document.querySelector("[data-atlas-workspace-panel]");
+    const content = panelContent();
+    const status = document.querySelector("[data-atlas-workspace-status]");
+
+    if (panel) panel.removeAttribute("aria-live");
+    if (content) content.setAttribute("tabindex", "-1");
+    if (status) {
+      status.setAttribute("role", "status");
+      status.setAttribute("aria-live", "polite");
+      status.setAttribute("aria-atomic", "true");
+    }
+  }
+
+  function focusPanelHeadingAfterKeyboardNavigation() {
+    if (!keyboardIntent) return;
+    keyboardIntent = false;
+
+    requestAnimationFrame(() => {
+      const content = panelContent();
+      if (!content) return;
+
+      const heading = content.querySelector("h1, h2");
+      if (!(heading instanceof HTMLElement)) return;
+
+      heading.setAttribute("tabindex", "-1");
+      heading.focus({ preventScroll: true });
+    });
   }
 
   function cancelPending() {
@@ -200,6 +273,7 @@
 
   function start() {
     installStyles();
+    prepareAccessibility();
     inspectPanel();
 
     const content = panelContent();
@@ -209,10 +283,26 @@
     observer.observe(content, { childList: true, subtree: false });
   }
 
+  document.addEventListener("keydown", (event) => {
+    if (event.key !== "Enter") return;
+    const target = event.target;
+    if (!(target instanceof Element)) return;
+    if (target.closest("a[href]")) keyboardIntent = true;
+  });
+
+  document.addEventListener(
+    "pointerdown",
+    () => {
+      keyboardIntent = false;
+    },
+    { passive: true },
+  );
+
   document.addEventListener("atlas:desktop-panel-change", (event) => {
     const detail = event instanceof CustomEvent ? event.detail : null;
     const path = detail && typeof detail.path === "string" ? detail.path : "";
     syncCalendarCompanion(path);
+    focusPanelHeadingAfterKeyboardNavigation();
   });
 
   if (document.readyState === "loading") {
