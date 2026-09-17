@@ -1,6 +1,7 @@
 ---
 import ContentCard from "../components/ContentCard.astro";
 import DailyAudio from "../components/DailyAudio.astro";
+import DailySignals from "../components/DailySignals.astro";
 import EconomicIndicators from "../components/EconomicIndicators.astro";
 import EditorialDoubleRule from "../components/EditorialDoubleRule.astro";
 import FrontPageHeadline from "../components/FrontPageHeadline.astro";
@@ -161,6 +162,8 @@ const marketsVisual = latestMarkets
                 ))}
               </ol>
             </aside>
+
+            <DailySignals />
           </section>
         </>
       ) : (
