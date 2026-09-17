@@ -1,94 +1,151 @@
 ---
-import {
-  getLatestDaily,
-  getLatestMarkets,
-  getLatestNational,
-} from "../lib/content";
+import { getLatestDaily } from "../lib/content";
 
-interface SignalItem {
+interface CanonicalSignal {
+  slot: string;
+  headline: string;
+  deck: string;
+  development: string;
+  anchor: string;
+  sources: Array<{
+    name: string;
+    url: string;
+  }>;
+}
+
+interface SignalsArtifact {
+  status: "READY";
+  date: string;
+  contract: "atlas-senales-del-dia-v1";
+  senalesDelDia: {
+    internacional: CanonicalSignal[];
+    nacional: CanonicalSignal[];
+    mercados: CanonicalSignal[];
+  };
+}
+
+interface PublicSignal {
   label: string;
   text: string;
 }
 
-interface SignalSource {
-  data: {
-    title: string;
-    summary: string;
-    highlights?: SignalItem[];
-  };
+const signalFiles = import.meta.glob(
+  "../../data/senales-del-dia/*.json",
+  {
+    eager: true,
+    import: "default",
+  },
+) as Record<string, unknown>;
+
+const latestDaily = await getLatestDaily();
+const expectedDate = latestDaily?.id.slice(0, 10);
+
+function isCanonicalSignal(value: unknown): value is CanonicalSignal {
+  if (!value || typeof value !== "object") return false;
+
+  const signal = value as CanonicalSignal;
+
+  return (
+    typeof signal.slot === "string" &&
+    typeof signal.headline === "string" &&
+    signal.headline.trim().length > 0 &&
+    signal.headline.length <= 72 &&
+    typeof signal.deck === "string" &&
+    signal.deck.trim().length > 0 &&
+    signal.deck.length <= 180 &&
+    typeof signal.development === "string" &&
+    signal.development.trim().length > 0 &&
+    typeof signal.anchor === "string" &&
+    signal.anchor.trim().length > 0 &&
+    Array.isArray(signal.sources)
+  );
 }
 
-const [latestDaily, latestNational, latestMarkets] = await Promise.all([
-  getLatestDaily(),
-  getLatestNational(),
-  getLatestMarkets(),
-]);
+function isReadyArtifact(
+  value: unknown,
+  date?: string,
+): value is SignalsArtifact {
+  if (!value || typeof value !== "object" || !date) return false;
 
-function signalPair(source?: SignalSource): SignalItem[] {
-  if (!source) {
-    return [
-      {
-        label: "Señal en preparación",
-        text: "Esta vertical todavía no ha publicado su primera señal del día.",
-      },
-      {
-        label: "Segunda señal en preparación",
-        text: "La segunda señal aparecerá cuando la vertical complete su edición.",
-      },
-    ];
-  }
+  const artifact = value as SignalsArtifact;
+  const internacional = artifact.senalesDelDia?.internacional;
+  const nacional = artifact.senalesDelDia?.nacional;
+  const mercados = artifact.senalesDelDia?.mercados;
 
-  const items = (source.data.highlights ?? [])
-    .slice(0, 2)
-    .map(({ label, text }) => ({ label, text }));
-
-  if (items.length === 0) {
-    items.push({ label: source.data.title, text: source.data.summary });
-  } else if (
-    items.length === 1 &&
-    items[0].label.trim() !== source.data.title.trim()
+  if (
+    artifact.status !== "READY" ||
+    artifact.contract !== "atlas-senales-del-dia-v1" ||
+    artifact.date !== date ||
+    !Array.isArray(internacional) ||
+    !Array.isArray(nacional) ||
+    !Array.isArray(mercados) ||
+    internacional.length !== 2 ||
+    nacional.length !== 2 ||
+    mercados.length !== 2
   ) {
-    items.push({ label: source.data.title, text: source.data.summary });
+    return false;
   }
 
-  while (items.length < 2) {
-    items.push({
-      label: "Señal adicional en preparación",
-      text: "La vertical aún no ha publicado una segunda señal independiente.",
-    });
-  }
-
-  return items.slice(0, 2);
+  return [...internacional, ...nacional, ...mercados].every(isCanonicalSignal);
 }
 
-const groups = [
-  { section: "Internacional", items: signalPair(latestDaily) },
-  { section: "Nacional", items: signalPair(latestNational) },
-  { section: "Mercados", items: signalPair(latestMarkets) },
-];
+const artifactEntry = expectedDate
+  ? Object.entries(signalFiles).find(([path]) =>
+      path.endsWith(`/${expectedDate}.json`),
+    )
+  : undefined;
+
+const artifact = artifactEntry?.[1];
+const readyArtifact = isReadyArtifact(artifact, expectedDate) ? artifact : undefined;
+
+function publicPair(items: CanonicalSignal[]): PublicSignal[] {
+  return items.map((item) => ({
+    label: item.headline,
+    text: item.deck,
+  }));
+}
+
+const groups = readyArtifact
+  ? [
+      {
+        section: "Internacional",
+        items: publicPair(readyArtifact.senalesDelDia.internacional),
+      },
+      {
+        section: "Nacional",
+        items: publicPair(readyArtifact.senalesDelDia.nacional),
+      },
+      {
+        section: "Mercados",
+        items: publicPair(readyArtifact.senalesDelDia.mercados),
+      },
+    ]
+  : [];
 ---
 
-<section class="daily-signals" aria-labelledby="senales-del-dia">
-  <h2 id="senales-del-dia" class="daily-signals__title">Señales del día</h2>
+{
+  groups.length === 3 && (
+    <section class="daily-signals" aria-labelledby="senales-del-dia">
+      <h2 id="senales-del-dia" class="daily-signals__title">Señales del día</h2>
 
-  <div class="daily-signals__groups">
-    {
-      groups.map((group) => (
-        <section class="daily-signals__group" aria-label={group.section}>
-          <h3>{group.section}</h3>
-          <div class="daily-signals__items">
-            {group.items.map((item) => (
-              <article class="daily-signals__item">
-                <strong>{item.label}</strong>
-                <p>{item.text}</p>
-              </article>
-            ))}
-          </div>
-        </section>
-      ))
-    }
-  </div>
-</section>
+      <div class="daily-signals__groups">
+        {groups.map((group) => (
+          <section class="daily-signals__group" aria-label={group.section}>
+            <h3>{group.section}</h3>
+            <div class="daily-signals__items">
+              {group.items.map((item) => (
+                <article class="daily-signals__item">
+                  <strong>{item.label}</strong>
+                  <p>{item.text}</p>
+                </article>
+              ))}
+            </div>
+          </section>
+        ))}
+      </div>
+    </section>
+  )
+}
 
 <style>
   .daily-signals {
