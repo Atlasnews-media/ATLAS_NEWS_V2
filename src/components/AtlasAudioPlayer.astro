@@ -164,12 +164,19 @@ if (engineRole === "analysis") engineAttributes["data-analysis-player"] = "";
       setPlaying(false);
     });
 
-    setPlaying(false);
+    setPlaying(!audio.paused && !audio.ended);
     syncDuration();
     syncProgress();
   };
 
-  document.querySelectorAll("[data-atlas-audio]").forEach(initAtlasAudioPlayer);
+  const initAtlasAudioPlayers = () => {
+    document
+      .querySelectorAll("[data-atlas-audio]")
+      .forEach(initAtlasAudioPlayer);
+  };
+
+  initAtlasAudioPlayers();
+  document.addEventListener("astro:page-load", initAtlasAudioPlayers);
 </script>
 
 <style>
