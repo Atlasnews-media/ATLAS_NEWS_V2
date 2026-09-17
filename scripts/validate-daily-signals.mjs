@@ -15,7 +15,10 @@ function assert(condition, message) {
 
 function validateSignal(signal, expectedSlot, context) {
   assert(signal && typeof signal === "object", `${context}: señal inválida.`);
-  assert(signal.slot === expectedSlot, `${context}: slot esperado ${expectedSlot}.`);
+  assert(
+    signal.slot === expectedSlot,
+    `${context}: slot esperado ${expectedSlot}.`,
+  );
   assert(
     typeof signal.headline === "string" &&
       signal.headline.trim().length > 0 &&
@@ -44,7 +47,9 @@ function validateSignal(signal, expectedSlot, context) {
 
   for (const [index, source] of signal.sources.entries()) {
     assert(
-      source && typeof source.name === "string" && source.name.trim().length > 0,
+      source &&
+        typeof source.name === "string" &&
+        source.name.trim().length > 0,
       `${context}: source ${index + 1} sin name válido.`,
     );
     assert(
@@ -70,7 +75,10 @@ async function validateFile(path) {
     artifact.contract === "atlas-senales-del-dia-v1",
     `${path}: contract inválido.`,
   );
-  assert(artifact.date === expectedDate, `${path}: date no coincide con archivo.`);
+  assert(
+    artifact.date === expectedDate,
+    `${path}: date no coincide con archivo.`,
+  );
   assert(
     artifact.senalesDelDia && typeof artifact.senalesDelDia === "object",
     `${path}: falta senalesDelDia.`,
@@ -79,7 +87,10 @@ async function validateFile(path) {
   for (const [group, slots] of Object.entries(expectedSlots)) {
     const items = artifact.senalesDelDia[group];
     assert(Array.isArray(items), `${path}: ${group} no es array.`);
-    assert(items.length === 2, `${path}: ${group} debe tener exactamente 2 señales.`);
+    assert(
+      items.length === 2,
+      `${path}: ${group} debe tener exactamente 2 señales.`,
+    );
     slots.forEach((slot, index) =>
       validateSignal(items[index], slot, `${path} · ${group}[${index}]`),
     );
