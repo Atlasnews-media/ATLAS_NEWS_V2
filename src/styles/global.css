@@ -7,7 +7,7 @@
   --accent: #8e2f24;
   --serif: Georgia, "Times New Roman", serif;
   --display: Georgia, "Times New Roman", serif;
-  --sans: "Arial Narrow", "Roboto Condensed", Arial, sans-serif;
+  --sans: "Arial Narrow", var(--font-atlas-sans), Arial, sans-serif;
   color-scheme: light;
   font-family: var(--serif);
   background: var(--paper);
