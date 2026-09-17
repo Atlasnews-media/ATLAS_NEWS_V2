@@ -28,10 +28,14 @@ if (process.env.GITHUB_EVENT_NAME !== "push") {
   process.exit(0);
 }
 
-const changedFiles = execFileSync("git", ["diff", "--name-only", "HEAD^", "HEAD"], {
-  cwd: rootPath,
-  encoding: "utf8",
-})
+const changedFiles = execFileSync(
+  "git",
+  ["diff", "--name-only", "HEAD^", "HEAD"],
+  {
+    cwd: rootPath,
+    encoding: "utf8",
+  },
+)
   .split(/\r?\n/)
   .map((value) => value.trim())
   .filter(Boolean);
@@ -65,14 +69,14 @@ const editionDate = generalMatch[1];
 const editionId = generalPath.split("/").at(-1).replace(/\.md$/, "");
 
 const nationalFiles = changedFiles.filter((path) =>
-  new RegExp(
-    `^src/content/briefings/${editionDate}-national-.*\\.md$`,
-  ).test(path),
+  new RegExp(`^src/content/briefings/${editionDate}-national-.*\\.md$`).test(
+    path,
+  ),
 );
 const marketsFiles = changedFiles.filter((path) =>
-  new RegExp(
-    `^src/content/briefings/${editionDate}-markets-.*\\.md$`,
-  ).test(path),
+  new RegExp(`^src/content/briefings/${editionDate}-markets-.*\\.md$`).test(
+    path,
+  ),
 );
 
 if (nationalFiles.length > 1 || marketsFiles.length > 1) {
