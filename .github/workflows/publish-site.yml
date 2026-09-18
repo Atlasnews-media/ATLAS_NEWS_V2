@@ -195,6 +195,45 @@ jobs:
       - name: Instalar dependencias
         run: npm ci
 
+      - name: Preflight social de la edición diaria
+        if: github.event_name == 'push' && steps.edition.outputs.track == 'true' && steps.edition.outputs.edition_type == 'daily'
+        env:
+          ATLAS_SOURCE_COMMIT: ${{ env.ATLAS_SOURCE_SHA }}
+          ATLAS_SOCIAL_PREFLIGHT_ONLY: "true"
+          ATLAS_SOCIAL_CONTRACT_OUTPUT: tools/carousel/.generated/preflight-contract.json
+        run: node tools/carousel/prepare-carousel-contract.mjs
+
+      - name: Probar frontera histórica del contrato social
+        if: github.event_name == 'pull_request'
+        shell: bash
+        run: |
+          set -euo pipefail
+          positives=(
+            "src/content/editions/2026-09-14-daily-energia-se-convierte-en-riesgo-macro-global.md"
+            "src/content/editions/2026-09-15-daily-hormuz-pierde-dos-vias-de-alivio.md"
+            "src/content/editions/2026-09-16-daily-arabia-saudi-ensaya-un-bypass-maritimo.md"
+            "src/content/editions/2026-09-17-daily-fed-endurece-el-mapa-global-de-tasas.md"
+          )
+
+          for source_id in "${positives[@]}"; do
+            ATLAS_SOURCE_COMMIT="$ATLAS_SOURCE_SHA" \
+            ATLAS_SOCIAL_PREFLIGHT_ONLY=true \
+            ATLAS_SOCIAL_PREFLIGHT_SOURCE_ID="$source_id" \
+            ATLAS_SOCIAL_CONTRACT_OUTPUT="tools/carousel/.generated/historical-preflight.json" \
+              node tools/carousel/prepare-carousel-contract.mjs
+          done
+
+          historical="src/content/editions/2026-09-13-daily-doble-vulnerabilidad-logistica-golfo.md"
+          if ATLAS_SOURCE_COMMIT="$ATLAS_SOURCE_SHA" \
+            ATLAS_SOCIAL_PREFLIGHT_ONLY=true \
+            ATLAS_SOCIAL_PREFLIGHT_SOURCE_ID="$historical" \
+            ATLAS_SOCIAL_CONTRACT_OUTPUT="tools/carousel/.generated/historical-negative.json" \
+              node tools/carousel/prepare-carousel-contract.mjs; then
+            echo "Fail-closed: 13-09 historical edition unexpectedly passed the five-highlight social contract."
+            exit 1
+          fi
+          echo "PASS: 14-17/09 satisfy the current social contract; 13/09 remains correctly grandfathered/incompatible."
+
       - name: Validar contrato Señales (fail-open)
         id: signals_contract
         if: steps.edition.outputs.package_kind == 'morning'

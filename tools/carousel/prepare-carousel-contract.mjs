@@ -13,6 +13,11 @@ const BLOCKED_SOURCE_COMMIT =
 const OUTPUT_RELATIVE =
   process.env.ATLAS_SOCIAL_CONTRACT_OUTPUT ||
   "tools/carousel/.generated/carousel-contract.json";
+const PREFLIGHT_ONLY =
+  String(process.env.ATLAS_SOCIAL_PREFLIGHT_ONLY || "").trim() === "true";
+const PREFLIGHT_SOURCE_ID = String(
+  process.env.ATLAS_SOCIAL_PREFLIGHT_SOURCE_ID || "",
+).trim();
 
 const KEY_ICONS = ["trend-up", "cash-card", "risk-triangle"];
 const IMPACT_ICONS = ["portfolio-grid", "decision-check", "context-target"];
@@ -284,9 +289,23 @@ async function main() {
     return;
   }
 
-  const dailyFiles = changedFiles(SOURCE_COMMIT).filter((file) =>
-    /^src\/content\/editions\/\d{4}-\d{2}-\d{2}-daily-[^/]+\.mdx?$/.test(file),
-  );
+  if (PREFLIGHT_SOURCE_ID && !PREFLIGHT_ONLY) {
+    throw new Error(
+      "ATLAS_SOCIAL_PREFLIGHT_SOURCE_ID is only allowed in local preflight mode",
+    );
+  }
+
+  const dailyPattern =
+    /^src\/content\/editions\/\d{4}-\d{2}-\d{2}-daily-[^/]+\.mdx?$/;
+  const dailyFiles = PREFLIGHT_SOURCE_ID
+    ? [PREFLIGHT_SOURCE_ID]
+    : changedFiles(SOURCE_COMMIT).filter((file) => dailyPattern.test(file));
+
+  if (dailyFiles.some((file) => !dailyPattern.test(file))) {
+    throw new Error(
+      `Fail-closed: invalid daily source path for social preflight: ${dailyFiles.join(", ")}`,
+    );
+  }
   if (dailyFiles.length === 0) {
     await markSkipped("no-new-daily-edition-in-source-commit");
     return;
@@ -304,12 +323,19 @@ async function main() {
     return;
   }
 
-  const statusUrl = `${STATUS_URL}${STATUS_URL.includes("?") ? "&" : "?"}source=${SOURCE_COMMIT}`;
-  const status = await fetchJson(statusUrl);
-  const publicationEvidence = assertPublicStatus(status, editionId);
-  const editionNumber = String(status?.latestDaily?.issueNumber ?? "").trim();
-  if (!/^[1-9][0-9]*$/.test(editionNumber)) {
-    throw new Error("Fail-closed: public status latestDaily.issueNumber must be a positive integer");
+  let publicationEvidence = "LOCAL_SOCIAL_PREFLIGHT";
+  let editionNumber = "0";
+
+  if (!PREFLIGHT_ONLY) {
+    const statusUrl = `${STATUS_URL}${STATUS_URL.includes("?") ? "&" : "?"}source=${SOURCE_COMMIT}`;
+    const status = await fetchJson(statusUrl);
+    publicationEvidence = assertPublicStatus(status, editionId);
+    editionNumber = String(status?.latestDaily?.issueNumber ?? "").trim();
+    if (!/^[1-9][0-9]*$/.test(editionNumber)) {
+      throw new Error(
+        "Fail-closed: public status latestDaily.issueNumber must be a positive integer",
+      );
+    }
   }
 
   const markdown = await fs.readFile(path.join(ROOT, sourceId), "utf8");
@@ -367,7 +393,9 @@ async function main() {
   const fallbackDek = socialHighlights.map((item) => item.label).join(" · ");
   const headline = headlineParts(rawTitle, fallbackDek);
   const canonicalUrl = `https://atlasnews-media.github.io/ediciones/${editionId}/`;
-  await assertPublic(`${canonicalUrl}?source=${SOURCE_COMMIT}`);
+  if (!PREFLIGHT_ONLY) {
+    await assertPublic(`${canonicalUrl}?source=${SOURCE_COMMIT}`);
+  }
 
   const contract = {
     version: "1",
@@ -416,6 +444,7 @@ async function main() {
         contractPath: OUTPUT_RELATIVE,
         editionNumber,
         publicationEvidence,
+        preflightOnly: PREFLIGHT_ONLY,
       },
       null,
       2,

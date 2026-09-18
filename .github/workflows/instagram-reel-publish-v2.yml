@@ -17,6 +17,8 @@ on:
       - ".github/workflows/instagram-reel-publish-live-test.yml"
       - "tools/reel_maker/consume_reel_artifact.py"
       - "tools/reel_maker/publish_reel_artifact.sh"
+      - "tools/reel_maker/reconcile_instagram_reel.py"
+      - "tools/reel_maker/test_reconcile_instagram_reel.py"
 
 permissions:
   actions: read
@@ -26,7 +28,7 @@ concurrency:
   group: >-
     instagram-reel-f4e-v2-${{
       github.event_name == 'workflow_dispatch' && inputs.source_commit ||
-      github.event_name == 'workflow_run' && github.event.workflow_run.id ||
+      github.event_name == 'workflow_run' && github.event.workflow_run.head_sha ||
       github.run_id
     }}
   cancel-in-progress: false
@@ -44,7 +46,11 @@ jobs:
       - name: Syntax-check F4E runtime
         run: |
           set -euo pipefail
-          python3 -m py_compile tools/reel_maker/consume_reel_artifact.py
+          python3 -m py_compile \
+            tools/reel_maker/consume_reel_artifact.py \
+            tools/reel_maker/reconcile_instagram_reel.py \
+            tools/reel_maker/test_reconcile_instagram_reel.py
+          python3 tools/reel_maker/test_reconcile_instagram_reel.py
           bash -n tools/reel_maker/publish_reel_artifact.sh
 
       - name: Verify latest canonical F4D artifact is discoverable
