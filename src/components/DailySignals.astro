@@ -228,7 +228,7 @@ const groups = readyArtifact
                       loading="lazy"
                       variant="card"
                       class="daily-signals__image"
-                      onerror="this.closest('figure')?.remove()"
+                      onerror="this.closest('.daily-signals__item')?.removeAttribute('data-has-visual'); this.closest('figure')?.remove()"
                     />
                     <figcaption>
                       {item.visual.source} · {item.visual.author} ·{" "}
