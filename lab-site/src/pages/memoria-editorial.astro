@@ -1,356 +1,542 @@
 ---
-import "../../../src/styles/global.css";
+import BaseLayout from "../../../src/layouts/BaseLayout.astro";
 ---
 
-<!doctype html>
-<html lang="es">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
-    <meta name="robots" content="noindex, nofollow, noarchive" />
-    <meta name="theme-color" content="#f2efe5" />
-    <title>ATLAS NEWS LAB · Memoria editorial</title>
-  </head>
-  <body>
-    <main class="shell">
-      <p class="kicker">ATLAS NEWS · LAB · EXP-011</p>
-      <h1>Memoria editorial semántica</h1>
-      <p class="intro">
-        Comparación experimental entre el Shadow determinístico y un juez
-        semántico propio de ATLAS NEWS. Esta superficie no publica ni modifica
-        la operación editorial.
+<BaseLayout
+  title="Memoria editorial — ATLAS NEWS LAB"
+  description="Vista de laboratorio para comparar la lectura léxica vigente con el juez semántico experimental."
+>
+  <main class="article-page" data-lab-experiment="EXP-011">
+    <header class="article-header-lab">
+      <div class="meta">
+        <span id="eyebrow">Internacional</span>
+        <span aria-hidden="true">◆</span>
+        <span>ATLAS NEWS</span>
+      </div>
+
+      <h1 id="articleTitle">Cargando publicación…</h1>
+      <p class="summary" id="articleSummary">
+        Preparando la última lectura del laboratorio.
       </p>
 
-      <div class="rule" aria-hidden="true"></div>
-
-      <section class="status-grid" aria-label="Estado de la corrida">
-        <article>
-          <span>Estado</span>
-          <strong id="status">Cargando…</strong>
-        </article>
-        <article>
-          <span>Skill</span>
-          <strong id="skill">—</strong>
-        </article>
-        <article>
-          <span>Candidatos</span>
-          <strong id="candidates">—</strong>
-        </article>
-        <article>
-          <span>Tiempo</span>
-          <strong id="processing">—</strong>
-        </article>
-      </section>
-
-      <div class="rule" aria-hidden="true"></div>
-
-      <section>
-        <p class="section-label">Comparación</p>
-        <h2>Control vs experimental</h2>
-        <div class="comparison">
-          <article class="panel">
-            <p class="panel-label">Control / Shadow</p>
-            <div id="control">Sin corrida todavía.</div>
-          </article>
-          <article class="panel">
-            <p class="panel-label">Juez semántico LAB</p>
-            <div id="experimental">Sin corrida todavía.</div>
-          </article>
-        </div>
-      </section>
-
-      <div class="rule" aria-hidden="true"></div>
-
-      <section>
-        <p class="section-label">Casos</p>
-        <h2>Qué cambió y por qué</h2>
-        <div id="cases" class="cases">
-          <p>Aún no existen casos experimentales.</p>
-        </div>
-      </section>
-
-      <div class="rule" aria-hidden="true"></div>
-
-      <section>
-        <p class="section-label">Métricas</p>
-        <h2>Señal acumulada de la corrida</h2>
-        <dl class="metrics">
+      <div class="publication-data">
+        <dl>
           <div>
-            <dt>Alertas Shadow</dt>
-            <dd id="shadowAlerts">—</dd>
+            <dt>Publicado</dt>
+            <dd id="publishedAt">—</dd>
           </div>
           <div>
-            <dt>Señales semánticas</dt>
-            <dd id="semanticFlags">—</dd>
-          </div>
-          <div>
-            <dt>Desacuerdos</dt>
-            <dd id="disagreements">—</dd>
-          </div>
-          <div>
-            <dt>Falsos negativos recuperados</dt>
-            <dd id="recovered">—</dd>
-          </div>
-          <div>
-            <dt>Posibles falsos positivos</dt>
-            <dd id="falsePositives">—</dd>
+            <dt>Lectura</dt>
+            <dd id="experimentState">LAB</dd>
           </div>
         </dl>
-      </section>
+        <ul class="tags" id="articleTags" aria-label="Etiquetas"></ul>
+      </div>
+    </header>
 
-      <p class="footnote" id="generatedAt">Esperando primera corrida.</p>
-      <a class="back" href="/lab/">← Volver al laboratorio</a>
-    </main>
+    <nav class="case-nav" aria-label="Cambiar vertical del experimento">
+      <button type="button" data-section="general" class="is-active">
+        Internacional
+      </button>
+      <button type="button" data-section="national">Nacional</button>
+      <button type="button" data-section="markets">Mercados</button>
+    </nav>
 
-    <script>
-      const runtimeUrl = "/lab/editorial-memory-judge/latest.json";
-      const bootstrapUrl = "/lab/editorial-memory-judge/bootstrap.json";
+    <article class="prose" id="articleBody">
+      <p>
+        La vista se completará cuando exista una corrida válida del experimento.
+      </p>
+    </article>
 
-      const text = (value) =>
-        value === null || value === undefined || value === ""
-          ? "—"
-          : String(value);
+    <section class="sources" aria-labelledby="antecedentes-utilizados">
+      <h2 id="antecedentes-utilizados">Antecedentes utilizados</h2>
+      <ul id="evidenceList">
+        <li>Esperando datos del experimento.</li>
+      </ul>
+    </section>
 
-      function renderObject(target, value) {
-        const node = document.querySelector(target);
-        if (!node) return;
-        if (!value) {
-          node.textContent = "Sin corrida todavía.";
-          return;
-        }
-        const pre = document.createElement("pre");
-        pre.textContent = JSON.stringify(value, null, 2);
-        node.replaceChildren(pre);
+    <p class="return-link">
+      <a href="/lab/">← Volver al laboratorio</a>
+    </p>
+  </main>
+
+  <script>
+    const runtimeUrl = "/lab/editorial-memory-judge/latest.json";
+    const bootstrapUrl = "/lab/editorial-memory-judge/bootstrap.json";
+    const inputUrl = "/lab/editorial-memory-judge/input.json";
+
+    const sectionOrder = ["general", "national", "markets"];
+
+    const sectionLabel = {
+      general: "Internacional",
+      national: "Nacional",
+      markets: "Mercados",
+    };
+
+    const eventLabel = {
+      SAME_EVENT: "el mismo evento",
+      NEW_EVENT: "un evento nuevo",
+      UNRELATED: "un hecho sin continuidad relevante",
+      UNCERTAIN: "una relación de evento todavía ambigua",
+    };
+
+    const informationLabel = {
+      NEW: "información nueva",
+      CONTINUATION: "continuidad",
+      MEANINGFUL_UPDATE: "una actualización material",
+      REPETITION: "repetición",
+      CONTRADICTION: "una contradicción",
+      UNCERTAIN: "una relación informativa todavía ambigua",
+    };
+
+    function formatDate(value) {
+      if (!value) return "—";
+      const date = new Date(value);
+      if (Number.isNaN(date.valueOf())) return value;
+      return new Intl.DateTimeFormat("es-CL", {
+        dateStyle: "medium",
+        timeStyle: "short",
+        timeZone: "America/Santiago",
+      }).format(date);
+    }
+
+    function sentenceFromShadow(item) {
+      const score = item.shadow?.noveltyScore;
+      const flags = item.shadow?.repetitionFlags ?? 0;
+
+      if (flags > 0) {
+        return `El Shadow activó ${flags} señal de repetición. La novedad léxica de esta publicación fue ${score ?? "no disponible"} sobre 100.`;
       }
 
-      function renderCases(cases) {
-        const node = document.querySelector("#cases");
-        if (!node) return;
-        if (!Array.isArray(cases) || cases.length === 0) return;
+      return `El Shadow no activó una señal de repetición. La novedad léxica de esta publicación fue ${score ?? "no disponible"} sobre 100.`;
+    }
 
-        const fragment = document.createDocumentFragment();
-        for (const item of cases) {
-          const article = document.createElement("article");
-          article.className = "case";
-          const title = document.createElement("h3");
-          title.textContent = item.title ?? item.candidateId ?? "Caso";
-          const meta = document.createElement("p");
-          meta.className = "case-meta";
-          meta.textContent = [
-            item.section,
-            item.shadow?.result ? `Shadow: ${item.shadow.result}` : null,
-            item.semantic?.eventRelation
-              ? `Evento: ${item.semantic.eventRelation}`
-              : null,
-            item.semantic?.informationRelation
-              ? `Información: ${item.semantic.informationRelation}`
-              : null,
-          ]
-            .filter(Boolean)
-            .join(" · ");
-          const reason = document.createElement("p");
-          reason.textContent =
-            item.summary ??
-            item.decisionReason ??
-            "Caso registrado sin explicación visible.";
-          article.append(title, meta, reason);
-          fragment.append(article);
-        }
-        node.replaceChildren(fragment);
+    function sentenceFromSemantic(item) {
+      const semantic = item.semantic ?? {};
+      const event =
+        eventLabel[semantic.eventRelation] ??
+        "una relación de evento no clasificada";
+      const information =
+        informationLabel[semantic.informationRelation] ??
+        "una relación informativa no clasificada";
+
+      const angle = semantic.angleRepeated?.value === true
+        ? "El ángulo editorial sí aparece repetido respecto de antecedentes recientes."
+        : semantic.angleRepeated?.value === false
+          ? "El ángulo editorial no aparece repetido respecto de antecedentes recientes."
+          : "La repetición del ángulo quedó sin resolver.";
+
+      return `La lectura semántica describe esta pieza como ${event} y ${information}. ${angle}`;
+    }
+
+    function sectionBlock(title, body) {
+      const fragment = document.createDocumentFragment();
+      const heading = document.createElement("h2");
+      heading.textContent = title;
+      const paragraph = document.createElement("p");
+      paragraph.textContent = body;
+      fragment.append(heading, paragraph);
+      return fragment;
+    }
+
+    function lookupPriorTitle(input, candidateId, recordRef) {
+      if (!recordRef) return null;
+      const retrieval = input.retrieval?.find(
+        (entry) => entry.candidate_id === candidateId,
+      );
+      const prior = retrieval?.retrieved_prior_items?.find(
+        (entry) => entry.record_ref === recordRef,
+      );
+      return prior?.published_title ?? null;
+    }
+
+    function renderEvidence(item, input) {
+      const list = document.querySelector("#evidenceList");
+      if (!(list instanceof HTMLUListElement)) return;
+
+      const refs = Array.isArray(item.evidenceRefs) ? item.evidenceRefs : [];
+      if (refs.length === 0) {
+        const li = document.createElement("li");
+        li.textContent = "Sin antecedentes seleccionados para esta lectura.";
+        list.replaceChildren(li);
+        return;
       }
 
-      async function loadExperimentData() {
-        let lastError = null;
-        for (const url of [runtimeUrl, bootstrapUrl]) {
-          try {
-            const response = await fetch(url, { cache: "no-store" });
-            if (!response.ok) throw new Error(`HTTP ${response.status}`);
-            return await response.json();
-          } catch (error) {
-            lastError = error;
-          }
-        }
-        throw lastError ?? new Error("Sin artefacto EXP-011");
+      const nodes = refs.map((recordRef) => {
+        const li = document.createElement("li");
+        const title =
+          lookupPriorTitle(input, item.candidateId, recordRef) ??
+          "Antecedente editorial previo";
+        li.textContent = title;
+        return li;
+      });
+      list.replaceChildren(...nodes);
+    }
+
+    function renderTags(candidate) {
+      const list = document.querySelector("#articleTags");
+      if (!(list instanceof HTMLUListElement)) return;
+      const tags = Array.isArray(candidate?.tags) ? candidate.tags : [];
+      list.replaceChildren(
+        ...tags.map((tag) => {
+          const li = document.createElement("li");
+          li.textContent = tag;
+          return li;
+        }),
+      );
+    }
+
+    function renderArticle(section, data, input) {
+      const item =
+        data.cases?.find((entry) => entry.section === section) ??
+        data.cases?.[0];
+
+      if (!item) return;
+
+      const candidate =
+        input.candidates?.find(
+          (entry) => entry.candidate_id === item.candidateId,
+        ) ?? null;
+
+      const eyebrow = document.querySelector("#eyebrow");
+      const title = document.querySelector("#articleTitle");
+      const summary = document.querySelector("#articleSummary");
+      const publishedAt = document.querySelector("#publishedAt");
+      const experimentState = document.querySelector("#experimentState");
+      const body = document.querySelector("#articleBody");
+
+      if (eyebrow) eyebrow.textContent = sectionLabel[item.section] ?? "ATLAS";
+      if (title) title.textContent = candidate?.published_title ?? item.title;
+      if (summary) {
+        summary.textContent =
+          candidate?.published_summary ??
+          item.summary ??
+          "Lectura experimental sin resumen visible.";
+      }
+      if (publishedAt) {
+        publishedAt.textContent = formatDate(
+          candidate?.published_at ?? data.generatedAt,
+        );
+      }
+      if (experimentState) {
+        experimentState.textContent =
+          data.status === "PASS_WITH_OBSERVATIONS"
+            ? "Laboratorio · con observaciones"
+            : "Laboratorio";
       }
 
-      loadExperimentData().then((data) => {
-          document.querySelector("#status").textContent = text(data.status);
-          document.querySelector("#skill").textContent =
-            `${text(data.skill?.name)} · ${text(data.skill?.version)}`;
-          document.querySelector("#candidates").textContent = text(
-            data.metrics?.candidates,
-          );
-          document.querySelector("#processing").textContent =
-            data.metrics?.processingMs == null
-              ? "—"
-              : `${data.metrics.processingMs} ms`;
+      renderTags(candidate);
 
-          document.querySelector("#shadowAlerts").textContent = text(
-            data.metrics?.shadowAlerts,
-          );
-          document.querySelector("#semanticFlags").textContent = text(
-            data.metrics?.semanticFlags,
-          );
-          document.querySelector("#disagreements").textContent = text(
-            data.metrics?.disagreements,
-          );
-          document.querySelector("#recovered").textContent = text(
-            data.metrics?.recoveredFalseNegatives,
-          );
-          document.querySelector("#falsePositives").textContent = text(
-            data.metrics?.possibleFalsePositives,
-          );
+      if (body) {
+        body.replaceChildren();
 
-          renderObject("#control", data.control);
-          renderObject("#experimental", data.experimental);
-          renderCases(data.cases);
+        const opening = document.createElement("p");
+        opening.textContent =
+          item.decisionReason ??
+          item.summary ??
+          "Sin lectura experimental disponible.";
+        body.append(opening);
 
-          document.querySelector("#generatedAt").textContent = data.generatedAt
-            ? `Última actualización: ${data.generatedAt}`
-            : "Bootstrap técnico: esperando primera corrida.";
-        })
-        .catch((error) => {
-          document.querySelector("#status").textContent = "SIN DATOS";
-          document.querySelector("#generatedAt").textContent =
-            `No fue posible cargar el artefacto experimental: ${error.message}`;
-        });
-    </script>
-  </body>
-</html>
+        body.append(
+          sectionBlock("Lectura del Shadow", sentenceFromShadow(item)),
+        );
+
+        body.append(
+          sectionBlock(
+            "Lectura de memoria editorial",
+            sentenceFromSemantic(item),
+          ),
+        );
+
+        if (item.semantic?.angleSummary) {
+          body.append(
+            sectionBlock("Ángulo observado", item.semantic.angleSummary),
+          );
+        }
+
+        if (item.summary) {
+          body.append(sectionBlock("Qué cambia", item.summary));
+        }
+
+        const note = document.createElement("p");
+        note.className = "lab-note";
+        note.textContent =
+          "Esta lectura pertenece al laboratorio y no modifica la publicación ni la memoria canónica de ATLAS NEWS.";
+        body.append(note);
+      }
+
+      renderEvidence(item, input);
+
+      for (const button of document.querySelectorAll("[data-section]")) {
+        button.classList.toggle(
+          "is-active",
+          button.getAttribute("data-section") === item.section,
+        );
+      }
+    }
+
+    async function loadJson(url) {
+      const response = await fetch(url, { cache: "no-store" });
+      if (!response.ok) throw new Error(`HTTP ${response.status}`);
+      return await response.json();
+    }
+
+    async function loadExperimentData() {
+      let runtime = null;
+      try {
+        runtime = await loadJson(runtimeUrl);
+      } catch {
+        runtime = await loadJson(bootstrapUrl);
+      }
+
+      const input = await loadJson(inputUrl);
+      return { runtime, input };
+    }
+
+    loadExperimentData()
+      .then(({ runtime, input }) => {
+        const available = sectionOrder.find((section) =>
+          runtime.cases?.some((item) => item.section === section),
+        );
+        renderArticle(available ?? "general", runtime, input);
+
+        for (const button of document.querySelectorAll("[data-section]")) {
+          button.addEventListener("click", () => {
+            const section = button.getAttribute("data-section");
+            if (section) renderArticle(section, runtime, input);
+          });
+        }
+      })
+      .catch(() => {
+        const title = document.querySelector("#articleTitle");
+        const summary = document.querySelector("#articleSummary");
+        const body = document.querySelector("#articleBody");
+        if (title) title.textContent = "Experimento sin datos disponibles";
+        if (summary) {
+          summary.textContent =
+            "La vista de publicación no pudo cargar una corrida válida.";
+        }
+        if (body) {
+          const paragraph = document.createElement("p");
+          paragraph.textContent =
+            "No se muestra información parcial para evitar una comparación incompleta.";
+          body.replaceChildren(paragraph);
+        }
+      });
+  </script>
+</BaseLayout>
 
 <style>
-  :global(body) {
-    margin: 0;
-    background: #f2efe5;
-    color: #151515;
-  }
-
-  .shell {
-    width: min(72rem, calc(100% - 2rem));
+  .article-page {
+    width: min(88rem, calc(100% - 2rem));
     margin: 0 auto;
-    padding: clamp(3rem, 9vw, 7rem) 0;
   }
 
-  .kicker,
-  .section-label,
-  .panel-label,
-  .status-grid span {
-    margin: 0;
+  .article-header-lab {
+    max-width: 72rem;
+    margin: clamp(2.5rem, 7vw, 5.5rem) auto 0;
+  }
+
+  .meta {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.6rem;
+    margin-bottom: 1rem;
+    color: var(--accent);
     font: 800 0.72rem/1.2 var(--sans);
     letter-spacing: 0.12em;
     text-transform: uppercase;
   }
 
-  h1 {
-    max-width: 60rem;
-    margin: 0.75rem 0 1rem;
-    font: 700 clamp(3rem, 9vw, 6.5rem)/0.92 var(--display);
+  .article-header-lab h1 {
+    max-width: 62rem;
+    margin: 0;
+    font: 700 clamp(2.8rem, 7vw, 5.6rem) / 0.96 var(--display);
     letter-spacing: -0.04em;
   }
 
-  h2 {
-    margin: 0.5rem 0 1rem;
-    font: 700 clamp(2rem, 5vw, 3.5rem)/0.95 var(--serif);
-    letter-spacing: -0.03em;
+  .summary {
+    max-width: 54rem;
+    margin: 1.35rem 0 0;
+    color: var(--ink-soft);
+    font: 1.24rem/1.55 var(--serif);
   }
 
-  h3 {
-    margin: 0 0 0.5rem;
-    font: 700 1.35rem/1.1 var(--serif);
+  .publication-data {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 1rem 2rem;
+    margin-top: 1.65rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--rule);
   }
 
-  .intro,
-  .case p,
-  .footnote {
-    max-width: 48rem;
-    font: 1.1rem/1.65 var(--serif);
-  }
-
-  .rule {
-    margin: 2.5rem 0 2rem;
-    border-top: 4px double currentColor;
-  }
-
-  .status-grid,
-  .comparison,
-  .metrics {
-    display: grid;
-    gap: 1rem;
-  }
-
-  .status-grid {
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-  }
-
-  .status-grid article,
-  .panel,
-  .case,
-  .metrics div {
-    border: 1px solid currentColor;
-    padding: 1rem;
-    background: rgba(255, 255, 255, 0.18);
-  }
-
-  .status-grid strong {
-    display: block;
-    margin-top: 0.45rem;
-    font: 700 1.05rem/1.25 var(--serif);
-  }
-
-  .comparison {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
-  pre {
-    overflow: auto;
-    margin: 1rem 0 0;
-    white-space: pre-wrap;
-    font: 0.84rem/1.45 ui-monospace, SFMono-Regular, Menlo, monospace;
-  }
-
-  .cases {
-    display: grid;
-    gap: 1rem;
-  }
-
-  .case-meta {
-    font-size: 0.86rem !important;
-  }
-
-  .metrics {
-    grid-template-columns: repeat(5, minmax(0, 1fr));
+  .publication-data dl {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem 2rem;
     margin: 0;
   }
 
-  dt {
-    font: 700 0.78rem/1.3 var(--sans);
+  .publication-data dl div {
+    display: grid;
+    gap: 0.18rem;
   }
 
-  dd {
-    margin: 0.65rem 0 0;
-    font: 700 2rem/1 var(--serif);
+  .publication-data dt,
+  .publication-data dd {
+    margin: 0;
   }
 
-  .footnote {
-    margin-top: 2rem;
-    font-size: 0.9rem;
+  .publication-data dt {
+    color: var(--ink-soft);
+    font: 800 0.66rem/1.2 var(--sans);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
   }
 
-  .back {
-    display: inline-block;
-    margin-top: 1rem;
-    color: inherit;
-    font: 800 0.75rem/1.2 var(--sans);
+  .publication-data dd {
+    font: 0.82rem/1.4 var(--sans);
+  }
+
+  .tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.45rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .tags li {
+    padding: 0.28rem 0.48rem;
+    border: 1px solid var(--rule);
+    font: 700 0.66rem/1.2 var(--sans);
+    text-transform: uppercase;
+  }
+
+  .case-nav {
+    max-width: 52rem;
+    margin: 2.5rem auto 0;
+    padding-bottom: 0.75rem;
+    border-bottom: 4px double var(--rule);
+  }
+
+  .case-nav button {
+    margin: 0 1.15rem 0.35rem 0;
+    padding: 0;
+    border: 0;
+    border-bottom: 2px solid transparent;
+    background: transparent;
+    color: var(--ink-soft);
+    cursor: pointer;
+    font: 800 0.72rem/1.8 var(--sans);
     letter-spacing: 0.08em;
     text-transform: uppercase;
-    text-underline-offset: 0.2em;
   }
 
-  @media (max-width: 56rem) {
-    .status-grid,
-    .comparison,
-    .metrics {
-      grid-template-columns: 1fr;
+  .case-nav button.is-active {
+    border-bottom-color: var(--accent);
+    color: var(--accent);
+  }
+
+  .prose {
+    max-width: 52rem;
+    margin: 2rem auto 3.5rem;
+    font-size: 1.1rem;
+    line-height: 1.72;
+  }
+
+  .prose :global(p:first-of-type:first-letter) {
+    float: left;
+    margin: 0.08em 0.08em 0 0;
+    color: var(--accent);
+    font-size: 4.6rem;
+    font-weight: 700;
+    line-height: 0.72;
+  }
+
+  .prose :global(h2) {
+    margin: 3rem 0 1rem;
+    padding-top: 0.65rem;
+    border-top: 4px double var(--rule);
+    font: 800 clamp(1.55rem, 4vw, 2.45rem) / 1 var(--sans);
+    letter-spacing: -0.02em;
+  }
+
+  .prose :global(.lab-note) {
+    margin-top: 3rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--rule);
+    color: var(--ink-soft);
+    font: 0.78rem/1.5 var(--sans);
+  }
+
+  .sources,
+  .return-link {
+    max-width: 52rem;
+    margin: 4rem auto;
+  }
+
+  .sources {
+    padding-top: 1.5rem;
+    border-top: 4px double var(--rule);
+  }
+
+  .sources h2 {
+    font: 800 1.1rem/1 var(--sans);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .sources li {
+    margin: 0.7rem 0;
+    line-height: 1.5;
+  }
+
+  .return-link {
+    padding-top: 1rem;
+    border-top: 1px solid var(--rule);
+    font: 800 0.8rem/1.4 var(--sans);
+    text-transform: uppercase;
+  }
+
+  @media (max-width: 42rem) {
+    .article-page {
+      width: min(100% - 1.25rem, 88rem);
+    }
+
+    .article-header-lab {
+      margin-top: 1.8rem;
+    }
+
+    .article-header-lab h1 {
+      font-size: clamp(2.45rem, 13vw, 4.2rem);
+    }
+
+    .summary {
+      font-size: 1.08rem;
+    }
+
+    .publication-data {
+      display: block;
+    }
+
+    .tags {
+      margin-top: 1rem;
+    }
+
+    .case-nav {
+      margin-top: 1.8rem;
+      overflow-x: auto;
+      white-space: nowrap;
+    }
+
+    .prose {
+      margin-top: 1.55rem;
+      font-size: 1.03rem;
     }
   }
 </style>
