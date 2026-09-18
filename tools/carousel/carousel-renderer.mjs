@@ -293,6 +293,14 @@ function imageLayer(
   return `<div class="visual" style="top:${top}px;bottom:${bottom}px;width:${width}px;opacity:${opacity}"><img src="${visual.dataUrl}"><div class="wash"></div><div class="credit">${esc(visual.credit)}</div></div>`;
 }
 
+function sectionLabelFix(text, width) {
+  return `<div class="static-copy-fix section-label-fix" style="left:24px;top:216px;width:${width}px;height:52px"><span>${esc(text)}</span></div>`;
+}
+
+function closingDeckFix() {
+  return `<div class="static-copy-fix closing-deck-fix"><span>PROFUNDIZA MÁS EN ESTA NOTA EN</span></div>`;
+}
+
 function html(template, inner, edition, date) {
   return `<!doctype html><html><head><meta charset="utf-8"><style>
   *{box-sizing:border-box}html,body{margin:0;width:${W}px;height:${H}px;overflow:hidden}body{font-family:Georgia,'Times New Roman',serif;color:${INK};background:${PAPER}}
@@ -302,6 +310,9 @@ function html(template, inner, edition, date) {
   .copy{position:absolute;z-index:4;text-align:left;display:flex;flex-direction:column;justify-content:center}.headline{font-weight:700;letter-spacing:-2.6px;line-height:.94}.body{line-height:1.10}.rule{width:58px;border-top:3px solid ${RED};margin:24px 0 26px}
   .point,.impact{padding-bottom:22px;margin-bottom:22px;border-bottom:1px solid rgba(23,19,15,.22)}.point:last-child,.impact:last-child{border-bottom:none;margin-bottom:0}
   .edition{position:absolute;z-index:5;left:946px;top:42px;color:${RED};font-size:18px;font-weight:700;letter-spacing:1px}.date{position:absolute;z-index:5;left:1033px;top:42px;color:${INK};font-size:16px;font-weight:600;letter-spacing:2.1px;white-space:nowrap}
+  .static-copy-fix{position:absolute;z-index:7;background:rgba(244,240,230,.985);display:flex;align-items:center}
+  .section-label-fix{padding-left:6px;color:${RED};font-weight:700;font-size:29px;line-height:1;letter-spacing:2.4px}
+  .closing-deck-fix{left:72px;top:658px;width:702px;height:61px;padding-left:4px;color:${RED};font-weight:700;font-size:36px;line-height:1;letter-spacing:-.5px}
   [data-fit]{overflow-wrap:anywhere}
   </style></head><body><div class="page" id="root"><img class="template" src="${template}"><div class="edition">${edition}</div><div class="date">${date}</div>${inner}</div></body></html>`;
 }
@@ -381,9 +392,9 @@ async function main() {
   const slides = [
     `${imageLayer(coverVisual, 190, 70, 640, 0.92)}<div class="copy" data-fit style="left:72px;top:250px;bottom:90px;width:805px"><div class="headline" style="font-size:${titleSize}px">${esc(contract.title)}</div><div class="rule"></div><div class="body" style="font-size:${dekSize}px;max-width:755px">${esc(contract.dek)}</div></div>`,
     `${imageLayer(ideaVisual, 190, 70, 650, 0.91)}<div class="copy" data-fit style="left:72px;top:245px;bottom:88px;width:815px"><div class="headline" style="font-size:${ideaSize}px">${esc(contract.ideaCentral)}</div><div class="rule"></div><div class="body" style="font-size:${supportSize}px;max-width:760px">${esc(contract.ideaSupport)}</div></div>`,
-    `${imageLayer(changedVisual, 195, 70, 610, 0.88)}<div class="copy body" data-fit style="left:72px;top:245px;bottom:88px;width:800px;font-size:${pointsSize}px;font-weight:600;line-height:1.04">${contract.keyPoints.map((item) => `<div class="point">${esc(item.text)}</div>`).join("")}</div>`,
-    `${imageLayer(impactVisual, 190, 70, 625, 0.88)}<div class="copy body" data-fit style="left:72px;top:245px;bottom:88px;width:805px;font-size:${impactSize}px;line-height:1.05">${contract.impactItems.map((item) => `<div class="impact"><b>${esc(item.label)}.</b> ${esc(item.text)}</div>`).join("")}</div>`,
-    `${imageLayer(closingVisual, 135, 70, 620, 0.84)}`,
+    `${imageLayer(changedVisual, 195, 70, 610, 0.88)}${sectionLabelFix("QUÉ CAMBIÓ", 250)}<div class="copy body" data-fit style="left:72px;top:245px;bottom:88px;width:800px;font-size:${pointsSize}px;font-weight:600;line-height:1.04">${contract.keyPoints.map((item) => `<div class="point">${esc(item.text)}</div>`).join("")}</div>`,
+    `${imageLayer(impactVisual, 190, 70, 625, 0.88)}${sectionLabelFix("POR QUÉ IMPORTA", 365)}<div class="copy body" data-fit style="left:72px;top:245px;bottom:88px;width:805px;font-size:${impactSize}px;line-height:1.05">${contract.impactItems.map((item) => `<div class="impact"><b>${esc(item.label)}.</b> ${esc(item.text)}</div>`).join("")}</div>`,
+    `${imageLayer(closingVisual, 135, 70, 620, 0.84)}${closingDeckFix()}`,
   ];
 
   const browser = await chromium.launch({ headless: true });
