@@ -259,40 +259,50 @@ if (engineRole === "analysis") engineAttributes["data-analysis-player"] = "";
     line-height: 0;
   }
 
-  .atlas-audio-player--minimal:not([data-playing="true"])
-    [data-atlas-audio-icon]::before {
+  .atlas-audio-player--minimal [data-atlas-audio-icon]::before,
+  .atlas-audio-player--minimal [data-atlas-audio-icon]::after {
     position: absolute;
-    top: 50%;
-    left: 54%;
+    inset: 0;
+    margin: auto;
+    content: "";
+    transition:
+      opacity 110ms ease-out,
+      transform 110ms ease-out;
+  }
+
+  .atlas-audio-player--minimal [data-atlas-audio-icon]::before {
     width: 0;
     height: 0;
     border-top: 0.47rem solid transparent;
     border-bottom: 0.47rem solid transparent;
     border-left: 0.72rem solid var(--ink);
-    content: "";
-    transform: translate(-50%, -50%);
+    opacity: 1;
+    transform: translateX(0.05rem) scale(1);
   }
 
-  .atlas-audio-player--minimal[data-playing="true"]
-    [data-atlas-audio-icon]::before,
-  .atlas-audio-player--minimal[data-playing="true"]
-    [data-atlas-audio-icon]::after {
-    position: absolute;
-    top: 0;
-    width: 0.19rem;
+  .atlas-audio-player--minimal [data-atlas-audio-icon]::after {
+    width: 0.82rem;
     height: 0.92rem;
-    background: var(--accent);
-    content: "";
+    background: linear-gradient(
+      to right,
+      var(--accent) 0 0.19rem,
+      transparent 0.19rem 0.63rem,
+      var(--accent) 0.63rem 0.82rem
+    );
+    opacity: 0;
+    transform: scale(0.9);
   }
 
   .atlas-audio-player--minimal[data-playing="true"]
     [data-atlas-audio-icon]::before {
-    left: 0.08rem;
+    opacity: 0;
+    transform: translateX(0.05rem) scale(0.9);
   }
 
   .atlas-audio-player--minimal[data-playing="true"]
     [data-atlas-audio-icon]::after {
-    right: 0.08rem;
+    opacity: 1;
+    transform: scale(1);
   }
 
   .atlas-audio-time,
