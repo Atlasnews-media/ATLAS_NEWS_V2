@@ -1,0 +1,180 @@
+---
+import "../../styles/global.css";
+---
+
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="robots" content="noindex, nofollow, noarchive" />
+    <meta name="theme-color" content="#f2efe5" />
+    <title>ATLAS NEWS LAB · Alex V2</title>
+  </head>
+  <body>
+    <main class="lab-shell">
+      <p class="lab-kicker">ATLAS NEWS · AUDIO LAB</p>
+      <h1>Alex · refinamiento V2</h1>
+      <p class="lead">
+        Dora queda congelada. El texto, las pausas y la velocidad base también.
+        La única variable nueva es la prosodia interna de Alex.
+      </p>
+
+      <div class="rule" aria-hidden="true"></div>
+
+      <section>
+        <p class="status">B1 · Control aprobado</p>
+        <h2>Kokoro-FastAPI</h2>
+        <p>
+          Es la opción B aprobada por escucha humana: Dora + Alex originales,
+          pausas explícitas y Alex a 0.96.
+        </p>
+        <audio controls preload="metadata">
+          <source
+            src="/lab/audio/alex-v2/b1-fastapi-approved.mp3"
+            type="audio/mpeg"
+          />
+        </audio>
+      </section>
+
+      <div class="comparison-grid">
+        <article class="audio-card audio-card--candidate">
+          <p class="card-kicker">B2 · Alex broadcast</p>
+          <h3>Más contenido</h3>
+          <p class="card-copy">
+            Mismo Alex. Registro apenas más bajo y rango tonal 5% más estrecho.
+            Busca quitar sensación sintética sin volverlo plano.
+          </p>
+          <audio controls preload="metadata">
+            <source
+              src="/lab/audio/alex-v2/b2-alex-broadcast.mp3"
+              type="audio/mpeg"
+            />
+          </audio>
+        </article>
+
+        <article class="audio-card audio-card--candidate">
+          <p class="card-kicker">B3 · Alex conversacional</p>
+          <h3>Pregunta más orgánica</h3>
+          <p class="card-copy">
+            Mantiene las afirmaciones casi neutras y abre suavemente el rango
+            tonal de Alex sólo cuando pregunta.
+          </p>
+          <audio controls preload="metadata">
+            <source
+              src="/lab/audio/alex-v2/b3-alex-conversational.mp3"
+              type="audio/mpeg"
+            />
+          </audio>
+        </article>
+      </div>
+
+      <div class="rule" aria-hidden="true"></div>
+
+      <section>
+        <p class="status">Método</p>
+        <h2>Prosodia dentro de Kokoro</h2>
+        <p>
+          B2 y B3 usan el motor staged de kokoro-lab-py fijado al commit
+          9820dd3. El ajuste ocurre sobre F0 y energía antes del decoder. No hay
+          mezcla con Santa ni filtros de pitch aplicados al MP3 terminado.
+        </p>
+        <p>
+          Ninguna variante toca Audio V2 productivo, Speech Normalizer, Lexicon,
+          manifests ni F1–F4A.
+        </p>
+      </section>
+    </main>
+  </body>
+</html>
+
+<style>
+  :global(body) {
+    margin: 0;
+    background: #f2efe5;
+    color: #151515;
+  }
+
+  .lab-shell {
+    width: min(70rem, calc(100% - 2rem));
+    margin: 0 auto;
+    padding: clamp(3.5rem, 10vw, 7rem) 0;
+  }
+
+  .lab-kicker,
+  .status,
+  .card-kicker {
+    margin: 0;
+    font: 800 0.72rem/1.2 var(--sans);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  h1 {
+    margin: 0.75rem 0 1rem;
+    font: 700 clamp(2.7rem, 9vw, 6.5rem)/0.92 var(--display);
+    letter-spacing: -0.04em;
+  }
+
+  h2 {
+    margin: 0.45rem 0 0.8rem;
+    font: 700 clamp(1.7rem, 4vw, 2.8rem)/1 var(--display);
+  }
+
+  h3 {
+    margin: 0.4rem 0 0.65rem;
+    font: 700 1.45rem/1 var(--display);
+  }
+
+  p {
+    font: 400 1rem/1.6 var(--serif);
+  }
+
+  .lead {
+    max-width: 48rem;
+    font-size: 1.12rem;
+  }
+
+  .rule {
+    height: 4px;
+    margin: 2.5rem 0;
+    border-top: 1px solid #151515;
+    border-bottom: 1px solid #151515;
+  }
+
+  .comparison-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1rem;
+    margin: 2rem 0;
+  }
+
+  .audio-card {
+    padding: 1.25rem;
+    border: 1px solid #151515;
+    background: rgba(255, 255, 255, 0.18);
+  }
+
+  .audio-card--candidate {
+    border-top: 5px solid #a71920;
+  }
+
+  .card-copy {
+    min-height: 6rem;
+  }
+
+  audio {
+    width: 100%;
+    margin-top: 0.8rem;
+  }
+
+  @media (max-width: 800px) {
+    .comparison-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .card-copy {
+      min-height: 0;
+    }
+  }
+</style>
