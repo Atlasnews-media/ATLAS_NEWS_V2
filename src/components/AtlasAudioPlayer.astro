@@ -205,10 +205,10 @@ if (engineRole === "analysis") engineAttributes["data-analysis-player"] = "";
     height: 2.6rem;
     padding: 0;
     place-items: center;
-    border: 1px solid var(--ink);
+    border: 1px solid rgba(31, 29, 23, 0.18);
     border-radius: 0;
-    color: var(--paper);
-    background: var(--ink);
+    color: var(--ink);
+    background: rgba(31, 29, 23, 0.045);
     cursor: pointer;
     transition:
       background-color 140ms ease,
@@ -217,12 +217,13 @@ if (engineRole === "analysis") engineAttributes["data-analysis-player"] = "";
   }
 
   .atlas-audio-toggle:hover {
+    background: rgba(31, 29, 23, 0.065);
     transform: translateY(-1px);
   }
 
   .atlas-audio-player[data-playing="true"] .atlas-audio-toggle {
-    border-color: var(--accent);
-    background: var(--accent);
+    border-color: rgba(153, 47, 36, 0.42);
+    background: rgba(31, 29, 23, 0.045);
   }
 
   .atlas-audio-toggle:focus-visible,
@@ -238,14 +239,14 @@ if (engineRole === "analysis") engineAttributes["data-analysis-player"] = "";
   .atlas-audio-player--minimal .atlas-audio-toggle {
     width: 2.6rem;
     height: 2.6rem;
-    border: 1px solid var(--ink);
-    color: var(--paper);
-    background: var(--ink);
+    border: 1px solid rgba(31, 29, 23, 0.18);
+    color: var(--ink);
+    background: rgba(31, 29, 23, 0.045);
   }
 
   .atlas-audio-player--minimal[data-playing="true"] .atlas-audio-toggle {
-    border-color: var(--accent);
-    background: var(--accent);
+    border-color: rgba(153, 47, 36, 0.42);
+    background: rgba(31, 29, 23, 0.045);
   }
 
   .atlas-audio-player--minimal [data-atlas-audio-icon] {
@@ -267,7 +268,7 @@ if (engineRole === "analysis") engineAttributes["data-analysis-player"] = "";
     height: 0;
     border-top: 0.47rem solid transparent;
     border-bottom: 0.47rem solid transparent;
-    border-left: 0.72rem solid var(--paper);
+    border-left: 0.72rem solid var(--ink);
     content: "";
     transform: translate(-50%, -50%);
   }
@@ -280,7 +281,7 @@ if (engineRole === "analysis") engineAttributes["data-analysis-player"] = "";
     top: 0;
     width: 0.19rem;
     height: 0.92rem;
-    background: var(--paper);
+    background: var(--accent);
     content: "";
   }
 
