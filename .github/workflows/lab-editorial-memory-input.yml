@@ -1,0 +1,158 @@
+name: LAB — preparar memoria editorial EXP-011
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "50 7 * * *"
+      timezone: "America/Santiago"
+  push:
+    branches: [main]
+    paths:
+      - "scripts/lab/prepare-editorial-memory-input.mjs"
+      - "scripts/lab/validate-editorial-memory-input.mjs"
+      - "scripts/editorial-shadow-audit.mjs"
+      - ".github/workflows/lab-editorial-memory-input.yml"
+  pull_request:
+    branches: [main]
+    paths:
+      - "scripts/lab/prepare-editorial-memory-input.mjs"
+      - "scripts/lab/validate-editorial-memory-input.mjs"
+      - "scripts/editorial-shadow-audit.mjs"
+      - ".github/workflows/lab-editorial-memory-input.yml"
+
+permissions:
+  contents: read
+
+concurrency:
+  group: lab-editorial-memory-input
+  cancel-in-progress: true
+
+jobs:
+  prepare:
+    name: Preparar input semántico aislado
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: Descargar repositorio
+        uses: actions/checkout@v5
+        with:
+          ref: ${{ github.event_name == 'pull_request' && github.event.pull_request.head.sha || 'main' }}
+          fetch-depth: 1
+
+      - name: Preparar Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: Ejecutar Shadow canónico
+        run: >-
+          node scripts/editorial-shadow-audit.mjs
+          --window=5
+          --out=artifacts/editorial-shadow
+
+      - name: Construir input EXP-011
+        env:
+          ATLAS_SOURCE_COMMIT: ${{ github.event_name == 'pull_request' && github.event.pull_request.head.sha || github.sha }}
+        run: |
+          set -euo pipefail
+          if [[ "${{ github.event_name }}" == "pull_request" ]]; then
+            source_ref="PR_VALIDATION"
+          else
+            source_ref="main"
+          fi
+          node scripts/lab/prepare-editorial-memory-input.mjs \
+            --shadow=artifacts/editorial-shadow/report.json \
+            --out=artifacts/editorial-memory-input/input.json \
+            --source-ref="$source_ref"
+
+      - name: Validar input EXP-011
+        run: >-
+          node scripts/lab/validate-editorial-memory-input.mjs
+          artifacts/editorial-memory-input/input.json
+
+      - name: Resumen de aislamiento
+        run: |
+          node - <<'NODE' >> "$GITHUB_STEP_SUMMARY"
+          const fs = require("fs");
+          const data = JSON.parse(
+            fs.readFileSync("artifacts/editorial-memory-input/input.json", "utf8"),
+          );
+          const prior = data.retrieval?.[0]?.retrieved_prior_items?.length ?? 0;
+          console.log("# EXP-011 — Input de memoria editorial");
+          console.log("");
+          console.log(`- Fecha editorial: **${data.source.editorial_date}**`);
+          console.log(`- Source commit: **${data.source.source_commit}**`);
+          console.log(`- Candidatos: **${data.candidates.length}**`);
+          console.log(`- Antecedentes por candidato: **${prior}**`);
+          console.log("- Modo: **LAB_ONLY**");
+          console.log("- Escrituras productivas: **PROHIBIDAS**");
+          NODE
+
+      - name: Guardar input como artefacto
+        uses: actions/upload-artifact@v4
+        with:
+          name: editorial-memory-input-${{ github.run_id }}
+          path: artifacts/editorial-memory-input/input.json
+          if-no-files-found: error
+          retention-days: 14
+
+      - name: Preparar acceso al repositorio público
+        if: github.event_name != 'pull_request'
+        env:
+          DEPLOY_KEY: ${{ secrets.ATLAS_PAGES_DEPLOY_KEY }}
+        run: |
+          set -euo pipefail
+          install -m 700 -d ~/.ssh
+          printf '%s\n' "$DEPLOY_KEY" > ~/.ssh/atlas_news_pages
+          chmod 600 ~/.ssh/atlas_news_pages
+          ssh-keyscan -H github.com >> ~/.ssh/known_hosts
+
+      - name: Publicar exclusivamente input.json de EXP-011
+        if: github.event_name != 'pull_request'
+        env:
+          GIT_SSH_COMMAND: ssh -i ~/.ssh/atlas_news_pages -o IdentitiesOnly=yes
+        run: |
+          set -euo pipefail
+          public="$RUNNER_TEMP/atlas-news-public"
+          target="lab/editorial-memory-judge/input.json"
+
+          git clone --depth 1 \
+            git@github.com:Atlasnews-media/Atlasnews-media.github.io.git \
+            "$public"
+
+          mkdir -p "$public/lab/editorial-memory-judge"
+          cp artifacts/editorial-memory-input/input.json "$public/$target"
+
+          cd "$public"
+          git config user.name "ATLAS NEWS LAB Input Publisher"
+          git config user.email "actions@users.noreply.github.com"
+          git add -- "$target"
+
+          staged="$(git diff --cached --name-only)"
+          if [[ -z "$staged" ]]; then
+            echo "input.json ya estaba actualizado."
+            exit 0
+          fi
+
+          if [[ "$staged" != "$target" ]]; then
+            echo "SCOPE GUARD FAIL: se intentó modificar fuera de $target" >&2
+            printf '%s\n' "$staged" >&2
+            exit 1
+          fi
+
+          date="$(node -p "JSON.parse(require('fs').readFileSync('$target','utf8')).source.editorial_date")"
+          sha7="$(node -p "JSON.parse(require('fs').readFileSync('$target','utf8')).source.source_commit.slice(0,7)")"
+
+          git commit -m "LAB EXP-011 input ${date} desde ${sha7}"
+
+          for attempt in 1 2 3; do
+            if git pull --rebase origin main && git push origin main; then
+              exit 0
+            fi
+            if [[ "$attempt" -eq 3 ]]; then
+              echo "No fue posible publicar input LAB tras tres intentos." >&2
+              exit 1
+            fi
+            sleep 2
+          done
