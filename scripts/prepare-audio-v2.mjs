@@ -7,7 +7,7 @@ import { upgradeCoverPlanToV13 } from "./audio-cover-presentation.mjs";
 const root = new URL("../", import.meta.url);
 const ANALYSIS_SCRIPT_VERSION = 3;
 const SPEECH_NORMALIZER_VERSION = 5;
-const ALEXC_DIALOGUE_RHYTHM_VERSION = 2;
+const ALEXC_DIALOGUE_RHYTHM_VERSION = 3;
 const PLAN_FILE = ".atlas-audio-v2-plan.json";
 const lexiconConfig = JSON.parse(
   await readFile(new URL("config/audio/lexicon-v3.json", root), "utf8"),
