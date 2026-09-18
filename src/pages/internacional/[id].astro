@@ -167,9 +167,7 @@ const internationalSignals = readySignals?.senalesDelDia.internacional ?? [];
                 aria-labelledby={`${signal.anchor}-title`}
               >
                 <h3 id={`${signal.anchor}-title`}>{signal.headline}</h3>
-                <div class="signal-development__body">
-                  {signal.development}
-                </div>
+                <div class="signal-development__body">{signal.development}</div>
 
                 {signal.sources.length > 0 && (
                   <div
