@@ -7,6 +7,7 @@ import { upgradeCoverPlanToV13 } from "./audio-cover-presentation.mjs";
 const root = new URL("../", import.meta.url);
 const ANALYSIS_SCRIPT_VERSION = 3;
 const SPEECH_NORMALIZER_VERSION = 5;
+const ALEXC_DIALOGUE_RHYTHM_VERSION = 2;
 const PLAN_FILE = ".atlas-audio-v2-plan.json";
 const lexiconConfig = JSON.parse(
   await readFile(new URL("config/audio/lexicon-v3.json", root), "utf8"),
@@ -118,6 +119,7 @@ function currentAnalysisState({ sourceId, script, scriptVersion, section }) {
     sameHash &&
     existing?.speechNormalizerVersion === SPEECH_NORMALIZER_VERSION &&
     existing?.voiceProfileVersion === VOICE_PROFILE_VERSION &&
+    existing?.dialogueRhythmVersion === ALEXC_DIALOGUE_RHYTHM_VERSION &&
     sameLexicon(existing) &&
     hasPublishedPath;
 
@@ -155,6 +157,7 @@ async function dialogueProduct(section) {
     lexiconVersion: LEXICON_VERSION,
     lexiconRevision: LEXICON_REVISION,
     voiceProfileVersion: VOICE_PROFILE_VERSION,
+    dialogueRhythmVersion: ALEXC_DIALOGUE_RHYTHM_VERSION,
     needsGeneration: state.needsGeneration,
     unavailableReason: state.unavailableReason,
   };
@@ -183,6 +186,7 @@ function internationalProduct() {
     lexiconVersion: LEXICON_VERSION,
     lexiconRevision: LEXICON_REVISION,
     voiceProfileVersion: VOICE_PROFILE_VERSION,
+    dialogueRhythmVersion: ALEXC_DIALOGUE_RHYTHM_VERSION,
     needsGeneration: state.needsGeneration,
     unavailableReason:
       internationalPlanPath && !internationalPlan
@@ -227,6 +231,7 @@ const plan = {
   lexiconVersion: LEXICON_VERSION,
   lexiconRevision: LEXICON_REVISION,
   voiceProfileVersion: VOICE_PROFILE_VERSION,
+  dialogueRhythmVersion: ALEXC_DIALOGUE_RHYTHM_VERSION,
   simulateMarketsFailure,
   products,
 };
