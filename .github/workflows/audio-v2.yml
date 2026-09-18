@@ -322,11 +322,12 @@ jobs:
           ' "$analysis_manifest" >/dev/null
 
           jq -e '
-            [.international, .national, .markets] |
-            all(
-              .status == "published" and
-              .voiceProfileVersion == "alex-c-v1" and
-              .fallbackUsed == false
+            ([.international, .national, .markets] |
+              all(
+                .status == "published" and
+                .voiceProfileVersion == "alex-c-v1" and
+                .fallbackUsed == false
+              )
             )
           ' "$analysis_manifest" >/dev/null
 
