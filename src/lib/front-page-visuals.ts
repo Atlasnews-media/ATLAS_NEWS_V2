@@ -1121,9 +1121,7 @@ export const MARKET_INDICES_KEYWORDS = [
   "renta fija",
 ] as const;
 
-export type UtilityPageVisualFamily =
-  | "economic-calendar"
-  | "market-indices";
+export type UtilityPageVisualFamily = "economic-calendar" | "market-indices";
 
 const ECONOMIC_CALENDAR_VISUALS: CatalogVisual[] = [
   FED_ECCLES,
@@ -1151,10 +1149,7 @@ const MARKET_INDICES_VISUALS: CatalogVisual[] = [
   PORT_SAN_ANTONIO_CONTAINERS,
 ];
 
-const UTILITY_PAGE_VISUALS: Record<
-  UtilityPageVisualFamily,
-  CatalogVisual[]
-> = {
+const UTILITY_PAGE_VISUALS: Record<UtilityPageVisualFamily, CatalogVisual[]> = {
   "economic-calendar": ECONOMIC_CALENDAR_VISUALS,
   "market-indices": MARKET_INDICES_VISUALS,
 };
