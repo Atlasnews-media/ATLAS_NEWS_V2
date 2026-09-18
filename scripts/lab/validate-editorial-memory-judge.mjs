@@ -22,7 +22,11 @@ async function main() {
   const errors = [];
 
   assert(data.schemaVersion === 1, "schemaVersion debe ser 1", errors);
-  assert(data.experimentId === "EXP-011", "experimentId debe ser EXP-011", errors);
+  assert(
+    data.experimentId === "EXP-011",
+    "experimentId debe ser EXP-011",
+    errors,
+  );
   assert(data.mode === "LAB_ONLY", "mode debe ser LAB_ONLY", errors);
   assert(allowedStatus.has(data.status), "status no permitido", errors);
   assert(
@@ -36,7 +40,11 @@ async function main() {
     errors,
   );
   assert(Array.isArray(data.cases), "cases debe ser lista", errors);
-  assert(data.metrics && typeof data.metrics === "object", "metrics obligatorio", errors);
+  assert(
+    data.metrics && typeof data.metrics === "object",
+    "metrics obligatorio",
+    errors,
+  );
   assert(Array.isArray(data.notes), "notes debe ser lista", errors);
 
   if (data.generatedAt !== null) {
