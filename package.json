@@ -25,7 +25,6 @@
     "test:funds": "node scripts/funds/run-finance-tests.mjs && node --test scripts/funds/snapshot.test.mjs",
     "update:indicators": "node scripts/update-economic-indicators.mjs && node scripts/enrich-economic-trends.mjs && node scripts/update-market-pulse.mjs && node scripts/recover-market-snapshot.mjs && node scripts/update-market-history.mjs && node scripts/validate-market-pulse-freshness.mjs && node scripts/probe-calendar.mjs",
     "validate:content": "node scripts/validate-content.mjs",
-    "validate:promotion": "node scripts/validate-morning-promotion.mjs",
     "validate:publication-provenance": "bash scripts/validate-publication-provenance.sh",
     "validate:visuals": "node scripts/validate-front-page-visuals.mjs",
     "validate:build": "node scripts/validate-build.mjs && node scripts/validate-morning-publish-target.mjs",
