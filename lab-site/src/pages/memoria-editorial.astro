@@ -1,0 +1,329 @@
+---
+import "../../../src/styles/global.css";
+---
+
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="robots" content="noindex, nofollow, noarchive" />
+    <meta name="theme-color" content="#f2efe5" />
+    <title>ATLAS NEWS LAB · Memoria editorial</title>
+  </head>
+  <body>
+    <main class="shell">
+      <p class="kicker">ATLAS NEWS · LAB · EXP-011</p>
+      <h1>Memoria editorial semántica</h1>
+      <p class="intro">
+        Comparación experimental entre el Shadow determinístico y un juez
+        semántico propio de ATLAS NEWS. Esta superficie no publica ni modifica
+        la operación editorial.
+      </p>
+
+      <div class="rule" aria-hidden="true"></div>
+
+      <section class="status-grid" aria-label="Estado de la corrida">
+        <article>
+          <span>Estado</span>
+          <strong id="status">Cargando…</strong>
+        </article>
+        <article>
+          <span>Skill</span>
+          <strong id="skill">—</strong>
+        </article>
+        <article>
+          <span>Candidatos</span>
+          <strong id="candidates">—</strong>
+        </article>
+        <article>
+          <span>Tiempo</span>
+          <strong id="processing">—</strong>
+        </article>
+      </section>
+
+      <div class="rule" aria-hidden="true"></div>
+
+      <section>
+        <p class="section-label">Comparación</p>
+        <h2>Control vs experimental</h2>
+        <div class="comparison">
+          <article class="panel">
+            <p class="panel-label">Control / Shadow</p>
+            <div id="control">Sin corrida todavía.</div>
+          </article>
+          <article class="panel">
+            <p class="panel-label">Juez semántico LAB</p>
+            <div id="experimental">Sin corrida todavía.</div>
+          </article>
+        </div>
+      </section>
+
+      <div class="rule" aria-hidden="true"></div>
+
+      <section>
+        <p class="section-label">Casos</p>
+        <h2>Qué cambió y por qué</h2>
+        <div id="cases" class="cases">
+          <p>Aún no existen casos experimentales.</p>
+        </div>
+      </section>
+
+      <div class="rule" aria-hidden="true"></div>
+
+      <section>
+        <p class="section-label">Métricas</p>
+        <h2>Señal acumulada de la corrida</h2>
+        <dl class="metrics">
+          <div><dt>Alertas Shadow</dt><dd id="shadowAlerts">—</dd></div>
+          <div><dt>Señales semánticas</dt><dd id="semanticFlags">—</dd></div>
+          <div><dt>Desacuerdos</dt><dd id="disagreements">—</dd></div>
+          <div><dt>Falsos negativos recuperados</dt><dd id="recovered">—</dd></div>
+          <div><dt>Posibles falsos positivos</dt><dd id="falsePositives">—</dd></div>
+        </dl>
+      </section>
+
+      <p class="footnote" id="generatedAt">Esperando primera corrida.</p>
+      <a class="back" href="/lab/">← Volver al laboratorio</a>
+    </main>
+
+    <script>
+      const url = "/lab/editorial-memory-judge/latest.json";
+
+      const text = (value) =>
+        value === null || value === undefined || value === "" ? "—" : String(value);
+
+      function renderObject(target, value) {
+        const node = document.querySelector(target);
+        if (!node) return;
+        if (!value) {
+          node.textContent = "Sin corrida todavía.";
+          return;
+        }
+        const pre = document.createElement("pre");
+        pre.textContent = JSON.stringify(value, null, 2);
+        node.replaceChildren(pre);
+      }
+
+      function renderCases(cases) {
+        const node = document.querySelector("#cases");
+        if (!node) return;
+        if (!Array.isArray(cases) || cases.length === 0) return;
+
+        const fragment = document.createDocumentFragment();
+        for (const item of cases) {
+          const article = document.createElement("article");
+          article.className = "case";
+          const title = document.createElement("h3");
+          title.textContent = item.title ?? item.candidateId ?? "Caso";
+          const meta = document.createElement("p");
+          meta.className = "case-meta";
+          meta.textContent = [
+            item.section,
+            item.shadow?.result ? `Shadow: ${item.shadow.result}` : null,
+            item.semantic?.eventRelation
+              ? `Evento: ${item.semantic.eventRelation}`
+              : null,
+            item.semantic?.informationRelation
+              ? `Información: ${item.semantic.informationRelation}`
+              : null,
+          ]
+            .filter(Boolean)
+            .join(" · ");
+          const reason = document.createElement("p");
+          reason.textContent =
+            item.summary ??
+            item.decisionReason ??
+            "Caso registrado sin explicación visible.";
+          article.append(title, meta, reason);
+          fragment.append(article);
+        }
+        node.replaceChildren(fragment);
+      }
+
+      fetch(url, { cache: "no-store" })
+        .then((response) => {
+          if (!response.ok) throw new Error(`HTTP ${response.status}`);
+          return response.json();
+        })
+        .then((data) => {
+          document.querySelector("#status").textContent = text(data.status);
+          document.querySelector("#skill").textContent =
+            `${text(data.skill?.name)} · ${text(data.skill?.version)}`;
+          document.querySelector("#candidates").textContent = text(
+            data.metrics?.candidates,
+          );
+          document.querySelector("#processing").textContent =
+            data.metrics?.processingMs == null
+              ? "—"
+              : `${data.metrics.processingMs} ms`;
+
+          document.querySelector("#shadowAlerts").textContent = text(
+            data.metrics?.shadowAlerts,
+          );
+          document.querySelector("#semanticFlags").textContent = text(
+            data.metrics?.semanticFlags,
+          );
+          document.querySelector("#disagreements").textContent = text(
+            data.metrics?.disagreements,
+          );
+          document.querySelector("#recovered").textContent = text(
+            data.metrics?.recoveredFalseNegatives,
+          );
+          document.querySelector("#falsePositives").textContent = text(
+            data.metrics?.possibleFalsePositives,
+          );
+
+          renderObject("#control", data.control);
+          renderObject("#experimental", data.experimental);
+          renderCases(data.cases);
+
+          document.querySelector("#generatedAt").textContent = data.generatedAt
+            ? `Última actualización: ${data.generatedAt}`
+            : "Bootstrap técnico: esperando primera corrida.";
+        })
+        .catch((error) => {
+          document.querySelector("#status").textContent = "SIN DATOS";
+          document.querySelector("#generatedAt").textContent =
+            `No fue posible cargar el artefacto experimental: ${error.message}`;
+        });
+    </script>
+  </body>
+</html>
+
+<style>
+  :global(body) {
+    margin: 0;
+    background: #f2efe5;
+    color: #151515;
+  }
+
+  .shell {
+    width: min(72rem, calc(100% - 2rem));
+    margin: 0 auto;
+    padding: clamp(3rem, 9vw, 7rem) 0;
+  }
+
+  .kicker,
+  .section-label,
+  .panel-label,
+  .status-grid span {
+    margin: 0;
+    font: 800 0.72rem/1.2 var(--sans);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  h1 {
+    max-width: 60rem;
+    margin: 0.75rem 0 1rem;
+    font: 700 clamp(3rem, 9vw, 6.5rem)/0.92 var(--display);
+    letter-spacing: -0.04em;
+  }
+
+  h2 {
+    margin: 0.5rem 0 1rem;
+    font: 700 clamp(2rem, 5vw, 3.5rem)/0.95 var(--serif);
+    letter-spacing: -0.03em;
+  }
+
+  h3 {
+    margin: 0 0 0.5rem;
+    font: 700 1.35rem/1.1 var(--serif);
+  }
+
+  .intro,
+  .case p,
+  .footnote {
+    max-width: 48rem;
+    font: 1.1rem/1.65 var(--serif);
+  }
+
+  .rule {
+    margin: 2.5rem 0 2rem;
+    border-top: 4px double currentColor;
+  }
+
+  .status-grid,
+  .comparison,
+  .metrics {
+    display: grid;
+    gap: 1rem;
+  }
+
+  .status-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  .status-grid article,
+  .panel,
+  .case,
+  .metrics div {
+    border: 1px solid currentColor;
+    padding: 1rem;
+    background: rgba(255, 255, 255, 0.18);
+  }
+
+  .status-grid strong {
+    display: block;
+    margin-top: 0.45rem;
+    font: 700 1.05rem/1.25 var(--serif);
+  }
+
+  .comparison {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  pre {
+    overflow: auto;
+    margin: 1rem 0 0;
+    white-space: pre-wrap;
+    font: 0.84rem/1.45 ui-monospace, SFMono-Regular, Menlo, monospace;
+  }
+
+  .cases {
+    display: grid;
+    gap: 1rem;
+  }
+
+  .case-meta {
+    font-size: 0.86rem !important;
+  }
+
+  .metrics {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    margin: 0;
+  }
+
+  dt {
+    font: 700 0.78rem/1.3 var(--sans);
+  }
+
+  dd {
+    margin: 0.65rem 0 0;
+    font: 700 2rem/1 var(--serif);
+  }
+
+  .footnote {
+    margin-top: 2rem;
+    font-size: 0.9rem;
+  }
+
+  .back {
+    display: inline-block;
+    margin-top: 1rem;
+    color: inherit;
+    font: 800 0.75rem/1.2 var(--sans);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    text-underline-offset: 0.2em;
+  }
+
+  @media (max-width: 56rem) {
+    .status-grid,
+    .comparison,
+    .metrics {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
