@@ -8,6 +8,8 @@ const root = new URL("../", import.meta.url);
 const ANALYSIS_SCRIPT_VERSION = 3;
 const SPEECH_NORMALIZER_VERSION = 5;
 const ALEXC_DIALOGUE_RHYTHM_VERSION = 3;
+const ALEXC_INTERNATIONAL_SHORT_PHRASE_VERSION = 1;
+const ALEXC_INTERNATIONAL_MAX_WORDS = 12;
 const PLAN_FILE = ".atlas-audio-v2-plan.json";
 const lexiconConfig = JSON.parse(
   await readFile(new URL("config/audio/lexicon-v3.json", root), "utf8"),
@@ -105,7 +107,13 @@ function sameLexicon(existing) {
   );
 }
 
-function currentAnalysisState({ sourceId, script, scriptVersion, section }) {
+function currentAnalysisState({
+  sourceId,
+  script,
+  scriptVersion,
+  section,
+  shortPhraseVersion = null,
+}) {
   const scriptHash = script ? hashText(script) : null;
   const existing = existingAnalysis?.[section] ?? null;
   const sameSource = existing?.sourceId === sourceId;
@@ -113,6 +121,9 @@ function currentAnalysisState({ sourceId, script, scriptVersion, section }) {
   const sameHash = existing?.scriptHash === scriptHash;
   const hasPublishedPath =
     existing?.status === "published" && Boolean(existing?.path);
+  const sameShortPhraseVersion =
+    section !== "international" ||
+    existing?.shortPhraseVersion === shortPhraseVersion;
   const isCurrent =
     sameSource &&
     sameVersion &&
@@ -120,6 +131,7 @@ function currentAnalysisState({ sourceId, script, scriptVersion, section }) {
     existing?.speechNormalizerVersion === SPEECH_NORMALIZER_VERSION &&
     existing?.voiceProfileVersion === VOICE_PROFILE_VERSION &&
     existing?.dialogueRhythmVersion === ALEXC_DIALOGUE_RHYTHM_VERSION &&
+    sameShortPhraseVersion &&
     sameLexicon(existing) &&
     hasPublishedPath;
 
@@ -172,6 +184,7 @@ function internationalProduct() {
     script,
     scriptVersion,
     section: "international",
+    shortPhraseVersion: ALEXC_INTERNATIONAL_SHORT_PHRASE_VERSION,
   });
 
   return {
@@ -187,6 +200,8 @@ function internationalProduct() {
     lexiconRevision: LEXICON_REVISION,
     voiceProfileVersion: VOICE_PROFILE_VERSION,
     dialogueRhythmVersion: ALEXC_DIALOGUE_RHYTHM_VERSION,
+    shortPhraseVersion: ALEXC_INTERNATIONAL_SHORT_PHRASE_VERSION,
+    maxPhraseWords: ALEXC_INTERNATIONAL_MAX_WORDS,
     needsGeneration: state.needsGeneration,
     unavailableReason:
       internationalPlanPath && !internationalPlan

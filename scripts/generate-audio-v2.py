@@ -53,6 +53,8 @@ MIN_DURATION_SECONDS = 5.0
 QUESTION_PROSODY_VERSION = 2
 ALEXC_DIALOGUE_RHYTHM_VERSION = 3
 ALEXC_SENTENCE_PAUSE_SECONDS = 0.55
+ALEXC_INTERNATIONAL_SHORT_PHRASE_VERSION = 1
+ALEXC_INTERNATIONAL_MAX_WORDS = 12
 FALLBACK_PROFILE_VERSION = f"{VOICE_PROFILE_VERSION}-fallback-kokoro"
 
 DIALOGUE_VOICES = {
@@ -202,13 +204,43 @@ def split_alexc_sentences(text: str) -> list[str]:
     return sentences or [text.strip()]
 
 
+def split_alexc_short_phrases(text: str, max_words: int) -> list[str]:
+    """Replica el LAB aprobado: unidades cortas sin cambiar palabras ni ortografía."""
+    phrases = []
+
+    for sentence in split_alexc_sentences(text):
+        remaining = sentence.split()
+        while len(remaining) > max_words:
+            split_at = max_words
+
+            # Si existe un corte natural cercano, se prefiere coma, punto y coma o dos puntos.
+            # No se fuerza un corte demasiado temprano: la muestra aprobada tenía 9-11 palabras.
+            for index in range(max_words - 1, 5 - 1, -1):
+                if remaining[index].endswith((",", ";", ":")):
+                    split_at = index + 1
+                    break
+
+            phrases.append(" ".join(remaining[:split_at]))
+            remaining = remaining[split_at:]
+
+        if remaining:
+            phrases.append(" ".join(remaining))
+
+    return phrases or [text.strip()]
+
+
 def synthesize_alexc_sentences(
     text: str,
     reference_date: str,
     seed_base: int,
+    max_words: int | None = None,
 ) -> tuple[np.ndarray, int]:
     """Sintetiza cada frase de Alex C por separado con micro-pausas aprobadas."""
-    sentences = split_alexc_sentences(text)
+    sentences = (
+        split_alexc_short_phrases(text, max_words)
+        if max_words
+        else split_alexc_sentences(text)
+    )
     pause = np.zeros(
         int(SAMPLE_RATE * ALEXC_SENTENCE_PAUSE_SECONDS),
         dtype=np.float32,
@@ -235,6 +267,7 @@ def synthesize_dialogue_alexc(
     text: str,
     reference_date: str,
     seed_base: int,
+    max_words: int | None = None,
 ) -> np.ndarray:
     """Dora permanece en Kokoro; Alex C se genera por frases cortas."""
     turns = parse_dialogue(text)
@@ -261,6 +294,7 @@ def synthesize_dialogue_alexc(
                 content,
                 reference_date,
                 seed_base + alex_index,
+                max_words=max_words,
             )
             alex_index += sentence_count
 
@@ -338,6 +372,7 @@ def generate_analysis_samples(section: str, script: str, reference_date: str):
                 script,
                 reference_date,
                 seed_base=9200,
+                max_words=ALEXC_INTERNATIONAL_MAX_WORDS,
             )
             metadata = {
                 "engine": f"Kokoro-82M + {CHATTERBOX_ENGINE}",
@@ -352,6 +387,8 @@ def generate_analysis_samples(section: str, script: str, reference_date: str):
                 },
                 "questionProsodyVersion": 0,
                 "dialogueRhythmVersion": ALEXC_DIALOGUE_RHYTHM_VERSION,
+                "shortPhraseVersion": ALEXC_INTERNATIONAL_SHORT_PHRASE_VERSION,
+                "maxPhraseWords": ALEXC_INTERNATIONAL_MAX_WORDS,
                 "fallbackUsed": False,
             }
         else:
@@ -428,6 +465,12 @@ if (
     or plan.get("speechNormalizerVersion") != SPEECH_NORMALIZER_VERSION
     or plan.get("voiceProfileVersion") != VOICE_PROFILE_VERSION
     or plan.get("dialogueRhythmVersion") != ALEXC_DIALOGUE_RHYTHM_VERSION
+    or plan.get("products", {})
+    .get("international", {})
+    .get("shortPhraseVersion")
+    != ALEXC_INTERNATIONAL_SHORT_PHRASE_VERSION
+    or plan.get("products", {}).get("international", {}).get("maxPhraseWords")
+    != ALEXC_INTERNATIONAL_MAX_WORDS
 ):
     raise RuntimeError(
         "El plan de Audio V2 no coincide con Lexicon V3, Speech V5 o Alex C."
