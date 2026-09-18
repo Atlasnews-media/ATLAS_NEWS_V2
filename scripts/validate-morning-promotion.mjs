@@ -57,9 +57,7 @@ if (
   eventName !== "pull_request" ||
   !/^editorial\/\d{4}-\d{2}-\d{2}-morning$/.test(headRef)
 ) {
-  console.log(
-    "Contrato de promoción matutina: omitido fuera del PR morning.",
-  );
+  console.log("Contrato de promoción matutina: omitido fuera del PR morning.");
   process.exit(0);
 }
 
