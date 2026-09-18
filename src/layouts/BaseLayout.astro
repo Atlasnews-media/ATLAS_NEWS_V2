@@ -150,7 +150,11 @@ const isPrimarySectionLanding = [
           height="1172"
         />
         <div class="brand-copy">
-          <a class="brand" href="/" aria-label="ATLAS NEWS, portada"
+          <a
+            class="brand"
+            href="/"
+            aria-label="ATLAS NEWS, portada"
+            data-brand="ATLAS NEWS"
             >ATLAS NEWS</a
           >
           <p class="brand-subtitle" aria-label="Economía, Mercados, Contexto">
@@ -324,6 +328,7 @@ const isPrimarySectionLanding = [
     height: auto;
   }
   .brand {
+    position: relative;
     display: block;
     min-width: 0;
     color: inherit;
@@ -332,6 +337,25 @@ const isPrimarySectionLanding = [
     text-align: center;
     text-decoration: none;
     white-space: nowrap;
+  }
+  .brand::after {
+    position: absolute;
+    inset: 0;
+    display: block;
+    color: transparent;
+    content: attr(data-brand);
+    font: inherit;
+    letter-spacing: inherit;
+    text-align: inherit;
+    white-space: inherit;
+    pointer-events: none;
+    transform: scale(0.982, 0.962);
+    transform-origin: 50% 52%;
+    -webkit-text-stroke: clamp(
+      0.7px,
+      0.018em,
+      1.4px
+    ) rgba(242, 239, 229, 0.82);
   }
   .brand-subtitle {
     display: flex;
