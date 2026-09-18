@@ -186,7 +186,7 @@ def synthesize_dialogue_fallback(text: str, reference_date: str) -> np.ndarray:
         if index:
             parts.append(question_silence if previous_was_question else normal_silence)
         parts.append(samples)
-        previous_was_question = alex_question
+        previous_was_question = is_question(content)
 
     return np.concatenate(parts)
 
@@ -229,7 +229,7 @@ def synthesize_dialogue_alexc(
         if index:
             parts.append(question_silence if previous_was_question else normal_silence)
         parts.append(samples)
-        previous_was_question = speaker == "VOZ 2" and is_question(content)
+        previous_was_question = is_question(content)
 
     return np.concatenate(parts)
 
@@ -296,18 +296,24 @@ def generate_analysis_samples(section: str, script: str, reference_date: str):
     """Genera con Alex C; cualquier fallo cae a la ruta Kokoro conocida."""
     try:
         if section == "international":
-            samples = synthesize_alexc(
+            samples = synthesize_dialogue_alexc(
                 script,
-                PUBLIC_DIR,
                 reference_date,
                 seed_base=5100,
-                long_form=True,
             )
             metadata = {
-                "engine": CHATTERBOX_ENGINE,
+                "engine": f"Kokoro-82M + {CHATTERBOX_ENGINE}",
                 "voiceProfileVersion": VOICE_PROFILE_VERSION,
-                "voice": VOICE_PROFILE_VERSION,
+                "voices": {
+                    "reporter": VOICE_PROFILE_VERSION,
+                    "interviewer": "ef_dora",
+                },
+                "roles": {
+                    "reporter": "VOZ 2",
+                    "interviewer": "VOZ 1",
+                },
                 "questionProsodyVersion": 0,
+                "dialogueRhythmVersion": ALEXC_DIALOGUE_RHYTHM_VERSION,
                 "fallbackUsed": False,
             }
         else:
@@ -335,17 +341,23 @@ def generate_analysis_samples(section: str, script: str, reference_date: str):
             f"activando fallback Kokoro · {alexc_exc}"
         )
         if section == "international":
-            samples = synthesize(
+            samples = synthesize_dialogue_fallback(
                 script,
-                "em_alex",
-                "e",
                 reference_date=reference_date,
             )
             metadata = {
                 "engine": "Kokoro-82M",
                 "voiceProfileVersion": FALLBACK_PROFILE_VERSION,
-                "voice": "em_alex",
+                "voices": {
+                    "reporter": "em_alex",
+                    "interviewer": "ef_dora",
+                },
+                "roles": {
+                    "reporter": "VOZ 2",
+                    "interviewer": "VOZ 1",
+                },
                 "questionProsodyVersion": QUESTION_PROSODY_VERSION,
+                "dialogueRhythmVersion": ALEXC_DIALOGUE_RHYTHM_VERSION,
                 "fallbackUsed": True,
                 "fallbackReason": str(alexc_exc)[:200],
             }
