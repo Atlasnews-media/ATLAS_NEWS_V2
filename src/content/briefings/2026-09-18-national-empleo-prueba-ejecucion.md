@@ -1,10 +1,10 @@
 ---
 title: "El plan laboral enfrenta su prueba: convertir ejecución rápida en empleo efectivo"
 summary: "Con desempleo de 9,5% y destrucción de puestos de trabajo, el plan de emergencia laboral desplaza el foco hacia la velocidad de ejecución y la capacidad de sostener contratación privada."
-publishedAt: "2026-09-18T09:47:00-03:00"
+publishedAt: "2026-09-18T10:21:09-03:00"
 cutoffAt: "2026-09-18T09:45:00-03:00"
 section: "national"
-status: "draft"
+status: "published"
 tags:
   - chile
   - empleo
