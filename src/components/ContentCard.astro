@@ -20,6 +20,7 @@ interface Props {
   compact?: boolean;
   visual?: EditorialVisual;
   visualAlways?: boolean;
+  sharedTransition?: boolean;
 }
 
 const {
@@ -32,6 +33,7 @@ const {
   compact = false,
   visual,
   visualAlways = false,
+  sharedTransition = true,
 } = Astro.props;
 
 const visualAllowed = (() => {
@@ -49,8 +51,12 @@ const transitionKey = new URL(href, Astro.url).pathname
   .replace(/^\/+|\/+$/g, "")
   .replace(/[^a-zA-Z0-9_-]+/g, "-")
   .toLowerCase();
-const titleTransitionName = `atlas-title-${transitionKey}`;
-const visualTransitionName = `atlas-visual-${transitionKey}`;
+const titleTransitionName = sharedTransition
+  ? `atlas-title-${transitionKey}`
+  : undefined;
+const visualTransitionName = sharedTransition
+  ? `atlas-visual-${transitionKey}`
+  : undefined;
 ---
 
 <article
