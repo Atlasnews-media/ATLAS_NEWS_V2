@@ -158,6 +158,7 @@ const groups = readyArtifact
                     <a class="daily-signals__link" href={item.href}>
                       <strong>{item.label}</strong>
                       <p>{item.text}</p>
+                      <span class="daily-signals__cta">Ir a la noticia →</span>
                     </a>
                   ) : (
                     <>
@@ -230,6 +231,22 @@ const groups = readyArtifact
     text-decoration: underline;
     text-decoration-thickness: 0.08em;
     text-underline-offset: 0.14em;
+  }
+
+  .daily-signals__cta {
+    display: inline-block;
+    margin-top: 0.65rem;
+    color: var(--accent);
+    font: 800 0.68rem/1.2 var(--sans);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .daily-signals__link:hover .daily-signals__cta,
+  .daily-signals__link:focus-visible .daily-signals__cta {
+    text-decoration: underline;
+    text-decoration-thickness: 0.08em;
+    text-underline-offset: 0.16em;
   }
 
   .daily-signals__item strong {
