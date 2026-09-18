@@ -1,4 +1,5 @@
 import { mkdir, readFile, writeFile } from "node:fs/promises";
+import { serializeCanonicalJson } from "./lib/serialize-canonical-json.mjs";
 
 const root = new URL("../", import.meta.url);
 const marketSnapshotPath = new URL("src/data/market-pulse.json", root);
@@ -366,7 +367,7 @@ const enrichedSnapshot = {
   historyDiagnostics,
 };
 
-const serialized = `${JSON.stringify(enrichedSnapshot, null, 2)}\n`;
+const serialized = await serializeCanonicalJson(enrichedSnapshot);
 await mkdir(publicDataDirectory, { recursive: true });
 await Promise.all([
   writeFile(marketSnapshotPath, serialized),
