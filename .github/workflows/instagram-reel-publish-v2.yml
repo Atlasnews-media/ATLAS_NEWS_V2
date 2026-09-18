@@ -52,8 +52,8 @@ jobs:
           GH_TOKEN: ${{ github.token }}
         run: |
           set -euo pipefail
-          source_commit="$(curl -fsSL -H 'Accept: application/json' -H 'Cache-Control: no-cache'             "https://atlasnews-media.github.io/status.json?f4e-pr=${GITHUB_RUN_ID}" | jq -er '.latestDaily | select(.id != null) as $d | input_filename? // empty' 2>/dev/null || true)"
-          status="$(curl -fsSL -H 'Accept: application/json' -H 'Cache-Control: no-cache'             "https://atlasnews-media.github.io/status.json?f4e-pr=${GITHUB_RUN_ID}")"
+          status="$(curl -fsSL -H 'Accept: application/json' -H 'Cache-Control: no-cache' \
+            "https://atlasnews-media.github.io/status.json?f4e-pr=${GITHUB_RUN_ID}")"
           source_commit="$(jq -er '.latestDaily.id as $id | .sourceCommit | select(type == "string" and test("^[0-9a-f]{40}$"))' <<<"$status")"
           artifact_name="atlas-news-reel-canonical-${source_commit}"
           artifacts="$(gh api "repos/${GITHUB_REPOSITORY}/actions/artifacts?name=${artifact_name}&per_page=100")"
