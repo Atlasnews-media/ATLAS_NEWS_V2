@@ -89,63 +89,110 @@ const marketsVisual = latestMarkets
       latestDaily ? (
         <>
           <EditorialDoubleRule />
-          <section class="lead-grid" aria-labelledby="titulares">
-            <article class="lead-story headline-board">
-              <h1 id="titulares" class="headline-board-title">
-                Titulares
-              </h1>
-
-              <div class="headline-list">
-                <FrontPageHeadline
-                  label="Internacional"
-                  title={latestDaily.data.title}
-                  href={`/ediciones/${latestDaily.id}/`}
-                  cta="Ir a Internacional"
-                  visual={dailyVisual}
-                  eager
-                />
-
-                {latestNational && (
-                  <FrontPageHeadline
-                    label="Nacional"
-                    title={latestNational.data.title}
-                    href={`/nacional/${latestNational.id}/`}
-                    cta="Ir a Nacional"
-                    visual={nationalVisual}
-                  />
-                )}
-
-                {latestMarkets && (
-                  <FrontPageHeadline
-                    label="Mercados"
-                    title={latestMarkets.data.title}
-                    href={`/mercados/${latestMarkets.id}/`}
-                    cta="Ir a Mercados"
-                    visual={marketsVisual}
-                  />
-                )}
+          <section class="lead-grid" aria-label="Titulares y Señales del Día">
+            <article
+              class="lead-story headline-board"
+              data-front-page-switcher
+            >
+              <div
+                class="headline-tabs"
+                role="tablist"
+                aria-label="Contenido principal de Portada"
+              >
+                <button
+                  id="portada-tab-titulares"
+                  class="headline-tab is-active"
+                  type="button"
+                  role="tab"
+                  aria-selected="true"
+                  aria-controls="portada-panel-titulares"
+                  data-front-page-tab="titulares"
+                >
+                  Titulares
+                </button>
+                <button
+                  id="portada-tab-senales"
+                  class="headline-tab"
+                  type="button"
+                  role="tab"
+                  aria-selected="false"
+                  aria-controls="portada-panel-senales"
+                  data-front-page-tab="senales"
+                >
+                  Señales del día
+                </button>
               </div>
 
-              <div class="calendar-entry">
-                <a
-                  class="calendar-link"
-                  href="/calendario-economico/"
-                  aria-label="Ir a calendario económico de hoy"
-                >
-                  Ir a calendario económico de hoy
-                  <span aria-hidden="true">→</span>
-                </a>
+              <div
+                id="portada-panel-titulares"
+                class="headline-tab-panel"
+                role="tabpanel"
+                aria-labelledby="portada-tab-titulares"
+                data-front-page-panel="titulares"
+              >
+                <div class="headline-list">
+                  <FrontPageHeadline
+                    label="Internacional"
+                    title={latestDaily.data.title}
+                    href={`/ediciones/${latestDaily.id}/`}
+                    cta="Ir a Internacional"
+                    visual={dailyVisual}
+                    eager
+                  />
+
+                  {latestNational && (
+                    <FrontPageHeadline
+                      label="Nacional"
+                      title={latestNational.data.title}
+                      href={`/nacional/${latestNational.id}/`}
+                      cta="Ir a Nacional"
+                      visual={nationalVisual}
+                    />
+                  )}
+
+                  {latestMarkets && (
+                    <FrontPageHeadline
+                      label="Mercados"
+                      title={latestMarkets.data.title}
+                      href={`/mercados/${latestMarkets.id}/`}
+                      cta="Ir a Mercados"
+                      visual={marketsVisual}
+                    />
+                  )}
+                </div>
+
+                <div class="calendar-entry">
+                  <a
+                    class="calendar-link"
+                    href="/calendario-economico/"
+                    aria-label="Ir a calendario económico de hoy"
+                  >
+                    Ir a calendario económico de hoy
+                    <span aria-hidden="true">→</span>
+                  </a>
+                </div>
+
+                <div class="calendar-entry">
+                  <a
+                    class="calendar-link"
+                    href="/mercados/indices/"
+                    aria-label="Ir a índices de mercado"
+                  >
+                    Ir a índices de mercado
+                    <span aria-hidden="true">→</span>
+                  </a>
+                </div>
               </div>
 
-              <div class="calendar-entry">
-                <a
-                  class="calendar-link"
-                  href="/mercados/indices/"
-                  aria-label="Ir a índices de mercado"
-                >
-                  Ir a índices de mercado
-                  <span aria-hidden="true">→</span>
-                </a>
+              <div
+                id="portada-panel-senales"
+                class="headline-tab-panel headline-tab-panel--signals"
+                role="tabpanel"
+                aria-labelledby="portada-tab-senales"
+                data-front-page-panel="senales"
+                hidden
+              >
+                <DailySignals />
               </div>
             </article>
 
@@ -162,8 +209,6 @@ const marketsVisual = latestMarkets
                 ))}
               </ol>
             </aside>
-
-            <DailySignals />
           </section>
         </>
       ) : (
@@ -301,6 +346,48 @@ const marketsVisual = latestMarkets
       </p>
     </noscript>
   </aside>
+
+  <script>
+    const setupFrontPageSwitcher = () => {
+      const switcher = document.querySelector<HTMLElement>(
+        "[data-front-page-switcher]",
+      );
+      if (!switcher) return;
+
+      const tabs = Array.from(
+        switcher.querySelectorAll<HTMLButtonElement>("[data-front-page-tab]"),
+      );
+      const panels = Array.from(
+        switcher.querySelectorAll<HTMLElement>("[data-front-page-panel]"),
+      );
+
+      const activate = (name: string) => {
+        tabs.forEach((tab) => {
+          const active = tab.dataset.frontPageTab === name;
+          tab.classList.toggle("is-active", active);
+          tab.setAttribute("aria-selected", String(active));
+        });
+
+        panels.forEach((panel) => {
+          panel.hidden = panel.dataset.frontPagePanel !== name;
+        });
+      };
+
+      tabs.forEach((tab) => {
+        if (tab.dataset.frontPageTabReady === "true") return;
+        tab.dataset.frontPageTabReady = "true";
+        tab.addEventListener("click", () => {
+          const name = tab.dataset.frontPageTab;
+          if (name) activate(name);
+        });
+      });
+
+      activate("titulares");
+    };
+
+    setupFrontPageSwitcher();
+    document.addEventListener("astro:page-load", setupFrontPageSwitcher);
+  </script>
 
   <script>
     const DESKTOP_WORKSPACE_QUERY = "(min-width: 80rem)";
@@ -602,6 +689,48 @@ const marketsVisual = latestMarkets
     padding: clamp(2rem, 5vw, 4.5rem) 0 3rem;
     border-right: 0;
   }
+  .headline-tabs {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    margin: 0 0 0.8rem;
+    border-top: 1px solid var(--rule);
+    border-bottom: 4px double var(--rule);
+  }
+  .headline-tab {
+    min-width: 0;
+    padding: 0.62rem 0.55rem;
+    border: 0;
+    background: transparent;
+    color: var(--ink);
+    cursor: pointer;
+    font: 800 0.68rem/1.2 var(--sans);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+  .headline-tab + .headline-tab {
+    border-left: 1px solid rgba(31, 29, 23, 0.16);
+  }
+  .headline-tab.is-active {
+    background: rgba(31, 29, 23, 0.045);
+    color: var(--accent);
+  }
+  .headline-tab:hover,
+  .headline-tab:focus-visible {
+    background: rgba(31, 29, 23, 0.035);
+  }
+  .headline-tab-panel[hidden] {
+    display: none !important;
+  }
+  .headline-tab-panel--signals :global(.daily-signals) {
+    padding: 0.15rem 0 0.35rem;
+    border-top: 0;
+  }
+  .headline-tab-panel--signals :global(.daily-signals__title) {
+    display: none;
+  }
+  .headline-tab-panel--signals :global(.daily-signals__group:first-child) {
+    padding-top: 0.3rem;
+  }
   .kicker,
   .headline-board-title {
     margin: 0;
@@ -825,6 +954,14 @@ const marketsVisual = latestMarkets
     .headline-board-title {
       margin-top: 0;
       margin-bottom: 0;
+    }
+    .headline-tabs {
+      margin-bottom: 0.72rem;
+    }
+    .headline-tab {
+      padding: 0.5rem 0.35rem;
+      font-size: 0.62rem;
+      letter-spacing: 0.075em;
     }
     .headline-list {
       margin-top: 0.75rem;
