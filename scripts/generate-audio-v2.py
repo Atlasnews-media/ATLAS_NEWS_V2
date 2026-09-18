@@ -196,7 +196,7 @@ def split_alexc_sentences(text: str) -> list[str]:
     """Segmenta Alex C en frases cortas sin alterar la ortografía."""
     sentences = [
         sentence.strip()
-        for sentence in re.split(r"(?<=[.!?])\\s+(?=[A-ZÁÉÍÓÚÑ¿¡])", text)
+        for sentence in re.split(r"(?<=[.!?])\s+(?=[A-ZÁÉÍÓÚÑ¿¡])", text)
         if sentence.strip()
     ]
     return sentences or [text.strip()]
