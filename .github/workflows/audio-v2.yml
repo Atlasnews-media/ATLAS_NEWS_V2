@@ -9,6 +9,7 @@ on:
       - "lab/audio-v2/**"
       - "config/audio/**"
       - "scripts/audio_speech.py"
+      - "scripts/audio_alexc.py"
       - "scripts/test_audio_speech.py"
       - "scripts/prepare-daily-audio.mjs"
       - "scripts/prepare-international-audio.mjs"
@@ -42,7 +43,7 @@ jobs:
   audio-v2:
     name: Generar Portada + Internacional + Nacional + Mercados
     runs-on: ubuntu-latest
-    timeout-minutes: 35
+    timeout-minutes: 50
     env:
       ATLAS_SOURCE_SHA: ${{ github.sha }}
 
@@ -100,7 +101,7 @@ jobs:
             exit 1
           fi
 
-          sensitive_re='^(src/content/editions/|src/content/briefings/|lab/audio-v2/|config/audio/|scripts/audio_speech\.py$|scripts/test_audio_speech\.py$|scripts/cover-briefing-contract\.mjs$|scripts/prepare-daily-audio\.mjs$|scripts/prepare-international-audio\.mjs$|scripts/prepare-audio-v2\.mjs$|scripts/generate-audio-v2\.py$|\.github/workflows/audio-v2\.yml$)'
+          sensitive_re='^(src/content/editions/|src/content/briefings/|lab/audio-v2/|config/audio/|scripts/audio_speech\.py$|scripts/audio_alexc\.py$|scripts/test_audio_speech\.py$|scripts/cover-briefing-contract\.mjs$|scripts/prepare-daily-audio\.mjs$|scripts/prepare-international-audio\.mjs$|scripts/prepare-audio-v2\.mjs$|scripts/generate-audio-v2\.py$|\.github/workflows/audio-v2\.yml$)'
 
           for attempt in $(seq 1 24); do
             cd "$atlas_public_dir"
@@ -191,23 +192,53 @@ jobs:
           ATLAS_AUDIO_V2_SIMULATE_MARKETS_FAILURE: ${{ github.event_name == 'workflow_dispatch' && inputs.simulate_markets_failure || false }}
         run: node scripts/prepare-audio-v2.mjs
 
-      - name: Restaurar caché de Kokoro
+      - name: Restaurar caché de motores de audio
         if: steps.audio_v2_plan.outputs.needs_generation == 'true'
         uses: actions/cache@v4
         with:
           path: ~/.cache/huggingface
-          key: kokoro-82m-v1-${{ runner.os }}
+          key: audio-v2-alexc-v1-${{ runner.os }}
 
-      - name: Preparar Kokoro una sola vez
+      - name: Preparar Kokoro + Alex C
         if: steps.audio_v2_plan.outputs.needs_generation == 'true'
         run: |
           set -euo pipefail
           sudo apt-get update -qq
           sudo apt-get install -y -qq espeak-ng ffmpeg python3-venv
+
           python3 -m venv "$RUNNER_TEMP/kokoro-v2-venv"
           source "$RUNNER_TEMP/kokoro-v2-venv/bin/activate"
           python -m pip install --quiet --upgrade pip
-          python -m pip install --quiet "kokoro==0.9.4" soundfile numpy
+          python -m pip install --quiet --index-url https://download.pytorch.org/whl/cpu             torch==2.8.0 torchaudio==2.8.0
+          python -m pip install --quiet             "kokoro==0.9.4"             numpy==1.26.0             soundfile             resampy==0.4.3             librosa==0.10.0             s3tokenizer             transformers==4.46.3             diffusers==0.29.0             omegaconf==2.3.0             resemble-perth==1.0.1             silero-vad==5.1.2             conformer==0.3.2             safetensors             huggingface_hub
+
+          git clone --quiet             https://huggingface.co/spaces/ResembleAI/Chatterbox-Multilingual-TTS-es-mx-latam             "$RUNNER_TEMP/chatterbox-latam"
+          git -C "$RUNNER_TEMP/chatterbox-latam" checkout --quiet             0d2648c4c1637eccfa8d45c7e192a0ad8d5b1fca
+
+          python - <<'PY'
+          import os
+          import shutil
+          from pathlib import Path
+          from huggingface_hub import snapshot_download
+
+          base = Path(snapshot_download(
+              repo_id="ResembleAI/chatterbox",
+              revision="5bb1f6ee58e50c3b8d408bc82a6d3740c2db6e18",
+              allow_patterns=["ve.pt", "grapheme_mtl_merged_expanded_v1.json", "conds.pt"],
+          ))
+          latam = Path(snapshot_download(
+              repo_id="ResembleAI/Chatterbox-Multilingual-es-mx-latam",
+              revision="27e595bf2fe7be0533ca299d9afafcde08b7cca7",
+              allow_patterns=["t3_es_mx_latam.safetensors", "s3gen_v3.pt"],
+          ))
+          target = Path(os.environ["RUNNER_TEMP"]) / "chatterbox-ckpt"
+          target.mkdir(parents=True, exist_ok=True)
+
+          for name in ("ve.pt", "grapheme_mtl_merged_expanded_v1.json", "conds.pt"):
+              shutil.copy2(base / name, target / name)
+          for name in ("t3_es_mx_latam.safetensors", "s3gen_v3.pt"):
+              shutil.copy2(latam / name, target / name)
+          PY
 
       - name: Generar salidas válidas en staging
         if: steps.audio_v2_plan.outputs.needs_generation == 'true'
@@ -215,6 +246,8 @@ jobs:
           ATLAS_PUBLIC_REPO_DIR: ${{ runner.temp }}/atlas-news-public
           ATLAS_AUDIO_V2_PLAN: ${{ runner.temp }}/atlas-audio-v2-plan.json
           ATLAS_AUDIO_SPEED: "1.0"
+          ATLAS_CHATTERBOX_SPACE_DIR: ${{ runner.temp }}/chatterbox-latam
+          ATLAS_CHATTERBOX_CKPT_DIR: ${{ runner.temp }}/chatterbox-ckpt
         run: |
           set -euo pipefail
           source "$RUNNER_TEMP/kokoro-v2-venv/bin/activate"
@@ -282,9 +315,19 @@ jobs:
           jq -e --arg date "$AUDIO_DATE" --arg sha "$ATLAS_SOURCE_SHA" '
             .date == $date and
             .sourceCommit == $sha and
+            .voiceProfileTarget == "alex-c-v1" and
             (.international | type == "object") and
             (.national | type == "object") and
             (.markets | type == "object")
+          ' "$analysis_manifest" >/dev/null
+
+          jq -e '
+            [.international, .national, .markets] |
+            all(
+              .status == "published" and
+              .voiceProfileVersion == "alex-c-v1" and
+              .fallbackUsed == false
+            )
           ' "$analysis_manifest" >/dev/null
 
           jq -e --arg date "$AUDIO_DATE" '
