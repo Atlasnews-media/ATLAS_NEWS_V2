@@ -88,16 +88,16 @@ jobs:
               -of json "$f" |
               jq -e '.streams[0].width == 1080 and .streams[0].height == 1920 and .streams[0].pix_fmt == "yuv420p" and .streams[0].r_frame_rate == "30/1"' >/dev/null
           done
-          cat > "$OUTPUT/LEEME.txt" <<'TXT'
-ATLAS NEWS LAB — REEL 047
-Comparación real del mismo contenido, audio y duración.
-100% = actual
-95% = reducción 5%
-92% = reducción 8%
-90% = reducción 10%
-Todos conservan 1080x1920 / 9:16.
-No se publica nada en Meta ni en el sitio público.
-TXT
+          printf '%s\n' \
+            'ATLAS NEWS LAB — REEL 047' \
+            'Comparación real del mismo contenido, audio y duración.' \
+            '100% = actual' \
+            '95% = reducción 5%' \
+            '92% = reducción 8%' \
+            '90% = reducción 10%' \
+            'Todos conservan 1080x1920 / 9:16.' \
+            'No se publica nada en Meta ni en el sitio público.' \
+            > "$OUTPUT/LEEME.txt"
 
       - name: Subir matriz LAB
         uses: actions/upload-artifact@v4
