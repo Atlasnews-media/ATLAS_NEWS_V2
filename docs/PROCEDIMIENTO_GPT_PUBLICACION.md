@@ -125,8 +125,8 @@ Si no existe un fallo objetivo persistente:
 
 1. Confirmar que General evaluó únicamente la memoria correspondiente a los hilos efectivamente investigados. Si cambió, verificar que `data/editorial_state.json` acompañe el paquete y que los hilos no afectados permanezcan intactos.
 2. Confirmar que Nacional y Mercados, si existen, no hayan escrito memoria de forma independiente.
-3. Cambiar `status: draft` por `status: published` en los contenidos válidos del mismo paquete sin reescribir el cuerpo.
-4. Crear un único commit de promoción editorial.
+3. Promover los contenidos válidos del mismo paquete sin reescribir el cuerpo: cambiar únicamente `status: draft → published` y reemplazar `publishedAt` provisional por la hora efectiva real de promoción en formato ISO 8601 con zona horaria. `cutoffAt` permanece intacto. Una pieza ya `published` conserva su `publishedAt` durante una recuperación parcial.
+4. Crear, cuando sea posible, un único commit de promoción editorial. El gate `validate:promotion` debe confirmar que cada transición `draft → published` modificó exclusivamente `status` y `publishedAt`; cualquier reescritura editorial o cambio de `cutoffAt` bloquea el merge.
 5. Esperar las validaciones del **SHA final** del Pull Request.
 6. Si aparece un fallo mecánico reparable, corregirlo en la misma rama, crear un nuevo SHA y volver a validar.
 7. Si el SHA final queda verde, fusionar mediante `squash` verificando el SHA esperado.

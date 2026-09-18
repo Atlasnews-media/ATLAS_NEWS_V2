@@ -101,6 +101,19 @@ Debe contener exactamente una edición General diaria para esa fecha. Puede cont
 
 Los tres archivos comienzan como `draft`. La promoción a `published`, cuando corresponda, se realiza en la misma rama y sin reescribir el cuerpo.
 
+### Contrato de promoción del Morning Package
+
+La promoción es una transición mecánica, no una nueva etapa editorial. Para cada pieza válida que pase de `draft` a `published`:
+
+- sólo pueden cambiar `status: draft → published` y `publishedAt`;
+- `publishedAt` provisional debe reemplazarse por la hora efectiva real de promoción en formato ISO 8601 con zona horaria;
+- `cutoffAt` permanece exactamente intacto y debe cumplir `cutoffAt <= publishedAt`;
+- título, summary, tags, sources, highlights y cuerpo permanecen idénticos;
+- una pieza que ya estaba `published` conserva su `publishedAt` durante una recuperación parcial;
+- General es obligatoria; Nacional y Mercados continúan siendo soft-required y una vertical no promocionable no debe bloquear una General válida.
+
+El gate técnico `validate:promotion` verifica en el PR morning cada transición `draft → published` contra el commit inmediatamente anterior. Si detecta reescritura editorial, cambio de `cutoffAt`, timestamp inválido o una pieza nueva que nace directamente como `published`, la promoción falla cerrada antes del merge.
+
 La memoria editorial `data/editorial_state.json` puede ser leída por las tres piezas, pero dentro del paquete matutino solo la edición General puede modificarla. General solo evalúa y actualiza hilos efectivamente investigados dentro de su alcance internacional en esa ejecución; los demás hilos permanecen intactos. Nacional y Mercados no escriben memoria editorial de forma independiente.
 
 ## Lecturas seleccionadas
