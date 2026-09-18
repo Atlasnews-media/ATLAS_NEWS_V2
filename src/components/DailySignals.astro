@@ -1,9 +1,15 @@
 ---
+import ResponsiveEditorialImage from "./ResponsiveEditorialImage.astro";
 import {
   getLatestDaily,
   getLatestMarkets,
   getLatestNational,
 } from "../lib/content";
+import {
+  resolveFrontPageVisual,
+  type EditorialVisual,
+  type FrontPageSection,
+} from "../lib/front-page-visuals";
 
 interface CanonicalSignal {
   slot: string;
@@ -32,6 +38,7 @@ interface PublicSignal {
   label: string;
   text: string;
   href?: string;
+  visual: EditorialVisual;
 }
 
 const signalFiles = import.meta.glob("../../data/senales-del-dia/*.json", {
@@ -126,14 +133,30 @@ const readyArtifact = isReadyArtifact(artifact, expectedDate)
 
 function publicPair(
   items: CanonicalSignal[],
-  destinationBase?: string,
+  section: FrontPageSection,
+  date: string,
+  destinationBase: string | undefined,
+  usedSources: Set<string>,
 ): PublicSignal[] {
-  return items.map((item) => ({
-    label: item.headline,
-    text: item.deck,
-    href: destinationBase ? `${destinationBase}#${item.anchor}` : undefined,
-  }));
+  return items.map((item) => {
+    const visual = resolveFrontPageVisual({
+      section,
+      id: `${date}:${item.slot}:${item.anchor}`,
+      title: `${item.headline} ${item.deck}`,
+      usedSources,
+    });
+    usedSources.add(visual.src);
+
+    return {
+      label: item.headline,
+      text: item.deck,
+      href: destinationBase ? `${destinationBase}#${item.anchor}` : undefined,
+      visual,
+    };
+  });
 }
+
+const usedSources = new Set<string>();
 
 const groups = readyArtifact
   ? [
@@ -141,21 +164,30 @@ const groups = readyArtifact
         section: "Internacional",
         items: publicPair(
           readyArtifact.senalesDelDia.internacional,
+          "international",
+          readyArtifact.date,
           latestDaily ? `/internacional/${latestDaily.id}/` : undefined,
+          usedSources,
         ),
       },
       {
         section: "Nacional",
         items: publicPair(
           readyArtifact.senalesDelDia.nacional,
+          "national",
+          readyArtifact.date,
           nationalDestination,
+          usedSources,
         ),
       },
       {
         section: "Mercados",
         items: publicPair(
           readyArtifact.senalesDelDia.mercados,
+          "markets",
+          readyArtifact.date,
           marketsDestination,
+          usedSources,
         ),
       },
     ]
@@ -175,7 +207,7 @@ const groups = readyArtifact
             <h3>{group.section}</h3>
             <div class="daily-signals__items">
               {group.items.map((item) => (
-                <article class="daily-signals__item">
+                <article class="daily-signals__item" data-has-visual="true">
                   {item.href ? (
                     <a class="daily-signals__link" href={item.href}>
                       <strong>{item.label}</strong>
@@ -188,6 +220,21 @@ const groups = readyArtifact
                       <p>{item.text}</p>
                     </>
                   )}
+                  <figure class="daily-signals__visual">
+                    <ResponsiveEditorialImage
+                      src={item.visual.src}
+                      alt={item.visual.alt}
+                      sizes="(max-width: 42rem) 22vw, (max-width: 79.99rem) 18vw, 8vw"
+                      loading="lazy"
+                      variant="card"
+                      class="daily-signals__image"
+                      onerror="this.closest('.daily-signals__item')?.removeAttribute('data-has-visual'); this.closest('figure')?.remove()"
+                    />
+                    <figcaption>
+                      {item.visual.source} · {item.visual.author} ·{" "}
+                      {item.visual.license}
+                    </figcaption>
+                  </figure>
                 </article>
               ))}
             </div>
@@ -235,7 +282,39 @@ const groups = readyArtifact
   }
 
   .daily-signals__item {
+    position: relative;
     padding: clamp(0.8rem, 1.45vw, 1.05rem) 0;
+    overflow: hidden;
+    isolation: isolate;
+  }
+
+  .daily-signals__item[data-has-visual="true"] {
+    min-height: 6.1rem;
+    padding-right: calc(clamp(5.5rem, 18vw, 8rem) + 0.8rem);
+  }
+
+  .daily-signals__visual {
+    position: absolute;
+    z-index: 0;
+    top: 50%;
+    right: 0;
+    width: clamp(5.5rem, 18vw, 8rem);
+    height: clamp(4.5rem, 10vw, 5.35rem);
+    margin: 0;
+    overflow: hidden;
+    transform: translateY(-50%);
+    pointer-events: none;
+  }
+
+  .daily-signals__visual figcaption {
+    position: absolute;
+    right: 0.22rem;
+    bottom: 0.16rem;
+    max-width: 88%;
+    color: var(--ink-soft);
+    font: 600 0.3rem/1.1 var(--sans);
+    text-align: right;
+    opacity: 0.7;
   }
 
   .daily-signals__item + .daily-signals__item {
@@ -243,6 +322,8 @@ const groups = readyArtifact
   }
 
   .daily-signals__link {
+    position: relative;
+    z-index: 1;
     display: block;
     color: inherit;
     text-decoration: none;
@@ -313,6 +394,20 @@ const groups = readyArtifact
 
     .daily-signals__item {
       padding: 0.72rem 0 0.8rem;
+    }
+
+    .daily-signals__item[data-has-visual="true"] {
+      min-height: 5.45rem;
+      padding-right: 6rem;
+    }
+
+    .daily-signals__visual {
+      width: 5.35rem;
+      height: 4.45rem;
+    }
+
+    .daily-signals__visual figcaption {
+      font-size: 0.27rem;
     }
 
     .daily-signals__item strong {
@@ -400,6 +495,22 @@ const groups = readyArtifact
       p {
       font-size: 0.9rem !important;
       line-height: 1.22 !important;
+    }
+  }
+
+  @media (min-width: 80rem) {
+    body:has(.desktop-workspace-panel)
+      .front-page.front-page--v2
+      .daily-signals__item[data-has-visual="true"] {
+      min-height: 5rem !important;
+      padding-right: 7rem !important;
+    }
+
+    body:has(.desktop-workspace-panel)
+      .front-page.front-page--v2
+      .daily-signals__visual {
+      width: 6.25rem !important;
+      height: 4.5rem !important;
     }
   }
 </style>
