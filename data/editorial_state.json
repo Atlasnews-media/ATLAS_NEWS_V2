@@ -3,14 +3,14 @@
     {
       "id": "oil-geopolitics-inflation",
       "topic": "Petróleo, geopolítica e inflación",
-      "thesis": "El shock energético sigue activo: el bypass saudí mediante Omán alivia parte del riesgo inmediato de oferta, pero el desplome del tránsito por Hormuz confirma que la redundancia logística todavía no equivale a normalización.",
+      "thesis": "El shock energético sigue activo: el bypass saudí mediante Omán alivia parte del riesgo inmediato de oferta y ya sostiene mayores volúmenes, pero el tráfico excepcionalmente bajo por Hormuz confirma que la redundancia logística todavía no equivale a normalización.",
       "status": "confirmed",
-      "last_evidence": "El 17 de septiembre datos preliminares mostraron sólo tres cruces comerciales por Hormuz el miércoles, frente a 12 el martes y un promedio de diez días cercano a 17; al mismo tiempo, las transferencias saudíes frente a Sohar ayudaron a aliviar el temor inmediato de oferta.",
-      "effect": "La adaptación logística contiene el escenario extremo de escasez saudí, pero la baja circulación por Hormuz y la tensión regional mantienen riesgo sobre energía, transporte, seguros, inflación y tasas globales.",
+      "last_evidence": "El 18 de septiembre datos preliminares mostraron sólo cuatro tránsitos de buques de commodities por Hormuz el jueves frente a un promedio de diez días de 16, mientras operadores indicaron que Aramco planea mover cerca de 60 millones de barriles en septiembre y octubre mediante transferencias frente a Sohar, Omán.",
+      "effect": "La adaptación logística saudí reduce el riesgo inmediato de escasez y ayudó a moderar el petróleo, pero la baja circulación por Hormuz y la tensión regional mantienen riesgo sobre energía, transporte, seguros, inflación y tasas globales.",
       "base_scenario": "Prima energética elevada y volátil con adaptación logística parcial de productores del Golfo, mientras Hormuz y el corredor del mar Rojo sigan expuestos a restricciones y ataques durante el resto de 2026.",
       "invalidate_if": "Normalización sostenida del tráfico por Hormuz, reapertura estable del oleoducto Este-Oeste y ausencia de nuevas amenazas sobre rutas alternativas debilitarían la tesis; fallas del bypass omaní o nuevos ataques simultáneos la reforzarían.",
       "watch": "Volumen efectivo transferido frente a Sohar, reapertura y capacidad del oleoducto Este-Oeste, tráfico por Hormuz, seguridad en Bab el-Mandeb y mar Rojo, seguros marítimos y transmisión a inflación.",
-      "last_publication": "/ediciones/2026-09-17-daily-fed-endurece-el-mapa-global-de-tasas/"
+      "last_publication": "/ediciones/2026-09-18-daily-bancos-centrales-endurecen-el-mapa-global/"
     },
     {
       "id": "us-employment-fed-rates",
