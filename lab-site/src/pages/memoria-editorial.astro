@@ -75,11 +75,26 @@ import "../../../src/styles/global.css";
         <p class="section-label">Métricas</p>
         <h2>Señal acumulada de la corrida</h2>
         <dl class="metrics">
-          <div><dt>Alertas Shadow</dt><dd id="shadowAlerts">—</dd></div>
-          <div><dt>Señales semánticas</dt><dd id="semanticFlags">—</dd></div>
-          <div><dt>Desacuerdos</dt><dd id="disagreements">—</dd></div>
-          <div><dt>Falsos negativos recuperados</dt><dd id="recovered">—</dd></div>
-          <div><dt>Posibles falsos positivos</dt><dd id="falsePositives">—</dd></div>
+          <div>
+            <dt>Alertas Shadow</dt>
+            <dd id="shadowAlerts">—</dd>
+          </div>
+          <div>
+            <dt>Señales semánticas</dt>
+            <dd id="semanticFlags">—</dd>
+          </div>
+          <div>
+            <dt>Desacuerdos</dt>
+            <dd id="disagreements">—</dd>
+          </div>
+          <div>
+            <dt>Falsos negativos recuperados</dt>
+            <dd id="recovered">—</dd>
+          </div>
+          <div>
+            <dt>Posibles falsos positivos</dt>
+            <dd id="falsePositives">—</dd>
+          </div>
         </dl>
       </section>
 
@@ -91,7 +106,9 @@ import "../../../src/styles/global.css";
       const url = "/lab/editorial-memory-judge/latest.json";
 
       const text = (value) =>
-        value === null || value === undefined || value === "" ? "—" : String(value);
+        value === null || value === undefined || value === ""
+          ? "—"
+          : String(value);
 
       function renderObject(target, value) {
         const node = document.querySelector(target);
