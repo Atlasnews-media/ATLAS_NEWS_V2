@@ -112,8 +112,6 @@ La promoción es una transición mecánica, no una nueva etapa editorial. Para c
 - una pieza que ya estaba `published` conserva su `publishedAt` durante una recuperación parcial;
 - General es obligatoria; Nacional y Mercados continúan siendo soft-required y una vertical no promocionable no debe bloquear una General válida.
 
-El gate técnico `validate:promotion` verifica en el PR morning cada transición `draft → published` contra el commit inmediatamente anterior. Si detecta reescritura editorial, cambio de `cutoffAt`, timestamp inválido o una pieza nueva que nace directamente como `published`, la promoción falla cerrada antes del merge.
-
 La memoria editorial `data/editorial_state.json` puede ser leída por las tres piezas, pero dentro del paquete matutino solo la edición General puede modificarla. General solo evalúa y actualiza hilos efectivamente investigados dentro de su alcance internacional en esa ejecución; los demás hilos permanecen intactos. Nacional y Mercados no escriben memoria editorial de forma independiente.
 
 ## Lecturas seleccionadas
