@@ -1,0 +1,128 @@
+name: Audio LAB — naturalidad Kokoro V1
+
+on:
+  push:
+    branches: ["main"]
+    paths:
+      - "lab/audio-naturalness-v1/**"
+      - "src/pages/lab/audio-naturalness-v1.astro"
+      - ".github/workflows/audio-naturalness-lab.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: atlas-news-audio-naturalness-lab
+  cancel-in-progress: false
+
+jobs:
+  generate:
+    name: Comparar producción vs FastAPI
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+
+    steps:
+      - name: Descargar repositorio
+        uses: actions/checkout@v5
+
+      - name: Preparar baseline productivo
+        run: |
+          set -euo pipefail
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq espeak-ng ffmpeg python3-venv
+          python3 -m venv "$RUNNER_TEMP/kokoro-naturalness-lab"
+          source "$RUNNER_TEMP/kokoro-naturalness-lab/bin/activate"
+          python -m pip install --quiet --upgrade pip
+          python -m pip install --quiet "kokoro==0.9.4" soundfile numpy requests
+
+      - name: Iniciar Kokoro-FastAPI v0.9.0
+        run: |
+          set -euo pipefail
+          docker run -d --name atlas-kokoro-fastapi -p 8880:8880 \
+            ghcr.io/remsky/kokoro-fastapi-cpu:v0.9.0
+          for attempt in $(seq 1 60); do
+            if curl -fsS http://127.0.0.1:8880/v1/audio/voices >/dev/null 2>&1; then
+              echo "Kokoro-FastAPI listo."
+              exit 0
+            fi
+            sleep 3
+          done
+          docker logs atlas-kokoro-fastapi || true
+          echo "Kokoro-FastAPI no quedó listo dentro de la ventana." >&2
+          exit 1
+
+      - name: Generar pistas comparables
+        env:
+          KOKORO_FASTAPI_BASE: http://127.0.0.1:8880
+        run: |
+          set -euo pipefail
+          source "$RUNNER_TEMP/kokoro-naturalness-lab/bin/activate"
+          python lab/audio-naturalness-v1/generate_lab.py
+
+      - name: Mostrar log del servidor
+        if: always()
+        run: docker logs --tail 120 atlas-kokoro-fastapi || true
+
+      - name: Detener servidor
+        if: always()
+        run: docker rm -f atlas-kokoro-fastapi >/dev/null 2>&1 || true
+
+      - name: Publicar artefacto LAB
+        uses: actions/upload-artifact@v4
+        with:
+          name: kokoro-naturalness-v1
+          path: lab/audio-naturalness-v1/out/
+          if-no-files-found: error
+          retention-days: 7
+
+      - name: Preparar acceso al repositorio público
+        env:
+          DEPLOY_KEY: ${{ secrets.ATLAS_PAGES_DEPLOY_KEY }}
+        run: |
+          set -euo pipefail
+          install -m 700 -d ~/.ssh
+          printf '%s\n' "$DEPLOY_KEY" > ~/.ssh/atlas_news_pages
+          chmod 600 ~/.ssh/atlas_news_pages
+          ssh-keyscan -H github.com >> ~/.ssh/known_hosts
+
+      - name: Descargar repositorio público
+        env:
+          GIT_SSH_COMMAND: ssh -i ~/.ssh/atlas_news_pages -o IdentitiesOnly=yes
+        run: |
+          set -euo pipefail
+          git clone --depth 1 git@github.com:Atlasnews-media/Atlasnews-media.github.io.git \
+            "$RUNNER_TEMP/atlas-news-public"
+
+      - name: Publicar pistas en LAB web
+        env:
+          GIT_SSH_COMMAND: ssh -i ~/.ssh/atlas_news_pages -o IdentitiesOnly=yes
+        run: |
+          set -euo pipefail
+          public="$RUNNER_TEMP/atlas-news-public"
+          target="$public/lab/audio/naturalness-v1"
+          mkdir -p "$target"
+          cp lab/audio-naturalness-v1/out/*.mp3 "$target/"
+          cp lab/audio-naturalness-v1/out/manifest.json "$target/manifest.json"
+
+          cd "$public"
+          git config user.name "ATLAS NEWS AUDIO LAB"
+          git config user.email "actions@users.noreply.github.com"
+          git add lab/audio/naturalness-v1/
+
+          if git diff --cached --quiet; then
+            echo "Pistas LAB ya estaban publicadas."
+            exit 0
+          fi
+
+          git commit -m "LAB Audio — naturalidad Kokoro V1"
+          for attempt in 1 2; do
+            git pull --rebase origin main
+            if git push origin main; then
+              exit 0
+            fi
+            if [[ "$attempt" -eq 2 ]]; then
+              echo "No fue posible publicar las pistas LAB tras un retry controlado." >&2
+              exit 1
+            fi
+          done
