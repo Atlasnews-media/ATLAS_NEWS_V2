@@ -1,0 +1,123 @@
+name: LAB — Sitio aislado
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "lab-site/**"
+      - "lab/**"
+      - "scripts/lab/**"
+      - "src/content/**"
+      - "src/content.config.ts"
+      - "src/components/**"
+      - "src/layouts/**"
+      - "src/lib/**"
+      - "src/styles/**"
+      - ".github/workflows/*lab*.yml"
+  pull_request:
+    branches: [main]
+    paths:
+      - "lab-site/**"
+      - "lab/**"
+      - "scripts/lab/**"
+      - "src/content/**"
+      - "src/content.config.ts"
+      - "src/components/**"
+      - "src/layouts/**"
+      - "src/lib/**"
+      - "src/styles/**"
+      - ".github/workflows/*lab*.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: atlas-news-lab-site-${{ github.event_name == 'pull_request' && format('pr-{0}', github.event.pull_request.number) || 'main' }}
+  cancel-in-progress: true
+
+jobs:
+  build-lab:
+    name: Validar y construir LAB
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+
+    steps:
+      - name: Descargar repositorio
+        uses: actions/checkout@v5
+
+      - name: Preparar Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: npm
+
+      - name: Instalar dependencias
+        run: npm ci
+
+      - name: Sincronizar contenido de referencia
+        run: |
+          set -euo pipefail
+          rm -rf lab-site/src/content lab-site/src/content.config.ts
+          cp -R src/content lab-site/src/content
+          cp src/content.config.ts lab-site/src/content.config.ts
+
+      - name: Comprobar formato LAB
+        run: >-
+          npx prettier --check
+          "lab-site/src/pages/**/*.{astro,ts}"
+          "lab-site/astro.config.mjs"
+          "lab-site/tsconfig.json"
+          --ignore-path /dev/null
+
+      - name: Construir LAB aislado
+        run: npx astro build --root ./lab-site
+
+      - name: Registrar procedencia LAB
+        run: |
+          node -e 'const fs=require("fs");fs.writeFileSync("lab-site/dist/build-info.json",JSON.stringify({schemaVersion:1,sourceCommit:process.env.GITHUB_SHA,builtAt:new Date().toISOString()},null,2)+"\\n")'
+
+      - name: Preparar acceso al repositorio público
+        if: github.event_name == 'push'
+        env:
+          DEPLOY_KEY: ${{ secrets.ATLAS_PAGES_DEPLOY_KEY }}
+        run: |
+          set -euo pipefail
+          install -m 700 -d ~/.ssh
+          printf '%s\n' "$DEPLOY_KEY" > ~/.ssh/atlas_news_pages
+          chmod 600 ~/.ssh/atlas_news_pages
+          ssh-keyscan -H github.com >> ~/.ssh/known_hosts
+
+      - name: Publicar únicamente /lab
+        if: github.event_name == 'push'
+        env:
+          GIT_SSH_COMMAND: ssh -i ~/.ssh/atlas_news_pages -o IdentitiesOnly=yes
+        run: |
+          set -euo pipefail
+          public="$RUNNER_TEMP/atlas-news-public"
+          git clone --depth 1 git@github.com:Atlasnews-media/Atlasnews-media.github.io.git "$public"
+          mkdir -p "$public/lab"
+          rsync -a --delete --exclude='audio/' lab-site/dist/ "$public/lab/"
+
+          cd "$public"
+          git config user.name "ATLAS NEWS LAB Publisher"
+          git config user.email "actions@users.noreply.github.com"
+          git add lab/
+
+          if git diff --cached --quiet; then
+            echo "LAB público ya estaba actualizado."
+            exit 0
+          fi
+
+          git commit -m "Publica LAB aislado desde ${GITHUB_SHA::7}"
+          for attempt in 1 2 3; do
+            git pull --rebase origin main
+            if git push origin main; then
+              exit 0
+            fi
+            if [[ "$attempt" -eq 3 ]]; then
+              echo "No fue posible publicar LAB tras tres intentos." >&2
+              exit 1
+            fi
+            sleep 2
+          done

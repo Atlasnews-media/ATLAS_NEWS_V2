@@ -1,4 +1,15 @@
+import { existsSync } from "node:fs";
+import { fileURLToPath } from "node:url";
 import { defineConfig, fontProviders } from "astro/config";
+
+const legacyLabPagesDir = fileURLToPath(
+  new URL("./src/pages/lab/", import.meta.url),
+);
+if (existsSync(legacyLabPagesDir)) {
+  throw new Error(
+    "[production-boundary] LAB debe vivir fuera de src/pages. Use lab-site/src/pages.",
+  );
+}
 
 const analyticsWebsiteId =
   process.env.ATLAS_UMAMI_WEBSITE_ID?.trim() ||

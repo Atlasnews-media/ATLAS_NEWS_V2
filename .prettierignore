@@ -11,17 +11,21 @@ data/senales-del-dia/*.json
 # CALENDARIO: vista heredada auditada migrada a componente sin refactor funcional
 src/components/calendar/EconomicCalendarView.astro
 # Compatibilidad temporal de la antigua URL LAB hacia la ruta productiva
-src/pages/lab/calendario-economico.astro
-src/pages/lab/calendario-probe.json.ts
 src/lib/chile-calendar.ts
 scripts/probe-calendar.mjs
+# LAB ISOLATION: estas superficies tienen build/CI propio y nunca deben bloquear F4A.
+lab/
+lab-site/
+public/lab/
+scripts/lab/
+.github/workflows/*lab*.yml
+
 # RUNTIME OPT: post-build operativo; se ejecuta dentro del gate de build y falla por sintaxis/ejecución real
 scripts/optimize-runtime-assets.mjs
 # VISUAL LOCK: scripts operativos ejecutados dentro del build; su sintaxis y comportamiento fallan el gate si son inválidos
 scripts/sync-visual-locks.mjs
 scripts/write-visual-locks.mjs
 # TEMP LAB: baseline previo que hoy bloquea prettier; no modificar estos archivos aquí
-src/pages/lab/portada-v2.astro
 scripts/prepare-audio-v2.mjs
 scripts/prepare-international-audio.mjs
 # DESKTOP V1: hoja editorial extensa validada por build/auditor; evitar churn cosmético del formatter
