@@ -1,0 +1,196 @@
+---
+import "../../styles/global.css";
+---
+
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="robots" content="noindex, nofollow, noarchive" />
+    <meta name="theme-color" content="#f2efe5" />
+    <title>ATLAS NEWS LAB · Naturalidad Kokoro</title>
+  </head>
+  <body>
+    <main class="lab-shell">
+      <p class="lab-kicker">ATLAS NEWS · AUDIO LAB</p>
+      <h1>Naturalidad de voces</h1>
+      <p class="lead">
+        Tres tratamientos sobre el mismo fragmento real de Mercados del 17 de
+        septiembre. No se modifica el texto editorial ni Audio V2 productivo.
+      </p>
+
+      <div class="rule" aria-hidden="true"></div>
+
+      <section>
+        <p class="status">Experimento aislado · Dora + Alex · Kokoro</p>
+        <h2>Mismo texto, distinta interfaz de voz</h2>
+        <p>
+          Escucha primero A y luego B/C. La pregunta no es cuál suena más
+          llamativa, sino cuál mantiene mejor naturalidad, ritmo informativo y
+          contraste entre Dora y Alex.
+        </p>
+
+        <div class="comparison-grid">
+          <article class="audio-card">
+            <p class="card-kicker">A · Referencia</p>
+            <h3>Producción actual</h3>
+            <p class="card-copy">
+              Reproduce la lógica vigente: Dora 1.0; Alex 0.92 en preguntas,
+              pausa diferenciada y elevación terminal controlada.
+            </p>
+            <audio controls preload="metadata">
+              <source
+                src="/lab/audio/naturalness-v1/a-production-current.mp3"
+                type="audio/mpeg"
+              />
+            </audio>
+          </article>
+
+          <article class="audio-card audio-card--candidate">
+            <p class="card-kicker">B · Interfaz moderna</p>
+            <h3>Kokoro-FastAPI v0.9.0</h3>
+            <p class="card-copy">
+              Dora y Alex originales, con diálogo nativo, pausas explícitas y
+              Alex a ritmo 0.96. Sin pitch artificial posterior.
+            </p>
+            <audio controls preload="metadata">
+              <source
+                src="/lab/audio/naturalness-v1/b-fastapi-dialogue.mp3"
+                type="audio/mpeg"
+              />
+            </audio>
+          </article>
+
+          <article class="audio-card audio-card--candidate">
+            <p class="card-kicker">C · Mezcla experimental</p>
+            <h3>Alex 75% + Santa 25%</h3>
+            <p class="card-copy">
+              Mantiene Dora sin cambios. Para la segunda voz usa una mezcla
+              ponderada de Alex y Santa, con el mismo ritmo y pausas de B.
+            </p>
+            <audio controls preload="metadata">
+              <source
+                src="/lab/audio/naturalness-v1/c-fastapi-alex-blend.mp3"
+                type="audio/mpeg"
+              />
+            </audio>
+          </article>
+        </div>
+      </section>
+
+      <div class="rule" aria-hidden="true"></div>
+
+      <section>
+        <p class="status">Guardrail</p>
+        <h2>No toca producción</h2>
+        <p>
+          Este experimento vive únicamente en LAB. No modifica Speech
+          Normalizer, Lexicon, voces productivas, manifests ni workflows de F4B.
+          Cualquier promoción futura requiere escucha humana previa.
+        </p>
+        <a class="lab-link" href="/lab/">← Volver a ATLAS NEWS LAB</a>
+      </section>
+    </main>
+  </body>
+</html>
+
+<style>
+  :global(body) {
+    margin: 0;
+    background: #f2efe5;
+    color: #151515;
+  }
+
+  .lab-shell {
+    width: min(70rem, calc(100% - 2rem));
+    margin: 0 auto;
+    padding: clamp(3.5rem, 10vw, 7rem) 0;
+  }
+
+  .lab-kicker,
+  .status,
+  .card-kicker {
+    margin: 0;
+    font: 800 0.72rem/1.2 var(--sans);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  h1 {
+    margin: 0.75rem 0 1rem;
+    font: 700 clamp(2.7rem, 9vw, 6.5rem)/0.92 var(--display);
+    letter-spacing: -0.04em;
+  }
+
+  h2 {
+    margin: 0.45rem 0 0.8rem;
+    font: 700 clamp(1.7rem, 4vw, 2.8rem)/1 var(--display);
+  }
+
+  h3 {
+    margin: 0.4rem 0 0.65rem;
+    font: 700 1.45rem/1 var(--display);
+  }
+
+  p {
+    font: 400 1rem/1.6 var(--serif);
+  }
+
+  .lead {
+    max-width: 48rem;
+    font-size: 1.12rem;
+  }
+
+  .rule {
+    height: 4px;
+    margin: 2.5rem 0;
+    border-top: 1px solid #151515;
+    border-bottom: 1px solid #151515;
+  }
+
+  .comparison-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1rem;
+    margin-top: 1.5rem;
+  }
+
+  .audio-card {
+    padding: 1.25rem;
+    border: 1px solid #151515;
+    background: rgba(255, 255, 255, 0.18);
+  }
+
+  .audio-card--candidate {
+    border-top: 5px solid #a71920;
+  }
+
+  .card-copy {
+    min-height: 7.5rem;
+  }
+
+  audio {
+    width: 100%;
+    margin-top: 0.8rem;
+  }
+
+  .lab-link {
+    display: inline-block;
+    margin-top: 1rem;
+    color: inherit;
+    font: 800 0.86rem/1.2 var(--sans);
+    text-decoration-thickness: 2px;
+    text-underline-offset: 0.2em;
+  }
+
+  @media (max-width: 800px) {
+    .comparison-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .card-copy {
+      min-height: 0;
+    }
+  }
+</style>
