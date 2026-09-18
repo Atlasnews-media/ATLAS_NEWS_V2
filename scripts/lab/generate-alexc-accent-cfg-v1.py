@@ -3,11 +3,16 @@ import json
 import os
 import re
 import subprocess
+import sys
 from pathlib import Path
 
 import numpy as np
 import soundfile as sf
 from kokoro import KPipeline
+
+ROOT = Path(__file__).resolve().parents[2]
+SCRIPTS_DIR = ROOT / "scripts"
+sys.path.insert(0, str(SCRIPTS_DIR))
 
 import audio_alexc
 from audio_speech import is_question, normalize_for_speech
