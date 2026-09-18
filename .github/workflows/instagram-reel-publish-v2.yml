@@ -54,13 +54,31 @@ jobs:
           set -euo pipefail
           status="$(curl -fsSL -H 'Accept: application/json' -H 'Cache-Control: no-cache' \
             "https://atlasnews-media.github.io/status.json?f4e-pr=${GITHUB_RUN_ID}")"
-          source_commit="$(jq -er '.latestDaily.id as $id | .sourceCommit | select(type == "string" and test("^[0-9a-f]{40}$"))' <<<"$status")"
+          edition_id="$(jq -er '.latestDaily.id | select(type == "string" and length > 0)' <<<"$status")"
+          git fetch --no-tags origin main:refs/remotes/origin/main
+          source_id=""
+          for ext in md mdx; do
+            candidate="src/content/editions/${edition_id}.${ext}"
+            if git cat-file -e "origin/main:${candidate}" 2>/dev/null; then
+              source_id="$candidate"
+              break
+            fi
+          done
+          test -n "$source_id" || {
+            echo "Fail-closed: latest public edition file not found on origin/main."
+            exit 9
+          }
+          source_commit="$(git log -1 --format=%H origin/main -- "$source_id")"
+          [[ "$source_commit" =~ ^[0-9a-f]{40}$ ]] || {
+            echo "Fail-closed: latest daily sourceCommit is invalid."
+            exit 10
+          }
           artifact_name="atlas-news-reel-canonical-${source_commit}"
           artifacts="$(gh api "repos/${GITHUB_REPOSITORY}/actions/artifacts?name=${artifact_name}&per_page=100")"
           count="$(jq --arg name "$artifact_name" '[.artifacts[] | select(.expired == false and .name == $name)] | length' <<<"$artifacts")"
           test "$count" -ge 1 || {
             echo "Fail-closed: no unexpired canonical F4D artifact found for current public edition."
-            exit 10
+            exit 11
           }
           echo "PASS: canonical F4D artifact is discoverable. No download or Meta POST executed."
 
