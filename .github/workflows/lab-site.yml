@@ -62,12 +62,26 @@ jobs:
           cp -R src/content lab-site/src/content
           cp src/content.config.ts lab-site/src/content.config.ts
 
+      - name: Validar EXP-011 memoria editorial
+        run: node scripts/lab/validate-editorial-memory-judge.mjs lab/editorial-memory-judge/latest.json
+
+      - name: Sincronizar datos EXP-011 hacia LAB
+        run: |
+          set -euo pipefail
+          rm -rf lab-site/public/editorial-memory-judge
+          mkdir -p lab-site/public/editorial-memory-judge
+          cp lab/editorial-memory-judge/latest.json lab-site/public/editorial-memory-judge/latest.json
+          if [ -d lab/editorial-memory-judge/runs ]; then
+            cp -R lab/editorial-memory-judge/runs lab-site/public/editorial-memory-judge/runs
+          fi
+
       - name: Comprobar formato LAB
         run: >-
           npx prettier --check
           "lab-site/src/pages/**/*.{astro,ts}"
           "lab-site/astro.config.mjs"
           "lab-site/tsconfig.json"
+          "scripts/lab/validate-editorial-memory-judge.mjs"
           --ignore-path /dev/null
 
       - name: Construir LAB aislado
