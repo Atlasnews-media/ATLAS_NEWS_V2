@@ -273,7 +273,9 @@ jobs:
           python3 -m py_compile \
             tools/reel_maker/prepare_reel_contract.py \
             tools/reel_maker/reel_maker.py \
-            tools/reel_maker/build_reel_artifact.py
+            tools/reel_maker/build_reel_artifact.py \
+            tools/reel_maker/consume_reel_artifact.py
+          bash -n tools/reel_maker/publish_reel_artifact.sh
           test -f reference-assets/01_portada_base.png
           test -f reference-assets/02_noticia_base.png
           test -f reference-assets/03_cierre_base.png
