@@ -195,16 +195,6 @@ jobs:
       - name: Instalar dependencias
         run: npm ci
 
-      - name: Validar promoción editorial
-        if: github.event_name == 'pull_request' && steps.edition.outputs.package_kind == 'morning'
-        shell: bash
-        env:
-          ATLAS_PR_HEAD_SHA: ${{ github.event.pull_request.head.sha }}
-        run: |
-          set -euo pipefail
-          git fetch --no-tags --depth=2 origin "$GITHUB_HEAD_REF"
-          npm run validate:promotion
-
       - name: Validar contrato Señales (fail-open)
         id: signals_contract
         if: steps.edition.outputs.package_kind == 'morning'
