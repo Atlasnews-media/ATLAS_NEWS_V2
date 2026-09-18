@@ -1,4 +1,5 @@
 import { mkdir, readFile, writeFile } from "node:fs/promises";
+import { serializeCanonicalJson } from "./lib/serialize-canonical-json.mjs";
 
 const root = new URL("../", import.meta.url);
 const snapshotPath = new URL("src/data/economic-indicators.json", root);
@@ -309,7 +310,7 @@ async function loadFallbackSnapshot(now) {
 }
 
 async function writeSnapshot(snapshot) {
-  const serialized = `${JSON.stringify(snapshot, null, 2)}\n`;
+  const serialized = await serializeCanonicalJson(snapshot);
   await mkdir(publicDataDirectory, { recursive: true });
   await Promise.all([
     writeFile(snapshotPath, serialized),
