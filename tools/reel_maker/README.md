@@ -115,6 +115,30 @@ tools/reel_maker/output/visual-sources.json
 tools/reel_maker/output/atlas-news-plates-<sourceCommit>/scene-01.png ... scene-07.png
 ```
 
+## Artifact canónico F4D
+
+Después de validar el MP4, F4D ejecuta `build_reel_artifact.py` y crea un handoff inmutable por `sourceCommit`:
+
+```text
+tools/reel_maker/output/canonical/<sourceCommit>/
+├── atlas-news-reel-<sourceCommit>.mp4
+├── reel-contract.json
+├── visual-validation.json
+├── visual-sources.json
+├── reel.sha256
+└── reel-manifest.json
+```
+
+`reel-manifest.json` usa el esquema `atlas-news-reel-artifact/v1` y sólo queda en estado `READY_FOR_PUBLICATION` cuando coinciden contrato, `sourceCommit`, número de edición, validación audiovisual y SHA-256 del MP4.
+
+El workflow publica ese directorio como artifact de GitHub Actions con nombre:
+
+```text
+atlas-news-reel-canonical-<sourceCommit>
+```
+
+Ese artifact es la salida canónica de F4D para F4E. F4E deberá consumir exactamente ese MP4 y verificar su SHA-256; no debe regenerar el Reel.
+
 ## Validación técnica
 
 El artifact falla si no cumple:
@@ -134,6 +158,8 @@ El artifact falla si no cumple:
 ## Aislamiento
 
 `.github/workflows/reel-maker-v2.yml` corre como consumidor post-publicación y también en PR para validación. Un fallo del Reel deja rojo únicamente su workflow. No revierte ni bloquea web, Audio V2, carrusel ni Instagram.
+
+F4D **genera y certifica**. No publica en Meta. La publicación externa pertenece a F4E.
 
 ## Dependencias
 
