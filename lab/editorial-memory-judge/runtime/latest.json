@@ -1,0 +1,304 @@
+{
+  "schemaVersion": 1,
+  "experimentId": "EXP-011",
+  "experimentName": "Memoria editorial semántica",
+  "mode": "LAB_ONLY",
+  "status": "PASS_WITH_OBSERVATIONS",
+  "generatedAt": "2026-09-18T19:25:00.000Z",
+  "skill": {
+    "name": "atlas-editorial-memory",
+    "version": "0.2.0-candidate",
+    "snapshot": "SNAPSHOT — SKILL-003 — atlas-editorial-memory — v0.2.0-candidate — 2026-09-18"
+  },
+  "run": {
+    "runId": "MANUAL-2026-09-18-16c4cbf",
+    "editorialDate": "2026-09-18",
+    "sourceCommit": "16c4cbf88f2d704a587b10a7e05427718684176a",
+    "inputGeneratedAt": "2026-09-18T19:20:20.960Z",
+    "productionWrites": 0
+  },
+  "metrics": {
+    "candidates": 3,
+    "shadowAlerts": 0,
+    "semanticFlags": 2,
+    "disagreements": 2,
+    "recoveredFalseNegatives": 2,
+    "possibleFalsePositives": 0,
+    "processingMs": null
+  },
+  "control": {
+    "engine": "scripts/editorial-shadow-audit.mjs",
+    "thresholds": {
+      "titleSimilarity": 0.45,
+      "thesisSimilarity": 0.35,
+      "crossSectionSimilarity": 0.32,
+      "lowNoveltyScore": 55
+    },
+    "candidateResults": [
+      {
+        "candidate_id": "CAND-b84242c85dbd52ca",
+        "novelty": {
+          "date": "2026-09-18",
+          "section": "general",
+          "title": "Bancos centrales endurecen el mapa global mientras la energía mantiene presión",
+          "noveltyScore": 80,
+          "closestPrevious": {
+            "date": "2026-09-17",
+            "section": "general",
+            "title": "La Fed endurece el mapa global de tasas mientras la energía mantiene el riesgo",
+            "similarity": 0.196
+          }
+        },
+        "repetition": [],
+        "cross_section_overlap": []
+      },
+      {
+        "candidate_id": "CAND-69ce53ec1e1bae9b",
+        "novelty": {
+          "date": "2026-09-18",
+          "section": "markets",
+          "title": "Tasas globales y flujos elevan la selectividad mientras el petróleo da alivio parcial",
+          "noveltyScore": 93,
+          "closestPrevious": {
+            "date": "2026-09-11",
+            "section": "markets",
+            "title": "El IPC decidirá si el Treasury rompe 5% o si el mercado desarma parte del shock",
+            "similarity": 0.07
+          }
+        },
+        "repetition": [],
+        "cross_section_overlap": []
+      },
+      {
+        "candidate_id": "CAND-2b7ac8af686dc430",
+        "novelty": {
+          "date": "2026-09-18",
+          "section": "national",
+          "title": "El plan laboral enfrenta su prueba: convertir ejecución rápida en empleo efectivo",
+          "noveltyScore": 98,
+          "closestPrevious": {
+            "date": "2026-09-11",
+            "section": "general",
+            "title": "La inflación vuelve a mandar y deja a la Fed frente a una prueba decisiva",
+            "similarity": 0.024
+          }
+        },
+        "repetition": [],
+        "cross_section_overlap": []
+      }
+    ]
+  },
+  "experimental": {
+    "judge": "CHATGPT_SEMANTIC_LAB_V1",
+    "contractVersion": "0.2",
+    "confidencePolicy": "UNSCORED_NO_AUTOMATIC_ACTION",
+    "thresholdsApplied": false,
+    "lineageAssigned": false,
+    "canonicalMemoryWritten": false,
+    "productionWrites": 0,
+    "observations": [
+      "El juicio semántico detectó repetición de ángulo en General y Mercados que el Shadow léxico no marcó.",
+      "General y Mercados son piezas compuestas: un único event_relation a nivel artículo pierde información frente a las relaciones por claim.",
+      "Los highlights publicados no son siempre claims factuales atómicos; Nacional CLM-03 es una tesis editorial. Debe separarse evidence_units de claims verificados antes de automatizar lineage."
+    ]
+  },
+  "cases": [
+    {
+      "candidateId": "CAND-b84242c85dbd52ca",
+      "title": "Bancos centrales endurecen el mapa global mientras la energía mantiene presión",
+      "section": "general",
+      "summary": "Actualización material, pero la pieza mezcla varias líneas factuales distintas bajo una sola publicación; el label de evento a nivel artículo queda deliberadamente UNCERTAIN.",
+      "shadow": {
+        "noveltyScore": 80,
+        "repetitionFlags": 0,
+        "result": "NO_REPETITION_FLAG"
+      },
+      "semantic": {
+        "eventRelation": "UNCERTAIN",
+        "proposedPriorRecordRef": "src/content/editions/2026-09-17-daily-fed-endurece-el-mapa-global-de-tasas.md",
+        "proposedLineageId": null,
+        "confidence": null,
+        "informationRelation": "MEANINGFUL_UPDATE",
+        "informationConfidence": null,
+        "claimRelations": [
+          {
+            "candidateClaimId": "CAND-b84242c85dbd52ca-CLM-01",
+            "priorClaimRef": "src/content/editions/2026-09-17-daily-fed-endurece-el-mapa-global-de-tasas.md#CLM-03",
+            "label": "MATERIAL_UPDATE",
+            "confidence": null
+          },
+          {
+            "candidateClaimId": "CAND-b84242c85dbd52ca-CLM-02",
+            "priorClaimRef": "src/content/editions/2026-09-17-daily-fed-endurece-el-mapa-global-de-tasas.md#CLM-01",
+            "label": "SAME_FACT",
+            "confidence": null
+          },
+          {
+            "candidateClaimId": "CAND-b84242c85dbd52ca-CLM-03",
+            "priorClaimRef": null,
+            "label": "UNRELATED",
+            "confidence": null
+          },
+          {
+            "candidateClaimId": "CAND-b84242c85dbd52ca-CLM-04",
+            "priorClaimRef": "src/content/editions/2026-09-17-daily-fed-endurece-el-mapa-global-de-tasas.md#CLM-02",
+            "label": "NEW_EVIDENCE",
+            "confidence": null
+          },
+          {
+            "candidateClaimId": "CAND-b84242c85dbd52ca-CLM-05",
+            "priorClaimRef": "src/content/editions/2026-09-16-daily-arabia-saudi-ensaya-un-bypass-maritimo.md#CLM-01",
+            "label": "MATERIAL_UPDATE",
+            "confidence": null
+          }
+        ],
+        "addsNewInformation": {
+          "value": true,
+          "confidence": null
+        },
+        "historicalContextNeeded": {
+          "value": true,
+          "confidence": null
+        },
+        "angleRepeated": {
+          "value": true,
+          "confidence": null
+        },
+        "angleSummary": "Endurecimiento coordinado de bancos centrales con energía/Hormuz como presión inflacionaria persistente.",
+        "confidenceSummary": null
+      },
+      "decisionReason": "El 18 de septiembre aporta hechos nuevos —alza efectiva del BOJ, votación del BoE y cuantificación de exportaciones saudíes—, pero conserva casi intacto el encuadre macro de tasas más energía usado el 17. No se asigna lineage porque la pieza es compuesta y no existe threshold autorizado.",
+      "evidenceRefs": [
+        "src/content/editions/2026-09-17-daily-fed-endurece-el-mapa-global-de-tasas.md",
+        "src/content/editions/2026-09-16-daily-arabia-saudi-ensaya-un-bypass-maritimo.md"
+      ],
+      "policyAction": "HOLD_FOR_HUMAN_REVIEW"
+    },
+    {
+      "candidateId": "CAND-69ce53ec1e1bae9b",
+      "title": "Tasas globales y flujos elevan la selectividad mientras el petróleo da alivio parcial",
+      "section": "markets",
+      "summary": "Hay nueva información de flujos y una actualización monetaria, pero el ángulo de tasas altas + petróleo + selectividad continúa una familia editorial ya usada.",
+      "shadow": {
+        "noveltyScore": 93,
+        "repetitionFlags": 0,
+        "result": "NO_REPETITION_FLAG"
+      },
+      "semantic": {
+        "eventRelation": "UNCERTAIN",
+        "proposedPriorRecordRef": "src/content/briefings/2026-09-16-markets-petroleo-cede-pero-tasas-mantienen-la-presion.md",
+        "proposedLineageId": null,
+        "confidence": null,
+        "informationRelation": "MEANINGFUL_UPDATE",
+        "informationConfidence": null,
+        "claimRelations": [
+          {
+            "candidateClaimId": "CAND-69ce53ec1e1bae9b-CLM-01",
+            "priorClaimRef": "src/content/editions/2026-09-17-daily-fed-endurece-el-mapa-global-de-tasas.md#CLM-03",
+            "label": "MATERIAL_UPDATE",
+            "confidence": null
+          },
+          {
+            "candidateClaimId": "CAND-69ce53ec1e1bae9b-CLM-02",
+            "priorClaimRef": null,
+            "label": "NEW_EVIDENCE",
+            "confidence": null
+          },
+          {
+            "candidateClaimId": "CAND-69ce53ec1e1bae9b-CLM-03",
+            "priorClaimRef": "src/content/briefings/2026-09-16-markets-petroleo-cede-pero-tasas-mantienen-la-presion.md#CLM-01",
+            "label": "NEW_EVIDENCE",
+            "confidence": null
+          }
+        ],
+        "addsNewInformation": {
+          "value": true,
+          "confidence": null
+        },
+        "historicalContextNeeded": {
+          "value": true,
+          "confidence": null
+        },
+        "angleRepeated": {
+          "value": true,
+          "confidence": null
+        },
+        "angleSummary": "Tasas elevadas mantienen presión financiera mientras el petróleo sólo ofrece alivio parcial; la novedad se desplaza a flujos y selección de riesgo.",
+        "confidenceSummary": null
+      },
+      "decisionReason": "El dato de salidas de fondos es realmente nuevo y la subida del BOJ actualiza el régimen de tasas, pero el marco editorial de costo de capital alto y alivio energético incompleto aparece reiteradamente en los días previos. Sin threshold calibrado, no hay acción automática.",
+      "evidenceRefs": [
+        "src/content/briefings/2026-09-16-markets-petroleo-cede-pero-tasas-mantienen-la-presion.md",
+        "src/content/briefings/2026-09-17-markets-fed-aplana-la-curva-y-el-dolar-toma-el-relevo.md",
+        "src/content/editions/2026-09-17-daily-fed-endurece-el-mapa-global-de-tasas.md"
+      ],
+      "policyAction": "HOLD_FOR_HUMAN_REVIEW"
+    },
+    {
+      "candidateId": "CAND-2b7ac8af686dc430",
+      "title": "El plan laboral enfrenta su prueba: convertir ejecución rápida en empleo efectivo",
+      "section": "national",
+      "summary": "Evento nuevo respecto de la memoria reciente: pasa del diagnóstico de debilidad laboral a un plan gubernamental de respuesta. El contexto previo ayuda, pero no convierte la pieza en repetición.",
+      "shadow": {
+        "noveltyScore": 98,
+        "repetitionFlags": 0,
+        "result": "NO_REPETITION_FLAG"
+      },
+      "semantic": {
+        "eventRelation": "NEW_EVENT",
+        "proposedPriorRecordRef": null,
+        "proposedLineageId": null,
+        "confidence": null,
+        "informationRelation": "NEW",
+        "informationConfidence": null,
+        "claimRelations": [
+          {
+            "candidateClaimId": "CAND-2b7ac8af686dc430-CLM-01",
+            "priorClaimRef": "src/content/briefings/2026-09-17-national-minuta-confirma-pausa-pero-eleva-el-valor-del-empleo.md#CLM-03",
+            "label": "NEW_EVIDENCE",
+            "confidence": null
+          },
+          {
+            "candidateClaimId": "CAND-2b7ac8af686dc430-CLM-02",
+            "priorClaimRef": null,
+            "label": "UNRELATED",
+            "confidence": null
+          },
+          {
+            "candidateClaimId": "CAND-2b7ac8af686dc430-CLM-03",
+            "priorClaimRef": null,
+            "label": "UNCERTAIN",
+            "confidence": null,
+            "note": "El highlight expresa una tesis/criterio editorial y no un hecho atómico verificable."
+          }
+        ],
+        "addsNewInformation": {
+          "value": true,
+          "confidence": null
+        },
+        "historicalContextNeeded": {
+          "value": true,
+          "confidence": null
+        },
+        "angleRepeated": {
+          "value": false,
+          "confidence": null
+        },
+        "angleSummary": "Del diagnóstico de deterioro laboral a la prueba de ejecución y sostenibilidad del plan de empleo.",
+        "confidenceSummary": null
+      },
+      "decisionReason": "La debilidad del empleo ya estaba en la memoria, pero la preparación de un plan de emergencia laboral introduce un evento y una pregunta editorial nuevos. El tercer highlight revela además que highlights y claims factuales no son equivalentes.",
+      "evidenceRefs": [
+        "src/content/briefings/2026-09-17-national-minuta-confirma-pausa-pero-eleva-el-valor-del-empleo.md",
+        "src/content/briefings/2026-09-15-national-credito-tasas-economia-debil.md"
+      ],
+      "policyAction": "HOLD_FOR_HUMAN_REVIEW"
+    }
+  ],
+  "notes": [
+    "Primera corrida controlada de EXP-011 sobre la edición publicada del 2026-09-18.",
+    "No se inventaron confidencias ni thresholds; todos los confidence permanecen null.",
+    "No se asignó lineage, no se modificó memoria canónica y no se tocó producción.",
+    "Resultado de laboratorio; no implica promoción de SKILL-003."
+  ]
+}
