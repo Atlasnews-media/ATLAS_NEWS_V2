@@ -195,6 +195,22 @@ jobs:
       - name: Instalar dependencias
         run: npm ci
 
+      - name: Validar contrato Señales (fail-open)
+        id: signals_contract
+        if: steps.edition.outputs.package_kind == 'morning'
+        continue-on-error: true
+        shell: bash
+        env:
+          EDITION_DATE: ${{ steps.edition.outputs.edition_date }}
+        run: |
+          set -euo pipefail
+          signal_path="data/senales-del-dia/${EDITION_DATE}.json"
+          if [[ ! -f "$signal_path" ]]; then
+            echo "Señales ausentes para ${EDITION_DATE}: FAIL-OPEN, el núcleo continúa."
+            exit 0
+          fi
+          npm run signals:validate -- "$signal_path"
+
       - name: Probar el respaldo económico
         if: github.event_name == 'pull_request'
         env:
