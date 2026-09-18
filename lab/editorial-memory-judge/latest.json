@@ -1,0 +1,29 @@
+{
+  "schemaVersion": 1,
+  "experimentId": "EXP-011",
+  "experimentName": "Memoria editorial semántica",
+  "mode": "LAB_ONLY",
+  "status": "BOOTSTRAP",
+  "generatedAt": null,
+  "skill": {
+    "name": "atlas-editorial-memory",
+    "version": "0.2.0-candidate",
+    "snapshot": "SNAPSHOT — SKILL-003 — atlas-editorial-memory — v0.2.0-candidate — 2026-09-18"
+  },
+  "run": null,
+  "metrics": {
+    "candidates": 0,
+    "shadowAlerts": 0,
+    "semanticFlags": 0,
+    "disagreements": 0,
+    "recoveredFalseNegatives": 0,
+    "possibleFalsePositives": 0,
+    "processingMs": null
+  },
+  "control": null,
+  "experimental": null,
+  "cases": [],
+  "notes": [
+    "Bootstrap técnico. Aún no existe una corrida experimental."
+  ]
+}
