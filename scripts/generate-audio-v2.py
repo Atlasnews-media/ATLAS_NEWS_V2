@@ -1,3 +1,4 @@
+import gc
 import json
 import os
 import re
@@ -11,6 +12,12 @@ import numpy as np
 import soundfile as sf
 from kokoro import KPipeline
 
+from audio_alexc import (
+    CHATTERBOX_ENGINE,
+    PROFILE as ALEXC_PROFILE,
+    VOICE_PROFILE_VERSION,
+    synthesize_alexc,
+)
 from audio_question_prosody import raise_terminal_pitch
 from audio_speech import (
     LEXICON_REVISION,
@@ -23,8 +30,12 @@ from audio_speech import (
 PLAN_PATH = Path(os.environ["ATLAS_AUDIO_V2_PLAN"])
 PUBLIC_DIR = Path(os.environ["ATLAS_PUBLIC_REPO_DIR"])
 SAMPLE_RATE = 24_000
-TURN_PAUSE_SECONDS = 0.28
-QUESTION_TURN_PAUSE_SECONDS = 0.42
+TURN_PAUSE_SECONDS = float(
+    ALEXC_PROFILE.get("dialogue", {}).get("statementPauseSeconds", 0.34)
+)
+QUESTION_TURN_PAUSE_SECONDS = float(
+    ALEXC_PROFILE.get("dialogue", {}).get("questionPauseSeconds", 0.40)
+)
 QUESTION_SPEED = float(os.environ.get("ATLAS_AUDIO_QUESTION_SPEED", "0.92"))
 QUESTION_TAIL_SECONDS = 0.65
 QUESTION_TAIL_GAIN = 1.12
@@ -40,6 +51,8 @@ QUESTION_PITCH_CROSSFADE_SECONDS = float(
 MIN_AUDIO_BYTES = 10_000
 MIN_DURATION_SECONDS = 5.0
 QUESTION_PROSODY_VERSION = 2
+ALEXC_DIALOGUE_RHYTHM_VERSION = 1
+FALLBACK_PROFILE_VERSION = f"{VOICE_PROFILE_VERSION}-fallback-kokoro"
 
 DIALOGUE_VOICES = {
     "VOZ 1": ("ef_dora", "e"),
@@ -139,7 +152,8 @@ def emphasize_question_tail(samples: np.ndarray) -> np.ndarray:
     return output
 
 
-def synthesize_dialogue(text: str, reference_date: str) -> np.ndarray:
+def synthesize_dialogue_fallback(text: str, reference_date: str) -> np.ndarray:
+    """Ruta Kokoro histórica: sólo se usa si Alex C no puede generar."""
     turns = parse_dialogue(text)
     normal_silence = np.zeros(
         int(SAMPLE_RATE * TURN_PAUSE_SECONDS), dtype=np.float32
@@ -173,6 +187,49 @@ def synthesize_dialogue(text: str, reference_date: str) -> np.ndarray:
             parts.append(question_silence if previous_was_question else normal_silence)
         parts.append(samples)
         previous_was_question = alex_question
+
+    return np.concatenate(parts)
+
+
+def synthesize_dialogue_alexc(
+    text: str,
+    reference_date: str,
+    seed_base: int,
+) -> np.ndarray:
+    """Dora permanece en Kokoro; VOZ 2 usa Alex C sin post-procesado tonal."""
+    turns = parse_dialogue(text)
+    normal_silence = np.zeros(
+        int(SAMPLE_RATE * TURN_PAUSE_SECONDS), dtype=np.float32
+    )
+    question_silence = np.zeros(
+        int(SAMPLE_RATE * QUESTION_TURN_PAUSE_SECONDS), dtype=np.float32
+    )
+    parts = []
+    previous_was_question = False
+    alex_index = 0
+
+    for index, (speaker, content) in enumerate(turns):
+        if speaker == "VOZ 1":
+            samples = synthesize(
+                content,
+                "ef_dora",
+                "e",
+                reference_date=reference_date,
+            )
+        else:
+            samples = synthesize_alexc(
+                content,
+                PUBLIC_DIR,
+                reference_date,
+                seed_base + alex_index,
+                long_form=False,
+            )
+            alex_index += 1
+
+        if index:
+            parts.append(question_silence if previous_was_question else normal_silence)
+        parts.append(samples)
+        previous_was_question = speaker == "VOZ 2" and is_question(content)
 
     return np.concatenate(parts)
 
@@ -235,6 +292,82 @@ def read_json(path: Path):
         return None
 
 
+def generate_analysis_samples(section: str, script: str, reference_date: str):
+    """Genera con Alex C; cualquier fallo cae a la ruta Kokoro conocida."""
+    try:
+        if section == "international":
+            samples = synthesize_alexc(
+                script,
+                PUBLIC_DIR,
+                reference_date,
+                seed_base=5100,
+                long_form=True,
+            )
+            metadata = {
+                "engine": CHATTERBOX_ENGINE,
+                "voiceProfileVersion": VOICE_PROFILE_VERSION,
+                "voice": VOICE_PROFILE_VERSION,
+                "questionProsodyVersion": 0,
+                "fallbackUsed": False,
+            }
+        else:
+            seed_base = 6100 if section == "national" else 7100
+            samples = synthesize_dialogue_alexc(
+                script,
+                reference_date,
+                seed_base=seed_base,
+            )
+            metadata = {
+                "engine": f"Kokoro-82M + {CHATTERBOX_ENGINE}",
+                "voiceProfileVersion": VOICE_PROFILE_VERSION,
+                "voices": {
+                    "voice1": "ef_dora",
+                    "voice2": VOICE_PROFILE_VERSION,
+                },
+                "questionProsodyVersion": 0,
+                "dialogueRhythmVersion": ALEXC_DIALOGUE_RHYTHM_VERSION,
+                "fallbackUsed": False,
+            }
+        return samples, metadata
+    except Exception as alexc_exc:
+        print(
+            f"Audio V2 {section}: Alex C no disponible; "
+            f"activando fallback Kokoro · {alexc_exc}"
+        )
+        if section == "international":
+            samples = synthesize(
+                script,
+                "em_alex",
+                "e",
+                reference_date=reference_date,
+            )
+            metadata = {
+                "engine": "Kokoro-82M",
+                "voiceProfileVersion": FALLBACK_PROFILE_VERSION,
+                "voice": "em_alex",
+                "questionProsodyVersion": QUESTION_PROSODY_VERSION,
+                "fallbackUsed": True,
+                "fallbackReason": str(alexc_exc)[:200],
+            }
+        else:
+            samples = synthesize_dialogue_fallback(
+                script,
+                reference_date=reference_date,
+            )
+            metadata = {
+                "engine": "Kokoro-82M",
+                "voiceProfileVersion": FALLBACK_PROFILE_VERSION,
+                "voices": {
+                    "voice1": "ef_dora",
+                    "voice2": "em_alex",
+                },
+                "questionProsodyVersion": QUESTION_PROSODY_VERSION,
+                "fallbackUsed": True,
+                "fallbackReason": str(alexc_exc)[:200],
+            }
+        return samples, metadata
+
+
 plan = json.loads(PLAN_PATH.read_text(encoding="utf-8"))
 if not plan.get("needsGeneration"):
     print("Audio V2 omitido: no hay síntesis pendiente.")
@@ -243,9 +376,10 @@ if (
     plan.get("lexiconVersion") != LEXICON_VERSION
     or plan.get("lexiconRevision") != LEXICON_REVISION
     or plan.get("speechNormalizerVersion") != SPEECH_NORMALIZER_VERSION
+    or plan.get("voiceProfileVersion") != VOICE_PROFILE_VERSION
 ):
     raise RuntimeError(
-        "El plan de Audio V2 no coincide con Lexicon V3 o con el normalizador de voz."
+        "El plan de Audio V2 no coincide con Lexicon V3, Speech V5 o Alex C V1."
     )
 
 audio_dir = PUBLIC_DIR / "audio"
@@ -304,6 +438,12 @@ with tempfile.TemporaryDirectory(prefix="atlas-audio-v2-") as temp_dir_name:
             "sourceCommit": source_commit,
         }
 
+    # Portada nunca necesita Chatterbox; libera referencias no utilizadas antes
+    # de entrar a la generación de análisis.
+    if cover_metadata is not None:
+        pipelines.clear()
+        gc.collect()
+
     analysis_manifest = {
         "schemaVersion": 1,
         "date": date,
@@ -312,6 +452,7 @@ with tempfile.TemporaryDirectory(prefix="atlas-audio-v2-") as temp_dir_name:
         "speechNormalizerVersion": SPEECH_NORMALIZER_VERSION,
         "lexiconVersion": LEXICON_VERSION,
         "lexiconRevision": LEXICON_REVISION,
+        "voiceProfileTarget": VOICE_PROFILE_VERSION,
         "questionProsodyVersion": QUESTION_PROSODY_VERSION,
     }
 
@@ -336,6 +477,7 @@ with tempfile.TemporaryDirectory(prefix="atlas-audio-v2-") as temp_dir_name:
                 and existing.get("speechNormalizerVersion") == SPEECH_NORMALIZER_VERSION
                 and existing.get("lexiconVersion") == LEXICON_VERSION
                 and existing.get("lexiconRevision") == LEXICON_REVISION
+                and existing.get("voiceProfileVersion") == VOICE_PROFILE_VERSION
             ):
                 analysis_manifest[section] = existing
             else:
@@ -356,17 +498,11 @@ with tempfile.TemporaryDirectory(prefix="atlas-audio-v2-") as temp_dir_name:
             if not script:
                 raise RuntimeError(f"Guion {section} vacío.")
 
-            if section == "international":
-                voice = str(product.get("voice") or "em_alex")
-                samples = synthesize(
-                    script,
-                    voice,
-                    "e",
-                    reference_date=date,
-                )
-            else:
-                voice = None
-                samples = synthesize_dialogue(script, reference_date=date)
+            samples, voice_metadata = generate_analysis_samples(
+                section,
+                script,
+                reference_date=date,
+            )
 
             filename = f"{date}-{section}-analysis.mp3"
             temp_path = temp_dir / filename
@@ -385,14 +521,9 @@ with tempfile.TemporaryDirectory(prefix="atlas-audio-v2-") as temp_dir_name:
                 "speechNormalizerVersion": SPEECH_NORMALIZER_VERSION,
                 "lexiconVersion": LEXICON_VERSION,
                 "lexiconRevision": LEXICON_REVISION,
-                "questionProsodyVersion": QUESTION_PROSODY_VERSION,
-                "engine": "Kokoro-82M",
                 "language": "es",
+                **voice_metadata,
             }
-            if section == "international":
-                entry["voice"] = voice
-            else:
-                entry["voices"] = {"voice1": "ef_dora", "voice2": "em_alex"}
             analysis_manifest[section] = entry
         except Exception as exc:
             analysis_manifest[section] = {
@@ -405,6 +536,7 @@ with tempfile.TemporaryDirectory(prefix="atlas-audio-v2-") as temp_dir_name:
                 "speechNormalizerVersion": SPEECH_NORMALIZER_VERSION,
                 "lexiconVersion": LEXICON_VERSION,
                 "lexiconRevision": LEXICON_REVISION,
+                "voiceProfileVersion": FALLBACK_PROFILE_VERSION,
             }
             print(f"Audio V2 {section}: unavailable · {exc}")
 
