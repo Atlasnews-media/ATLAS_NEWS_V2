@@ -87,9 +87,7 @@ const signals = artifact?.senalesDelDia[group] ?? [];
             <h3 id={`${signal.anchor}-title`}>{signal.headline}</h3>
 
             <div class="signal-development__body">
-              {paragraphs(signal.development).map((paragraph) => (
-                <p>{paragraph}</p>
-              ))}
+              {paragraphs(signal.development).map((paragraph) => <p>{paragraph}</p>)}
             </div>
 
             {signal.sources.length > 0 && (
