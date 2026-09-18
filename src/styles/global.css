@@ -491,7 +491,7 @@ body:has(.calendar-lab) .calendar-source {
   body .site-header nav {
     font-size: clamp(0.91rem, 1.1vw, 1rem);
     font-weight: 800;
-    letter-spacing: 0.055em;
+    letter-spacing: 0.05em;
   }
 
   body .site-header .edition-bar {
