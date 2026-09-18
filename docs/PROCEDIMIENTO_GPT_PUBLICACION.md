@@ -139,8 +139,8 @@ El check terminal autoritativo del núcleo web es `Validar, construir y publicar
 - Cualquier commit nuevo invalida como evidencia los checks del SHA anterior. Debe esperarse una nueva ejecución terminal sobre el nuevo HEAD.
 - Un rerun de jobs fallidos puede reutilizarse únicamente si el SHA no cambió. Si hubo una corrección de archivos, existe un SHA nuevo y debe validarse desde cero.
 - El merge productivo se realiza únicamente mediante `squash` y debe enviar como `expected_head_sha` el mismo HEAD que quedó validado. Si GitHub informa que el HEAD cambió, se aborta el merge y se vuelve a leer PR, SHA y checks; nunca se hereda el verde anterior.
-- El ruleset de `main` debe exigir como status check obligatorio `Validar, construir y publicar` y permitir únicamente `squash` como método de merge.
-- La protección de status checks no sustituye la verificación explícita de `expected_head_sha`.
+- El ruleset de `main` se mantiene como protección mínima y no sustituye la lógica operacional del Publicador. No se endurece preventivamente con nuevas barreras si esas restricciones pueden bloquear una recuperación automática válida.
+- La protección efectiva del merge está en comprobar el `head_sha` actual, esperar el check terminal de ese mismo SHA y fusionar con `expected_head_sha`; un verde de un SHA anterior nunca se reutiliza después de una corrección.
 - No se activa una exigencia de rama estrictamente actualizada con `main` mientras el Publicador no tenga un mecanismo de recuperación autónomo y probado para actualizar el PR morning cuando la base avance. Esa restricción, aplicada antes de disponer de recovery seguro, podría bloquear una edición válida por cambios concurrentes ajenos al paquete editorial.
 
 La edición General es obligatoria para completar el paquete matutino. Nacional y Mercados son componentes complementarios: su ausencia no debe provocar la creación de un segundo ciclo editorial ni bloquear una General válida cuando la política de publicación vigente permita continuar.
