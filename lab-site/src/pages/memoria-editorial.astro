@@ -103,7 +103,8 @@ import "../../../src/styles/global.css";
     </main>
 
     <script>
-      const url = "/lab/editorial-memory-judge/latest.json";
+      const runtimeUrl = "/lab/editorial-memory-judge/latest.json";
+      const bootstrapUrl = "/lab/editorial-memory-judge/bootstrap.json";
 
       const text = (value) =>
         value === null || value === undefined || value === ""
@@ -158,12 +159,21 @@ import "../../../src/styles/global.css";
         node.replaceChildren(fragment);
       }
 
-      fetch(url, { cache: "no-store" })
-        .then((response) => {
-          if (!response.ok) throw new Error(`HTTP ${response.status}`);
-          return response.json();
-        })
-        .then((data) => {
+      async function loadExperimentData() {
+        let lastError = null;
+        for (const url of [runtimeUrl, bootstrapUrl]) {
+          try {
+            const response = await fetch(url, { cache: "no-store" });
+            if (!response.ok) throw new Error(`HTTP ${response.status}`);
+            return await response.json();
+          } catch (error) {
+            lastError = error;
+          }
+        }
+        throw lastError ?? new Error("Sin artefacto EXP-011");
+      }
+
+      loadExperimentData().then((data) => {
           document.querySelector("#status").textContent = text(data.status);
           document.querySelector("#skill").textContent =
             `${text(data.skill?.name)} · ${text(data.skill?.version)}`;
