@@ -53,8 +53,13 @@ function readAt(sha, path) {
   }
 }
 
-if (eventName !== "pull_request" || !/^editorial\/\d{4}-\d{2}-\d{2}-morning$/.test(headRef)) {
-  console.log("Contrato de promoción matutina: omitido fuera del PR morning.");
+if (
+  eventName !== "pull_request" ||
+  !/^editorial\/\d{4}-\d{2}-\d{2}-morning$/.test(headRef)
+) {
+  console.log(
+    "Contrato de promoción matutina: omitido fuera del PR morning.",
+  );
   process.exit(0);
 }
 
@@ -94,7 +99,9 @@ for (const path of changedFiles) {
   const beforeStatus = frontmatterValue(before, "status");
 
   if (beforeStatus === "published" && afterStatus === "draft") {
-    throw new Error(`${path}: no se permite published → draft durante promoción.`);
+    throw new Error(
+      `${path}: no se permite published → draft durante promoción.`,
+    );
   }
 
   if (beforeStatus !== "draft" || afterStatus !== "published") continue;
@@ -141,9 +148,7 @@ for (const path of changedFiles) {
     );
   }
 
-  if (
-    normalizePromotionFields(before) !== normalizePromotionFields(after)
-  ) {
+  if (normalizePromotionFields(before) !== normalizePromotionFields(after)) {
     throw new Error(
       `${path}: la promoción modificó contenido fuera de status y publishedAt.`,
     );
