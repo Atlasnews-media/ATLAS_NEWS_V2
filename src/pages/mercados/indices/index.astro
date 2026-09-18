@@ -1,7 +1,9 @@
 ---
 import MarketHistoryChart from "../../../components/MarketHistoryChart.astro";
+import ResponsiveEditorialImage from "../../../components/ResponsiveEditorialImage.astro";
 import marketPulse from "../../../data/market-pulse.json";
 import BaseLayout from "../../../layouts/BaseLayout.astro";
+import { resolveUtilityPageVisual } from "../../../lib/front-page-visuals";
 
 type MarketTrend = "up" | "down" | "flat";
 
@@ -217,6 +219,21 @@ const historyAvailable = historyOrder.filter((id) => {
   const series = historyById.get(id);
   return Boolean(series && series.points?.length >= 2);
 }).length;
+
+const visualDateParts = new Intl.DateTimeFormat("en-CA", {
+  timeZone: "America/Santiago",
+  year: "numeric",
+  month: "2-digit",
+  day: "2-digit",
+}).formatToParts(new Date());
+const visualDateMap = Object.fromEntries(
+  visualDateParts.map((part) => [part.type, part.value]),
+);
+const marketVisualDateKey = `${visualDateMap.year}-${visualDateMap.month}-${visualDateMap.day}`;
+const marketVisual = resolveUtilityPageVisual(
+  "market-indices",
+  marketVisualDateKey,
+);
 ---
 
 <BaseLayout
@@ -244,6 +261,21 @@ const historyAvailable = historyOrder.filter((id) => {
           )
         }
       </div>
+      <figure class="indices-heading__visual">
+        <ResponsiveEditorialImage
+          src={marketVisual.src}
+          alt={marketVisual.alt}
+          sizes="(max-width: 42rem) 40vw, (max-width: 79.99rem) 34vw, 24vw"
+          loading="eager"
+          fetchpriority="high"
+          variant="headline"
+          onerror="this.closest('.indices-heading__visual')?.remove()"
+        />
+        <figcaption>
+          {marketVisual.source} · {marketVisual.author} ·{" "}
+          {marketVisual.license}
+        </figcaption>
+      </figure>
     </header>
 
     <div class="market-table" aria-label="Índices de mercado de ATLAS NEWS">
@@ -351,16 +383,58 @@ const historyAvailable = historyOrder.filter((id) => {
   }
 
   .indices-heading {
+    position: relative;
     display: grid;
     grid-template-columns: minmax(0, 1fr) auto;
     gap: 0.75rem;
     align-items: end;
     padding: 0.15rem 0 0.63rem;
     border-bottom: 3px double var(--rule);
+    overflow: hidden;
+    isolation: isolate;
   }
 
   .indices-heading__copy {
+    position: relative;
+    z-index: 2;
     min-width: 0;
+  }
+
+  .indices-heading__visual {
+    position: absolute;
+    z-index: 1;
+    top: 0.25rem;
+    right: -0.15rem;
+    bottom: 1.05rem;
+    width: 31%;
+    margin: 0;
+    overflow: hidden;
+    pointer-events: none;
+    -webkit-mask-image: linear-gradient(
+      to bottom,
+      transparent 0%,
+      #000 10%,
+      #000 90%,
+      transparent 100%
+    );
+    mask-image: linear-gradient(
+      to bottom,
+      transparent 0%,
+      #000 10%,
+      #000 90%,
+      transparent 100%
+    );
+  }
+
+  .indices-heading__visual figcaption {
+    position: absolute;
+    right: 0.35rem;
+    bottom: 0.18rem;
+    max-width: 82%;
+    color: var(--ink-soft);
+    font: 600 0.38rem/1.12 var(--sans);
+    text-align: right;
+    opacity: 0.66;
   }
 
   .indices-heading .page-kicker {
@@ -393,6 +467,8 @@ const historyAvailable = historyOrder.filter((id) => {
   }
 
   .update-stamp {
+    position: relative;
+    z-index: 3;
     display: grid;
     align-self: end;
     gap: 0.08rem;
@@ -662,6 +738,19 @@ const historyAvailable = historyOrder.filter((id) => {
       grid-template-columns: minmax(0, 1fr) auto;
       gap: 0.42rem;
       padding-bottom: 0.39rem;
+    }
+
+    .indices-heading__visual {
+      top: 0.15rem;
+      right: -0.2rem;
+      bottom: 0.9rem;
+      width: 40%;
+    }
+
+    .indices-heading__visual figcaption {
+      max-width: 76%;
+      font-size: 0.28rem;
+      opacity: 0.72;
     }
 
     .indices-heading .page-kicker {
