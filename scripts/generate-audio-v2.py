@@ -51,7 +51,8 @@ QUESTION_PITCH_CROSSFADE_SECONDS = float(
 MIN_AUDIO_BYTES = 10_000
 MIN_DURATION_SECONDS = 5.0
 QUESTION_PROSODY_VERSION = 2
-ALEXC_DIALOGUE_RHYTHM_VERSION = 1
+ALEXC_DIALOGUE_RHYTHM_VERSION = 2
+ALEXC_SENTENCE_PAUSE_SECONDS = 0.55
 FALLBACK_PROFILE_VERSION = f"{VOICE_PROFILE_VERSION}-fallback-kokoro"
 
 DIALOGUE_VOICES = {
@@ -191,12 +192,51 @@ def synthesize_dialogue_fallback(text: str, reference_date: str) -> np.ndarray:
     return np.concatenate(parts)
 
 
+def split_alexc_sentences(text: str) -> list[str]:
+    """Segmenta Alex C en frases cortas sin alterar la ortografía."""
+    sentences = [
+        sentence.strip()
+        for sentence in re.split(r"(?<=[.!?])\\s+(?=[A-ZÁÉÍÓÚÑ¿¡])", text)
+        if sentence.strip()
+    ]
+    return sentences or [text.strip()]
+
+
+def synthesize_alexc_sentences(
+    text: str,
+    reference_date: str,
+    seed_base: int,
+) -> tuple[np.ndarray, int]:
+    """Sintetiza cada frase de Alex C por separado con micro-pausas aprobadas."""
+    sentences = split_alexc_sentences(text)
+    pause = np.zeros(
+        int(SAMPLE_RATE * ALEXC_SENTENCE_PAUSE_SECONDS),
+        dtype=np.float32,
+    )
+    parts = []
+
+    for index, sentence in enumerate(sentences):
+        if index:
+            parts.append(pause)
+        parts.append(
+            synthesize_alexc(
+                sentence,
+                PUBLIC_DIR,
+                reference_date,
+                seed_base + index,
+                long_form=False,
+            )
+        )
+
+    return np.concatenate(parts), len(sentences)
+
+
 def synthesize_dialogue_alexc(
     text: str,
     reference_date: str,
     seed_base: int,
 ) -> np.ndarray:
-    """Dora permanece en Kokoro; VOZ 2 usa Alex C sin post-procesado tonal."""
+    """Dora permanece en Kokoro; Alex C se genera por frases cortas."""
     turns = parse_dialogue(text)
     normal_silence = np.zeros(
         int(SAMPLE_RATE * TURN_PAUSE_SECONDS), dtype=np.float32
@@ -217,14 +257,12 @@ def synthesize_dialogue_alexc(
                 reference_date=reference_date,
             )
         else:
-            samples = synthesize_alexc(
+            samples, sentence_count = synthesize_alexc_sentences(
                 content,
-                PUBLIC_DIR,
                 reference_date,
                 seed_base + alex_index,
-                long_form=False,
             )
-            alex_index += 1
+            alex_index += sentence_count
 
         if index:
             parts.append(question_silence if previous_was_question else normal_silence)
@@ -389,9 +427,10 @@ if (
     or plan.get("lexiconRevision") != LEXICON_REVISION
     or plan.get("speechNormalizerVersion") != SPEECH_NORMALIZER_VERSION
     or plan.get("voiceProfileVersion") != VOICE_PROFILE_VERSION
+    or plan.get("dialogueRhythmVersion") != ALEXC_DIALOGUE_RHYTHM_VERSION
 ):
     raise RuntimeError(
-        "El plan de Audio V2 no coincide con Lexicon V3, Speech V5 o Alex C V1."
+        "El plan de Audio V2 no coincide con Lexicon V3, Speech V5 o Alex C."
     )
 
 audio_dir = PUBLIC_DIR / "audio"
