@@ -75,6 +75,13 @@ jobs:
             cp -R lab/editorial-memory-judge/runs lab-site/public/editorial-memory-judge/runs
           fi
 
+      - name: Canonicalizar formato EXP-011
+        run: >-
+          npx prettier --write
+          "lab-site/src/pages/memoria-editorial.astro"
+          "scripts/lab/validate-editorial-memory-judge.mjs"
+          --ignore-path /dev/null
+
       - name: Comprobar formato LAB
         run: >-
           npx prettier --check
