@@ -1,0 +1,110 @@
+name: LAB — Reel 047 matriz de escala
+
+on:
+  push:
+    branches:
+      - lab/reel-safe-area-047-matrix-v2
+    paths:
+      - ".github/workflows/lab-reel-safe-area-matrix-v2.yml"
+
+permissions:
+  contents: read
+
+concurrency:
+  group: lab-reel-safe-area-047-matrix-v2
+  cancel-in-progress: true
+
+jobs:
+  build:
+    name: Generar MP4 reales 100 95 92 90
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      SOURCE_COMMIT: 78e2f96838bd2a5956619913feb6a5d480eb4c1c
+      SOURCE_ID: src/content/editions/2026-09-18-daily-bancos-centrales-endurecen-el-mapa-global.md
+      EDITION_ID: 2026-09-18-daily-bancos-centrales-endurecen-el-mapa-global
+      EDITION_NUMBER: "47"
+      CONTRACT: tools/reel_maker/.generated/lab-reel-047-contract.json
+      OUTPUT: tools/reel_maker/lab-scale-matrix-047
+
+    steps:
+      - name: Checkout LAB
+        uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
+
+      - name: Preparar runtime real de F4D
+        run: |
+          set -euo pipefail
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq --no-install-recommends ffmpeg fontconfig fonts-liberation python3-pil
+          python3 -m py_compile tools/reel_maker/prepare_reel_contract.py tools/reel_maker/reel_maker.py
+
+      - name: Construir contrato edición 047
+        env:
+          ATLAS_SOURCE_COMMIT: ${{ env.SOURCE_COMMIT }}
+          ATLAS_SOURCE_ID: ${{ env.SOURCE_ID }}
+          ATLAS_EDITION_ID: ${{ env.EDITION_ID }}
+          ATLAS_EDITION_NUMBER: ${{ env.EDITION_NUMBER }}
+          ATLAS_REEL_CONTRACT_OUTPUT: ${{ env.CONTRACT }}
+        run: |
+          set -euo pipefail
+          python3 tools/reel_maker/prepare_reel_contract.py
+          jq -e '.editionNumber == 47 and (.highlights | length == 5)' "$CONTRACT" >/dev/null
+
+      - name: Generar Reel 100% con engine real
+        run: |
+          set -euo pipefail
+          rm -rf "$OUTPUT"
+          python3 tools/reel_maker/reel_maker.py "$CONTRACT" --output-dir "$OUTPUT"
+          mv "$OUTPUT/atlas-news-reel-$SOURCE_COMMIT.mp4" "$OUTPUT/reel-047-100.mp4"
+          jq -e '.status == "PASS" and .audio.selectionEdition == 47' "$OUTPUT/visual-validation.json" >/dev/null
+
+      - name: Generar escalas 95 92 90
+        run: |
+          set -euo pipefail
+          src="$OUTPUT/reel-047-100.mp4"
+          make_variant () {
+            pct="$1"
+            case "$pct" in
+              95) w=1026; h=1824 ;;
+              92) w=994; h=1766 ;;
+              90) w=972; h=1728 ;;
+              *) exit 2 ;;
+            esac
+            ffmpeg -y -hide_banner -loglevel error \
+              -i "$src" \
+              -vf "scale=${w}:${h}:flags=lanczos,pad=1080:1920:(ow-iw)/2:(oh-ih)/2:color=0xF4F0E8" \
+              -map 0:v:0 -map 0:a? \
+              -c:v libx264 -preset medium -crf 18 -pix_fmt yuv420p -r 30 \
+              -c:a copy -movflags +faststart "$OUTPUT/reel-047-${pct}.mp4"
+          }
+          make_variant 95
+          make_variant 92
+          make_variant 90
+          for f in "$OUTPUT"/reel-047-*.mp4; do
+            ffprobe -v error -select_streams v:0 \
+              -show_entries stream=width,height,pix_fmt,r_frame_rate \
+              -of json "$f" |
+              jq -e '.streams[0].width == 1080 and .streams[0].height == 1920 and .streams[0].pix_fmt == "yuv420p" and .streams[0].r_frame_rate == "30/1"' >/dev/null
+          done
+          cat > "$OUTPUT/LEEME.txt" <<'TXT'
+ATLAS NEWS LAB — REEL 047
+Comparación real del mismo contenido, audio y duración.
+100% = actual
+95% = reducción 5%
+92% = reducción 8%
+90% = reducción 10%
+Todos conservan 1080x1920 / 9:16.
+No se publica nada en Meta ni en el sitio público.
+TXT
+
+      - name: Subir matriz LAB
+        uses: actions/upload-artifact@v4
+        with:
+          name: lab-reel-047-matriz-100-95-92-90
+          path: |
+            tools/reel_maker/lab-scale-matrix-047/reel-047-*.mp4
+            tools/reel_maker/lab-scale-matrix-047/visual-validation.json
+            tools/reel_maker/lab-scale-matrix-047/LEEME.txt
+          retention-days: 7
