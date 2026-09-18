@@ -109,11 +109,13 @@ class KokoroAlex:
             raise RuntimeError("Alex actual no produjo audio.")
         return np.concatenate(chunks)
 
-    def b2(self, text: str, speed: float = 1.0) -> np.ndarray:
+    def _b2_chunk(self, text: str, speed: float) -> np.ndarray:
         speech = normalize_for_speech(text, "2026-09-17")
         phonemes = self.lab.phonemize(self.g2p, speech)
         if not phonemes:
             raise RuntimeError("Alex B2 no produjo fonemas.")
+        if len(phonemes) > 500:
+            raise RuntimeError(f"Chunk B2 excede límite staged: {len(phonemes)} fonemas")
         index = min(len(phonemes) - 1, self.pack.shape[0] - 1)
         ref_s = self.pack[index].numpy()
         _, trace, ctx = self.lab.synthesize(
@@ -121,6 +123,16 @@ class KokoroAlex:
         )
         f0, n = transform_b2(trace.stages["F0_pred"], trace.stages["N_pred"])
         return self.lab.decode(ctx, f0=f0, n=n)
+
+    def b2(self, text: str, speed: float = 1.0) -> np.ndarray:
+        chunks = split_chunks(text, limit=220)
+        pause = np.zeros(int(SAMPLE_RATE * 0.22), np.float32)
+        parts = []
+        for idx, chunk in enumerate(chunks):
+            if idx:
+                parts.append(pause)
+            parts.append(self._b2_chunk(chunk, speed))
+        return np.concatenate(parts)
 
 
 def split_chunks(text: str, limit: int = 255):
