@@ -169,7 +169,7 @@ a:focus-visible {
     margin: 0.22rem 0 0.48rem;
   }
   body .site-header .brand-mark {
-    width: clamp(2.65rem, 11vw, 3.1rem);
+    width: clamp(2.85rem, 11.8vw, 3.3rem);
   }
   body .site-header .brand {
     font-size: clamp(2.35rem, 11.3vw, 3.8rem);
@@ -583,7 +583,7 @@ body:has(.calendar-lab) .calendar-source {
   }
 
   body .site-header .brand-mark {
-    width: clamp(2.35rem, 2.8vw, 3.1rem);
+    width: clamp(2.55rem, 3vw, 3.3rem);
   }
 
   body .site-header .brand {
