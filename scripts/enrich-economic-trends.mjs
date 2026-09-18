@@ -1,4 +1,5 @@
 import { readFile, writeFile } from "node:fs/promises";
+import { serializeCanonicalJson } from "./lib/serialize-canonical-json.mjs";
 
 const root = new URL("../", import.meta.url);
 const snapshotPath = new URL("src/data/economic-indicators.json", root);
@@ -111,7 +112,7 @@ const enrichedSnapshot = {
   ...snapshot,
   indicators: enrichedIndicators,
 };
-const serialized = `${JSON.stringify(enrichedSnapshot, null, 2)}\n`;
+const serialized = await serializeCanonicalJson(enrichedSnapshot);
 
 await Promise.all([
   writeFile(snapshotPath, serialized),
