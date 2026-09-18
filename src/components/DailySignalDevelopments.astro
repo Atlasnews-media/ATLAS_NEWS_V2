@@ -1,0 +1,215 @@
+---
+interface SignalSource {
+  name: string;
+  url: string;
+}
+
+interface CanonicalSignal {
+  slot: string;
+  headline: string;
+  deck: string;
+  development: string;
+  anchor: string;
+  sources: SignalSource[];
+}
+
+interface SignalsArtifact {
+  status: "READY";
+  date: string;
+  contract: "atlas-senales-del-dia-v1";
+  senalesDelDia: {
+    internacional: CanonicalSignal[];
+    nacional: CanonicalSignal[];
+    mercados: CanonicalSignal[];
+  };
+}
+
+interface Props {
+  date: string;
+  group: "internacional" | "nacional" | "mercados";
+  label: string;
+}
+
+const { date, group, label } = Astro.props;
+
+const signalFiles = import.meta.glob("../../data/senales-del-dia/*.json", {
+  eager: true,
+  query: "?raw",
+  import: "default",
+}) as Record<string, string>;
+
+function parseArtifact(raw: string | undefined): SignalsArtifact | undefined {
+  if (!raw) return undefined;
+
+  try {
+    const value = JSON.parse(raw) as SignalsArtifact;
+    if (
+      value.status !== "READY" ||
+      value.contract !== "atlas-senales-del-dia-v1" ||
+      value.date !== date ||
+      !value.senalesDelDia ||
+      !Array.isArray(value.senalesDelDia[group])
+    ) {
+      return undefined;
+    }
+
+    return value;
+  } catch {
+    return undefined;
+  }
+}
+
+function isRenderableSignal(signal: CanonicalSignal): boolean {
+  return (
+    typeof signal?.headline === "string" &&
+    signal.headline.trim().length > 0 &&
+    typeof signal.development === "string" &&
+    signal.development.trim().length > 0 &&
+    typeof signal.anchor === "string" &&
+    signal.anchor.trim().length > 0 &&
+    Array.isArray(signal.sources)
+  );
+}
+
+const artifactEntry = Object.entries(signalFiles).find(([path]) =>
+  path.endsWith(`/${date}.json`),
+);
+const artifact = parseArtifact(artifactEntry?.[1]);
+const signals = (artifact?.senalesDelDia[group] ?? []).filter(isRenderableSignal);
+---
+
+{
+  signals.length > 0 && (
+    <section class="signal-developments" aria-labelledby={`signals-${group}`}>
+      <header class="signal-developments__header">
+        <p>Señales del día</p>
+        <h2 id={`signals-${group}`}>{label}</h2>
+      </header>
+
+      <div class="signal-developments__list">
+        {signals.map((signal) => (
+          <article
+            class="signal-development"
+            id={signal.anchor}
+            aria-labelledby={`${signal.anchor}-title`}
+          >
+            <h3 id={`${signal.anchor}-title`}>{signal.headline}</h3>
+
+            <div class="signal-development__body">
+              {signal.development
+                .trim()
+                .split(/\n\s*\n/)
+                .filter(Boolean)
+                .map((paragraph) => <p>{paragraph}</p>)}
+            </div>
+
+            {signal.sources.length > 0 && (
+              <div
+                class="signal-development__sources"
+                aria-label={`Fuentes de ${signal.headline}`}
+              >
+                <strong>Fuentes</strong>
+                <ul>
+                  {signal.sources.map((source) => (
+                    <li>
+                      <a href={source.url}>{source.name}</a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
+          </article>
+        ))}
+      </div>
+    </section>
+  )
+}
+
+<style>
+  .signal-developments {
+    max-width: 52rem;
+    margin: 3.75rem auto 4rem;
+    padding-top: 1.5rem;
+    border-top: 4px double var(--rule);
+  }
+
+  .signal-developments__header {
+    margin-bottom: 1.4rem;
+  }
+
+  .signal-developments__header p {
+    margin: 0 0 0.35rem;
+    color: var(--accent);
+    font: 800 0.72rem/1.2 var(--sans);
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+  }
+
+  .signal-developments__header h2 {
+    margin: 0;
+    font: 700 clamp(1.8rem, 4vw, 2.8rem) / 1 var(--serif);
+    letter-spacing: -0.03em;
+  }
+
+  .signal-development {
+    scroll-margin-top: 5rem;
+    padding: 1.65rem 0;
+    border-top: 1px solid var(--rule);
+  }
+
+  .signal-development:first-child {
+    border-top: 0;
+  }
+
+  .signal-development h3 {
+    margin: 0 0 1rem;
+    font: 700 clamp(1.35rem, 3vw, 1.85rem) / 1.08 var(--serif);
+    letter-spacing: -0.02em;
+  }
+
+  .signal-development__body {
+    font-size: 1.08rem;
+    line-height: 1.68;
+  }
+
+  .signal-development__body p {
+    margin: 0 0 1rem;
+  }
+
+  .signal-development__sources {
+    margin-top: 1.35rem;
+    padding-top: 0.85rem;
+    border-top: 1px solid var(--rule);
+    font: 0.78rem/1.45 var(--sans);
+  }
+
+  .signal-development__sources > strong {
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .signal-development__sources ul {
+    margin: 0.45rem 0 0;
+    padding-left: 1.15rem;
+  }
+
+  .signal-development__sources li {
+    margin: 0.3rem 0;
+  }
+
+  @media (max-width: 42rem) {
+    .signal-developments {
+      margin-top: 2.6rem;
+    }
+
+    .signal-development {
+      scroll-margin-top: 3.5rem;
+      padding: 1.35rem 0;
+    }
+
+    .signal-development__body {
+      font-size: 1.03rem;
+      line-height: 1.62;
+    }
+  }
+</style>
