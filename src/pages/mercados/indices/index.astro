@@ -225,7 +225,16 @@ const historyAvailable = historyOrder.filter((id) => {
 >
   <main class="market-indices-page page-shell">
     <header class="indices-heading">
-      <h1>Índices de mercado</h1>
+      <div class="indices-heading__copy">
+        <p class="page-kicker">Mercados</p>
+        <h1>Índices de mercado</h1>
+        <p class="indices-intro">
+          <em>
+            Una lectura rápida de índices, tasas, divisas y materias primas que
+            marcan la jornada.
+          </em>
+        </p>
+      </div>
       <div class="update-stamp" aria-label="Última actualización de los datos">
         <strong>Última actualización</strong>
         <span>{generatedDate} · {generatedTime}</span>
@@ -350,6 +359,19 @@ const historyAvailable = historyOrder.filter((id) => {
     border-bottom: 1px solid var(--rule);
   }
 
+  .indices-heading__copy {
+    min-width: 0;
+  }
+
+  .indices-heading .page-kicker {
+    margin: 0 0 0.22rem;
+    color: var(--accent);
+    font-size: clamp(0.86rem, 1.35vw, 1.05rem);
+    font-weight: 700;
+    letter-spacing: 0;
+    text-transform: none;
+  }
+
   .indices-heading h1 {
     margin: 0;
     font-size: clamp(1.8rem, 3.6vw, 3.36rem);
@@ -358,8 +380,21 @@ const historyAvailable = historyOrder.filter((id) => {
     letter-spacing: -0.055em;
   }
 
+  .indices-intro {
+    max-width: 46rem;
+    margin: 0.58rem 0 0;
+    color: var(--ink-soft);
+    font-size: clamp(0.9rem, 1.45vw, 1.08rem);
+    line-height: 1.35;
+  }
+
+  .indices-intro em {
+    font-style: italic;
+  }
+
   .update-stamp {
     display: grid;
+    align-self: center;
     gap: 0.08rem;
     min-width: 7.8rem;
     padding-bottom: 0.11rem;
@@ -629,9 +664,20 @@ const historyAvailable = historyOrder.filter((id) => {
       padding-bottom: 0.39rem;
     }
 
+    .indices-heading .page-kicker {
+      margin-bottom: 0.18rem;
+      font-size: 0.82rem;
+    }
+
     .indices-heading h1 {
       font-size: clamp(1.47rem, 6.6vw, 2.07rem);
       line-height: 0.93;
+    }
+
+    .indices-intro {
+      margin-top: 0.42rem;
+      font-size: 0.88rem;
+      line-height: 1.3;
     }
 
     .update-stamp {
