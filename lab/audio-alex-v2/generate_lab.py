@@ -128,20 +128,43 @@ def transform_f0_energy(f0, n, *, semitones: float, range_scale: float, energy_s
     return out_f0.astype(np.float32), out_n.astype(np.float32)
 
 
-class StagedAlex:
+class StagedKokoro:
     def __init__(self):
         self.pipeline = KPipeline(lang_code="e")
         self.lab = KokoroLab(self.pipeline.model)
         self.g2p = self.lab.make_g2p("e")
-        self.pack = self.pipeline.load_voice(ALEX_VOICE).detach().cpu()
+        self.alex_pack = self.pipeline.load_voice(ALEX_VOICE).detach().cpu()
+        self.dora_cache = {}
 
-    def synthesize(self, text: str, *, profile: str) -> np.ndarray:
+    def synthesize_dora(self, text: str) -> np.ndarray:
+        if text in self.dora_cache:
+            return self.dora_cache[text].copy()
+        speech = normalize_for_speech(text, "2026-09-17")
+        chunks = []
+        for _, _, audio in self.pipeline(
+            speech,
+            voice=DORA_VOICE,
+            speed=1.0,
+            split_pattern=r"\n+",
+        ):
+            if audio is None:
+                continue
+            arr = np.asarray(audio, dtype=np.float32).reshape(-1)
+            if arr.size:
+                chunks.append(arr)
+        if not chunks:
+            raise RuntimeError("Dora no produjo audio.")
+        samples = np.concatenate(chunks)
+        self.dora_cache[text] = samples
+        return samples.copy()
+
+    def synthesize_alex(self, text: str, *, profile: str) -> np.ndarray:
         speech = normalize_for_speech(text, "2026-09-17")
         phonemes = self.lab.phonemize(self.g2p, speech)
         if not phonemes:
             raise RuntimeError("Alex no produjo fonemas.")
-        index = min(len(phonemes) - 1, self.pack.shape[0] - 1)
-        ref_s = self.pack[index].numpy()
+        index = min(len(phonemes) - 1, self.alex_pack.shape[0] - 1)
+        ref_s = self.alex_pack[index].numpy()
         _, trace, ctx = self.lab.synthesize(
             phonemes,
             ref_s,
@@ -181,23 +204,7 @@ class StagedAlex:
         return self.lab.decode(ctx, f0=f0, n=n)
 
 
-def synthesize_dora(text: str) -> np.ndarray:
-    pipeline = KPipeline(lang_code="e")
-    speech = normalize_for_speech(text, "2026-09-17")
-    chunks = []
-    for _, _, audio in pipeline(speech, voice=DORA_VOICE, speed=1.0, split_pattern=r"\n+"):
-        if audio is None:
-            continue
-        arr = np.asarray(audio, dtype=np.float32).reshape(-1)
-        if arr.size:
-            chunks.append(arr)
-    if not chunks:
-        raise RuntimeError("Dora no produjo audio.")
-    return np.concatenate(chunks)
-
-
-def generate_variant(turns, target: Path, *, profile: str) -> None:
-    alex = StagedAlex()
+def generate_variant(turns, target: Path, *, profile: str, engine: StagedKokoro) -> None:
     silence_statement = np.zeros(int(SAMPLE_RATE * STATEMENT_PAUSE), dtype=np.float32)
     silence_question = np.zeros(int(SAMPLE_RATE * QUESTION_PAUSE), dtype=np.float32)
     parts = []
@@ -207,9 +214,9 @@ def generate_variant(turns, target: Path, *, profile: str) -> None:
         if idx:
             parts.append(silence_question if previous_question else silence_statement)
         if speaker == "VOZ 1":
-            samples = synthesize_dora(content)
+            samples = engine.synthesize_dora(content)
         else:
-            samples = alex.synthesize(content, profile=profile)
+            samples = engine.synthesize_alex(content, profile=profile)
         parts.append(samples)
         previous_question = speaker == "VOZ 2" and is_question(content)
 
@@ -225,8 +232,9 @@ def main() -> None:
     b3 = OUT_DIR / "b3-alex-conversational.mp3"
 
     generate_fastapi_reference(turns, b1)
-    generate_variant(turns, b2, profile="broadcast")
-    generate_variant(turns, b3, profile="conversational")
+    engine = StagedKokoro()
+    generate_variant(turns, b2, profile="broadcast", engine=engine)
+    generate_variant(turns, b3, profile="conversational", engine=engine)
 
     manifest = {
         "schemaVersion": 1,
