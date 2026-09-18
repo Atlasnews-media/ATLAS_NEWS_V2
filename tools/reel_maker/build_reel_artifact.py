@@ -30,10 +30,14 @@ def required_text(value: Any, label: str) -> str:
     return text
 
 
-def load_json(path: Path, label: str) -> dict[str, Any]:
+def load_json_value(path: Path, label: str) -> Any:
     if not path.is_file():
         raise FileNotFoundError(f"{label} not found: {path}")
-    data = json.loads(path.read_text(encoding="utf-8"))
+    return json.loads(path.read_text(encoding="utf-8"))
+
+
+def load_json(path: Path, label: str) -> dict[str, Any]:
+    data = load_json_value(path, label)
     if not isinstance(data, dict):
         raise ValueError(f"{label} must be a JSON object")
     return data
@@ -122,7 +126,7 @@ def main() -> None:
     mp4_path = output_dir / f"atlas-news-reel-{source_commit}.mp4"
 
     report = load_json(validation_path, "visual validation")
-    load_json(visual_sources_path, "visual sources")
+    load_json_value(visual_sources_path, "visual sources")
     video = validate_report(report, source_commit, edition_number)
 
     if not mp4_path.is_file():
