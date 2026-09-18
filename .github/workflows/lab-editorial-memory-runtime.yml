@@ -41,6 +41,11 @@ jobs:
           node scripts/lab/validate-editorial-memory-judge.mjs
           lab/editorial-memory-judge/bootstrap.json
 
+      - name: Validar fixture semántico
+        run: >-
+          node scripts/lab/validate-editorial-memory-judge.mjs
+          lab/editorial-memory-judge/runtime-example.json
+
   publish-runtime:
     if: github.event_name == 'push'
     name: Publicar sólo latest.json en LAB
