@@ -1,0 +1,177 @@
+name: TEMP LAB — B2.1 y Alex solista
+
+on:
+  push:
+    branches: ["lab/alex-b2-1-solo"]
+    paths:
+      - "lab/audio-b2-1-solo/**"
+      - ".github/workflows/temp-audio-b2-1-solo.yml"
+
+permissions:
+  contents: read
+
+concurrency:
+  group: atlas-news-audio-b2-1-solo
+  cancel-in-progress: false
+
+jobs:
+  preview:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v5
+
+      - name: Preparar runtime
+        run: |
+          set -euo pipefail
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq espeak-ng ffmpeg python3-venv
+          python3 -m venv "$RUNNER_TEMP/b2-1-solo"
+          source "$RUNNER_TEMP/b2-1-solo/bin/activate"
+          python -m pip install --quiet --upgrade pip
+          python -m pip install --quiet "kokoro==0.9.4" soundfile numpy requests
+
+      - name: Fijar kokoro-lab-py
+        run: |
+          set -euo pipefail
+          git clone --quiet https://github.com/wlejon/kokoro-lab-py.git "$RUNNER_TEMP/kokoro-lab-py"
+          cd "$RUNNER_TEMP/kokoro-lab-py"
+          git checkout --quiet 9820dd38f40e71f8df318cdcf017bd24c62a03f7
+
+      - name: Iniciar Kokoro-FastAPI v0.9.0
+        run: |
+          set -euo pipefail
+          docker run -d --name atlas-kokoro-fastapi -p 8880:8880 ghcr.io/remsky/kokoro-fastapi-cpu:v0.9.0
+          for attempt in $(seq 1 60); do
+            if curl -fsS http://127.0.0.1:8880/v1/audio/voices >/dev/null 2>&1; then
+              echo "Kokoro-FastAPI listo."
+              exit 0
+            fi
+            sleep 3
+          done
+          docker logs atlas-kokoro-fastapi || true
+          exit 1
+
+      - name: Preparar acceso al repositorio público
+        env:
+          DEPLOY_KEY: ${{ secrets.ATLAS_PAGES_DEPLOY_KEY }}
+        run: |
+          set -euo pipefail
+          install -m 700 -d ~/.ssh
+          printf '%s\n' "$DEPLOY_KEY" > ~/.ssh/atlas_news_pages
+          chmod 600 ~/.ssh/atlas_news_pages
+          ssh-keyscan -H github.com >> ~/.ssh/known_hosts
+
+      - name: Descargar repositorio público
+        env:
+          GIT_SSH_COMMAND: ssh -i ~/.ssh/atlas_news_pages -o IdentitiesOnly=yes
+        run: |
+          set -euo pipefail
+          git clone --depth 1 git@github.com:Atlasnews-media/Atlasnews-media.github.io.git "$RUNNER_TEMP/public"
+
+      - name: Generar B2.1 y Alex solista
+        env:
+          KOKORO_FASTAPI_BASE: http://127.0.0.1:8880
+          KOKORO_LAB_PY: ${{ runner.temp }}/kokoro-lab-py
+          ATLAS_PUBLIC_REPO_DIR: ${{ runner.temp }}/public
+        run: |
+          set -euo pipefail
+          source "$RUNNER_TEMP/b2-1-solo/bin/activate"
+          python lab/audio-b2-1-solo/generate_lab.py
+
+      - name: Publicar sólo LAB
+        env:
+          GIT_SSH_COMMAND: ssh -i ~/.ssh/atlas_news_pages -o IdentitiesOnly=yes
+        run: |
+          set -euo pipefail
+          public="$RUNNER_TEMP/public"
+          target="$public/lab/audio/b2-1-solo"
+          mkdir -p "$target"
+          cp lab/audio-b2-1-solo/out/*.mp3 "$target/"
+          cp lab/audio-b2-1-solo/out/manifest.json "$target/manifest.json"
+
+          cat > "$target/index.html" <<'HTML'
+          <!doctype html>
+          <html lang="es">
+          <head>
+            <meta charset="utf-8">
+            <meta name="viewport" content="width=device-width,initial-scale=1">
+            <meta name="robots" content="noindex,nofollow,noarchive">
+            <title>ATLAS NEWS LAB · B2.1 + Alex solista</title>
+            <style>
+              :root{font-family:Georgia,serif;color:#171717;background:#f2efe5}
+              *{box-sizing:border-box}body{margin:0}
+              main{width:min(1080px,calc(100% - 32px));margin:auto;padding:60px 0}
+              .k{font:800 12px/1.2 Arial,sans-serif;letter-spacing:.14em;text-transform:uppercase}
+              h1{font-size:clamp(42px,8vw,84px);line-height:.94;margin:12px 0 18px}
+              h2{font-size:28px;margin:8px 0 12px}
+              p{line-height:1.55}.lead{max-width:780px;font-size:18px}
+              .rule{border-top:1px solid;border-bottom:1px solid;height:5px;margin:34px 0}
+              .grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+              article{border:1px solid;padding:20px;background:rgba(255,255,255,.18)}
+              article.candidate{border-top:5px solid #a71920}
+              audio{width:100%;margin-top:12px}
+              .note{font-size:14px;margin-top:28px}
+              @media(max-width:760px){.grid{grid-template-columns:1fr}}
+            </style>
+          </head>
+          <body>
+          <main>
+            <p class="k">ATLAS NEWS · AUDIO LAB</p>
+            <h1>B2.1 + Alex solista</h1>
+            <p class="lead">Dos pruebas separadas: corregir sólo el arranque de preguntas ultracortas y comprobar qué ocurre con Alex B2 cuando habla solo en Internacional.</p>
+
+            <div class="rule"></div>
+            <p class="k">Prueba 1 · diálogo</p>
+            <div class="grid">
+              <article>
+                <p class="k">B2 · control exacto</p>
+                <h2>Alex broadcast</h2>
+                <p>Es exactamente la pista B2 que ya escuchaste y aprobaste.</p>
+                <audio controls preload="metadata" src="./dialogue-b2-control.mp3"></audio>
+              </article>
+              <article class="candidate">
+                <p class="k">B2.1 · híbrida</p>
+                <h2>Microcirugía en preguntas cortas</h2>
+                <p>Alex conserva B2 salvo preguntas de cinco palabras o menos, que pasan por la ruta FastAPI de B1.</p>
+                <audio controls preload="metadata" src="./dialogue-b2-1-hybrid.mp3"></audio>
+              </article>
+            </div>
+
+            <div class="rule"></div>
+            <p class="k">Prueba 2 · Internacional</p>
+            <div class="grid">
+              <article>
+                <p class="k">Actual · producción real</p>
+                <h2>Alex actual</h2>
+                <p>MP3 exacto publicado por ATLAS NEWS el 17 de septiembre.</p>
+                <audio controls preload="metadata" src="./international-current.mp3"></audio>
+              </article>
+              <article class="candidate">
+                <p class="k">B2 · solista</p>
+                <h2>Alex broadcast solo</h2>
+                <p>Mismo guion, velocidad 1.0 como Internacional productivo, con el tratamiento B2 antes del decoder.</p>
+                <audio controls preload="metadata" src="./international-b2.mp3"></audio>
+              </article>
+            </div>
+
+            <p class="note"><strong>Guardrail:</strong> LAB aislado. No cambia F4B productivo, Speech Normalizer, Lexicon, manifests ni F1–F4A.</p>
+          </main>
+          </body>
+          </html>
+          HTML
+
+          cd "$public"
+          git config user.name "ATLAS NEWS AUDIO LAB"
+          git config user.email "actions@users.noreply.github.com"
+          git add lab/audio/b2-1-solo/
+          if git diff --cached --quiet; then exit 0; fi
+          git commit -m "LAB Audio — B2.1 y Alex solista"
+          git pull --rebase origin main
+          git push origin main
+
+      - name: Diagnóstico
+        if: always()
+        run: |
+          docker logs --tail 120 atlas-kokoro-fastapi || true
+          docker rm -f atlas-kokoro-fastapi >/dev/null 2>&1 || true
