@@ -51,7 +51,7 @@ QUESTION_PITCH_CROSSFADE_SECONDS = float(
 MIN_AUDIO_BYTES = 10_000
 MIN_DURATION_SECONDS = 5.0
 QUESTION_PROSODY_VERSION = 2
-ALEXC_DIALOGUE_RHYTHM_VERSION = 2
+ALEXC_DIALOGUE_RHYTHM_VERSION = 3
 ALEXC_SENTENCE_PAUSE_SECONDS = 0.55
 FALLBACK_PROFILE_VERSION = f"{VOICE_PROFILE_VERSION}-fallback-kokoro"
 
@@ -337,7 +337,7 @@ def generate_analysis_samples(section: str, script: str, reference_date: str):
             samples = synthesize_dialogue_alexc(
                 script,
                 reference_date,
-                seed_base=5100,
+                seed_base=9200,
             )
             metadata = {
                 "engine": f"Kokoro-82M + {CHATTERBOX_ENGINE}",
