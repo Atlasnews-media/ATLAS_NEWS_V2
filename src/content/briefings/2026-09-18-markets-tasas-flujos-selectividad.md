@@ -1,10 +1,10 @@
 ---
 title: "Tasas globales y flujos elevan la selectividad mientras el petróleo da alivio parcial"
 summary: "El endurecimiento monetario se amplía, los fondos globales reducen exposición a acciones y el retroceso del petróleo alivia sólo parcialmente unas condiciones financieras todavía exigentes."
-publishedAt: "2026-09-18T10:05:00-03:00"
+publishedAt: "2026-09-18T10:21:20-03:00"
 cutoffAt: "2026-09-18T10:03:00-03:00"
 section: "markets"
-status: "draft"
+status: "published"
 tags:
   - mercados
   - tasas
