@@ -1,7 +1,6 @@
 ---
 import { render } from "astro:content";
 import ArticleHeader from "../../components/ArticleHeader.astro";
-import DailySignalDevelopments from "../../components/DailySignalDevelopments.astro";
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import {
   dailyIssueNumber,
@@ -54,15 +53,6 @@ const visual = resolveFrontPageVisual({
       visual={visual}
     />
     <article class="prose"><Content /></article>
-    {
-      edition.data.type === "daily" && (
-        <DailySignalDevelopments
-          date={edition.id.slice(0, 10)}
-          group="internacional"
-          label="Internacional"
-        />
-      )
-    }
     <section class="sources" aria-labelledby="fuentes-documentadas">
       <h2 id="fuentes-documentadas">Fuentes documentadas</h2>
       <ul>
