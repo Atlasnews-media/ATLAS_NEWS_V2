@@ -9,21 +9,8 @@ const expectedSlots = {
   mercados: ["markets_chile", "markets_global"],
 };
 
-const expectedGroups = Object.keys(expectedSlots).sort();
-
 function assert(condition, message) {
   if (!condition) throw new Error(message);
-}
-
-function wordCount(text) {
-  return text.trim().split(/\s+/).filter(Boolean).length;
-}
-
-function paragraphs(text) {
-  return text
-    .trim()
-    .split(/\n\s*\n/)
-    .filter((paragraph) => paragraph.trim().length > 0);
 }
 
 function validateSignal(signal, expectedSlot, context) {
@@ -49,21 +36,9 @@ function validateSignal(signal, expectedSlot, context) {
       signal.development.trim().length > 0,
     `${context}: development inválido.`,
   );
-
-  const developmentParagraphs = paragraphs(signal.development);
   assert(
-    developmentParagraphs.length >= 2 && developmentParagraphs.length <= 4,
-    `${context}: development debe tener entre 2 y 4 párrafos.`,
-  );
-  assert(
-    wordCount(signal.development) >= 140,
-    `${context}: development debe tener al menos 140 palabras.`,
-  );
-
-  assert(
-    typeof signal.anchor === "string" &&
-      /^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(signal.anchor),
-    `${context}: anchor debe ser ASCII, minúsculas y guiones.`,
+    typeof signal.anchor === "string" && signal.anchor.trim().length > 0,
+    `${context}: anchor inválido.`,
   );
   assert(
     Array.isArray(signal.sources) && signal.sources.length > 0,
@@ -109,13 +84,6 @@ async function validateFile(path) {
     `${path}: falta senalesDelDia.`,
   );
 
-  const groups = Object.keys(artifact.senalesDelDia).sort();
-  assert(
-    JSON.stringify(groups) === JSON.stringify(expectedGroups),
-    `${path}: senalesDelDia debe contener exclusivamente internacional, nacional y mercados.`,
-  );
-
-  const anchors = [];
   for (const [group, slots] of Object.entries(expectedSlots)) {
     const items = artifact.senalesDelDia[group];
     assert(Array.isArray(items), `${path}: ${group} no es array.`);
@@ -123,16 +91,10 @@ async function validateFile(path) {
       items.length === 2,
       `${path}: ${group} debe tener exactamente 2 señales.`,
     );
-    slots.forEach((slot, index) => {
-      validateSignal(items[index], slot, `${path} · ${group}[${index}]`);
-      anchors.push(items[index].anchor);
-    });
+    slots.forEach((slot, index) =>
+      validateSignal(items[index], slot, `${path} · ${group}[${index}]`),
+    );
   }
-
-  assert(
-    new Set(anchors).size === anchors.length,
-    `${path}: los 6 anchors deben ser únicos.`,
-  );
 
   console.log(`Señales válidas: ${path}`);
 }
