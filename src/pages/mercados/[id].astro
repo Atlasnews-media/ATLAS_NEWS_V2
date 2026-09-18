@@ -9,6 +9,29 @@ import {
 } from "../../lib/content";
 import { resolveFrontPageVisual } from "../../lib/front-page-visuals";
 
+interface CanonicalSignal {
+  slot: string;
+  headline: string;
+  deck: string;
+  development: string;
+  anchor: string;
+  sources: Array<{
+    name: string;
+    url: string;
+  }>;
+}
+
+interface SignalsArtifact {
+  status: "READY";
+  date: string;
+  contract: "atlas-senales-del-dia-v1";
+  senalesDelDia: {
+    internacional: CanonicalSignal[];
+    nacional: CanonicalSignal[];
+    mercados: CanonicalSignal[];
+  };
+}
+
 export async function getStaticPaths() {
   const briefings = await getPublishedMarkets();
   return briefings.map((briefing) => ({
@@ -30,6 +53,80 @@ const visual = resolveFrontPageVisual({
   tags: briefing.data.tags,
   editorialVisual: briefing.data.editorialVisual,
 });
+const signalFiles = import.meta.glob("../../../data/senales-del-dia/*.json", {
+  eager: true,
+  query: "?raw",
+  import: "default",
+}) as Record<string, string>;
+
+const expectedSignalsDate = briefing.id.slice(0, 10);
+
+function parseSignalsArtifact(raw: string | undefined): unknown {
+  if (!raw) return undefined;
+  try {
+    return JSON.parse(raw);
+  } catch {
+    return undefined;
+  }
+}
+
+function isCanonicalSignal(value: unknown): value is CanonicalSignal {
+  if (!value || typeof value !== "object") return false;
+
+  const signal = value as CanonicalSignal;
+
+  return (
+    typeof signal.slot === "string" &&
+    typeof signal.headline === "string" &&
+    signal.headline.trim().length > 0 &&
+    signal.headline.length <= 72 &&
+    typeof signal.deck === "string" &&
+    signal.deck.trim().length > 0 &&
+    signal.deck.length <= 180 &&
+    typeof signal.development === "string" &&
+    signal.development.trim().length > 0 &&
+    typeof signal.anchor === "string" &&
+    signal.anchor.trim().length > 0 &&
+    Array.isArray(signal.sources)
+  );
+}
+
+function isReadySignalsArtifact(
+  value: unknown,
+  date: string,
+): value is SignalsArtifact {
+  if (!value || typeof value !== "object") return false;
+
+  const artifact = value as SignalsArtifact;
+  const internacional = artifact.senalesDelDia?.internacional;
+  const nacional = artifact.senalesDelDia?.nacional;
+  const mercados = artifact.senalesDelDia?.mercados;
+
+  if (
+    artifact.status !== "READY" ||
+    artifact.contract !== "atlas-senales-del-dia-v1" ||
+    artifact.date !== date ||
+    !Array.isArray(internacional) ||
+    !Array.isArray(nacional) ||
+    !Array.isArray(mercados) ||
+    internacional.length !== 2 ||
+    nacional.length !== 2 ||
+    mercados.length !== 2
+  ) {
+    return false;
+  }
+
+  return [...internacional, ...nacional, ...mercados].every(isCanonicalSignal);
+}
+
+const signalEntry = Object.entries(signalFiles).find(([path]) =>
+  path.endsWith(`/${expectedSignalsDate}.json`),
+);
+const signalArtifact = parseSignalsArtifact(signalEntry?.[1]);
+const readySignals = isReadySignalsArtifact(signalArtifact, expectedSignalsDate)
+  ? signalArtifact
+  : undefined;
+const marketsSignals = readySignals?.senalesDelDia.mercados ?? [];
 ---
 
 <BaseLayout
@@ -49,6 +146,46 @@ const visual = resolveFrontPageVisual({
     />
 
     <article class="prose"><Content /></article>
+
+    {
+      marketsSignals.length === 2 && (
+        <section class="signal-developments" aria-labelledby="senales-mercados">
+          <header class="signal-developments__header">
+            <p>Señales del día</p>
+            <h2 id="senales-mercados">Mercados</h2>
+          </header>
+
+          <div class="signal-developments__list">
+            {marketsSignals.map((signal) => (
+              <article
+                class="signal-development"
+                id={signal.anchor}
+                aria-labelledby={`${signal.anchor}-title`}
+              >
+                <h3 id={`${signal.anchor}-title`}>{signal.headline}</h3>
+                <div class="signal-development__body">{signal.development}</div>
+
+                {signal.sources.length > 0 && (
+                  <div
+                    class="signal-development__sources"
+                    aria-label={`Fuentes de ${signal.headline}`}
+                  >
+                    <strong>Fuentes</strong>
+                    <ul>
+                      {signal.sources.map((source) => (
+                        <li>
+                          <a href={source.url}>{source.name}</a>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+              </article>
+            ))}
+          </div>
+        </section>
+      )
+    }
 
     <section class="sources" aria-labelledby="fuentes-documentadas">
       <h2 id="fuentes-documentadas">Fuentes documentadas</h2>
@@ -129,6 +266,63 @@ const visual = resolveFrontPageVisual({
     border-top: 1px solid var(--rule);
     text-align: left;
   }
+  .signal-developments {
+    max-width: 52rem;
+    margin: 3.75rem auto 4rem;
+    padding-top: 1.5rem;
+    border-top: 4px double var(--rule);
+  }
+  .signal-developments__header {
+    margin-bottom: 1.4rem;
+  }
+  .signal-developments__header p {
+    margin: 0 0 0.35rem;
+    color: var(--accent);
+    font: 800 0.72rem/1.2 var(--sans);
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+  }
+  .signal-developments__header h2 {
+    margin: 0;
+    font: 700 clamp(1.8rem, 4vw, 2.8rem) / 1 var(--serif);
+    letter-spacing: -0.03em;
+  }
+  .signal-development {
+    scroll-margin-top: 5rem;
+    padding: 1.65rem 0;
+    border-top: 1px solid var(--rule);
+  }
+  .signal-development:first-child {
+    border-top: 0;
+  }
+  .signal-development h3 {
+    margin: 0 0 1rem;
+    font: 700 clamp(1.35rem, 3vw, 1.85rem) / 1.08 var(--serif);
+    letter-spacing: -0.02em;
+  }
+  .signal-development__body {
+    color: var(--ink);
+    font-size: 1.08rem;
+    line-height: 1.68;
+    white-space: pre-line;
+  }
+  .signal-development__sources {
+    margin-top: 1.35rem;
+    padding-top: 0.85rem;
+    border-top: 1px solid var(--rule);
+    font: 0.78rem/1.45 var(--sans);
+  }
+  .signal-development__sources > strong {
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .signal-development__sources ul {
+    margin: 0.45rem 0 0;
+    padding-left: 1.15rem;
+  }
+  .signal-development__sources li {
+    margin: 0.3rem 0;
+  }
   .sources,
   .return-link {
     max-width: 52rem;
@@ -165,6 +359,17 @@ const visual = resolveFrontPageVisual({
     .prose {
       margin-top: 1.55rem;
       font-size: 1.03rem;
+    }
+    .signal-developments {
+      margin-top: 2.6rem;
+    }
+    .signal-development {
+      scroll-margin-top: 3.5rem;
+      padding: 1.35rem 0;
+    }
+    .signal-development__body {
+      font-size: 1.03rem;
+      line-height: 1.62;
     }
   }
 </style>
