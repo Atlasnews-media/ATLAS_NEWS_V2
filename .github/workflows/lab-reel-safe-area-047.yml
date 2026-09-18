@@ -125,7 +125,7 @@ jobs:
           git add "$LAB_PUBLIC_DIR"
           git commit -m "LAB: Reel 047 100 vs 92 safe-area"
           for attempt in 1 2 3; do
-            git pull --rebase origin main
+            GIT_SSH_COMMAND="ssh -i ~/.ssh/atlas_news_pages -o IdentitiesOnly=yes" git pull --rebase origin main
             if GIT_SSH_COMMAND="ssh -i ~/.ssh/atlas_news_pages -o IdentitiesOnly=yes" git push origin main; then
               exit 0
             fi
