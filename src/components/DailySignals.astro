@@ -47,13 +47,33 @@ function parseArtifact(raw: string | undefined): unknown {
   }
 }
 
-function isCanonicalSignal(value: unknown): value is CanonicalSignal {
+const expectedSlots = {
+  internacional: ["technology", "world"],
+  nacional: ["ipsa_company", "policy_economy"],
+  mercados: ["markets_chile", "markets_global"],
+} as const;
+
+function wordCount(text: string): number {
+  return text.trim().split(/\s+/).filter(Boolean).length;
+}
+
+function paragraphCount(text: string): number {
+  return text
+    .trim()
+    .split(/\n\s*\n/)
+    .filter((paragraph) => paragraph.trim().length > 0).length;
+}
+
+function isCanonicalSignal(
+  value: unknown,
+  expectedSlot: string,
+): value is CanonicalSignal {
   if (!value || typeof value !== "object") return false;
 
   const signal = value as CanonicalSignal;
 
   return (
-    typeof signal.slot === "string" &&
+    signal.slot === expectedSlot &&
     typeof signal.headline === "string" &&
     signal.headline.trim().length > 0 &&
     signal.headline.length <= 72 &&
@@ -62,9 +82,21 @@ function isCanonicalSignal(value: unknown): value is CanonicalSignal {
     signal.deck.length <= 180 &&
     typeof signal.development === "string" &&
     signal.development.trim().length > 0 &&
+    paragraphCount(signal.development) >= 2 &&
+    paragraphCount(signal.development) <= 4 &&
+    wordCount(signal.development) >= 140 &&
     typeof signal.anchor === "string" &&
-    signal.anchor.trim().length > 0 &&
-    Array.isArray(signal.sources)
+    /^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(signal.anchor) &&
+    Array.isArray(signal.sources) &&
+    signal.sources.length > 0 &&
+    signal.sources.every(
+      (source) =>
+        source &&
+        typeof source.name === "string" &&
+        source.name.trim().length > 0 &&
+        typeof source.url === "string" &&
+        /^https:\/\//.test(source.url),
+    )
   );
 }
 
@@ -93,7 +125,29 @@ function isReadyArtifact(
     return false;
   }
 
-  return [...internacional, ...nacional, ...mercados].every(isCanonicalSignal);
+  const orderedSignals = [
+    ...internacional.map((signal, index) => ({
+      signal,
+      slot: expectedSlots.internacional[index],
+    })),
+    ...nacional.map((signal, index) => ({
+      signal,
+      slot: expectedSlots.nacional[index],
+    })),
+    ...mercados.map((signal, index) => ({
+      signal,
+      slot: expectedSlots.mercados[index],
+    })),
+  ];
+
+  if (
+    orderedSignals.some(({ signal, slot }) => !isCanonicalSignal(signal, slot))
+  ) {
+    return false;
+  }
+
+  const anchors = orderedSignals.map(({ signal }) => signal.anchor);
+  return new Set(anchors).size === anchors.length;
 }
 
 const artifactEntry = expectedDate
