@@ -272,7 +272,8 @@ jobs:
           sudo apt-get install -y -qq --no-install-recommends ffmpeg fontconfig fonts-liberation python3-pil
           python3 -m py_compile \
             tools/reel_maker/prepare_reel_contract.py \
-            tools/reel_maker/reel_maker.py
+            tools/reel_maker/reel_maker.py \
+            tools/reel_maker/build_reel_artifact.py
           test -f reference-assets/01_portada_base.png
           test -f reference-assets/02_noticia_base.png
           test -f reference-assets/03_cierre_base.png
@@ -352,6 +353,67 @@ jobs:
             .audio.outputCodec == "aac"
           ' "$report" >/dev/null
 
+      - name: Package canonical Reel artifact handoff
+        if: github.event_name == 'pull_request' || steps.source.outputs.eligible == 'true'
+        id: canonical
+        env:
+          SOURCE_COMMIT: ${{ steps.source.outputs.source_commit }}
+        run: |
+          set -euo pipefail
+          contract="$ATLAS_REEL_CONTRACT"
+          source_commit="${SOURCE_COMMIT:-$(jq -r '.sourceCommit' "$contract")}"
+          [[ "$source_commit" =~ ^[0-9a-f]{40}$ ]] || {
+            echo "Fail-closed: canonical artifact sourceCommit is invalid."
+            exit 29
+          }
+
+          python3 tools/reel_maker/build_reel_artifact.py \
+            --contract "$contract" \
+            --output-dir tools/reel_maker/output
+
+          canonical_dir="tools/reel_maker/output/canonical/${source_commit}"
+          manifest="${canonical_dir}/reel-manifest.json"
+          test -f "$manifest"
+          test -f "${canonical_dir}/reel.sha256"
+
+          jq -e --arg source "$source_commit" '
+            .schema == "atlas-news-reel-artifact/v1" and
+            .status == "READY_FOR_PUBLICATION" and
+            .sourceCommit == $source and
+            (.editionNumber | type == "number" and . >= 1) and
+            .mp4.codec == "h264" and
+            .mp4.width == 1080 and
+            .mp4.height == 1920 and
+            .mp4.pixFmt == "yuv420p" and
+            .mp4.audioCodec == "aac" and
+            (.mp4.sha256 | test("^[0-9a-f]{64}$")) and
+            (.mp4.sizeBytes | type == "number" and . > 0) and
+            (.contract.sha256 | test("^[0-9a-f]{64}$")) and
+            (.validation.sha256 | test("^[0-9a-f]{64}$")) and
+            (.visualSources.sha256 | test("^[0-9a-f]{64}$"))
+          ' "$manifest" >/dev/null || {
+            echo "Fail-closed: canonical Reel manifest is invalid."
+            exit 30
+          }
+
+          mp4_file="$(jq -r '.mp4.file' "$manifest")"
+          expected_sha="$(jq -r '.mp4.sha256' "$manifest")"
+          actual_sha="$(sha256sum "${canonical_dir}/${mp4_file}" | awk '{print $1}')"
+          test "$actual_sha" = "$expected_sha" || {
+            echo "Fail-closed: canonical MP4 SHA256 does not match manifest."
+            exit 31
+          }
+          grep -qx "${expected_sha}  ${mp4_file}" "${canonical_dir}/reel.sha256" || {
+            echo "Fail-closed: reel.sha256 does not match canonical MP4."
+            exit 32
+          }
+
+          artifact_name="atlas-news-reel-canonical-${source_commit}"
+          echo "source_commit=$source_commit" >> "$GITHUB_OUTPUT"
+          echo "artifact_name=$artifact_name" >> "$GITHUB_OUTPUT"
+          echo "canonical_dir=$canonical_dir" >> "$GITHUB_OUTPUT"
+          echo "manifest=$manifest" >> "$GITHUB_OUTPUT"
+          echo "mp4_sha256=$expected_sha" >> "$GITHUB_OUTPUT"
       - name: Summarize isolated Phase 4 result
         if: github.event_name == 'pull_request' || steps.source.outputs.eligible == 'true'
         env:
@@ -362,10 +424,12 @@ jobs:
           source_commit="${SOURCE_COMMIT:-$(jq -r '.sourceCommit' "$contract")}"
           edition_number="$(jq -r '.editionNumber' "$contract")"
           report="tools/reel_maker/output/visual-validation.json"
+          manifest="${{ steps.canonical.outputs.manifest }}"
           selected_track="$(jq -r '.audio.selectedTrack' "$report")"
           resolved_track="$(jq -r '.audio.resolvedTrack' "$report")"
           fallback="$(jq -r '.audio.fallbackUsed' "$report")"
           selector="$(jq -r '.audio.selectorVersion' "$report")"
+          mp4_sha256="$(jq -r '.mp4.sha256' "$manifest")"
           {
             echo "### Reel Maker V2 — PASS"
             echo "sourceCommit: \`${source_commit}\`"
@@ -374,19 +438,27 @@ jobs:
             echo "Templates: official reference-assets bases"
             echo "Audio: \`${resolved_track}\` · ${selector} · selected=\`${selected_track}\` · fallback=${fallback}"
             echo "Output: \`atlas-news-reel-${source_commit}.mp4\`"
+            echo "Artifact: \`${{ steps.canonical.outputs.artifact_name }}\`"
+            echo "Manifest: \`reel-manifest.json\` · status=READY_FOR_PUBLICATION"
+            echo "MP4 SHA256: \`${mp4_sha256}\`"
             echo "Isolation: no social-renderer mutation / no Meta publish."
           } >> "$GITHUB_STEP_SUMMARY"
 
-      - name: Upload Reel Maker evidence
+      - name: Upload canonical Reel artifact
+        if: steps.canonical.outcome == 'success'
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ steps.canonical.outputs.artifact_name }}
+          path: ${{ steps.canonical.outputs.canonical_dir }}/
+          if-no-files-found: error
+          retention-days: 14
+
+      - name: Upload Reel Maker diagnostic evidence
         if: always() && (github.event_name == 'pull_request' || steps.source.outputs.eligible == 'true')
         uses: actions/upload-artifact@v4
         with:
-          name: atlas-news-reel-maker-${{ steps.source.outputs.source_commit || github.run_id }}
+          name: atlas-news-reel-diagnostics-${{ steps.canonical.outputs.source_commit || github.run_id }}
           path: |
-            tools/reel_maker/.generated/reel-contract.json
-            tools/reel_maker/output/atlas-news-reel-*.mp4
-            tools/reel_maker/output/visual-validation.json
-            tools/reel_maker/output/visual-sources.json
             tools/reel_maker/output/atlas-news-plates-*/scene-*.png
           if-no-files-found: warn
-          retention-days: 14
+          retention-days: 7
