@@ -346,7 +346,17 @@ jobs:
             echo "La versión pública ya está actualizada."
           else
             git commit -m "Publica ATLAS NEWS desde ${ATLAS_SOURCE_SHA::7}"
-            git push origin main
+            for attempt in 1 2 3; do
+              git pull --rebase origin main
+              if git push origin main; then
+                break
+              fi
+              if [[ "$attempt" -eq 3 ]]; then
+                echo "No fue posible publicar tras tres intentos de conciliación con escritores laterales." >&2
+                exit 1
+              fi
+              sleep 2
+            done
           fi
           echo "public_commit=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
 
