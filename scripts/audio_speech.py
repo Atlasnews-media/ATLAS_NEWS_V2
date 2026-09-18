@@ -376,6 +376,19 @@ def normalize_numbers_and_symbols(text: str) -> str:
         flags=re.IGNORECASE,
     )
 
+    # Rangos porcentuales observados en producción:
+    # 3,75%-4,00% -> tres coma setenta y cinco a cuatro por ciento.
+    # Esta regla debe correr antes del porcentaje individual para evitar
+    # interpretar el guion como signo negativo.
+    normalized = re.sub(
+        rf"(?<!\d)(?P<start>{_NUMBER_TOKEN})\s*%\s*[-–—]\s*(?P<end>{_NUMBER_TOKEN})\s*%",
+        lambda match: (
+            f"{_number_token_to_words(match.group('start'))} a "
+            f"{_number_token_to_words(match.group('end'))} por ciento"
+        ),
+        normalized,
+    )
+
     # Porcentajes: 8,7% -> ocho coma siete por ciento.
     normalized = re.sub(
         rf"(?<!\d)(?P<number>{_NUMBER_TOKEN})\s*%",
