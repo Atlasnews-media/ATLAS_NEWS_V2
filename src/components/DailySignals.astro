@@ -115,9 +115,7 @@ function publicPair(
   return items.map((item) => ({
     label: item.headline,
     text: item.deck,
-    href: destinationBase
-      ? `${destinationBase}#${item.anchor}`
-      : undefined,
+    href: destinationBase ? `${destinationBase}#${item.anchor}` : undefined,
   }));
 }
 
