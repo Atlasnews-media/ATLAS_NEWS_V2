@@ -162,6 +162,13 @@ const nationalSignals = readySignals?.senalesDelDia.nacional ?? [];
                 id={signal.anchor}
                 aria-labelledby={`${signal.anchor}-title`}
               >
+                <nav
+                  class="signal-development__nav"
+                  aria-label={`Navegación desde ${signal.headline}`}
+                >
+                  <a href="/">Ir a Portada</a>
+                  <a href="/nacional/">Ir a Nacional</a>
+                </nav>
                 <h3 id={`${signal.anchor}-title`}>{signal.headline}</h3>
                 <div class="signal-development__body">{signal.development}</div>
 
@@ -294,6 +301,25 @@ const nationalSignals = readySignals?.senalesDelDia.nacional ?? [];
   }
   .signal-development:first-child {
     border-top: 0;
+  }
+  .signal-development__nav {
+    display: flex;
+    justify-content: flex-end;
+    gap: clamp(0.75rem, 2vw, 1.25rem);
+    margin: 0 0 1.1rem;
+    font: 800 0.68rem/1.2 var(--sans);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .signal-development__nav a {
+    color: var(--accent);
+    text-decoration: none;
+  }
+  .signal-development__nav a:hover,
+  .signal-development__nav a:focus-visible {
+    text-decoration: underline;
+    text-decoration-thickness: 0.08em;
+    text-underline-offset: 0.16em;
   }
   .signal-development h3 {
     margin: 0 0 1rem;
