@@ -159,9 +159,9 @@ a:focus-visible {
     padding-top: 0.55rem;
   }
   body .site-header nav {
-    font-size: clamp(0.64rem, 2.8vw, 0.7rem);
+    font-size: clamp(0.61rem, 2.65vw, 0.67rem);
     font-weight: 800;
-    letter-spacing: 0.035em;
+    letter-spacing: 0.03em;
   }
   body .site-header nav a {
     min-height: 2.05rem;
@@ -457,9 +457,9 @@ body:has(.calendar-lab) .calendar-source {
   }
 
   body .site-header nav {
-    font-size: clamp(0.92rem, 2vw, 1.02rem);
+    font-size: clamp(0.88rem, 1.9vw, 0.97rem);
     font-weight: 800;
-    letter-spacing: 0.055em;
+    letter-spacing: 0.05em;
   }
 
   body .site-header nav a {
@@ -489,9 +489,9 @@ body:has(.calendar-lab) .calendar-source {
   }
 
   body .site-header nav {
-    font-size: clamp(0.95rem, 1.15vw, 1.05rem);
+    font-size: clamp(0.91rem, 1.1vw, 1rem);
     font-weight: 800;
-    letter-spacing: 0.055em;
+    letter-spacing: 0.05em;
   }
 
   body .site-header .edition-bar {
