@@ -1,0 +1,119 @@
+name: Instagram Reel — Automatic from F4D
+
+on:
+  workflow_run:
+    workflows: ["Reel Maker V2 — post-publication artifact"]
+    types: [completed]
+
+permissions:
+  actions: read
+  contents: read
+
+concurrency:
+  group: instagram-reel-f4e-v2
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    name: Publicar Reel canónico desde F4D
+    if: >-
+      github.event.workflow_run.conclusion == 'success' &&
+      github.event.workflow_run.head_branch == 'main'
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      ATLAS_PUBLIC_STATUS_URL: https://atlasnews-media.github.io/status.json
+      INSTAGRAM_API_VERSION: v23.0
+      INSTAGRAM_EXPECTED_USERNAME: _atlas_news
+      UPSTREAM_RUN_ID: ${{ github.event.workflow_run.id }}
+
+    steps:
+      - name: Checkout F4E runtime
+        uses: actions/checkout@v5
+        with:
+          ref: ${{ github.event.workflow_run.head_sha }}
+          fetch-depth: 0
+
+      - name: Inspect canonical artifact from F4D
+        id: upstream
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          artifacts="$(gh api "repos/${GITHUB_REPOSITORY}/actions/runs/${UPSTREAM_RUN_ID}/artifacts")"
+          count="$(jq '[.artifacts[] | select(.expired == false and (.name | startswith("atlas-news-reel-canonical-")))] | length' <<<"$artifacts")"
+          if [[ "$count" = "0" ]]; then
+            echo "eligible=false" >> "$GITHUB_OUTPUT"
+            echo "Safe no-op: F4D completed without a canonical Reel artifact."
+            exit 0
+          fi
+          [[ "$count" = "1" ]] || {
+            echo "Fail-closed: expected exactly one canonical F4D artifact, found $count."
+            exit 40
+          }
+          artifact_id="$(jq -r '.artifacts[] | select(.expired == false and (.name | startswith("atlas-news-reel-canonical-"))) | .id' <<<"$artifacts")"
+          artifact_name="$(jq -r '.artifacts[] | select(.expired == false and (.name | startswith("atlas-news-reel-canonical-"))) | .name' <<<"$artifacts")"
+          echo "eligible=true" >> "$GITHUB_OUTPUT"
+          echo "artifact_id=$artifact_id" >> "$GITHUB_OUTPUT"
+          echo "artifact_name=$artifact_name" >> "$GITHUB_OUTPUT"
+
+      - name: Download exact canonical F4D artifact
+        if: steps.upstream.outputs.eligible == 'true'
+        uses: actions/download-artifact@v4
+        with:
+          artifact-ids: ${{ steps.upstream.outputs.artifact_id }}
+          path: _reel_handoff
+          run-id: ${{ env.UPSTREAM_RUN_ID }}
+          github-token: ${{ github.token }}
+
+      - name: Verify F4D artifact identity, SHA256 and idempotency
+        if: steps.upstream.outputs.eligible == 'true'
+        id: handoff
+        run: |
+          python3 tools/reel_maker/consume_reel_artifact.py             --artifact-dir _reel_handoff             --artifact-name "${{ steps.upstream.outputs.artifact_name }}"             --status-url "$ATLAS_PUBLIC_STATUS_URL"
+
+      - name: Record already-published handoff no-op
+        if: steps.upstream.outputs.eligible == 'true' && steps.handoff.outputs.already_published == 'true'
+        env:
+          SOURCE_COMMIT: ${{ steps.handoff.outputs.source_commit }}
+          MP4_SHA256: ${{ steps.handoff.outputs.mp4_sha256 }}
+        run: |
+          {
+            echo "### F4D → F4E — ALREADY_PUBLISHED_VERIFIED"
+            echo "Source commit: $SOURCE_COMMIT"
+            echo "F4D run: $UPSTREAM_RUN_ID"
+            echo "MP4 SHA256 verified: $MP4_SHA256"
+            echo "No regeneration, staging or Meta POST was executed."
+          } >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Verify secrets and resolve Instagram session
+        if: steps.upstream.outputs.eligible == 'true' && steps.handoff.outputs.already_published != 'true'
+        env:
+          INSTAGRAM_ACCESS_TOKEN: ${{ secrets.INSTAGRAM_ACCESS_TOKEN }}
+          ATLAS_PAGES_DEPLOY_KEY: ${{ secrets.ATLAS_PAGES_DEPLOY_KEY }}
+        run: |
+          set -euo pipefail
+          test -n "$INSTAGRAM_ACCESS_TOKEN" || { echo "BLOCKED_EXTERNAL: INSTAGRAM_ACCESS_TOKEN missing"; exit 56; }
+          test -n "$ATLAS_PAGES_DEPLOY_KEY" || { echo "BLOCKED_EXTERNAL: ATLAS_PAGES_DEPLOY_KEY missing"; exit 57; }
+          node tools/social-renderer/resolve-instagram-session.mjs
+
+      - name: Publish exact F4D artifact
+        if: steps.upstream.outputs.eligible == 'true' && steps.handoff.outputs.already_published != 'true'
+        env:
+          SOURCE_COMMIT: ${{ steps.handoff.outputs.source_commit }}
+          REEL_DIR: ${{ steps.handoff.outputs.reel_dir }}
+          MP4_FILE: ${{ steps.handoff.outputs.mp4_file }}
+          MP4_SHA256: ${{ steps.handoff.outputs.mp4_sha256 }}
+          ARTIFACT_NAME: ${{ steps.upstream.outputs.artifact_name }}
+          ATLAS_PAGES_DEPLOY_KEY: ${{ secrets.ATLAS_PAGES_DEPLOY_KEY }}
+        run: bash tools/reel_maker/publish_reel_artifact.sh
+
+      - name: Record F4D safe no-op
+        if: steps.upstream.outputs.eligible == 'false'
+        run: |
+          {
+            echo "### F4D → F4E — SAFE NO-OP"
+            echo "Upstream Reel Maker completed successfully but produced no canonical artifact."
+            echo "Nothing was regenerated or published."
+          } >> "$GITHUB_STEP_SUMMARY"
