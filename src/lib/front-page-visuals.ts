@@ -30,6 +30,7 @@ interface ResolveVisualInput {
   title: string;
   tags?: string[];
   editorialVisual?: EditorialVisual;
+  usedSources?: ReadonlySet<string>;
 }
 
 const FED_KEYWORDS = [
@@ -1151,6 +1152,7 @@ export function resolveFrontPageVisual({
   title,
   tags = [],
   editorialVisual,
+  usedSources,
 }: ResolveVisualInput): EditorialVisual {
   if (editorialVisual) return editorialVisual;
 
@@ -1159,8 +1161,13 @@ export function resolveFrontPageVisual({
     sectionOwnsSharedVisual(section, visual),
   );
   const pool = ownedPool.length > 0 ? ownedPool : catalogPool;
+  const availablePool =
+    usedSources && usedSources.size > 0
+      ? pool.filter(({ src }) => !usedSources.has(src))
+      : pool;
+  const selectionPool = availablePool.length > 0 ? availablePool : pool;
   const haystack = normalize(`${title} ${tags.join(" ")}`);
-  const scored = pool.map((visual) => ({
+  const scored = selectionPool.map((visual) => ({
     visual,
     score: visual.keywords.reduce(
       (total, keyword) =>
@@ -1172,16 +1179,18 @@ export function resolveFrontPageVisual({
   const matchedCandidates = scored
     .filter(({ score }) => score === bestScore && score > 0)
     .map(({ visual }) => visual);
-  const fallbackCandidates = pool.filter(({ fallback }) => fallback);
+  const fallbackCandidates = selectionPool.filter(({ fallback }) => fallback);
   const candidates =
     matchedCandidates.length > 0
       ? matchedCandidates
       : fallbackCandidates.length > 0
         ? fallbackCandidates
-        : pool;
+        : selectionPool;
   const rotationKey = `${section}:${id}`;
   const selected =
-    candidates[stableHash(rotationKey) % candidates.length] ?? pool[0];
+    candidates[stableHash(rotationKey) % candidates.length] ??
+    selectionPool[0] ??
+    pool[0];
 
   return stripCatalogMetadata(selected);
 }
