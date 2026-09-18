@@ -1,0 +1,155 @@
+name: TEMP LAB — Alex V2
+
+on:
+  push:
+    branches: ["lab/kokoro-naturalness-v1"]
+    paths:
+      - "lab/audio-alex-v2/**"
+      - ".github/workflows/temp-audio-alex-v2.yml"
+
+permissions:
+  contents: read
+
+concurrency:
+  group: atlas-news-audio-alex-v2-preview
+  cancel-in-progress: false
+
+jobs:
+  preview:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v5
+
+      - name: Preparar runtime
+        run: |
+          set -euo pipefail
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq espeak-ng ffmpeg python3-venv
+          python3 -m venv "$RUNNER_TEMP/alex-v2"
+          source "$RUNNER_TEMP/alex-v2/bin/activate"
+          python -m pip install --quiet --upgrade pip
+          python -m pip install --quiet "kokoro==0.9.4" soundfile numpy requests
+
+      - name: Fijar kokoro-lab-py
+        run: |
+          set -euo pipefail
+          git clone --quiet https://github.com/wlejon/kokoro-lab-py.git "$RUNNER_TEMP/kokoro-lab-py"
+          cd "$RUNNER_TEMP/kokoro-lab-py"
+          git checkout --quiet 9820dd38f40e71f8df318cdcf017bd24c62a03f7
+
+      - name: Iniciar Kokoro-FastAPI v0.9.0
+        run: |
+          set -euo pipefail
+          docker run -d --name atlas-kokoro-fastapi -p 8880:8880 ghcr.io/remsky/kokoro-fastapi-cpu:v0.9.0
+          for attempt in $(seq 1 60); do
+            if curl -fsS http://127.0.0.1:8880/v1/audio/voices >/dev/null 2>&1; then
+              echo "Kokoro-FastAPI listo."
+              exit 0
+            fi
+            sleep 3
+          done
+          docker logs atlas-kokoro-fastapi || true
+          exit 1
+
+      - name: Generar B1 B2 B3
+        env:
+          KOKORO_FASTAPI_BASE: http://127.0.0.1:8880
+          KOKORO_LAB_PY: ${{ runner.temp }}/kokoro-lab-py
+        run: |
+          set -euo pipefail
+          source "$RUNNER_TEMP/alex-v2/bin/activate"
+          python lab/audio-alex-v2/generate_lab.py
+
+      - name: Preparar acceso público
+        env:
+          DEPLOY_KEY: ${{ secrets.ATLAS_PAGES_DEPLOY_KEY }}
+        run: |
+          set -euo pipefail
+          install -m 700 -d ~/.ssh
+          printf '%s\n' "$DEPLOY_KEY" > ~/.ssh/atlas_news_pages
+          chmod 600 ~/.ssh/atlas_news_pages
+          ssh-keyscan -H github.com >> ~/.ssh/known_hosts
+
+      - name: Publicar sólo LAB Alex V2
+        env:
+          GIT_SSH_COMMAND: ssh -i ~/.ssh/atlas_news_pages -o IdentitiesOnly=yes
+        run: |
+          set -euo pipefail
+          git clone --depth 1 git@github.com:Atlasnews-media/Atlasnews-media.github.io.git "$RUNNER_TEMP/public"
+          target="$RUNNER_TEMP/public/lab/audio/alex-v2"
+          mkdir -p "$target"
+          cp lab/audio-alex-v2/out/*.mp3 "$target/"
+          cp lab/audio-alex-v2/out/manifest.json "$target/manifest.json"
+
+          cat > "$target/index.html" <<'HTML'
+          <!doctype html>
+          <html lang="es">
+          <head>
+            <meta charset="utf-8">
+            <meta name="viewport" content="width=device-width,initial-scale=1">
+            <meta name="robots" content="noindex,nofollow,noarchive">
+            <title>ATLAS NEWS LAB · Alex V2</title>
+            <style>
+              :root{font-family:Georgia,serif;color:#171717;background:#f2efe5}
+              *{box-sizing:border-box} body{margin:0}
+              main{width:min(1050px,calc(100% - 32px));margin:auto;padding:64px 0}
+              .k{font:800 12px/1.2 Arial,sans-serif;letter-spacing:.14em;text-transform:uppercase}
+              h1{font-size:clamp(42px,8vw,86px);line-height:.94;margin:12px 0 18px}
+              .lead{max-width:760px;font-size:18px;line-height:1.6}
+              .rule{border-top:1px solid;border-bottom:1px solid;height:5px;margin:34px 0}
+              .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+              article{border:1px solid;padding:20px;background:rgba(255,255,255,.18)}
+              article.candidate{border-top:5px solid #a71920}
+              h2{font-size:25px;margin:8px 0 12px}
+              p{line-height:1.55} audio{width:100%;margin-top:12px}
+              .note{margin-top:32px;font-size:14px}
+              @media(max-width:780px){.grid{grid-template-columns:1fr}}
+            </style>
+          </head>
+          <body>
+          <main>
+            <p class="k">ATLAS NEWS · AUDIO LAB</p>
+            <h1>Alex · refinamiento V2</h1>
+            <p class="lead">Dora permanece congelada entre B2 y B3. No hay mezcla con Santa. La variable es la prosodia interna de Alex antes del decoder.</p>
+            <div class="rule"></div>
+            <div class="grid">
+              <article>
+                <p class="k">B1 · Control aprobado</p>
+                <h2>FastAPI</h2>
+                <p>La opción B original: Dora + Alex, pausas explícitas y Alex a 0,96.</p>
+                <audio controls preload="metadata" src="./b1-fastapi-approved.mp3"></audio>
+              </article>
+              <article class="candidate">
+                <p class="k">B2 · Broadcast</p>
+                <h2>Alex más contenido</h2>
+                <p>Registro apenas más bajo y rango tonal 5% más estrecho. Busca una lectura más sobria.</p>
+                <audio controls preload="metadata" src="./b2-alex-broadcast.mp3"></audio>
+              </article>
+              <article class="candidate">
+                <p class="k">B3 · Conversacional</p>
+                <h2>Pregunta más orgánica</h2>
+                <p>Afirmaciones casi neutras; en preguntas se abre suavemente el rango tonal.</p>
+                <audio controls preload="metadata" src="./b3-alex-conversational.mp3"></audio>
+              </article>
+            </div>
+            <p class="note"><strong>Guardrail:</strong> LAB aislado. No cambia Audio V2, Speech Normalizer, Lexicon, manifests ni F1–F4A.</p>
+          </main>
+          </body>
+          </html>
+          HTML
+
+          cd "$RUNNER_TEMP/public"
+          git config user.name "ATLAS NEWS AUDIO LAB"
+          git config user.email "actions@users.noreply.github.com"
+          git add lab/audio/alex-v2/
+          if git diff --cached --quiet; then exit 0; fi
+          git commit -m "LAB Audio — Alex V2"
+          git pull --rebase origin main
+          git push origin main
+
+      - name: Diagnóstico
+        if: always()
+        run: |
+          docker logs --tail 120 atlas-kokoro-fastapi || true
+          docker rm -f atlas-kokoro-fastapi >/dev/null 2>&1 || true
