@@ -10,6 +10,9 @@ from PIL import Image, ImageChops, ImageDraw, ImageEnhance, ImageFont, ImageOps
 
 ROOT = Path.cwd().resolve()
 W, H, FPS = 1080, 1920, 30
+SAFE_AREA_SCALE = 0.92
+SAFE_AREA_W, SAFE_AREA_H = 994, 1766
+SAFE_AREA_BG = "0xF4F0E8"
 DURATIONS = (5.0, 6.0, 6.0, 6.0, 6.0, 6.0, 5.0)
 TEMPLATES = ROOT / "reference-assets"
 COVER = TEMPLATES / "01_portada_base.png"
@@ -182,7 +185,7 @@ def render_scene(index:int, c:Contract, out:Path, image:Path|None=None):
         draw.text((388,1094),ed,font=font(38,True),fill=RED); spaced(draw,(584,1096),d,font(34,True),INK,5)
     else:
         item=c.highlights[index-2]; canvas=open_template(NEWS); photo_overlay(canvas,image); draw=ImageDraw.Draw(canvas)
-        draw.text((132,598),str(index-1),font=font(172),fill=RED)
+        draw.text((132,598),f"{index-1:02d}",font=font(172),fill=RED)
         tf,tl=fit(draw,item["label"],920,3,78,52,True); tb=draw_lines(draw,tl,(70,830),tf,INK,1.02)
         by=tb[3]+62; bf,bl=fit(draw,item["text"],920,6,56,38,False); bb=draw_lines(draw,bl,(70,by),bf,INK,1.10)
         if bb[3]>1695: raise ValueError(f"Escena {index}: texto fuera de área")
@@ -225,9 +228,10 @@ def download_visuals(c:Contract, folder:Path):
     paths.append(None); return paths,manifest
 
 
-def animate(png:Path, clip:Path, seconds:float):
+def animate(png:Path, clip:Path, seconds:float, fade_in:bool=True):
     fade=min(.20,seconds/4)
-    run(["ffmpeg","-y","-hide_banner","-loglevel","error","-loop","1","-i",str(png),"-t",f"{seconds:.3f}","-vf",f"fade=t=in:st=0:d={fade:.3f},fade=t=out:st={seconds-fade:.3f}:d={fade:.3f},format=yuv420p","-r",str(FPS),"-an","-c:v","libx264","-preset","ultrafast","-crf","18",str(clip)])
+    vf=(f"fade=t=in:st=0:d={fade:.3f}," if fade_in else "") + f"fade=t=out:st={seconds-fade:.3f}:d={fade:.3f},format=yuv420p"
+    run(["ffmpeg","-y","-hide_banner","-loglevel","error","-loop","1","-i",str(png),"-t",f"{seconds:.3f}","-vf",vf,"-r",str(FPS),"-an","-c:v","libx264","-preset","ultrafast","-crf","18",str(clip)])
 
 
 def music_bed(src:Path, dst:Path, total:float):
@@ -250,15 +254,16 @@ def main():
         t=Path(td); pngdir=t/"png"; clipdir=t/"clips"; pngdir.mkdir(); clipdir.mkdir(); images,manifest=download_visuals(c,t/"images")
         metas=[]
         for i in range(1,8):
-            png=pngdir/f"scene-{i:02d}.png"; clip=clipdir/f"scene-{i:02d}.mp4"; render_scene(i,c,png,images[i-1]); animate(png,clip,durations[i-1]); metas.append({"scene":i,"status":"PASS","animated":{"status":"PASS"},"duration":durations[i-1]})
+            png=pngdir/f"scene-{i:02d}.png"; clip=clipdir/f"scene-{i:02d}.mp4"; render_scene(i,c,png,images[i-1]); animate(png,clip,durations[i-1],fade_in=(i != 1)); metas.append({"scene":i,"status":"PASS","animated":{"status":"PASS","fadeIn":i != 1},"duration":durations[i-1]})
         concat=t/"concat.txt"; concat.write_text("".join(f"file '{p.as_posix()}'\n" for p in sorted(clipdir.glob("*.mp4"))),encoding="utf-8"); silent=t/"silent.mp4"
         run(["ffmpeg","-y","-hide_banner","-loglevel","error","-f","concat","-safe","0","-i",str(concat),"-c","copy",str(silent)])
-        bed=t/"bed.m4a"; music_bed(music,bed,total); final=out/f"atlas-news-reel-{c.source_commit}.mp4"
-        run(["ffmpeg","-y","-hide_banner","-loglevel","error","-i",str(silent),"-i",str(bed),"-map","0:v:0","-map","1:a:0","-c:v","copy","-c:a","aac","-b:a","192k","-shortest","-movflags","+faststart",str(final)])
+        bed=t/"bed.m4a"; music_bed(music,bed,total); composed=t/"composed.mp4"; final=out/f"atlas-news-reel-{c.source_commit}.mp4"
+        run(["ffmpeg","-y","-hide_banner","-loglevel","error","-i",str(silent),"-i",str(bed),"-map","0:v:0","-map","1:a:0","-c:v","copy","-c:a","aac","-b:a","192k","-shortest","-movflags","+faststart",str(composed)])
+        run(["ffmpeg","-y","-hide_banner","-loglevel","error","-i",str(composed),"-vf",f"scale={SAFE_AREA_W}:{SAFE_AREA_H}:flags=lanczos,pad={W}:{H}:(ow-iw)/2:(oh-ih)/2:color={SAFE_AREA_BG}","-map","0:v:0","-map","0:a:0","-c:v","libx264","-preset","medium","-crf","18","-pix_fmt","yuv420p","-r",str(FPS),"-c:a","copy","-movflags","+faststart",str(final)])
         probe=ffprobe(final); v=next(x for x in probe["streams"] if x["codec_type"]=="video"); a=next((x for x in probe["streams"] if x["codec_type"]=="audio"),None); actual=float(probe["format"]["duration"])
         ok=v.get("codec_name")=="h264" and v.get("width")==W and v.get("height")==H and v.get("pix_fmt")=="yuv420p" and v.get("r_frame_rate")=="30/1" and a and a.get("codec_name")=="aac" and abs(actual-total)<.6
         if not ok: raise RuntimeError("Validación técnica MP4 fallida")
-        report={"sourceCommit":c.source_commit,"editionNumber":c.edition,"publishedDate":c.published_date,"scenes":metas,"sceneDurations":durations,"expectedDuration":total,"video":{"codec":"h264","width":str(W),"height":str(H),"pix_fmt":"yuv420p","r_frame_rate":"30/1","audio_codec":"aac","duration":f"{actual:.3f}"},"audio":audio_meta,"visualSources":manifest,"status":"PASS"}
+        report={"sourceCommit":c.source_commit,"editionNumber":c.edition,"publishedDate":c.published_date,"scenes":metas,"sceneDurations":durations,"expectedDuration":total,"video":{"codec":"h264","width":str(W),"height":str(H),"pix_fmt":"yuv420p","r_frame_rate":"30/1","audio_codec":"aac","duration":f"{actual:.3f}"},"layout":{"safeAreaScale":SAFE_AREA_SCALE,"safeAreaWidth":SAFE_AREA_W,"safeAreaHeight":SAFE_AREA_H,"safeAreaBackground":"#F4F0E8","highlightNumberFormat":"02d","firstSceneFadeIn":False},"audio":audio_meta,"visualSources":manifest,"status":"PASS"}
         (out/"visual-validation.json").write_text(json.dumps(report,ensure_ascii=False,indent=2)+"\n",encoding="utf-8"); (out/"visual-sources.json").write_text(json.dumps(manifest,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
         if args.keep_plates:
             plates=out/f"atlas-news-plates-{c.source_commit}"; plates.mkdir(parents=True,exist_ok=True)
