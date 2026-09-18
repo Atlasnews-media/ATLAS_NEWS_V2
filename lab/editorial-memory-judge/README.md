@@ -34,13 +34,23 @@ La tarea programada experimental deberá producir primero un artefacto conforme 
 
 ## Artefactos
 
-- `latest.json`: última corrida visible.
-- `runs/YYYY-MM-DD.json`: histórico futuro de corridas.
-- `scripts/lab/validate-editorial-memory-judge.mjs`: validación mecánica.
+- `bootstrap.json`: estado estático de arranque versionado con el código.
+- `input.json`: paquete determinístico diario publicado sólo en la superficie pública LAB.
+- `latest.json`: salida runtime del juez semántico; vive sólo en la superficie pública LAB y nunca se copia desde este repositorio.
+- `runs/YYYY-MM-DD.json`: histórico futuro de corridas, cuando se habilite.
+- `scripts/lab/prepare-editorial-memory-input.mjs`: productor determinístico de candidatos, claims publicados y antecedentes.
+- `scripts/lab/validate-editorial-memory-input.mjs`: scope gate del paquete de entrada.
+- `scripts/lab/validate-editorial-memory-judge.mjs`: validación mecánica de la salida visible.
 - `lab-site/src/pages/memoria-editorial.astro`: superficie humana del experimento.
+
+El deploy general de LAB preserva explícitamente `input.json` y `latest.json`; por diseño no puede reemplazarlos ni borrarlos mediante `rsync --delete`.
 
 ## Baseline
 
 Skill: `atlas-editorial-memory 0.2.0-candidate`.
+
+Snapshot congelado para EXP-011: `1oZLcsmCwPV0KapLAHbaGuUoDfodUGUky`.
+
+La primera fase usa como control el Shadow canónico vigente y, para el juez semántico, recupera por recall todos los antecedentes publicados dentro del pool comparativo. No asigna lineage, no inventa thresholds ni ejecuta acciones de política.
 
 La baseline histórica documentada contiene 60 publicaciones distribuidas en cuatro ventanas de cinco días. La incorporación de ese benchmark al runtime se hará en una fase posterior y separada.
