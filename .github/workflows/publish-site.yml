@@ -3,8 +3,20 @@ name: Publicar ATLAS NEWS
 on:
   push:
     branches: [main]
+    paths-ignore:
+      - "lab/**"
+      - "lab-site/**"
+      - "public/lab/**"
+      - "scripts/lab/**"
+      - ".github/workflows/*lab*.yml"
   pull_request:
     branches: [main]
+    paths-ignore:
+      - "lab/**"
+      - "lab-site/**"
+      - "public/lab/**"
+      - "scripts/lab/**"
+      - ".github/workflows/*lab*.yml"
   workflow_dispatch:
 
 permissions:
@@ -325,7 +337,7 @@ jobs:
         run: |
           atlas_publish_dir="$RUNNER_TEMP/atlas-news-public"
           git clone --depth 1 git@github.com:Atlasnews-media/Atlasnews-media.github.io.git "$atlas_publish_dir"
-          rsync -a --delete --exclude='.git' --exclude='audio/' --exclude='data/funds-beagf.json' dist/ "$atlas_publish_dir/"
+          rsync -a --delete --exclude='.git' --exclude='audio/' --exclude='lab/' --exclude='data/funds-beagf.json' dist/ "$atlas_publish_dir/"
           cd "$atlas_publish_dir"
           git config user.name "ATLAS NEWS Publisher"
           git config user.email "actions@users.noreply.github.com"

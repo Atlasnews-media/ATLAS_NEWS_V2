@@ -5,7 +5,7 @@ on:
     branches: ["main", "lab/lexicon-v4-bypass"]
     paths:
       - "lab/audio-lexicon-v4/**"
-      - "src/pages/lab/lexicon-v4.astro"
+      - "lab-site/src/pages/lexicon-v4.astro"
       - ".github/workflows/audio-lexicon-v4-lab.yml"
   workflow_dispatch:
 

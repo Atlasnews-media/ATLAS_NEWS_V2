@@ -5,7 +5,7 @@ on:
     branches: ["main"]
     paths:
       - "lab/audio-naturalness-v1/**"
-      - "src/pages/lab/audio-naturalness-v1.astro"
+      - "lab-site/src/pages/audio-naturalness-v1.astro"
       - ".github/workflows/audio-naturalness-lab.yml"
   workflow_dispatch:
 

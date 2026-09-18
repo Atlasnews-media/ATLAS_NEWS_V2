@@ -1,11 +1,11 @@
 ---
-import ContentCard from "../../components/ContentCard.astro";
-import DailyAudio from "../../components/DailyAudio.astro";
-import EconomicIndicators from "../../components/EconomicIndicators.astro";
-import EditorialDoubleRule from "../../components/EditorialDoubleRule.astro";
-import FrontPageHeadline from "../../components/FrontPageHeadline.astro";
-import MarketPulse from "../../components/MarketPulse.astro";
-import BaseLayout from "../../layouts/BaseLayout.astro";
+import ContentCard from "../../../src/components/ContentCard.astro";
+import DailyAudio from "../../../src/components/DailyAudio.astro";
+import EconomicIndicators from "../../../src/components/EconomicIndicators.astro";
+import EditorialDoubleRule from "../../../src/components/EditorialDoubleRule.astro";
+import FrontPageHeadline from "../../../src/components/FrontPageHeadline.astro";
+import MarketPulse from "../../../src/components/MarketPulse.astro";
+import BaseLayout from "../../../src/layouts/BaseLayout.astro";
 import {
   dailyIssueNumber,
   formatEditorialDate,
@@ -15,7 +15,7 @@ import {
   getLatestNational,
   getPublishedEditions,
   getPublishedReadings,
-} from "../../lib/content";
+} from "../../../src/lib/content";
 
 const [latestDaily, editions, latestNational, latestMarkets, readings] =
   await Promise.all([
