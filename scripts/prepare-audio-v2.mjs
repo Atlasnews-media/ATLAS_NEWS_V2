@@ -11,11 +11,18 @@ const PLAN_FILE = ".atlas-audio-v2-plan.json";
 const lexiconConfig = JSON.parse(
   await readFile(new URL("config/audio/lexicon-v3.json", root), "utf8"),
 );
+const voiceProfileConfig = JSON.parse(
+  await readFile(new URL("config/audio/alex-c-v1.json", root), "utf8"),
+);
 const LEXICON_VERSION = Number(lexiconConfig.version ?? 0);
 const LEXICON_REVISION = Number(lexiconConfig.revision ?? 0);
+const VOICE_PROFILE_VERSION = String(voiceProfileConfig.profile ?? "");
 
 if (LEXICON_VERSION !== 3 || LEXICON_REVISION < 1) {
   throw new Error("Lexicon V3 inválido para planificación de Audio V2.");
+}
+if (VOICE_PROFILE_VERSION !== "alex-c-v1") {
+  throw new Error("Perfil de voz Alex C inválido para Audio V2.");
 }
 
 function hashText(text) {
@@ -110,6 +117,7 @@ function currentAnalysisState({ sourceId, script, scriptVersion, section }) {
     sameVersion &&
     sameHash &&
     existing?.speechNormalizerVersion === SPEECH_NORMALIZER_VERSION &&
+    existing?.voiceProfileVersion === VOICE_PROFILE_VERSION &&
     sameLexicon(existing) &&
     hasPublishedPath;
 
@@ -146,6 +154,7 @@ async function dialogueProduct(section) {
     scriptVersion: ANALYSIS_SCRIPT_VERSION,
     lexiconVersion: LEXICON_VERSION,
     lexiconRevision: LEXICON_REVISION,
+    voiceProfileVersion: VOICE_PROFILE_VERSION,
     needsGeneration: state.needsGeneration,
     unavailableReason: state.unavailableReason,
   };
@@ -173,6 +182,7 @@ function internationalProduct() {
     title: internationalPlan?.title ?? null,
     lexiconVersion: LEXICON_VERSION,
     lexiconRevision: LEXICON_REVISION,
+    voiceProfileVersion: VOICE_PROFILE_VERSION,
     needsGeneration: state.needsGeneration,
     unavailableReason:
       internationalPlanPath && !internationalPlan
@@ -216,6 +226,7 @@ const plan = {
   speechNormalizerVersion: SPEECH_NORMALIZER_VERSION,
   lexiconVersion: LEXICON_VERSION,
   lexiconRevision: LEXICON_REVISION,
+  voiceProfileVersion: VOICE_PROFILE_VERSION,
   simulateMarketsFailure,
   products,
 };

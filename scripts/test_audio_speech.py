@@ -133,6 +133,10 @@ check(
     "El IPC fue 3,20%.",
     "El índice de precios al consumidor fue tres coma dos por ciento.",
 )
+check(
+    "La Fed elevó el rango a 3,75%-4,00%.",
+    "La Reserva Federal elevó el rango a tres coma setenta y cinco a cuatro por ciento.",
+)
 
 if not is_question("¿Qué significa esto?"):
     raise AssertionError("No se detectó una pregunta explícita.")
