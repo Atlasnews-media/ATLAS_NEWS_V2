@@ -1,0 +1,138 @@
+name: LAB — Reel 047 candidato final 92
+
+on:
+  push:
+    branches:
+      - lab/reel-047-final-candidate
+    paths:
+      - ".github/workflows/lab-reel-047-final-candidate.yml"
+
+permissions:
+  contents: read
+
+concurrency:
+  group: lab-reel-047-final-candidate
+  cancel-in-progress: true
+
+jobs:
+  build:
+    name: Generar Reel 047 candidato 92 sin negro + 01-05
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      SOURCE_COMMIT: 78e2f96838bd2a5956619913feb6a5d480eb4c1c
+      SOURCE_ID: src/content/editions/2026-09-18-daily-bancos-centrales-endurecen-el-mapa-global.md
+      EDITION_ID: 2026-09-18-daily-bancos-centrales-endurecen-el-mapa-global
+      EDITION_NUMBER: "47"
+      CONTRACT: tools/reel_maker/.generated/lab-reel-047-final-contract.json
+      OUTPUT: tools/reel_maker/lab-final-candidate-047
+
+    steps:
+      - name: Checkout LAB
+        uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
+
+      - name: Preparar runtime real de F4D
+        run: |
+          set -euo pipefail
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq --no-install-recommends ffmpeg fontconfig fonts-liberation python3-pil
+          python3 -m py_compile tools/reel_maker/prepare_reel_contract.py tools/reel_maker/reel_maker.py
+
+      - name: Construir contrato edición 047
+        env:
+          ATLAS_SOURCE_COMMIT: ${{ env.SOURCE_COMMIT }}
+          ATLAS_SOURCE_ID: ${{ env.SOURCE_ID }}
+          ATLAS_EDITION_ID: ${{ env.EDITION_ID }}
+          ATLAS_EDITION_NUMBER: ${{ env.EDITION_NUMBER }}
+          ATLAS_REEL_CONTRACT_OUTPUT: ${{ env.CONTRACT }}
+        run: |
+          set -euo pipefail
+          python3 tools/reel_maker/prepare_reel_contract.py
+          jq -e '.editionNumber == 47 and (.highlights | length == 5)' "$CONTRACT" >/dev/null
+
+      - name: Crear copia temporal del engine con cambios LAB
+        run: |
+          set -euo pipefail
+          cp tools/reel_maker/reel_maker.py "$RUNNER_TEMP/reel_maker_lab.py"
+          python3 - "$RUNNER_TEMP/reel_maker_lab.py" <<'PY'
+          from pathlib import Path
+          import sys
+          p=Path(sys.argv[1])
+          s=p.read_text(encoding="utf-8")
+          old='draw.text((132,598),str(index-1),font=font(172),fill=RED)'
+          new='draw.text((132,598),f"{index-1:02d}",font=font(172),fill=RED)'
+          if old not in s:
+              raise SystemExit("No se encontró numerador esperado")
+          s=s.replace(old,new,1)
+
+          old='''def animate(png:Path, clip:Path, seconds:float):
+              fade=min(.20,seconds/4)
+              run(["ffmpeg","-y","-hide_banner","-loglevel","error","-loop","1","-i",str(png),"-t",f"{seconds:.3f}","-vf",f"fade=t=in:st=0:d={fade:.3f},fade=t=out:st={seconds-fade:.3f}:d={fade:.3f},format=yuv420p","-r",str(FPS),"-an","-c:v","libx264","-preset","ultrafast","-crf","18",str(clip)])
+          '''
+          new='''def animate(png:Path, clip:Path, seconds:float, fade_in:bool=True):
+              fade=min(.20,seconds/4)
+              vf=(f"fade=t=in:st=0:d={fade:.3f}," if fade_in else "") + f"fade=t=out:st={seconds-fade:.3f}:d={fade:.3f},format=yuv420p"
+              run(["ffmpeg","-y","-hide_banner","-loglevel","error","-loop","1","-i",str(png),"-t",f"{seconds:.3f}","-vf",vf,"-r",str(FPS),"-an","-c:v","libx264","-preset","ultrafast","-crf","18",str(clip)])
+          '''
+          if old not in s:
+              raise SystemExit("No se encontró animate esperado")
+          s=s.replace(old,new,1)
+
+          old='render_scene(i,c,png,images[i-1]); animate(png,clip,durations[i-1]);'
+          new='render_scene(i,c,png,images[i-1]); animate(png,clip,durations[i-1],fade_in=(i != 1));'
+          if old not in s:
+              raise SystemExit("No se encontró llamada animate esperada")
+          s=s.replace(old,new,1)
+          p.write_text(s,encoding="utf-8")
+          PY
+          python3 -m py_compile "$RUNNER_TEMP/reel_maker_lab.py"
+
+      - name: Renderizar candidato real
+        run: |
+          set -euo pipefail
+          rm -rf "$OUTPUT"
+          python3 "$RUNNER_TEMP/reel_maker_lab.py" "$CONTRACT" --output-dir "$OUTPUT" --keep-plates
+          raw="$OUTPUT/atlas-news-reel-$SOURCE_COMMIT.mp4"
+          test -f "$raw"
+          jq -e '.status == "PASS" and .expectedDuration == 40 and .audio.selectionEdition == 47' "$OUTPUT/visual-validation.json" >/dev/null
+
+      - name: Aplicar safe area 92%
+        run: |
+          set -euo pipefail
+          raw="$OUTPUT/atlas-news-reel-$SOURCE_COMMIT.mp4"
+          final="$OUTPUT/reel-047-final-92-no-black-01-05.mp4"
+          ffmpeg -y -hide_banner -loglevel error \
+            -i "$raw" \
+            -vf "scale=994:1766:flags=lanczos,pad=1080:1920:(ow-iw)/2:(oh-ih)/2:color=0xF4F0E8" \
+            -map 0:v:0 -map 0:a? \
+            -c:v libx264 -preset medium -crf 18 -pix_fmt yuv420p -r 30 \
+            -c:a copy -movflags +faststart "$final"
+
+          ffprobe -v error -show_entries \
+            stream=codec_type,codec_name,width,height,pix_fmt,r_frame_rate:format=duration \
+            -of json "$final" > "$OUTPUT/final-probe.json"
+
+          jq -e '
+            ([.streams[] | select(.codec_type=="video")][0] |
+              .codec_name=="h264" and .width==1080 and .height==1920 and
+              .pix_fmt=="yuv420p" and .r_frame_rate=="30/1") and
+            ([.streams[] | select(.codec_type=="audio")][0] | .codec_name=="aac") and
+            ((.format.duration|tonumber) > 39.4 and (.format.duration|tonumber) < 40.6)
+          ' "$OUTPUT/final-probe.json" >/dev/null
+
+          ffmpeg -y -hide_banner -loglevel error -ss 0 -i "$final" -frames:v 1 "$OUTPUT/frame-000.png"
+          ffmpeg -y -hide_banner -loglevel error -ss 5.2 -i "$final" -frames:v 1 "$OUTPUT/frame-01.png"
+
+      - name: Subir candidato LAB
+        uses: actions/upload-artifact@v4
+        with:
+          name: lab-reel-047-final-92-no-black-01-05
+          path: |
+            tools/reel_maker/lab-final-candidate-047/reel-047-final-92-no-black-01-05.mp4
+            tools/reel_maker/lab-final-candidate-047/final-probe.json
+            tools/reel_maker/lab-final-candidate-047/frame-000.png
+            tools/reel_maker/lab-final-candidate-047/frame-01.png
+            tools/reel_maker/lab-final-candidate-047/visual-validation.json
+          retention-days: 7
