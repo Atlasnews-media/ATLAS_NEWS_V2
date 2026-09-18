@@ -16,19 +16,14 @@ const { expectedDate } = Astro.props;
   hidden
 >
   <div class="audio-copy">
-    <p class="audio-kicker" id="daily-audio-title">
-      Escuchar el resumen del día
-    </p>
-    <p data-audio-summary>
-      Una cápsula con las señales principales de hoy: el titular, Nacional y
-      Mercados.
-    </p>
+    <p class="audio-kicker" id="daily-audio-title">ATLAS NEWS RADIO</p>
   </div>
   <div class="audio-player">
     <AtlasAudioPlayer
       preload="metadata"
       ariaLabel="Resumen diario de ATLAS NEWS"
       engineRole="daily"
+      visualVariant="radio"
     />
   </div>
 </section>
@@ -97,15 +92,21 @@ const { expectedDate } = Astro.props;
 <style>
   .daily-audio {
     display: grid;
-    grid-template-columns: minmax(0, 1.4fr) minmax(18rem, 1fr);
-    gap: clamp(1.25rem, 4vw, 3rem);
+    grid-template-columns: 1fr;
+    gap: 0.28rem;
     align-items: center;
-    padding: 0.8rem 0 1.5rem;
+    padding: 0.68rem 0 0.72rem;
     border-bottom: 4px double var(--rule);
   }
+
   .daily-audio[hidden] {
     display: none;
   }
+
+  .audio-copy {
+    min-width: 0;
+  }
+
   .audio-kicker {
     margin: 0;
     color: var(--accent);
@@ -113,20 +114,15 @@ const { expectedDate } = Astro.props;
     letter-spacing: 0.16em;
     text-transform: uppercase;
   }
-  .audio-copy > p:last-child {
-    max-width: 45rem;
-    margin: 0.55rem 0 0;
-    color: var(--ink-soft);
-    line-height: 1.4;
-  }
+
   .audio-player {
     min-width: 0;
+    width: 100%;
   }
 
   @media (min-width: 70.01rem) {
     .daily-audio {
-      grid-template-columns: minmax(12rem, 0.42fr) minmax(0, 1.58fr);
-      gap: 0.9rem;
+      gap: 0.24rem;
       padding: 0.62rem 0 0.68rem;
     }
 
@@ -134,16 +130,11 @@ const { expectedDate } = Astro.props;
       font-size: 0.64rem;
       letter-spacing: 0.12em;
     }
-
-    .audio-copy > p:last-child {
-      display: none;
-    }
   }
 
   @media (max-width: 42rem) {
     .daily-audio {
-      grid-template-columns: 1fr;
-      gap: 0.3rem;
+      gap: 0.2rem;
       padding: 0.58rem 0 0.62rem;
       border-bottom: 0;
     }
@@ -152,14 +143,6 @@ const { expectedDate } = Astro.props;
       font-size: 0.61rem;
       line-height: 1.35;
       letter-spacing: 0.12em;
-    }
-
-    .audio-copy > p:last-child {
-      display: none;
-    }
-
-    .audio-player {
-      width: 100%;
     }
   }
 </style>
