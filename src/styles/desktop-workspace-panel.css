@@ -26,9 +26,9 @@
   html:has(.desktop-workspace-panel)
     body:has(.desktop-workspace-panel)
     .front-page {
-    width: calc(100% - 1.8rem) !important;
-    margin-right: 0.9rem !important;
-    margin-left: 0.9rem !important;
+    width: calc(100% - 1.4rem) !important;
+    margin-right: 0.7rem !important;
+    margin-left: 0.7rem !important;
   }
 
   html:has(.desktop-workspace-panel)
@@ -115,7 +115,7 @@
   .desktop-workspace-panel .article-page,
   .desktop-workspace-panel .market-indices-page,
   .desktop-workspace-panel .calendar-lab {
-    width: calc(100% - 1.53rem) !important;
+    width: calc(100% - 1.2rem) !important;
     max-width: none !important;
     margin-right: auto !important;
     margin-left: auto !important;
