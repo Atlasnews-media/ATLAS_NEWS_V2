@@ -871,6 +871,22 @@ const marketsVisual = latestMarkets
       padding-left: 0;
     }
   }
+  @media (min-width: 42.01rem) and (max-width: 70rem) {
+    .headline-tab {
+      padding: 0.45rem 0.55rem;
+      font-size: 1rem;
+      letter-spacing: 0.05em;
+    }
+  }
+
+  @media (min-width: 70.01rem) and (max-width: 79.99rem) {
+    .headline-tab {
+      padding: 0.45rem 0.55rem;
+      font-size: clamp(0.91rem, 1.1vw, 1rem);
+      letter-spacing: 0.05em;
+    }
+  }
+
   @media (max-width: 42rem) {
     .front-page {
       width: min(100% - 1.25rem, 88rem);
