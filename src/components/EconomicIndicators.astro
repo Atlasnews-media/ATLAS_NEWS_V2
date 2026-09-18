@@ -343,6 +343,8 @@ const freshnessLabel =
   }
 
   .economic-strip__actions {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     margin: 0 0 0.28rem;
     border-top: 1px solid var(--rule);
     border-bottom: 1px solid var(--rule);
@@ -350,8 +352,9 @@ const freshnessLabel =
 
   .economic-strip__action {
     display: grid;
-    grid-template-columns: 2.6rem minmax(0, 1fr) 2.8rem;
+    grid-template-columns: 2.1rem minmax(0, 1fr) 1.8rem;
     align-items: center;
+    min-width: 0;
     height: 25px;
     min-height: 25px;
     color: var(--ink);
@@ -359,7 +362,7 @@ const freshnessLabel =
   }
 
   .economic-strip__action + .economic-strip__action {
-    border-top: 1px solid var(--rule);
+    border-left: 1px solid rgba(31, 29, 23, 0.16);
   }
 
   .economic-strip__action-icon {
@@ -386,13 +389,18 @@ const freshnessLabel =
   }
 
   .economic-strip__action-label {
-    padding: 0 0.4rem;
+    min-width: 0;
+    padding: 0 0.25rem;
+    overflow: hidden;
     font-family: var(--sans);
     font-size: 0.63rem;
     font-weight: 800;
     line-height: 1;
     letter-spacing: 0.065em;
+    text-align: center;
+    text-overflow: ellipsis;
     text-transform: uppercase;
+    white-space: nowrap;
   }
 
   .economic-strip__action-arrow {
@@ -400,7 +408,6 @@ const freshnessLabel =
     align-items: center;
     justify-content: center;
     align-self: stretch;
-    border-left: 1px solid var(--rule);
     color: var(--accent);
     font-family: var(--sans);
     font-size: 1rem;
@@ -464,7 +471,7 @@ const freshnessLabel =
     }
 
     .economic-strip__action {
-      grid-template-columns: 2.25rem minmax(0, 1fr) 2.55rem;
+      grid-template-columns: 1.95rem minmax(0, 1fr) 1.65rem;
       min-height: 25px;
     }
 
@@ -521,18 +528,18 @@ const freshnessLabel =
     }
 
     .economic-strip__action {
-      grid-template-columns: 2.35rem minmax(0, 1fr) 2.45rem;
+      grid-template-columns: 1.65rem minmax(0, 1fr) 1.35rem;
       min-height: 25px;
     }
 
     .economic-strip__action-icon {
-      font-size: 0.603rem;
+      font-size: 0.56rem;
     }
 
     .economic-strip__action-label {
-      padding-left: 0.22rem;
-      font-size: 0.603rem;
-      letter-spacing: 0.045em;
+      padding: 0 0.08rem;
+      font-size: clamp(0.47rem, 2.15vw, 0.56rem);
+      letter-spacing: 0.025em;
     }
 
     .economic-strip__action-arrow {
