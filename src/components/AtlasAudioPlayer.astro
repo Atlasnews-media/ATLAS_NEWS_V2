@@ -320,16 +320,17 @@ const waveformHeights = [
     height: 2.576rem;
     border: 0;
     border-radius: 0.55rem;
-    background: rgba(31, 29, 23, 0.055);
+    background: rgba(31, 29, 23, 0.022);
   }
 
   .atlas-audio-player--radio .atlas-audio-toggle:hover {
-    background: rgba(31, 29, 23, 0.075);
+    background: rgba(31, 29, 23, 0.035);
+    transform: none;
   }
 
   .atlas-audio-player--radio[data-playing="true"] .atlas-audio-toggle {
     border: 0;
-    background: rgba(153, 47, 36, 0.085);
+    background: rgba(153, 47, 36, 0.035);
   }
 
   .atlas-audio-player--minimal [data-atlas-audio-icon],
@@ -379,6 +380,19 @@ const waveformHeights = [
     );
     opacity: 0;
     transform: scale(0.9);
+  }
+
+  .atlas-audio-player--radio [data-atlas-audio-icon]::before {
+    border-left-color: rgba(31, 29, 23, 0.72);
+  }
+
+  .atlas-audio-player--radio [data-atlas-audio-icon]::after {
+    background: linear-gradient(
+      to right,
+      rgba(153, 47, 36, 0.62) 0 0.19rem,
+      transparent 0.19rem 0.63rem,
+      rgba(153, 47, 36, 0.62) 0.63rem 0.82rem
+    );
   }
 
   .atlas-audio-player--minimal[data-playing="true"]
