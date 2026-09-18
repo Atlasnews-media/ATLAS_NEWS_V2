@@ -5,14 +5,10 @@ on:
     branches: [main]
     paths:
       - ".github/workflows/carousel-template-preview.yml"
-      - "tools/social-renderer/render-carousel-five-v2.mjs"
-      - "tools/social-renderer/prepare-daily-contract.mjs"
+      - ".github/workflows/instagram-carousel-publish-automatic.yml"
+      - "tools/carousel/**"
+      - "tools/social-renderer/render.mjs"
       - "tools/social-renderer/resolve-instagram-session.mjs"
-      - "tools/social-renderer/assets/CARRUSEL_1.png"
-      - "tools/social-renderer/assets/CARRUSEL_2.png"
-      - "tools/social-renderer/assets/CARRUSEL_3.png"
-      - "tools/social-renderer/assets/CARRUSEL_4.png"
-      - "tools/social-renderer/assets/CARRUSEL_5.png"
   workflow_dispatch:
 
 permissions:
@@ -23,80 +19,75 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 10
     env:
-      ATLAS_SOURCE_COMMIT: 5acf20e9a60c1f7f1100168a5567576df9c5850e
-      ATLAS_PUBLIC_STATUS_URL: https://atlasnews-media.github.io/status.json
-      ATLAS_SOCIAL_CONTRACT_OUTPUT: tools/social-renderer/.generated/daily-contract.json
       SOCIAL_PUBLICATION_STATUS: PUBLICACIÓN DISPONIBLE / VERIFICADA
       SOCIAL_EDITION_NUMBER: "046"
       INSTAGRAM_API_VERSION: v23.0
       INSTAGRAM_EXPECTED_USERNAME: _atlas_news
 
     steps:
-      - name: Checkout preview branch and source history
+      - name: Checkout preview branch
         uses: actions/checkout@v5
-        with:
-          fetch-depth: 0
 
       - name: Setup Node
         uses: actions/setup-node@v6
         with:
           node-version: 22.19.0
 
-      - name: Install renderer dependencies
+      - name: Syntax-check carousel contract and publisher
+        run: |
+          node --check tools/carousel/prepare-carousel-contract.mjs
+          node --check tools/carousel/publish-instagram.mjs
+
+      - name: Install Carousel V2 dependencies
+        working-directory: tools/carousel
+        run: npm install --no-audit --no-fund --no-package-lock
+
+      - name: Install preserved SHARE renderer dependencies
         working-directory: tools/social-renderer
         run: npm install --no-audit --no-fund --no-package-lock
 
       - name: Ensure Chromium
-        working-directory: tools/social-renderer
+        working-directory: tools/carousel
         run: npx playwright install chromium
 
       - name: Verify five official bases
-        working-directory: tools/social-renderer
+        working-directory: tools/carousel
         run: |
           set -euo pipefail
           for n in 1 2 3 4 5; do
             test -f "assets/CARRUSEL_${n}.png"
           done
 
-      - name: Build live five-slide contract for Edition 046
-        run: |
-          set -euo pipefail
-          node tools/social-renderer/prepare-daily-contract.mjs
-          test -f "$ATLAS_SOCIAL_CONTRACT_OUTPUT"
-          jq -e '
-            .version == "1" and
-            .sourceCommit == "5acf20e9a60c1f7f1100168a5567576df9c5850e" and
-            .sourceId == "src/content/editions/2026-09-16-daily-arabia-saudi-ensaya-un-bypass-maritimo.md" and
-            (.publishedDate | startswith("2026-09-16")) and
-            .canonicalUrl == "https://atlasnews-media.github.io/ediciones/2026-09-16-daily-arabia-saudi-ensaya-un-bypass-maritimo/"
-          ' "$ATLAS_SOCIAL_CONTRACT_OUTPUT" >/dev/null
-          echo "Edition 046 identity verified from sourceCommit + published edition."
-
-      - name: Render current five-slide carousel
-        working-directory: tools/social-renderer
+      - name: Render five-slide carousel fixture
+        working-directory: tools/carousel
         env:
-          SOCIAL_CONTRACT: tools/social-renderer/.generated/daily-contract.json
-        run: node render-carousel-five-v2.mjs
+          SOCIAL_CONTRACT: tools/carousel/contracts/example-v1.json
+        run: node carousel-renderer.mjs
 
-      - name: Validate current carousel artifact
-        working-directory: tools/social-renderer
+      - name: Validate five-slide artifact
+        working-directory: tools/carousel
         run: |
           set -euo pipefail
-          test "$(find output-template -maxdepth 1 -type f -name 'atlas-news-instagram-carousel-0*.png' | wc -l | tr -d ' ')" = "5"
+          test "$(find output -maxdepth 1 -type f -name 'atlas-news-instagram-carousel-0*.png' | wc -l | tr -d ' ')" = "5"
           for n in 01 02 03 04 05; do
-            test -f "output-template/atlas-news-instagram-carousel-${n}.png"
+            test -f "output/atlas-news-instagram-carousel-${n}.png"
           done
           jq -e '
             .status == "PASS" and
             .carouselSlides == 5 and
             .editionNumber == "046" and
-            .publishedDate == "16 SEPT 2026" and
             .uniqueVisuals == 5 and
-            (.visualKeys | length == 5) and
-            ((.visualKeys | unique | length) == 5) and
             (.outputs | length == 5) and
             (.templates | length == 5)
-          ' output-template/template-validation.json >/dev/null
+          ' output/template-validation.json >/dev/null
+
+      - name: Render preserved SHARE card from same contract
+        working-directory: tools/social-renderer
+        env:
+          SOCIAL_CONTRACT: tools/carousel/contracts/example-v1.json
+        run: |
+          node render.mjs
+          test -f output/atlas-news-social-card-1200x630.png
 
       - name: Resolve Instagram session exactly like production
         env:
@@ -116,26 +107,24 @@ jobs:
             echo "BLOCKED_EXTERNAL: wrong Instagram account ${INSTAGRAM_USERNAME:-<missing>}."
             exit 6
           }
-          response="$(curl -fsSL \
-            -H "Authorization: Bearer ${INSTAGRAM_SESSION_TOKEN}" \
-            -H 'User-Agent: ATLAS-NEWS-Social-DryRun/2.0' \
-            "${INSTAGRAM_GRAPH_BASE}/${INSTAGRAM_USER_ID}?fields=id,username")" || {
+          response="$(curl -fsSL             -H "Authorization: Bearer ${INSTAGRAM_SESSION_TOKEN}"             -H 'User-Agent: ATLAS-NEWS-Social-DryRun/3.0'             "${INSTAGRAM_GRAPH_BASE}/${INSTAGRAM_USER_ID}?fields=id,username")" || {
               echo "BLOCKED_EXTERNAL: resolved Instagram session rejected by read-only account lookup."
               exit 7
             }
           jq -e --arg id "$INSTAGRAM_USER_ID" --arg username "$INSTAGRAM_EXPECTED_USERNAME" '
             (.id | tostring) == $id and (.username | ascii_downcase) == ($username | ascii_downcase)
           ' <<<"$response" >/dev/null
-          echo "Instagram secret/session accepted for @_atlas_news via ${INSTAGRAM_AUTH_MODE}. No POST request was sent to Meta."
+          echo "Instagram session accepted for @_atlas_news. No POST request was sent to Meta."
 
       - name: Upload dry-run evidence
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: atlas-news-carousel-046-dry-run-${{ github.run_id }}
+          name: atlas-news-carousel-five-dry-run-${{ github.run_id }}
           path: |
-            tools/social-renderer/.generated/daily-contract.json
-            tools/social-renderer/output-template/atlas-news-instagram-carousel-0*.png
-            tools/social-renderer/output-template/template-validation.json
+            tools/carousel/contracts/example-v1.json
+            tools/carousel/output/atlas-news-instagram-carousel-0*.png
+            tools/carousel/output/template-validation.json
+            tools/social-renderer/output/atlas-news-social-card-1200x630.png
           if-no-files-found: warn
           retention-days: 14

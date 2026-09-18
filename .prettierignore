@@ -31,3 +31,7 @@ src/styles/global.css
 tools/social-renderer/upgrade-daily-contract-v2.mjs
 tools/social-renderer/render-v2.mjs
 tools/social-renderer/publish-instagram-v2.mjs
+# CARRUSEL V2 CANÓNICO: runtime aislado; validado por LAB/Actions social, no por formatter del core web.
+tools/carousel/prepare-carousel-contract.mjs
+tools/carousel/carousel-renderer.mjs
+tools/carousel/publish-instagram.mjs
