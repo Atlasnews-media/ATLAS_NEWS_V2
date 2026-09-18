@@ -1055,6 +1055,133 @@ const CHILE_CONSTRUCTION_VISUALS = [
   CHILE_CCHC,
 ];
 
+export const ECONOMIC_CALENDAR_KEYWORDS = [
+  "calendario económico",
+  "agenda económica",
+  "dato económico",
+  "indicador",
+  "publicación",
+  "estadística",
+  "inflación",
+  "ipc",
+  "empleo",
+  "desempleo",
+  "pib",
+  "ventas minoristas",
+  "retail sales",
+  "producción industrial",
+  "banco central",
+  "fed",
+  "bce",
+  "boj",
+  "tpm",
+  "tasa de interés",
+  "discurso",
+  "conferencia",
+  "comercio exterior",
+  "balanza comercial",
+  "actividad económica",
+  "imacec",
+  "chile",
+  "estados unidos",
+  "eurozona",
+  "japón",
+] as const;
+
+export const MARKET_INDICES_KEYWORDS = [
+  "índices de mercado",
+  "mercados",
+  "bolsa",
+  "acciones",
+  "s&p 500",
+  "nasdaq",
+  "dow jones",
+  "euro stoxx 50",
+  "ipsa",
+  "bonos",
+  "treasury",
+  "ust 10y",
+  "tasas",
+  "tpm",
+  "divisas",
+  "dólar",
+  "usd/clp",
+  "eur/usd",
+  "usd/jpy",
+  "materias primas",
+  "brent",
+  "petróleo",
+  "oro",
+  "cobre",
+  "bitcoin",
+  "criptomonedas",
+  "mercado chileno",
+  "bolsa de santiago",
+  "renta variable",
+  "renta fija",
+] as const;
+
+export type UtilityPageVisualFamily = "economic-calendar" | "market-indices";
+
+const ECONOMIC_CALENDAR_VISUALS: CatalogVisual[] = [
+  FED_ECCLES,
+  FED_FOMC_2016,
+  ECB_BUILDING,
+  PBOC_HEADQUARTER,
+  BCCH_EXTERIOR,
+  PORT_SAN_ANTONIO,
+  SINGAPORE_PORT,
+  SANTIAGO_METRO,
+  SANTIAGO_SKYLINE,
+  HACIENDA_HISTORIC,
+];
+
+const MARKET_INDICES_VISUALS: CatalogVisual[] = [
+  NYSE_HIGHSMITH,
+  NYSE_HISTORIC_FLOOR,
+  TREASURY_BUILDING,
+  EURO_BANKNOTES,
+  GULF_OIL_TERMINAL,
+  GOLD_BULLION,
+  COPPER_MINE,
+  BCCH_BUILDING,
+  SHANGHAI_PUDONG,
+  PORT_SAN_ANTONIO_CONTAINERS,
+];
+
+const UTILITY_PAGE_VISUALS: Record<UtilityPageVisualFamily, CatalogVisual[]> = {
+  "economic-calendar": ECONOMIC_CALENDAR_VISUALS,
+  "market-indices": MARKET_INDICES_VISUALS,
+};
+
+const UTILITY_PAGE_KEYWORDS: Record<
+  UtilityPageVisualFamily,
+  readonly string[]
+> = {
+  "economic-calendar": ECONOMIC_CALENDAR_KEYWORDS,
+  "market-indices": MARKET_INDICES_KEYWORDS,
+};
+
+function utilityDayOrdinal(dateKey: string) {
+  const match = /^(\d{4})-(\d{2})-(\d{2})$/.exec(dateKey);
+  if (!match) return stableHash(dateKey);
+  const [, year, month, day] = match;
+  return Math.floor(
+    Date.UTC(Number(year), Number(month) - 1, Number(day)) / 86_400_000,
+  );
+}
+
+export function resolveUtilityPageVisual(
+  family: UtilityPageVisualFamily,
+  dateKey: string,
+): EditorialVisual {
+  const pool = UTILITY_PAGE_VISUALS[family];
+  const familySalt = UTILITY_PAGE_KEYWORDS[family].join("|");
+  const offset = stableHash(`${family}:${familySalt}`) % pool.length;
+  const index = (utilityDayOrdinal(dateKey) + offset) % pool.length;
+  return stripCatalogMetadata(pool[index] ?? pool[0]);
+}
+
 const VISUAL_CATALOG: Record<FrontPageSection, CatalogVisual[]> = {
   international: [
     ...FED_VISUALS,
