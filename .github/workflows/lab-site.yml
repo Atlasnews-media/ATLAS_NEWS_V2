@@ -62,13 +62,26 @@ jobs:
           cp -R src/content lab-site/src/content
           cp src/content.config.ts lab-site/src/content.config.ts
 
-      - name: Comprobar formato LAB
+      - name: Generar formato canónico LAB
         run: >-
-          npx prettier --check
+          npx prettier --write
           "lab-site/src/pages/**/*.{astro,ts}"
           "lab-site/astro.config.mjs"
           "lab-site/tsconfig.json"
           --ignore-path /dev/null
+
+      - name: Exportar fuentes LAB formateadas
+        uses: actions/upload-artifact@v4
+        with:
+          name: lab-site-prettier-output
+          path: |
+            lab-site/src/pages/
+            lab-site/astro.config.mjs
+            lab-site/tsconfig.json
+          retention-days: 1
+
+      - name: Exigir formato canónico versionado
+        run: git diff --exit-code -- lab-site/src/pages lab-site/astro.config.mjs lab-site/tsconfig.json
 
       - name: Construir LAB aislado
         run: npx astro build --root ./lab-site
