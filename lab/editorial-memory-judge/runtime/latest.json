@@ -300,5 +300,46 @@
     "No se inventaron confidencias ni thresholds; todos los confidence permanecen null.",
     "No se asignó lineage, no se modificó memoria canónica y no se tocó producción.",
     "Resultado de laboratorio; no implica promoción de SKILL-003."
-  ]
+  ],
+  "experimentalArticle": {
+    "candidateId": "CAND-b84242c85dbd52ca",
+    "section": "general",
+    "eyebrow": "Internacional",
+    "title": "Japón sube la tasa y Arabia Saudita amplía su vía alternativa mientras Hormuz sigue restringido",
+    "summary": "El Banco de Japón llevó su referencia a 1,25%, el Banco de Inglaterra mantuvo 3,75% con una minoría a favor de subir y Aramco prepara mayores transferencias vía Omán mientras el tránsito por Hormuz continúa deprimido.",
+    "publishedAt": "2026-09-18T10:20:57-03:00",
+    "cutoffAt": "2026-09-18T09:49:25-03:00",
+    "tags": [
+      "economia-global",
+      "bancos-centrales",
+      "energia"
+    ],
+    "bodyMarkdown": "## Hecho central\n\nLa novedad de este viernes está en dos movimientos concretos dentro de un escenario que ATLAS NEWS ya venía siguiendo: Japón ejecutó una nueva subida de tasas y Arabia Saudita amplió su adaptación logística para sostener exportaciones de crudo. El Banco de Japón elevó su tasa de referencia de 1,0% a 1,25%, el nivel más alto en 31 años, mientras Aramco planea mover cerca de 60 millones de barriles en septiembre y octubre mediante transferencias frente a Sohar, Omán.\n\nLa Reserva Federal queda como antecedente inmediato, no como hecho nuevo del día. Su alza de 25 puntos base esta semana ya había endurecido el mapa global de tasas. La información nueva es que Japón se suma de forma efectiva a ese movimiento y que el Banco de Inglaterra, aunque mantuvo Bank Rate en 3,75%, mostró una división mayor: tres de sus nueve miembros prefirieron elevarla a 4%.\n\n## En una mirada\n\nJapón subió su tasa a 1,25%. El Banco de Inglaterra mantuvo 3,75%, con tres votos por un alza. El Brent retrocedió hacia US$103 por barril al moderarse el temor inmediato sobre la oferta saudí. Al mismo tiempo, Hormuz siguió lejos de normalizarse: el jueves se registraron sólo cuatro tránsitos de buques de commodities frente a un promedio reciente de 16.\n\nArabia Saudita está intentando compensar parte de esa restricción mediante una ruta alternativa. Operadores esperan que Aramco amplíe transferencias de crudo frente a Omán durante septiembre y octubre, una señal de adaptación operativa más que de resolución del cuello de botella.\n\n## Por qué importa\n\nLa combinación muestra que el shock de energía y tasas no está simplemente repitiéndose: está cambiando de forma. En política monetaria, más economías están reaccionando al riesgo inflacionario. En energía, el foco se desplaza desde la interrupción inicial hacia la capacidad de los productores para rediseñar rutas y sostener volúmenes.\n\nEso importa porque un sistema que logra adaptarse puede reducir la presión inmediata sobre precios sin eliminar el riesgo estructural. El petróleo puede retroceder mientras Hormuz continúa operando muy por debajo de su tráfico habitual. Del mismo modo, una pausa del Banco de Inglaterra no equivale a relajación si una parte creciente del comité considera necesario subir.\n\n## Mercados globales\n\nEl Brent cayó alrededor de 2% hacia US$103 por barril y el WTI se acercó a US$100, apoyados por la recuperación gradual de capacidad saudí, mayores inventarios y alternativas de exportación. La caída del crudo ofrece alivio frente a las sesiones previas, pero todavía no confirma una normalización logística.\n\nEn Asia, las bolsas cerraron mayoritariamente al alza y el Nikkei avanzó pese a la subida del Banco de Japón. El yen, en cambio, se debilitó después de la decisión. La reacción recuerda que el efecto de una subida de tasas depende también de las expectativas previas, de la trayectoria relativa frente a otros bancos centrales y de la percepción de riesgo.\n\n## Chile\n\nPara Chile, la señal internacional combina un alivio parcial en energía con condiciones financieras externas todavía exigentes. Un petróleo algo más bajo reduce presión marginal sobre costos importados, pero el endurecimiento de tasas en economías desarrolladas mantiene elevado el costo global del capital.\n\nLa variable relevante será cuál de esas dos fuerzas persiste. Si la adaptación logística saudí permite contener el precio del crudo mientras los flujos por Hormuz se recuperan, el canal inflacionario externo perdería presión. Si las interrupciones continúan, el alivio observado este viernes podría ser transitorio.\n\n## Tasas, monedas y commodities\n\nLa Fed dejó su rango objetivo en 3,75%-4,00% tras la subida de esta semana. Japón elevó su referencia a 1,25% y el Banco de Inglaterra mantuvo 3,75%, aunque con una minoría de tres miembros inclinada por 4%.\n\nEn energía, Aramco planea mover cerca de 60 millones de barriles durante septiembre y octubre mediante transferencias frente a Omán. Esa capacidad alternativa ayuda a sostener envíos, pero no elimina la relevancia estratégica de Hormuz, donde el tránsito de commodities sigue muy por debajo del promedio reciente.\n\n## Qué observar\n\nLa primera señal a seguir es si la ruta alternativa saudí logra sostener volúmenes suficientes durante varias jornadas y si eso continúa reflejándose en menores precios del petróleo. La segunda es si el tráfico por Hormuz comienza a recuperarse de forma persistente.\n\nEn política monetaria, el foco pasa a la comunicación posterior del Banco de Japón y a la evolución del debate dentro del Banco de Inglaterra. Si más bancos centrales convierten la preocupación inflacionaria en alzas efectivas, el costo global del capital seguirá siendo una restricción. Si el alivio energético se consolida, parte de esa presión podría moderarse.",
+    "sources": [
+      {
+        "name": "Federal Reserve — FOMC statement, 16 septiembre 2026",
+        "url": "https://www.federalreserve.gov/newsevents/pressreleases/monetary20260916a.htm"
+      },
+      {
+        "name": "Bank of England — Monetary Policy Summary, septiembre 2026",
+        "url": "https://www.bankofengland.co.uk/monetary-policy-summary-and-minutes/2026/september-2026"
+      },
+      {
+        "name": "AP — Banco de Japón eleva la tasa a 1,25%",
+        "url": "https://apnews.com/article/67e71246d3af41bcfc61aa788f9959c7"
+      },
+      {
+        "name": "Reuters — Petróleo cae al aliviarse el temor por oferta saudí",
+        "url": "https://www.reuters.com/business/energy/oil-prices-fall-1-hopes-limited-supply-disruptions-2026-09-18/"
+      },
+      {
+        "name": "Reuters — Tráfico por Hormuz sigue bajo el promedio",
+        "url": "https://www.reuters.com/world/middle-east/shipping-traffic-via-strait-hormuz-stays-below-10-day-average-data-shows-2026-09-18/"
+      },
+      {
+        "name": "Reuters — Aramco aumenta exportaciones vía transferencias en Omán",
+        "url": "https://www.reuters.com/business/energy/aramco-boost-exports-strait-hormuz-60-million-bbl-september-october-traders-say-2026-09-18/"
+      }
+    ]
+  }
 }
