@@ -13,7 +13,6 @@ const { expectedDate } = Astro.props;
   data-daily-audio
   data-expected-date={expectedDate}
   aria-labelledby="daily-audio-title"
-  transition:persist="atlas-daily-audio"
   hidden
 >
   <div class="audio-copy">
@@ -39,15 +38,14 @@ const { expectedDate } = Astro.props;
     const root = document.querySelector("[data-daily-audio]");
     if (!(root instanceof HTMLElement)) return;
 
-    // El motor persiste entre páginas para mantener reproducción y posición,
-    // pero su interfaz pertenece exclusivamente a Portada.
+    // El resumen diario pertenece exclusivamente a Portada.
+    // Al salir de esta vista, el componente se desmonta junto con la página.
     if (window.location.pathname !== "/") {
       root.hidden = true;
       return;
     }
 
-    // Si Astro trasladó este mismo reproductor con transition:persist,
-    // no se vuelve a tocar el <audio>: así conserva reproducción y posición.
+    // Evita repetir player.load() si esta instancia ya resolvió su audio.
     if (root.dataset.audioContentKey) {
       root.hidden = false;
       return;
