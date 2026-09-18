@@ -75,7 +75,9 @@ const artifactEntry = Object.entries(signalFiles).find(([path]) =>
   path.endsWith(`/${date}.json`),
 );
 const artifact = parseArtifact(artifactEntry?.[1]);
-const signals = (artifact?.senalesDelDia[group] ?? []).filter(isRenderableSignal);
+const signals = (artifact?.senalesDelDia[group] ?? []).filter(
+  isRenderableSignal,
+);
 ---
 
 {
