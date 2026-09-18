@@ -33,7 +33,7 @@ jobs:
 
       - name: Preparar plan Internacional bloqueado
         env:
-          ATLAS_INTERNATIONAL_PLAN: \${{ runner.temp }}/atlas-international-plan.json
+          ATLAS_INTERNATIONAL_PLAN: ${{ runner.temp }}/atlas-international-plan.json
         run: node scripts/prepare-international-audio.mjs
 
       - name: Preparar Python y motores de voz
@@ -96,7 +96,7 @@ jobs:
 
       - name: Preparar acceso al repo público
         env:
-          DEPLOY_KEY: \${{ secrets.ATLAS_PAGES_DEPLOY_KEY }}
+          DEPLOY_KEY: ${{ secrets.ATLAS_PAGES_DEPLOY_KEY }}
         run: |
           set -euo pipefail
           install -m 700 -d ~/.ssh
@@ -110,10 +110,10 @@ jobs:
 
       - name: Generar una sola muestra de Internacional
         env:
-          ATLAS_PUBLIC_REPO_DIR: \${{ runner.temp }}/atlas-news-public
-          ATLAS_INTERNATIONAL_PLAN: \${{ runner.temp }}/atlas-international-plan.json
-          ATLAS_CHATTERBOX_SPACE_DIR: \${{ runner.temp }}/chatterbox-latam
-          ATLAS_CHATTERBOX_CKPT_DIR: \${{ runner.temp }}/chatterbox-ckpt
+          ATLAS_PUBLIC_REPO_DIR: ${{ runner.temp }}/atlas-news-public
+          ATLAS_INTERNATIONAL_PLAN: ${{ runner.temp }}/atlas-international-plan.json
+          ATLAS_CHATTERBOX_SPACE_DIR: ${{ runner.temp }}/chatterbox-latam
+          ATLAS_CHATTERBOX_CKPT_DIR: ${{ runner.temp }}/chatterbox-ckpt
         run: |
           set -euo pipefail
           source "$RUNNER_TEMP/alexc-accent-lab-venv/bin/activate"
