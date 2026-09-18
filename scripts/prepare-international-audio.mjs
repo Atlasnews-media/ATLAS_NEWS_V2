@@ -3,9 +3,9 @@ import path from "node:path";
 
 const root = new URL("../", import.meta.url);
 const editionDir = new URL("src/content/editions/", root);
-const SCRIPT_VERSION = 1;
-const TARGET_MIN_WORDS = 280;
-const TARGET_MAX_WORDS = 360;
+const SCRIPT_VERSION = 2;
+const TARGET_MIN_WORDS = 230;
+const TARGET_MAX_WORDS = 330;
 
 function frontmatter(text) {
   return text.match(/^---\s*\r?\n([\s\S]*?)\r?\n---/)?.[1] ?? "";
@@ -203,67 +203,102 @@ if (!latestDaily) {
 }
 
 const date = latestDaily.id.slice(0, 10);
-const parts = [];
 const accepted = [];
 
-function add(text, { force = false } = {}) {
-  const normalized = speechText(text);
-  if (!normalized || nearDuplicate(normalized, accepted)) return false;
-  const nextWords = countWords(parts.join(" ")) + countWords(normalized);
-  if (!force && nextWords > TARGET_MAX_WORDS) return false;
-  parts.push(normalized);
+function acceptText(value) {
+  const normalized = speechText(value);
+  if (!normalized || nearDuplicate(normalized, accepted)) return null;
   accepted.push(normalized);
-  return true;
+  return normalized;
 }
 
-function addSection(label, paragraphs, targetWords) {
-  add(label, { force: true });
-  const start = countWords(parts.join(" "));
+function selectSentences(paragraphs, targetWords) {
+  const selected = [];
   for (const sentence of sentenceList(paragraphs)) {
-    add(sentence);
-    if (countWords(parts.join(" ")) - start >= targetWords) break;
+    const normalized = acceptText(sentence);
+    if (!normalized) continue;
+    selected.push(normalized);
+    if (countWords(selected.join(" ")) >= targetWords) break;
   }
+  return selected;
 }
 
-add(`ATLAS NEWS. Análisis internacional del ${formatSpanishDate(date)}.`, {
-  force: true,
-});
-add("El hecho central.", { force: true });
-add(latestDaily.summary);
-for (const item of latestDaily.highlights) add(item.text);
-addSection(
-  "Qué está cambiando.",
+const openingFacts = [
+  acceptText(latestDaily.summary),
+  acceptText(latestDaily.highlights[0]?.text),
+].filter(Boolean);
+
+const centralFacts = selectSentences(
   [
     ...sectionParagraphs(latestDaily, "Hecho central"),
-    ...sectionParagraphs(latestDaily, "En una mirada"),
     ...sectionParagraphs(latestDaily, "Por qué importa"),
+    ...sectionParagraphs(latestDaily, "En una mirada"),
   ],
-  190,
-);
-addSection(
-  "Qué observar ahora.",
-  sectionParagraphs(latestDaily, "Qué observar"),
   90,
 );
 
-if (countWords(parts.join(" ")) < TARGET_MIN_WORDS) {
-  const reserve = [
+const marketFacts = selectSentences(
+  [
     ...sectionParagraphs(latestDaily, "Mercados globales"),
     ...sectionParagraphs(latestDaily, "Tasas, monedas y commodities"),
-  ];
-  for (const sentence of sentenceList(reserve)) {
-    add(sentence);
-    if (countWords(parts.join(" ")) >= TARGET_MIN_WORDS) break;
-  }
-}
-
-add(
-  "La señal a vigilar es si los próximos datos confirman esta lectura o devuelven al mercado hacia un escenario menos restrictivo.",
-  { force: true },
+  ],
+  60,
 );
 
-const script = parts.join("\n\n");
-const wordCount = countWords(script);
+const observationFacts = selectSentences(
+  sectionParagraphs(latestDaily, "Qué observar"),
+  60,
+);
+
+const reporterOpening = [
+  `ATLAS NEWS. Análisis internacional del ${formatSpanishDate(date)}.`,
+  ...openingFacts,
+].join(" ");
+
+const turns = [
+  { speaker: "VOZ 2", text: reporterOpening },
+  { speaker: "VOZ 1", text: "¿Qué está cambiando y por qué importa?" },
+  { speaker: "VOZ 2", text: centralFacts.join(" ") },
+  {
+    speaker: "VOZ 1",
+    text: "¿Y cómo se está reflejando esta señal en los mercados?",
+  },
+  { speaker: "VOZ 2", text: marketFacts.join(" ") },
+  {
+    speaker: "VOZ 1",
+    text: "Entonces, ¿qué deberíamos observar a partir de ahora?",
+  },
+  {
+    speaker: "VOZ 2",
+    text: [
+      ...observationFacts,
+      "La señal a vigilar es si los próximos datos confirman esta lectura o devuelven al mercado hacia un escenario menos restrictivo.",
+    ].join(" "),
+  },
+];
+
+let script = turns
+  .map(({ speaker, text }) => `${speaker}: ${speechText(text)}`)
+  .join("\n\n");
+let wordCount = countWords(script);
+
+for (const item of latestDaily.highlights.slice(1)) {
+  if (wordCount >= TARGET_MIN_WORDS) break;
+  const extra = acceptText(item.text);
+  if (!extra) continue;
+  turns[2].text = `${turns[2].text} ${extra}`.trim();
+  script = turns
+    .map(({ speaker, text }) => `${speaker}: ${speechText(text)}`)
+    .join("\n\n");
+  wordCount = countWords(script);
+}
+
+if (wordCount > TARGET_MAX_WORDS) {
+  console.warn(
+    `Audio Internacional ${date}: diálogo sobre objetivo (${wordCount}/${TARGET_MAX_WORDS} palabras).`,
+  );
+}
+
 const outputPath =
   process.env.ATLAS_INTERNATIONAL_PLAN ??
   path.resolve(process.cwd(), ".atlas-international-audio-plan.json");
@@ -274,8 +309,14 @@ const plan = {
   date,
   sourceId: latestDaily.id,
   title: latestDaily.title,
-  voice: "em_alex",
-  engine: "Kokoro-82M",
+  format: "dialogue",
+  voice: "alex-c-v1",
+  interviewerVoice: "ef_dora",
+  roles: {
+    reporter: "VOZ 2",
+    interviewer: "VOZ 1",
+  },
+  engine: "Chatterbox + Kokoro-82M",
   language: "es",
   wordCount,
   estimatedDurationSeconds: Math.max(60, Math.round((wordCount / 125) * 60)),
@@ -290,5 +331,5 @@ if (process.env.GITHUB_OUTPUT) {
 }
 
 console.log(
-  `Audio Internacional ${date}: plan listo (${wordCount} palabras, Alex).`,
+  `Audio Internacional ${date}: plan listo (${wordCount} palabras, Alex C + Dora).`,
 );
