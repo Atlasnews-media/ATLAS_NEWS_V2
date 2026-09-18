@@ -170,8 +170,6 @@ async function dialogueProduct(section) {
     lexiconRevision: LEXICON_REVISION,
     voiceProfileVersion: VOICE_PROFILE_VERSION,
     dialogueRhythmVersion: ALEXC_DIALOGUE_RHYTHM_VERSION,
-    shortPhraseVersion: ALEXC_INTERNATIONAL_SHORT_PHRASE_VERSION,
-    maxPhraseWords: ALEXC_INTERNATIONAL_MAX_WORDS,
     needsGeneration: state.needsGeneration,
     unavailableReason: state.unavailableReason,
   };
@@ -202,6 +200,8 @@ function internationalProduct() {
     lexiconRevision: LEXICON_REVISION,
     voiceProfileVersion: VOICE_PROFILE_VERSION,
     dialogueRhythmVersion: ALEXC_DIALOGUE_RHYTHM_VERSION,
+    shortPhraseVersion: ALEXC_INTERNATIONAL_SHORT_PHRASE_VERSION,
+    maxPhraseWords: ALEXC_INTERNATIONAL_MAX_WORDS,
     needsGeneration: state.needsGeneration,
     unavailableReason:
       internationalPlanPath && !internationalPlan
