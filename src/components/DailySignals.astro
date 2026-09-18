@@ -1,5 +1,9 @@
 ---
-import { getLatestDaily } from "../lib/content";
+import {
+  getLatestDaily,
+  getLatestMarkets,
+  getLatestNational,
+} from "../lib/content";
 
 interface CanonicalSignal {
   slot: string;
@@ -36,8 +40,20 @@ const signalFiles = import.meta.glob("../../data/senales-del-dia/*.json", {
   import: "default",
 }) as Record<string, string>;
 
-const latestDaily = await getLatestDaily();
+const [latestDaily, latestNational, latestMarkets] = await Promise.all([
+  getLatestDaily(),
+  getLatestNational(),
+  getLatestMarkets(),
+]);
 const expectedDate = latestDaily?.id.slice(0, 10);
+const nationalDestination =
+  expectedDate && latestNational?.id.startsWith(`${expectedDate}-national-`)
+    ? `/nacional/${latestNational.id}/`
+    : undefined;
+const marketsDestination =
+  expectedDate && latestMarkets?.id.startsWith(`${expectedDate}-markets-`)
+    ? `/mercados/${latestMarkets.id}/`
+    : undefined;
 
 function parseArtifact(raw: string | undefined): unknown {
   if (!raw) return undefined;
@@ -130,11 +146,17 @@ const groups = readyArtifact
       },
       {
         section: "Nacional",
-        items: publicPair(readyArtifact.senalesDelDia.nacional),
+        items: publicPair(
+          readyArtifact.senalesDelDia.nacional,
+          nationalDestination,
+        ),
       },
       {
         section: "Mercados",
-        items: publicPair(readyArtifact.senalesDelDia.mercados),
+        items: publicPair(
+          readyArtifact.senalesDelDia.mercados,
+          marketsDestination,
+        ),
       },
     ]
   : [];
