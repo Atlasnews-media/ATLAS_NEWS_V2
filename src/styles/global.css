@@ -158,6 +158,15 @@ a:focus-visible {
   body .site-header {
     padding-top: 0.55rem;
   }
+  body .site-header nav {
+    font-size: clamp(0.64rem, 2.8vw, 0.7rem);
+    font-weight: 800;
+    letter-spacing: 0.035em;
+  }
+  body .site-header nav a {
+    min-height: 2.05rem;
+    padding: 0.28rem 0.02rem;
+  }
   body .site-header .edition-bar {
     gap: 0.4rem;
     padding: 0.32rem 0;
@@ -443,9 +452,19 @@ body:has(.calendar-lab) .calendar-source {
     margin-bottom: 3rem;
   }
 
-  body .site-header .edition-bar,
-  body .site-header nav {
+  body .site-header .edition-bar {
     font-size: 0.76rem;
+  }
+
+  body .site-header nav {
+    font-size: clamp(0.92rem, 2vw, 1.02rem);
+    font-weight: 800;
+    letter-spacing: 0.055em;
+  }
+
+  body .site-header nav a {
+    min-height: 3.45rem;
+    padding: 0.72rem 0.35rem;
   }
 
   body .site-footer {
@@ -465,9 +484,14 @@ body:has(.calendar-lab) .calendar-source {
     padding-top: 0.75rem;
   }
 
-  body .site-header .edition-bar,
-  body .site-header nav {
+  body .site-header .edition-bar {
     font-size: 0.76rem;
+  }
+
+  body .site-header nav {
+    font-size: clamp(0.95rem, 1.15vw, 1.05rem);
+    font-weight: 800;
+    letter-spacing: 0.055em;
   }
 
   body .site-header .edition-bar {
@@ -605,8 +629,8 @@ body:has(.calendar-lab) .calendar-source {
   }
 
   body .site-header nav a {
-    min-height: 2.35rem;
-    padding: 0.42rem 0.5rem;
+    min-height: 2.85rem;
+    padding: 0.56rem 0.45rem;
   }
 
   /* Portada: composición editorial de dos zonas, con rail de inteligencia. */
