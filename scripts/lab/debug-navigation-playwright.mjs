@@ -314,7 +314,7 @@ async function snapshotPage(page, label, outputDir, steps) {
     path: path.join(outputDir, `${String(steps.length).padStart(2, "0")}-${slug(
       label,
     )}.png`),
-    fullPage: true,
+    fullPage: false,
   });
   return data;
 }
