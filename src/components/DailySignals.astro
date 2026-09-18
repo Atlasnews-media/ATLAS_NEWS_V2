@@ -27,6 +27,7 @@ interface SignalsArtifact {
 interface PublicSignal {
   label: string;
   text: string;
+  href?: string;
 }
 
 const signalFiles = import.meta.glob("../../data/senales-del-dia/*.json", {
@@ -107,10 +108,16 @@ const readyArtifact = isReadyArtifact(artifact, expectedDate)
   ? artifact
   : undefined;
 
-function publicPair(items: CanonicalSignal[]): PublicSignal[] {
+function publicPair(
+  items: CanonicalSignal[],
+  destinationBase?: string,
+): PublicSignal[] {
   return items.map((item) => ({
     label: item.headline,
     text: item.deck,
+    href: destinationBase
+      ? `${destinationBase}#${item.anchor}`
+      : undefined,
   }));
 }
 
@@ -118,7 +125,10 @@ const groups = readyArtifact
   ? [
       {
         section: "Internacional",
-        items: publicPair(readyArtifact.senalesDelDia.internacional),
+        items: publicPair(
+          readyArtifact.senalesDelDia.internacional,
+          latestDaily ? `/ediciones/${latestDaily.id}/` : undefined,
+        ),
       },
       {
         section: "Nacional",
@@ -146,8 +156,17 @@ const groups = readyArtifact
             <div class="daily-signals__items">
               {group.items.map((item) => (
                 <article class="daily-signals__item">
-                  <strong>{item.label}</strong>
-                  <p>{item.text}</p>
+                  {item.href ? (
+                    <a class="daily-signals__link" href={item.href}>
+                      <strong>{item.label}</strong>
+                      <p>{item.text}</p>
+                    </a>
+                  ) : (
+                    <>
+                      <strong>{item.label}</strong>
+                      <p>{item.text}</p>
+                    </>
+                  )}
                 </article>
               ))}
             </div>
@@ -200,6 +219,19 @@ const groups = readyArtifact
 
   .daily-signals__item + .daily-signals__item {
     border-top: 1px solid var(--rule);
+  }
+
+  .daily-signals__link {
+    display: block;
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .daily-signals__link:hover strong,
+  .daily-signals__link:focus-visible strong {
+    text-decoration: underline;
+    text-decoration-thickness: 0.08em;
+    text-underline-offset: 0.14em;
   }
 
   .daily-signals__item strong {
