@@ -111,12 +111,13 @@ jobs:
           set -euo pipefail
           manifest="$RUNNER_TEMP/public/audio/analysis-latest.json"
           jq -e '
-            .voiceProfileTarget == "alex-c-v1" and
-            [.international, .national, .markets] |
-            all(
-              .status == "published" and
-              .voiceProfileVersion == "alex-c-v1" and
-              .fallbackUsed == false
+            (.voiceProfileTarget == "alex-c-v1") and
+            ([.international, .national, .markets] |
+              all(
+                .status == "published" and
+                .voiceProfileVersion == "alex-c-v1" and
+                .fallbackUsed == false
+              )
             )
           ' "$manifest"
           jq '{
