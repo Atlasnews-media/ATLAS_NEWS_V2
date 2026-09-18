@@ -42,42 +42,31 @@ function parseArtifact(raw: string | undefined): SignalsArtifact | undefined {
   if (!raw) return undefined;
 
   try {
-    const value = JSON.parse(raw) as SignalsArtifact;
+    const artifact = JSON.parse(raw) as SignalsArtifact;
     if (
-      value.status !== "READY" ||
-      value.contract !== "atlas-senales-del-dia-v1" ||
-      value.date !== date ||
-      !value.senalesDelDia ||
-      !Array.isArray(value.senalesDelDia[group])
+      artifact.status !== "READY" ||
+      artifact.contract !== "atlas-senales-del-dia-v1" ||
+      artifact.date !== date ||
+      !Array.isArray(artifact.senalesDelDia?.[group])
     ) {
       return undefined;
     }
 
-    return value;
+    return artifact;
   } catch {
     return undefined;
   }
 }
 
-function isRenderableSignal(signal: CanonicalSignal): boolean {
-  return (
-    typeof signal?.headline === "string" &&
-    signal.headline.trim().length > 0 &&
-    typeof signal.development === "string" &&
-    signal.development.trim().length > 0 &&
-    typeof signal.anchor === "string" &&
-    signal.anchor.trim().length > 0 &&
-    Array.isArray(signal.sources)
-  );
+function paragraphs(text: string): string[] {
+  return text.trim().split(/\n\s*\n/).filter(Boolean);
 }
 
 const artifactEntry = Object.entries(signalFiles).find(([path]) =>
   path.endsWith(`/${date}.json`),
 );
 const artifact = parseArtifact(artifactEntry?.[1]);
-const signals = (artifact?.senalesDelDia[group] ?? []).filter(
-  isRenderableSignal,
-);
+const signals = artifact?.senalesDelDia[group] ?? [];
 ---
 
 {
@@ -98,11 +87,9 @@ const signals = (artifact?.senalesDelDia[group] ?? []).filter(
             <h3 id={`${signal.anchor}-title`}>{signal.headline}</h3>
 
             <div class="signal-development__body">
-              {signal.development
-                .trim()
-                .split(/\n\s*\n/)
-                .filter(Boolean)
-                .map((paragraph) => <p>{paragraph}</p>)}
+              {paragraphs(signal.development).map((paragraph) => (
+                <p>{paragraph}</p>
+              ))}
             </div>
 
             {signal.sources.length > 0 && (
