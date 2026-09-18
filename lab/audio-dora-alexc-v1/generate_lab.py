@@ -177,7 +177,14 @@ def main():
     ref_path = OUT_DIR / "reference-alex-b2.wav"
     make_reference(lab_path, ref_path)
 
-    # Libera el modelo staged antes de cargar Chatterbox.
+    # Dora se renderiza completa antes de cargar Chatterbox.
+    # Así evitamos mantener ambos modelos grandes simultáneamente en RAM.
+    dora = KPipeline(lang_code="e")
+    dora_segments = {}
+    for speaker, content in turns:
+        if speaker == "VOZ 1":
+            dora_segments[content] = synthesize_dora(dora, content)
+    del dora
     gc.collect()
 
     sys.path.insert(0, str(CHATTERBOX_SPACE))
@@ -186,7 +193,6 @@ def main():
     # Prepara una sola vez la identidad/estilo Alex C para todos sus turnos.
     chatterbox.prepare_conditionals(str(ref_path), exaggeration=0.50)
 
-    dora = KPipeline(lang_code="e")
     normal_pause = np.zeros(int(SAMPLE_RATE * STATEMENT_PAUSE), np.float32)
     question_pause = np.zeros(int(SAMPLE_RATE * QUESTION_PAUSE), np.float32)
     parts = []
@@ -199,7 +205,7 @@ def main():
             parts.append(question_pause if previous_question else normal_pause)
 
         if speaker == "VOZ 1":
-            samples = synthesize_dora(dora, content)
+            samples = dora_segments[content]
         else:
             seed = 3101 + alex_index
             samples = synthesize_alexc(chatterbox, content, ref_path, seed)
