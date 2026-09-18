@@ -124,10 +124,7 @@ const signalEntry = Object.entries(signalFiles).find(([path]) =>
   path.endsWith(`/${expectedSignalsDate}.json`),
 );
 const signalArtifact = parseSignalsArtifact(signalEntry?.[1]);
-const readySignals = isReadySignalsArtifact(
-  signalArtifact,
-  expectedSignalsDate,
-)
+const readySignals = isReadySignalsArtifact(signalArtifact, expectedSignalsDate)
   ? signalArtifact
   : undefined;
 const internationalSignals = readySignals?.senalesDelDia.internacional ?? [];
