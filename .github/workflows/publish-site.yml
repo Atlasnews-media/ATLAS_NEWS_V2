@@ -195,6 +195,10 @@ jobs:
       - name: Instalar dependencias
         run: npm ci
 
+      - name: DEBUG formato contrato 4
+        if: github.event_name == 'pull_request'
+        run: npx prettier scripts/validate-morning-promotion.mjs
+
       - name: Validar promoción editorial
         if: github.event_name == 'pull_request' && steps.edition.outputs.package_kind == 'morning'
         shell: bash
