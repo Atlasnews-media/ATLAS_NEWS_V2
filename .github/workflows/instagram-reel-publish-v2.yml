@@ -4,59 +4,154 @@ on:
   workflow_run:
     workflows: ["Reel Maker V2 — post-publication artifact"]
     types: [completed]
+  workflow_dispatch:
+    inputs:
+      source_commit:
+        description: "sourceCommit con artifact canónico F4D vigente"
+        required: true
+        type: string
+  pull_request:
+    branches: [main]
+    paths:
+      - ".github/workflows/instagram-reel-publish-v2.yml"
+      - ".github/workflows/instagram-reel-publish-live-test.yml"
+      - "tools/reel_maker/consume_reel_artifact.py"
+      - "tools/reel_maker/publish_reel_artifact.sh"
 
 permissions:
   actions: read
   contents: read
 
 concurrency:
-  group: instagram-reel-f4e-v2
+  group: >-
+    instagram-reel-f4e-v2-${{
+      github.event_name == 'workflow_dispatch' && inputs.source_commit ||
+      github.event_name == 'workflow_run' && github.event.workflow_run.id ||
+      github.run_id
+    }}
   cancel-in-progress: false
 
 jobs:
+  validate:
+    name: Validar runtime F4E sin Meta
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Checkout PR
+        uses: actions/checkout@v5
+
+      - name: Syntax-check F4E runtime
+        run: |
+          set -euo pipefail
+          python3 -m py_compile tools/reel_maker/consume_reel_artifact.py
+          bash -n tools/reel_maker/publish_reel_artifact.sh
+
+      - name: Verify latest canonical F4D artifact is discoverable
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          source_commit="$(curl -fsSL -H 'Accept: application/json' -H 'Cache-Control: no-cache'             "https://atlasnews-media.github.io/status.json?f4e-pr=${GITHUB_RUN_ID}" | jq -er '.latestDaily | select(.id != null) as $d | input_filename? // empty' 2>/dev/null || true)"
+          status="$(curl -fsSL -H 'Accept: application/json' -H 'Cache-Control: no-cache'             "https://atlasnews-media.github.io/status.json?f4e-pr=${GITHUB_RUN_ID}")"
+          source_commit="$(jq -er '.latestDaily.id as $id | .sourceCommit | select(type == "string" and test("^[0-9a-f]{40}$"))' <<<"$status")"
+          artifact_name="atlas-news-reel-canonical-${source_commit}"
+          artifacts="$(gh api "repos/${GITHUB_REPOSITORY}/actions/artifacts?name=${artifact_name}&per_page=100")"
+          count="$(jq --arg name "$artifact_name" '[.artifacts[] | select(.expired == false and .name == $name)] | length' <<<"$artifacts")"
+          test "$count" -ge 1 || {
+            echo "Fail-closed: no unexpired canonical F4D artifact found for current public edition."
+            exit 10
+          }
+          echo "PASS: canonical F4D artifact is discoverable. No download or Meta POST executed."
+
   publish:
     name: Publicar Reel canónico desde F4D
     if: >-
-      github.event.workflow_run.conclusion == 'success' &&
-      github.event.workflow_run.head_branch == 'main'
+      github.event_name == 'workflow_dispatch' ||
+      (github.event_name == 'workflow_run' &&
+       github.event.workflow_run.conclusion == 'success' &&
+       github.event.workflow_run.head_branch == 'main')
     runs-on: ubuntu-latest
     timeout-minutes: 15
     env:
       ATLAS_PUBLIC_STATUS_URL: https://atlasnews-media.github.io/status.json
       INSTAGRAM_API_VERSION: v23.0
       INSTAGRAM_EXPECTED_USERNAME: _atlas_news
-      UPSTREAM_RUN_ID: ${{ github.event.workflow_run.id }}
 
     steps:
       - name: Checkout F4E runtime
         uses: actions/checkout@v5
         with:
-          ref: ${{ github.event.workflow_run.head_sha }}
+          ref: ${{ github.event_name == 'workflow_run' && github.event.workflow_run.head_sha || 'main' }}
           fetch-depth: 0
 
-      - name: Inspect canonical artifact from F4D
+      - name: Resolve canonical F4D artifact
         id: upstream
         env:
           GH_TOKEN: ${{ github.token }}
+          EVENT_RUN_ID: ${{ github.event_name == 'workflow_run' && github.event.workflow_run.id || '' }}
+          INPUT_SOURCE_COMMIT: ${{ github.event_name == 'workflow_dispatch' && inputs.source_commit || '' }}
         shell: bash
         run: |
           set -euo pipefail
-          artifacts="$(gh api "repos/${GITHUB_REPOSITORY}/actions/runs/${UPSTREAM_RUN_ID}/artifacts")"
-          count="$(jq '[.artifacts[] | select(.expired == false and (.name | startswith("atlas-news-reel-canonical-")))] | length' <<<"$artifacts")"
-          if [[ "$count" = "0" ]]; then
-            echo "eligible=false" >> "$GITHUB_OUTPUT"
-            echo "Safe no-op: F4D completed without a canonical Reel artifact."
-            exit 0
+
+          if [[ "${GITHUB_EVENT_NAME}" = "workflow_run" ]]; then
+            upstream_run_id="$EVENT_RUN_ID"
+            artifacts="$(gh api "repos/${GITHUB_REPOSITORY}/actions/runs/${upstream_run_id}/artifacts")"
+            count="$(jq '[.artifacts[] | select(.expired == false and (.name | startswith("atlas-news-reel-canonical-")))] | length' <<<"$artifacts")"
+            if [[ "$count" = "0" ]]; then
+              echo "eligible=false" >> "$GITHUB_OUTPUT"
+              echo "Safe no-op: F4D completed without a canonical Reel artifact."
+              exit 0
+            fi
+            [[ "$count" = "1" ]] || {
+              echo "Fail-closed: expected exactly one canonical F4D artifact, found $count."
+              exit 40
+            }
+            artifact_id="$(jq -r '.artifacts[] | select(.expired == false and (.name | startswith("atlas-news-reel-canonical-"))) | .id' <<<"$artifacts")"
+            artifact_name="$(jq -r '.artifacts[] | select(.expired == false and (.name | startswith("atlas-news-reel-canonical-"))) | .name' <<<"$artifacts")"
+          else
+            source_commit="$INPUT_SOURCE_COMMIT"
+            [[ "$source_commit" =~ ^[0-9a-f]{40}$ ]] || {
+              echo "Fail-closed: workflow_dispatch source_commit must be a full SHA."
+              exit 41
+            }
+            artifact_name="atlas-news-reel-canonical-${source_commit}"
+            artifacts="$(gh api "repos/${GITHUB_REPOSITORY}/actions/artifacts?name=${artifact_name}&per_page=100")"
+            candidate="$(jq -c --arg name "$artifact_name" '
+              [.artifacts[]
+               | select(.expired == false and .name == $name)
+               | select(.workflow_run.id != null)]
+              | sort_by(.created_at)
+              | reverse
+              | .[0] // empty
+            ' <<<"$artifacts")"
+            [[ -n "$candidate" ]] || {
+              echo "Fail-closed: no unexpired canonical F4D artifact for sourceCommit=$source_commit."
+              echo "Use Instagram Reel — Controlled recovery to regenerate only through F4D."
+              exit 42
+            }
+            artifact_id="$(jq -r '.id' <<<"$candidate")"
+            upstream_run_id="$(jq -r '.workflow_run.id' <<<"$candidate")"
+            upstream="$(gh api "repos/${GITHUB_REPOSITORY}/actions/runs/${upstream_run_id}")"
+            [[ "$(jq -r '.name' <<<"$upstream")" = "Reel Maker V2 — post-publication artifact" ]] || {
+              echo "Fail-closed: artifact did not originate from canonical F4D workflow."
+              exit 43
+            }
+            [[ "$(jq -r '.conclusion' <<<"$upstream")" = "success" ]] || {
+              echo "Fail-closed: artifact F4D run was not successful."
+              exit 44
+            }
+            [[ "$(jq -r '.head_branch' <<<"$upstream")" = "main" ]] || {
+              echo "Fail-closed: artifact F4D run did not execute from main."
+              exit 45
+            }
           fi
-          [[ "$count" = "1" ]] || {
-            echo "Fail-closed: expected exactly one canonical F4D artifact, found $count."
-            exit 40
-          }
-          artifact_id="$(jq -r '.artifacts[] | select(.expired == false and (.name | startswith("atlas-news-reel-canonical-"))) | .id' <<<"$artifacts")"
-          artifact_name="$(jq -r '.artifacts[] | select(.expired == false and (.name | startswith("atlas-news-reel-canonical-"))) | .name' <<<"$artifacts")"
+
           echo "eligible=true" >> "$GITHUB_OUTPUT"
           echo "artifact_id=$artifact_id" >> "$GITHUB_OUTPUT"
           echo "artifact_name=$artifact_name" >> "$GITHUB_OUTPUT"
+          echo "run_id=$upstream_run_id" >> "$GITHUB_OUTPUT"
 
       - name: Download exact canonical F4D artifact
         if: steps.upstream.outputs.eligible == 'true'
@@ -64,20 +159,24 @@ jobs:
         with:
           artifact-ids: ${{ steps.upstream.outputs.artifact_id }}
           path: _reel_handoff
-          run-id: ${{ env.UPSTREAM_RUN_ID }}
+          run-id: ${{ steps.upstream.outputs.run_id }}
           github-token: ${{ github.token }}
 
       - name: Verify F4D artifact identity, SHA256 and idempotency
         if: steps.upstream.outputs.eligible == 'true'
         id: handoff
         run: |
-          python3 tools/reel_maker/consume_reel_artifact.py             --artifact-dir _reel_handoff             --artifact-name "${{ steps.upstream.outputs.artifact_name }}"             --status-url "$ATLAS_PUBLIC_STATUS_URL"
+          python3 tools/reel_maker/consume_reel_artifact.py \
+            --artifact-dir _reel_handoff \
+            --artifact-name "${{ steps.upstream.outputs.artifact_name }}" \
+            --status-url "$ATLAS_PUBLIC_STATUS_URL"
 
       - name: Record already-published handoff no-op
         if: steps.upstream.outputs.eligible == 'true' && steps.handoff.outputs.already_published == 'true'
         env:
           SOURCE_COMMIT: ${{ steps.handoff.outputs.source_commit }}
           MP4_SHA256: ${{ steps.handoff.outputs.mp4_sha256 }}
+          UPSTREAM_RUN_ID: ${{ steps.upstream.outputs.run_id }}
         run: |
           {
             echo "### F4D → F4E — ALREADY_PUBLISHED_VERIFIED"
@@ -106,6 +205,7 @@ jobs:
           MP4_FILE: ${{ steps.handoff.outputs.mp4_file }}
           MP4_SHA256: ${{ steps.handoff.outputs.mp4_sha256 }}
           ARTIFACT_NAME: ${{ steps.upstream.outputs.artifact_name }}
+          UPSTREAM_RUN_ID: ${{ steps.upstream.outputs.run_id }}
           ATLAS_PAGES_DEPLOY_KEY: ${{ secrets.ATLAS_PAGES_DEPLOY_KEY }}
         run: bash tools/reel_maker/publish_reel_artifact.sh
 
