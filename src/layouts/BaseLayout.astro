@@ -1,7 +1,6 @@
 ---
 import { Font } from "astro:assets";
 import { ClientRouter } from "astro:transitions";
-import DailyAudio from "../components/DailyAudio.astro";
 import "../styles/global.css";
 import "../styles/desktop-workspace-panel.css";
 import {
@@ -50,7 +49,6 @@ const sourceCommit = (
 
 const siteOrigin = Astro.site ?? Astro.url.origin;
 const canonicalUrl = new URL(Astro.url.pathname, siteOrigin).href;
-const isHome = Astro.url.pathname === "/";
 const isArticle = /^\/(ediciones|nacional|mercados|lecturas)\/[^/]+\/?$/.test(
   Astro.url.pathname,
 );
@@ -178,13 +176,6 @@ const isPrimarySectionLanding = [
         }
       </nav>
     </header>
-    {
-      !isHome && (
-        <div class="persistent-daily-audio-shell">
-          <DailyAudio expectedDate={currentDaily?.id.slice(0, 10)} />
-        </div>
-      )
-    }
     <div id="contenido"><slot /></div>
     <footer class="site-footer">
       <div class="footer-meta">
@@ -304,8 +295,7 @@ const isPrimarySectionLanding = [
 
 <style is:global>
   .site-header,
-  .site-footer,
-  .persistent-daily-audio-shell {
+  .site-footer {
     position: relative;
     z-index: 1;
     width: min(88rem, calc(100% - 2rem));
@@ -492,8 +482,7 @@ const isPrimarySectionLanding = [
 
   @media (max-width: 36rem) {
     .site-header,
-    .site-footer,
-    .persistent-daily-audio-shell {
+    .site-footer {
       width: min(100% - 1.25rem, 88rem);
     }
     .edition-bar span:last-child {
@@ -559,8 +548,7 @@ const isPrimarySectionLanding = [
       text-size-adjust: 100%;
     }
 
-    .page-shell,
-    .persistent-daily-audio-shell {
+    .page-shell {
       width: min(100% - 1.75rem, 88rem) !important;
     }
 
@@ -706,9 +694,4 @@ const isPrimarySectionLanding = [
     }
   }
 
-  @media (min-width: 70.01rem) {
-    .persistent-daily-audio-shell {
-      width: min(96rem, calc(100% - 3rem));
-    }
-  }
 </style>
