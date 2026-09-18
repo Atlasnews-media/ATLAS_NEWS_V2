@@ -453,7 +453,7 @@ body:has(.calendar-lab) .calendar-source {
   }
 
   body .site-header .edition-bar {
-    font-size: 0.76rem;
+    font-size: 0.875rem;
   }
 
   body .site-header nav {
@@ -489,7 +489,7 @@ body:has(.calendar-lab) .calendar-source {
   }
 
   body .site-header nav {
-    font-size: clamp(0.91rem, 1.1vw, 1rem);
+    font-size: clamp(1.05rem, 1.265vw, 1.15rem);
     font-weight: 800;
     letter-spacing: 0.05em;
   }
