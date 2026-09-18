@@ -1,4 +1,12 @@
 ---
+import FacebookIcon from "../assets/icons/facebook.svg";
+import LinkIcon from "../assets/icons/link.svg";
+import LinkedInIcon from "../assets/icons/linkedin.svg";
+import ShareIcon from "../assets/icons/share.svg";
+import WhatsAppIcon from "../assets/icons/whatsapp.svg";
+import XIcon from "../assets/icons/x.svg";
+import ResponsiveEditorialImage from "./ResponsiveEditorialImage.astro";
+
 interface EditorialVisual {
   src: string;
   alt: string;
@@ -55,12 +63,13 @@ const xHref = `https://twitter.com/intent/tweet?text=${encodeURIComponent(title)
   {
     visual && visualAllowed && (
       <figure class="article-visual" aria-hidden="true">
-        <img
+        <ResponsiveEditorialImage
           src={visual.src}
-          alt=""
+          decorative
+          sizes="(max-width: 42rem) 38vw, (max-width: 79.99rem) 34vw, 17vw"
           loading="eager"
-          decoding="async"
-          referrerpolicy="no-referrer"
+          fetchpriority="high"
+          variant="article"
         />
         <figcaption>
           {visual.source} · {visual.author} · {visual.license}
@@ -103,12 +112,20 @@ const xHref = `https://twitter.com/intent/tweet?text=${encodeURIComponent(title)
         data-share-title={title}
         data-share-summary={summary}
       >
+        <ShareIcon
+          class="share-icon share-icon--astro"
+          width="24"
+          height="24"
+          aria-hidden="true"
+          focusable="false"
+        />
         <img
-          class="share-icon"
+          class="share-icon share-icon--mobile"
           src="/share-icons/share.svg"
           alt=""
           width="24"
           height="24"
+          aria-hidden="true"
         />
         Compartir…
       </button>
@@ -118,12 +135,20 @@ const xHref = `https://twitter.com/intent/tweet?text=${encodeURIComponent(title)
         target="_blank"
         rel="noopener noreferrer"
       >
+        <WhatsAppIcon
+          class="share-icon share-icon--astro"
+          width="24"
+          height="24"
+          aria-hidden="true"
+          focusable="false"
+        />
         <img
-          class="share-icon"
+          class="share-icon share-icon--mobile"
           src="/share-icons/whatsapp.svg"
           alt=""
           width="24"
           height="24"
+          aria-hidden="true"
         />
         WhatsApp
       </a>
@@ -133,12 +158,20 @@ const xHref = `https://twitter.com/intent/tweet?text=${encodeURIComponent(title)
         target="_blank"
         rel="noopener noreferrer"
       >
+        <FacebookIcon
+          class="share-icon share-icon--astro"
+          width="24"
+          height="24"
+          aria-hidden="true"
+          focusable="false"
+        />
         <img
-          class="share-icon"
+          class="share-icon share-icon--mobile"
           src="/share-icons/facebook.svg"
           alt=""
           width="24"
           height="24"
+          aria-hidden="true"
         />
         Facebook
       </a>
@@ -148,12 +181,20 @@ const xHref = `https://twitter.com/intent/tweet?text=${encodeURIComponent(title)
         target="_blank"
         rel="noopener noreferrer"
       >
+        <LinkedInIcon
+          class="share-icon share-icon--astro"
+          width="24"
+          height="24"
+          aria-hidden="true"
+          focusable="false"
+        />
         <img
-          class="share-icon"
+          class="share-icon share-icon--mobile"
           src="/share-icons/linkedin.svg"
           alt=""
           width="24"
           height="24"
+          aria-hidden="true"
         />
         LinkedIn
       </a>
@@ -163,22 +204,38 @@ const xHref = `https://twitter.com/intent/tweet?text=${encodeURIComponent(title)
         target="_blank"
         rel="noopener noreferrer"
       >
+        <XIcon
+          class="share-icon share-icon--astro"
+          width="24"
+          height="24"
+          aria-hidden="true"
+          focusable="false"
+        />
         <img
-          class="share-icon"
+          class="share-icon share-icon--mobile"
           src="/share-icons/x.svg"
           alt=""
           width="24"
           height="24"
+          aria-hidden="true"
         />
         X
       </a>
       <button class="share-action" type="button" data-share-copy>
+        <LinkIcon
+          class="share-icon share-icon--astro"
+          width="24"
+          height="24"
+          aria-hidden="true"
+          focusable="false"
+        />
         <img
-          class="share-icon"
+          class="share-icon share-icon--mobile"
           src="/share-icons/link.svg"
           alt=""
           width="24"
           height="24"
+          aria-hidden="true"
         />
         Copiar enlace
       </button>
@@ -418,15 +475,14 @@ const xHref = `https://twitter.com/intent/tweet?text=${encodeURIComponent(title)
     height: 1rem;
     flex: 0 0 auto;
   }
+  .share-icon--mobile {
+    display: none;
+  }
   .share-action:hover,
   .share-action:focus-visible {
     color: var(--paper);
     background: var(--ink);
     outline: none;
-  }
-  .share-action:hover .share-icon,
-  .share-action:focus-visible .share-icon {
-    filter: brightness(0) invert(1);
   }
   .share-native {
     border-color: var(--accent);
@@ -443,6 +499,17 @@ const xHref = `https://twitter.com/intent/tweet?text=${encodeURIComponent(title)
   }
 
   @media (max-width: 42rem) {
+    .share-icon--astro {
+      display: none;
+    }
+    .share-icon--mobile {
+      display: block;
+    }
+    .share-action:hover .share-icon--mobile,
+    .share-action:focus-visible .share-icon--mobile {
+      filter: brightness(0) invert(1);
+    }
+
     .article-header {
       padding: 0.72rem 0 0.85rem;
     }

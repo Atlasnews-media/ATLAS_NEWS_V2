@@ -1,28 +1,36 @@
 # ATLAS NEWS — Carousel V2
 
-Módulo aislado del carrusel de Instagram.
+Módulo productivo aislado del carrusel de Instagram.
 
-## Objetivo
+## Producto canónico
 
-Separar completamente la implementación del carrusel respecto de Reel Maker y del renderer social histórico.
+El Carrusel V2 tiene exactamente **5 láminas**:
 
-## Arquitectura de esta iteración
+1. Portada
+2. Idea central
+3. Qué cambió
+4. Por qué importa
+5. Cierre / Lee la nota completa
 
-- `assets/CARRUSEL_1.png` … `assets/CARRUSEL_5.png`: cinco bases oficiales del carrusel V2.
-- `carousel-renderer.mjs`: renderer de cinco láminas basado en esas bases.
-- `publish-instagram.mjs`: publisher específico de carrusel de cinco imágenes.
-- `package.json`: runtime propio del módulo.
+Las cinco bases oficiales viven en `assets/CARRUSEL_1.png` … `assets/CARRUSEL_5.png`.
 
-## Regla de aislamiento
+## Componentes
 
-Carrusel y Reel comparten únicamente la fuente editorial. No comparten plantillas, renderer, outputs ni publisher.
+- `prepare-carousel-contract.mjs`: deriva el contrato v1 desde la edición diaria publicada y verificada.
+- `carousel-renderer.mjs`: render productivo de cinco láminas.
+- `publish-instagram.mjs`: publisher de cinco children que consume la sesión Instagram resuelta por producción.
+- `contracts/example-v1.json`: fixture de validación / LAB.
 
-El Reel permanece en `tools/reel_maker/`.
+## Reglas
 
-## Estado de migración
+- Carrusel y Reel son pipelines hermanos e independientes.
+- El carrusel deriva su contenido de la edición publicada; no depende de «En una mirada».
+- La identidad se conserva por `sourceCommit`.
+- `VERIFY_FIRST`, idempotencia, staging HTTPS, evidencia durable y recovery siguen siendo responsabilidad del workflow canónico.
+- El Social Renderer histórico no es el renderer productivo del carrusel. Por compatibilidad, durante este bloque `tools/social-renderer/render.mjs` se conserva únicamente para producir la tarjeta SHARE/OG 1200×630; sus PNG de carrusel no se publican.
 
-ITERACIÓN 1: módulo creado y aislado, sin conectar todavía el workflow productivo.
+## Estado
 
-El workflow `.github/workflows/instagram-carousel-publish-automatic.yml` continúa sin cambios en esta iteración. Por lo tanto, este PR no debe publicar en Instagram ni alterar la producción actual.
+**BLOQUE A — F4C conectado en rama de PR.**
 
-La conexión del workflow, la preparación del contrato definitivo y la prueba E2E en seco corresponden a la siguiente iteración.
+La producción en `main` no cambia hasta que este PR sea revisado y mergeado.

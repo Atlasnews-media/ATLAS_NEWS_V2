@@ -1,4 +1,6 @@
 ---
+import ResponsiveEditorialImage from "./ResponsiveEditorialImage.astro";
+
 interface EditorialVisual {
   src: string;
   alt: string;
@@ -30,6 +32,23 @@ const visualAllowed = (() => {
     return false;
   }
 })();
+
+const transitionKey = (() => {
+  try {
+    return new URL(href, Astro.url).pathname
+      .replace(/^\/+|\/+$/g, "")
+      .replace(/[^a-zA-Z0-9_-]+/g, "-")
+      .toLowerCase();
+  } catch {
+    return href.replace(/[^a-zA-Z0-9_-]+/g, "-").toLowerCase();
+  }
+})();
+const titleTransitionName = transitionKey
+  ? `atlas-title-${transitionKey}`
+  : undefined;
+const visualTransitionName = transitionKey
+  ? `atlas-visual-${transitionKey}`
+  : undefined;
 ---
 
 <section
@@ -39,7 +58,7 @@ const visualAllowed = (() => {
 >
   <div class="headline-copy">
     <p class="headline-label">{label}</p>
-    <h2><a href={href}>{title}</a></h2>
+    <h2 transition:name={titleTransitionName}><a href={href}>{title}</a></h2>
     <a class="headline-cta" href={href}
       >{cta} <span aria-hidden="true">→</span></a
     >
@@ -47,13 +66,13 @@ const visualAllowed = (() => {
 
   {
     visual && visualAllowed && (
-      <figure class="headline-visual">
-        <img
+      <figure class="headline-visual" transition:name={visualTransitionName}>
+        <ResponsiveEditorialImage
           src={visual.src}
           alt={visual.alt}
+          sizes="(max-width: 42rem) 40vw, (max-width: 79.99rem) 34vw, 16vw"
           loading={eager ? "eager" : "lazy"}
-          decoding="async"
-          referrerpolicy="no-referrer"
+          fetchpriority={eager ? "high" : "auto"}
         />
         <figcaption>
           {visual.source} · {visual.author} · {visual.license}
@@ -249,6 +268,29 @@ const visualAllowed = (() => {
       max-width: 78%;
       font-size: 0.34rem;
       opacity: 0.72;
+    }
+  }
+</style>
+
+<style is:global>
+  @media (min-width: 80rem) {
+    body:has(.desktop-workspace-panel)
+      .front-page.front-page--v2
+      .headline-list
+      .headline-item:first-child[data-has-visual="true"]
+      .headline-copy {
+      width: 78% !important;
+    }
+
+    body:has(.desktop-workspace-panel)
+      .front-page.front-page--v2
+      .headline-list
+      .headline-item:first-child
+      h2 {
+      max-width: 100% !important;
+      font-size: clamp(1.55rem, 2.05vw, 1.85rem) !important;
+      line-height: 0.96 !important;
+      text-wrap: pretty !important;
     }
   }
 </style>

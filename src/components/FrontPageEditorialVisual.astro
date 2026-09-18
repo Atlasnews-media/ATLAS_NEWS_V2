@@ -1,5 +1,6 @@
 ---
 import { getEntry } from "astro:content";
+import ResponsiveEditorialImage from "./ResponsiveEditorialImage.astro";
 
 interface Props {
   editionId: string;
@@ -26,12 +27,13 @@ const visualAllowed = (() => {
       class="front-page-editorial-visual"
       data-front-page-editorial-visual
     >
-      <img
+      <ResponsiveEditorialImage
         src={visualSrc}
         alt={visual.alt ?? ""}
+        sizes="(max-width: 79.99rem) min(34rem, 92vw), 26vw"
         loading="eager"
-        decoding="async"
-        referrerpolicy="no-referrer"
+        fetchpriority="high"
+        variant="frontpage"
         onerror="this.closest('[data-front-page-editorial-visual]')?.remove()"
       />
       <figcaption>

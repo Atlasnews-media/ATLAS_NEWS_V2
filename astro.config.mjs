@@ -1,4 +1,4 @@
-import { defineConfig } from "astro/config";
+import { defineConfig, fontProviders } from "astro/config";
 
 const analyticsWebsiteId =
   process.env.ATLAS_UMAMI_WEBSITE_ID?.trim() ||
@@ -170,12 +170,85 @@ function atlasDesktopWorkspaceCalendar() {
   };
 }
 
+function atlasDesktopSharedTransitions() {
+  return {
+    name: "atlas-desktop-shared-transitions",
+    hooks: {
+      "astro:config:setup": ({ injectScript }) => {
+        injectScript(
+          "head-inline",
+          `(() => {
+  const desktop = window.matchMedia("(min-width: 80rem)");
+  const articlePattern = /^\\/(ediciones|nacional|mercados|lecturas)\\/[^/]+\\/?$/;
+  const keyForPath = (pathname) =>
+    pathname
+      .replace(/^\\/+|\\/+$/g, "")
+      .replace(/[^a-zA-Z0-9_-]+/g, "-")
+      .toLowerCase();
+
+  if (!document.querySelector("style[data-atlas-shared-transitions]")) {
+    const style = document.createElement("style");
+    style.dataset.atlasSharedTransitions = "true";
+    style.textContent = [
+      "@media (min-width: 80rem) and (prefers-reduced-motion: no-preference) {",
+      "  ::view-transition-group(*) {",
+      "    animation-duration: 240ms;",
+      "    animation-timing-function: cubic-bezier(0.22, 1, 0.36, 1);",
+      "  }",
+      "}",
+      "@media (max-width: 79.99rem), (prefers-reduced-motion: reduce) {",
+      "  ::view-transition-group(*),",
+      "  ::view-transition-old(*),",
+      "  ::view-transition-new(*) { animation: none !important; }",
+      "}",
+    ].join("\\n");
+    document.head.appendChild(style);
+  }
+
+  document.addEventListener("astro:before-swap", (event) => {
+    if (!desktop.matches || !event.newDocument) return;
+
+    const destination = new URL(event.to ?? window.location.href, window.location.href);
+    if (!articlePattern.test(destination.pathname)) return;
+
+    const key = keyForPath(destination.pathname);
+    const title = event.newDocument.querySelector(".article-header h1");
+    const visual = event.newDocument.querySelector(".article-header .article-visual");
+
+    if (title instanceof HTMLElement) {
+      title.style.viewTransitionName = "atlas-title-" + key;
+    }
+    if (visual instanceof HTMLElement) {
+      visual.style.viewTransitionName = "atlas-visual-" + key;
+    }
+  });
+})();`,
+        );
+      },
+    },
+  };
+}
+
 export default defineConfig({
   output: "static",
+  fonts: [
+    {
+      name: "Roboto Condensed",
+      cssVariable: "--font-atlas-sans",
+      provider: fontProviders.fontsource(),
+      weights: [400, 700, 800],
+      styles: ["normal"],
+      subsets: ["latin"],
+      formats: ["woff2"],
+      fallbacks: ["Arial", "sans-serif"],
+      display: "swap",
+    },
+  ],
   site: "https://atlasnews-media.github.io",
   integrations: [
     atlasWebAnalytics(),
     atlasLiveMarketNumbers(),
     atlasDesktopWorkspaceCalendar(),
+    atlasDesktopSharedTransitions(),
   ],
 });

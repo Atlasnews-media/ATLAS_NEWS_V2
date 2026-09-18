@@ -3,7 +3,7 @@ import path from "node:path";
 import { chromium } from "playwright";
 
 const ROOT = path.resolve(process.cwd(), "../..");
-const OUT = path.resolve(process.cwd(), "output-template");
+const OUT = path.resolve(process.cwd(), "output");
 const CONTRACT_INPUT = process.env.SOCIAL_CONTRACT || process.argv[2] || "";
 const PUBLICATION_STATUS = process.env.SOCIAL_PUBLICATION_STATUS || "";
 const EDITION_INPUT = String(process.env.SOCIAL_EDITION_NUMBER || "").trim();

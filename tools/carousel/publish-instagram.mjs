@@ -8,7 +8,10 @@ const PUBLICATION_STATUS = process.env.SOCIAL_PUBLICATION_STATUS || "";
 const REQUIRED_PUBLICATION_STATUS = "PUBLICACIÓN DISPONIBLE / VERIFICADA";
 const PUBLISH_CONFIRMATION = process.env.INSTAGRAM_PUBLISH_CONFIRMATION || "";
 const REQUIRED_PUBLISH_CONFIRMATION = "PUBLICAR CARRUSEL / AUTORIZADO";
-const ACCESS_TOKEN = process.env.INSTAGRAM_ACCESS_TOKEN || "";
+const ACCESS_TOKEN =
+  process.env.INSTAGRAM_SESSION_TOKEN ||
+  process.env.INSTAGRAM_ACCESS_TOKEN ||
+  "";
 const EXPECTED_USERNAME =
   process.env.INSTAGRAM_EXPECTED_USERNAME || "_atlas_news";
 const API_VERSION = process.env.INSTAGRAM_API_VERSION || "v23.0";
@@ -16,7 +19,9 @@ const IMAGE_BASE_URL = (process.env.SOCIAL_IMAGE_BASE_URL || "").replace(
   /\/$/,
   "",
 );
-const GRAPH_BASE = "https://graph.instagram.com";
+const GRAPH_BASE = (process.env.INSTAGRAM_GRAPH_BASE || "").replace(/\/$/, "");
+const SESSION_USER_ID = process.env.INSTAGRAM_USER_ID || "";
+const SESSION_USERNAME = process.env.INSTAGRAM_USERNAME || "";
 const CAROUSEL_FILES = Array.from(
   { length: 5 },
   (_, i) => `atlas-news-instagram-carousel-0${i + 1}.png`,
@@ -45,12 +50,12 @@ function resolveContract(input) {
 }
 
 async function api(pathname, { method = "GET", form } = {}) {
-  const url = `${GRAPH_BASE}/${API_VERSION}${pathname}`;
+  const url = `${GRAPH_BASE}${pathname}`;
   const init = {
     method,
     headers: {
       Authorization: `Bearer ${ACCESS_TOKEN}`,
-      "User-Agent": "ATLAS-NEWS-Social-Distribution/1.0",
+      "User-Agent": "ATLAS-NEWS-Social-Distribution/2.0",
     },
   };
   if (form) {
@@ -174,10 +179,16 @@ async function main() {
     );
   }
   required(ACCESS_TOKEN, "INSTAGRAM_ACCESS_TOKEN");
+  required(GRAPH_BASE, "INSTAGRAM_GRAPH_BASE");
+  required(SESSION_USER_ID, "INSTAGRAM_USER_ID");
+  required(SESSION_USERNAME, "INSTAGRAM_USERNAME");
   required(IMAGE_BASE_URL, "SOCIAL_IMAGE_BASE_URL");
 
   const contractPath = resolveContract(CONTRACT_INPUT);
   const contract = JSON.parse(await fs.readFile(contractPath.absolute, "utf8"));
+  if (String(contract.version) !== "1") {
+    throw new Error(`Five-slide publisher requires contract v1, got ${contract.version}`);
+  }
   const title = required(contract.title, "contract.title");
   const dek = required(contract.dek, "contract.dek");
   const canonicalUrl = required(contract.canonicalUrl, "contract.canonicalUrl");
@@ -192,9 +203,8 @@ async function main() {
 
   await assertCanonicalPublished(canonicalUrl);
 
-  const me = await api("/me?fields=id,username");
-  const igUserId = required(me.id, "Instagram user id");
-  const username = required(me.username, "Instagram username");
+  const igUserId = SESSION_USER_ID;
+  const username = SESSION_USERNAME;
   if (username.toLowerCase() !== EXPECTED_USERNAME.toLowerCase()) {
     throw new Error(
       `Wrong Instagram account: expected ${EXPECTED_USERNAME}, got ${username}`,
@@ -232,7 +242,7 @@ async function main() {
     await waitForContainer(childId, `Carousel child ${i + 1}`);
   }
 
-  const caption = `${title}\n\n${dek}\n\nLee la nota completa en Atlas News:\n${canonicalUrl}\n\n#AtlasNews`;
+  const caption = `${title}\n\n${dek}\n\nLee la edición completa en Atlas News:\n${canonicalUrl}\n\n#AtlasNews`;
   const carousel = await api(`/${encodeURIComponent(igUserId)}/media`, {
     method: "POST",
     form: {
@@ -290,6 +300,7 @@ async function main() {
         mediaId: result.mediaId,
         permalink: result.permalink,
         canonicalUrl: result.canonicalUrl,
+        carouselItems: imageUrls.length,
       },
       null,
       2,

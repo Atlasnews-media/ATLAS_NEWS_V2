@@ -1,0 +1,185 @@
+---
+interface Props {
+  src: string;
+  alt?: string;
+  sizes: string;
+  loading?: "eager" | "lazy";
+  decorative?: boolean;
+  variant?: "headline" | "card" | "article" | "frontpage" | "plain";
+  class?: string;
+  fetchpriority?: "high" | "low" | "auto";
+  onerror?: string;
+}
+
+const {
+  src,
+  alt = "",
+  sizes,
+  loading = "lazy",
+  decorative = false,
+  variant,
+  class: className,
+  fetchpriority = loading === "eager" ? "high" : "auto",
+  onerror,
+} = Astro.props;
+
+const resolvedVariant = variant ?? (decorative ? "card" : "headline");
+const widths = [320, 480, 640, 800, 960, 1280];
+
+const commonsVariant = (width: number) => {
+  try {
+    const url = new URL(src);
+    if (
+      url.hostname !== "commons.wikimedia.org" ||
+      !url.pathname.startsWith("/wiki/Special:FilePath/")
+    ) {
+      return null;
+    }
+
+    url.searchParams.set("width", String(width));
+    return url.href;
+  } catch {
+    return null;
+  }
+};
+
+const variants = widths
+  .map((width) => {
+    const url = commonsVariant(width);
+    return url ? `${url} ${width}w` : null;
+  })
+  .filter((entry): entry is string => Boolean(entry));
+
+const fallbackSrc = commonsVariant(1280) ?? src;
+const srcset = variants.length ? variants.join(", ") : undefined;
+---
+
+<img
+  class:list={[
+    "responsive-editorial-image",
+    `is-${resolvedVariant}`,
+    className,
+  ]}
+  src={fallbackSrc}
+  srcset={srcset}
+  sizes={srcset ? sizes : undefined}
+  alt={decorative ? "" : alt}
+  aria-hidden={decorative ? "true" : undefined}
+  loading={loading}
+  decoding="async"
+  fetchpriority={fetchpriority}
+  referrerpolicy="no-referrer"
+  onerror={onerror}
+/>
+
+<style>
+  .responsive-editorial-image {
+    display: block;
+    width: 100%;
+  }
+
+  .is-headline,
+  .is-card,
+  .is-article {
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+
+  .is-headline {
+    opacity: 0.52;
+    filter: saturate(0.72) sepia(0.12) contrast(0.92) brightness(1.06);
+    -webkit-mask-image: linear-gradient(
+      to right,
+      transparent 0%,
+      rgba(0, 0, 0, 0.38) 24%,
+      #000 58%
+    );
+    mask-image: linear-gradient(
+      to right,
+      transparent 0%,
+      rgba(0, 0, 0, 0.38) 24%,
+      #000 58%
+    );
+  }
+
+  .is-card {
+    opacity: 0.68;
+    filter: saturate(0.7) sepia(0.1) contrast(0.92) brightness(1.06);
+    -webkit-mask-image: linear-gradient(
+      to right,
+      transparent 0%,
+      rgba(0, 0, 0, 0.34) 24%,
+      #000 60%
+    );
+    mask-image: linear-gradient(
+      to right,
+      transparent 0%,
+      rgba(0, 0, 0, 0.34) 24%,
+      #000 60%
+    );
+  }
+
+  .is-article {
+    opacity: 0.42;
+    filter: saturate(0.65) sepia(0.12) contrast(0.9) brightness(1.08);
+    -webkit-mask-image: linear-gradient(
+      to right,
+      transparent 0%,
+      rgba(0, 0, 0, 0.25) 22%,
+      rgba(0, 0, 0, 0.72) 58%,
+      #000 100%
+    );
+    mask-image: linear-gradient(
+      to right,
+      transparent 0%,
+      rgba(0, 0, 0, 0.25) 22%,
+      rgba(0, 0, 0, 0.72) 58%,
+      #000 100%
+    );
+  }
+
+  .is-frontpage {
+    max-height: 18rem;
+    object-fit: cover;
+    filter: sepia(0.72) contrast(0.92);
+  }
+
+  @media (min-width: 42.01rem) {
+    .is-headline {
+      opacity: 0.68;
+    }
+  }
+
+  @media (min-width: 42.01rem) and (max-width: 58rem) {
+    .is-headline {
+      opacity: 0.74;
+    }
+  }
+
+  @media (max-width: 42rem) {
+    .is-headline {
+      opacity: 0.76;
+    }
+    .is-card {
+      opacity: 0.72;
+    }
+    .is-article {
+      opacity: 0.34;
+      -webkit-mask-image: linear-gradient(
+        to right,
+        transparent 0%,
+        rgba(0, 0, 0, 0.18) 30%,
+        rgba(0, 0, 0, 0.64) 72%,
+        #000 100%
+      );
+      mask-image: linear-gradient(
+        to right,
+        transparent 0%,
+        rgba(0, 0, 0, 0.18) 30%,
+        rgba(0, 0, 0, 0.64) 72%,
+        #000 100%
+      );
+    }
+  }
+</style>

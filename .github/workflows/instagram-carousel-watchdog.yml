@@ -10,6 +10,7 @@ on:
     paths:
       - ".github/workflows/instagram-carousel-publish-automatic.yml"
       - ".github/workflows/instagram-carousel-watchdog.yml"
+      - "tools/carousel/**"
       - "tools/social-renderer/render.mjs"
       - "tools/social-renderer/resolve-instagram-session.mjs"
 

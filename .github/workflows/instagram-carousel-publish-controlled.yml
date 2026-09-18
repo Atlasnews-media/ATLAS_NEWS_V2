@@ -79,5 +79,5 @@ jobs:
             echo "Reason: \`${RECOVERY_REASON}\`"
             echo ""
             echo "This workflow does not render or publish to Meta directly."
-            echo "The canonical V2 pipeline owns readiness, 7-slide rendering, VERIFY_FIRST, sourceCommit idempotency, account verification and publication evidence."
+            echo "The canonical V2 pipeline owns readiness, 5-slide rendering, VERIFY_FIRST, sourceCommit idempotency, account verification and publication evidence."
           } >> "$GITHUB_STEP_SUMMARY"
