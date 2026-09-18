@@ -1,8 +1,8 @@
 ---
 title: "Bancos centrales endurecen el mapa global mientras la energía mantiene presión"
 summary: "Japón se suma al giro restrictivo tras la subida de la Fed, mientras el Banco de Inglaterra mantiene una postura vigilante y el petróleo cede sin normalizar el riesgo logístico en Hormuz."
-publishedAt: "2026-09-18T06:01:34-03:00"
-cutoffAt: "2026-09-18T06:01:21-03:00"
+publishedAt: "2026-09-18T09:49:31-03:00"
+cutoffAt: "2026-09-18T09:49:25-03:00"
 type: "daily"
 status: "draft"
 tags:

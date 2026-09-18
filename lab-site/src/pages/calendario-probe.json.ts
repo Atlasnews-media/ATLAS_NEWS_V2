@@ -47,12 +47,15 @@ function cleanText(html: string): string {
 }
 
 function excerpt(text: string, needle: string, radius = 180): string | null {
-  const index = text.toLocaleLowerCase("es-CL").indexOf(
-    needle.toLocaleLowerCase("es-CL"),
-  );
+  const index = text
+    .toLocaleLowerCase("es-CL")
+    .indexOf(needle.toLocaleLowerCase("es-CL"));
   if (index === -1) return null;
 
-  return text.slice(Math.max(0, index - radius), index + needle.length + radius);
+  return text.slice(
+    Math.max(0, index - radius),
+    index + needle.length + radius,
+  );
 }
 
 export async function GET() {
@@ -80,7 +83,9 @@ export async function GET() {
 
   if (countriesResult.ok) {
     try {
-      const parsed = JSON.parse(countriesResult.body) as Array<{ code?: string }>;
+      const parsed = JSON.parse(countriesResult.body) as Array<{
+        code?: string;
+      }>;
       countryCodes = parsed
         .map((country) => country.code)
         .filter((code): code is string => Boolean(code));

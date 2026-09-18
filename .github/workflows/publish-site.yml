@@ -3,8 +3,20 @@ name: Publicar ATLAS NEWS
 on:
   push:
     branches: [main]
+    paths-ignore:
+      - "lab/**"
+      - "lab-site/**"
+      - "public/lab/**"
+      - "scripts/lab/**"
+      - ".github/workflows/*lab*.yml"
   pull_request:
     branches: [main]
+    paths-ignore:
+      - "lab/**"
+      - "lab-site/**"
+      - "public/lab/**"
+      - "scripts/lab/**"
+      - ".github/workflows/*lab*.yml"
   workflow_dispatch:
 
 permissions:
@@ -325,7 +337,7 @@ jobs:
         run: |
           atlas_publish_dir="$RUNNER_TEMP/atlas-news-public"
           git clone --depth 1 git@github.com:Atlasnews-media/Atlasnews-media.github.io.git "$atlas_publish_dir"
-          rsync -a --delete --exclude='.git' --exclude='audio/' --exclude='data/funds-beagf.json' dist/ "$atlas_publish_dir/"
+          rsync -a --delete --exclude='.git' --exclude='audio/' --exclude='lab/' --exclude='data/funds-beagf.json' dist/ "$atlas_publish_dir/"
           cd "$atlas_publish_dir"
           git config user.name "ATLAS NEWS Publisher"
           git config user.email "actions@users.noreply.github.com"
@@ -334,7 +346,17 @@ jobs:
             echo "La versión pública ya está actualizada."
           else
             git commit -m "Publica ATLAS NEWS desde ${ATLAS_SOURCE_SHA::7}"
-            git push origin main
+            for attempt in 1 2 3; do
+              git pull --rebase origin main
+              if git push origin main; then
+                break
+              fi
+              if [[ "$attempt" -eq 3 ]]; then
+                echo "No fue posible publicar tras tres intentos de conciliación con escritores laterales." >&2
+                exit 1
+              fi
+              sleep 2
+            done
           fi
           echo "public_commit=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
 

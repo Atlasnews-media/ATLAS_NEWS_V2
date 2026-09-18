@@ -7,7 +7,7 @@ on:
       - "lab/exp2-national-dialogue.txt"
       - "lab/exp2-markets-dialogue.txt"
       - "scripts/lab-generate-voice-test.py"
-      - "src/pages/lab/index.astro"
+      - "lab-site/src/pages/index.astro"
       - ".github/workflows/lab-voice-test.yml"
   push:
     branches:
@@ -17,7 +17,7 @@ on:
       - "lab/exp2-national-dialogue.txt"
       - "lab/exp2-markets-dialogue.txt"
       - "scripts/lab-generate-voice-test.py"
-      - "src/pages/lab/index.astro"
+      - "lab-site/src/pages/index.astro"
       - ".github/workflows/lab-voice-test.yml"
   workflow_dispatch:
 

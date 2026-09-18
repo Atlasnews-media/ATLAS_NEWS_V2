@@ -1,5 +1,5 @@
 ---
-import "../../styles/global.css";
+import "../../../src/styles/global.css";
 ---
 
 <!doctype html>
@@ -9,87 +9,85 @@ import "../../styles/global.css";
     <meta name="viewport" content="width=device-width" />
     <meta name="robots" content="noindex, nofollow, noarchive" />
     <meta name="theme-color" content="#f2efe5" />
-    <title>ATLAS NEWS LAB · Lexicon V4</title>
+    <title>ATLAS NEWS LAB · Naturalidad Kokoro</title>
   </head>
   <body>
     <main class="lab-shell">
       <p class="lab-kicker">ATLAS NEWS · AUDIO LAB</p>
-      <h1>Lexicon V4</h1>
+      <h1>Naturalidad de voces</h1>
       <p class="lead">
-        Comparación A/B de pronunciación para <strong>bypass</strong>. El texto
-        editorial no cambia: esta prueba modifica únicamente la forma hablada
-        que recibe Kokoro.
+        Tres tratamientos sobre el mismo fragmento real de Mercados del 17 de
+        septiembre. No se modifica el texto editorial ni Audio V2 productivo.
       </p>
 
       <div class="rule" aria-hidden="true"></div>
 
       <section>
-        <p class="status">Dora · ef_dora</p>
-        <h2>Pronunciación actual vs propuesta</h2>
-        <div class="comparison-grid">
-          <article class="audio-card">
-            <p class="card-kicker">A · Actual</p>
-            <h3>Dora · actual</h3>
-            <audio controls preload="metadata">
-              <source
-                src="/lab/audio/lexicon-v4/bypass-dora-current.mp3"
-                type="audio/mpeg"
-              />
-            </audio>
-          </article>
-
-          <article class="audio-card audio-card--candidate">
-            <p class="card-kicker">B · Propuesta</p>
-            <h3>Dora · “bái pas”</h3>
-            <audio controls preload="metadata">
-              <source
-                src="/lab/audio/lexicon-v4/bypass-dora-proposed.mp3"
-                type="audio/mpeg"
-              />
-            </audio>
-          </article>
-        </div>
-      </section>
-
-      <div class="rule" aria-hidden="true"></div>
-
-      <section>
-        <p class="status">Alex · em_alex</p>
-        <h2>Pronunciación actual vs propuesta</h2>
-        <div class="comparison-grid">
-          <article class="audio-card">
-            <p class="card-kicker">A · Actual</p>
-            <h3>Alex · actual</h3>
-            <audio controls preload="metadata">
-              <source
-                src="/lab/audio/lexicon-v4/bypass-alex-current.mp3"
-                type="audio/mpeg"
-              />
-            </audio>
-          </article>
-
-          <article class="audio-card audio-card--candidate">
-            <p class="card-kicker">B · Propuesta</p>
-            <h3>Alex · “bái pas”</h3>
-            <audio controls preload="metadata">
-              <source
-                src="/lab/audio/lexicon-v4/bypass-alex-proposed.mp3"
-                type="audio/mpeg"
-              />
-            </audio>
-          </article>
-        </div>
-      </section>
-
-      <div class="rule" aria-hidden="true"></div>
-
-      <section>
-        <p class="status">Contrato LAB</p>
-        <h2>Escucha humana antes de producción</h2>
+        <p class="status">Experimento aislado · Dora + Alex · Kokoro</p>
+        <h2>Mismo texto, distinta interfaz de voz</h2>
         <p>
-          Ninguna variante se incorpora automáticamente al Lexicon productivo.
-          La promoción requiere elegir explícitamente la pronunciación que mejor
-          funcione con Dora y Alex.
+          Escucha primero A y luego B/C. La pregunta no es cuál suena más
+          llamativa, sino cuál mantiene mejor naturalidad, ritmo informativo y
+          contraste entre Dora y Alex.
+        </p>
+
+        <div class="comparison-grid">
+          <article class="audio-card">
+            <p class="card-kicker">A · Referencia</p>
+            <h3>Producción actual</h3>
+            <p class="card-copy">
+              Reproduce la lógica vigente: Dora 1.0; Alex 0.92 en preguntas,
+              pausa diferenciada y elevación terminal controlada.
+            </p>
+            <audio controls preload="metadata">
+              <source
+                src="/lab/audio/naturalness-v1/a-production-current.mp3"
+                type="audio/mpeg"
+              />
+            </audio>
+          </article>
+
+          <article class="audio-card audio-card--candidate">
+            <p class="card-kicker">B · Interfaz moderna</p>
+            <h3>Kokoro-FastAPI v0.9.0</h3>
+            <p class="card-copy">
+              Dora y Alex originales, con diálogo nativo, pausas explícitas y
+              Alex a ritmo 0.96. Sin pitch artificial posterior.
+            </p>
+            <audio controls preload="metadata">
+              <source
+                src="/lab/audio/naturalness-v1/b-fastapi-dialogue.mp3"
+                type="audio/mpeg"
+              />
+            </audio>
+          </article>
+
+          <article class="audio-card audio-card--candidate">
+            <p class="card-kicker">C · Mezcla experimental</p>
+            <h3>Alex 75% + Santa 25%</h3>
+            <p class="card-copy">
+              Mantiene Dora sin cambios. Para la segunda voz usa una mezcla
+              ponderada de Alex y Santa, con el mismo ritmo y pausas de B.
+            </p>
+            <audio controls preload="metadata">
+              <source
+                src="/lab/audio/naturalness-v1/c-fastapi-alex-blend.mp3"
+                type="audio/mpeg"
+              />
+            </audio>
+          </article>
+        </div>
+      </section>
+
+      <div class="rule" aria-hidden="true"></div>
+
+      <section>
+        <p class="status">Guardrail</p>
+        <h2>No toca producción</h2>
+        <p>
+          Este experimento vive únicamente en LAB. No modifica Speech
+          Normalizer, Lexicon, voces productivas, manifests ni workflows de F4B.
+          Cualquier promoción futura requiere escucha humana previa.
         </p>
         <a class="lab-link" href="/lab/">← Volver a ATLAS NEWS LAB</a>
       </section>
@@ -105,7 +103,7 @@ import "../../styles/global.css";
   }
 
   .lab-shell {
-    width: min(64rem, calc(100% - 2rem));
+    width: min(70rem, calc(100% - 2rem));
     margin: 0 auto;
     padding: clamp(3.5rem, 10vw, 7rem) 0;
   }
@@ -140,7 +138,7 @@ import "../../styles/global.css";
   }
 
   .lead {
-    max-width: 44rem;
+    max-width: 48rem;
     font-size: 1.12rem;
   }
 
@@ -153,19 +151,23 @@ import "../../styles/global.css";
 
   .comparison-grid {
     display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 1rem;
     margin-top: 1.5rem;
   }
 
   .audio-card {
-    border: 1px solid #151515;
     padding: 1.25rem;
+    border: 1px solid #151515;
     background: rgba(255, 255, 255, 0.18);
   }
 
   .audio-card--candidate {
     border-top: 5px solid #a71920;
+  }
+
+  .card-copy {
+    min-height: 7.5rem;
   }
 
   audio {
@@ -182,9 +184,13 @@ import "../../styles/global.css";
     text-underline-offset: 0.2em;
   }
 
-  @media (max-width: 700px) {
+  @media (max-width: 800px) {
     .comparison-grid {
       grid-template-columns: 1fr;
+    }
+
+    .card-copy {
+      min-height: 0;
     }
   }
 </style>
