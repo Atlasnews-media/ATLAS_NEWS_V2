@@ -1,0 +1,143 @@
+name: LAB — Reel 047 safe-area 92%
+
+on:
+  push:
+    branches:
+      - lab/reel-safe-area-047-92
+    paths:
+      - ".github/workflows/lab-reel-safe-area-047.yml"
+
+permissions:
+  contents: read
+
+concurrency:
+  group: lab-reel-safe-area-047-92
+  cancel-in-progress: true
+
+jobs:
+  build-preview:
+    name: Generar comparación real 100% vs 92%
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      SOURCE_COMMIT: 78e2f96838bd2a5956619913feb6a5d480eb4c1c
+      SOURCE_ID: src/content/editions/2026-09-18-daily-bancos-centrales-endurecen-el-mapa-global.md
+      EDITION_ID: 2026-09-18-daily-bancos-centrales-endurecen-el-mapa-global
+      EDITION_NUMBER: "47"
+      CONTRACT: tools/reel_maker/.generated/lab-reel-047-contract.json
+      OUTPUT: tools/reel_maker/lab-safe-area-047
+      LAB_PUBLIC_DIR: lab/reel-safe-area-047
+    steps:
+      - name: Checkout LAB
+        uses: actions/checkout@v5
+
+      - name: Preparar runtime real de F4D
+        run: |
+          set -euo pipefail
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq --no-install-recommends ffmpeg fontconfig fonts-liberation python3-pil
+          python3 -m py_compile tools/reel_maker/prepare_reel_contract.py tools/reel_maker/reel_maker.py
+          ffmpeg -version | head -n 1
+
+      - name: Construir contrato de la edición 047
+        env:
+          ATLAS_SOURCE_COMMIT: ${{ env.SOURCE_COMMIT }}
+          ATLAS_SOURCE_ID: ${{ env.SOURCE_ID }}
+          ATLAS_EDITION_ID: ${{ env.EDITION_ID }}
+          ATLAS_EDITION_NUMBER: ${{ env.EDITION_NUMBER }}
+          ATLAS_REEL_CONTRACT_OUTPUT: ${{ env.CONTRACT }}
+        run: |
+          set -euo pipefail
+          python3 tools/reel_maker/prepare_reel_contract.py
+          jq -e '.editionNumber == 47 and (.highlights | length == 5)' "$CONTRACT" >/dev/null
+
+      - name: Generar Reel base con el engine real
+        run: |
+          set -euo pipefail
+          rm -rf "$OUTPUT"
+          python3 tools/reel_maker/reel_maker.py "$CONTRACT" --output-dir "$OUTPUT" --keep-plates
+          test -f "$OUTPUT/atlas-news-reel-$SOURCE_COMMIT.mp4"
+          jq -e '.status == "PASS" and .audio.selectorVersion == "audio-rotation-v1" and .audio.selectionEdition == 47' "$OUTPUT/visual-validation.json" >/dev/null
+
+      - name: Crear versión 92% dentro del mismo 1080x1920
+        run: |
+          set -euo pipefail
+          original="$OUTPUT/atlas-news-reel-$SOURCE_COMMIT.mp4"
+          scaled="$OUTPUT/atlas-news-reel-047-safe-area-92.mp4"
+          ffmpeg -y -hide_banner -loglevel error \
+            -i "$original" \
+            -vf "scale=994:1766:flags=lanczos,pad=1080:1920:(ow-iw)/2:(oh-ih)/2:color=0xF4F0E8" \
+            -map 0:v:0 -map 0:a? \
+            -c:v libx264 -preset medium -crf 18 -pix_fmt yuv420p -r 30 \
+            -c:a copy -movflags +faststart "$scaled"
+          ffprobe -v error -select_streams v:0 -show_entries stream=width,height,pix_fmt,r_frame_rate -of json "$scaled" |
+            jq -e '.streams[0].width == 1080 and .streams[0].height == 1920 and .streams[0].pix_fmt == "yuv420p" and .streams[0].r_frame_rate == "30/1"' >/dev/null
+
+      - name: Publicar sólo muestra LAB
+        env:
+          DEPLOY_KEY: ${{ secrets.ATLAS_PAGES_DEPLOY_KEY }}
+        run: |
+          set -euo pipefail
+          install -m 700 -d ~/.ssh
+          printf '%s\n' "$DEPLOY_KEY" > ~/.ssh/atlas_news_pages
+          chmod 600 ~/.ssh/atlas_news_pages
+          ssh-keyscan -H github.com >> ~/.ssh/known_hosts
+
+          public="$RUNNER_TEMP/atlas-news-public"
+          GIT_SSH_COMMAND="ssh -i ~/.ssh/atlas_news_pages -o IdentitiesOnly=yes" \
+            git clone --depth 1 git@github.com:Atlasnews-media/Atlasnews-media.github.io.git "$public"
+
+          mkdir -p "$public/$LAB_PUBLIC_DIR"
+          cp "$OUTPUT/atlas-news-reel-$SOURCE_COMMIT.mp4" "$public/$LAB_PUBLIC_DIR/reel-047-100.mp4"
+          cp "$OUTPUT/atlas-news-reel-047-safe-area-92.mp4" "$public/$LAB_PUBLIC_DIR/reel-047-92.mp4"
+
+          cat > "$public/$LAB_PUBLIC_DIR/index.html" <<'HTML'
+          <!doctype html>
+          <html lang="es">
+          <head>
+            <meta charset="utf-8">
+            <meta name="viewport" content="width=device-width,initial-scale=1">
+            <title>ATLAS NEWS LAB — Reel 047 100% vs 92%</title>
+            <style>
+              body{font-family:system-ui,-apple-system,sans-serif;background:#f4f0e8;color:#111;margin:0;padding:20px}
+              h1{font-size:20px;margin:0 0 8px} p{margin:0 0 18px;line-height:1.4}
+              .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:18px;align-items:start}
+              .card{background:#fff;padding:12px;border:1px solid #ddd;border-radius:12px}
+              h2{font-size:16px;margin:0 0 10px}.tag{font-weight:700;color:#c61a23}
+              video{width:100%;aspect-ratio:9/16;background:#111;border-radius:8px;display:block}
+              small{display:block;margin-top:8px;color:#555}
+            </style>
+          </head>
+          <body>
+            <h1>ATLAS NEWS LAB — Reel 047</h1>
+            <p>Comparación real del mismo engine F4D. La segunda versión mantiene 1080×1920 y reduce el cuadro completo al 92%.</p>
+            <div class="grid">
+              <div class="card"><h2>Actual <span class="tag">100%</span></h2><video controls playsinline preload="metadata" src="./reel-047-100.mp4"></video><small>Referencia generada con el engine actual.</small></div>
+              <div class="card"><h2>Prueba <span class="tag">92%</span></h2><video controls playsinline preload="metadata" src="./reel-047-92.mp4"></video><small>Zoom out 8%, mismo lienzo 9:16.</small></div>
+            </div>
+          </body>
+          </html>
+          HTML
+
+          cd "$public"
+          git config user.name "ATLAS NEWS LAB"
+          git config user.email "actions@users.noreply.github.com"
+          git add "$LAB_PUBLIC_DIR"
+          git commit -m "LAB: Reel 047 100 vs 92 safe-area"
+          for attempt in 1 2 3; do
+            git pull --rebase origin main
+            if GIT_SSH_COMMAND="ssh -i ~/.ssh/atlas_news_pages -o IdentitiesOnly=yes" git push origin main; then
+              exit 0
+            fi
+            test "$attempt" -lt 3 || exit 1
+            sleep 2
+          done
+
+      - name: Subir evidencia LAB
+        uses: actions/upload-artifact@v4
+        with:
+          name: lab-reel-047-safe-area-92
+          path: |
+            tools/reel_maker/lab-safe-area-047/atlas-news-reel-*.mp4
+            tools/reel_maker/lab-safe-area-047/visual-validation.json
+          retention-days: 7
