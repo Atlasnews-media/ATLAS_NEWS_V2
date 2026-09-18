@@ -3,44 +3,38 @@ import BaseLayout from "../../../src/layouts/BaseLayout.astro";
 ---
 
 <BaseLayout
-  title="Memoria editorial — ATLAS NEWS LAB"
-  description="Vista de laboratorio para comparar la lectura léxica vigente con el juez semántico experimental."
+  title="Internacional — ATLAS NEWS LAB"
+  description="Versión experimental de Internacional generada con memoria editorial."
 >
   <main class="article-page" data-lab-experiment="EXP-011">
-    <header class="article-header-lab">
-      <div class="meta">
-        <span id="eyebrow">Internacional</span>
-        <span aria-hidden="true">◆</span>
-        <span>ATLAS NEWS</span>
-      </div>
+    <header class="article-header">
+      <div class="article-header-copy">
+        <div class="meta">
+          <span>Internacional</span>
+          <span aria-hidden="true">◆</span>
+          <span>ATLAS NEWS</span>
+        </div>
 
-      <h1 id="articleTitle">Cargando publicación…</h1>
-      <p class="summary" id="articleSummary">
-        Preparando la última lectura del laboratorio.
-      </p>
+        <h1 id="articleTitle">Cargando publicación…</h1>
+        <p class="summary" id="articleSummary">
+          Preparando la versión experimental.
+        </p>
 
-      <div class="publication-data">
-        <dl>
-          <div>
-            <dt>Publicado</dt>
-            <dd id="publishedAt">—</dd>
-          </div>
-          <div>
-            <dt>Lectura</dt>
-            <dd id="experimentState">LAB</dd>
-          </div>
-        </dl>
-        <ul class="tags" id="articleTags" aria-label="Etiquetas"></ul>
+        <div class="publication-data">
+          <dl>
+            <div>
+              <dt>Publicado</dt>
+              <dd id="publishedAt">—</dd>
+            </div>
+            <div>
+              <dt>Cierre</dt>
+              <dd id="cutoffAt">—</dd>
+            </div>
+          </dl>
+          <ul class="tags" id="articleTags" aria-label="Etiquetas"></ul>
+        </div>
       </div>
     </header>
-
-    <nav class="case-nav" aria-label="Cambiar vertical del experimento">
-      <button type="button" data-section="general" class="is-active">
-        Internacional
-      </button>
-      <button type="button" data-section="national">Nacional</button>
-      <button type="button" data-section="markets">Mercados</button>
-    </nav>
 
     <article class="prose" id="articleBody">
       <p>
@@ -48,12 +42,17 @@ import BaseLayout from "../../../src/layouts/BaseLayout.astro";
       </p>
     </article>
 
-    <section class="sources" aria-labelledby="antecedentes-utilizados">
-      <h2 id="antecedentes-utilizados">Antecedentes utilizados</h2>
-      <ul id="evidenceList">
-        <li>Esperando datos del experimento.</li>
+    <section class="sources" aria-labelledby="fuentes-documentadas">
+      <h2 id="fuentes-documentadas">Fuentes documentadas</h2>
+      <ul id="sourceList">
+        <li>Esperando datos de la publicación experimental.</li>
       </ul>
     </section>
+
+    <p class="lab-disclaimer">
+      LAB · Versión experimental de memoria editorial. No modifica la publicación
+      productiva de ATLAS NEWS.
+    </p>
 
     <p class="return-link">
       <a href="/lab/">← Volver al laboratorio</a>
@@ -64,30 +63,6 @@ import BaseLayout from "../../../src/layouts/BaseLayout.astro";
     const runtimeUrl = "/lab/editorial-memory-judge/latest.json";
     const bootstrapUrl = "/lab/editorial-memory-judge/bootstrap.json";
     const inputUrl = "/lab/editorial-memory-judge/input.json";
-
-    const sectionOrder = ["general", "national", "markets"];
-
-    const sectionLabel = {
-      general: "Internacional",
-      national: "Nacional",
-      markets: "Mercados",
-    };
-
-    const eventLabel = {
-      SAME_EVENT: "el mismo evento",
-      NEW_EVENT: "un evento nuevo",
-      UNRELATED: "un hecho sin continuidad relevante",
-      UNCERTAIN: "una relación de evento todavía ambigua",
-    };
-
-    const informationLabel = {
-      NEW: "información nueva",
-      CONTINUATION: "continuidad",
-      MEANINGFUL_UPDATE: "una actualización material",
-      REPETITION: "repetición",
-      CONTRADICTION: "una contradicción",
-      UNCERTAIN: "una relación informativa todavía ambigua",
-    };
 
     function formatDate(value) {
       if (!value) return "—";
@@ -100,85 +75,12 @@ import BaseLayout from "../../../src/layouts/BaseLayout.astro";
       }).format(date);
     }
 
-    function sentenceFromShadow(item) {
-      const score = item.shadow?.noveltyScore;
-      const flags = item.shadow?.repetitionFlags ?? 0;
-
-      if (flags > 0) {
-        return `El Shadow activó ${flags} señal de repetición. La novedad léxica de esta publicación fue ${score ?? "no disponible"} sobre 100.`;
-      }
-
-      return `El Shadow no activó una señal de repetición. La novedad léxica de esta publicación fue ${score ?? "no disponible"} sobre 100.`;
-    }
-
-    function sentenceFromSemantic(item) {
-      const semantic = item.semantic ?? {};
-      const event =
-        eventLabel[semantic.eventRelation] ??
-        "una relación de evento no clasificada";
-      const information =
-        informationLabel[semantic.informationRelation] ??
-        "una relación informativa no clasificada";
-
-      const angle = semantic.angleRepeated?.value === true
-        ? "El ángulo editorial sí aparece repetido respecto de antecedentes recientes."
-        : semantic.angleRepeated?.value === false
-          ? "El ángulo editorial no aparece repetido respecto de antecedentes recientes."
-          : "La repetición del ángulo quedó sin resolver.";
-
-      return `La lectura semántica describe esta pieza como ${event} y ${information}. ${angle}`;
-    }
-
-    function sectionBlock(title, body) {
-      const fragment = document.createDocumentFragment();
-      const heading = document.createElement("h2");
-      heading.textContent = title;
-      const paragraph = document.createElement("p");
-      paragraph.textContent = body;
-      fragment.append(heading, paragraph);
-      return fragment;
-    }
-
-    function lookupPriorTitle(input, candidateId, recordRef) {
-      if (!recordRef) return null;
-      const retrieval = input.retrieval?.find(
-        (entry) => entry.candidate_id === candidateId,
-      );
-      const prior = retrieval?.retrieved_prior_items?.find(
-        (entry) => entry.record_ref === recordRef,
-      );
-      return prior?.published_title ?? null;
-    }
-
-    function renderEvidence(item, input) {
-      const list = document.querySelector("#evidenceList");
-      if (!(list instanceof HTMLUListElement)) return;
-
-      const refs = Array.isArray(item.evidenceRefs) ? item.evidenceRefs : [];
-      if (refs.length === 0) {
-        const li = document.createElement("li");
-        li.textContent = "Sin antecedentes seleccionados para esta lectura.";
-        list.replaceChildren(li);
-        return;
-      }
-
-      const nodes = refs.map((recordRef) => {
-        const li = document.createElement("li");
-        const title =
-          lookupPriorTitle(input, item.candidateId, recordRef) ??
-          "Antecedente editorial previo";
-        li.textContent = title;
-        return li;
-      });
-      list.replaceChildren(...nodes);
-    }
-
-    function renderTags(candidate) {
+    function renderTags(tags) {
       const list = document.querySelector("#articleTags");
       if (!(list instanceof HTMLUListElement)) return;
-      const tags = Array.isArray(candidate?.tags) ? candidate.tags : [];
+      const safeTags = Array.isArray(tags) ? tags : [];
       list.replaceChildren(
-        ...tags.map((tag) => {
+        ...safeTags.map((tag) => {
           const li = document.createElement("li");
           li.textContent = tag;
           return li;
@@ -186,93 +88,69 @@ import BaseLayout from "../../../src/layouts/BaseLayout.astro";
       );
     }
 
-    function renderArticle(section, data, input) {
-      const item =
-        data.cases?.find((entry) => entry.section === section) ??
-        data.cases?.[0];
+    function renderSources(sources) {
+      const list = document.querySelector("#sourceList");
+      if (!(list instanceof HTMLUListElement)) return;
 
-      if (!item) return;
+      const safeSources = Array.isArray(sources) ? sources : [];
+      if (safeSources.length === 0) {
+        const li = document.createElement("li");
+        li.textContent = "Sin fuentes disponibles.";
+        list.replaceChildren(li);
+        return;
+      }
 
-      const candidate =
-        input.candidates?.find(
-          (entry) => entry.candidate_id === item.candidateId,
-        ) ?? null;
+      list.replaceChildren(
+        ...safeSources.map((source) => {
+          const li = document.createElement("li");
+          if (source?.url) {
+            const link = document.createElement("a");
+            link.href = source.url;
+            link.textContent = source.name ?? source.url;
+            link.target = "_blank";
+            link.rel = "noopener noreferrer";
+            li.append(link);
+          } else {
+            li.textContent = source?.name ?? "Fuente";
+          }
+          return li;
+        }),
+      );
+    }
 
-      const eyebrow = document.querySelector("#eyebrow");
-      const title = document.querySelector("#articleTitle");
-      const summary = document.querySelector("#articleSummary");
-      const publishedAt = document.querySelector("#publishedAt");
-      const experimentState = document.querySelector("#experimentState");
+    function renderMarkdownBody(markdown) {
       const body = document.querySelector("#articleBody");
+      if (!(body instanceof HTMLElement)) return;
 
-      if (eyebrow) eyebrow.textContent = sectionLabel[item.section] ?? "ATLAS";
-      if (title) title.textContent = candidate?.published_title ?? item.title;
-      if (summary) {
-        summary.textContent =
-          candidate?.published_summary ??
-          item.summary ??
-          "Lectura experimental sin resumen visible.";
-      }
-      if (publishedAt) {
-        publishedAt.textContent = formatDate(
-          candidate?.published_at ?? data.generatedAt,
-        );
-      }
-      if (experimentState) {
-        experimentState.textContent =
-          data.status === "PASS_WITH_OBSERVATIONS"
-            ? "Laboratorio · con observaciones"
-            : "Laboratorio";
+      const source = typeof markdown === "string" ? markdown.trim() : "";
+      if (!source) {
+        const paragraph = document.createElement("p");
+        paragraph.textContent =
+          "La corrida experimental no incluyó un cuerpo editorial completo.";
+        body.replaceChildren(paragraph);
+        return;
       }
 
-      renderTags(candidate);
+      const fragment = document.createDocumentFragment();
+      const blocks = source.split(/\n\s*\n/);
 
-      if (body) {
-        body.replaceChildren();
+      for (const rawBlock of blocks) {
+        const block = rawBlock.trim();
+        if (!block) continue;
 
-        const opening = document.createElement("p");
-        opening.textContent =
-          item.decisionReason ??
-          item.summary ??
-          "Sin lectura experimental disponible.";
-        body.append(opening);
-
-        body.append(
-          sectionBlock("Lectura del Shadow", sentenceFromShadow(item)),
-        );
-
-        body.append(
-          sectionBlock(
-            "Lectura de memoria editorial",
-            sentenceFromSemantic(item),
-          ),
-        );
-
-        if (item.semantic?.angleSummary) {
-          body.append(
-            sectionBlock("Ángulo observado", item.semantic.angleSummary),
-          );
+        if (block.startsWith("## ")) {
+          const heading = document.createElement("h2");
+          heading.textContent = block.slice(3).trim();
+          fragment.append(heading);
+          continue;
         }
 
-        if (item.summary) {
-          body.append(sectionBlock("Qué cambia", item.summary));
-        }
-
-        const note = document.createElement("p");
-        note.className = "lab-note";
-        note.textContent =
-          "Esta lectura pertenece al laboratorio y no modifica la publicación ni la memoria canónica de ATLAS NEWS.";
-        body.append(note);
+        const paragraph = document.createElement("p");
+        paragraph.textContent = block.replace(/\n/g, " ").trim();
+        fragment.append(paragraph);
       }
 
-      renderEvidence(item, input);
-
-      for (const button of document.querySelectorAll("[data-section]")) {
-        button.classList.toggle(
-          "is-active",
-          button.getAttribute("data-section") === item.section,
-        );
-      }
+      body.replaceChildren(fragment);
     }
 
     async function loadJson(url) {
@@ -288,38 +166,57 @@ import BaseLayout from "../../../src/layouts/BaseLayout.astro";
       } catch {
         runtime = await loadJson(bootstrapUrl);
       }
-
       const input = await loadJson(inputUrl);
       return { runtime, input };
     }
 
     loadExperimentData()
       .then(({ runtime, input }) => {
-        const available = sectionOrder.find((section) =>
-          runtime.cases?.some((item) => item.section === section),
+        const article = runtime.experimentalArticle;
+        const candidate = input.candidates?.find(
+          (item) => item.section === "general",
         );
-        renderArticle(available ?? "general", runtime, input);
 
-        for (const button of document.querySelectorAll("[data-section]")) {
-          button.addEventListener("click", () => {
-            const section = button.getAttribute("data-section");
-            if (section) renderArticle(section, runtime, input);
-          });
+        if (!article || article.section !== "general") {
+          throw new Error("Sin artículo experimental Internacional");
         }
+
+        const title = document.querySelector("#articleTitle");
+        const summary = document.querySelector("#articleSummary");
+        const publishedAt = document.querySelector("#publishedAt");
+        const cutoffAt = document.querySelector("#cutoffAt");
+
+        if (title) title.textContent = article.title;
+        if (summary) summary.textContent = article.summary;
+        if (publishedAt) {
+          publishedAt.textContent = formatDate(
+            article.publishedAt ?? candidate?.published_at,
+          );
+        }
+        if (cutoffAt) {
+          cutoffAt.textContent = formatDate(
+            article.cutoffAt ?? candidate?.cutoff_at,
+          );
+        }
+
+        renderTags(article.tags ?? candidate?.tags);
+        renderMarkdownBody(article.bodyMarkdown);
+        renderSources(article.sources ?? candidate?.sources);
       })
       .catch(() => {
         const title = document.querySelector("#articleTitle");
         const summary = document.querySelector("#articleSummary");
         const body = document.querySelector("#articleBody");
-        if (title) title.textContent = "Experimento sin datos disponibles";
+
+        if (title) title.textContent = "Experimento sin publicación completa";
         if (summary) {
           summary.textContent =
-            "La vista de publicación no pudo cargar una corrida válida.";
+            "La corrida disponible todavía no contiene una versión editorial comparable.";
         }
         if (body) {
           const paragraph = document.createElement("p");
           paragraph.textContent =
-            "No se muestra información parcial para evitar una comparación incompleta.";
+            "No se muestra una versión parcial para evitar comparaciones engañosas.";
           body.replaceChildren(paragraph);
         }
       });
@@ -332,119 +229,99 @@ import BaseLayout from "../../../src/layouts/BaseLayout.astro";
     margin: 0 auto;
   }
 
-  .article-header-lab {
-    max-width: 72rem;
-    margin: clamp(2.5rem, 7vw, 5.5rem) auto 0;
+  .article-header {
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+    padding: clamp(1.4rem, 4vw, 2.8rem) 0 1.5rem;
+    border-bottom: 4px double var(--rule);
+  }
+
+  .article-header-copy {
+    position: relative;
+    z-index: 2;
   }
 
   .meta {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-    gap: 0.6rem;
-    margin-bottom: 1rem;
+    gap: 0.7rem;
     color: var(--accent);
-    font: 800 0.72rem/1.2 var(--sans);
+    font: 800 0.7rem/1.2 var(--sans);
     letter-spacing: 0.12em;
     text-transform: uppercase;
   }
 
-  .article-header-lab h1 {
-    max-width: 62rem;
-    margin: 0;
-    font: 700 clamp(2.8rem, 7vw, 5.6rem) / 0.96 var(--display);
-    letter-spacing: -0.04em;
+  .article-header h1 {
+    max-width: 76rem;
+    margin: 0.9rem 0 1rem;
+    font-size: clamp(2.25rem, 6.375vw, 5.625rem);
+    line-height: 0.88;
+    letter-spacing: -0.055em;
+    text-wrap: balance;
   }
 
   .summary {
-    max-width: 54rem;
-    margin: 1.35rem 0 0;
+    max-width: 58rem;
+    margin: 0;
     color: var(--ink-soft);
-    font: 1.24rem/1.55 var(--serif);
+    font-size: clamp(1.08rem, 2.2vw, 1.45rem);
+    line-height: 1.38;
   }
 
   .publication-data {
     display: flex;
-    flex-wrap: wrap;
+    align-items: end;
     justify-content: space-between;
-    gap: 1rem 2rem;
-    margin-top: 1.65rem;
-    padding-top: 1rem;
-    border-top: 1px solid var(--rule);
+    gap: 1rem;
+    margin-top: 1.25rem;
   }
 
-  .publication-data dl {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 1rem 2rem;
-    margin: 0;
-  }
-
-  .publication-data dl div {
-    display: grid;
-    gap: 0.18rem;
-  }
-
-  .publication-data dt,
-  .publication-data dd {
-    margin: 0;
-  }
-
-  .publication-data dt {
-    color: var(--ink-soft);
-    font: 800 0.66rem/1.2 var(--sans);
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-  }
-
-  .publication-data dd {
-    font: 0.82rem/1.4 var(--sans);
-  }
-
+  .publication-data dl,
+  .publication-data dl div,
   .tags {
     display: flex;
     flex-wrap: wrap;
-    gap: 0.45rem;
+  }
+
+  .publication-data dl {
+    gap: 0.45rem 1.4rem;
+    margin: 0;
+    font: 0.7rem/1.35 var(--sans);
+    text-transform: uppercase;
+  }
+
+  .publication-data dl div {
+    gap: 0.35rem;
+  }
+
+  .publication-data dt {
+    font-weight: 800;
+  }
+
+  .publication-data dd {
+    margin: 0;
+  }
+
+  .tags {
+    justify-content: flex-end;
+    gap: 0.35rem;
     margin: 0;
     padding: 0;
     list-style: none;
   }
 
   .tags li {
-    padding: 0.28rem 0.48rem;
+    padding: 0.18rem 0.4rem;
     border: 1px solid var(--rule);
-    font: 700 0.66rem/1.2 var(--sans);
+    font: 0.62rem/1.2 var(--sans);
     text-transform: uppercase;
-  }
-
-  .case-nav {
-    max-width: 52rem;
-    margin: 2.5rem auto 0;
-    padding-bottom: 0.75rem;
-    border-bottom: 4px double var(--rule);
-  }
-
-  .case-nav button {
-    margin: 0 1.15rem 0.35rem 0;
-    padding: 0;
-    border: 0;
-    border-bottom: 2px solid transparent;
-    background: transparent;
-    color: var(--ink-soft);
-    cursor: pointer;
-    font: 800 0.72rem/1.8 var(--sans);
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-  }
-
-  .case-nav button.is-active {
-    border-bottom-color: var(--accent);
-    color: var(--accent);
   }
 
   .prose {
     max-width: 52rem;
-    margin: 2rem auto 3.5rem;
+    margin: 2.5rem auto 3.5rem;
     font-size: 1.1rem;
     line-height: 1.72;
   }
@@ -466,16 +343,9 @@ import BaseLayout from "../../../src/layouts/BaseLayout.astro";
     letter-spacing: -0.02em;
   }
 
-  .prose :global(.lab-note) {
-    margin-top: 3rem;
-    padding-top: 1rem;
-    border-top: 1px solid var(--rule);
-    color: var(--ink-soft);
-    font: 0.78rem/1.5 var(--sans);
-  }
-
   .sources,
-  .return-link {
+  .return-link,
+  .lab-disclaimer {
     max-width: 52rem;
     margin: 4rem auto;
   }
@@ -493,10 +363,20 @@ import BaseLayout from "../../../src/layouts/BaseLayout.astro";
 
   .sources li {
     margin: 0.7rem 0;
-    line-height: 1.5;
+  }
+
+  .lab-disclaimer {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--rule);
+    color: var(--ink-soft);
+    font: 0.7rem/1.5 var(--sans);
+    letter-spacing: 0.02em;
   }
 
   .return-link {
+    margin-top: 2rem;
     padding-top: 1rem;
     border-top: 1px solid var(--rule);
     font: 800 0.8rem/1.4 var(--sans);
@@ -508,30 +388,30 @@ import BaseLayout from "../../../src/layouts/BaseLayout.astro";
       width: min(100% - 1.25rem, 88rem);
     }
 
-    .article-header-lab {
-      margin-top: 1.8rem;
+    .article-header {
+      padding: 0.72rem 0 0.85rem;
     }
 
-    .article-header-lab h1 {
-      font-size: clamp(2.45rem, 13vw, 4.2rem);
+    .article-header h1 {
+      margin: 0.58rem 0 0.72rem;
+      font-size: clamp(2.15rem, 9.2vw, 2.85rem);
+      line-height: 0.92;
     }
 
     .summary {
-      font-size: 1.08rem;
+      font-size: 0.98rem;
+      line-height: 1.34;
     }
 
     .publication-data {
-      display: block;
+      align-items: flex-start;
+      flex-direction: column;
+      gap: 0.55rem;
+      margin-top: 0.85rem;
     }
 
     .tags {
-      margin-top: 1rem;
-    }
-
-    .case-nav {
-      margin-top: 1.8rem;
-      overflow-x: auto;
-      white-space: nowrap;
+      justify-content: flex-start;
     }
 
     .prose {
