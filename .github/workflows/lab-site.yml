@@ -62,24 +62,21 @@ jobs:
           cp -R src/content lab-site/src/content
           cp src/content.config.ts lab-site/src/content.config.ts
 
-      - name: Validar EXP-011 memoria editorial
-        run: node scripts/lab/validate-editorial-memory-judge.mjs lab/editorial-memory-judge/latest.json
+      - name: Validar bootstrap EXP-011
+        run: node scripts/lab/validate-editorial-memory-judge.mjs lab/editorial-memory-judge/bootstrap.json
 
-      - name: Sincronizar datos EXP-011 hacia LAB
+      - name: Sincronizar bootstrap EXP-011 hacia LAB
         run: |
           set -euo pipefail
           rm -rf lab-site/public/editorial-memory-judge
           mkdir -p lab-site/public/editorial-memory-judge
-          cp lab/editorial-memory-judge/latest.json lab-site/public/editorial-memory-judge/latest.json
-          if [ -d lab/editorial-memory-judge/runs ]; then
-            cp -R lab/editorial-memory-judge/runs lab-site/public/editorial-memory-judge/runs
-          fi
+          cp lab/editorial-memory-judge/bootstrap.json lab-site/public/editorial-memory-judge/bootstrap.json
 
       - name: Canonicalizar formato EXP-011
         run: >-
           npx prettier --write
           "lab-site/src/pages/memoria-editorial.astro"
-          "scripts/lab/validate-editorial-memory-judge.mjs"
+          "scripts/lab/*.mjs"
           --ignore-path /dev/null
 
       - name: Comprobar formato LAB
@@ -88,7 +85,7 @@ jobs:
           "lab-site/src/pages/**/*.{astro,ts}"
           "lab-site/astro.config.mjs"
           "lab-site/tsconfig.json"
-          "scripts/lab/validate-editorial-memory-judge.mjs"
+          "scripts/lab/*.mjs"
           --ignore-path /dev/null
 
       - name: Construir LAB aislado
@@ -118,7 +115,11 @@ jobs:
           public="$RUNNER_TEMP/atlas-news-public"
           git clone --depth 1 git@github.com:Atlasnews-media/Atlasnews-media.github.io.git "$public"
           mkdir -p "$public/lab"
-          rsync -a --delete --exclude='audio/' lab-site/dist/ "$public/lab/"
+          rsync -a --delete \
+            --exclude='audio/' \
+            --exclude='editorial-memory-judge/input.json' \
+            --exclude='editorial-memory-judge/latest.json' \
+            lab-site/dist/ "$public/lab/"
 
           cd "$public"
           git config user.name "ATLAS NEWS LAB Publisher"
