@@ -34,7 +34,7 @@ ALEX_VOICE = "em_alex"
 B2_PITCH_SEMITONES = -0.28
 B2_RANGE_SCALE = 0.95
 B2_ENERGY_SCALE = 0.99
-CHUNK_LIMIT = 250
+CHUNK_LIMIT = 280
 CHUNK_PAUSE_SECONDS = 0.24
 SECTION_PAUSE_SECONDS = 0.34
 
@@ -96,9 +96,10 @@ def normalize_full_script(text: str) -> str:
 
 def split_for_chatterbox(text: str):
     paragraphs = [p.strip() for p in text.split("\n") if p.strip()]
+    headings = {"El hecho central.", "Qué está cambiando.", "Qué observar ahora."}
     units = []
+
     for paragraph in paragraphs:
-        # Los encabezados cortos se conservan pero se empaquetan con el bloque siguiente.
         sentences = [
             s.strip()
             for s in re.split(r"(?<=[.!?])\s+", paragraph)
@@ -108,33 +109,54 @@ def split_for_chatterbox(text: str):
 
     chunks = []
     current = ""
+
     for unit in units:
+        # Un encabezado abre un bloque nuevo para que acompañe al contenido siguiente,
+        # nunca quede pegado al cierre de la sección anterior.
+        if unit in headings:
+            if current:
+                chunks.append(current)
+            current = unit
+            continue
+
         candidate = f"{current} {unit}".strip() if current else unit
         if len(candidate) <= CHUNK_LIMIT:
             current = candidate
             continue
+
         if current:
             chunks.append(current)
+            current = ""
+
         if len(unit) <= CHUNK_LIMIT:
             current = unit
             continue
 
-        # Fallback por comas si una oración aislada excede el límite.
+        # Fallback sólo para oraciones realmente largas. Se permite hasta 295
+        # caracteres para no crear prefijos huérfanos alrededor de dos puntos.
         pieces = [p.strip() for p in re.split(r"(?<=[,;:])\s+", unit) if p.strip()]
-        current = ""
+        buffer = ""
         for piece in pieces:
-            candidate = f"{current} {piece}".strip() if current else piece
-            if len(candidate) <= CHUNK_LIMIT:
-                current = candidate
+            candidate = f"{buffer} {piece}".strip() if buffer else piece
+            if len(candidate) <= 295:
+                buffer = candidate
             else:
-                if current:
-                    chunks.append(current)
-                current = piece
+                if buffer:
+                    chunks.append(buffer)
+                buffer = piece
+        current = buffer
+
     if current:
         chunks.append(current)
 
-    if not chunks or any(len(c) > 300 for c in chunks):
-        raise RuntimeError(f"Chunking inválido: {[len(c) for c in chunks]}")
+    if not chunks or any(len(chunk) > 300 for chunk in chunks):
+        raise RuntimeError(f"Chunking inválido: {[len(chunk) for chunk in chunks]}")
+
+    # Evita fragmentos artificialmente cortos salvo el saludo inicial.
+    for idx, chunk in enumerate(chunks):
+        if idx > 0 and len(chunk) < 45:
+            raise RuntimeError(f"Chunk huérfano detectado: {chunk!r}")
+
     return chunks
 
 
