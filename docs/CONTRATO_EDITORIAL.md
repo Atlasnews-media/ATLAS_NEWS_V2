@@ -112,7 +112,6 @@ La promoción es una transición mecánica, no una nueva etapa editorial. Para c
 - una pieza que ya estaba `published` conserva su `publishedAt` durante una recuperación parcial;
 - General es obligatoria; Nacional y Mercados continúan siendo soft-required y una vertical no promocionable no debe bloquear una General válida.
 
-
 La memoria editorial `data/editorial_state.json` puede ser leída por las tres piezas, pero dentro del paquete matutino solo la edición General puede modificarla. General solo evalúa y actualiza hilos efectivamente investigados dentro de su alcance internacional en esa ejecución; los demás hilos permanecen intactos. Nacional y Mercados no escriben memoria editorial de forma independiente.
 
 ## Lecturas seleccionadas
