@@ -1,0 +1,147 @@
+name: TEMP LAB — Dora + Alex C
+
+on:
+  push:
+    branches: ["lab/dora-alexc-dialogue-v1"]
+    paths:
+      - "lab/audio-dora-alexc-v1/**"
+      - ".github/workflows/temp-audio-dora-alexc.yml"
+
+permissions:
+  contents: read
+
+concurrency:
+  group: atlas-news-dora-alexc
+  cancel-in-progress: false
+
+jobs:
+  preview:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v5
+
+      - name: Preparar sistema
+        run: |
+          set -euo pipefail
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq espeak-ng ffmpeg python3-venv
+
+      - name: Preparar Python CPU
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.10"
+
+      - name: Instalar dependencias
+        run: |
+          set -euo pipefail
+          python -m pip install --quiet --upgrade pip
+          python -m pip install --quiet --index-url https://download.pytorch.org/whl/cpu             torch==2.8.0 torchaudio==2.8.0
+          python -m pip install --quiet             numpy==1.26.0             resampy==0.4.3             librosa==0.10.0             s3tokenizer             transformers==4.46.3             diffusers==0.29.0             omegaconf==2.3.0             resemble-perth==1.0.1             silero-vad==5.1.2             conformer==0.3.2             safetensors             huggingface_hub             soundfile             "kokoro==0.9.4"
+
+      - name: Fijar motores públicos
+        run: |
+          set -euo pipefail
+          git clone --quiet https://github.com/wlejon/kokoro-lab-py.git "$RUNNER_TEMP/kokoro-lab-py"
+          cd "$RUNNER_TEMP/kokoro-lab-py"
+          git checkout --quiet 9820dd38f40e71f8df318cdcf017bd24c62a03f7
+
+          git clone --depth 1 --quiet             https://huggingface.co/spaces/ResembleAI/Chatterbox-Multilingual-TTS-es-mx-latam             "$RUNNER_TEMP/chatterbox-latam"
+
+      - name: Preparar acceso público
+        env:
+          DEPLOY_KEY: ${{ secrets.ATLAS_PAGES_DEPLOY_KEY }}
+        run: |
+          set -euo pipefail
+          install -m 700 -d ~/.ssh
+          printf '%s\n' "$DEPLOY_KEY" > ~/.ssh/atlas_news_pages
+          chmod 600 ~/.ssh/atlas_news_pages
+          ssh-keyscan -H github.com >> ~/.ssh/known_hosts
+
+      - name: Descargar repositorio público
+        env:
+          GIT_SSH_COMMAND: ssh -i ~/.ssh/atlas_news_pages -o IdentitiesOnly=yes
+        run: |
+          set -euo pipefail
+          git clone --depth 1 git@github.com:Atlasnews-media/Atlasnews-media.github.io.git "$RUNNER_TEMP/public"
+
+      - name: Generar diálogo Dora + Alex C
+        env:
+          KOKORO_LAB_PY: ${{ runner.temp }}/kokoro-lab-py
+          CHATTERBOX_SPACE_DIR: ${{ runner.temp }}/chatterbox-latam
+          ATLAS_PUBLIC_REPO_DIR: ${{ runner.temp }}/public
+          HF_HOME: ${{ runner.temp }}/hf-cache
+        run: |
+          set -euo pipefail
+          python lab/audio-dora-alexc-v1/generate_lab.py
+
+      - name: Publicar sólo LAB
+        env:
+          GIT_SSH_COMMAND: ssh -i ~/.ssh/atlas_news_pages -o IdentitiesOnly=yes
+        run: |
+          set -euo pipefail
+          public="$RUNNER_TEMP/public"
+          target="$public/lab/audio/dora-alexc-v1"
+          mkdir -p "$target"
+          cp lab/audio-dora-alexc-v1/out/*.mp3 "$target/"
+          cp lab/audio-dora-alexc-v1/out/manifest.json "$target/manifest.json"
+
+          cat > "$target/index.html" <<'HTML'
+          <!doctype html>
+          <html lang="es">
+          <head>
+            <meta charset="utf-8">
+            <meta name="viewport" content="width=device-width,initial-scale=1">
+            <meta name="robots" content="noindex,nofollow,noarchive">
+            <title>ATLAS NEWS LAB · Dora + Alex C</title>
+            <style>
+              :root{font-family:Georgia,serif;color:#171717;background:#f2efe5}
+              *{box-sizing:border-box}body{margin:0}
+              main{width:min(1080px,calc(100% - 32px));margin:auto;padding:60px 0}
+              .k{font:800 12px/1.2 Arial,sans-serif;letter-spacing:.14em;text-transform:uppercase}
+              h1{font-size:clamp(42px,8vw,82px);line-height:.94;margin:12px 0 18px}
+              h2{font-size:28px;margin:8px 0 12px}
+              p{line-height:1.55}.lead{max-width:780px;font-size:18px}
+              .rule{border-top:1px solid;border-bottom:1px solid;height:5px;margin:34px 0}
+              .grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+              article{border:1px solid;padding:20px;background:rgba(255,255,255,.18)}
+              article.candidate{border-top:5px solid #a71920}
+              audio{width:100%;margin-top:12px}
+              .note{font-size:14px;margin-top:28px}
+              @media(max-width:760px){.grid{grid-template-columns:1fr}}
+            </style>
+          </head>
+          <body>
+          <main>
+            <p class="k">ATLAS NEWS · AUDIO LAB</p>
+            <h1>Dora + Alex C</h1>
+            <p class="lead">Mismo diálogo que aprobó B2.1. Dora permanece en Kokoro; Alex C usa Chatterbox LatAm con la misma referencia vocal del experimento C.</p>
+            <div class="rule"></div>
+            <div class="grid">
+              <article>
+                <p class="k">A · Control exacto</p>
+                <h2>B2.1 aprobado</h2>
+                <p>La pista exacta que ya elegiste: Dora + Alex B2.1.</p>
+                <audio controls preload="metadata" src="./a-dialogue-b2-1-control.mp3"></audio>
+              </article>
+              <article class="candidate">
+                <p class="k">B · Candidato</p>
+                <h2>Dora + Alex C</h2>
+                <p>Dora sin cambios. Todas las intervenciones de Alex pasan por Chatterbox C, manteniendo las mismas pausas del diálogo aprobado.</p>
+                <audio controls preload="metadata" src="./b-dora-alexc.mp3"></audio>
+              </article>
+            </div>
+            <p class="note"><strong>Guardrail:</strong> LAB aislado. No modifica F4B, Speech Normalizer, Lexicon, voces productivas ni manifests.</p>
+          </main>
+          </body>
+          </html>
+          HTML
+
+          cd "$public"
+          git config user.name "ATLAS NEWS AUDIO LAB"
+          git config user.email "actions@users.noreply.github.com"
+          git add lab/audio/dora-alexc-v1/
+          if git diff --cached --quiet; then exit 0; fi
+          git commit -m "LAB Audio — Dora + Alex C"
+          git pull --rebase origin main
+          git push origin main
