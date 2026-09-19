@@ -45,12 +45,6 @@ const visualAllowed = (() => {
   }
 })();
 
-const transitionKey = new URL(href, Astro.url).pathname
-  .replace(/^\/+|\/+$/g, "")
-  .replace(/[^a-zA-Z0-9_-]+/g, "-")
-  .toLowerCase();
-const titleTransitionName = `atlas-title-${transitionKey}`;
-const visualTransitionName = `atlas-visual-${transitionKey}`;
 ---
 
 <article
@@ -68,7 +62,7 @@ const visualTransitionName = `atlas-visual-${transitionKey}`;
       <span>{eyebrow}</span>
       {demo && <span class="demo">Demostración</span>}
     </div>
-    <h2 transition:name={titleTransitionName}><a href={href}>{title}</a></h2>
+    <h2><a href={href}>{title}</a></h2>
     <p>{summary}</p>
     <div class="card-footer">
       <time>{date}</time>
@@ -80,11 +74,7 @@ const visualTransitionName = `atlas-visual-${transitionKey}`;
 
   {
     visualAllowed && visual && (
-      <figure
-        class="card-visual"
-        aria-hidden="true"
-        transition:name={visualTransitionName}
-      >
+      <figure class="card-visual" aria-hidden="true">
         <ResponsiveEditorialImage
           src={visual.src}
           decorative
