@@ -72,10 +72,7 @@ TURNS = [
         "el shock energético dejó de ser sólo una perturbación de precios y está "
         "condicionando simultáneamente decisiones monetarias en varias economías avanzadas. "
         "La coincidencia de señales restrictivas reduce la posibilidad de que una gran "
-        "economía compense a las demás con condiciones financieras claramente más laxas. "
-        "Si el shock energético dura, los bancos centrales enfrentan el riesgo de que el "
-        "aumento inicial de combustibles se propague hacia expectativas, salarios y otros "
-        "precios, aun cuando la actividad pierda fuerza.",
+        "economía compense a las demás con condiciones financieras claramente más laxas.",
     ),
     (
         "DORA",
@@ -84,11 +81,7 @@ TURNS = [
     (
         "ALEX C",
         "La señal central no es un movimiento puntual de un activo, sino una condición "
-        "financiera global más exigente. La reacción inicial del yen mostró que una subida "
-        "de tasas no garantiza por sí sola una apreciación sostenida cuando el mercado "
-        "duda sobre la velocidad de los próximos pasos. En Europa y Estados Unidos, la "
-        "discusión también se desplaza desde la decisión inmediata hacia cuánto tiempo "
-        "deberá mantenerse el sesgo restrictivo si energía e inflación continúan presionando.",
+        "financiera global más exigente.",
     ),
 ]
 
