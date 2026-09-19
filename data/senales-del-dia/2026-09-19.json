@@ -1,0 +1,99 @@
+{
+  "status": "READY",
+  "date": "2026-09-19",
+  "contract": "atlas-senales-del-dia-v1",
+  "senalesDelDia": {
+    "internacional": [
+      {
+        "slot": "technology",
+        "headline": "Nscale abre sus cifras antes de una oferta pública en Estados Unidos",
+        "deck": "La firma británica de nube para IA reportó ingresos por US$140,6 millones en el primer semestre y una pérdida neta superior a US$1.000 millones.",
+        "development": "Nscale presentó el 18 de septiembre documentación para una oferta pública inicial en Estados Unidos y abrió por primera vez una ventana detallada sobre las finanzas de uno de los nuevos proveedores de infraestructura para inteligencia artificial. La compañía británica, respaldada por Nvidia, informó ingresos de US$140,6 millones durante los seis meses terminados en junio, frente a US$10,4 millones en igual período de 2025. El salto equivale a más de doce veces la base comparable y muestra la velocidad con que está creciendo la demanda por capacidad de cómputo especializada.\n\nEl crecimiento, sin embargo, convive con una estructura todavía intensiva en capital. Nscale registró una pérdida neta de US$1.020 millones en el semestre, comparada con US$368,9 millones un año antes. La combinación es relevante porque permite observar el costo financiero y operativo de construir centros de datos, adquirir aceleradores y asegurar energía antes de que los contratos de clientes maduren plenamente. Una salida a bolsa trasladaría esa discusión desde rondas privadas hacia inversionistas públicos.\n\nLa señal tecnológica está en la aparición de una nueva categoría bursátil potencial: operadores de nube especializados en IA que no fabrican los chips, pero concentran infraestructura para desplegarlos. El crecimiento de ingresos valida demanda, mientras la pérdida obliga a separar expansión de rentabilidad. El expediente de oferta permitirá seguir capacidad contratada, concentración de clientes, compromisos de inversión y financiamiento; esas variables serán más informativas que una extrapolación simple del crecimiento semestral.",
+        "anchor": "nscale-ipo-nube-ia-ingresos-infraestructura",
+        "sources": [
+          {
+            "name": "Reuters",
+            "url": "https://www.reuters.com/technology/ai-cloud-firm-nscale-files-us-ipo-2026-09-18/"
+          }
+        ]
+      },
+      {
+        "slot": "world",
+        "headline": "Ucrania impulsa un bloque carpático de comercio y seguridad",
+        "deck": "La iniciativa reúne a ocho países de Europa central y oriental y estrenó más de 50 acuerdos por encima de 1.000 millones de euros.",
+        "development": "El presidente ucraniano Volodímir Zelenski lanzó el 18 de septiembre la iniciativa Carpathian Eight, un marco regional orientado a comercio, energía, transporte y seguridad entre países de Europa central y oriental. La reunión en el oeste de Ucrania convocó a representantes de Rumania, Serbia, Polonia, Eslovaquia, República Checa, Austria, Hungría y de la Unión Europea. El encuentro produjo más de 50 acuerdos valorados en más de 1.000 millones de euros, según la información divulgada durante la cumbre.\n\nMás de la mitad de los acuerdos se vincula con energía renovable, especialmente proyectos solares y eólicos. La propuesta busca aprovechar conexiones transfronterizas y capacidad energética de la región carpática, además de mantener corredores de comercio y transporte que han ganado importancia desde la invasión rusa de Ucrania en 2022. Cerca de 550 representantes empresariales estaban previstos en las actividades de la cumbre, lo que agrega una dimensión comercial al componente político y de seguridad.\n\nLa señal internacional no equivale todavía a una nueva organización supranacional ni garantiza que todos los proyectos anunciados se ejecuten. Su relevancia está en formalizar cooperación regional alrededor de infraestructura y energía en una zona donde las rutas comerciales y la seguridad están estrechamente conectadas. El seguimiento deberá distinguir acuerdos firmados de inversiones efectivamente financiadas y observar si el mecanismo logra continuidad institucional más allá de esta primera reunión.",
+        "anchor": "carpathian-eight-ucrania-comercio-energia-seguridad",
+        "sources": [
+          {
+            "name": "Reuters",
+            "url": "https://www.reuters.com/world/europe/zelenskiy-launches-carpathian-eight-initiative-trade-security-2026-09-18/"
+          }
+        ]
+      }
+    ],
+    "nacional": [
+      {
+        "slot": "ipsa_company",
+        "headline": "SQM lidera las utilidades corporativas del primer semestre en Chile",
+        "deck": "La minera reportó US$1.024,7 millones de ganancias y encabezó un semestre en que 471 empresas elevaron sus utilidades agregadas en 21,16%.",
+        "development": "SQM encabezó las utilidades reportadas por las empresas chilenas a la Comisión para el Mercado Financiero durante el primer semestre de 2026. La compañía registró ganancias por US$1.024,7 millones, de acuerdo con la consolidación de estados financieros publicada el 14 de septiembre. El dato se inserta en un universo de 471 compañías que informaron resultados a la CMF y que, en conjunto, acumularon utilidades por US$16.881 millones entre enero y junio.\n\nLa lectura corporativa gana contexto al comparar el agregado. Las ganancias del conjunto aumentaron 21,16% frente al mismo período de 2025 y los ingresos alcanzaron US$194.272 millones, un avance de 12,11%. El efectivo y equivalentes subieron 15,41%, hasta US$40.792 millones, mientras el capital de trabajo agregado creció 15,06%. Esas cifras muestran que la mejora no se limita a una sola línea contable, aunque la dispersión entre sectores y compañías sigue siendo relevante.\n\nPara SQM, liderar el ranking semestral confirma el peso que sus resultados mantienen dentro del universo corporativo chileno y del IPSA, pero no permite proyectar automáticamente el segundo semestre. El desempeño futuro depende, entre otros factores, de precios y volúmenes de litio, potasio y yodo. La señal a seguir será si el liderazgo en utilidades se sostiene cuando las compañías reporten el tercer trimestre y cuánto de la mejora agregada proviene de crecimiento operacional frente a efectos de precios o bases comparativas.",
+        "anchor": "sqm-utilidades-primer-semestre-empresas-chile",
+        "sources": [
+          {
+            "name": "La Tercera",
+            "url": "https://www.latercera.com/pulso/noticia/empresas-cierran-el-primer-semestre-con-alza-de-21-en-sus-ganancias-y-suman-casi-us17-mil-millones/"
+          }
+        ]
+      },
+      {
+        "slot": "policy_economy",
+        "headline": "CNE abre revisión de la metodología para definir horas de punta",
+        "deck": "La resolución 513 aprobó un informe técnico preliminar para el Sistema Eléctrico Nacional y abrió observaciones hasta el 17 de octubre.",
+        "development": "La Comisión Nacional de Energía publicó el 17 de septiembre la Resolución Exenta 513, que aprueba el informe técnico preliminar sobre la metodología para determinar el período de control de punta del Sistema Eléctrico Nacional en 2026. El documento abre una etapa formal de observaciones que se extenderá hasta el 17 de octubre. La CNE también puso a disposición el formato para presentar comentarios y el oficio dirigido al Coordinador Eléctrico Nacional.\n\nLa metodología de control de punta es relevante porque identifica períodos en que la demanda del sistema adquiere especial importancia para señales de capacidad y gestión eléctrica. La publicación actual es preliminar: abre un procedimiento técnico y no debe interpretarse como una modificación definitiva ya aplicada a consumidores o empresas. Precisamente por eso, la etapa de observaciones permite que participantes entreguen antecedentes antes de que la autoridad cierre el proceso correspondiente.\n\nLa señal de política económica está en el ajuste de reglas operativas que influyen sobre incentivos de consumo y planificación del sistema eléctrico, sin confundirse con una decisión tarifaria inmediata. En una red con mayor participación renovable y cambios en los perfiles horarios de demanda, la definición de punta requiere actualizar evidencia y metodología. El seguimiento debe concentrarse en las observaciones recibidas, la versión final que adopte la CNE y cualquier efecto regulatorio posterior que derive de esa definición.",
+        "anchor": "cne-metodologia-periodo-control-punta-sen-2026",
+        "sources": [
+          {
+            "name": "Comisión Nacional de Energía",
+            "url": "https://www.cne.cl/tarificacion/electrica/"
+          }
+        ]
+      }
+    ],
+    "mercados": [
+      {
+        "slot": "markets_chile",
+        "headline": "Cobre encadena cuatro avances con demanda china todavía firme",
+        "deck": "El metal llegó a US$14.521 por tonelada en Londres y acumuló cerca de 2% semanal, mientras las primas físicas en China alcanzaron máximos de casi cuatro años.",
+        "development": "El cobre avanzó por cuarta sesión consecutiva el 18 de septiembre y quedó nuevamente cerca de sus máximos históricos. El contrato a tres meses en la Bolsa de Metales de Londres subió alrededor de 0,2% hasta US$14.521 por tonelada durante la jornada y acumuló aproximadamente 2% en la semana. El movimiento ocurrió pese a un entorno financiero exigente y tuvo como soporte principal señales de demanda física en China, el mayor consumidor mundial del metal.\n\nDatos de alta frecuencia citados por Reuters mostraron que la demanda china de cobre, aluminio y acero plano fue entre 1% y 2% superior interanualmente durante la primera mitad de septiembre. La prima de cobre de Yangshan aumentó con fuerza durante el mes y alcanzó su nivel más alto en casi cuatro años, una señal de disposición a pagar por metal importado. Al mismo tiempo, la oferta de chatarra en China permanece ajustada y parte de la capacidad de fundición tarda en volver desde mantenimientos.\n\nPara Chile, principal productor minero de cobre, la señal es distinta de un movimiento puntual del IPSA: un precio internacional alto mejora el valor potencial de exportaciones y las condiciones económicas de productores, aunque también puede moderar demanda si persiste demasiado. El mercado deberá observar inventarios, primas físicas chinas y respuesta de usuarios finales. Si la demanda real acompaña los precios, el avance tendrá una base más sólida; si las primas o el consumo retroceden, la cercanía a récords puede aumentar la sensibilidad a correcciones.",
+        "anchor": "cobre-demanda-china-cuarta-alza-semanal",
+        "sources": [
+          {
+            "name": "Reuters vía Business Recorder",
+            "url": "https://www.brecorder.com/news/40440143/active-demand-in-china-sets-copper-on-track-for-weekly-gain"
+          },
+          {
+            "name": "Rio Times",
+            "url": "https://www.riotimesonline.com/copper-markets-latam-friday-september-18-2026/"
+          }
+        ]
+      },
+      {
+        "slot": "markets_global",
+        "headline": "Bitcoin recupera los US$80.000 tras una semana de presión regulatoria",
+        "deck": "La criptomoneda avanzó más de 5% el viernes pese al tropiezo de la Clarity Act, mientras acciones ligadas a cripto también repuntaron.",
+        "development": "Bitcoin recuperó el 18 de septiembre el nivel de US$80.000 y avanzó más de 5% durante la sesión, después de una semana marcada por volatilidad y por el fracaso de la Clarity Act para superar una votación procedimental en el Senado estadounidense. El movimiento llevó la cotización sobre US$80.500 durante la mañana en Estados Unidos y revirtió parte de las pérdidas previas. Acciones vinculadas al ecosistema cripto acompañaron el rebote, con avances relevantes en plataformas y compañías expuestas al activo.\n\nLa recuperación no elimina el frente regulatorio. Tras el revés legislativo, la atención del mercado se desplazó hacia acciones de los reguladores: la SEC concedió una exención temporal relacionada con negociación de versiones tokenizadas de acciones y la CFTC continúa trabajando en reglas para transacciones de activos digitales. En paralelo, los ETF de bitcoin registraron cerca de US$160 millones de entradas el jueves, después de dos jornadas de salidas netas, aportando una señal de demanda institucional de corto plazo.\n\nLa señal de mercado está en la capacidad del activo para absorber noticias que normalmente habrían sido interpretadas como restrictivas y recuperar un umbral psicológico relevante. Eso no establece una nueva tendencia por sí solo. Bitcoin seguía muy por debajo de máximos anteriores y conserva una volatilidad elevada. El seguimiento debe separar precio, flujos de ETF y avances regulatorios efectivos: si las entradas se sostienen y el marco regulatorio gana claridad, el rebote tendrá más respaldo; si vuelven las salidas, el nivel de US$80.000 puede resultar transitorio.",
+        "anchor": "bitcoin-recupera-80000-regulacion-etf",
+        "sources": [
+          {
+            "name": "Wall Street Journal",
+            "url": "https://www.wsj.com/livecoverage/stock-market-today-dow-sp-500-nasdaq-09-18-2026/card/bitcoin-climbs-above-80-000-ndw4CMftrZiZoLm0fxDg"
+          },
+          {
+            "name": "Yahoo Finance",
+            "url": "https://finance.yahoo.com/markets/article/bitcoin-surges-5-to-top-80000-as-investors-look-past-clarity-acts-failure-145857106.html"
+          }
+        ]
+      }
+    ]
+  }
+}
