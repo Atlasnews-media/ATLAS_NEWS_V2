@@ -1,6 +1,5 @@
 ---
 import { Font } from "astro:assets";
-import { ClientRouter } from "astro:transitions";
 import "../styles/global.css";
 import "../styles/desktop-workspace-panel.css";
 import {
@@ -87,7 +86,7 @@ const isPrimarySectionLanding = [
 ---
 
 <!doctype html>
-<html lang="es" transition:animate="none">
+<html lang="es">
   <head>
     <meta charset="UTF-8" />
     <meta name="description" content={description} />
@@ -131,7 +130,6 @@ const isPrimarySectionLanding = [
       cssVariable="--font-atlas-sans"
       preload={[{ weight: 800, style: "normal", subset: "latin" }]}
     />
-    <ClientRouter fallback="swap" />
   </head>
   <body class={isPrimarySectionLanding ? "primary-section-page" : undefined}>
     <a class="skip-link" href="#contenido">Saltar al contenido</a>
