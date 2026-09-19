@@ -1,10 +1,10 @@
 ---
 title: "El endurecimiento monetario global gana alcance"
 summary: "Japón se suma al giro restrictivo mientras Estados Unidos y Europa mantienen el foco en inflación, con energía y Hormuz ampliando el riesgo para precios, crédito y comercio mundial."
-publishedAt: "2026-09-19T06:04:00-03:00"
+publishedAt: "2026-09-19T06:45:00-03:00"
 cutoffAt: "2026-09-19T06:03:00-03:00"
 type: "daily"
-status: "draft"
+status: "published"
 tags:
   - economia-global
   - bancos-centrales
