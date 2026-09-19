@@ -266,10 +266,21 @@ jobs:
             exit 0
           fi
 
+          if jq -e --arg source "$SOURCE_COMMIT" '
+            .sourceCommit == $source and
+            (.permalink | type == "string") and
+            (.permalink | contains("/reel/"))
+          ' "$evidence" >/dev/null 2>&1; then
+            echo "Ignoring stale cross-product Reel evidence for carousel sourceCommit=${SOURCE_COMMIT}."
+            echo "already_published=false" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+
           jq -e --arg source "$SOURCE_COMMIT" '
             .sourceCommit == $source and
             (.status == "PUBLISHED_VERIFIED" or .status == "ALREADY_PUBLISHED_VERIFIED") and
-            (.permalink | type == "string" and length > 0)
+            (.permalink | type == "string" and length > 0) and
+            ((.mediaType // "CAROUSEL_ALBUM") == "CAROUSEL_ALBUM")
           ' "$evidence" >/dev/null || {
             echo "Fail-closed: sourceCommit evidence exists but is invalid: $evidence"
             exit 12

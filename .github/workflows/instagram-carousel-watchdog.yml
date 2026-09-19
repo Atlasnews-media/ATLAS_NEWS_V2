@@ -103,7 +103,9 @@ jobs:
 
           if [[ "$code" = "200" ]] && jq -e '
             (.status == "PUBLISHED_VERIFIED" or .status == "ALREADY_PUBLISHED_VERIFIED") and
-            (.permalink | type == "string" and length > 0)
+            (.permalink | type == "string" and length > 0) and
+            ((.permalink | contains("/reel/")) | not) and
+            ((.mediaType // "CAROUSEL_ALBUM") == "CAROUSEL_ALBUM")
           ' "$tmp" >/dev/null 2>&1; then
             permalink="$(jq -r '.permalink' "$tmp")"
             echo "published=true" >> "$GITHUB_OUTPUT"
