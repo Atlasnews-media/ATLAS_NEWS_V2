@@ -1,10 +1,10 @@
 ---
 title: "Presupuesto 2027 concentra la prueba en empleo e inversión con margen fiscal estrecho"
 summary: "El diseño presupuestario prioriza carteras reactivadoras mientras el gasto crecería como máximo 1%; la prueba será convertir reasignaciones e inversión en empleo formal efectivo."
-publishedAt: "2026-09-19T06:20:00-03:00"
+publishedAt: "2026-09-19T06:45:00-03:00"
 cutoffAt: "2026-09-19T06:19:00-03:00"
 section: "national"
-status: "draft"
+status: "published"
 tags:
   - chile
   - presupuesto-2027
