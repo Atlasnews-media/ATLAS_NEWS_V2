@@ -260,6 +260,37 @@ const groups = readyArtifact
     letter-spacing: -0.04em;
   }
 
+  .daily-signals__title::after {
+    content: "";
+    display: inline-block;
+    width: 7px;
+    height: 7px;
+    margin-left: 0.45rem;
+    border-radius: 50%;
+    vertical-align: 0.14em;
+    background: var(--accent);
+    box-shadow: 0 0 5px rgba(142, 47, 36, 0.22);
+    animation: daily-signals-active 1.8s ease-in-out infinite;
+  }
+
+  @keyframes daily-signals-active {
+    0%,
+    100% {
+      opacity: 0.48;
+    }
+
+    50% {
+      opacity: 0.95;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .daily-signals__title::after {
+      animation: none;
+      opacity: 0.88;
+    }
+  }
+
   .daily-signals__group {
     padding: clamp(1rem, 1.8vw, 1.45rem) 0 0;
   }
