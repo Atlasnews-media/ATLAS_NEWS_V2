@@ -75,7 +75,7 @@ git clone --depth 1 --branch social-assets \
 git -C _social_assets config user.name "github-actions[bot]"
 git -C _social_assets config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
-push_social_assets_with_retry() {
+# Git persistence is bounded to three attempts; Meta verification loops remain unchanged.\npush_social_assets_with_retry() {
   local attempt
   for attempt in 1 2 3; do
     if git -C _social_assets pull --rebase origin social-assets && \
