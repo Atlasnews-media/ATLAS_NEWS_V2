@@ -25,8 +25,14 @@ on:
         required: false
         default: ""
         type: string
+      retry_depth:
+        description: "Profundidad interna de reintento automático (0-2)"
+        required: false
+        default: "0"
+        type: string
 
 permissions:
+  actions: write
   contents: read
 
 concurrency:
@@ -50,6 +56,8 @@ jobs:
        github.event.workflow_run.head_branch == 'main')
     runs-on: ubuntu-latest
     timeout-minutes: 15
+    outputs:
+      source_commit: ${{ steps.source.outputs.source_commit }}
     env:
       ATLAS_PUBLIC_STATUS_URL: https://atlasnews-media.github.io/status.json
       ATLAS_REEL_CONTRACT: tools/reel_maker/.generated/reel-contract.json
@@ -464,3 +472,38 @@ jobs:
             tools/reel_maker/output/atlas-news-plates-*/scene-*.png
           if-no-files-found: warn
           retention-days: 7
+
+  autorecover:
+    needs: build-reel
+    if: always() && needs.build-reel.result == 'failure' && github.event_name != 'pull_request'
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    env:
+      GH_TOKEN: ${{ github.token }}
+      SOURCE_COMMIT: ${{ needs.build-reel.outputs.source_commit || github.event.workflow_run.head_sha || inputs.source_commit || '' }}
+      RETRY_DEPTH: ${{ github.event_name == 'workflow_dispatch' && inputs.retry_depth || '0' }}
+
+    steps:
+      - name: Dispatch bounded automatic retry
+        run: |
+          set -euo pipefail
+          depth="${RETRY_DEPTH:-0}"
+          [[ "$depth" =~ ^[0-9]+$ ]] || depth=0
+
+          if (( depth >= 2 )); then
+            echo "Retry budget exhausted at depth=${depth}; maximum three workflow attempts reached."
+            exit 0
+          fi
+
+          if [[ ! "$SOURCE_COMMIT" =~ ^[0-9a-f]{40}$ ]]; then
+            echo "No exact sourceCommit available for safe Reel retry; refusing ambiguous redispatch."
+            exit 0
+          fi
+
+          next=$((depth + 1))
+          gh workflow run reel-maker-v2.yml \
+            --repo "$GITHUB_REPOSITORY" \
+            --ref main \
+            -f source_commit="$SOURCE_COMMIT" \
+            -f retry_depth="$next"
+          echo "Automatic Reel retry dispatched sourceCommit=${SOURCE_COMMIT} retryDepth=${next}."
