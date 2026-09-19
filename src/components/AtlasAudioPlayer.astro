@@ -121,9 +121,7 @@ const waveformHeights = [
   let waveSurferModulePromise: Promise<any> | undefined;
 
   const loadWaveSurferModule = () => {
-    waveSurferModulePromise ??= import(
-      /* @vite-ignore */ waveSurferModuleUrl
-    );
+    waveSurferModulePromise ??= import(/* @vite-ignore */ waveSurferModuleUrl);
     return waveSurferModulePromise;
   };
 
