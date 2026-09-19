@@ -559,6 +559,14 @@ const isPrimarySectionLanding = [
     letter-spacing: 0.035em !important;
   }
 
+  /* Tablet: navegación tipográfica también para tablets con viewport CSS compacto. */
+  @media (min-width: 36.01rem) and (max-width: 70rem) {
+    .site-header nav,
+    .front-page .headline-tab {
+      font-size: 1rem !important;
+    }
+  }
+
   /* Tablet: escala editorial propia y refuerzos de legibilidad. */
   @media (min-width: 42.01rem) and (max-width: 70rem) {
     html {
@@ -573,11 +581,6 @@ const isPrimarySectionLanding = [
 
     .site-header .brand-mark {
       width: clamp(3.45rem, 7.4vw, 4.5rem) !important;
-    }
-
-    .site-header nav,
-    .front-page .headline-tab {
-      font-size: 1rem !important;
     }
 
     .front-page .economic-strip {
