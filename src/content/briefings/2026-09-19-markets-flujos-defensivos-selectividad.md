@@ -1,10 +1,10 @@
 ---
 title: "Flujos defensivos ganan peso mientras acciones resisten el endurecimiento global"
 summary: "Las acciones globales cerraron con leve avance, pero las salidas récord de fondos, el oro al alza y los bonos de corto plazo muestran una demanda de riesgo mucho más selectiva."
-publishedAt: "2026-09-19T06:23:00-03:00"
+publishedAt: "2026-09-19T06:45:00-03:00"
 cutoffAt: "2026-09-19T06:22:00-03:00"
 section: "markets"
-status: "draft"
+status: "published"
 tags:
   - mercados
   - flujos
