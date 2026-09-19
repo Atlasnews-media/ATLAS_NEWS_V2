@@ -347,10 +347,10 @@ jobs:
           else
             git commit -m "Publica ATLAS NEWS desde ${ATLAS_SOURCE_SHA::7}"
             for attempt in 1 2 3; do
-              git pull --rebase origin main
-              if git push origin main; then
+              if git pull --rebase origin main && git push origin main; then
                 break
               fi
+              git rebase --abort >/dev/null 2>&1 || true
               if [[ "$attempt" -eq 3 ]]; then
                 echo "No fue posible publicar tras tres intentos de conciliación con escritores laterales." >&2
                 exit 1
@@ -535,7 +535,17 @@ jobs:
             echo "El audio público ya está actualizado."
           else
             git commit -m "Publica audio ATLAS NEWS — ${{ steps.audio_plan.outputs.audio_date }}"
-            git push origin main
+            for attempt in 1 2 3; do
+              if git pull --rebase origin main && git push origin main; then
+                break
+              fi
+              git rebase --abort >/dev/null 2>&1 || true
+              if [[ "$attempt" -eq 3 ]]; then
+                echo "No fue posible publicar el audio de Portada tras tres intentos de conciliación." >&2
+                exit 1
+              fi
+              sleep 2
+            done
           fi
 
       - name: Registrar fallo operacional
