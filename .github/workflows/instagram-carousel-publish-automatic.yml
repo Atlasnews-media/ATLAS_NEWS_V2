@@ -389,7 +389,17 @@ jobs:
           git add -u "instagram-pending/${SOURCE_COMMIT}.json" 2>/dev/null || true
           if ! git diff --cached --quiet; then
             git commit -m "social-assets: recover verified Instagram ${SOURCE_COMMIT::7}"
-            git push origin HEAD:social-assets
+            for attempt in 1 2 3; do
+              if git pull --rebase origin social-assets && git push origin HEAD:social-assets; then
+                break
+              fi
+              git rebase --abort >/dev/null 2>&1 || true
+              if [[ "$attempt" -eq 3 ]]; then
+                echo "No fue posible persistir social-assets tras tres intentos de conciliación." >&2
+                exit 1
+              fi
+              sleep 2
+            done
           fi
 
           permalink="$(jq -r '.permalink' "instagram-published/${SOURCE_COMMIT}.json")"
@@ -534,7 +544,17 @@ jobs:
             echo "Public social assets already match this sourceCommit."
           else
             git commit -m "social-assets: stage automatic carousel ${SOURCE_COMMIT::7}"
-            git push origin HEAD:social-assets
+            for attempt in 1 2 3; do
+              if git pull --rebase origin social-assets && git push origin HEAD:social-assets; then
+                break
+              fi
+              git rebase --abort >/dev/null 2>&1 || true
+              if [[ "$attempt" -eq 3 ]]; then
+                echo "No fue posible persistir social-assets tras tres intentos de conciliación." >&2
+                exit 1
+              fi
+              sleep 2
+            done
           fi
 
           base_url="https://raw.githubusercontent.com/Atlasnews-media/Atlasnews-media.github.io/social-assets/${stage_dir}"
@@ -622,7 +642,17 @@ jobs:
           git add "instagram-pending/${SOURCE_COMMIT}.json"
           if ! git diff --cached --quiet; then
             git commit -m "social-assets: record ambiguous Instagram ${SOURCE_COMMIT::7}"
-            git push origin HEAD:social-assets
+            for attempt in 1 2 3; do
+              if git pull --rebase origin social-assets && git push origin HEAD:social-assets; then
+                break
+              fi
+              git rebase --abort >/dev/null 2>&1 || true
+              if [[ "$attempt" -eq 3 ]]; then
+                echo "No fue posible persistir social-assets tras tres intentos de conciliación." >&2
+                exit 1
+              fi
+              sleep 2
+            done
           fi
           echo "VERIFY_FIRST marker persisted for sourceCommit=${SOURCE_COMMIT}."
 
@@ -663,7 +693,17 @@ jobs:
             "${{ steps.stage.outputs.stage_dir }}/instagram-publish.json"
           git add -u "instagram-pending/${SOURCE_COMMIT}.json" 2>/dev/null || true
           git commit -m "social-assets: record verified Instagram ${SOURCE_COMMIT::7}"
-          git push origin HEAD:social-assets
+          for attempt in 1 2 3; do
+            if git pull --rebase origin social-assets && git push origin HEAD:social-assets; then
+              break
+            fi
+            git rebase --abort >/dev/null 2>&1 || true
+            if [[ "$attempt" -eq 3 ]]; then
+              echo "No fue posible persistir social-assets tras tres intentos de conciliación." >&2
+              exit 1
+            fi
+            sleep 2
+          done
 
           permalink="$(jq -r '.permalink' "instagram-published/${SOURCE_COMMIT}.json")"
           {
