@@ -10,6 +10,11 @@ on:
         description: "sourceCommit con artifact canónico F4D vigente"
         required: true
         type: string
+      retry_depth:
+        description: "Profundidad interna de reintento automático (0-2)"
+        required: false
+        default: "0"
+        type: string
   pull_request:
     branches: [main]
     paths:
@@ -21,7 +26,7 @@ on:
       - "tools/reel_maker/test_reconcile_instagram_reel.py"
 
 permissions:
-  actions: read
+  actions: write
   contents: read
 
 concurrency:
@@ -97,6 +102,8 @@ jobs:
        github.event.workflow_run.head_branch == 'main')
     runs-on: ubuntu-latest
     timeout-minutes: 15
+    outputs:
+      source_commit: ${{ steps.handoff.outputs.source_commit || steps.upstream.outputs.source_commit }}
     env:
       ATLAS_PUBLIC_STATUS_URL: https://atlasnews-media.github.io/status.json
       INSTAGRAM_API_VERSION: v23.0
@@ -172,6 +179,13 @@ jobs:
             }
           fi
 
+          resolved_source_commit="${artifact_name#atlas-news-reel-canonical-}"
+          [[ "$resolved_source_commit" =~ ^[0-9a-f]{40}$ ]] || {
+            echo "Fail-closed: canonical F4D artifact name does not contain a valid sourceCommit."
+            exit 46
+          }
+          echo "source_commit=$resolved_source_commit" >> "$GITHUB_OUTPUT"
+
           echo "eligible=true" >> "$GITHUB_OUTPUT"
           echo "artifact_id=$artifact_id" >> "$GITHUB_OUTPUT"
           echo "artifact_name=$artifact_name" >> "$GITHUB_OUTPUT"
@@ -241,3 +255,38 @@ jobs:
             echo "Upstream Reel Maker completed successfully but produced no canonical artifact."
             echo "Nothing was regenerated or published."
           } >> "$GITHUB_STEP_SUMMARY"
+
+  autorecover:
+    needs: publish
+    if: always() && needs.publish.result == 'failure' && github.event_name != 'pull_request'
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    env:
+      GH_TOKEN: ${{ github.token }}
+      SOURCE_COMMIT: ${{ needs.publish.outputs.source_commit || inputs.source_commit || github.event.workflow_run.head_sha || '' }}
+      RETRY_DEPTH: ${{ github.event_name == 'workflow_dispatch' && inputs.retry_depth || '0' }}
+
+    steps:
+      - name: Dispatch bounded automatic retry
+        run: |
+          set -euo pipefail
+          depth="${RETRY_DEPTH:-0}"
+          [[ "$depth" =~ ^[0-9]+$ ]] || depth=0
+
+          if (( depth >= 2 )); then
+            echo "Retry budget exhausted at depth=${depth}; maximum three workflow attempts reached."
+            exit 0
+          fi
+
+          if [[ ! "$SOURCE_COMMIT" =~ ^[0-9a-f]{40}$ ]]; then
+            echo "No exact sourceCommit available for safe Instagram Reel retry; refusing ambiguous redispatch."
+            exit 0
+          fi
+
+          next=$((depth + 1))
+          gh workflow run instagram-reel-publish-v2.yml \
+            --repo "$GITHUB_REPOSITORY" \
+            --ref main \
+            -f source_commit="$SOURCE_COMMIT" \
+            -f retry_depth="$next"
+          echo "Automatic Instagram Reel retry dispatched sourceCommit=${SOURCE_COMMIT} retryDepth=${next}."
