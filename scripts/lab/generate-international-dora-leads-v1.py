@@ -77,19 +77,6 @@ TURNS = [
         "aumento inicial de combustibles se propague hacia expectativas, salarios y otros "
         "precios, aun cuando la actividad pierda fuerza.",
     ),
-    (
-        "DORA",
-        "¿Y cómo se está reflejando esta señal en los mercados?",
-    ),
-    (
-        "ALEX C",
-        "La señal central no es un movimiento puntual de un activo, sino una condición "
-        "financiera global más exigente. La reacción inicial del yen mostró que una subida "
-        "de tasas no garantiza por sí sola una apreciación sostenida cuando el mercado "
-        "duda sobre la velocidad de los próximos pasos. En Europa y Estados Unidos, la "
-        "discusión también se desplaza desde la decisión inmediata hacia cuánto tiempo "
-        "deberá mantenerse el sesgo restrictivo si energía e inflación continúan presionando.",
-    ),
 ]
 
 
