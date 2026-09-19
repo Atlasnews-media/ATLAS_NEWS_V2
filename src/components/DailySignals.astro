@@ -224,7 +224,7 @@ const groups = readyArtifact
                     <ResponsiveEditorialImage
                       src={item.visual.src}
                       alt={item.visual.alt}
-                      sizes="(max-width: 42rem) 22vw, (max-width: 79.99rem) 18vw, 8vw"
+                      sizes="(max-width: 42rem) 40vw, (max-width: 79.99rem) 18vw, 8vw"
                       loading="lazy"
                       variant="card"
                       class="daily-signals__image"
@@ -441,13 +441,17 @@ const groups = readyArtifact
     }
 
     .daily-signals__item[data-has-visual="true"] {
-      min-height: 6.1rem;
+      min-height: 135px;
       padding-right: 7.2rem;
     }
 
     .daily-signals__visual {
-      width: 6.5rem;
-      height: 5.25rem;
+      top: 9%;
+      right: -0.25rem;
+      bottom: 9%;
+      width: 40%;
+      height: auto;
+      transform: none;
     }
 
     .daily-signals__visual figcaption {
