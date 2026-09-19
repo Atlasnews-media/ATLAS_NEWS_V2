@@ -1,4 +1,12 @@
 const root = document.querySelector("[data-radio-lab]");
+const player = root?.querySelector("[data-radio-player]");
+const toggle = root?.querySelector("[data-radio-toggle]");
+const waveform = root?.querySelector("[data-radio-waveform]");
+const current = root?.querySelector("[data-radio-current]");
+const duration = root?.querySelector("[data-radio-duration]");
+const fallback = root?.querySelector("[data-radio-fallback]");
+
+const AUDIO_SRC = "/audio/2026-09-19-resumen-diario.mp3";
 
 const formatTime = (seconds) => {
   if (!Number.isFinite(seconds) || seconds < 0) return "--:--";
@@ -8,73 +16,33 @@ const formatTime = (seconds) => {
   return `${String(minutes).padStart(2, "0")}:${String(remainder).padStart(2, "0")}`;
 };
 
-const setState = (message, kind = "ready") => {
-  const state = root?.querySelector("[data-radio-state]");
-  if (!(state instanceof HTMLElement)) return;
-  state.textContent = message;
-  state.dataset.kind = kind;
-};
-
-if (!(root instanceof HTMLElement)) {
-  throw new Error("ATLAS NEWS RADIO LAB: root unavailable");
-}
-
-const audio = root.querySelector("audio");
-const waveform = root.querySelector("[data-radio-waveform]");
-const current = root.querySelector("[data-radio-current]");
-const duration = root.querySelector("[data-radio-duration]");
-const volumeSlot = root.querySelector("[data-radio-volume]");
-const gapHost = root.querySelector(".gap-player");
-
 if (
-  !(audio instanceof HTMLAudioElement) ||
+  !(root instanceof HTMLElement) ||
+  !(player instanceof HTMLElement) ||
+  !(toggle instanceof HTMLButtonElement) ||
   !(waveform instanceof HTMLElement) ||
   !(current instanceof HTMLElement) ||
   !(duration instanceof HTMLElement) ||
-  !(volumeSlot instanceof HTMLElement) ||
-  !(gapHost instanceof HTMLElement)
+  !(fallback instanceof HTMLAudioElement)
 ) {
-  setState("No fue posible preparar el reproductor.", "error");
   throw new Error("ATLAS NEWS RADIO LAB: incomplete DOM");
 }
 
 try {
-  if (typeof window.GreenAudioPlayer !== "function") {
-    throw new Error("Green Audio Player unavailable");
-  }
-
-  window.GreenAudioPlayer.init({
-    selector: ".gap-player",
-    stopOthersOnPlay: true,
-    enableKeystrokes: true,
-    showTooltips: true,
-  });
-
-  const gapTimeline = gapHost.querySelector(".controls");
-  if (gapTimeline instanceof HTMLElement) {
-    gapTimeline.classList.add("atlas-gap-hidden-controls");
-    gapTimeline.setAttribute("aria-hidden", "true");
-  }
-
-  const volume = gapHost.querySelector(".volume");
-  if (volume instanceof HTMLElement) {
-    volumeSlot.append(volume);
-  }
-
   const { default: WaveSurfer } = await import(
     "https://cdn.jsdelivr.net/npm/wavesurfer.js@7.12.12/dist/wavesurfer.esm.js"
   );
 
   const wavesurfer = WaveSurfer.create({
     container: waveform,
-    media: audio,
-    waveColor: "#65625b",
+    url: AUDIO_SRC,
+    waveColor: "#45433f",
     progressColor: "#9b3428",
     cursorColor: "#9b3428",
     cursorWidth: 1,
-    height: 42,
+    height: 28,
     barWidth: 2,
-    barGap: 2,
+    barGap: 3,
     barRadius: 2,
     barMinHeight: 2,
     normalize: true,
@@ -84,81 +52,99 @@ try {
     hideScrollbar: true,
   });
 
-  const syncTime = () => {
-    const elapsed = Number.isFinite(audio.currentTime) ? audio.currentTime : 0;
-    const total = Number.isFinite(audio.duration) ? audio.duration : 0;
-    const ratio =
-      total > 0 ? Math.min(1, Math.max(0, elapsed / total)) : 0;
+  let totalDuration = 297.3;
 
-    current.textContent = formatTime(elapsed);
-    duration.textContent = total > 0 ? formatTime(total) : "--:--";
+  const syncPlaying = (playing) => {
+    root.dataset.playing = String(playing);
+    toggle.setAttribute("aria-pressed", String(playing));
+    toggle.setAttribute(
+      "aria-label",
+      `${playing ? "Pausar" : "Reproducir"} Resumen diario de ATLAS NEWS`,
+    );
+  };
+
+  const syncTime = (elapsed = wavesurfer.getCurrentTime()) => {
+    const safeElapsed = Number.isFinite(elapsed) ? elapsed : 0;
+    const safeDuration =
+      Number.isFinite(totalDuration) && totalDuration > 0
+        ? totalDuration
+        : wavesurfer.getDuration();
+
+    current.textContent = formatTime(safeElapsed);
+    duration.textContent =
+      Number.isFinite(safeDuration) && safeDuration > 0
+        ? formatTime(safeDuration)
+        : "--:--";
+
+    const ratio =
+      Number.isFinite(safeDuration) && safeDuration > 0
+        ? Math.min(1, Math.max(0, safeElapsed / safeDuration))
+        : 0;
+
     waveform.setAttribute("aria-valuenow", String(Math.round(ratio * 100)));
     waveform.setAttribute(
       "aria-valuetext",
-      total > 0
-        ? `${formatTime(elapsed)} de ${formatTime(total)}`
-        : formatTime(elapsed),
+      `${formatTime(safeElapsed)} de ${formatTime(safeDuration)}`,
     );
   };
 
-  const syncPlaying = () => {
-    root.dataset.playing = String(!audio.paused && !audio.ended);
-  };
-
-  const seekBy = (seconds) => {
-    if (!Number.isFinite(audio.duration) || audio.duration <= 0) return;
-    audio.currentTime = Math.min(
-      audio.duration,
-      Math.max(0, audio.currentTime + seconds),
-    );
-    syncTime();
-  };
-
-  waveform.addEventListener("keydown", (event) => {
-    if (event.key === "ArrowRight") {
-      event.preventDefault();
-      seekBy(5);
-    } else if (event.key === "ArrowLeft") {
-      event.preventDefault();
-      seekBy(-5);
-    } else if (event.key === "Home") {
-      event.preventDefault();
-      audio.currentTime = 0;
-      syncTime();
-    } else if (event.key === "End" && Number.isFinite(audio.duration)) {
-      event.preventDefault();
-      audio.currentTime = audio.duration;
-      syncTime();
+  toggle.addEventListener("click", async () => {
+    try {
+      await wavesurfer.playPause();
+    } catch {
+      syncPlaying(false);
     }
   });
 
-  audio.addEventListener("loadedmetadata", syncTime);
-  audio.addEventListener("durationchange", syncTime);
-  audio.addEventListener("timeupdate", syncTime);
-  audio.addEventListener("play", syncPlaying);
-  audio.addEventListener("pause", syncPlaying);
-  audio.addEventListener("ended", syncPlaying);
-  audio.addEventListener("error", () => {
-    setState("El MP3 no pudo cargarse.", "error");
-  });
+  waveform.addEventListener("keydown", (event) => {
+    const step = event.shiftKey ? 15 : 5;
+    const now = wavesurfer.getCurrentTime();
+    const total = wavesurfer.getDuration() || totalDuration;
 
-  wavesurfer.on("ready", () => {
+    if (event.key === "ArrowRight") {
+      event.preventDefault();
+      wavesurfer.setTime(Math.min(total, now + step));
+    } else if (event.key === "ArrowLeft") {
+      event.preventDefault();
+      wavesurfer.setTime(Math.max(0, now - step));
+    } else if (event.key === "Home") {
+      event.preventDefault();
+      wavesurfer.setTime(0);
+    } else if (event.key === "End" && Number.isFinite(total)) {
+      event.preventDefault();
+      wavesurfer.setTime(total);
+    }
+
     syncTime();
-    setState("Waveform real cargada · seek habilitado");
   });
 
-  wavesurfer.on("interaction", syncTime);
-  wavesurfer.on("error", () => {
-    setState("WaveSurfer no pudo procesar el MP3.", "error");
+  wavesurfer.on("ready", (loadedDuration) => {
+    if (Number.isFinite(loadedDuration) && loadedDuration > 0) {
+      totalDuration = loadedDuration;
+    }
+    syncTime(0);
   });
 
-  syncTime();
-  syncPlaying();
+  wavesurfer.on("timeupdate", syncTime);
+  wavesurfer.on("audioprocess", syncTime);
+  wavesurfer.on("interaction", () => syncTime());
+  wavesurfer.on("play", () => syncPlaying(true));
+  wavesurfer.on("pause", () => syncPlaying(false));
+  wavesurfer.on("finish", () => {
+    syncPlaying(false);
+    syncTime(totalDuration);
+  });
+
+  wavesurfer.on("error", (error) => {
+    console.error("ATLAS NEWS RADIO LAB · WaveSurfer", error);
+    player.hidden = true;
+    fallback.hidden = false;
+  });
+
+  syncPlaying(false);
+  syncTime(0);
 } catch (error) {
-  audio.controls = true;
-  setState(
-    "Fallback HTML5 activo: no se pudo cargar una dependencia externa.",
-    "error",
-  );
-  console.error(error);
+  console.error("ATLAS NEWS RADIO LAB · bootstrap", error);
+  player.hidden = true;
+  fallback.hidden = false;
 }
