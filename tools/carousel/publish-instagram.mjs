@@ -212,16 +212,18 @@ async function main() {
   }
 
   const recent = await api(
-    `/${encodeURIComponent(igUserId)}/media?fields=id,caption,permalink,timestamp&limit=25`,
+    `/${encodeURIComponent(igUserId)}/media?fields=id,caption,permalink,timestamp,media_type&limit=25`,
   );
   const duplicate = Array.isArray(recent.data)
-    ? recent.data.find((item) =>
-        String(item.caption || "").includes(canonicalUrl),
+    ? recent.data.find(
+        (item) =>
+          item.media_type === "CAROUSEL_ALBUM" &&
+          String(item.caption || "").includes(canonicalUrl),
       )
     : null;
   if (duplicate) {
     throw new Error(
-      `Anti-duplicate guard: this canonical URL is already present in Instagram media ${duplicate.id}`,
+      `Anti-duplicate guard: this canonical URL is already present in Instagram carousel ${duplicate.id}`,
     );
   }
 
