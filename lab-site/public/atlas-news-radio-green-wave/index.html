@@ -6,105 +6,76 @@
     <meta name="robots" content="noindex, nofollow, noarchive" />
     <meta name="theme-color" content="#f2efe5" />
     <title>ATLAS NEWS RADIO — LAB</title>
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/green-audio-player@1.1.2/dist/css/green-audio-player.min.css"
-    />
     <link rel="stylesheet" href="/lab/atlas-news-radio-green-wave.css" />
   </head>
   <body>
-    <main class="radio-lab">
-      <header class="lab-header">
-        <p class="lab-kicker">ATLAS NEWS · LAB</p>
-        <h1>ATLAS NEWS RADIO</h1>
-        <p class="lab-lede">
-          Prototipo de reproductor editorial con controles de Green Audio Player
-          y waveform real del MP3 mediante WaveSurfer.js.
-        </p>
-      </header>
+    <main class="portada-slice">
+      <p class="economic-source">
+        Fuentes: Mi Indicador · Índices de mercado ATLAS · Datos al:
+        <time datetime="2026-09-19">19 sept 2026</time>
+      </p>
 
       <section
-        class="radio-specimen"
+        class="daily-audio"
         data-radio-lab
-        aria-labelledby="radio-title"
+        aria-labelledby="daily-audio-title"
       >
-        <div class="radio-heading">
-          <p class="radio-kicker" id="radio-title">ATLAS NEWS RADIO</p>
-          <p class="radio-source">Resumen diario · 19 SEP 2026</p>
+        <div class="audio-copy">
+          <p class="audio-kicker" id="daily-audio-title">ATLAS NEWS RADIO</p>
         </div>
 
-        <div class="radio-player">
-          <div
-            class="gap-player player-accessible"
-            aria-label="Controles de reproducción"
-          >
-            <audio
-              src="/audio/2026-09-19-resumen-diario.mp3"
-              preload="metadata"
-              aria-label="Resumen diario de ATLAS NEWS"
-            ></audio>
+        <div class="audio-player">
+          <div class="radio-player" data-radio-player>
+            <button
+              class="radio-toggle"
+              type="button"
+              data-radio-toggle
+              aria-label="Reproducir Resumen diario de ATLAS NEWS"
+              aria-pressed="false"
+            >
+              <span class="radio-icon" data-radio-icon aria-hidden="true"></span>
+            </button>
+
+            <span class="radio-time" data-radio-current>00:00</span>
+
+            <div
+              class="radio-waveform"
+              data-radio-waveform
+              role="slider"
+              tabindex="0"
+              aria-label="Posición de Resumen diario de ATLAS NEWS"
+              aria-valuemin="0"
+              aria-valuemax="100"
+              aria-valuenow="0"
+              aria-valuetext="00:00 de 04:57"
+            ></div>
+
+            <span class="radio-duration" data-radio-duration>04:57</span>
           </div>
 
-          <output
-            class="radio-time radio-time--current"
-            data-radio-current
-            aria-label="Tiempo transcurrido"
-          >
-            00:00
-          </output>
-
-          <div
-            class="radio-waveform"
-            data-radio-waveform
-            role="slider"
-            tabindex="0"
-            aria-label="Posición del audio"
-            aria-valuemin="0"
-            aria-valuemax="100"
-            aria-valuenow="0"
-            aria-valuetext="00:00"
-          ></div>
-
-          <output
-            class="radio-time radio-time--duration"
-            data-radio-duration
-            aria-label="Duración total"
-          >
-            --:--
-          </output>
-
-          <div
-            class="radio-volume"
-            data-radio-volume
-            aria-label="Control de volumen"
-          ></div>
+          <audio
+            class="radio-fallback"
+            data-radio-fallback
+            src="/audio/2026-09-19-resumen-diario.mp3"
+            preload="metadata"
+            aria-label="Resumen diario de ATLAS NEWS"
+            controls
+            hidden
+          ></audio>
         </div>
-
-        <p class="radio-state" data-radio-state aria-live="polite">
-          Preparando waveform…
-        </p>
       </section>
 
-      <section class="lab-notes" aria-labelledby="lab-notes-title">
-        <h2 id="lab-notes-title">Arquitectura de la muestra</h2>
-        <div class="note-grid">
-          <article>
-            <strong>Green Audio Player</strong>
-            <span>Play/pause, volumen y accesibilidad de controles.</span>
-          </article>
-          <article>
-            <strong>WaveSurfer.js</strong>
-            <span>Waveform real, progreso y seek por click/tap o teclado.</span>
-          </article>
-          <article>
-            <strong>Fuente</strong>
-            <span>MP3 productivo existente; la muestra sólo lo consume.</span>
-          </article>
-        </div>
+      <div class="editorial-double-rule" aria-hidden="true"></div>
+
+      <section class="context-tabs" aria-label="Contexto visual de Portada">
+        <span class="context-tab context-tab--active">TITULARES</span>
+        <span class="context-tab">SEÑALES DEL DÍA</span>
       </section>
     </main>
 
-    <script src="https://cdn.jsdelivr.net/npm/green-audio-player@1.1.2/dist/js/green-audio-player.min.js"></script>
-    <script type="module" src="/lab/atlas-news-radio-green-wave.js"></script>
+    <script
+      type="module"
+      src="/lab/atlas-news-radio-green-wave.js"
+    ></script>
   </body>
 </html>
