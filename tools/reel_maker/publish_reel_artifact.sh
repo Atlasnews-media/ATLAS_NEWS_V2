@@ -75,6 +75,22 @@ git clone --depth 1 --branch social-assets \
 git -C _social_assets config user.name "github-actions[bot]"
 git -C _social_assets config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
+push_social_assets_with_retry() {
+  local attempt
+  for attempt in 1 2 3; do
+    if git -C _social_assets pull --rebase origin social-assets && \
+       git -C _social_assets push origin HEAD:social-assets; then
+      return 0
+    fi
+    git -C _social_assets rebase --abort >/dev/null 2>&1 || true
+    if [[ "$attempt" -eq 3 ]]; then
+      echo "No fue posible persistir social-assets tras tres intentos de conciliación." >&2
+      return 1
+    fi
+    sleep 2
+  done
+}
+
 evidence="_social_assets/instagram-reels-published/${SOURCE_COMMIT}.json"
 pending="_social_assets/instagram-reels-pending/${SOURCE_COMMIT}.json"
 
@@ -106,7 +122,7 @@ persist_verified() {
 
   if ! git -C _social_assets diff --cached --quiet; then
     git -C _social_assets commit -m "instagram-reel: PUBLISHED_VERIFIED ${SOURCE_COMMIT::7}"
-    git -C _social_assets push origin HEAD:social-assets
+    push_social_assets_with_retry
   fi
 
   {
@@ -141,7 +157,7 @@ persist_pending() {
   git -C _social_assets add "instagram-reels-pending/${SOURCE_COMMIT}.json"
   if ! git -C _social_assets diff --cached --quiet; then
     git -C _social_assets commit -m "instagram-reel: PUBLISH_PENDING ${SOURCE_COMMIT::7}"
-    git -C _social_assets push origin HEAD:social-assets
+    push_social_assets_with_retry
   fi
 }
 
@@ -202,7 +218,7 @@ cp "$source_mp4" "_social_assets/${stage_dir}/atlas-news-reel.mp4"
 git -C _social_assets add "$stage_dir/atlas-news-reel.mp4"
 if ! git -C _social_assets diff --cached --quiet; then
   git -C _social_assets commit -m "social-assets: stage canonical Reel ${SOURCE_COMMIT::7}"
-  git -C _social_assets push origin HEAD:social-assets
+  push_social_assets_with_retry
 fi
 
 video_url="https://raw.githubusercontent.com/Atlasnews-media/Atlasnews-media.github.io/social-assets/${stage_dir}/atlas-news-reel.mp4"
