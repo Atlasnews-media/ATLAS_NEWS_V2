@@ -321,7 +321,8 @@ jobs:
             for attempt in 1 2 3 4 5 6; do
               candidate="$(api_get "/${media_id}?fields=id,permalink,media_type,timestamp,caption" 2>/dev/null || true)"
               permalink="$(jq -r '.permalink // empty' <<<"${candidate:-{}}" 2>/dev/null || true)"
-              if [[ -n "$permalink" ]]; then
+              media_type="$(jq -r '.media_type // empty' <<<"${candidate:-{}}" 2>/dev/null || true)"
+              if [[ -n "$permalink" && "$media_type" == "CAROUSEL_ALBUM" ]]; then
                 jq -n \
                   --arg status "ALREADY_PUBLISHED_VERIFIED" \
                   --arg username "$username" \
@@ -329,7 +330,8 @@ jobs:
                   --arg canonicalUrl "$CANONICAL_URL" \
                   --arg mediaId "$media_id" \
                   --arg permalink "$permalink" \
-                  '{status:$status,username:$username,sourceId:$sourceId,canonicalUrl:$canonicalUrl,mediaId:$mediaId,permalink:$permalink,verificationSource:"pending-media-id"}' \
+                  --arg mediaType "$media_type" \
+                  '{status:$status,username:$username,sourceId:$sourceId,canonicalUrl:$canonicalUrl,mediaId:$mediaId,permalink:$permalink,mediaType:$mediaType,verificationSource:"pending-media-id"}' \
                   > tools/carousel/output/instagram-publish.json
                 echo "already_published_verified=true" >> "$GITHUB_OUTPUT"
                 echo "VERIFY_FIRST state=ALREADY_PUBLISHED_VERIFIED mediaId=${media_id} permalink=${permalink}"
@@ -342,15 +344,16 @@ jobs:
             exit 34
           fi
 
-          recent="$(api_get "/${ig_user_id}/media?fields=id,caption,permalink,timestamp&limit=25")" || {
+          recent="$(api_get "/${ig_user_id}/media?fields=id,caption,permalink,timestamp,media_type&limit=25")" || {
             echo "BLOCKED_EXTERNAL: cannot verify recent Instagram media."
             exit 35
           }
-          duplicate="$(jq -c --arg canonical "$CANONICAL_URL" '.data[]? | select((.caption // "") | contains($canonical)) | select((.permalink // "") != "")' <<<"$recent" | head -n 1)"
+          duplicate="$(jq -c --arg canonical "$CANONICAL_URL" '.data[]? | select(.media_type == "CAROUSEL_ALBUM") | select((.caption // "") | contains($canonical)) | select((.permalink // "") != "")' <<<"$recent" | head -n 1)"
 
           if [[ -n "$duplicate" ]]; then
             media_id="$(jq -r '.id' <<<"$duplicate")"
             permalink="$(jq -r '.permalink' <<<"$duplicate")"
+            media_type="$(jq -r '.media_type' <<<"$duplicate")"
             jq -n \
               --arg status "ALREADY_PUBLISHED_VERIFIED" \
               --arg username "$username" \
@@ -358,7 +361,8 @@ jobs:
               --arg canonicalUrl "$CANONICAL_URL" \
               --arg mediaId "$media_id" \
               --arg permalink "$permalink" \
-              '{status:$status,username:$username,sourceId:$sourceId,canonicalUrl:$canonicalUrl,mediaId:$mediaId,permalink:$permalink,verificationSource:"recent-media-canonical"}' \
+              --arg mediaType "$media_type" \
+              '{status:$status,username:$username,sourceId:$sourceId,canonicalUrl:$canonicalUrl,mediaId:$mediaId,permalink:$permalink,mediaType:$mediaType,verificationSource:"recent-media-canonical"}' \
               > tools/carousel/output/instagram-publish.json
             echo "already_published_verified=true" >> "$GITHUB_OUTPUT"
             echo "VERIFY_FIRST state=ALREADY_PUBLISHED_VERIFIED mediaId=${media_id} permalink=${permalink}"
@@ -445,6 +449,8 @@ jobs:
         run: npx playwright install chromium
 
       - name: Render SHARE card with preserved renderer
+        id: share_card
+        continue-on-error: true
         if: steps.contract.outputs.eligible == 'true' && steps.idempotency.outputs.already_published != 'true' && steps.verify_first.outputs.already_published_verified != 'true'
         working-directory: tools/social-renderer
         env:
@@ -510,26 +516,36 @@ jobs:
             if (!/^\/(ediciones|nacional|mercados|lecturas)\/[^/]+\/$/.test(p)) process.exit(3);
             process.stdout.write(p);
           ' "$CANONICAL_URL")"
-          share_dir="share/${canonical_path#/}"
-          share_file="${share_dir}atlas-news-social-card-1200x630.png"
-          mkdir -p "_social_assets/$share_dir"
-          cp tools/social-renderer/output/atlas-news-social-card-1200x630.png "_social_assets/$share_file"
-
-          share_url="https://raw.githubusercontent.com/Atlasnews-media/Atlasnews-media.github.io/social-assets/${share_file}"
-          manifest="_social_assets/share/manifest.json"
-          if [ ! -f "$manifest" ]; then
-            printf '{}\n' > "$manifest"
-          fi
-          manifest_tmp="$(mktemp)"
-          jq --arg path "$canonical_path" --arg url "$share_url" \
-            '.[$path] = $url | to_entries | sort_by(.key) | from_entries' \
-            "$manifest" > "$manifest_tmp"
-          mv "$manifest_tmp" "$manifest"
 
           cd _social_assets
           git config user.name "ATLAS NEWS Social Publisher"
           git config user.email "actions@users.noreply.github.com"
-          git add "$stage_dir" "$share_file" share/manifest.json
+          git add "$stage_dir"
+
+          if [ -f "../tools/social-renderer/output/atlas-news-social-card-1200x630.png" ]; then
+            share_dir="share/${canonical_path#/}"
+            share_file="${share_dir}atlas-news-social-card-1200x630.png"
+            mkdir -p "$share_dir"
+            cp ../tools/social-renderer/output/atlas-news-social-card-1200x630.png "$share_file"
+
+            share_url="https://raw.githubusercontent.com/Atlasnews-media/Atlasnews-media.github.io/social-assets/${share_file}"
+            manifest="share/manifest.json"
+            if [ ! -f "$manifest" ]; then
+              printf '{}\n' > "$manifest"
+            fi
+            manifest_tmp="$(mktemp)"
+            jq --arg path "$canonical_path" --arg url "$share_url" \
+              '.[$path] = $url | to_entries | sort_by(.key) | from_entries' \
+              "$manifest" > "$manifest_tmp"
+            mv "$manifest_tmp" "$manifest"
+            git add "$share_file" share/manifest.json
+            echo "share_path=$canonical_path" >> "$GITHUB_OUTPUT"
+            echo "share_image_url=$share_url" >> "$GITHUB_OUTPUT"
+          else
+            echo "SHARE card unavailable; continuing with carousel-only staging."
+            echo "share_path=" >> "$GITHUB_OUTPUT"
+            echo "share_image_url=" >> "$GITHUB_OUTPUT"
+          fi
           if git diff --cached --quiet; then
             echo "Public social assets already match this sourceCommit."
           else
@@ -540,8 +556,6 @@ jobs:
           base_url="https://raw.githubusercontent.com/Atlasnews-media/Atlasnews-media.github.io/social-assets/${stage_dir}"
           echo "SOCIAL_IMAGE_BASE_URL=$base_url" >> "$GITHUB_ENV"
           echo "stage_dir=$stage_dir" >> "$GITHUB_OUTPUT"
-          echo "share_path=$canonical_path" >> "$GITHUB_OUTPUT"
-          echo "share_image_url=$share_url" >> "$GITHUB_OUTPUT"
 
       - name: Confirm staged images are publicly fetchable
         if: steps.contract.outputs.eligible == 'true' && steps.idempotency.outputs.already_published != 'true' && steps.verify_first.outputs.already_published_verified != 'true'
