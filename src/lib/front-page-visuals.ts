@@ -339,23 +339,59 @@ const CHILE_MINISTRY_KEYWORDS = [
 ];
 
 const INTERNATIONAL_EXPANSION_KEYWORDS = [
-  "onu", "naciones unidas", "otan", "nato", "union europea", "comision europea",
-  "diplomacia", "geopolitica", "semiconductores", "chips", "tecnologia", "taiwan",
-  "comercio mundial", "puerto", "contenedores",
+  "onu",
+  "naciones unidas",
+  "otan",
+  "nato",
+  "union europea",
+  "comision europea",
+  "diplomacia",
+  "geopolitica",
+  "semiconductores",
+  "chips",
+  "tecnologia",
+  "taiwan",
+  "comercio mundial",
+  "puerto",
+  "contenedores",
 ];
 
 const NATIONAL_EXPANSION_KEYWORDS = [
-  "retail", "supermercado", "consumo", "agricultura", "campo", "alimentos",
-  "energia renovable", "solar", "eolica", "infraestructura", "transporte",
-  "actividad economica", "santiago", "regiones", "inversion",
+  "retail",
+  "supermercado",
+  "consumo",
+  "agricultura",
+  "campo",
+  "alimentos",
+  "energia renovable",
+  "solar",
+  "eolica",
+  "infraestructura",
+  "transporte",
+  "actividad economica",
+  "santiago",
+  "regiones",
+  "inversion",
 ];
 
 const MARKETS_EXPANSION_KEYWORDS = [
-  "bolsa", "acciones", "mercados", "asia", "europa", "hong kong", "tokio",
-  "frankfurt", "bitcoin", "cripto", "petroleo", "energia", "litio",
-  "tierras raras", "commodities", "renovables",
+  "bolsa",
+  "acciones",
+  "mercados",
+  "asia",
+  "europa",
+  "hong kong",
+  "tokio",
+  "frankfurt",
+  "bitcoin",
+  "cripto",
+  "petroleo",
+  "energia",
+  "litio",
+  "tierras raras",
+  "commodities",
+  "renovables",
 ];
-
 
 export const ECONOMIC_CALENDAR_KEYWORDS = [
   "calendario economico",
