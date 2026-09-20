@@ -1,10 +1,10 @@
 ---
 title: "El riesgo saudí ya se refleja en bolsa mientras el petróleo espera la reapertura global"
 summary: "Las bolsas del Golfo reaccionan a los nuevos ataques sobre Arabia Saudita mientras el Brent conserva una prima elevada y China mantiene sus tasas, dejando al riesgo geopolítico como principal señal del fin de semana."
-publishedAt: "2026-09-20T06:17:00-03:00"
+publishedAt: "2026-09-20T06:46:00-03:00"
 cutoffAt: "2026-09-20T06:15:00-03:00"
 section: "markets"
-status: "draft"
+status: "published"
 tags:
   - mercados
   - energia
