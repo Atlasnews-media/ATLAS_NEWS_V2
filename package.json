@@ -21,7 +21,7 @@
     "signals:validate": "node scripts/validate-daily-signals.mjs",
     "status:generate": "node scripts/generate-publication-status.mjs",
     "sync:visual-locks": "node scripts/sync-visual-locks.mjs",
-    "test:cover": "node scripts/test-cover-briefing-contract.mjs && node scripts/test-audio-cover-presentation.mjs",
+    "test:cover": "node scripts/test-cover-briefing-contract.mjs && node scripts/test-audio-cover-presentation.mjs && node scripts/test-market-pulse-canonical-write.mjs",
     "test:funds": "node scripts/funds/run-finance-tests.mjs && node --test scripts/funds/snapshot.test.mjs",
     "update:indicators": "node scripts/update-economic-indicators.mjs && node scripts/enrich-economic-trends.mjs && node scripts/update-market-pulse.mjs && node scripts/recover-market-snapshot.mjs && node scripts/update-market-history.mjs && node scripts/validate-market-pulse-freshness.mjs && node scripts/probe-calendar.mjs",
     "validate:content": "node scripts/validate-content.mjs",
