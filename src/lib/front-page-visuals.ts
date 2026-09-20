@@ -1165,7 +1165,6 @@ const MARKETS_EXPANSION_VISUALS = catalogBatch(
   MARKETS_EXPANSION_KEYWORDS,
 );
 
-
 export const ECONOMIC_CALENDAR_VISUALS: CatalogVisual[] = [
   commonsVisual({
     file: "Desk-Calendars-1-700x700 (1).webp",
