@@ -1134,7 +1134,7 @@ const NATIONAL_EXPANSION_VISUALS = catalogBatch(
     "Armado Parque Eolico.jpg",
     "Parque Eolico (83088069).jpeg",
     "Parque Eolico 01.jpg",
-    "Parque Eolico \"El Totoral\".JPG",
+    'Parque Eolico "El Totoral".JPG',
     "2019-10-31 14-01-58 Quilapilún.jpg",
     "Salar de Atacama Lithium salt ponds 2018.jpg",
     "Salar de Atacama, Chile.jpg",
@@ -1185,7 +1185,8 @@ export const ECONOMIC_CALENDAR_VISUALS: CatalogVisual[] = [
     alt: "Jerome Powell responde preguntas durante una conferencia de prensa del FOMC.",
     source: "Wikimedia Commons / Federal Reserve",
     author: "Federalreserve",
-    license: "Dominio público — Board of Governors of the Federal Reserve System",
+    license:
+      "Dominio público — Board of Governors of the Federal Reserve System",
     keywords: ECONOMIC_CALENDAR_KEYWORDS,
   }),
   commonsVisual({
