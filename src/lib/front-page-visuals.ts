@@ -338,6 +338,91 @@ const CHILE_MINISTRY_KEYWORDS = [
   "edificio publico",
 ];
 
+const INTERNATIONAL_EXPANSION_KEYWORDS = [
+  "onu", "naciones unidas", "otan", "nato", "union europea", "comision europea",
+  "diplomacia", "geopolitica", "semiconductores", "chips", "tecnologia", "taiwan",
+  "comercio mundial", "puerto", "contenedores",
+];
+
+const NATIONAL_EXPANSION_KEYWORDS = [
+  "retail", "supermercado", "consumo", "agricultura", "campo", "alimentos",
+  "energia renovable", "solar", "eolica", "infraestructura", "transporte",
+  "actividad economica", "santiago", "regiones", "inversion",
+];
+
+const MARKETS_EXPANSION_KEYWORDS = [
+  "bolsa", "acciones", "mercados", "asia", "europa", "hong kong", "tokio",
+  "frankfurt", "bitcoin", "cripto", "petroleo", "energia", "litio",
+  "tierras raras", "commodities", "renovables",
+];
+
+
+export const ECONOMIC_CALENDAR_KEYWORDS = [
+  "calendario economico",
+  "agenda economica",
+  "dato economico",
+  "indicador",
+  "publicacion",
+  "estadistica",
+  "inflacion",
+  "ipc",
+  "empleo",
+  "desempleo",
+  "pib",
+  "ventas minoristas",
+  "retail sales",
+  "produccion industrial",
+  "banco central",
+  "fed",
+  "bce",
+  "boj",
+  "tpm",
+  "tasa de interes",
+  "discurso",
+  "conferencia",
+  "comercio exterior",
+  "balanza comercial",
+  "actividad economica",
+  "imacec",
+  "chile",
+  "estados unidos",
+  "eurozona",
+  "japon",
+];
+
+export const MARKET_INDICES_KEYWORDS = [
+  "indices de mercado",
+  "mercados",
+  "bolsa",
+  "acciones",
+  "s&p 500",
+  "nasdaq",
+  "dow jones",
+  "euro stoxx 50",
+  "ipsa",
+  "bonos",
+  "treasury",
+  "ust 10y",
+  "tasas",
+  "tpm",
+  "divisas",
+  "dolar",
+  "usd/clp",
+  "eur/usd",
+  "usd/jpy",
+  "materias primas",
+  "brent",
+  "petroleo",
+  "oro",
+  "cobre",
+  "bitcoin",
+  "criptomonedas",
+  "mercado chileno",
+  "bolsa de santiago",
+  "renta variable",
+  "renta fija",
+];
+
 function commonsVisual({
   file,
   alt,
@@ -978,175 +1063,222 @@ const PLAZA_CONSTITUCION = commonsVisual({
   keywords: CHILE_INSTITUTION_KEYWORDS,
 });
 
-const FED_VISUALS = [
-  FED_ECCLES,
-  FED_FOMC_2016,
-  FED_FOMC_2014,
-  FED_BOARD_2014,
-  FED_RULES_2014,
-  FED_FOMC_2014_ALT,
-  ...FED_EXTRA,
-];
+const INTERNATIONAL_EXPANSION_VISUALS = catalogBatch(
+  [
+    "United Nations HQ.jpg",
+    "United Nations headquarters.jpg",
+    "United Nations Headquarters, Geneva.jpg",
+    "Brussels-NATO headquarters.jpg",
+    "NATO headquarters (Brussels).jpg",
+    "Brussels NATO Headquarters.jpg",
+    "Berlaymont building european commission.jpg",
+    "Berlayent.jpg",
+    "Berlaymont building-.jpg",
+    "TSMC factory in Taichung's Central Taiwan Science Park.jpg",
+    "200mm Wafer Fertigungslinie.JPG",
+    "20100509350MDR Dresden-Klotzsche Königsbrücker Straße 180 Qimonda.jpg",
+    "20100509355MDR Dresden-Klotzsche Königsbrücker Straße 180 Qimonda.jpg",
+    "Containers, Port of Rotterdam (9703431992).jpg",
+    "Port of Singapore (3777500194).jpg",
+  ],
+  "Instituciones internacionales, tecnología, semiconductores, diplomacia o comercio global.",
+  INTERNATIONAL_EXPANSION_KEYWORDS,
+);
 
-const TREASURY_VISUALS = [
-  TREASURY_BUILDING,
-  TREASURY_BUILDING_OFFICIAL,
-  ...TREASURY_EXTRA,
-];
+const NATIONAL_EXPANSION_VISUALS = catalogBatch(
+  [
+    "Acuenta Vivaceta, Independencia, Santiago 20250812.jpg",
+    "Alvi, Recoleta, Santiago 20230817.jpg",
+    "Ekono Providencia.jpg",
+    "Granja Alimentaria de Maipú - 001.jpg",
+    "Granja Alimentaria de Maipú - 002.jpg",
+    "TomatalesEnRengo.jpg",
+    "Siembra con bueyes Puerto Saavedra.jpg",
+    "Vallée du Rio Limari.jpg",
+    "Armado Parque Eolico.jpg",
+    "Parque Eolico (83088069).jpeg",
+    "Parque Eolico 01.jpg",
+    "Parque Eolico \"El Totoral\".JPG",
+    "2019-10-31 14-01-58 Quilapilún.jpg",
+    "Salar de Atacama Lithium salt ponds 2018.jpg",
+    "Salar de Atacama, Chile.jpg",
+  ],
+  "Actividad económica real en Chile: consumo, agricultura, energía, infraestructura y recursos naturales.",
+  NATIONAL_EXPANSION_KEYWORDS,
+);
 
-const ENERGY_VISUALS = [GULF_CONVOY, GULF_OIL_TERMINAL, ...ENERGY_EXTRA];
+const MARKETS_EXPANSION_VISUALS = catalogBatch(
+  [
+    "Tokyo stock exchange.jpg",
+    "Market centre in Tokyo stock exchange.jpg",
+    "Frankfurt Stock Exchange.jpg",
+    "Exchange Building (London).jpg",
+    "Three mainland Chinese companies rang the listing bell at the Hong Kong Stock Exchange 2026-1.png",
+    "Oil terminal.jpg",
+    "Bitcoin logo Satoshi Nakamoto.svg",
+    "Bitcoin logo.webp",
+    "Bitcoin-whitepaper-poster page-0001.jpg",
+    "Rare earth minerals 1.jpg",
+    "Lithium Ponds of Chile's Salar de Atacama (SVS15006).jpg",
+    "Salar de Atacama - Chile.jpg",
+    "Windpark-Wind-Farm.jpg",
+    "Containers, Port of Rotterdam (9703431992).jpg",
+    "TSMC factory in Taichung's Central Taiwan Science Park.jpg",
+  ],
+  "Mercados globales, bolsas, tecnología, criptoactivos, energía y commodities estratégicos.",
+  MARKETS_EXPANSION_KEYWORDS,
+);
 
-const EQUITY_VISUALS = [
-  NYSE_HIGHSMITH,
-  NYSE_HISTORIC_FLOOR,
-  NYSE_EXTERIOR,
-  NYSE_WALL_STREET,
-  ...EQUITY_EXTRA,
-];
 
-const PORT_VISUALS = [
-  PORT_SAN_ANTONIO,
-  PORT_SAN_ANTONIO_PANORAMA,
-  PORT_SAN_ANTONIO_CONTAINERS,
-  ...PORT_EXTRA,
-];
-
-const SANTIAGO_VISUALS = [
-  SANTIAGO_SKYLINE,
-  SANTIAGO_COSTANERA,
-  SANTIAGO_COSTANERA_CURRENT,
-  ...SANTIAGO_EXTRA,
-];
-
-const BCCH_VISUALS = [BCCH_BUILDING, BCCH_EXTERIOR, ...BCCH_EXTRA];
-const COPPER_VISUALS = [COPPER_MINE, COPPER_CHUQUICAMATA, ...COPPER_EXTRA];
-const ECB_VISUALS = [ECB_BUILDING, ECB_SKYTOWER];
-const CHINA_VISUALS = [PBOC_HEADQUARTER, PBOC_NEW_HEADQUARTER, SHANGHAI_PUDONG];
-const GLOBAL_TRADE_VISUALS = [SINGAPORE_PORT, HAMBURG_CONTAINER_SHIP];
-const FX_VISUALS = [EURO_BANKNOTES];
-const GOLD_VISUALS = [GOLD_BULLION];
-const CHILE_INSTITUTION_VISUALS = [
-  LA_MONEDA,
-  CONGRESO_NACIONAL,
-  HACIENDA_HISTORIC,
-  PLAZA_CONSTITUCION,
-];
-const CHILE_URBAN_VISUALS = [
-  SANTIAGO_METRO,
-  SANTIAGO_CENTER_BUILDINGS,
-  SANTIAGO_OFFICE_BUILDING,
-  SANTIAGO_CCU_BUILDING,
-];
-const CONFLICT_VISUALS = [WAR_DAMAGE, WAR_DAMAGE_ALT, MILITARY_HUMANITARIAN];
-const HUMANITARIAN_VISUALS = [
-  HUMANITARIAN_DISTRIBUTION,
-  HUMANITARIAN_AID,
-  REFUGEE_ASSISTANCE,
-  HUMANITARIAN_AIRDROP,
-  MILITARY_HUMANITARIAN,
-];
-const DISASTER_VISUALS = [FEMA_RELIEF];
-const CHILE_JUSTICE_VISUALS = [CHILE_TC, CHILE_TC_2015];
-const CHILE_MINISTRY_VISUALS = [MINVU_BUILDING];
-const CHILE_CONSTRUCTION_VISUALS = [
-  CHILE_CONSTRUCTION_PROVIDENCIA,
-  CHILE_CONSTRUCTION_GAM,
-  CHILE_COSTANERA_CONSTRUCTION,
-  CHILE_CCHC,
-];
-
-export const ECONOMIC_CALENDAR_KEYWORDS = [
-  "calendario económico",
-  "agenda económica",
-  "dato económico",
-  "indicador",
-  "publicación",
-  "estadística",
-  "inflación",
-  "ipc",
-  "empleo",
-  "desempleo",
-  "pib",
-  "ventas minoristas",
-  "retail sales",
-  "producción industrial",
-  "banco central",
-  "fed",
-  "bce",
-  "boj",
-  "tpm",
-  "tasa de interés",
-  "discurso",
-  "conferencia",
-  "comercio exterior",
-  "balanza comercial",
-  "actividad económica",
-  "imacec",
-  "chile",
-  "estados unidos",
-  "eurozona",
-  "japón",
-] as const;
-
-export const MARKET_INDICES_KEYWORDS = [
-  "índices de mercado",
-  "mercados",
-  "bolsa",
-  "acciones",
-  "s&p 500",
-  "nasdaq",
-  "dow jones",
-  "euro stoxx 50",
-  "ipsa",
-  "bonos",
-  "treasury",
-  "ust 10y",
-  "tasas",
-  "tpm",
-  "divisas",
-  "dólar",
-  "usd/clp",
-  "eur/usd",
-  "usd/jpy",
-  "materias primas",
-  "brent",
-  "petróleo",
-  "oro",
-  "cobre",
-  "bitcoin",
-  "criptomonedas",
-  "mercado chileno",
-  "bolsa de santiago",
-  "renta variable",
-  "renta fija",
-] as const;
-
-export type UtilityPageVisualFamily = "economic-calendar" | "market-indices";
-
-const ECONOMIC_CALENDAR_VISUALS: CatalogVisual[] = [
-  FED_ECCLES,
-  FED_FOMC_2016,
-  ECB_BUILDING,
-  PBOC_HEADQUARTER,
-  BCCH_EXTERIOR,
-  PORT_SAN_ANTONIO,
-  SINGAPORE_PORT,
-  SANTIAGO_METRO,
-  SANTIAGO_SKYLINE,
-  HACIENDA_HISTORIC,
+export const ECONOMIC_CALENDAR_VISUALS: CatalogVisual[] = [
+  commonsVisual({
+    file: "Desk-Calendars-1-700x700 (1).webp",
+    alt: "Calendario de escritorio utilizado como referencia visual para una agenda de eventos.",
+    author: "SURYA QUAPRI",
+    license: "CC BY-SA 4.0",
+    keywords: ECONOMIC_CALENDAR_KEYWORDS,
+  }),
+  commonsVisual({
+    file: "Bank of Japan headquarters in Tokyo, Japan.jpg",
+    alt: "Sede del Banco de Japón en Tokio.",
+    author: "Fg2",
+    license: "Dominio público",
+    keywords: ECONOMIC_CALENDAR_KEYWORDS,
+  }),
+  commonsVisual({
+    file: "Chairman Jerome Powell answers reporters' questions at the FOMC press conference (55239092858).jpg",
+    alt: "Jerome Powell responde preguntas durante una conferencia de prensa del FOMC.",
+    source: "Wikimedia Commons / Federal Reserve",
+    author: "Federalreserve",
+    license: "Dominio público — Board of Governors of the Federal Reserve System",
+    keywords: ECONOMIC_CALENDAR_KEYWORDS,
+  }),
+  commonsVisual({
+    file: "Industrial production line operating in a large modern factory.jpg",
+    alt: "Línea de producción industrial operando en una fábrica moderna.",
+    author: "Shixart1985",
+    license: "CC BY 2.0",
+    keywords: ECONOMIC_CALENDAR_KEYWORDS,
+  }),
+  commonsVisual({
+    file: "Supermarket.jpg",
+    alt: "Supermercado utilizado como referencia visual para ventas minoristas y consumo.",
+    author: "Waterpoint",
+    license: "Dominio público",
+    keywords: ECONOMIC_CALENDAR_KEYWORDS,
+  }),
+  commonsVisual({
+    file: "Grocery Store display--03.jpg",
+    alt: "Exhibición de productos en una tienda de alimentos.",
+    author: "Myotus",
+    license: "CC0 1.0",
+    keywords: ECONOMIC_CALENDAR_KEYWORDS,
+  }),
+  commonsVisual({
+    file: "Job-fair.jpg",
+    alt: "Feria laboral utilizada como referencia visual para empleo y mercado del trabajo.",
+    author: "Tantangalario",
+    license: "CC0 1.0",
+    keywords: ECONOMIC_CALENDAR_KEYWORDS,
+  }),
+  commonsVisual({
+    file: "Container cranes at the Port of Rio de Janeiro, Brazil 2.jpg",
+    alt: "Grúas de contenedores en el puerto de Río de Janeiro.",
+    author: "Wilfredor",
+    license: "CC0 1.0",
+    keywords: ECONOMIC_CALENDAR_KEYWORDS,
+  }),
+  commonsVisual({
+    file: "Bureau of Labor Statistics - Commissioner Abraham of Bureau of Labor Statistics Farewall Luncheon at the Postal Square Building - DPLA - 78a1b09e5b653a494cee6849742984ac.jpg",
+    alt: "Actividad institucional vinculada a la Oficina de Estadísticas Laborales de Estados Unidos.",
+    source: "Wikimedia Commons / U.S. National Archives",
+    author: "U.S. Department of Labor",
+    license: "Dominio público — gobierno federal de EE.UU.",
+    keywords: ECONOMIC_CALENDAR_KEYWORDS,
+  }),
+  commonsVisual({
+    file: "CALENDAR.png",
+    alt: "Representación gráfica de un calendario para una agenda diaria.",
+    author: "Visnalize",
+    license: "CC0 1.0",
+    keywords: ECONOMIC_CALENDAR_KEYWORDS,
+  }),
 ];
 
 const MARKET_INDICES_VISUALS: CatalogVisual[] = [
-  NYSE_HIGHSMITH,
-  NYSE_HISTORIC_FLOOR,
-  TREASURY_BUILDING,
-  EURO_BANKNOTES,
-  GULF_OIL_TERMINAL,
-  GOLD_BULLION,
-  COPPER_MINE,
-  BCCH_BUILDING,
-  SHANGHAI_PUDONG,
-  PORT_SAN_ANTONIO_CONTAINERS,
+  commonsVisual({
+    file: "Bolsa de comercio de Santiago.jpg",
+    alt: "Edificio de la Bolsa de Comercio de Santiago.",
+    author: "Diego.mdzc93",
+    license: "CC0 1.0",
+    keywords: MARKET_INDICES_KEYWORDS,
+  }),
+  commonsVisual({
+    file: "Santiago Stock Exchange.jpg",
+    alt: "Interior del piso de operaciones de la Bolsa de Comercio de Santiago.",
+    source: "Wikimedia Commons / Flickr",
+    author: "Isaías Campbell",
+    license: "CC BY-SA 3.0",
+    keywords: MARKET_INDICES_KEYWORDS,
+  }),
+  commonsVisual({
+    file: "Trading Floor in the Chicago Board of Trade Building.png",
+    alt: "Piso de operaciones del Chicago Board of Trade.",
+    author: "Fixedsun",
+    license: "CC0 1.0",
+    keywords: MARKET_INDICES_KEYWORDS,
+  }),
+  commonsVisual({
+    file: "Oil pumpjack in the Permian Basin.jpg",
+    alt: "Bomba extractora de petróleo operando en la cuenca Pérmica de Estados Unidos.",
+    author: "Quintin Soloviev",
+    license: "CC BY 4.0",
+    keywords: MARKET_INDICES_KEYWORDS,
+  }),
+  commonsVisual({
+    file: "Gold bar in Centrum Pieniadza NBP AB.jpg",
+    alt: "Lingote de oro de 400 onzas troy exhibido en el centro monetario del banco central polaco.",
+    author: "Andrzej Barabasz",
+    license: "CC BY-SA 4.0",
+    keywords: MARKET_INDICES_KEYWORDS,
+  }),
+  commonsVisual({
+    file: "Bitcoin.png",
+    alt: "Representación del símbolo de Bitcoin.",
+    author: "Satoshi Nakamoto",
+    license: "Dominio público",
+    keywords: MARKET_INDICES_KEYWORDS,
+  }),
+  commonsVisual({
+    file: "US Dollar banknotes.jpg",
+    alt: "Billetes de dólares estadounidenses.",
+    author: "Milad Mosapoor",
+    license: "Dominio público — moneda de Estados Unidos",
+    keywords: MARKET_INDICES_KEYWORDS,
+  }),
+  commonsVisual({
+    file: "Euro banknotes.png",
+    alt: "Billetes de euro de distintas denominaciones.",
+    source: "Wikimedia Commons / European Central Bank",
+    author: "Andrew Netzler",
+    license: "Uso permitido por BCE bajo decisiones ECB/2003/4 y ECB/2003/5",
+    keywords: MARKET_INDICES_KEYWORDS,
+  }),
+  commonsVisual({
+    file: "Sewell Museum Copper Cathode.jpg",
+    alt: "Cátodo de cobre de El Teniente exhibido en el Museo de la Gran Minería del Cobre.",
+    author: "WeHaKa",
+    license: "CC BY-SA 4.0",
+    keywords: MARKET_INDICES_KEYWORDS,
+  }),
+  commonsVisual({
+    file: "New Toronto Stock Exchange trading floor.jpg",
+    alt: "Piso de operaciones de la Bolsa de Toronto en una imagen histórica.",
+    source: "Wikimedia Commons / City of Toronto Archives",
+    author: "Alexandra Studios",
+    license: "Dominio público",
+    keywords: MARKET_INDICES_KEYWORDS,
+  }),
 ];
 
 const UTILITY_PAGE_VISUALS: Record<UtilityPageVisualFamily, CatalogVisual[]> = {
@@ -1194,6 +1326,7 @@ const VISUAL_CATALOG: Record<FrontPageSection, CatalogVisual[]> = {
     ...CONFLICT_VISUALS,
     ...HUMANITARIAN_VISUALS,
     ...DISASTER_VISUALS,
+    ...INTERNATIONAL_EXPANSION_VISUALS,
   ],
   national: [
     ...PORT_VISUALS,
@@ -1205,6 +1338,7 @@ const VISUAL_CATALOG: Record<FrontPageSection, CatalogVisual[]> = {
     ...CHILE_JUSTICE_VISUALS,
     ...CHILE_MINISTRY_VISUALS,
     ...CHILE_CONSTRUCTION_VISUALS,
+    ...NATIONAL_EXPANSION_VISUALS,
   ],
   markets: [
     ...EQUITY_VISUALS,
@@ -1217,6 +1351,7 @@ const VISUAL_CATALOG: Record<FrontPageSection, CatalogVisual[]> = {
     ...GLOBAL_TRADE_VISUALS,
     ...FX_VISUALS,
     ...GOLD_VISUALS,
+    ...MARKETS_EXPANSION_VISUALS,
   ],
 };
 
