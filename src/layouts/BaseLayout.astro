@@ -487,7 +487,7 @@ const isPrimarySectionLanding = [
       min-height: 0;
       align-items: stretch;
       gap: 0;
-      font-size: 0.46rem;
+      font-size: 0.4462rem;
       line-height: 1;
     }
     .site-header nav a {
@@ -559,10 +559,22 @@ const isPrimarySectionLanding = [
     letter-spacing: 0.035em !important;
   }
 
+  /* Mobile ancho: conserva la escala efectiva vigente y la reduce exactamente 3%. */
+  @media (min-width: 36.01rem) and (max-width: 42rem) {
+    .site-header nav {
+      font-size: 0.82935rem !important;
+    }
+  }
+
   /* Tablet: navegación tipográfica también para tablets con viewport CSS compacto. */
   @media (min-width: 36.01rem) and (max-width: 70rem) {
-    .site-header nav,
     .front-page .headline-tab {
+      font-size: 0.855rem !important;
+    }
+  }
+
+  @media (min-width: 42.01rem) and (max-width: 70rem) {
+    .site-header nav {
       font-size: 0.855rem !important;
     }
   }
