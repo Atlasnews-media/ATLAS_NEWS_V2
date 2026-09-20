@@ -419,6 +419,34 @@ def normalize_for_speech(text: str, reference_date: str | None = None) -> str:
     return normalized
 
 
+def normalize_for_kokoro_dora(
+    text: str,
+    reference_date: str | None = None,
+) -> str:
+    """Prepara speech_text específico de Dora/Kokoro sin tocar display_text."""
+    normalized = normalize_for_speech(text, reference_date)
+    return re.sub(
+        r"\bmil cien pesos\b",
+        lambda match: _preserve_initial_case(match, "mil\ncien pesos"),
+        normalized,
+        flags=re.IGNORECASE,
+    )
+
+
+def normalize_for_kokoro_dora(
+    text: str,
+    reference_date: str | None = None,
+) -> str:
+    """Prepara speech_text específico de Dora/Kokoro sin tocar display_text."""
+    normalized = normalize_for_speech(text, reference_date)
+    return re.sub(
+        r"\bmil cien pesos\b",
+        lambda match: _preserve_initial_case(match, "mil\ncien pesos"),
+        normalized,
+        flags=re.IGNORECASE,
+    )
+
+
 def is_question(text: str) -> bool:
     stripped = str(text).strip()
     return stripped.startswith("¿") or stripped.endswith("?")
