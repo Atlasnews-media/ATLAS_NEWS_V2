@@ -140,6 +140,19 @@ if (
         "Dora/Kokoro debe segmentar mil cien sin modificar el texto editorial."
     )
 check(
+    "El euro se ubicó en 1.100 pesos con 95 centavos.",
+    "El euro se ubicó en mil cien pesos con 95 centavos.",
+)
+if (
+    normalize_for_kokoro_dora(
+        "El euro se ubicó en 1.100 pesos con 95 centavos."
+    )
+    != "El euro se ubicó en mil\ncien pesos con 95 centavos."
+):
+    raise AssertionError(
+        "Dora/Kokoro debe segmentar mil cien sin modificar el texto editorial."
+    )
+check(
     "El dólar observado quedó en $913,86.",
     "El dólar observado quedó en novecientos trece coma ochenta y seis pesos.",
 )
