@@ -16,11 +16,11 @@ sources:
   - name: "Banco Central de Chile — IPoM septiembre 2026"
     url: "https://www.bcentral.cl/areas/politica-monetaria/informe-de-politica-monetaria"
 highlights:
-  - label: "Codelco aplaza definiciones"
+  - label: "Codelco posterga ajustes"
     text: "El plan de reestructuración podría desplazarse desde octubre hasta fines de 2026, extendiendo la incertidumbre sobre sus medidas concretas."
   - label: "Producción exige ajustes"
     text: "La nueva administración busca revertir años de producción estancada y mayores costos, con una meta productiva revisada a la baja."
-  - label: "El empleo entra al balance"
+  - label: "Empleo entra al balance"
     text: "Posibles reducciones de dotación tensionarían el objetivo de eficiencia en un mercado laboral chileno que ya registra 9,5% de desempleo."
 demo: false
 ---
