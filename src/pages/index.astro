@@ -543,6 +543,7 @@ const marketsVisual = latestMarkets
       panel.setAttribute("aria-busy", "true");
       panelStatus.hidden = false;
       panelStatus.textContent = "Cargando vista…";
+      panelContent.replaceChildren();
 
       try {
         const response = await fetch(targetPath, {
