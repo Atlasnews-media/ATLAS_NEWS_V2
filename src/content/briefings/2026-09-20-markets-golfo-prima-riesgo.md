@@ -20,7 +20,7 @@ sources:
   - name: "Reuters — Flujos globales de fondos"
     url: "https://www.reuters.com/world/china/global-markets-flows-graphic-pix-2026-09-18/"
 highlights:
-  - label: "El Golfo abre con presión"
+  - label: "Golfo abre con presión"
     text: "El índice saudí cedía 0,5% y Qatar 0,9% tras los ataques reivindicados por los hutíes, llevando el riesgo geopolítico directamente a precios regionales."
   - label: "Aramco refleja el riesgo"
     text: "Saudi Aramco retrocedía 0,6%, una señal de que el mercado empieza a descontar mayor vulnerabilidad sobre infraestructura y logística energética."
