@@ -339,23 +339,59 @@ const CHILE_MINISTRY_KEYWORDS = [
 ];
 
 const INTERNATIONAL_EXPANSION_KEYWORDS = [
-  "onu", "naciones unidas", "otan", "nato", "union europea", "comision europea",
-  "diplomacia", "geopolitica", "semiconductores", "chips", "tecnologia", "taiwan",
-  "comercio mundial", "puerto", "contenedores",
+  "onu",
+  "naciones unidas",
+  "otan",
+  "nato",
+  "union europea",
+  "comision europea",
+  "diplomacia",
+  "geopolitica",
+  "semiconductores",
+  "chips",
+  "tecnologia",
+  "taiwan",
+  "comercio mundial",
+  "puerto",
+  "contenedores",
 ];
 
 const NATIONAL_EXPANSION_KEYWORDS = [
-  "retail", "supermercado", "consumo", "agricultura", "campo", "alimentos",
-  "energia renovable", "solar", "eolica", "infraestructura", "transporte",
-  "actividad economica", "santiago", "regiones", "inversion",
+  "retail",
+  "supermercado",
+  "consumo",
+  "agricultura",
+  "campo",
+  "alimentos",
+  "energia renovable",
+  "solar",
+  "eolica",
+  "infraestructura",
+  "transporte",
+  "actividad economica",
+  "santiago",
+  "regiones",
+  "inversion",
 ];
 
 const MARKETS_EXPANSION_KEYWORDS = [
-  "bolsa", "acciones", "mercados", "asia", "europa", "hong kong", "tokio",
-  "frankfurt", "bitcoin", "cripto", "petroleo", "energia", "litio",
-  "tierras raras", "commodities", "renovables",
+  "bolsa",
+  "acciones",
+  "mercados",
+  "asia",
+  "europa",
+  "hong kong",
+  "tokio",
+  "frankfurt",
+  "bitcoin",
+  "cripto",
+  "petroleo",
+  "energia",
+  "litio",
+  "tierras raras",
+  "commodities",
+  "renovables",
 ];
-
 
 export const ECONOMIC_CALENDAR_KEYWORDS = [
   "calendario economico",
@@ -1063,6 +1099,83 @@ const PLAZA_CONSTITUCION = commonsVisual({
   keywords: CHILE_INSTITUTION_KEYWORDS,
 });
 
+const FED_VISUALS = [
+  FED_ECCLES,
+  FED_FOMC_2016,
+  FED_FOMC_2014,
+  FED_BOARD_2014,
+  FED_RULES_2014,
+  FED_FOMC_2014_ALT,
+  ...FED_EXTRA,
+];
+
+const TREASURY_VISUALS = [
+  TREASURY_BUILDING,
+  TREASURY_BUILDING_OFFICIAL,
+  ...TREASURY_EXTRA,
+];
+
+const ENERGY_VISUALS = [GULF_CONVOY, GULF_OIL_TERMINAL, ...ENERGY_EXTRA];
+
+const EQUITY_VISUALS = [
+  NYSE_HIGHSMITH,
+  NYSE_HISTORIC_FLOOR,
+  NYSE_EXTERIOR,
+  NYSE_WALL_STREET,
+  ...EQUITY_EXTRA,
+];
+
+const PORT_VISUALS = [
+  PORT_SAN_ANTONIO,
+  PORT_SAN_ANTONIO_PANORAMA,
+  PORT_SAN_ANTONIO_CONTAINERS,
+  ...PORT_EXTRA,
+];
+
+const SANTIAGO_VISUALS = [
+  SANTIAGO_SKYLINE,
+  SANTIAGO_COSTANERA,
+  SANTIAGO_COSTANERA_CURRENT,
+  ...SANTIAGO_EXTRA,
+];
+
+const BCCH_VISUALS = [BCCH_BUILDING, BCCH_EXTERIOR, ...BCCH_EXTRA];
+const COPPER_VISUALS = [COPPER_MINE, COPPER_CHUQUICAMATA, ...COPPER_EXTRA];
+const ECB_VISUALS = [ECB_BUILDING, ECB_SKYTOWER];
+const CHINA_VISUALS = [PBOC_HEADQUARTER, PBOC_NEW_HEADQUARTER, SHANGHAI_PUDONG];
+const GLOBAL_TRADE_VISUALS = [SINGAPORE_PORT, HAMBURG_CONTAINER_SHIP];
+const FX_VISUALS = [EURO_BANKNOTES];
+const GOLD_VISUALS = [GOLD_BULLION];
+const CHILE_INSTITUTION_VISUALS = [
+  LA_MONEDA,
+  CONGRESO_NACIONAL,
+  HACIENDA_HISTORIC,
+  PLAZA_CONSTITUCION,
+];
+const CHILE_URBAN_VISUALS = [
+  SANTIAGO_METRO,
+  SANTIAGO_CENTER_BUILDINGS,
+  SANTIAGO_OFFICE_BUILDING,
+  SANTIAGO_CCU_BUILDING,
+];
+const CONFLICT_VISUALS = [WAR_DAMAGE, WAR_DAMAGE_ALT, MILITARY_HUMANITARIAN];
+const HUMANITARIAN_VISUALS = [
+  HUMANITARIAN_DISTRIBUTION,
+  HUMANITARIAN_AID,
+  REFUGEE_ASSISTANCE,
+  HUMANITARIAN_AIRDROP,
+  MILITARY_HUMANITARIAN,
+];
+const DISASTER_VISUALS = [FEMA_RELIEF];
+const CHILE_JUSTICE_VISUALS = [CHILE_TC, CHILE_TC_2015];
+const CHILE_MINISTRY_VISUALS = [MINVU_BUILDING];
+const CHILE_CONSTRUCTION_VISUALS = [
+  CHILE_CONSTRUCTION_PROVIDENCIA,
+  CHILE_CONSTRUCTION_GAM,
+  CHILE_COSTANERA_CONSTRUCTION,
+  CHILE_CCHC,
+];
+
 const INTERNATIONAL_EXPANSION_VISUALS = catalogBatch(
   [
     "United Nations HQ.jpg",
@@ -1098,7 +1211,7 @@ const NATIONAL_EXPANSION_VISUALS = catalogBatch(
     "Armado Parque Eolico.jpg",
     "Parque Eolico (83088069).jpeg",
     "Parque Eolico 01.jpg",
-    "Parque Eolico \"El Totoral\".JPG",
+    'Parque Eolico "El Totoral".JPG',
     "2019-10-31 14-01-58 Quilapilún.jpg",
     "Salar de Atacama Lithium salt ponds 2018.jpg",
     "Salar de Atacama, Chile.jpg",
@@ -1129,6 +1242,7 @@ const MARKETS_EXPANSION_VISUALS = catalogBatch(
   MARKETS_EXPANSION_KEYWORDS,
 );
 
+export type UtilityPageVisualFamily = "economic-calendar" | "market-indices";
 
 export const ECONOMIC_CALENDAR_VISUALS: CatalogVisual[] = [
   commonsVisual({
@@ -1150,7 +1264,8 @@ export const ECONOMIC_CALENDAR_VISUALS: CatalogVisual[] = [
     alt: "Jerome Powell responde preguntas durante una conferencia de prensa del FOMC.",
     source: "Wikimedia Commons / Federal Reserve",
     author: "Federalreserve",
-    license: "Dominio público — Board of Governors of the Federal Reserve System",
+    license:
+      "Dominio público — Board of Governors of the Federal Reserve System",
     keywords: ECONOMIC_CALENDAR_KEYWORDS,
   }),
   commonsVisual({
