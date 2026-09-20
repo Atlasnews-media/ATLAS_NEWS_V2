@@ -1,10 +1,10 @@
 ---
 title: "Codelco suma una prueba laboral a su reestructuración productiva"
 summary: "El eventual retraso del plan de recuperación de Codelco hasta fin de 2026 y la posibilidad de ajustes de dotación agregan una tensión laboral a una empresa que necesita recuperar producción y competitividad."
-publishedAt: "2026-09-20T06:14:00-03:00"
+publishedAt: "2026-09-20T06:46:00-03:00"
 cutoffAt: "2026-09-20T06:12:00-03:00"
 section: "national"
-status: "draft"
+status: "published"
 tags:
   - chile
   - codelco
