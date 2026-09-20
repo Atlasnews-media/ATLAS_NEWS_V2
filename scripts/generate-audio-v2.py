@@ -24,6 +24,7 @@ from audio_speech import (
     LEXICON_VERSION,
     SPEECH_NORMALIZER_VERSION,
     is_question,
+    normalize_for_kokoro_dora,
     normalize_for_speech,
 )
 
@@ -76,7 +77,11 @@ def synthesize(
 ) -> np.ndarray:
     chunks = []
     pipeline = pipeline_for(lang_code)
-    speech_text = normalize_for_speech(text, reference_date)
+    speech_text = (
+        normalize_for_kokoro_dora(text, reference_date)
+        if voice == "ef_dora"
+        else normalize_for_speech(text, reference_date)
+    )
     speed = (
         speed_override
         if speed_override is not None
