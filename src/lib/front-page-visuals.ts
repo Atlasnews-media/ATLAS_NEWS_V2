@@ -339,23 +339,59 @@ const CHILE_MINISTRY_KEYWORDS = [
 ];
 
 const INTERNATIONAL_EXPANSION_KEYWORDS = [
-  "onu", "naciones unidas", "otan", "nato", "union europea", "comision europea",
-  "diplomacia", "geopolitica", "semiconductores", "chips", "tecnologia", "taiwan",
-  "comercio mundial", "puerto", "contenedores",
+  "onu",
+  "naciones unidas",
+  "otan",
+  "nato",
+  "union europea",
+  "comision europea",
+  "diplomacia",
+  "geopolitica",
+  "semiconductores",
+  "chips",
+  "tecnologia",
+  "taiwan",
+  "comercio mundial",
+  "puerto",
+  "contenedores",
 ];
 
 const NATIONAL_EXPANSION_KEYWORDS = [
-  "retail", "supermercado", "consumo", "agricultura", "campo", "alimentos",
-  "energia renovable", "solar", "eolica", "infraestructura", "transporte",
-  "actividad economica", "santiago", "regiones", "inversion",
+  "retail",
+  "supermercado",
+  "consumo",
+  "agricultura",
+  "campo",
+  "alimentos",
+  "energia renovable",
+  "solar",
+  "eolica",
+  "infraestructura",
+  "transporte",
+  "actividad economica",
+  "santiago",
+  "regiones",
+  "inversion",
 ];
 
 const MARKETS_EXPANSION_KEYWORDS = [
-  "bolsa", "acciones", "mercados", "asia", "europa", "hong kong", "tokio",
-  "frankfurt", "bitcoin", "cripto", "petroleo", "energia", "litio",
-  "tierras raras", "commodities", "renovables",
+  "bolsa",
+  "acciones",
+  "mercados",
+  "asia",
+  "europa",
+  "hong kong",
+  "tokio",
+  "frankfurt",
+  "bitcoin",
+  "cripto",
+  "petroleo",
+  "energia",
+  "litio",
+  "tierras raras",
+  "commodities",
+  "renovables",
 ];
-
 
 export const ECONOMIC_CALENDAR_KEYWORDS = [
   "calendario economico",
@@ -1098,7 +1134,7 @@ const NATIONAL_EXPANSION_VISUALS = catalogBatch(
     "Armado Parque Eolico.jpg",
     "Parque Eolico (83088069).jpeg",
     "Parque Eolico 01.jpg",
-    "Parque Eolico \"El Totoral\".JPG",
+    'Parque Eolico "El Totoral".JPG',
     "2019-10-31 14-01-58 Quilapilún.jpg",
     "Salar de Atacama Lithium salt ponds 2018.jpg",
     "Salar de Atacama, Chile.jpg",
@@ -1129,7 +1165,6 @@ const MARKETS_EXPANSION_VISUALS = catalogBatch(
   MARKETS_EXPANSION_KEYWORDS,
 );
 
-
 export const ECONOMIC_CALENDAR_VISUALS: CatalogVisual[] = [
   commonsVisual({
     file: "Desk-Calendars-1-700x700 (1).webp",
@@ -1150,7 +1185,8 @@ export const ECONOMIC_CALENDAR_VISUALS: CatalogVisual[] = [
     alt: "Jerome Powell responde preguntas durante una conferencia de prensa del FOMC.",
     source: "Wikimedia Commons / Federal Reserve",
     author: "Federalreserve",
-    license: "Dominio público — Board of Governors of the Federal Reserve System",
+    license:
+      "Dominio público — Board of Governors of the Federal Reserve System",
     keywords: ECONOMIC_CALENDAR_KEYWORDS,
   }),
   commonsVisual({
