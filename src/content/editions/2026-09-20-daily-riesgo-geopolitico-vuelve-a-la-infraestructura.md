@@ -1,7 +1,7 @@
 ---
 title: "El riesgo geopolítico vuelve a golpear infraestructura crítica"
 summary: "Ataques sobre infraestructura energética rusa y saudí elevan el riesgo de interrupciones mientras China mantiene sin cambios sus tasas de referencia y Washington y Beijing reabren conversaciones sobre comercio, IA y minerales críticos."
-publishedAt: "2026-09-20T06:00:47-03:00"
+publishedAt: "2026-09-20T06:01:38-03:00"
 cutoffAt: "2026-09-20T06:00:47-03:00"
 type: "daily"
 status: "draft"
