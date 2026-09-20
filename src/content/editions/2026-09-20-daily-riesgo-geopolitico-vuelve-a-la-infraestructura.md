@@ -1,7 +1,7 @@
 ---
 title: "El riesgo geopolítico vuelve a golpear infraestructura crítica"
 summary: "Ataques sobre infraestructura energética rusa y saudí elevan el riesgo de interrupciones mientras China mantiene sin cambios sus tasas de referencia y Washington y Beijing reabren conversaciones sobre comercio, IA y minerales críticos."
-publishedAt: "2026-09-20T06:01:38-03:00"
+publishedAt: "2026-09-20T06:03:42-03:00"
 cutoffAt: "2026-09-20T06:00:47-03:00"
 type: "daily"
 status: "draft"
@@ -25,7 +25,7 @@ featured: false
 demo: false
 highlights:
   - label: "Ataques hutíes alcanzan nuevamente la capital saudí"
-    text: "Misiles y drones fueron dirigidos contra sitios sensibles en Riad y una instalación de Aramco en Yanbu, ampliando el riesgo sobre infraestructura energética y logística regional."
+    text: "Misiles y drones apuntaron a Riad y a una instalación de Aramco en Yanbu, ampliando el riesgo sobre infraestructura energética regional."
   - label: "Un ataque masivo con drones daña una refinería de Moscú"
     text: "Rusia informó más de 1.600 drones interceptados desde el sábado y daños en la refinería de Moscú, prolongando la presión sobre infraestructura energética rusa."
   - label: "China mantiene sus tasas de referencia por decimosexto mes"
