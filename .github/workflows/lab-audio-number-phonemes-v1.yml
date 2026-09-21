@@ -17,9 +17,9 @@ concurrency:
 
 jobs:
   diagnose:
-    name: Diagnosticar miles — speech_text, fonemas y audio
+    name: Diagnosticar miles — speech_text, fonemas, audio y ASR
     runs-on: ubuntu-latest
-    timeout-minutes: 20
+    timeout-minutes: 30
 
     steps:
       - name: Descargar repositorio
@@ -40,6 +40,18 @@ jobs:
           set -euo pipefail
           source "$RUNNER_TEMP/kokoro-number-lab/bin/activate"
           python lab/audio-number-phonemes-v1/generate_lab.py
+
+      - name: Preparar ASR de control
+        run: |
+          set -euo pipefail
+          source "$RUNNER_TEMP/kokoro-number-lab/bin/activate"
+          python -m pip install --quiet faster-whisper
+
+      - name: Transcribir variantes
+        run: |
+          set -euo pipefail
+          source "$RUNNER_TEMP/kokoro-number-lab/bin/activate"
+          python lab/audio-number-phonemes-v1/transcribe_lab.py
 
       - name: Publicar artefacto diagnóstico
         uses: actions/upload-artifact@v4
