@@ -383,7 +383,9 @@ jobs:
             | curl -fsSL -X POST "$ATLAS_STATE_ENDPOINT" -H "Authorization: Bearer $token" -H 'content-type: application/json' --data-binary @-
 
       - name: Verificar la versión pública
+        id: public_verify
         if: github.event_name != 'pull_request'
+        continue-on-error: true
         run: |
           set -euo pipefail
           atlas_publish_dir="$RUNNER_TEMP/atlas-news-public"
@@ -469,7 +471,10 @@ jobs:
           echo "Versión pública verificada en repositorio y GitHub Pages: $(git -C "$atlas_publish_dir" rev-parse HEAD)"
 
       - name: Registrar publicación verificada
-        if: github.event_name == 'push' && steps.edition.outputs.track == 'true'
+        if: >-
+          github.event_name == 'push' &&
+          steps.edition.outputs.track == 'true' &&
+          steps.public_verify.outcome == 'success'
         continue-on-error: true
         env:
           EDITION_KEY: ${{ steps.edition.outputs.edition_key }}
