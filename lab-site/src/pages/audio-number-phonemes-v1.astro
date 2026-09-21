@@ -1,0 +1,240 @@
+---
+import "../../../src/styles/global.css";
+---
+
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="robots" content="noindex, nofollow, noarchive" />
+    <meta name="theme-color" content="#f2efe5" />
+    <title>ATLAS NEWS LAB · Miles con Dora</title>
+  </head>
+  <body>
+    <main class="lab-shell">
+      <p class="lab-kicker">ATLAS NEWS · AUDIO LAB</p>
+      <h1>Miles con Dora</h1>
+      <p class="lead">
+        Prueba aislada sobre la segmentación de cantidades en miles. Speech V5,
+        Lexicon V3 rev. 5, ef_dora y Kokoro 0.9.4 permanecen intactos. No se
+        modifica el texto editorial ni Audio V2 productivo.
+      </p>
+
+      <div class="rule" aria-hidden="true"></div>
+
+      <section>
+        <p class="status">Muestra principal · Portada 21-09-2026</p>
+        <h2>Párrafo real de mercados</h2>
+        <p>
+          Escucha especialmente 1.099 pesos y 40.983 pesos. A y B mantienen el
+          párrafo completo; C sintetiza el mismo texto por oración. La única
+          variable evaluada aquí es la segmentación.
+        </p>
+
+        <div class="comparison-grid">
+          <article class="audio-card">
+            <p class="card-kicker">A · Forma productiva actual</p>
+            <h3>Párrafo completo</h3>
+            <p class="card-copy">
+              Usa la ruta específica Dora actual, incluida cualquier regla
+              speech-only vigente.
+            </p>
+            <audio controls preload="metadata">
+              <source
+                src="/lab/audio/number-phonemes-v1/portada-paragraph-current.mp3"
+                type="audio/mpeg"
+              />
+            </audio>
+          </article>
+
+          <article class="audio-card">
+            <p class="card-kicker">B · Control</p>
+            <h3>Speech V5 continuo</h3>
+            <p class="card-copy">
+              Mismo párrafo y misma voz, sin la excepción Dora de segmentación.
+            </p>
+            <audio controls preload="metadata">
+              <source
+                src="/lab/audio/number-phonemes-v1/portada-paragraph-generic.mp3"
+                type="audio/mpeg"
+              />
+            </audio>
+          </article>
+
+          <article class="audio-card audio-card--candidate">
+            <p class="card-kicker">C · Candidato</p>
+            <h3>Una oración por síntesis</h3>
+            <p class="card-copy">
+              Mismo contenido y Speech V5, pero cada oración se sintetiza como
+              unidad independiente antes de concatenar el audio.
+            </p>
+            <audio controls preload="metadata">
+              <source
+                src="/lab/audio/number-phonemes-v1/portada-paragraph-sentence-chunks.mp3"
+                type="audio/mpeg"
+              />
+            </audio>
+          </article>
+        </div>
+      </section>
+
+      <div class="rule" aria-hidden="true"></div>
+
+      <section>
+        <p class="status">Control específico · 1.100 pesos</p>
+        <h2>El salto de línea actual</h2>
+        <p>
+          Esta comparación aísla el parche “mil + salto de línea + cien”. D es
+          la variante actual; E conserva “mil cien” dentro de una sola unidad.
+        </p>
+
+        <div class="comparison-grid comparison-grid--two">
+          <article class="audio-card">
+            <p class="card-kicker">D · Actual</p>
+            <h3>mil ↵ cien</h3>
+            <audio controls preload="metadata">
+              <source
+                src="/lab/audio/number-phonemes-v1/euro-1100-dora.mp3"
+                type="audio/mpeg"
+              />
+            </audio>
+          </article>
+
+          <article class="audio-card audio-card--candidate">
+            <p class="card-kicker">E · Continuo</p>
+            <h3>mil cien</h3>
+            <audio controls preload="metadata">
+              <source
+                src="/lab/audio/number-phonemes-v1/euro-1100-dora-joined.mp3"
+                type="audio/mpeg"
+              />
+            </audio>
+          </article>
+        </div>
+      </section>
+
+      <div class="rule" aria-hidden="true"></div>
+
+      <section>
+        <p class="status">Guardrail</p>
+        <h2>Producción intacta</h2>
+        <p>
+          productionTouched=false · fallbackAllowed=false. El LAB no escribe en
+          /audio/, no modifica F4A, Speech Normalizer, Lexicon, voces
+          productivas ni contenido editorial visible.
+        </p>
+        <a class="lab-link" href="/lab/audio/number-phonemes-v1/manifest.json">
+          Ver manifest del experimento →
+        </a>
+        <br />
+        <a class="lab-link" href="/lab/">← Volver a ATLAS NEWS LAB</a>
+      </section>
+    </main>
+  </body>
+</html>
+
+<style>
+  :global(body) {
+    margin: 0;
+    background: #f2efe5;
+    color: #151515;
+  }
+
+  .lab-shell {
+    width: min(70rem, calc(100% - 2rem));
+    margin: 0 auto;
+    padding: clamp(3.5rem, 10vw, 7rem) 0;
+  }
+
+  .lab-kicker,
+  .status,
+  .card-kicker {
+    margin: 0;
+    font: 800 0.72rem/1.2 var(--sans);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  h1 {
+    margin: 0.75rem 0 1rem;
+    font: 700 clamp(2.7rem, 9vw, 6.5rem)/0.92 var(--display);
+    letter-spacing: -0.04em;
+  }
+
+  h2 {
+    margin: 0.45rem 0 0.8rem;
+    font: 700 clamp(1.7rem, 4vw, 2.8rem)/1 var(--display);
+  }
+
+  h3 {
+    margin: 0.4rem 0 0.65rem;
+    font: 700 1.45rem/1 var(--display);
+  }
+
+  p {
+    font: 400 1rem/1.6 var(--serif);
+  }
+
+  .lead {
+    max-width: 48rem;
+    font-size: 1.12rem;
+  }
+
+  .rule {
+    height: 4px;
+    margin: 2.5rem 0;
+    border-top: 1px solid #151515;
+    border-bottom: 1px solid #151515;
+  }
+
+  .comparison-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1rem;
+    margin-top: 1.5rem;
+  }
+
+  .comparison-grid--two {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .audio-card {
+    padding: 1.25rem;
+    border: 1px solid #151515;
+    background: rgba(255, 255, 255, 0.18);
+  }
+
+  .audio-card--candidate {
+    border-top: 5px solid #a71920;
+  }
+
+  .card-copy {
+    min-height: 5rem;
+  }
+
+  audio {
+    width: 100%;
+    margin-top: 0.8rem;
+  }
+
+  .lab-link {
+    display: inline-block;
+    margin-top: 1rem;
+    color: inherit;
+    font: 800 0.86rem/1.2 var(--sans);
+    text-decoration-thickness: 2px;
+    text-underline-offset: 0.2em;
+  }
+
+  @media (max-width: 800px) {
+    .comparison-grid,
+    .comparison-grid--two {
+      grid-template-columns: 1fr;
+    }
+
+    .card-copy {
+      min-height: 0;
+    }
+  }
+</style>
