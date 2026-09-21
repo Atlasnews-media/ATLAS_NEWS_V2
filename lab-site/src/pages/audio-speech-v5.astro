@@ -23,6 +23,94 @@ import "../../../src/styles/global.css";
       <div class="rule" aria-hidden="true"></div>
 
       <section>
+        <p class="status">Muestra del 21 de septiembre · Dora · LAB</p>
+        <h2>Cantidades en miles</h2>
+        <p>
+          Escucha especialmente “1.099 pesos”, “40.983 pesos” y el control
+          “1.100 pesos”. A y B mantienen el párrafo completo; C sintetiza el
+          mismo texto por oración. D y E aíslan el parche actual de “mil cien”.
+        </p>
+
+        <div class="comparison-grid comparison-grid--three">
+          <article class="audio-card">
+            <p class="card-kicker">A · Actual</p>
+            <h3>Párrafo completo</h3>
+            <p class="card-copy">
+              Ruta específica Dora vigente, incluida la regla speech-only
+              actual.
+            </p>
+            <audio controls preload="metadata">
+              <source
+                src="/lab/audio/number-phonemes-v1/portada-paragraph-current.mp3"
+                type="audio/mpeg"
+              />
+            </audio>
+          </article>
+
+          <article class="audio-card">
+            <p class="card-kicker">B · Control</p>
+            <h3>Speech V5 continuo</h3>
+            <p class="card-copy">
+              Mismo párrafo y misma voz, sin la excepción Dora de segmentación.
+            </p>
+            <audio controls preload="metadata">
+              <source
+                src="/lab/audio/number-phonemes-v1/portada-paragraph-generic.mp3"
+                type="audio/mpeg"
+              />
+            </audio>
+          </article>
+
+          <article class="audio-card audio-card--candidate">
+            <p class="card-kicker">C · Candidato</p>
+            <h3>Una oración por síntesis</h3>
+            <p class="card-copy">
+              Mismo contenido y Speech V5; cada oración se sintetiza como unidad
+              independiente antes de concatenar.
+            </p>
+            <audio controls preload="metadata">
+              <source
+                src="/lab/audio/number-phonemes-v1/portada-paragraph-sentence-chunks.mp3"
+                type="audio/mpeg"
+              />
+            </audio>
+          </article>
+        </div>
+
+        <div class="comparison-grid">
+          <article class="audio-card">
+            <p class="card-kicker">D · Actual</p>
+            <h3>mil ↵ cien</h3>
+            <p class="card-copy">
+              Control específico con el salto de línea introducido para 1.100.
+            </p>
+            <audio controls preload="metadata">
+              <source
+                src="/lab/audio/number-phonemes-v1/euro-1100-dora.mp3"
+                type="audio/mpeg"
+              />
+            </audio>
+          </article>
+
+          <article class="audio-card audio-card--candidate">
+            <p class="card-kicker">E · Continuo</p>
+            <h3>mil cien</h3>
+            <p class="card-copy">
+              Mismo texto hablado, dentro de una sola unidad de síntesis.
+            </p>
+            <audio controls preload="metadata">
+              <source
+                src="/lab/audio/number-phonemes-v1/euro-1100-dora-joined.mp3"
+                type="audio/mpeg"
+              />
+            </audio>
+          </article>
+        </div>
+      </section>
+
+      <div class="rule" aria-hidden="true"></div>
+
+      <section>
         <p class="status">Muestra del 11 de septiembre · Dora · LAB</p>
         <h2>Mismo texto, dos tratamientos</h2>
         <p>
@@ -162,6 +250,10 @@ import "../../../src/styles/global.css";
     margin-top: 1.5rem;
   }
 
+  .comparison-grid--three {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
   .audio-card {
     border: 1px solid #151515;
     padding: 1.25rem;
@@ -206,7 +298,8 @@ import "../../../src/styles/global.css";
   }
 
   @media (max-width: 700px) {
-    .comparison-grid {
+    .comparison-grid,
+    .comparison-grid--three {
       grid-template-columns: 1fr;
     }
 
