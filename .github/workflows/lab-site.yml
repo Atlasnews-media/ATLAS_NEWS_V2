@@ -79,14 +79,6 @@ jobs:
           "scripts/lab/*.mjs"
           --ignore-path /dev/null
 
-      - name: Formatear muestra Speech V5 para inspección
-        run: |
-          set -euo pipefail
-          npx prettier --write "lab-site/src/pages/audio-speech-v5.astro" --ignore-path /dev/null
-          echo "=== SPEECH V5 PRETTIER START ==="
-          cat "lab-site/src/pages/audio-speech-v5.astro"
-          echo "=== SPEECH V5 PRETTIER END ==="
-
       - name: Comprobar formato LAB
         run: >-
           npx prettier --check
