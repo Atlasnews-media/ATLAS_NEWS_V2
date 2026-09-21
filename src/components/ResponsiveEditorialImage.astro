@@ -8,6 +8,7 @@ interface Props {
   variant?: "headline" | "card" | "article" | "frontpage" | "plain";
   class?: string;
   fetchpriority?: "high" | "low" | "auto";
+  decoding?: "async" | "sync" | "auto";
   onerror?: string;
 }
 
@@ -20,6 +21,7 @@ const {
   variant,
   class: className,
   fetchpriority = loading === "eager" ? "high" : "auto",
+  decoding = "async",
   onerror,
 } = Astro.props;
 
@@ -66,7 +68,7 @@ const srcset = variants.length ? variants.join(", ") : undefined;
   alt={decorative ? "" : alt}
   aria-hidden={decorative ? "true" : undefined}
   loading={loading}
-  decoding="async"
+  decoding={decoding}
   fetchpriority={fetchpriority}
   referrerpolicy="no-referrer"
   onerror={onerror}
