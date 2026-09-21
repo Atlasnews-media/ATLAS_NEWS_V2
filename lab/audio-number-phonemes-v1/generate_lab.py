@@ -1,7 +1,10 @@
+import hashlib
 import json
+import os
 import re
 import subprocess
 import sys
+from datetime import datetime, timezone
 from pathlib import Path
 
 import numpy as np
@@ -24,6 +27,8 @@ LANG_CODE = "e"
 SPEED = 1.0
 SAMPLE_RATE = 24_000
 OUT = Path(__file__).resolve().parent / "out"
+BASELINE_PATH = Path(__file__).resolve().parent / "baseline.json"
+PUBLIC_BASE = "/lab/audio/number-phonemes-v1"
 
 CASES = [
     ("euro-1099", "El euro se ubicó en 1.099 pesos con 86 centavos."),
@@ -191,14 +196,29 @@ def main() -> None:
         old_file.unlink()
     pipeline = KPipeline(lang_code=LANG_CODE)
 
+    baseline = json.loads(BASELINE_PATH.read_text(encoding="utf-8"))
     manifest = {
-        "lab": "audio-number-phonemes-v1",
-        "engine": "kokoro==0.9.4",
-        "voice": VOICE,
+        "experiment": "audio-number-phonemes-v1",
+        "generatedAt": datetime.now(timezone.utc).isoformat(),
+        "productionTouched": False,
+        "fallbackAllowed": False,
+        "date": baseline["productionAudio"]["date"],
+        "sourceId": baseline["productionAudio"]["cover"]["sourceId"],
+        "sourceRepoCommit": os.environ.get("GITHUB_SHA"),
+        "productionAudioSourceCommit": baseline["productionAudio"]["sourceCommit"],
+        "productionScriptHash": baseline["productionAudio"]["cover"]["scriptHash"],
+        "publicBasePath": PUBLIC_BASE,
+        "engine": "Kokoro-82M / kokoro==0.9.4",
+        "voiceProfileVersion": "ef_dora",
+        "voices": {"dora": VOICE},
         "language": "es",
         "speechNormalizerVersion": SPEECH_NORMALIZER_VERSION,
         "lexiconVersion": LEXICON_VERSION,
         "lexiconRevision": LEXICON_REVISION,
+        "dialogueRhythmVersion": None,
+        "seed": None,
+        "relevantPauses": "Sólo cambia segmentación; sin pausas añadidas salvo variante productiva mil\\ncien usada como control.",
+        "baselineFile": "baseline.json",
         "cases": [],
     }
 
@@ -230,8 +250,10 @@ def main() -> None:
                     "speechText": speech_text,
                     "trace": trace,
                     "audio": filename,
+                    "publicPath": f"{PUBLIC_BASE}/{filename}",
                     "samples": int(samples.size),
                     "durationSeconds": round(samples.size / SAMPLE_RATE, 3),
+                    "bytes": (OUT / filename).stat().st_size,
                 }
             )
 
@@ -269,7 +291,9 @@ def main() -> None:
             "speechText": current_text,
             "trace": trace,
             "audio": current_file,
+            "publicPath": f"{PUBLIC_BASE}/{current_file}",
             "durationSeconds": round(samples.size / SAMPLE_RATE, 3),
+            "bytes": (OUT / current_file).stat().st_size,
         }
     )
 
@@ -283,7 +307,9 @@ def main() -> None:
             "speechText": generic_text,
             "trace": trace,
             "audio": generic_file,
+            "publicPath": f"{PUBLIC_BASE}/{generic_file}",
             "durationSeconds": round(samples.size / SAMPLE_RATE, 3),
+            "bytes": (OUT / generic_file).stat().st_size,
         }
     )
 
@@ -313,9 +339,14 @@ def main() -> None:
             "name": "generic-sentence-chunks",
             "sentences": sentence_trace,
             "audio": sentence_file,
+            "publicPath": f"{PUBLIC_BASE}/{sentence_file}",
             "durationSeconds": round(sentence_samples.size / SAMPLE_RATE, 3),
+            "bytes": (OUT / sentence_file).stat().st_size,
         }
     )
+    paragraph_entry["textHash"] = hashlib.sha256(
+        PORTADA_PARAGRAPH.encode("utf-8")
+    ).hexdigest()
     manifest["productionParagraph"] = paragraph_entry
 
     manifest_path = OUT / "manifest.json"
