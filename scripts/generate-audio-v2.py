@@ -343,12 +343,12 @@ def generate_analysis_samples(section: str, script: str, reference_date: str):
                 "engine": f"Kokoro-82M + {CHATTERBOX_ENGINE}",
                 "voiceProfileVersion": VOICE_PROFILE_VERSION,
                 "voices": {
-                    "reporter": VOICE_PROFILE_VERSION,
-                    "interviewer": "ef_dora",
+                    "host": "ef_dora",
+                    "analyst": VOICE_PROFILE_VERSION,
                 },
                 "roles": {
-                    "reporter": "VOZ 2",
-                    "interviewer": "VOZ 1",
+                    "host": "VOZ 1",
+                    "analyst": "VOZ 2",
                 },
                 "questionProsodyVersion": 0,
                 "dialogueRhythmVersion": ALEXC_DIALOGUE_RHYTHM_VERSION,
@@ -387,12 +387,12 @@ def generate_analysis_samples(section: str, script: str, reference_date: str):
                 "engine": "Kokoro-82M",
                 "voiceProfileVersion": FALLBACK_PROFILE_VERSION,
                 "voices": {
-                    "reporter": "em_alex",
-                    "interviewer": "ef_dora",
+                    "host": "ef_dora",
+                    "analyst": "em_alex",
                 },
                 "roles": {
-                    "reporter": "VOZ 2",
-                    "interviewer": "VOZ 1",
+                    "host": "VOZ 1",
+                    "analyst": "VOZ 2",
                 },
                 "questionProsodyVersion": QUESTION_PROSODY_VERSION,
                 "dialogueRhythmVersion": ALEXC_DIALOGUE_RHYTHM_VERSION,
