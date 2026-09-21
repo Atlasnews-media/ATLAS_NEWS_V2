@@ -1,0 +1,140 @@
+name: LAB — reproducibilidad Speech V5 Dora
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - "lab/dora-speech-v5-repro-20260921/**"
+      - "lab-site/src/pages/audio-speech-v5.astro"
+      - ".github/workflows/lab-dora-speech-v5-repro.yml"
+  push:
+    branches: [main]
+    paths:
+      - "lab/dora-speech-v5-repro-20260921/**"
+      - "lab-site/src/pages/audio-speech-v5.astro"
+      - ".github/workflows/lab-dora-speech-v5-repro.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: atlas-news-lab-dora-speech-v5-repro-${{ github.event_name == 'pull_request' && format('pr-{0}', github.event.pull_request.number) || 'main' }}
+  cancel-in-progress: true
+
+jobs:
+  reproducibility:
+    name: Comparar PCM y repetir B
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+
+    steps:
+      - name: Descargar repositorio
+        uses: actions/checkout@v5
+
+      - name: Preparar runtime productivo Dora
+        run: |
+          set -euo pipefail
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq espeak-ng ffmpeg python3-venv
+          python3 -m venv "$RUNNER_TEMP/kokoro-repro"
+          source "$RUNNER_TEMP/kokoro-repro/bin/activate"
+          python -m pip install --quiet --upgrade pip
+          python -m pip install --quiet "kokoro==0.9.4" soundfile numpy
+
+      - name: Descargar A y B aprobadas
+        run: |
+          set -euo pipefail
+          mkdir -p "$RUNNER_TEMP/repro-input"
+          curl -fsSL \
+            "https://raw.githubusercontent.com/Atlasnews-media/Atlasnews-media.github.io/main/lab/audio/number-phonemes-v1/portada-paragraph-current.mp3" \
+            -o "$RUNNER_TEMP/repro-input/a-current.mp3"
+          curl -fsSL \
+            "https://raw.githubusercontent.com/Atlasnews-media/Atlasnews-media.github.io/main/lab/audio/number-phonemes-v1/portada-paragraph-generic.mp3" \
+            -o "$RUNNER_TEMP/repro-input/b-approved.mp3"
+
+      - name: Ejecutar prueba de reproducibilidad
+        run: |
+          set -euo pipefail
+          source "$RUNNER_TEMP/kokoro-repro/bin/activate"
+          python lab/dora-speech-v5-repro-20260921/reproducibility.py \
+            --sample-a "$RUNNER_TEMP/repro-input/a-current.mp3" \
+            --sample-b "$RUNNER_TEMP/repro-input/b-approved.mp3" \
+            --out "lab/dora-speech-v5-repro-20260921/out"
+
+      - name: Validar contrato LAB
+        run: |
+          set -euo pipefail
+          jq -e '
+            .experiment == "dora-speech-v5-repro-20260921" and
+            .productionTouched == false and
+            .fallbackAllowed == false and
+            .voice == "ef_dora" and
+            .speechNormalizerVersion == 5 and
+            .lexiconVersion == 3 and
+            .lexiconRevision == 5
+          ' lab/dora-speech-v5-repro-20260921/out/report.json >/dev/null
+
+      - name: Publicar artefacto diagnóstico
+        uses: actions/upload-artifact@v4
+        with:
+          name: dora-speech-v5-repro-20260921
+          path: lab/dora-speech-v5-repro-20260921/out/
+          if-no-files-found: error
+          retention-days: 7
+
+      - name: Preparar acceso al repositorio público
+        if: github.event_name == 'push'
+        env:
+          DEPLOY_KEY: ${{ secrets.ATLAS_PAGES_DEPLOY_KEY }}
+        run: |
+          set -euo pipefail
+          install -m 700 -d ~/.ssh
+          printf '%s\n' "$DEPLOY_KEY" > ~/.ssh/atlas_news_pages
+          chmod 600 ~/.ssh/atlas_news_pages
+          ssh-keyscan -H github.com >> ~/.ssh/known_hosts
+
+      - name: Descargar repositorio público
+        if: github.event_name == 'push'
+        env:
+          GIT_SSH_COMMAND: ssh -i ~/.ssh/atlas_news_pages -o IdentitiesOnly=yes
+        run: |
+          set -euo pipefail
+          git clone --depth 1 git@github.com:Atlasnews-media/Atlasnews-media.github.io.git \
+            "$RUNNER_TEMP/atlas-news-public"
+
+      - name: Publicar únicamente evidencia LAB
+        if: github.event_name == 'push'
+        env:
+          GIT_SSH_COMMAND: ssh -i ~/.ssh/atlas_news_pages -o IdentitiesOnly=yes
+        run: |
+          set -euo pipefail
+          public="$RUNNER_TEMP/atlas-news-public"
+          target="$public/lab/audio/dora-speech-v5-repro-20260921"
+          mkdir -p "$target"
+          cp lab/dora-speech-v5-repro-20260921/out/repeat-*.mp3 "$target/"
+          cp lab/dora-speech-v5-repro-20260921/out/report.json "$target/report.json"
+          cp lab/dora-speech-v5-repro-20260921/baseline.json "$target/baseline.json"
+
+          cd "$public"
+          git config user.name "ATLAS NEWS AUDIO LAB"
+          git config user.email "actions@users.noreply.github.com"
+          git add lab/audio/dora-speech-v5-repro-20260921/
+
+          if git diff --cached --quiet; then
+            echo "LAB ya estaba publicado."
+            exit 0
+          fi
+
+          git commit -m "LAB Audio — reproducibilidad Speech V5 Dora"
+          for attempt in 1 2 3; do
+            git pull --rebase origin main
+            if git push origin main; then
+              exit 0
+            fi
+            if [[ "$attempt" -eq 3 ]]; then
+              echo "No fue posible publicar la evidencia LAB." >&2
+              exit 1
+            fi
+            sleep 2
+          done
