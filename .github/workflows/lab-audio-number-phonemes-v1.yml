@@ -1,10 +1,17 @@
 name: LAB — números y fonemas Dora
 
 on:
-  push:
-    branches: ["lab/audio-number-phonemes-v1"]
+  pull_request:
+    branches: ["main"]
     paths:
       - "lab/audio-number-phonemes-v1/**"
+      - "lab-site/src/pages/audio-number-phonemes-v1.astro"
+      - ".github/workflows/lab-audio-number-phonemes-v1.yml"
+  push:
+    branches: ["main"]
+    paths:
+      - "lab/audio-number-phonemes-v1/**"
+      - "lab-site/src/pages/audio-number-phonemes-v1.astro"
       - ".github/workflows/lab-audio-number-phonemes-v1.yml"
   workflow_dispatch:
 
@@ -12,8 +19,8 @@ permissions:
   contents: read
 
 concurrency:
-  group: atlas-news-lab-audio-number-phonemes-v1
-  cancel-in-progress: false
+  group: atlas-news-lab-audio-number-phonemes-v1-${{ github.event_name == 'pull_request' && format('pr-{0}', github.event.pull_request.number) || 'main' }}
+  cancel-in-progress: true
 
 jobs:
   diagnose:
@@ -41,6 +48,19 @@ jobs:
           source "$RUNNER_TEMP/kokoro-number-lab/bin/activate"
           python lab/audio-number-phonemes-v1/generate_lab.py
 
+      - name: Validar manifest LAB
+        run: |
+          set -euo pipefail
+          jq -e '
+            .experiment == "audio-number-phonemes-v1" and
+            .productionTouched == false and
+            .fallbackAllowed == false and
+            .speechNormalizerVersion == 5 and
+            .lexiconVersion == 3 and
+            .lexiconRevision == 5 and
+            (.sourceRepoCommit | type == "string")
+          ' lab/audio-number-phonemes-v1/out/manifest.json >/dev/null
+
       - name: Preparar ASR de control
         run: |
           set -euo pipefail
@@ -60,3 +80,60 @@ jobs:
           path: lab/audio-number-phonemes-v1/out/
           if-no-files-found: error
           retention-days: 7
+
+      - name: Preparar acceso al repositorio público
+        if: github.event_name == 'push'
+        env:
+          DEPLOY_KEY: ${{ secrets.ATLAS_PAGES_DEPLOY_KEY }}
+        run: |
+          set -euo pipefail
+          install -m 700 -d ~/.ssh
+          printf '%s\n' "$DEPLOY_KEY" > ~/.ssh/atlas_news_pages
+          chmod 600 ~/.ssh/atlas_news_pages
+          ssh-keyscan -H github.com >> ~/.ssh/known_hosts
+
+      - name: Descargar repositorio público
+        if: github.event_name == 'push'
+        env:
+          GIT_SSH_COMMAND: ssh -i ~/.ssh/atlas_news_pages -o IdentitiesOnly=yes
+        run: |
+          set -euo pipefail
+          git clone --depth 1 git@github.com:Atlasnews-media/Atlasnews-media.github.io.git \
+            "$RUNNER_TEMP/atlas-news-public"
+
+      - name: Publicar pistas únicamente en LAB
+        if: github.event_name == 'push'
+        env:
+          GIT_SSH_COMMAND: ssh -i ~/.ssh/atlas_news_pages -o IdentitiesOnly=yes
+        run: |
+          set -euo pipefail
+          public="$RUNNER_TEMP/atlas-news-public"
+          target="$public/lab/audio/number-phonemes-v1"
+          mkdir -p "$target"
+          cp lab/audio-number-phonemes-v1/out/*.mp3 "$target/"
+          cp lab/audio-number-phonemes-v1/out/manifest.json "$target/manifest.json"
+          cp lab/audio-number-phonemes-v1/out/asr.json "$target/asr.json"
+          cp lab/audio-number-phonemes-v1/baseline.json "$target/baseline.json"
+
+          cd "$public"
+          git config user.name "ATLAS NEWS AUDIO LAB"
+          git config user.email "actions@users.noreply.github.com"
+          git add lab/audio/number-phonemes-v1/
+
+          if git diff --cached --quiet; then
+            echo "LAB de números ya estaba publicado."
+            exit 0
+          fi
+
+          git commit -m "LAB Audio — publicar números y fonemas Dora"
+          for attempt in 1 2 3; do
+            git pull --rebase origin main
+            if git push origin main; then
+              exit 0
+            fi
+            if [[ "$attempt" -eq 3 ]]; then
+              echo "No fue posible publicar el LAB tras tres intentos." >&2
+              exit 1
+            fi
+            sleep 2
+          done
