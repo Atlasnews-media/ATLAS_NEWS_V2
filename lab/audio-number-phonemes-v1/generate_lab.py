@@ -34,6 +34,8 @@ CASES = [
     ("uf-40983", "La UF vigente alcanza los 40.983 pesos con 58 centavos."),
 ]
 
+PHONEME_AB_CASES = {"euro-1099", "euro-1100", "euro-1101", "uf-40983"}
+
 
 def safe_slug(value: str) -> str:
     return re.sub(r"[^a-z0-9-]+", "-", value.lower()).strip("-")
@@ -71,12 +73,7 @@ def run_pipeline(pipeline: KPipeline, speech_text: str):
         speed=SPEED,
         split_pattern=r"\n+",
     ):
-        trace.append(
-            {
-                "graphemes": graphemes,
-                "phonemes": phonemes,
-            }
-        )
+        trace.append({"graphemes": graphemes, "phonemes": phonemes})
         if audio is not None:
             array = np.asarray(audio, dtype=np.float32).reshape(-1)
             if array.size:
@@ -86,8 +83,40 @@ def run_pipeline(pipeline: KPipeline, speech_text: str):
     return np.concatenate(chunks), trace
 
 
+def run_raw_phonemes(pipeline: KPipeline, phonemes: str) -> np.ndarray:
+    chunks = []
+    for result in pipeline.generate_from_tokens(
+        tokens=phonemes,
+        voice=VOICE,
+        speed=SPEED,
+    ):
+        audio = result.audio
+        if audio is None:
+            continue
+        array = np.asarray(audio, dtype=np.float32).reshape(-1)
+        if array.size:
+            chunks.append(array)
+    if not chunks:
+        raise RuntimeError(f"Kokoro no devolvió audio para fonemas: {phonemes!r}")
+    return np.concatenate(chunks)
+
+
+def phoneme_candidates(phonemes: str):
+    return [
+        ("phoneme-baseline", phonemes),
+        ("phoneme-mil-joined", phonemes.replace("mˈil ", "mˈil")),
+        ("phoneme-mil-unstressed", phonemes.replace("mˈil", "mil")),
+        (
+            "phoneme-mil-joined-unstressed",
+            phonemes.replace("mˈil ", "mil"),
+        ),
+    ]
+
+
 def main() -> None:
     OUT.mkdir(parents=True, exist_ok=True)
+    for old_file in OUT.glob("*.mp3"):
+        old_file.unlink()
     pipeline = KPipeline(lang_code=LANG_CODE)
 
     manifest = {
@@ -116,6 +145,7 @@ def main() -> None:
             "genericSpeechText": generic,
             "doraSpeechText": dora,
             "variants": [],
+            "phonemeVariants": [],
         }
 
         for variant, speech_text in variants:
@@ -129,8 +159,25 @@ def main() -> None:
                     "trace": trace,
                     "audio": filename,
                     "samples": int(samples.size),
+                    "durationSeconds": round(samples.size / SAMPLE_RATE, 3),
                 }
             )
+
+        if case_id in PHONEME_AB_CASES:
+            base_phonemes, _ = pipeline.g2p(generic)
+            for variant, candidate in phoneme_candidates(base_phonemes):
+                samples = run_raw_phonemes(pipeline, candidate)
+                filename = f"{safe_slug(case_id)}-{safe_slug(variant)}.mp3"
+                write_mp3(OUT / filename, samples)
+                case_entry["phonemeVariants"].append(
+                    {
+                        "name": variant,
+                        "phonemes": candidate,
+                        "audio": filename,
+                        "samples": int(samples.size),
+                        "durationSeconds": round(samples.size / SAMPLE_RATE, 3),
+                    }
+                )
 
         manifest["cases"].append(case_entry)
 
