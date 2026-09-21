@@ -29,6 +29,7 @@ const waveformHeights = [
   class={`atlas-audio-player atlas-audio-player--${visualVariant}`}
   data-atlas-audio
   data-playing="false"
+  data-waveform-state={visualVariant === "radio" ? "loading" : undefined}
 >
   <button
     class="atlas-audio-toggle"
@@ -231,14 +232,19 @@ const waveformHeights = [
       }
     };
 
-    const setWaveformReady = (ready: boolean) => {
-      waveformReady = ready;
-      root.dataset.waveformReady = String(ready);
+    type WaveformState = "loading" | "ready" | "fallback";
+
+    const setWaveformState = (state: WaveformState) => {
+      waveformReady = state === "ready";
+      root.dataset.waveformState = state;
+      root.dataset.waveformReady = String(waveformReady);
       progress.disabled =
-        ready || !(Number.isFinite(audio.duration) && audio.duration > 0);
+        state === "loading" ||
+        state === "ready" ||
+        !(Number.isFinite(audio.duration) && audio.duration > 0);
 
       if (waveformReal instanceof HTMLElement) {
-        waveformReal.tabIndex = ready ? 0 : -1;
+        waveformReal.tabIndex = waveformReady ? 0 : -1;
       }
     };
 
@@ -248,13 +254,13 @@ const waveformHeights = [
       return new URL(value, window.location.href).href;
     };
 
-    const destroyWaveform = () => {
+    const destroyWaveform = (nextState: WaveformState = "loading") => {
       if (waveSurfer) {
         waveSurfer.destroy();
         waveSurfer = undefined;
       }
       waveSource = "";
-      setWaveformReady(false);
+      setWaveformState(nextState);
     };
 
     const mountWaveform = async () => {
@@ -306,7 +312,7 @@ const waveformHeights = [
 
         waveSurfer.on("ready", () => {
           if (generation !== waveLoadGeneration) return;
-          setWaveformReady(true);
+          setWaveformState("ready");
           syncDuration();
           syncProgress();
         });
@@ -314,13 +320,13 @@ const waveformHeights = [
         waveSurfer.on("interaction", syncProgress);
         waveSurfer.on("error", () => {
           if (generation !== waveLoadGeneration) return;
-          destroyWaveform();
+          destroyWaveform("fallback");
           syncDuration();
           syncProgress();
         });
       } catch {
         if (generation !== waveLoadGeneration) return;
-        destroyWaveform();
+        destroyWaveform("fallback");
         syncDuration();
         syncProgress();
       }
@@ -405,7 +411,7 @@ const waveformHeights = [
       });
       setPlaying(false);
       if (isRadio) {
-        setWaveformReady(false);
+        setWaveformState("loading");
       }
     });
 
@@ -717,7 +723,7 @@ const waveformHeights = [
   }
 
   .atlas-audio-waveform--fallback {
-    opacity: 1;
+    opacity: 0;
   }
 
   .atlas-audio-waveform-real {
@@ -730,9 +736,14 @@ const waveformHeights = [
     pointer-events: none;
   }
 
-  .atlas-audio-player--radio[data-waveform-ready="true"]
+  .atlas-audio-player--radio[data-waveform-state="loading"]
+    > :not(.atlas-audio-engine) {
+    visibility: hidden;
+  }
+
+  .atlas-audio-player--radio[data-waveform-state="fallback"]
     .atlas-audio-waveform--fallback {
-    opacity: 0;
+    opacity: 1;
   }
 
   .atlas-audio-player--radio[data-waveform-ready="true"]
