@@ -1,10 +1,10 @@
 ---
 title: "Presupuesto 2027 enfrenta la prueba de convertir reasignación fiscal en empleo e inversión"
 summary: "Con margen fiscal estrecho y desempleo elevado, el primer Presupuesto completo del Gobierno prioriza inversión y ministerios ejecutores; la prueba será cuánto gasto logra transformarse en actividad y empleo formal."
-publishedAt: "2026-09-21T06:16:00-03:00"
+publishedAt: "2026-09-21T06:45:00-03:00"
 cutoffAt: "2026-09-21T06:14:00-03:00"
 section: "national"
-status: "draft"
+status: "published"
 tags:
   - chile
   - presupuesto
