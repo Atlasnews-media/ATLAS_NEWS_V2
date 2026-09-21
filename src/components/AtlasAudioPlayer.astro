@@ -30,6 +30,7 @@ const waveformHeights = [
   data-atlas-audio
   data-playing="false"
   data-waveform-state={visualVariant === "radio" ? "loading" : undefined}
+  aria-busy={visualVariant === "radio" ? "true" : undefined}
 >
   <button
     class="atlas-audio-toggle"
@@ -238,6 +239,7 @@ const waveformHeights = [
       waveformReady = state === "ready";
       root.dataset.waveformState = state;
       root.dataset.waveformReady = String(waveformReady);
+      root.setAttribute("aria-busy", String(state === "loading"));
       progress.disabled =
         state === "loading" ||
         state === "ready" ||
@@ -519,6 +521,7 @@ const waveformHeights = [
   }
 
   .atlas-audio-player--radio {
+    position: relative;
     grid-template-columns: 2.8rem 3.35rem minmax(0, 1fr) 3.35rem;
     gap: 0.76rem;
     padding: 0.64rem 0;
@@ -739,6 +742,20 @@ const waveformHeights = [
   .atlas-audio-player--radio[data-waveform-state="loading"]
     > :not(.atlas-audio-engine) {
     visibility: hidden;
+  }
+
+  .atlas-audio-player--radio[data-waveform-state="loading"]::after {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    padding: 0 0.15rem;
+    color: var(--ink-soft);
+    content: "Preparando audio…";
+    font: 800 0.62rem/1 var(--sans);
+    letter-spacing: 0.09em;
+    pointer-events: none;
+    text-transform: uppercase;
   }
 
   .atlas-audio-player--radio[data-waveform-state="fallback"]
