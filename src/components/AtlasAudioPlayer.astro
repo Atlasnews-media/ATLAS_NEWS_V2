@@ -168,7 +168,6 @@ const waveformHeights = [
     }
 
     root.dataset.atlasAudioReady = "true";
-    const lifecycle = new AbortController();
 
     const originalLabel =
       audio.getAttribute("aria-label") || "audio de ATLAS NEWS";
@@ -327,61 +326,49 @@ const waveformHeights = [
       }
     };
 
-    toggle.addEventListener(
-      "click",
-      async () => {
-        if (audio.paused || audio.ended) {
-          if (audio.ended) audio.currentTime = 0;
-          try {
-            await audio.play();
-          } catch {
-            setPlaying(false);
-          }
-        } else {
-          audio.pause();
+    toggle.addEventListener("click", async () => {
+      if (audio.paused || audio.ended) {
+        if (audio.ended) audio.currentTime = 0;
+        try {
+          await audio.play();
+        } catch {
+          setPlaying(false);
         }
-      },
-      { signal: lifecycle.signal },
-    );
+      } else {
+        audio.pause();
+      }
+    });
 
-    progress.addEventListener(
-      "input",
-      () => {
-        if (!Number.isFinite(audio.duration) || audio.duration <= 0) return;
-        audio.currentTime = (Number(progress.value) / 1000) * audio.duration;
-        syncProgress();
-      },
-      { signal: lifecycle.signal },
-    );
+    progress.addEventListener("input", () => {
+      if (!Number.isFinite(audio.duration) || audio.duration <= 0) return;
+      audio.currentTime = (Number(progress.value) / 1000) * audio.duration;
+      syncProgress();
+    });
 
     if (waveformReal instanceof HTMLElement) {
-      waveformReal.addEventListener(
-        "keydown",
-        (event) => {
-          if (!waveformReady) return;
-          const total = audio.duration;
-          if (!Number.isFinite(total) || total <= 0) return;
+      waveformReal.addEventListener("keydown", (event) => {
+        if (!waveformReady) return;
+        const total = audio.duration;
+        if (!Number.isFinite(total) || total <= 0) return;
 
-          const step = event.shiftKey ? 15 : 5;
-          if (event.key === "ArrowRight") {
-            event.preventDefault();
-            audio.currentTime = Math.min(total, audio.currentTime + step);
-          } else if (event.key === "ArrowLeft") {
-            event.preventDefault();
-            audio.currentTime = Math.max(0, audio.currentTime - step);
-          } else if (event.key === "Home") {
-            event.preventDefault();
-            audio.currentTime = 0;
-          } else if (event.key === "End") {
-            event.preventDefault();
-            audio.currentTime = total;
-          } else {
-            return;
-          }
-          syncProgress();
-        },
-        { signal: lifecycle.signal },
-      );
+        const step = event.shiftKey ? 15 : 5;
+        if (event.key === "ArrowRight") {
+          event.preventDefault();
+          audio.currentTime = Math.min(total, audio.currentTime + step);
+        } else if (event.key === "ArrowLeft") {
+          event.preventDefault();
+          audio.currentTime = Math.max(0, audio.currentTime - step);
+        } else if (event.key === "Home") {
+          event.preventDefault();
+          audio.currentTime = 0;
+        } else if (event.key === "End") {
+          event.preventDefault();
+          audio.currentTime = total;
+        } else {
+          return;
+        }
+        syncProgress();
+      });
     }
 
     const sourceObserver = isRadio
@@ -394,62 +381,39 @@ const waveformHeights = [
       attributeFilter: ["src"],
     });
 
-    audio.addEventListener(
-      "loadedmetadata",
-      () => {
-        syncDuration();
-        syncProgress();
-        void mountWaveform();
-      },
-      { signal: lifecycle.signal },
-    );
-    audio.addEventListener("durationchange", syncDuration, {
-      signal: lifecycle.signal,
+    audio.addEventListener("loadedmetadata", () => {
+      syncDuration();
+      syncProgress();
+      void mountWaveform();
     });
-    audio.addEventListener("timeupdate", syncProgress, {
-      signal: lifecycle.signal,
+    audio.addEventListener("durationchange", syncDuration);
+    audio.addEventListener("timeupdate", syncProgress);
+    audio.addEventListener("play", () => setPlaying(true));
+    audio.addEventListener("pause", () => setPlaying(false));
+    audio.addEventListener("ended", () => {
+      setPlaying(false);
+      syncProgress();
     });
-    audio.addEventListener("play", () => setPlaying(true), {
-      signal: lifecycle.signal,
+    audio.addEventListener("emptied", () => {
+      current.textContent = "00:00";
+      duration.textContent = "--:--";
+      progress.value = "0";
+      progress.style.setProperty("--audio-progress", "0%");
+      progress.disabled = true;
+      waveformBars.forEach((bar) => {
+        if (bar instanceof HTMLElement) bar.dataset.played = "false";
+      });
+      setPlaying(false);
+      if (isRadio) {
+        setWaveformReady(false);
+      }
     });
-    audio.addEventListener("pause", () => setPlaying(false), {
-      signal: lifecycle.signal,
-    });
-    audio.addEventListener(
-      "ended",
-      () => {
-        setPlaying(false);
-        syncProgress();
-      },
-      { signal: lifecycle.signal },
-    );
-    audio.addEventListener(
-      "emptied",
-      () => {
-        current.textContent = "00:00";
-        duration.textContent = "--:--";
-        progress.value = "0";
-        progress.style.setProperty("--audio-progress", "0%");
-        progress.disabled = true;
-        waveformBars.forEach((bar) => {
-          if (bar instanceof HTMLElement) bar.dataset.played = "false";
-        });
-        setPlaying(false);
-        if (isRadio) {
-          setWaveformReady(false);
-        }
-      },
-      { signal: lifecycle.signal },
-    );
 
     const cleanup = () => {
       if (atlasAudioCleanups.get(root) !== cleanup) return;
       waveLoadGeneration += 1;
       sourceObserver?.disconnect();
-      lifecycle.abort();
       destroyWaveform();
-      root.removeAttribute("data-atlas-audio-ready");
-      root.removeAttribute("data-waveform-ready");
       atlasAudioCleanups.delete(root);
     };
     atlasAudioCleanups.set(root, cleanup);
