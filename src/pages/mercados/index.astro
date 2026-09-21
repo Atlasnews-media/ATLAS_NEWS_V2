@@ -36,7 +36,7 @@ const briefings = await getPublishedMarkets();
     {
       briefings.length > 0 ? (
         <div class="briefing-list">
-          {briefings.map((briefing) => (
+          {briefings.map((briefing, index) => (
             <ContentCard
               href={`/mercados/${briefing.id}/`}
               eyebrow="Mercados"
@@ -44,6 +44,7 @@ const briefings = await getPublishedMarkets();
               summary={briefing.data.summary}
               date={formatEditorialDate(briefing.data.publishedAt)}
               demo={briefing.data.demo}
+              eagerVisual={index === 0}
               visual={resolveFrontPageVisual({
                 section: "markets",
                 id: briefing.id,
