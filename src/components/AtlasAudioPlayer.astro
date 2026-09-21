@@ -119,6 +119,7 @@ const waveformHeights = [
   const waveSurferModuleUrl =
     "https://cdn.jsdelivr.net/npm/wavesurfer.js@7.12.12/dist/wavesurfer.esm.js";
   let waveSurferModulePromise: Promise<any> | undefined;
+  const atlasAudioCleanups = new Map<HTMLElement, () => void>();
 
   const loadWaveSurferModule = () => {
     waveSurferModulePromise ??= import(/* @vite-ignore */ waveSurferModuleUrl);
@@ -408,6 +409,15 @@ const waveformHeights = [
       }
     });
 
+    const cleanup = () => {
+      if (atlasAudioCleanups.get(root) !== cleanup) return;
+      waveLoadGeneration += 1;
+      sourceObserver?.disconnect();
+      destroyWaveform();
+      atlasAudioCleanups.delete(root);
+    };
+    atlasAudioCleanups.set(root, cleanup);
+
     setPlaying(!audio.paused && !audio.ended);
     syncDuration();
     syncProgress();
@@ -415,6 +425,10 @@ const waveformHeights = [
   };
 
   const initAtlasAudioPlayers = () => {
+    atlasAudioCleanups.forEach((cleanup, root) => {
+      if (!root.isConnected) cleanup();
+    });
+
     document
       .querySelectorAll("[data-atlas-audio]")
       .forEach(initAtlasAudioPlayer);
@@ -422,6 +436,10 @@ const waveformHeights = [
 
   initAtlasAudioPlayers();
   document.addEventListener("astro:page-load", initAtlasAudioPlayers);
+  document.addEventListener(
+    "atlas:desktop-panel-change",
+    initAtlasAudioPlayers,
+  );
 </script>
 
 <style>
