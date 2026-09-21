@@ -39,7 +39,7 @@ const currentInternational = editions[0];
     {
       editions.length > 0 ? (
         <div class="briefing-list">
-          {editions.map((edition) => (
+          {editions.map((edition, index) => (
             <ContentCard
               href={`/internacional/${edition.id}/`}
               eyebrow="Internacional"
@@ -47,6 +47,7 @@ const currentInternational = editions[0];
               summary={edition.data.summary}
               date={formatEditorialDate(edition.data.publishedAt)}
               demo={edition.data.demo}
+              eagerVisual={index === 0}
               visual={resolveFrontPageVisual({
                 section: "international",
                 id: edition.id,
