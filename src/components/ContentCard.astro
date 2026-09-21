@@ -20,6 +20,7 @@ interface Props {
   compact?: boolean;
   visual?: EditorialVisual;
   visualAlways?: boolean;
+  eagerVisual?: boolean;
 }
 
 const {
@@ -32,6 +33,7 @@ const {
   compact = false,
   visual,
   visualAlways = false,
+  eagerVisual = false,
 } = Astro.props;
 
 const visualAllowed = (() => {
@@ -78,8 +80,9 @@ const visualAllowed = (() => {
           src={visual.src}
           decorative
           sizes="(max-width: 42rem) 42vw, (max-width: 79.99rem) 36vw, 18vw"
-          loading="lazy"
-          fetchpriority="low"
+          loading={eagerVisual ? "eager" : "lazy"}
+          fetchpriority={eagerVisual ? "high" : "low"}
+          decoding={eagerVisual ? "sync" : "async"}
         />
         <figcaption>
           {visual.source} · {visual.author}
