@@ -1,0 +1,83 @@
+{
+  "experiment": "audio-number-phonemes-v1",
+  "capturedAt": "2026-09-21 17:38 America/Santiago",
+  "hypothesis": "La anomalía audible de valores en miles con Dora debe aislarse en la segmentación/prosodia sin modificar la oralización numérica correcta de Speech V5.",
+  "primaryVariable": "segmentación de la síntesis Dora/Kokoro alrededor de cantidades en miles",
+  "productionTouched": false,
+  "fallbackAllowed": false,
+  "doNotTouch": [
+    "contenido editorial visible",
+    "scripts/audio_speech.py",
+    "config/audio/lexicon-v3.json",
+    "voz ef_dora",
+    "Kokoro 0.9.4",
+    "Audio V2 productivo",
+    "F4A",
+    "RRSS",
+    "repositorio público /audio/"
+  ],
+  "sourceRepo": {
+    "repository": "Atlasnews-media/ATLAS_NEWS_V2",
+    "mainSha": "e7b8049785ae268fdc2895cbea15427cb6537ddc"
+  },
+  "publicRepo": {
+    "repository": "Atlasnews-media/Atlasnews-media.github.io",
+    "mainSha": "d12ebcfc8ed9f8afe07afe1591f9f2a79d87b93d"
+  },
+  "productionAudio": {
+    "date": "2026-09-21",
+    "sourceCommit": "419cb294185e020e2333f620203477abea762808",
+    "speechNormalizerVersion": 5,
+    "lexiconVersion": 3,
+    "lexiconRevision": 5,
+    "cover": {
+      "sourceId": "2026-09-21-daily-hormuz-adapta-flujos-sin-normalizar-riesgo",
+      "scriptVersion": 14,
+      "scriptHash": null,
+      "voice": "ef_dora",
+      "engine": "Kokoro-82M",
+      "path": "/audio/2026-09-21-resumen-diario.mp3",
+      "durationSeconds": 324.1,
+      "bytes": 3889773,
+      "blobSha": "242946d2ecbf00a54ca257f774f1f0e05d4d5f1a"
+    },
+    "neighbors": {
+      "international": {
+        "sourceId": "2026-09-21-daily-hormuz-adapta-flujos-sin-normalizar-riesgo",
+        "scriptVersion": 3,
+        "scriptHash": "f03fd2b1151e4dfbeb8b8aa0c8c75e9f32d5825ba58aead27256e8b33de8e99b",
+        "voiceProfileVersion": "alex-c-v1",
+        "dialogueRhythmVersion": 2,
+        "fallbackUsed": false,
+        "path": "/audio/2026-09-21-international-analysis.mp3",
+        "durationSeconds": 143.8,
+        "bytes": 1726029,
+        "blobSha": "4acd7abd555d3e5b6856cfb18f17d02bb6314123"
+      },
+      "national": {
+        "sourceId": "2026-09-21-national-presupuesto-empleo-ejecucion",
+        "scriptVersion": 3,
+        "scriptHash": "992eb17463241ee816cfa668d00c97bfdb394c2d780836e0f36c08c9447287ca",
+        "voiceProfileVersion": "alex-c-v1",
+        "dialogueRhythmVersion": 2,
+        "fallbackUsed": false,
+        "path": "/audio/2026-09-21-national-analysis.mp3",
+        "durationSeconds": 187.1,
+        "bytes": 2245293,
+        "blobSha": "cf93194c2ba60796c3e7d192ad98926c24f811e7"
+      },
+      "markets": {
+        "sourceId": "2026-09-21-markets-tecnologia-tasas-petroleo",
+        "scriptVersion": 3,
+        "scriptHash": "7b4596ecdb10a5ca117f4d5b3861503759512ed45a1bafd5781c9676d657b178",
+        "voiceProfileVersion": "alex-c-v1",
+        "dialogueRhythmVersion": 2,
+        "fallbackUsed": false,
+        "path": "/audio/2026-09-21-markets-analysis.mp3",
+        "durationSeconds": 203,
+        "bytes": 2436237,
+        "blobSha": "d0eb79512f7653e25d11993c285ff607126580a8"
+      }
+    }
+  }
+}
