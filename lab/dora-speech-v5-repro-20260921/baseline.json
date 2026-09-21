@@ -1,0 +1,54 @@
+{
+  "experiment": "dora-speech-v5-repro-20260921",
+  "capturedAt": "2026-09-21T20:15:00-03:00",
+  "hypothesis": "Con idéntico speech_text, fonemas, ef_dora, Kokoro 0.9.4, speed 1.0 y chunking productivo, la síntesis debe ser reproducible; si A y B difieren sólo por encoding, el PCM decodificado será idéntico.",
+  "primaryVariable": "repetición de la misma síntesis sin cambiar inputs",
+  "productionTouched": false,
+  "fallbackAllowed": false,
+  "frozen": {
+    "voice": "ef_dora",
+    "engine": "Kokoro-82M",
+    "kokoroVersion": "0.9.4",
+    "speechNormalizerVersion": 5,
+    "lexiconVersion": 3,
+    "lexiconRevision": 5,
+    "speed": 1,
+    "splitPattern": "\\n+",
+    "editorialText": "sin cambios"
+  },
+  "sourceRepo": {
+    "repository": "Atlasnews-media/ATLAS_NEWS_V2",
+    "mainSha": "7849f5e80728fd9aae3591b7f15ff80e91ba3812"
+  },
+  "publicAudio": {
+    "date": "2026-09-21",
+    "sourceCommit": "419cb294185e020e2333f620203477abea762808",
+    "cover": {
+      "scriptVersion": 14,
+      "path": "/audio/2026-09-21-resumen-diario.mp3",
+      "blobSha": "242946d2ecbf00a54ca257f774f1f0e05d4d5f1a",
+      "bytes": 3889773,
+      "durationSeconds": 324.1
+    },
+    "neighbors": {
+      "international": {
+        "blobSha": "4acd7abd555d3e5b6856cfb18f17d02bb6314123",
+        "bytes": 1726029
+      },
+      "national": {
+        "blobSha": "cf93194c2ba60796c3e7d192ad98926c24f811e7",
+        "bytes": 2245293
+      },
+      "markets": {
+        "blobSha": "d0eb79512f7653e25d11993c285ff607126580a8",
+        "bytes": 2436237
+      }
+    }
+  },
+  "approvedLab": {
+    "page": "/lab/audio-speech-v5/",
+    "option": "B",
+    "sampleA": "/lab/audio/number-phonemes-v1/portada-paragraph-current.mp3",
+    "sampleB": "/lab/audio/number-phonemes-v1/portada-paragraph-generic.mp3"
+  }
+}
