@@ -36,6 +36,12 @@ const titleId = `section-analysis-audio-${section}`;
 </section>
 
 <script>
+  const analysisRuntimeWindow = window as typeof window & {
+    __atlasAnalysisAudioRuntime?: { dispose: () => void };
+  };
+  analysisRuntimeWindow.__atlasAnalysisAudioRuntime?.dispose();
+
+  const analysisLifecycle = new AbortController();
   const analysisRetryIntervalMs = 30_000;
   const analysisMaxAttempts = 40;
   let analysisAttempt = 0;
@@ -149,17 +155,31 @@ const titleId = `section-analysis-audio-${section}`;
     void checkAnalysisAudio(analysisGeneration);
   };
 
-  document.addEventListener("astro:page-load", startAnalysisAudio);
-  document.addEventListener("visibilitychange", () => {
-    if (
-      document.visibilityState === "visible" &&
-      analysisRoots().length &&
-      analysisAttempt < analysisMaxAttempts
-    ) {
-      clearAnalysisRetry();
-      void checkAnalysisAudio(analysisGeneration);
-    }
+  document.addEventListener("astro:page-load", startAnalysisAudio, {
+    signal: analysisLifecycle.signal,
   });
+  document.addEventListener(
+    "visibilitychange",
+    () => {
+      if (
+        document.visibilityState === "visible" &&
+        analysisRoots().length &&
+        analysisAttempt < analysisMaxAttempts
+      ) {
+        clearAnalysisRetry();
+        void checkAnalysisAudio(analysisGeneration);
+      }
+    },
+    { signal: analysisLifecycle.signal },
+  );
+
+  analysisRuntimeWindow.__atlasAnalysisAudioRuntime = {
+    dispose: () => {
+      analysisGeneration += 1;
+      clearAnalysisRetry();
+      analysisLifecycle.abort();
+    },
+  };
 
   startAnalysisAudio();
 </script>
