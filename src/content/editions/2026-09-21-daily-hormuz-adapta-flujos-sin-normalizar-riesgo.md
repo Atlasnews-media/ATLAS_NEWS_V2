@@ -1,10 +1,10 @@
 ---
 title: "Hormuz adapta los flujos sin normalizar el riesgo energético global"
 summary: "El Golfo sostiene más exportaciones mediante transbordos y rutas alternativas, pero el costo logístico, la fragilidad de los corredores y la presión inflacionaria mantienen abierto el shock energético."
-publishedAt: "2026-09-21T05:58:00-03:00"
+publishedAt: "2026-09-21T06:45:00-03:00"
 cutoffAt: "2026-09-21T05:57:00-03:00"
 type: "daily"
-status: "draft"
+status: "published"
 tags:
   - energia
   - geopolitica
