@@ -1,10 +1,10 @@
 ---
 title: "Tecnología sostiene el riesgo mientras tasas altas y petróleo separan ganadores de perdedores"
 summary: "Asia avanza liderada por semiconductores y el petróleo retrocede, pero los rendimientos estadounidenses y la expectativa de nuevas alzas de la Fed mantienen elevada la tasa de descuento global."
-publishedAt: "2026-09-21T06:20:00-03:00"
+publishedAt: "2026-09-21T06:45:00-03:00"
 cutoffAt: "2026-09-21T06:18:00-03:00"
 section: "markets"
-status: "draft"
+status: "published"
 tags:
   - mercados
   - tecnologia
