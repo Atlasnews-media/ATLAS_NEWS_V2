@@ -423,14 +423,8 @@ def normalize_for_kokoro_dora(
     text: str,
     reference_date: str | None = None,
 ) -> str:
-    """Prepara speech_text específico de Dora/Kokoro sin tocar display_text."""
-    normalized = normalize_for_speech(text, reference_date)
-    return re.sub(
-        r"\bmil cien pesos\b",
-        lambda match: _preserve_initial_case(match, "mil\ncien pesos"),
-        normalized,
-        flags=re.IGNORECASE,
-    )
+    """Mantiene Speech V5 continuo para Dora/Kokoro sin tocar display_text."""
+    return normalize_for_speech(text, reference_date)
 
 
 def is_question(text: str) -> bool:
