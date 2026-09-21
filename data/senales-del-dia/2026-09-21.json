@@ -1,0 +1,75 @@
+{
+  "status": "READY",
+  "date": "2026-09-21",
+  "contract": "atlas-senales-del-dia-v1",
+  "senalesDelDia": {
+    "internacional": [
+      {
+        "slot": "technology",
+        "headline": "Virginia endurece las reglas para nuevos centros de datos",
+        "deck": "El mayor polo de data centers de EE.UU. exigirá más transparencia a grandes proyectos y busca trasladar su expansión hacia energía más limpia.",
+        "development": "Virginia anunció el 18 de septiembre un nuevo marco de responsabilidad para centros de datos, en respuesta al crecimiento acelerado de instalaciones y a la presión pública por sus efectos sobre electricidad, territorio y costos locales. El estado, que concentra la mayor densidad mundial de estas infraestructuras, prohibirá acuerdos de confidencialidad para proyectos de 25 megavatios o más y promoverá que las nuevas cargas eléctricas se cubran con fuentes renovables en vez de depender de generación adicional a gas o diésel. Parte de las medidas requerirá legislación estatal durante 2027.\n\nLa señal tecnológica está en el cambio de restricción para la infraestructura física que sostiene la inteligencia artificial. El debate ya no se limita a disponibilidad de chips o capacidad de cómputo: electricidad, redes, suelo y aceptación comunitaria están pasando a determinar dónde y a qué costo puede crecer un clúster de IA. Virginia es especialmente relevante porque su posición dominante convierte cualquier cambio regulatorio en una prueba temprana para operadores, utilities y desarrolladores.\n\nEl efecto económico dependerá de la implementación. Mayor transparencia puede reducir fricciones con comunidades y hacer explícitos costos antes absorbidos por consumidores, pero requisitos energéticos más exigentes también pueden alargar plazos o desplazar inversión hacia otros estados. Lo observable será la cartera de proyectos de más de 25 MW, la respuesta legislativa y si las empresas modifican ubicación, contratos eléctricos o diseño de nuevas instalaciones.",
+        "anchor": "virginia-reglas-centros-datos-transparencia-energia",
+        "sources": [
+          {"name": "Reuters", "url": "https://www.reuters.com/world/us/virginia-tightens-data-center-restrictions-amid-political-backlash-2026-09-18/"}
+        ]
+      },
+      {
+        "slot": "world",
+        "headline": "Ucrania lanza un bloque regional de comercio y seguridad",
+        "deck": "La iniciativa Carpathian Eight reunió a ocho países y a la UE, con más de 50 acuerdos por sobre €1.000 millones y foco en energía renovable.",
+        "development": "Ucrania lanzó el 18 de septiembre la iniciativa Carpathian Eight para profundizar cooperación en comercio, energía, logística y seguridad entre países de Europa central y oriental. El encuentro reunió a representantes de Rumania, Serbia, Polonia, Eslovaquia, República Checa, Austria y Hungría, además de la Unión Europea y Ucrania. Durante la cumbre se firmaron más de 50 acuerdos valorados en más de €1.000 millones, con más de la mitad de los proyectos vinculados a fuentes renovables como energía solar y eólica.\n\nLa señal internacional es la búsqueda de una arquitectura económica regional alrededor de corredores que han ganado importancia desde la invasión rusa de 2022. Ucrania ha dependido de rutas terrestres y de cooperación con sus vecinos para sostener comercio, abastecimiento y exportaciones cuando sus accesos tradicionales han enfrentado interrupciones. Convertir esa necesidad operativa en una plataforma permanente podría ampliar infraestructura transfronteriza y conectar proyectos energéticos con el mercado europeo.\n\nEl alcance todavía debe medirse por ejecución y no por el número de acuerdos anunciados. La heterogeneidad política de los participantes y sus distintas relaciones con Kiev pueden limitar decisiones comunes. Los indicadores concretos serán qué proyectos obtienen financiamiento, qué interconexiones energéticas avanzan y si la plataforma consigue reducir costos o tiempos de transporte. Si esos resultados aparecen, Carpathian Eight pasará de foro político a mecanismo económico regional; si no, quedará principalmente como señal diplomática.",
+        "anchor": "ucrania-carpathian-eight-comercio-seguridad-energia",
+        "sources": [
+          {"name": "Reuters", "url": "https://www.reuters.com/world/europe/zelenskiy-launches-carpathian-eight-initiative-trade-security-2026-09-18/"}
+        ]
+      }
+    ],
+    "nacional": [
+      {
+        "slot": "ipsa_company",
+        "headline": "Cencosud lleva Don Salva a 11 tiendas en cuatro meses",
+        "deck": "El formato de hard discount sumó dos locales y acelera su despliegue en Santiago tras debutar en mayo como nueva apuesta del grupo supermercadista.",
+        "development": "Cencosud amplió durante septiembre su formato de descuento Don Salva hasta alcanzar 11 tiendas operativas en la Región Metropolitana, después de sumar dos nuevos establecimientos. La cadena había iniciado operaciones en mayo con tres locales y desde entonces extendió presencia a comunas como Santiago Centro, Peñalolén, Recoleta, Cerrillos, La Reina y Huechuraba. El movimiento da continuidad a una estrategia que la compañía ya había identificado en sus resultados del segundo trimestre como una de sus iniciativas de crecimiento orgánico en Chile.\n\nLa señal corporativa está en la velocidad con que Cencosud está probando un formato distinto de Jumbo y Santa Isabel. El hard discount opera con una propuesta más acotada y orientada a precio y reposición frecuente, por lo que su economía depende de rotación, densidad de locales, surtido y disciplina de costos. Pasar de tres aperturas iniciales a once puntos en pocos meses permite empezar a evaluar si el grupo busca una prueba localizada o construir una red con escala propia.\n\nPara el accionista, la expansión todavía no permite atribuir un efecto material sobre ingresos o márgenes consolidados. Lo relevante será observar ventas por tienda, ritmo de nuevas aperturas, canibalización con otros formatos y eventual extensión fuera de Santiago. Si Don Salva mantiene crecimiento sin deteriorar rentabilidad del negocio chileno, Cencosud habrá agregado una herramienta para competir en segmentos más sensibles a precio; si no, el despliegue seguirá siendo una experimentación acotada dentro de un grupo multiformato.",
+        "anchor": "cencosud-don-salva-once-tiendas-expansion-santiago",
+        "sources": [
+          {"name": "Perú Retail", "url": "https://www.peru-retail.com/cencosud-amplia-su-apuesta-por-el-hard-discount-con-11-tiendas-don-salva-donde-abrio-su-nuevo-local/"},
+          {"name": "Cencosud", "url": "https://www.cencosud.com/centro-de-medios/copia-de-cencosud-adquiere-makro-en-colombia"}
+        ]
+      },
+      {
+        "slot": "policy_economy",
+        "headline": "Chile evalúa mezclar etanol con gasolina para reducir costos",
+        "deck": "Energía estudia una mezcla E10 que podría ahorrar unos US$107 millones al año, aunque exigiría inversiones de ENAP y nuevas importaciones de etanol.",
+        "development": "Chile está evaluando introducir gasolina E10, compuesta por 10% de etanol y 90% de gasolina, como respuesta estructural al mayor costo de los combustibles importados. La propuesta del Ministerio de Energía, conocida el 17 de septiembre, estima ahorros cercanos a US$107 millones anuales en abastecimiento. Para implementarla, ENAP requeriría inversiones de aproximadamente US$10,8 millones en infraestructura y el país tendría que desarrollar una cadena estable de suministro de etanol, insumo que hoy no produce a escala suficiente para este uso.\n\nLa señal de política económica es un intento de modificar la composición del combustible y no simplemente subsidiar su precio. Chile utiliza actualmente MTBE como aditivo y depende fuertemente de hidrocarburos importados, por lo que una mezcla con etanol podría diversificar proveedores y reducir parcialmente la exposición al petróleo. Estados Unidos y Argentina aparecen como fuentes potenciales de abastecimiento, mientras Brasil ofrece una referencia regional de mezclas considerablemente mayores.\n\nEl diseño tiene compensaciones que todavía deben cuantificarse. Sustituir parte de la gasolina por etanol reduce una dependencia, pero crea otra importación y requiere adaptar almacenamiento, mezcla y distribución. La implementación gradual permitirá medir compatibilidad vehicular, costos logísticos y ahorro efectivo. También será relevante el tratamiento del impuesto al carbono y la trayectoria hacia mezclas E10 o E15 antes de 2030. Hasta que exista una decisión regulatoria definitiva, corresponde leerlo como una alternativa en evaluación y no como un cambio ya vigente para consumidores.",
+        "anchor": "chile-etanol-gasolina-e10-costos-enap",
+        "sources": [
+          {"name": "Reuters", "url": "https://www.reuters.com/business/energy/chile-weighs-ethanol-gasoline-blend-government-seeks-cheaper-fuels-amid-fiscal-2026-09-17/"}
+        ]
+      }
+    ],
+    "mercados": [
+      {
+        "slot": "markets_chile",
+        "headline": "Chile reabre con cobre al alza y dólar cerca de $958",
+        "deck": "La Bolsa de Santiago vuelve tras Fiestas Patrias con el cobre fortalecido durante el cierre y una referencia cambiaria cercana a $958 por dólar.",
+        "development": "Los activos chilenos vuelven a una sesión ordinaria este 21 de septiembre después del cierre por Fiestas Patrias, con dos referencias externas acumuladas durante la pausa. El cobre ganó terreno al cierre de la semana internacional y un tracker del metal avanzó 2,68% en los cinco días terminados el 18 de septiembre. En paralelo, el Banco Central publica para el 21 de septiembre una referencia del dólar observado cercana a $958,42, frente al último cierre bursátil local del jueves 17, cuando el IPSA terminó en 11.381,18 puntos.\n\nLa señal de mercado está en la concentración temporal del ajuste. Mientras Santiago estuvo cerrado, acciones, monedas y commodities internacionales siguieron negociándose, de modo que la reapertura debe incorporar de una vez movimientos que normalmente se distribuirían entre varias sesiones. El cobre ofrece soporte potencial para activos vinculados a minería y para el peso, mientras un dólar global firme y tasas estadounidenses elevadas operan en sentido contrario. Ninguno de esos factores determina por sí solo el resultado local.\n\nEl dato útil será cómo se forma el precio durante la jornada y no sólo la apertura. Conviene observar la amplitud del IPSA, el comportamiento de SQM-B y otros nombres expuestos a materias primas, además de USD/CLP frente a la referencia oficial. Si el movimiento inicial se revierte rápidamente, habrá sido principalmente ajuste de calendario; si persiste con volumen, entregará una señal más robusta sobre cómo el mercado chileno está procesando el nuevo entorno externo.",
+        "anchor": "chile-reapertura-cobre-dolar-958-fiestas-patrias",
+        "sources": [
+          {"name": "The Rio Times", "url": "https://www.riotimesonline.com/chile-markets-ipsa-peso-saturday-september-19-2026/"},
+          {"name": "Banco Central de Chile", "url": "https://www.bcentral.cl/"}
+        ]
+      },
+      {
+        "slot": "markets_global",
+        "headline": "Fondos globales de acciones sufren su mayor salida en nueve meses",
+        "deck": "Los inversionistas retiraron US$23.210 millones en una semana marcada por inflación, petróleo caro y expectativas de nuevas alzas de tasas.",
+        "development": "Los fondos globales de acciones registraron salidas netas por US$23.210 millones durante la semana terminada el 16 de septiembre, la mayor retirada semanal en nueve meses. Los fondos estadounidenses concentraron US$31.440 millones de rescates y acumularon una cuarta semana consecutiva de salidas, mientras Asia recibió US$6.260 millones. Al mismo tiempo, fondos sectoriales captaron US$4.490 millones, con entradas hacia tecnología, finanzas y consumo discrecional, mostrando que la reducción de riesgo no fue uniforme entre industrias y regiones.\n\nLa señal de mercado es una reasignación defensiva en un entorno donde inflación y costo de capital volvieron a ganar peso. Los fondos globales de bonos recibieron apenas US$855 millones, su menor entrada desde abril, aunque deuda pública y vencimientos cortos conservaron demanda. Los fondos de materias primas sumaron US$1.170 millones, especialmente en oro y metales preciosos. La combinación sugiere que parte del capital está buscando protección o duración menor en vez de abandonar completamente los mercados.\n\nEstos flujos no anticipan necesariamente la dirección de los índices en la semana siguiente: miden decisiones ya ejecutadas y pueden coexistir con avances bursátiles puntuales. Su utilidad está en mostrar dónde se está reduciendo exposición. Habrá que observar si los rescates accionarios continúan después de las decisiones recientes de bancos centrales y si tecnología mantiene entradas sectoriales. Una persistencia de salidas junto con mayores rendimientos confirmaría una reducción más amplia del apetito por riesgo; una reversión indicaría que el episodio fue principalmente un ajuste alrededor de inflación y política monetaria.",
+        "anchor": "fondos-globales-acciones-salidas-nueve-meses",
+        "sources": [
+          {"name": "Reuters", "url": "https://www.reuters.com/world/china/global-markets-flows-graphic-pix-2026-09-18/"}
+        ]
+      }
+    ]
+  }
+}
