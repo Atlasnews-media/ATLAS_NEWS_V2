@@ -36,6 +36,15 @@ CASES = [
 
 PHONEME_AB_CASES = {"euro-1099", "euro-1100", "euro-1101", "uf-40983"}
 
+PORTADA_PARAGRAPH = (
+    "En monedas, el dólar observado marcó 958 pesos con 42 centavos, con una variación positiva de 0,37% frente a la jornada hábil anterior. "
+    "El euro se ubicó en 1.099 pesos con 86 centavos, con un retroceso de 0,1%. "
+    "La UF vigente alcanza los 40.983 pesos con 58 centavos. "
+    "En renta variable y energía, el IPSA retrocede 0,99%, el S&P 500 cae 1,25% y el Brent retrocede 9,23%. "
+    "El cobre, en tanto, sube 1,26%. El Treasury a diez años se ubica en 5%. "
+    "Entre los movimientos destacados, Bitcoin avanza 5,61%."
+)
+
 
 def safe_slug(value: str) -> str:
     return re.sub(r"[^a-z0-9-]+", "-", value.lower()).strip("-")
@@ -244,6 +253,70 @@ def main() -> None:
                 )
 
         manifest["cases"].append(case_entry)
+
+    paragraph_entry = {
+        "source": PORTADA_PARAGRAPH,
+        "variants": [],
+    }
+
+    current_text = normalize_for_kokoro_dora(PORTADA_PARAGRAPH)
+    samples, trace = run_pipeline(pipeline, current_text)
+    current_file = "portada-paragraph-current.mp3"
+    write_mp3(OUT / current_file, samples)
+    paragraph_entry["variants"].append(
+        {
+            "name": "current-production-shape",
+            "speechText": current_text,
+            "trace": trace,
+            "audio": current_file,
+            "durationSeconds": round(samples.size / SAMPLE_RATE, 3),
+        }
+    )
+
+    generic_text = normalize_for_speech(PORTADA_PARAGRAPH)
+    samples, trace = run_pipeline(pipeline, generic_text)
+    generic_file = "portada-paragraph-generic.mp3"
+    write_mp3(OUT / generic_file, samples)
+    paragraph_entry["variants"].append(
+        {
+            "name": "generic-whole-paragraph",
+            "speechText": generic_text,
+            "trace": trace,
+            "audio": generic_file,
+            "durationSeconds": round(samples.size / SAMPLE_RATE, 3),
+        }
+    )
+
+    sentence_chunks = [
+        part.strip()
+        for part in re.findall(r"[^.!?]+[.!?]+|[^.!?]+$", PORTADA_PARAGRAPH)
+        if part.strip()
+    ]
+    sentence_audio = []
+    sentence_trace = []
+    for sentence in sentence_chunks:
+        speech_sentence = normalize_for_speech(sentence)
+        part_samples, part_trace = run_pipeline(pipeline, speech_sentence)
+        sentence_audio.append(part_samples)
+        sentence_trace.append(
+            {
+                "source": sentence,
+                "speechText": speech_sentence,
+                "trace": part_trace,
+            }
+        )
+    sentence_samples = np.concatenate(sentence_audio)
+    sentence_file = "portada-paragraph-sentence-chunks.mp3"
+    write_mp3(OUT / sentence_file, sentence_samples)
+    paragraph_entry["variants"].append(
+        {
+            "name": "generic-sentence-chunks",
+            "sentences": sentence_trace,
+            "audio": sentence_file,
+            "durationSeconds": round(sentence_samples.size / SAMPLE_RATE, 3),
+        }
+    )
+    manifest["productionParagraph"] = paragraph_entry
 
     manifest_path = OUT / "manifest.json"
     manifest_path.write_text(
