@@ -2,7 +2,7 @@ import { createHash } from "node:crypto";
 import { appendFile, readFile, writeFile } from "node:fs/promises";
 import path from "node:path";
 
-import { upgradeCoverPlanToV13 } from "./audio-cover-presentation.mjs";
+import { upgradeCoverPlanToV14 } from "./audio-cover-presentation.mjs";
 
 const root = new URL("../", import.meta.url);
 const ANALYSIS_SCRIPT_VERSION = 3;
@@ -93,7 +93,7 @@ const existingAnalysis = await readJson(manifestPath);
 const existingCover = await readJson(coverManifestPath);
 const presentationInstant =
   process.env.ATLAS_AUDIO_PRESENTATION_INSTANT ?? new Date().toISOString();
-const coverPlan = upgradeCoverPlanToV13(coverPlanBase, {
+const coverPlan = upgradeCoverPlanToV14(coverPlanBase, {
   existingCover,
   generatedAt: presentationInstant,
 });
