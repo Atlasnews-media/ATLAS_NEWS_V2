@@ -29,6 +29,7 @@ interface ResolveVisualInput {
   id: string;
   title: string;
   tags?: string[];
+  slot?: string;
   editorialVisual?: EditorialVisual;
   usedSources?: ReadonlySet<string>;
 }
@@ -336,6 +337,32 @@ const CHILE_MINISTRY_KEYWORDS = [
   "gobierno",
   "estado",
   "edificio publico",
+];
+
+const TECHNOLOGY_KEYWORDS = [
+  "tecnologia",
+  "tecnologico",
+  "tecnologica",
+  "semiconductor",
+  "semiconductores",
+  "chip",
+  "chips",
+  "data center",
+  "data centers",
+  "centro de datos",
+  "centros de datos",
+  "inteligencia artificial",
+  "infraestructura digital",
+  "servidor",
+  "servidores",
+  "cloud",
+  "computacion en la nube",
+  "computo",
+  "capacidad de computo",
+  "gpu",
+  "gpus",
+  "tsmc",
+  "nvidia",
 ];
 
 const INTERNATIONAL_EXPANSION_KEYWORDS = [
@@ -1176,6 +1203,17 @@ const CHILE_CONSTRUCTION_VISUALS = [
   CHILE_CCHC,
 ];
 
+const TECHNOLOGY_VISUALS = catalogBatch(
+  [
+    "TSMC factory in Taichung's Central Taiwan Science Park.jpg",
+    "200mm Wafer Fertigungslinie.JPG",
+    "20100509350MDR Dresden-Klotzsche Königsbrücker Straße 180 Qimonda.jpg",
+    "20100509355MDR Dresden-Klotzsche Königsbrücker Straße 180 Qimonda.jpg",
+  ],
+  "Tecnología, semiconductores, centros de datos, inteligencia artificial e infraestructura digital.",
+  TECHNOLOGY_KEYWORDS,
+);
+
 const INTERNATIONAL_EXPANSION_VISUALS = catalogBatch(
   [
     "United Nations HQ.jpg",
@@ -1187,14 +1225,10 @@ const INTERNATIONAL_EXPANSION_VISUALS = catalogBatch(
     "Berlaymont building european commission.jpg",
     "Berlayent.jpg",
     "Berlaymont building-.jpg",
-    "TSMC factory in Taichung's Central Taiwan Science Park.jpg",
-    "200mm Wafer Fertigungslinie.JPG",
-    "20100509350MDR Dresden-Klotzsche Königsbrücker Straße 180 Qimonda.jpg",
-    "20100509355MDR Dresden-Klotzsche Königsbrücker Straße 180 Qimonda.jpg",
     "Containers, Port of Rotterdam (9703431992).jpg",
     "Port of Singapore (3777500194).jpg",
   ],
-  "Instituciones internacionales, tecnología, semiconductores, diplomacia o comercio global.",
+  "Instituciones internacionales, diplomacia o comercio global.",
   INTERNATIONAL_EXPANSION_KEYWORDS,
 );
 
@@ -1441,6 +1475,7 @@ const VISUAL_CATALOG: Record<FrontPageSection, CatalogVisual[]> = {
     ...CONFLICT_VISUALS,
     ...HUMANITARIAN_VISUALS,
     ...DISASTER_VISUALS,
+    ...TECHNOLOGY_VISUALS,
     ...INTERNATIONAL_EXPANSION_VISUALS,
   ],
   national: [
@@ -1528,12 +1563,18 @@ export function resolveFrontPageVisual({
   id,
   title,
   tags = [],
+  slot,
   editorialVisual,
   usedSources,
 }: ResolveVisualInput): EditorialVisual {
   if (editorialVisual) return editorialVisual;
 
-  const catalogPool = VISUAL_CATALOG[section];
+  const normalizedSlot = normalize(slot ?? "");
+  const slotPool =
+    section === "international" && normalizedSlot === "technology"
+      ? TECHNOLOGY_VISUALS
+      : undefined;
+  const catalogPool = slotPool ?? VISUAL_CATALOG[section];
   const ownedPool = catalogPool.filter((visual) =>
     sectionOwnsSharedVisual(section, visual),
   );
