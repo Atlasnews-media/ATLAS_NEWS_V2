@@ -32,15 +32,6 @@ jobs:
       - name: Descargar repositorio
         uses: actions/checkout@v5
 
-      - name: Formatear página LAB para inspección
-        run: |
-          set -euo pipefail
-          npm ci
-          npx prettier --write "lab-site/src/pages/audio-number-phonemes-v1.astro" --ignore-path /dev/null
-          echo "=== PRETTIER OUTPUT START ==="
-          cat "lab-site/src/pages/audio-number-phonemes-v1.astro"
-          echo "=== PRETTIER OUTPUT END ==="
-
       - name: Preparar Kokoro
         run: |
           set -euo pipefail
