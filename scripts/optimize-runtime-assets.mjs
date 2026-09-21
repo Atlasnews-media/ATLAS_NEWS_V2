@@ -188,26 +188,6 @@ async function vendorCurrentEditorialImages() {
         .replaceAll(remoteUrl.replaceAll("&", "&amp;"), localPath);
     }
 
-    if (file === HOME_PATH.pathname) {
-      html = html.replace(
-        /<img\b[^>]*\bsrc=(?:"\/images\/editorial\/[^"]+"|'\/images\/editorial\/[^']+')[^>]*>/gi,
-        (tag) => {
-          let next = tag.replace(/loading=("|')lazy\1/i, 'loading="eager"');
-          if (!/fetchpriority=/i.test(next)) {
-            const withPriority = next.replace(
-              /\s*\/>$/,
-              ' fetchpriority="high" />',
-            );
-            next =
-              withPriority === next
-                ? next.replace(/>$/, ' fetchpriority="high">')
-                : withPriority;
-          }
-          return next;
-        },
-      );
-    }
-
     if (html !== original) await writeFile(file, html);
   }
 }
