@@ -3,7 +3,7 @@ import path from "node:path";
 
 const root = new URL("../", import.meta.url);
 const editionDir = new URL("src/content/editions/", root);
-const SCRIPT_VERSION = 2;
+const SCRIPT_VERSION = 3;
 const TARGET_MIN_WORDS = 230;
 const TARGET_MAX_WORDS = 330;
 
@@ -250,26 +250,26 @@ const observationFacts = selectSentences(
   60,
 );
 
-const reporterOpening = [
+const hostOpening = [
   `ATLAS NEWS. Análisis internacional del ${formatSpanishDate(date)}.`,
   ...openingFacts,
 ].join(" ");
 
 const turns = [
-  { speaker: "VOZ 2", text: reporterOpening },
-  { speaker: "VOZ 1", text: "¿Qué está cambiando y por qué importa?" },
-  { speaker: "VOZ 2", text: centralFacts.join(" ") },
-  {
-    speaker: "VOZ 1",
-    text: "¿Y cómo se está reflejando esta señal en los mercados?",
-  },
-  { speaker: "VOZ 2", text: marketFacts.join(" ") },
-  {
-    speaker: "VOZ 1",
-    text: "Entonces, ¿qué deberíamos observar a partir de ahora?",
-  },
+  { speaker: "VOZ 1", text: hostOpening },
+  { speaker: "VOZ 2", text: "¿Qué está cambiando y por qué importa?" },
+  { speaker: "VOZ 1", text: centralFacts.join(" ") },
   {
     speaker: "VOZ 2",
+    text: "Entonces la clave es cómo se transmite esta señal a los mercados.",
+  },
+  { speaker: "VOZ 1", text: marketFacts.join(" ") },
+  {
+    speaker: "VOZ 2",
+    text: "Y desde aquí, ¿qué señal conviene seguir?",
+  },
+  {
+    speaker: "VOZ 1",
     text: [
       ...observationFacts,
       "La señal a vigilar es si los próximos datos confirman esta lectura o devuelven al mercado hacia un escenario menos restrictivo.",
@@ -310,11 +310,11 @@ const plan = {
   sourceId: latestDaily.id,
   title: latestDaily.title,
   format: "dialogue",
-  voice: "alex-c-v1",
-  interviewerVoice: "ef_dora",
+  voice: "ef_dora",
+  analystVoice: "alex-c-v1",
   roles: {
-    reporter: "VOZ 2",
-    interviewer: "VOZ 1",
+    host: "VOZ 1",
+    analyst: "VOZ 2",
   },
   engine: "Chatterbox + Kokoro-82M",
   language: "es",
