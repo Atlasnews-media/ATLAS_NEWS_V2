@@ -130,15 +130,26 @@ check(
     "El euro se ubicó en 1.100 pesos con 95 centavos.",
     "El euro se ubicó en mil cien pesos con 95 centavos.",
 )
-if (
-    normalize_for_kokoro_dora(
-        "El euro se ubicó en 1.100 pesos con 95 centavos."
-    )
-    != "El euro se ubicó en mil\ncien pesos con 95 centavos."
-):
-    raise AssertionError(
-        "Dora/Kokoro debe segmentar mil cien sin modificar el texto editorial."
-    )
+
+dora_continuous_cases = (
+    ("1.099 pesos", "mil noventa y nueve pesos"),
+    ("1.100 pesos", "mil cien pesos"),
+    ("1.101 pesos", "mil ciento uno pesos"),
+    ("8.743 pesos", "ocho mil setecientos cuarenta y tres pesos"),
+    ("22.330 pesos", "veintidós mil trescientos treinta pesos"),
+    ("40.983 pesos", "cuarenta mil novecientos ochenta y tres pesos"),
+)
+for source, expected in dora_continuous_cases:
+    actual = normalize_for_kokoro_dora(source)
+    if actual != expected:
+        raise AssertionError(
+            f"Dora/Kokoro debe conservar Speech V5 continuo: "
+            f"{source!r} -> {actual!r}; esperado {expected!r}"
+        )
+    if "\n" in actual:
+        raise AssertionError(
+            f"Dora/Kokoro no debe introducir saltos de línea: {source!r}"
+        )
 check(
     "El dólar observado quedó en $913,86.",
     "El dólar observado quedó en novecientos trece coma ochenta y seis pesos.",
