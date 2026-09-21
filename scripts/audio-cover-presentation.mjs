@@ -4,7 +4,7 @@ import {
 } from "./cover-briefing-contract.mjs";
 
 export const AUDIO_PRESENTATION_TIME_ZONE = "America/Santiago";
-export const AUDIO_COVER_SCRIPT_VERSION = 14;
+export const AUDIO_COVER_SCRIPT_VERSION = 15;
 
 const SMALL_NUMBERS = [
   "cero",
@@ -146,7 +146,7 @@ function parseCoverScript(script, { hasNational, hasMarkets }) {
     const value = next();
     if (value !== label) {
       throw new Error(
-        `Portada V14: se esperaba bloque '${label}' y llegó '${value}'.`,
+        `Portada V15: se esperaba bloque '${label}' y llegó '${value}'.`,
       );
     }
   };
@@ -174,7 +174,7 @@ function parseCoverScript(script, { hasNational, hasMarkets }) {
   const closing = parts.join("\n\n").trim();
   if (!opening || !central || !watch || !closing) {
     throw new Error(
-      "Portada V14: estructura V12 incompleta para promover presentación.",
+      "Portada V15: estructura V12 incompleta para promover presentación.",
     );
   }
 
@@ -205,12 +205,12 @@ function sameEditorialIdentity(existing, plan) {
   );
 }
 
-export function upgradeCoverPlanToV14(
+export function upgradeCoverPlanToV15(
   plan,
   { existingCover = null, generatedAt = new Date() } = {},
 ) {
   if (!plan?.date || !plan?.script || !plan?.sourceIds?.general) {
-    throw new Error("Portada V14: plan base inválido.");
+    throw new Error("Portada V15: plan base inválido.");
   }
 
   const hasNational = Boolean(plan.sourceIds.national);
@@ -253,7 +253,7 @@ export function upgradeCoverPlanToV14(
     ),
     generationBlockedReason: contract.valid ? null : "cover_contract_failed",
     summary:
-      "Briefing de Portada V14: snapshot con hora de corte hablada, dólar con dirección explícita, señal central, Chile, mercados y variables a seguir.",
+      "Briefing de Portada V15: snapshot con hora de corte hablada, dólar con dirección explícita, señal central, Chile, mercados y variables a seguir.",
     presentationAt: generatedAtIso,
     presentationTimeZone: AUDIO_PRESENTATION_TIME_ZONE,
     wordCount,
