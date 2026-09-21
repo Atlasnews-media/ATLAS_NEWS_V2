@@ -1,0 +1,50 @@
+name: LAB — números y fonemas Dora
+
+on:
+  push:
+    branches: ["lab/audio-number-phonemes-v1"]
+    paths:
+      - "lab/audio-number-phonemes-v1/**"
+      - ".github/workflows/lab-audio-number-phonemes-v1.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: atlas-news-lab-audio-number-phonemes-v1
+  cancel-in-progress: false
+
+jobs:
+  diagnose:
+    name: Diagnosticar miles — speech_text, fonemas y audio
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+
+    steps:
+      - name: Descargar repositorio
+        uses: actions/checkout@v5
+
+      - name: Preparar Kokoro
+        run: |
+          set -euo pipefail
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq espeak-ng ffmpeg python3-venv
+          python3 -m venv "$RUNNER_TEMP/kokoro-number-lab"
+          source "$RUNNER_TEMP/kokoro-number-lab/bin/activate"
+          python -m pip install --quiet --upgrade pip
+          python -m pip install --quiet "kokoro==0.9.4" soundfile numpy
+
+      - name: Ejecutar matriz diagnóstica
+        run: |
+          set -euo pipefail
+          source "$RUNNER_TEMP/kokoro-number-lab/bin/activate"
+          python lab/audio-number-phonemes-v1/generate_lab.py
+
+      - name: Publicar artefacto diagnóstico
+        uses: actions/upload-artifact@v4
+        with:
+          name: audio-number-phonemes-v1
+          path: lab/audio-number-phonemes-v1/out/
+          if-no-files-found: error
+          retention-days: 7
