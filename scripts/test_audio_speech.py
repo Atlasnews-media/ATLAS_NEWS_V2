@@ -134,7 +134,7 @@ check(
 dora_continuous_cases = (
     ("1.099 pesos", "mil noventa y nueve pesos"),
     ("1.100 pesos", "mil cien pesos"),
-    ("1.101 pesos", "mil ciento uno pesos"),
+    ("1.101 pesos", "mil ciento un pesos"),
     ("8.743 pesos", "ocho mil setecientos cuarenta y tres pesos"),
     ("22.330 pesos", "veintidós mil trescientos treinta pesos"),
     ("40.983 pesos", "cuarenta mil novecientos ochenta y tres pesos"),
