@@ -1,10 +1,10 @@
 ---
 title: "Energía y tasas endurecen el mapa global mientras la diplomacia busca abrir espacio"
 summary: "La presión energética sigue condicionando inflación y política monetaria, mientras Medio Oriente combina riesgo logístico con señales diplomáticas y China y Estados Unidos preparan una cumbre decisiva para el comercio."
-publishedAt: "2026-09-22T06:02:32-03:00"
+publishedAt: "2026-09-22T06:50:00-03:00"
 cutoffAt: "2026-09-22T06:02:20-03:00"
 type: "daily"
-status: "draft"
+status: "published"
 tags:
   - economia-global
   - geopolitica
