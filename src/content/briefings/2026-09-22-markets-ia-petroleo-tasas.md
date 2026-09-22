@@ -1,10 +1,10 @@
 ---
 title: "La IA sostiene el riesgo mientras petróleo y tasas vuelven a imponer un costo"
 summary: "Las tecnológicas extienden el impulso bursátil, pero Brent sobre US$100, Treasury cerca de 5% y un dólar firme mantienen una combinación exigente para el resto de los activos."
-publishedAt: "2026-09-22T06:16:00-03:00"
+publishedAt: "2026-09-22T06:52:00-03:00"
 cutoffAt: "2026-09-22T06:14:00-03:00"
 section: "markets"
-status: "draft"
+status: "published"
 tags:
   - mercados
   - tecnologia
