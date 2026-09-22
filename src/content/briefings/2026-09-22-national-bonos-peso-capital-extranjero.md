@@ -1,10 +1,10 @@
 ---
 title: "Capital extranjero récord en bonos en pesos pone a prueba la resiliencia financiera de Chile"
 summary: "La tenencia extranjera de deuda soberana chilena en pesos alcanzó un récord en agosto, una señal de demanda por activos locales que convive con una economía débil y un entorno externo de tasas altas."
-publishedAt: "2026-09-22T06:14:00-03:00"
+publishedAt: "2026-09-22T06:51:00-03:00"
 cutoffAt: "2026-09-22T06:12:00-03:00"
 section: "national"
-status: "draft"
+status: "published"
 tags:
   - chile
   - renta-fija
