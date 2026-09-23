@@ -36,10 +36,19 @@ jobs:
         id: eligibility
         run: |
           set -euo pipefail
-          if git diff-tree --no-commit-id --name-only -r HEAD | grep -Fxq 'lab/radar-editorial/runtime/latest.json'; then
+          changed="$RUNNER_TEMP/radar-publish-paths.txt"
+          git diff-tree --no-commit-id --name-only -r HEAD > "$changed"
+
+          if grep -Fxq 'lab/radar-editorial/runtime/latest.json' "$changed"; then
             echo "eligible=true" >> "$GITHUB_OUTPUT"
+            echo "publish_run=true" >> "$GITHUB_OUTPUT"
+          elif grep -Fxq 'lab/radar-editorial/runtime/surface-refresh.json' "$changed"; then
+            echo "eligible=true" >> "$GITHUB_OUTPUT"
+            echo "publish_run=false" >> "$GITHUB_OUTPUT"
+            echo "RADAR surface refresh: reutiliza el último run READY sin reescribirlo."
           else
             echo "eligible=false" >> "$GITHUB_OUTPUT"
+            echo "publish_run=false" >> "$GITHUB_OUTPUT"
             echo "RADAR publisher safe no-op: checkpoint sin handoff READY."
           fi
 
@@ -49,6 +58,27 @@ jobs:
           set -euo pipefail
           node scripts/lab/radar-editorial/validate-radar-artifact.mjs lab/radar-editorial/runtime/latest.json
           node scripts/lab/radar-editorial/validate-baseline-run.mjs --latest lab/radar-editorial/runtime/latest.json
+
+      - name: Checkout herramientas de superficie desde main
+        if: steps.eligibility.outputs.eligible == 'true'
+        uses: actions/checkout@v5
+        with:
+          ref: main
+          path: .radar-main-tools
+          fetch-depth: 1
+
+      - name: Construir superficie editorial desde artefactos READY
+        if: steps.eligibility.outputs.eligible == 'true'
+        run: |
+          set -euo pipefail
+          surface="$RUNNER_TEMP/radar-surface"
+          node .radar-main-tools/scripts/lab/radar-editorial/build-editorial-surface.mjs \
+            --runtime-root lab/radar-editorial/runtime \
+            --output "$surface"
+
+          latest_run="$(node -p "JSON.parse(require('fs').readFileSync('lab/radar-editorial/runtime/latest.json','utf8')).radarRunId")"
+          surface_run="$(node -p "JSON.parse(require('fs').readFileSync('$surface/surface-manifest.json','utf8')).radarRunId")"
+          test "$surface_run" = "$latest_run"
 
       - name: Preparar acceso al repositorio público
         if: steps.eligibility.outputs.eligible == 'true'
@@ -61,40 +91,80 @@ jobs:
           chmod 600 ~/.ssh/atlas_news_pages
           ssh-keyscan -H github.com >> ~/.ssh/known_hosts
 
-      - name: Publicar run BASELINE exclusivamente en RADAR
+      - name: Publicar superficie editorial exclusivamente en RADAR
         if: steps.eligibility.outputs.eligible == 'true'
         env:
           GIT_SSH_COMMAND: ssh -i ~/.ssh/atlas_news_pages -o IdentitiesOnly=yes
         run: |
           set -euo pipefail
           public="$RUNNER_TEMP/atlas-news-public"
+          surface="$RUNNER_TEMP/radar-surface"
           latest="lab/radar-editorial/runtime/latest.json"
           run_id="$(node -p "JSON.parse(require('fs').readFileSync('$latest','utf8')).radarRunId")"
           run_path="$(node -p "JSON.parse(require('fs').readFileSync('$latest','utf8')).runPath")"
+          publish_run="${{ steps.eligibility.outputs.publish_run }}"
           target_latest="lab/radar-editorial/latest.json"
           target_index="lab/radar-editorial/index.html"
           target_run="lab/radar-editorial/runs/$run_id"
+          target_archive="lab/radar-editorial/archivo"
+          target_trace="lab/radar-editorial/trazabilidad"
 
           git clone --depth 1 \
             git@github.com:Atlasnews-media/Atlasnews-media.github.io.git \
             "$public"
 
           mkdir -p "$public/lab/radar-editorial/runs"
-          if [[ -d "$public/$target_run" ]]; then
-            if ! diff -qr "$run_path" "$public/$target_run"; then
-              echo "RADAR IDEMPOTENCY FAIL: radarRunId ya existe con contenido distinto" >&2
-              exit 1
+          if [[ "$publish_run" = "true" ]]; then
+            if [[ -d "$public/$target_run" ]]; then
+              if ! diff -qr "$run_path" "$public/$target_run"; then
+                echo "RADAR IDEMPOTENCY FAIL: radarRunId ya existe con contenido distinto" >&2
+                exit 1
+              fi
+            else
+              cp -R "$run_path" "$public/$target_run"
             fi
           else
-            cp -R "$run_path" "$public/$target_run"
+            test -d "$public/$target_run"
+            test -f "$public/$target_run/result.json"
+            test -f "$public/$target_run/publish-request.json"
           fi
+
           cp "$latest" "$public/$target_latest"
-          cp "$run_path/index.html" "$public/$target_index"
+          cp "$surface/current/index.html" "$public/$target_index"
+
+          for section in internacional nacional mercados; do
+            rm -rf "$public/lab/radar-editorial/$section"
+            cp -R "$surface/current/$section" "$public/lab/radar-editorial/$section"
+          done
+
+          mkdir -p "$public/$target_archive" "$public/$target_trace"
+          cp "$surface/current/archivo/index.html" "$public/$target_archive/index.html"
+
+          for source_dir in "$surface/history"/*; do
+            [[ -d "$source_dir" ]] || continue
+            historical_run="$(basename "$source_dir")"
+            historical_target="$public/$target_archive/$historical_run"
+            if [[ ! -d "$historical_target" ]]; then
+              cp -R "$source_dir" "$historical_target"
+            fi
+          done
+
+          for source_dir in "$surface/trace"/*; do
+            [[ -d "$source_dir" ]] || continue
+            trace_run="$(basename "$source_dir")"
+            trace_target="$public/$target_trace/$trace_run"
+            if [[ ! -d "$trace_target" ]]; then
+              cp -R "$source_dir" "$trace_target"
+            fi
+          done
+
+          cp "$surface/surface-manifest.json" \
+            "$public/lab/radar-editorial/surface-manifest.json"
 
           cd "$public"
           git config user.name "ATLAS NEWS RADAR LAB Publisher"
           git config user.email "actions@users.noreply.github.com"
-          git add -- "$target_latest" "$target_index" "$target_run"
+          git add -- lab/radar-editorial
 
           staged="$(git diff --cached --name-only)"
           if [[ -n "$staged" ]]; then
@@ -104,7 +174,7 @@ jobs:
               exit 1
             fi
 
-            git commit -m "LAB RADAR BASELINE ${run_id}"
+            git commit -m "LAB RADAR surface ${run_id}"
             published=false
             for attempt in 1 2 3; do
               if ! git pull --rebase origin main; then
@@ -120,7 +190,7 @@ jobs:
               exit 1
             fi
           else
-            echo "RADAR público ya coincide con este radarRunId."
+            echo "RADAR público ya coincide con esta superficie."
           fi
 
           git fetch --quiet origin main
@@ -128,6 +198,14 @@ jobs:
           git show origin/main:"$target_run/publish-request.json" > "$RUNNER_TEMP/radar-remote-request.json"
           git cat-file -e "origin/main:$target_index"
           git cat-file -e "origin/main:$target_run/result.json"
+          git cat-file -e "origin/main:lab/radar-editorial/internacional/index.html"
+          git cat-file -e "origin/main:lab/radar-editorial/nacional/index.html"
+          git cat-file -e "origin/main:lab/radar-editorial/mercados/index.html"
+          git cat-file -e "origin/main:$target_archive/$run_id/internacional/index.html"
+          git cat-file -e "origin/main:$target_archive/$run_id/nacional/index.html"
+          git cat-file -e "origin/main:$target_archive/$run_id/mercados/index.html"
+          git cat-file -e "origin/main:$target_trace/$run_id/index.html"
+          git cat-file -e "origin/main:lab/radar-editorial/surface-manifest.json"
 
       - name: Verificar identidad remota BASELINE
         if: steps.eligibility.outputs.eligible == 'true'
