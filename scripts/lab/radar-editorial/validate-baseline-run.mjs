@@ -3,7 +3,12 @@ import path from "node:path";
 import { pathToFileURL } from "node:url";
 
 const SECTIONS = ["general", "national", "markets"];
-const PHASE_STATUS_ORDER = ["GENERAL_PASS", "NATIONAL_PASS", "MARKETS_PASS", "READY"];
+const PHASE_STATUS_ORDER = [
+  "GENERAL_PASS",
+  "NATIONAL_PASS",
+  "MARKETS_PASS",
+  "READY",
+];
 const REQUIRED_FRAMEWORK = [
   "AGENTS.md",
   "docs/PROCEDIMIENTO_GPT_PUBLICACION.md",
@@ -83,7 +88,9 @@ function assertBaseIdentity(data, label) {
 function walkForbiddenKeys(value, where = "$") {
   if (!value || typeof value !== "object") return;
   if (Array.isArray(value)) {
-    value.forEach((item, index) => walkForbiddenKeys(item, `${where}[${index}]`));
+    value.forEach((item, index) =>
+      walkForbiddenKeys(item, `${where}[${index}]`),
+    );
     return;
   }
   for (const [key, child] of Object.entries(value)) {
@@ -130,26 +137,46 @@ function assertCandidate(candidate, ids) {
   for (const key of required) {
     if (!(key in candidate)) fail(`candidate sin ${key}`);
   }
-  if (ids.has(candidate.candidateId)) fail(`candidateId duplicado: ${candidate.candidateId}`);
+  if (ids.has(candidate.candidateId))
+    fail(`candidateId duplicado: ${candidate.candidateId}`);
   ids.add(candidate.candidateId);
-  if (!SECTIONS.includes(candidate.section)) fail(`section inválida en ${candidate.candidateId}`);
-  if (typeof candidate.titleOriginal !== "string" || candidate.titleOriginal.length < 4) {
+  if (!SECTIONS.includes(candidate.section))
+    fail(`section inválida en ${candidate.candidateId}`);
+  if (
+    typeof candidate.titleOriginal !== "string" ||
+    candidate.titleOriginal.length < 4
+  ) {
     fail(`titleOriginal inválido en ${candidate.candidateId}`);
   }
-  if (typeof candidate.sourceName !== "string" || !candidate.sourceName.trim()) {
+  if (
+    typeof candidate.sourceName !== "string" ||
+    !candidate.sourceName.trim()
+  ) {
     fail(`sourceName inválido en ${candidate.candidateId}`);
   }
   assertHttps(candidate.sourceUrl, `${candidate.candidateId}.sourceUrl`);
-  if (candidate.publishedAt !== null) assertIso(candidate.publishedAt, `${candidate.candidateId}.publishedAt`);
+  if (candidate.publishedAt !== null)
+    assertIso(candidate.publishedAt, `${candidate.candidateId}.publishedAt`);
   assertIso(candidate.discoveredAt, `${candidate.candidateId}.discoveredAt`);
-  if (typeof candidate.description !== "string" || candidate.description.length < 20) {
+  if (
+    typeof candidate.description !== "string" ||
+    candidate.description.length < 20
+  ) {
     fail(`description demasiado breve en ${candidate.candidateId}`);
   }
-  if (typeof candidate.retrievalOrigin !== "string" || !candidate.retrievalOrigin.trim()) {
+  if (
+    typeof candidate.retrievalOrigin !== "string" ||
+    !candidate.retrievalOrigin.trim()
+  ) {
     fail(`retrievalOrigin inválido en ${candidate.candidateId}`);
   }
-  if (typeof candidate.selected !== "boolean") fail(`selected inválido en ${candidate.candidateId}`);
-  if (!["considered", "screened-out", "selected-final"].includes(candidate.selectionStage)) {
+  if (typeof candidate.selected !== "boolean")
+    fail(`selected inválido en ${candidate.candidateId}`);
+  if (
+    !["considered", "screened-out", "selected-final"].includes(
+      candidate.selectionStage,
+    )
+  ) {
     fail(`selectionStage inválido en ${candidate.candidateId}`);
   }
   if (candidate.selected && candidate.selectionStage !== "selected-final") {
@@ -160,34 +187,57 @@ function assertCandidate(candidate, ids) {
 
 function assertMetadata(meta, section, identity, candidateMap, runDir) {
   assertIdentity(meta, identity, `${section}/metadata`);
-  if (meta.schemaVersion !== 1) fail(`${section}.metadata.schemaVersion debe ser 1`);
+  if (meta.schemaVersion !== 1)
+    fail(`${section}.metadata.schemaVersion debe ser 1`);
   if (meta.section !== section) fail(`${section}.metadata.section inválida`);
   if (meta.status !== "PASS") fail(`${section}.metadata.status debe ser PASS`);
   assertIso(meta.startedAt, `${section}.metadata.startedAt`);
   assertIso(meta.completedAt, `${section}.metadata.completedAt`);
   const maxTitle = section === "general" ? 140 : 160;
-  if (typeof meta.title !== "string" || meta.title.length < 8 || meta.title.length > maxTitle) {
+  if (
+    typeof meta.title !== "string" ||
+    meta.title.length < 8 ||
+    meta.title.length > maxTitle
+  ) {
     fail(`${section}.title fuera de contrato`);
   }
-  if (typeof meta.summary !== "string" || meta.summary.length < 40 || meta.summary.length > 320) {
+  if (
+    typeof meta.summary !== "string" ||
+    meta.summary.length < 40 ||
+    meta.summary.length > 320
+  ) {
     fail(`${section}.summary fuera de contrato`);
   }
-  if (!Array.isArray(meta.tags) || meta.tags.length < 1) fail(`${section}.tags vacío`);
-  if (!Array.isArray(meta.sources) || meta.sources.length < 1) fail(`${section}.sources vacío`);
+  if (!Array.isArray(meta.tags) || meta.tags.length < 1)
+    fail(`${section}.tags vacío`);
+  if (!Array.isArray(meta.sources) || meta.sources.length < 1)
+    fail(`${section}.sources vacío`);
   for (const [index, source] of meta.sources.entries()) {
-    if (typeof source.name !== "string" || !source.name.trim()) fail(`${section}.sources[${index}].name inválido`);
+    if (typeof source.name !== "string" || !source.name.trim())
+      fail(`${section}.sources[${index}].name inválido`);
     assertHttps(source.url, `${section}.sources[${index}].url`);
-    if (source.publishedAt != null) assertIso(source.publishedAt, `${section}.sources[${index}].publishedAt`);
+    if (source.publishedAt != null)
+      assertIso(source.publishedAt, `${section}.sources[${index}].publishedAt`);
   }
   const expectedHighlights = section === "general" ? 5 : 3;
-  if (!Array.isArray(meta.highlights) || meta.highlights.length !== expectedHighlights) {
-    fail(`${section}.highlights debe contener exactamente ${expectedHighlights}`);
+  if (
+    !Array.isArray(meta.highlights) ||
+    meta.highlights.length !== expectedHighlights
+  ) {
+    fail(
+      `${section}.highlights debe contener exactamente ${expectedHighlights}`,
+    );
   }
   for (const highlight of meta.highlights) {
-    if (typeof highlight.label !== "string" || !highlight.label.trim()) fail(`${section}.highlight.label inválido`);
-    if (typeof highlight.text !== "string" || !highlight.text.trim()) fail(`${section}.highlight.text inválido`);
+    if (typeof highlight.label !== "string" || !highlight.label.trim())
+      fail(`${section}.highlight.label inválido`);
+    if (typeof highlight.text !== "string" || !highlight.text.trim())
+      fail(`${section}.highlight.text inválido`);
   }
-  if (!Array.isArray(meta.selectedCandidateIds) || meta.selectedCandidateIds.length < 1) {
+  if (
+    !Array.isArray(meta.selectedCandidateIds) ||
+    meta.selectedCandidateIds.length < 1
+  ) {
     fail(`${section}.selectedCandidateIds vacío`);
   }
   for (const id of meta.selectedCandidateIds) {
@@ -197,7 +247,8 @@ function assertMetadata(meta, section, identity, candidateMap, runDir) {
       fail(`${section} referencia candidate no seleccionado ${id}`);
     }
   }
-  if (!Array.isArray(meta.discardedCandidateIds)) fail(`${section}.discardedCandidateIds debe ser lista`);
+  if (!Array.isArray(meta.discardedCandidateIds))
+    fail(`${section}.discardedCandidateIds debe ser lista`);
   for (const id of meta.discardedCandidateIds) {
     const candidate = candidateMap.get(id);
     if (!candidate) fail(`${section} descarta candidate inexistente ${id}`);
@@ -206,14 +257,16 @@ function assertMetadata(meta, section, identity, candidateMap, runDir) {
     }
   }
   const expectedOutput = path.posix.join(runDir, section, "output.md");
-  if (meta.outputPath !== expectedOutput) fail(`${section}.outputPath debe ser ${expectedOutput}`);
+  if (meta.outputPath !== expectedOutput)
+    fail(`${section}.outputPath debe ser ${expectedOutput}`);
   walkForbiddenKeys(meta, `${section}.metadata`);
 }
 
 async function assertOutputMarkdown(file, section) {
   const output = await fs.readFile(file, "utf8");
   if (output.length < 500) fail(`${section}/output.md demasiado breve`);
-  if (output.includes("cite")) fail(`${section}/output.md contiene marcador interno de cita`);
+  if (output.includes("cite"))
+    fail(`${section}/output.md contiene marcador interno de cita`);
   const required =
     section === "general"
       ? [
@@ -227,7 +280,8 @@ async function assertOutputMarkdown(file, section) {
         ]
       : ["## Desarrollo", "## Implicancias y riesgos", "## Qué observar"];
   for (const heading of required) {
-    if (!output.includes(heading)) fail(`${section}/output.md no contiene ${heading}`);
+    if (!output.includes(heading))
+      fail(`${section}/output.md no contiene ${heading}`);
   }
   return output;
 }
@@ -235,10 +289,15 @@ async function assertOutputMarkdown(file, section) {
 async function readRunIdentity(runDir) {
   const run = await readCanonicalJson(path.join(runDir, "run.json"));
   assertBaseIdentity(run, "run");
-  assertRunPath(`lab/radar-editorial/runtime/runs/${run.radarRunId}`, run.radarRunId);
+  assertRunPath(
+    `lab/radar-editorial/runtime/runs/${run.radarRunId}`,
+    run.radarRunId,
+  );
   if (run.schemaVersion !== 1) fail("run.schemaVersion debe ser 1");
-  if (run.memoryMode !== "PRODUCTIVE_READ_ONLY_CONTEXT") fail("run.memoryMode inválido");
-  if (run.radarInterventionUsed !== false) fail("run.radarInterventionUsed debe ser false");
+  if (run.memoryMode !== "PRODUCTIVE_READ_ONLY_CONTEXT")
+    fail("run.memoryMode inválido");
+  if (run.radarInterventionUsed !== false)
+    fail("run.radarInterventionUsed debe ser false");
   if (run.jevUsed !== false) fail("run.jevUsed debe ser false");
   if (run.corpusUsed !== false) fail("run.corpusUsed debe ser false");
   assertIso(run.startedAt, "run.startedAt");
@@ -252,19 +311,34 @@ async function validatePhase(runDir, section, identity, candidateMap) {
   const phaseDir = path.join(runDir, section);
   const input = await readCanonicalJson(path.join(phaseDir, "input.json"));
   const meta = await readCanonicalJson(path.join(phaseDir, "metadata.json"));
-  const checkpoint = await readCanonicalJson(path.join(runDir, "checkpoints", `${section}.json`));
+  const checkpoint = await readCanonicalJson(
+    path.join(runDir, "checkpoints", `${section}.json`),
+  );
   assertIdentity(input, identity, `${section}/input`);
   assertIdentity(checkpoint, identity, `${section}/checkpoint`);
-  if (input.schemaVersion !== 1 || input.section !== section) fail(`${section}.input inválido`);
+  if (input.schemaVersion !== 1 || input.section !== section)
+    fail(`${section}.input inválido`);
   assertIso(input.startedAt, `${section}.input.startedAt`);
   assertFrameworkRead(input.frameworkRead, `${section}.input.frameworkRead`);
-  if (!Array.isArray(input.searchQueryIds) || input.searchQueryIds.length < 1) fail(`${section}.searchQueryIds vacío`);
-  if (!Array.isArray(input.candidateIds) || input.candidateIds.length < 1) fail(`${section}.candidateIds vacío`);
-  if (checkpoint.schemaVersion !== 1 || checkpoint.phase !== section || checkpoint.status !== "PASS") {
+  if (!Array.isArray(input.searchQueryIds) || input.searchQueryIds.length < 1)
+    fail(`${section}.searchQueryIds vacío`);
+  if (!Array.isArray(input.candidateIds) || input.candidateIds.length < 1)
+    fail(`${section}.candidateIds vacío`);
+  if (
+    checkpoint.schemaVersion !== 1 ||
+    checkpoint.phase !== section ||
+    checkpoint.status !== "PASS"
+  ) {
     fail(`checkpoint ${section} inválido`);
   }
   assertIso(checkpoint.completedAt, `${section}.checkpoint.completedAt`);
-  assertMetadata(meta, section, identity, candidateMap, `lab/radar-editorial/runtime/runs/${identity.radarRunId}`);
+  assertMetadata(
+    meta,
+    section,
+    identity,
+    candidateMap,
+    `lab/radar-editorial/runtime/runs/${identity.radarRunId}`,
+  );
   await assertOutputMarkdown(path.join(phaseDir, "output.md"), section);
   return { input, meta, checkpoint };
 }
@@ -280,62 +354,105 @@ export async function validateBaselineRun(runDir, latest = null, options = {}) {
     fail("run completo requiere General/Nacional/Mercados PASS");
   }
 
-  const searchLog = await readCanonicalJson(path.join(runDir, "search-log.json"));
+  const searchLog = await readCanonicalJson(
+    path.join(runDir, "search-log.json"),
+  );
   assertIdentity(searchLog, run, "search-log");
-  if (searchLog.schemaVersion !== 1 || !Array.isArray(searchLog.entries) || searchLog.entries.length < 3) {
+  if (
+    searchLog.schemaVersion !== 1 ||
+    !Array.isArray(searchLog.entries) ||
+    searchLog.entries.length < 3
+  ) {
     fail("search-log inválido");
   }
   const queryIds = new Set();
   for (const entry of searchLog.entries) {
-    if (!entry.queryId || queryIds.has(entry.queryId)) fail("queryId inválido o duplicado");
+    if (!entry.queryId || queryIds.has(entry.queryId))
+      fail("queryId inválido o duplicado");
     queryIds.add(entry.queryId);
-    if (!SECTIONS.includes(entry.section)) fail(`search-log section inválida: ${entry.section}`);
-    if (typeof entry.query !== "string" || entry.query.length < 3) fail("query vacía");
+    if (!SECTIONS.includes(entry.section))
+      fail(`search-log section inválida: ${entry.section}`);
+    if (typeof entry.query !== "string" || entry.query.length < 3)
+      fail("query vacía");
     assertIso(entry.executedAt, `${entry.queryId}.executedAt`);
-    if (!Number.isInteger(entry.resultCount) || entry.resultCount < 0) fail("resultCount inválido");
+    if (!Number.isInteger(entry.resultCount) || entry.resultCount < 0)
+      fail("resultCount inválido");
   }
 
-  const candidatesDoc = await readCanonicalJson(path.join(runDir, "candidates.json"));
+  const candidatesDoc = await readCanonicalJson(
+    path.join(runDir, "candidates.json"),
+  );
   assertIdentity(candidatesDoc, run, "candidates");
-  if (candidatesDoc.schemaVersion !== 1 || !Array.isArray(candidatesDoc.candidates)) {
+  if (
+    candidatesDoc.schemaVersion !== 1 ||
+    !Array.isArray(candidatesDoc.candidates)
+  ) {
     fail("candidates.json inválido");
   }
   walkForbiddenKeys(candidatesDoc, "candidates");
   const candidateIds = new Set();
-  for (const candidate of candidatesDoc.candidates) assertCandidate(candidate, candidateIds);
-  const candidateMap = new Map(candidatesDoc.candidates.map((candidate) => [candidate.candidateId, candidate]));
+  for (const candidate of candidatesDoc.candidates)
+    assertCandidate(candidate, candidateIds);
+  const candidateMap = new Map(
+    candidatesDoc.candidates.map((candidate) => [
+      candidate.candidateId,
+      candidate,
+    ]),
+  );
   for (const section of SECTIONS) {
-    if (!candidatesDoc.candidates.some((candidate) => candidate.section === section && candidate.selected)) {
+    if (
+      !candidatesDoc.candidates.some(
+        (candidate) => candidate.section === section && candidate.selected,
+      )
+    ) {
       fail(`no hay candidate seleccionado para ${section}`);
     }
   }
 
-  for (const section of SECTIONS) await validatePhase(runDir, section, run, candidateMap);
+  for (const section of SECTIONS)
+    await validatePhase(runDir, section, run, candidateMap);
 
   const result = await readCanonicalJson(path.join(runDir, "result.json"));
   assertIdentity(result, run, "result");
-  if (result.schemaVersion !== 1 || result.status !== "PASS") fail("result.status debe ser PASS");
-  if (result.experimentMode !== "BASELINE" || result.mode !== "LAB_ONLY") fail("result modo inválido");
-  if (result.productionWritesAllowed !== false) fail("result permite production writes");
+  if (result.schemaVersion !== 1 || result.status !== "PASS")
+    fail("result.status debe ser PASS");
+  if (result.experimentMode !== "BASELINE" || result.mode !== "LAB_ONLY")
+    fail("result modo inválido");
+  if (result.productionWritesAllowed !== false)
+    fail("result permite production writes");
   for (const section of SECTIONS) {
-    if (result.sections?.[section]?.status !== "PASS") fail(`result ${section} no está PASS`);
+    if (result.sections?.[section]?.status !== "PASS")
+      fail(`result ${section} no está PASS`);
   }
   walkForbiddenKeys(result, "result");
 
-  const request = await readCanonicalJson(path.join(runDir, "publish-request.json"));
+  const request = await readCanonicalJson(
+    path.join(runDir, "publish-request.json"),
+  );
   assertIdentity(request, run, "publish-request");
-  if (request.schemaVersion !== 1 || request.status !== "READY") fail("publish-request no está READY");
-  if (request.mode !== "LAB_ONLY" || request.experimentMode !== "BASELINE") fail("publish-request modo inválido");
-  if (request.productionWritesAllowed !== false) fail("publish-request permite production writes");
+  if (request.schemaVersion !== 1 || request.status !== "READY")
+    fail("publish-request no está READY");
+  if (request.mode !== "LAB_ONLY" || request.experimentMode !== "BASELINE")
+    fail("publish-request modo inválido");
+  if (request.productionWritesAllowed !== false)
+    fail("publish-request permite production writes");
   const logicalRunPath = `lab/radar-editorial/runtime/runs/${run.radarRunId}`;
   assertRunPath(request.runPath, run.radarRunId);
-  if (request.resultPath !== `${logicalRunPath}/result.json`) fail("publish-request.resultPath inválido");
-  if (request.viewPath !== `${logicalRunPath}/index.html`) fail("publish-request.viewPath inválido");
+  if (request.resultPath !== `${logicalRunPath}/result.json`)
+    fail("publish-request.resultPath inválido");
+  if (request.viewPath !== `${logicalRunPath}/index.html`)
+    fail("publish-request.viewPath inválido");
   walkForbiddenKeys(request, "publish-request");
 
   if (options.requireView !== false) {
-    const indexHtml = await fs.readFile(path.join(runDir, "index.html"), "utf8");
-    if (!indexHtml.includes(run.radarRunId) || !indexHtml.includes("BASELINE")) {
+    const indexHtml = await fs.readFile(
+      path.join(runDir, "index.html"),
+      "utf8",
+    );
+    if (
+      !indexHtml.includes(run.radarRunId) ||
+      !indexHtml.includes("BASELINE")
+    ) {
       fail("index.html no identifica run BASELINE");
     }
   }
@@ -343,10 +460,14 @@ export async function validateBaselineRun(runDir, latest = null, options = {}) {
   if (latest) {
     assertIdentity(latest, run, "latest");
     assertRunPath(latest.runPath, run.radarRunId);
-    if (latest.resultPath !== request.resultPath || latest.publishRequestPath !== `${logicalRunPath}/publish-request.json`) {
+    if (
+      latest.resultPath !== request.resultPath ||
+      latest.publishRequestPath !== `${logicalRunPath}/publish-request.json`
+    ) {
       fail("latest paths no coinciden con run");
     }
-    if (latest.viewPath !== request.viewPath) fail("latest.viewPath no coincide");
+    if (latest.viewPath !== request.viewPath)
+      fail("latest.viewPath no coincide");
   }
 
   console.log(`BASELINE RUN PASS — ${run.radarRunId}`);
@@ -357,7 +478,8 @@ export async function validateBaselineCheckpoint(activeFile) {
   const active = await readCanonicalJson(activeFile);
   assertBaseIdentity(active, "active");
   if (active.schemaVersion !== 1) fail("active.schemaVersion debe ser 1");
-  if (!PHASE_STATUS_ORDER.includes(active.status)) fail("active.status inválido");
+  if (!PHASE_STATUS_ORDER.includes(active.status))
+    fail("active.status inválido");
   assertRunPath(active.runPath, active.radarRunId);
   assertIso(active.updatedAt, "active.updatedAt");
   const runDir = active.runPath;
@@ -368,21 +490,34 @@ export async function validateBaselineCheckpoint(activeFile) {
     return validateBaselineRun(runDir);
   }
 
-  const searchLog = await readCanonicalJson(path.join(runDir, "search-log.json"));
-  const candidatesDoc = await readCanonicalJson(path.join(runDir, "candidates.json"));
+  const searchLog = await readCanonicalJson(
+    path.join(runDir, "search-log.json"),
+  );
+  const candidatesDoc = await readCanonicalJson(
+    path.join(runDir, "candidates.json"),
+  );
   assertIdentity(searchLog, run, "search-log");
   assertIdentity(candidatesDoc, run, "candidates");
-  if (!Array.isArray(candidatesDoc.candidates)) fail("candidates debe contener lista");
+  if (!Array.isArray(candidatesDoc.candidates))
+    fail("candidates debe contener lista");
   walkForbiddenKeys(candidatesDoc, "candidates");
   const ids = new Set();
-  for (const candidate of candidatesDoc.candidates) assertCandidate(candidate, ids);
-  const candidateMap = new Map(candidatesDoc.candidates.map((candidate) => [candidate.candidateId, candidate]));
+  for (const candidate of candidatesDoc.candidates)
+    assertCandidate(candidate, ids);
+  const candidateMap = new Map(
+    candidatesDoc.candidates.map((candidate) => [
+      candidate.candidateId,
+      candidate,
+    ]),
+  );
 
   const requiredCount = PHASE_STATUS_ORDER.indexOf(active.status) + 1;
   for (const section of SECTIONS.slice(0, Math.min(requiredCount, 3))) {
     await validatePhase(runDir, section, run, candidateMap);
   }
-  console.log(`BASELINE CHECKPOINT PASS — ${active.radarRunId} · ${active.status}`);
+  console.log(
+    `BASELINE CHECKPOINT PASS — ${active.radarRunId} · ${active.status}`,
+  );
   return { active, run };
 }
 
@@ -406,10 +541,15 @@ async function main() {
     await validateBaselineRun(target, latest);
     return;
   }
-  fail("uso: validate-baseline-run.mjs --active FILE | --run DIR | --latest FILE");
+  fail(
+    "uso: validate-baseline-run.mjs --active FILE | --run DIR | --latest FILE",
+  );
 }
 
-if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) {
+if (
+  process.argv[1] &&
+  import.meta.url === pathToFileURL(process.argv[1]).href
+) {
   main().catch((error) => {
     console.error(`BASELINE VALIDATION FAIL: ${error.message}`);
     process.exit(1);

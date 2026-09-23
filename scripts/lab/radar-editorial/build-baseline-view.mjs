@@ -18,23 +18,32 @@ async function readJson(file) {
 async function main() {
   const runDir = process.argv[2];
   if (!runDir) throw new Error("uso: build-baseline-view.mjs RUN_DIR");
-  const { run, searchLog, candidatesDoc } = await validateBaselineRun(runDir, null, { requireView: false });
+  const { run, searchLog, candidatesDoc } = await validateBaselineRun(
+    runDir,
+    null,
+    { requireView: false },
+  );
   const sections = {};
   for (const section of ["general", "national", "markets"]) {
     sections[section] = {
       meta: await readJson(path.join(runDir, section, "metadata.json")),
-      output: await fs.readFile(path.join(runDir, section, "output.md"), "utf8"),
+      output: await fs.readFile(
+        path.join(runDir, section, "output.md"),
+        "utf8",
+      ),
     };
   }
   const publicBase = `/lab/radar-editorial/runs/${run.radarRunId}`;
   const candidateRows = candidatesDoc.candidates
     .map(
-      (candidate) => `<tr><td>${esc(candidate.section)}</td><td>${esc(candidate.titleOriginal)}</td><td>${esc(candidate.sourceName)}</td><td>${candidate.selected ? "sí" : "no"}</td><td>${esc(candidate.selectionStage)}</td></tr>`,
+      (candidate) =>
+        `<tr><td>${esc(candidate.section)}</td><td>${esc(candidate.titleOriginal)}</td><td>${esc(candidate.sourceName)}</td><td>${candidate.selected ? "sí" : "no"}</td><td>${esc(candidate.selectionStage)}</td></tr>`,
     )
     .join("");
   const queryRows = searchLog.entries
     .map(
-      (entry) => `<tr><td>${esc(entry.section)}</td><td>${esc(entry.query)}</td><td>${esc(entry.executedAt)}</td><td>${entry.resultCount}</td></tr>`,
+      (entry) =>
+        `<tr><td>${esc(entry.section)}</td><td>${esc(entry.query)}</td><td>${esc(entry.executedAt)}</td><td>${entry.resultCount}</td></tr>`,
     )
     .join("");
   const cards = ["general", "national", "markets"]
@@ -76,7 +85,10 @@ ${cards}
   console.log(`BASELINE VIEW WRITTEN — ${run.radarRunId}`);
 }
 
-if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) {
+if (
+  process.argv[1] &&
+  import.meta.url === pathToFileURL(process.argv[1]).href
+) {
   main().catch((error) => {
     console.error(`BASELINE VIEW FAIL: ${error.message}`);
     process.exit(1);

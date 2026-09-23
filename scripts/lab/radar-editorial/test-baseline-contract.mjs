@@ -30,7 +30,8 @@ try {
 } catch {
   productionFieldRejected = true;
 }
-if (!productionFieldRejected) throw new Error("sourceCommit productivo no fue rechazado");
+if (!productionFieldRejected)
+  throw new Error("sourceCommit productivo no fue rechazado");
 console.log("BASELINE SOURCECOMMIT FORBIDDEN: PASS");
 
 assertRuntimeScope([
