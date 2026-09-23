@@ -2,7 +2,7 @@
 title: "El PIB regional revela dónde golpeó la desaceleración: la minería concentra las mayores caídas"
 summary: "Siete de las 16 regiones se contrajeron durante el segundo trimestre. Antofagasta cayó 6,3% y Tarapacá 4,5%, ambas afectadas por la menor actividad del cobre, mientras la Región Metropolitana creció 1,6% y amortiguó parte del retroceso nacional."
 publishedAt: "2026-09-23T14:58:00-03:00"
-status: "draft"
+status: "published"
 tags:
   - lectura-seleccionada
   - contingencia
