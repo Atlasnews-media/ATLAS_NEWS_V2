@@ -117,6 +117,7 @@ jobs:
           mkdir -p "$public/lab"
           rsync -a --delete \
             --exclude='audio/' \
+            --exclude='radar-editorial/' \
             --exclude='editorial-memory-judge/input.json' \
             --exclude='editorial-memory-judge/latest.json' \
             lab-site/dist/ "$public/lab/"
