@@ -116,18 +116,8 @@ const oldId = "RADAR-BASELINE-TEST-OLD";
 const newId = "RADAR-BASELINE-TEST-NEW";
 const incompleteId = "RADAR-BASELINE-TEST-INCOMPLETE";
 
-await writeRun(
-  runtimeRoot,
-  oldId,
-  "2026-09-22",
-  "2026-09-22T09:20:00-03:00",
-);
-await writeRun(
-  runtimeRoot,
-  newId,
-  "2026-09-23",
-  "2026-09-23T09:20:00-03:00",
-);
+await writeRun(runtimeRoot, oldId, "2026-09-22", "2026-09-22T09:20:00-03:00");
+await writeRun(runtimeRoot, newId, "2026-09-23", "2026-09-23T09:20:00-03:00");
 await writeRun(
   runtimeRoot,
   incompleteId,
@@ -176,19 +166,10 @@ assert(
 );
 
 const historical = await fs.readFile(
-  path.join(
-    outputRoot,
-    "history",
-    newId,
-    "nacional",
-    "index.html",
-  ),
+  path.join(outputRoot, "history", newId, "nacional", "index.html"),
   "utf8",
 );
-assert(
-  historical.includes("<h2>Desarrollo</h2>"),
-  "Markdown perdió jerarquía",
-);
+assert(historical.includes("<h2>Desarrollo</h2>"), "Markdown perdió jerarquía");
 assert(
   historical.includes("Texto editorial sin reescritura."),
   "Markdown fue alterado",
