@@ -54,6 +54,30 @@
       "executedAt": "2026-09-23T17:27:00-03:00",
       "resultCount": 1,
       "countMeaning": "retainedCandidates"
+    },
+    {
+      "queryId": "m-q1",
+      "section": "markets",
+      "query": "September 23 2026 Reuters stocks bonds dollar oil Fed today",
+      "executedAt": "2026-09-23T17:30:00-03:00",
+      "resultCount": 2,
+      "countMeaning": "retainedCandidates"
+    },
+    {
+      "queryId": "m-q2",
+      "section": "markets",
+      "query": "23 septiembre 2026 IPSA dólar cobre Brent Treasury Wall Street hoy",
+      "executedAt": "2026-09-23T17:30:00-03:00",
+      "resultCount": 3,
+      "countMeaning": "retainedCandidates"
+    },
+    {
+      "queryId": "m-q3",
+      "section": "markets",
+      "query": "23 septiembre 2026 Chile mercados tasas bonos dólar cobre IPSA hoy",
+      "executedAt": "2026-09-23T17:30:00-03:00",
+      "resultCount": 2,
+      "countMeaning": "retainedCandidates"
     }
   ]
 }

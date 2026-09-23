@@ -1,0 +1,62 @@
+{
+  "schemaVersion": 1,
+  "radarRunId": "RADAR-BASELINE-20260923-1725",
+  "sourceMainCommit": "0a29bf17e396e5d24d5088a3ed366023e1d1eef4",
+  "radarStateVersion": "radar-state-v1",
+  "editorialDate": "2026-09-23",
+  "mode": "LAB_ONLY",
+  "experimentMode": "BASELINE",
+  "section": "markets",
+  "status": "PASS",
+  "startedAt": "2026-09-23T17:29:23-03:00",
+  "completedAt": "2026-09-23T17:31:36-03:00",
+  "title": "Dólar sobre $960 y tasas de EEUU endurecen la sesión local",
+  "summary": "El peso perdió terreno ante un dólar global firme, cobre algo más débil y un salto de las tasas del Tesoro; el IPSA acompañó las ventas globales con Brent cerca de US$100.",
+  "tags": [
+    "mercados",
+    "dolar",
+    "tasas",
+    "cobre",
+    "ipsa"
+  ],
+  "sources": [
+    {
+      "name": "Diario Financiero — dólar y Treasury",
+      "url": "https://www.df.cl/mercados/bolsa-monedas/dolar-hoy-3p3uj",
+      "publishedAt": "2026-09-23T13:14:00-03:00"
+    },
+    {
+      "name": "Diario Financiero — IPSA y Brent",
+      "url": "https://www.df.cl/mercados/bolsa-monedas/bolsas-hoy-5kdjn",
+      "publishedAt": "2026-09-23T10:36:00-03:00"
+    },
+    {
+      "name": "Emol — dólar y cobre",
+      "url": "https://www.emol.com/noticias/Economia/2026/09/23/1212195/dolar-mercado-cambiario-local.html",
+      "publishedAt": "2026-09-23T10:18:00-03:00"
+    }
+  ],
+  "highlights": [
+    {
+      "label": "El dólar local supera $960 durante la sesión",
+      "text": "La combinación de dólar global fuerte y tasas estadounidenses al alza empujó al peso hacia mínimos recientes."
+    },
+    {
+      "label": "El Treasury vuelve a tensar las valorizaciones",
+      "text": "Datos de actividad más firmes elevaron las tasas largas y reforzaron expectativas de política monetaria restrictiva."
+    },
+    {
+      "label": "Brent cerca de US$100 y cobre más débil presionan a Chile",
+      "text": "Energía cara, corrección del metal rojo y ventas globales configuraron un entorno adverso para moneda y bolsa local."
+    }
+  ],
+  "selectedCandidateIds": [
+    "m-dollar-yields",
+    "m-ipsa-oil",
+    "m-copper-dollar"
+  ],
+  "discardedCandidateIds": [
+    "m-fed-ipsa"
+  ],
+  "outputPath": "lab/radar-editorial/runtime/runs/RADAR-BASELINE-20260923-1725/markets/output.md"
+}

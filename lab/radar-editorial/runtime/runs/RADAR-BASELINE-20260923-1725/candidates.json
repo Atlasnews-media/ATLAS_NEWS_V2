@@ -123,6 +123,58 @@
       "retrievalOrigin": "n-q3",
       "selected": false,
       "selectionStage": "screened-out"
+    },
+    {
+      "candidateId": "m-dollar-yields",
+      "section": "markets",
+      "titleOriginal": "Dólar se dispara $ 15 y supera los $ 960 al inicio de la tarde tras índices de actividad que sorprendieron al alza en EEUU",
+      "sourceName": "Diario Financiero",
+      "sourceUrl": "https://www.df.cl/mercados/bolsa-monedas/dolar-hoy-3p3uj",
+      "publishedAt": "2026-09-23T13:14:00-03:00",
+      "discoveredAt": "2026-09-23T17:30:00-03:00",
+      "description": "El dólar-peso escaló sobre $960 mientras las tasas del Tesoro subieron con fuerza tras datos de actividad estadounidenses mejores de lo esperado y una lectura más restrictiva de la Fed.",
+      "retrievalOrigin": "m-q2",
+      "selected": true,
+      "selectionStage": "selected-final"
+    },
+    {
+      "candidateId": "m-ipsa-oil",
+      "section": "markets",
+      "titleOriginal": "Bolsa chilena cae en línea con ventas globales mientras el Brent se afirma en US$ 100 pese al diálogo entre EEUU e Irán",
+      "sourceName": "Diario Financiero",
+      "sourceUrl": "https://www.df.cl/mercados/bolsa-monedas/bolsas-hoy-5kdjn",
+      "publishedAt": "2026-09-23T10:36:00-03:00",
+      "discoveredAt": "2026-09-23T17:30:00-03:00",
+      "description": "El IPSA retrocedió junto a las bolsas globales mientras el Brent permaneció cerca de US$100, combinando presión energética con tasas internacionales elevadas.",
+      "retrievalOrigin": "m-q2",
+      "selected": true,
+      "selectionStage": "selected-final"
+    },
+    {
+      "candidateId": "m-copper-dollar",
+      "section": "markets",
+      "titleOriginal": "Dólar salta en la apertura y se acerca a los $960 tras moderación del cobre",
+      "sourceName": "Emol",
+      "sourceUrl": "https://www.emol.com/noticias/Economia/2026/09/23/1212195/dolar-mercado-cambiario-local.html",
+      "publishedAt": "2026-09-23T10:18:00-03:00",
+      "discoveredAt": "2026-09-23T17:30:00-03:00",
+      "description": "La corrección del cobre hacia US$6,68 por libra y un índice dólar cerca de 100,5 reforzaron la presión alcista inicial sobre el tipo de cambio local.",
+      "retrievalOrigin": "m-q3",
+      "selected": true,
+      "selectionStage": "selected-final"
+    },
+    {
+      "candidateId": "m-fed-ipsa",
+      "section": "markets",
+      "titleOriginal": "Alza de tasas de la Fed reordena el escenario para las acciones del IPSA",
+      "sourceName": "Diario Financiero",
+      "sourceUrl": "https://www.df.cl/mercados/alza-de-tasas-de-la-fed-reordena-el-escenario-para-las-acciones-del-ipsa",
+      "publishedAt": "2026-09-22T04:00:00-03:00",
+      "discoveredAt": "2026-09-23T17:30:00-03:00",
+      "description": "El análisis sectorial muestra que dólar alto y crédito caro distribuyen impactos distintos entre exportadoras, retail e inmobiliarias, pero corresponde más a marco previo que a señal nueva del día.",
+      "retrievalOrigin": "m-q3",
+      "selected": false,
+      "selectionStage": "screened-out"
     }
   ]
 }
