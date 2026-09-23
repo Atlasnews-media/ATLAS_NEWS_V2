@@ -1,7 +1,7 @@
 import fs from "node:fs/promises";
 import { pathToFileURL } from "node:url";
 
-const REQUIRED_KEYS = [
+const FIXTURE_KEYS = [
   "schemaVersion",
   "radarRunId",
   "sourceMainCommit",
@@ -10,6 +10,23 @@ const REQUIRED_KEYS = [
   "mode",
   "status",
   "productionWritesAllowed",
+  "message",
+];
+
+const BASELINE_KEYS = [
+  "schemaVersion",
+  "radarRunId",
+  "sourceMainCommit",
+  "radarStateVersion",
+  "editorialDate",
+  "mode",
+  "experimentMode",
+  "status",
+  "productionWritesAllowed",
+  "runPath",
+  "resultPath",
+  "publishRequestPath",
+  "viewPath",
   "message",
 ];
 
@@ -43,18 +60,7 @@ function walkForbidden(value, path = "$") {
   }
 }
 
-export function validateRadarArtifact(data) {
-  if (!data || typeof data !== "object" || Array.isArray(data)) {
-    fail("artefacto RADAR debe ser un objeto JSON");
-  }
-
-  const actualKeys = Object.keys(data).sort();
-  const expectedKeys = [...REQUIRED_KEYS].sort();
-  if (JSON.stringify(actualKeys) !== JSON.stringify(expectedKeys)) {
-    fail(`claves inválidas: ${actualKeys.join(", ")}`);
-  }
-
-  if (data.schemaVersion !== 1) fail("schemaVersion debe ser 1");
+function assertCommon(data) {
   if (!/^[A-Za-z0-9._:-]{8,128}$/.test(data.radarRunId ?? "")) {
     fail("radarRunId inválido");
   }
@@ -72,8 +78,46 @@ export function validateRadarArtifact(data) {
   if (data.productionWritesAllowed !== false) {
     fail("productionWritesAllowed debe ser false");
   }
-  if (data.message !== "RADAR isolation fixture") {
-    fail("message no corresponde al fixture de aislamiento");
+}
+
+function assertExactKeys(data, expected) {
+  const actualKeys = Object.keys(data).sort();
+  const expectedKeys = [...expected].sort();
+  if (JSON.stringify(actualKeys) !== JSON.stringify(expectedKeys)) {
+    fail(`claves inválidas: ${actualKeys.join(", ")}`);
+  }
+}
+
+export function validateRadarArtifact(data) {
+  if (!data || typeof data !== "object" || Array.isArray(data)) {
+    fail("artefacto RADAR debe ser un objeto JSON");
+  }
+
+  if (data.experimentMode === "BASELINE") {
+    assertExactKeys(data, BASELINE_KEYS);
+    if (data.schemaVersion !== 2) fail("baseline schemaVersion debe ser 2");
+    assertCommon(data);
+    const expectedRunPath = `lab/radar-editorial/runtime/runs/${data.radarRunId}`;
+    if (data.runPath !== expectedRunPath) fail("runPath baseline inválido");
+    if (data.resultPath !== `${expectedRunPath}/result.json`) {
+      fail("resultPath baseline inválido");
+    }
+    if (data.publishRequestPath !== `${expectedRunPath}/publish-request.json`) {
+      fail("publishRequestPath baseline inválido");
+    }
+    if (data.viewPath !== `${expectedRunPath}/index.html`) {
+      fail("viewPath baseline inválido");
+    }
+    if (data.message !== "ATLAS NEWS LAB baseline READY") {
+      fail("message baseline inválido");
+    }
+  } else {
+    assertExactKeys(data, FIXTURE_KEYS);
+    if (data.schemaVersion !== 1) fail("fixture schemaVersion debe ser 1");
+    assertCommon(data);
+    if (data.message !== "RADAR isolation fixture") {
+      fail("message no corresponde al fixture de aislamiento");
+    }
   }
 
   walkForbidden(data);
@@ -97,7 +141,7 @@ async function main() {
   const file = process.argv[2] ?? "lab/radar-editorial/runtime/latest.json";
   const data = await readAndValidateRadarArtifact(file);
   console.log(
-    `RADAR CONTRACT PASS — ${data.radarRunId} · ${data.editorialDate}`,
+    `RADAR CONTRACT PASS — ${data.radarRunId} · ${data.editorialDate} · ${data.experimentMode ?? "ISOLATION"}`,
   );
 }
 
