@@ -16,6 +16,10 @@ source:
   url: "https://www.bcentral.cl/web/banco-central/contenido/-/detalle/prensa/nota-de-prensa/producto-interno-bruto-regional-segundo-trimestre-2026"
   publishedAt: "2026-09-23T08:30:00-03:00"
 author: "ATLAS NEWS"
+audio:
+  src: "/audio/readings/2026-09-23-reading-pib-regional-norte-minero.mp3"
+  durationLabel: "3 min"
+  voice: "Dora"
 editorialVisual:
   src: "https://commons.wikimedia.org/wiki/Special:FilePath/Escondida%20Copper%20Mine%2C%20Atacama%20Desert%2C%20Chile%202009-12-09.jpg?width=1280"
   alt: "Vista aérea de la mina Escondida en el desierto de Atacama, Chile."
