@@ -1,0 +1,70 @@
+name: LAB — RADAR Editorial isolation contract
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - "lab/radar-editorial/**"
+      - "scripts/lab/radar-editorial/**"
+      - ".github/workflows/lab-radar-editorial-*.yml"
+
+permissions:
+  contents: read
+
+concurrency:
+  group: lab-radar-editorial-contract-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
+jobs:
+  isolation-contract:
+    name: Validar perímetro RADAR
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - name: Checkout PR
+        uses: actions/checkout@v5
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: Validar fixture y casos A-C
+        run: node scripts/lab/radar-editorial/test-radar-contract.mjs
+
+      - name: Validar bootstrap de estado
+        run: node scripts/lab/radar-editorial/validate-radar-state.mjs lab/radar-editorial/state/radar-state.json
+
+      - name: Caso D — probar aislamiento de triggers productivos
+        run: |
+          set -euo pipefail
+          grep -Fq 'branches: [main]' .github/workflows/publish-site.yml
+          grep -Fq '"lab/**"' .github/workflows/publish-site.yml
+          grep -Fq '"scripts/lab/**"' .github/workflows/publish-site.yml
+          grep -Fq 'branches: [main]' .github/workflows/audio-v2.yml
+          ! grep -Fq 'radar-runtime/editorial' .github/workflows/publish-site.yml
+          ! grep -Fq 'radar-runtime/editorial' .github/workflows/audio-v2.yml
+          ! grep -Fq 'radar-runtime/editorial' .github/workflows/instagram-carousel-publish-automatic.yml
+          ! grep -Fq 'radar-runtime/editorial' .github/workflows/reel-maker-v2.yml
+          ! grep -Fq 'radar-runtime/editorial' .github/workflows/instagram-reel-publish-v2.yml
+          ! grep -Fq 'radar-runtime/editorial' .github/workflows/social-renderer-post-publish.yml
+          grep -Fq 'branches: [main]' .github/workflows/instagram-carousel-watchdog.yml
+          ! grep -Fq 'radar-runtime/editorial' .github/workflows/instagram-carousel-watchdog.yml
+          ! grep -Eq '^  push:' .github/workflows/instagram-carousel-publish-automatic.yml
+          ! grep -Eq '^  push:' .github/workflows/reel-maker-v2.yml
+          ! grep -Eq '^  push:' .github/workflows/instagram-reel-publish-v2.yml
+          echo 'CASE D TRIGGER ISOLATION: PASS' 
+
+      - name: Caso E — simular escritor lateral concurrente
+        run: bash scripts/lab/radar-editorial/test-public-concurrency.sh
+
+      - name: Comprobar formato RADAR
+        run: >-
+          npx prettier --check
+          "lab/radar-editorial/**/*.{json,md}"
+          "scripts/lab/radar-editorial/*.mjs"
+          ".github/workflows/lab-radar-editorial-*.yml"
+          --ignore-path /dev/null
+
+      - name: Comprobar sintaxis shell
+        run: bash -n scripts/lab/radar-editorial/test-public-concurrency.sh

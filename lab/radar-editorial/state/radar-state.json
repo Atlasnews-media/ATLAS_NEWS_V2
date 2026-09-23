@@ -1,0 +1,63 @@
+{
+  "_radar": {
+    "schemaVersion": 1,
+    "mode": "LAB_ONLY",
+    "productionWritesAllowed": false,
+    "syncBackToProductionAllowed": false,
+    "radarStateVersion": "radar-state-v1",
+    "bootstrappedAt": "2026-09-23T12:08:00-03:00",
+    "sourceMainCommit": "8c2b96f634e9e539742d965bd7196ca0e4bbc896",
+    "origin": "data/editorial_state.json",
+    "initialVersion": "radar-state-v1"
+  },
+  "threads": [
+    {
+      "id": "oil-geopolitics-inflation",
+      "topic": "Petróleo, geopolítica e inflación",
+      "thesis": "El shock energético sigue activo: el bypass saudí mediante Omán alivia parte del riesgo inmediato de oferta y ya sostiene mayores volúmenes, pero el tráfico excepcionalmente bajo por Hormuz confirma que la redundancia logística todavía no equivale a normalización.",
+      "status": "confirmed",
+      "last_evidence": "El 18 de septiembre datos preliminares mostraron sólo cuatro tránsitos de buques de commodities por Hormuz el jueves frente a un promedio de diez días de 16, mientras operadores indicaron que Aramco planea mover cerca de 60 millones de barriles en septiembre y octubre mediante transferencias frente a Sohar, Omán.",
+      "effect": "La adaptación logística saudí reduce el riesgo inmediato de escasez y ayudó a moderar el petróleo, pero la baja circulación por Hormuz y la tensión regional mantienen riesgo sobre energía, transporte, seguros, inflación y tasas globales.",
+      "base_scenario": "Prima energética elevada y volátil con adaptación logística parcial de productores del Golfo, mientras Hormuz y el corredor del mar Rojo sigan expuestos a restricciones y ataques durante el resto de 2026.",
+      "invalidate_if": "Normalización sostenida del tráfico por Hormuz, reapertura estable del oleoducto Este-Oeste y ausencia de nuevas amenazas sobre rutas alternativas debilitarían la tesis; fallas del bypass omaní o nuevos ataques simultáneos la reforzarían.",
+      "watch": "Volumen efectivo transferido frente a Sohar, reapertura y capacidad del oleoducto Este-Oeste, tráfico por Hormuz, seguridad en Bab el-Mandeb y mar Rojo, seguros marítimos y transmisión a inflación.",
+      "last_publication": "/ediciones/2026-09-18-daily-bancos-centrales-endurecen-el-mapa-global/"
+    },
+    {
+      "id": "us-employment-fed-rates",
+      "topic": "Empleo de Estados Unidos y Reserva Federal",
+      "thesis": "La Fed materializó el giro restrictivo con su primera subida en más de tres años y dejó abierta la puerta a más endurecimiento; el foco pasa de si subiría en septiembre a la velocidad y persistencia del nuevo ciclo.",
+      "status": "changed",
+      "last_evidence": "El 16 de septiembre el FOMC votó 12-0 por elevar 25 puntos base el rango de fondos federales a 3,75%-4,00%, señalando que la inflación sigue elevada y que la acción busca un retorno más oportuno a la meta de 2%.",
+      "effect": "La subida confirma que empleo resiliente e inflación persistente superaron el umbral para volver a endurecer; ahora la incertidumbre relevante es cuántas alzas adicionales serán necesarias mientras energía mantiene riesgo alcista sobre precios.",
+      "base_scenario": "La Fed mantiene sesgo restrictivo tras la subida de septiembre, con al menos una nueva alza en 2026 como posibilidad central si inflación y actividad no se enfrían con claridad.",
+      "invalidate_if": "Una desaceleración clara y sostenida de inflación subyacente, deterioro laboral material o comunicación explícita de la Fed que cierre la puerta a nuevas alzas debilitarían la tesis.",
+      "watch": "Comunicación de la Fed, reunión de octubre, inflación subyacente, salarios, solicitudes de desempleo, Treasury a dos y diez años, petróleo y dólar.",
+      "last_publication": "/ediciones/2026-09-17-daily-fed-endurece-el-mapa-global-de-tasas/"
+    },
+    {
+      "id": "ai-monetization-selectivity",
+      "topic": "Inteligencia artificial y selectividad bursátil",
+      "thesis": "Nvidia confirma demanda y monetización de IA, pero la pausa de un programa de apoyo financiero a nubes pequeñas muestra que la transparencia de la demanda y la disciplina de capital pasan a ser filtros explícitos junto con márgenes y caja.",
+      "status": "changed",
+      "last_evidence": "Tras subir 8,7% por una guía que validó la demanda de IA, Nvidia pausó parte de un programa que facilitaba financiamiento a pequeñas nubes y contemplaba recomprar capacidad no utilizada, en medio de escrutinio por posibles estructuras circulares y control excesivo sobre clientes.",
+      "effect": "Fortalece la exposición selectiva a líderes con demanda final y caja visibles, mientras aumenta el descuento exigido a modelos dependientes de garantías, deuda o demanda apoyada por el propio proveedor.",
+      "base_scenario": "Crecimiento tecnológico acompañado por monetización efectiva en líderes, con mayor dispersión según retorno del capital, transparencia de la demanda y estructura de financiamiento.",
+      "invalidate_if": "La financiación apoyada por proveedores demuestra ser marginal y transparente sin afectar calidad de demanda, o los márgenes y el flujo de caja se deterioran materialmente pese al crecimiento de ingresos.",
+      "watch": "Resultados, márgenes, flujo de caja, emisiones de deuda y acciones, garantías y apoyo financiero a clientes, utilización de infraestructura y Treasury a diez y treinta años.",
+      "last_publication": "/ediciones/2026-08-28-daily-ia-sostiene-mercado-disciplina-capital/"
+    },
+    {
+      "id": "chile-inflation-activity-rates",
+      "topic": "Inflación, actividad y tasas en Chile",
+      "thesis": "Chile entra en una combinación de señales cruzadas: el crecimiento de 2026 fue revisado a 0,25%-0,75%, el IPC de agosto sorprendió con 0,6% mensual aunque el componente sin volátiles avanzó solo 0,1%, y el petróleo sobre US$108 junto con tasas globales más altas endurece el entorno externo; menor demanda y shocks de costos actúan en direcciones opuestas.",
+      "status": "confirmed",
+      "last_evidence": "Al 14 de septiembre, el IPoM mantenía la proyección de crecimiento 2026 en 0,25%-0,75% tras la sorpresa del IPC de agosto de 0,6% mensual y 4,1% anual; el IPC sin volátiles había subido 0,1% mensual y 3,3% anual, mientras el Brent volvió sobre US$108 y el Treasury estadounidense a diez años superó temporalmente 5%.",
+      "effect": "Confirma que el escenario chileno no puede leerse en una sola dirección: la debilidad de la demanda reduce presión interna, mientras energía y condiciones financieras externas mantienen riesgos alcistas sobre costos e inflación, sin fijar de antemano la próxima decisión de TPM.",
+      "base_scenario": "Actividad débil durante 2026, inflación subyacente más contenida que el índice general y riesgo de costos externos todavía elevado; la TPM permanece en 4,5% sin trayectoria predeterminada y la lectura depende de cuál de esas fuerzas gane persistencia.",
+      "invalidate_if": "Una aceleración sostenida de la inflación subyacente confirmaría una presión más amplia; una normalización durable del petróleo y de las tasas globales reduciría el riesgo externo; una recuperación clara de consumo, inversión y empleo debilitaría la tesis de demanda interna frágil.",
+      "watch": "Consumo, inversión, empleo, confianza, IPC sin volátiles, combustibles, Brent, Treasury a dos anos, decisión de la Fed, expectativas de inflación y próximas RPM.",
+      "last_publication": "/lecturas/2026-09-14-reading-chile-cierra-semana-senales-cruzadas/"
+    }
+  ]
+}
