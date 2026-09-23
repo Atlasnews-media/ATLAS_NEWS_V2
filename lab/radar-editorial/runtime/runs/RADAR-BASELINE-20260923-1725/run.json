@@ -1,0 +1,27 @@
+{
+  "schemaVersion": 1,
+  "radarRunId": "RADAR-BASELINE-20260923-1725",
+  "sourceMainCommit": "0a29bf17e396e5d24d5088a3ed366023e1d1eef4",
+  "radarStateVersion": "radar-state-v1",
+  "editorialDate": "2026-09-23",
+  "mode": "LAB_ONLY",
+  "experimentMode": "BASELINE",
+  "startedAt": "2026-09-23T17:25:01-03:00",
+  "completedAt": null,
+  "productionWritesAllowed": false,
+  "memoryMode": "PRODUCTIVE_READ_ONLY_CONTEXT",
+  "radarInterventionUsed": false,
+  "jevUsed": false,
+  "corpusUsed": false,
+  "frameworkRead": [
+    "AGENTS.md",
+    "docs/PROCEDIMIENTO_GPT_PUBLICACION.md",
+    "docs/CONTRATO_EDITORIAL.md",
+    "data/editorial_state.json"
+  ],
+  "phases": {
+    "general": "PASS",
+    "national": "PENDING",
+    "markets": "PENDING"
+  }
+}

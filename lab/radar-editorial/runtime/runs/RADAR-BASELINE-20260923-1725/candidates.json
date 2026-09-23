@@ -1,0 +1,76 @@
+{
+  "schemaVersion": 1,
+  "radarRunId": "RADAR-BASELINE-20260923-1725",
+  "sourceMainCommit": "0a29bf17e396e5d24d5088a3ed366023e1d1eef4",
+  "radarStateVersion": "radar-state-v1",
+  "editorialDate": "2026-09-23",
+  "mode": "LAB_ONLY",
+  "experimentMode": "BASELINE",
+  "candidates": [
+    {
+      "candidateId": "g-iran-oil",
+      "section": "general",
+      "titleOriginal": "Oil prices rise on Trump timeline for Iran peace deal: after US elections",
+      "sourceName": "Reuters",
+      "sourceUrl": "https://www.reuters.com/business/energy/oil-rises-slightly-ahead-potential-us-iran-talks-2026-09-22/",
+      "publishedAt": null,
+      "discoveredAt": "2026-09-23T17:25:10-03:00",
+      "description": "El petróleo volvió a incorporar prima geopolítica después de que Trump situara un eventual acuerdo con Irán más allá de las elecciones de noviembre y mantuviera abierta la amenaza militar.",
+      "retrievalOrigin": "g-q1",
+      "selected": true,
+      "selectionStage": "selected-final"
+    },
+    {
+      "candidateId": "g-trump-xi",
+      "section": "general",
+      "titleOriginal": "Key issues for this week's Trump-Xi summit in Washington",
+      "sourceName": "Reuters",
+      "sourceUrl": "https://www.reuters.com/world/china/what-will-trump-xi-discuss-washington-next-week-2026-09-17/",
+      "publishedAt": null,
+      "discoveredAt": "2026-09-23T17:25:10-03:00",
+      "description": "La cumbre Trump-Xi concentra riesgos sobre tregua arancelaria, acceso tecnológico, tierras raras, Taiwán e inteligencia artificial, con impacto potencial sobre comercio e inversión.",
+      "retrievalOrigin": "g-q2",
+      "selected": true,
+      "selectionStage": "selected-final"
+    },
+    {
+      "candidateId": "g-ai-capital",
+      "section": "general",
+      "titleOriginal": "As Trump and Xi meet, investors play both sides of AI divide",
+      "sourceName": "Reuters",
+      "sourceUrl": "https://www.reuters.com/business/retail-consumer/trump-xi-meet-investors-play-both-sides-ai-divide-2026-09-22/",
+      "publishedAt": null,
+      "discoveredAt": "2026-09-23T17:25:10-03:00",
+      "description": "Los flujos de capital muestran interdependencia entre los ecosistemas tecnológicos de Estados Unidos y China pese a controles y rivalidad estratégica en inteligencia artificial.",
+      "retrievalOrigin": "g-q2",
+      "selected": true,
+      "selectionStage": "selected-final"
+    },
+    {
+      "candidateId": "g-un-ai",
+      "section": "general",
+      "titleOriginal": "UN chief calls for AI curbs and end to wars in his last assembly address",
+      "sourceName": "Reuters",
+      "sourceUrl": "https://www.reuters.com/world/europe/un-chief-calls-ai-curbs-end-wars-his-last-assembly-address-2026-09-22/",
+      "publishedAt": null,
+      "discoveredAt": "2026-09-23T17:25:10-03:00",
+      "description": "Guterres pidió gobernanza internacional de la inteligencia artificial, reformas multilaterales y acciones sobre conflictos y clima en su última Asamblea General como secretario general.",
+      "retrievalOrigin": "g-q1",
+      "selected": false,
+      "selectionStage": "screened-out"
+    },
+    {
+      "candidateId": "g-nasdaq-oil",
+      "section": "general",
+      "titleOriginal": "Nasdaq sets record high on AI optimism, oil drops below $100",
+      "sourceName": "Reuters",
+      "sourceUrl": "https://www.reuters.com/world/china/global-markets-wrapup-1-2026-09-22/",
+      "publishedAt": null,
+      "discoveredAt": "2026-09-23T17:25:10-03:00",
+      "description": "El Nasdaq marcó récord mientras el petróleo cedió por perspectivas de oferta y los inversionistas evaluaron nuevas alzas de tasas y la próxima cumbre entre Estados Unidos y China.",
+      "retrievalOrigin": "g-q3",
+      "selected": false,
+      "selectionStage": "screened-out"
+    }
+  ]
+}

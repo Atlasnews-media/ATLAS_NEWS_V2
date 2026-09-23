@@ -1,0 +1,71 @@
+{
+  "schemaVersion": 1,
+  "radarRunId": "RADAR-BASELINE-20260923-1725",
+  "sourceMainCommit": "0a29bf17e396e5d24d5088a3ed366023e1d1eef4",
+  "radarStateVersion": "radar-state-v1",
+  "editorialDate": "2026-09-23",
+  "mode": "LAB_ONLY",
+  "experimentMode": "BASELINE",
+  "section": "general",
+  "status": "PASS",
+  "startedAt": "2026-09-23T17:25:01-03:00",
+  "completedAt": "2026-09-23T17:26:39-03:00",
+  "title": "Energía y rivalidad estratégica mantienen elevado el riesgo global",
+  "summary": "La expectativa de un acuerdo rápido entre Estados Unidos e Irán perdió fuerza mientras la cumbre Trump-Xi concentra riesgos sobre comercio, tecnología y cadenas de suministro.",
+  "tags": [
+    "internacional",
+    "energia",
+    "geopolitica",
+    "comercio",
+    "inteligencia-artificial"
+  ],
+  "sources": [
+    {
+      "name": "Reuters — petróleo e Irán",
+      "url": "https://www.reuters.com/business/energy/oil-rises-slightly-ahead-potential-us-iran-talks-2026-09-22/",
+      "publishedAt": null
+    },
+    {
+      "name": "Reuters — agenda Trump-Xi",
+      "url": "https://www.reuters.com/world/china/what-will-trump-xi-discuss-washington-next-week-2026-09-17/",
+      "publishedAt": null
+    },
+    {
+      "name": "Reuters — capital e IA",
+      "url": "https://www.reuters.com/business/retail-consumer/trump-xi-meet-investors-play-both-sides-ai-divide-2026-09-22/",
+      "publishedAt": null
+    }
+  ],
+  "highlights": [
+    {
+      "label": "La paz con Irán deja de verse inmediata",
+      "text": "Trump situó un posible acuerdo más allá de las elecciones de noviembre y mantuvo abierta la presión militar."
+    },
+    {
+      "label": "El petróleo conserva prima geopolítica",
+      "text": "Brent permanece cerca de US$100 pese a más flujos saudíes y señales diplomáticas."
+    },
+    {
+      "label": "Trump y Xi llegan con tregua comercial en juego",
+      "text": "Comercio, tecnología, tierras raras y Taiwán concentran la agenda bilateral."
+    },
+    {
+      "label": "La IA sigue uniendo capitales rivales",
+      "text": "Inversionistas de ambos países mantienen exposición cruzada pese a mayores restricciones tecnológicas."
+    },
+    {
+      "label": "Tasas altas amplifican el costo del shock",
+      "text": "La combinación de energía cara y bancos centrales restrictivos mantiene presión sobre crecimiento y activos de riesgo."
+    }
+  ],
+  "selectedCandidateIds": [
+    "g-iran-oil",
+    "g-trump-xi",
+    "g-ai-capital"
+  ],
+  "discardedCandidateIds": [
+    "g-un-ai",
+    "g-nasdaq-oil"
+  ],
+  "outputPath": "lab/radar-editorial/runtime/runs/RADAR-BASELINE-20260923-1725/general/output.md"
+}
