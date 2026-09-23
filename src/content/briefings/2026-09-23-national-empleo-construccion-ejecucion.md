@@ -1,10 +1,10 @@
 ---
 title: "Empleo: la prueba pasa de los anuncios a la ejecución en construcción"
 summary: "El plan de US$200 millones para acelerar obras y vivienda busca responder al desempleo de 9,5%; la señal relevante será cuánto gasto logra convertirse en empleo formal durante el cuarto trimestre."
-publishedAt: "2026-09-23T06:18:00-03:00"
+publishedAt: "2026-09-23T06:46:00-03:00"
 cutoffAt: "2026-09-23T06:17:00-03:00"
 section: "national"
-status: "draft"
+status: "published"
 tags:
   - chile
   - empleo
