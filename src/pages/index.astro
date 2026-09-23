@@ -577,11 +577,17 @@ const marketsVisual = latestMarkets
         const targetId = targetHash
           ? decodeURIComponent(targetHash.slice(1))
           : undefined;
-        const anchorTarget = targetId
-          ? Array.from(
-              panelContent.querySelectorAll<HTMLElement>("[id]"),
-            ).find((element) => element.id === targetId)
-          : undefined;
+        let anchorTarget: HTMLElement | undefined;
+        if (targetId) {
+          for (const element of panelContent.querySelectorAll<HTMLElement>(
+            "[id]",
+          )) {
+            if (element.id === targetId) {
+              anchorTarget = element;
+              break;
+            }
+          }
+        }
 
         if (anchorTarget) {
           const panelTop = panel.getBoundingClientRect().top;
