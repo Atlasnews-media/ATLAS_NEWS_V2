@@ -8,6 +8,7 @@ const root = new URL("../", import.meta.url);
 const ANALYSIS_SCRIPT_VERSION = 3;
 const SPEECH_NORMALIZER_VERSION = 5;
 const ALEXC_DIALOGUE_RHYTHM_VERSION = 2;
+const COVER_RENDER_VERSION = 2;
 const PLAN_FILE = ".atlas-audio-v2-plan.json";
 const lexiconConfig = JSON.parse(
   await readFile(new URL("config/audio/lexicon-v3.json", root), "utf8"),
@@ -206,14 +207,19 @@ const cover = {
   scriptVersion: coverPlan.scriptVersion ?? 1,
   lexiconVersion: LEXICON_VERSION,
   lexiconRevision: LEXICON_REVISION,
+  coverRenderVersion: COVER_RENDER_VERSION,
   needsGeneration: Boolean(
     coverContractValid &&
       (coverPlan.needsGeneration ||
         !coverLexiconCurrent ||
-        existingCover?.speechNormalizerVersion !== SPEECH_NORMALIZER_VERSION),
+        existingCover?.speechNormalizerVersion !== SPEECH_NORMALIZER_VERSION ||
+        existingCover?.coverRenderVersion !== COVER_RENDER_VERSION),
   ),
   unavailableReason: coverContractValid ? null : "cover_contract_failed",
-  plan: coverPlan,
+  plan: {
+    ...coverPlan,
+    coverRenderVersion: COVER_RENDER_VERSION,
+  },
 };
 
 const products = {
