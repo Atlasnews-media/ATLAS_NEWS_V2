@@ -1,10 +1,10 @@
 ---
 title: "Energía y crecimiento reordenan el riesgo global"
 summary: "El alivio parcial en los flujos de crudo de Medio Oriente convive con una escasez persistente de diésel, mientras la eurozona sorprende con mayor actividad y el mundo sigue expuesto a costos energéticos y geopolíticos elevados."
-publishedAt: "2026-09-23T06:01:20-03:00"
+publishedAt: "2026-09-23T06:46:00-03:00"
 cutoffAt: "2026-09-23T06:00:45-03:00"
 type: "daily"
-status: "draft"
+status: "published"
 tags:
   - economia-global
   - energia
