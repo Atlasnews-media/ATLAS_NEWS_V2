@@ -1,0 +1,8 @@
+{
+  "schemaVersion": 1,
+  "action": "RENDER_READY_SURFACE",
+  "radarRunId": "RADAR-BASELINE-20260923-1725",
+  "mode": "LAB_ONLY",
+  "targetMainCommit": "c41e0cb59343994b87c17d8615d80867fb1a58b2",
+  "reason": "Initial editorial surface publication after PR #190"
+}
