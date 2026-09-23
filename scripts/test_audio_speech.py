@@ -2,6 +2,7 @@ from audio_speech import (
     LEXICON_REVISION,
     SPEECH_NORMALIZER_VERSION,
     is_question,
+    normalize_dora_longform_paragraphs,
     normalize_for_kokoro_dora,
     normalize_for_speech,
 )
@@ -150,6 +151,23 @@ for source, expected in dora_continuous_cases:
         raise AssertionError(
             f"Dora/Kokoro no debe introducir saltos de línea: {source!r}"
         )
+
+# Regresión Portada: cada cifra debe permanecer completa dentro de un segmento
+# corto de Dora, en vez de quedar expuesta al chunking de un briefing completo.
+longform_source = (
+    "El euro se ubicó en 1.081 pesos.\n\n"
+    "La UF vigente alcanza los 40.999 pesos."
+)
+longform_expected = [
+    "El euro se ubicó en mil ochenta y un pesos.",
+    "La UF vigente alcanza los cuarenta mil novecientos noventa y nueve pesos.",
+]
+longform_actual = normalize_dora_longform_paragraphs(longform_source)
+if longform_actual != longform_expected:
+    raise AssertionError(
+        f"Portada Dora debe preservar cifras completas por párrafo: "
+        f"{longform_actual!r}; esperado {longform_expected!r}"
+    )
 check(
     "El dólar observado quedó en $913,86.",
     "El dólar observado quedó en novecientos trece coma ochenta y seis pesos.",
