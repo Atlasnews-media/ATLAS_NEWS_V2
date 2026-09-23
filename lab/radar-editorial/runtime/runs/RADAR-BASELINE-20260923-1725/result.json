@@ -1,0 +1,43 @@
+{
+  "schemaVersion": 1,
+  "radarRunId": "RADAR-BASELINE-20260923-1725",
+  "sourceMainCommit": "0a29bf17e396e5d24d5088a3ed366023e1d1eef4",
+  "radarStateVersion": "radar-state-v1",
+  "editorialDate": "2026-09-23",
+  "mode": "LAB_ONLY",
+  "experimentMode": "BASELINE",
+  "status": "PASS",
+  "productionWritesAllowed": false,
+  "completedAt": "2026-09-23T17:35:45-03:00",
+  "sections": {
+    "general": {
+      "status": "PASS",
+      "title": "Energía y rivalidad estratégica mantienen elevado el riesgo global",
+      "candidateCount": 5,
+      "selectedCount": 3,
+      "sourceNames": [
+        "Reuters"
+      ]
+    },
+    "national": {
+      "status": "PASS",
+      "title": "PIB regional expone una recuperación desigual y la minería concentra el retroceso",
+      "candidateCount": 4,
+      "selectedCount": 2,
+      "sourceNames": [
+        "Banco Central de Chile",
+        "Emol"
+      ]
+    },
+    "markets": {
+      "status": "PASS",
+      "title": "Dólar sobre $960 y tasas de EEUU endurecen la sesión local",
+      "candidateCount": 4,
+      "selectedCount": 3,
+      "sourceNames": [
+        "Diario Financiero",
+        "Emol"
+      ]
+    }
+  }
+}
