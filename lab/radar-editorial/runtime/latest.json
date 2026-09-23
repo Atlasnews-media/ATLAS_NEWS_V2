@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "radarRunId": "RADAR-ISOLATION-E2E-20260923-001",
-  "sourceMainCommit": "d397711a13013c0387371ce42e142d1d37fa306f",
+  "radarRunId": "RADAR-ISOLATION-E2E-20260923-002",
+  "sourceMainCommit": "78cff12d31ff945ea2694ae222fcf91f9589feb2",
   "radarStateVersion": "radar-state-v1",
   "editorialDate": "2026-09-23",
   "mode": "LAB_ONLY",
