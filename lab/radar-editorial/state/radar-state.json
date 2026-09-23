@@ -56,7 +56,7 @@
       "effect": "Confirma que el escenario chileno no puede leerse en una sola dirección: la debilidad de la demanda reduce presión interna, mientras energía y condiciones financieras externas mantienen riesgos alcistas sobre costos e inflación, sin fijar de antemano la próxima decisión de TPM.",
       "base_scenario": "Actividad débil durante 2026, inflación subyacente más contenida que el índice general y riesgo de costos externos todavía elevado; la TPM permanece en 4,5% sin trayectoria predeterminada y la lectura depende de cuál de esas fuerzas gane persistencia.",
       "invalidate_if": "Una aceleración sostenida de la inflación subyacente confirmaría una presión más amplia; una normalización durable del petróleo y de las tasas globales reduciría el riesgo externo; una recuperación clara de consumo, inversión y empleo debilitaría la tesis de demanda interna frágil.",
-      "watch": "Consumo, inversión, empleo, confianza, IPC sin volátiles, combustibles, Brent, Treasury a dos anos, decisión de la Fed, expectativas de inflación y próximas RPM.",
+      "watch": "Consumo, inversión, empleo, confianza, IPC sin volátiles, combustibles, Brent, Treasury a diez años, decisión de la Fed, expectativas de inflación y próximas RPM.",
       "last_publication": "/lecturas/2026-09-14-reading-chile-cierra-semana-senales-cruzadas/"
     }
   ]
