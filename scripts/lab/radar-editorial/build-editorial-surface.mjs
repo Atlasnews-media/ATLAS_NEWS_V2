@@ -137,44 +137,69 @@ const STYLE =
 
 function page(title, description, body) {
   return [
-    "<!doctype html><html lang=\"es\"><head><meta charset=\"utf-8\">",
-    "<meta name=\"viewport\" content=\"width=device-width,initial-scale=1\">",
-    "<meta name=\"robots\" content=\"noindex,nofollow\">",
-    "<title>", esc(title), "</title><meta name=\"description\" content=\"",
-    esc(description), "\"><style>", STYLE, "</style></head><body>",
-    body, "</body></html>\n",
+    '<!doctype html><html lang="es"><head><meta charset="utf-8">',
+    '<meta name="viewport" content="width=device-width,initial-scale=1">',
+    '<meta name="robots" content="noindex,nofollow">',
+    "<title>",
+    esc(title),
+    '</title><meta name="description" content="',
+    esc(description),
+    '"><style>',
+    STYLE,
+    "</style></head><body>",
+    body,
+    "</body></html>\n",
   ].join("");
 }
 
 function labBar(label) {
-  return '<div class="labbar"><strong>ATLAS NEWS LAB</strong><span>' +
-    esc(label) + " · NO PRODUCCIÓN</span></div>";
+  return (
+    '<div class="labbar"><strong>ATLAS NEWS LAB</strong><span>' +
+    esc(label) +
+    " · NO PRODUCCIÓN</span></div>"
+  );
 }
 
 function identity(run) {
   return [
     '<div class="identity" aria-label="Identidad LAB"><span><b>LAB</b> ',
-    esc(run.experimentMode), "</span><span>", esc(run.editorialDate),
-    "</span><span><code>", esc(run.radarRunId),
+    esc(run.experimentMode),
+    "</span><span>",
+    esc(run.editorialDate),
+    "</span><span><code>",
+    esc(run.radarRunId),
     "</code></span><span><code>sourceMainCommit ",
-    esc(run.sourceMainCommit.slice(0, 12)), "</code></span></div>",
+    esc(run.sourceMainCommit.slice(0, 12)),
+    "</code></span></div>",
   ].join("");
 }
 
 function chips(meta) {
   const tags = Array.isArray(meta.tags) ? meta.tags : [];
   if (!tags.length) return "";
-  return '<div class="chips">' +
-    tags.map((tag) => "<span>" + esc(tag) + "</span>").join("") + "</div>";
+  return (
+    '<div class="chips">' +
+    tags.map((tag) => "<span>" + esc(tag) + "</span>").join("") +
+    "</div>"
+  );
 }
 
 function sources(meta) {
   if (!Array.isArray(meta.sources) || !meta.sources.length) return "";
-  return '<section class="sources"><h2>Fuentes documentadas</h2><ul>' +
-    meta.sources.map((source) =>
-      '<li><a href="' + esc(source.url) + '" rel="noopener noreferrer">' +
-      esc(source.name) + "</a></li>"
-    ).join("") + "</ul></section>";
+  return (
+    '<section class="sources"><h2>Fuentes documentadas</h2><ul>' +
+    meta.sources
+      .map(
+        (source) =>
+          '<li><a href="' +
+          esc(source.url) +
+          '" rel="noopener noreferrer">' +
+          esc(source.name) +
+          "</a></li>",
+      )
+      .join("") +
+    "</ul></section>"
+  );
 }
 
 async function readReadyRun(runDir) {
@@ -198,15 +223,23 @@ async function readReadyRun(runDir) {
     const dir = path.join(runDir, section.technical);
     const meta = await readJson(path.join(dir, "metadata.json"));
     const output = await fs.readFile(path.join(dir, "output.md"), "utf8");
-    if (meta.status !== "PASS" || meta.radarRunId !== run.radarRunId ||
-        meta.section !== section.technical) {
-      throw new Error(run.radarRunId + "/" + section.technical + ": metadata inválida");
+    if (
+      meta.status !== "PASS" ||
+      meta.radarRunId !== run.radarRunId ||
+      meta.section !== section.technical
+    ) {
+      throw new Error(
+        run.radarRunId + "/" + section.technical + ": metadata inválida",
+      );
     }
     sections[section.technical] = { meta, output };
   }
 
   return {
-    run, request, result, sections,
+    run,
+    request,
+    result,
+    sections,
     searchLog: await readJson(path.join(runDir, "search-log.json")),
     candidates: await readJson(path.join(runDir, "candidates.json")),
   };
@@ -241,152 +274,258 @@ async function collectHistory(runtimeRoot) {
 
 function archiveItems(history, section) {
   if (!history.length) return '<p class="empty">Sin corridas READY.</p>';
-  return '<div class="archive">' + history.map((item) => {
-    const meta = item.sections[section.technical].meta;
-    return [
-      '<article class="item"><p class="eyebrow">',
-      esc(dateLabel(item.run.editorialDate)), " · ", esc(item.run.experimentMode),
-      '</p><h3><a href="', PUBLIC_BASE, "archivo/",
-      esc(item.run.radarRunId), "/", section.visible, '/">',
-      esc(meta.title), "</a></h3><p><code>", esc(item.run.radarRunId),
-      "</code></p></article>",
-    ].join("");
-  }).join("") + "</div>";
+  return (
+    '<div class="archive">' +
+    history
+      .map((item) => {
+        const meta = item.sections[section.technical].meta;
+        return [
+          '<article class="item"><p class="eyebrow">',
+          esc(dateLabel(item.run.editorialDate)),
+          " · ",
+          esc(item.run.experimentMode),
+          '</p><h3><a href="',
+          PUBLIC_BASE,
+          "archivo/",
+          esc(item.run.radarRunId),
+          "/",
+          section.visible,
+          '/">',
+          esc(meta.title),
+          "</a></h3><p><code>",
+          esc(item.run.radarRunId),
+          "</code></p></article>",
+        ].join("");
+      })
+      .join("") +
+    "</div>"
+  );
 }
 
 function buildHome(current, history) {
   const cards = SECTIONS.map((section) => {
     const meta = current.sections[section.technical].meta;
     return [
-      '<article class="card"><p class="eyebrow">', esc(section.label),
-      "</p><h2>", esc(meta.title), "</h2><p>", esc(meta.summary),
-      '</p><a class="cta" href="./', section.visible,
+      '<article class="card"><p class="eyebrow">',
+      esc(section.label),
+      "</p><h2>",
+      esc(meta.title),
+      "</h2><p>",
+      esc(meta.summary),
+      '</p><a class="cta" href="./',
+      section.visible,
       '/">Abrir sección →</a></article>',
     ].join("");
   }).join("");
 
-  return page("ATLAS NEWS LAB — RADAR Editorial",
+  return page(
+    "ATLAS NEWS LAB — RADAR Editorial",
     "Superficie editorial navegable de ATLAS NEWS LAB.",
     [
-      '<main class="shell">', labBar("RADAR EDITORIAL"),
+      '<main class="shell">',
+      labBar("RADAR EDITORIAL"),
       '<header class="masthead"><h1>ATLAS NEWS LAB</h1><p>Ventana de observación del experimento editorial RADAR. La superficie representa corridas LAB validadas y no participa en selección ni escritura editorial.</p></header>',
-      identity(current.run), '<section class="grid" aria-label="Secciones vigentes">',
-      cards, '</section><section class="block"><div class="blockhead"><div><p class="eyebrow">Archivo editorial</p><h2>Corridas READY</h2></div><a class="cta" href="./archivo/">Ver archivo completo →</a></div><p>',
-      String(history.length), " corrida", history.length === 1 ? "" : "s",
-      " READY disponible", history.length === 1 ? "" : "s",
+      identity(current.run),
+      '<section class="grid" aria-label="Secciones vigentes">',
+      cards,
+      '</section><section class="block"><div class="blockhead"><div><p class="eyebrow">Archivo editorial</p><h2>Corridas READY</h2></div><a class="cta" href="./archivo/">Ver archivo completo →</a></div><p>',
+      String(history.length),
+      " corrida",
+      history.length === 1 ? "" : "s",
+      " READY disponible",
+      history.length === 1 ? "" : "s",
       '.</p></section><div class="trace"><a href="./trazabilidad/',
       esc(current.run.radarRunId),
       '/">Trazabilidad de la corrida</a><a href="./latest.json">latest.json</a></div></main>',
-    ].join(""));
+    ].join(""),
+  );
 }
 
 function buildSection(current, history, section) {
   const meta = current.sections[section.technical].meta;
-  const articleUrl = PUBLIC_BASE + "archivo/" + current.run.radarRunId +
-    "/" + section.visible + "/";
-  return page(section.label + " — ATLAS NEWS LAB",
+  const articleUrl =
+    PUBLIC_BASE +
+    "archivo/" +
+    current.run.radarRunId +
+    "/" +
+    section.visible +
+    "/";
+  return page(
+    section.label + " — ATLAS NEWS LAB",
     "Sección " + section.label + " de ATLAS NEWS LAB.",
     [
-      '<main class="shell">', labBar(section.label),
-      '<header class="hero"><p class="eyebrow">', esc(section.label),
-      " · pieza vigente</p><h1>", esc(meta.title),
-      '</h1><p class="deck">', esc(meta.summary),
-      '</p><a class="cta" href="', esc(articleUrl),
-      '">Leer noticia completa →</a></header>', identity(current.run),
+      '<main class="shell">',
+      labBar(section.label),
+      '<header class="hero"><p class="eyebrow">',
+      esc(section.label),
+      " · pieza vigente</p><h1>",
+      esc(meta.title),
+      '</h1><p class="deck">',
+      esc(meta.summary),
+      '</p><a class="cta" href="',
+      esc(articleUrl),
+      '">Leer noticia completa →</a></header>',
+      identity(current.run),
       '<section class="block"><div class="blockhead"><div><p class="eyebrow">Archivo de ',
       esc(section.label),
       '</p><h2>Corridas anteriores</h2></div><a class="cta" href="../">Volver a Portada LAB</a></div>',
       archiveItems(history, section),
       '</section><footer class="footer"><a href="../">← Portada LAB</a><a href="../trazabilidad/',
-      esc(current.run.radarRunId), '/">Trazabilidad</a></footer></main>',
-    ].join(""));
+      esc(current.run.radarRunId),
+      '/">Trazabilidad</a></footer></main>',
+    ].join(""),
+  );
 }
 
 function buildArchiveIndex(history) {
-  const items = history.map((item) => {
-    const links = SECTIONS.map((section) =>
-      '<a href="./' + esc(item.run.radarRunId) + "/" + section.visible +
-      '/">' + esc(section.label) + "</a>"
-    ).join(" · ");
-    return [
-      '<article class="item"><p class="eyebrow">',
-      esc(dateLabel(item.run.editorialDate)), " · ", esc(item.run.experimentMode),
-      "</p><h3>", esc(item.run.radarRunId), "</h3><p>", links,
-      "</p></article>",
-    ].join("");
-  }).join("");
+  const items = history
+    .map((item) => {
+      const links = SECTIONS.map(
+        (section) =>
+          '<a href="./' +
+          esc(item.run.radarRunId) +
+          "/" +
+          section.visible +
+          '/">' +
+          esc(section.label) +
+          "</a>",
+      ).join(" · ");
+      return [
+        '<article class="item"><p class="eyebrow">',
+        esc(dateLabel(item.run.editorialDate)),
+        " · ",
+        esc(item.run.experimentMode),
+        "</p><h3>",
+        esc(item.run.radarRunId),
+        "</h3><p>",
+        links,
+        "</p></article>",
+      ].join("");
+    })
+    .join("");
 
-  return page("Archivo — ATLAS NEWS LAB",
+  return page(
+    "Archivo — ATLAS NEWS LAB",
     "Archivo histórico de corridas READY de RADAR Editorial.",
     [
-      '<main class="shell">', labBar("ARCHIVO EDITORIAL"),
+      '<main class="shell">',
+      labBar("ARCHIVO EDITORIAL"),
       '<header class="masthead"><h1>Archivo LAB</h1><p>Histórico de corridas READY con radarRunId, fecha, modo experimental y sección preservados.</p></header>',
       '<section class="block"><div class="archive">',
       items || '<p class="empty">Sin corridas READY.</p>',
       '</div></section><footer class="footer"><a href="../">← Portada LAB</a><span>ATLAS NEWS LAB</span></footer></main>',
-    ].join(""));
+    ].join(""),
+  );
 }
 
 function buildArticle(runData, section) {
   const meta = runData.sections[section.technical].meta;
   const output = runData.sections[section.technical].output;
-  return page(meta.title + " — ATLAS NEWS LAB", meta.summary,
+  return page(
+    meta.title + " — ATLAS NEWS LAB",
+    meta.summary,
     [
-      '<main class="shell">', labBar(section.label + " · ARCHIVO"),
-      '<header class="hero"><p class="eyebrow">', esc(section.label), " · ",
-      esc(dateLabel(runData.run.editorialDate)), "</p><h1>", esc(meta.title),
-      '</h1><p class="deck">', esc(meta.summary), "</p></header>",
+      '<main class="shell">',
+      labBar(section.label + " · ARCHIVO"),
+      '<header class="hero"><p class="eyebrow">',
+      esc(section.label),
+      " · ",
+      esc(dateLabel(runData.run.editorialDate)),
+      "</p><h1>",
+      esc(meta.title),
+      '</h1><p class="deck">',
+      esc(meta.summary),
+      "</p></header>",
       identity(runData.run),
-      '<div class="meta"><div><h2>Etiquetas</h2>', chips(meta),
-      '</div><div><h2>Identidad</h2><p><code>', esc(runData.run.radarRunId),
-      "</code><br><code>mode=", esc(runData.run.mode),
-      "</code><br><code>experimentMode=", esc(runData.run.experimentMode),
-      "</code></p></div></div><article class=\"article\">",
-      renderMarkdown(output), "</article>", sources(meta),
+      '<div class="meta"><div><h2>Etiquetas</h2>',
+      chips(meta),
+      "</div><div><h2>Identidad</h2><p><code>",
+      esc(runData.run.radarRunId),
+      "</code><br><code>mode=",
+      esc(runData.run.mode),
+      "</code><br><code>experimentMode=",
+      esc(runData.run.experimentMode),
+      '</code></p></div></div><article class="article">',
+      renderMarkdown(output),
+      "</article>",
+      sources(meta),
       '<div class="trace"><a href="../../../trazabilidad/',
       esc(runData.run.radarRunId),
       '/">Trazabilidad de la corrida</a><a href="../../../runs/',
-      esc(runData.run.radarRunId), "/", section.technical,
+      esc(runData.run.radarRunId),
+      "/",
+      section.technical,
       '/output.md">Markdown original</a></div><footer class="footer"><a href="../../../',
-      section.visible, '/">← Volver a ', esc(section.label),
+      section.visible,
+      '/">← Volver a ',
+      esc(section.label),
       '</a><a href="../../../">Portada LAB</a></footer></main>',
-    ].join(""));
+    ].join(""),
+  );
 }
 
 function buildTrace(runData) {
   const queries = Array.isArray(runData.searchLog.entries)
-    ? runData.searchLog.entries : [];
+    ? runData.searchLog.entries
+    : [];
   const candidates = Array.isArray(runData.candidates.candidates)
-    ? runData.candidates.candidates : [];
-  const queryRows = queries.map((entry) =>
-    "<tr><td>" + esc(entry.section) + "</td><td>" + esc(entry.query) +
-    "</td><td>" + esc(entry.executedAt) + "</td><td>" +
-    esc(entry.resultCount) + "</td></tr>"
-  ).join("");
-  const candidateRows = candidates.map((candidate) =>
-    "<tr><td>" + esc(candidate.section) + "</td><td>" +
-    esc(candidate.titleOriginal) + "</td><td>" + esc(candidate.sourceName) +
-    "</td><td>" + (candidate.selected ? "sí" : "no") + "</td><td>" +
-    esc(candidate.selectionStage) + "</td></tr>"
-  ).join("");
+    ? runData.candidates.candidates
+    : [];
+  const queryRows = queries
+    .map(
+      (entry) =>
+        "<tr><td>" +
+        esc(entry.section) +
+        "</td><td>" +
+        esc(entry.query) +
+        "</td><td>" +
+        esc(entry.executedAt) +
+        "</td><td>" +
+        esc(entry.resultCount) +
+        "</td></tr>",
+    )
+    .join("");
+  const candidateRows = candidates
+    .map(
+      (candidate) =>
+        "<tr><td>" +
+        esc(candidate.section) +
+        "</td><td>" +
+        esc(candidate.titleOriginal) +
+        "</td><td>" +
+        esc(candidate.sourceName) +
+        "</td><td>" +
+        (candidate.selected ? "sí" : "no") +
+        "</td><td>" +
+        esc(candidate.selectionStage) +
+        "</td></tr>",
+    )
+    .join("");
   const base = PUBLIC_BASE + "runs/" + runData.run.radarRunId;
 
-  return page("Trazabilidad " + runData.run.radarRunId + " — ATLAS NEWS LAB",
+  return page(
+    "Trazabilidad " + runData.run.radarRunId + " — ATLAS NEWS LAB",
     "Trazabilidad técnica de una corrida RADAR Editorial.",
     [
-      '<main class="shell">', labBar("TRAZABILIDAD"),
+      '<main class="shell">',
+      labBar("TRAZABILIDAD"),
       '<header class="masthead"><h1>Trazabilidad</h1><p>Zona técnica secundaria. La lectura editorial permanece separada de estos artefactos.</p></header>',
       identity(runData.run),
       '<section class="block"><h2 class="section-title">Búsquedas registradas</h2><table class="trace-table"><thead><tr><th>Sección</th><th>Query</th><th>Ejecutada</th><th>Resultados</th></tr></thead><tbody>',
       queryRows,
       '</tbody></table></section><section class="block"><h2 class="section-title">Candidatos</h2><table class="trace-table"><thead><tr><th>Sección</th><th>Título original</th><th>Fuente</th><th>Seleccionado</th><th>Etapa</th></tr></thead><tbody>',
       candidateRows,
-      '</tbody></table></section><div class="trace"><a href="', base,
-      '/search-log.json">search-log.json</a><a href="', base,
-      '/candidates.json">candidates.json</a><a href="', base,
-      '/result.json">result.json</a><a href="', base,
+      '</tbody></table></section><div class="trace"><a href="',
+      base,
+      '/search-log.json">search-log.json</a><a href="',
+      base,
+      '/candidates.json">candidates.json</a><a href="',
+      base,
+      '/result.json">result.json</a><a href="',
+      base,
       '/publish-request.json">publish-request.json</a></div><footer class="footer"><a href="../../">← Portada LAB</a><span>Zona técnica</span></footer></main>',
-    ].join(""));
+    ].join(""),
+  );
 }
 
 async function write(file, content) {
@@ -396,8 +535,11 @@ async function write(file, content) {
 
 export async function buildEditorialSurface(runtimeRoot, outputRoot) {
   const latest = await readJson(path.join(runtimeRoot, "latest.json"));
-  if (latest.status !== "READY" || latest.mode !== "LAB_ONLY" ||
-      latest.productionWritesAllowed !== false) {
+  if (
+    latest.status !== "READY" ||
+    latest.mode !== "LAB_ONLY" ||
+    latest.productionWritesAllowed !== false
+  ) {
     throw new Error("latest.json no representa una corrida READY LAB_ONLY");
   }
 
@@ -405,35 +547,52 @@ export async function buildEditorialSurface(runtimeRoot, outputRoot) {
   const current = await readReadyRun(
     path.join(runtimeRoot, "runs", latest.radarRunId),
   );
-  if (current.run.radarRunId !== latest.radarRunId ||
-      current.run.sourceMainCommit !== latest.sourceMainCommit) {
+  if (
+    current.run.radarRunId !== latest.radarRunId ||
+    current.run.sourceMainCommit !== latest.sourceMainCommit
+  ) {
     throw new Error("latest.json no coincide con identidad del run");
   }
 
   const history = await collectHistory(runtimeRoot);
-  if (!history.some((item) =>
-    item.run.radarRunId === current.run.radarRunId)) {
+  if (!history.some((item) => item.run.radarRunId === current.run.radarRunId)) {
     throw new Error("la corrida latest READY no aparece en history validado");
   }
 
   await fs.rm(outputRoot, { recursive: true, force: true });
-  await write(path.join(outputRoot, "current", "index.html"),
-    buildHome(current, history));
-  await write(path.join(outputRoot, "current", "archivo", "index.html"),
-    buildArchiveIndex(history));
+  await write(
+    path.join(outputRoot, "current", "index.html"),
+    buildHome(current, history),
+  );
+  await write(
+    path.join(outputRoot, "current", "archivo", "index.html"),
+    buildArchiveIndex(history),
+  );
 
   for (const section of SECTIONS) {
-    await write(path.join(outputRoot, "current", section.visible, "index.html"),
-      buildSection(current, history, section));
+    await write(
+      path.join(outputRoot, "current", section.visible, "index.html"),
+      buildSection(current, history, section),
+    );
   }
 
   for (const item of history) {
     for (const section of SECTIONS) {
-      await write(path.join(outputRoot, "history", item.run.radarRunId,
-        section.visible, "index.html"), buildArticle(item, section));
+      await write(
+        path.join(
+          outputRoot,
+          "history",
+          item.run.radarRunId,
+          section.visible,
+          "index.html",
+        ),
+        buildArticle(item, section),
+      );
     }
-    await write(path.join(outputRoot, "trace", item.run.radarRunId,
-      "index.html"), buildTrace(item));
+    await write(
+      path.join(outputRoot, "trace", item.run.radarRunId, "index.html"),
+      buildTrace(item),
+    );
   }
 
   const manifest = {
@@ -445,11 +604,18 @@ export async function buildEditorialSurface(runtimeRoot, outputRoot) {
     sourceMainCommit: current.run.sourceMainCommit,
     historyRunIds: history.map((item) => item.run.radarRunId),
   };
-  await write(path.join(outputRoot, "surface-manifest.json"),
-    JSON.stringify(manifest, null, 2) + "\n");
+  await write(
+    path.join(outputRoot, "surface-manifest.json"),
+    JSON.stringify(manifest, null, 2) + "\n",
+  );
 
-  console.log("RADAR EDITORIAL SURFACE WRITTEN — " +
-    current.run.radarRunId + " · " + history.length + " READY");
+  console.log(
+    "RADAR EDITORIAL SURFACE WRITTEN — " +
+      current.run.radarRunId +
+      " · " +
+      history.length +
+      " READY",
+  );
   return manifest;
 }
 
@@ -457,8 +623,12 @@ async function main() {
   const args = process.argv.slice(2);
   const runtimeIndex = args.indexOf("--runtime-root");
   const outputIndex = args.indexOf("--output");
-  if (runtimeIndex < 0 || outputIndex < 0 ||
-      !args[runtimeIndex + 1] || !args[outputIndex + 1]) {
+  if (
+    runtimeIndex < 0 ||
+    outputIndex < 0 ||
+    !args[runtimeIndex + 1] ||
+    !args[outputIndex + 1]
+  ) {
     throw new Error(
       "uso: build-editorial-surface.mjs --runtime-root DIR --output DIR",
     );
@@ -466,8 +636,10 @@ async function main() {
   await buildEditorialSurface(args[runtimeIndex + 1], args[outputIndex + 1]);
 }
 
-if (process.argv[1] &&
-    import.meta.url === pathToFileURL(process.argv[1]).href) {
+if (
+  process.argv[1] &&
+  import.meta.url === pathToFileURL(process.argv[1]).href
+) {
   main().catch((error) => {
     console.error("RADAR EDITORIAL SURFACE FAIL: " + error.message);
     process.exit(1);
