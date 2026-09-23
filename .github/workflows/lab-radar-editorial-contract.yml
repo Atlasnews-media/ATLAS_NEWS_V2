@@ -62,12 +62,25 @@ jobs:
         run: bash scripts/lab/radar-editorial/test-public-concurrency.sh
 
       - name: Comprobar formato RADAR
-        run: >-
-          npx prettier --check
-          "lab/radar-editorial/**/*.{json,md}"
-          "scripts/lab/radar-editorial/*.mjs"
-          ".github/workflows/lab-radar-editorial-*.yml"
-          --ignore-path /dev/null
+        run: |
+          set -euo pipefail
+          npx prettier --write \
+            "lab/radar-editorial/**/*.{json,md}" \
+            "scripts/lab/radar-editorial/*.mjs" \
+            ".github/workflows/lab-radar-editorial-*.yml" \
+            --ignore-path /dev/null
+          git diff -- \
+            "lab/radar-editorial" \
+            "scripts/lab/radar-editorial" \
+            ".github/workflows/lab-radar-editorial-contract.yml" \
+            ".github/workflows/lab-radar-editorial-runtime.yml" \
+            ".github/workflows/lab-radar-editorial-publish.yml"
+          git diff --exit-code -- \
+            "lab/radar-editorial" \
+            "scripts/lab/radar-editorial" \
+            ".github/workflows/lab-radar-editorial-contract.yml" \
+            ".github/workflows/lab-radar-editorial-runtime.yml" \
+            ".github/workflows/lab-radar-editorial-publish.yml"
 
       - name: Comprobar sintaxis shell
         run: bash -n scripts/lab/radar-editorial/test-public-concurrency.sh
