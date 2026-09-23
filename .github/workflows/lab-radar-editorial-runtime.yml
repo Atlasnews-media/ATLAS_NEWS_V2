@@ -1,0 +1,49 @@
+name: LAB — RADAR Editorial runtime gate
+
+on:
+  push:
+    branches:
+      - "radar-runtime/editorial"
+
+permissions:
+  contents: read
+
+concurrency:
+  group: lab-radar-editorial-runtime
+  cancel-in-progress: false
+
+jobs:
+  validate-runtime:
+    name: Scope + identidad RADAR
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Checkout rama runtime
+        uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: Gate fail-closed de rama y scope
+        run: |
+          set -euo pipefail
+          test "$GITHUB_REF_NAME" = "radar-runtime/editorial"
+          before="${{ github.event.before }}"
+          if [[ "$before" =~ ^0+$ ]] || ! git cat-file -e "${before}^{commit}" 2>/dev/null; then
+            git diff-tree --no-commit-id --name-only -r "$GITHUB_SHA"
+          else
+            git diff --name-only "$before" "$GITHUB_SHA"
+          fi | node scripts/lab/radar-editorial/assert-runtime-scope.mjs
+
+      - name: Exigir artefacto runtime
+        run: test -f lab/radar-editorial/runtime/latest.json
+
+      - name: Validar contrato RADAR
+        run: node scripts/lab/radar-editorial/validate-radar-artifact.mjs lab/radar-editorial/runtime/latest.json
+
+      - name: Validar estado RADAR
+        run: node scripts/lab/radar-editorial/validate-radar-state.mjs lab/radar-editorial/state/radar-state.json

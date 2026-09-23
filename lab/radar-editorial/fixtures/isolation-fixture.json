@@ -1,0 +1,11 @@
+{
+  "schemaVersion": 1,
+  "radarRunId": "RADAR-ARCH-FIXTURE-20260923-A",
+  "sourceMainCommit": "8c2b96f634e9e539742d965bd7196ca0e4bbc896",
+  "radarStateVersion": "radar-state-v1",
+  "editorialDate": "2026-09-23",
+  "mode": "LAB_ONLY",
+  "status": "READY",
+  "productionWritesAllowed": false,
+  "message": "RADAR isolation fixture"
+}
