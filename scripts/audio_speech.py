@@ -427,6 +427,22 @@ def normalize_for_kokoro_dora(
     return normalize_for_speech(text, reference_date)
 
 
+def normalize_dora_longform_paragraphs(
+    text: str,
+    reference_date: str | None = None,
+) -> list[str]:
+    """Normaliza Portada por párrafos para evitar chunking arbitrario de Kokoro."""
+    paragraphs = [
+        part.strip()
+        for part in re.split(r"\n\s*\n+", str(text))
+        if part.strip()
+    ]
+    return [
+        normalize_for_kokoro_dora(paragraph, reference_date)
+        for paragraph in paragraphs
+    ]
+
+
 def is_question(text: str) -> bool:
     stripped = str(text).strip()
     return stripped.startswith("¿") or stripped.endswith("?")
