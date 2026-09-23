@@ -71,23 +71,13 @@ jobs:
           node --check scripts/lab/radar-editorial/build-baseline-view.mjs
           node --check scripts/lab/radar-editorial/verify-baseline-publication.mjs
 
-      - name: Emitir formato canónico BASELINE
-        run: |
-          set -euo pipefail
-          files=(
-            "scripts/lab/radar-editorial/build-baseline-view.mjs"
-            "scripts/lab/radar-editorial/test-baseline-contract.mjs"
-            "scripts/lab/radar-editorial/validate-baseline-run.mjs"
-            "scripts/lab/radar-editorial/verify-baseline-publication.mjs"
-          )
-          npx prettier --write "${files[@]}"
-          for file in "${files[@]}"; do
-            echo "BASE64_FILE_BEGIN $file"
-            base64 -w0 "$file"
-            echo
-            echo "BASE64_FILE_END $file"
-          done
-          exit 1
+      - name: Comprobar formato RADAR
+        run: >-
+          npx prettier --check
+          "lab/radar-editorial/**/*.{json,md}"
+          "scripts/lab/radar-editorial/*.mjs"
+          ".github/workflows/lab-radar-editorial-*.yml"
+          --ignore-path /dev/null
 
       - name: Comprobar sintaxis shell
         run: bash -n scripts/lab/radar-editorial/test-public-concurrency.sh
