@@ -9,7 +9,7 @@ on:
       - ".github/workflows/lab-radar-editorial-*.yml"
 
 permissions:
-  contents: write
+  contents: read
 
 concurrency:
   group: lab-radar-editorial-contract-${{ github.event.pull_request.number }}
@@ -71,27 +71,23 @@ jobs:
           node --check scripts/lab/radar-editorial/build-baseline-view.mjs
           node --check scripts/lab/radar-editorial/verify-baseline-publication.mjs
 
-      - name: Formatear scripts BASELINE y persistir en rama PR
-        env:
-          PR_BRANCH: ${{ github.head_ref }}
+      - name: Emitir formato canónico BASELINE
         run: |
           set -euo pipefail
-          npx prettier --write \
-            "scripts/lab/radar-editorial/build-baseline-view.mjs" \
-            "scripts/lab/radar-editorial/test-baseline-contract.mjs" \
-            "scripts/lab/radar-editorial/validate-baseline-run.mjs" \
+          files=(
+            "scripts/lab/radar-editorial/build-baseline-view.mjs"
+            "scripts/lab/radar-editorial/test-baseline-contract.mjs"
+            "scripts/lab/radar-editorial/validate-baseline-run.mjs"
             "scripts/lab/radar-editorial/verify-baseline-publication.mjs"
-          git config user.name "ATLAS NEWS LAB Formatter"
-          git config user.email "actions@users.noreply.github.com"
-          git add -- \
-            "scripts/lab/radar-editorial/build-baseline-view.mjs" \
-            "scripts/lab/radar-editorial/test-baseline-contract.mjs" \
-            "scripts/lab/radar-editorial/validate-baseline-run.mjs" \
-            "scripts/lab/radar-editorial/verify-baseline-publication.mjs"
-          if ! git diff --cached --quiet; then
-            git commit -m "LAB RADAR — aplica formato canónico baseline"
-            git push origin "HEAD:$PR_BRANCH"
-          fi
+          )
+          npx prettier --write "${files[@]}"
+          for file in "${files[@]}"; do
+            echo "BASE64_FILE_BEGIN $file"
+            base64 -w0 "$file"
+            echo
+            echo "BASE64_FILE_END $file"
+          done
+          exit 1
 
       - name: Comprobar sintaxis shell
         run: bash -n scripts/lab/radar-editorial/test-public-concurrency.sh
