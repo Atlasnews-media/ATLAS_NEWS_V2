@@ -29,6 +29,9 @@ jobs:
         with:
           node-version: "22"
 
+      - name: Instalar dependencias
+        run: npm ci
+
       - name: Validar fixture y casos A-C
         run: node scripts/lab/radar-editorial/test-radar-contract.mjs
 
