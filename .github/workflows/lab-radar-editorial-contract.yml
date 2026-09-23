@@ -19,7 +19,7 @@ jobs:
   isolation-contract:
     name: Validar perímetro RADAR
     runs-on: ubuntu-latest
-    timeout-minutes: 8
+    timeout-minutes: 10
     steps:
       - name: Checkout PR
         uses: actions/checkout@v5
@@ -32,8 +32,11 @@ jobs:
       - name: Instalar dependencias
         run: npm ci
 
-      - name: Validar fixture y casos A-C
+      - name: Validar fixture de aislamiento y casos A-C
         run: node scripts/lab/radar-editorial/test-radar-contract.mjs
+
+      - name: Validar contrato BASELINE
+        run: node scripts/lab/radar-editorial/test-baseline-contract.mjs
 
       - name: Validar bootstrap de estado
         run: node scripts/lab/radar-editorial/validate-radar-state.mjs lab/radar-editorial/state/radar-state.json
@@ -60,6 +63,13 @@ jobs:
 
       - name: Caso E — simular escritor lateral concurrente
         run: bash scripts/lab/radar-editorial/test-public-concurrency.sh
+
+      - name: Comprobar sintaxis de scripts BASELINE
+        run: |
+          set -euo pipefail
+          node --check scripts/lab/radar-editorial/validate-baseline-run.mjs
+          node --check scripts/lab/radar-editorial/build-baseline-view.mjs
+          node --check scripts/lab/radar-editorial/verify-baseline-publication.mjs
 
       - name: Comprobar formato RADAR
         run: >-
