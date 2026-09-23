@@ -438,7 +438,7 @@ const marketsVisual = latestMarkets
           url.origin === window.location.origin &&
           supportsPanelPath(url.pathname)
         ) {
-          return url.pathname;
+          return `${url.pathname}${url.search}${url.hash}`;
         }
       } catch {
         return "/";
@@ -532,9 +532,14 @@ const marketsVisual = latestMarkets
         return;
       }
 
+      const requestedUrl = new URL(requestedPath, window.location.origin);
+      if (!supportsPanelPath(requestedUrl.pathname)) return;
+
       const targetPath =
-        requestedPath === "/" ? DEFAULT_PANEL_PATH : requestedPath;
-      if (!supportsPanelPath(targetPath)) return;
+        requestedUrl.pathname === "/"
+          ? DEFAULT_PANEL_PATH
+          : `${requestedUrl.pathname}${requestedUrl.search}`;
+      const targetHash = requestedUrl.hash;
 
       activeRequest?.abort();
       activeRequest = new AbortController();
@@ -568,10 +573,30 @@ const marketsVisual = latestMarkets
 
         panelContent.innerHTML = sourceContent.innerHTML;
         activatePanelScripts(panelContent);
-        panel.scrollTo({ top: 0, behavior: "auto" });
+
+        const targetId = targetHash
+          ? decodeURIComponent(targetHash.slice(1))
+          : undefined;
+        const anchorTarget = targetId
+          ? Array.from(
+              panelContent.querySelectorAll<HTMLElement>("[id]"),
+            ).find((element) => element.id === targetId)
+          : undefined;
+
+        if (anchorTarget) {
+          const panelTop = panel.getBoundingClientRect().top;
+          const targetTop = anchorTarget.getBoundingClientRect().top;
+          panel.scrollTo({
+            top: panel.scrollTop + targetTop - panelTop - 16,
+            behavior: "auto",
+          });
+        } else {
+          panel.scrollTo({ top: 0, behavior: "auto" });
+        }
+
         panelStatus.hidden = true;
         panel.removeAttribute("aria-busy");
-        syncPrimaryNavigation(requestedPath);
+        syncPrimaryNavigation(requestedUrl.pathname);
 
         if (options.pushHistory) updateHistory(requestedPath);
 
@@ -615,7 +640,9 @@ const marketsVisual = latestMarkets
       }
 
       event.preventDefault();
-      void loadPanel(url.pathname, { pushHistory: true });
+      void loadPanel(`${url.pathname}${url.search}${url.hash}`, {
+        pushHistory: true,
+      });
     };
 
     if (panel && panelContent && panelStatus) {
