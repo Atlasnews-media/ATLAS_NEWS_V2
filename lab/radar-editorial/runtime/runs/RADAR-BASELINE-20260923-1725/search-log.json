@@ -30,6 +30,30 @@
       "executedAt": "2026-09-23T17:25:10-03:00",
       "resultCount": 2,
       "countMeaning": "retainedCandidates"
+    },
+    {
+      "queryId": "n-q1",
+      "section": "national",
+      "query": "23 septiembre 2026 Chile PIB regional Banco Central siete regiones segundo trimestre",
+      "executedAt": "2026-09-23T17:27:00-03:00",
+      "resultCount": 2,
+      "countMeaning": "retainedCandidates"
+    },
+    {
+      "queryId": "n-q2",
+      "section": "national",
+      "query": "23 septiembre 2026 Chile empleo inversión seguridad gobierno noticias nacional hoy",
+      "executedAt": "2026-09-23T17:27:00-03:00",
+      "resultCount": 2,
+      "countMeaning": "retainedCandidates"
+    },
+    {
+      "queryId": "n-q3",
+      "section": "national",
+      "query": "23 septiembre 2026 Chile presupuesto 2027 reforma mercado capitales productividad hoy",
+      "executedAt": "2026-09-23T17:27:00-03:00",
+      "resultCount": 1,
+      "countMeaning": "retainedCandidates"
     }
   ]
 }

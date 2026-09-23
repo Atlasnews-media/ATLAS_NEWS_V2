@@ -1,0 +1,57 @@
+{
+  "schemaVersion": 1,
+  "radarRunId": "RADAR-BASELINE-20260923-1725",
+  "sourceMainCommit": "0a29bf17e396e5d24d5088a3ed366023e1d1eef4",
+  "radarStateVersion": "radar-state-v1",
+  "editorialDate": "2026-09-23",
+  "mode": "LAB_ONLY",
+  "experimentMode": "BASELINE",
+  "section": "national",
+  "status": "PASS",
+  "startedAt": "2026-09-23T17:26:40-03:00",
+  "completedAt": "2026-09-23T17:29:22-03:00",
+  "title": "PIB regional expone una recuperación desigual y la minería concentra el retroceso",
+  "summary": "Siete regiones se contrajeron en el segundo trimestre y la zona norte explicó buena parte del resultado, mientras el debate por inversión y empleo busca acelerar proyectos y formalización.",
+  "tags": [
+    "chile",
+    "actividad",
+    "regiones",
+    "mineria",
+    "empleo"
+  ],
+  "sources": [
+    {
+      "name": "Banco Central de Chile — PIB Regional II trimestre 2026",
+      "url": "https://www.bcentral.cl/web/banco-central/contenido/-/detalle/prensa/nota-de-prensa/producto-interno-bruto-regional-segundo-trimestre-2026",
+      "publishedAt": null
+    },
+    {
+      "name": "Emol — Trabajo 3x3 e inversión",
+      "url": "https://www.emol.com/noticias/Economia/2026/09/22/1212137/empresarios-y-sindicatos-inversion.html",
+      "publishedAt": "2026-09-22T16:26:00-03:00"
+    }
+  ],
+  "highlights": [
+    {
+      "label": "Siete regiones retroceden en el segundo trimestre",
+      "text": "El PIB nacional cayó 0,2% y la macrozona norte tuvo la principal incidencia negativa."
+    },
+    {
+      "label": "La minería vuelve a explicar la divergencia territorial",
+      "text": "Menor actividad cuprífera golpeó especialmente a regiones del norte y también incidió en zonas del centro sur."
+    },
+    {
+      "label": "Inversión y empleo ganan espacio en la agenda interna",
+      "text": "Empresarios y representantes sindicales abrieron una mesa con foco en proyectos, permisos, capacitación y empleo formal."
+    }
+  ],
+  "selectedCandidateIds": [
+    "n-pib-regional",
+    "n-sofofa-empleo"
+  ],
+  "discardedCandidateIds": [
+    "n-kast-onu",
+    "n-cmf-multa"
+  ],
+  "outputPath": "lab/radar-editorial/runtime/runs/RADAR-BASELINE-20260923-1725/national/output.md"
+}

@@ -71,6 +71,58 @@
       "retrievalOrigin": "g-q3",
       "selected": false,
       "selectionStage": "screened-out"
+    },
+    {
+      "candidateId": "n-pib-regional",
+      "section": "national",
+      "titleOriginal": "Producto Interno Bruto Regional Segundo Trimestre 2026",
+      "sourceName": "Banco Central de Chile",
+      "sourceUrl": "https://www.bcentral.cl/web/banco-central/contenido/-/detalle/prensa/nota-de-prensa/producto-interno-bruto-regional-segundo-trimestre-2026",
+      "publishedAt": null,
+      "discoveredAt": "2026-09-23T17:27:00-03:00",
+      "description": "El PIB nacional cayó 0,2% en el segundo trimestre y siete de dieciséis regiones registraron contracción, con la macrozona norte como principal incidencia negativa y la minería como factor relevante.",
+      "retrievalOrigin": "n-q1",
+      "selected": true,
+      "selectionStage": "selected-final"
+    },
+    {
+      "candidateId": "n-sofofa-empleo",
+      "section": "national",
+      "titleOriginal": "Empresarios y sindicatos coinciden en necesidad de más inversión: \"Son mucho más los acuerdos que los desacuerdos\"",
+      "sourceName": "Emol",
+      "sourceUrl": "https://www.emol.com/noticias/Economia/2026/09/22/1212137/empresarios-y-sindicatos-inversion.html",
+      "publishedAt": "2026-09-22T16:26:00-03:00",
+      "discoveredAt": "2026-09-23T17:27:00-03:00",
+      "description": "El primer encuentro Trabajo 3x3 de Sofofa reunió a representantes empresariales y sindicales con foco en inversión, crecimiento, permisos, capacitación y empleo formal.",
+      "retrievalOrigin": "n-q2",
+      "selected": true,
+      "selectionStage": "selected-final"
+    },
+    {
+      "candidateId": "n-kast-onu",
+      "section": "national",
+      "titleOriginal": "\"Chile está de vuelta\": Juicio al primer discurso de Kast ante la ONU que incluyó reproche al organismo",
+      "sourceName": "Emol",
+      "sourceUrl": "https://www.emol.com/noticias/Nacional/2026/09/23/1212150/analisis-discurso-kast-onu.html",
+      "publishedAt": "2026-09-23T08:03:00-03:00",
+      "discoveredAt": "2026-09-23T17:27:00-03:00",
+      "description": "El discurso presidencial ante la ONU combinó una señal política interna con un mensaje de apertura a la inversión y una crítica al funcionamiento del organismo multilateral.",
+      "retrievalOrigin": "n-q2",
+      "selected": false,
+      "selectionStage": "screened-out"
+    },
+    {
+      "candidateId": "n-cmf-multa",
+      "section": "national",
+      "titleOriginal": "CMF multa con $1.025 millones a sociedad por realizar 34 mil operaciones ficticias en la Bolsa de Santiago",
+      "sourceName": "Emol",
+      "sourceUrl": "https://www.emol.com/noticias/Economia/2026/09/22/1212124/cmf-millonaria-multa.html",
+      "publishedAt": "2026-09-22T14:00:00-03:00",
+      "discoveredAt": "2026-09-23T17:27:00-03:00",
+      "description": "La CMF sancionó a una sociedad por operaciones ficticias y manipulación de precios, un caso relevante para integridad de mercado pero menos central para el panorama macro nacional del día.",
+      "retrievalOrigin": "n-q3",
+      "selected": false,
+      "selectionStage": "screened-out"
     }
   ]
 }
