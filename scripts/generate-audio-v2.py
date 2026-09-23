@@ -24,6 +24,7 @@ from audio_speech import (
     LEXICON_VERSION,
     SPEECH_NORMALIZER_VERSION,
     is_question,
+    normalize_dora_longform_paragraphs,
     normalize_for_kokoro_dora,
     normalize_for_speech,
 )
@@ -52,6 +53,9 @@ QUESTION_PITCH_CROSSFADE_SECONDS = float(
 MIN_AUDIO_BYTES = 10_000
 MIN_DURATION_SECONDS = 5.0
 QUESTION_PROSODY_VERSION = 2
+COVER_RENDER_VERSION = 2
+COVER_SENTENCE_PAUSE_SECONDS = 0.08
+COVER_PARAGRAPH_PAUSE_SECONDS = 0.22
 ALEXC_DIALOGUE_RHYTHM_VERSION = 2
 ALEXC_SENTENCE_PAUSE_SECONDS = 0.55
 FALLBACK_PROFILE_VERSION = f"{VOICE_PROFILE_VERSION}-fallback-kokoro"
@@ -101,6 +105,48 @@ def synthesize(
     if not chunks:
         raise RuntimeError(f"Kokoro no devolvió audio para {voice}.")
     return np.concatenate(chunks)
+
+
+def synthesize_cover_dora(text: str, reference_date: str) -> np.ndarray:
+    """Renderiza Portada en segmentos cortos para evitar cortes internos de cifras."""
+    paragraphs = normalize_dora_longform_paragraphs(text, reference_date)
+    if not paragraphs:
+        raise RuntimeError("El guion de Portada no produjo párrafos para Dora.")
+
+    sentence_pause = np.zeros(
+        int(SAMPLE_RATE * COVER_SENTENCE_PAUSE_SECONDS), dtype=np.float32
+    )
+    paragraph_pause = np.zeros(
+        int(SAMPLE_RATE * COVER_PARAGRAPH_PAUSE_SECONDS), dtype=np.float32
+    )
+    parts = []
+
+    for paragraph_index, paragraph in enumerate(paragraphs):
+        sentences = [
+            sentence.strip()
+            for sentence in re.split(
+                r"(?<=[.!?])\s+(?=[A-ZÁÉÍÓÚÑ¿¡0-9])",
+                paragraph,
+            )
+            if sentence.strip()
+        ] or [paragraph]
+
+        if paragraph_index:
+            parts.append(paragraph_pause)
+
+        for sentence_index, sentence in enumerate(sentences):
+            if sentence_index:
+                parts.append(sentence_pause)
+            parts.append(
+                synthesize(
+                    sentence,
+                    "ef_dora",
+                    "e",
+                    reference_date=reference_date,
+                )
+            )
+
+    return np.concatenate(parts)
 
 
 def parse_dialogue(text: str):
@@ -459,12 +505,15 @@ with tempfile.TemporaryDirectory(prefix="atlas-audio-v2-") as temp_dir_name:
         if not cover_text:
             raise RuntimeError("El guion de Portada está vacío.")
         cover_voice = str(cover_plan.get("voice") or "ef_dora")
-        samples = synthesize(
-            cover_text,
-            cover_voice,
-            "e",
-            reference_date=date,
-        )
+        if cover_voice == "ef_dora":
+            samples = synthesize_cover_dora(cover_text, reference_date=date)
+        else:
+            samples = synthesize(
+                cover_text,
+                cover_voice,
+                "e",
+                reference_date=date,
+            )
         cover_filename = f"{date}-resumen-diario.mp3"
         cover_temp = temp_dir / cover_filename
         write_mp3(cover_temp, samples)
@@ -477,6 +526,7 @@ with tempfile.TemporaryDirectory(prefix="atlas-audio-v2-") as temp_dir_name:
             "lexiconVersion": LEXICON_VERSION,
             "lexiconRevision": LEXICON_REVISION,
             "questionProsodyVersion": QUESTION_PROSODY_VERSION,
+            "coverRenderVersion": COVER_RENDER_VERSION,
             "status": "published",
             "date": date,
             "title": cover_plan["title"],
