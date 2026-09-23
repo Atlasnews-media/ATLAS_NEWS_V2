@@ -66,17 +66,27 @@ Si falla Nacional, General queda durable y no existe READY. Si falla Mercados, G
 
 ## Publicación
 
-El publicador aprobado conserva cada corrida en:
+El publicador aprobado conserva los artefactos crudos de cada corrida en:
 
 `/lab/radar-editorial/runs/<radarRunId>/`
 
-y actualiza exclusivamente:
+y mantiene la superficie editorial dentro del mismo ownership RADAR:
 
-- `/lab/radar-editorial/latest.json`
-- `/lab/radar-editorial/index.html`
-- `/lab/radar-editorial/runs/<radarRunId>/**`
+- `/lab/radar-editorial/latest.json`: identidad READY vigente.
+- `/lab/radar-editorial/index.html`: Portada LAB vigente.
+- `/lab/radar-editorial/internacional/`: General visible como Internacional.
+- `/lab/radar-editorial/nacional/`: Nacional vigente.
+- `/lab/radar-editorial/mercados/`: Mercados vigente.
+- `/lab/radar-editorial/archivo/index.html`: archivo editorial de corridas READY.
+- `/lab/radar-editorial/archivo/<radarRunId>/<seccion>/`: pieza histórica estable.
+- `/lab/radar-editorial/trazabilidad/<radarRunId>/`: evidencia técnica secundaria.
+- `/lab/radar-editorial/runs/<radarRunId>/**`: fuente histórica cruda e inmutable.
 
-La publicación histórica es idempotente: si el mismo `radarRunId` ya existe con bytes distintos, el workflow falla.
+La publicación cruda es idempotente: si el mismo `radarRunId` ya existe con bytes distintos, el workflow falla. Las páginas históricas de `archivo/<radarRunId>/` y `trazabilidad/<radarRunId>/` son append-only: una corrida nueva puede actualizar Portada, secciones vigentes e índice de archivo, pero no reescribe una corrida histórica existente.
+
+La superficie se construye exclusivamente desde artefactos READY reales. Una corrida incompleta queda fuera de Portada y archivo. La representación visible no altera `output.md`, no inventa metadata ni incorpora imágenes ausentes.
+
+La exclusión `radar-editorial/` del publicador general `lab-site` forma parte de esta frontera y no puede eliminarse.
 
 ## Futuro productor de las 09:00
 
