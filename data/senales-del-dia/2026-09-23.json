@@ -1,0 +1,78 @@
+{
+  "status": "READY",
+  "date": "2026-09-23",
+  "contract": "atlas-senales-del-dia-v1",
+  "senalesDelDia": {
+    "internacional": [
+      {
+        "slot": "technology",
+        "headline": "Palo Alto lleva modelos frontera a defensa cibernética continua",
+        "deck": "Unit 42 lanzó un servicio que combina modelos de OpenAI, Anthropic y código abierto para buscar, validar y ayudar a corregir vulnerabilidades de forma continua.",
+        "development": "Palo Alto Networks presentó el 22 de septiembre Unit 42 Continuous Frontier AI Defense, un servicio de seguridad ofensiva que usa un arnés multimodelo para probar de manera continua aplicaciones, API, infraestructura cloud, repositorios de código y activos de red. La oferta integra modelos especializados como GPT-5.6-Cyber de OpenAI y Claude Mythos 5 de Anthropic, además de modelos de pesos abiertos. El objetivo declarado es encontrar exposiciones, comprobar si son explotables y priorizar su remediación antes de que un atacante pueda aprovecharlas.\n\nLa señal tecnológica está menos en incorporar un modelo avanzado que en la arquitectura de orquestación. Palo Alto sostiene que, en sus evaluaciones, ningún modelo individual detectó más de 40% de las vulnerabilidades de entornos complejos y que los hallazgos de los modelos líderes se superponen poco. Su respuesta es asignar tareas distintas al modelo que mejor se adapte a cada prueba, combinando resultados con inteligencia de amenazas y especialistas humanos. La compañía afirma haber validado el enfoque durante seis meses y en más de cien trabajos con clientes.\n\nEl servicio ya está disponible globalmente mediante suscripción anual. La prueba relevante será si el enfoque multimodelo mantiene cobertura y velocidad sin disparar falsos positivos, costos de cómputo o riesgos sobre datos sensibles. Si esa capa de enrutamiento logra demostrar ventajas repetibles frente a pruebas puntuales y herramientas tradicionales, la competencia en ciberseguridad con IA podría desplazarse desde qué modelo se utiliza hacia cómo se coordinan varios modelos dentro de un flujo operativo verificable.",
+        "anchor": "palo-alto-defensa-cibernetica-ia-multimodelo",
+        "sources": [
+          {"name": "Palo Alto Networks", "url": "https://www.paloaltonetworks.com/company/press/2026/palo-alto-networks-delivers-anthropic-s-mythos-and-openai-s-gpt-5-6-to-customers-with-unit-42-continuous-frontier-ai-defense"},
+          {"name": "Reuters", "url": "https://www.reuters.com/technology/palo-alto-networks-unveils-ai-powered-cybersecurity-service-using-claude-gpt-2026-09-22/"}
+        ]
+      },
+      {
+        "slot": "world",
+        "headline": "EE.UU., Dinamarca y Groenlandia cierran pacto de seguridad ártica",
+        "deck": "El acuerdo amplía la presencia militar estadounidense en Groenlandia sin alterar su soberanía y refuerza el marco de defensa de la OTAN en el Ártico.",
+        "development": "Estados Unidos, Dinamarca y Groenlandia firmaron el 22 de septiembre en Nueva York un acuerdo que amplía la presencia militar estadounidense en la isla ártica y busca cerrar meses de tensión diplomática. El pacto mantiene a Groenlandia dentro del Reino de Dinamarca y modifica el marco de defensa existente para permitir nuevas instalaciones y una presencia estadounidense más amplia. Entre los emplazamientos señalados están Narsarsuaq, en el sur, y Mestersvig, en la costa oriental, además de mejoras vinculadas a la base espacial de Pituffik.\n\nLa señal internacional está en el cambio desde una disputa territorial hacia un arreglo de seguridad. El acuerdo refuerza el papel de la OTAN y limita la posibilidad de que países ajenos a la alianza establezcan presencia militar en Groenlandia. Para Washington, el territorio es relevante por su ubicación entre Norteamérica y Europa, la vigilancia del Ártico y la defensa antimisiles. Para Copenhague y Nuuk, el texto ofrece una vía para ampliar cooperación sin aceptar una transferencia de soberanía, después de que la idea estadounidense de adquirir la isla deteriorara la relación entre aliados.\n\nLa implementación será la prueba decisiva. Habrá que observar el alcance efectivo de las nuevas instalaciones, su integración con la defensa de la OTAN y la participación de las autoridades groenlandesas en las decisiones posteriores. El pacto reduce una fuente inmediata de fricción entre aliados, pero no elimina la competencia estratégica en el Ártico, donde rutas marítimas, infraestructura, recursos y capacidades militares están adquiriendo mayor peso.",
+        "anchor": "eeuu-dinamarca-groenlandia-pacto-seguridad-artica",
+        "sources": [
+          {"name": "Reuters", "url": "https://www.reuters.com/world/europe/trump-denmark-greenland-sign-deal-bid-end-arctic-standoff-2026-09-22/"},
+          {"name": "Associated Press", "url": "https://apnews.com/article/084ac2a82952c2dff403c48bd3564113"}
+        ]
+      }
+    ],
+    "nacional": [
+      {
+        "slot": "ipsa_company",
+        "headline": "Copec amplía su cartera renovable con dos acuerdos industriales",
+        "deck": "La compañía anunció proyectos con Colun y Weir Minerals que extienden su negocio energético hacia autoconsumo solar y suministro renovable para clientes industriales.",
+        "development": "Copec comunicó el 22 de septiembre dos acuerdos que amplían su oferta de soluciones energéticas para clientes industriales. A través de Copec Flux desarrollará junto a Colun un sistema fotovoltaico para la nueva planta de quesos de la cooperativa en La Unión. El proyecto contempla 4.860 paneles bifaciales sobre más de 21.000 metros cuadrados de techumbre, con 3.159 kWp de potencia instalada y una generación estimada de 3.357 MWh durante su primer año. La instalación será destinada al autoconsumo de la planta.\n\nEn paralelo, Copec EMOAC firmó con Weir Minerals un acuerdo para suministrar energía de origen 100% renovable a parte de sus operaciones. Copec estima que el contrato permitirá evitar aproximadamente 4.637 toneladas de CO2 equivalente. Ambos anuncios corresponden a negocios distintos, pero muestran la misma dirección corporativa: extender la relación con clientes empresariales desde el suministro tradicional de combustibles hacia electricidad renovable, generación distribuida y servicios asociados a la transición energética.\n\nPara una compañía vinculada al IPSA, la relevancia financiera dependerá menos del tamaño aislado de estos contratos que de su capacidad para construir una cartera recurrente y escalable. Las cifras divulgadas no permiten inferir todavía un efecto material sobre resultados consolidados. Los indicadores a seguir son nuevos contratos, capacidad instalada o suministrada, márgenes del negocio y participación de estas soluciones dentro del portafolio energético del grupo.",
+        "anchor": "copec-acuerdos-renovables-colun-weir-minerals",
+        "sources": [
+          {"name": "Copec — proyecto solar con Colun", "url": "https://ww2.copec.cl/empresas/noticias/nuevas-energias/copec-y-colun-impulsan-el-mayor-proyecto-solar-en-techumbre-industrial-del-sur-de-chile"},
+          {"name": "Copec — suministro renovable a Weir Minerals", "url": "https://ww2.copec.cl/empresas/noticias/nuevas-energias/copec-emoac-firma-acuerdo-de-suministro-electrico-100percent-renovable-con-weir-minerals"}
+        ]
+      },
+      {
+        "slot": "policy_economy",
+        "headline": "CMF sanciona manipulación bursátil con multa de UF 25.000",
+        "deck": "El regulador acreditó más de 34 mil operaciones con cotizaciones ficticias y órdenes señuelo destinadas a alterar artificialmente precios en la Bolsa de Santiago.",
+        "development": "La Comisión para el Mercado Financiero informó el 22 de septiembre una multa de UF 25.000 contra Asesorías e Inversiones A&C SpA por infracciones a la Ley de Mercado de Valores. Según la resolución del regulador, la sociedad realizó cotizaciones ficticias y maniobras destinadas a variar artificialmente precios mediante 34.038 operaciones con acciones efectuadas en la Bolsa de Comercio de Santiago entre marzo de 2022 y septiembre de 2024. La CMF cifró en $860,062 millones el beneficio asociado a la conducta sancionada.\n\nEl patrón descrito consistía en ingresar órdenes de compra o venta sin intención real de ejecutarlas y cancelarlas segundos después, una vez que terceros igualaban o mejoraban la postura. Luego se ingresaba una orden en sentido contrario para materializar una operación aprovechando la distorsión creada. La autoridad encuadró estas conductas en las prohibiciones de manipulación de precios y cotizaciones ficticias, cuyo propósito es proteger la formación libre de precios y la autenticidad de las órdenes visibles en el mercado.\n\nLa señal de política financiera está en la aplicación concreta de las reglas de integridad bursátil, no en un cambio normativo. El caso muestra que la supervisión puede reconstruir patrones de órdenes a gran escala y sancionar estrategias que aparentan liquidez o interés negociador inexistente. Hacia adelante importará observar eventuales recursos contra la resolución y si el precedente modifica prácticas de vigilancia, cumplimiento y monitoreo de órdenes en intermediarios y participantes del mercado chileno.",
+        "anchor": "cmf-multa-manipulacion-cotizaciones-ficticias-bolsa",
+        "sources": [
+          {"name": "Comisión para el Mercado Financiero", "url": "https://www.cmfchile.cl/portal/prensa/625/w4-article-113723.html"}
+        ]
+      }
+    ],
+    "mercados": [
+      {
+        "slot": "markets_chile",
+        "headline": "IPSA sube 0,61% con una sesión marcada por alta dispersión sectorial",
+        "deck": "El índice cerró en 11.426,75 puntos mientras energía, telecomunicaciones e industriales retrocedieron, una divergencia que muestra concentración del avance local.",
+        "development": "El IPSA cerró la sesión del 22 de septiembre en 11.426,75 puntos, con un avance diario de 0,61%, después de haber retrocedido 0,21% en la jornada anterior. El movimiento dejó al principal índice chileno con una ganancia acumulada cercana a 8,4% en el año. La lectura agregada, sin embargo, oculta una sesión de alta dispersión: datos de mercado publicados al cierre muestran retrocesos en varios índices sectoriales aun cuando el selectivo general terminó en terreno positivo.\n\nEnergía cayó 2,95%, telecomunicaciones 1,69%, industriales 1,54% y materiales 0,94%, mientras el IPSA avanzó. Esa divergencia sugiere que el rendimiento del índice estuvo concentrado en un grupo de acciones con suficiente ponderación para compensar la debilidad de varios sectores. Para un mercado relativamente concentrado como el chileno, la amplitud importa porque permite distinguir entre una mejora general de valoración y un avance sostenido por pocos componentes.\n\nLa señal a seguir es si la subida gana participación durante las próximas ruedas. Una expansión del número de sectores y acciones en positivo haría más robusto el movimiento; una continuidad de la divergencia mantendría al índice más expuesto a cambios bruscos en sus principales ponderaciones. También será relevante observar el peso chileno, que tuvo un dólar observado de $952, y la evolución del cobre, dos referencias externas que pueden modificar rápidamente el tono de los activos locales.",
+        "anchor": "ipsa-sube-dispersion-sectorial-cierre-22-septiembre",
+        "sources": [
+          {"name": "Santander Inversiones", "url": "https://bancosantanderinversiones.finmarketslive.cl/www/acciones.html"},
+          {"name": "Diario Estrategia", "url": "https://www.diarioestrategia.cl/texto-diario/mostrar/6024663/msci-ipsa-bolsa-santiago-martes-cierra-baja-variacion-061"}
+        ]
+      },
+      {
+        "slot": "markets_global",
+        "headline": "Brasil baja la Selic a 13,75% y mantiene cautela sobre inflación",
+        "deck": "El Copom recortó la tasa por quinta vez consecutiva, pero sus minutas mantienen un tono prudente ante expectativas inflacionarias y riesgos fiscales persistentes.",
+        "development": "El Banco Central de Brasil redujo la Selic en 25 puntos base hasta 13,75% anual en su reunión de septiembre, extendiendo a cinco decisiones consecutivas el ciclo de recortes. Las minutas divulgadas después de la reunión describen una actividad económica que pierde fuerza bajo el efecto de tasas todavía restrictivas, mientras la inflación ha seguido moderándose. El PIB brasileño creció 0,5% en el segundo trimestre y el consumo de los hogares mostró menor dinamismo, señales coherentes con una desaceleración gradual.\n\nEl Copom, sin embargo, evitó convertir esa debilidad en una señal de relajación acelerada. La inflación interanual se ubica en torno a 4,22%, todavía por encima de la meta de 3%, y el comité continúa destacando el desanclaje de expectativas de largo plazo y los riesgos provenientes de la política fiscal. El mensaje es que el tamaño total del ciclo dependerá de nuevos datos y que la tasa seguirá en un nivel restrictivo mientras sea necesario para conducir la inflación hacia el objetivo.\n\nPara mercados globales, Brasil ofrece una referencia importante sobre el margen de los emergentes para recortar tasas cuando la inflación cede pero las condiciones externas siguen exigentes. Un ritmo gradual puede sostener credibilidad y limitar presión sobre el real y la curva local; una desaceleración económica más intensa podría aumentar las demandas por recortes mayores. La próxima reunión del Copom, junto con nuevas lecturas de inflación, actividad y expectativas, permitirá medir cuál de esas fuerzas está dominando.",
+        "anchor": "brasil-selic-1375-copom-cautela-inflacion",
+        "sources": [
+          {"name": "Banco Central do Brasil", "url": "https://www.bcb.gov.br/en/pressdetail/2689/nota"},
+          {"name": "Folha de S.Paulo", "url": "https://www1.folha.uol.com.br/mercado/2026/09/copom-ve-atividade-economica-mais-fraca-sob-efeito-de-juros-altos-e-queda-da-inflacao-mostra-ata.shtml"}
+        ]
+      }
+    ]
+  }
+}
