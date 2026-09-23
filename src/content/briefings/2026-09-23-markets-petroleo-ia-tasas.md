@@ -1,10 +1,10 @@
 ---
 title: "Petróleo cede y la IA lidera, pero las tasas mantienen el filtro de riesgo"
 summary: "Brent baja por sexta sesión ante mejores perspectivas de oferta, mientras tecnología sostiene las bolsas; el dólar firme y el Treasury a diez años bajo 5% muestran que el alivio energético aún convive con condiciones financieras restrictivas."
-publishedAt: "2026-09-23T06:21:00-03:00"
+publishedAt: "2026-09-23T06:46:00-03:00"
 cutoffAt: "2026-09-23T06:20:00-03:00"
 section: "markets"
-status: "draft"
+status: "published"
 tags:
   - mercados
   - petroleo
