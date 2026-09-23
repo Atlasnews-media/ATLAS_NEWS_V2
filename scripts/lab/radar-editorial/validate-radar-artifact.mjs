@@ -96,10 +96,15 @@ export async function readAndValidateRadarArtifact(file) {
 async function main() {
   const file = process.argv[2] ?? "lab/radar-editorial/runtime/latest.json";
   const data = await readAndValidateRadarArtifact(file);
-  console.log(`RADAR CONTRACT PASS — ${data.radarRunId} · ${data.editorialDate}`);
+  console.log(
+    `RADAR CONTRACT PASS — ${data.radarRunId} · ${data.editorialDate}`,
+  );
 }
 
-if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) {
+if (
+  process.argv[1] &&
+  import.meta.url === pathToFileURL(process.argv[1]).href
+) {
   main().catch((error) => {
     console.error(`RADAR CONTRACT FAIL: ${error.message}`);
     process.exit(1);

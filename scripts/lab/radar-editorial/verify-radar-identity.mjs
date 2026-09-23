@@ -30,7 +30,10 @@ async function main() {
   console.log(`RADAR IDENTITY PASS — ${local.radarRunId}`);
 }
 
-if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) {
+if (
+  process.argv[1] &&
+  import.meta.url === pathToFileURL(process.argv[1]).href
+) {
   main().catch((error) => {
     console.error(`RADAR IDENTITY FAIL: ${error.message}`);
     process.exit(1);
