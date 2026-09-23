@@ -1,0 +1,17 @@
+VOZ 1: Los mercados abren este miércoles con una combinación interesante: el petróleo baja por sexta sesión consecutiva, mientras la tecnología vuelve a liderar las bolsas y las tasas siguen actuando como filtro.
+VOZ 2: ¿Cuánto ha cambiado realmente la señal del petróleo?
+VOZ 1: El Brent se mueve alrededor de noventa y ocho dólares con ochenta y tres centavos por barril. La caída responde a mejores perspectivas de oferta, después de que Arabia Saudita reactivara su oleoducto Este-Oeste, y también a expectativas de avances diplomáticos con Irán.
+VOZ 2: ¿Eso significa que la prima geopolítica desapareció?
+VOZ 1: No. Significa que se está comprimiendo una parte de la prima inmediata. La normalización todavía depende de que los flujos saudíes aumenten de manera sostenida y de que no reaparezcan interrupciones en Hormuz u otras rutas. Durante los últimos meses ya vimos episodios de optimismo que luego se revirtieron.
+VOZ 2: Mientras baja el petróleo, la tecnología vuelve a subir. ¿Qué está impulsando ese movimiento?
+VOZ 1: El entusiasmo por inteligencia artificial y semiconductores. Corea del Sur avanza cerca de cero coma nueve por ciento y Taiwán alrededor de cero coma ocho por ciento. El mercado está premiando nuevamente la demanda por aplicaciones de IA y el liderazgo de hardware, mientras el Nasdaq se mantiene cerca de máximos.
+VOZ 2: Entonces parecería un escenario bastante favorable para riesgo.
+VOZ 1: Favorable, pero no completamente relajado. El tercer componente son las tasas. La baja del petróleo ayuda a los Treasury y mantiene el rendimiento a diez años por debajo del umbral de cinco por ciento. Pero funcionarios de la Reserva Federal siguen defendiendo el endurecimiento reciente porque la inflación continúa siendo una preocupación.
+VOZ 2: ¿Y dónde se ve esa cautela?
+VOZ 1: En el dólar. Está firme frente al euro, la libra y el dólar canadiense. El euro ronda uno coma catorce dólares, cerca de mínimos de dos meses, y el dólar está alrededor de ciento cincuenta y siete coma setenta y seis yenes. Es decir, las acciones tecnológicas reciben una señal positiva específica, pero las condiciones financieras globales siguen siendo exigentes.
+VOZ 2: ¿Qué implica esa combinación para la selectividad?
+VOZ 1: Que no basta con que suba el índice. Con tasas altas, el mercado puede seguir favoreciendo empresas capaces de convertir inversión en crecimiento, márgenes y caja. Los modelos más dependientes de financiación continúan expuestos al costo de capital, incluso si el entusiasmo por IA sostiene al sector.
+VOZ 2: ¿Qué deberíamos mirar para saber si este alivio se vuelve más robusto?
+VOZ 1: Primero, si Brent logra consolidarse bajo cien dólares y aumentan de forma verificable las exportaciones saudíes desde Yanbu. Segundo, si el Treasury a diez años permanece bajo cinco por ciento pese a nuevos mensajes de la Fed. Y tercero, si el avance tecnológico se amplía más allá de semiconductores y grandes plataformas.
+VOZ 2: ¿Y qué rompería esta lectura?
+VOZ 1: Una nueva interrupción energética, un repunte fuerte del petróleo o una subida renovada de rendimientos y dólar. En ese caso volveríamos rápidamente a un mercado dominado por inflación y costo de capital. Por ahora, la señal es de alivio energético y liderazgo tecnológico, pero todavía dentro de un régimen de tasas restrictivas.
