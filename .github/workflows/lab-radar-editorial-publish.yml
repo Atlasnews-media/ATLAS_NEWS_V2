@@ -52,7 +52,7 @@ jobs:
             echo "RADAR publisher safe no-op: checkpoint sin handoff READY."
           fi
 
-      - name: Revalidar baseline antes de publicar
+      - name: Revalidar corrida RADAR antes de publicar
         if: steps.eligibility.outputs.eligible == 'true'
         run: |
           set -euo pipefail
@@ -207,7 +207,7 @@ jobs:
           git cat-file -e "origin/main:$target_trace/$run_id/index.html"
           git cat-file -e "origin/main:lab/radar-editorial/surface-manifest.json"
 
-      - name: Verificar identidad remota BASELINE
+      - name: Verificar identidad remota RADAR
         if: steps.eligibility.outputs.eligible == 'true'
         run: >-
           node scripts/lab/radar-editorial/verify-baseline-publication.mjs
