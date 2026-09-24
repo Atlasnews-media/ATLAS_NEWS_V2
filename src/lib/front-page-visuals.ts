@@ -658,6 +658,15 @@ const ENERGY_EXTRA = catalogBatch(
   ENERGY_KEYWORDS,
 );
 
+const GLOBAL_OIL_REFINERY = commonsVisual({
+  file: "Mina-Al-Ahmadi oil refinery night.jpg",
+  alt: "Refinería de petróleo de Mina Al-Ahmadi, Kuwait, iluminada durante la noche.",
+  source: "Wikimedia Commons",
+  author: "Grubb",
+  license: "Dominio público",
+  keywords: ENERGY_KEYWORDS,
+});
+
 const NYSE_HIGHSMITH = commonsVisual({
   file: "No Known Restrictions Trading Floor, New York Stock Exchange (Highsmith LOC) (6718386525).jpg",
   alt: "Piso de operaciones de la Bolsa de Nueva York fotografiado por Carol M. Highsmith.",
@@ -918,6 +927,15 @@ const EURO_BANKNOTES = commonsVisual({
   keywords: FX_KEYWORDS,
 });
 
+const US_DOLLAR_BANKNOTES = commonsVisual({
+  file: "US Dollar banknotes I.jpg",
+  alt: "Billetes de cien dólares estadounidenses en primer plano.",
+  source: "Wikimedia Commons",
+  author: "Milad Mosapoor",
+  license: "Dominio público en Estados Unidos — moneda estadounidense",
+  keywords: FX_KEYWORDS,
+});
+
 const GOLD_BULLION = commonsVisual({
   file: "Gold bullion bars.jpg",
   alt: "Conjunto de lingotes de oro apilados.",
@@ -1138,7 +1156,12 @@ const TREASURY_VISUALS = [
   ...TREASURY_EXTRA,
 ];
 
-const ENERGY_VISUALS = [GULF_CONVOY, GULF_OIL_TERMINAL, ...ENERGY_EXTRA];
+const ENERGY_VISUALS = [
+  GULF_CONVOY,
+  GULF_OIL_TERMINAL,
+  GLOBAL_OIL_REFINERY,
+  ...ENERGY_EXTRA,
+];
 
 const EQUITY_VISUALS = [
   NYSE_HIGHSMITH,
@@ -1167,7 +1190,7 @@ const COPPER_VISUALS = [COPPER_MINE, COPPER_CHUQUICAMATA, ...COPPER_EXTRA];
 const ECB_VISUALS = [ECB_BUILDING, ECB_SKYTOWER];
 const CHINA_VISUALS = [PBOC_HEADQUARTER, PBOC_NEW_HEADQUARTER, SHANGHAI_PUDONG];
 const GLOBAL_TRADE_VISUALS = [SINGAPORE_PORT, HAMBURG_CONTAINER_SHIP];
-const FX_VISUALS = [EURO_BANKNOTES];
+const FX_VISUALS = [EURO_BANKNOTES, US_DOLLAR_BANKNOTES];
 const GOLD_VISUALS = [GOLD_BULLION];
 const CHILE_INSTITUTION_VISUALS = [
   LA_MONEDA,
