@@ -32,13 +32,17 @@ async function main() {
     !["BASELINE", "RADAR_JEV"].includes(local.experimentMode) ||
     remote.experimentMode !== local.experimentMode
   ) {
-    throw new Error("verificación remota recibió modos experimentales incompatibles");
+    throw new Error(
+      "verificación remota recibió modos experimentales incompatibles",
+    );
   }
   if (
     request.status !== "READY" ||
     request.experimentMode !== local.experimentMode
   ) {
-    throw new Error("publish-request remoto no está READY para el modo vigente");
+    throw new Error(
+      "publish-request remoto no está READY para el modo vigente",
+    );
   }
   if (request.productionWritesAllowed !== false) {
     throw new Error("publish-request remoto permite producción");
