@@ -193,18 +193,18 @@ const marketsSignalItems = marketsSignals.map((signal) => {
           </header>
 
           <div class="signal-developments__list">
-            {marketsSignalItems.map(({ signal, visual: signalVisual }) => (
+            {marketsSignalItems.map((item) => (
               <article
                 class="signal-development"
-                id={signal.anchor}
-                aria-labelledby={`${signal.anchor}-title`}
+                id={item.signal.anchor}
+                aria-labelledby={`${item.signal.anchor}-title`}
               >
                 <p class="signal-development__context">
                   Señales del día · Mercados
                 </p>
                 <nav
                   class="signal-development__nav"
-                  aria-label={`Navegación desde ${signal.headline}`}
+                  aria-label={`Navegación desde ${item.signal.headline}`}
                 >
                   <a class="signal-development__back" href="/#senales-del-dia">
                     ← Volver a Señales del Día
@@ -212,37 +212,38 @@ const marketsSignalItems = marketsSignals.map((signal) => {
                   <a href="/">Ir a Portada</a>
                   <a href="/mercados/">Ir a Mercados</a>
                 </nav>
-                <h3 id={`${signal.anchor}-title`}>{signal.headline}</h3>
+                <h3 id={`${item.signal.anchor}-title`}>{item.signal.headline}</h3>
 
                 <figure class="signal-development__visual">
                   <ResponsiveEditorialImage
-                    src={signalVisual.src}
-                    alt={signalVisual.alt}
+                    src={item.visual.src}
+                    alt={item.visual.alt}
                     sizes="(max-width: 42rem) calc(100vw - 1.25rem), 52rem"
                     loading="lazy"
                     variant="article"
                   />
                   <figcaption>
-                    {signalVisual.source} · {signalVisual.author} · {signalVisual.license}
+                    {item.visual.source} · {item.visual.author} ·{" "}
+                    {item.visual.license}
                   </figcaption>
                 </figure>
 
                 <SignalShareTools
-                  title={signal.headline}
-                  summary={signal.deck}
-                  anchor={signal.anchor}
+                  title={item.signal.headline}
+                  summary={item.signal.deck}
+                  anchor={item.signal.anchor}
                 />
 
-                <div class="signal-development__body">{signal.development}</div>
+                <div class="signal-development__body">{item.signal.development}</div>
 
-                {signal.sources.length > 0 && (
+                {item.signal.sources.length > 0 && (
                   <div
                     class="signal-development__sources"
-                    aria-label={`Fuentes de ${signal.headline}`}
+                    aria-label={`Fuentes de ${item.signal.headline}`}
                   >
                     <strong>Fuentes</strong>
                     <ul>
-                      {signal.sources.map((source) => (
+                      {item.signal.sources.map((source) => (
                         <li>
                           <a href={source.url}>{source.name}</a>
                         </li>
