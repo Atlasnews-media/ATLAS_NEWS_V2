@@ -9,7 +9,9 @@ const { title, summary, anchor } = Astro.props;
 const shareUrl = new URL(Astro.url.href);
 shareUrl.hash = anchor;
 const shareHref = shareUrl.href;
-const whatsappHref = `https://wa.me/?text=${encodeURIComponent(`${title}\n${shareHref}`)}`;
+const whatsappHref = `https://wa.me/?text=${encodeURIComponent(
+  `${title}\n${shareHref}`,
+)}`;
 ---
 
 <div
@@ -22,8 +24,18 @@ const whatsappHref = `https://wa.me/?text=${encodeURIComponent(`${title}\n${shar
 >
   <span class="signal-share-tools__label">Compartir</span>
 
-  <button class="signal-share-tools__action" type="button" data-signal-share-native>
-    <img src="/share-icons/share.svg" alt="" width="18" height="18" aria-hidden="true" />
+  <button
+    class="signal-share-tools__action"
+    type="button"
+    data-signal-share-native
+  >
+    <img
+      src="/share-icons/share.svg"
+      alt=""
+      width="18"
+      height="18"
+      aria-hidden="true"
+    />
     Compartir
   </button>
 
@@ -33,28 +45,53 @@ const whatsappHref = `https://wa.me/?text=${encodeURIComponent(`${title}\n${shar
     target="_blank"
     rel="noopener noreferrer"
   >
-    <img src="/share-icons/whatsapp.svg" alt="" width="18" height="18" aria-hidden="true" />
+    <img
+      src="/share-icons/whatsapp.svg"
+      alt=""
+      width="18"
+      height="18"
+      aria-hidden="true"
+    />
     WhatsApp
   </a>
 
-  <button class="signal-share-tools__action" type="button" data-signal-share-copy>
-    <img src="/share-icons/link.svg" alt="" width="18" height="18" aria-hidden="true" />
+  <button
+    class="signal-share-tools__action"
+    type="button"
+    data-signal-share-copy
+  >
+    <img
+      src="/share-icons/link.svg"
+      alt=""
+      width="18"
+      height="18"
+      aria-hidden="true"
+    />
     Copiar enlace
   </button>
 
-  <span class="signal-share-tools__status" data-signal-share-status aria-live="polite"></span>
+  <span
+    class="signal-share-tools__status"
+    data-signal-share-status
+    aria-live="polite"
+  ></span>
 </div>
 
 <script>
   function setupSignalShareTools() {
     document.querySelectorAll("[data-signal-share]").forEach((container) => {
-      if (!(container instanceof HTMLElement) || container.dataset.shareBound === "true") {
+      if (
+        !(container instanceof HTMLElement) ||
+        container.dataset.shareBound === "true"
+      ) {
         return;
       }
 
       container.dataset.shareBound = "true";
 
-      const nativeButton = container.querySelector("[data-signal-share-native]");
+      const nativeButton = container.querySelector(
+        "[data-signal-share-native]",
+      );
       const copyButton = container.querySelector("[data-signal-share-copy]");
       const status = container.querySelector("[data-signal-share-status]");
       const url = container.dataset.shareUrl ?? window.location.href;
@@ -78,7 +115,8 @@ const whatsappHref = `https://wa.me/?text=${encodeURIComponent(`${title}\n${shar
       if (copyButton instanceof HTMLButtonElement) {
         copyButton.addEventListener("click", async () => {
           if (!navigator.clipboard) {
-            if (status instanceof HTMLElement) status.textContent = "Copia no disponible";
+            if (status instanceof HTMLElement)
+              status.textContent = "Copia no disponible";
             return;
           }
 
@@ -91,7 +129,8 @@ const whatsappHref = `https://wa.me/?text=${encodeURIComponent(`${title}\n${shar
               }, 2200);
             }
           } catch {
-            if (status instanceof HTMLElement) status.textContent = "No se pudo copiar";
+            if (status instanceof HTMLElement)
+              status.textContent = "No se pudo copiar";
           }
         });
       }
