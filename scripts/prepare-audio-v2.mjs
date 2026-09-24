@@ -162,7 +162,6 @@ async function dialogueProduct(section) {
     lexiconRevision: LEXICON_REVISION,
     voiceProfileVersion: VOICE_PROFILE_VERSION,
     dialogueRhythmVersion: ALEXC_DIALOGUE_RHYTHM_VERSION,
-    doraRenderVersion: INTERNATIONAL_DORA_RENDER_VERSION,
     needsGeneration: state.needsGeneration,
     unavailableReason: state.unavailableReason,
   };
@@ -192,6 +191,7 @@ function internationalProduct() {
     lexiconRevision: LEXICON_REVISION,
     voiceProfileVersion: VOICE_PROFILE_VERSION,
     dialogueRhythmVersion: ALEXC_DIALOGUE_RHYTHM_VERSION,
+    doraRenderVersion: INTERNATIONAL_DORA_RENDER_VERSION,
     needsGeneration: state.needsGeneration,
     unavailableReason:
       internationalPlanPath && !internationalPlan
