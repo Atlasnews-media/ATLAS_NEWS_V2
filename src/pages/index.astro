@@ -725,16 +725,19 @@ const marketsVisual = latestMarkets
     color: var(--accent);
   }
   .headline-tab[data-front-page-tab="senales"] {
-    padding-right: 1.75rem;
+    padding-right: 3.35rem;
   }
   .headline-tab[data-front-page-tab="senales"]::after {
     position: absolute;
     top: 50%;
     right: 0.62rem;
     color: var(--accent);
-    content: "→";
-    font-size: 0.95rem;
+    content: "VER ›";
+    font-size: 0.62rem;
+    font-weight: 800;
     line-height: 1;
+    letter-spacing: 0.06em;
+    white-space: nowrap;
     transform: translateY(-50%);
     animation: headline-signal-cue 520ms ease-out 1;
   }
@@ -1000,6 +1003,13 @@ const marketsVisual = latestMarkets
       padding: 0.5rem 0.35rem;
       font-size: 0.62rem;
       letter-spacing: 0.075em;
+    }
+    .headline-tab[data-front-page-tab="senales"] {
+      padding-right: 2.9rem;
+    }
+    .headline-tab[data-front-page-tab="senales"]::after {
+      right: 0.4rem;
+      font-size: 0.54rem;
     }
     .headline-list {
       margin-top: 0.75rem;
