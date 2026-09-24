@@ -27,6 +27,7 @@ from audio_speech import (
     normalize_dora_longform_paragraphs,
     normalize_for_kokoro_dora,
     normalize_for_speech,
+    split_dora_sentences,
 )
 
 PLAN_PATH = Path(os.environ["ATLAS_AUDIO_V2_PLAN"])
@@ -56,6 +57,8 @@ QUESTION_PROSODY_VERSION = 2
 COVER_RENDER_VERSION = 2
 COVER_SENTENCE_PAUSE_SECONDS = 0.08
 COVER_PARAGRAPH_PAUSE_SECONDS = 0.22
+INTERNATIONAL_DORA_RENDER_VERSION = 2
+DORA_DIALOGUE_SENTENCE_PAUSE_SECONDS = 0.10
 ALEXC_DIALOGUE_RHYTHM_VERSION = 2
 ALEXC_SENTENCE_PAUSE_SECONDS = 0.55
 FALLBACK_PROFILE_VERSION = f"{VOICE_PROFILE_VERSION}-fallback-kokoro"
@@ -204,7 +207,33 @@ def emphasize_question_tail(samples: np.ndarray) -> np.ndarray:
     return output
 
 
-def synthesize_dialogue_fallback(text: str, reference_date: str) -> np.ndarray:
+def synthesize_dora_sentences(text: str, reference_date: str) -> np.ndarray:
+    """Sintetiza turnos de Dora por oración para evitar cortes internos de Kokoro."""
+    sentences = split_dora_sentences(text)
+    pause = np.zeros(
+        int(SAMPLE_RATE * DORA_DIALOGUE_SENTENCE_PAUSE_SECONDS),
+        dtype=np.float32,
+    )
+    parts = []
+    for index, sentence in enumerate(sentences):
+        if index:
+            parts.append(pause)
+        parts.append(
+            synthesize(
+                sentence,
+                "ef_dora",
+                "e",
+                reference_date=reference_date,
+            )
+        )
+    return np.concatenate(parts)
+
+
+def synthesize_dialogue_fallback(
+    text: str,
+    reference_date: str,
+    segment_dora: bool = False,
+) -> np.ndarray:
     """Ruta Kokoro histórica: sólo se usa si Alex C no puede generar."""
     turns = parse_dialogue(text)
     normal_silence = np.zeros(
@@ -219,13 +248,16 @@ def synthesize_dialogue_fallback(text: str, reference_date: str) -> np.ndarray:
     for index, (speaker, content) in enumerate(turns):
         voice, lang_code = DIALOGUE_VOICES[speaker]
         alex_question = speaker == "VOZ 2" and is_question(content)
-        samples = synthesize(
-            content,
-            voice,
-            lang_code,
-            reference_date=reference_date,
-            speed_override=QUESTION_SPEED if alex_question else None,
-        )
+        if speaker == "VOZ 1" and segment_dora:
+            samples = synthesize_dora_sentences(content, reference_date)
+        else:
+            samples = synthesize(
+                content,
+                voice,
+                lang_code,
+                reference_date=reference_date,
+                speed_override=QUESTION_SPEED if alex_question else None,
+            )
         if alex_question:
             samples = emphasize_question_tail(samples)
             samples = raise_terminal_pitch(
@@ -286,6 +318,7 @@ def synthesize_dialogue_alexc(
     text: str,
     reference_date: str,
     seed_base: int,
+    segment_dora: bool = False,
 ) -> np.ndarray:
     """Dora permanece en Kokoro; Alex C se genera por frases cortas."""
     turns = parse_dialogue(text)
@@ -301,11 +334,15 @@ def synthesize_dialogue_alexc(
 
     for index, (speaker, content) in enumerate(turns):
         if speaker == "VOZ 1":
-            samples = synthesize(
-                content,
-                "ef_dora",
-                "e",
-                reference_date=reference_date,
+            samples = (
+                synthesize_dora_sentences(content, reference_date)
+                if segment_dora
+                else synthesize(
+                    content,
+                    "ef_dora",
+                    "e",
+                    reference_date=reference_date,
+                )
             )
         else:
             samples, sentence_count = synthesize_alexc_sentences(
@@ -389,6 +426,7 @@ def generate_analysis_samples(section: str, script: str, reference_date: str):
                 script,
                 reference_date,
                 seed_base=5100,
+                segment_dora=True,
             )
             metadata = {
                 "engine": f"Kokoro-82M + {CHATTERBOX_ENGINE}",
@@ -403,6 +441,7 @@ def generate_analysis_samples(section: str, script: str, reference_date: str):
                 },
                 "questionProsodyVersion": 0,
                 "dialogueRhythmVersion": ALEXC_DIALOGUE_RHYTHM_VERSION,
+                "doraRenderVersion": INTERNATIONAL_DORA_RENDER_VERSION,
                 "fallbackUsed": False,
             }
         else:
@@ -433,6 +472,7 @@ def generate_analysis_samples(section: str, script: str, reference_date: str):
             samples = synthesize_dialogue_fallback(
                 script,
                 reference_date=reference_date,
+                segment_dora=True,
             )
             metadata = {
                 "engine": "Kokoro-82M",
@@ -447,6 +487,7 @@ def generate_analysis_samples(section: str, script: str, reference_date: str):
                 },
                 "questionProsodyVersion": QUESTION_PROSODY_VERSION,
                 "dialogueRhythmVersion": ALEXC_DIALOGUE_RHYTHM_VERSION,
+                "doraRenderVersion": INTERNATIONAL_DORA_RENDER_VERSION,
                 "fallbackUsed": True,
                 "fallbackReason": str(alexc_exc)[:200],
             }

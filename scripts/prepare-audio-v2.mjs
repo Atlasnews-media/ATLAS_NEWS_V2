@@ -9,6 +9,7 @@ const ANALYSIS_SCRIPT_VERSION = 3;
 const SPEECH_NORMALIZER_VERSION = 5;
 const ALEXC_DIALOGUE_RHYTHM_VERSION = 2;
 const COVER_RENDER_VERSION = 2;
+const INTERNATIONAL_DORA_RENDER_VERSION = 2;
 const PLAN_FILE = ".atlas-audio-v2-plan.json";
 const lexiconConfig = JSON.parse(
   await readFile(new URL("config/audio/lexicon-v3.json", root), "utf8"),
@@ -121,6 +122,8 @@ function currentAnalysisState({ sourceId, script, scriptVersion, section }) {
     existing?.speechNormalizerVersion === SPEECH_NORMALIZER_VERSION &&
     existing?.voiceProfileVersion === VOICE_PROFILE_VERSION &&
     existing?.dialogueRhythmVersion === ALEXC_DIALOGUE_RHYTHM_VERSION &&
+    (section !== "international" ||
+      existing?.doraRenderVersion === INTERNATIONAL_DORA_RENDER_VERSION) &&
     sameLexicon(existing) &&
     hasPublishedPath;
 
@@ -188,6 +191,7 @@ function internationalProduct() {
     lexiconRevision: LEXICON_REVISION,
     voiceProfileVersion: VOICE_PROFILE_VERSION,
     dialogueRhythmVersion: ALEXC_DIALOGUE_RHYTHM_VERSION,
+    doraRenderVersion: INTERNATIONAL_DORA_RENDER_VERSION,
     needsGeneration: state.needsGeneration,
     unavailableReason:
       internationalPlanPath && !internationalPlan

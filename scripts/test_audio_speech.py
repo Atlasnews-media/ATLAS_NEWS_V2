@@ -5,6 +5,7 @@ from audio_speech import (
     normalize_dora_longform_paragraphs,
     normalize_for_kokoro_dora,
     normalize_for_speech,
+    split_dora_sentences,
 )
 
 
@@ -167,6 +168,23 @@ if longform_actual != longform_expected:
     raise AssertionError(
         f"Portada Dora debe preservar cifras completas por párrafo: "
         f"{longform_actual!r}; esperado {longform_expected!r}"
+    )
+
+international_opening = (
+    "ATLAS NEWS. Análisis internacional del jueves 24 de septiembre de 2026. "
+    "La frágil logística petrolera del Golfo, la cumbre entre Estados Unidos y China "
+    "y nuevas señales de actividad resistente mantienen abierto un escenario de inflación. "
+    "La adaptación logística saudí sostiene parte de los flujos, pero la falta de avances "
+    "entre Estados Unidos e Irán mantiene elevado el riesgo energético."
+)
+international_sentences = split_dora_sentences(international_opening)
+if len(international_sentences) != 4:
+    raise AssertionError(
+        "Dora Internacional debe recibir la apertura separada en cuatro oraciones."
+    )
+if any(sentence.count("Estados Unidos") > 1 for sentence in international_sentences):
+    raise AssertionError(
+        "Cada oración de Dora Internacional debe aislar las menciones a Estados Unidos."
     )
 check(
     "El dólar observado quedó en $913,86.",

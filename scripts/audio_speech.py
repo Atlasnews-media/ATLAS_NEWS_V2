@@ -443,6 +443,19 @@ def normalize_dora_longform_paragraphs(
     ]
 
 
+def split_dora_sentences(text: str) -> list[str]:
+    """Divide turnos largos de Dora en oraciones sin alterar su contenido."""
+    sentences = [
+        sentence.strip()
+        for sentence in re.split(
+            r"(?<=[.!?])\s+(?=[A-ZÁÉÍÓÚÑ¿¡0-9])",
+            str(text).strip(),
+        )
+        if sentence.strip()
+    ]
+    return sentences or [str(text).strip()]
+
+
 def is_question(text: str) -> bool:
     stripped = str(text).strip()
     return stripped.startswith("¿") or stripped.endswith("?")
