@@ -188,6 +188,21 @@ const nationalSignalItems = nationalSignals.map((signal) => {
                 id={item.signal.anchor}
                 aria-labelledby={`${item.signal.anchor}-title`}
               >
+                <nav
+                  class="signal-development__nav"
+                  aria-label={`Navegación desde ${item.signal.headline}`}
+                >
+                  <a class="signal-development__back" href="/#senales-del-dia">
+                    ← Volver a Señales del Día
+                  </a>
+                  <a class="signal-development__secondary" href="/">
+                    Ir a Portada
+                  </a>
+                  <a class="signal-development__secondary" href="/nacional/">
+                    Ir a Nacional
+                  </a>
+                </nav>
+
                 <div class="signal-development__hero">
                   <figure class="signal-development__visual">
                     <ResponsiveEditorialImage
@@ -213,26 +228,11 @@ const nationalSignalItems = nationalSignals.map((signal) => {
                   </div>
                 </div>
 
-                <nav
-                  class="signal-development__nav"
-                  aria-label={`Navegación desde ${item.signal.headline}`}
-                >
-                  <a class="signal-development__back" href="/#senales-del-dia">
-                    ← Volver a Señales del Día
-                  </a>
-                  <a class="signal-development__secondary" href="/">
-                    Portada
-                  </a>
-                  <a class="signal-development__secondary" href="/nacional/">
-                    Nacional
-                  </a>
-                </nav>
-
                 <SignalShareTools
                   title={item.signal.headline}
                   summary={item.signal.deck}
                   anchor={item.signal.anchor}
-                  variant="full"
+                  variant="compact"
                 />
 
                 <div class="signal-development__body">
