@@ -222,7 +222,7 @@ const freshnessLabel =
       <span class="economic-strip__action-label">
         IR A CALENDARIO ECONÓMICO
       </span>
-      <span class="economic-strip__action-arrow" aria-hidden="true">→</span>
+      <span class="economic-strip__action-arrow" aria-hidden="true">VER ›</span>
     </a>
 
     <a class="economic-strip__action" href="/mercados/indices/">
@@ -234,7 +234,7 @@ const freshnessLabel =
         </svg>
       </span>
       <span class="economic-strip__action-label">IR A ÍNDICES DE MERCADO</span>
-      <span class="economic-strip__action-arrow" aria-hidden="true">→</span>
+      <span class="economic-strip__action-arrow" aria-hidden="true">VER ›</span>
     </a>
   </nav>
 
@@ -352,7 +352,7 @@ const freshnessLabel =
 
   .economic-strip__action {
     display: grid;
-    grid-template-columns: 2.1rem minmax(0, 1fr) 1.8rem;
+    grid-template-columns: 2.1rem minmax(0, 1fr) 2.55rem;
     align-items: center;
     min-width: 0;
     height: 25px;
@@ -410,9 +410,11 @@ const freshnessLabel =
     align-self: stretch;
     color: var(--accent);
     font-family: var(--sans);
-    font-size: 1rem;
-    font-weight: 400;
+    font-size: 0.62rem;
+    font-weight: 800;
     line-height: 1;
+    letter-spacing: 0.06em;
+    white-space: nowrap;
   }
 
   .economic-strip__action:hover .economic-strip__action-label,
@@ -471,7 +473,7 @@ const freshnessLabel =
     }
 
     .economic-strip__action {
-      grid-template-columns: 1.95rem minmax(0, 1fr) 1.65rem;
+      grid-template-columns: 1.95rem minmax(0, 1fr) 2.35rem;
       min-height: 25px;
     }
 
@@ -484,7 +486,7 @@ const freshnessLabel =
     }
 
     .economic-strip__action-arrow {
-      font-size: 1rem;
+      font-size: 0.56rem;
     }
 
     .economic-strip__source {
@@ -531,7 +533,7 @@ const freshnessLabel =
     }
 
     .economic-strip__action {
-      grid-template-columns: 1.65rem minmax(0, 1fr) 1.35rem;
+      grid-template-columns: 1.65rem minmax(0, 1fr) 2.25rem;
       min-height: 25px;
     }
 
@@ -546,7 +548,7 @@ const freshnessLabel =
     }
 
     .economic-strip__action-arrow {
-      font-size: 1rem;
+      font-size: 0.54rem;
     }
 
     .economic-strip__source {
