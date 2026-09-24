@@ -1,0 +1,46 @@
+{
+  "schemaVersion": 1,
+  "radarRunId": "RADAR-BASELINE-20260923-2105",
+  "sourceMainCommit": "c41e0cb59343994b87c17d8615d80867fb1a58b2",
+  "radarStateVersion": "radar-state-v1",
+  "editorialDate": "2026-09-23",
+  "mode": "LAB_ONLY",
+  "experimentMode": "BASELINE",
+  "status": "PASS",
+  "productionWritesAllowed": false,
+  "completedAt": "2026-09-23T21:17:20-03:00",
+  "sections": {
+    "general": {
+      "status": "PASS",
+      "title": "Cumbre EEUU-China y energía concentran el riesgo global de corto plazo",
+      "candidateCount": 5,
+      "selectedCount": 3,
+      "sourceNames": [
+        "Reuters"
+      ]
+    },
+    "national": {
+      "status": "PASS",
+      "title": "PIB regional y agenda proinversión exponen la brecha de la reactivación chilena",
+      "candidateCount": 4,
+      "selectedCount": 3,
+      "sourceNames": [
+        "Banco Central de Chile",
+        "Senado de Chile",
+        "Diario Financiero"
+      ]
+    },
+    "markets": {
+      "status": "PASS",
+      "title": "Dólar sobre $960 y Treasury sobre 5% endurecen el cierre de mercados",
+      "candidateCount": 5,
+      "selectedCount": 4,
+      "sourceNames": [
+        "Emol",
+        "Reuters / Journal Record",
+        "Reuters / Mecklenburg Times",
+        "Diario Estrategia"
+      ]
+    }
+  }
+}
