@@ -25,8 +25,13 @@ export class TypeSafeJevClient {
   }
 
   async runQuestions({ state, questions } = {}) {
-    if (state === undefined || state === null) throw new TypeError("state is required");
-    if (!questions || typeof questions !== "object" || Array.isArray(questions)) {
+    if (state === undefined || state === null)
+      throw new TypeError("state is required");
+    if (
+      !questions ||
+      typeof questions !== "object" ||
+      Array.isArray(questions)
+    ) {
       throw new TypeError("questions must be an object");
     }
     if (!this.apiKey) {
@@ -50,7 +55,8 @@ export class TypeSafeJevClient {
           body: JSON.stringify({ state, model: this.model, questions }),
           signal: controller.signal,
         });
-        const latencyMs = Math.round((performance.now() - started) * 100) / 100;
+        const latencyMs =
+          Math.round((performance.now() - started) * 100) / 100;
         const text = await response.text();
         let payload = null;
         try {
@@ -60,7 +66,11 @@ export class TypeSafeJevClient {
         }
         clearTimeout(timeout);
 
-        if (!response.ok && RETRIABLE_STATUSES.has(response.status) && attempt < this.maxRetries) {
+        if (
+          !response.ok &&
+          RETRIABLE_STATUSES.has(response.status) &&
+          attempt < this.maxRetries
+        ) {
           const retryAfter = Number(response.headers.get("retry-after"));
           const delay = Number.isFinite(retryAfter)
             ? Math.min(retryAfter * 1000, 2_000)
@@ -86,7 +96,9 @@ export class TypeSafeJevClient {
           latencyMs: Math.round((performance.now() - started) * 100) / 100,
           attempts: attempt + 1,
           payload: null,
-          error: { type: error?.name === "AbortError" ? "timeout" : "network" },
+          error: {
+            type: error?.name === "AbortError" ? "timeout" : "network",
+          },
         };
       }
     }
