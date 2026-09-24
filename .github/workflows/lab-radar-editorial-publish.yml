@@ -2,10 +2,12 @@ name: LAB — RADAR Editorial publisher
 
 on:
   workflow_run:
-    workflows: ["LAB — RADAR Editorial runtime gate"]
+    workflows:
+      ["LAB — RADAR Editorial runtime gate", "LAB — RADAR Editorial ingest"]
     types: [completed]
 
 permissions:
+  actions: read
   contents: read
 
 concurrency:
@@ -17,14 +19,49 @@ jobs:
     if: >-
       github.event.workflow_run.conclusion == 'success' &&
       github.event.workflow_run.event == 'push' &&
-      github.event.workflow_run.head_branch == 'radar-runtime/editorial'
+      (
+        (
+          github.event.workflow_run.name == 'LAB — RADAR Editorial runtime gate' &&
+          github.event.workflow_run.head_branch == 'radar-runtime/editorial'
+        ) ||
+        (
+          github.event.workflow_run.name == 'LAB — RADAR Editorial ingest' &&
+          github.event.workflow_run.head_branch == 'radar-ingress/editorial'
+        )
+      )
     runs-on: ubuntu-latest
     timeout-minutes: 12
     steps:
+      - name: Descargar handoff de ingest
+        if: github.event.workflow_run.name == 'LAB — RADAR Editorial ingest'
+        uses: actions/download-artifact@v4
+        with:
+          name: radar-ingest-handoff
+          path: ${{ runner.temp }}/radar-ingest-handoff
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          run-id: ${{ github.event.workflow_run.id }}
+
+      - name: Resolver commit runtime exacto
+        id: runtime
+        env:
+          SOURCE_WORKFLOW: ${{ github.event.workflow_run.name }}
+          SOURCE_HEAD_SHA: ${{ github.event.workflow_run.head_sha }}
+        run: |
+          set -euo pipefail
+          if [[ "$SOURCE_WORKFLOW" = "LAB — RADAR Editorial ingest" ]]; then
+            handoff="$RUNNER_TEMP/radar-ingest-handoff/handoff.json"
+            test -f "$handoff"
+            runtime_sha="$(node -p "JSON.parse(require('fs').readFileSync('$handoff','utf8')).runtimeCommit")"
+            [[ "$runtime_sha" =~ ^[0-9a-f]{40}$ ]]
+          else
+            runtime_sha="$SOURCE_HEAD_SHA"
+          fi
+          echo "sha=$runtime_sha" >> "$GITHUB_OUTPUT"
+
       - name: Checkout runtime exacto
         uses: actions/checkout@v5
         with:
-          ref: ${{ github.event.workflow_run.head_sha }}
+          ref: ${{ steps.runtime.outputs.sha }}
           fetch-depth: 2
 
       - name: Setup Node

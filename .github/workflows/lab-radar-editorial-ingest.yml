@@ -1,0 +1,184 @@
+name: LAB — RADAR Editorial ingest
+
+on:
+  push:
+    branches:
+      - "radar-ingress/editorial"
+    paths:
+      - "lab/radar-editorial/requests/*.json"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: lab-radar-editorial-ingest
+  cancel-in-progress: false
+
+jobs:
+  ingest:
+    name: Validar + materializar handoff LAB
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Checkout request exacta
+        uses: actions/checkout@v5
+        with:
+          fetch-depth: 2
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: Gate fail-closed del buzón
+        id: request
+        run: |
+          set -euo pipefail
+          test "$GITHUB_REF_NAME" = "radar-ingress/editorial"
+          before="${{ github.event.before }}"
+          changed="$RUNNER_TEMP/radar-ingress-changes.txt"
+          if [[ "$before" =~ ^0+$ ]] || ! git cat-file -e "${before}^{commit}" 2>/dev/null; then
+            git diff-tree --no-commit-id --name-status -r "$GITHUB_SHA" > "$changed"
+          else
+            git diff --name-status "$before" "$GITHUB_SHA" > "$changed"
+          fi
+          cat "$changed"
+          test "$(wc -l < "$changed" | tr -d " ")" = "1"
+          status="$(cut -f1 "$changed")"
+          request_path="$(cut -f2 "$changed")"
+          test "$status" = "A"
+          [[ "$request_path" =~ ^lab/radar-editorial/requests/[A-Za-z0-9._-]+\.json$ ]]
+          test -f "$request_path"
+          echo "path=$request_path" >> "$GITHUB_OUTPUT"
+
+      - name: Validar contrato de request
+        run: node scripts/lab/radar-editorial/validate-baseline-request.mjs "${{ steps.request.outputs.path }}"
+
+      - name: Validar sourceMainCommit contra historia de main
+        run: |
+          set -euo pipefail
+          request="${{ steps.request.outputs.path }}"
+          source_main="$(node -p "JSON.parse(require('fs').readFileSync('$request','utf8')).sourceMainCommit")"
+          git fetch --quiet origin main
+          git cat-file -e "${source_main}^{commit}"
+          git merge-base --is-ancestor "$source_main" origin/main
+
+      - name: Preflight completo sin mutar runtime
+        run: |
+          set -euo pipefail
+          request="${{ steps.request.outputs.path }}"
+          preflight="$RUNNER_TEMP/radar-preflight"
+          mkdir -p "$preflight"
+          node scripts/lab/radar-editorial/materialize-baseline-request.mjs \
+            --request "$request" \
+            --target-root "$preflight" \
+            --phase ready
+          (
+            cd "$preflight"
+            node "$GITHUB_WORKSPACE/scripts/lab/radar-editorial/validate-radar-artifact.mjs" \
+              lab/radar-editorial/runtime/latest.json
+            node "$GITHUB_WORKSPACE/scripts/lab/radar-editorial/validate-baseline-run.mjs" \
+              --latest lab/radar-editorial/runtime/latest.json
+          )
+
+      - name: Checkout runtime durable
+        uses: actions/checkout@v5
+        with:
+          ref: radar-runtime/editorial
+          path: .runtime
+          fetch-depth: 0
+
+      - name: Configurar writer LAB
+        run: |
+          set -euo pipefail
+          git -C .runtime config user.name "ATLAS NEWS RADAR Ingest"
+          git -C .runtime config user.email "actions@users.noreply.github.com"
+
+      - name: Persistir checkpoint General
+        run: |
+          set -euo pipefail
+          request="$GITHUB_WORKSPACE/${{ steps.request.outputs.path }}"
+          git -C .runtime fetch --quiet origin radar-runtime/editorial
+          test "$(git -C .runtime rev-parse HEAD)" = "$(git -C .runtime rev-parse origin/radar-runtime/editorial)"
+          node scripts/lab/radar-editorial/materialize-baseline-request.mjs --request "$request" --target-root .runtime --phase general
+          (cd .runtime && node "$GITHUB_WORKSPACE/scripts/lab/radar-editorial/validate-baseline-run.mjs" --active lab/radar-editorial/runtime/active.json)
+          git -C .runtime add -- lab/radar-editorial/runtime
+          git -C .runtime diff --cached --name-only | node scripts/lab/radar-editorial/assert-runtime-scope.mjs
+          if ! git -C .runtime diff --cached --quiet; then
+            git -C .runtime commit -m "LAB RADAR ingest General $GITHUB_RUN_ID"
+            git -C .runtime push origin HEAD:radar-runtime/editorial
+          fi
+
+      - name: Persistir checkpoint Nacional
+        run: |
+          set -euo pipefail
+          request="$GITHUB_WORKSPACE/${{ steps.request.outputs.path }}"
+          git -C .runtime fetch --quiet origin radar-runtime/editorial
+          test "$(git -C .runtime rev-parse HEAD)" = "$(git -C .runtime rev-parse origin/radar-runtime/editorial)"
+          node scripts/lab/radar-editorial/materialize-baseline-request.mjs --request "$request" --target-root .runtime --phase national
+          (cd .runtime && node "$GITHUB_WORKSPACE/scripts/lab/radar-editorial/validate-baseline-run.mjs" --active lab/radar-editorial/runtime/active.json)
+          git -C .runtime add -- lab/radar-editorial/runtime
+          git -C .runtime diff --cached --name-only | node scripts/lab/radar-editorial/assert-runtime-scope.mjs
+          if ! git -C .runtime diff --cached --quiet; then
+            git -C .runtime commit -m "LAB RADAR ingest Nacional $GITHUB_RUN_ID"
+            git -C .runtime push origin HEAD:radar-runtime/editorial
+          fi
+
+      - name: Persistir checkpoint Mercados
+        run: |
+          set -euo pipefail
+          request="$GITHUB_WORKSPACE/${{ steps.request.outputs.path }}"
+          git -C .runtime fetch --quiet origin radar-runtime/editorial
+          test "$(git -C .runtime rev-parse HEAD)" = "$(git -C .runtime rev-parse origin/radar-runtime/editorial)"
+          node scripts/lab/radar-editorial/materialize-baseline-request.mjs --request "$request" --target-root .runtime --phase markets
+          (cd .runtime && node "$GITHUB_WORKSPACE/scripts/lab/radar-editorial/validate-baseline-run.mjs" --active lab/radar-editorial/runtime/active.json)
+          git -C .runtime add -- lab/radar-editorial/runtime
+          git -C .runtime diff --cached --name-only | node scripts/lab/radar-editorial/assert-runtime-scope.mjs
+          if ! git -C .runtime diff --cached --quiet; then
+            git -C .runtime commit -m "LAB RADAR ingest Mercados $GITHUB_RUN_ID"
+            git -C .runtime push origin HEAD:radar-runtime/editorial
+          fi
+
+      - name: Persistir READY y validar commit exacto
+        id: runtime
+        run: |
+          set -euo pipefail
+          request="$GITHUB_WORKSPACE/${{ steps.request.outputs.path }}"
+          git -C .runtime fetch --quiet origin radar-runtime/editorial
+          test "$(git -C .runtime rev-parse HEAD)" = "$(git -C .runtime rev-parse origin/radar-runtime/editorial)"
+          node scripts/lab/radar-editorial/materialize-baseline-request.mjs --request "$request" --target-root .runtime --phase ready
+          (
+            cd .runtime
+            node "$GITHUB_WORKSPACE/scripts/lab/radar-editorial/validate-radar-artifact.mjs" lab/radar-editorial/runtime/latest.json
+            node "$GITHUB_WORKSPACE/scripts/lab/radar-editorial/validate-baseline-run.mjs" --latest lab/radar-editorial/runtime/latest.json
+          )
+          git -C .runtime add -- lab/radar-editorial/runtime
+          git -C .runtime diff --cached --name-only | node scripts/lab/radar-editorial/assert-runtime-scope.mjs
+          if ! git -C .runtime diff --cached --quiet; then
+            git -C .runtime commit -m "LAB RADAR ingest READY $GITHUB_RUN_ID"
+            git -C .runtime push origin HEAD:radar-runtime/editorial
+          fi
+          runtime_sha="$(git -C .runtime rev-parse HEAD)"
+          git -C .runtime fetch --quiet origin radar-runtime/editorial
+          remote_sha="$(git -C .runtime rev-parse origin/radar-runtime/editorial)"
+          test "$runtime_sha" = "$remote_sha"
+          echo "sha=$runtime_sha" >> "$GITHUB_OUTPUT"
+
+      - name: Crear handoff verificable para publisher
+        run: |
+          set -euo pipefail
+          request="${{ steps.request.outputs.path }}"
+          runtime_sha="${{ steps.runtime.outputs.sha }}"
+          request_sha256="$(sha256sum "$request" | cut -d" " -f1)"
+          run_id="$(node -p "JSON.parse(require('fs').readFileSync('$request','utf8')).radarRunId")"
+          node -e 'const fs=require("fs"); const out={schemaVersion:1,runId:process.argv[1],requestCommit:process.env.GITHUB_SHA,requestSha256:process.argv[2],runtimeCommit:process.argv[3]}; fs.writeFileSync(process.argv[4],JSON.stringify(out,null,2)+"\n");' \
+            "$run_id" "$request_sha256" "$runtime_sha" "$RUNNER_TEMP/handoff.json"
+          cat "$RUNNER_TEMP/handoff.json"
+
+      - name: Subir handoff del commit runtime
+        uses: actions/upload-artifact@v4
+        with:
+          name: radar-ingest-handoff
+          path: ${{ runner.temp }}/handoff.json
+          if-no-files-found: error
+          retention-days: 7
