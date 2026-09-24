@@ -1,0 +1,112 @@
+name: LAB — RADAR JEV resolver
+
+on:
+  push:
+    branches:
+      - "radar-runtime/editorial"
+    paths:
+      - "lab/radar-editorial/runtime/runs/**/jev-request.json"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: lab-radar-jev-resolver
+  cancel-in-progress: false
+
+jobs:
+  resolve-jev:
+    name: Resolver JEV TypeSafe
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    env:
+      TYPESAFE_API_KEY: ${{ secrets.TYPESAFE_API_KEY }}
+
+    steps:
+      - name: Checkout runtime exacto
+        uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: Verificar credencial TypeSafe
+        run: |
+          set -euo pipefail
+          if [[ -z "${TYPESAFE_API_KEY:-}" ]]; then
+            echo "JEV_CREDENTIAL=FAIL"
+            echo "ERROR=TYPESAFE_API_KEY unavailable in ATLAS_NEWS_V2"
+            exit 1
+          fi
+          echo "JEV_CREDENTIAL=AVAILABLE"
+
+      - name: Detectar request del commit
+        id: request
+        run: |
+          set -euo pipefail
+          before="${{ github.event.before }}"
+          changed="$RUNNER_TEMP/jev-request-paths.txt"
+          if [[ "$before" =~ ^0+$ ]] || ! git cat-file -e "${before}^{commit}" 2>/dev/null; then
+            git diff-tree --no-commit-id --name-only -r "$GITHUB_SHA"
+          else
+            git diff --name-only "$before" "$GITHUB_SHA"
+          fi | grep -E '^lab/radar-editorial/runtime/runs/[^/]+/jev-request\.json$' > "$changed"
+
+          count="$(wc -l < "$changed" | tr -d ' ')"
+          test "$count" = "1"
+          request="$(cat "$changed")"
+          run_dir="$(dirname "$request")"
+          output="$run_dir/jev-judgments.json"
+          echo "request=$request" >> "$GITHUB_OUTPUT"
+          echo "output=$output" >> "$GITHUB_OUTPUT"
+
+      - name: Resolver juicios reales con TypeSafe JEV
+        run: |
+          set -euo pipefail
+          node scripts/lab/radar-editorial/run-jev-memory-judge.mjs \
+            --request "${{ steps.request.outputs.request }}" \
+            --output "${{ steps.request.outputs.output }}"
+
+      - name: Validar identidad del resultado
+        env:
+          REQUEST: ${{ steps.request.outputs.request }}
+          OUTPUT: ${{ steps.request.outputs.output }}
+        run: |
+          set -euo pipefail
+          node - <<'NODE'
+          const fs = require("fs");
+          const request = JSON.parse(fs.readFileSync(process.env.REQUEST, "utf8"));
+          const result = JSON.parse(fs.readFileSync(process.env.OUTPUT, "utf8"));
+          for (const key of ["radarRunId","sourceMainCommit","radarStateVersion","editorialDate"]) {
+            if (request[key] !== result[key]) throw new Error(`identity mismatch: ${key}`);
+          }
+          if (result.engine !== "JEV_TYPESAFE" || result.status !== "PASS") {
+            throw new Error("JEV result is not PASS");
+          }
+          if (!Array.isArray(result.judgments) || result.judgments.length < 1) {
+            throw new Error("JEV result has no judgments");
+          }
+          NODE
+
+      - name: Persistir juicio en rama runtime
+        run: |
+          set -euo pipefail
+          git config user.name "ATLAS NEWS RADAR JEV"
+          git config user.email "actions@users.noreply.github.com"
+          git add -- "${{ steps.request.outputs.output }}"
+          git diff --cached --quiet && exit 0
+          git commit -m "LAB RADAR JEV judgments"
+
+          for attempt in 1 2 3; do
+            if git pull --rebase origin radar-runtime/editorial && git push origin HEAD:radar-runtime/editorial; then
+              echo "JEV_PERSIST=PASS"
+              exit 0
+            fi
+            git rebase --abort 2>/dev/null || true
+            if [[ "$attempt" -lt 3 ]]; then sleep 2; fi
+          done
+          echo "JEV_PERSIST=FAIL" >&2
+          exit 1
