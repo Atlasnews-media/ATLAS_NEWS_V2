@@ -1,0 +1,219 @@
+---
+interface Props {
+  title: string;
+  summary: string;
+  anchor: string;
+}
+
+const { title, summary, anchor } = Astro.props;
+const shareUrl = new URL(Astro.url.href);
+shareUrl.hash = anchor;
+const shareHref = shareUrl.href;
+const whatsappHref = `https://wa.me/?text=${encodeURIComponent(
+  `${title}\n${shareHref}`,
+)}`;
+---
+
+<div
+  class="signal-share-tools"
+  aria-label="Compartir señal"
+  data-signal-share
+  data-share-url={shareHref}
+  data-share-title={title}
+  data-share-summary={summary}
+>
+  <span class="signal-share-tools__label">Compartir</span>
+
+  <button
+    class="signal-share-tools__action"
+    type="button"
+    data-signal-share-native
+  >
+    <img
+      src="/share-icons/share.svg"
+      alt=""
+      width="18"
+      height="18"
+      aria-hidden="true"
+    />
+    Compartir
+  </button>
+
+  <a
+    class="signal-share-tools__action"
+    href={whatsappHref}
+    target="_blank"
+    rel="noopener noreferrer"
+  >
+    <img
+      src="/share-icons/whatsapp.svg"
+      alt=""
+      width="18"
+      height="18"
+      aria-hidden="true"
+    />
+    WhatsApp
+  </a>
+
+  <button
+    class="signal-share-tools__action"
+    type="button"
+    data-signal-share-copy
+  >
+    <img
+      src="/share-icons/link.svg"
+      alt=""
+      width="18"
+      height="18"
+      aria-hidden="true"
+    />
+    Copiar enlace
+  </button>
+
+  <span
+    class="signal-share-tools__status"
+    data-signal-share-status
+    aria-live="polite"></span>
+</div>
+
+<script>
+  function setupSignalShareTools() {
+    document.querySelectorAll("[data-signal-share]").forEach((container) => {
+      if (
+        !(container instanceof HTMLElement) ||
+        container.dataset.shareBound === "true"
+      ) {
+        return;
+      }
+
+      container.dataset.shareBound = "true";
+
+      const nativeButton = container.querySelector(
+        "[data-signal-share-native]",
+      );
+      const copyButton = container.querySelector("[data-signal-share-copy]");
+      const status = container.querySelector("[data-signal-share-status]");
+      const url = container.dataset.shareUrl ?? window.location.href;
+      const title = container.dataset.shareTitle ?? document.title;
+      const text = container.dataset.shareSummary ?? "";
+
+      if (nativeButton instanceof HTMLButtonElement) {
+        if (typeof navigator.share === "function") {
+          nativeButton.addEventListener("click", async () => {
+            try {
+              await navigator.share({ title, text, url });
+            } catch {
+              // Cerrar el menú de compartir no requiere acción adicional.
+            }
+          });
+        } else {
+          nativeButton.hidden = true;
+        }
+      }
+
+      if (copyButton instanceof HTMLButtonElement) {
+        copyButton.addEventListener("click", async () => {
+          if (!navigator.clipboard) {
+            if (status instanceof HTMLElement)
+              status.textContent = "Copia no disponible";
+            return;
+          }
+
+          try {
+            await navigator.clipboard.writeText(url);
+            if (status instanceof HTMLElement) {
+              status.textContent = "Enlace copiado";
+              window.setTimeout(() => {
+                status.textContent = "";
+              }, 2200);
+            }
+          } catch {
+            if (status instanceof HTMLElement)
+              status.textContent = "No se pudo copiar";
+          }
+        });
+      }
+    });
+  }
+
+  setupSignalShareTools();
+  document.addEventListener("astro:page-load", setupSignalShareTools);
+</script>
+
+<style>
+  .signal-share-tools {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.4rem;
+    margin: 0.9rem 0 1.15rem;
+    font: 800 0.62rem/1 var(--sans);
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+
+  .signal-share-tools__label {
+    margin-right: 0.15rem;
+    color: var(--ink-soft);
+  }
+
+  .signal-share-tools__action {
+    appearance: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    min-height: 1.9rem;
+    padding: 0.4rem 0.52rem;
+    border: 1px solid var(--rule);
+    border-radius: 0;
+    color: var(--ink);
+    background: transparent;
+    font: inherit;
+    letter-spacing: inherit;
+    text-decoration: none;
+    text-transform: inherit;
+    cursor: pointer;
+  }
+
+  .signal-share-tools__action img {
+    width: 0.95rem;
+    height: 0.95rem;
+    flex: 0 0 auto;
+  }
+
+  .signal-share-tools__action:hover,
+  .signal-share-tools__action:focus-visible {
+    color: var(--paper);
+    background: var(--ink);
+    outline: none;
+  }
+
+  .signal-share-tools__status {
+    min-height: 1em;
+    color: var(--accent);
+    font-weight: 700;
+    text-transform: none;
+  }
+
+  .signal-share-tools__status:empty {
+    display: none;
+  }
+
+  @media (max-width: 42rem) {
+    .signal-share-tools {
+      gap: 0.35rem;
+      margin-top: 0.75rem;
+    }
+
+    .signal-share-tools__label {
+      flex-basis: 100%;
+      margin-bottom: 0.1rem;
+    }
+
+    .signal-share-tools__action {
+      min-height: 2rem;
+      padding: 0.42rem 0.48rem;
+      font-size: 0.6rem;
+    }
+  }
+</style>

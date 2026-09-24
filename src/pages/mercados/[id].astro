@@ -1,6 +1,8 @@
 ---
 import { render } from "astro:content";
 import ArticleHeader from "../../components/ArticleHeader.astro";
+import ResponsiveEditorialImage from "../../components/ResponsiveEditorialImage.astro";
+import SignalShareTools from "../../components/SignalShareTools.astro";
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import {
   formatEditorialDateTime,
@@ -127,6 +129,41 @@ const readySignals = isReadySignalsArtifact(signalArtifact, expectedSignalsDate)
   ? signalArtifact
   : undefined;
 const marketsSignals = readySignals?.senalesDelDia.mercados ?? [];
+const signalUsedSources = new Set<string>();
+
+for (const signal of readySignals?.senalesDelDia.internacional ?? []) {
+  const reservedVisual = resolveFrontPageVisual({
+    section: "international",
+    id: `${expectedSignalsDate}:${signal.slot}:${signal.anchor}`,
+    title: `${signal.headline} ${signal.deck}`,
+    slot: signal.slot,
+    usedSources: signalUsedSources,
+  });
+  signalUsedSources.add(reservedVisual.src);
+}
+
+for (const signal of readySignals?.senalesDelDia.nacional ?? []) {
+  const reservedVisual = resolveFrontPageVisual({
+    section: "national",
+    id: `${expectedSignalsDate}:${signal.slot}:${signal.anchor}`,
+    title: `${signal.headline} ${signal.deck}`,
+    slot: signal.slot,
+    usedSources: signalUsedSources,
+  });
+  signalUsedSources.add(reservedVisual.src);
+}
+
+const marketsSignalItems = marketsSignals.map((signal) => {
+  const signalVisual = resolveFrontPageVisual({
+    section: "markets",
+    id: `${expectedSignalsDate}:${signal.slot}:${signal.anchor}`,
+    title: `${signal.headline} ${signal.deck}`,
+    slot: signal.slot,
+    usedSources: signalUsedSources,
+  });
+  signalUsedSources.add(signalVisual.src);
+  return { signal, visual: signalVisual };
+});
 ---
 
 <BaseLayout
@@ -148,7 +185,7 @@ const marketsSignals = readySignals?.senalesDelDia.mercados ?? [];
     <article class="prose"><Content /></article>
 
     {
-      marketsSignals.length === 2 && (
+      marketsSignalItems.length === 2 && (
         <section class="signal-developments" aria-labelledby="senales-mercados">
           <header class="signal-developments__header">
             <p>Señales del día</p>
@@ -156,30 +193,61 @@ const marketsSignals = readySignals?.senalesDelDia.mercados ?? [];
           </header>
 
           <div class="signal-developments__list">
-            {marketsSignals.map((signal) => (
+            {marketsSignalItems.map((item) => (
               <article
                 class="signal-development"
-                id={signal.anchor}
-                aria-labelledby={`${signal.anchor}-title`}
+                id={item.signal.anchor}
+                aria-labelledby={`${item.signal.anchor}-title`}
               >
+                <p class="signal-development__context">
+                  Señales del día · Mercados
+                </p>
                 <nav
                   class="signal-development__nav"
-                  aria-label={`Navegación desde ${signal.headline}`}
+                  aria-label={`Navegación desde ${item.signal.headline}`}
                 >
+                  <a class="signal-development__back" href="/#senales-del-dia">
+                    ← Volver a Señales del Día
+                  </a>
                   <a href="/">Ir a Portada</a>
                   <a href="/mercados/">Ir a Mercados</a>
                 </nav>
-                <h3 id={`${signal.anchor}-title`}>{signal.headline}</h3>
-                <div class="signal-development__body">{signal.development}</div>
+                <h3 id={`${item.signal.anchor}-title`}>
+                  {item.signal.headline}
+                </h3>
 
-                {signal.sources.length > 0 && (
+                <figure class="signal-development__visual">
+                  <ResponsiveEditorialImage
+                    src={item.visual.src}
+                    alt={item.visual.alt}
+                    sizes="(max-width: 42rem) calc(100vw - 1.25rem), 52rem"
+                    loading="lazy"
+                    variant="article"
+                  />
+                  <figcaption>
+                    {item.visual.source} · {item.visual.author} ·{" "}
+                    {item.visual.license}
+                  </figcaption>
+                </figure>
+
+                <SignalShareTools
+                  title={item.signal.headline}
+                  summary={item.signal.deck}
+                  anchor={item.signal.anchor}
+                />
+
+                <div class="signal-development__body">
+                  {item.signal.development}
+                </div>
+
+                {item.signal.sources.length > 0 && (
                   <div
                     class="signal-development__sources"
-                    aria-label={`Fuentes de ${signal.headline}`}
+                    aria-label={`Fuentes de ${item.signal.headline}`}
                   >
                     <strong>Fuentes</strong>
                     <ul>
-                      {signal.sources.map((source) => (
+                      {item.signal.sources.map((source) => (
                         <li>
                           <a href={source.url}>{source.name}</a>
                         </li>
@@ -302,10 +370,21 @@ const marketsSignals = readySignals?.senalesDelDia.mercados ?? [];
   .signal-development:first-child {
     border-top: 0;
   }
+  .signal-development:target {
+    border-top: 4px double var(--rule);
+  }
+  .signal-development__context {
+    margin: 0 0 0.65rem;
+    color: var(--accent);
+    font: 800 0.68rem/1.2 var(--sans);
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+  }
   .signal-development__nav {
     display: flex;
-    justify-content: flex-end;
-    gap: clamp(0.75rem, 2vw, 1.25rem);
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    gap: clamp(0.55rem, 2vw, 1.25rem);
     margin: 0 0 1.1rem;
     font: 800 0.68rem/1.2 var(--sans);
     letter-spacing: 0.08em;
@@ -314,6 +393,9 @@ const marketsSignals = readySignals?.senalesDelDia.mercados ?? [];
   .signal-development__nav a {
     color: var(--accent);
     text-decoration: none;
+  }
+  .signal-development__nav .signal-development__back {
+    margin-right: auto;
   }
   .signal-development__nav a:hover,
   .signal-development__nav a:focus-visible {
@@ -325,6 +407,22 @@ const marketsSignals = readySignals?.senalesDelDia.mercados ?? [];
     margin: 0 0 1rem;
     font: 700 clamp(1.35rem, 3vw, 1.85rem) / 1.08 var(--serif);
     letter-spacing: -0.02em;
+  }
+  .signal-development__visual {
+    margin: 0 0 0.9rem;
+    overflow: hidden;
+  }
+  .signal-development__visual :global(img) {
+    display: block;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+  }
+  .signal-development__visual figcaption {
+    margin-top: 0.35rem;
+    color: var(--ink-soft);
+    font: 600 0.58rem/1.3 var(--sans);
+    text-align: right;
   }
   .signal-development__body {
     color: var(--ink);
@@ -392,6 +490,16 @@ const marketsSignals = readySignals?.senalesDelDia.mercados ?? [];
     .signal-development {
       scroll-margin-top: 3.5rem;
       padding: 1.35rem 0;
+    }
+    .signal-development__nav {
+      align-items: flex-start;
+    }
+    .signal-development__nav .signal-development__back {
+      flex-basis: 100%;
+      margin-right: 0;
+    }
+    .signal-development__visual {
+      margin-bottom: 0.75rem;
     }
     .signal-development__body {
       font-size: 1.03rem;
