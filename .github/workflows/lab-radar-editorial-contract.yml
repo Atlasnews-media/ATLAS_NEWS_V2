@@ -89,18 +89,6 @@ jobs:
           node --check scripts/lab/radar-editorial/test-editorial-surface.mjs
           node --check scripts/lab/radar-editorial/verify-baseline-publication.mjs
 
-      - name: Diagnóstico único de formato de ingest
-        run: |
-          set -euo pipefail
-          files=(
-            scripts/lab/radar-editorial/materialize-baseline-request.mjs
-            scripts/lab/radar-editorial/validate-baseline-request.mjs
-          )
-          npx prettier --write "${files[@]}" --ignore-path /dev/null
-          echo "FORMAT_MATERIALIZER_B64=$(base64 -w0 scripts/lab/radar-editorial/materialize-baseline-request.mjs)"
-          echo "FORMAT_VALIDATOR_B64=$(base64 -w0 scripts/lab/radar-editorial/validate-baseline-request.mjs)"
-          git checkout -- "${files[@]}"
-
       - name: Comprobar formato RADAR
         run: >-
           npx prettier --check
