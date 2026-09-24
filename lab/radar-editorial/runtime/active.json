@@ -1,13 +1,13 @@
 {
   "schemaVersion": 1,
-  "radarRunId": "RADAR-JEV-STRESS-20260923-2125",
-  "sourceMainCommit": "c41e0cb59343994b87c17d8615d80867fb1a58b2",
+  "radarRunId": "RADAR-BASELINE-20260924-0903",
+  "sourceMainCommit": "3d17aa0bb2579bd1dfa7f850e9132b0aa4b0fd3e",
   "radarStateVersion": "radar-state-v1",
-  "editorialDate": "2026-09-23",
+  "editorialDate": "2026-09-24",
   "mode": "LAB_ONLY",
-  "experimentMode": "RADAR_JEV",
-  "status": "GENERAL_PASS",
+  "experimentMode": "BASELINE",
+  "status": "STARTED",
   "productionWritesAllowed": false,
-  "runPath": "lab/radar-editorial/runtime/runs/RADAR-JEV-STRESS-20260923-2125",
-  "updatedAt": "2026-09-23T21:25:00-03:00"
+  "runPath": "lab/radar-editorial/runtime/runs/RADAR-BASELINE-20260924-0903",
+  "updatedAt": "2026-09-24T09:03:04-03:00"
 }
