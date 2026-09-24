@@ -1,10 +1,10 @@
 ---
 title: "Tasas sobre 5% devuelven al dólar el mando del mercado"
 summary: "El salto del Treasury a diez años sobre 5%, el petróleo todavía elevado y un dólar en máximos de dos meses endurecen las condiciones financieras mientras las bolsas asiáticas esperan señales de la cumbre Trump-Xi."
-publishedAt: "2026-09-24T06:21:00-03:00"
+publishedAt: "2026-09-24T06:44:01-03:00"
 cutoffAt: "2026-09-24T06:20:00-03:00"
 section: "markets"
-status: "draft"
+status: "published"
 tags:
   - mercados
   - tasas
