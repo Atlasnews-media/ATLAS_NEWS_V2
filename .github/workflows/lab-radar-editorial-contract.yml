@@ -97,7 +97,8 @@ jobs:
             scripts/lab/radar-editorial/validate-baseline-request.mjs
           )
           npx prettier --write "${files[@]}"
-          git diff -- "${files[@]}"
+          echo "FORMAT_MATERIALIZER_B64=$(base64 -w0 scripts/lab/radar-editorial/materialize-baseline-request.mjs)"
+          echo "FORMAT_VALIDATOR_B64=$(base64 -w0 scripts/lab/radar-editorial/validate-baseline-request.mjs)"
           git checkout -- "${files[@]}"
 
       - name: Comprobar formato RADAR
