@@ -1,0 +1,76 @@
+{
+  "schemaVersion": 1,
+  "radarRunId": "RADAR-BASELINE-20260923-2105",
+  "sourceMainCommit": "c41e0cb59343994b87c17d8615d80867fb1a58b2",
+  "radarStateVersion": "radar-state-v1",
+  "editorialDate": "2026-09-23",
+  "mode": "LAB_ONLY",
+  "experimentMode": "BASELINE",
+  "candidates": [
+    {
+      "candidateId": "g-xi-visit",
+      "section": "general",
+      "titleOriginal": "China's Xi to visit the US from September 23-25",
+      "sourceName": "Reuters",
+      "sourceUrl": "https://www.reuters.com/world/china/chinas-xi-visit-us-september-23-25-2026-09-21/",
+      "publishedAt": "2026-09-21T00:00:00Z",
+      "discoveredAt": "2026-09-23T21:05:10-03:00",
+      "description": "Xi Jinping inició una visita de Estado a Estados Unidos con una cumbre bilateral que concentra comercio, tecnología, seguridad y estabilidad de la relación entre las dos mayores economías.",
+      "retrievalOrigin": "g-q1",
+      "selected": true,
+      "selectionStage": "selected-final"
+    },
+    {
+      "candidateId": "g-iran-oil-late",
+      "section": "general",
+      "titleOriginal": "Oil prices rise on Trump timeline for Iran peace deal: after US elections",
+      "sourceName": "Reuters",
+      "sourceUrl": "https://www.reuters.com/business/energy/oil-rises-slightly-ahead-potential-us-iran-talks-2026-09-22/",
+      "publishedAt": "2026-09-22T00:00:00Z",
+      "discoveredAt": "2026-09-23T21:05:10-03:00",
+      "description": "El petróleo retuvo una prima geopolítica porque la perspectiva de un acuerdo rápido entre Estados Unidos e Irán se debilitó y persistieron dudas sobre la normalización de la oferta y las rutas del Golfo.",
+      "retrievalOrigin": "g-q2",
+      "selected": true,
+      "selectionStage": "selected-final"
+    },
+    {
+      "candidateId": "g-yuan-summit",
+      "section": "general",
+      "titleOriginal": "Yuan hits fresh multi-year peak as PBOC eases curb ahead of Trump-Xi summit",
+      "sourceName": "Reuters",
+      "sourceUrl": "https://www.reuters.com/world/asia-pacific/yuan-hits-fresh-multi-year-peak-pboc-eases-curb-ahead-trump-xi-summit-2026-09-21/",
+      "publishedAt": "2026-09-21T00:00:00Z",
+      "discoveredAt": "2026-09-23T21:05:10-03:00",
+      "description": "El yuan alcanzó máximos de varios años mientras el banco central chino redujo su resistencia a la apreciación, una señal de estabilidad cambiaria antes de la cumbre con Estados Unidos.",
+      "retrievalOrigin": "g-q1",
+      "selected": true,
+      "selectionStage": "selected-final"
+    },
+    {
+      "candidateId": "g-trade-engine",
+      "section": "general",
+      "titleOriginal": "Xi rolls into Trump summit with China's trade engine roaring",
+      "sourceName": "Reuters",
+      "sourceUrl": "https://www.reuters.com/world/china/xi-rolls-into-trump-summit-with-chinas-trade-engine-roaring-2026-09-21/",
+      "publishedAt": "2026-09-21T00:00:00Z",
+      "discoveredAt": "2026-09-23T21:05:10-03:00",
+      "description": "China llega a la cumbre con un superávit comercial fuerte y con incentivos para prolongar la tregua, mientras siguen abiertas disputas sobre aranceles, Taiwán y acceso tecnológico.",
+      "retrievalOrigin": "g-q3",
+      "selected": false,
+      "selectionStage": "screened-out"
+    },
+    {
+      "candidateId": "g-un-ai",
+      "section": "general",
+      "titleOriginal": "UN chief calls for AI curbs and end to wars in his last assembly address",
+      "sourceName": "Reuters",
+      "sourceUrl": "https://www.reuters.com/world/europe/un-chief-calls-ai-curbs-end-wars-his-last-assembly-address-2026-09-22/",
+      "publishedAt": "2026-09-22T00:00:00Z",
+      "discoveredAt": "2026-09-23T21:05:10-03:00",
+      "description": "El secretario general de la ONU pidió gobernanza internacional de la inteligencia artificial y reformas multilaterales, pero la señal tiene menor impacto inmediato sobre la lectura macrofinanciera de esta corrida.",
+      "retrievalOrigin": "g-q3",
+      "selected": false,
+      "selectionStage": "screened-out"
+    }
+  ]
+}

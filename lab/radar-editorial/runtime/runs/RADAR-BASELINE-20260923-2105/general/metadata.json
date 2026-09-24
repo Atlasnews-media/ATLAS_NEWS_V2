@@ -1,0 +1,71 @@
+{
+  "schemaVersion": 1,
+  "radarRunId": "RADAR-BASELINE-20260923-2105",
+  "sourceMainCommit": "c41e0cb59343994b87c17d8615d80867fb1a58b2",
+  "radarStateVersion": "radar-state-v1",
+  "editorialDate": "2026-09-23",
+  "mode": "LAB_ONLY",
+  "experimentMode": "BASELINE",
+  "section": "general",
+  "status": "PASS",
+  "startedAt": "2026-09-23T21:05:01-03:00",
+  "completedAt": "2026-09-23T21:07:30-03:00",
+  "title": "Cumbre EEUU-China y energía concentran el riesgo global de corto plazo",
+  "summary": "La visita de Xi a Estados Unidos concentra comercio, tecnología y monedas mientras el petróleo mantiene una prima geopolítica por la incertidumbre en torno a Irán.",
+  "tags": [
+    "internacional",
+    "china",
+    "estados-unidos",
+    "energia",
+    "divisas"
+  ],
+  "sources": [
+    {
+      "name": "Reuters — visita de Xi a Estados Unidos",
+      "url": "https://www.reuters.com/world/china/chinas-xi-visit-us-september-23-25-2026-09-21/",
+      "publishedAt": "2026-09-21T00:00:00Z"
+    },
+    {
+      "name": "Reuters — petróleo e Irán",
+      "url": "https://www.reuters.com/business/energy/oil-rises-slightly-ahead-potential-us-iran-talks-2026-09-22/",
+      "publishedAt": "2026-09-22T00:00:00Z"
+    },
+    {
+      "name": "Reuters — yuan antes de la cumbre",
+      "url": "https://www.reuters.com/world/asia-pacific/yuan-hits-fresh-multi-year-peak-pboc-eases-curb-ahead-trump-xi-summit-2026-09-21/",
+      "publishedAt": "2026-09-21T00:00:00Z"
+    }
+  ],
+  "highlights": [
+    {
+      "label": "Xi llega a EEUU con comercio y tecnología en el centro",
+      "text": "La visita de Estado abre una negociación sobre tregua comercial, acceso tecnológico y estabilidad bilateral."
+    },
+    {
+      "label": "El petróleo sigue cargando una prima por Irán",
+      "text": "Las conversaciones continúan, pero el mercado aún no trata la normalización del Golfo como un hecho asegurado."
+    },
+    {
+      "label": "China favorece estabilidad cambiaria antes de la cumbre",
+      "text": "El yuan alcanzó máximos de varios años mientras el PBOC redujo su resistencia a la apreciación."
+    },
+    {
+      "label": "La tregua comercial importa más que un gran acuerdo inmediato",
+      "text": "La señal clave es si ambas potencias preservan reglas previsibles para inversión, comercio y cadenas de suministro."
+    },
+    {
+      "label": "Chile recibe el impacto por energía, dólar y demanda china",
+      "text": "Petróleo, monedas y expectativas de crecimiento asiático siguen siendo los canales externos más directos."
+    }
+  ],
+  "selectedCandidateIds": [
+    "g-xi-visit",
+    "g-iran-oil-late",
+    "g-yuan-summit"
+  ],
+  "discardedCandidateIds": [
+    "g-trade-engine",
+    "g-un-ai"
+  ],
+  "outputPath": "lab/radar-editorial/runtime/runs/RADAR-BASELINE-20260923-2105/general/output.md"
+}
