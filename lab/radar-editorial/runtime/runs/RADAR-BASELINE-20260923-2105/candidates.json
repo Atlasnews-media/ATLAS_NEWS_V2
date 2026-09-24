@@ -71,6 +71,58 @@
       "retrievalOrigin": "g-q3",
       "selected": false,
       "selectionStage": "screened-out"
+    },
+    {
+      "candidateId": "n-pib-regional-late",
+      "section": "national",
+      "titleOriginal": "Producto Interno Bruto Regional Segundo Trimestre 2026",
+      "sourceName": "Banco Central de Chile",
+      "sourceUrl": "https://www.bcentral.cl/web/banco-central/contenido/-/detalle/prensa/nota-de-prensa/producto-interno-bruto-regional-segundo-trimestre-2026",
+      "publishedAt": "2026-09-23T08:30:00-03:00",
+      "discoveredAt": "2026-09-23T21:08:10-03:00",
+      "description": "El PIB chileno cayó 0,2% en el segundo trimestre y siete de las dieciséis regiones se contrajeron, con la macrozona norte como principal incidencia negativa y la minería como factor central.",
+      "retrievalOrigin": "n-q1",
+      "selected": true,
+      "selectionStage": "selected-final"
+    },
+    {
+      "candidateId": "n-senate-growth",
+      "section": "national",
+      "titleOriginal": "Comisión de Economía analizó escenario económico y medidas para impulsar crecimiento",
+      "sourceName": "Senado de Chile",
+      "sourceUrl": "https://www.senado.cl/comunicaciones/noticias/comision-de-economia-analizo-escenario-economico-y-medidas-para-impulsar",
+      "publishedAt": "2026-09-23T00:00:00-03:00",
+      "discoveredAt": "2026-09-23T21:08:10-03:00",
+      "description": "La Comisión de Economía revisó con el Ejecutivo el deterioro de actividad y empleo y las medidas proinversión, incluyendo iniciativas pro-Pymes, reconstrucción, permisos y herramientas proempleo.",
+      "retrievalOrigin": "n-q2",
+      "selected": true,
+      "selectionStage": "selected-final"
+    },
+    {
+      "candidateId": "n-cherries-diversify",
+      "section": "national",
+      "titleOriginal": "Cómo Chile busca atenuar dependencia de China en envíos de cerezas",
+      "sourceName": "Diario Financiero",
+      "sourceUrl": "https://www.df.cl/doble-click/lo-que-debes-saber-a-esta-hora-de-la-tarde-xpanj",
+      "publishedAt": "2026-09-23T15:15:00-03:00",
+      "discoveredAt": "2026-09-23T21:08:10-03:00",
+      "description": "La agenda exportadora busca abrir destinos alternativos para cerezas y reducir dependencia de China mediante acuerdos en Asia que bajen barreras y costos logísticos.",
+      "retrievalOrigin": "n-q3",
+      "selected": true,
+      "selectionStage": "selected-final"
+    },
+    {
+      "candidateId": "n-ipom-context",
+      "section": "national",
+      "titleOriginal": "Informe de Política Monetaria septiembre 2026",
+      "sourceName": "Banco Central de Chile",
+      "sourceUrl": "https://www.bcentral.cl/contenido/-/detalle/publicaciones/politica-monetaria/ipom-septiembre-2026",
+      "publishedAt": "2026-09-09T00:00:00-03:00",
+      "discoveredAt": "2026-09-23T21:08:10-03:00",
+      "description": "El IPoM de septiembre ya había recortado el crecimiento de 2026 y descrito debilidad de demanda y empleo, por lo que opera como marco de contexto más que como novedad nueva de esta noche.",
+      "retrievalOrigin": "n-q1",
+      "selected": false,
+      "selectionStage": "screened-out"
     }
   ]
 }
