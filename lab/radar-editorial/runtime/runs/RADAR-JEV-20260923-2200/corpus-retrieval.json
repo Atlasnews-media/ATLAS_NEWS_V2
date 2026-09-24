@@ -1,0 +1,32 @@
+{
+  "schemaVersion": 1,
+  "radarRunId": "RADAR-JEV-20260923-2200",
+  "radarStateVersion": "radar-state-v1",
+  "editorialDate": "2026-09-23",
+  "sourceMainCommit": "31fe90d5bd9afadaf429ec34f96c496f9f01bffc",
+  "experimentMode": "RADAR_JEV",
+  "mode": "LAB_ONLY",
+  "productionWritesAllowed": false,
+  "retrievalMethod": "DETERMINISTIC_RADAR_STATE_REFERENCES",
+  "candidateRetrievals": [
+    {
+      "candidateKey": "CLP_USD_TREASURY_2026-09-23",
+      "matchedThreadId": "chile-inflation-activity-rates",
+      "historicalReferences": ["/lecturas/2026-09-14-reading-chile-cierra-semana-senales-cruzadas/"],
+      "reason": "Coincidencia determinística por geografía Chile y canales dólar/cobre/tasas globales presentes en el hilo RADAR vigente."
+    },
+    {
+      "candidateKey": "US_TREASURY_FED_2026-09-23",
+      "matchedThreadId": "us-employment-fed-rates",
+      "historicalReferences": ["/ediciones/2026-09-17-daily-fed-endurece-el-mapa-global-de-tasas/"],
+      "reason": "Coincidencia determinística con el hilo de Fed/tasas y su última publicación registrada."
+    },
+    {
+      "candidateKey": "ENERGY_RATES_2026-09-23",
+      "matchedThreadId": "oil-geopolitics-inflation",
+      "historicalReferences": ["/ediciones/2026-09-18-daily-bancos-centrales-endurecen-el-mapa-global/"],
+      "reason": "Coincidencia determinística con el hilo de energía, geopolítica e inflación y su última publicación registrada."
+    }
+  ],
+  "status": "PASS_TO_JEV"
+}
