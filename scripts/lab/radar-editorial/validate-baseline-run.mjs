@@ -15,6 +15,9 @@ const REQUIRED_FRAMEWORK = [
   "docs/CONTRATO_EDITORIAL.md",
   "data/editorial_state.json",
 ];
+const ALLOWED_EXPERIMENT_MODES = new Set(["BASELINE", "RADAR_JEV"]);
+let activeExperimentMode = "BASELINE";
+
 const FORBIDDEN_DECISION_KEYS = new Set([
   "SAME_EVENT",
   "NEW_EVENT",
@@ -77,8 +80,8 @@ function assertBaseIdentity(data, label) {
     fail(`${label}.editorialDate debe ser YYYY-MM-DD`);
   }
   if (data.mode !== "LAB_ONLY") fail(`${label}.mode debe ser LAB_ONLY`);
-  if (data.experimentMode !== "BASELINE") {
-    fail(`${label}.experimentMode debe ser BASELINE`);
+  if (!ALLOWED_EXPERIMENT_MODES.has(data.experimentMode)) {
+    fail(`${label}.experimentMode no autorizado: ${data.experimentMode}`);
   }
   if (data.productionWritesAllowed !== false) {
     fail(`${label}.productionWritesAllowed debe ser false`);
@@ -86,6 +89,7 @@ function assertBaseIdentity(data, label) {
 }
 
 function walkForbiddenKeys(value, where = "$") {
+  if (activeExperimentMode !== "BASELINE") return;
   if (!value || typeof value !== "object") return;
   if (Array.isArray(value)) {
     value.forEach((item, index) =>
@@ -288,23 +292,81 @@ async function assertOutputMarkdown(file, section) {
 
 async function readRunIdentity(runDir) {
   const run = await readCanonicalJson(path.join(runDir, "run.json"));
+  activeExperimentMode = run.experimentMode ?? "BASELINE";
   assertBaseIdentity(run, "run");
   assertRunPath(
     `lab/radar-editorial/runtime/runs/${run.radarRunId}`,
     run.radarRunId,
   );
   if (run.schemaVersion !== 1) fail("run.schemaVersion debe ser 1");
-  if (run.memoryMode !== "PRODUCTIVE_READ_ONLY_CONTEXT")
-    fail("run.memoryMode inválido");
-  if (run.radarInterventionUsed !== false)
-    fail("run.radarInterventionUsed debe ser false");
-  if (run.jevUsed !== false) fail("run.jevUsed debe ser false");
-  if (run.corpusUsed !== false) fail("run.corpusUsed debe ser false");
+  if (run.experimentMode === "BASELINE") {
+    if (run.memoryMode !== "PRODUCTIVE_READ_ONLY_CONTEXT")
+      fail("run.memoryMode inválido para BASELINE");
+    if (run.radarInterventionUsed !== false)
+      fail("run.radarInterventionUsed debe ser false en BASELINE");
+    if (run.jevUsed !== false) fail("run.jevUsed debe ser false en BASELINE");
+    if (run.corpusUsed !== false)
+      fail("run.corpusUsed debe ser false en BASELINE");
+  } else if (run.experimentMode === "RADAR_JEV") {
+    if (run.memoryMode !== "RADAR_PLUS_CORPUS")
+      fail("run.memoryMode debe ser RADAR_PLUS_CORPUS en RADAR_JEV");
+    if (run.radarInterventionUsed !== true)
+      fail("run.radarInterventionUsed debe ser true en RADAR_JEV");
+    if (run.jevUsed !== true) fail("run.jevUsed debe ser true en RADAR_JEV");
+    if (run.corpusUsed !== true)
+      fail("run.corpusUsed debe ser true en RADAR_JEV");
+  }
   assertIso(run.startedAt, "run.startedAt");
   if (run.completedAt !== null) assertIso(run.completedAt, "run.completedAt");
   assertFrameworkRead(run.frameworkRead, "run.frameworkRead");
   walkForbiddenKeys(run, "run");
   return run;
+}
+
+
+async function validateExperimentalEvidence(runDir, run) {
+  if (run.experimentMode !== "RADAR_JEV") return;
+
+  const radarContext = await readCanonicalJson(
+    path.join(runDir, "radar-context.json"),
+  );
+  const corpusRetrieval = await readCanonicalJson(
+    path.join(runDir, "corpus-retrieval.json"),
+  );
+  const jevJudgments = await readCanonicalJson(
+    path.join(runDir, "jev-judgments.json"),
+  );
+
+  for (const [label, artifact] of [
+    ["radar-context", radarContext],
+    ["corpus-retrieval", corpusRetrieval],
+    ["jev-judgments", jevJudgments],
+  ]) {
+    assertIdentity(artifact, run, label);
+    if (artifact.schemaVersion !== 1) fail(`${label}.schemaVersion debe ser 1`);
+    if (artifact.experimentMode !== "RADAR_JEV")
+      fail(`${label}.experimentMode debe ser RADAR_JEV`);
+  }
+
+  if (!Array.isArray(radarContext.signals) || radarContext.signals.length < 1) {
+    fail("radar-context.signals debe contener al menos una señal");
+  }
+  if (
+    !Array.isArray(corpusRetrieval.candidateRetrievals) ||
+    corpusRetrieval.candidateRetrievals.length < 1
+  ) {
+    fail("corpus-retrieval.candidateRetrievals debe contener evidencia");
+  }
+  if (
+    jevJudgments.engine !== "JEV_TYPESAFE" ||
+    !Array.isArray(jevJudgments.judgments) ||
+    jevJudgments.judgments.length < 1
+  ) {
+    fail("jev-judgments debe declarar JEV_TYPESAFE y contener juicios");
+  }
+  if (jevJudgments.thresholdsApplied === true) {
+    fail("RADAR_JEV no autoriza thresholds semánticos automáticos");
+  }
 }
 
 async function validatePhase(runDir, section, identity, candidateMap) {
@@ -353,6 +415,8 @@ export async function validateBaselineRun(runDir, latest = null, options = {}) {
   ) {
     fail("run completo requiere General/Nacional/Mercados PASS");
   }
+
+  await validateExperimentalEvidence(runDir, run);
 
   const searchLog = await readCanonicalJson(
     path.join(runDir, "search-log.json"),
@@ -416,7 +480,10 @@ export async function validateBaselineRun(runDir, latest = null, options = {}) {
   assertIdentity(result, run, "result");
   if (result.schemaVersion !== 1 || result.status !== "PASS")
     fail("result.status debe ser PASS");
-  if (result.experimentMode !== "BASELINE" || result.mode !== "LAB_ONLY")
+  if (
+    result.experimentMode !== run.experimentMode ||
+    result.mode !== "LAB_ONLY"
+  )
     fail("result modo inválido");
   if (result.productionWritesAllowed !== false)
     fail("result permite production writes");
@@ -432,7 +499,10 @@ export async function validateBaselineRun(runDir, latest = null, options = {}) {
   assertIdentity(request, run, "publish-request");
   if (request.schemaVersion !== 1 || request.status !== "READY")
     fail("publish-request no está READY");
-  if (request.mode !== "LAB_ONLY" || request.experimentMode !== "BASELINE")
+  if (
+    request.mode !== "LAB_ONLY" ||
+    request.experimentMode !== run.experimentMode
+  )
     fail("publish-request modo inválido");
   if (request.productionWritesAllowed !== false)
     fail("publish-request permite production writes");
@@ -451,9 +521,9 @@ export async function validateBaselineRun(runDir, latest = null, options = {}) {
     );
     if (
       !indexHtml.includes(run.radarRunId) ||
-      !indexHtml.includes("BASELINE")
+      !indexHtml.includes(run.experimentMode)
     ) {
-      fail("index.html no identifica run BASELINE");
+      fail(`index.html no identifica run ${run.experimentMode}`);
     }
   }
 
@@ -470,7 +540,7 @@ export async function validateBaselineRun(runDir, latest = null, options = {}) {
       fail("latest.viewPath no coincide");
   }
 
-  console.log(`BASELINE RUN PASS — ${run.radarRunId}`);
+  console.log(`RADAR RUN PASS — ${run.radarRunId} · ${run.experimentMode}`);
   return { run, searchLog, candidatesDoc, result, request };
 }
 
@@ -489,6 +559,8 @@ export async function validateBaselineCheckpoint(activeFile) {
   if (active.status === "READY") {
     return validateBaselineRun(runDir);
   }
+
+  await validateExperimentalEvidence(runDir, run);
 
   const searchLog = await readCanonicalJson(
     path.join(runDir, "search-log.json"),
@@ -516,7 +588,7 @@ export async function validateBaselineCheckpoint(activeFile) {
     await validatePhase(runDir, section, run, candidateMap);
   }
   console.log(
-    `BASELINE CHECKPOINT PASS — ${active.radarRunId} · ${active.status}`,
+    `RADAR CHECKPOINT PASS — ${active.radarRunId} · ${run.experimentMode} · ${active.status}`,
   );
   return { active, run };
 }
@@ -551,7 +623,7 @@ if (
   import.meta.url === pathToFileURL(process.argv[1]).href
 ) {
   main().catch((error) => {
-    console.error(`BASELINE VALIDATION FAIL: ${error.message}`);
+    console.error(`RADAR VALIDATION FAIL: ${error.message}`);
     process.exit(1);
   });
 }
