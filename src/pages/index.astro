@@ -706,6 +706,7 @@ const marketsVisual = latestMarkets
     border-bottom: 4px double var(--rule);
   }
   .headline-tab {
+    position: relative;
     min-width: 0;
     padding: 0.62rem 0.55rem;
     border: 0;
@@ -723,32 +724,34 @@ const marketsVisual = latestMarkets
     background: rgba(31, 29, 23, 0.045);
     color: var(--accent);
   }
-  .headline-tab[data-front-page-tab="senales"]::after {
-    content: "";
-    display: inline-block;
-    width: 7px;
-    height: 7px;
-    margin-left: 0.42rem;
-    border-radius: 50%;
-    vertical-align: 0.08em;
-    background: var(--accent);
-    box-shadow: 0 0 5px rgba(142, 47, 36, 0.22);
-    animation: headline-signal-active 1.8s ease-in-out infinite;
+  .headline-tab[data-front-page-tab="senales"] {
+    padding-right: 1.75rem;
   }
-  @keyframes headline-signal-active {
-    0%,
-    100% {
-      opacity: 0.48;
+  .headline-tab[data-front-page-tab="senales"]::after {
+    position: absolute;
+    top: 50%;
+    right: 0.62rem;
+    color: var(--accent);
+    content: "→";
+    font-size: 0.95rem;
+    line-height: 1;
+    transform: translateY(-50%);
+    animation: headline-signal-cue 520ms ease-out 1;
+  }
+  @keyframes headline-signal-cue {
+    0% {
+      opacity: 0;
+      transform: translate(-3px, -50%);
     }
 
-    50% {
-      opacity: 0.95;
+    100% {
+      opacity: 1;
+      transform: translate(0, -50%);
     }
   }
   @media (prefers-reduced-motion: reduce) {
     .headline-tab[data-front-page-tab="senales"]::after {
       animation: none;
-      opacity: 0.88;
     }
   }
   .headline-tab:hover,
