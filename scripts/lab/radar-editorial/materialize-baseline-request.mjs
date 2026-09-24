@@ -1,7 +1,10 @@
 import fs from "node:fs/promises";
 import path from "node:path";
 import { pathToFileURL } from "node:url";
-import { readAndValidateBaselineRequest, REQUIRED_ARTIFACTS } from "./validate-baseline-request.mjs";
+import {
+  readAndValidateBaselineRequest,
+  REQUIRED_ARTIFACTS,
+} from "./validate-baseline-request.mjs";
 
 function fail(message) {
   throw new Error(message);
@@ -54,11 +57,17 @@ function activeFor(request, runPath, phase) {
     markets: "MARKETS_PASS",
     ready: "READY",
   };
-  const checkpointKey = phase === "ready" ? "checkpoints/markets.json" : "checkpoints/" + phase + ".json";
+  const checkpointKey =
+    phase === "ready"
+      ? "checkpoints/markets.json"
+      : "checkpoints/" + phase + ".json";
   const checkpoint = request.artifacts[checkpointKey];
   const finalRun = request.artifacts["run.json"];
-  const updatedAt = phase === "ready" ? finalRun.completedAt : checkpoint.completedAt;
-  if (typeof updatedAt !== "string") fail("timestamp de active no disponible para " + phase);
+  const updatedAt =
+    phase === "ready" ? finalRun.completedAt : checkpoint.completedAt;
+  if (typeof updatedAt !== "string") {
+    fail("timestamp de active no disponible para " + phase);
+  }
   return {
     schemaVersion: 1,
     radarRunId: request.radarRunId,
@@ -117,7 +126,9 @@ function artifactSet(phase) {
   if (phase === "general") return general;
   if (phase === "national") return national;
   if (phase === "markets") return markets;
-  if (phase === "ready") return REQUIRED_ARTIFACTS.filter((key) => key !== "run.json");
+  if (phase === "ready") {
+    return REQUIRED_ARTIFACTS.filter((key) => key !== "run.json");
+  }
   fail("phase inválida: " + phase);
 }
 
@@ -129,15 +140,29 @@ export async function materializeRequest(requestFile, targetRoot, phase) {
 
   for (const key of artifactSet(phase)) {
     const value = request.artifacts[key];
-    const content = typeof value === "string" ? (value.endsWith("\n") ? value : value + "\n") : jsonText(value);
+    const content =
+      typeof value === "string"
+        ? value.endsWith("\n")
+          ? value
+          : value + "\n"
+        : jsonText(value);
     await writeImmutable(path.join(runDir, key), content);
   }
 
-  await writeMutable(path.join(runDir, "run.json"), jsonText(phaseRun(request.artifacts["run.json"], phase)));
+  await writeMutable(
+    path.join(runDir, "run.json"),
+    jsonText(phaseRun(request.artifacts["run.json"], phase)),
+  );
   const runtimeRoot = path.join(targetRoot, "lab/radar-editorial/runtime");
-  await writeMutable(path.join(runtimeRoot, "active.json"), jsonText(activeFor(request, runPath, phase)));
+  await writeMutable(
+    path.join(runtimeRoot, "active.json"),
+    jsonText(activeFor(request, runPath, phase)),
+  );
   if (phase === "ready") {
-    await writeMutable(path.join(runtimeRoot, "latest.json"), jsonText(latestFor(request, runPath)));
+    await writeMutable(
+      path.join(runtimeRoot, "latest.json"),
+      jsonText(latestFor(request, runPath)),
+    );
   }
   return { request, runPath };
 }
@@ -148,16 +173,23 @@ async function main() {
   const rootIndex = args.indexOf("--target-root");
   const phaseIndex = args.indexOf("--phase");
   if (requestIndex < 0 || rootIndex < 0 || phaseIndex < 0) {
-    fail("uso: materialize-baseline-request.mjs --request FILE --target-root DIR --phase general|national|markets|ready");
+    fail(
+      "uso: materialize-baseline-request.mjs --request FILE --target-root DIR --phase general|national|markets|ready",
+    );
   }
   const requestFile = args[requestIndex + 1];
   const targetRoot = args[rootIndex + 1];
   const phase = args[phaseIndex + 1];
   const { request } = await materializeRequest(requestFile, targetRoot, phase);
-  console.log("RADAR MATERIALIZE PASS — " + request.radarRunId + " · " + phase);
+  console.log(
+    "RADAR MATERIALIZE PASS — " + request.radarRunId + " · " + phase,
+  );
 }
 
-if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) {
+if (
+  process.argv[1] &&
+  import.meta.url === pathToFileURL(process.argv[1]).href
+) {
   main().catch((error) => {
     console.error("RADAR MATERIALIZE FAIL: " + error.message);
     process.exit(1);
