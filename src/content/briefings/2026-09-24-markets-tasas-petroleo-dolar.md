@@ -17,6 +17,13 @@ sources:
     url: "https://www.reuters.com/world/china/global-markets-global-markets-2026-09-23/"
   - name: "Reuters — Wall Street ends down as oil prices, Treasury yields rise"
     url: "https://www.reuters.com/world/china/wall-st-futures-steady-with-focus-mideast-talks-us-china-summit-2026-09-23/"
+editorialVisual:
+  src: "https://commons.wikimedia.org/wiki/Special:FilePath/US%20Dollar%20banknotes%20I.jpg?width=1280"
+  alt: "Billetes de cien dólares estadounidenses en primer plano."
+  source: "Wikimedia Commons"
+  sourceUrl: "https://commons.wikimedia.org/wiki/File:US_Dollar_banknotes_I.jpg"
+  author: "Milad Mosapoor"
+  license: "Dominio público en Estados Unidos — moneda estadounidense"
 highlights:
   - label: "Treasury sobre 5%"
     text: "El rendimiento a diez años saltó a 5,106%, máximo desde 2007, tras una fuerte lectura de actividad estadounidense."

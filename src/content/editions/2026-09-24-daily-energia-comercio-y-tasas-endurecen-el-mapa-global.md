@@ -21,6 +21,13 @@ sources:
     url: "https://www.reuters.com/world/china/global-markets-global-markets-2026-09-23/"
   - name: "Reuters — German institutes raise 2026 and 2027 economic growth forecasts"
     url: "https://www.reuters.com/business/german-institutes-raise-2026-2027-economic-growth-forecasts-2026-09-24/"
+editorialVisual:
+  src: "https://commons.wikimedia.org/wiki/Special:FilePath/Mina-Al-Ahmadi%20oil%20refinery%20night.jpg?width=1280"
+  alt: "Refinería de petróleo de Mina Al-Ahmadi, Kuwait, iluminada durante la noche."
+  source: "Wikimedia Commons"
+  sourceUrl: "https://commons.wikimedia.org/wiki/File:Mina-Al-Ahmadi_oil_refinery_night.jpg"
+  author: "Grubb"
+  license: "Dominio público"
 featured: false
 demo: false
 highlights:
