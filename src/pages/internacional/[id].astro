@@ -193,7 +193,9 @@ const internationalSignalItems = internationalSignals.map((signal) => {
                   <a href="/">Ir a Portada</a>
                   <a href="/internacional/">Ir a Internacional</a>
                 </nav>
-                <h3 id={`${item.signal.anchor}-title`}>{item.signal.headline}</h3>
+                <h3 id={`${item.signal.anchor}-title`}>
+                  {item.signal.headline}
+                </h3>
 
                 <figure class="signal-development__visual">
                   <ResponsiveEditorialImage
@@ -215,7 +217,9 @@ const internationalSignalItems = internationalSignals.map((signal) => {
                   anchor={item.signal.anchor}
                 />
 
-                <div class="signal-development__body">{item.signal.development}</div>
+                <div class="signal-development__body">
+                  {item.signal.development}
+                </div>
 
                 {item.signal.sources.length > 0 && (
                   <div
