@@ -180,9 +180,31 @@ const internationalSignalItems = internationalSignals.map((signal) => {
                 id={item.signal.anchor}
                 aria-labelledby={`${item.signal.anchor}-title`}
               >
-                <p class="signal-development__context">
-                  Señales del día · Internacional
-                </p>
+                <div class="signal-development__hero">
+                  <figure class="signal-development__visual">
+                    <ResponsiveEditorialImage
+                      src={item.visual.src}
+                      alt={item.visual.alt}
+                      sizes="(max-width: 42rem) 58vw, 32rem"
+                      loading="lazy"
+                      variant="article"
+                    />
+                    <figcaption>
+                      {item.visual.source} · {item.visual.author} ·{" "}
+                      {item.visual.license}
+                    </figcaption>
+                  </figure>
+
+                  <div class="signal-development__hero-copy">
+                    <p class="signal-development__context">
+                      Señales del día · Internacional
+                    </p>
+                    <h3 id={`${item.signal.anchor}-title`}>
+                      {item.signal.headline}
+                    </h3>
+                  </div>
+                </div>
+
                 <nav
                   class="signal-development__nav"
                   aria-label={`Navegación desde ${item.signal.headline}`}
@@ -200,23 +222,6 @@ const internationalSignalItems = internationalSignals.map((signal) => {
                     Internacional
                   </a>
                 </nav>
-                <h3 id={`${item.signal.anchor}-title`}>
-                  {item.signal.headline}
-                </h3>
-
-                <figure class="signal-development__visual">
-                  <ResponsiveEditorialImage
-                    src={item.visual.src}
-                    alt={item.visual.alt}
-                    sizes="(max-width: 42rem) calc(100vw - 1.25rem), 52rem"
-                    loading="lazy"
-                    variant="article"
-                  />
-                  <figcaption>
-                    {item.visual.source} · {item.visual.author} ·{" "}
-                    {item.visual.license}
-                  </figcaption>
-                </figure>
 
                 <SignalShareTools
                   title={item.signal.headline}
@@ -363,21 +368,106 @@ const internationalSignalItems = internationalSignals.map((signal) => {
   .signal-development:target {
     border-top: 4px double var(--rule);
   }
+  .signal-development__hero {
+    position: relative;
+    min-height: clamp(15rem, 46vw, 20rem);
+    margin: 0 0 1rem;
+    overflow: hidden;
+    isolation: isolate;
+    border-bottom: 1px solid var(--rule);
+  }
+  .signal-development__hero-copy {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    min-height: inherit;
+    max-width: 78%;
+    padding: clamp(1.25rem, 4vw, 2.2rem) 0 1.35rem;
+  }
   .signal-development__context {
-    margin: 0 0 0.65rem;
+    margin: 0 0 0.7rem;
     color: var(--accent);
     font: 800 0.68rem/1.2 var(--sans);
     letter-spacing: 0.14em;
     text-transform: uppercase;
   }
+  .signal-development h3 {
+    margin: 0;
+    font: 700 clamp(2rem, 5.2vw, 3.6rem) / 0.95 var(--serif);
+    letter-spacing: -0.045em;
+    text-wrap: balance;
+  }
+  .signal-development__visual {
+    position: absolute;
+    z-index: 0;
+    top: 0;
+    right: -0.5rem;
+    bottom: 0;
+    width: min(58%, 32rem);
+    margin: 0;
+    overflow: hidden;
+    pointer-events: none;
+    -webkit-mask-image: linear-gradient(
+      to bottom,
+      transparent 0%,
+      #000 10%,
+      #000 90%,
+      transparent 100%
+    );
+    mask-image: linear-gradient(
+      to bottom,
+      transparent 0%,
+      #000 10%,
+      #000 90%,
+      transparent 100%
+    );
+  }
+  .signal-development__visual :global(img) {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    opacity: 0.42;
+    filter: saturate(0.65) sepia(0.12) contrast(0.9) brightness(1.08);
+    -webkit-mask-image: linear-gradient(
+      to right,
+      transparent 0%,
+      rgba(0, 0, 0, 0.22) 22%,
+      rgba(0, 0, 0, 0.72) 58%,
+      #000 100%
+    );
+    mask-image: linear-gradient(
+      to right,
+      transparent 0%,
+      rgba(0, 0, 0, 0.22) 22%,
+      rgba(0, 0, 0, 0.72) 58%,
+      #000 100%
+    );
+  }
+  .signal-development__visual figcaption {
+    position: absolute;
+    right: 0.25rem;
+    bottom: 0.2rem;
+    max-width: 82%;
+    color: var(--ink-soft);
+    font: 600 0.42rem/1.15 var(--sans);
+    text-align: right;
+    opacity: 0.7;
+  }
   .signal-development__nav {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    width: min(100%, 30rem);
+    width: min(100%, 36rem);
     margin: 0 0 1.1rem;
-    border: 1px solid var(--rule);
+    border-right: 1px solid var(--rule);
+    border-bottom: 4px double var(--rule);
+    border-left: 1px solid var(--rule);
+    border-top: 4px double var(--rule);
     font: 800 0.68rem/1.2 var(--sans);
-    letter-spacing: 0.08em;
+    letter-spacing: 0.09em;
     text-transform: uppercase;
   }
   .signal-development__nav a {
@@ -385,12 +475,19 @@ const internationalSignalItems = internationalSignals.map((signal) => {
     align-items: center;
     min-height: 2.55rem;
     padding: 0.62rem 0.75rem;
-    color: var(--accent);
+    color: var(--ink);
     text-decoration: none;
   }
   .signal-development__nav .signal-development__back {
     grid-column: 1 / -1;
     border-bottom: 1px solid var(--rule);
+    color: var(--accent);
+  }
+  .signal-development__nav .signal-development__back::after {
+    margin-left: auto;
+    color: var(--accent);
+    content: "◆";
+    font-size: 0.62rem;
   }
   .signal-development__nav
     .signal-development__secondary
@@ -399,30 +496,13 @@ const internationalSignalItems = internationalSignals.map((signal) => {
   }
   .signal-development__nav a:hover,
   .signal-development__nav a:focus-visible {
-    text-decoration: underline;
-    text-decoration-thickness: 0.08em;
-    text-underline-offset: 0.16em;
+    color: var(--paper);
+    background: var(--ink);
+    outline: none;
   }
-  .signal-development h3 {
-    margin: 0 0 1rem;
-    font: 700 clamp(1.35rem, 3vw, 1.85rem) / 1.08 var(--serif);
-    letter-spacing: -0.02em;
-  }
-  .signal-development__visual {
-    margin: 0 0 0.9rem;
-    overflow: hidden;
-  }
-  .signal-development__visual :global(img) {
-    display: block;
-    width: 100%;
-    aspect-ratio: 16 / 9;
-    object-fit: cover;
-  }
-  .signal-development__visual figcaption {
-    margin-top: 0.35rem;
-    color: var(--ink-soft);
-    font: 600 0.58rem/1.3 var(--sans);
-    text-align: right;
+  .signal-development__nav .signal-development__back:hover::after,
+  .signal-development__nav .signal-development__back:focus-visible::after {
+    color: var(--paper);
   }
   .signal-development__body {
     color: var(--ink);
@@ -491,8 +571,33 @@ const internationalSignalItems = internationalSignals.map((signal) => {
       scroll-margin-top: 3.5rem;
       padding: 1.35rem 0;
     }
+    .signal-development__hero {
+      min-height: 14.5rem;
+      margin-bottom: 0.85rem;
+    }
+    .signal-development__hero-copy {
+      max-width: 86%;
+      padding: 1rem 0 1.1rem;
+    }
+    .signal-development h3 {
+      font-size: clamp(2rem, 8.4vw, 2.7rem);
+      line-height: 0.96;
+    }
     .signal-development__visual {
-      margin-bottom: 0.75rem;
+      right: -0.55rem;
+      width: 62%;
+    }
+    .signal-development__visual :global(img) {
+      opacity: 0.36;
+    }
+    .signal-development__visual figcaption {
+      right: 0.2rem;
+      bottom: 0.15rem;
+      max-width: 74%;
+      font-size: 0.36rem;
+    }
+    .signal-development__nav {
+      width: 100%;
     }
     .signal-development__body {
       font-size: 1.03rem;
