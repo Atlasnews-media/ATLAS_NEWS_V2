@@ -1,0 +1,19 @@
+{
+  "schemaVersion": 1,
+  "radarRunId": "RADAR-JEV-20260923-2200",
+  "radarStateVersion": "radar-state-v1",
+  "editorialDate": "2026-09-23",
+  "sourceMainCommit": "31fe90d5bd9afadaf429ec34f96c496f9f01bffc",
+  "experimentMode": "RADAR_JEV",
+  "mode": "LAB_ONLY",
+  "productionWritesAllowed": false,
+  "engine": "JEV_TYPESAFE",
+  "thresholdsApplied": false,
+  "judgments": [],
+  "status": "FAIL",
+  "failurePoint": "JEV_INTEGRATION",
+  "failureReason": "No se encontró ni estuvo disponible en esta ejecución una integración/runtime JEV_TYPESAFE real invocable desde ATLAS_NEWS_V2. El contrato RADAR_JEV existe y el retrieval previo fue persistido, pero producir judgments sin el motor real habría simulado JEV, lo que está prohibido por el stress test.",
+  "nextPhaseStarted": false,
+  "readyGenerated": false,
+  "publisherInvoked": false
+}
