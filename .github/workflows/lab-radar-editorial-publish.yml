@@ -2,7 +2,8 @@ name: LAB — RADAR Editorial publisher
 
 on:
   workflow_run:
-    workflows:\n      ["LAB — RADAR Editorial runtime gate", "LAB — RADAR Editorial ingest"]
+    workflows:
+      ["LAB — RADAR Editorial runtime gate", "LAB — RADAR Editorial ingest"]
     types: [completed]
 
 permissions:
