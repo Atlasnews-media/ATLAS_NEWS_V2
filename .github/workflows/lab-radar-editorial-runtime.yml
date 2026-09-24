@@ -14,7 +14,7 @@ concurrency:
 
 jobs:
   validate-runtime:
-    name: Scope + baseline RADAR
+    name: Scope + RADAR mode-aware
     runs-on: ubuntu-latest
     timeout-minutes: 8
     steps:
@@ -73,5 +73,8 @@ jobs:
           set -euo pipefail
           node scripts/lab/radar-editorial/validate-radar-artifact.mjs lab/radar-editorial/runtime/latest.json
           experiment="$(node -p "JSON.parse(require('fs').readFileSync('lab/radar-editorial/runtime/latest.json','utf8')).experimentMode || ''")"
-          test "$experiment" = "BASELINE"
+          case "$experiment" in
+            BASELINE|RADAR_JEV) ;;
+            *) echo "experimentMode no autorizado: $experiment" >&2; exit 1 ;;
+          esac
           node scripts/lab/radar-editorial/validate-baseline-run.mjs --latest lab/radar-editorial/runtime/latest.json

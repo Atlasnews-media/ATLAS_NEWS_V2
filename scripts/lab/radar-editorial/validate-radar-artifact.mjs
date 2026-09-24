@@ -93,23 +93,27 @@ export function validateRadarArtifact(data) {
     fail("artefacto RADAR debe ser un objeto JSON");
   }
 
-  if (data.experimentMode === "BASELINE") {
+  if (["BASELINE", "RADAR_JEV"].includes(data.experimentMode)) {
     assertExactKeys(data, BASELINE_KEYS);
-    if (data.schemaVersion !== 2) fail("baseline schemaVersion debe ser 2");
+    if (data.schemaVersion !== 2) fail("runtime schemaVersion debe ser 2");
     assertCommon(data);
     const expectedRunPath = `lab/radar-editorial/runtime/runs/${data.radarRunId}`;
-    if (data.runPath !== expectedRunPath) fail("runPath baseline inválido");
+    if (data.runPath !== expectedRunPath) fail("runPath runtime inválido");
     if (data.resultPath !== `${expectedRunPath}/result.json`) {
-      fail("resultPath baseline inválido");
+      fail("resultPath runtime inválido");
     }
     if (data.publishRequestPath !== `${expectedRunPath}/publish-request.json`) {
-      fail("publishRequestPath baseline inválido");
+      fail("publishRequestPath runtime inválido");
     }
     if (data.viewPath !== `${expectedRunPath}/index.html`) {
-      fail("viewPath baseline inválido");
+      fail("viewPath runtime inválido");
     }
-    if (data.message !== "ATLAS NEWS LAB baseline READY") {
-      fail("message baseline inválido");
+    const expectedMessage =
+      data.experimentMode === "BASELINE"
+        ? "ATLAS NEWS LAB baseline READY"
+        : "ATLAS NEWS LAB radar+jev READY";
+    if (data.message !== expectedMessage) {
+      fail("message runtime inválido");
     }
   } else {
     assertExactKeys(data, FIXTURE_KEYS);
