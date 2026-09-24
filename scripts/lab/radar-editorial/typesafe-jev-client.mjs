@@ -55,8 +55,7 @@ export class TypeSafeJevClient {
           body: JSON.stringify({ state, model: this.model, questions }),
           signal: controller.signal,
         });
-        const latencyMs =
-          Math.round((performance.now() - started) * 100) / 100;
+        const latencyMs = Math.round((performance.now() - started) * 100) / 100;
         const text = await response.text();
         let payload = null;
         try {

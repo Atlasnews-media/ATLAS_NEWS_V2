@@ -14,8 +14,7 @@ function assertIdentity(request) {
   if (request.schemaVersion !== 1) fail("jev-request.schemaVersion debe ser 1");
   if (request.experimentMode !== "RADAR_JEV")
     fail("jev-request.experimentMode debe ser RADAR_JEV");
-  if (request.mode !== "LAB_ONLY")
-    fail("jev-request.mode debe ser LAB_ONLY");
+  if (request.mode !== "LAB_ONLY") fail("jev-request.mode debe ser LAB_ONLY");
   if (request.productionWritesAllowed !== false)
     fail("jev-request.productionWritesAllowed debe ser false");
   if (!/^[A-Za-z0-9._:-]{8,128}$/.test(request.radarRunId ?? ""))
@@ -189,8 +188,7 @@ async function main() {
       "historical_context_needed",
       "angle_repeated",
     ]) {
-      if (!answers[key])
-        fail(`${candidate.candidateKey}: falta answer ${key}`);
+      if (!answers[key]) fail(`${candidate.candidateKey}: falta answer ${key}`);
     }
 
     judgments.push({
