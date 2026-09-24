@@ -139,7 +139,7 @@ const internationalSignalItems = internationalSignals.map((signal) => {
     slot: signal.slot,
     usedSources: signalUsedSources,
   });
-  signalUsedSources.add(item.visual.src);
+  signalUsedSources.add(signalVisual.src);
   return { signal, visual: signalVisual };
 });
 ---
