@@ -1,0 +1,36 @@
+{
+  "schemaVersion": 1,
+  "radarRunId": "RADAR-JEV-20260923-2200",
+  "radarStateVersion": "radar-state-v1",
+  "editorialDate": "2026-09-23",
+  "sourceMainCommit": "31fe90d5bd9afadaf429ec34f96c496f9f01bffc",
+  "experimentMode": "RADAR_JEV",
+  "mode": "LAB_ONLY",
+  "productionWritesAllowed": false,
+  "generatedAt": "2026-09-23T22:00:00-03:00",
+  "signals": [
+    {
+      "threadId": "chile-inflation-activity-rates",
+      "topic": "Inflación, actividad y tasas en Chile",
+      "preSearchSignal": "Vigilar transmisión de dólar, cobre y tasas globales al escenario chileno sin predeterminar la próxima TPM."
+    },
+    {
+      "threadId": "us-employment-fed-rates",
+      "topic": "Empleo de Estados Unidos y Reserva Federal",
+      "preSearchSignal": "Vigilar tasas Treasury, dólar y señales sobre persistencia del nuevo ciclo restrictivo de la Fed."
+    },
+    {
+      "threadId": "oil-geopolitics-inflation",
+      "topic": "Petróleo, geopolítica e inflación",
+      "preSearchSignal": "Vigilar energía y riesgo geopolítico como canal hacia inflación y tasas."
+    }
+  ],
+  "searchEvidence": {
+    "status": "COMPLETED",
+    "observations": [
+      "El 23-09 el peso chileno se debilitó con fuerza frente al dólar mientras el cobre corregía y aumentaban las apuestas por nuevas alzas de la Fed.",
+      "Wall Street cayó el 23-09 mientras el Treasury a 10 años superó 5,1%, reforzando la señal de condiciones financieras globales más duras.",
+      "La cobertura reciente de IA mantiene una señal de selectividad bursátil y monetización, con AMD alcanzando una valorización de US$1 billón el 21-09."
+    ]
+  }
+}
