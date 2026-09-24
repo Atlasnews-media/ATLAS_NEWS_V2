@@ -209,8 +209,15 @@ const marketsSignalItems = marketsSignals.map((signal) => {
                   <a class="signal-development__back" href="/#senales-del-dia">
                     ← Volver a Señales del Día
                   </a>
-                  <a href="/">Ir a Portada</a>
-                  <a href="/mercados/">Ir a Mercados</a>
+                  <a class="signal-development__secondary" href="/">
+                    Portada
+                  </a>
+                  <a
+                    class="signal-development__secondary"
+                    href="/mercados/"
+                  >
+                    Mercados
+                  </a>
                 </nav>
                 <h3 id={`${item.signal.anchor}-title`}>
                   {item.signal.headline}
@@ -381,21 +388,31 @@ const marketsSignalItems = marketsSignals.map((signal) => {
     text-transform: uppercase;
   }
   .signal-development__nav {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: flex-start;
-    gap: clamp(0.55rem, 2vw, 1.25rem);
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    width: min(100%, 30rem);
     margin: 0 0 1.1rem;
+    border: 1px solid var(--rule);
     font: 800 0.68rem/1.2 var(--sans);
     letter-spacing: 0.08em;
     text-transform: uppercase;
   }
   .signal-development__nav a {
+    display: flex;
+    align-items: center;
+    min-height: 2.55rem;
+    padding: 0.62rem 0.75rem;
     color: var(--accent);
     text-decoration: none;
   }
   .signal-development__nav .signal-development__back {
-    margin-right: auto;
+    grid-column: 1 / -1;
+    border-bottom: 1px solid var(--rule);
+  }
+  .signal-development__nav
+    .signal-development__secondary
+    + .signal-development__secondary {
+    border-left: 1px solid var(--rule);
   }
   .signal-development__nav a:hover,
   .signal-development__nav a:focus-visible {
@@ -490,13 +507,6 @@ const marketsSignalItems = marketsSignals.map((signal) => {
     .signal-development {
       scroll-margin-top: 3.5rem;
       padding: 1.35rem 0;
-    }
-    .signal-development__nav {
-      align-items: flex-start;
-    }
-    .signal-development__nav .signal-development__back {
-      flex-basis: 100%;
-      margin-right: 0;
     }
     .signal-development__visual {
       margin-bottom: 0.75rem;
