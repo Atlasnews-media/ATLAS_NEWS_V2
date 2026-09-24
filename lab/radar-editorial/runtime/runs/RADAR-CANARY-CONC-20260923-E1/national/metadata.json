@@ -1,0 +1,62 @@
+{
+  "schemaVersion": 1,
+  "radarRunId": "RADAR-CANARY-CONC-20260923-E1",
+  "sourceMainCommit": "c41e0cb59343994b87c17d8615d80867fb1a58b2",
+  "radarStateVersion": "radar-state-v1",
+  "editorialDate": "2026-09-23",
+  "mode": "LAB_ONLY",
+  "experimentMode": "BASELINE",
+  "section": "national",
+  "status": "PASS",
+  "startedAt": "2026-09-23T21:07:31-03:00",
+  "completedAt": "2026-09-23T21:10:40-03:00",
+  "title": "PIB regional y agenda proinversión exponen la brecha de la reactivación chilena",
+  "summary": "La contracción de siete regiones confirma una recuperación desigual, mientras el Ejecutivo y el Senado discuten medidas para inversión, empleo y Pymes y el sector exportador busca diversificar mercados.",
+  "tags": [
+    "chile",
+    "actividad",
+    "regiones",
+    "inversion",
+    "exportaciones"
+  ],
+  "sources": [
+    {
+      "name": "Banco Central de Chile — PIB Regional II trimestre 2026",
+      "url": "https://www.bcentral.cl/web/banco-central/contenido/-/detalle/prensa/nota-de-prensa/producto-interno-bruto-regional-segundo-trimestre-2026",
+      "publishedAt": "2026-09-23T08:30:00-03:00"
+    },
+    {
+      "name": "Senado de Chile — Comisión de Economía",
+      "url": "https://www.senado.cl/comunicaciones/noticias/comision-de-economia-analizo-escenario-economico-y-medidas-para-impulsar",
+      "publishedAt": "2026-09-23T00:00:00-03:00"
+    },
+    {
+      "name": "Diario Financiero — diversificación exportadora",
+      "url": "https://www.df.cl/doble-click/lo-que-debes-saber-a-esta-hora-de-la-tarde-xpanj",
+      "publishedAt": "2026-09-23T15:15:00-03:00"
+    }
+  ],
+  "highlights": [
+    {
+      "label": "Siete regiones se contrajeron en el segundo trimestre",
+      "text": "La caída nacional de 0,2% tuvo su principal incidencia en la macrozona norte y estuvo fuertemente ligada a la minería."
+    },
+    {
+      "label": "La discusión proinversión se desplaza hacia ejecución",
+      "text": "Senado y Ejecutivo revisaron permisos, medidas pro-Pymes, reconstrucción y herramientas para empleo e inversión."
+    },
+    {
+      "label": "Exportadores buscan reducir dependencia de un solo mercado",
+      "text": "La estrategia para cerezas incorpora destinos alternativos en Asia para mejorar resiliencia comercial y logística."
+    }
+  ],
+  "selectedCandidateIds": [
+    "n-pib-regional-late",
+    "n-senate-growth",
+    "n-cherries-diversify"
+  ],
+  "discardedCandidateIds": [
+    "n-ipom-context"
+  ],
+  "outputPath": "lab/radar-editorial/runtime/runs/RADAR-CANARY-CONC-20260923-E1/national/output.md"
+}
