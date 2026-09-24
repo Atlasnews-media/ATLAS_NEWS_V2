@@ -141,11 +141,7 @@ export function validateBaselineRequest(request) {
       if (typeof value !== "string" || !value.trim()) {
         fail("artifact textual inválido: " + key);
       }
-    } else if (
-      !value ||
-      typeof value !== "object" ||
-      Array.isArray(value)
-    ) {
+    } else if (!value || typeof value !== "object" || Array.isArray(value)) {
       fail("artifact JSON inválido: " + key);
     }
   }
