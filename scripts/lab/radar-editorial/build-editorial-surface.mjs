@@ -519,7 +519,17 @@ function buildTrace(runData) {
       base,
       '/search-log.json">search-log.json</a><a href="',
       base,
-      '/candidates.json">candidates.json</a><a href="',
+      '/candidates.json">candidates.json</a>',
+      runData.run.experimentMode === "RADAR_JEV"
+        ? '<a href="' +
+          base +
+          '/radar-context.json">radar-context.json</a><a href="' +
+          base +
+          '/corpus-retrieval.json">corpus-retrieval.json</a><a href="' +
+          base +
+          '/jev-judgments.json">jev-judgments.json</a>'
+        : "",
+      '<a href="',
       base,
       '/result.json">result.json</a><a href="',
       base,

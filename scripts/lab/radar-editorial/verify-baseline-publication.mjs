@@ -29,20 +29,29 @@ async function main() {
   const remote = await readAndValidateRadarArtifact(remoteLatestFile);
   const request = await readCanonicalJson(remoteRequestFile);
   if (
-    local.experimentMode !== "BASELINE" ||
-    remote.experimentMode !== "BASELINE"
+    !["BASELINE", "RADAR_JEV"].includes(local.experimentMode) ||
+    remote.experimentMode !== local.experimentMode
   ) {
-    throw new Error("verificación baseline recibió artefacto no BASELINE");
+    throw new Error(
+      "verificación remota recibió modos experimentales incompatibles",
+    );
   }
-  if (request.status !== "READY" || request.experimentMode !== "BASELINE") {
-    throw new Error("publish-request remoto no está READY BASELINE");
+  if (
+    request.status !== "READY" ||
+    request.experimentMode !== local.experimentMode
+  ) {
+    throw new Error(
+      "publish-request remoto no está READY para el modo vigente",
+    );
   }
   if (request.productionWritesAllowed !== false) {
     throw new Error("publish-request remoto permite producción");
   }
   assertSame(local, remote, "latest remoto");
   assertSame(local, request, "publish-request remoto");
-  console.log(`BASELINE REMOTE IDENTITY PASS — ${local.radarRunId}`);
+  console.log(
+    `RADAR REMOTE IDENTITY PASS — ${local.radarRunId} · ${local.experimentMode}`,
+  );
 }
 
 if (
@@ -50,7 +59,7 @@ if (
   import.meta.url === pathToFileURL(process.argv[1]).href
 ) {
   main().catch((error) => {
-    console.error(`BASELINE REMOTE IDENTITY FAIL: ${error.message}`);
+    console.error(`RADAR REMOTE IDENTITY FAIL: ${error.message}`);
     process.exit(1);
   });
 }
