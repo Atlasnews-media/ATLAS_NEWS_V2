@@ -6,22 +6,24 @@
   "editorialDate": "2026-09-23",
   "mode": "LAB_ONLY",
   "experimentMode": "BASELINE",
-  "startedAt": "2026-09-23T21:05:01-03:00",
-  "completedAt": null,
-  "productionWritesAllowed": false,
-  "memoryMode": "PRODUCTIVE_READ_ONLY_CONTEXT",
-  "radarInterventionUsed": false,
-  "jevUsed": false,
-  "corpusUsed": false,
+  "section": "markets",
+  "startedAt": "2026-09-23T21:10:41-03:00",
   "frameworkRead": [
     "AGENTS.md",
     "docs/PROCEDIMIENTO_GPT_PUBLICACION.md",
     "docs/CONTRATO_EDITORIAL.md",
     "data/editorial_state.json"
   ],
-  "phases": {
-    "general": "PASS",
-    "national": "PASS",
-    "markets": "PASS"
-  }
+  "searchQueryIds": [
+    "m-q1",
+    "m-q2",
+    "m-q3"
+  ],
+  "candidateIds": [
+    "m-dollar-close",
+    "m-us-yields",
+    "m-wallstreet-oil",
+    "m-ipsa-close",
+    "m-fed-ipsa-context"
+  ]
 }

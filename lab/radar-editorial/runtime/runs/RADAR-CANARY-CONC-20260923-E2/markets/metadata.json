@@ -1,0 +1,68 @@
+{
+  "schemaVersion": 1,
+  "radarRunId": "RADAR-CANARY-CONC-20260923-E2",
+  "sourceMainCommit": "c41e0cb59343994b87c17d8615d80867fb1a58b2",
+  "radarStateVersion": "radar-state-v1",
+  "editorialDate": "2026-09-23",
+  "mode": "LAB_ONLY",
+  "experimentMode": "BASELINE",
+  "section": "markets",
+  "status": "PASS",
+  "startedAt": "2026-09-23T21:10:41-03:00",
+  "completedAt": "2026-09-23T21:14:20-03:00",
+  "title": "Dólar sobre $960 y Treasury sobre 5% endurecen el cierre de mercados",
+  "summary": "El peso cerró cerca de $963 mientras el Treasury a diez años alcanzó máximos desde 2007, Wall Street cayó y el petróleo repuntó; el IPSA mostró una variación marginal positiva.",
+  "tags": [
+    "mercados",
+    "dolar",
+    "treasury",
+    "wall-street",
+    "ipsa"
+  ],
+  "sources": [
+    {
+      "name": "Emol — cierre del dólar",
+      "url": "https://www.emol.com/noticias/Economia/2026/09/23/1212234/dolar-mercado-cambiario-local.html",
+      "publishedAt": "2026-09-23T14:12:00-03:00"
+    },
+    {
+      "name": "Reuters / Journal Record — Treasury y acciones",
+      "url": "https://journalrecord.com/2026/09/23/us-stocks-fall-treasury-yields-highest-2007-business-data/",
+      "publishedAt": "2026-09-23T00:00:00Z"
+    },
+    {
+      "name": "Reuters / Mecklenburg Times — Wall Street y petróleo",
+      "url": "https://mecktimes.com/news/2026/09/23/wall-street-ends-down-as-oil-prices-treasury-yields-rise/",
+      "publishedAt": "2026-09-23T00:00:00Z"
+    },
+    {
+      "name": "Diario Estrategia — cierre IPSA",
+      "url": "https://www.diarioestrategia.cl/texto-diario/mostrar/6026266/msci-ipsa-bolsa-santiago-miercoles-termina-alza-marginal-020",
+      "publishedAt": "2026-09-23T19:35:00-03:00"
+    }
+  ],
+  "highlights": [
+    {
+      "label": "El dólar cerró cerca de $963",
+      "text": "La fortaleza global de la divisa y la corrección del cobre llevaron al peso a su cierre más débil en casi un año."
+    },
+    {
+      "label": "El Treasury a diez años volvió sobre 5%",
+      "text": "Datos de actividad fuertes elevaron los rendimientos y reforzaron la posibilidad de nuevas alzas de la Fed."
+    },
+    {
+      "label": "Wall Street cayó mientras el IPSA resistió",
+      "text": "Las acciones estadounidenses retrocedieron con tasas y petróleo al alza, mientras la bolsa chilena terminó con variación marginal positiva."
+    }
+  ],
+  "selectedCandidateIds": [
+    "m-dollar-close",
+    "m-us-yields",
+    "m-wallstreet-oil",
+    "m-ipsa-close"
+  ],
+  "discardedCandidateIds": [
+    "m-fed-ipsa-context"
+  ],
+  "outputPath": "lab/radar-editorial/runtime/runs/RADAR-CANARY-CONC-20260923-E2/markets/output.md"
+}
