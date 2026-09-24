@@ -78,15 +78,12 @@ jobs:
           node --check scripts/lab/radar-editorial/verify-baseline-publication.mjs
 
       - name: Comprobar formato RADAR
-        run: |
-          set -euo pipefail
-          npx prettier --write \
-            "lab/radar-editorial/**/*.{json,md}" \
-            "scripts/lab/radar-editorial/*.mjs" \
-            ".github/workflows/lab-radar-editorial-*.yml" \
-            --ignore-path /dev/null
-          git diff -- scripts/lab/radar-editorial/validate-baseline-run.mjs scripts/lab/radar-editorial/verify-baseline-publication.mjs
-          test -z "$(git diff --name-only)"
+        run: >-
+          npx prettier --check
+          "lab/radar-editorial/**/*.{json,md}"
+          "scripts/lab/radar-editorial/*.mjs"
+          ".github/workflows/lab-radar-editorial-*.yml"
+          --ignore-path /dev/null
 
       - name: Comprobar sintaxis shell
         run: bash -n scripts/lab/radar-editorial/test-public-concurrency.sh
