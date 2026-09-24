@@ -1,10 +1,10 @@
 ---
 title: "Construcción pone a prueba la velocidad del plan de empleo"
 summary: "El plan de emergencia para construcción compromete cerca de US$200 millones hasta diciembre; la señal relevante ahora es cuánto logra transformarse en obras ejecutadas y empleo formal en regiones."
-publishedAt: "2026-09-24T06:18:00-03:00"
+publishedAt: "2026-09-24T06:44:01-03:00"
 cutoffAt: "2026-09-24T06:16:00-03:00"
 section: "national"
-status: "draft"
+status: "published"
 tags:
   - chile
   - empleo
