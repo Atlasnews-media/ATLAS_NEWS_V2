@@ -89,6 +89,17 @@ jobs:
           node --check scripts/lab/radar-editorial/test-editorial-surface.mjs
           node --check scripts/lab/radar-editorial/verify-baseline-publication.mjs
 
+      - name: Diagnóstico único de formato de ingest
+        run: |
+          set -euo pipefail
+          files=(
+            scripts/lab/radar-editorial/materialize-baseline-request.mjs
+            scripts/lab/radar-editorial/validate-baseline-request.mjs
+          )
+          npx prettier --write "${files[@]}"
+          git diff -- "${files[@]}"
+          git checkout -- "${files[@]}"
+
       - name: Comprobar formato RADAR
         run: >-
           npx prettier --check
