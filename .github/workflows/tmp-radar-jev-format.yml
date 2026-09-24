@@ -1,0 +1,28 @@
+name: TEMP — Format RADAR JEV
+
+on:
+  push:
+    branches:
+      - "lab/radar-jev-bridge-2026-09-23"
+
+permissions:
+  contents: read
+
+jobs:
+  format:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - run: npm ci
+      - name: Format
+        run: npx prettier --write scripts/lab/radar-editorial/run-jev-memory-judge.mjs scripts/lab/radar-editorial/typesafe-jev-client.mjs
+      - uses: actions/upload-artifact@v4
+        with:
+          name: radar-jev-formatted
+          path: |
+            scripts/lab/radar-editorial/run-jev-memory-judge.mjs
+            scripts/lab/radar-editorial/typesafe-jev-client.mjs
