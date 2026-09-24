@@ -1,0 +1,14 @@
+{
+  "schemaVersion": 1,
+  "radarRunId": "RADAR-BASELINE-20260924-0903",
+  "queries": [
+    {"q":"September 24 2026 global markets oil Fed Iran latest Reuters","timestamp":"2026-09-24T09:07:00-03:00"},
+    {"q":"September 24 2026 world economy markets central banks latest","timestamp":"2026-09-24T09:07:00-03:00"},
+    {"q":"September 24 2026 Iran Hormuz oil latest","timestamp":"2026-09-24T09:07:00-03:00"},
+    {"q":"September 24 2026 Asia Europe markets oil latest","timestamp":"2026-09-24T09:07:00-03:00"},
+    {"q":"Chile September 24 2026 economy politics markets latest Reuters","timestamp":"2026-09-24T09:09:00-03:00"},
+    {"q":"Chile September 24 2026 central bank peso copper latest","timestamp":"2026-09-24T09:09:00-03:00"},
+    {"q":"Chile September 24 2026 news economy government latest","timestamp":"2026-09-24T09:09:00-03:00"},
+    {"q":"Chile September 24 2026 markets IPSA dollar copper latest","timestamp":"2026-09-24T09:09:00-03:00"}
+  ]
+}

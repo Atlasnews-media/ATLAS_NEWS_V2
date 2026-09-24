@@ -1,0 +1,32 @@
+{
+  "schemaVersion": 1,
+  "radarRunId": "RADAR-BASELINE-20260924-0903",
+  "sourceMainCommit": "3d17aa0bb2579bd1dfa7f850e9132b0aa4b0fd3e",
+  "radarStateVersion": "radar-state-v1",
+  "editorialDate": "2026-09-24",
+  "mode": "LAB_ONLY",
+  "experimentMode": "BASELINE",
+  "section": "general",
+  "status": "PASS",
+  "startedAt": "2026-09-24T09:03:04-03:00",
+  "completedAt": "2026-09-24T09:11:00-03:00",
+  "title": "Bonos y petróleo vuelven a endurecer el mapa financiero global",
+  "summary": "El repunte del petróleo y el salto de los rendimientos soberanos refuerzan la presión inflacionaria y prolongan el sesgo restrictivo de los bancos centrales.",
+  "tags": ["internacional", "petroleo", "tasas", "inflacion", "divisas"],
+  "sources": [
+    {"name":"Reuters — mercados globales","url":"https://www.reuters.com/world/china/global-markets-global-markets-2026-09-24/"},
+    {"name":"Reuters — petróleo e Irán","url":"https://www.reuters.com/business/energy/oil-prices-edge-lower-iran-says-it-is-open-diplomacy-end-war-2026-09-24/"},
+    {"name":"Reuters — bancos centrales nórdicos","url":"https://www.reuters.com/business/finance/wrapup1-nordic-central-banks-join-global-fight-against-war-led-inflation-2026-09-24/"},
+    {"name":"Reuters — Fed Williams","url":"https://www.reuters.com/business/feds-williams-says-it-is-reasonable-see-another-us-rate-hike-this-year-2026-09-24/"}
+  ],
+  "highlights": [
+    {"label":"El petróleo repunta mientras la diplomacia con Irán sigue trabada","text":"El crudo sube más de 2% y conserva una prima geopolítica."},
+    {"label":"Los bonos globales elevan nuevamente el costo financiero","text":"El Treasury a diez años alcanza su mayor rendimiento desde 2007."},
+    {"label":"El dólar fuerte refleja expectativas de nuevas alzas de la Fed","text":"La moneda estadounidense se mantiene cerca de máximos de dos meses."},
+    {"label":"Noruega sube tasas y Suecia apunta a más endurecimiento","text":"El shock energético extiende el sesgo restrictivo entre bancos centrales."},
+    {"label":"Energía y tasas transmiten presión hacia economías importadoras","text":"Combustibles y financiamiento más caros estrechan las condiciones globales."}
+  ],
+  "selectedCandidateIds": ["g-bonds-oil", "g-nordic-cb", "g-fed-williams"],
+  "discardedCandidateIds": ["g-gold", "g-nse-ipo"],
+  "outputPath": "lab/radar-editorial/runtime/runs/RADAR-BASELINE-20260924-0903/general/output.md"
+}

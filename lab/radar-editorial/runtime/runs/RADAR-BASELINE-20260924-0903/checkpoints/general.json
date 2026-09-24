@@ -6,8 +6,7 @@
   "editorialDate": "2026-09-24",
   "mode": "LAB_ONLY",
   "experimentMode": "BASELINE",
-  "status": "GENERAL_PASS",
-  "productionWritesAllowed": false,
-  "runPath": "lab/radar-editorial/runtime/runs/RADAR-BASELINE-20260924-0903",
-  "updatedAt": "2026-09-24T09:11:00-03:00"
+  "phase": "general",
+  "status": "PASS",
+  "completedAt": "2026-09-24T09:11:00-03:00"
 }

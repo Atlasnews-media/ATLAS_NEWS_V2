@@ -1,0 +1,11 @@
+{
+  "schemaVersion": 1,
+  "radarRunId": "RADAR-BASELINE-20260924-0903",
+  "general": [
+    {"id":"g-bonds-oil","selected":true,"reason":"Señal dominante cross-market: petróleo, rendimientos y dólar endurecen condiciones financieras.","source":"https://www.reuters.com/world/china/global-markets-global-markets-2026-09-24/"},
+    {"id":"g-nordic-cb","selected":true,"reason":"Confirma extensión internacional del sesgo restrictivo.","source":"https://www.reuters.com/business/finance/wrapup1-nordic-central-banks-join-global-fight-against-war-led-inflation-2026-09-24/"},
+    {"id":"g-fed-williams","selected":true,"reason":"Refuerza posibilidad de otra subida de la Fed este año.","source":"https://www.reuters.com/business/feds-williams-says-it-is-reasonable-see-another-us-rate-hike-this-year-2026-09-24/"},
+    {"id":"g-gold","selected":false,"reason":"Reacción de activo secundaria frente a la señal dominante de tasas y energía.","source":"https://www.reuters.com/world/india/gold-muted-fed-policy-tightening-prospects-weigh-2026-09-24/"},
+    {"id":"g-nse-ipo","selected":false,"reason":"Evento corporativo relevante pero menor para la tesis macro global.","source":"https://www.reuters.com/world/india/nse-ipo-institutional-investor-portion-fully-subscribed-second-day-2026-09-18/"}
+  ]
+}
