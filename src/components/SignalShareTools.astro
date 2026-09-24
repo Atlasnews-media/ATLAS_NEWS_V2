@@ -3,19 +3,29 @@ interface Props {
   title: string;
   summary: string;
   anchor: string;
+  variant?: "compact" | "full";
 }
 
-const { title, summary, anchor } = Astro.props;
+const { title, summary, anchor, variant = "compact" } = Astro.props;
 const shareUrl = new URL(Astro.url.href);
 shareUrl.hash = anchor;
 const shareHref = shareUrl.href;
+const encodedUrl = encodeURIComponent(shareHref);
 const whatsappHref = `https://wa.me/?text=${encodeURIComponent(
   `${title}\n${shareHref}`,
 )}`;
+const facebookHref = `https://www.facebook.com/sharer/sharer.php?u=${encodedUrl}`;
+const linkedinHref = `https://www.linkedin.com/sharing/share-offsite/?url=${encodedUrl}`;
+const xHref = `https://twitter.com/intent/tweet?text=${encodeURIComponent(
+  title,
+)}&url=${encodedUrl}`;
 ---
 
 <div
-  class="signal-share-tools"
+  class:list={[
+    "signal-share-tools",
+    variant === "full" && "signal-share-tools--full",
+  ]}
   aria-label="Compartir señal"
   data-signal-share
   data-share-url={shareHref}
@@ -36,7 +46,7 @@ const whatsappHref = `https://wa.me/?text=${encodeURIComponent(
       height="18"
       aria-hidden="true"
     />
-    Compartir
+    {variant === "full" ? "Compartir…" : "Compartir"}
   </button>
 
   <a
@@ -54,6 +64,60 @@ const whatsappHref = `https://wa.me/?text=${encodeURIComponent(
     />
     WhatsApp
   </a>
+
+  {
+    variant === "full" && (
+      <>
+        <a
+          class="signal-share-tools__action"
+          href={facebookHref}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <img
+            src="/share-icons/facebook.svg"
+            alt=""
+            width="18"
+            height="18"
+            aria-hidden="true"
+          />
+          Facebook
+        </a>
+
+        <a
+          class="signal-share-tools__action"
+          href={linkedinHref}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <img
+            src="/share-icons/linkedin.svg"
+            alt=""
+            width="18"
+            height="18"
+            aria-hidden="true"
+          />
+          LinkedIn
+        </a>
+
+        <a
+          class="signal-share-tools__action signal-share-tools__action--x"
+          href={xHref}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <img
+            src="/share-icons/x.svg"
+            alt=""
+            width="18"
+            height="18"
+            aria-hidden="true"
+          />
+          X
+        </a>
+      </>
+    )
+  }
 
   <button
     class="signal-share-tools__action"
@@ -181,6 +245,23 @@ const whatsappHref = `https://wa.me/?text=${encodeURIComponent(
     flex: 0 0 auto;
   }
 
+  .signal-share-tools--full {
+    align-items: stretch;
+    padding-top: 0.8rem;
+    border-top: 1px solid var(--rule);
+  }
+
+  .signal-share-tools--full .signal-share-tools__label {
+    flex-basis: 100%;
+    margin-right: 0;
+  }
+
+  .signal-share-tools--full
+    .signal-share-tools__action[data-signal-share-native] {
+    border-color: var(--accent);
+    color: var(--accent);
+  }
+
   .signal-share-tools__action:hover,
   .signal-share-tools__action:focus-visible {
     color: var(--paper);
@@ -214,6 +295,15 @@ const whatsappHref = `https://wa.me/?text=${encodeURIComponent(
       min-height: 2rem;
       padding: 0.42rem 0.48rem;
       font-size: 0.6rem;
+    }
+
+    .signal-share-tools--full .signal-share-tools__action {
+      justify-content: center;
+      flex: 1 1 auto;
+    }
+
+    .signal-share-tools--full .signal-share-tools__action--x {
+      min-width: 5rem;
     }
   }
 </style>

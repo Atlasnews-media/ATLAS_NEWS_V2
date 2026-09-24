@@ -185,7 +185,7 @@ const internationalSignalItems = internationalSignals.map((signal) => {
                     <ResponsiveEditorialImage
                       src={item.visual.src}
                       alt={item.visual.alt}
-                      sizes="(max-width: 42rem) 58vw, 32rem"
+                      sizes="(max-width: 42rem) 38vw, 18rem"
                       loading="lazy"
                       variant="article"
                     />
@@ -227,6 +227,7 @@ const internationalSignalItems = internationalSignals.map((signal) => {
                   title={item.signal.headline}
                   summary={item.signal.deck}
                   anchor={item.signal.anchor}
+                  variant="full"
                 />
 
                 <div class="signal-development__body">
@@ -405,7 +406,7 @@ const internationalSignalItems = internationalSignals.map((signal) => {
     top: 0;
     right: -0.5rem;
     bottom: 0;
-    width: min(58%, 32rem);
+    width: min(34%, 24rem);
     margin: 0;
     overflow: hidden;
     pointer-events: none;
@@ -585,7 +586,7 @@ const internationalSignalItems = internationalSignals.map((signal) => {
     }
     .signal-development__visual {
       right: -0.55rem;
-      width: 62%;
+      width: 38%;
     }
     .signal-development__visual :global(img) {
       opacity: 0.36;
