@@ -1,10 +1,10 @@
 ---
 title: "Energía, comercio y tasas endurecen el mapa global"
 summary: "La frágil logística petrolera del Golfo, la cumbre entre Estados Unidos y China y nuevas señales de actividad resistente mantienen abierto un escenario de inflación y tasas altas pese a los avances parciales de oferta."
-publishedAt: "2026-09-24T06:01:20-03:00"
+publishedAt: "2026-09-24T06:44:01-03:00"
 cutoffAt: "2026-09-24T06:00:45-03:00"
 type: "daily"
-status: "draft"
+status: "published"
 tags:
   - mercados-globales
   - geopolitica
