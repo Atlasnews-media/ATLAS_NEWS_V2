@@ -26,7 +26,8 @@ jobs:
           set -euo pipefail
           npx prettier --write \
             scripts/lab/radar-editorial/run-jev-memory-judge.mjs \
-            scripts/lab/radar-editorial/typesafe-jev-client.mjs
+            scripts/lab/radar-editorial/typesafe-jev-client.mjs \
+            --ignore-path /dev/null
           if git diff --quiet; then
             echo "FORMAT_NOOP"
             exit 0
