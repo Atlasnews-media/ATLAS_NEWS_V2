@@ -1,6 +1,8 @@
 ---
 import { render } from "astro:content";
 import ArticleHeader from "../../components/ArticleHeader.astro";
+import ResponsiveEditorialImage from "../../components/ResponsiveEditorialImage.astro";
+import SignalShareTools from "../../components/SignalShareTools.astro";
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import {
   formatEditorialDateTime,
@@ -127,6 +129,30 @@ const readySignals = isReadySignalsArtifact(signalArtifact, expectedSignalsDate)
   ? signalArtifact
   : undefined;
 const nationalSignals = readySignals?.senalesDelDia.nacional ?? [];
+const signalUsedSources = new Set<string>();
+
+for (const signal of readySignals?.senalesDelDia.internacional ?? []) {
+  const reservedVisual = resolveFrontPageVisual({
+    section: "international",
+    id: `${expectedSignalsDate}:${signal.slot}:${signal.anchor}`,
+    title: `${signal.headline} ${signal.deck}`,
+    slot: signal.slot,
+    usedSources: signalUsedSources,
+  });
+  signalUsedSources.add(reservedVisual.src);
+}
+
+const nationalSignalItems = nationalSignals.map((signal) => {
+  const signalVisual = resolveFrontPageVisual({
+    section: "national",
+    id: `${expectedSignalsDate}:${signal.slot}:${signal.anchor}`,
+    title: `${signal.headline} ${signal.deck}`,
+    slot: signal.slot,
+    usedSources: signalUsedSources,
+  });
+  signalUsedSources.add(signalVisual.src);
+  return { signal, visual: signalVisual };
+});
 ---
 
 <BaseLayout
@@ -148,7 +174,7 @@ const nationalSignals = readySignals?.senalesDelDia.nacional ?? [];
     <article class="prose"><Content /></article>
 
     {
-      nationalSignals.length === 2 && (
+      nationalSignalItems.length === 2 && (
         <section class="signal-developments" aria-labelledby="senales-nacional">
           <header class="signal-developments__header">
             <p>Señales del día</p>
@@ -156,30 +182,71 @@ const nationalSignals = readySignals?.senalesDelDia.nacional ?? [];
           </header>
 
           <div class="signal-developments__list">
-            {nationalSignals.map((signal) => (
+            {nationalSignalItems.map((item) => (
               <article
                 class="signal-development"
-                id={signal.anchor}
-                aria-labelledby={`${signal.anchor}-title`}
+                id={item.signal.anchor}
+                aria-labelledby={`${item.signal.anchor}-title`}
               >
+                <div class="signal-development__hero">
+                  <figure class="signal-development__visual">
+                    <ResponsiveEditorialImage
+                      src={item.visual.src}
+                      alt={item.visual.alt}
+                      sizes="(max-width: 42rem) 38vw, 18rem"
+                      loading="lazy"
+                      variant="article"
+                    />
+                    <figcaption>
+                      {item.visual.source} · {item.visual.author} ·{" "}
+                      {item.visual.license}
+                    </figcaption>
+                  </figure>
+
+                  <div class="signal-development__hero-copy">
+                    <p class="signal-development__context">
+                      Señales del día · Nacional
+                    </p>
+                    <h3 id={`${item.signal.anchor}-title`}>
+                      {item.signal.headline}
+                    </h3>
+                  </div>
+                </div>
+
                 <nav
                   class="signal-development__nav"
-                  aria-label={`Navegación desde ${signal.headline}`}
+                  aria-label={`Navegación desde ${item.signal.headline}`}
                 >
-                  <a href="/">Ir a Portada</a>
-                  <a href="/nacional/">Ir a Nacional</a>
+                  <a class="signal-development__back" href="/#senales-del-dia">
+                    ← Volver a Señales del Día
+                  </a>
+                  <a class="signal-development__secondary" href="/">
+                    Portada
+                  </a>
+                  <a class="signal-development__secondary" href="/nacional/">
+                    Nacional
+                  </a>
                 </nav>
-                <h3 id={`${signal.anchor}-title`}>{signal.headline}</h3>
-                <div class="signal-development__body">{signal.development}</div>
 
-                {signal.sources.length > 0 && (
+                <SignalShareTools
+                  title={item.signal.headline}
+                  summary={item.signal.deck}
+                  anchor={item.signal.anchor}
+                  variant="full"
+                />
+
+                <div class="signal-development__body">
+                  {item.signal.development}
+                </div>
+
+                {item.signal.sources.length > 0 && (
                   <div
                     class="signal-development__sources"
-                    aria-label={`Fuentes de ${signal.headline}`}
+                    aria-label={`Fuentes de ${item.signal.headline}`}
                   >
                     <strong>Fuentes</strong>
                     <ul>
-                      {signal.sources.map((source) => (
+                      {item.signal.sources.map((source) => (
                         <li>
                           <a href={source.url}>{source.name}</a>
                         </li>
@@ -302,29 +369,142 @@ const nationalSignals = readySignals?.senalesDelDia.nacional ?? [];
   .signal-development:first-child {
     border-top: 0;
   }
-  .signal-development__nav {
+  .signal-development:target {
+    border-top: 4px double var(--rule);
+  }
+  .signal-development__hero {
+    position: relative;
+    margin: 0 0 1rem;
+    overflow: hidden;
+    isolation: isolate;
+    border-bottom: 1px solid var(--rule);
+  }
+  .signal-development__hero-copy {
+    position: relative;
+    z-index: 2;
     display: flex;
+    flex-direction: column;
     justify-content: flex-end;
-    gap: clamp(0.75rem, 2vw, 1.25rem);
-    margin: 0 0 1.1rem;
+    max-width: 78%;
+    padding: clamp(1.25rem, 4vw, 2.2rem) 0 1.35rem;
+  }
+  .signal-development__context {
+    margin: 0 0 0.7rem;
+    color: var(--accent);
     font: 800 0.68rem/1.2 var(--sans);
-    letter-spacing: 0.08em;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+  }
+  .signal-development h3 {
+    margin: 0;
+    font: 700 clamp(2rem, 5.2vw, 3.6rem) / 0.95 var(--serif);
+    letter-spacing: -0.045em;
+    text-wrap: balance;
+  }
+  .signal-development__visual {
+    position: absolute;
+    z-index: 0;
+    top: 0;
+    right: -0.5rem;
+    bottom: 0;
+    width: min(34%, 24rem);
+    margin: 0;
+    overflow: hidden;
+    pointer-events: none;
+    -webkit-mask-image: linear-gradient(
+      to bottom,
+      transparent 0%,
+      #000 10%,
+      #000 90%,
+      transparent 100%
+    );
+    mask-image: linear-gradient(
+      to bottom,
+      transparent 0%,
+      #000 10%,
+      #000 90%,
+      transparent 100%
+    );
+  }
+  .signal-development__visual :global(img) {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    opacity: 0.42;
+    filter: saturate(0.65) sepia(0.12) contrast(0.9) brightness(1.08);
+    -webkit-mask-image: linear-gradient(
+      to right,
+      transparent 0%,
+      rgba(0, 0, 0, 0.22) 22%,
+      rgba(0, 0, 0, 0.72) 58%,
+      #000 100%
+    );
+    mask-image: linear-gradient(
+      to right,
+      transparent 0%,
+      rgba(0, 0, 0, 0.22) 22%,
+      rgba(0, 0, 0, 0.72) 58%,
+      #000 100%
+    );
+  }
+  .signal-development__visual figcaption {
+    position: absolute;
+    right: 0.25rem;
+    bottom: 0.2rem;
+    max-width: 82%;
+    color: var(--ink-soft);
+    font: 600 0.42rem/1.15 var(--sans);
+    text-align: right;
+    opacity: 0.7;
+  }
+  .signal-development__nav {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    width: min(100%, 36rem);
+    margin: 0 0 1.1rem;
+    border-right: 1px solid var(--rule);
+    border-bottom: 4px double var(--rule);
+    border-left: 1px solid var(--rule);
+    border-top: 4px double var(--rule);
+    font: 800 0.68rem/1.2 var(--sans);
+    letter-spacing: 0.09em;
     text-transform: uppercase;
   }
   .signal-development__nav a {
-    color: var(--accent);
+    display: flex;
+    align-items: center;
+    min-height: 2.55rem;
+    padding: 0.62rem 0.75rem;
+    color: var(--ink);
     text-decoration: none;
+  }
+  .signal-development__nav .signal-development__back {
+    grid-column: 1 / -1;
+    border-bottom: 1px solid var(--rule);
+    color: var(--accent);
+  }
+  .signal-development__nav .signal-development__back::after {
+    margin-left: auto;
+    color: var(--accent);
+    content: "◆";
+    font-size: 0.62rem;
+  }
+  .signal-development__nav
+    .signal-development__secondary
+    + .signal-development__secondary {
+    border-left: 1px solid var(--rule);
   }
   .signal-development__nav a:hover,
   .signal-development__nav a:focus-visible {
-    text-decoration: underline;
-    text-decoration-thickness: 0.08em;
-    text-underline-offset: 0.16em;
+    color: var(--paper);
+    background: var(--ink);
+    outline: none;
   }
-  .signal-development h3 {
-    margin: 0 0 1rem;
-    font: 700 clamp(1.35rem, 3vw, 1.85rem) / 1.08 var(--serif);
-    letter-spacing: -0.02em;
+  .signal-development__nav .signal-development__back:hover::after,
+  .signal-development__nav .signal-development__back:focus-visible::after {
+    color: var(--paper);
   }
   .signal-development__body {
     color: var(--ink);
@@ -392,6 +572,33 @@ const nationalSignals = readySignals?.senalesDelDia.nacional ?? [];
     .signal-development {
       scroll-margin-top: 3.5rem;
       padding: 1.35rem 0;
+    }
+    .signal-development__hero {
+      margin-bottom: 0.85rem;
+    }
+    .signal-development__hero-copy {
+      max-width: 86%;
+      padding: 1rem 0 1.1rem;
+    }
+    .signal-development h3 {
+      font-size: clamp(2rem, 8.4vw, 2.7rem);
+      line-height: 0.96;
+    }
+    .signal-development__visual {
+      right: -0.55rem;
+      width: 38%;
+    }
+    .signal-development__visual :global(img) {
+      opacity: 0.36;
+    }
+    .signal-development__visual figcaption {
+      right: 0.2rem;
+      bottom: 0.15rem;
+      max-width: 74%;
+      font-size: 0.36rem;
+    }
+    .signal-development__nav {
+      width: 100%;
     }
     .signal-development__body {
       font-size: 1.03rem;
