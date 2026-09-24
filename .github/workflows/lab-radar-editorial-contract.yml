@@ -38,6 +38,9 @@ jobs:
       - name: Validar contrato BASELINE
         run: node scripts/lab/radar-editorial/test-baseline-contract.mjs
 
+      - name: Validar contrato de ingest
+        run: node scripts/lab/radar-editorial/test-ingest-contract.mjs
+
       - name: Validar superficie editorial RADAR
         run: node scripts/lab/radar-editorial/test-editorial-surface.mjs
 
@@ -57,6 +60,12 @@ jobs:
           ! grep -Fq 'radar-runtime/editorial' .github/workflows/reel-maker-v2.yml
           ! grep -Fq 'radar-runtime/editorial' .github/workflows/instagram-reel-publish-v2.yml
           ! grep -Fq 'radar-runtime/editorial' .github/workflows/social-renderer-post-publish.yml
+          ! grep -Fq 'radar-ingress/editorial' .github/workflows/publish-site.yml
+          ! grep -Fq 'radar-ingress/editorial' .github/workflows/audio-v2.yml
+          ! grep -Fq 'radar-ingress/editorial' .github/workflows/instagram-carousel-publish-automatic.yml
+          ! grep -Fq 'radar-ingress/editorial' .github/workflows/reel-maker-v2.yml
+          ! grep -Fq 'radar-ingress/editorial' .github/workflows/instagram-reel-publish-v2.yml
+          ! grep -Fq 'radar-ingress/editorial' .github/workflows/social-renderer-post-publish.yml
           grep -Fq 'branches: [main]' .github/workflows/instagram-carousel-watchdog.yml
           ! grep -Fq 'radar-runtime/editorial' .github/workflows/instagram-carousel-watchdog.yml
           ! grep -Eq '^  push:' .github/workflows/instagram-carousel-publish-automatic.yml
@@ -72,6 +81,9 @@ jobs:
         run: |
           set -euo pipefail
           node --check scripts/lab/radar-editorial/validate-baseline-run.mjs
+          node --check scripts/lab/radar-editorial/validate-baseline-request.mjs
+          node --check scripts/lab/radar-editorial/materialize-baseline-request.mjs
+          node --check scripts/lab/radar-editorial/test-ingest-contract.mjs
           node --check scripts/lab/radar-editorial/build-baseline-view.mjs
           node --check scripts/lab/radar-editorial/build-editorial-surface.mjs
           node --check scripts/lab/radar-editorial/test-editorial-surface.mjs
