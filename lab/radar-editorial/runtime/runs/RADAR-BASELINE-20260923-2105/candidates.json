@@ -123,6 +123,71 @@
       "retrievalOrigin": "n-q1",
       "selected": false,
       "selectionStage": "screened-out"
+    },
+    {
+      "candidateId": "m-dollar-close",
+      "section": "markets",
+      "titleOriginal": "Dólar toca máximos de casi un año y cierra sobre $960 tras su fortalecimiento global y corrección del cobre",
+      "sourceName": "Emol",
+      "sourceUrl": "https://www.emol.com/noticias/Economia/2026/09/23/1212234/dolar-mercado-cambiario-local.html",
+      "publishedAt": "2026-09-23T14:12:00-03:00",
+      "discoveredAt": "2026-09-23T21:11:10-03:00",
+      "description": "El dólar cerró en torno a $962,8 vendedor, con un avance cercano a $15, impulsado por fortaleza global de la divisa y una corrección del cobre.",
+      "retrievalOrigin": "m-q1",
+      "selected": true,
+      "selectionStage": "selected-final"
+    },
+    {
+      "candidateId": "m-us-yields",
+      "section": "markets",
+      "titleOriginal": "US Stocks Fall as 10-Year Treasury Yield Hits Highest Since 2007",
+      "sourceName": "Reuters / Journal Record",
+      "sourceUrl": "https://journalrecord.com/2026/09/23/us-stocks-fall-treasury-yields-highest-2007-business-data/",
+      "publishedAt": "2026-09-23T00:00:00Z",
+      "discoveredAt": "2026-09-23T21:11:10-03:00",
+      "description": "El Treasury a diez años superó 5% y alcanzó máximos desde 2007 después de un PMI estadounidense fuerte, mientras las acciones cayeron y el mercado elevó la probabilidad de nuevas alzas de la Fed.",
+      "retrievalOrigin": "m-q2",
+      "selected": true,
+      "selectionStage": "selected-final"
+    },
+    {
+      "candidateId": "m-wallstreet-oil",
+      "section": "markets",
+      "titleOriginal": "Wall Street ends down as oil prices, Treasury yields rise",
+      "sourceName": "Reuters / Mecklenburg Times",
+      "sourceUrl": "https://mecktimes.com/news/2026/09/23/wall-street-ends-down-as-oil-prices-treasury-yields-rise/",
+      "publishedAt": "2026-09-23T00:00:00Z",
+      "discoveredAt": "2026-09-23T21:11:10-03:00",
+      "description": "Wall Street cerró a la baja mientras subieron el petróleo y los rendimientos del Tesoro, reforzando el costo de descuento para acciones y la sensibilidad a la tensión con Irán.",
+      "retrievalOrigin": "m-q2",
+      "selected": true,
+      "selectionStage": "selected-final"
+    },
+    {
+      "candidateId": "m-ipsa-close",
+      "section": "markets",
+      "titleOriginal": "MSCI IPSA: La Bolsa de Santiago este miércoles termina con alza marginal de 0,20%",
+      "sourceName": "Diario Estrategia",
+      "sourceUrl": "https://www.diarioestrategia.cl/texto-diario/mostrar/6026266/msci-ipsa-bolsa-santiago-miercoles-termina-alza-marginal-020",
+      "publishedAt": "2026-09-23T19:35:00-03:00",
+      "discoveredAt": "2026-09-23T21:11:10-03:00",
+      "description": "El IPSA cerró con una variación marginal positiva de 0,20%, mostrando resistencia local frente al deterioro más marcado de las bolsas estadounidenses.",
+      "retrievalOrigin": "m-q3",
+      "selected": true,
+      "selectionStage": "selected-final"
+    },
+    {
+      "candidateId": "m-fed-ipsa-context",
+      "section": "markets",
+      "titleOriginal": "Alza de tasas de la Fed reordena el escenario para las acciones del IPSA",
+      "sourceName": "Diario Financiero",
+      "sourceUrl": "https://www.df.cl/mercados/alza-de-tasas-de-la-fed-reordena-el-escenario-para-las-acciones-del-ipsa",
+      "publishedAt": "2026-09-22T04:00:00-03:00",
+      "discoveredAt": "2026-09-23T21:11:10-03:00",
+      "description": "El análisis sectorial del impacto de tasas altas sobre el IPSA sirve como contexto, pero es menos nuevo que el cierre del dólar, el salto del Treasury y el movimiento efectivo de las bolsas.",
+      "retrievalOrigin": "m-q3",
+      "selected": false,
+      "selectionStage": "screened-out"
     }
   ]
 }
