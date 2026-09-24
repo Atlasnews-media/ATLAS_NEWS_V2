@@ -181,9 +181,7 @@ async function main() {
   const targetRoot = args[rootIndex + 1];
   const phase = args[phaseIndex + 1];
   const { request } = await materializeRequest(requestFile, targetRoot, phase);
-  console.log(
-    "RADAR MATERIALIZE PASS — " + request.radarRunId + " · " + phase,
-  );
+  console.log("RADAR MATERIALIZE PASS — " + request.radarRunId + " · " + phase);
 }
 
 if (
