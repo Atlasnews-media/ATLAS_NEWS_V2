@@ -15,10 +15,7 @@ const { date, section, signal, visual } = Astro.props as SignalPageProps;
 const currentSection = signalSectionConfig[section];
 ---
 
-<BaseLayout
-  title={`${signal.headline} — ATLAS NEWS`}
-  description={signal.deck}
->
+<BaseLayout title={`${signal.headline} — ATLAS NEWS`} description={signal.deck}>
   <main class="signal-page">
     <nav
       class="signal-page__nav"
