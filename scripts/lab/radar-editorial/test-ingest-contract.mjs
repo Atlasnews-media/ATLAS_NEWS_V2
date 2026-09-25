@@ -184,10 +184,7 @@ console.log("INGEST RADAR_JEV EVIDENCE REQUIRED: PASS");
 
 const jevTemp = await fs.mkdtemp(path.join(os.tmpdir(), "radar-jev-ingest-"));
 const jevRequestFile = path.join(jevTemp, "request.json");
-await fs.writeFile(
-  jevRequestFile,
-  JSON.stringify(jevRequest, null, 2) + "\n",
-);
+await fs.writeFile(jevRequestFile, JSON.stringify(jevRequest, null, 2) + "\n");
 await materializeRequest(jevRequestFile, jevTemp, "general");
 const jevActive = JSON.parse(
   await fs.readFile(
