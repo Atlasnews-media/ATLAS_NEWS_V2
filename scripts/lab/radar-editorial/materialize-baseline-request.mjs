@@ -3,7 +3,8 @@ import path from "node:path";
 import { pathToFileURL } from "node:url";
 import {
   readAndValidateBaselineRequest,
-  REQUIRED_ARTIFACTS,
+  RADAR_JEV_EVIDENCE_ARTIFACTS,
+  requiredArtifactsForMode,
 } from "./validate-baseline-request.mjs";
 
 function fail(message) {
@@ -75,7 +76,7 @@ function activeFor(request, runPath, phase) {
     radarStateVersion: request.radarStateVersion,
     editorialDate: request.editorialDate,
     mode: "LAB_ONLY",
-    experimentMode: "BASELINE",
+    experimentMode: request.experimentMode,
     status: statusMap[phase],
     productionWritesAllowed: false,
     runPath,
@@ -91,18 +92,21 @@ function latestFor(request, runPath) {
     radarStateVersion: request.radarStateVersion,
     editorialDate: request.editorialDate,
     mode: "LAB_ONLY",
-    experimentMode: "BASELINE",
+    experimentMode: request.experimentMode,
     status: "READY",
     productionWritesAllowed: false,
     runPath,
     resultPath: runPath + "/result.json",
     publishRequestPath: runPath + "/publish-request.json",
     viewPath: runPath + "/index.html",
-    message: "ATLAS NEWS LAB baseline READY",
+    message:
+      request.experimentMode === "RADAR_JEV"
+        ? "ATLAS NEWS LAB RADAR_JEV READY"
+        : "ATLAS NEWS LAB baseline READY",
   };
 }
 
-function artifactSet(phase) {
+function artifactSet(request, phase) {
   const general = [
     "search-log.json",
     "candidates.json",
@@ -123,11 +127,15 @@ function artifactSet(phase) {
     "markets/output.md",
     "checkpoints/markets.json",
   ];
-  if (phase === "general") return general;
+  const experimental =
+    request.experimentMode === "RADAR_JEV" ? RADAR_JEV_EVIDENCE_ARTIFACTS : [];
+  if (phase === "general") return [...experimental, ...general];
   if (phase === "national") return national;
   if (phase === "markets") return markets;
   if (phase === "ready") {
-    return REQUIRED_ARTIFACTS.filter((key) => key !== "run.json");
+    return requiredArtifactsForMode(request.experimentMode).filter(
+      (key) => key !== "run.json",
+    );
   }
   fail("phase inválida: " + phase);
 }
@@ -138,7 +146,7 @@ export async function materializeRequest(requestFile, targetRoot, phase) {
   const runDir = path.join(targetRoot, runPath);
   await fs.mkdir(runDir, { recursive: true });
 
-  for (const key of artifactSet(phase)) {
+  for (const key of artifactSet(request, phase)) {
     const value = request.artifacts[key];
     const content =
       typeof value === "string"
