@@ -1,6 +1,5 @@
 ---
-import ResponsiveEditorialImage from "../../../../components/ResponsiveEditorialImage.astro";
-import SignalShareTools from "../../../../components/SignalShareTools.astro";
+import ArticleHeader from "../../../../components/ArticleHeader.astro";
 import BaseLayout from "../../../../layouts/BaseLayout.astro";
 import {
   resolveFrontPageVisual,
@@ -213,75 +212,47 @@ const canonicalPath = `/senales/${date}/${section}/${signal.anchor}/`;
       </a>
     </nav>
 
-    <article
-      class="signal-article"
-      id={signal.anchor}
-      aria-labelledby="signal-title"
-    >
-      <header class="signal-article__hero">
-        <figure class="signal-article__visual">
-          <ResponsiveEditorialImage
-            src={visual.src}
-            alt={visual.alt}
-            sizes="(max-width: 42rem) 38vw, 18rem"
-            loading="eager"
-            variant="article"
-          />
-          <figcaption>
-            {visual.source} · {visual.author} · {visual.license}
-          </figcaption>
-        </figure>
+    <ArticleHeader
+      eyebrow={`Señales del día · ${currentSection.label}`}
+      title={signal.headline}
+      summary={signal.deck}
+      date={date}
+      tags={[section, signal.slot]}
+      visual={visual}
+    />
 
-        <div class="signal-article__hero-copy">
-          <p class="signal-article__context">
-            Señales del día · {currentSection.label}
-          </p>
-          <h1 id="signal-title">{signal.headline}</h1>
-        </div>
-      </header>
+    <article class="signal-page__body">{signal.development}</article>
 
-      <SignalShareTools
-        title={signal.headline}
-        summary={signal.deck}
-        anchor={signal.anchor}
-        url={canonicalPath}
-        variant="full"
-      />
-
-      <div class="signal-article__body">{signal.development}</div>
-
-      {
-        signal.sources.length > 0 && (
-          <section
-            class="signal-article__sources"
-            aria-labelledby="signal-sources-title"
-          >
-            <h2 id="signal-sources-title">Fuentes</h2>
-            <ul>
-              {signal.sources.map((source) => (
-                <li>
-                  <a href={source.url}>{source.name}</a>
-                </li>
-              ))}
-            </ul>
-          </section>
-        )
-      }
-    </article>
+    {
+      signal.sources.length > 0 && (
+        <section
+          class="signal-page__sources"
+          aria-labelledby="signal-sources-title"
+        >
+          <h2 id="signal-sources-title">Fuentes</h2>
+          <ul>
+            {signal.sources.map((source) => (
+              <li>
+                <a href={source.url}>{source.name}</a>
+              </li>
+            ))}
+          </ul>
+        </section>
+      )
+    }
   </main>
 </BaseLayout>
 
 <style>
   .signal-page {
-    width: min(52rem, calc(100% - 2rem));
-    margin: 2.75rem auto 4rem;
+    width: min(88rem, calc(100% - 2rem));
+    margin: 0 auto;
   }
-
   .signal-page__nav {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    width: 100%;
-    margin: 0 0 2.5rem;
+    width: min(52rem, 100%);
+    margin: 2.5rem auto;
     border: 1px solid var(--rule);
     border-top: 4px double var(--rule);
     border-bottom: 4px double var(--rule);
@@ -289,7 +260,6 @@ const canonicalPath = `/senales/${date}/${section}/${signal.anchor}/`;
     letter-spacing: 0.09em;
     text-transform: uppercase;
   }
-
   .signal-page__nav a {
     display: flex;
     align-items: center;
@@ -298,197 +268,71 @@ const canonicalPath = `/senales/${date}/${section}/${signal.anchor}/`;
     color: var(--ink);
     text-decoration: none;
   }
-
   .signal-page__back {
     grid-column: 1 / -1;
     border-bottom: 1px solid var(--rule);
     color: var(--accent) !important;
   }
-
   .signal-page__back::after {
     margin-left: auto;
     color: var(--accent);
     content: "◆";
     font-size: 0.62rem;
   }
-
   .signal-page__secondary + .signal-page__secondary {
     border-left: 1px solid var(--rule);
   }
-
   .signal-page__nav a:hover,
   .signal-page__nav a:focus-visible {
     color: var(--paper) !important;
     background: var(--ink);
     outline: none;
   }
-
   .signal-page__back:hover::after,
   .signal-page__back:focus-visible::after {
     color: var(--paper);
   }
-
-  .signal-article__hero {
-    position: relative;
-    margin: 0 0 1rem;
-    overflow: hidden;
-    isolation: isolate;
-    border-bottom: 1px solid var(--rule);
+  .signal-page__body,
+  .signal-page__sources {
+    max-width: 52rem;
+    margin-right: auto;
+    margin-left: auto;
   }
-
-  .signal-article__hero-copy {
-    position: relative;
-    z-index: 2;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    max-width: 78%;
-    padding: clamp(1.25rem, 4vw, 2.2rem) 0 1.35rem;
-  }
-
-  .signal-article__context {
-    margin: 0 0 0.7rem;
-    color: var(--accent);
-    font: 800 0.68rem/1.2 var(--sans);
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-  }
-
-  .signal-article h1 {
-    margin: 0;
-    font: 700 clamp(2rem, 5.2vw, 3.6rem) / 0.95 var(--serif);
-    letter-spacing: -0.045em;
-    text-wrap: balance;
-  }
-
-  .signal-article__visual {
-    position: absolute;
-    z-index: 0;
-    top: 0;
-    right: -0.5rem;
-    bottom: 0;
-    width: min(34%, 24rem);
-    margin: 0;
-    overflow: hidden;
-    pointer-events: none;
-    -webkit-mask-image: linear-gradient(
-      to bottom,
-      transparent 0%,
-      #000 10%,
-      #000 90%,
-      transparent 100%
-    );
-    mask-image: linear-gradient(
-      to bottom,
-      transparent 0%,
-      #000 10%,
-      #000 90%,
-      transparent 100%
-    );
-  }
-
-  .signal-article__visual :global(img) {
-    display: block;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center;
-    opacity: 0.42;
-    filter: saturate(0.65) sepia(0.12) contrast(0.9) brightness(1.08);
-    -webkit-mask-image: linear-gradient(
-      to right,
-      transparent 0%,
-      rgba(0, 0, 0, 0.22) 22%,
-      rgba(0, 0, 0, 0.72) 58%,
-      #000 100%
-    );
-    mask-image: linear-gradient(
-      to right,
-      transparent 0%,
-      rgba(0, 0, 0, 0.22) 22%,
-      rgba(0, 0, 0, 0.72) 58%,
-      #000 100%
-    );
-  }
-
-  .signal-article__visual figcaption {
-    position: absolute;
-    right: 0.25rem;
-    bottom: 0.2rem;
-    max-width: 82%;
-    color: var(--ink-soft);
-    font: 600 0.42rem/1.15 var(--sans);
-    text-align: right;
-    opacity: 0.7;
-  }
-
-  .signal-article__body {
+  .signal-page__body {
+    margin-top: 2rem;
     color: var(--ink);
     font-size: 1.08rem;
     line-height: 1.68;
     white-space: pre-line;
   }
-
-  .signal-article__sources {
+  .signal-page__sources {
     margin-top: 1.5rem;
+    margin-bottom: 4rem;
     padding-top: 0.9rem;
     border-top: 1px solid var(--rule);
     font: 0.78rem/1.45 var(--sans);
   }
-
-  .signal-article__sources h2 {
+  .signal-page__sources h2 {
     margin: 0;
     font: 800 0.78rem/1.2 var(--sans);
     letter-spacing: 0.08em;
     text-transform: uppercase;
   }
-
-  .signal-article__sources ul {
+  .signal-page__sources ul {
     margin: 0.45rem 0 0;
     padding-left: 1.15rem;
   }
-
-  .signal-article__sources li {
+  .signal-page__sources li {
     margin: 0.3rem 0;
   }
-
   @media (max-width: 42rem) {
     .signal-page {
-      width: min(100% - 1.25rem, 52rem);
-      margin-top: 1.6rem;
+      width: min(100% - 1.25rem, 88rem);
     }
-
     .signal-page__nav {
-      margin-bottom: 2rem;
+      margin: 1.6rem auto 2rem;
     }
-
-    .signal-article__hero-copy {
-      max-width: 86%;
-      padding: 1rem 0 1.1rem;
-    }
-
-    .signal-article h1 {
-      font-size: clamp(2rem, 8.4vw, 2.7rem);
-      line-height: 0.96;
-    }
-
-    .signal-article__visual {
-      right: -0.55rem;
-      width: 38%;
-    }
-
-    .signal-article__visual :global(img) {
-      opacity: 0.36;
-    }
-
-    .signal-article__visual figcaption {
-      right: 0.2rem;
-      bottom: 0.15rem;
-      max-width: 74%;
-      font-size: 0.36rem;
-    }
-
-    .signal-article__body {
+    .signal-page__body {
       font-size: 1.03rem;
       line-height: 1.62;
     }
