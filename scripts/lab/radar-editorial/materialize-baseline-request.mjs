@@ -101,7 +101,7 @@ function latestFor(request, runPath) {
     viewPath: runPath + "/index.html",
     message:
       request.experimentMode === "RADAR_JEV"
-        ? "ATLAS NEWS LAB RADAR_JEV READY"
+        ? "ATLAS NEWS LAB radar+jev READY"
         : "ATLAS NEWS LAB baseline READY",
   };
 }
