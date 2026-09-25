@@ -1,0 +1,461 @@
+{
+  "schemaVersion": 1,
+  "radarRunId": "RADAR-JEV-20260925-1450-B",
+  "sourceMainCommit": "d04b23aacd3e3d7e8fa2108d9a8843731d24c437",
+  "radarStateVersion": "radar-state-v1",
+  "editorialDate": "2026-09-25",
+  "experimentMode": "RADAR_JEV",
+  "mode": "LAB_ONLY",
+  "productionWritesAllowed": false,
+  "engine": "JEV_TYPESAFE",
+  "modelRequested": "jev-latest",
+  "modelObserved": "jev-1.13.0",
+  "thresholdsApplied": false,
+  "generatedAt": "2026-09-25T17:41:54.813Z",
+  "judgments": [
+    {
+      "candidateKey": "g-hormuz-7day",
+      "section": "general",
+      "eventRelation": {
+        "value": "SAME_EVENT",
+        "confidence": 0.85,
+        "probabilities": {
+          "UNRELATED": 0,
+          "UNCERTAIN": 0,
+          "NEW_EVENT": 0.11,
+          "SAME_EVENT": 0.89
+        }
+      },
+      "informationRelation": {
+        "value": "MEANINGFUL_UPDATE",
+        "confidence": 0.33,
+        "probabilities": {
+          "REPETITION": 0.01,
+          "UNCERTAIN": 0,
+          "MEANINGFUL_UPDATE": 0.45,
+          "NEW": 0.12,
+          "CONTINUATION": 0.42,
+          "CONTRADICTION": 0
+        }
+      },
+      "addsNewInformation": {
+        "probability": 0.66,
+        "confidence": null
+      },
+      "historicalContextNeeded": {
+        "probability": 0.54,
+        "confidence": null
+      },
+      "angleRepeated": {
+        "probability": 0.5,
+        "confidence": null
+      }
+    },
+    {
+      "candidateKey": "g-trump-xi-takeaways",
+      "section": "general",
+      "eventRelation": {
+        "value": "SAME_EVENT",
+        "confidence": 0.96,
+        "probabilities": {
+          "UNRELATED": 0,
+          "UNCERTAIN": 0,
+          "SAME_EVENT": 0.97,
+          "NEW_EVENT": 0.03
+        }
+      },
+      "informationRelation": {
+        "value": "REPETITION",
+        "confidence": 0.23,
+        "probabilities": {
+          "MEANINGFUL_UPDATE": 0.18,
+          "UNCERTAIN": 0.08,
+          "CONTINUATION": 0.07,
+          "NEW": 0.3,
+          "REPETITION": 0.37,
+          "CONTRADICTION": 0
+        }
+      },
+      "addsNewInformation": {
+        "probability": 0.73,
+        "confidence": null
+      },
+      "historicalContextNeeded": {
+        "probability": 0.47,
+        "confidence": null
+      },
+      "angleRepeated": {
+        "probability": 0.53,
+        "confidence": null
+      }
+    },
+    {
+      "candidateKey": "g-anthropic-akamai",
+      "section": "general",
+      "eventRelation": {
+        "value": "NEW_EVENT",
+        "confidence": 0.88,
+        "probabilities": {
+          "SAME_EVENT": 0.08,
+          "NEW_EVENT": 0.91,
+          "UNRELATED": 0,
+          "UNCERTAIN": 0.01
+        }
+      },
+      "informationRelation": {
+        "value": "NEW",
+        "confidence": 0.77,
+        "probabilities": {
+          "MEANINGFUL_UPDATE": 0.16,
+          "REPETITION": 0.02,
+          "NEW": 0.81,
+          "CONTRADICTION": 0,
+          "CONTINUATION": 0.01,
+          "UNCERTAIN": 0
+        }
+      },
+      "addsNewInformation": {
+        "probability": 0.9,
+        "confidence": null
+      },
+      "historicalContextNeeded": {
+        "probability": 0.5,
+        "confidence": null
+      },
+      "angleRepeated": {
+        "probability": 0.75,
+        "confidence": null
+      }
+    },
+    {
+      "candidateKey": "n-escondida-talks",
+      "section": "national",
+      "eventRelation": {
+        "value": "NEW_EVENT",
+        "confidence": 0.85,
+        "probabilities": {
+          "UNRELATED": 0,
+          "UNCERTAIN": 0,
+          "SAME_EVENT": 0.11,
+          "NEW_EVENT": 0.89
+        }
+      },
+      "informationRelation": {
+        "value": "NEW",
+        "confidence": 0.63,
+        "probabilities": {
+          "CONTINUATION": 0.04,
+          "MEANINGFUL_UPDATE": 0.26,
+          "UNCERTAIN": 0,
+          "CONTRADICTION": 0,
+          "NEW": 0.69,
+          "REPETITION": 0.01
+        }
+      },
+      "addsNewInformation": {
+        "probability": 0.84,
+        "confidence": null
+      },
+      "historicalContextNeeded": {
+        "probability": 0.51,
+        "confidence": null
+      },
+      "angleRepeated": {
+        "probability": 0.17,
+        "confidence": null
+      }
+    },
+    {
+      "candidateKey": "n-escondida-restart",
+      "section": "national",
+      "eventRelation": {
+        "value": "SAME_EVENT",
+        "confidence": 0.98,
+        "probabilities": {
+          "SAME_EVENT": 0.98,
+          "UNRELATED": 0,
+          "NEW_EVENT": 0.02,
+          "UNCERTAIN": 0
+        }
+      },
+      "informationRelation": {
+        "value": "REPETITION",
+        "confidence": 0.18,
+        "probabilities": {
+          "CONTRADICTION": 0,
+          "MEANINGFUL_UPDATE": 0.3,
+          "NEW": 0.14,
+          "REPETITION": 0.33,
+          "UNCERTAIN": 0.01,
+          "CONTINUATION": 0.22
+        }
+      },
+      "addsNewInformation": {
+        "probability": 0.77,
+        "confidence": null
+      },
+      "historicalContextNeeded": {
+        "probability": 0.48,
+        "confidence": null
+      },
+      "angleRepeated": {
+        "probability": 0.59,
+        "confidence": null
+      }
+    },
+    {
+      "candidateKey": "n-regional-gdp",
+      "section": "national",
+      "eventRelation": {
+        "value": "SAME_EVENT",
+        "confidence": 0.99,
+        "probabilities": {
+          "NEW_EVENT": 0,
+          "UNRELATED": 0,
+          "UNCERTAIN": 0,
+          "SAME_EVENT": 1
+        }
+      },
+      "informationRelation": {
+        "value": "REPETITION",
+        "confidence": 0.95,
+        "probabilities": {
+          "MEANINGFUL_UPDATE": 0.01,
+          "NEW": 0.02,
+          "REPETITION": 0.96,
+          "CONTRADICTION": 0,
+          "CONTINUATION": 0.01,
+          "UNCERTAIN": 0
+        }
+      },
+      "addsNewInformation": {
+        "probability": 0.26,
+        "confidence": null
+      },
+      "historicalContextNeeded": {
+        "probability": 0.39,
+        "confidence": null
+      },
+      "angleRepeated": {
+        "probability": 0.88,
+        "confidence": null
+      }
+    },
+    {
+      "candidateKey": "m-global-bonds",
+      "section": "markets",
+      "eventRelation": {
+        "value": "SAME_EVENT",
+        "confidence": 0.81,
+        "probabilities": {
+          "SAME_EVENT": 0.86,
+          "NEW_EVENT": 0.14,
+          "UNRELATED": 0,
+          "UNCERTAIN": 0
+        }
+      },
+      "informationRelation": {
+        "value": "CONTINUATION",
+        "confidence": 0.69,
+        "probabilities": {
+          "NEW": 0.11,
+          "MEANINGFUL_UPDATE": 0.07,
+          "CONTINUATION": 0.75,
+          "CONTRADICTION": 0,
+          "REPETITION": 0.07,
+          "UNCERTAIN": 0
+        }
+      },
+      "addsNewInformation": {
+        "probability": 0.63,
+        "confidence": null
+      },
+      "historicalContextNeeded": {
+        "probability": 0.53,
+        "confidence": null
+      },
+      "angleRepeated": {
+        "probability": 0.73,
+        "confidence": null
+      }
+    },
+    {
+      "candidateKey": "m-wallstreet-ai",
+      "section": "markets",
+      "eventRelation": {
+        "value": "NEW_EVENT",
+        "confidence": 0.59,
+        "probabilities": {
+          "UNRELATED": 0,
+          "NEW_EVENT": 0.7,
+          "UNCERTAIN": 0.01,
+          "SAME_EVENT": 0.29
+        }
+      },
+      "informationRelation": {
+        "value": "NEW",
+        "confidence": 0.45,
+        "probabilities": {
+          "REPETITION": 0.04,
+          "NEW": 0.55,
+          "UNCERTAIN": 0,
+          "MEANINGFUL_UPDATE": 0.19,
+          "CONTRADICTION": 0,
+          "CONTINUATION": 0.22
+        }
+      },
+      "addsNewInformation": {
+        "probability": 0.78,
+        "confidence": null
+      },
+      "historicalContextNeeded": {
+        "probability": 0.47,
+        "confidence": null
+      },
+      "angleRepeated": {
+        "probability": 0.64,
+        "confidence": null
+      }
+    },
+    {
+      "candidateKey": "m-dollar-fed",
+      "section": "markets",
+      "eventRelation": {
+        "value": "NEW_EVENT",
+        "confidence": 0.35,
+        "probabilities": {
+          "UNCERTAIN": 0,
+          "SAME_EVENT": 0.48,
+          "UNRELATED": 0,
+          "NEW_EVENT": 0.52
+        }
+      },
+      "informationRelation": {
+        "value": "MEANINGFUL_UPDATE",
+        "confidence": 0.49,
+        "probabilities": {
+          "NEW": 0.08,
+          "CONTINUATION": 0.31,
+          "UNCERTAIN": 0,
+          "MEANINGFUL_UPDATE": 0.57,
+          "REPETITION": 0.04,
+          "CONTRADICTION": 0
+        }
+      },
+      "addsNewInformation": {
+        "probability": 0.7,
+        "confidence": null
+      },
+      "historicalContextNeeded": {
+        "probability": 0.37,
+        "confidence": null
+      },
+      "angleRepeated": {
+        "probability": 0.73,
+        "confidence": null
+      }
+    }
+  ],
+  "telemetry": [
+    {
+      "candidateKey": "g-hormuz-7day",
+      "status": 200,
+      "latencyMs": 304.19,
+      "attempts": 1,
+      "usage": {
+        "input_tokens": 1044,
+        "output_tokens": 190
+      },
+      "error": null
+    },
+    {
+      "candidateKey": "g-trump-xi-takeaways",
+      "status": 200,
+      "latencyMs": 184.76,
+      "attempts": 1,
+      "usage": {
+        "input_tokens": 991,
+        "output_tokens": 189
+      },
+      "error": null
+    },
+    {
+      "candidateKey": "g-anthropic-akamai",
+      "status": 200,
+      "latencyMs": 104.61,
+      "attempts": 1,
+      "usage": {
+        "input_tokens": 943,
+        "output_tokens": 185
+      },
+      "error": null
+    },
+    {
+      "candidateKey": "n-escondida-talks",
+      "status": 200,
+      "latencyMs": 161.89,
+      "attempts": 1,
+      "usage": {
+        "input_tokens": 1016,
+        "output_tokens": 185
+      },
+      "error": null
+    },
+    {
+      "candidateKey": "n-escondida-restart",
+      "status": 200,
+      "latencyMs": 115.41,
+      "attempts": 1,
+      "usage": {
+        "input_tokens": 1004,
+        "output_tokens": 189
+      },
+      "error": null
+    },
+    {
+      "candidateKey": "n-regional-gdp",
+      "status": 200,
+      "latencyMs": 99.18,
+      "attempts": 1,
+      "usage": {
+        "input_tokens": 1036,
+        "output_tokens": 189
+      },
+      "error": null
+    },
+    {
+      "candidateKey": "m-global-bonds",
+      "status": 200,
+      "latencyMs": 97.87,
+      "attempts": 1,
+      "usage": {
+        "input_tokens": 1010,
+        "output_tokens": 189
+      },
+      "error": null
+    },
+    {
+      "candidateKey": "m-wallstreet-ai",
+      "status": 200,
+      "latencyMs": 124.59,
+      "attempts": 1,
+      "usage": {
+        "input_tokens": 1016,
+        "output_tokens": 185
+      },
+      "error": null
+    },
+    {
+      "candidateKey": "m-dollar-fed",
+      "status": 200,
+      "latencyMs": 94.35,
+      "attempts": 1,
+      "usage": {
+        "input_tokens": 998,
+        "output_tokens": 189
+      },
+      "error": null
+    }
+  ],
+  "status": "PASS"
+}

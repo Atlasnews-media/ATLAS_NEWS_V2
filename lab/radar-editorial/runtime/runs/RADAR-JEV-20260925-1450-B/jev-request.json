@@ -1,0 +1,187 @@
+{
+  "schemaVersion": 1,
+  "radarRunId": "RADAR-JEV-20260925-1450-B",
+  "sourceMainCommit": "d04b23aacd3e3d7e8fa2108d9a8843731d24c437",
+  "radarStateVersion": "radar-state-v1",
+  "editorialDate": "2026-09-25",
+  "experimentMode": "RADAR_JEV",
+  "mode": "LAB_ONLY",
+  "productionWritesAllowed": false,
+  "candidateReviews": [
+    {
+      "candidateKey": "g-hormuz-7day",
+      "section": "general",
+      "title": "Iran says Hormuz could reopen within seven days under phased US deal",
+      "description": "Iran says it has offered a plan that could reopen the Strait of Hormuz within seven days if the United States eases military pressure and lifts its blockade, sharpening the timetable around negotiations reported this week.",
+      "sourceName": "Reuters",
+      "publishedAt": "2026-09-25T12:00:00Z",
+      "priors": [
+        {
+          "origin": "editorial_state",
+          "title": "oil-geopolitics-inflation",
+          "relationHint": "Active thread says Hormuz traffic remains exceptionally low despite Saudi logistics adaptation."
+        },
+        {
+          "origin": "current search",
+          "title": "US and Iran discuss phased deal",
+          "relationHint": "Negotiations were already reported Sept 24; the seven-day proposal is an incremental timetable."
+        }
+      ]
+    },
+    {
+      "candidateKey": "g-trump-xi-takeaways",
+      "section": "general",
+      "title": "Trump-Xi summit extends trade truce but leaves structural disputes unresolved",
+      "description": "The Washington summit delivered a short two-month extension of the trade truce while leaving Taiwan, AI, technology controls and other structural disputes unresolved.",
+      "sourceName": "Reuters",
+      "publishedAt": "2026-09-25T10:00:00Z",
+      "priors": [
+        {
+          "origin": "previous LAB evidence",
+          "title": "Trump-Xi summit",
+          "relationHint": "The immediately preceding experimental run already evaluated the summit and truce."
+        },
+        {
+          "origin": "editorial_state",
+          "title": "active threads",
+          "relationHint": "No dedicated active US-China trade thread."
+        }
+      ]
+    },
+    {
+      "candidateKey": "g-anthropic-akamai",
+      "section": "general",
+      "title": "Akamai signs $11.6 billion cloud deal with Anthropic",
+      "description": "Akamai signed an $11.6 billion seven-year cloud-services agreement with Anthropic and granted a warrant that could reach a 5% equity stake, providing a concrete infrastructure-demand signal.",
+      "sourceName": "Reuters",
+      "publishedAt": "2026-09-24T20:00:00Z",
+      "priors": [
+        {
+          "origin": "editorial_state",
+          "title": "ai-monetization-selectivity",
+          "relationHint": "Active thesis favors visible end demand, cash generation and disciplined financing in AI."
+        }
+      ]
+    },
+    {
+      "candidateKey": "n-escondida-talks",
+      "section": "national",
+      "title": "Escondida unions reject bid to pause contract talks after worker death",
+      "description": "Unions at Escondida rejected management's request to temporarily pause contract negotiations after a fatal accident, so talks with supervisors and staff continue on schedule.",
+      "sourceName": "Reuters",
+      "publishedAt": "2026-09-25T16:46:00Z",
+      "priors": [
+        {
+          "origin": "current search",
+          "title": "Escondida resumes operations",
+          "relationHint": "Same accident context but a distinct labor-relations development after progressive restart."
+        },
+        {
+          "origin": "editorial_state",
+          "title": "chile-inflation-activity-rates",
+          "relationHint": "Mining production is already part of the weak-activity backdrop."
+        }
+      ]
+    },
+    {
+      "candidateKey": "n-escondida-restart",
+      "section": "national",
+      "title": "Escondida gradually resumes operations after fatal accident",
+      "description": "BHP's Escondida mine is progressively resuming operations while safety assessments continue after a fatal maintenance accident at the world's largest copper mine.",
+      "sourceName": "Reuters",
+      "publishedAt": "2026-09-25T00:22:00Z",
+      "priors": [
+        {
+          "origin": "previous LAB evidence",
+          "title": "Escondida restart",
+          "relationHint": "The immediately preceding experimental run selected this item post-JEV."
+        },
+        {
+          "origin": "editorial_state",
+          "title": "chile-inflation-activity-rates",
+          "relationHint": "Lower mining production already contributes to the domestic growth backdrop."
+        }
+      ]
+    },
+    {
+      "candidateKey": "n-regional-gdp",
+      "section": "national",
+      "title": "Seven Chilean regions contracted in second quarter as national GDP fell 0.2%",
+      "description": "Regional GDP data show seven regions contracted in the second quarter while national output fell 0.2%, with mining and lower copper extraction weighing on activity.",
+      "sourceName": "Banco Central de Chile",
+      "publishedAt": "2026-09-23T11:30:00Z",
+      "priors": [
+        {
+          "origin": "previous LAB evidence",
+          "title": "PIB regional Q2",
+          "relationHint": "Exact data point was already selected by the prior baseline and judged repetitive in the first RADAR_JEV run."
+        },
+        {
+          "origin": "editorial_state",
+          "title": "chile-inflation-activity-rates",
+          "relationHint": "Weak activity is already explicit in the active thesis."
+        }
+      ]
+    },
+    {
+      "candidateKey": "m-global-bonds",
+      "section": "markets",
+      "title": "Stocks weather bond volatility as long yields remain near multi-decade highs",
+      "description": "Global equities stayed resilient while long-dated sovereign yields remained near multi-decade highs, keeping borrowing costs elevated and challenging equity valuations.",
+      "sourceName": "Reuters",
+      "publishedAt": "2026-09-25T10:40:00Z",
+      "priors": [
+        {
+          "origin": "previous LAB evidence",
+          "title": "Bond storm",
+          "relationHint": "Bond volatility was already the central markets frame in the baseline and first RADAR_JEV run."
+        },
+        {
+          "origin": "editorial_state",
+          "title": "us-employment-fed-rates",
+          "relationHint": "Treasury yields are an explicit watch variable."
+        }
+      ]
+    },
+    {
+      "candidateKey": "m-wallstreet-ai",
+      "section": "markets",
+      "title": "Wall Street edges up as AI enthusiasm and Mideast negotiation hopes offset yields",
+      "description": "US equities edged higher as AI optimism and hopes of Middle East de-escalation offset pressure from elevated yields, with technology demand signals supporting risk appetite.",
+      "sourceName": "Reuters",
+      "publishedAt": "2026-09-25T14:00:00Z",
+      "priors": [
+        {
+          "origin": "previous LAB evidence",
+          "title": "AI equities",
+          "relationHint": "This theme was selected post-JEV in the preceding experiment."
+        },
+        {
+          "origin": "editorial_state",
+          "title": "ai-monetization-selectivity",
+          "relationHint": "AI monetization remains active but requires visible demand and disciplined capital."
+        }
+      ]
+    },
+    {
+      "candidateKey": "m-dollar-fed",
+      "section": "markets",
+      "title": "Dollar reaches two-month high as Fed hike expectations strengthen",
+      "description": "The dollar reached a fresh two-month high as Treasury yields remained elevated and expectations of additional Federal Reserve rate hikes strengthened after firm activity and inflation signals.",
+      "sourceName": "Reuters",
+      "publishedAt": "2026-09-24T20:00:00Z",
+      "priors": [
+        {
+          "origin": "editorial_state",
+          "title": "us-employment-fed-rates",
+          "relationHint": "Fed tightening, Treasury yields and dollar are already central watch variables."
+        },
+        {
+          "origin": "previous LAB evidence",
+          "title": "Dollar firm",
+          "relationHint": "The baseline already incorporated a firm dollar into its markets framing."
+        }
+      ]
+    }
+  ]
+}
