@@ -3,9 +3,9 @@ name: LAB — RADAR JEV resolver
 on:
   push:
     branches:
-      - "radar-runtime/editorial"
+      - "radar-ingress/editorial"
     paths:
-      - "lab/radar-editorial/runtime/runs/**/jev-request.json"
+      - "lab/radar-editorial/jev-requests/*.json"
 
 permissions:
   contents: write
@@ -23,7 +23,7 @@ jobs:
       TYPESAFE_API_KEY: ${{ secrets.TYPESAFE_API_KEY }}
 
     steps:
-      - name: Checkout runtime exacto
+      - name: Checkout request exacta
         uses: actions/checkout@v5
         with:
           fetch-depth: 0
@@ -43,37 +43,41 @@ jobs:
           fi
           echo "JEV_CREDENTIAL=AVAILABLE"
 
-      - name: Detectar request del commit
+      - name: Gate fail-closed del buzón JEV
         id: request
         run: |
           set -euo pipefail
+          test "$GITHUB_REF_NAME" = "radar-ingress/editorial"
           before="${{ github.event.before }}"
-          changed="$RUNNER_TEMP/jev-request-paths.txt"
+          changed="$RUNNER_TEMP/jev-ingress-changes.txt"
           if [[ "$before" =~ ^0+$ ]] || ! git cat-file -e "${before}^{commit}" 2>/dev/null; then
-            git diff-tree --no-commit-id --name-only -r "$GITHUB_SHA"
+            git diff-tree --no-commit-id --name-status -r "$GITHUB_SHA" > "$changed"
           else
-            git diff --name-only "$before" "$GITHUB_SHA"
-          fi | grep -E '^lab/radar-editorial/runtime/runs/[^/]+/jev-request\.json$' > "$changed"
-
-          count="$(wc -l < "$changed" | tr -d ' ')"
-          test "$count" = "1"
-          request="$(cat "$changed")"
-          run_dir="$(dirname "$request")"
-          output="$run_dir/jev-judgments.json"
-          echo "request=$request" >> "$GITHUB_OUTPUT"
-          echo "output=$output" >> "$GITHUB_OUTPUT"
+            git diff --name-status "$before" "$GITHUB_SHA" > "$changed"
+          fi
+          cat "$changed"
+          test "$(wc -l < "$changed" | tr -d " ")" = "1"
+          status="$(cut -f1 "$changed")"
+          request="$(cut -f2 "$changed")"
+          test "$status" = "A"
+          [[ "$request" =~ ^lab/radar-editorial/jev-requests/[A-Za-z0-9._-]+\.json$ ]]
+          test -f "$request"
+          run_id="$(node -p "JSON.parse(require('fs').readFileSync('$request','utf8')).radarRunId")"
+          [[ "$run_id" =~ ^[A-Za-z0-9._:-]{8,128}$ ]]
+          echo "path=$request" >> "$GITHUB_OUTPUT"
+          echo "run_id=$run_id" >> "$GITHUB_OUTPUT"
 
       - name: Resolver juicios reales con TypeSafe JEV
         run: |
           set -euo pipefail
           node scripts/lab/radar-editorial/run-jev-memory-judge.mjs \
-            --request "${{ steps.request.outputs.request }}" \
-            --output "${{ steps.request.outputs.output }}"
+            --request "${{ steps.request.outputs.path }}" \
+            --output "$RUNNER_TEMP/jev-judgments.json"
 
       - name: Validar identidad del resultado
         env:
-          REQUEST: ${{ steps.request.outputs.request }}
-          OUTPUT: ${{ steps.request.outputs.output }}
+          REQUEST: ${{ steps.request.outputs.path }}
+          OUTPUT: ${{ runner.temp }}/jev-judgments.json
         run: |
           set -euo pipefail
           node - <<'NODE'
@@ -83,6 +87,7 @@ jobs:
           for (const key of ["radarRunId","sourceMainCommit","radarStateVersion","editorialDate"]) {
             if (request[key] !== result[key]) throw new Error(`identity mismatch: ${key}`);
           }
+          if (request.experimentMode !== "RADAR_JEV") throw new Error("request is not RADAR_JEV");
           if (result.engine !== "JEV_TYPESAFE" || result.status !== "PASS") {
             throw new Error("JEV result is not PASS");
           }
@@ -91,21 +96,55 @@ jobs:
           }
           NODE
 
-      - name: Persistir juicio en rama runtime
+      - name: Checkout runtime durable
+        uses: actions/checkout@v5
+        with:
+          ref: radar-runtime/editorial
+          path: .runtime
+          fetch-depth: 0
+
+      - name: Persistir request y juicio JEV en runtime
+        env:
+          REQUEST: ${{ steps.request.outputs.path }}
+          RUN_ID: ${{ steps.request.outputs.run_id }}
         run: |
           set -euo pipefail
-          git config user.name "ATLAS NEWS RADAR JEV"
-          git config user.email "actions@users.noreply.github.com"
-          git add -- "${{ steps.request.outputs.output }}"
-          git diff --cached --quiet && exit 0
-          git commit -m "LAB RADAR JEV judgments"
+          target=".runtime/lab/radar-editorial/runtime/runs/$RUN_ID"
+          mkdir -p "$target"
 
+          for pair in \
+            "$REQUEST:$target/jev-request.json" \
+            "$RUNNER_TEMP/jev-judgments.json:$target/jev-judgments.json"
+          do
+            source_file="${pair%%:*}"
+            target_file="${pair#*:}"
+            if [[ -f "$target_file" ]] && ! cmp -s "$source_file" "$target_file"; then
+              echo "JEV IDEMPOTENCY FAIL: $target_file ya existe con contenido distinto" >&2
+              exit 1
+            fi
+            cp "$source_file" "$target_file"
+          done
+
+          git -C .runtime config user.name "ATLAS NEWS RADAR JEV"
+          git -C .runtime config user.email "actions@users.noreply.github.com"
+          git -C .runtime add -- "lab/radar-editorial/runtime/runs/$RUN_ID/jev-request.json" \
+            "lab/radar-editorial/runtime/runs/$RUN_ID/jev-judgments.json"
+          git -C .runtime diff --cached --name-only | \
+            node scripts/lab/radar-editorial/assert-runtime-scope.mjs
+
+          if git -C .runtime diff --cached --quiet; then
+            echo "JEV_PERSIST=IDEMPOTENT"
+            exit 0
+          fi
+
+          git -C .runtime commit -m "LAB RADAR JEV judgments $GITHUB_RUN_ID"
           for attempt in 1 2 3; do
-            if git pull --rebase origin radar-runtime/editorial && git push origin HEAD:radar-runtime/editorial; then
+            if git -C .runtime pull --rebase origin radar-runtime/editorial && \
+              git -C .runtime push origin HEAD:radar-runtime/editorial; then
               echo "JEV_PERSIST=PASS"
               exit 0
             fi
-            git rebase --abort 2>/dev/null || true
+            git -C .runtime rebase --abort 2>/dev/null || true
             if [[ "$attempt" -lt 3 ]]; then sleep 2; fi
           done
           echo "JEV_PERSIST=FAIL" >&2
