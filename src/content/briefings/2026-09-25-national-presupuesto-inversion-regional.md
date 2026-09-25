@@ -1,10 +1,10 @@
 ---
 title: "El Presupuesto 2027 enfrenta una prueba regional: ajustar gasto sin frenar inversión"
 summary: "A días del ingreso del proyecto, los gobiernos regionales piden preservar recursos para obras en ejecución mientras Hacienda prioriza austeridad, infraestructura y empleo."
-publishedAt: "2026-09-25T07:36:00-03:00"
+publishedAt: "2026-09-25T07:42:00-03:00"
 cutoffAt: "2026-09-25T07:35:00-03:00"
 section: "national"
-status: "draft"
+status: "published"
 tags:
   - chile
   - presupuesto-2027
