@@ -3,12 +3,13 @@ interface Props {
   title: string;
   summary: string;
   anchor: string;
+  url?: string;
   variant?: "compact" | "full";
 }
 
-const { title, summary, anchor, variant = "compact" } = Astro.props;
-const shareUrl = new URL(Astro.url.href);
-shareUrl.hash = anchor;
+const { title, summary, anchor, url, variant = "compact" } = Astro.props;
+const shareUrl = new URL(url ?? Astro.url.href, Astro.site ?? Astro.url.origin);
+if (!url) shareUrl.hash = anchor;
 const shareHref = shareUrl.href;
 const encodedUrl = encodeURIComponent(shareHref);
 const whatsappHref = `https://wa.me/?text=${encodeURIComponent(
