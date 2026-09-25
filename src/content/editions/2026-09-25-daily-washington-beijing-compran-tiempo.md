@@ -1,10 +1,10 @@
 ---
 title: "Washington y Beijing compran tiempo, pero no resuelven su rivalidad"
 summary: "Trump y Xi extendieron por dos meses la tregua comercial entre Estados Unidos y China, mientras las disputas sobre tecnología, Taiwán, minerales críticos y seguridad siguen abiertas."
-publishedAt: "2026-09-25T06:00:39-03:00"
+publishedAt: "2026-09-25T07:42:00-03:00"
 cutoffAt: "2026-09-25T06:00:39-03:00"
 type: "daily"
-status: "draft"
+status: "published"
 tags:
   - estados-unidos
   - china
