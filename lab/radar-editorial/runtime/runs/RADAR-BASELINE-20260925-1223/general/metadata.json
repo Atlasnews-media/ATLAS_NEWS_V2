@@ -1,0 +1,71 @@
+{
+  "radarRunId": "RADAR-BASELINE-20260925-1223",
+  "sourceMainCommit": "177ad4bf9fd4140816531c3d870ed0ec9a2f815a",
+  "radarStateVersion": "radar-state-v1",
+  "editorialDate": "2026-09-25",
+  "experimentMode": "BASELINE",
+  "mode": "LAB_ONLY",
+  "productionWritesAllowed": false,
+  "schemaVersion": 1,
+  "section": "general",
+  "status": "PASS",
+  "startedAt": "2026-09-25T09:05:00-03:00",
+  "completedAt": "2026-09-25T09:07:00-03:00",
+  "title": "Tregua EEUU-China alivia el frente comercial, pero las tasas siguen marcando el pulso global",
+  "summary": "La extensión de la tregua comercial entre Estados Unidos y China reduce riesgo inmediato, pero la presión de tasas largas y energía mantiene exigentes las condiciones financieras globales.",
+  "tags": [
+    "global",
+    "china",
+    "estados-unidos",
+    "tasas",
+    "energia"
+  ],
+  "sources": [
+    {
+      "name": "Reuters — tregua comercial EEUU-China",
+      "url": "https://www.reuters.com/world/asia-pacific/us-treasurys-bessent-chinas-he-meet-unfinished-business-before-trump-xi-summit-2026-09-23/",
+      "publishedAt": "2026-09-24T00:00:00Z"
+    },
+    {
+      "name": "Reuters — cierre de cumbre Trump-Xi",
+      "url": "https://www.reuters.com/world/china/trump-wrap-up-xi-summit-with-tour-us-archives-2026-09-25/",
+      "publishedAt": "2026-09-25T00:00:00Z"
+    },
+    {
+      "name": "Reuters — mercados globales",
+      "url": "https://www.reuters.com/world/china/global-markets-warpup-1-pix-2026-09-25/",
+      "publishedAt": "2026-09-25T00:00:00Z"
+    }
+  ],
+  "highlights": [
+    {
+      "label": "EEUU y China extendieron la tregua comercial",
+      "text": "El alivio reduce el riesgo de una escalada arancelaria inmediata y compra tiempo para una negociación más amplia."
+    },
+    {
+      "label": "La cumbre cerró sin resolver las tensiones estructurales",
+      "text": "Comercio, tecnología y seguridad siguen abiertos, por lo que la reducción de riesgo es parcial."
+    },
+    {
+      "label": "Las bolsas resistieron pese a la presión de los bonos",
+      "text": "El apetito por riesgo mejoró, pero los rendimientos altos siguen encareciendo las condiciones financieras."
+    },
+    {
+      "label": "El petróleo cedió parcialmente",
+      "text": "La moderación de la energía reduce presión inflacionaria marginal, aunque no compensa el efecto de tasas largas elevadas."
+    },
+    {
+      "label": "Chile sigue expuesto al canal externo",
+      "text": "Cobre, dólar y condiciones financieras globales continuarán transmitiendo al mercado local los cambios en comercio y tasas."
+    }
+  ],
+  "selectedCandidateIds": [
+    "g-truce",
+    "g-xi-wrap",
+    "g-stocks-bonds"
+  ],
+  "discardedCandidateIds": [
+    "g-ai-flows"
+  ],
+  "outputPath": "lab/radar-editorial/runtime/runs/RADAR-BASELINE-20260925-1223/general/output.md"
+}

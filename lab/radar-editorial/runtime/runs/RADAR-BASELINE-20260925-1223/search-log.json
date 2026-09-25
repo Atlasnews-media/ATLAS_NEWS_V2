@@ -1,0 +1,60 @@
+{
+  "radarRunId": "RADAR-BASELINE-20260925-1223",
+  "sourceMainCommit": "177ad4bf9fd4140816531c3d870ed0ec9a2f815a",
+  "radarStateVersion": "radar-state-v1",
+  "editorialDate": "2026-09-25",
+  "experimentMode": "BASELINE",
+  "mode": "LAB_ONLY",
+  "productionWritesAllowed": false,
+  "schemaVersion": 1,
+  "entries": [
+    {
+      "queryId": "g-q1",
+      "section": "general",
+      "query": "September 25 2026 Reuters US China summit trade truce global markets",
+      "executedAt": "2026-09-25T09:05:00-03:00",
+      "resultCount": 3,
+      "countMeaning": "retainedCandidates"
+    },
+    {
+      "queryId": "g-q2",
+      "section": "general",
+      "query": "September 25 2026 Reuters global stocks bond yields oil latest",
+      "executedAt": "2026-09-25T09:05:00-03:00",
+      "resultCount": 2,
+      "countMeaning": "retainedCandidates"
+    },
+    {
+      "queryId": "n-q1",
+      "section": "national",
+      "query": "25 septiembre 2026 Chile Banco Central PIB regional actividad",
+      "executedAt": "2026-09-25T09:07:10-03:00",
+      "resultCount": 2,
+      "countMeaning": "retainedCandidates"
+    },
+    {
+      "queryId": "n-q2",
+      "section": "national",
+      "query": "25 septiembre 2026 Chile IPoM septiembre 2026 crecimiento demanda interna",
+      "executedAt": "2026-09-25T09:07:10-03:00",
+      "resultCount": 1,
+      "countMeaning": "retainedCandidates"
+    },
+    {
+      "queryId": "m-q1",
+      "section": "markets",
+      "query": "September 25 2026 Reuters global stocks bond storm oil retreats",
+      "executedAt": "2026-09-25T09:09:10-03:00",
+      "resultCount": 2,
+      "countMeaning": "retainedCandidates"
+    },
+    {
+      "queryId": "m-q2",
+      "section": "markets",
+      "query": "25 septiembre 2026 Chile dólar observado cobre mercados",
+      "executedAt": "2026-09-25T09:09:10-03:00",
+      "resultCount": 2,
+      "countMeaning": "retainedCandidates"
+    }
+  ]
+}
