@@ -1,0 +1,192 @@
+{
+  "schemaVersion": 1,
+  "radarRunId": "RADAR-JEV-20260925-1431-A",
+  "sourceMainCommit": "d04b23aacd3e3d7e8fa2108d9a8843731d24c437",
+  "radarStateVersion": "radar-state-v1",
+  "editorialDate": "2026-09-25",
+  "experimentMode": "RADAR_JEV",
+  "mode": "LAB_ONLY",
+  "productionWritesAllowed": false,
+  "candidateReviews": [
+    {
+      "candidateKey": "g-trump-xi",
+      "section": "general",
+      "title": "Trump-Xi summit extends trade truce but leaves structural disputes unresolved",
+      "description": "The September 24 Washington summit produced a two-month extension of the U.S.-China trade truce while leaving tariffs, rare-earth supply, technology restrictions, Taiwan and AI disagreements substantially unresolved.",
+      "sourceName": "Reuters",
+      "publishedAt": "2026-09-24T20:52:00Z",
+      "priors": [
+        {
+          "origin": "RADAR baseline 2026-09-25",
+          "title": "US, China agree to extend trade truce by two months, work on bigger deal",
+          "relationHint": "Same current summit/truce was already selected by the immediately preceding LAB baseline; use as historical comparison, not as a decision."
+        },
+        {
+          "origin": "editorial_state",
+          "thread": "us-employment-fed-rates",
+          "summary": "Active memory is centered on Fed tightening, not U.S.-China trade; no active trade-war thread is recorded."
+        }
+      ]
+    },
+    {
+      "candidateKey": "g-us-iran-hormuz",
+      "section": "general",
+      "title": "US and Iran discuss phased deal to reopen Hormuz and end US blockade",
+      "description": "U.S. and Iranian negotiators are exploring a phased path in which Tehran would reopen the Strait of Hormuz and Washington would lift its economic blockade, potentially altering a seven-month conflict and global oil-supply risk.",
+      "sourceName": "Reuters",
+      "publishedAt": "2026-09-24T16:17:00Z",
+      "priors": [
+        {
+          "origin": "editorial_state",
+          "thread": "oil-geopolitics-inflation",
+          "summary": "Shock energético activo; bypass saudí reduce riesgo inmediato but Hormuz traffic remains exceptionally low and geopolitical risk persists."
+        },
+        {
+          "origin": "editorial_state",
+          "thread": "oil-geopolitics-inflation",
+          "lastEvidence": "Sept 18 evidence emphasized only four commodity-vessel transits through Hormuz versus a ten-day average of 16 and Saudi logistical adaptation via Oman."
+        }
+      ]
+    },
+    {
+      "candidateKey": "g-anthropic-akamai",
+      "section": "general",
+      "title": "Anthropic signs $11.6 billion Akamai cloud agreement",
+      "description": "Anthropic committed $11.6 billion over seven years to Akamai cloud services, potentially expanding by another $9 billion, while receiving a warrant tied to expansion that could reach 5% of Akamai equity.",
+      "sourceName": "Akamai / Reuters",
+      "publishedAt": "2026-09-24T20:01:00Z",
+      "priors": [
+        {
+          "origin": "editorial_state",
+          "thread": "ai-monetization-selectivity",
+          "summary": "AI demand remains strong but capital discipline, demand transparency, financing structures and cash generation are explicit editorial filters."
+        },
+        {
+          "origin": "editorial_state",
+          "thread": "ai-monetization-selectivity",
+          "lastEvidence": "Nvidia demand validation coexisted with scrutiny of vendor-supported financing structures for smaller clouds."
+        }
+      ]
+    },
+    {
+      "candidateKey": "n-escondida-restart",
+      "section": "national",
+      "title": "Escondida gradually resumes operations after fatal accident",
+      "description": "BHP's Escondida mine in Chile began progressively resuming operations after a fatal maintenance accident, with assessments continuing at the world's largest copper mine.",
+      "sourceName": "Reuters",
+      "publishedAt": "2026-09-25T00:22:00Z",
+      "priors": [
+        {
+          "origin": "editorial_state",
+          "thread": "chile-inflation-activity-rates",
+          "summary": "Chile faces weak activity with external cost risks; lower mining production is part of the current domestic growth backdrop."
+        },
+        {
+          "origin": "RADAR baseline 2026-09-25",
+          "title": "Producto Interno Bruto Regional Segundo Trimestre 2026",
+          "summary": "Baseline selected regional GDP weakness and north-zone contraction as a domestic signal."
+        }
+      ]
+    },
+    {
+      "candidateKey": "n-regional-gdp",
+      "section": "national",
+      "title": "Producto Interno Bruto Regional Segundo Trimestre 2026",
+      "description": "Chile's national GDP fell 0.2% in the second quarter, with seven regions contracting and the northern macrozone making the largest negative contribution, according to the Central Bank of Chile.",
+      "sourceName": "Banco Central de Chile",
+      "publishedAt": "2026-09-23T11:30:00Z",
+      "priors": [
+        {
+          "origin": "editorial_state",
+          "thread": "chile-inflation-activity-rates",
+          "summary": "Active thesis already records weak 2026 activity and cross-currents between domestic demand weakness and external cost shocks."
+        },
+        {
+          "origin": "RADAR baseline 2026-09-25",
+          "title": "Producto Interno Bruto Regional Segundo Trimestre 2026",
+          "summary": "This exact item was selected in the immediately preceding LAB baseline."
+        }
+      ]
+    },
+    {
+      "candidateKey": "n-ipom",
+      "section": "national",
+      "title": "Resumen IPoM septiembre 2026",
+      "description": "The Central Bank of Chile cut its 2026 growth range to 0.25%-0.75%, citing weak demand, employment and lower mining output, while inflation and external energy conditions complicate the outlook.",
+      "sourceName": "Banco Central de Chile",
+      "publishedAt": "2026-09-09T03:00:00Z",
+      "priors": [
+        {
+          "origin": "editorial_state",
+          "thread": "chile-inflation-activity-rates",
+          "summary": "The active thesis already incorporates the 0.25%-0.75% growth range, August CPI surprise, weak demand and external energy/rate risks."
+        },
+        {
+          "origin": "editorial_state",
+          "thread": "chile-inflation-activity-rates",
+          "lastPublication": "2026-09-14 reading on Chile's crossed signals."
+        }
+      ]
+    },
+    {
+      "candidateKey": "m-bond-storm",
+      "section": "markets",
+      "title": "Global stocks weather bond volatility as yields dominate the week",
+      "description": "Global equities remained resilient even as sovereign bond yields surged to multi-year or multi-decade highs, with high long-term rates becoming a central cross-asset risk into quarter-end.",
+      "sourceName": "Reuters",
+      "publishedAt": "2026-09-25T10:40:00Z",
+      "priors": [
+        {
+          "origin": "editorial_state",
+          "thread": "us-employment-fed-rates",
+          "summary": "Fed has begun a renewed tightening cycle and may tighten further; Treasury yields and inflation are explicit watch variables."
+        },
+        {
+          "origin": "RADAR baseline 2026-09-25",
+          "title": "Stocks weather bond storm, oil retreats slightly",
+          "summary": "Baseline selected bond volatility and resilient equities as a principal markets signal."
+        }
+      ]
+    },
+    {
+      "candidateKey": "m-ai-equities",
+      "section": "markets",
+      "title": "Wall Street edges up as AI enthusiasm offsets oil and yield worries",
+      "description": "U.S. equities edged higher as AI enthusiasm, including the Akamai-Anthropic cloud agreement, offset pressure from elevated bond yields and energy uncertainty.",
+      "sourceName": "Reuters",
+      "publishedAt": "2026-09-25T14:00:00Z",
+      "priors": [
+        {
+          "origin": "editorial_state",
+          "thread": "ai-monetization-selectivity",
+          "summary": "AI monetization remains a live thesis, with preference for visible end demand, margins, cash flow and disciplined financing."
+        },
+        {
+          "origin": "RADAR baseline 2026-09-25",
+          "title": "Global equity funds snap two-week outflow as AI optimism returns",
+          "summary": "Baseline screened out the AI-flow candidate in favor of broader bond/oil/currency signals."
+        }
+      ]
+    },
+    {
+      "candidateKey": "m-dollar-rates",
+      "section": "markets",
+      "title": "Dollar reaches two-month high as inflation and Fed-hike expectations rise",
+      "description": "The U.S. dollar reached a fresh two-month high as Treasury yields rose, solid U.S. data persisted and expectations for additional Federal Reserve rate hikes strengthened.",
+      "sourceName": "Reuters",
+      "publishedAt": "2026-09-24T20:00:00Z",
+      "priors": [
+        {
+          "origin": "editorial_state",
+          "thread": "us-employment-fed-rates",
+          "summary": "Fed tightening thesis is active; inflation persistence, resilient activity, Treasury yields and the dollar are key watch variables."
+        },
+        {
+          "origin": "RADAR baseline 2026-09-25",
+          "title": "Bonos tensos y dólar firme conviven con bolsas globales resilientes",
+          "summary": "Baseline final markets framing already combined tight bonds, firm dollar and resilient equities."
+        }
+      ]
+    }
+  ]
+}
