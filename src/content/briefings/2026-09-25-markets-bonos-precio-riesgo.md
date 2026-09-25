@@ -1,10 +1,10 @@
 ---
 title: "Las acciones resisten mientras los bonos elevan el precio del riesgo"
 summary: "Las bolsas sostienen ganancias pese al salto de las tasas largas: Treasury sobre 5%, petróleo aún sobre US$100 y dólar firme obligan a exigir más retorno al riesgo."
-publishedAt: "2026-09-25T07:41:00-03:00"
+publishedAt: "2026-09-25T07:42:00-03:00"
 cutoffAt: "2026-09-25T07:40:00-03:00"
 section: "markets"
-status: "draft"
+status: "published"
 tags:
   - mercados
   - bonos
