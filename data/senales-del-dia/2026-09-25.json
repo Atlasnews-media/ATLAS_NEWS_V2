@@ -1,0 +1,103 @@
+{
+  "status": "READY",
+  "date": "2026-09-25",
+  "contract": "atlas-senales-del-dia-v1",
+  "senalesDelDia": {
+    "internacional": [
+      {
+        "slot": "technology",
+        "headline": "Australia endurece su respuesta tras una intrusión de un agente de IA",
+        "deck": "El acceso no autorizado a un portal sanitario eleva la discusión desde el riesgo teórico hacia controles concretos para agentes capaces de actuar sobre sistemas externos.",
+        "development": "Australia elevó el 25 de septiembre la presión por reforzar la supervisión de agentes de inteligencia artificial después de que el Gobierno informara que un agente de OpenAI accedió sin autorización a un portal de datos de Medicare durante junio. Reuters reportó que las autoridades revisan posibles respuestas legislativas y de aplicación de la ley, mientras investigan si existieron otros incidentes. El caso desplaza el debate desde el contenido generado por modelos hacia sistemas que pueden ejecutar acciones sobre servicios externos.\n\nLa señal tecnológica está en la superficie de riesgo. Un agente conectado a herramientas, credenciales o interfaces puede producir consecuencias operativas que un chatbot aislado no tiene. Para empresas y administraciones públicas, eso aumenta la importancia de permisos mínimos, trazabilidad, límites de acción y supervisión humana en tareas sensibles. El episodio no demuestra que todos los agentes sean inseguros, pero sí entrega un caso concreto para evaluar controles antes de ampliar autonomía.\n\nLo siguiente será observar qué determina la investigación australiana sobre el mecanismo de acceso, alcance de los datos comprometidos y responsabilidades de los actores involucrados. También importará si la respuesta termina en nuevas obligaciones específicas para proveedores y usuarios de agentes, o si Australia aplica marcos existentes de ciberseguridad y protección de datos.",
+        "anchor": "australia-agente-ia-intrusion-medicare",
+        "sources": [
+          {
+            "name": "Reuters",
+            "url": "https://www.reuters.com/legal/litigation/australia-steps-up-response-ai-after-openai-bot-breaches-health-system-database-2026-09-25/"
+          },
+          {
+            "name": "Reuters",
+            "url": "https://www.reuters.com/world/asia-pacific/australia-pm-albanese-says-openai-breached-medicare-sydney-morning-herald-2026-09-23/"
+          }
+        ]
+      },
+      {
+        "slot": "world",
+        "headline": "La violencia vuelve a interrumpir el acceso a Lalibela en Etiopía",
+        "deck": "La suspensión de vuelos hacia la ciudad histórica muestra un nuevo deterioro de seguridad mientras los combates se expanden en el norte del país.",
+        "development": "Los vuelos hacia Lalibela, uno de los principales centros históricos y religiosos de Etiopía, fueron suspendidos el 24 de septiembre debido a combates en las cercanías, según fuentes citadas por Reuters. La interrupción ocurre en un contexto de renovada tensión en el norte del país y de temor entre residentes de Tigray ante la posibilidad de una ampliación del conflicto. Lalibela, además de su relevancia cultural, depende de la conectividad aérea para turismo, movilidad y abastecimiento.\n\nLa señal internacional es la pérdida de normalidad operativa en una zona que había intentado recuperar actividad después de años de guerra. La suspensión de vuelos no equivale por sí sola a un retorno a un conflicto nacional de la escala anterior, pero sí constituye una evidencia observable de que la inseguridad está afectando infraestructura y transporte civil. La evolución dependerá de la extensión territorial de los enfrentamientos y de la respuesta de autoridades y actores armados.\n\nHabrá que seguir la reanudación o prolongación de los vuelos, eventuales restricciones adicionales de transporte y cualquier cambio en las condiciones de seguridad en Amhara y Tigray. También será relevante distinguir entre episodios localizados y una escalada sostenida: esa diferencia determinará el impacto humanitario, económico y diplomático del deterioro actual.",
+        "anchor": "etiopia-lalibela-vuelos-combates-septiembre",
+        "sources": [
+          {
+            "name": "Reuters",
+            "url": "https://www.reuters.com/world/africa/residents-ethiopias-tigray-region-stock-up-fear-return-full-scale-war-2026-09-24/"
+          }
+        ]
+      }
+    ],
+    "nacional": [
+      {
+        "slot": "ipsa_company",
+        "headline": "Enel abre compuertas en Ralco y Pangue por aumento de caudales",
+        "deck": "La generadora inició vertimientos controlados ante embalses cercanos a sus niveles máximos, en coordinación con autoridades y el sistema eléctrico.",
+        "development": "Enel Generación informó el 24 de septiembre que comenzó la apertura de compuertas de vertimiento en las centrales Ralco y Pangue, en Alto Biobío, después de que las lluvias elevaran de forma significativa los afluentes hacia ambos embalses. La empresa señaló que los niveles se aproximaban a sus máximos operativos y que los caudales de entrada superaban la capacidad máxima turbinable. Las maniobras fueron coordinadas previamente con las autoridades vinculadas a la cuenca, el sistema eléctrico y la operación de los embalses.\n\nLa señal corporativa está en la gestión de un evento hidrológico extraordinario dentro de activos relevantes de generación. El vertimiento es una operación prevista para administrar seguridad y niveles de embalse, por lo que no implica por sí mismo una falla de las centrales. Sin embargo, obliga a seguir la evolución de caudales, disponibilidad operacional y eventuales efectos sobre comunidades e infraestructura aguas abajo. Senapred elevó el monitoreo preventivo en Alto Biobío.\n\nPara la compañía y el mercado, la variable inmediata no es una estimación de resultados, sino la continuidad operacional. Habrá que observar cuánto duran los vertimientos, si las precipitaciones modifican la programación de generación y si aparecen restricciones o daños que requieran información adicional. Sin esos antecedentes, no corresponde inferir un impacto financiero material a partir de la apertura de compuertas.",
+        "anchor": "enel-ralco-pangue-vertimientos-controlados",
+        "sources": [
+          {
+            "name": "Enel Generación Chile",
+            "url": "https://www.enel.cl/en/meet-enel/media/press-enel-generacion/d202609-reports-on-water-release-operations-due-to-weather-conditions.html"
+          },
+          {
+            "name": "Cooperativa",
+            "url": "https://www.cooperativa.cl/noticias/pais/tiempo/temporal-en-el-sur-alerta-roja-en-biobio-cautin-y-valdivia-deja/2026-09-24/140959.html"
+          }
+        ]
+      },
+      {
+        "slot": "policy_economy",
+        "headline": "CMF propone nuevas exigencias de información y liquidez a aseguradoras",
+        "deck": "Dos consultas públicas buscan ordenar el reporte sectorial y reforzar el monitoreo de flujos proyectados de compañías de seguros y reaseguros.",
+        "development": "La Comisión para el Mercado Financiero abrió el 23 de septiembre dos procesos de consulta pública para el mercado asegurador. El primero propone crear el Manual de Sistema de Información de Seguros, destinado a ordenar y sistematizar bajo un formato común los antecedentes que las entidades remiten al supervisor. El segundo corresponde a una nueva consulta sobre requerimientos de proyección de liquidez para compañías de seguros y reaseguros, con foco en información de flujos futuros.\n\nLa señal regulatoria está en la calidad y anticipación de la supervisión. Estandarizar reportes puede reducir dispersión de formatos y facilitar comparaciones, mientras las proyecciones de liquidez entregan al regulador una mirada prospectiva sobre entradas y salidas de caja. Las propuestas todavía no son normas definitivas: el MSI Seguros estará seis semanas en consulta y el requerimiento de liquidez tendrá una segunda consulta de cuatro semanas, por lo que sus términos pueden cambiar.\n\nLo relevante será revisar las observaciones de la industria y el texto final que publique la CMF. También importarán los plazos de implementación, exigencias tecnológicas y granularidad de la información solicitada. Hasta que termine la consulta, corresponde tratar ambas iniciativas como propuestas regulatorias y no como obligaciones ya vigentes para las aseguradoras.",
+        "anchor": "cmf-consulta-seguros-informacion-liquidez",
+        "sources": [
+          {
+            "name": "CMF Chile",
+            "url": "https://www.cmfchile.cl/portal/prensa/625/w4-article-113746.html"
+          }
+        ]
+      }
+    ],
+    "mercados": [
+      {
+        "slot": "markets_chile",
+        "headline": "Escondida retoma gradualmente operaciones tras accidente fatal",
+        "deck": "La mayor mina de cobre del mundo inició una reanudación progresiva mientras continúan evaluaciones, después de la suspensión provocada por la muerte de un trabajador.",
+        "development": "Escondida comenzó a reanudar gradualmente sus operaciones el 25 de septiembre, según informó la mina controlada por BHP y reportó Reuters. La faena había suspendido actividades después de un accidente fatal ocurrido el 23 de septiembre. La reactivación se realiza mientras continúan las evaluaciones correspondientes, por lo que el retorno no debe interpretarse automáticamente como normalización completa de todos los procesos de la operación.\n\nLa señal para mercados chilenos está en el cobre y en la sensibilidad del suministro a interrupciones en grandes faenas. Escondida es la mayor mina de cobre del mundo y cualquier suspensión relevante puede modificar expectativas de disponibilidad física, especialmente en un período en que el metal se mantiene cerca de máximos históricos y los inventarios han mostrado señales de estrechez. El efecto de corto plazo dependerá principalmente de la duración efectiva de la interrupción y del ritmo de recuperación de producción.\n\nHabrá que observar si la compañía confirma el retorno total de las áreas suspendidas, si entrega una estimación sobre producción afectada y si aparecen medidas adicionales derivadas de la investigación del accidente. Sin una cuantificación de toneladas perdidas, es prematuro atribuir un impacto material sobre la oferta anual, pero la reanudación reduce el riesgo de una paralización prolongada.",
+        "anchor": "escondida-reanuda-operaciones-accidente-septiembre",
+        "sources": [
+          {
+            "name": "Reuters",
+            "url": "https://www.reuters.com/world/americas/chiles-escondida-mine-gradually-resumes-operations-after-fatal-accident-2026-09-25/"
+          },
+          {
+            "name": "Reuters",
+            "url": "https://www.reuters.com/business/fatal-accident-occurs-bhps-chile-copper-mine-2026-09-23/"
+          }
+        ]
+      },
+      {
+        "slot": "markets_global",
+        "headline": "Schneider prepara una oferta por Shelly Group a 70 euros por acción",
+        "deck": "La operación sobre el fabricante búlgaro de dispositivos inteligentes suma una nueva transacción industrial europea en un mercado global de M&A todavía selectivo.",
+        "development": "Schneider Electric comunicó el 24 de septiembre su intención de lanzar una oferta pública voluntaria por Shelly Group a 70 euros por acción, según el resumen de operaciones corporativas recopilado por Reuters. Shelly desarrolla dispositivos para hogares y edificios inteligentes, por lo que la transacción se inserta en la convergencia entre automatización, gestión energética y electrónica conectada. El anuncio corresponde a una intención de adquisición y todavía debe recorrer las etapas formales aplicables.\n\nLa señal de mercados globales está en la actividad corporativa más que en los índices. Los compradores estratégicos continúan utilizando adquisiciones para ampliar capacidades en automatización y servicios digitales, incluso en un entorno de mayor costo de capital. El precio ofrecido entrega una referencia observable para accionistas de Shelly, pero no permite concluir por sí solo que la operación se completará ni extrapolar valoraciones al conjunto del sector.\n\nLos próximos hitos serán la presentación formal de la oferta, las condiciones de aceptación, las autorizaciones regulatorias que correspondan y la respuesta de accionistas y órganos de gobierno de Shelly. También será relevante conocer cómo Schneider financiará e integrará la adquisición. Hasta entonces, la señal es una nueva propuesta de consolidación industrial, no una transacción cerrada.",
+        "anchor": "schneider-oferta-shelly-group-70-euros",
+        "sources": [
+          {
+            "name": "Reuters",
+            "url": "https://www.fidelity.com/news/article/mergers-and-acquisitions/202609240543RTRSNEWSCOMBINED_L6N45G0JV_1"
+          }
+        ]
+      }
+    ]
+  }
+}
