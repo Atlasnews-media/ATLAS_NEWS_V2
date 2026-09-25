@@ -1,0 +1,1172 @@
+{
+  "schemaVersion": 1,
+  "radarRunId": "RADAR-JEV-20260925-1657-C",
+  "sourceMainCommit": "1f55c43e64c892ee6e01a98722f232eac952d478",
+  "radarStateVersion": "radar-state-v1",
+  "editorialDate": "2026-09-25",
+  "experimentMode": "RADAR_JEV",
+  "mode": "LAB_ONLY",
+  "productionWritesAllowed": false,
+  "createdAt": "2026-09-25T17:01:00-03:00",
+  "producer": "CHATGPT_TASK",
+  "artifacts": {
+    "run.json": {
+      "schemaVersion": 1,
+      "radarRunId": "RADAR-JEV-20260925-1657-C",
+      "sourceMainCommit": "1f55c43e64c892ee6e01a98722f232eac952d478",
+      "radarStateVersion": "radar-state-v1",
+      "editorialDate": "2026-09-25",
+      "experimentMode": "RADAR_JEV",
+      "mode": "LAB_ONLY",
+      "productionWritesAllowed": false,
+      "startedAt": "2026-09-25T16:57:00-03:00",
+      "completedAt": "2026-09-25T17:01:00-03:00",
+      "memoryMode": "RADAR_PLUS_CORPUS",
+      "radarInterventionUsed": true,
+      "jevUsed": true,
+      "corpusUsed": true,
+      "frameworkRead": [
+        "AGENTS.md",
+        "docs/PROCEDIMIENTO_GPT_PUBLICACION.md",
+        "docs/CONTRATO_EDITORIAL.md",
+        "data/editorial_state.json"
+      ],
+      "phases": {
+        "general": "PASS",
+        "national": "PASS",
+        "markets": "PASS"
+      }
+    },
+    "search-log.json": {
+      "schemaVersion": 1,
+      "radarRunId": "RADAR-JEV-20260925-1657-C",
+      "sourceMainCommit": "1f55c43e64c892ee6e01a98722f232eac952d478",
+      "radarStateVersion": "radar-state-v1",
+      "editorialDate": "2026-09-25",
+      "experimentMode": "RADAR_JEV",
+      "mode": "LAB_ONLY",
+      "productionWritesAllowed": false,
+      "entries": [
+        {
+          "queryId": "g-q1",
+          "section": "general",
+          "query": "September 25 2026 Reuters Gulf Oman oil transfers Saudi exports",
+          "executedAt": "2026-09-25T16:57:31-03:00",
+          "resultCount": 5
+        },
+        {
+          "queryId": "g-q2",
+          "section": "general",
+          "query": "September 25 2026 Reuters India imported coal power supply",
+          "executedAt": "2026-09-25T16:57:32-03:00",
+          "resultCount": 5
+        },
+        {
+          "queryId": "g-q3",
+          "section": "general",
+          "query": "September 25 2026 Reuters Qatar Airways Iran war jet fuel",
+          "executedAt": "2026-09-25T16:57:33-03:00",
+          "resultCount": 5
+        },
+        {
+          "queryId": "n-q1",
+          "section": "national",
+          "query": "September 25 2026 Reuters Chile Escondida union contract talks",
+          "executedAt": "2026-09-25T16:57:34-03:00",
+          "resultCount": 5
+        },
+        {
+          "queryId": "n-q2",
+          "section": "national",
+          "query": "September 25 2026 Reuters Chile Escondida resumes operations",
+          "executedAt": "2026-09-25T16:57:35-03:00",
+          "resultCount": 5
+        },
+        {
+          "queryId": "n-q3",
+          "section": "national",
+          "query": "September 25 2026 Chile Banco Central PIB regional Q2",
+          "executedAt": "2026-09-25T16:57:36-03:00",
+          "resultCount": 10
+        },
+        {
+          "queryId": "m-q1",
+          "section": "markets",
+          "query": "September 25 2026 Reuters dollar oil Fed rate hike bets",
+          "executedAt": "2026-09-25T16:57:37-03:00",
+          "resultCount": 5
+        },
+        {
+          "queryId": "m-q2",
+          "section": "markets",
+          "query": "September 25 2026 Reuters global bond rout yields",
+          "executedAt": "2026-09-25T16:57:38-03:00",
+          "resultCount": 5
+        },
+        {
+          "queryId": "m-q3",
+          "section": "markets",
+          "query": "September 25 2026 Reuters Treasury 6 percent investor concern",
+          "executedAt": "2026-09-25T16:57:39-03:00",
+          "resultCount": 5
+        }
+      ]
+    },
+    "candidates.json": {
+      "schemaVersion": 1,
+      "radarRunId": "RADAR-JEV-20260925-1657-C",
+      "sourceMainCommit": "1f55c43e64c892ee6e01a98722f232eac952d478",
+      "radarStateVersion": "radar-state-v1",
+      "editorialDate": "2026-09-25",
+      "experimentMode": "RADAR_JEV",
+      "mode": "LAB_ONLY",
+      "productionWritesAllowed": false,
+      "candidates": [
+        {
+          "candidateId": "g-oman-transfer-capacity",
+          "section": "general",
+          "titleOriginal": "Gulf of Oman ship-to-ship oil transfers reach limit as Saudi exports surge",
+          "sourceName": "Reuters",
+          "sourceUrl": "https://www.reuters.com/business/energy/gulf-oman-ship-to-ship-oil-transfers-reach-limit-saudi-exports-surge-2026-09-25/",
+          "publishedAt": "2026-09-25T15:00:00Z",
+          "discoveredAt": "2026-09-25T16:57:30-03:00",
+          "description": "Las transferencias de petróleo barco a barco frente a Omán alcanzaron su límite, mostrando que la ruta de adaptación a Hormuz enfrenta una restricción física adicional.",
+          "retrievalOrigin": "g-q1",
+          "selected": false,
+          "selectionStage": "screened-out"
+        },
+        {
+          "candidateId": "g-india-coal",
+          "section": "general",
+          "titleOriginal": "India weighs mandatory blending of imported coal at power plants, sources say",
+          "sourceName": "Reuters",
+          "sourceUrl": "https://www.reuters.com/business/energy/india-weighs-mandatory-blending-imported-coal-power-plants-sources-say-2026-09-25/",
+          "publishedAt": "2026-09-25T12:00:00Z",
+          "discoveredAt": "2026-09-25T16:57:30-03:00",
+          "description": "India estudia obligar a centrales a mezclar carbón importado porque los inventarios caen con rapidez y los precios spot de electricidad alcanzan máximos desde 2022.",
+          "retrievalOrigin": "g-q2",
+          "selected": true,
+          "selectionStage": "selected-final"
+        },
+        {
+          "candidateId": "g-qatar-aviation",
+          "section": "general",
+          "titleOriginal": "Qatar Airways retires idle A330s and sends pilots to RwandAir as Iran war drags",
+          "sourceName": "Reuters",
+          "sourceUrl": "https://www.reuters.com/business/aerospace-defense/qatar-airways-retires-idle-a330s-sends-pilots-rwandair-iran-war-drags-2026-09-25/",
+          "publishedAt": "2026-09-25T14:00:00Z",
+          "discoveredAt": "2026-09-25T16:57:30-03:00",
+          "description": "Qatar Airways retira A330 y desplaza pilotos mientras la guerra con Irán altera la aviación del Golfo y el combustible de aviación permanece fuertemente encarecido.",
+          "retrievalOrigin": "g-q3",
+          "selected": false,
+          "selectionStage": "screened-out"
+        },
+        {
+          "candidateId": "n-escondida-talks",
+          "section": "national",
+          "titleOriginal": "Union at BHP's Escondida mine refuses to pause contract talks after fatal accident",
+          "sourceName": "Reuters",
+          "sourceUrl": "https://www.reuters.com/business/world-at-work/unions-chiles-escondida-mine-reject-bid-pause-contract-talks-after-workers-death-2026-09-25/",
+          "publishedAt": "2026-09-25T16:46:00Z",
+          "discoveredAt": "2026-09-25T16:57:30-03:00",
+          "description": "Un sindicato de Escondida rechazó retrasar negociaciones contractuales tras el accidente fatal, manteniendo las conversaciones mientras la operación se recupera.",
+          "retrievalOrigin": "n-q1",
+          "selected": true,
+          "selectionStage": "selected-final"
+        },
+        {
+          "candidateId": "n-escondida-restart",
+          "section": "national",
+          "titleOriginal": "Chile's Escondida mine gradually resumes operations after fatal accident",
+          "sourceName": "Reuters",
+          "sourceUrl": "https://www.reuters.com/world/americas/chiles-escondida-mine-gradually-resumes-operations-after-fatal-accident-2026-09-25/",
+          "publishedAt": "2026-09-25T00:22:00Z",
+          "discoveredAt": "2026-09-25T16:57:30-03:00",
+          "description": "Escondida reanuda progresivamente sus operaciones después del accidente fatal mientras continúan evaluaciones de seguridad.",
+          "retrievalOrigin": "n-q2",
+          "selected": false,
+          "selectionStage": "screened-out"
+        },
+        {
+          "candidateId": "n-regional-gdp",
+          "section": "national",
+          "titleOriginal": "Producto Interno Bruto Regional Segundo Trimestre 2026",
+          "sourceName": "Banco Central de Chile",
+          "sourceUrl": "https://www.bcentral.cl/web/banco-central/contenido/-/detalle/prensa/nota-de-prensa/producto-interno-bruto-regional-segundo-trimestre-2026",
+          "publishedAt": "2026-09-23T11:30:00Z",
+          "discoveredAt": "2026-09-25T16:57:30-03:00",
+          "description": "El PIB nacional cayó 0,2% en el segundo trimestre y siete regiones registraron contracción, mientras el consumo de hogares creció a nivel nacional.",
+          "retrievalOrigin": "n-q3",
+          "selected": false,
+          "selectionStage": "screened-out"
+        },
+        {
+          "candidateId": "m-dollar-eases",
+          "section": "markets",
+          "titleOriginal": "Dollar falls as oil eases, yen rallies on Japan remarks",
+          "sourceName": "Reuters",
+          "sourceUrl": "https://www.reuters.com/world/africa/dollar-set-weekly-gains-yields-surge-fed-bets-build-2026-09-25/",
+          "publishedAt": "2026-09-25T16:00:00Z",
+          "discoveredAt": "2026-09-25T16:57:30-03:00",
+          "description": "El dólar retrocedió con la baja del petróleo, aunque seguía encaminado a una segunda semana de avance por mayores apuestas de alzas de la Fed.",
+          "retrievalOrigin": "m-q1",
+          "selected": true,
+          "selectionStage": "selected-final"
+        },
+        {
+          "candidateId": "m-bond-rout",
+          "section": "markets",
+          "titleOriginal": "Trading Day: Rout of control",
+          "sourceName": "Reuters",
+          "sourceUrl": "https://www.reuters.com/commentary/reuters-open-interest/global-markets-trading-day-graphic-2026-09-24/",
+          "publishedAt": "2026-09-24T21:00:00Z",
+          "discoveredAt": "2026-09-25T16:57:30-03:00",
+          "description": "La venta global de bonos llevó varios rendimientos a máximos de décadas y mantuvo presión sobre acciones y condiciones financieras.",
+          "retrievalOrigin": "m-q2",
+          "selected": false,
+          "selectionStage": "screened-out"
+        },
+        {
+          "candidateId": "m-treasury-6",
+          "section": "markets",
+          "titleOriginal": "As 5% Treasury yields lose shock value, investors start worrying about 6%",
+          "sourceName": "Reuters",
+          "sourceUrl": "https://www.reuters.com/business/finance/global-markets-treasuries-analysis-2026-09-23/",
+          "publishedAt": "2026-09-24T10:00:00Z",
+          "discoveredAt": "2026-09-25T16:57:30-03:00",
+          "description": "Inversionistas comienzan a evaluar un escenario de Treasury a 10 años cercano a 6%, con implicancias de repricing para el mercado global.",
+          "retrievalOrigin": "m-q3",
+          "selected": false,
+          "selectionStage": "screened-out"
+        }
+      ]
+    },
+    "general/input.json": {
+      "schemaVersion": 1,
+      "radarRunId": "RADAR-JEV-20260925-1657-C",
+      "sourceMainCommit": "1f55c43e64c892ee6e01a98722f232eac952d478",
+      "radarStateVersion": "radar-state-v1",
+      "editorialDate": "2026-09-25",
+      "experimentMode": "RADAR_JEV",
+      "mode": "LAB_ONLY",
+      "productionWritesAllowed": false,
+      "section": "general",
+      "startedAt": "2026-09-25T16:59:00-03:00",
+      "frameworkRead": [
+        "AGENTS.md",
+        "docs/PROCEDIMIENTO_GPT_PUBLICACION.md",
+        "docs/CONTRATO_EDITORIAL.md",
+        "data/editorial_state.json"
+      ],
+      "searchQueryIds": [
+        "g-q1",
+        "g-q2",
+        "g-q3"
+      ],
+      "candidateIds": [
+        "g-oman-transfer-capacity",
+        "g-india-coal",
+        "g-qatar-aviation"
+      ]
+    },
+    "general/metadata.json": {
+      "schemaVersion": 1,
+      "radarRunId": "RADAR-JEV-20260925-1657-C",
+      "sourceMainCommit": "1f55c43e64c892ee6e01a98722f232eac952d478",
+      "radarStateVersion": "radar-state-v1",
+      "editorialDate": "2026-09-25",
+      "experimentMode": "RADAR_JEV",
+      "mode": "LAB_ONLY",
+      "productionWritesAllowed": false,
+      "section": "general",
+      "status": "PASS",
+      "startedAt": "2026-09-25T16:59:00-03:00",
+      "completedAt": "2026-09-25T16:59:35-03:00",
+      "title": "India amplía el mapa del estrés energético con inventarios críticos de carbón",
+      "summary": "India estudia exigir carbón importado ante inventarios bajos y electricidad cara, agregando un nuevo foco energético a un sistema global ya tensionado.",
+      "tags": [
+        "internacional"
+      ],
+      "sources": [
+        {
+          "name": "Reuters",
+          "url": "https://www.reuters.com/business/energy/india-weighs-mandatory-blending-imported-coal-power-plants-sources-say-2026-09-25/",
+          "publishedAt": "2026-09-25T12:00:00Z"
+        },
+        {
+          "name": "Reuters",
+          "url": "https://www.reuters.com/business/energy/gulf-oman-ship-to-ship-oil-transfers-reach-limit-saudi-exports-surge-2026-09-25/",
+          "publishedAt": "2026-09-25T15:00:00Z"
+        },
+        {
+          "name": "Reuters",
+          "url": "https://www.reuters.com/business/aerospace-defense/qatar-airways-retires-idle-a330s-sends-pilots-rwandair-iran-war-drags-2026-09-25/",
+          "publishedAt": "2026-09-25T14:00:00Z"
+        }
+      ],
+      "highlights": [
+        {
+          "label": "India enfrenta una nueva restricción energética",
+          "text": "El gobierno estudia obligar a importar carbón para reforzar inventarios de centrales."
+        },
+        {
+          "label": "Varias plantas tienen reservas muy bajas",
+          "text": "Cerca de 40% tendría menos de tres días de existencias de carbón."
+        },
+        {
+          "label": "Omán también muestra límites físicos",
+          "text": "Las transferencias de petróleo barco a barco alcanzaron su capacidad disponible."
+        },
+        {
+          "label": "La guerra afecta a la aviación del Golfo",
+          "text": "Qatar Airways adapta flota y personal mientras persisten disrupciones y combustible caro."
+        },
+        {
+          "label": "Las tasas globales siguen elevadas",
+          "text": "El mercado continúa absorbiendo un ciclo monetario más restrictivo."
+        }
+      ],
+      "selectedCandidateIds": [
+        "g-india-coal"
+      ],
+      "discardedCandidateIds": [
+        "g-oman-transfer-capacity",
+        "g-qatar-aviation"
+      ],
+      "outputPath": "lab/radar-editorial/runtime/runs/RADAR-JEV-20260925-1657-C/general/output.md"
+    },
+    "general/output.md": "## Hecho central\n\nIndia evalúa volver a exigir que sus centrales eléctricas mezclen carbón importado con suministro doméstico, una medida que no utiliza desde 2024. La razón es concreta: los inventarios de carbón están cayendo con rapidez, cerca de 40% de las plantas tendría menos de tres días de existencias y los precios spot de electricidad alcanzaron máximos desde 2022. La señal amplía el mapa del estrés energético global más allá de petróleo y Hormuz.\n\n## En una mirada\n\n- **India enfrenta una nueva restricción energética:** el gobierno estudia obligar a importar carbón para reforzar inventarios de centrales.\n- **Las reservas de varias plantas son muy bajas:** cerca de 40% tendría menos de tres días de existencias.\n- **Omán también muestra límites físicos:** las transferencias de petróleo barco a barco alcanzaron su capacidad disponible.\n- **La guerra afecta a la aviación del Golfo:** Qatar Airways adapta flota y personal mientras persisten disrupciones y combustible caro.\n- **Las tasas globales siguen elevadas:** el mercado continúa absorbiendo un ciclo monetario más restrictivo.\n\n## Por qué importa\n\nEl episodio indio es un evento nuevo frente a una memoria dominada por petróleo, Hormuz y tasas. Muestra que la tensión energética también puede transmitirse por electricidad y carbón en Asia, con efectos potenciales sobre costos industriales e importaciones. No implica por sí sola una crisis de suministro, pero la combinación de inventarios bajos, mayor importación y precios spot altos vuelve el episodio verificable en las próximas semanas.\n\n## Mercados globales\n\nEl petróleo ha cedido con señales diplomáticas, pero la infraestructura alternativa alrededor de Hormuz está mostrando límites. Al mismo tiempo, el carbón vuelve a ganar importancia para India. La coexistencia de alivio en algunos precios y restricciones físicas en distintas cadenas energéticas mantiene un escenario heterogéneo para inflación y activos.\n\n## Chile\n\nPara Chile, la transmisión es principalmente externa. Una demanda asiática adicional por combustibles y energía puede afectar costos internacionales, fletes y expectativas de inflación importada. No existe en esta investigación una señal doméstica nueva derivada directamente del episodio indio.\n\n## Tasas, monedas y commodities\n\nEl dólar retrocedió durante la sesión al bajar el petróleo, aunque las apuestas por nuevas alzas de la Fed continúan sosteniendo rendimientos elevados. En commodities, la atención ya no está sólo en crudo: la posible obligación de importar carbón en India agrega otra fuente de demanda energética internacional.\n\n## Qué observar\n\nSerá clave confirmar si India formaliza la obligación de mezcla, cuánto carbón adicional importa y si recupera inventarios. En paralelo, habrá que observar la capacidad logística frente a Omán, el tráfico por Hormuz, petróleo y los rendimientos soberanos globales.",
+    "checkpoints/general.json": {
+      "schemaVersion": 1,
+      "radarRunId": "RADAR-JEV-20260925-1657-C",
+      "sourceMainCommit": "1f55c43e64c892ee6e01a98722f232eac952d478",
+      "radarStateVersion": "radar-state-v1",
+      "editorialDate": "2026-09-25",
+      "experimentMode": "RADAR_JEV",
+      "mode": "LAB_ONLY",
+      "productionWritesAllowed": false,
+      "phase": "general",
+      "status": "PASS",
+      "completedAt": "2026-09-25T16:59:35-03:00"
+    },
+    "national/input.json": {
+      "schemaVersion": 1,
+      "radarRunId": "RADAR-JEV-20260925-1657-C",
+      "sourceMainCommit": "1f55c43e64c892ee6e01a98722f232eac952d478",
+      "radarStateVersion": "radar-state-v1",
+      "editorialDate": "2026-09-25",
+      "experimentMode": "RADAR_JEV",
+      "mode": "LAB_ONLY",
+      "productionWritesAllowed": false,
+      "section": "national",
+      "startedAt": "2026-09-25T16:59:36-03:00",
+      "frameworkRead": [
+        "AGENTS.md",
+        "docs/PROCEDIMIENTO_GPT_PUBLICACION.md",
+        "docs/CONTRATO_EDITORIAL.md",
+        "data/editorial_state.json"
+      ],
+      "searchQueryIds": [
+        "n-q1",
+        "n-q2",
+        "n-q3"
+      ],
+      "candidateIds": [
+        "n-escondida-talks",
+        "n-escondida-restart",
+        "n-regional-gdp"
+      ]
+    },
+    "national/metadata.json": {
+      "schemaVersion": 1,
+      "radarRunId": "RADAR-JEV-20260925-1657-C",
+      "sourceMainCommit": "1f55c43e64c892ee6e01a98722f232eac952d478",
+      "radarStateVersion": "radar-state-v1",
+      "editorialDate": "2026-09-25",
+      "experimentMode": "RADAR_JEV",
+      "mode": "LAB_ONLY",
+      "productionWritesAllowed": false,
+      "section": "national",
+      "status": "PASS",
+      "startedAt": "2026-09-25T16:59:36-03:00",
+      "completedAt": "2026-09-25T17:00:10-03:00",
+      "title": "Escondida mantiene negociación laboral mientras recupera operaciones",
+      "summary": "El sindicato rechazó pausar las conversaciones contractuales tras el accidente fatal, manteniendo abierto un frente laboral mientras la mina normaliza faenas.",
+      "tags": [
+        "chile"
+      ],
+      "sources": [
+        {
+          "name": "Reuters",
+          "url": "https://www.reuters.com/business/world-at-work/unions-chiles-escondida-mine-reject-bid-pause-contract-talks-after-workers-death-2026-09-25/",
+          "publishedAt": "2026-09-25T16:46:00Z"
+        },
+        {
+          "name": "Reuters",
+          "url": "https://www.reuters.com/world/americas/chiles-escondida-mine-gradually-resumes-operations-after-fatal-accident-2026-09-25/",
+          "publishedAt": "2026-09-25T00:22:00Z"
+        },
+        {
+          "name": "Banco Central de Chile",
+          "url": "https://www.bcentral.cl/web/banco-central/contenido/-/detalle/prensa/nota-de-prensa/producto-interno-bruto-regional-segundo-trimestre-2026",
+          "publishedAt": "2026-09-23T11:30:00Z"
+        }
+      ],
+      "highlights": [
+        {
+          "label": "La negociación laboral continúa",
+          "text": "El sindicato rechazó suspender temporalmente las conversaciones contractuales."
+        },
+        {
+          "label": "La mina recupera operaciones gradualmente",
+          "text": "Escondida sigue evaluando seguridad mientras normaliza sus faenas."
+        },
+        {
+          "label": "La duración define el impacto económico",
+          "text": "Una perturbación adicional sería más relevante si se prolonga o afecta producción."
+        }
+      ],
+      "selectedCandidateIds": [
+        "n-escondida-talks"
+      ],
+      "discardedCandidateIds": [
+        "n-escondida-restart",
+        "n-regional-gdp"
+      ],
+      "outputPath": "lab/radar-editorial/runtime/runs/RADAR-JEV-20260925-1657-C/national/output.md"
+    },
+    "national/output.md": "## Desarrollo\n\nLa negociación laboral en Escondida continúa después de que un sindicato rechazara la solicitud de BHP de suspender temporalmente las conversaciones contractuales tras la muerte de un trabajador. El proceso coincide con la recuperación progresiva de las operaciones de la mayor mina de cobre del mundo, que había detenido faenas después del accidente.\n\nLa noticia no cambia por sí sola la trayectoria productiva de la mina, pero mantiene abierta una segunda dimensión de seguimiento: relaciones laborales mientras seguridad y continuidad operacional todavía están bajo evaluación. El dato regional de actividad publicado esta semana refuerza por qué la minería importa para la lectura macro, aunque no constituye una novedad suficiente para desplazar el foco del evento operativo y laboral.\n\n## Implicancias y riesgos\n\nLa continuidad de las conversaciones no equivale a conflicto ni anticipa una paralización. Su relevancia depende de si las negociaciones avanzan mientras Escondida recupera capacidad normal. Una interrupción adicional tendría mayor efecto económico cuanto más prolongada fuera y cuanto más coincidiera con restricciones derivadas de seguridad.\n\nLa evidencia disponible exige separar los hechos: hubo un accidente fatal, la operación se está reanudando progresivamente y las conversaciones contractuales continúan. No hay base para afirmar que alguno de esos elementos vaya a provocar necesariamente otro.\n\n## Qué observar\n\nEl ritmo de recuperación operacional, nuevas comunicaciones de seguridad, hitos de la negociación contractual y cualquier señal de interrupción adicional serán los indicadores principales. También será útil observar producción minera y actividad regional para medir transmisión económica efectiva.",
+    "checkpoints/national.json": {
+      "schemaVersion": 1,
+      "radarRunId": "RADAR-JEV-20260925-1657-C",
+      "sourceMainCommit": "1f55c43e64c892ee6e01a98722f232eac952d478",
+      "radarStateVersion": "radar-state-v1",
+      "editorialDate": "2026-09-25",
+      "experimentMode": "RADAR_JEV",
+      "mode": "LAB_ONLY",
+      "productionWritesAllowed": false,
+      "phase": "national",
+      "status": "PASS",
+      "completedAt": "2026-09-25T17:00:10-03:00"
+    },
+    "markets/input.json": {
+      "schemaVersion": 1,
+      "radarRunId": "RADAR-JEV-20260925-1657-C",
+      "sourceMainCommit": "1f55c43e64c892ee6e01a98722f232eac952d478",
+      "radarStateVersion": "radar-state-v1",
+      "editorialDate": "2026-09-25",
+      "experimentMode": "RADAR_JEV",
+      "mode": "LAB_ONLY",
+      "productionWritesAllowed": false,
+      "section": "markets",
+      "startedAt": "2026-09-25T17:00:11-03:00",
+      "frameworkRead": [
+        "AGENTS.md",
+        "docs/PROCEDIMIENTO_GPT_PUBLICACION.md",
+        "docs/CONTRATO_EDITORIAL.md",
+        "data/editorial_state.json"
+      ],
+      "searchQueryIds": [
+        "m-q1",
+        "m-q2",
+        "m-q3"
+      ],
+      "candidateIds": [
+        "m-dollar-eases",
+        "m-bond-rout",
+        "m-treasury-6"
+      ]
+    },
+    "markets/metadata.json": {
+      "schemaVersion": 1,
+      "radarRunId": "RADAR-JEV-20260925-1657-C",
+      "sourceMainCommit": "1f55c43e64c892ee6e01a98722f232eac952d478",
+      "radarStateVersion": "radar-state-v1",
+      "editorialDate": "2026-09-25",
+      "experimentMode": "RADAR_JEV",
+      "mode": "LAB_ONLY",
+      "productionWritesAllowed": false,
+      "section": "markets",
+      "status": "PASS",
+      "startedAt": "2026-09-25T17:00:11-03:00",
+      "completedAt": "2026-09-25T17:00:50-03:00",
+      "title": "Dólar cede con el petróleo, pero las tasas mantienen el sesgo restrictivo",
+      "summary": "La moneda estadounidense retrocedió durante la sesión mientras el crudo bajó, aunque las apuestas por nuevas alzas de la Fed siguen sosteniendo rendimientos altos.",
+      "tags": [
+        "mercados"
+      ],
+      "sources": [
+        {
+          "name": "Reuters",
+          "url": "https://www.reuters.com/world/africa/dollar-set-weekly-gains-yields-surge-fed-bets-build-2026-09-25/",
+          "publishedAt": "2026-09-25T16:00:00Z"
+        },
+        {
+          "name": "Reuters",
+          "url": "https://www.reuters.com/commentary/reuters-open-interest/global-markets-trading-day-graphic-2026-09-24/",
+          "publishedAt": "2026-09-24T21:00:00Z"
+        },
+        {
+          "name": "Reuters",
+          "url": "https://www.reuters.com/business/finance/global-markets-treasuries-analysis-2026-09-23/",
+          "publishedAt": "2026-09-24T10:00:00Z"
+        }
+      ],
+      "highlights": [
+        {
+          "label": "El dólar cede durante la sesión",
+          "text": "La baja del petróleo redujo parte de la demanda por la moneda estadounidense."
+        },
+        {
+          "label": "La Fed mantiene soporte para las tasas",
+          "text": "Las apuestas por nuevas alzas continúan elevando los rendimientos."
+        },
+        {
+          "label": "Los bonos siguen siendo la restricción de fondo",
+          "text": "Los rendimientos largos permanecen cerca de máximos de décadas."
+        }
+      ],
+      "selectedCandidateIds": [
+        "m-dollar-eases"
+      ],
+      "discardedCandidateIds": [
+        "m-bond-rout",
+        "m-treasury-6"
+      ],
+      "outputPath": "lab/radar-editorial/runtime/runs/RADAR-JEV-20260925-1657-C/markets/output.md"
+    },
+    "markets/output.md": "## Desarrollo\n\nEl dólar retrocedió durante la sesión del viernes mientras el petróleo bajó, pero seguía encaminado a una segunda semana consecutiva de avance porque las expectativas de nuevas alzas de la Reserva Federal continúan sosteniendo las tasas estadounidenses. La combinación actualiza el cuadro de la jornada: el alivio energético puede reducir demanda defensiva por dólar sin eliminar el soporte que proviene de una política monetaria más restrictiva.\n\nLos bonos siguen siendo la restricción de fondo. Rendimientos globales en máximos de décadas han elevado la tasa de descuento para acciones y crédito, mientras algunos inversionistas empiezan a discutir si un Treasury a diez años cercano a 6% debe considerarse un riesgo plausible. Esa discusión amplía el rango de escenarios, pero no constituye por sí misma una previsión.\n\n## Implicancias y riesgos\n\nLa caída intradía del dólar muestra que energía y tasas pueden empujar a la moneda en direcciones distintas. Si el petróleo continúa bajando, parte de la presión inflacionaria podría moderarse; si actividad e inflación estadounidenses mantienen a la Fed en modo restrictivo, los rendimientos pueden seguir limitando ese alivio.\n\nPara activos globales, el punto central es la persistencia. Una jornada de dólar más débil no invalida el endurecimiento financiero acumulado, del mismo modo que un escenario discutido de Treasury a 6% no significa que ese nivel vaya a materializarse.\n\n## Qué observar\n\nLos próximos datos de inflación y empleo de Estados Unidos, las intervenciones de la Fed, el Treasury a dos y diez años y la relación entre petróleo y dólar serán determinantes. También importa comprobar si la baja del crudo se sostiene a medida que evolucionan las negociaciones en Medio Oriente.",
+    "checkpoints/markets.json": {
+      "schemaVersion": 1,
+      "radarRunId": "RADAR-JEV-20260925-1657-C",
+      "sourceMainCommit": "1f55c43e64c892ee6e01a98722f232eac952d478",
+      "radarStateVersion": "radar-state-v1",
+      "editorialDate": "2026-09-25",
+      "experimentMode": "RADAR_JEV",
+      "mode": "LAB_ONLY",
+      "productionWritesAllowed": false,
+      "phase": "markets",
+      "status": "PASS",
+      "completedAt": "2026-09-25T17:00:50-03:00"
+    },
+    "result.json": {
+      "schemaVersion": 1,
+      "radarRunId": "RADAR-JEV-20260925-1657-C",
+      "sourceMainCommit": "1f55c43e64c892ee6e01a98722f232eac952d478",
+      "radarStateVersion": "radar-state-v1",
+      "editorialDate": "2026-09-25",
+      "experimentMode": "RADAR_JEV",
+      "mode": "LAB_ONLY",
+      "productionWritesAllowed": false,
+      "status": "PASS",
+      "sections": {
+        "general": {
+          "status": "PASS",
+          "effectOfJev": "CHANGED_SELECTION",
+          "preJev": "g-oman-transfer-capacity",
+          "postJev": "g-india-coal"
+        },
+        "national": {
+          "status": "PASS",
+          "effectOfJev": "CONFIRMED_SELECTION",
+          "preJev": "n-escondida-talks",
+          "postJev": "n-escondida-talks"
+        },
+        "markets": {
+          "status": "PASS",
+          "effectOfJev": "CHANGED_SELECTION",
+          "preJev": "m-bond-rout",
+          "postJev": "m-dollar-eases"
+        }
+      }
+    },
+    "publish-request.json": {
+      "schemaVersion": 1,
+      "radarRunId": "RADAR-JEV-20260925-1657-C",
+      "sourceMainCommit": "1f55c43e64c892ee6e01a98722f232eac952d478",
+      "radarStateVersion": "radar-state-v1",
+      "editorialDate": "2026-09-25",
+      "experimentMode": "RADAR_JEV",
+      "mode": "LAB_ONLY",
+      "productionWritesAllowed": false,
+      "status": "READY",
+      "runPath": "lab/radar-editorial/runtime/runs/RADAR-JEV-20260925-1657-C",
+      "resultPath": "lab/radar-editorial/runtime/runs/RADAR-JEV-20260925-1657-C/result.json",
+      "viewPath": "lab/radar-editorial/runtime/runs/RADAR-JEV-20260925-1657-C/index.html"
+    },
+    "index.html": "<!doctype html><html><head><meta charset=\"utf-8\"><title>RADAR-JEV-20260925-1657-C · RADAR_JEV</title></head><body><main><h1>ATLAS NEWS LAB — RADAR-JEV-20260925-1657-C</h1><p>RADAR_JEV · LAB_ONLY · READY</p><h2>General</h2><p>India amplía el mapa del estrés energético con inventarios críticos de carbón.</p><h2>Nacional</h2><p>Escondida mantiene negociación laboral mientras recupera operaciones.</p><h2>Mercados</h2><p>Dólar cede con el petróleo, pero las tasas mantienen el sesgo restrictivo.</p></main></body></html>",
+    "radar-context.json": {
+      "schemaVersion": 1,
+      "radarRunId": "RADAR-JEV-20260925-1657-C",
+      "sourceMainCommit": "1f55c43e64c892ee6e01a98722f232eac952d478",
+      "radarStateVersion": "radar-state-v1",
+      "editorialDate": "2026-09-25",
+      "experimentMode": "RADAR_JEV",
+      "mode": "LAB_ONLY",
+      "productionWritesAllowed": false,
+      "signals": [
+        {
+          "id": "oil",
+          "thread": "oil-geopolitics-inflation",
+          "signal": "La adaptación logística por Omán ya es parte de la tesis; buscar si su capacidad cambia materialmente o si aparece otro shock energético."
+        },
+        {
+          "id": "fed",
+          "thread": "us-employment-fed-rates",
+          "signal": "El sesgo restrictivo ya está establecido; privilegiar cambios intradía o repricing nuevo frente a repetir que los yields están altos."
+        },
+        {
+          "id": "ai",
+          "thread": "ai-monetization-selectivity",
+          "signal": "La IA requiere evidencia de demanda y monetización, no sólo momentum."
+        },
+        {
+          "id": "chile",
+          "thread": "chile-inflation-activity-rates",
+          "signal": "La debilidad chilena y PIB regional ya fueron cubiertos; exigir novedad incremental."
+        }
+      ],
+      "preJevProvisional": {
+        "general": {
+          "candidateId": "g-oman-transfer-capacity",
+          "reason": "La saturación del bypass omaní parecía la actualización más directamente conectada con el principal riesgo energético activo."
+        },
+        "national": {
+          "candidateId": "n-escondida-talks",
+          "reason": "Es el desarrollo doméstico más reciente y agrega dimensión laboral al accidente y reinicio."
+        },
+        "markets": {
+          "candidateId": "m-bond-rout",
+          "reason": "Los rendimientos en máximos de décadas parecían el factor cross-asset dominante."
+        }
+      }
+    },
+    "corpus-retrieval.json": {
+      "schemaVersion": 1,
+      "radarRunId": "RADAR-JEV-20260925-1657-C",
+      "sourceMainCommit": "1f55c43e64c892ee6e01a98722f232eac952d478",
+      "radarStateVersion": "radar-state-v1",
+      "editorialDate": "2026-09-25",
+      "experimentMode": "RADAR_JEV",
+      "mode": "LAB_ONLY",
+      "productionWritesAllowed": false,
+      "candidateRetrievals": [
+        {
+          "candidateId": "g-oman-transfer-capacity",
+          "priors": [
+            "La memoria ya registra el bypass saudí vía Omán como mitigación parcial; alcanzar su límite prueba directamente esa tesis."
+          ]
+        },
+        {
+          "candidateId": "g-india-coal",
+          "priors": [
+            "No hay un evento previo equivalente en la memoria activa; es un shock energético asiático distinto."
+          ]
+        },
+        {
+          "candidateId": "g-qatar-aviation",
+          "priors": [
+            "La memoria ya sigue transmisión del conflicto Irán/Hormuz a energía y transporte; aviación es un canal real adicional."
+          ]
+        },
+        {
+          "candidateId": "n-escondida-talks",
+          "priors": [
+            "La corrida anterior ya evaluó esta misma negociación laboral."
+          ]
+        },
+        {
+          "candidateId": "n-escondida-restart",
+          "priors": [
+            "El reinicio de Escondida ya fue evaluado en corridas LAB previas."
+          ]
+        },
+        {
+          "candidateId": "n-regional-gdp",
+          "priors": [
+            "El PIB regional Q2 ya fue evaluado y la debilidad de actividad está en memoria."
+          ]
+        },
+        {
+          "candidateId": "m-dollar-eases",
+          "priors": [
+            "La memoria sigue dólar/Treasury/Fed; la reversión del dólar con petróleo más bajo actualiza la sesión."
+          ]
+        },
+        {
+          "candidateId": "m-bond-rout",
+          "priors": [
+            "El bond rout ya fue eje de corridas anteriores y de la memoria Fed."
+          ]
+        },
+        {
+          "candidateId": "m-treasury-6",
+          "priors": [
+            "Treasury largo es watch activo, pero el umbral de 6% introduce un nuevo marco de riesgo."
+          ]
+        }
+      ]
+    },
+    "jev-judgments.json": {
+      "schemaVersion": 1,
+      "radarRunId": "RADAR-JEV-20260925-1657-C",
+      "sourceMainCommit": "1f55c43e64c892ee6e01a98722f232eac952d478",
+      "radarStateVersion": "radar-state-v1",
+      "editorialDate": "2026-09-25",
+      "experimentMode": "RADAR_JEV",
+      "mode": "LAB_ONLY",
+      "productionWritesAllowed": false,
+      "engine": "JEV_TYPESAFE",
+      "modelRequested": "jev-latest",
+      "modelObserved": "jev-1.13.0",
+      "thresholdsApplied": false,
+      "generatedAt": "2026-09-25T19:58:22.365Z",
+      "judgments": [
+        {
+          "candidateKey": "g-oman-transfer-capacity",
+          "section": "general",
+          "eventRelation": {
+            "value": "SAME_EVENT",
+            "confidence": 0.92,
+            "probabilities": {
+              "UNRELATED": 0,
+              "UNCERTAIN": 0,
+              "SAME_EVENT": 0.94,
+              "NEW_EVENT": 0.06
+            }
+          },
+          "informationRelation": {
+            "value": "REPETITION",
+            "confidence": 0.46,
+            "probabilities": {
+              "CONTINUATION": 0.06,
+              "MEANINGFUL_UPDATE": 0.27,
+              "UNCERTAIN": 0,
+              "REPETITION": 0.55,
+              "NEW": 0.11,
+              "CONTRADICTION": 0
+            }
+          },
+          "addsNewInformation": {
+            "probability": 0.56,
+            "confidence": null
+          },
+          "historicalContextNeeded": {
+            "probability": 0.55,
+            "confidence": null
+          },
+          "angleRepeated": {
+            "probability": 0.61,
+            "confidence": null
+          }
+        },
+        {
+          "candidateKey": "g-india-coal",
+          "section": "general",
+          "eventRelation": {
+            "value": "NEW_EVENT",
+            "confidence": 1,
+            "probabilities": {
+              "NEW_EVENT": 1,
+              "UNRELATED": 0,
+              "SAME_EVENT": 0,
+              "UNCERTAIN": 0
+            }
+          },
+          "informationRelation": {
+            "value": "NEW",
+            "confidence": 0.93,
+            "probabilities": {
+              "REPETITION": 0.01,
+              "CONTRADICTION": 0,
+              "NEW": 0.94,
+              "CONTINUATION": 0,
+              "UNCERTAIN": 0.01,
+              "MEANINGFUL_UPDATE": 0.04
+            }
+          },
+          "addsNewInformation": {
+            "probability": 0.9,
+            "confidence": null
+          },
+          "historicalContextNeeded": {
+            "probability": 0.36,
+            "confidence": null
+          },
+          "angleRepeated": {
+            "probability": 0.17,
+            "confidence": null
+          }
+        },
+        {
+          "candidateKey": "g-qatar-aviation",
+          "section": "general",
+          "eventRelation": {
+            "value": "NEW_EVENT",
+            "confidence": 0.57,
+            "probabilities": {
+              "UNRELATED": 0,
+              "SAME_EVENT": 0.32,
+              "NEW_EVENT": 0.68,
+              "UNCERTAIN": 0
+            }
+          },
+          "informationRelation": {
+            "value": "NEW",
+            "confidence": 0.48,
+            "probabilities": {
+              "MEANINGFUL_UPDATE": 0.28,
+              "CONTINUATION": 0.11,
+              "REPETITION": 0.02,
+              "NEW": 0.58,
+              "UNCERTAIN": 0.01,
+              "CONTRADICTION": 0
+            }
+          },
+          "addsNewInformation": {
+            "probability": 0.82,
+            "confidence": null
+          },
+          "historicalContextNeeded": {
+            "probability": 0.61,
+            "confidence": null
+          },
+          "angleRepeated": {
+            "probability": 0.86,
+            "confidence": null
+          }
+        },
+        {
+          "candidateKey": "n-escondida-talks",
+          "section": "national",
+          "eventRelation": {
+            "value": "SAME_EVENT",
+            "confidence": 0.92,
+            "probabilities": {
+              "UNCERTAIN": 0,
+              "NEW_EVENT": 0.05,
+              "SAME_EVENT": 0.95,
+              "UNRELATED": 0
+            }
+          },
+          "informationRelation": {
+            "value": "REPETITION",
+            "confidence": 0.4,
+            "probabilities": {
+              "CONTRADICTION": 0,
+              "MEANINGFUL_UPDATE": 0.17,
+              "UNCERTAIN": 0.09,
+              "CONTINUATION": 0.15,
+              "NEW": 0.08,
+              "REPETITION": 0.51
+            }
+          },
+          "addsNewInformation": {
+            "probability": 0.47,
+            "confidence": null
+          },
+          "historicalContextNeeded": {
+            "probability": 0.45,
+            "confidence": null
+          },
+          "angleRepeated": {
+            "probability": 0.73,
+            "confidence": null
+          }
+        },
+        {
+          "candidateKey": "n-escondida-restart",
+          "section": "national",
+          "eventRelation": {
+            "value": "SAME_EVENT",
+            "confidence": 1,
+            "probabilities": {
+              "UNRELATED": 0,
+              "UNCERTAIN": 0,
+              "NEW_EVENT": 0,
+              "SAME_EVENT": 1
+            }
+          },
+          "informationRelation": {
+            "value": "REPETITION",
+            "confidence": 0.68,
+            "probabilities": {
+              "CONTINUATION": 0.09999999999999999,
+              "MEANINGFUL_UPDATE": 0.08,
+              "UNCERTAIN": 0.02,
+              "NEW": 0.06,
+              "REPETITION": 0.74,
+              "CONTRADICTION": 0
+            }
+          },
+          "addsNewInformation": {
+            "probability": 0.5,
+            "confidence": null
+          },
+          "historicalContextNeeded": {
+            "probability": 0.44,
+            "confidence": null
+          },
+          "angleRepeated": {
+            "probability": 0.86,
+            "confidence": null
+          }
+        },
+        {
+          "candidateKey": "n-regional-gdp",
+          "section": "national",
+          "eventRelation": {
+            "value": "SAME_EVENT",
+            "confidence": 0.99,
+            "probabilities": {
+              "UNCERTAIN": 0,
+              "NEW_EVENT": 0.01,
+              "UNRELATED": 0,
+              "SAME_EVENT": 0.99
+            }
+          },
+          "informationRelation": {
+            "value": "REPETITION",
+            "confidence": 0.89,
+            "probabilities": {
+              "REPETITION": 0.92,
+              "UNCERTAIN": 0,
+              "CONTRADICTION": 0,
+              "MEANINGFUL_UPDATE": 0.02,
+              "CONTINUATION": 0.02,
+              "NEW": 0.04
+            }
+          },
+          "addsNewInformation": {
+            "probability": 0.27,
+            "confidence": null
+          },
+          "historicalContextNeeded": {
+            "probability": 0.48,
+            "confidence": null
+          },
+          "angleRepeated": {
+            "probability": 0.89,
+            "confidence": null
+          }
+        },
+        {
+          "candidateKey": "m-dollar-eases",
+          "section": "markets",
+          "eventRelation": {
+            "value": "SAME_EVENT",
+            "confidence": 0.63,
+            "probabilities": {
+              "UNRELATED": 0,
+              "UNCERTAIN": 0,
+              "NEW_EVENT": 0.27,
+              "SAME_EVENT": 0.73
+            }
+          },
+          "informationRelation": {
+            "value": "MEANINGFUL_UPDATE",
+            "confidence": 0.32,
+            "probabilities": {
+              "CONTINUATION": 0.3,
+              "REPETITION": 0.06,
+              "NEW": 0.17,
+              "UNCERTAIN": 0,
+              "CONTRADICTION": 0.03,
+              "MEANINGFUL_UPDATE": 0.44
+            }
+          },
+          "addsNewInformation": {
+            "probability": 0.78,
+            "confidence": null
+          },
+          "historicalContextNeeded": {
+            "probability": 0.55,
+            "confidence": null
+          },
+          "angleRepeated": {
+            "probability": 0.67,
+            "confidence": null
+          }
+        },
+        {
+          "candidateKey": "m-bond-rout",
+          "section": "markets",
+          "eventRelation": {
+            "value": "SAME_EVENT",
+            "confidence": 0.91,
+            "probabilities": {
+              "UNRELATED": 0,
+              "SAME_EVENT": 0.93,
+              "NEW_EVENT": 0.07,
+              "UNCERTAIN": 0
+            }
+          },
+          "informationRelation": {
+            "value": "MEANINGFUL_UPDATE",
+            "confidence": 0.33,
+            "probabilities": {
+              "REPETITION": 0.16,
+              "NEW": 0.08,
+              "CONTRADICTION": 0,
+              "MEANINGFUL_UPDATE": 0.45,
+              "CONTINUATION": 0.3,
+              "UNCERTAIN": 0.01
+            }
+          },
+          "addsNewInformation": {
+            "probability": 0.71,
+            "confidence": null
+          },
+          "historicalContextNeeded": {
+            "probability": 0.41,
+            "confidence": null
+          },
+          "angleRepeated": {
+            "probability": 0.75,
+            "confidence": null
+          }
+        },
+        {
+          "candidateKey": "m-treasury-6",
+          "section": "markets",
+          "eventRelation": {
+            "value": "NEW_EVENT",
+            "confidence": 0.66,
+            "probabilities": {
+              "UNCERTAIN": 0.01,
+              "SAME_EVENT": 0.24,
+              "NEW_EVENT": 0.75,
+              "UNRELATED": 0
+            }
+          },
+          "informationRelation": {
+            "value": "CONTINUATION",
+            "confidence": 0.44,
+            "probabilities": {
+              "UNCERTAIN": 0,
+              "REPETITION": 0.02,
+              "NEW": 0.21,
+              "CONTINUATION": 0.53,
+              "MEANINGFUL_UPDATE": 0.24,
+              "CONTRADICTION": 0
+            }
+          },
+          "addsNewInformation": {
+            "probability": 0.66,
+            "confidence": null
+          },
+          "historicalContextNeeded": {
+            "probability": 0.46,
+            "confidence": null
+          },
+          "angleRepeated": {
+            "probability": 0.35,
+            "confidence": null
+          }
+        }
+      ],
+      "telemetry": [
+        {
+          "candidateKey": "g-oman-transfer-capacity",
+          "status": 200,
+          "latencyMs": 319.75,
+          "attempts": 1,
+          "usage": {
+            "input_tokens": 1037,
+            "output_tokens": 189
+          },
+          "error": null
+        },
+        {
+          "candidateKey": "g-india-coal",
+          "status": 200,
+          "latencyMs": 288.71,
+          "attempts": 1,
+          "usage": {
+            "input_tokens": 936,
+            "output_tokens": 185
+          },
+          "error": null
+        },
+        {
+          "candidateKey": "g-qatar-aviation",
+          "status": 200,
+          "latencyMs": 93.77,
+          "attempts": 1,
+          "usage": {
+            "input_tokens": 951,
+            "output_tokens": 185
+          },
+          "error": null
+        },
+        {
+          "candidateKey": "n-escondida-talks",
+          "status": 200,
+          "latencyMs": 109.6,
+          "attempts": 1,
+          "usage": {
+            "input_tokens": 919,
+            "output_tokens": 189
+          },
+          "error": null
+        },
+        {
+          "candidateKey": "n-escondida-restart",
+          "status": 200,
+          "latencyMs": 136.18,
+          "attempts": 1,
+          "usage": {
+            "input_tokens": 910,
+            "output_tokens": 189
+          },
+          "error": null
+        },
+        {
+          "candidateKey": "n-regional-gdp",
+          "status": 200,
+          "latencyMs": 101.44,
+          "attempts": 1,
+          "usage": {
+            "input_tokens": 1003,
+            "output_tokens": 189
+          },
+          "error": null
+        },
+        {
+          "candidateKey": "m-dollar-eases",
+          "status": 200,
+          "latencyMs": 99.46,
+          "attempts": 1,
+          "usage": {
+            "input_tokens": 1003,
+            "output_tokens": 190
+          },
+          "error": null
+        },
+        {
+          "candidateKey": "m-bond-rout",
+          "status": 200,
+          "latencyMs": 123.22,
+          "attempts": 1,
+          "usage": {
+            "input_tokens": 907,
+            "output_tokens": 190
+          },
+          "error": null
+        },
+        {
+          "candidateKey": "m-treasury-6",
+          "status": 200,
+          "latencyMs": 160.99,
+          "attempts": 1,
+          "usage": {
+            "input_tokens": 947,
+            "output_tokens": 188
+          },
+          "error": null
+        }
+      ],
+      "status": "PASS"
+    }
+  }
+}
