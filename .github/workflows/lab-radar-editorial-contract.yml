@@ -7,6 +7,7 @@ on:
       - "lab/radar-editorial/**"
       - "scripts/lab/radar-editorial/**"
       - ".github/workflows/lab-radar-editorial-*.yml"
+      - ".github/workflows/lab-radar-jev-resolver.yml"
 
 permissions:
   contents: read
@@ -88,6 +89,8 @@ jobs:
           node --check scripts/lab/radar-editorial/build-editorial-surface.mjs
           node --check scripts/lab/radar-editorial/test-editorial-surface.mjs
           node --check scripts/lab/radar-editorial/verify-baseline-publication.mjs
+          node --check scripts/lab/radar-editorial/typesafe-jev-client.mjs
+          node --check scripts/lab/radar-editorial/run-jev-memory-judge.mjs
 
       - name: Comprobar formato RADAR
         run: >-
@@ -95,6 +98,7 @@ jobs:
           "lab/radar-editorial/**/*.{json,md}"
           "scripts/lab/radar-editorial/*.mjs"
           ".github/workflows/lab-radar-editorial-*.yml"
+          ".github/workflows/lab-radar-jev-resolver.yml"
           --ignore-path /dev/null
 
       - name: Comprobar sintaxis shell

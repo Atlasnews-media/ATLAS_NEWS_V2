@@ -115,3 +115,100 @@ if (
   throw new Error("materializador no creó General");
 }
 console.log("INGEST GENERAL MATERIALIZATION: PASS");
+
+const jevIdentity = {
+  ...identity,
+  radarRunId: "RADAR-JEV-INGEST-TEST-001",
+  experimentMode: "RADAR_JEV",
+};
+const jevArtifacts = {
+  ...artifacts,
+  "run.json": {
+    schemaVersion: 1,
+    ...jevIdentity,
+    startedAt: "2026-09-24T09:00:00-03:00",
+    completedAt: "2026-09-24T09:05:00-03:00",
+    phases: { general: "PASS", national: "PASS", markets: "PASS" },
+    memoryMode: "RADAR_PLUS_CORPUS",
+    radarInterventionUsed: true,
+    jevUsed: true,
+    corpusUsed: true,
+    frameworkRead: [
+      "AGENTS.md",
+      "docs/PROCEDIMIENTO_GPT_PUBLICACION.md",
+      "docs/CONTRATO_EDITORIAL.md",
+      "data/editorial_state.json",
+    ],
+  },
+  "radar-context.json": {
+    schemaVersion: 1,
+    ...jevIdentity,
+    signals: [{ id: "signal-1" }],
+  },
+  "corpus-retrieval.json": {
+    schemaVersion: 1,
+    ...jevIdentity,
+    candidateRetrievals: [{ candidateKey: "candidate-1", priors: [] }],
+  },
+  "jev-judgments.json": {
+    schemaVersion: 1,
+    ...jevIdentity,
+    engine: "JEV_TYPESAFE",
+    thresholdsApplied: false,
+    judgments: [{ candidateKey: "candidate-1" }],
+  },
+};
+const jevRequest = {
+  schemaVersion: 1,
+  ...jevIdentity,
+  createdAt: "2026-09-24T09:05:00-03:00",
+  producer: "CHATGPT_TASK",
+  artifacts: jevArtifacts,
+};
+validateBaselineRequest(jevRequest);
+console.log("INGEST RADAR_JEV REQUEST VALID: PASS");
+
+let jevEvidenceRequired = false;
+try {
+  const missingEvidence = { ...jevArtifacts };
+  delete missingEvidence["jev-judgments.json"];
+  validateBaselineRequest({ ...jevRequest, artifacts: missingEvidence });
+} catch {
+  jevEvidenceRequired = true;
+}
+if (!jevEvidenceRequired) {
+  throw new Error("RADAR_JEV aceptó request sin jev-judgments");
+}
+console.log("INGEST RADAR_JEV EVIDENCE REQUIRED: PASS");
+
+const jevTemp = await fs.mkdtemp(path.join(os.tmpdir(), "radar-jev-ingest-"));
+const jevRequestFile = path.join(jevTemp, "request.json");
+await fs.writeFile(jevRequestFile, JSON.stringify(jevRequest, null, 2) + "\n");
+await materializeRequest(jevRequestFile, jevTemp, "general");
+const jevActive = JSON.parse(
+  await fs.readFile(
+    path.join(jevTemp, "lab/radar-editorial/runtime/active.json"),
+    "utf8",
+  ),
+);
+if (
+  jevActive.status !== "GENERAL_PASS" ||
+  jevActive.experimentMode !== "RADAR_JEV"
+) {
+  throw new Error("materializador no preservó identidad RADAR_JEV");
+}
+for (const evidence of [
+  "radar-context.json",
+  "corpus-retrieval.json",
+  "jev-judgments.json",
+]) {
+  await fs.stat(
+    path.join(
+      jevTemp,
+      "lab/radar-editorial/runtime/runs",
+      jevIdentity.radarRunId,
+      evidence,
+    ),
+  );
+}
+console.log("INGEST RADAR_JEV MATERIALIZATION: PASS");

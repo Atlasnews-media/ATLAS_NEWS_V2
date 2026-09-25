@@ -75,3 +75,16 @@ Una corrida RADAR_JEV sin los tres artefactos experimentales no pasa el runtime 
 Una falla preserva la última publicación READY válida.
 
 La superficie pública sigue bajo `/lab/radar-editorial/` y la trazabilidad enlaza los tres artefactos experimentales.
+
+## Handoff de productor
+
+Mientras el productor sea una tarea externa de ChatGPT, RADAR_JEV usa dos handoffs acotados sobre `radar-ingress/editorial`:
+
+1. `lab/radar-editorial/jev-requests/<radarRunId>.json`: candidatos + priors recuperados antes de la selección final.
+2. `lab/radar-editorial/requests/<radarRunId>.json`: paquete editorial final, después de observar los juicios JEV.
+
+ChatGPT no escribe en `radar-runtime/editorial`. El resolver JEV y el ingest durable son los únicos escritores de runtime.
+
+El ingest final exige que `artifacts["jev-judgments.json"]` coincida byte a byte con el juicio persistido por el resolver TypeSafe para el mismo `radarRunId`. Así, el productor no puede fabricar ni modificar la evidencia JEV.
+
+Este doble handoff es una compatibilidad temporal del productor ChatGPT. Un productor futuro que pueda invocar TypeSafe directamente puede conservar el mismo contrato editorial sin usar GitHub como transporte intermedio del juicio.
