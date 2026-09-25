@@ -1,0 +1,162 @@
+{
+  "schemaVersion": 1,
+  "radarRunId": "RADAR-JEV-20260925-1657-C",
+  "sourceMainCommit": "1f55c43e64c892ee6e01a98722f232eac952d478",
+  "radarStateVersion": "radar-state-v1",
+  "editorialDate": "2026-09-25",
+  "experimentMode": "RADAR_JEV",
+  "mode": "LAB_ONLY",
+  "productionWritesAllowed": false,
+  "candidateReviews": [
+    {
+      "candidateKey": "g-oman-transfer-capacity",
+      "section": "general",
+      "title": "Gulf of Oman ship-to-ship oil transfers reach limit as Saudi exports surge",
+      "description": "Ship-to-ship oil transfers in the Gulf of Oman have reached capacity as Saudi Arabia and other producers divert barrels around constrained Hormuz routes, creating a fresh physical bottleneck in the adaptation strategy.",
+      "sourceName": "Reuters",
+      "publishedAt": "2026-09-25T15:00:00Z",
+      "priors": [
+        {
+          "origin": "editorial_state",
+          "title": "oil-geopolitics-inflation",
+          "relationHint": "Active thesis says the Saudi/Oman bypass mitigates supply risk but does not equal normalization."
+        },
+        {
+          "origin": "current news",
+          "title": "Gulf of Oman transfers at limit",
+          "relationHint": "New capacity constraint directly tests the active bypass thesis."
+        }
+      ]
+    },
+    {
+      "candidateKey": "g-india-coal",
+      "section": "general",
+      "title": "India weighs mandatory imported-coal blending as power stocks tighten",
+      "description": "India is considering mandatory blending of imported coal at power plants as domestic inventories fall rapidly and spot power prices reach their highest since 2022, creating a new Asian energy-supply signal.",
+      "sourceName": "Reuters",
+      "publishedAt": "2026-09-25T12:00:00Z",
+      "priors": [
+        {
+          "origin": "editorial_state",
+          "title": "oil-geopolitics-inflation",
+          "relationHint": "Related to global energy stress but distinct from the oil/Hormuz mechanism."
+        }
+      ]
+    },
+    {
+      "candidateKey": "g-qatar-aviation",
+      "section": "general",
+      "title": "Qatar Airways retires idle A330s and sends pilots abroad as Iran war drags",
+      "description": "Qatar Airways is retiring older A330s and seconding pilots as the prolonged Iran war disrupts Gulf aviation and jet-fuel costs remain sharply elevated, showing a real-economy transmission channel from the conflict.",
+      "sourceName": "Reuters",
+      "publishedAt": "2026-09-25T14:00:00Z",
+      "priors": [
+        {
+          "origin": "editorial_state",
+          "title": "oil-geopolitics-inflation",
+          "relationHint": "Active thread tracks energy and transport transmission from the Iran/Hormuz shock."
+        }
+      ]
+    },
+    {
+      "candidateKey": "n-escondida-talks",
+      "section": "national",
+      "title": "Union at BHP's Escondida mine refuses to pause contract talks after fatal accident",
+      "description": "A union at Escondida rejected BHP's attempt to delay contract negotiations after a worker death, leaving labor talks running while the mine progressively restores operations.",
+      "sourceName": "Reuters",
+      "publishedAt": "2026-09-25T16:46:00Z",
+      "priors": [
+        {
+          "origin": "prior LAB run",
+          "title": "Escondida labor talks",
+          "relationHint": "This development was already evaluated in the immediately preceding LAB run."
+        }
+      ]
+    },
+    {
+      "candidateKey": "n-escondida-restart",
+      "section": "national",
+      "title": "Chile's Escondida mine gradually resumes operations after fatal accident",
+      "description": "BHP's Escondida mine is progressively resuming operations after a fatal maintenance accident, with assessments continuing at the world's largest copper mine.",
+      "sourceName": "Reuters",
+      "publishedAt": "2026-09-25T00:22:00Z",
+      "priors": [
+        {
+          "origin": "prior LAB runs",
+          "title": "Escondida restart",
+          "relationHint": "This event was already selected and judged in preceding LAB experiments."
+        }
+      ]
+    },
+    {
+      "candidateKey": "n-regional-gdp",
+      "section": "national",
+      "title": "Chile regional GDP shows seven regions contracting in second quarter",
+      "description": "Banco Central data show Chilean GDP contracted 0.2% in the second quarter, with seven of sixteen regions declining while household consumption expanded nationally.",
+      "sourceName": "Banco Central de Chile",
+      "publishedAt": "2026-09-23T11:30:00Z",
+      "priors": [
+        {
+          "origin": "editorial_state",
+          "title": "chile-inflation-activity-rates",
+          "relationHint": "Weak domestic activity is already an active thesis."
+        },
+        {
+          "origin": "prior LAB runs",
+          "title": "Regional GDP Q2",
+          "relationHint": "Exact release has already been evaluated and judged repetitive."
+        }
+      ]
+    },
+    {
+      "candidateKey": "m-dollar-eases",
+      "section": "markets",
+      "title": "Dollar falls as oil eases while Fed rate-hike bets remain elevated",
+      "description": "The dollar declined as oil prices eased but remained on course for a second weekly gain because expectations of further Federal Reserve tightening continued to support US yields.",
+      "sourceName": "Reuters",
+      "publishedAt": "2026-09-25T16:00:00Z",
+      "priors": [
+        {
+          "origin": "editorial_state",
+          "title": "us-employment-fed-rates",
+          "relationHint": "Fed tightening, Treasury yields and dollar are explicit watch variables."
+        },
+        {
+          "origin": "current news",
+          "title": "Dollar reverses intraday",
+          "relationHint": "Fresh session move updates the earlier two-month-high narrative."
+        }
+      ]
+    },
+    {
+      "candidateKey": "m-bond-rout",
+      "section": "markets",
+      "title": "Global bond rout pushes yields toward multi-decade highs",
+      "description": "The global bond selloff has pushed benchmark yields toward multi-decade highs, challenging equity valuations and raising the prospect that 5% Treasury yields are becoming less exceptional.",
+      "sourceName": "Reuters",
+      "publishedAt": "2026-09-24T21:00:00Z",
+      "priors": [
+        {
+          "origin": "prior LAB runs",
+          "title": "Bond storm",
+          "relationHint": "Bond volatility and high yields have already been central market candidates."
+        }
+      ]
+    },
+    {
+      "candidateKey": "m-treasury-6",
+      "section": "markets",
+      "title": "Investors start asking whether 6% is the new Treasury pain threshold",
+      "description": "Investors are reassessing the market's tolerance for long Treasury yields after 5% lost some shock value, with a possible move toward 6% implying a larger repricing across global assets.",
+      "sourceName": "Reuters",
+      "publishedAt": "2026-09-24T10:00:00Z",
+      "priors": [
+        {
+          "origin": "editorial_state",
+          "title": "us-employment-fed-rates",
+          "relationHint": "Long Treasury yields are an explicit watch variable, but the pain-threshold framing is incremental."
+        }
+      ]
+    }
+  ]
+}
