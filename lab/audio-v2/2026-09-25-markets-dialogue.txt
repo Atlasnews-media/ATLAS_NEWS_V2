@@ -1,0 +1,27 @@
+VOZ 1: La señal de mercados de hoy es una divergencia bastante clara: las acciones todavía resisten, pero el mercado de bonos está subiendo el precio del riesgo para todos los demás activos.
+VOZ 2: ¿Qué significa eso en números?
+VOZ 1: El Treasury estadounidense a diez años se movía alrededor de 5,17% después de tocar cerca de 5,22%, un máximo de 19 años. El bono a treinta años rondaba 5,46% después de alcanzar 5,48%, su nivel más alto desde 2004.
+VOZ 2: ¿Y aun así las bolsas no están cayendo con fuerza?
+VOZ 1: No. De hecho, el índice mundial de acciones de MSCI se encaminaba a su mejor semana desde comienzos de agosto. Hay dos apoyos importantes: el entusiasmo en torno a inteligencia artificial y la posibilidad de una mejora en el suministro energético si avanzan las conversaciones entre Estados Unidos e Irán.
+VOZ 2: Entonces el mercado está tolerando una tasa libre de riesgo muy alta.
+VOZ 1: Hasta ahora, sí. Pero eso no significa que sea irrelevante. Cuando el Treasury supera 5%, cualquier acción, bono corporativo, activo inmobiliario o deuda emergente tiene que ofrecer una compensación mayor para seguir siendo atractivo.
+VOZ 2: ¿Por qué las tecnológicas pueden resistir mejor?
+VOZ 1: Porque mientras exista crecimiento visible de ingresos, utilidades y caja asociado a inteligencia artificial, algunos inversionistas aceptan pagar valoraciones altas. Pero la tasa de descuento también sube, así que la exigencia sobre resultados futuros aumenta.
+VOZ 2: ¿La presión de tasas es sólo estadounidense?
+VOZ 1: No. Japón también muestra el mismo patrón. Su bono soberano a diez años llegó a 3,115%, el mayor rendimiento desde 1996. Es una señal de que el ajuste de tasas largas es global.
+VOZ 2: ¿Qué está haciendo el petróleo?
+VOZ 1: Está retrocediendo algo, pero sigue sobre 100 dólares por barril. El mercado evalúa conversaciones entre Estados Unidos e Irán sobre una posible salida gradual del conflicto y una reapertura de Hormuz.
+VOZ 2: ¿Hay evidencia de que el flujo por Hormuz esté mejorando?
+VOZ 1: Reuters informó, con datos preliminares de Kpler, que las exportaciones de crudo a través del estrecho sumaron 33,7 millones de barriles en la semana iniciada el 20 de septiembre, aproximadamente en línea con la semana previa.
+VOZ 2: Entonces todavía no es una normalización.
+VOZ 1: Exactamente. Es más bien una señal de continuidad del flujo, mientras el mercado intenta asignar probabilidad a una solución diplomática. El petróleo conserva una prima geopolítica importante.
+VOZ 2: ¿Y qué dicen el dólar y el oro?
+VOZ 1: El dólar se encamina a una segunda semana consecutiva de avance. El oro, en cambio, acumula una caída cercana a 2% en la semana, aunque el riesgo geopolítico sigue presente.
+VOZ 2: Eso parece contraintuitivo para un activo refugio.
+VOZ 1: La explicación principal está en las tasas. Con rendimientos soberanos tan altos, aumenta el costo de oportunidad de mantener un activo que no paga intereses. Por ahora ese efecto está pesando más que la demanda de refugio.
+VOZ 2: ¿Cuál es la variable que ordena todo el mapa?
+VOZ 1: El Treasury a diez años. Si se estabiliza, las acciones pueden seguir conviviendo con tasas altas. Si vuelve a subir con fuerza, la presión puede pasar a crédito, vivienda y valoraciones bursátiles.
+VOZ 2: ¿Y el segundo punto?
+VOZ 1: Petróleo y Hormuz. Una reapertura creíble reduciría presión inflacionaria. Si las conversaciones fallan y el crudo sigue sobre 100 dólares, aumentará la probabilidad de una política monetaria más restrictiva durante más tiempo.
+VOZ 2: Entonces hoy no tenemos un mercado simplemente optimista o pesimista.
+VOZ 1: Exacto. Tenemos un mercado selectivo: las acciones todavía encuentran razones para subir, pero los bonos están recordando que el costo del capital ya cambió y que cada activo tendrá que justificar su precio frente a una referencia libre de riesgo mucho más exigente.
