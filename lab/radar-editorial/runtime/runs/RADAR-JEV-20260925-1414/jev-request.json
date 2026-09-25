@@ -1,0 +1,132 @@
+{
+  "schemaVersion": 1,
+  "radarRunId": "RADAR-JEV-20260925-1414",
+  "sourceMainCommit": "2a901821866a980434b8d7a423266d9c7fcf967d",
+  "radarStateVersion": "radar-state-v1",
+  "editorialDate": "2026-09-25",
+  "experimentMode": "RADAR_JEV",
+  "mode": "LAB_ONLY",
+  "productionWritesAllowed": false,
+  "candidateReviews": [
+    {
+      "candidateKey": "g-trade-details",
+      "section": "general",
+      "title": "US to release details of China trade talks on Monday",
+      "description": "Estados Unidos informará el lunes detalles del resultado de las negociaciones comerciales con China tras la cumbre, añadiendo una próxima fecha concreta para conocer el alcance del acuerdo.",
+      "sourceName": "Reuters",
+      "publishedAt": "2026-09-25T13:29:00Z",
+      "priors": [
+        {
+          "title": "Washington y Beijing compran tiempo, pero no resuelven su rivalidad",
+          "publishedAt": "2026-09-25T07:42:00-03:00",
+          "summary": "Trump y Xi extendieron por dos meses la tregua comercial entre Estados Unidos y China, mientras las disputas sobre tecnología, Taiwán, minerales críticos y seguridad siguen abiertas.",
+          "path": "src/content/editions/2026-09-25-daily-washington-beijing-compran-tiempo.md"
+        },
+        {
+          "title": "Energía, comercio y tasas endurecen el mapa global",
+          "publishedAt": "2026-09-24T06:44:01-03:00",
+          "summary": "La frágil logística petrolera del Golfo, la cumbre entre Estados Unidos y China y nuevas señales de actividad resistente mantienen abierto un escenario de inflación y tasas altas pese a los avances parciales de oferta.",
+          "path": "src/content/editions/2026-09-24-daily-energia-comercio-y-tasas-endurecen-el-mapa-global.md"
+        },
+        {
+          "title": "Energía y crecimiento reordenan el riesgo global",
+          "publishedAt": "2026-09-23T06:46:00-03:00",
+          "summary": "El alivio parcial en los flujos de crudo de Medio Oriente convive con una escasez persistente de diésel, mientras la eurozona sorprende con mayor actividad y el mundo sigue expuesto a costos energéticos y geopolíticos elevados.",
+          "path": "src/content/editions/2026-09-23-daily-energia-y-crecimiento-reordenan-el-riesgo-global.md"
+        },
+        {
+          "title": "Energía y tasas endurecen el mapa global mientras la diplomacia busca abrir espacio",
+          "publishedAt": "2026-09-22T06:50:00-03:00",
+          "summary": "La presión energética sigue condicionando inflación y política monetaria, mientras Medio Oriente combina riesgo logístico con señales diplomáticas y China y Estados Unidos preparan una cumbre decisiva para el comercio.",
+          "path": "src/content/editions/2026-09-22-daily-energia-y-tasas-endurecen-el-mapa-global.md"
+        },
+        {
+          "title": "Hormuz adapta los flujos sin normalizar el riesgo energético global",
+          "publishedAt": "2026-09-21T06:45:00-03:00",
+          "summary": "El Golfo sostiene más exportaciones mediante transbordos y rutas alternativas, pero el costo logístico, la fragilidad de los corredores y la presión inflacionaria mantienen abierto el shock energético.",
+          "path": "src/content/editions/2026-09-21-daily-hormuz-adapta-flujos-sin-normalizar-riesgo.md"
+        }
+      ]
+    },
+    {
+      "candidateKey": "n-regional-activity",
+      "section": "national",
+      "title": "Producto Interno Bruto Regional Segundo Trimestre 2026",
+      "description": "El PIB nacional cayó 0,2% en el segundo trimestre y siete regiones se contrajeron, con incidencia relevante de menor actividad minera y una recuperación territorial desigual.",
+      "sourceName": "Banco Central de Chile",
+      "publishedAt": "2026-09-23T08:30:00-03:00",
+      "priors": [
+        {
+          "title": "El Presupuesto 2027 enfrenta una prueba regional: ajustar gasto sin frenar inversión",
+          "publishedAt": "2026-09-25T07:42:00-03:00",
+          "summary": "A días del ingreso del proyecto, los gobiernos regionales piden preservar recursos para obras en ejecución mientras Hacienda prioriza austeridad, infraestructura y empleo.",
+          "path": "src/content/briefings/2026-09-25-national-presupuesto-inversion-regional.md"
+        },
+        {
+          "title": "Construcción pone a prueba la velocidad del plan de empleo",
+          "publishedAt": "2026-09-24T06:44:01-03:00",
+          "summary": "El plan de emergencia para construcción compromete cerca de US$200 millones hasta diciembre; la señal relevante ahora es cuánto logra transformarse en obras ejecutadas y empleo formal en regiones.",
+          "path": "src/content/briefings/2026-09-24-national-empleo-construccion-ejecucion.md"
+        },
+        {
+          "title": "Empleo: la prueba pasa de los anuncios a la ejecución en construcción",
+          "publishedAt": "2026-09-23T06:46:00-03:00",
+          "summary": "El plan de US$200 millones para acelerar obras y vivienda busca responder al desempleo de 9,5%; la señal relevante será cuánto gasto logra convertirse en empleo formal durante el cuarto trimestre.",
+          "path": "src/content/briefings/2026-09-23-national-empleo-construccion-ejecucion.md"
+        },
+        {
+          "title": "Capital extranjero récord en bonos en pesos pone a prueba la resiliencia financiera de Chile",
+          "publishedAt": "2026-09-22T06:51:00-03:00",
+          "summary": "La tenencia extranjera de deuda soberana chilena en pesos alcanzó un récord en agosto, una señal de demanda por activos locales que convive con una economía débil y un entorno externo de tasas altas.",
+          "path": "src/content/briefings/2026-09-22-national-bonos-peso-capital-extranjero.md"
+        },
+        {
+          "title": "Presupuesto 2027 enfrenta la prueba de convertir reasignación fiscal en empleo e inversión",
+          "publishedAt": "2026-09-21T06:45:00-03:00",
+          "summary": "Con margen fiscal estrecho y desempleo elevado, el primer Presupuesto completo del Gobierno prioriza inversión y ministerios ejecutores; la prueba será cuánto gasto logra transformarse en actividad y empleo formal.",
+          "path": "src/content/briefings/2026-09-21-national-presupuesto-empleo-ejecucion.md"
+        }
+      ]
+    },
+    {
+      "candidateKey": "m-equity-inflows",
+      "section": "markets",
+      "title": "Global equity funds snap two-week outflow as AI optimism returns",
+      "description": "Los fondos globales de renta variable registraron las mayores entradas desde comienzos de julio, pese al fuerte aumento de los rendimientos soberanos, apoyados por optimismo en IA y menor petróleo.",
+      "sourceName": "Reuters",
+      "publishedAt": "2026-09-25T11:17:00Z",
+      "priors": [
+        {
+          "title": "Bonos fijan el nuevo precio del riesgo mientras las acciones todavía resisten",
+          "publishedAt": "2026-09-25T07:42:00-03:00",
+          "summary": "El Treasury a diez años supera 5% y eleva la tasa de descuento global, mientras acciones e IA resisten y el petróleo ofrece sólo un alivio parcial.",
+          "path": "src/content/briefings/2026-09-25-markets-bonos-precio-riesgo.md"
+        },
+        {
+          "title": "Tasas sobre 5% devuelven al dólar el mando del mercado",
+          "publishedAt": "2026-09-24T06:44:01-03:00",
+          "summary": "El salto del Treasury a diez años sobre 5%, el petróleo todavía elevado y un dólar en máximos de dos meses endurecen las condiciones financieras mientras las bolsas asiáticas esperan señales de la cumbre Trump-Xi.",
+          "path": "src/content/briefings/2026-09-24-markets-tasas-petroleo-dolar.md"
+        },
+        {
+          "title": "Petróleo cede y la IA lidera, pero las tasas mantienen el filtro de riesgo",
+          "publishedAt": "2026-09-23T06:46:00-03:00",
+          "summary": "Brent baja por sexta sesión ante mejores perspectivas de oferta, mientras tecnología sostiene las bolsas; el dólar firme y el Treasury a diez años bajo 5% muestran que el alivio energético aún convive con condiciones financieras restrictivas.",
+          "path": "src/content/briefings/2026-09-23-markets-petroleo-ia-tasas.md"
+        },
+        {
+          "title": "La IA sostiene el riesgo mientras petróleo y tasas vuelven a imponer un costo",
+          "publishedAt": "2026-09-22T06:52:00-03:00",
+          "summary": "Las tecnológicas extienden el impulso bursátil, pero Brent sobre US$100, Treasury cerca de 5% y un dólar firme mantienen una combinación exigente para el resto de los activos.",
+          "path": "src/content/briefings/2026-09-22-markets-ia-petroleo-tasas.md"
+        },
+        {
+          "title": "Tecnología sostiene el riesgo mientras tasas altas y petróleo separan ganadores de perdedores",
+          "publishedAt": "2026-09-21T06:45:00-03:00",
+          "summary": "Asia avanza liderada por semiconductores y el petróleo retrocede, pero los rendimientos estadounidenses y la expectativa de nuevas alzas de la Fed mantienen elevada la tasa de descuento global.",
+          "path": "src/content/briefings/2026-09-21-markets-tecnologia-tasas-petroleo.md"
+        }
+      ]
+    }
+  ]
+}
