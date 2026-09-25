@@ -1,0 +1,57 @@
+{
+  "radarRunId": "RADAR-BASELINE-20260925-1223",
+  "sourceMainCommit": "177ad4bf9fd4140816531c3d870ed0ec9a2f815a",
+  "radarStateVersion": "radar-state-v1",
+  "editorialDate": "2026-09-25",
+  "experimentMode": "BASELINE",
+  "mode": "LAB_ONLY",
+  "productionWritesAllowed": false,
+  "schemaVersion": 1,
+  "section": "national",
+  "status": "PASS",
+  "startedAt": "2026-09-25T09:07:01-03:00",
+  "completedAt": "2026-09-25T09:09:00-03:00",
+  "title": "Actividad regional débil confirma una recuperación chilena todavía desigual",
+  "summary": "La contracción de siete regiones y la rebaja del crecimiento 2026 refuerzan una lectura de recuperación débil y heterogénea, con minería y demanda interna como focos principales.",
+  "tags": [
+    "chile",
+    "actividad",
+    "regiones",
+    "ipom",
+    "mineria"
+  ],
+  "sources": [
+    {
+      "name": "Banco Central — PIB Regional II trimestre 2026",
+      "url": "https://www.bcentral.cl/web/banco-central/contenido/-/detalle/prensa/nota-de-prensa/producto-interno-bruto-regional-segundo-trimestre-2026",
+      "publishedAt": "2026-09-23T08:30:00-03:00"
+    },
+    {
+      "name": "Banco Central — IPoM septiembre 2026",
+      "url": "https://www.bcentral.cl/resumen-ipom/-/detalle/resumen-ipom-septiembre-2026",
+      "publishedAt": "2026-09-09T00:00:00-03:00"
+    }
+  ],
+  "highlights": [
+    {
+      "label": "Siete regiones se contrajeron en el segundo trimestre",
+      "text": "La debilidad tuvo su mayor incidencia en la macrozona norte y estuvo vinculada en parte a menor actividad minera."
+    },
+    {
+      "label": "El crecimiento 2026 fue revisado a la baja",
+      "text": "El Banco Central redujo su rango a 0,25%-0,75% por debilidad de demanda, empleo y producción minera."
+    },
+    {
+      "label": "La recuperación sigue siendo desigual",
+      "text": "El consumo avanzó en varias regiones, pero la actividad agregada y las exportaciones mostraron fragilidad."
+    }
+  ],
+  "selectedCandidateIds": [
+    "n-pib",
+    "n-ipom"
+  ],
+  "discardedCandidateIds": [
+    "n-fbcf"
+  ],
+  "outputPath": "lab/radar-editorial/runtime/runs/RADAR-BASELINE-20260925-1223/national/output.md"
+}
