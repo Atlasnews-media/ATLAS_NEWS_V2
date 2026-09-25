@@ -1,0 +1,71 @@
+{
+  "radarRunId": "RADAR-BASELINE-20260925-1404",
+  "sourceMainCommit": "2a901821866a980434b8d7a423266d9c7fcf967d",
+  "radarStateVersion": "radar-state-v1",
+  "editorialDate": "2026-09-25",
+  "experimentMode": "BASELINE",
+  "mode": "LAB_ONLY",
+  "productionWritesAllowed": false,
+  "schemaVersion": 1,
+  "section": "general",
+  "status": "PASS",
+  "startedAt": "2026-09-25T14:04:00-03:00",
+  "completedAt": "2026-09-25T14:06:00-03:00",
+  "title": "Tregua EEUU-China alivia el frente comercial, pero las tasas siguen marcando el pulso global",
+  "summary": "La tregua EEUU-China reduce riesgo comercial inmediato, mientras el mercado de bonos concentra la presión financiera y los flujos hacia acciones mejoran con el renovado optimismo por IA.",
+  "tags": [
+    "global",
+    "china",
+    "estados-unidos",
+    "tasas",
+    "energia"
+  ],
+  "sources": [
+    {
+      "name": "Reuters — tregua comercial EEUU-China",
+      "url": "https://www.reuters.com/world/asia-pacific/us-treasurys-bessent-chinas-he-meet-unfinished-business-before-trump-xi-summit-2026-09-23/",
+      "publishedAt": "2026-09-24T00:00:00Z"
+    },
+    {
+      "name": "Reuters — cierre de cumbre Trump-Xi",
+      "url": "https://www.reuters.com/world/china/trump-wrap-up-xi-summit-with-tour-us-archives-2026-09-25/",
+      "publishedAt": "2026-09-25T00:00:00Z"
+    },
+    {
+      "name": "Reuters — mercados globales",
+      "url": "https://www.reuters.com/world/china/global-markets-warpup-1-pix-2026-09-25/",
+      "publishedAt": "2026-09-25T00:00:00Z"
+    }
+  ],
+  "highlights": [
+    {
+      "label": "EEUU y China extendieron la tregua comercial",
+      "text": "La extensión por dos meses reduce el riesgo de una escalada arancelaria inmediata y abre espacio para seguir negociando."
+    },
+    {
+      "label": "Los bonos concentran la tensión financiera",
+      "text": "Los rendimientos soberanos elevados siguen siendo el principal contrapeso para activos de riesgo y condiciones de financiamiento."
+    },
+    {
+      "label": "Las bolsas globales mantienen resiliencia",
+      "text": "Las acciones globales avanzaron pese a la volatilidad de bonos, apoyadas por optimismo asociado a inteligencia artificial."
+    },
+    {
+      "label": "Los flujos vuelven a renta variable",
+      "text": "Los fondos globales de acciones registraron sus mayores entradas desde comienzos de julio tras dos semanas de salidas."
+    },
+    {
+      "label": "Chile sigue expuesto al canal externo",
+      "text": "Cobre, dólar, petróleo y tasas internacionales siguen transmitiendo al mercado local los cambios en comercio y condiciones financieras."
+    }
+  ],
+  "selectedCandidateIds": [
+    "g-truce",
+    "g-xi-wrap",
+    "g-stocks-bonds"
+  ],
+  "discardedCandidateIds": [
+    "g-ai-flows"
+  ],
+  "outputPath": "lab/radar-editorial/runtime/runs/RADAR-BASELINE-20260925-1404/general/output.md"
+}
