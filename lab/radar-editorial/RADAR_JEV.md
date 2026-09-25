@@ -88,4 +88,3 @@ ChatGPT no escribe en `radar-runtime/editorial`. El resolver JEV y el ingest dur
 El ingest final exige que `artifacts["jev-judgments.json"]` coincida byte a byte con el juicio persistido por el resolver TypeSafe para el mismo `radarRunId`. Así, el productor no puede fabricar ni modificar la evidencia JEV.
 
 Este doble handoff es una compatibilidad temporal del productor ChatGPT. Un productor futuro que pueda invocar TypeSafe directamente puede conservar el mismo contrato editorial sin usar GitHub como transporte intermedio del juicio.
-
