@@ -128,9 +128,7 @@ function artifactSet(request, phase) {
     "checkpoints/markets.json",
   ];
   const experimental =
-    request.experimentMode === "RADAR_JEV"
-      ? RADAR_JEV_EVIDENCE_ARTIFACTS
-      : [];
+    request.experimentMode === "RADAR_JEV" ? RADAR_JEV_EVIDENCE_ARTIFACTS : [];
   if (phase === "general") return [...experimental, ...general];
   if (phase === "national") return national;
   if (phase === "markets") return markets;
