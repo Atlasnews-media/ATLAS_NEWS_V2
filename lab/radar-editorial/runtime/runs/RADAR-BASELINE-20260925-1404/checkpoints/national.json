@@ -1,13 +1,13 @@
 {
-  "schemaVersion": 1,
   "radarRunId": "RADAR-BASELINE-20260925-1404",
   "sourceMainCommit": "2a901821866a980434b8d7a423266d9c7fcf967d",
   "radarStateVersion": "radar-state-v1",
   "editorialDate": "2026-09-25",
-  "mode": "LAB_ONLY",
   "experimentMode": "BASELINE",
-  "status": "NATIONAL_PASS",
+  "mode": "LAB_ONLY",
   "productionWritesAllowed": false,
-  "runPath": "lab/radar-editorial/runtime/runs/RADAR-BASELINE-20260925-1404",
-  "updatedAt": "2026-09-25T14:08:00-03:00"
+  "schemaVersion": 1,
+  "phase": "national",
+  "status": "PASS",
+  "completedAt": "2026-09-25T14:08:00-03:00"
 }
