@@ -2,7 +2,7 @@ import fs from "node:fs/promises";
 import crypto from "node:crypto";
 import { pathToFileURL } from "node:url";
 
-export const REQUIRED_ARTIFACTS = [
+export const BASE_REQUIRED_ARTIFACTS = [
   "run.json",
   "search-log.json",
   "candidates.json",
@@ -22,6 +22,22 @@ export const REQUIRED_ARTIFACTS = [
   "publish-request.json",
   "index.html",
 ];
+
+export const RADAR_JEV_EVIDENCE_ARTIFACTS = [
+  "radar-context.json",
+  "corpus-retrieval.json",
+  "jev-judgments.json",
+];
+
+export const REQUIRED_ARTIFACTS = BASE_REQUIRED_ARTIFACTS;
+
+export function requiredArtifactsForMode(experimentMode) {
+  if (experimentMode === "BASELINE") return BASE_REQUIRED_ARTIFACTS;
+  if (experimentMode === "RADAR_JEV") {
+    return [...BASE_REQUIRED_ARTIFACTS, ...RADAR_JEV_EVIDENCE_ARTIFACTS];
+  }
+  fail("experimentMode no autorizado: " + experimentMode);
+}
 
 const REQUEST_KEYS = [
   "schemaVersion",
@@ -116,8 +132,8 @@ export function validateBaselineRequest(request) {
   if (!/^\d{4}-\d{2}-\d{2}$/.test(request.editorialDate || "")) {
     fail("editorialDate inválida");
   }
-  if (request.experimentMode !== "BASELINE") {
-    fail("V1 sólo acepta experimentMode BASELINE");
+  if (!["BASELINE", "RADAR_JEV"].includes(request.experimentMode)) {
+    fail("experimentMode no autorizado: " + request.experimentMode);
   }
   if (request.mode !== "LAB_ONLY") fail("mode debe ser LAB_ONLY");
   if (request.productionWritesAllowed !== false) {
@@ -134,8 +150,9 @@ export function validateBaselineRequest(request) {
   ) {
     fail("artifacts debe ser objeto");
   }
-  assertExactKeys(request.artifacts, REQUIRED_ARTIFACTS, "artifacts");
-  for (const key of REQUIRED_ARTIFACTS) {
+  const requiredArtifacts = requiredArtifactsForMode(request.experimentMode);
+  assertExactKeys(request.artifacts, requiredArtifacts, "artifacts");
+  for (const key of requiredArtifacts) {
     const value = request.artifacts[key];
     if (key.endsWith(".md") || key.endsWith(".html")) {
       if (typeof value !== "string" || !value.trim()) {
