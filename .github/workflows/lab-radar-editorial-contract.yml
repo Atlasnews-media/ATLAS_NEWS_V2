@@ -93,21 +93,13 @@ jobs:
           node --check scripts/lab/radar-editorial/run-jev-memory-judge.mjs
 
       - name: Comprobar formato RADAR
-        run: |
-          set -euo pipefail
-          npx prettier --write \
-            "lab/radar-editorial/**/*.{json,md}" \
-            "scripts/lab/radar-editorial/*.mjs" \
-            ".github/workflows/lab-radar-editorial-*.yml" \
-            ".github/workflows/lab-radar-jev-resolver.yml" \
-            --ignore-path /dev/null
-          git diff --exit-code -- \
-            lab/radar-editorial \
-            scripts/lab/radar-editorial \
-            .github/workflows/lab-radar-editorial-contract.yml \
-            .github/workflows/lab-radar-editorial-ingest.yml \
-            .github/workflows/lab-radar-editorial-publish.yml \
-            .github/workflows/lab-radar-jev-resolver.yml
+        run: >-
+          npx prettier --check
+          "lab/radar-editorial/**/*.{json,md}"
+          "scripts/lab/radar-editorial/*.mjs"
+          ".github/workflows/lab-radar-editorial-*.yml"
+          ".github/workflows/lab-radar-jev-resolver.yml"
+          --ignore-path /dev/null
 
       - name: Comprobar sintaxis shell
         run: bash -n scripts/lab/radar-editorial/test-public-concurrency.sh
