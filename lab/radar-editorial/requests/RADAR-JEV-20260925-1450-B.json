@@ -1,0 +1,1174 @@
+{
+  "schemaVersion": 1,
+  "radarRunId": "RADAR-JEV-20260925-1450-B",
+  "sourceMainCommit": "d04b23aacd3e3d7e8fa2108d9a8843731d24c437",
+  "radarStateVersion": "radar-state-v1",
+  "editorialDate": "2026-09-25",
+  "experimentMode": "RADAR_JEV",
+  "mode": "LAB_ONLY",
+  "productionWritesAllowed": false,
+  "createdAt": "2026-09-25T14:44:00-03:00",
+  "producer": "CHATGPT_TASK",
+  "artifacts": {
+    "run.json": {
+      "schemaVersion": 1,
+      "radarRunId": "RADAR-JEV-20260925-1450-B",
+      "sourceMainCommit": "d04b23aacd3e3d7e8fa2108d9a8843731d24c437",
+      "radarStateVersion": "radar-state-v1",
+      "editorialDate": "2026-09-25",
+      "experimentMode": "RADAR_JEV",
+      "mode": "LAB_ONLY",
+      "productionWritesAllowed": false,
+      "startedAt": "2026-09-25T14:39:00-03:00",
+      "completedAt": "2026-09-25T14:44:00-03:00",
+      "memoryMode": "RADAR_PLUS_CORPUS",
+      "radarInterventionUsed": true,
+      "jevUsed": true,
+      "corpusUsed": true,
+      "frameworkRead": [
+        "AGENTS.md",
+        "docs/PROCEDIMIENTO_GPT_PUBLICACION.md",
+        "docs/CONTRATO_EDITORIAL.md",
+        "data/editorial_state.json"
+      ],
+      "phases": {
+        "general": "PASS",
+        "national": "PASS",
+        "markets": "PASS"
+      }
+    },
+    "search-log.json": {
+      "schemaVersion": 1,
+      "radarRunId": "RADAR-JEV-20260925-1450-B",
+      "sourceMainCommit": "d04b23aacd3e3d7e8fa2108d9a8843731d24c437",
+      "radarStateVersion": "radar-state-v1",
+      "editorialDate": "2026-09-25",
+      "experimentMode": "RADAR_JEV",
+      "mode": "LAB_ONLY",
+      "productionWritesAllowed": false,
+      "entries": [
+        {
+          "queryId": "g-q1",
+          "section": "general",
+          "query": "September 25 2026 Reuters US Iran phased deal Hormuz blockade",
+          "executedAt": "2026-09-25T14:39:01-03:00",
+          "resultCount": 8
+        },
+        {
+          "queryId": "g-q2",
+          "section": "general",
+          "query": "September 25 2026 Reuters Trump Xi trade truce Washington summit",
+          "executedAt": "2026-09-25T14:39:02-03:00",
+          "resultCount": 8
+        },
+        {
+          "queryId": "g-q3",
+          "section": "general",
+          "query": "September 25 2026 Reuters Anthropic Akamai 11.6 billion",
+          "executedAt": "2026-09-25T14:39:03-03:00",
+          "resultCount": 3
+        },
+        {
+          "queryId": "n-q1",
+          "section": "national",
+          "query": "September 25 2026 Chile Escondida union contract talks fatal accident Reuters",
+          "executedAt": "2026-09-25T14:39:04-03:00",
+          "resultCount": 3
+        },
+        {
+          "queryId": "n-q2",
+          "section": "national",
+          "query": "September 25 2026 Reuters Chile Escondida resumes operations fatal accident",
+          "executedAt": "2026-09-25T14:39:05-03:00",
+          "resultCount": 3
+        },
+        {
+          "queryId": "n-q3",
+          "section": "national",
+          "query": "September 25 2026 Chile Banco Central PIB regional segundo trimestre 2026",
+          "executedAt": "2026-09-25T14:39:06-03:00",
+          "resultCount": 10
+        },
+        {
+          "queryId": "m-q1",
+          "section": "markets",
+          "query": "September 25 2026 Reuters global stocks bond volatility oil AI",
+          "executedAt": "2026-09-25T14:39:07-03:00",
+          "resultCount": 8
+        },
+        {
+          "queryId": "m-q2",
+          "section": "markets",
+          "query": "September 25 2026 Reuters Wall Street AI Mideast negotiation hopes",
+          "executedAt": "2026-09-25T14:39:08-03:00",
+          "resultCount": 5
+        },
+        {
+          "queryId": "m-q3",
+          "section": "markets",
+          "query": "September 25 2026 Reuters dollar two month high inflation Fed hike expectations",
+          "executedAt": "2026-09-25T14:39:09-03:00",
+          "resultCount": 5
+        }
+      ]
+    },
+    "candidates.json": {
+      "schemaVersion": 1,
+      "radarRunId": "RADAR-JEV-20260925-1450-B",
+      "sourceMainCommit": "d04b23aacd3e3d7e8fa2108d9a8843731d24c437",
+      "radarStateVersion": "radar-state-v1",
+      "editorialDate": "2026-09-25",
+      "experimentMode": "RADAR_JEV",
+      "mode": "LAB_ONLY",
+      "productionWritesAllowed": false,
+      "candidates": [
+        {
+          "candidateId": "g-hormuz-7day",
+          "section": "general",
+          "titleOriginal": "Iran says Hormuz could reopen within seven days under phased US deal",
+          "sourceName": "Reuters",
+          "sourceUrl": "https://www.reuters.com/world/asia-pacific/us-iran-discuss-phased-deal-reopen-hormuz-end-us-blockade-sources-say-2026-09-24/",
+          "publishedAt": "2026-09-24T16:17:00Z",
+          "discoveredAt": "2026-09-25T14:40:30-03:00",
+          "description": "Irán planteó un calendario de hasta siete días para reabrir Hormuz si EEUU reduce presión militar y levanta el bloqueo, convirtiendo una negociación general en una secuencia verificable.",
+          "retrievalOrigin": "g-q1",
+          "selected": true,
+          "selectionStage": "selected-final"
+        },
+        {
+          "candidateId": "g-trump-xi-takeaways",
+          "section": "general",
+          "titleOriginal": "Five takeaways from Trump's summit with Xi in Washington",
+          "sourceName": "Reuters",
+          "sourceUrl": "https://www.reuters.com/world/china/four-takeaways-trumps-summit-with-xi-washington-2026-09-24/",
+          "publishedAt": "2026-09-25T10:00:00Z",
+          "discoveredAt": "2026-09-25T14:40:30-03:00",
+          "description": "La cumbre extendió sólo dos meses la tregua comercial y dejó abiertas diferencias estructurales sobre tecnología, IA, Taiwán y comercio.",
+          "retrievalOrigin": "g-q2",
+          "selected": false,
+          "selectionStage": "screened-out"
+        },
+        {
+          "candidateId": "g-anthropic-akamai",
+          "section": "general",
+          "titleOriginal": "Akamai signs $11.6 billion cloud deal with Anthropic, grants warrant for up to 5% stake",
+          "sourceName": "Reuters",
+          "sourceUrl": "https://www.reuters.com/technology/akamai-anthropic-sign-116-billion-cloud-services-deal-2026-09-24/",
+          "publishedAt": "2026-09-24T20:00:00Z",
+          "discoveredAt": "2026-09-25T14:40:30-03:00",
+          "description": "Akamai firmó con Anthropic un acuerdo cloud de US$11.600 millones por siete años, con un warrant que puede llegar a 5% de participación.",
+          "retrievalOrigin": "g-q3",
+          "selected": false,
+          "selectionStage": "screened-out"
+        },
+        {
+          "candidateId": "n-escondida-talks",
+          "section": "national",
+          "titleOriginal": "Unions at Chile's Escondida mine reject bid to pause contract talks after worker's death",
+          "sourceName": "Reuters",
+          "sourceUrl": "https://www.reuters.com/business/world-at-work/unions-chiles-escondida-mine-reject-bid-pause-contract-talks-after-workers-death-2026-09-25/",
+          "publishedAt": "2026-09-25T16:46:00Z",
+          "discoveredAt": "2026-09-25T14:40:30-03:00",
+          "description": "Sindicatos de Escondida rechazaron suspender temporalmente negociaciones contractuales tras el accidente fatal, por lo que el proceso laboral seguirá su calendario.",
+          "retrievalOrigin": "n-q1",
+          "selected": true,
+          "selectionStage": "selected-final"
+        },
+        {
+          "candidateId": "n-escondida-restart",
+          "section": "national",
+          "titleOriginal": "Chile's Escondida mine gradually resumes operations after fatal accident",
+          "sourceName": "Reuters",
+          "sourceUrl": "https://www.reuters.com/world/americas/chiles-escondida-mine-gradually-resumes-operations-after-fatal-accident-2026-09-25/",
+          "publishedAt": "2026-09-25T00:22:00Z",
+          "discoveredAt": "2026-09-25T14:40:30-03:00",
+          "description": "Escondida reanuda operaciones progresivamente mientras continúan evaluaciones de seguridad tras el accidente fatal.",
+          "retrievalOrigin": "n-q2",
+          "selected": false,
+          "selectionStage": "screened-out"
+        },
+        {
+          "candidateId": "n-regional-gdp",
+          "section": "national",
+          "titleOriginal": "Producto Interno Bruto Regional Segundo Trimestre 2026",
+          "sourceName": "Banco Central de Chile",
+          "sourceUrl": "https://www.bcentral.cl/web/banco-central/contenido/-/detalle/prensa/nota-de-prensa/producto-interno-bruto-regional-segundo-trimestre-2026",
+          "publishedAt": "2026-09-23T11:30:00Z",
+          "discoveredAt": "2026-09-25T14:40:30-03:00",
+          "description": "Siete regiones se contrajeron en el segundo trimestre y el PIB nacional cayó 0,2%, con minería y menor extracción de cobre entre los factores.",
+          "retrievalOrigin": "n-q3",
+          "selected": false,
+          "selectionStage": "screened-out"
+        },
+        {
+          "candidateId": "m-global-bonds",
+          "section": "markets",
+          "titleOriginal": "Stocks weather bond volatility, oil eases slightly",
+          "sourceName": "Reuters",
+          "sourceUrl": "https://www.reuters.com/world/china/global-markets-warpup-1-pix-2026-09-25/",
+          "publishedAt": "2026-09-25T10:40:00Z",
+          "discoveredAt": "2026-09-25T14:40:30-03:00",
+          "description": "Las bolsas globales resistieron mientras los rendimientos largos siguieron cerca de máximos de décadas, manteniendo elevados los costos de financiamiento.",
+          "retrievalOrigin": "m-q1",
+          "selected": false,
+          "selectionStage": "screened-out"
+        },
+        {
+          "candidateId": "m-wallstreet-ai",
+          "section": "markets",
+          "titleOriginal": "Wall St edges up on AI enthusiasm, Mideast negotiation hopes",
+          "sourceName": "Reuters",
+          "sourceUrl": "https://finance.yahoo.com/markets/stocks/articles/wall-st-futures-gain-ai-095035646.html",
+          "publishedAt": "2026-09-25T14:00:00Z",
+          "discoveredAt": "2026-09-25T14:40:30-03:00",
+          "description": "Wall Street avanzó modestamente porque la IA y las esperanzas de negociación en Medio Oriente compensaron parte de la presión de tasas elevadas.",
+          "retrievalOrigin": "m-q2",
+          "selected": false,
+          "selectionStage": "screened-out"
+        },
+        {
+          "candidateId": "m-dollar-fed",
+          "section": "markets",
+          "titleOriginal": "Dollar ascends to fresh 2-month high on inflation worry, Fed hike expectations",
+          "sourceName": "Reuters",
+          "sourceUrl": "https://www.reuters.com/business/dollar-perched-two-month-high-hot-pmi-fuels-inflation-fears-rate-hike-bets-2026-09-24/",
+          "publishedAt": "2026-09-24T20:00:00Z",
+          "discoveredAt": "2026-09-25T14:40:30-03:00",
+          "description": "El dólar tocó un máximo de dos meses mientras rendimientos altos y expectativas de nuevas alzas de la Fed reforzaron la demanda por la moneda estadounidense.",
+          "retrievalOrigin": "m-q3",
+          "selected": true,
+          "selectionStage": "selected-final"
+        }
+      ]
+    },
+    "radar-context.json": {
+      "schemaVersion": 1,
+      "radarRunId": "RADAR-JEV-20260925-1450-B",
+      "sourceMainCommit": "d04b23aacd3e3d7e8fa2108d9a8843731d24c437",
+      "radarStateVersion": "radar-state-v1",
+      "editorialDate": "2026-09-25",
+      "experimentMode": "RADAR_JEV",
+      "mode": "LAB_ONLY",
+      "productionWritesAllowed": false,
+      "signals": [
+        {
+          "id": "r-oil",
+          "thread": "oil-geopolitics-inflation",
+          "signal": "Hormuz sigue restringido; buscar evidencia que cambie la probabilidad o el calendario de normalización, no repetir sólo el riesgo energético."
+        },
+        {
+          "id": "r-fed",
+          "thread": "us-employment-fed-rates",
+          "signal": "El ciclo restrictivo de la Fed ya está establecido; buscar actualización material en tasas, dólar o transmisión cross-asset."
+        },
+        {
+          "id": "r-ai",
+          "thread": "ai-monetization-selectivity",
+          "signal": "Distinguir nueva demanda contractual de IA de repetición temática o euforia bursátil."
+        },
+        {
+          "id": "r-chile",
+          "thread": "chile-inflation-activity-rates",
+          "signal": "La debilidad macro chilena ya está documentada; favorecer hechos domésticos incrementales y evitar reiterar IPoM/PIB sin novedad."
+        }
+      ],
+      "preJevProvisional": {
+        "general": {
+          "candidateId": "g-hormuz-7day",
+          "reason": "El calendario concreto de siete días podía alterar rápidamente el riesgo energético global."
+        },
+        "national": {
+          "candidateId": "n-escondida-restart",
+          "reason": "La normalización operacional de la mayor mina de cobre parecía el hecho doméstico de mayor transmisión económica."
+        },
+        "markets": {
+          "candidateId": "m-global-bonds",
+          "reason": "Los rendimientos largos seguían siendo el factor cross-asset dominante y más amplio."
+        }
+      }
+    },
+    "corpus-retrieval.json": {
+      "schemaVersion": 1,
+      "radarRunId": "RADAR-JEV-20260925-1450-B",
+      "sourceMainCommit": "d04b23aacd3e3d7e8fa2108d9a8843731d24c437",
+      "radarStateVersion": "radar-state-v1",
+      "editorialDate": "2026-09-25",
+      "experimentMode": "RADAR_JEV",
+      "mode": "LAB_ONLY",
+      "productionWritesAllowed": false,
+      "candidateRetrievals": [
+        {
+          "candidateId": "g-hormuz-7day",
+          "priors": [
+            "Hilo oil-geopolitics-inflation: Hormuz sigue anormalmente restringido pese a adaptación saudí.",
+            "Negociación por fases reportada el 24-09; el calendario de siete días agrega una condición temporal verificable."
+          ]
+        },
+        {
+          "candidateId": "g-trump-xi-takeaways",
+          "priors": [
+            "La corrida RADAR_JEV anterior ya evaluó la cumbre y la tregua corta.",
+            "No existe hilo activo específico de comercio EEUU-China."
+          ]
+        },
+        {
+          "candidateId": "g-anthropic-akamai",
+          "priors": [
+            "Hilo ai-monetization-selectivity prioriza demanda final visible, caja y disciplina de capital."
+          ]
+        },
+        {
+          "candidateId": "n-escondida-talks",
+          "priors": [
+            "El accidente y reinicio operacional ya eran conocidos; la continuidad de negociación laboral es un desarrollo distinto.",
+            "Minería ya forma parte del escenario de actividad chilena débil."
+          ]
+        },
+        {
+          "candidateId": "n-escondida-restart",
+          "priors": [
+            "La corrida experimental anterior ya seleccionó el reinicio de Escondida post-JEV.",
+            "Hilo Chile ya incorpora menor producción minera como riesgo de actividad."
+          ]
+        },
+        {
+          "candidateId": "n-regional-gdp",
+          "priors": [
+            "El dato exacto de PIB regional fue seleccionado por el baseline previo y juzgado repetición en la primera corrida JEV.",
+            "La tesis activa ya contiene actividad débil."
+          ]
+        },
+        {
+          "candidateId": "m-global-bonds",
+          "priors": [
+            "Bond storm fue eje del baseline y evaluado en la corrida anterior.",
+            "Treasury es watch explícito del hilo Fed."
+          ]
+        },
+        {
+          "candidateId": "m-wallstreet-ai",
+          "priors": [
+            "IA/equities fue seleccionada post-JEV en la corrida anterior.",
+            "Hilo IA exige evidencia de monetización, no sólo momentum."
+          ]
+        },
+        {
+          "candidateId": "m-dollar-fed",
+          "priors": [
+            "Dólar y Treasury ya son watch del hilo Fed.",
+            "El nuevo máximo de dos meses y mayor expectativa de alzas aportan actualización observable."
+          ]
+        }
+      ]
+    },
+    "jev-judgments.json": {
+      "schemaVersion": 1,
+      "radarRunId": "RADAR-JEV-20260925-1450-B",
+      "sourceMainCommit": "d04b23aacd3e3d7e8fa2108d9a8843731d24c437",
+      "radarStateVersion": "radar-state-v1",
+      "editorialDate": "2026-09-25",
+      "experimentMode": "RADAR_JEV",
+      "mode": "LAB_ONLY",
+      "productionWritesAllowed": false,
+      "engine": "JEV_TYPESAFE",
+      "modelRequested": "jev-latest",
+      "modelObserved": "jev-1.13.0",
+      "thresholdsApplied": false,
+      "generatedAt": "2026-09-25T17:41:54.813Z",
+      "judgments": [
+        {
+          "candidateKey": "g-hormuz-7day",
+          "section": "general",
+          "eventRelation": {
+            "value": "SAME_EVENT",
+            "confidence": 0.85,
+            "probabilities": {
+              "UNRELATED": 0,
+              "UNCERTAIN": 0,
+              "NEW_EVENT": 0.11,
+              "SAME_EVENT": 0.89
+            }
+          },
+          "informationRelation": {
+            "value": "MEANINGFUL_UPDATE",
+            "confidence": 0.33,
+            "probabilities": {
+              "REPETITION": 0.01,
+              "UNCERTAIN": 0,
+              "MEANINGFUL_UPDATE": 0.45,
+              "NEW": 0.12,
+              "CONTINUATION": 0.42,
+              "CONTRADICTION": 0
+            }
+          },
+          "addsNewInformation": {
+            "probability": 0.66,
+            "confidence": null
+          },
+          "historicalContextNeeded": {
+            "probability": 0.54,
+            "confidence": null
+          },
+          "angleRepeated": {
+            "probability": 0.5,
+            "confidence": null
+          }
+        },
+        {
+          "candidateKey": "g-trump-xi-takeaways",
+          "section": "general",
+          "eventRelation": {
+            "value": "SAME_EVENT",
+            "confidence": 0.96,
+            "probabilities": {
+              "UNRELATED": 0,
+              "UNCERTAIN": 0,
+              "SAME_EVENT": 0.97,
+              "NEW_EVENT": 0.03
+            }
+          },
+          "informationRelation": {
+            "value": "REPETITION",
+            "confidence": 0.23,
+            "probabilities": {
+              "MEANINGFUL_UPDATE": 0.18,
+              "UNCERTAIN": 0.08,
+              "CONTINUATION": 0.07,
+              "NEW": 0.3,
+              "REPETITION": 0.37,
+              "CONTRADICTION": 0
+            }
+          },
+          "addsNewInformation": {
+            "probability": 0.73,
+            "confidence": null
+          },
+          "historicalContextNeeded": {
+            "probability": 0.47,
+            "confidence": null
+          },
+          "angleRepeated": {
+            "probability": 0.53,
+            "confidence": null
+          }
+        },
+        {
+          "candidateKey": "g-anthropic-akamai",
+          "section": "general",
+          "eventRelation": {
+            "value": "NEW_EVENT",
+            "confidence": 0.88,
+            "probabilities": {
+              "SAME_EVENT": 0.08,
+              "NEW_EVENT": 0.91,
+              "UNRELATED": 0,
+              "UNCERTAIN": 0.01
+            }
+          },
+          "informationRelation": {
+            "value": "NEW",
+            "confidence": 0.77,
+            "probabilities": {
+              "MEANINGFUL_UPDATE": 0.16,
+              "REPETITION": 0.02,
+              "NEW": 0.81,
+              "CONTRADICTION": 0,
+              "CONTINUATION": 0.01,
+              "UNCERTAIN": 0
+            }
+          },
+          "addsNewInformation": {
+            "probability": 0.9,
+            "confidence": null
+          },
+          "historicalContextNeeded": {
+            "probability": 0.5,
+            "confidence": null
+          },
+          "angleRepeated": {
+            "probability": 0.75,
+            "confidence": null
+          }
+        },
+        {
+          "candidateKey": "n-escondida-talks",
+          "section": "national",
+          "eventRelation": {
+            "value": "NEW_EVENT",
+            "confidence": 0.85,
+            "probabilities": {
+              "UNRELATED": 0,
+              "UNCERTAIN": 0,
+              "SAME_EVENT": 0.11,
+              "NEW_EVENT": 0.89
+            }
+          },
+          "informationRelation": {
+            "value": "NEW",
+            "confidence": 0.63,
+            "probabilities": {
+              "CONTINUATION": 0.04,
+              "MEANINGFUL_UPDATE": 0.26,
+              "UNCERTAIN": 0,
+              "CONTRADICTION": 0,
+              "NEW": 0.69,
+              "REPETITION": 0.01
+            }
+          },
+          "addsNewInformation": {
+            "probability": 0.84,
+            "confidence": null
+          },
+          "historicalContextNeeded": {
+            "probability": 0.51,
+            "confidence": null
+          },
+          "angleRepeated": {
+            "probability": 0.17,
+            "confidence": null
+          }
+        },
+        {
+          "candidateKey": "n-escondida-restart",
+          "section": "national",
+          "eventRelation": {
+            "value": "SAME_EVENT",
+            "confidence": 0.98,
+            "probabilities": {
+              "SAME_EVENT": 0.98,
+              "UNRELATED": 0,
+              "NEW_EVENT": 0.02,
+              "UNCERTAIN": 0
+            }
+          },
+          "informationRelation": {
+            "value": "REPETITION",
+            "confidence": 0.18,
+            "probabilities": {
+              "CONTRADICTION": 0,
+              "MEANINGFUL_UPDATE": 0.3,
+              "NEW": 0.14,
+              "REPETITION": 0.33,
+              "UNCERTAIN": 0.01,
+              "CONTINUATION": 0.22
+            }
+          },
+          "addsNewInformation": {
+            "probability": 0.77,
+            "confidence": null
+          },
+          "historicalContextNeeded": {
+            "probability": 0.48,
+            "confidence": null
+          },
+          "angleRepeated": {
+            "probability": 0.59,
+            "confidence": null
+          }
+        },
+        {
+          "candidateKey": "n-regional-gdp",
+          "section": "national",
+          "eventRelation": {
+            "value": "SAME_EVENT",
+            "confidence": 0.99,
+            "probabilities": {
+              "NEW_EVENT": 0,
+              "UNRELATED": 0,
+              "UNCERTAIN": 0,
+              "SAME_EVENT": 1
+            }
+          },
+          "informationRelation": {
+            "value": "REPETITION",
+            "confidence": 0.95,
+            "probabilities": {
+              "MEANINGFUL_UPDATE": 0.01,
+              "NEW": 0.02,
+              "REPETITION": 0.96,
+              "CONTRADICTION": 0,
+              "CONTINUATION": 0.01,
+              "UNCERTAIN": 0
+            }
+          },
+          "addsNewInformation": {
+            "probability": 0.26,
+            "confidence": null
+          },
+          "historicalContextNeeded": {
+            "probability": 0.39,
+            "confidence": null
+          },
+          "angleRepeated": {
+            "probability": 0.88,
+            "confidence": null
+          }
+        },
+        {
+          "candidateKey": "m-global-bonds",
+          "section": "markets",
+          "eventRelation": {
+            "value": "SAME_EVENT",
+            "confidence": 0.81,
+            "probabilities": {
+              "SAME_EVENT": 0.86,
+              "NEW_EVENT": 0.14,
+              "UNRELATED": 0,
+              "UNCERTAIN": 0
+            }
+          },
+          "informationRelation": {
+            "value": "CONTINUATION",
+            "confidence": 0.69,
+            "probabilities": {
+              "NEW": 0.11,
+              "MEANINGFUL_UPDATE": 0.07,
+              "CONTINUATION": 0.75,
+              "CONTRADICTION": 0,
+              "REPETITION": 0.07,
+              "UNCERTAIN": 0
+            }
+          },
+          "addsNewInformation": {
+            "probability": 0.63,
+            "confidence": null
+          },
+          "historicalContextNeeded": {
+            "probability": 0.53,
+            "confidence": null
+          },
+          "angleRepeated": {
+            "probability": 0.73,
+            "confidence": null
+          }
+        },
+        {
+          "candidateKey": "m-wallstreet-ai",
+          "section": "markets",
+          "eventRelation": {
+            "value": "NEW_EVENT",
+            "confidence": 0.59,
+            "probabilities": {
+              "UNRELATED": 0,
+              "NEW_EVENT": 0.7,
+              "UNCERTAIN": 0.01,
+              "SAME_EVENT": 0.29
+            }
+          },
+          "informationRelation": {
+            "value": "NEW",
+            "confidence": 0.45,
+            "probabilities": {
+              "REPETITION": 0.04,
+              "NEW": 0.55,
+              "UNCERTAIN": 0,
+              "MEANINGFUL_UPDATE": 0.19,
+              "CONTRADICTION": 0,
+              "CONTINUATION": 0.22
+            }
+          },
+          "addsNewInformation": {
+            "probability": 0.78,
+            "confidence": null
+          },
+          "historicalContextNeeded": {
+            "probability": 0.47,
+            "confidence": null
+          },
+          "angleRepeated": {
+            "probability": 0.64,
+            "confidence": null
+          }
+        },
+        {
+          "candidateKey": "m-dollar-fed",
+          "section": "markets",
+          "eventRelation": {
+            "value": "NEW_EVENT",
+            "confidence": 0.35,
+            "probabilities": {
+              "UNCERTAIN": 0,
+              "SAME_EVENT": 0.48,
+              "UNRELATED": 0,
+              "NEW_EVENT": 0.52
+            }
+          },
+          "informationRelation": {
+            "value": "MEANINGFUL_UPDATE",
+            "confidence": 0.49,
+            "probabilities": {
+              "NEW": 0.08,
+              "CONTINUATION": 0.31,
+              "UNCERTAIN": 0,
+              "MEANINGFUL_UPDATE": 0.57,
+              "REPETITION": 0.04,
+              "CONTRADICTION": 0
+            }
+          },
+          "addsNewInformation": {
+            "probability": 0.7,
+            "confidence": null
+          },
+          "historicalContextNeeded": {
+            "probability": 0.37,
+            "confidence": null
+          },
+          "angleRepeated": {
+            "probability": 0.73,
+            "confidence": null
+          }
+        }
+      ],
+      "telemetry": [
+        {
+          "candidateKey": "g-hormuz-7day",
+          "status": 200,
+          "latencyMs": 304.19,
+          "attempts": 1,
+          "usage": {
+            "input_tokens": 1044,
+            "output_tokens": 190
+          },
+          "error": null
+        },
+        {
+          "candidateKey": "g-trump-xi-takeaways",
+          "status": 200,
+          "latencyMs": 184.76,
+          "attempts": 1,
+          "usage": {
+            "input_tokens": 991,
+            "output_tokens": 189
+          },
+          "error": null
+        },
+        {
+          "candidateKey": "g-anthropic-akamai",
+          "status": 200,
+          "latencyMs": 104.61,
+          "attempts": 1,
+          "usage": {
+            "input_tokens": 943,
+            "output_tokens": 185
+          },
+          "error": null
+        },
+        {
+          "candidateKey": "n-escondida-talks",
+          "status": 200,
+          "latencyMs": 161.89,
+          "attempts": 1,
+          "usage": {
+            "input_tokens": 1016,
+            "output_tokens": 185
+          },
+          "error": null
+        },
+        {
+          "candidateKey": "n-escondida-restart",
+          "status": 200,
+          "latencyMs": 115.41,
+          "attempts": 1,
+          "usage": {
+            "input_tokens": 1004,
+            "output_tokens": 189
+          },
+          "error": null
+        },
+        {
+          "candidateKey": "n-regional-gdp",
+          "status": 200,
+          "latencyMs": 99.18,
+          "attempts": 1,
+          "usage": {
+            "input_tokens": 1036,
+            "output_tokens": 189
+          },
+          "error": null
+        },
+        {
+          "candidateKey": "m-global-bonds",
+          "status": 200,
+          "latencyMs": 97.87,
+          "attempts": 1,
+          "usage": {
+            "input_tokens": 1010,
+            "output_tokens": 189
+          },
+          "error": null
+        },
+        {
+          "candidateKey": "m-wallstreet-ai",
+          "status": 200,
+          "latencyMs": 124.59,
+          "attempts": 1,
+          "usage": {
+            "input_tokens": 1016,
+            "output_tokens": 185
+          },
+          "error": null
+        },
+        {
+          "candidateKey": "m-dollar-fed",
+          "status": 200,
+          "latencyMs": 94.35,
+          "attempts": 1,
+          "usage": {
+            "input_tokens": 998,
+            "output_tokens": 189
+          },
+          "error": null
+        }
+      ],
+      "status": "PASS"
+    },
+    "general/input.json": {
+      "schemaVersion": 1,
+      "radarRunId": "RADAR-JEV-20260925-1450-B",
+      "sourceMainCommit": "d04b23aacd3e3d7e8fa2108d9a8843731d24c437",
+      "radarStateVersion": "radar-state-v1",
+      "editorialDate": "2026-09-25",
+      "experimentMode": "RADAR_JEV",
+      "mode": "LAB_ONLY",
+      "productionWritesAllowed": false,
+      "section": "general",
+      "startedAt": "2026-09-25T14:42:05-03:00",
+      "frameworkRead": [
+        "AGENTS.md",
+        "docs/PROCEDIMIENTO_GPT_PUBLICACION.md",
+        "docs/CONTRATO_EDITORIAL.md",
+        "data/editorial_state.json"
+      ],
+      "searchQueryIds": [
+        "g-q1",
+        "g-q2",
+        "g-q3"
+      ],
+      "candidateIds": [
+        "g-hormuz-7day",
+        "g-trump-xi-takeaways",
+        "g-anthropic-akamai"
+      ]
+    },
+    "general/metadata.json": {
+      "schemaVersion": 1,
+      "radarRunId": "RADAR-JEV-20260925-1450-B",
+      "sourceMainCommit": "d04b23aacd3e3d7e8fa2108d9a8843731d24c437",
+      "radarStateVersion": "radar-state-v1",
+      "editorialDate": "2026-09-25",
+      "experimentMode": "RADAR_JEV",
+      "mode": "LAB_ONLY",
+      "productionWritesAllowed": false,
+      "section": "general",
+      "status": "PASS",
+      "startedAt": "2026-09-25T14:42:05-03:00",
+      "completedAt": "2026-09-25T14:42:45-03:00",
+      "title": "Hormuz ya tiene un calendario negociable para una posible reapertura",
+      "summary": "Irán plantea reabrir Hormuz en hasta siete días bajo condiciones explícitas, convirtiendo la negociación en una señal verificable para energía e inflación.",
+      "tags": [
+        "internacional"
+      ],
+      "sources": [
+        {
+          "name": "Reuters",
+          "url": "https://www.reuters.com/world/asia-pacific/us-iran-discuss-phased-deal-reopen-hormuz-end-us-blockade-sources-say-2026-09-24/",
+          "publishedAt": "2026-09-24T16:17:00Z"
+        },
+        {
+          "name": "Reuters",
+          "url": "https://www.reuters.com/world/china/four-takeaways-trumps-summit-with-xi-washington-2026-09-24/",
+          "publishedAt": "2026-09-25T10:00:00Z"
+        },
+        {
+          "name": "Reuters",
+          "url": "https://www.reuters.com/technology/akamai-anthropic-sign-116-billion-cloud-services-deal-2026-09-24/",
+          "publishedAt": "2026-09-24T20:00:00Z"
+        }
+      ],
+      "highlights": [
+        {
+          "label": "Hormuz ya tiene un calendario negociable",
+          "text": "Irán plantea una reapertura en hasta siete días si se cumplen condiciones explícitas."
+        },
+        {
+          "label": "El alivio energético aún es condicional",
+          "text": "La propuesta reduce incertidumbre sobre la secuencia, pero todavía no normaliza el tránsito."
+        },
+        {
+          "label": "EEUU y China compraron tiempo, no una solución",
+          "text": "La tregua comercial se extendió dos meses sin resolver disputas estructurales."
+        },
+        {
+          "label": "Anthropic convierte demanda de IA en contrato",
+          "text": "El acuerdo con Akamai compromete US$11.600 millones en servicios cloud a siete años."
+        },
+        {
+          "label": "Las tasas largas siguen restringiendo",
+          "text": "Los rendimientos soberanos elevados mantienen presión sobre costos de financiamiento."
+        }
+      ],
+      "selectedCandidateIds": [
+        "g-hormuz-7day"
+      ],
+      "discardedCandidateIds": [
+        "g-trump-xi-takeaways",
+        "g-anthropic-akamai"
+      ],
+      "outputPath": "lab/radar-editorial/runtime/runs/RADAR-JEV-20260925-1450-B/general/output.md"
+    },
+    "general/output.md": "## Hecho central\n\nIrán ha puesto un calendario concreto sobre la mesa para una eventual reapertura del estrecho de Hormuz: hasta siete días si Estados Unidos reduce la presión militar y levanta su bloqueo económico. La negociación sigue abierta y no existe garantía de acuerdo, pero el paso desde una disposición general a negociar hacia una secuencia con plazo verificable cambia la calidad de la señal. Para la economía mundial, el punto central es si el principal cuello de botella energético de los últimos meses puede comenzar a normalizarse.\n\n## En una mirada\n\n- **Hormuz ya tiene un calendario negociable:** la propuesta iraní plantea una reapertura en hasta siete días bajo condiciones explícitas.\n- **El alivio energético aún es condicional:** una propuesta no equivale a tránsito normalizado y el riesgo de ejecución sigue alto.\n- **EEUU y China compraron tiempo, no una solución:** la tregua comercial se extendió sólo dos meses y mantiene abiertas diferencias estructurales.\n- **Anthropic convierte demanda de IA en contrato:** el acuerdo con Akamai compromete US$11.600 millones en servicios cloud durante siete años.\n- **Las tasas largas siguen restringiendo:** los rendimientos soberanos permanecen elevados pese a la resiliencia de las bolsas.\n\n## Por qué importa\n\nHormuz conecta el riesgo geopolítico con energía, transporte, seguros, inflación y política monetaria. Una reapertura efectiva reduciría una fuente directa de presión sobre costos globales y podría modificar expectativas de inflación, aunque no eliminaría por sí sola el endurecimiento monetario ya iniciado. La diferencia frente a la memoria previa es que ahora existe una condición temporal concreta que puede comprobarse o fallar rápidamente.\n\n## Mercados globales\n\nLas acciones globales han resistido mejor que los bonos, mientras el petróleo reacciona a cada señal de negociación. El mercado sigue dividido entre una posible descompresión energética y rendimientos largos que obligan a valorar activos con una tasa de descuento más alta. La negociación sobre Hormuz puede aliviar el primer factor sin resolver automáticamente el segundo.\n\n## Chile\n\nPara Chile, una normalización efectiva de Hormuz podría transmitirse mediante menores costos energéticos e inflación importada. Ese canal sería relevante en un escenario doméstico donde la demanda está débil pero los shocks externos de energía y tasas todavía complican la trayectoria de precios. La señal debe evaluarse por tránsito real y precios, no sólo por anuncios diplomáticos.\n\n## Tasas, monedas y commodities\n\nEl dólar alcanzó máximos de dos meses y los Treasury se mantienen elevados mientras aumenta la expectativa de nuevas alzas de la Fed. El petróleo, en cambio, incorpora una prima geopolítica sensible a las conversaciones con Irán. Esa divergencia muestra que una eventual caída del crudo puede aliviar inflación sin provocar de inmediato una relajación general de las condiciones financieras.\n\n## Qué observar\n\nLa prueba decisiva será si Washington y Teherán acuerdan la secuencia de concesiones y si el tráfico por Hormuz aumenta dentro del plazo planteado. También importarán los precios del Brent, los seguros marítimos, los rendimientos del Treasury y la comunicación de la Fed ante cualquier reducción de la presión energética.",
+    "checkpoints/general.json": {
+      "schemaVersion": 1,
+      "radarRunId": "RADAR-JEV-20260925-1450-B",
+      "sourceMainCommit": "d04b23aacd3e3d7e8fa2108d9a8843731d24c437",
+      "radarStateVersion": "radar-state-v1",
+      "editorialDate": "2026-09-25",
+      "experimentMode": "RADAR_JEV",
+      "mode": "LAB_ONLY",
+      "productionWritesAllowed": false,
+      "phase": "general",
+      "status": "PASS",
+      "completedAt": "2026-09-25T14:42:45-03:00"
+    },
+    "national/input.json": {
+      "schemaVersion": 1,
+      "radarRunId": "RADAR-JEV-20260925-1450-B",
+      "sourceMainCommit": "d04b23aacd3e3d7e8fa2108d9a8843731d24c437",
+      "radarStateVersion": "radar-state-v1",
+      "editorialDate": "2026-09-25",
+      "experimentMode": "RADAR_JEV",
+      "mode": "LAB_ONLY",
+      "productionWritesAllowed": false,
+      "section": "national",
+      "startedAt": "2026-09-25T14:42:46-03:00",
+      "frameworkRead": [
+        "AGENTS.md",
+        "docs/PROCEDIMIENTO_GPT_PUBLICACION.md",
+        "docs/CONTRATO_EDITORIAL.md",
+        "data/editorial_state.json"
+      ],
+      "searchQueryIds": [
+        "n-q1",
+        "n-q2",
+        "n-q3"
+      ],
+      "candidateIds": [
+        "n-escondida-talks",
+        "n-escondida-restart",
+        "n-regional-gdp"
+      ]
+    },
+    "national/metadata.json": {
+      "schemaVersion": 1,
+      "radarRunId": "RADAR-JEV-20260925-1450-B",
+      "sourceMainCommit": "d04b23aacd3e3d7e8fa2108d9a8843731d24c437",
+      "radarStateVersion": "radar-state-v1",
+      "editorialDate": "2026-09-25",
+      "experimentMode": "RADAR_JEV",
+      "mode": "LAB_ONLY",
+      "productionWritesAllowed": false,
+      "section": "national",
+      "status": "PASS",
+      "startedAt": "2026-09-25T14:42:46-03:00",
+      "completedAt": "2026-09-25T14:43:20-03:00",
+      "title": "Escondida mantiene negociación laboral mientras normaliza operaciones",
+      "summary": "Los sindicatos rechazaron pausar las conversaciones contractuales tras el accidente fatal, agregando una variable laboral al proceso de recuperación operacional.",
+      "tags": [
+        "chile"
+      ],
+      "sources": [
+        {
+          "name": "Reuters",
+          "url": "https://www.reuters.com/business/world-at-work/unions-chiles-escondida-mine-reject-bid-pause-contract-talks-after-workers-death-2026-09-25/",
+          "publishedAt": "2026-09-25T16:46:00Z"
+        },
+        {
+          "name": "Reuters",
+          "url": "https://www.reuters.com/world/americas/chiles-escondida-mine-gradually-resumes-operations-after-fatal-accident-2026-09-25/",
+          "publishedAt": "2026-09-25T00:22:00Z"
+        }
+      ],
+      "highlights": [
+        {
+          "label": "La negociación laboral sigue en Escondida",
+          "text": "Los sindicatos rechazaron suspender temporalmente las conversaciones contractuales."
+        },
+        {
+          "label": "El proceso coincide con la reapertura",
+          "text": "La mina recupera operaciones gradualmente mientras continúan evaluaciones de seguridad."
+        },
+        {
+          "label": "El impacto dependerá de la continuidad",
+          "text": "La relevancia económica aumentaría si seguridad o negociación generan nuevas interrupciones."
+        }
+      ],
+      "selectedCandidateIds": [
+        "n-escondida-talks"
+      ],
+      "discardedCandidateIds": [
+        "n-escondida-restart",
+        "n-regional-gdp"
+      ],
+      "outputPath": "lab/radar-editorial/runtime/runs/RADAR-JEV-20260925-1450-B/national/output.md"
+    },
+    "national/output.md": "## Desarrollo\n\nLos sindicatos de trabajadores de Escondida rechazaron la solicitud de la administración de suspender temporalmente las negociaciones contractuales después del accidente fatal ocurrido esta semana. Con ello, las conversaciones con supervisores y personal sindicalizado continúan según el calendario previsto, incluso mientras la mayor mina de cobre del mundo avanza en una reanudación progresiva de sus operaciones y mantiene evaluaciones de seguridad.\n\nEl desarrollo agrega una dimensión distinta al reinicio operacional ya conocido. El foco deja de ser únicamente cuánto tarda la mina en recuperar actividad y pasa también por la capacidad de mantener un proceso laboral sensible en paralelo con las consecuencias del accidente. Para una operación de la escala de Escondida, seguridad, continuidad productiva y relaciones laborales pueden interactuar y amplificar el impacto de un episodio inicialmente acotado.\n\n## Implicancias y riesgos\n\nLa continuidad de las negociaciones no implica por sí sola un conflicto laboral ni una nueva interrupción de producción. Sí introduce una variable adicional que debe seguirse porque una negociación más compleja podría coincidir con la normalización operacional posterior al accidente. En una economía donde la minería ya contribuye a la debilidad de actividad, la duración de cualquier perturbación importa más que el episodio inicial.\n\nEl riesgo editorial relevante es evitar extrapolar. La evidencia disponible confirma que las conversaciones siguen, no que vayan a fracasar. El impacto económico dependerá de si Escondida recupera capacidad normal y de si el proceso contractual avanza sin nuevas disrupciones.\n\n## Qué observar\n\nLos próximos hitos son el ritmo de recuperación de faenas, nuevas evaluaciones de seguridad, el calendario de negociación colectiva y cualquier comunicación de BHP o de los sindicatos que modifique la continuidad operacional. También será importante contrastar estos eventos con producción minera y actividad regional.",
+    "checkpoints/national.json": {
+      "schemaVersion": 1,
+      "radarRunId": "RADAR-JEV-20260925-1450-B",
+      "sourceMainCommit": "d04b23aacd3e3d7e8fa2108d9a8843731d24c437",
+      "radarStateVersion": "radar-state-v1",
+      "editorialDate": "2026-09-25",
+      "experimentMode": "RADAR_JEV",
+      "mode": "LAB_ONLY",
+      "productionWritesAllowed": false,
+      "phase": "national",
+      "status": "PASS",
+      "completedAt": "2026-09-25T14:43:20-03:00"
+    },
+    "markets/input.json": {
+      "schemaVersion": 1,
+      "radarRunId": "RADAR-JEV-20260925-1450-B",
+      "sourceMainCommit": "d04b23aacd3e3d7e8fa2108d9a8843731d24c437",
+      "radarStateVersion": "radar-state-v1",
+      "editorialDate": "2026-09-25",
+      "experimentMode": "RADAR_JEV",
+      "mode": "LAB_ONLY",
+      "productionWritesAllowed": false,
+      "section": "markets",
+      "startedAt": "2026-09-25T14:43:21-03:00",
+      "frameworkRead": [
+        "AGENTS.md",
+        "docs/PROCEDIMIENTO_GPT_PUBLICACION.md",
+        "docs/CONTRATO_EDITORIAL.md",
+        "data/editorial_state.json"
+      ],
+      "searchQueryIds": [
+        "m-q1",
+        "m-q2",
+        "m-q3"
+      ],
+      "candidateIds": [
+        "m-global-bonds",
+        "m-wallstreet-ai",
+        "m-dollar-fed"
+      ]
+    },
+    "markets/metadata.json": {
+      "schemaVersion": 1,
+      "radarRunId": "RADAR-JEV-20260925-1450-B",
+      "sourceMainCommit": "d04b23aacd3e3d7e8fa2108d9a8843731d24c437",
+      "radarStateVersion": "radar-state-v1",
+      "editorialDate": "2026-09-25",
+      "experimentMode": "RADAR_JEV",
+      "mode": "LAB_ONLY",
+      "productionWritesAllowed": false,
+      "section": "markets",
+      "status": "PASS",
+      "startedAt": "2026-09-25T14:43:21-03:00",
+      "completedAt": "2026-09-25T14:43:55-03:00",
+      "title": "Dólar en máximos de dos meses refuerza la señal de tasas altas",
+      "summary": "El dólar y los Treasury reflejan expectativas de mayor endurecimiento de la Fed, mientras las acciones resisten apoyadas por IA y menor riesgo energético.",
+      "tags": [
+        "mercados"
+      ],
+      "sources": [
+        {
+          "name": "Reuters",
+          "url": "https://www.reuters.com/business/dollar-perched-two-month-high-hot-pmi-fuels-inflation-fears-rate-hike-bets-2026-09-24/",
+          "publishedAt": "2026-09-24T20:00:00Z"
+        },
+        {
+          "name": "Reuters",
+          "url": "https://www.reuters.com/world/china/global-markets-warpup-1-pix-2026-09-25/",
+          "publishedAt": "2026-09-25T10:40:00Z"
+        }
+      ],
+      "highlights": [
+        {
+          "label": "El dólar alcanza máximos de dos meses",
+          "text": "Las expectativas de nuevas alzas de la Fed fortalecieron la moneda estadounidense."
+        },
+        {
+          "label": "Los Treasury mantienen presión financiera",
+          "text": "Los rendimientos elevados siguen encareciendo la tasa de descuento global."
+        },
+        {
+          "label": "Las bolsas resisten de forma selectiva",
+          "text": "IA y expectativas de menor tensión energética compensan parte del impacto de las tasas."
+        }
+      ],
+      "selectedCandidateIds": [
+        "m-dollar-fed"
+      ],
+      "discardedCandidateIds": [
+        "m-global-bonds",
+        "m-wallstreet-ai"
+      ],
+      "outputPath": "lab/radar-editorial/runtime/runs/RADAR-JEV-20260925-1450-B/markets/output.md"
+    },
+    "markets/output.md": "## Desarrollo\n\nEl dólar alcanzó un máximo de dos meses mientras los rendimientos del Treasury permanecieron elevados y aumentaron las expectativas de nuevas alzas de la Reserva Federal. La señal es una actualización del mismo ciclo restrictivo que domina el mercado desde la subida de septiembre: datos de actividad resistentes y preocupación inflacionaria están haciendo que los inversionistas asignen mayor probabilidad a que el endurecimiento continúe.\n\nAl mismo tiempo, las bolsas globales han mostrado resiliencia y Wall Street recibió apoyo del entusiasmo por inteligencia artificial y de las expectativas de negociación en Medio Oriente. Esa combinación no elimina la presión de tasas. Más bien muestra una mayor dispersión entre activos: el dólar y los bonos reflejan política monetaria restrictiva, mientras segmentos de renta variable siguen premiando crecimiento y demanda tecnológica visible.\n\n## Implicancias y riesgos\n\nUn dólar más fuerte y rendimientos altos endurecen las condiciones financieras fuera de Estados Unidos y elevan el costo relativo de financiamiento para economías y empresas expuestas a la moneda estadounidense. Si la Fed mantiene abierta la puerta a nuevas alzas, la presión sobre valorizaciones puede persistir incluso si el petróleo retrocede por una eventual descompresión en Hormuz.\n\nLa principal tensión de mercado está entre inflación y crecimiento. Una caída sostenible de la prima energética aliviaría uno de los argumentos para mayor endurecimiento, pero los datos de actividad y precios siguen siendo necesarios para cambiar la trayectoria esperada de la Fed.\n\n## Qué observar\n\nLos próximos datos de empleo e inflación de Estados Unidos, las intervenciones de autoridades de la Fed y el comportamiento del Treasury a dos, diez y treinta años serán centrales. También habrá que observar si el dólar consolida sus máximos recientes y si una eventual caída del petróleo modifica de forma durable las expectativas de tasas.",
+    "checkpoints/markets.json": {
+      "schemaVersion": 1,
+      "radarRunId": "RADAR-JEV-20260925-1450-B",
+      "sourceMainCommit": "d04b23aacd3e3d7e8fa2108d9a8843731d24c437",
+      "radarStateVersion": "radar-state-v1",
+      "editorialDate": "2026-09-25",
+      "experimentMode": "RADAR_JEV",
+      "mode": "LAB_ONLY",
+      "productionWritesAllowed": false,
+      "phase": "markets",
+      "status": "PASS",
+      "completedAt": "2026-09-25T14:43:55-03:00"
+    },
+    "result.json": {
+      "schemaVersion": 1,
+      "radarRunId": "RADAR-JEV-20260925-1450-B",
+      "sourceMainCommit": "d04b23aacd3e3d7e8fa2108d9a8843731d24c437",
+      "radarStateVersion": "radar-state-v1",
+      "editorialDate": "2026-09-25",
+      "experimentMode": "RADAR_JEV",
+      "mode": "LAB_ONLY",
+      "productionWritesAllowed": false,
+      "status": "PASS",
+      "completedAt": "2026-09-25T14:44:00-03:00",
+      "sections": {
+        "general": {
+          "status": "PASS",
+          "title": "Hormuz ya tiene un calendario negociable para una posible reapertura",
+          "effectOfJev": "CONFIRMED_SELECTION",
+          "preJev": "g-hormuz-7day",
+          "postJev": "g-hormuz-7day"
+        },
+        "national": {
+          "status": "PASS",
+          "title": "Escondida mantiene negociación laboral mientras normaliza operaciones",
+          "effectOfJev": "CHANGED_SELECTION",
+          "preJev": "n-escondida-restart",
+          "postJev": "n-escondida-talks"
+        },
+        "markets": {
+          "status": "PASS",
+          "title": "Dólar en máximos de dos meses refuerza la señal de tasas altas",
+          "effectOfJev": "CHANGED_SELECTION",
+          "preJev": "m-global-bonds",
+          "postJev": "m-dollar-fed"
+        }
+      }
+    },
+    "publish-request.json": {
+      "schemaVersion": 1,
+      "radarRunId": "RADAR-JEV-20260925-1450-B",
+      "sourceMainCommit": "d04b23aacd3e3d7e8fa2108d9a8843731d24c437",
+      "radarStateVersion": "radar-state-v1",
+      "editorialDate": "2026-09-25",
+      "experimentMode": "RADAR_JEV",
+      "mode": "LAB_ONLY",
+      "productionWritesAllowed": false,
+      "status": "READY",
+      "runPath": "lab/radar-editorial/runtime/runs/RADAR-JEV-20260925-1450-B",
+      "resultPath": "lab/radar-editorial/runtime/runs/RADAR-JEV-20260925-1450-B/result.json",
+      "viewPath": "lab/radar-editorial/runtime/runs/RADAR-JEV-20260925-1450-B/index.html"
+    },
+    "index.html": "<!doctype html><html><head><meta charset=\"utf-8\"><title>RADAR-JEV-20260925-1450-B · RADAR_JEV</title></head><body><main><h1>ATLAS NEWS LAB — RADAR-JEV-20260925-1450-B</h1><p>RADAR_JEV · LAB_ONLY · READY</p><h2>General</h2><p>Hormuz ya tiene un calendario negociable para una posible reapertura.</p><h2>Nacional</h2><p>Escondida mantiene negociación laboral mientras normaliza operaciones.</p><h2>Mercados</h2><p>Dólar en máximos de dos meses refuerza la señal de tasas altas.</p></main></body></html>"
+  }
+}
