@@ -1,0 +1,27 @@
+{
+  "schemaVersion": 1,
+  "radarRunId": "RADAR-JEV-CANARY-20260925-1",
+  "sourceMainCommit": "2a901821866a980434b8d7a423266d9c7fcf967d",
+  "radarStateVersion": "radar-state-v1",
+  "editorialDate": "2026-09-25",
+  "experimentMode": "RADAR_JEV",
+  "mode": "LAB_ONLY",
+  "productionWritesAllowed": false,
+  "candidateReviews": [
+    {
+      "candidateKey": "canary-us-china-truce",
+      "section": "general",
+      "title": "Estados Unidos y China extienden su tregua comercial",
+      "description": "La extensión de dos meses de la tregua reduce el riesgo inmediato de una escalada arancelaria, pero mantiene abiertas disputas de tecnología, minerales críticos y seguridad.",
+      "sourceName": "CANARY LAB",
+      "publishedAt": "2026-09-25T12:00:00-03:00",
+      "priors": [
+        {
+          "title": "Washington y Beijing compran tiempo, pero no resuelven su rivalidad",
+          "date": "2026-09-25",
+          "summary": "Trump y Xi extendieron por dos meses la tregua comercial mientras las disputas estructurales siguieron abiertas."
+        }
+      ]
+    }
+  ]
+}

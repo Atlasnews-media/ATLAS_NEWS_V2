@@ -1,0 +1,69 @@
+{
+  "schemaVersion": 1,
+  "radarRunId": "RADAR-JEV-CANARY-20260925-1",
+  "sourceMainCommit": "2a901821866a980434b8d7a423266d9c7fcf967d",
+  "radarStateVersion": "radar-state-v1",
+  "editorialDate": "2026-09-25",
+  "experimentMode": "RADAR_JEV",
+  "mode": "LAB_ONLY",
+  "productionWritesAllowed": false,
+  "engine": "JEV_TYPESAFE",
+  "modelRequested": "jev-latest",
+  "modelObserved": "jev-1.13.0",
+  "thresholdsApplied": false,
+  "generatedAt": "2026-09-25T17:01:29.540Z",
+  "judgments": [
+    {
+      "candidateKey": "canary-us-china-truce",
+      "section": "general",
+      "eventRelation": {
+        "value": "SAME_EVENT",
+        "confidence": 1,
+        "probabilities": {
+          "SAME_EVENT": 1,
+          "NEW_EVENT": 0,
+          "UNRELATED": 0,
+          "UNCERTAIN": 0
+        }
+      },
+      "informationRelation": {
+        "value": "REPETITION",
+        "confidence": 0.69,
+        "probabilities": {
+          "NEW": 0.08,
+          "MEANINGFUL_UPDATE": 0.06,
+          "CONTINUATION": 0.11,
+          "REPETITION": 0.75,
+          "CONTRADICTION": 0,
+          "UNCERTAIN": 0
+        }
+      },
+      "addsNewInformation": {
+        "probability": 0.53,
+        "confidence": null
+      },
+      "historicalContextNeeded": {
+        "probability": 0.33,
+        "confidence": null
+      },
+      "angleRepeated": {
+        "probability": 0.92,
+        "confidence": null
+      }
+    }
+  ],
+  "telemetry": [
+    {
+      "candidateKey": "canary-us-china-truce",
+      "status": 200,
+      "latencyMs": 417.87,
+      "attempts": 1,
+      "usage": {
+        "input_tokens": 992,
+        "output_tokens": 189
+      },
+      "error": null
+    }
+  ],
+  "status": "PASS"
+}
