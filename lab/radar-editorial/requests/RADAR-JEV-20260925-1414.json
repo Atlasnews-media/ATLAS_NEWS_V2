@@ -1,0 +1,766 @@
+{
+  "radarRunId": "RADAR-JEV-20260925-1414",
+  "sourceMainCommit": "2a901821866a980434b8d7a423266d9c7fcf967d",
+  "radarStateVersion": "radar-state-v1",
+  "editorialDate": "2026-09-25",
+  "experimentMode": "RADAR_JEV",
+  "mode": "LAB_ONLY",
+  "productionWritesAllowed": false,
+  "schemaVersion": 1,
+  "createdAt": "2026-09-25T14:18:00-03:00",
+  "producer": "CHATGPT_TASK",
+  "artifacts": {
+    "run.json": {
+      "radarRunId": "RADAR-JEV-20260925-1414",
+      "sourceMainCommit": "2a901821866a980434b8d7a423266d9c7fcf967d",
+      "radarStateVersion": "radar-state-v1",
+      "editorialDate": "2026-09-25",
+      "experimentMode": "RADAR_JEV",
+      "mode": "LAB_ONLY",
+      "productionWritesAllowed": false,
+      "schemaVersion": 1,
+      "startedAt": "2026-09-25T14:14:00-03:00",
+      "completedAt": "2026-09-25T14:18:00-03:00",
+      "memoryMode": "RADAR_PLUS_CORPUS",
+      "radarInterventionUsed": true,
+      "jevUsed": true,
+      "corpusUsed": true,
+      "frameworkRead": [
+        "AGENTS.md",
+        "docs/PROCEDIMIENTO_GPT_PUBLICACION.md",
+        "docs/CONTRATO_EDITORIAL.md",
+        "data/editorial_state.json"
+      ],
+      "phases": {
+        "general": "PASS",
+        "national": "PASS",
+        "markets": "PASS"
+      }
+    },
+    "search-log.json": {
+      "radarRunId": "RADAR-JEV-20260925-1414",
+      "sourceMainCommit": "2a901821866a980434b8d7a423266d9c7fcf967d",
+      "radarStateVersion": "radar-state-v1",
+      "editorialDate": "2026-09-25",
+      "experimentMode": "RADAR_JEV",
+      "mode": "LAB_ONLY",
+      "productionWritesAllowed": false,
+      "schemaVersion": 1,
+      "entries": [
+        {
+          "queryId": "g-q1",
+          "section": "general",
+          "query": "Reuters September 25 2026 US China trade summit latest",
+          "executedAt": "2026-09-25T14:14:00-03:00",
+          "resultCount": 1
+        },
+        {
+          "queryId": "n-q1",
+          "section": "national",
+          "query": "Chile September 25 2026 Banco Central actividad regional",
+          "executedAt": "2026-09-25T14:14:20-03:00",
+          "resultCount": 1
+        },
+        {
+          "queryId": "m-q1",
+          "section": "markets",
+          "query": "Reuters September 25 2026 global equity funds bonds oil",
+          "executedAt": "2026-09-25T14:14:40-03:00",
+          "resultCount": 1
+        }
+      ]
+    },
+    "candidates.json": {
+      "radarRunId": "RADAR-JEV-20260925-1414",
+      "sourceMainCommit": "2a901821866a980434b8d7a423266d9c7fcf967d",
+      "radarStateVersion": "radar-state-v1",
+      "editorialDate": "2026-09-25",
+      "experimentMode": "RADAR_JEV",
+      "mode": "LAB_ONLY",
+      "productionWritesAllowed": false,
+      "schemaVersion": 1,
+      "candidates": [
+        {
+          "candidateId": "g-trade-details",
+          "section": "general",
+          "titleOriginal": "Details on US, China trade talks to come on Monday, says Greer",
+          "sourceName": "Reuters",
+          "sourceUrl": "https://www.reuters.com/world/china/details-us-china-trade-talks-come-monday-says-greer-2026-09-25/",
+          "publishedAt": "2026-09-25T13:29:00Z",
+          "discoveredAt": "2026-09-25T14:14:00-03:00",
+          "description": "Estados Unidos informará el lunes detalles del resultado de las negociaciones comerciales con China tras la cumbre, añadiendo una fecha concreta para conocer el alcance del acuerdo.",
+          "retrievalOrigin": "g-q1",
+          "selected": true,
+          "selectionStage": "selected-final"
+        },
+        {
+          "candidateId": "n-regional-activity",
+          "section": "national",
+          "titleOriginal": "Producto Interno Bruto Regional Segundo Trimestre 2026",
+          "sourceName": "Banco Central de Chile",
+          "sourceUrl": "https://www.bcentral.cl/web/banco-central/contenido/-/detalle/prensa/nota-de-prensa/producto-interno-bruto-regional-segundo-trimestre-2026",
+          "publishedAt": "2026-09-23T08:30:00-03:00",
+          "discoveredAt": "2026-09-25T14:14:20-03:00",
+          "description": "El PIB nacional cayó 0,2% en el segundo trimestre y siete regiones se contrajeron, con incidencia relevante de menor actividad minera y una recuperación territorial desigual.",
+          "retrievalOrigin": "n-q1",
+          "selected": true,
+          "selectionStage": "selected-final"
+        },
+        {
+          "candidateId": "m-equity-inflows",
+          "section": "markets",
+          "titleOriginal": "Global equity funds snap two-week outflow as AI optimism returns",
+          "sourceName": "Reuters",
+          "sourceUrl": "https://www.reuters.com/world/china/global-markets-flows-graphic-2026-09-25/",
+          "publishedAt": "2026-09-25T11:17:00Z",
+          "discoveredAt": "2026-09-25T14:14:40-03:00",
+          "description": "Los fondos globales de renta variable registraron las mayores entradas desde comienzos de julio pese al aumento de rendimientos soberanos, apoyados por optimismo en IA y menor petróleo.",
+          "retrievalOrigin": "m-q1",
+          "selected": true,
+          "selectionStage": "selected-final"
+        }
+      ]
+    },
+    "radar-context.json": {
+      "radarRunId": "RADAR-JEV-20260925-1414",
+      "sourceMainCommit": "2a901821866a980434b8d7a423266d9c7fcf967d",
+      "radarStateVersion": "radar-state-v1",
+      "editorialDate": "2026-09-25",
+      "experimentMode": "RADAR_JEV",
+      "mode": "LAB_ONLY",
+      "productionWritesAllowed": false,
+      "schemaVersion": 1,
+      "signals": [
+        {
+          "id": "us-employment-fed-rates",
+          "topic": "Empleo de Estados Unidos y Reserva Federal",
+          "thesis": "La Fed materializó el giro restrictivo y el foco está en la velocidad y persistencia del nuevo ciclo.",
+          "usedFor": "General y Mercados: distinguir noticias comerciales de la presión monetaria vigente."
+        },
+        {
+          "id": "chile-inflation-activity-rates",
+          "topic": "Inflación, actividad y tasas en Chile",
+          "thesis": "Chile combina demanda débil con riesgos externos de costos y condiciones financieras.",
+          "usedFor": "Nacional: buscar evidencia territorial que refine la debilidad agregada."
+        },
+        {
+          "id": "ai-monetization-selectivity",
+          "topic": "Inteligencia artificial y selectividad bursátil",
+          "thesis": "La monetización y disciplina de capital filtran el entusiasmo por IA.",
+          "usedFor": "Mercados: observar si los flujos confirman apetito selectivo por renta variable."
+        }
+      ]
+    },
+    "corpus-retrieval.json": {
+      "radarRunId": "RADAR-JEV-20260925-1414",
+      "sourceMainCommit": "2a901821866a980434b8d7a423266d9c7fcf967d",
+      "radarStateVersion": "radar-state-v1",
+      "editorialDate": "2026-09-25",
+      "experimentMode": "RADAR_JEV",
+      "mode": "LAB_ONLY",
+      "productionWritesAllowed": false,
+      "schemaVersion": 1,
+      "candidateRetrievals": [
+        {
+          "candidateKey": "g-trade-details",
+          "section": "general",
+          "priors": [
+            {
+              "title": "Washington y Beijing compran tiempo, pero no resuelven su rivalidad",
+              "publishedAt": "2026-09-25T07:42:00-03:00",
+              "summary": "Trump y Xi extendieron por dos meses la tregua comercial entre Estados Unidos y China, mientras las disputas sobre tecnología, Taiwán, minerales críticos y seguridad siguen abiertas.",
+              "path": "src/content/editions/2026-09-25-daily-washington-beijing-compran-tiempo.md"
+            },
+            {
+              "title": "Energía, comercio y tasas endurecen el mapa global",
+              "publishedAt": "2026-09-24T06:44:01-03:00",
+              "summary": "La frágil logística petrolera del Golfo, la cumbre entre Estados Unidos y China y nuevas señales de actividad resistente mantienen abierto un escenario de inflación y tasas altas pese a los avances parciales de oferta.",
+              "path": "src/content/editions/2026-09-24-daily-energia-comercio-y-tasas-endurecen-el-mapa-global.md"
+            },
+            {
+              "title": "Energía y crecimiento reordenan el riesgo global",
+              "publishedAt": "2026-09-23T06:46:00-03:00",
+              "summary": "El alivio parcial en los flujos de crudo de Medio Oriente convive con una escasez persistente de diésel, mientras la eurozona sorprende con mayor actividad y el mundo sigue expuesto a costos energéticos y geopolíticos elevados.",
+              "path": "src/content/editions/2026-09-23-daily-energia-y-crecimiento-reordenan-el-riesgo-global.md"
+            },
+            {
+              "title": "Energía y tasas endurecen el mapa global mientras la diplomacia busca abrir espacio",
+              "publishedAt": "2026-09-22T06:50:00-03:00",
+              "summary": "La presión energética sigue condicionando inflación y política monetaria, mientras Medio Oriente combina riesgo logístico con señales diplomáticas y China y Estados Unidos preparan una cumbre decisiva para el comercio.",
+              "path": "src/content/editions/2026-09-22-daily-energia-y-tasas-endurecen-el-mapa-global.md"
+            },
+            {
+              "title": "Hormuz adapta los flujos sin normalizar el riesgo energético global",
+              "publishedAt": "2026-09-21T06:45:00-03:00",
+              "summary": "El Golfo sostiene más exportaciones mediante transbordos y rutas alternativas, pero el costo logístico, la fragilidad de los corredores y la presión inflacionaria mantienen abierto el shock energético.",
+              "path": "src/content/editions/2026-09-21-daily-hormuz-adapta-flujos-sin-normalizar-riesgo.md"
+            }
+          ]
+        },
+        {
+          "candidateKey": "n-regional-activity",
+          "section": "national",
+          "priors": [
+            {
+              "title": "El Presupuesto 2027 enfrenta una prueba regional: ajustar gasto sin frenar inversión",
+              "publishedAt": "2026-09-25T07:42:00-03:00",
+              "summary": "A días del ingreso del proyecto, los gobiernos regionales piden preservar recursos para obras en ejecución mientras Hacienda prioriza austeridad, infraestructura y empleo.",
+              "path": "src/content/briefings/2026-09-25-national-presupuesto-inversion-regional.md"
+            },
+            {
+              "title": "Construcción pone a prueba la velocidad del plan de empleo",
+              "publishedAt": "2026-09-24T06:44:01-03:00",
+              "summary": "El plan de emergencia para construcción compromete cerca de US$200 millones hasta diciembre; la señal relevante ahora es cuánto logra transformarse en obras ejecutadas y empleo formal en regiones.",
+              "path": "src/content/briefings/2026-09-24-national-empleo-construccion-ejecucion.md"
+            },
+            {
+              "title": "Empleo: la prueba pasa de los anuncios a la ejecución en construcción",
+              "publishedAt": "2026-09-23T06:46:00-03:00",
+              "summary": "El plan de US$200 millones para acelerar obras y vivienda busca responder al desempleo de 9,5%; la señal relevante será cuánto gasto logra convertirse en empleo formal durante el cuarto trimestre.",
+              "path": "src/content/briefings/2026-09-23-national-empleo-construccion-ejecucion.md"
+            },
+            {
+              "title": "Capital extranjero récord en bonos en pesos pone a prueba la resiliencia financiera de Chile",
+              "publishedAt": "2026-09-22T06:51:00-03:00",
+              "summary": "La tenencia extranjera de deuda soberana chilena en pesos alcanzó un récord en agosto, una señal de demanda por activos locales que convive con una economía débil y un entorno externo de tasas altas.",
+              "path": "src/content/briefings/2026-09-22-national-bonos-peso-capital-extranjero.md"
+            },
+            {
+              "title": "Presupuesto 2027 enfrenta la prueba de convertir reasignación fiscal en empleo e inversión",
+              "publishedAt": "2026-09-21T06:45:00-03:00",
+              "summary": "Con margen fiscal estrecho y desempleo elevado, el primer Presupuesto completo del Gobierno prioriza inversión y ministerios ejecutores; la prueba será cuánto gasto logra transformarse en actividad y empleo formal.",
+              "path": "src/content/briefings/2026-09-21-national-presupuesto-empleo-ejecucion.md"
+            }
+          ]
+        },
+        {
+          "candidateKey": "m-equity-inflows",
+          "section": "markets",
+          "priors": [
+            {
+              "title": "Bonos fijan el nuevo precio del riesgo mientras las acciones todavía resisten",
+              "publishedAt": "2026-09-25T07:42:00-03:00",
+              "summary": "El Treasury a diez años supera 5% y eleva la tasa de descuento global, mientras acciones e IA resisten y el petróleo ofrece sólo un alivio parcial.",
+              "path": "src/content/briefings/2026-09-25-markets-bonos-precio-riesgo.md"
+            },
+            {
+              "title": "Tasas sobre 5% devuelven al dólar el mando del mercado",
+              "publishedAt": "2026-09-24T06:44:01-03:00",
+              "summary": "El salto del Treasury a diez años sobre 5%, el petróleo todavía elevado y un dólar en máximos de dos meses endurecen las condiciones financieras mientras las bolsas asiáticas esperan señales de la cumbre Trump-Xi.",
+              "path": "src/content/briefings/2026-09-24-markets-tasas-petroleo-dolar.md"
+            },
+            {
+              "title": "Petróleo cede y la IA lidera, pero las tasas mantienen el filtro de riesgo",
+              "publishedAt": "2026-09-23T06:46:00-03:00",
+              "summary": "Brent baja por sexta sesión ante mejores perspectivas de oferta, mientras tecnología sostiene las bolsas; el dólar firme y el Treasury a diez años bajo 5% muestran que el alivio energético aún convive con condiciones financieras restrictivas.",
+              "path": "src/content/briefings/2026-09-23-markets-petroleo-ia-tasas.md"
+            },
+            {
+              "title": "La IA sostiene el riesgo mientras petróleo y tasas vuelven a imponer un costo",
+              "publishedAt": "2026-09-22T06:52:00-03:00",
+              "summary": "Las tecnológicas extienden el impulso bursátil, pero Brent sobre US$100, Treasury cerca de 5% y un dólar firme mantienen una combinación exigente para el resto de los activos.",
+              "path": "src/content/briefings/2026-09-22-markets-ia-petroleo-tasas.md"
+            },
+            {
+              "title": "Tecnología sostiene el riesgo mientras tasas altas y petróleo separan ganadores de perdedores",
+              "publishedAt": "2026-09-21T06:45:00-03:00",
+              "summary": "Asia avanza liderada por semiconductores y el petróleo retrocede, pero los rendimientos estadounidenses y la expectativa de nuevas alzas de la Fed mantienen elevada la tasa de descuento global.",
+              "path": "src/content/briefings/2026-09-21-markets-tecnologia-tasas-petroleo.md"
+            }
+          ]
+        }
+      ]
+    },
+    "jev-judgments.json": {
+      "schemaVersion": 1,
+      "radarRunId": "RADAR-JEV-20260925-1414",
+      "sourceMainCommit": "2a901821866a980434b8d7a423266d9c7fcf967d",
+      "radarStateVersion": "radar-state-v1",
+      "editorialDate": "2026-09-25",
+      "experimentMode": "RADAR_JEV",
+      "mode": "LAB_ONLY",
+      "productionWritesAllowed": false,
+      "engine": "JEV_TYPESAFE",
+      "modelRequested": "jev-latest",
+      "modelObserved": "jev-1.13.0",
+      "thresholdsApplied": false,
+      "generatedAt": "2026-09-25T17:14:26.109Z",
+      "judgments": [
+        {
+          "candidateKey": "g-trade-details",
+          "section": "general",
+          "eventRelation": {
+            "value": "SAME_EVENT",
+            "confidence": 0.35,
+            "probabilities": {
+              "NEW_EVENT": 0.49,
+              "UNRELATED": 0,
+              "SAME_EVENT": 0.51,
+              "UNCERTAIN": 0
+            }
+          },
+          "informationRelation": {
+            "value": "NEW",
+            "confidence": 0.39,
+            "probabilities": {
+              "CONTINUATION": 0.08,
+              "MEANINGFUL_UPDATE": 0.42,
+              "CONTRADICTION": 0,
+              "NEW": 0.5,
+              "UNCERTAIN": 0,
+              "REPETITION": 0
+            }
+          },
+          "addsNewInformation": {
+            "probability": 0.79,
+            "confidence": null
+          },
+          "historicalContextNeeded": {
+            "probability": 0.45,
+            "confidence": null
+          },
+          "angleRepeated": {
+            "probability": 0.29,
+            "confidence": null
+          }
+        },
+        {
+          "candidateKey": "n-regional-activity",
+          "section": "national",
+          "eventRelation": {
+            "value": "NEW_EVENT",
+            "confidence": 0.96,
+            "probabilities": {
+              "UNRELATED": 0,
+              "SAME_EVENT": 0.03,
+              "UNCERTAIN": 0,
+              "NEW_EVENT": 0.97
+            }
+          },
+          "informationRelation": {
+            "value": "NEW",
+            "confidence": 0.78,
+            "probabilities": {
+              "MEANINGFUL_UPDATE": 0.17,
+              "REPETITION": 0,
+              "CONTINUATION": 0.01,
+              "UNCERTAIN": 0,
+              "CONTRADICTION": 0,
+              "NEW": 0.81
+            }
+          },
+          "addsNewInformation": {
+            "probability": 0.82,
+            "confidence": null
+          },
+          "historicalContextNeeded": {
+            "probability": 0.51,
+            "confidence": null
+          },
+          "angleRepeated": {
+            "probability": 0.34,
+            "confidence": null
+          }
+        },
+        {
+          "candidateKey": "m-equity-inflows",
+          "section": "markets",
+          "eventRelation": {
+            "value": "NEW_EVENT",
+            "confidence": 0.87,
+            "probabilities": {
+              "UNCERTAIN": 0,
+              "UNRELATED": 0,
+              "SAME_EVENT": 0.1,
+              "NEW_EVENT": 0.9
+            }
+          },
+          "informationRelation": {
+            "value": "NEW",
+            "confidence": 0.48,
+            "probabilities": {
+              "REPETITION": 0.01,
+              "CONTRADICTION": 0.06,
+              "NEW": 0.57,
+              "UNCERTAIN": 0,
+              "MEANINGFUL_UPDATE": 0.3,
+              "CONTINUATION": 0.06
+            }
+          },
+          "addsNewInformation": {
+            "probability": 0.72,
+            "confidence": null
+          },
+          "historicalContextNeeded": {
+            "probability": 0.53,
+            "confidence": null
+          },
+          "angleRepeated": {
+            "probability": 0.64,
+            "confidence": null
+          }
+        }
+      ],
+      "telemetry": [
+        {
+          "candidateKey": "g-trade-details",
+          "status": 200,
+          "latencyMs": 197.25,
+          "attempts": 1,
+          "usage": {
+            "input_tokens": 2370,
+            "output_tokens": 186
+          },
+          "error": null
+        },
+        {
+          "candidateKey": "n-regional-activity",
+          "status": 200,
+          "latencyMs": 105.48,
+          "attempts": 1,
+          "usage": {
+            "input_tokens": 2285,
+            "output_tokens": 185
+          },
+          "error": null
+        },
+        {
+          "candidateKey": "m-equity-inflows",
+          "status": 200,
+          "latencyMs": 89.67,
+          "attempts": 1,
+          "usage": {
+            "input_tokens": 2323,
+            "output_tokens": 185
+          },
+          "error": null
+        }
+      ],
+      "status": "PASS"
+    },
+    "general/input.json": {
+      "radarRunId": "RADAR-JEV-20260925-1414",
+      "sourceMainCommit": "2a901821866a980434b8d7a423266d9c7fcf967d",
+      "radarStateVersion": "radar-state-v1",
+      "editorialDate": "2026-09-25",
+      "experimentMode": "RADAR_JEV",
+      "mode": "LAB_ONLY",
+      "productionWritesAllowed": false,
+      "schemaVersion": 1,
+      "section": "general",
+      "startedAt": "2026-09-25T14:15:00-03:00",
+      "frameworkRead": [
+        "AGENTS.md",
+        "docs/PROCEDIMIENTO_GPT_PUBLICACION.md",
+        "docs/CONTRATO_EDITORIAL.md",
+        "data/editorial_state.json"
+      ],
+      "searchQueryIds": [
+        "g-q1"
+      ],
+      "candidateIds": [
+        "g-trade-details"
+      ]
+    },
+    "general/metadata.json": {
+      "radarRunId": "RADAR-JEV-20260925-1414",
+      "sourceMainCommit": "2a901821866a980434b8d7a423266d9c7fcf967d",
+      "radarStateVersion": "radar-state-v1",
+      "editorialDate": "2026-09-25",
+      "experimentMode": "RADAR_JEV",
+      "mode": "LAB_ONLY",
+      "productionWritesAllowed": false,
+      "schemaVersion": 1,
+      "section": "general",
+      "status": "PASS",
+      "startedAt": "2026-09-25T14:15:00-03:00",
+      "completedAt": "2026-09-25T14:16:00-03:00",
+      "title": "Washington y Beijing aplazan la definición: el detalle comercial llegará el lunes",
+      "summary": "Tras extender la tregua, Estados Unidos anticipó que el lunes divulgará detalles de las negociaciones con China. JEV lo clasificó como información nueva sobre el mismo frente, con alto aporte incremental.",
+      "tags": [
+        "estados-unidos",
+        "china",
+        "comercio",
+        "tasas"
+      ],
+      "sources": [
+        {
+          "name": "Reuters — detalles de conversaciones comerciales",
+          "url": "https://www.reuters.com/world/china/details-us-china-trade-talks-come-monday-says-greer-2026-09-25/",
+          "publishedAt": "2026-09-25T13:29:00Z"
+        }
+      ],
+      "highlights": [
+        {
+          "label": "El detalle comercial llegará el lunes",
+          "text": "Washington fijó una próxima fecha concreta para conocer el alcance de las negociaciones con Beijing."
+        },
+        {
+          "label": "La tregua reduce el riesgo inmediato",
+          "text": "La extensión por dos meses evita por ahora una nueva escalada arancelaria entre las dos mayores economías."
+        },
+        {
+          "label": "La definición sigue pendiente",
+          "text": "La cumbre cerró sin resolver las disputas estructurales y el contenido operativo del entendimiento aún debe conocerse."
+        },
+        {
+          "label": "JEV detectó información incremental",
+          "text": "El juicio TypeSafe clasificó la noticia como NEW, aunque vinculada al mismo frente comercial ya publicado."
+        },
+        {
+          "label": "Las tasas siguen condicionando el entorno",
+          "text": "El alivio comercial convive con rendimientos soberanos elevados y una política monetaria global restrictiva."
+        }
+      ],
+      "selectedCandidateIds": [
+        "g-trade-details"
+      ],
+      "discardedCandidateIds": [],
+      "outputPath": "lab/radar-editorial/runtime/runs/RADAR-JEV-20260925-1414/general/output.md"
+    },
+    "general/output.md": "# Washington y Beijing aplazan la definición: el detalle comercial llegará el lunes\n\n## Hecho central\n\nEstados Unidos anticipó que el lunes divulgará detalles del resultado de las negociaciones comerciales con China. La novedad llega después de la extensión por dos meses de la tregua bilateral y desplaza el foco desde el gesto diplomático de la cumbre hacia el contenido operativo que ambas partes estén dispuestas a reconocer.\n\n## En una mirada\n\nEl detalle comercial llegará el lunes. La tregua reduce el riesgo inmediato de escalada arancelaria. La definición estructural sigue pendiente. JEV detectó información incremental sobre el mismo frente. Y las tasas globales continúan condicionando el entorno financiero.\n\n## Por qué importa\n\nLa fecha concreta para conocer los términos permite separar la señal política del contenido económico verificable. Si los detalles incluyen compromisos ejecutables, el alivio puede extenderse a cadenas de suministro y expectativas de inversión. Si predominan fórmulas generales, la rivalidad tecnológica y comercial seguirá siendo el marco dominante.\n\n## Mercados globales\n\nEl frente comercial mejora en el margen, pero no elimina la presión de rendimientos soberanos elevados. Las bolsas han mostrado resiliencia, especialmente en segmentos ligados a inteligencia artificial, mientras los bonos mantienen alto el costo de capital.\n\n## Chile\n\nPara Chile, el canal relevante pasa por expectativas de demanda china, cobre, dólar y condiciones financieras. Un acuerdo más definido puede reducir incertidumbre comercial, aunque no neutraliza el efecto de tasas globales altas.\n\n## Tasas, monedas y commodities\n\nEl mercado sigue mirando el Treasury, el dólar, el petróleo y el cobre. La tregua puede aliviar una prima de riesgo comercial, pero el precio del dinero continúa siendo una restricción independiente.\n\n## Qué observar\n\nEl lunes será clave por el detalle anunciado por Washington: alcance, duración, mecanismos de implementación y cualquier referencia a tecnología o acceso a mercados.",
+    "checkpoints/general.json": {
+      "radarRunId": "RADAR-JEV-20260925-1414",
+      "sourceMainCommit": "2a901821866a980434b8d7a423266d9c7fcf967d",
+      "radarStateVersion": "radar-state-v1",
+      "editorialDate": "2026-09-25",
+      "experimentMode": "RADAR_JEV",
+      "mode": "LAB_ONLY",
+      "productionWritesAllowed": false,
+      "schemaVersion": 1,
+      "phase": "general",
+      "status": "PASS",
+      "completedAt": "2026-09-25T14:16:00-03:00"
+    },
+    "national/input.json": {
+      "radarRunId": "RADAR-JEV-20260925-1414",
+      "sourceMainCommit": "2a901821866a980434b8d7a423266d9c7fcf967d",
+      "radarStateVersion": "radar-state-v1",
+      "editorialDate": "2026-09-25",
+      "experimentMode": "RADAR_JEV",
+      "mode": "LAB_ONLY",
+      "productionWritesAllowed": false,
+      "schemaVersion": 1,
+      "section": "national",
+      "startedAt": "2026-09-25T14:16:01-03:00",
+      "frameworkRead": [
+        "AGENTS.md",
+        "docs/PROCEDIMIENTO_GPT_PUBLICACION.md",
+        "docs/CONTRATO_EDITORIAL.md",
+        "data/editorial_state.json"
+      ],
+      "searchQueryIds": [
+        "n-q1"
+      ],
+      "candidateIds": [
+        "n-regional-activity"
+      ]
+    },
+    "national/metadata.json": {
+      "radarRunId": "RADAR-JEV-20260925-1414",
+      "sourceMainCommit": "2a901821866a980434b8d7a423266d9c7fcf967d",
+      "radarStateVersion": "radar-state-v1",
+      "editorialDate": "2026-09-25",
+      "experimentMode": "RADAR_JEV",
+      "mode": "LAB_ONLY",
+      "productionWritesAllowed": false,
+      "schemaVersion": 1,
+      "section": "national",
+      "status": "PASS",
+      "startedAt": "2026-09-25T14:16:01-03:00",
+      "completedAt": "2026-09-25T14:17:00-03:00",
+      "title": "La debilidad chilena se vuelve territorial: siete regiones retroceden",
+      "summary": "El PIB regional del segundo trimestre muestra contracción en siete regiones y confirma que la desaceleración no es homogénea. JEV lo identificó como evento nuevo frente a los cinco antecedentes recientes.",
+      "tags": [
+        "chile",
+        "regiones",
+        "actividad",
+        "mineria"
+      ],
+      "sources": [
+        {
+          "name": "Banco Central de Chile — PIB Regional II trimestre 2026",
+          "url": "https://www.bcentral.cl/web/banco-central/contenido/-/detalle/prensa/nota-de-prensa/producto-interno-bruto-regional-segundo-trimestre-2026",
+          "publishedAt": "2026-09-23T08:30:00-03:00"
+        }
+      ],
+      "highlights": [
+        {
+          "label": "Siete regiones retroceden",
+          "text": "La contracción territorial muestra que la debilidad agregada se distribuye de manera desigual en el país."
+        },
+        {
+          "label": "Minería pesa en el norte",
+          "text": "La menor actividad minera aparece entre las incidencias relevantes y conecta producción con desempeño regional."
+        },
+        {
+          "label": "JEV detecta novedad",
+          "text": "TypeSafe clasificó el dato regional como NEW_EVENT y NEW frente a los cinco antecedentes nacionales recuperados."
+        }
+      ],
+      "selectedCandidateIds": [
+        "n-regional-activity"
+      ],
+      "discardedCandidateIds": [],
+      "outputPath": "lab/radar-editorial/runtime/runs/RADAR-JEV-20260925-1414/national/output.md"
+    },
+    "national/output.md": "# La debilidad chilena se vuelve territorial: siete regiones retroceden\n\n## Desarrollo\n\nEl PIB regional del segundo trimestre muestra que la desaceleración chilena no puede leerse sólo desde el agregado nacional. Siete de las dieciséis regiones registraron contracciones y la macrozona norte tuvo una incidencia negativa relevante, en un período donde la menor producción minera volvió a pesar sobre la actividad.\n\nLa lectura territorial agrega información al diagnóstico de demanda débil del IPoM. Algunas regiones sostienen mejor el consumo y los servicios, mientras otras quedan más expuestas a minería, inversión y construcción. Esa dispersión importa porque empleo, ingresos y ejecución de proyectos reaccionan de forma distinta según la estructura productiva local.\n\nEl juicio JEV reforzó esa lectura de valor marginal: clasificó el dato como un evento nuevo frente a los cinco antecedentes nacionales recuperados y como información nueva, en vez de una repetición del debate reciente sobre presupuesto y empleo.\n\n## Implicancias y riesgos\n\nUna recuperación nacional puede convivir con regiones rezagadas si la minería, la inversión o la construcción permanecen débiles en territorios específicos. Eso aumenta la importancia de observar ejecución regional y empleo formal, evitando extrapolar una sola cifra nacional a todo el país.\n\nEl riesgo es que la heterogeneidad se prolongue y debilite la transmisión de cualquier mejora agregada. En sentido contrario, una recuperación de producción minera e inversión podría reducir la brecha entre regiones.\n\n## Qué observar\n\nProducción minera, empleo regional, inversión efectiva, construcción, consumo y próximos indicadores de actividad permitirán evaluar si la dispersión comienza a cerrarse o se convierte en una característica más persistente del ciclo.",
+    "checkpoints/national.json": {
+      "radarRunId": "RADAR-JEV-20260925-1414",
+      "sourceMainCommit": "2a901821866a980434b8d7a423266d9c7fcf967d",
+      "radarStateVersion": "radar-state-v1",
+      "editorialDate": "2026-09-25",
+      "experimentMode": "RADAR_JEV",
+      "mode": "LAB_ONLY",
+      "productionWritesAllowed": false,
+      "schemaVersion": 1,
+      "phase": "national",
+      "status": "PASS",
+      "completedAt": "2026-09-25T14:17:00-03:00"
+    },
+    "markets/input.json": {
+      "radarRunId": "RADAR-JEV-20260925-1414",
+      "sourceMainCommit": "2a901821866a980434b8d7a423266d9c7fcf967d",
+      "radarStateVersion": "radar-state-v1",
+      "editorialDate": "2026-09-25",
+      "experimentMode": "RADAR_JEV",
+      "mode": "LAB_ONLY",
+      "productionWritesAllowed": false,
+      "schemaVersion": 1,
+      "section": "markets",
+      "startedAt": "2026-09-25T14:17:01-03:00",
+      "frameworkRead": [
+        "AGENTS.md",
+        "docs/PROCEDIMIENTO_GPT_PUBLICACION.md",
+        "docs/CONTRATO_EDITORIAL.md",
+        "data/editorial_state.json"
+      ],
+      "searchQueryIds": [
+        "m-q1"
+      ],
+      "candidateIds": [
+        "m-equity-inflows"
+      ]
+    },
+    "markets/metadata.json": {
+      "radarRunId": "RADAR-JEV-20260925-1414",
+      "sourceMainCommit": "2a901821866a980434b8d7a423266d9c7fcf967d",
+      "radarStateVersion": "radar-state-v1",
+      "editorialDate": "2026-09-25",
+      "experimentMode": "RADAR_JEV",
+      "mode": "LAB_ONLY",
+      "productionWritesAllowed": false,
+      "schemaVersion": 1,
+      "section": "markets",
+      "status": "PASS",
+      "startedAt": "2026-09-25T14:17:01-03:00",
+      "completedAt": "2026-09-25T14:18:00-03:00",
+      "title": "Los flujos vuelven a acciones pese al castigo de los bonos",
+      "summary": "Los fondos globales de renta variable registraron sus mayores entradas desde julio mientras los rendimientos soberanos siguieron elevados. JEV detectó novedad, aunque con una señal relevante de ángulo repetido.",
+      "tags": [
+        "mercados",
+        "flujos",
+        "acciones",
+        "bonos",
+        "ia"
+      ],
+      "sources": [
+        {
+          "name": "Reuters — flujos globales hacia acciones",
+          "url": "https://www.reuters.com/world/china/global-markets-flows-graphic-2026-09-25/",
+          "publishedAt": "2026-09-25T11:17:00Z"
+        }
+      ],
+      "highlights": [
+        {
+          "label": "Vuelven los flujos",
+          "text": "Los fondos globales de renta variable cortaron dos semanas de salidas con las mayores entradas desde comienzos de julio."
+        },
+        {
+          "label": "Bonos siguen tensos",
+          "text": "El retorno hacia acciones ocurre pese a rendimientos soberanos altos, mostrando una divergencia entre flujos y costo de capital."
+        },
+        {
+          "label": "JEV marca cautela",
+          "text": "TypeSafe detectó información nueva pero también una probabilidad elevada de repetir el ángulo reciente sobre IA y tasas."
+        }
+      ],
+      "selectedCandidateIds": [
+        "m-equity-inflows"
+      ],
+      "discardedCandidateIds": [],
+      "outputPath": "lab/radar-editorial/runtime/runs/RADAR-JEV-20260925-1414/markets/output.md"
+    },
+    "markets/output.md": "# Los flujos vuelven a acciones pese al castigo de los bonos\n\n## Desarrollo\n\nLos fondos globales de renta variable registraron sus mayores entradas desde comienzos de julio y cortaron una racha de dos semanas de salidas. La señal aparece en una semana dominada por el alza de rendimientos soberanos, por lo que el movimiento no representa una relajación general de las condiciones financieras.\n\nEl dato agrega una dimensión de posicionamiento a la resiliencia que ya mostraban los índices. El entusiasmo por inteligencia artificial y el retroceso parcial del petróleo ayudaron a sostener la demanda por acciones, mientras el mercado de bonos siguió elevando la tasa de descuento. Eso permite que ambos movimientos convivan: más dinero entrando a renta variable y, al mismo tiempo, un precio del capital más exigente.\n\nJEV clasificó el candidato como evento nuevo e información nueva, pero asignó una señal relevante a la repetición del ángulo. Editorialmente, por eso el foco no está en volver a decir que IA resiste tasas altas, sino en el cambio observable de flujos después de dos semanas de salidas.\n\n## Implicancias y riesgos\n\nSi las entradas continúan, la renta variable puede sostenerse incluso con bonos tensos, pero la concentración importa. Un mercado dependiente de pocos segmentos de crecimiento sigue vulnerable a otra subida de rendimientos o a una decepción de resultados.\n\nEl principal riesgo es confundir retorno de flujos con relajación monetaria. Mientras los rendimientos permanezcan elevados, el filtro sobre valoraciones, crédito y activos de larga duración continúa activo.\n\n## Qué observar\n\nFlujos semanales hacia acciones y bonos, amplitud del mercado, Treasury a diez años, petróleo y resultados ligados a inteligencia artificial permitirán distinguir entre una rotación sostenible y un rebote concentrado.",
+    "checkpoints/markets.json": {
+      "radarRunId": "RADAR-JEV-20260925-1414",
+      "sourceMainCommit": "2a901821866a980434b8d7a423266d9c7fcf967d",
+      "radarStateVersion": "radar-state-v1",
+      "editorialDate": "2026-09-25",
+      "experimentMode": "RADAR_JEV",
+      "mode": "LAB_ONLY",
+      "productionWritesAllowed": false,
+      "schemaVersion": 1,
+      "phase": "markets",
+      "status": "PASS",
+      "completedAt": "2026-09-25T14:18:00-03:00"
+    },
+    "result.json": {
+      "radarRunId": "RADAR-JEV-20260925-1414",
+      "sourceMainCommit": "2a901821866a980434b8d7a423266d9c7fcf967d",
+      "radarStateVersion": "radar-state-v1",
+      "editorialDate": "2026-09-25",
+      "experimentMode": "RADAR_JEV",
+      "mode": "LAB_ONLY",
+      "productionWritesAllowed": false,
+      "schemaVersion": 1,
+      "status": "PASS",
+      "completedAt": "2026-09-25T14:18:00-03:00",
+      "sections": {
+        "general": {
+          "status": "PASS",
+          "title": "Washington y Beijing aplazan la definición: el detalle comercial llegará el lunes",
+          "candidateCount": 1,
+          "selectedCount": 1,
+          "sourceNames": [
+            "Reuters"
+          ]
+        },
+        "national": {
+          "status": "PASS",
+          "title": "La debilidad chilena se vuelve territorial: siete regiones retroceden",
+          "candidateCount": 1,
+          "selectedCount": 1,
+          "sourceNames": [
+            "Banco Central de Chile"
+          ]
+        },
+        "markets": {
+          "status": "PASS",
+          "title": "Los flujos vuelven a acciones pese al castigo de los bonos",
+          "candidateCount": 1,
+          "selectedCount": 1,
+          "sourceNames": [
+            "Reuters"
+          ]
+        }
+      }
+    },
+    "publish-request.json": {
+      "radarRunId": "RADAR-JEV-20260925-1414",
+      "sourceMainCommit": "2a901821866a980434b8d7a423266d9c7fcf967d",
+      "radarStateVersion": "radar-state-v1",
+      "editorialDate": "2026-09-25",
+      "experimentMode": "RADAR_JEV",
+      "mode": "LAB_ONLY",
+      "productionWritesAllowed": false,
+      "schemaVersion": 1,
+      "status": "READY",
+      "runPath": "lab/radar-editorial/runtime/runs/RADAR-JEV-20260925-1414",
+      "resultPath": "lab/radar-editorial/runtime/runs/RADAR-JEV-20260925-1414/result.json",
+      "viewPath": "lab/radar-editorial/runtime/runs/RADAR-JEV-20260925-1414/index.html",
+      "createdAt": "2026-09-25T14:18:00-03:00"
+    },
+    "index.html": "<!doctype html>\n<html lang=\"es\"><head><meta charset=\"utf-8\"><meta name=\"viewport\" content=\"width=device-width,initial-scale=1\"><title>ATLAS NEWS LAB — RADAR-JEV-20260925-1414</title></head><body><main><p><strong>ATLAS NEWS LAB · RADAR EDITORIAL</strong></p><h1>RADAR_JEV</h1><p>2026-09-25 · RADAR-JEV-20260925-1414</p><p>sourceMainCommit 2a901821866a980434b8d7a423266d9c7fcf967d</p><section><h2>GENERAL LAB</h2><h3>Washington y Beijing aplazan la definición: el detalle comercial llegará el lunes</h3></section><section><h2>NACIONAL LAB</h2><h3>La debilidad chilena se vuelve territorial: siete regiones retroceden</h3></section><section><h2>MERCADOS LAB</h2><h3>Los flujos vuelven a acciones pese al castigo de los bonos</h3></section></main></body></html>\n"
+  }
+}
