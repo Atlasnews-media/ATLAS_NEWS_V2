@@ -1,0 +1,63 @@
+{
+  "radarRunId": "RADAR-BASELINE-20260925-1404",
+  "sourceMainCommit": "2a901821866a980434b8d7a423266d9c7fcf967d",
+  "radarStateVersion": "radar-state-v1",
+  "editorialDate": "2026-09-25",
+  "experimentMode": "BASELINE",
+  "mode": "LAB_ONLY",
+  "productionWritesAllowed": false,
+  "schemaVersion": 1,
+  "section": "markets",
+  "status": "PASS",
+  "startedAt": "2026-09-25T14:08:01-03:00",
+  "completedAt": "2026-09-25T14:10:00-03:00",
+  "title": "Bonos tensos y dólar firme conviven con bolsas globales resilientes",
+  "summary": "Las bolsas globales mantienen resiliencia y vuelven los flujos hacia renta variable, pero los rendimientos soberanos altos continúan endureciendo las condiciones financieras; el petróleo retrocede.",
+  "tags": [
+    "mercados",
+    "bonos",
+    "dolar",
+    "acciones",
+    "petroleo"
+  ],
+  "sources": [
+    {
+      "name": "Reuters — mercados globales",
+      "url": "https://www.reuters.com/world/china/global-markets-warpup-1-pix-2026-09-25/",
+      "publishedAt": "2026-09-25T00:00:00Z"
+    },
+    {
+      "name": "Reuters — semana financiera",
+      "url": "https://www.reuters.com/commentary/reuters-open-interest/bond-storm-trumps-diesel-gambit-muse-effect-financial-week-five-charts-2026-09-25/",
+      "publishedAt": "2026-09-25T00:00:00Z"
+    },
+    {
+      "name": "Banco Central de Chile — indicadores",
+      "url": "https://www.bcentral.cl/en/inicio/-/detalle/index.html",
+      "publishedAt": "2026-09-24T00:00:00-03:00"
+    }
+  ],
+  "highlights": [
+    {
+      "label": "Las bolsas globales resistieron la volatilidad de bonos",
+      "text": "La renta variable mostró mejor tono pese a rendimientos soberanos todavía altos."
+    },
+    {
+      "label": "Las tasas largas siguen siendo el principal freno",
+      "text": "El costo de descuento elevado limita la expansión de múltiplos y endurece el financiamiento."
+    },
+    {
+      "label": "El dólar observado chileno se mantiene cerca de $960",
+      "text": "El nivel sigue reflejando fortaleza global del dólar y sensibilidad local al cobre y a las tasas externas."
+    }
+  ],
+  "selectedCandidateIds": [
+    "m-global",
+    "m-yields",
+    "m-dollar-cl"
+  ],
+  "discardedCandidateIds": [
+    "m-equityflows"
+  ],
+  "outputPath": "lab/radar-editorial/runtime/runs/RADAR-BASELINE-20260925-1404/markets/output.md"
+}

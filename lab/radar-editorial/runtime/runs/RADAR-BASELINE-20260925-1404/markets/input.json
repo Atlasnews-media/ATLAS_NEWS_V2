@@ -7,21 +7,22 @@
   "mode": "LAB_ONLY",
   "productionWritesAllowed": false,
   "schemaVersion": 1,
-  "startedAt": "2026-09-25T14:04:00-03:00",
-  "completedAt": null,
-  "memoryMode": "PRODUCTIVE_READ_ONLY_CONTEXT",
-  "radarInterventionUsed": false,
-  "jevUsed": false,
-  "corpusUsed": false,
+  "section": "markets",
+  "startedAt": "2026-09-25T14:08:01-03:00",
   "frameworkRead": [
     "AGENTS.md",
     "docs/PROCEDIMIENTO_GPT_PUBLICACION.md",
     "docs/CONTRATO_EDITORIAL.md",
     "data/editorial_state.json"
   ],
-  "phases": {
-    "general": "PASS",
-    "national": "PASS",
-    "markets": "PASS"
-  }
+  "searchQueryIds": [
+    "m-q1",
+    "m-q2"
+  ],
+  "candidateIds": [
+    "m-global",
+    "m-yields",
+    "m-dollar-cl",
+    "m-equityflows"
+  ]
 }
