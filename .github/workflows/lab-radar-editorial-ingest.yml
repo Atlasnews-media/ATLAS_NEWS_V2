@@ -74,7 +74,7 @@ jobs:
             remote_path="lab/radar-editorial/runtime/runs/$run_id/jev-judgments.json"
             fetched_runtime_commit="$(git rev-parse FETCH_HEAD)"
             git show "FETCH_HEAD:$remote_path" > "$RUNNER_TEMP/jev-remote.json"
-            node -e 'const fs=require("fs");const r=JSON.parse(fs.readFileSync(process.argv[1],"utf8"));fs.writeFileSync(process.argv[2],JSON.stringify(r.artifacts["jev-judgments.json"],null,2)+"\\n");' "$request" "$RUNNER_TEMP/jev-request-artifact.json"
+            node -e 'const fs=require("fs");const r=JSON.parse(fs.readFileSync(process.argv[1],"utf8"));fs.writeFileSync(process.argv[2],JSON.stringify(r.artifacts["jev-judgments.json"],null,2)+"\n");' "$request" "$RUNNER_TEMP/jev-request-artifact.json"
             if ! cmp -s "$RUNNER_TEMP/jev-remote.json" "$RUNNER_TEMP/jev-request-artifact.json"; then
               echo "RADAR_JEV JUDGMENT IDENTITY: FAIL"
               echo "fetched_runtime_commit=$fetched_runtime_commit"
