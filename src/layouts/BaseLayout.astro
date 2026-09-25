@@ -50,7 +50,7 @@ const siteOrigin = Astro.site ?? Astro.url.origin;
 const canonicalUrl = new URL(Astro.url.pathname, siteOrigin).href;
 const isArticle = /^\/(ediciones|nacional|mercados|lecturas)\/[^/]+\/?$/.test(
   Astro.url.pathname,
-);
+) || /^\/senales\/[^/]+\/[^/]+\/[^/]+\/?$/.test(Astro.url.pathname);
 const generatedSocialImage = isArticle
   ? await socialImageFor(Astro.url.pathname)
   : null;
