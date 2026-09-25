@@ -1,0 +1,42 @@
+{
+  "radarRunId": "RADAR-BASELINE-20260925-1404",
+  "sourceMainCommit": "2a901821866a980434b8d7a423266d9c7fcf967d",
+  "radarStateVersion": "radar-state-v1",
+  "editorialDate": "2026-09-25",
+  "experimentMode": "BASELINE",
+  "mode": "LAB_ONLY",
+  "productionWritesAllowed": false,
+  "schemaVersion": 1,
+  "status": "PASS",
+  "completedAt": "2026-09-25T14:11:00-03:00",
+  "sections": {
+    "general": {
+      "status": "PASS",
+      "title": "Tregua EEUU-China alivia el frente comercial, pero las tasas siguen marcando el pulso global",
+      "candidateCount": 4,
+      "selectedCount": 3,
+      "sourceNames": [
+        "Reuters"
+      ]
+    },
+    "national": {
+      "status": "PASS",
+      "title": "Actividad regional débil confirma una recuperación chilena todavía desigual",
+      "candidateCount": 3,
+      "selectedCount": 2,
+      "sourceNames": [
+        "Banco Central de Chile"
+      ]
+    },
+    "markets": {
+      "status": "PASS",
+      "title": "Bonos tensos y dólar firme conviven con bolsas globales resilientes",
+      "candidateCount": 4,
+      "selectedCount": 3,
+      "sourceNames": [
+        "Reuters",
+        "Banco Central de Chile"
+      ]
+    }
+  }
+}

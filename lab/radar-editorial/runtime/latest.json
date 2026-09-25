@@ -1,16 +1,16 @@
 {
   "schemaVersion": 2,
-  "radarRunId": "RADAR-BASELINE-20260925-1223",
-  "sourceMainCommit": "177ad4bf9fd4140816531c3d870ed0ec9a2f815a",
+  "radarRunId": "RADAR-BASELINE-20260925-1404",
+  "sourceMainCommit": "2a901821866a980434b8d7a423266d9c7fcf967d",
   "radarStateVersion": "radar-state-v1",
   "editorialDate": "2026-09-25",
   "mode": "LAB_ONLY",
   "experimentMode": "BASELINE",
   "status": "READY",
   "productionWritesAllowed": false,
-  "runPath": "lab/radar-editorial/runtime/runs/RADAR-BASELINE-20260925-1223",
-  "resultPath": "lab/radar-editorial/runtime/runs/RADAR-BASELINE-20260925-1223/result.json",
-  "publishRequestPath": "lab/radar-editorial/runtime/runs/RADAR-BASELINE-20260925-1223/publish-request.json",
-  "viewPath": "lab/radar-editorial/runtime/runs/RADAR-BASELINE-20260925-1223/index.html",
+  "runPath": "lab/radar-editorial/runtime/runs/RADAR-BASELINE-20260925-1404",
+  "resultPath": "lab/radar-editorial/runtime/runs/RADAR-BASELINE-20260925-1404/result.json",
+  "publishRequestPath": "lab/radar-editorial/runtime/runs/RADAR-BASELINE-20260925-1404/publish-request.json",
+  "viewPath": "lab/radar-editorial/runtime/runs/RADAR-BASELINE-20260925-1404/index.html",
   "message": "ATLAS NEWS LAB baseline READY"
 }
