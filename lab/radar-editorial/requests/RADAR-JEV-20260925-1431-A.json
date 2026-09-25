@@ -1,0 +1,1153 @@
+{
+  "schemaVersion": 1,
+  "radarRunId": "RADAR-JEV-20260925-1431-A",
+  "sourceMainCommit": "d04b23aacd3e3d7e8fa2108d9a8843731d24c437",
+  "radarStateVersion": "radar-state-v1",
+  "editorialDate": "2026-09-25",
+  "experimentMode": "RADAR_JEV",
+  "mode": "LAB_ONLY",
+  "productionWritesAllowed": false,
+  "createdAt": "2026-09-25T14:38:30-03:00",
+  "producer": "CHATGPT_TASK",
+  "artifacts": {
+    "run.json": {
+      "schemaVersion": 1,
+      "radarRunId": "RADAR-JEV-20260925-1431-A",
+      "sourceMainCommit": "d04b23aacd3e3d7e8fa2108d9a8843731d24c437",
+      "radarStateVersion": "radar-state-v1",
+      "editorialDate": "2026-09-25",
+      "experimentMode": "RADAR_JEV",
+      "mode": "LAB_ONLY",
+      "productionWritesAllowed": false,
+      "startedAt": "2026-09-25T14:31:00-03:00",
+      "completedAt": "2026-09-25T14:38:30-03:00",
+      "memoryMode": "RADAR_PLUS_CORPUS",
+      "radarInterventionUsed": true,
+      "jevUsed": true,
+      "corpusUsed": true,
+      "frameworkRead": [
+        "AGENTS.md",
+        "docs/PROCEDIMIENTO_GPT_PUBLICACION.md",
+        "docs/CONTRATO_EDITORIAL.md",
+        "data/editorial_state.json"
+      ],
+      "phases": {
+        "general": "PASS",
+        "national": "PASS",
+        "markets": "PASS"
+      }
+    },
+    "search-log.json": {
+      "schemaVersion": 1,
+      "radarRunId": "RADAR-JEV-20260925-1431-A",
+      "sourceMainCommit": "d04b23aacd3e3d7e8fa2108d9a8843731d24c437",
+      "radarStateVersion": "radar-state-v1",
+      "editorialDate": "2026-09-25",
+      "experimentMode": "RADAR_JEV",
+      "mode": "LAB_ONLY",
+      "productionWritesAllowed": false,
+      "entries": [
+        {
+          "queryId": "g-q1",
+          "section": "general",
+          "query": "September 25 2026 Trump Xi summit outcome Reuters trade AI China Washington",
+          "executedAt": "2026-09-25T14:31:30-03:00",
+          "resultCount": 5
+        },
+        {
+          "queryId": "g-q2",
+          "section": "general",
+          "query": "September 25 2026 Iran peace negotiations oil Reuters Middle East deal",
+          "executedAt": "2026-09-25T14:31:31-03:00",
+          "resultCount": 4
+        },
+        {
+          "queryId": "g-q3",
+          "section": "general",
+          "query": "September 25 2026 AI deal Anthropic Akamai Microsoft Reuters",
+          "executedAt": "2026-09-25T14:31:32-03:00",
+          "resultCount": 4
+        },
+        {
+          "queryId": "n-q1",
+          "section": "national",
+          "query": "Chile September 25 2026 BHP Escondida economy Reuters",
+          "executedAt": "2026-09-25T14:31:33-03:00",
+          "resultCount": 2
+        },
+        {
+          "queryId": "n-q2",
+          "section": "national",
+          "query": "Chile September 2026 central bank economy growth Reuters latest Chile",
+          "executedAt": "2026-09-25T14:31:34-03:00",
+          "resultCount": 4
+        },
+        {
+          "queryId": "m-q1",
+          "section": "markets",
+          "query": "September 25 2026 stocks bonds oil dollar markets Reuters",
+          "executedAt": "2026-09-25T14:31:35-03:00",
+          "resultCount": 8
+        },
+        {
+          "queryId": "m-q2",
+          "section": "markets",
+          "query": "September 25 2026 Wall Street AI enthusiasm yields Reuters",
+          "executedAt": "2026-09-25T14:31:36-03:00",
+          "resultCount": 4
+        }
+      ]
+    },
+    "candidates.json": {
+      "schemaVersion": 1,
+      "radarRunId": "RADAR-JEV-20260925-1431-A",
+      "sourceMainCommit": "d04b23aacd3e3d7e8fa2108d9a8843731d24c437",
+      "radarStateVersion": "radar-state-v1",
+      "editorialDate": "2026-09-25",
+      "experimentMode": "RADAR_JEV",
+      "mode": "LAB_ONLY",
+      "productionWritesAllowed": false,
+      "candidates": [
+        {
+          "candidateId": "g-trump-xi",
+          "section": "general",
+          "titleOriginal": "Trump-Xi summit in Washington features great fanfare but low expectations",
+          "sourceName": "Reuters",
+          "sourceUrl": "https://www.internazionale.it/ultime-notizie-reuters/2026/09/25/trump-welcomes-xi-to-washington-looking-for-a-trade-win",
+          "publishedAt": "2026-09-25T04:00:00Z",
+          "discoveredAt": "2026-09-25T14:31:40-03:00",
+          "description": "La cumbre extendió por dos meses la tregua comercial, pero dejó sin resolver disputas estructurales sobre tecnología, comercio y Taiwán.",
+          "retrievalOrigin": "g-q1",
+          "selected": false,
+          "selectionStage": "screened-out"
+        },
+        {
+          "candidateId": "g-us-iran-hormuz",
+          "section": "general",
+          "titleOriginal": "US and Iran discuss phased deal to reopen Hormuz and end US blockade, sources say",
+          "sourceName": "Reuters",
+          "sourceUrl": "https://www.investing.com/news/commodities-news/us-and-iran-discuss-phased-deal-to-reopen-hormuz-and-end-us-blockade-sources-say-4915884",
+          "publishedAt": "2026-09-24T16:17:00Z",
+          "discoveredAt": "2026-09-25T14:31:40-03:00",
+          "description": "Negociadores de Estados Unidos e Irán exploran una salida por fases que vincula reapertura de Hormuz y alivio del bloqueo económico estadounidense.",
+          "retrievalOrigin": "g-q2",
+          "selected": true,
+          "selectionStage": "selected-final"
+        },
+        {
+          "candidateId": "g-anthropic-akamai",
+          "section": "general",
+          "titleOriginal": "Akamai Announces $11.6 Billion Multi-year Agreement with Anthropic to Support Growing Demand",
+          "sourceName": "Akamai",
+          "sourceUrl": "https://www.akamai.com/newsroom/press-release/akamai-announces-11-6-billion-multi-year-agreement-with-anthropic-to-support-growing-demand",
+          "publishedAt": "2026-09-24T20:01:00Z",
+          "discoveredAt": "2026-09-25T14:31:40-03:00",
+          "description": "Anthropic comprometió US$11.600 millones a siete años con Akamai, con opción de ampliar el acuerdo en hasta US$9.000 millones adicionales.",
+          "retrievalOrigin": "g-q3",
+          "selected": false,
+          "selectionStage": "screened-out"
+        },
+        {
+          "candidateId": "n-escondida-restart",
+          "section": "national",
+          "titleOriginal": "Chile's Escondida mine gradually resumes operations after fatal accident",
+          "sourceName": "Reuters",
+          "sourceUrl": "https://www.reuters.com/world/americas/chiles-escondida-mine-gradually-resumes-operations-after-fatal-accident-2026-09-25/",
+          "publishedAt": "2026-09-25T00:22:00Z",
+          "discoveredAt": "2026-09-25T14:31:40-03:00",
+          "description": "Escondida inició una reanudación progresiva de operaciones después del accidente fatal que obligó a suspender faenas, mientras continúan las evaluaciones de seguridad.",
+          "retrievalOrigin": "n-q1",
+          "selected": true,
+          "selectionStage": "selected-final"
+        },
+        {
+          "candidateId": "n-regional-gdp",
+          "section": "national",
+          "titleOriginal": "Producto Interno Bruto Regional Segundo Trimestre 2026",
+          "sourceName": "Banco Central de Chile",
+          "sourceUrl": "https://www.bcentral.cl/web/banco-central/contenido/-/detalle/prensa/nota-de-prensa/producto-interno-bruto-regional-segundo-trimestre-2026",
+          "publishedAt": "2026-09-23T11:30:00Z",
+          "discoveredAt": "2026-09-25T14:31:40-03:00",
+          "description": "El PIB nacional cayó 0,2% en el segundo trimestre y siete regiones se contrajeron, con incidencia negativa relevante de la macrozona norte.",
+          "retrievalOrigin": "n-q2",
+          "selected": false,
+          "selectionStage": "screened-out"
+        },
+        {
+          "candidateId": "n-ipom",
+          "section": "national",
+          "titleOriginal": "Resumen IPoM septiembre 2026",
+          "sourceName": "Banco Central de Chile",
+          "sourceUrl": "https://www.bcentral.cl/resumen-ipom/-/detalle/resumen-ipom-septiembre-2026",
+          "publishedAt": "2026-09-09T03:00:00Z",
+          "discoveredAt": "2026-09-25T14:31:40-03:00",
+          "description": "El IPoM redujo el rango de crecimiento 2026 a 0,25%-0,75% y destacó debilidad de demanda, empleo y producción minera.",
+          "retrievalOrigin": "n-q2",
+          "selected": false,
+          "selectionStage": "screened-out"
+        },
+        {
+          "candidateId": "m-bond-storm",
+          "section": "markets",
+          "titleOriginal": "Morning Bid: Bonds steal the show",
+          "sourceName": "Reuters",
+          "sourceUrl": "https://www.reuters.com/commentary/reuters-open-interest/global-markets-view-usa-2026-09-25/",
+          "publishedAt": "2026-09-25T10:40:00Z",
+          "discoveredAt": "2026-09-25T14:31:40-03:00",
+          "description": "Los bonos dominaron la semana financiera con rendimientos elevados, manteniendo presión sobre valorizaciones y condiciones financieras globales.",
+          "retrievalOrigin": "m-q1",
+          "selected": false,
+          "selectionStage": "screened-out"
+        },
+        {
+          "candidateId": "m-ai-equities",
+          "section": "markets",
+          "titleOriginal": "Wall St edges up as AI enthusiasm, Mideast negotiation hopes",
+          "sourceName": "Reuters",
+          "sourceUrl": "https://www.reuters.com/business/wall-st-futures-gain-ai-enthusiasm-eases-worries-over-higher-oil-prices-yields-2026-09-25/",
+          "publishedAt": "2026-09-25T14:00:00Z",
+          "discoveredAt": "2026-09-25T14:31:40-03:00",
+          "description": "Wall Street avanzó modestamente porque el renovado entusiasmo por IA y la baja del petróleo compensaron parte de la presión de los rendimientos altos.",
+          "retrievalOrigin": "m-q2",
+          "selected": true,
+          "selectionStage": "selected-final"
+        },
+        {
+          "candidateId": "m-dollar-rates",
+          "section": "markets",
+          "titleOriginal": "Dollar ascends to fresh 2-month high on inflation worry, Fed hike expectations",
+          "sourceName": "Reuters",
+          "sourceUrl": "https://www.reuters.com/business/dollar-perched-two-month-high-hot-pmi-fuels-inflation-fears-rate-hike-bets-2026-09-24/",
+          "publishedAt": "2026-09-24T20:00:00Z",
+          "discoveredAt": "2026-09-25T14:31:40-03:00",
+          "description": "El dólar tocó máximos de dos meses mientras subieron los rendimientos del Treasury y se reforzaron las expectativas de nuevas alzas de la Fed.",
+          "retrievalOrigin": "m-q1",
+          "selected": false,
+          "selectionStage": "screened-out"
+        }
+      ]
+    },
+    "radar-context.json": {
+      "schemaVersion": 1,
+      "radarRunId": "RADAR-JEV-20260925-1431-A",
+      "sourceMainCommit": "d04b23aacd3e3d7e8fa2108d9a8843731d24c437",
+      "radarStateVersion": "radar-state-v1",
+      "editorialDate": "2026-09-25",
+      "experimentMode": "RADAR_JEV",
+      "mode": "LAB_ONLY",
+      "productionWritesAllowed": false,
+      "signals": [
+        {
+          "id": "r1",
+          "thread": "oil-geopolitics-inflation",
+          "signal": "Hormuz sigue siendo un riesgo activo; buscar cambios que alteren el equilibrio entre disrupción y adaptación logística."
+        },
+        {
+          "id": "r2",
+          "thread": "us-employment-fed-rates",
+          "signal": "La Fed ya giró a endurecimiento; evitar repetir una lectura de tasas salvo información incremental."
+        },
+        {
+          "id": "r3",
+          "thread": "ai-monetization-selectivity",
+          "signal": "IA requiere distinguir demanda final nueva de repetición temática y estructuras de financiamiento."
+        },
+        {
+          "id": "r4",
+          "thread": "chile-inflation-activity-rates",
+          "signal": "La debilidad chilena ya está documentada; priorizar hechos domésticos nuevos frente a reiteraciones del IPoM."
+        }
+      ],
+      "preJevProvisional": {
+        "general": {
+          "candidateId": "g-trump-xi",
+          "reason": "Era el hecho internacional de mayor visibilidad inmediata y la tregua comercial tenía transmisión global."
+        },
+        "national": {
+          "candidateId": "n-regional-gdp",
+          "reason": "Era la evidencia macro doméstica más reciente y amplia del baseline previo."
+        },
+        "markets": {
+          "candidateId": "m-bond-storm",
+          "reason": "Los rendimientos soberanos eran el factor cross-asset dominante del baseline previo."
+        }
+      }
+    },
+    "corpus-retrieval.json": {
+      "schemaVersion": 1,
+      "radarRunId": "RADAR-JEV-20260925-1431-A",
+      "sourceMainCommit": "d04b23aacd3e3d7e8fa2108d9a8843731d24c437",
+      "radarStateVersion": "radar-state-v1",
+      "editorialDate": "2026-09-25",
+      "experimentMode": "RADAR_JEV",
+      "mode": "LAB_ONLY",
+      "productionWritesAllowed": false,
+      "candidateRetrievals": [
+        {
+          "candidateId": "g-trump-xi",
+          "priors": [
+            "Baseline LAB del mismo día ya seleccionó la extensión de tregua Trump-Xi.",
+            "No existe hilo activo específico de comercio EEUU-China en editorial_state."
+          ]
+        },
+        {
+          "candidateId": "g-us-iran-hormuz",
+          "priors": [
+            "oil-geopolitics-inflation: shock energético activo y tráfico excepcionalmente bajo por Hormuz.",
+            "Última evidencia: adaptación saudí vía Omán alivia oferta sin normalizar el estrecho."
+          ]
+        },
+        {
+          "candidateId": "g-anthropic-akamai",
+          "priors": [
+            "ai-monetization-selectivity: demanda IA validada, pero disciplina de capital y transparencia de demanda son filtros activos."
+          ]
+        },
+        {
+          "candidateId": "n-escondida-restart",
+          "priors": [
+            "chile-inflation-activity-rates: actividad débil y menor producción minera forman parte del escenario doméstico.",
+            "Baseline previo se concentró en PIB regional, no en este accidente/reinicio."
+          ]
+        },
+        {
+          "candidateId": "n-regional-gdp",
+          "priors": [
+            "Baseline LAB del mismo día ya seleccionó exactamente este dato.",
+            "La tesis activa ya registra debilidad de actividad chilena."
+          ]
+        },
+        {
+          "candidateId": "n-ipom",
+          "priors": [
+            "editorial_state ya incorpora rango 0,25%-0,75%, IPC de agosto y demanda débil.",
+            "Lectura del 14-09 ya publicó señales cruzadas de Chile."
+          ]
+        },
+        {
+          "candidateId": "m-bond-storm",
+          "priors": [
+            "Baseline LAB del mismo día ya usó bonos tensos como eje de Mercados.",
+            "us-employment-fed-rates ya mantiene Treasury y Fed como watch."
+          ]
+        },
+        {
+          "candidateId": "m-ai-equities",
+          "priors": [
+            "Baseline previo había descartado flujos IA frente a bonos/dólar.",
+            "Nueva sesión incorpora acuerdo Akamai-Anthropic y resiliencia accionaria frente a yields."
+          ]
+        },
+        {
+          "candidateId": "m-dollar-rates",
+          "priors": [
+            "Baseline final ya tituló sobre dólar firme y bonos tensos.",
+            "Fed tightening y dólar ya forman parte del hilo activo."
+          ]
+        }
+      ]
+    },
+    "jev-judgments.json": {
+      "schemaVersion": 1,
+      "radarRunId": "RADAR-JEV-20260925-1431-A",
+      "sourceMainCommit": "d04b23aacd3e3d7e8fa2108d9a8843731d24c437",
+      "radarStateVersion": "radar-state-v1",
+      "editorialDate": "2026-09-25",
+      "experimentMode": "RADAR_JEV",
+      "mode": "LAB_ONLY",
+      "productionWritesAllowed": false,
+      "engine": "JEV_TYPESAFE",
+      "modelRequested": "jev-latest",
+      "modelObserved": "jev-1.13.0",
+      "thresholdsApplied": false,
+      "generatedAt": "2026-09-25T17:33:29.632Z",
+      "judgments": [
+        {
+          "candidateKey": "g-trump-xi",
+          "section": "general",
+          "eventRelation": {
+            "value": "SAME_EVENT",
+            "confidence": 0.99,
+            "probabilities": {
+              "UNRELATED": 0,
+              "SAME_EVENT": 1,
+              "NEW_EVENT": 0,
+              "UNCERTAIN": 0
+            }
+          },
+          "informationRelation": {
+            "value": "NEW",
+            "confidence": 0.26,
+            "probabilities": {
+              "REPETITION": 0.15,
+              "CONTINUATION": 0.1,
+              "MEANINGFUL_UPDATE": 0.37,
+              "NEW": 0.38,
+              "UNCERTAIN": 0,
+              "CONTRADICTION": 0
+            }
+          },
+          "addsNewInformation": {
+            "probability": 0.81,
+            "confidence": null
+          },
+          "historicalContextNeeded": {
+            "probability": 0.43,
+            "confidence": null
+          },
+          "angleRepeated": {
+            "probability": 0.58,
+            "confidence": null
+          }
+        },
+        {
+          "candidateKey": "g-us-iran-hormuz",
+          "section": "general",
+          "eventRelation": {
+            "value": "NEW_EVENT",
+            "confidence": 0.7,
+            "probabilities": {
+              "UNRELATED": 0,
+              "UNCERTAIN": 0,
+              "SAME_EVENT": 0.22,
+              "NEW_EVENT": 0.78
+            }
+          },
+          "informationRelation": {
+            "value": "NEW",
+            "confidence": 0.42,
+            "probabilities": {
+              "REPETITION": 0,
+              "MEANINGFUL_UPDATE": 0.47,
+              "UNCERTAIN": 0,
+              "CONTRADICTION": 0,
+              "NEW": 0.52,
+              "CONTINUATION": 0.01
+            }
+          },
+          "addsNewInformation": {
+            "probability": 0.85,
+            "confidence": null
+          },
+          "historicalContextNeeded": {
+            "probability": 0.62,
+            "confidence": null
+          },
+          "angleRepeated": {
+            "probability": 0.5,
+            "confidence": null
+          }
+        },
+        {
+          "candidateKey": "g-anthropic-akamai",
+          "section": "general",
+          "eventRelation": {
+            "value": "NEW_EVENT",
+            "confidence": 0.95,
+            "probabilities": {
+              "SAME_EVENT": 0.03,
+              "UNRELATED": 0,
+              "NEW_EVENT": 0.97,
+              "UNCERTAIN": 0
+            }
+          },
+          "informationRelation": {
+            "value": "NEW",
+            "confidence": 0.88,
+            "probabilities": {
+              "REPETITION": 0.01,
+              "CONTINUATION": 0.01,
+              "CONTRADICTION": 0,
+              "MEANINGFUL_UPDATE": 0.08,
+              "NEW": 0.9,
+              "UNCERTAIN": 0
+            }
+          },
+          "addsNewInformation": {
+            "probability": 0.88,
+            "confidence": null
+          },
+          "historicalContextNeeded": {
+            "probability": 0.54,
+            "confidence": null
+          },
+          "angleRepeated": {
+            "probability": 0.46,
+            "confidence": null
+          }
+        },
+        {
+          "candidateKey": "n-escondida-restart",
+          "section": "national",
+          "eventRelation": {
+            "value": "NEW_EVENT",
+            "confidence": 0.86,
+            "probabilities": {
+              "UNCERTAIN": 0,
+              "NEW_EVENT": 0.9,
+              "SAME_EVENT": 0.09,
+              "UNRELATED": 0.01
+            }
+          },
+          "informationRelation": {
+            "value": "NEW",
+            "confidence": 0.55,
+            "probabilities": {
+              "CONTRADICTION": 0,
+              "UNCERTAIN": 0,
+              "NEW": 0.63,
+              "REPETITION": 0.02,
+              "CONTINUATION": 0.04,
+              "MEANINGFUL_UPDATE": 0.31
+            }
+          },
+          "addsNewInformation": {
+            "probability": 0.82,
+            "confidence": null
+          },
+          "historicalContextNeeded": {
+            "probability": 0.52,
+            "confidence": null
+          },
+          "angleRepeated": {
+            "probability": 0.44,
+            "confidence": null
+          }
+        },
+        {
+          "candidateKey": "n-regional-gdp",
+          "section": "national",
+          "eventRelation": {
+            "value": "SAME_EVENT",
+            "confidence": 1,
+            "probabilities": {
+              "UNCERTAIN": 0,
+              "UNRELATED": 0,
+              "NEW_EVENT": 0,
+              "SAME_EVENT": 1
+            }
+          },
+          "informationRelation": {
+            "value": "REPETITION",
+            "confidence": 0.72,
+            "probabilities": {
+              "REPETITION": 0.76,
+              "MEANINGFUL_UPDATE": 0.03,
+              "UNCERTAIN": 0.01,
+              "CONTRADICTION": 0,
+              "NEW": 0.15,
+              "CONTINUATION": 0.05
+            }
+          },
+          "addsNewInformation": {
+            "probability": 0.46,
+            "confidence": null
+          },
+          "historicalContextNeeded": {
+            "probability": 0.42,
+            "confidence": null
+          },
+          "angleRepeated": {
+            "probability": 0.75,
+            "confidence": null
+          }
+        },
+        {
+          "candidateKey": "n-ipom",
+          "section": "national",
+          "eventRelation": {
+            "value": "SAME_EVENT",
+            "confidence": 0.9,
+            "probabilities": {
+              "UNCERTAIN": 0,
+              "NEW_EVENT": 0.07,
+              "SAME_EVENT": 0.93,
+              "UNRELATED": 0
+            }
+          },
+          "informationRelation": {
+            "value": "REPETITION",
+            "confidence": 0.72,
+            "probabilities": {
+              "REPETITION": 0.77,
+              "NEW": 0.06,
+              "CONTINUATION": 0.13,
+              "UNCERTAIN": 0,
+              "MEANINGFUL_UPDATE": 0.04,
+              "CONTRADICTION": 0
+            }
+          },
+          "addsNewInformation": {
+            "probability": 0.34,
+            "confidence": null
+          },
+          "historicalContextNeeded": {
+            "probability": 0.34,
+            "confidence": null
+          },
+          "angleRepeated": {
+            "probability": 0.87,
+            "confidence": null
+          }
+        },
+        {
+          "candidateKey": "m-bond-storm",
+          "section": "markets",
+          "eventRelation": {
+            "value": "SAME_EVENT",
+            "confidence": 0.99,
+            "probabilities": {
+              "NEW_EVENT": 0.01,
+              "UNRELATED": 0,
+              "SAME_EVENT": 0.99,
+              "UNCERTAIN": 0
+            }
+          },
+          "informationRelation": {
+            "value": "REPETITION",
+            "confidence": 0.43,
+            "probabilities": {
+              "REPETITION": 0.52,
+              "CONTINUATION": 0.33,
+              "CONTRADICTION": 0,
+              "MEANINGFUL_UPDATE": 0.12,
+              "UNCERTAIN": 0,
+              "NEW": 0.03
+            }
+          },
+          "addsNewInformation": {
+            "probability": 0.58,
+            "confidence": null
+          },
+          "historicalContextNeeded": {
+            "probability": 0.4,
+            "confidence": null
+          },
+          "angleRepeated": {
+            "probability": 0.93,
+            "confidence": null
+          }
+        },
+        {
+          "candidateKey": "m-ai-equities",
+          "section": "markets",
+          "eventRelation": {
+            "value": "NEW_EVENT",
+            "confidence": 0.69,
+            "probabilities": {
+              "NEW_EVENT": 0.77,
+              "UNRELATED": 0,
+              "UNCERTAIN": 0,
+              "SAME_EVENT": 0.23
+            }
+          },
+          "informationRelation": {
+            "value": "NEW",
+            "confidence": 0.4,
+            "probabilities": {
+              "CONTINUATION": 0.18,
+              "MEANINGFUL_UPDATE": 0.23,
+              "CONTRADICTION": 0.04,
+              "NEW": 0.51,
+              "UNCERTAIN": 0,
+              "REPETITION": 0.04
+            }
+          },
+          "addsNewInformation": {
+            "probability": 0.75,
+            "confidence": null
+          },
+          "historicalContextNeeded": {
+            "probability": 0.5,
+            "confidence": null
+          },
+          "angleRepeated": {
+            "probability": 0.58,
+            "confidence": null
+          }
+        },
+        {
+          "candidateKey": "m-dollar-rates",
+          "section": "markets",
+          "eventRelation": {
+            "value": "SAME_EVENT",
+            "confidence": 0.61,
+            "probabilities": {
+              "NEW_EVENT": 0.29,
+              "UNRELATED": 0,
+              "UNCERTAIN": 0,
+              "SAME_EVENT": 0.71
+            }
+          },
+          "informationRelation": {
+            "value": "CONTINUATION",
+            "confidence": 0.24,
+            "probabilities": {
+              "NEW": 0.09,
+              "REPETITION": 0.23,
+              "UNCERTAIN": 0,
+              "MEANINGFUL_UPDATE": 0.31,
+              "CONTRADICTION": 0,
+              "CONTINUATION": 0.37
+            }
+          },
+          "addsNewInformation": {
+            "probability": 0.61,
+            "confidence": null
+          },
+          "historicalContextNeeded": {
+            "probability": 0.38,
+            "confidence": null
+          },
+          "angleRepeated": {
+            "probability": 0.88,
+            "confidence": null
+          }
+        }
+      ],
+      "telemetry": [
+        {
+          "candidateKey": "g-trump-xi",
+          "status": 200,
+          "latencyMs": 305.51,
+          "attempts": 1,
+          "usage": {
+            "input_tokens": 1107,
+            "output_tokens": 186
+          },
+          "error": null
+        },
+        {
+          "candidateKey": "g-us-iran-hormuz",
+          "status": 200,
+          "latencyMs": 127.03,
+          "attempts": 1,
+          "usage": {
+            "input_tokens": 1094,
+            "output_tokens": 185
+          },
+          "error": null
+        },
+        {
+          "candidateKey": "g-anthropic-akamai",
+          "status": 200,
+          "latencyMs": 78.73,
+          "attempts": 1,
+          "usage": {
+            "input_tokens": 1071,
+            "output_tokens": 185
+          },
+          "error": null
+        },
+        {
+          "candidateKey": "n-escondida-restart",
+          "status": 200,
+          "latencyMs": 62.32,
+          "attempts": 1,
+          "usage": {
+            "input_tokens": 1068,
+            "output_tokens": 185
+          },
+          "error": null
+        },
+        {
+          "candidateKey": "n-regional-gdp",
+          "status": 200,
+          "latencyMs": 101.99,
+          "attempts": 1,
+          "usage": {
+            "input_tokens": 1088,
+            "output_tokens": 189
+          },
+          "error": null
+        },
+        {
+          "candidateKey": "n-ipom",
+          "status": 200,
+          "latencyMs": 61.26,
+          "attempts": 1,
+          "usage": {
+            "input_tokens": 1090,
+            "output_tokens": 189
+          },
+          "error": null
+        },
+        {
+          "candidateKey": "m-bond-storm",
+          "status": 200,
+          "latencyMs": 55.46,
+          "attempts": 1,
+          "usage": {
+            "input_tokens": 1059,
+            "output_tokens": 189
+          },
+          "error": null
+        },
+        {
+          "candidateKey": "m-ai-equities",
+          "status": 200,
+          "latencyMs": 63.93,
+          "attempts": 1,
+          "usage": {
+            "input_tokens": 1079,
+            "output_tokens": 185
+          },
+          "error": null
+        },
+        {
+          "candidateKey": "m-dollar-rates",
+          "status": 200,
+          "latencyMs": 89.92,
+          "attempts": 1,
+          "usage": {
+            "input_tokens": 1073,
+            "output_tokens": 189
+          },
+          "error": null
+        }
+      ],
+      "status": "PASS"
+    },
+    "general/input.json": {
+      "schemaVersion": 1,
+      "radarRunId": "RADAR-JEV-20260925-1431-A",
+      "sourceMainCommit": "d04b23aacd3e3d7e8fa2108d9a8843731d24c437",
+      "radarStateVersion": "radar-state-v1",
+      "editorialDate": "2026-09-25",
+      "experimentMode": "RADAR_JEV",
+      "mode": "LAB_ONLY",
+      "productionWritesAllowed": false,
+      "section": "general",
+      "startedAt": "2026-09-25T14:34:00-03:00",
+      "frameworkRead": [
+        "AGENTS.md",
+        "docs/PROCEDIMIENTO_GPT_PUBLICACION.md",
+        "docs/CONTRATO_EDITORIAL.md",
+        "data/editorial_state.json"
+      ],
+      "searchQueryIds": [
+        "g-q1",
+        "g-q2",
+        "g-q3"
+      ],
+      "candidateIds": [
+        "g-trump-xi",
+        "g-us-iran-hormuz",
+        "g-anthropic-akamai"
+      ]
+    },
+    "general/metadata.json": {
+      "schemaVersion": 1,
+      "radarRunId": "RADAR-JEV-20260925-1431-A",
+      "sourceMainCommit": "d04b23aacd3e3d7e8fa2108d9a8843731d24c437",
+      "radarStateVersion": "radar-state-v1",
+      "editorialDate": "2026-09-25",
+      "experimentMode": "RADAR_JEV",
+      "mode": "LAB_ONLY",
+      "productionWritesAllowed": false,
+      "section": "general",
+      "status": "PASS",
+      "startedAt": "2026-09-25T14:34:00-03:00",
+      "completedAt": "2026-09-25T14:35:30-03:00",
+      "title": "Hormuz entra en la negociación y abre una vía para reducir el shock energético",
+      "summary": "EEUU e Irán exploran una salida por fases que vincula la reapertura de Hormuz con alivio del bloqueo, mientras tasas altas y treguas comerciales limitadas mantienen riesgos globales.",
+      "tags": [
+        "internacional"
+      ],
+      "sources": [
+        {
+          "name": "Reuters",
+          "url": "https://www.investing.com/news/commodities-news/us-and-iran-discuss-phased-deal-to-reopen-hormuz-and-end-us-blockade-sources-say-4915884",
+          "publishedAt": "2026-09-24T16:17:00Z"
+        },
+        {
+          "name": "Reuters",
+          "url": "https://www.reuters.com/commentary/reuters-open-interest/global-markets-view-usa-2026-09-25/",
+          "publishedAt": "2026-09-25T10:40:00Z"
+        },
+        {
+          "name": "Akamai",
+          "url": "https://www.akamai.com/newsroom/press-release/akamai-announces-11-6-billion-multi-year-agreement-with-anthropic-to-support-growing-demand",
+          "publishedAt": "2026-09-24T20:01:00Z"
+        }
+      ],
+      "highlights": [
+        {
+          "label": "Hormuz entra en la negociación",
+          "text": "EEUU e Irán discuten una secuencia que vincula reapertura del estrecho y alivio del bloqueo."
+        },
+        {
+          "label": "El riesgo petrolero cambia de forma",
+          "text": "La disrupción sigue activa, pero aparece una vía diplomática concreta."
+        },
+        {
+          "label": "La tregua EEUU-China sigue siendo temporal",
+          "text": "La extensión fue de dos meses y no resolvió disputas estructurales."
+        },
+        {
+          "label": "La IA sigue movilizando capital",
+          "text": "Anthropic comprometió US$11.600 millones con Akamai a siete años."
+        },
+        {
+          "label": "Las tasas continúan altas",
+          "text": "Los rendimientos soberanos siguen endureciendo las condiciones financieras."
+        }
+      ],
+      "selectedCandidateIds": [
+        "g-us-iran-hormuz"
+      ],
+      "discardedCandidateIds": [
+        "g-trump-xi",
+        "g-anthropic-akamai"
+      ],
+      "outputPath": "lab/radar-editorial/runtime/runs/RADAR-JEV-20260925-1431-A/general/output.md"
+    },
+    "general/output.md": "## Hecho central\n\nEstados Unidos e Irán exploran en Nueva York una salida por fases a una guerra de casi siete meses. La fórmula discutida vincula dos palancas que hasta ahora han sostenido el conflicto: Teherán reabriría el estrecho de Hormuz al tránsito marítimo y Washington levantaría su bloqueo económico. No hay acuerdo cerrado y ambas partes conservan incentivos para no ceder primero, pero la existencia de una secuencia negociada introduce una alternativa concreta a la prolongación del shock energético.\n\n## En una mirada\n\n- **Hormuz entra en la negociación:** la reapertura del estrecho aparece ligada explícitamente a un alivio del bloqueo estadounidense.\n- **El riesgo petrolero cambia de forma:** la amenaza de interrupción no desaparece, pero ahora convive con una vía diplomática verificable.\n- **La tregua EEUU-China fue limitada:** Washington y Beijing extendieron sólo por dos meses su tregua comercial, sin resolver sus disputas estructurales.\n- **La IA sigue movilizando capital:** Anthropic comprometió US$11.600 millones en servicios cloud de Akamai por siete años.\n- **Las tasas continúan altas:** el mercado de bonos mantiene condiciones financieras exigentes incluso cuando las bolsas resisten.\n\n## Por qué importa\n\nHormuz es un canal crítico para el suministro energético mundial, de modo que una reapertura sostenible tendría efectos que van más allá del petróleo: transporte, seguros, inflación y expectativas de tasas. El punto editorial no es asumir que la paz está asegurada, sino reconocer que la negociación introduce una posible transición desde la gestión logística de la escasez hacia una reducción del riesgo geopolítico. La señal es material precisamente porque la memoria previa describía un estrecho todavía anormalmente restringido.\n\n## Mercados globales\n\nLas bolsas han mostrado resiliencia mientras el petróleo cedió desde máximos recientes, pero los rendimientos soberanos siguen elevados. Esa combinación implica que una eventual descompresión energética podría aliviar parte de la presión inflacionaria sin resolver por sí sola el problema de tasas largas. La tregua comercial entre Estados Unidos y China aporta estabilidad temporal, no un acuerdo estructural.\n\n## Chile\n\nPara Chile, el principal canal de transmisión internacional es doble: energía e inflación importada por un lado, y condiciones financieras globales por otro. Una reducción durable de la prima de riesgo de Hormuz podría moderar costos energéticos, pero el efecto dependerá de que la negociación produzca tránsito efectivo y no sólo anuncios.\n\n## Tasas, monedas y commodities\n\nEl dólar se fortaleció esta semana junto con rendimientos del Treasury más altos y expectativas de nuevas alzas de la Fed. El petróleo, en cambio, ha respondido a las señales de negociación en Medio Oriente. La divergencia recuerda que un alivio energético no equivale automáticamente a un giro monetario global.\n\n## Qué observar\n\nLa secuencia concreta de concesiones entre Washington y Teherán, el tránsito efectivo por Hormuz, la evolución de exportaciones saudíes y cualquier señal verificable de levantamiento del bloqueo serán las pruebas centrales. En paralelo, los próximos datos de empleo e inflación de Estados Unidos definirán cuánto espacio existe para que una menor prima energética se traduzca en menores rendimientos.",
+    "checkpoints/general.json": {
+      "schemaVersion": 1,
+      "radarRunId": "RADAR-JEV-20260925-1431-A",
+      "sourceMainCommit": "d04b23aacd3e3d7e8fa2108d9a8843731d24c437",
+      "radarStateVersion": "radar-state-v1",
+      "editorialDate": "2026-09-25",
+      "experimentMode": "RADAR_JEV",
+      "mode": "LAB_ONLY",
+      "productionWritesAllowed": false,
+      "phase": "general",
+      "status": "PASS",
+      "completedAt": "2026-09-25T14:35:30-03:00"
+    },
+    "national/input.json": {
+      "schemaVersion": 1,
+      "radarRunId": "RADAR-JEV-20260925-1431-A",
+      "sourceMainCommit": "d04b23aacd3e3d7e8fa2108d9a8843731d24c437",
+      "radarStateVersion": "radar-state-v1",
+      "editorialDate": "2026-09-25",
+      "experimentMode": "RADAR_JEV",
+      "mode": "LAB_ONLY",
+      "productionWritesAllowed": false,
+      "section": "national",
+      "startedAt": "2026-09-25T14:35:31-03:00",
+      "frameworkRead": [
+        "AGENTS.md",
+        "docs/PROCEDIMIENTO_GPT_PUBLICACION.md",
+        "docs/CONTRATO_EDITORIAL.md",
+        "data/editorial_state.json"
+      ],
+      "searchQueryIds": [
+        "n-q1",
+        "n-q2"
+      ],
+      "candidateIds": [
+        "n-escondida-restart",
+        "n-regional-gdp",
+        "n-ipom"
+      ]
+    },
+    "national/metadata.json": {
+      "schemaVersion": 1,
+      "radarRunId": "RADAR-JEV-20260925-1431-A",
+      "sourceMainCommit": "d04b23aacd3e3d7e8fa2108d9a8843731d24c437",
+      "radarStateVersion": "radar-state-v1",
+      "editorialDate": "2026-09-25",
+      "experimentMode": "RADAR_JEV",
+      "mode": "LAB_ONLY",
+      "productionWritesAllowed": false,
+      "section": "national",
+      "status": "PASS",
+      "startedAt": "2026-09-25T14:35:31-03:00",
+      "completedAt": "2026-09-25T14:36:40-03:00",
+      "title": "Escondida reanuda gradualmente sus operaciones tras accidente fatal",
+      "summary": "La mayor mina de cobre del mundo retoma faenas progresivamente mientras continúan evaluaciones de seguridad, agregando un riesgo productivo nuevo al escenario chileno.",
+      "tags": [
+        "chile"
+      ],
+      "sources": [
+        {
+          "name": "Reuters",
+          "url": "https://www.reuters.com/world/americas/chiles-escondida-mine-gradually-resumes-operations-after-fatal-accident-2026-09-25/",
+          "publishedAt": "2026-09-25T00:22:00Z"
+        }
+      ],
+      "highlights": [
+        {
+          "label": "Escondida inicia reapertura",
+          "text": "La mina comenzó a retomar operaciones de manera progresiva."
+        },
+        {
+          "label": "La seguridad sigue condicionando el ritmo",
+          "text": "Las evaluaciones continúan tras el accidente fatal que detuvo las faenas."
+        },
+        {
+          "label": "El efecto macro depende de la duración",
+          "text": "Una normalización rápida limitaría el impacto sobre producción minera."
+        }
+      ],
+      "selectedCandidateIds": [
+        "n-escondida-restart"
+      ],
+      "discardedCandidateIds": [
+        "n-regional-gdp",
+        "n-ipom"
+      ],
+      "outputPath": "lab/radar-editorial/runtime/runs/RADAR-JEV-20260925-1431-A/national/output.md"
+    },
+    "national/output.md": "## Desarrollo\n\nEscondida, la mayor mina de cobre del mundo, comenzó a reanudar progresivamente sus operaciones después de la suspensión provocada por la muerte de un trabajador durante labores de mantenimiento. La reapertura ocurre mientras continúan las evaluaciones y bajo el marco chileno que exige verificar condiciones de seguridad antes de retomar faenas tras un accidente fatal. El hecho es acotado, pero nuevo frente a la narrativa doméstica que venía dominada por el IPoM y la debilidad del PIB regional.\n\nLa importancia económica proviene del peso de Escondida en la minería chilena y de que la producción minera ya forma parte de las variables que explican el escenario de actividad más débil. Una interrupción breve no redefine por sí sola el crecimiento anual, pero la velocidad y alcance de la normalización operacional sí importan para distinguir un episodio transitorio de un nuevo obstáculo productivo.\n\n## Implicancias y riesgos\n\nEl principal riesgo inmediato es operacional y de seguridad, no macroeconómico. La reanudación progresiva reduce la probabilidad de una paralización prolongada, aunque todavía no permite asumir normalización completa. Para la lectura nacional, el dato agrega información que el IPoM y el PIB regional no contienen: un evento específico en el principal activo cuprífero del país con potencial de afectar producción si la recuperación se demora.\n\nEl contexto sigue siendo una economía con señales de actividad débiles y minería relevante para el desempeño regional. Por eso conviene separar el efecto puntual de Escondida de la tendencia agregada: el primero debe medirse por duración y capacidad recuperada; la segunda requiere los próximos datos de producción, empleo e inversión.\n\n## Qué observar\n\nLa confirmación de retorno a capacidad normal, eventuales restricciones adicionales de seguridad, información de BHP sobre producción y cualquier efecto en despachos serán los próximos hitos. También será relevante contrastar esos datos con la actividad minera regional y con las proyecciones del Banco Central.",
+    "checkpoints/national.json": {
+      "schemaVersion": 1,
+      "radarRunId": "RADAR-JEV-20260925-1431-A",
+      "sourceMainCommit": "d04b23aacd3e3d7e8fa2108d9a8843731d24c437",
+      "radarStateVersion": "radar-state-v1",
+      "editorialDate": "2026-09-25",
+      "experimentMode": "RADAR_JEV",
+      "mode": "LAB_ONLY",
+      "productionWritesAllowed": false,
+      "phase": "national",
+      "status": "PASS",
+      "completedAt": "2026-09-25T14:36:40-03:00"
+    },
+    "markets/input.json": {
+      "schemaVersion": 1,
+      "radarRunId": "RADAR-JEV-20260925-1431-A",
+      "sourceMainCommit": "d04b23aacd3e3d7e8fa2108d9a8843731d24c437",
+      "radarStateVersion": "radar-state-v1",
+      "editorialDate": "2026-09-25",
+      "experimentMode": "RADAR_JEV",
+      "mode": "LAB_ONLY",
+      "productionWritesAllowed": false,
+      "section": "markets",
+      "startedAt": "2026-09-25T14:36:41-03:00",
+      "frameworkRead": [
+        "AGENTS.md",
+        "docs/PROCEDIMIENTO_GPT_PUBLICACION.md",
+        "docs/CONTRATO_EDITORIAL.md",
+        "data/editorial_state.json"
+      ],
+      "searchQueryIds": [
+        "m-q1",
+        "m-q2"
+      ],
+      "candidateIds": [
+        "m-bond-storm",
+        "m-ai-equities",
+        "m-dollar-rates"
+      ]
+    },
+    "markets/metadata.json": {
+      "schemaVersion": 1,
+      "radarRunId": "RADAR-JEV-20260925-1431-A",
+      "sourceMainCommit": "d04b23aacd3e3d7e8fa2108d9a8843731d24c437",
+      "radarStateVersion": "radar-state-v1",
+      "editorialDate": "2026-09-25",
+      "experimentMode": "RADAR_JEV",
+      "mode": "LAB_ONLY",
+      "productionWritesAllowed": false,
+      "section": "markets",
+      "status": "PASS",
+      "startedAt": "2026-09-25T14:36:41-03:00",
+      "completedAt": "2026-09-25T14:37:50-03:00",
+      "title": "IA sostiene a Wall Street pese a tasas altas y riesgo energético",
+      "summary": "Contratos de infraestructura de IA vuelven a sostener acciones mientras rendimientos elevados, dólar firme y petróleo mantienen condiciones financieras exigentes.",
+      "tags": [
+        "mercados"
+      ],
+      "sources": [
+        {
+          "name": "Reuters",
+          "url": "https://www.reuters.com/business/wall-st-futures-gain-ai-enthusiasm-eases-worries-over-higher-oil-prices-yields-2026-09-25/",
+          "publishedAt": "2026-09-25T14:00:00Z"
+        },
+        {
+          "name": "Akamai",
+          "url": "https://www.akamai.com/newsroom/press-release/akamai-announces-11-6-billion-multi-year-agreement-with-anthropic-to-support-growing-demand",
+          "publishedAt": "2026-09-24T20:01:00Z"
+        }
+      ],
+      "highlights": [
+        {
+          "label": "IA vuelve a sostener las acciones",
+          "text": "El acuerdo Akamai-Anthropic aporta evidencia contractual de demanda de infraestructura."
+        },
+        {
+          "label": "Los bonos siguen restringiendo",
+          "text": "Los rendimientos altos mantienen presión sobre múltiplos y costo de capital."
+        },
+        {
+          "label": "El petróleo aporta alivio parcial",
+          "text": "Las expectativas diplomáticas reducen parte de la prima energética sin eliminar el riesgo."
+        }
+      ],
+      "selectedCandidateIds": [
+        "m-ai-equities"
+      ],
+      "discardedCandidateIds": [
+        "m-bond-storm",
+        "m-dollar-rates"
+      ],
+      "outputPath": "lab/radar-editorial/runtime/runs/RADAR-JEV-20260925-1431-A/markets/output.md"
+    },
+    "markets/output.md": "## Desarrollo\n\nWall Street avanzó modestamente en una sesión donde el entusiasmo por inteligencia artificial volvió a competir con dos fuerzas restrictivas: rendimientos soberanos elevados y riesgo energético. El acuerdo de siete años entre Anthropic y Akamai, por US$11.600 millones y con posibilidad de expansión, aportó una señal concreta de demanda de infraestructura. Al mismo tiempo, el petróleo cedió con expectativas de negociación en Medio Oriente, mientras el mercado de bonos siguió reflejando preocupación por inflación y nuevas alzas de la Reserva Federal.\n\nLa combinación es distinta de una simple repetición del “bond storm”. Las acciones muestran que el mercado todavía premia contratos capaces de hacer visible la monetización de IA, incluso cuando la tasa de descuento permanece exigente. Eso aumenta la dispersión: no todo crecimiento tecnológico recibe el mismo trato y la evidencia contractual gana peso frente a narrativas generales de demanda.\n\n## Implicancias y riesgos\n\nEl principal riesgo para la renta variable continúa siendo que las tasas largas permanezcan altas durante más tiempo, comprimiendo múltiplos y elevando el costo de capital. Sin embargo, acuerdos de infraestructura de gran escala pueden sostener segmentos específicos si convierten expectativas de IA en ingresos contratados. El contraste entre ambos factores explica por qué los índices pueden resistir sin que las condiciones financieras sean benignas.\n\nEl dólar fuerte agrega presión sobre monedas emergentes, mientras una eventual reducción del riesgo en Hormuz podría moderar el componente energético de la inflación. Ninguno de esos movimientos elimina la necesidad de observar la trayectoria de la Fed y de los Treasury.\n\n## Qué observar\n\nLos próximos datos de empleo e inflación de Estados Unidos, la respuesta de los rendimientos a esos datos, la evolución del petróleo y la materialización financiera del acuerdo Akamai-Anthropic serán los catalizadores principales. También importa si el avance de acciones ligadas a IA se amplía o sigue concentrado en compañías con contratos y caja visibles.",
+    "checkpoints/markets.json": {
+      "schemaVersion": 1,
+      "radarRunId": "RADAR-JEV-20260925-1431-A",
+      "sourceMainCommit": "d04b23aacd3e3d7e8fa2108d9a8843731d24c437",
+      "radarStateVersion": "radar-state-v1",
+      "editorialDate": "2026-09-25",
+      "experimentMode": "RADAR_JEV",
+      "mode": "LAB_ONLY",
+      "productionWritesAllowed": false,
+      "phase": "markets",
+      "status": "PASS",
+      "completedAt": "2026-09-25T14:37:50-03:00"
+    },
+    "result.json": {
+      "schemaVersion": 1,
+      "radarRunId": "RADAR-JEV-20260925-1431-A",
+      "sourceMainCommit": "d04b23aacd3e3d7e8fa2108d9a8843731d24c437",
+      "radarStateVersion": "radar-state-v1",
+      "editorialDate": "2026-09-25",
+      "experimentMode": "RADAR_JEV",
+      "mode": "LAB_ONLY",
+      "productionWritesAllowed": false,
+      "status": "PASS",
+      "completedAt": "2026-09-25T14:38:30-03:00",
+      "sections": {
+        "general": {
+          "status": "PASS",
+          "title": "Hormuz entra en la negociación y abre una vía para reducir el shock energético",
+          "effectOfJev": "CHANGED_SELECTION",
+          "preJev": "g-trump-xi",
+          "postJev": "g-us-iran-hormuz"
+        },
+        "national": {
+          "status": "PASS",
+          "title": "Escondida reanuda gradualmente sus operaciones tras accidente fatal",
+          "effectOfJev": "CHANGED_SELECTION",
+          "preJev": "n-regional-gdp",
+          "postJev": "n-escondida-restart"
+        },
+        "markets": {
+          "status": "PASS",
+          "title": "IA sostiene a Wall Street pese a tasas altas y riesgo energético",
+          "effectOfJev": "CHANGED_SELECTION",
+          "preJev": "m-bond-storm",
+          "postJev": "m-ai-equities"
+        }
+      }
+    },
+    "publish-request.json": {
+      "schemaVersion": 1,
+      "radarRunId": "RADAR-JEV-20260925-1431-A",
+      "sourceMainCommit": "d04b23aacd3e3d7e8fa2108d9a8843731d24c437",
+      "radarStateVersion": "radar-state-v1",
+      "editorialDate": "2026-09-25",
+      "experimentMode": "RADAR_JEV",
+      "mode": "LAB_ONLY",
+      "productionWritesAllowed": false,
+      "status": "READY",
+      "runPath": "lab/radar-editorial/runtime/runs/RADAR-JEV-20260925-1431-A",
+      "resultPath": "lab/radar-editorial/runtime/runs/RADAR-JEV-20260925-1431-A/result.json",
+      "viewPath": "lab/radar-editorial/runtime/runs/RADAR-JEV-20260925-1431-A/index.html"
+    },
+    "index.html": "<!doctype html><html><head><meta charset=\"utf-8\"><title>RADAR-JEV-20260925-1431-A · RADAR_JEV</title></head><body><main><h1>ATLAS NEWS LAB — RADAR-JEV-20260925-1431-A</h1><p>RADAR_JEV · LAB_ONLY · READY</p><h2>General</h2><p>Hormuz entra en la negociación y abre una vía para reducir el shock energético.</p><h2>Nacional</h2><p>Escondida reanuda gradualmente sus operaciones tras accidente fatal.</p><h2>Mercados</h2><p>IA sostiene a Wall Street pese a tasas altas y riesgo energético.</p></main></body></html>"
+  }
+}
