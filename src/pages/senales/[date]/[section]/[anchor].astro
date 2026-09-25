@@ -36,6 +36,12 @@ interface Props {
   visual: EditorialVisual;
 }
 
+const SIGNAL_SECTIONS: SignalSection[] = [
+  "internacional",
+  "nacional",
+  "mercados",
+];
+
 const sectionConfig: Record<
   SignalSection,
   {
@@ -130,11 +136,7 @@ function resolveSignalVisuals(artifact: SignalsArtifact) {
   const usedSources = new Set<string>();
   const visuals = new Map<string, EditorialVisual>();
 
-  for (const section of [
-    "internacional",
-    "nacional",
-    "mercados",
-  ] as const satisfies readonly SignalSection[]) {
+  for (const section of SIGNAL_SECTIONS) {
     const config = sectionConfig[section];
 
     for (const signal of artifact.senalesDelDia[section]) {
@@ -163,11 +165,7 @@ export function getStaticPaths() {
 
     const visuals = resolveSignalVisuals(parsed);
 
-    for (const section of [
-      "internacional",
-      "nacional",
-      "mercados",
-    ] as const satisfies readonly SignalSection[]) {
+    for (const section of SIGNAL_SECTIONS) {
       for (const signal of parsed.senalesDelDia[section]) {
         const visual = visuals.get(`${section}:${signal.anchor}`);
         if (!visual) continue;
