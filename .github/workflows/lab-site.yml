@@ -73,11 +73,15 @@ jobs:
           cp lab/editorial-memory-judge/bootstrap.json lab-site/public/editorial-memory-judge/bootstrap.json
 
       - name: Canonicalizar formato EXP-011
-        run: >-
-          npx prettier --write
-          "lab-site/src/pages/memoria-editorial.astro"
-          "scripts/lab/*.mjs"
-          --ignore-path /dev/null
+        run: |
+          npx prettier --write \
+            "lab-site/src/pages/memoria-editorial.astro" \
+            "lab-site/src/pages/audio-number-phonemes-v1.astro" \
+            "scripts/lab/*.mjs" \
+            --ignore-path /dev/null
+          echo "===ATLAS_FORMATTED_AUDIO_PAGE_BEGIN==="
+          cat lab-site/src/pages/audio-number-phonemes-v1.astro
+          echo "===ATLAS_FORMATTED_AUDIO_PAGE_END==="
 
       - name: Comprobar formato LAB
         run: >-
