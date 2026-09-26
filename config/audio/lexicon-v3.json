@@ -51,9 +51,7 @@
     },
     {
       "term": "Nvidia",
-      "variants": [
-        "NVIDIA"
-      ],
+      "variants": ["NVIDIA"],
       "type": "pronunciation",
       "speech": "Envídia",
       "approved": true
@@ -72,10 +70,7 @@
     },
     {
       "term": "J.P. Morgan",
-      "variants": [
-        "JPMorgan",
-        "JP Morgan"
-      ],
+      "variants": ["JPMorgan", "JP Morgan"],
       "type": "pronunciation",
       "speech": "Yéi pí Morgan",
       "approved": true
@@ -118,9 +113,7 @@
     },
     {
       "term": "EE.UU.",
-      "variants": [
-        "EE. UU."
-      ],
+      "variants": ["EE. UU."],
       "type": "normalization",
       "speech": "Estados Unidos",
       "approved": true
@@ -157,11 +150,7 @@
     },
     {
       "term": "bypass",
-      "variants": [
-        "BY PASS",
-        "by-pass",
-        "by pass"
-      ],
+      "variants": ["BY PASS", "by-pass", "by pass"],
       "type": "pronunciation",
       "speech": "bái pas",
       "approved": true
