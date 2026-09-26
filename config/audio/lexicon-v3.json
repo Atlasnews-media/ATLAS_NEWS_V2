@@ -1,6 +1,6 @@
 {
   "version": 3,
-  "revision": 5,
+  "revision": 6,
   "release": "Lexicon V4",
   "numericNormalizerVersion": 4,
   "status": "production",
@@ -10,7 +10,7 @@
     "requiresHumanApproval": true,
     "sheetDirectToProduction": false,
     "revisionRule": "Toda modificación de una entrada aprobada requiere incrementar revision antes de producción.",
-    "note": "Lexicon V4 mantiene el contrato productivo de Lexicon V3 y suma únicamente candidatos aprobados por escucha humana. Revision 5 incorpora bypass → bái pas, incluidas sus variantes BY PASS, by-pass y by pass, sin modificar display_text."
+    "note": "Lexicon V4 mantiene el contrato productivo de Lexicon V3. Revision 6 agrega cobertura general para S&P → ese y pe, preservando la regla más específica S&P 500 → ese y pe quinientos y cubriendo variantes contextuales como S&P Global Ratings sin modificar display_text."
   },
   "entries": [
     {
@@ -103,6 +103,12 @@
       "term": "S&P 500",
       "type": "normalization",
       "speech": "ese y pe quinientos",
+      "approved": true
+    },
+    {
+      "term": "S&P",
+      "type": "normalization",
+      "speech": "ese y pe",
       "approved": true
     },
     {
