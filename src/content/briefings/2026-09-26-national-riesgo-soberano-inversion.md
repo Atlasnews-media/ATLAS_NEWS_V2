@@ -1,10 +1,10 @@
 ---
 title: "S&P mantiene la nota de Chile, pero condiciona la mejora a inversión y disciplina fiscal"
 summary: "La clasificación soberana permanece estable y reconoce el marco fiscal, mientras la recuperación esperada para 2027 depende de que los proyectos mineros y energéticos pasen de permisos a ejecución."
-publishedAt: "2026-09-26T06:22:00-03:00"
+publishedAt: "2026-09-26T06:46:47-03:00"
 cutoffAt: "2026-09-26T06:18:00-03:00"
 section: "national"
-status: "draft"
+status: "published"
 tags:
   - chile
   - riesgo-soberano

@@ -1,10 +1,10 @@
 ---
 title: "Treguas acotan el riesgo inmediato, pero dejan abiertos los frentes globales"
 summary: "La extensión breve de la tregua entre Estados Unidos y China y una propuesta iraní para reabrir Hormuz alivian riesgos inmediatos, aunque comercio, energía, inflación y seguridad siguen sin una solución duradera."
-publishedAt: "2026-09-26T06:04:43-03:00"
+publishedAt: "2026-09-26T06:46:47-03:00"
 cutoffAt: "2026-09-26T06:04:36-03:00"
 type: "daily"
-status: "draft"
+status: "published"
 tags:
   - geopolitica
   - comercio-global

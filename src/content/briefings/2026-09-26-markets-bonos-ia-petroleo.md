@@ -1,10 +1,10 @@
 ---
 title: "Bonos en máximos de rendimiento obligan al rally de acciones a demostrar beneficios"
 summary: "El Treasury a diez años tocó 5,2297% y la volatilidad de bonos saltó cerca de 30% en la semana, pero la baja del petróleo y el impulso de la inteligencia artificial sostuvieron a las acciones."
-publishedAt: "2026-09-26T06:19:00-03:00"
+publishedAt: "2026-09-26T06:46:47-03:00"
 cutoffAt: "2026-09-26T06:17:00-03:00"
 section: "markets"
-status: "draft"
+status: "published"
 tags:
   - mercados-globales
   - bonos
