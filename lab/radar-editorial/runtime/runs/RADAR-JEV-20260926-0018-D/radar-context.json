@@ -1,0 +1,41 @@
+{
+  "schemaVersion": 1,
+  "radarRunId": "RADAR-JEV-20260926-0018-D",
+  "sourceMainCommit": "51ab2e4cacefbde565892a40fad86a9ea4458a31",
+  "radarStateVersion": "radar-state-v1",
+  "editorialDate": "2026-09-26",
+  "experimentMode": "RADAR_JEV",
+  "mode": "LAB_ONLY",
+  "productionWritesAllowed": false,
+  "signals": [
+    {
+      "id": "oil",
+      "thread": "oil-geopolitics-inflation",
+      "signal": "Buscar evidencia que cambie la transmisión del shock energético, no repetir Hormuz."
+    },
+    {
+      "id": "fed",
+      "thread": "us-employment-fed-rates",
+      "signal": "Distinguir estabilización o nuevo repricing de repetir yields altos."
+    },
+    {
+      "id": "chile",
+      "thread": "chile-inflation-activity-rates",
+      "signal": "PIB regional y reinicio de Escondida ya tienen alta exposición histórica."
+    }
+  ],
+  "preJevProvisional": {
+    "general": {
+      "candidateId": "g-oman-transfer",
+      "reason": "La restricción física del bypass parecía la señal internacional con mayor transmisión energética."
+    },
+    "national": {
+      "candidateId": "n-escondida-talks",
+      "reason": "Es el desarrollo laboral más reciente dentro del evento Escondida."
+    },
+    "markets": {
+      "candidateId": "m-dollar-eases",
+      "reason": "La combinación petróleo-dólar-Fed parecía la actualización de mercado más inmediata."
+    }
+  }
+}

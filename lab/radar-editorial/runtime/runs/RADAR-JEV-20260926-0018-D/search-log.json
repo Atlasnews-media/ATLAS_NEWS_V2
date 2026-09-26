@@ -1,0 +1,75 @@
+{
+  "schemaVersion": 1,
+  "radarRunId": "RADAR-JEV-20260926-0018-D",
+  "sourceMainCommit": "51ab2e4cacefbde565892a40fad86a9ea4458a31",
+  "radarStateVersion": "radar-state-v1",
+  "editorialDate": "2026-09-26",
+  "experimentMode": "RADAR_JEV",
+  "mode": "LAB_ONLY",
+  "productionWritesAllowed": false,
+  "entries": [
+    {
+      "queryId": "g-q1",
+      "section": "general",
+      "query": "September 26 2026 Reuters Italy fuel cap energy costs",
+      "executedAt": "2026-09-26T00:18:31-03:00",
+      "resultCount": 5
+    },
+    {
+      "queryId": "g-q2",
+      "section": "general",
+      "query": "September 26 2026 Reuters India coal power stocks",
+      "executedAt": "2026-09-26T00:18:32-03:00",
+      "resultCount": 5
+    },
+    {
+      "queryId": "g-q3",
+      "section": "general",
+      "query": "September 26 2026 Reuters Oman oil transfers Hormuz",
+      "executedAt": "2026-09-26T00:18:33-03:00",
+      "resultCount": 5
+    },
+    {
+      "queryId": "n-q1",
+      "section": "national",
+      "query": "September 26 2026 Reuters Chile Escondida contract talks",
+      "executedAt": "2026-09-26T00:18:34-03:00",
+      "resultCount": 5
+    },
+    {
+      "queryId": "n-q2",
+      "section": "national",
+      "query": "September 26 2026 Reuters Chile Escondida restart",
+      "executedAt": "2026-09-26T00:18:35-03:00",
+      "resultCount": 5
+    },
+    {
+      "queryId": "n-q3",
+      "section": "national",
+      "query": "September 26 2026 Chile regional GDP Banco Central",
+      "executedAt": "2026-09-26T00:18:36-03:00",
+      "resultCount": 10
+    },
+    {
+      "queryId": "m-q1",
+      "section": "markets",
+      "query": "September 26 2026 Reuters bonds falling oil Treasury yields",
+      "executedAt": "2026-09-26T00:18:37-03:00",
+      "resultCount": 5
+    },
+    {
+      "queryId": "m-q2",
+      "section": "markets",
+      "query": "September 26 2026 Reuters dollar oil Fed hikes",
+      "executedAt": "2026-09-26T00:18:38-03:00",
+      "resultCount": 5
+    },
+    {
+      "queryId": "m-q3",
+      "section": "markets",
+      "query": "September 26 2026 Reuters Treasury 6 percent",
+      "executedAt": "2026-09-26T00:18:39-03:00",
+      "resultCount": 5
+    }
+  ]
+}

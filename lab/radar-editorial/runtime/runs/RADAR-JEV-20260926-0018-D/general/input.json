@@ -1,0 +1,28 @@
+{
+  "schemaVersion": 1,
+  "radarRunId": "RADAR-JEV-20260926-0018-D",
+  "sourceMainCommit": "51ab2e4cacefbde565892a40fad86a9ea4458a31",
+  "radarStateVersion": "radar-state-v1",
+  "editorialDate": "2026-09-26",
+  "experimentMode": "RADAR_JEV",
+  "mode": "LAB_ONLY",
+  "productionWritesAllowed": false,
+  "section": "general",
+  "startedAt": "2026-09-26T00:20:00-03:00",
+  "frameworkRead": [
+    "AGENTS.md",
+    "docs/PROCEDIMIENTO_GPT_PUBLICACION.md",
+    "docs/CONTRATO_EDITORIAL.md",
+    "data/editorial_state.json"
+  ],
+  "searchQueryIds": [
+    "g-q1",
+    "g-q2",
+    "g-q3"
+  ],
+  "candidateIds": [
+    "g-italy-fuel-cap",
+    "g-india-coal",
+    "g-oman-transfer"
+  ]
+}

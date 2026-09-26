@@ -1,0 +1,66 @@
+{
+  "schemaVersion": 1,
+  "radarRunId": "RADAR-JEV-20260926-0018-D",
+  "sourceMainCommit": "51ab2e4cacefbde565892a40fad86a9ea4458a31",
+  "radarStateVersion": "radar-state-v1",
+  "editorialDate": "2026-09-26",
+  "experimentMode": "RADAR_JEV",
+  "mode": "LAB_ONLY",
+  "productionWritesAllowed": false,
+  "section": "general",
+  "status": "PASS",
+  "startedAt": "2026-09-26T00:20:00-03:00",
+  "completedAt": "2026-09-26T00:20:40-03:00",
+  "title": "Italia convierte el shock energético en topes directos a combustibles",
+  "summary": "Eni limitará temporalmente precios de gasolina y diésel, mostrando cómo el encarecimiento energético comienza a generar respuestas directas sobre precios al consumidor.",
+  "tags": [
+    "internacional"
+  ],
+  "sources": [
+    {
+      "name": "Reuters",
+      "url": "https://www.reuters.com/business/energy/italys-eni-caps-fuel-prices-meloni-struggles-tame-rising-costs-2026-09-25/",
+      "publishedAt": "2026-09-25T18:00:00Z"
+    },
+    {
+      "name": "Reuters",
+      "url": "https://www.reuters.com/business/energy/india-weighs-mandatory-blending-imported-coal-power-plants-sources-say-2026-09-25/",
+      "publishedAt": "2026-09-25T12:00:00Z"
+    },
+    {
+      "name": "Reuters",
+      "url": "https://www.reuters.com/business/energy/gulf-oman-ship-to-ship-oil-transfers-reach-limit-saudi-exports-surge-2026-09-25/",
+      "publishedAt": "2026-09-25T15:00:00Z"
+    }
+  ],
+  "highlights": [
+    {
+      "label": "Italia limita precios de combustibles",
+      "text": "Eni aplicará topes temporales a gasolina y diésel."
+    },
+    {
+      "label": "El shock llega al consumidor",
+      "text": "La medida responde directamente al aumento de costos energéticos."
+    },
+    {
+      "label": "India mantiene otro foco de tensión",
+      "text": "Inventarios bajos de carbón presionan su sistema eléctrico."
+    },
+    {
+      "label": "Omán enfrenta límites logísticos",
+      "text": "Las transferencias de petróleo alcanzaron su capacidad disponible."
+    },
+    {
+      "label": "Los bonos encuentran algo de alivio",
+      "text": "La caída del petróleo permitió estabilizar rendimientos estadounidenses."
+    }
+  ],
+  "selectedCandidateIds": [
+    "g-italy-fuel-cap"
+  ],
+  "discardedCandidateIds": [
+    "g-india-coal",
+    "g-oman-transfer"
+  ],
+  "outputPath": "lab/radar-editorial/runtime/runs/RADAR-JEV-20260926-0018-D/general/output.md"
+}

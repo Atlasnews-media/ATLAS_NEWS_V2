@@ -1,0 +1,66 @@
+{
+  "schemaVersion": 1,
+  "radarRunId": "RADAR-JEV-20260926-0018-D",
+  "sourceMainCommit": "51ab2e4cacefbde565892a40fad86a9ea4458a31",
+  "radarStateVersion": "radar-state-v1",
+  "editorialDate": "2026-09-26",
+  "experimentMode": "RADAR_JEV",
+  "mode": "LAB_ONLY",
+  "productionWritesAllowed": false,
+  "candidateRetrievals": [
+    {
+      "candidateId": "g-italy-fuel-cap",
+      "priors": [
+        "Respuesta de precios al consumidor nueva dentro del hilo energético."
+      ]
+    },
+    {
+      "candidateId": "g-india-coal",
+      "priors": [
+        "Seleccionado en la corrida inmediatamente anterior."
+      ]
+    },
+    {
+      "candidateId": "g-oman-transfer",
+      "priors": [
+        "Bypass Omán ya está en memoria y fue evaluado en corrida anterior."
+      ]
+    },
+    {
+      "candidateId": "n-escondida-talks",
+      "priors": [
+        "Negociación laboral evaluada en la corrida anterior."
+      ]
+    },
+    {
+      "candidateId": "n-escondida-restart",
+      "priors": [
+        "Reinicio de Escondida repetido en varias corridas."
+      ]
+    },
+    {
+      "candidateId": "n-regional-gdp",
+      "priors": [
+        "PIB regional exacto ya evaluado repetidamente."
+      ]
+    },
+    {
+      "candidateId": "m-bonds-stabilize",
+      "priors": [
+        "Estabilización tras nuevos máximos es desarrollo posterior del hilo de tasas."
+      ]
+    },
+    {
+      "candidateId": "m-dollar-eases",
+      "priors": [
+        "Seleccionado en la corrida inmediatamente anterior."
+      ]
+    },
+    {
+      "candidateId": "m-treasury-6",
+      "priors": [
+        "Umbral 6% ya evaluado en corrida anterior."
+      ]
+    }
+  ]
+}
