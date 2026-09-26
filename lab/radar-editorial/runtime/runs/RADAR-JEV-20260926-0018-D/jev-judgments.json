@@ -1,0 +1,461 @@
+{
+  "schemaVersion": 1,
+  "radarRunId": "RADAR-JEV-20260926-0018-D",
+  "sourceMainCommit": "51ab2e4cacefbde565892a40fad86a9ea4458a31",
+  "radarStateVersion": "radar-state-v1",
+  "editorialDate": "2026-09-26",
+  "experimentMode": "RADAR_JEV",
+  "mode": "LAB_ONLY",
+  "productionWritesAllowed": false,
+  "engine": "JEV_TYPESAFE",
+  "modelRequested": "jev-latest",
+  "modelObserved": "jev-1.13.0",
+  "thresholdsApplied": false,
+  "generatedAt": "2026-09-26T03:19:12.624Z",
+  "judgments": [
+    {
+      "candidateKey": "g-italy-fuel-cap",
+      "section": "general",
+      "eventRelation": {
+        "value": "NEW_EVENT",
+        "confidence": 0.89,
+        "probabilities": {
+          "UNRELATED": 0,
+          "NEW_EVENT": 0.92,
+          "UNCERTAIN": 0,
+          "SAME_EVENT": 0.08
+        }
+      },
+      "informationRelation": {
+        "value": "NEW",
+        "confidence": 0.57,
+        "probabilities": {
+          "CONTINUATION": 0.01,
+          "MEANINGFUL_UPDATE": 0.33,
+          "UNCERTAIN": 0,
+          "NEW": 0.65,
+          "CONTRADICTION": 0,
+          "REPETITION": 0.01
+        }
+      },
+      "addsNewInformation": {
+        "probability": 0.89,
+        "confidence": null
+      },
+      "historicalContextNeeded": {
+        "probability": 0.56,
+        "confidence": null
+      },
+      "angleRepeated": {
+        "probability": 0.48,
+        "confidence": null
+      }
+    },
+    {
+      "candidateKey": "g-india-coal",
+      "section": "general",
+      "eventRelation": {
+        "value": "SAME_EVENT",
+        "confidence": 0.87,
+        "probabilities": {
+          "UNRELATED": 0,
+          "NEW_EVENT": 0.09,
+          "UNCERTAIN": 0.01,
+          "SAME_EVENT": 0.9
+        }
+      },
+      "informationRelation": {
+        "value": "REPETITION",
+        "confidence": 0.47,
+        "probabilities": {
+          "CONTRADICTION": 0,
+          "REPETITION": 0.56,
+          "NEW": 0.12,
+          "CONTINUATION": 0.06,
+          "UNCERTAIN": 0.02,
+          "MEANINGFUL_UPDATE": 0.24
+        }
+      },
+      "addsNewInformation": {
+        "probability": 0.58,
+        "confidence": null
+      },
+      "historicalContextNeeded": {
+        "probability": 0.4,
+        "confidence": null
+      },
+      "angleRepeated": {
+        "probability": 0.83,
+        "confidence": null
+      }
+    },
+    {
+      "candidateKey": "g-oman-transfer",
+      "section": "general",
+      "eventRelation": {
+        "value": "SAME_EVENT",
+        "confidence": 0.85,
+        "probabilities": {
+          "NEW_EVENT": 0.11,
+          "UNCERTAIN": 0,
+          "SAME_EVENT": 0.89,
+          "UNRELATED": 0
+        }
+      },
+      "informationRelation": {
+        "value": "MEANINGFUL_UPDATE",
+        "confidence": 0.45,
+        "probabilities": {
+          "REPETITION": 0.29,
+          "UNCERTAIN": 0.01,
+          "NEW": 0.06,
+          "CONTRADICTION": 0,
+          "CONTINUATION": 0.1,
+          "MEANINGFUL_UPDATE": 0.54
+        }
+      },
+      "addsNewInformation": {
+        "probability": 0.59,
+        "confidence": null
+      },
+      "historicalContextNeeded": {
+        "probability": 0.48,
+        "confidence": null
+      },
+      "angleRepeated": {
+        "probability": 0.76,
+        "confidence": null
+      }
+    },
+    {
+      "candidateKey": "n-escondida-talks",
+      "section": "national",
+      "eventRelation": {
+        "value": "SAME_EVENT",
+        "confidence": 0.73,
+        "probabilities": {
+          "NEW_EVENT": 0.19,
+          "UNCERTAIN": 0.01,
+          "UNRELATED": 0,
+          "SAME_EVENT": 0.8
+        }
+      },
+      "informationRelation": {
+        "value": "MEANINGFUL_UPDATE",
+        "confidence": 0.54,
+        "probabilities": {
+          "REPETITION": 0.06,
+          "NEW": 0.22,
+          "CONTRADICTION": 0,
+          "MEANINGFUL_UPDATE": 0.63,
+          "UNCERTAIN": 0.04,
+          "CONTINUATION": 0.05
+        }
+      },
+      "addsNewInformation": {
+        "probability": 0.79,
+        "confidence": null
+      },
+      "historicalContextNeeded": {
+        "probability": 0.44,
+        "confidence": null
+      },
+      "angleRepeated": {
+        "probability": 0.67,
+        "confidence": null
+      }
+    },
+    {
+      "candidateKey": "n-escondida-restart",
+      "section": "national",
+      "eventRelation": {
+        "value": "SAME_EVENT",
+        "confidence": 0.99,
+        "probabilities": {
+          "UNRELATED": 0,
+          "NEW_EVENT": 0.01,
+          "SAME_EVENT": 0.99,
+          "UNCERTAIN": 0
+        }
+      },
+      "informationRelation": {
+        "value": "REPETITION",
+        "confidence": 0.3,
+        "probabilities": {
+          "CONTRADICTION": 0,
+          "REPETITION": 0.42,
+          "NEW": 0.15,
+          "CONTINUATION": 0.13,
+          "UNCERTAIN": 0,
+          "MEANINGFUL_UPDATE": 0.3
+        }
+      },
+      "addsNewInformation": {
+        "probability": 0.79,
+        "confidence": null
+      },
+      "historicalContextNeeded": {
+        "probability": 0.44,
+        "confidence": null
+      },
+      "angleRepeated": {
+        "probability": 0.81,
+        "confidence": null
+      }
+    },
+    {
+      "candidateKey": "n-regional-gdp",
+      "section": "national",
+      "eventRelation": {
+        "value": "SAME_EVENT",
+        "confidence": 0.95,
+        "probabilities": {
+          "UNCERTAIN": 0,
+          "NEW_EVENT": 0.03,
+          "SAME_EVENT": 0.97,
+          "UNRELATED": 0
+        }
+      },
+      "informationRelation": {
+        "value": "REPETITION",
+        "confidence": 0.53,
+        "probabilities": {
+          "NEW": 0.19,
+          "REPETITION": 0.6,
+          "CONTINUATION": 0.05,
+          "CONTRADICTION": 0,
+          "MEANINGFUL_UPDATE": 0.11,
+          "UNCERTAIN": 0.05
+        }
+      },
+      "addsNewInformation": {
+        "probability": 0.67,
+        "confidence": null
+      },
+      "historicalContextNeeded": {
+        "probability": 0.51,
+        "confidence": null
+      },
+      "angleRepeated": {
+        "probability": 0.61,
+        "confidence": null
+      }
+    },
+    {
+      "candidateKey": "m-bonds-stabilize",
+      "section": "markets",
+      "eventRelation": {
+        "value": "NEW_EVENT",
+        "confidence": 0.56,
+        "probabilities": {
+          "UNRELATED": 0,
+          "SAME_EVENT": 0.33,
+          "UNCERTAIN": 0,
+          "NEW_EVENT": 0.67
+        }
+      },
+      "informationRelation": {
+        "value": "NEW",
+        "confidence": 0.31,
+        "probabilities": {
+          "MEANINGFUL_UPDATE": 0.4,
+          "REPETITION": 0.09,
+          "NEW": 0.43,
+          "CONTRADICTION": 0,
+          "UNCERTAIN": 0.01,
+          "CONTINUATION": 0.07
+        }
+      },
+      "addsNewInformation": {
+        "probability": 0.82,
+        "confidence": null
+      },
+      "historicalContextNeeded": {
+        "probability": 0.49,
+        "confidence": null
+      },
+      "angleRepeated": {
+        "probability": 0.56,
+        "confidence": null
+      }
+    },
+    {
+      "candidateKey": "m-dollar-eases",
+      "section": "markets",
+      "eventRelation": {
+        "value": "SAME_EVENT",
+        "confidence": 0.96,
+        "probabilities": {
+          "SAME_EVENT": 0.97,
+          "UNCERTAIN": 0,
+          "UNRELATED": 0,
+          "NEW_EVENT": 0.03
+        }
+      },
+      "informationRelation": {
+        "value": "REPETITION",
+        "confidence": 0.4,
+        "probabilities": {
+          "CONTRADICTION": 0,
+          "UNCERTAIN": 0.01,
+          "NEW": 0.08,
+          "REPETITION": 0.51,
+          "CONTINUATION": 0.29,
+          "MEANINGFUL_UPDATE": 0.11
+        }
+      },
+      "addsNewInformation": {
+        "probability": 0.63,
+        "confidence": null
+      },
+      "historicalContextNeeded": {
+        "probability": 0.4,
+        "confidence": null
+      },
+      "angleRepeated": {
+        "probability": 0.88,
+        "confidence": null
+      }
+    },
+    {
+      "candidateKey": "m-treasury-6",
+      "section": "markets",
+      "eventRelation": {
+        "value": "SAME_EVENT",
+        "confidence": 0.91,
+        "probabilities": {
+          "SAME_EVENT": 0.93,
+          "NEW_EVENT": 0.07,
+          "UNCERTAIN": 0,
+          "UNRELATED": 0
+        }
+      },
+      "informationRelation": {
+        "value": "CONTINUATION",
+        "confidence": 0.42,
+        "probabilities": {
+          "MEANINGFUL_UPDATE": 0.03,
+          "NEW": 0.02,
+          "CONTINUATION": 0.52,
+          "CONTRADICTION": 0,
+          "REPETITION": 0.43,
+          "UNCERTAIN": 0
+        }
+      },
+      "addsNewInformation": {
+        "probability": 0.34,
+        "confidence": null
+      },
+      "historicalContextNeeded": {
+        "probability": 0.46,
+        "confidence": null
+      },
+      "angleRepeated": {
+        "probability": 0.79,
+        "confidence": null
+      }
+    }
+  ],
+  "telemetry": [
+    {
+      "candidateKey": "g-italy-fuel-cap",
+      "status": 200,
+      "latencyMs": 240.07,
+      "attempts": 1,
+      "usage": {
+        "input_tokens": 943,
+        "output_tokens": 185
+      },
+      "error": null
+    },
+    {
+      "candidateKey": "g-india-coal",
+      "status": 200,
+      "latencyMs": 90.26,
+      "attempts": 1,
+      "usage": {
+        "input_tokens": 909,
+        "output_tokens": 189
+      },
+      "error": null
+    },
+    {
+      "candidateKey": "g-oman-transfer",
+      "status": 200,
+      "latencyMs": 86.44,
+      "attempts": 1,
+      "usage": {
+        "input_tokens": 997,
+        "output_tokens": 190
+      },
+      "error": null
+    },
+    {
+      "candidateKey": "n-escondida-talks",
+      "status": 200,
+      "latencyMs": 100.71,
+      "attempts": 1,
+      "usage": {
+        "input_tokens": 900,
+        "output_tokens": 190
+      },
+      "error": null
+    },
+    {
+      "candidateKey": "n-escondida-restart",
+      "status": 200,
+      "latencyMs": 117.45,
+      "attempts": 1,
+      "usage": {
+        "input_tokens": 885,
+        "output_tokens": 189
+      },
+      "error": null
+    },
+    {
+      "candidateKey": "n-regional-gdp",
+      "status": 200,
+      "latencyMs": 83.04,
+      "attempts": 1,
+      "usage": {
+        "input_tokens": 986,
+        "output_tokens": 189
+      },
+      "error": null
+    },
+    {
+      "candidateKey": "m-bonds-stabilize",
+      "status": 200,
+      "latencyMs": 78.78,
+      "attempts": 1,
+      "usage": {
+        "input_tokens": 938,
+        "output_tokens": 185
+      },
+      "error": null
+    },
+    {
+      "candidateKey": "m-dollar-eases",
+      "status": 200,
+      "latencyMs": 92.89,
+      "attempts": 1,
+      "usage": {
+        "input_tokens": 897,
+        "output_tokens": 189
+      },
+      "error": null
+    },
+    {
+      "candidateKey": "m-treasury-6",
+      "status": 200,
+      "latencyMs": 106.13,
+      "attempts": 1,
+      "usage": {
+        "input_tokens": 1009,
+        "output_tokens": 189
+      },
+      "error": null
+    }
+  ],
+  "status": "PASS"
+}

@@ -1,0 +1,162 @@
+{
+  "schemaVersion": 1,
+  "radarRunId": "RADAR-JEV-20260926-0018-D",
+  "sourceMainCommit": "51ab2e4cacefbde565892a40fad86a9ea4458a31",
+  "radarStateVersion": "radar-state-v1",
+  "editorialDate": "2026-09-26",
+  "experimentMode": "RADAR_JEV",
+  "mode": "LAB_ONLY",
+  "productionWritesAllowed": false,
+  "candidateReviews": [
+    {
+      "candidateKey": "g-italy-fuel-cap",
+      "section": "general",
+      "title": "Italy's Eni caps fuel prices as government tries to tame energy costs",
+      "description": "Eni will cap diesel and petrol pump prices for at least a month, turning elevated energy costs into a direct consumer-price intervention in a major euro-area economy.",
+      "sourceName": "Reuters",
+      "publishedAt": "2026-09-25T18:00:00Z",
+      "priors": [
+        {
+          "origin": "editorial_state",
+          "title": "oil-geopolitics-inflation",
+          "relationHint": "Active thread tracks transmission from disrupted energy supply into inflation; this is a new policy response to that transmission."
+        }
+      ]
+    },
+    {
+      "candidateKey": "g-india-coal",
+      "section": "general",
+      "title": "India weighs mandatory imported-coal blending as power stocks tighten",
+      "description": "India is considering mandatory blending of imported coal at power plants as inventories fall rapidly and spot electricity prices reach their highest since 2022.",
+      "sourceName": "Reuters",
+      "publishedAt": "2026-09-25T12:00:00Z",
+      "priors": [
+        {
+          "origin": "recent LAB",
+          "title": "India coal constraint",
+          "relationHint": "Selected in the immediately preceding experimental run, so repetition risk is high."
+        }
+      ]
+    },
+    {
+      "candidateKey": "g-oman-transfer",
+      "section": "general",
+      "title": "Gulf of Oman ship-to-ship oil transfers reach limit as Saudi exports surge",
+      "description": "Oil transfers off Oman reached capacity as producers diverted barrels around constrained Hormuz routes, exposing a physical limit in the adaptation strategy.",
+      "sourceName": "Reuters",
+      "publishedAt": "2026-09-25T15:00:00Z",
+      "priors": [
+        {
+          "origin": "editorial_state",
+          "title": "oil-geopolitics-inflation",
+          "relationHint": "The Saudi/Oman bypass is already explicit in active memory."
+        },
+        {
+          "origin": "recent LAB",
+          "title": "Oman transfer capacity",
+          "relationHint": "Evaluated in the immediately preceding run."
+        }
+      ]
+    },
+    {
+      "candidateKey": "n-escondida-talks",
+      "section": "national",
+      "title": "Escondida union refuses to pause contract talks after fatal accident",
+      "description": "A union at Escondida rejected BHP's request to delay contract negotiations after a worker death, keeping labor talks active during the operational recovery.",
+      "sourceName": "Reuters",
+      "publishedAt": "2026-09-25T16:46:00Z",
+      "priors": [
+        {
+          "origin": "recent LAB",
+          "title": "Escondida labor talks",
+          "relationHint": "Selected in the immediately preceding run."
+        }
+      ]
+    },
+    {
+      "candidateKey": "n-escondida-restart",
+      "section": "national",
+      "title": "Escondida gradually resumes operations after fatal accident",
+      "description": "BHP's Escondida mine progressively resumed operations following a fatal maintenance accident while safety assessments continued.",
+      "sourceName": "Reuters",
+      "publishedAt": "2026-09-25T00:22:00Z",
+      "priors": [
+        {
+          "origin": "recent LAB",
+          "title": "Escondida restart",
+          "relationHint": "Repeated across several preceding LAB runs."
+        }
+      ]
+    },
+    {
+      "candidateKey": "n-regional-gdp",
+      "section": "national",
+      "title": "Chile regional GDP shows seven regions contracting in second quarter",
+      "description": "Central bank data show Chilean GDP contracted 0.2% in the second quarter, with seven regions declining while household consumption expanded nationally.",
+      "sourceName": "Banco Central de Chile",
+      "publishedAt": "2026-09-23T11:30:00Z",
+      "priors": [
+        {
+          "origin": "editorial_state",
+          "title": "chile-inflation-activity-rates",
+          "relationHint": "Weak activity is active memory."
+        },
+        {
+          "origin": "recent LAB",
+          "title": "Regional GDP Q2",
+          "relationHint": "Exact release has repeatedly been evaluated."
+        }
+      ]
+    },
+    {
+      "candidateKey": "m-bonds-stabilize",
+      "section": "markets",
+      "title": "Battered bonds draw support from falling oil prices",
+      "description": "US Treasury yields stabilized and the 10-year edged lower as oil fell after touching fresh multi-decade yield highs, while traders still priced further Fed hikes.",
+      "sourceName": "Reuters",
+      "publishedAt": "2026-09-25T21:00:00Z",
+      "priors": [
+        {
+          "origin": "editorial_state",
+          "title": "us-employment-fed-rates",
+          "relationHint": "Treasury yields and Fed tightening are active watch variables; stabilization after new highs is a fresh session development."
+        }
+      ]
+    },
+    {
+      "candidateKey": "m-dollar-eases",
+      "section": "markets",
+      "title": "Dollar falls as oil eases while Fed rate-hike bets remain elevated",
+      "description": "The dollar declined with oil but remained on course for a second weekly gain as expectations of further Federal Reserve tightening supported US yields.",
+      "sourceName": "Reuters",
+      "publishedAt": "2026-09-25T16:00:00Z",
+      "priors": [
+        {
+          "origin": "recent LAB",
+          "title": "Dollar eases/Fed",
+          "relationHint": "Selected in the immediately preceding experimental run."
+        }
+      ]
+    },
+    {
+      "candidateKey": "m-treasury-6",
+      "section": "markets",
+      "title": "Investors ask whether 6% is the new Treasury pain threshold",
+      "description": "Investors are reassessing tolerance for long Treasury yields after 5% lost some shock value, with 6% discussed as a larger global repricing threshold.",
+      "sourceName": "Reuters",
+      "publishedAt": "2026-09-24T10:00:00Z",
+      "priors": [
+        {
+          "origin": "editorial_state",
+          "title": "us-employment-fed-rates",
+          "relationHint": "Long yields are active memory; the threshold framing is incremental."
+        },
+        {
+          "origin": "recent LAB",
+          "title": "Treasury 6% threshold",
+          "relationHint": "Already evaluated in the immediately preceding run."
+        }
+      ]
+    }
+  ]
+}
