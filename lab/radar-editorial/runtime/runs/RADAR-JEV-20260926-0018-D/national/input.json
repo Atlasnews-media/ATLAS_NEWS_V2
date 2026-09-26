@@ -7,21 +7,22 @@
   "experimentMode": "RADAR_JEV",
   "mode": "LAB_ONLY",
   "productionWritesAllowed": false,
-  "startedAt": "2026-09-26T00:18:00-03:00",
-  "completedAt": null,
-  "memoryMode": "RADAR_PLUS_CORPUS",
-  "radarInterventionUsed": true,
-  "jevUsed": true,
-  "corpusUsed": true,
+  "section": "national",
+  "startedAt": "2026-09-26T00:20:41-03:00",
   "frameworkRead": [
     "AGENTS.md",
     "docs/PROCEDIMIENTO_GPT_PUBLICACION.md",
     "docs/CONTRATO_EDITORIAL.md",
     "data/editorial_state.json"
   ],
-  "phases": {
-    "general": "PASS",
-    "national": "PASS",
-    "markets": "PENDING"
-  }
+  "searchQueryIds": [
+    "n-q1",
+    "n-q2",
+    "n-q3"
+  ],
+  "candidateIds": [
+    "n-escondida-talks",
+    "n-escondida-restart",
+    "n-regional-gdp"
+  ]
 }
