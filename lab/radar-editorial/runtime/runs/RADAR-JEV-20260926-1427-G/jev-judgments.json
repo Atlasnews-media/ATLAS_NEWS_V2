@@ -1,0 +1,461 @@
+{
+  "schemaVersion": 1,
+  "radarRunId": "RADAR-JEV-20260926-1427-G",
+  "sourceMainCommit": "beb0abc67cb24faa9f495d202f03e4949a9fe27c",
+  "radarStateVersion": "radar-state-v1",
+  "editorialDate": "2026-09-26",
+  "experimentMode": "RADAR_JEV",
+  "mode": "LAB_ONLY",
+  "productionWritesAllowed": false,
+  "engine": "JEV_TYPESAFE",
+  "modelRequested": "jev-latest",
+  "modelObserved": "jev-1.13.0",
+  "thresholdsApplied": false,
+  "generatedAt": "2026-09-26T17:28:30.972Z",
+  "judgments": [
+    {
+      "candidateKey": "g-trump-rejects-iran",
+      "section": "general",
+      "eventRelation": {
+        "value": "SAME_EVENT",
+        "confidence": 1,
+        "probabilities": {
+          "UNRELATED": 0,
+          "SAME_EVENT": 1,
+          "UNCERTAIN": 0,
+          "NEW_EVENT": 0
+        }
+      },
+      "informationRelation": {
+        "value": "MEANINGFUL_UPDATE",
+        "confidence": 0.92,
+        "probabilities": {
+          "REPETITION": 0.02,
+          "CONTRADICTION": 0,
+          "CONTINUATION": 0,
+          "NEW": 0.03,
+          "UNCERTAIN": 0,
+          "MEANINGFUL_UPDATE": 0.95
+        }
+      },
+      "addsNewInformation": {
+        "probability": 0.87,
+        "confidence": null
+      },
+      "historicalContextNeeded": {
+        "probability": 0.62,
+        "confidence": null
+      },
+      "angleRepeated": {
+        "probability": 0.5,
+        "confidence": null
+      }
+    },
+    {
+      "candidateKey": "g-iran-talks-gap",
+      "section": "general",
+      "eventRelation": {
+        "value": "SAME_EVENT",
+        "confidence": 0.47,
+        "probabilities": {
+          "UNCERTAIN": 0.02,
+          "UNRELATED": 0,
+          "SAME_EVENT": 0.6,
+          "NEW_EVENT": 0.38
+        }
+      },
+      "informationRelation": {
+        "value": "REPETITION",
+        "confidence": 0.59,
+        "probabilities": {
+          "CONTRADICTION": 0,
+          "REPETITION": 0.66,
+          "UNCERTAIN": 0.02,
+          "CONTINUATION": 0.2,
+          "NEW": 0.05,
+          "MEANINGFUL_UPDATE": 0.07
+        }
+      },
+      "addsNewInformation": {
+        "probability": 0.44,
+        "confidence": null
+      },
+      "historicalContextNeeded": {
+        "probability": 0.6,
+        "confidence": null
+      },
+      "angleRepeated": {
+        "probability": 0.74,
+        "confidence": null
+      }
+    },
+    {
+      "candidateKey": "g-france-hormuz-un",
+      "section": "general",
+      "eventRelation": {
+        "value": "NEW_EVENT",
+        "confidence": 0.71,
+        "probabilities": {
+          "SAME_EVENT": 0.22,
+          "UNCERTAIN": 0,
+          "UNRELATED": 0,
+          "NEW_EVENT": 0.78
+        }
+      },
+      "informationRelation": {
+        "value": "NEW",
+        "confidence": 0.48,
+        "probabilities": {
+          "CONTRADICTION": 0,
+          "NEW": 0.57,
+          "MEANINGFUL_UPDATE": 0.32,
+          "REPETITION": 0.06,
+          "CONTINUATION": 0.04,
+          "UNCERTAIN": 0.01
+        }
+      },
+      "addsNewInformation": {
+        "probability": 0.8,
+        "confidence": null
+      },
+      "historicalContextNeeded": {
+        "probability": 0.55,
+        "confidence": null
+      },
+      "angleRepeated": {
+        "probability": 0.23,
+        "confidence": null
+      }
+    },
+    {
+      "candidateKey": "n-escondida-talks-g",
+      "section": "national",
+      "eventRelation": {
+        "value": "SAME_EVENT",
+        "confidence": 0.91,
+        "probabilities": {
+          "SAME_EVENT": 0.93,
+          "UNRELATED": 0,
+          "NEW_EVENT": 0.07,
+          "UNCERTAIN": 0
+        }
+      },
+      "informationRelation": {
+        "value": "REPETITION",
+        "confidence": 0.54,
+        "probabilities": {
+          "MEANINGFUL_UPDATE": 0.22,
+          "NEW": 0.1,
+          "REPETITION": 0.62,
+          "CONTRADICTION": 0,
+          "CONTINUATION": 0.04,
+          "UNCERTAIN": 0.02
+        }
+      },
+      "addsNewInformation": {
+        "probability": 0.59,
+        "confidence": null
+      },
+      "historicalContextNeeded": {
+        "probability": 0.53,
+        "confidence": null
+      },
+      "angleRepeated": {
+        "probability": 0.77,
+        "confidence": null
+      }
+    },
+    {
+      "candidateKey": "n-escondida-restart-g",
+      "section": "national",
+      "eventRelation": {
+        "value": "SAME_EVENT",
+        "confidence": 0.98,
+        "probabilities": {
+          "NEW_EVENT": 0.02,
+          "SAME_EVENT": 0.98,
+          "UNCERTAIN": 0,
+          "UNRELATED": 0
+        }
+      },
+      "informationRelation": {
+        "value": "REPETITION",
+        "confidence": 0.61,
+        "probabilities": {
+          "CONTRADICTION": 0,
+          "MEANINGFUL_UPDATE": 0.15,
+          "CONTINUATION": 0.14,
+          "UNCERTAIN": 0,
+          "NEW": 0.03,
+          "REPETITION": 0.68
+        }
+      },
+      "addsNewInformation": {
+        "probability": 0.45,
+        "confidence": null
+      },
+      "historicalContextNeeded": {
+        "probability": 0.48,
+        "confidence": null
+      },
+      "angleRepeated": {
+        "probability": 0.86,
+        "confidence": null
+      }
+    },
+    {
+      "candidateKey": "n-escondida-halt-g",
+      "section": "national",
+      "eventRelation": {
+        "value": "SAME_EVENT",
+        "confidence": 0.99,
+        "probabilities": {
+          "UNCERTAIN": 0,
+          "NEW_EVENT": 0.01,
+          "UNRELATED": 0,
+          "SAME_EVENT": 0.99
+        }
+      },
+      "informationRelation": {
+        "value": "REPETITION",
+        "confidence": 0.41,
+        "probabilities": {
+          "MEANINGFUL_UPDATE": 0.23,
+          "NEW": 0.12,
+          "UNCERTAIN": 0.01,
+          "REPETITION": 0.52,
+          "CONTINUATION": 0.12,
+          "CONTRADICTION": 0
+        }
+      },
+      "addsNewInformation": {
+        "probability": 0.52,
+        "confidence": null
+      },
+      "historicalContextNeeded": {
+        "probability": 0.51,
+        "confidence": null
+      },
+      "angleRepeated": {
+        "probability": 0.8,
+        "confidence": null
+      }
+    },
+    {
+      "candidateKey": "m-week-ahead-data",
+      "section": "markets",
+      "eventRelation": {
+        "value": "NEW_EVENT",
+        "confidence": 0.62,
+        "probabilities": {
+          "UNCERTAIN": 0,
+          "SAME_EVENT": 0.28,
+          "NEW_EVENT": 0.72,
+          "UNRELATED": 0
+        }
+      },
+      "informationRelation": {
+        "value": "NEW",
+        "confidence": 0.31,
+        "probabilities": {
+          "CONTINUATION": 0.16,
+          "MEANINGFUL_UPDATE": 0.24,
+          "REPETITION": 0.16,
+          "NEW": 0.42,
+          "CONTRADICTION": 0,
+          "UNCERTAIN": 0.02
+        }
+      },
+      "addsNewInformation": {
+        "probability": 0.72,
+        "confidence": null
+      },
+      "historicalContextNeeded": {
+        "probability": 0.54,
+        "confidence": null
+      },
+      "angleRepeated": {
+        "probability": 0.63,
+        "confidence": null
+      }
+    },
+    {
+      "candidateKey": "m-bonds-oil-g",
+      "section": "markets",
+      "eventRelation": {
+        "value": "SAME_EVENT",
+        "confidence": 0.99,
+        "probabilities": {
+          "UNRELATED": 0,
+          "UNCERTAIN": 0,
+          "NEW_EVENT": 0.01,
+          "SAME_EVENT": 0.99
+        }
+      },
+      "informationRelation": {
+        "value": "REPETITION",
+        "confidence": 0.88,
+        "probabilities": {
+          "CONTRADICTION": 0,
+          "MEANINGFUL_UPDATE": 0.04,
+          "UNCERTAIN": 0,
+          "REPETITION": 0.9,
+          "CONTINUATION": 0.04,
+          "NEW": 0.02
+        }
+      },
+      "addsNewInformation": {
+        "probability": 0.47,
+        "confidence": null
+      },
+      "historicalContextNeeded": {
+        "probability": 0.44,
+        "confidence": null
+      },
+      "angleRepeated": {
+        "probability": 0.92,
+        "confidence": null
+      }
+    },
+    {
+      "candidateKey": "m-oil-yields-g",
+      "section": "markets",
+      "eventRelation": {
+        "value": "SAME_EVENT",
+        "confidence": 0.47,
+        "probabilities": {
+          "UNCERTAIN": 0.01,
+          "NEW_EVENT": 0.38,
+          "UNRELATED": 0,
+          "SAME_EVENT": 0.61
+        }
+      },
+      "informationRelation": {
+        "value": "MEANINGFUL_UPDATE",
+        "confidence": 0.34,
+        "probabilities": {
+          "MEANINGFUL_UPDATE": 0.45,
+          "UNCERTAIN": 0.02,
+          "REPETITION": 0.09,
+          "CONTINUATION": 0.11,
+          "NEW": 0.33,
+          "CONTRADICTION": 0
+        }
+      },
+      "addsNewInformation": {
+        "probability": 0.83,
+        "confidence": null
+      },
+      "historicalContextNeeded": {
+        "probability": 0.58,
+        "confidence": null
+      },
+      "angleRepeated": {
+        "probability": 0.6,
+        "confidence": null
+      }
+    }
+  ],
+  "telemetry": [
+    {
+      "candidateKey": "g-trump-rejects-iran",
+      "status": 200,
+      "latencyMs": 201.53,
+      "attempts": 1,
+      "usage": {
+        "input_tokens": 1023,
+        "output_tokens": 190
+      },
+      "error": null
+    },
+    {
+      "candidateKey": "g-iran-talks-gap",
+      "status": 200,
+      "latencyMs": 81,
+      "attempts": 1,
+      "usage": {
+        "input_tokens": 895,
+        "output_tokens": 189
+      },
+      "error": null
+    },
+    {
+      "candidateKey": "g-france-hormuz-un",
+      "status": 200,
+      "latencyMs": 96.04,
+      "attempts": 1,
+      "usage": {
+        "input_tokens": 923,
+        "output_tokens": 185
+      },
+      "error": null
+    },
+    {
+      "candidateKey": "n-escondida-talks-g",
+      "status": 200,
+      "latencyMs": 82.72,
+      "attempts": 1,
+      "usage": {
+        "input_tokens": 911,
+        "output_tokens": 189
+      },
+      "error": null
+    },
+    {
+      "candidateKey": "n-escondida-restart-g",
+      "status": 200,
+      "latencyMs": 121.64,
+      "attempts": 1,
+      "usage": {
+        "input_tokens": 886,
+        "output_tokens": 189
+      },
+      "error": null
+    },
+    {
+      "candidateKey": "n-escondida-halt-g",
+      "status": 200,
+      "latencyMs": 87.59,
+      "attempts": 1,
+      "usage": {
+        "input_tokens": 910,
+        "output_tokens": 189
+      },
+      "error": null
+    },
+    {
+      "candidateKey": "m-week-ahead-data",
+      "status": 200,
+      "latencyMs": 69.37,
+      "attempts": 1,
+      "usage": {
+        "input_tokens": 932,
+        "output_tokens": 185
+      },
+      "error": null
+    },
+    {
+      "candidateKey": "m-bonds-oil-g",
+      "status": 200,
+      "latencyMs": 72.27,
+      "attempts": 1,
+      "usage": {
+        "input_tokens": 903,
+        "output_tokens": 189
+      },
+      "error": null
+    },
+    {
+      "candidateKey": "m-oil-yields-g",
+      "status": 200,
+      "latencyMs": 110.84,
+      "attempts": 1,
+      "usage": {
+        "input_tokens": 910,
+        "output_tokens": 190
+      },
+      "error": null
+    }
+  ],
+  "status": "PASS"
+}
