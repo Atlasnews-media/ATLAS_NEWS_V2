@@ -4,10 +4,10 @@
   "sourceMainCommit": "51ab2e4cacefbde565892a40fad86a9ea4458a31",
   "radarStateVersion": "radar-state-v1",
   "editorialDate": "2026-09-26",
-  "mode": "LAB_ONLY",
   "experimentMode": "RADAR_JEV",
-  "status": "MARKETS_PASS",
+  "mode": "LAB_ONLY",
   "productionWritesAllowed": false,
-  "runPath": "lab/radar-editorial/runtime/runs/RADAR-JEV-20260926-0018-D",
-  "updatedAt": "2026-09-26T00:21:50-03:00"
+  "phase": "markets",
+  "status": "PASS",
+  "completedAt": "2026-09-26T00:21:50-03:00"
 }
