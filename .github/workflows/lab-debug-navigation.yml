@@ -1,0 +1,45 @@
+name: LAB — Debug navegación Astro
+
+on:
+  pull_request:
+    paths:
+      - ".github/workflows/lab-debug-navigation.yml"
+      - "scripts/lab/debug-navigation-playwright.mjs"
+
+permissions:
+  contents: read
+
+jobs:
+  debug-navigation:
+    name: Capturar trace de navegación
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+
+    steps:
+      - name: Descargar rama LAB
+        uses: actions/checkout@v4
+
+      - name: Preparar Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: Instalar Playwright sólo para el LAB
+        run: |
+          npm install --no-save --package-lock=false playwright@latest
+          npx playwright install --with-deps chromium webkit
+
+      - name: Ejecutar diagnóstico contra producción pública
+        env:
+          ATLAS_DEBUG_URL: https://atlasnews-media.github.io/
+          ATLAS_DEBUG_OUT: debug-artifacts/navigation
+        run: node scripts/lab/debug-navigation-playwright.mjs
+
+      - name: Publicar trazas y capturas
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: atlas-navigation-debug
+          path: debug-artifacts/navigation/
+          if-no-files-found: warn
+          retention-days: 7
