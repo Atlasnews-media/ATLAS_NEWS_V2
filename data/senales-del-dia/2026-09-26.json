@@ -1,0 +1,111 @@
+{
+  "status": "READY",
+  "date": "2026-09-26",
+  "contract": "atlas-senales-del-dia-v1",
+  "senalesDelDia": {
+    "internacional": [
+      {
+        "slot": "technology",
+        "headline": "Collibra lleva contratos y guardianes al control de agentes de IA",
+        "deck": "La plataforma presentó controles legibles por máquina y supervisión en ejecución para limitar acciones no autorizadas de agentes empresariales.",
+        "development": "Collibra presentó el 23 de septiembre tres capacidades orientadas a gobernar agentes de inteligencia artificial en empresas: Maestro, Live Map y Guardian Agents con Agent Contracts. Maestro permite configurar agentes para tareas de gobierno de datos; Live Map les entrega un grafo de contexto sobre documentos y relaciones internas; y Agent Contracts define reglas legibles por máquina sobre permisos, riesgos y condiciones de operación. La compañía informó que Maestro está disponible, mientras Guardian Agents llegará en octubre y Live Map comenzará con un grupo reducido de socios de diseño.\n\nLa señal tecnológica no es una mejora de generación de texto, sino el traslado del gobierno hacia el momento en que un agente actúa. Guardian Agents está diseñado para supervisar conductas durante la ejecución y escalar, advertir o bloquear una acción fuera de los límites definidos. Ese enfoque responde a un problema distinto del entrenamiento del modelo: aunque la respuesta parezca plausible, una organización necesita saber qué herramientas puede usar el agente, con qué datos y bajo qué autoridad.\n\nEl anuncio proviene de la propia empresa y describe capacidades y calendarios, no resultados independientes de adopción o eficacia. Lo siguiente será observar cuántos clientes despliegan estos controles, cómo funcionan con agentes construidos fuera de Collibra y si las intervenciones quedan auditadas de forma verificable. También importará distinguir entre certificación de un asistente específico y seguridad demostrada de una flota completa en producción.",
+        "anchor": "collibra-contratos-guardianes-agentes-ia",
+        "sources": [
+          {
+            "name": "Collibra",
+            "url": "https://www.collibra.com/company/newsroom/press-releases/collibra-launches-new-capabilities-to-reduce-the-hallucination-tax-on-enterprise-ai"
+          },
+          {
+            "name": "Fortune",
+            "url": "https://fortune.com/2026/09/13/ai-agents-going-rogue-cio-guardrails/"
+          }
+        ]
+      },
+      {
+        "slot": "world",
+        "headline": "El avance industrial chino aumenta la presión sobre Alemania",
+        "deck": "Un análisis del BCE identifica mayor exposición alemana a la competencia china en maquinaria, transporte y cadenas manufactureras europeas.",
+        "development": "El Banco Central Europeo publicó esta semana un análisis sobre la exposición desigual de las economías europeas al avance industrial de China. El estudio concluye que la participación de la Unión Europea en las exportaciones mundiales ha retrocedido especialmente en sectores y destinos donde China ganó presencia, con maquinaria y equipos de transporte entre las áreas más expuestas. Alemania aparece como la gran economía europea con una estructura exportadora más parecida a la china, mientras Italia muestra una similitud menor.\n\nLa señal internacional está en la combinación de competencia externa y menor demanda china por productos europeos. A medida que China amplía producción doméstica de bienes de mayor valor tecnológico, empresas europeas enfrentan presión tanto en terceros mercados como dentro del propio mercado chino. El análisis también identifica efectos sobre economías de Europa central integradas a las cadenas automotrices y manufactureras alemanas, por lo que el impacto no se limita a un solo país.\n\nEl documento describe exposición estructural y no permite atribuir cada caída industrial reciente únicamente a China. Energía, costos laborales, inversión y demanda interna también influyen en la competitividad europea. Habrá que observar si la Unión Europea responde mediante inversión, reglas de contenido local o medidas comerciales, y si esas políticas elevan capacidad productiva sin fragmentar cadenas de suministro ni provocar nuevas represalias.",
+        "anchor": "china-industria-presion-alemania-bce",
+        "sources": [
+          {
+            "name": "Banco de los Países Bajos — Boletín Económico del BCE 6/2026",
+            "url": "https://www.dnb.nl/media/dbblfygk/eb202606-nl.pdf"
+          },
+          {
+            "name": "Reuters",
+            "url": "https://www.reuters.com/world/china/chinas-industrial-rise-hits-german-manufacturers-hard-ecb-finds-2026-09-22/"
+          }
+        ]
+      }
+    ],
+    "nacional": [
+      {
+        "slot": "ipsa_company",
+        "headline": "Sonda amplía MacOnline con la compra del negocio Apple de Yáneken",
+        "deck": "La filial ITEM cerró la operación por 139.584 UF y evalúa adquirir inventario adicional, tras recibir autorización sin condiciones de la FNE.",
+        "development": "Sonda informó el 21 de septiembre que su filial ITEM, operadora de MacOnline, concretó la compra del negocio de distribución y soporte técnico de productos Apple de Yáneken Retail, asociado a las tiendas Aufbau. La operación alcanzó 139.584 UF, equivalentes a cerca de $5.720 millones, después de descuentos por pronto pago y otros ajustes. La transacción había sido anunciada en marzo y recibió en agosto la aprobación sin condiciones de la Fiscalía Nacional Económica.\n\nLa señal corporativa está en la ampliación de cobertura geográfica de MacOnline dentro de una compañía IPSA cuyo negocio principal continúa siendo servicios tecnológicos. El acuerdo incorpora una operación comercial existente, pero el hecho esencial no detalló cuántas tiendas serán integradas ni un calendario de conversión. Sonda también señaló que ITEM puede adquirir inventario comercial seleccionado de Yáneken, cuyo valor estimó en aproximadamente $800 millones.\n\nEl monto informado permite dimensionar la inversión, pero todavía no permite estimar su contribución a ingresos, márgenes o resultados consolidados. Los próximos antecedentes relevantes serán el número de locales incorporados, costos de integración, tratamiento del inventario y desempeño de ventas posteriores al cierre. Hasta contar con esa información, corresponde registrar la expansión del canal Apple como una operación cerrada y evitar extrapolar un impacto financiero material no comunicado por la empresa.",
+        "anchor": "sonda-compra-negocio-apple-yaneken-maconline",
+        "sources": [
+          {
+            "name": "CMF — hecho esencial de Sonda reproducido por Public",
+            "url": "https://www.publicnow.com/view/4C0F1AA9A86736395B498A9D2898CBDD51F63356"
+          },
+          {
+            "name": "Diario Financiero",
+            "url": "https://www.df.cl/empresas/telecom-tecnologia/sonda-concreta-compra-del-negocio-apple-de-yaneken-por-casi-us-6-millones"
+          }
+        ]
+      },
+      {
+        "slot": "policy_economy",
+        "headline": "Gobierno anuncia para octubre un paquete legislativo pro-Pyme",
+        "deck": "El Ejecutivo anticipó proyectos para pequeñas y medianas empresas dentro de su respuesta al menor dinamismo, el empleo débil y la inversión.",
+        "development": "El biministro de Economía y Minería, Daniel Mas, informó el 23 de septiembre ante la Comisión de Economía del Senado que el Gobierno presentará en octubre un paquete legislativo pro-Pyme. La exposición abordó la caída de la actividad, el desempeño minero, el impacto del alza de combustibles y las condiciones de empleo e inversión. Según el ministro, las pequeñas y medianas empresas generan cerca del 47% del empleo en Chile, lo que explica su lugar dentro de la agenda anunciada.\n\nLa señal de política económica es preliminar: existe un calendario y una orientación, pero todavía no se conocen proyectos, costos fiscales, requisitos ni mecanismos de implementación. En la misma sesión, el Ejecutivo mencionó un plan de emergencia laboral, aceleración de inversión en Obras Públicas y Vivienda, proyectos municipales y reducción de plazos para iniciativas de inversión. Los senadores plantearon además la necesidad de fortalecer medidas proempleo y mantener condiciones tributarias para las pymes.\n\nEl análisis debe separar anuncios de normas vigentes. La evaluación comenzará cuando el Gobierno ingrese los textos y sea posible revisar cobertura, financiamiento, efectos administrativos y compatibilidad con otras políticas. También habrá que observar si las medidas reducen costos o barreras verificables para empresas pequeñas y si incluyen criterios de seguimiento. Hasta entonces, no corresponde atribuirles efectos sobre crecimiento, empleo o inversión que todavía no pueden medirse.",
+        "anchor": "gobierno-paquete-legislativo-pro-pyme-octubre",
+        "sources": [
+          {
+            "name": "Senado de la República de Chile",
+            "url": "https://www.senado.cl/comunicaciones/noticias/comision-de-economia-analizo-escenario-economico-y-medidas-para-impulsar"
+          }
+        ]
+      }
+    ],
+    "mercados": [
+      {
+        "slot": "markets_chile",
+        "headline": "El dólar completa un alza de 3% en Chile durante septiembre",
+        "deck": "La divisa pasó de $934,17 a $961,99 en el mes, mientras el IPSA cerró el viernes en 11.256,8 puntos con una caída diaria de 0,38%.",
+        "development": "El dólar cerró el viernes 25 de septiembre en $961,99 en el mercado chileno, frente a $934,17 al inicio del mes, acumulando un avance cercano a 3%. La referencia diaria de Santander mostró además al dólar observado en $965,71. En renta variable, el IPSA terminó la sesión en 11.256,8 puntos, con una baja de 0,38%, mientras el cobre se ubicó en US$6,69 por libra con una variación diaria negativa de 0,17%.\n\nLa señal local es la pérdida de valor del peso en un mes en que el diferencial de crecimiento y tasas favoreció al dólar global, mientras el cobre corrigió desde niveles superiores. Para empresas importadoras y obligaciones denominadas en moneda extranjera, un dólar más alto eleva costos en pesos; para exportadores, la transmisión puede ser favorable, aunque depende de precios, coberturas y estructura de costos. El retroceso diario del IPSA muestra que la moneda y las acciones no deben leerse como una sola apuesta.\n\nLas cifras describen precios observados, no una tendencia garantizada para octubre. Habrá que seguir la trayectoria del cobre, las expectativas de política monetaria local y externa, y la amplitud del movimiento dentro del IPSA. También será relevante distinguir entre una reacción global del dólar y factores específicamente chilenos antes de atribuir el avance mensual a una única causa.",
+        "anchor": "dolar-chile-alza-tres-por-ciento-septiembre",
+        "sources": [
+          {
+            "name": "Bloomberg Línea",
+            "url": "https://www.bloomberglinea.com/mercados/por-que-el-dolar-en-chile-subio-3-durante-septiembre/"
+          },
+          {
+            "name": "Santander Inversiones — Mercados",
+            "url": "https://bancosantanderinversiones.finmarketslive.cl/www/mercados.html"
+          }
+        ]
+      },
+      {
+        "slot": "markets_global",
+        "headline": "Bancos centrales europeos replantean reservas de stablecoins",
+        "deck": "El sistema europeo propone reemplazar cuotas obligatorias de depósitos bancarios por activos con vencimientos de uno a cinco días hábiles.",
+        "development": "El Sistema Europeo de Bancos Centrales propuso el 22 de septiembre modificar una regla de MiCA que obliga a los emisores de stablecoins a mantener en depósitos bancarios 30% de sus reservas, o 60% cuando se trata de emisores significativos. La alternativa plantea exigir una proporción mínima en activos que venzan entre uno y cinco días hábiles. La recomendación forma parte de una respuesta regulatoria y todavía no cambia por sí sola las obligaciones vigentes.\n\nLa señal para mercados globales está en cómo se administra la liquidez detrás de tokens vinculados a monedas. Los bancos centrales argumentan que concentrar reservas en depósitos puede reemplazar fondeo minorista relativamente estable por depósitos de emisores más sensibles a las condiciones de mercado. Un episodio de retiros desde una stablecoin podría entonces transmitir tensión hacia bancos que recibieron esas reservas. El planteamiento busca liquidez rápida sin fijar exclusivamente el instrumento bancario.\n\nEl documento también mantiene cautela frente a modelos de emisión múltiple, en que tokens emitidos dentro y fuera de la Unión Europea se tratan como intercambiables, y advierte dificultades de cumplimiento bajo MiCA. Los próximos hitos serán la respuesta de la Comisión Europea, la definición de activos elegibles y cualquier transición para los emisores. Hasta que exista una modificación formal, el mercado debe distinguir entre recomendación supervisora y norma aplicable.",
+        "anchor": "europa-reservas-stablecoins-depositos-liquidez",
+        "sources": [
+          {
+            "name": "Reuters",
+            "url": "https://www.reuters.com/business/finance/ecb-eu-central-banks-oppose-stablecoin-bank-deposit-rule-2026-09-22/"
+          },
+          {
+            "name": "Cinco Días",
+            "url": "https://cincodias.elpais.com/criptoactivos/2026-09-22/el-bce-recomienda-flexibilizar-los-requisitos-de-liquidez-para-los-emisores-de-stablecoins.html"
+          }
+        ]
+      }
+    ]
+  }
+}
