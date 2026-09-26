@@ -1,0 +1,461 @@
+{
+  "schemaVersion": 1,
+  "radarRunId": "RADAR-JEV-20260926-0900-E",
+  "sourceMainCommit": "beb0abc67cb24faa9f495d202f03e4949a9fe27c",
+  "radarStateVersion": "radar-state-v1",
+  "editorialDate": "2026-09-26",
+  "experimentMode": "RADAR_JEV",
+  "mode": "LAB_ONLY",
+  "productionWritesAllowed": false,
+  "engine": "JEV_TYPESAFE",
+  "modelRequested": "jev-latest",
+  "modelObserved": "jev-1.13.0",
+  "thresholdsApplied": false,
+  "generatedAt": "2026-09-26T12:01:32.836Z",
+  "judgments": [
+    {
+      "candidateKey": "g-iran-proposal",
+      "section": "general",
+      "eventRelation": {
+        "value": "NEW_EVENT",
+        "confidence": 0.9,
+        "probabilities": {
+          "UNCERTAIN": 0,
+          "NEW_EVENT": 0.93,
+          "UNRELATED": 0,
+          "SAME_EVENT": 0.07
+        }
+      },
+      "informationRelation": {
+        "value": "NEW",
+        "confidence": 0.54,
+        "probabilities": {
+          "UNCERTAIN": 0,
+          "MEANINGFUL_UPDATE": 0.37,
+          "CONTRADICTION": 0,
+          "REPETITION": 0.01,
+          "CONTINUATION": 0.01,
+          "NEW": 0.61
+        }
+      },
+      "addsNewInformation": {
+        "probability": 0.89,
+        "confidence": null
+      },
+      "historicalContextNeeded": {
+        "probability": 0.5,
+        "confidence": null
+      },
+      "angleRepeated": {
+        "probability": 0.28,
+        "confidence": null
+      }
+    },
+    {
+      "candidateKey": "g-india-max-output",
+      "section": "general",
+      "eventRelation": {
+        "value": "NEW_EVENT",
+        "confidence": 1,
+        "probabilities": {
+          "SAME_EVENT": 0,
+          "NEW_EVENT": 1,
+          "UNCERTAIN": 0,
+          "UNRELATED": 0
+        }
+      },
+      "informationRelation": {
+        "value": "NEW",
+        "confidence": 0.9,
+        "probabilities": {
+          "UNCERTAIN": 0,
+          "CONTINUATION": 0.01,
+          "MEANINGFUL_UPDATE": 0.07,
+          "NEW": 0.92,
+          "REPETITION": 0,
+          "CONTRADICTION": 0
+        }
+      },
+      "addsNewInformation": {
+        "probability": 0.89,
+        "confidence": null
+      },
+      "historicalContextNeeded": {
+        "probability": 0.38,
+        "confidence": null
+      },
+      "angleRepeated": {
+        "probability": 0.12,
+        "confidence": null
+      }
+    },
+    {
+      "candidateKey": "g-moldova-emergency",
+      "section": "general",
+      "eventRelation": {
+        "value": "NEW_EVENT",
+        "confidence": 1,
+        "probabilities": {
+          "SAME_EVENT": 0,
+          "NEW_EVENT": 1,
+          "UNCERTAIN": 0,
+          "UNRELATED": 0
+        }
+      },
+      "informationRelation": {
+        "value": "NEW",
+        "confidence": 0.84,
+        "probabilities": {
+          "REPETITION": 0,
+          "CONTINUATION": 0.01,
+          "UNCERTAIN": 0,
+          "MEANINGFUL_UPDATE": 0.11,
+          "NEW": 0.88,
+          "CONTRADICTION": 0
+        }
+      },
+      "addsNewInformation": {
+        "probability": 0.89,
+        "confidence": null
+      },
+      "historicalContextNeeded": {
+        "probability": 0.43,
+        "confidence": null
+      },
+      "angleRepeated": {
+        "probability": 0.16,
+        "confidence": null
+      }
+    },
+    {
+      "candidateKey": "n-escondida-talks",
+      "section": "national",
+      "eventRelation": {
+        "value": "SAME_EVENT",
+        "confidence": 0.78,
+        "probabilities": {
+          "SAME_EVENT": 0.84,
+          "NEW_EVENT": 0.16,
+          "UNCERTAIN": 0,
+          "UNRELATED": 0
+        }
+      },
+      "informationRelation": {
+        "value": "MEANINGFUL_UPDATE",
+        "confidence": 0.24,
+        "probabilities": {
+          "REPETITION": 0.21,
+          "CONTINUATION": 0.28,
+          "UNCERTAIN": 0.01,
+          "MEANINGFUL_UPDATE": 0.37,
+          "NEW": 0.13,
+          "CONTRADICTION": 0
+        }
+      },
+      "addsNewInformation": {
+        "probability": 0.7,
+        "confidence": null
+      },
+      "historicalContextNeeded": {
+        "probability": 0.51,
+        "confidence": null
+      },
+      "angleRepeated": {
+        "probability": 0.76,
+        "confidence": null
+      }
+    },
+    {
+      "candidateKey": "n-escondida-restart",
+      "section": "national",
+      "eventRelation": {
+        "value": "SAME_EVENT",
+        "confidence": 1,
+        "probabilities": {
+          "SAME_EVENT": 1,
+          "UNCERTAIN": 0,
+          "UNRELATED": 0,
+          "NEW_EVENT": 0
+        }
+      },
+      "informationRelation": {
+        "value": "REPETITION",
+        "confidence": 0.38,
+        "probabilities": {
+          "NEW": 0.08,
+          "UNCERTAIN": 0,
+          "REPETITION": 0.49,
+          "CONTRADICTION": 0,
+          "CONTINUATION": 0.16,
+          "MEANINGFUL_UPDATE": 0.27
+        }
+      },
+      "addsNewInformation": {
+        "probability": 0.72,
+        "confidence": null
+      },
+      "historicalContextNeeded": {
+        "probability": 0.48,
+        "confidence": null
+      },
+      "angleRepeated": {
+        "probability": 0.86,
+        "confidence": null
+      }
+    },
+    {
+      "candidateKey": "n-regional-gdp",
+      "section": "national",
+      "eventRelation": {
+        "value": "SAME_EVENT",
+        "confidence": 0.98,
+        "probabilities": {
+          "NEW_EVENT": 0.01,
+          "SAME_EVENT": 0.99,
+          "UNRELATED": 0,
+          "UNCERTAIN": 0
+        }
+      },
+      "informationRelation": {
+        "value": "REPETITION",
+        "confidence": 0.83,
+        "probabilities": {
+          "REPETITION": 0.85,
+          "MEANINGFUL_UPDATE": 0.03,
+          "NEW": 0.07,
+          "CONTRADICTION": 0,
+          "CONTINUATION": 0.04,
+          "UNCERTAIN": 0.01
+        }
+      },
+      "addsNewInformation": {
+        "probability": 0.34,
+        "confidence": null
+      },
+      "historicalContextNeeded": {
+        "probability": 0.45,
+        "confidence": null
+      },
+      "angleRepeated": {
+        "probability": 0.77,
+        "confidence": null
+      }
+    },
+    {
+      "candidateKey": "m-bonds-stabilize",
+      "section": "markets",
+      "eventRelation": {
+        "value": "SAME_EVENT",
+        "confidence": 0.99,
+        "probabilities": {
+          "NEW_EVENT": 0.01,
+          "UNRELATED": 0,
+          "UNCERTAIN": 0,
+          "SAME_EVENT": 0.99
+        }
+      },
+      "informationRelation": {
+        "value": "REPETITION",
+        "confidence": 0.89,
+        "probabilities": {
+          "MEANINGFUL_UPDATE": 0.05,
+          "REPETITION": 0.92,
+          "UNCERTAIN": 0,
+          "CONTINUATION": 0.02,
+          "NEW": 0.01,
+          "CONTRADICTION": 0
+        }
+      },
+      "addsNewInformation": {
+        "probability": 0.48,
+        "confidence": null
+      },
+      "historicalContextNeeded": {
+        "probability": 0.49,
+        "confidence": null
+      },
+      "angleRepeated": {
+        "probability": 0.93,
+        "confidence": null
+      }
+    },
+    {
+      "candidateKey": "m-equity-inflows",
+      "section": "markets",
+      "eventRelation": {
+        "value": "NEW_EVENT",
+        "confidence": 0.96,
+        "probabilities": {
+          "UNRELATED": 0,
+          "NEW_EVENT": 0.97,
+          "SAME_EVENT": 0.03,
+          "UNCERTAIN": 0
+        }
+      },
+      "informationRelation": {
+        "value": "MEANINGFUL_UPDATE",
+        "confidence": 0.78,
+        "probabilities": {
+          "CONTINUATION": 0,
+          "MEANINGFUL_UPDATE": 0.83,
+          "NEW": 0.17,
+          "REPETITION": 0,
+          "CONTRADICTION": 0,
+          "UNCERTAIN": 0
+        }
+      },
+      "addsNewInformation": {
+        "probability": 0.86,
+        "confidence": null
+      },
+      "historicalContextNeeded": {
+        "probability": 0.5,
+        "confidence": null
+      },
+      "angleRepeated": {
+        "probability": 0.19,
+        "confidence": null
+      }
+    },
+    {
+      "candidateKey": "m-oil-diplomacy",
+      "section": "markets",
+      "eventRelation": {
+        "value": "SAME_EVENT",
+        "confidence": 0.38,
+        "probabilities": {
+          "UNCERTAIN": 0,
+          "SAME_EVENT": 0.54,
+          "NEW_EVENT": 0.46,
+          "UNRELATED": 0
+        }
+      },
+      "informationRelation": {
+        "value": "NEW",
+        "confidence": 0.19,
+        "probabilities": {
+          "UNCERTAIN": 0,
+          "REPETITION": 0.23,
+          "CONTINUATION": 0.15,
+          "CONTRADICTION": 0,
+          "NEW": 0.33,
+          "MEANINGFUL_UPDATE": 0.29
+        }
+      },
+      "addsNewInformation": {
+        "probability": 0.68,
+        "confidence": null
+      },
+      "historicalContextNeeded": {
+        "probability": 0.56,
+        "confidence": null
+      },
+      "angleRepeated": {
+        "probability": 0.72,
+        "confidence": null
+      }
+    }
+  ],
+  "telemetry": [
+    {
+      "candidateKey": "g-iran-proposal",
+      "status": 200,
+      "latencyMs": 306.37,
+      "attempts": 1,
+      "usage": {
+        "input_tokens": 1039,
+        "output_tokens": 185
+      },
+      "error": null
+    },
+    {
+      "candidateKey": "g-india-max-output",
+      "status": 200,
+      "latencyMs": 142.79,
+      "attempts": 1,
+      "usage": {
+        "input_tokens": 947,
+        "output_tokens": 185
+      },
+      "error": null
+    },
+    {
+      "candidateKey": "g-moldova-emergency",
+      "status": 200,
+      "latencyMs": 143.26,
+      "attempts": 1,
+      "usage": {
+        "input_tokens": 944,
+        "output_tokens": 185
+      },
+      "error": null
+    },
+    {
+      "candidateKey": "n-escondida-talks",
+      "status": 200,
+      "latencyMs": 179.06,
+      "attempts": 1,
+      "usage": {
+        "input_tokens": 930,
+        "output_tokens": 190
+      },
+      "error": null
+    },
+    {
+      "candidateKey": "n-escondida-restart",
+      "status": 200,
+      "latencyMs": 142.24,
+      "attempts": 1,
+      "usage": {
+        "input_tokens": 898,
+        "output_tokens": 189
+      },
+      "error": null
+    },
+    {
+      "candidateKey": "n-regional-gdp",
+      "status": 200,
+      "latencyMs": 175.81,
+      "attempts": 1,
+      "usage": {
+        "input_tokens": 999,
+        "output_tokens": 189
+      },
+      "error": null
+    },
+    {
+      "candidateKey": "m-bonds-stabilize",
+      "status": 200,
+      "latencyMs": 165.26,
+      "attempts": 1,
+      "usage": {
+        "input_tokens": 1013,
+        "output_tokens": 189
+      },
+      "error": null
+    },
+    {
+      "candidateKey": "m-equity-inflows",
+      "status": 200,
+      "latencyMs": 147.04,
+      "attempts": 1,
+      "usage": {
+        "input_tokens": 1049,
+        "output_tokens": 189
+      },
+      "error": null
+    },
+    {
+      "candidateKey": "m-oil-diplomacy",
+      "status": 200,
+      "latencyMs": 129.43,
+      "attempts": 1,
+      "usage": {
+        "input_tokens": 1019,
+        "output_tokens": 186
+      },
+      "error": null
+    }
+  ],
+  "status": "PASS"
+}
