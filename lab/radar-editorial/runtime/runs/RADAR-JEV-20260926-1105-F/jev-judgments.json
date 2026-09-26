@@ -1,0 +1,461 @@
+{
+  "schemaVersion": 1,
+  "radarRunId": "RADAR-JEV-20260926-1105-F",
+  "sourceMainCommit": "beb0abc67cb24faa9f495d202f03e4949a9fe27c",
+  "radarStateVersion": "radar-state-v1",
+  "editorialDate": "2026-09-26",
+  "experimentMode": "RADAR_JEV",
+  "mode": "LAB_ONLY",
+  "productionWritesAllowed": false,
+  "engine": "JEV_TYPESAFE",
+  "modelRequested": "jev-latest",
+  "modelObserved": "jev-1.13.0",
+  "thresholdsApplied": false,
+  "generatedAt": "2026-09-26T14:06:48.750Z",
+  "judgments": [
+    {
+      "candidateKey": "g-iran-response",
+      "section": "general",
+      "eventRelation": {
+        "value": "SAME_EVENT",
+        "confidence": 0.88,
+        "probabilities": {
+          "UNRELATED": 0,
+          "SAME_EVENT": 0.91,
+          "UNCERTAIN": 0,
+          "NEW_EVENT": 0.09
+        }
+      },
+      "informationRelation": {
+        "value": "MEANINGFUL_UPDATE",
+        "confidence": 0.87,
+        "probabilities": {
+          "CONTINUATION": 0.03,
+          "REPETITION": 0.02,
+          "MEANINGFUL_UPDATE": 0.9,
+          "NEW": 0.05,
+          "UNCERTAIN": 0,
+          "CONTRADICTION": 0
+        }
+      },
+      "addsNewInformation": {
+        "probability": 0.78,
+        "confidence": null
+      },
+      "historicalContextNeeded": {
+        "probability": 0.6,
+        "confidence": null
+      },
+      "angleRepeated": {
+        "probability": 0.48,
+        "confidence": null
+      }
+    },
+    {
+      "candidateKey": "g-russia-asset-seizures",
+      "section": "general",
+      "eventRelation": {
+        "value": "NEW_EVENT",
+        "confidence": 0.97,
+        "probabilities": {
+          "UNCERTAIN": 0,
+          "NEW_EVENT": 0.98,
+          "SAME_EVENT": 0.01,
+          "UNRELATED": 0.01
+        }
+      },
+      "informationRelation": {
+        "value": "NEW",
+        "confidence": 0.94,
+        "probabilities": {
+          "CONTRADICTION": 0,
+          "MEANINGFUL_UPDATE": 0.03,
+          "REPETITION": 0.01,
+          "UNCERTAIN": 0.01,
+          "CONTINUATION": 0,
+          "NEW": 0.95
+        }
+      },
+      "addsNewInformation": {
+        "probability": 0.84,
+        "confidence": null
+      },
+      "historicalContextNeeded": {
+        "probability": 0.38,
+        "confidence": null
+      },
+      "angleRepeated": {
+        "probability": 0.16,
+        "confidence": null
+      }
+    },
+    {
+      "candidateKey": "g-us-diesel-export-ban",
+      "section": "general",
+      "eventRelation": {
+        "value": "NEW_EVENT",
+        "confidence": 1,
+        "probabilities": {
+          "UNRELATED": 0,
+          "NEW_EVENT": 1,
+          "SAME_EVENT": 0,
+          "UNCERTAIN": 0
+        }
+      },
+      "informationRelation": {
+        "value": "NEW",
+        "confidence": 0.74,
+        "probabilities": {
+          "MEANINGFUL_UPDATE": 0.12,
+          "UNCERTAIN": 0.01,
+          "REPETITION": 0.03,
+          "CONTINUATION": 0.05,
+          "NEW": 0.79,
+          "CONTRADICTION": 0
+        }
+      },
+      "addsNewInformation": {
+        "probability": 0.76,
+        "confidence": null
+      },
+      "historicalContextNeeded": {
+        "probability": 0.51,
+        "confidence": null
+      },
+      "angleRepeated": {
+        "probability": 0.31,
+        "confidence": null
+      }
+    },
+    {
+      "candidateKey": "n-escondida-talks-f",
+      "section": "national",
+      "eventRelation": {
+        "value": "SAME_EVENT",
+        "confidence": 0.95,
+        "probabilities": {
+          "UNCERTAIN": 0,
+          "SAME_EVENT": 0.96,
+          "UNRELATED": 0,
+          "NEW_EVENT": 0.04
+        }
+      },
+      "informationRelation": {
+        "value": "REPETITION",
+        "confidence": 0.68,
+        "probabilities": {
+          "NEW": 0.07,
+          "CONTINUATION": 0.04,
+          "UNCERTAIN": 0.01,
+          "MEANINGFUL_UPDATE": 0.15,
+          "CONTRADICTION": 0,
+          "REPETITION": 0.73
+        }
+      },
+      "addsNewInformation": {
+        "probability": 0.52,
+        "confidence": null
+      },
+      "historicalContextNeeded": {
+        "probability": 0.48,
+        "confidence": null
+      },
+      "angleRepeated": {
+        "probability": 0.83,
+        "confidence": null
+      }
+    },
+    {
+      "candidateKey": "n-escondida-restart-f",
+      "section": "national",
+      "eventRelation": {
+        "value": "SAME_EVENT",
+        "confidence": 0.99,
+        "probabilities": {
+          "UNCERTAIN": 0,
+          "UNRELATED": 0,
+          "SAME_EVENT": 1,
+          "NEW_EVENT": 0
+        }
+      },
+      "informationRelation": {
+        "value": "REPETITION",
+        "confidence": 0.55,
+        "probabilities": {
+          "CONTRADICTION": 0,
+          "REPETITION": 0.63,
+          "UNCERTAIN": 0,
+          "CONTINUATION": 0.12,
+          "NEW": 0.11,
+          "MEANINGFUL_UPDATE": 0.14
+        }
+      },
+      "addsNewInformation": {
+        "probability": 0.61,
+        "confidence": null
+      },
+      "historicalContextNeeded": {
+        "probability": 0.55,
+        "confidence": null
+      },
+      "angleRepeated": {
+        "probability": 0.83,
+        "confidence": null
+      }
+    },
+    {
+      "candidateKey": "n-regional-gdp-f",
+      "section": "national",
+      "eventRelation": {
+        "value": "SAME_EVENT",
+        "confidence": 0.99,
+        "probabilities": {
+          "UNCERTAIN": 0,
+          "UNRELATED": 0,
+          "NEW_EVENT": 0.01,
+          "SAME_EVENT": 0.99
+        }
+      },
+      "informationRelation": {
+        "value": "REPETITION",
+        "confidence": 0.76,
+        "probabilities": {
+          "REPETITION": 0.8,
+          "UNCERTAIN": 0.01,
+          "CONTRADICTION": 0,
+          "MEANINGFUL_UPDATE": 0.03,
+          "NEW": 0.07,
+          "CONTINUATION": 0.09
+        }
+      },
+      "addsNewInformation": {
+        "probability": 0.31,
+        "confidence": null
+      },
+      "historicalContextNeeded": {
+        "probability": 0.47,
+        "confidence": null
+      },
+      "angleRepeated": {
+        "probability": 0.77,
+        "confidence": null
+      }
+    },
+    {
+      "candidateKey": "m-bonds-oil-f",
+      "section": "markets",
+      "eventRelation": {
+        "value": "SAME_EVENT",
+        "confidence": 0.99,
+        "probabilities": {
+          "UNCERTAIN": 0,
+          "SAME_EVENT": 0.99,
+          "UNRELATED": 0,
+          "NEW_EVENT": 0.01
+        }
+      },
+      "informationRelation": {
+        "value": "REPETITION",
+        "confidence": 0.91,
+        "probabilities": {
+          "MEANINGFUL_UPDATE": 0.04,
+          "CONTRADICTION": 0,
+          "REPETITION": 0.92,
+          "CONTINUATION": 0.02,
+          "NEW": 0.02,
+          "UNCERTAIN": 0
+        }
+      },
+      "addsNewInformation": {
+        "probability": 0.42,
+        "confidence": null
+      },
+      "historicalContextNeeded": {
+        "probability": 0.58,
+        "confidence": null
+      },
+      "angleRepeated": {
+        "probability": 0.93,
+        "confidence": null
+      }
+    },
+    {
+      "candidateKey": "m-q4-data-f",
+      "section": "markets",
+      "eventRelation": {
+        "value": "NEW_EVENT",
+        "confidence": 0.77,
+        "probabilities": {
+          "UNCERTAIN": 0,
+          "UNRELATED": 0,
+          "NEW_EVENT": 0.83,
+          "SAME_EVENT": 0.17
+        }
+      },
+      "informationRelation": {
+        "value": "CONTINUATION",
+        "confidence": 0.42,
+        "probabilities": {
+          "UNCERTAIN": 0.01,
+          "CONTRADICTION": 0,
+          "MEANINGFUL_UPDATE": 0.17,
+          "REPETITION": 0.07,
+          "CONTINUATION": 0.51,
+          "NEW": 0.24
+        }
+      },
+      "addsNewInformation": {
+        "probability": 0.63,
+        "confidence": null
+      },
+      "historicalContextNeeded": {
+        "probability": 0.48,
+        "confidence": null
+      },
+      "angleRepeated": {
+        "probability": 0.22,
+        "confidence": null
+      }
+    },
+    {
+      "candidateKey": "m-equity-ai-f",
+      "section": "markets",
+      "eventRelation": {
+        "value": "SAME_EVENT",
+        "confidence": 0.77,
+        "probabilities": {
+          "UNCERTAIN": 0.01,
+          "UNRELATED": 0,
+          "NEW_EVENT": 0.16,
+          "SAME_EVENT": 0.83
+        }
+      },
+      "informationRelation": {
+        "value": "REPETITION",
+        "confidence": 0.32,
+        "probabilities": {
+          "REPETITION": 0.43,
+          "UNCERTAIN": 0.02,
+          "CONTRADICTION": 0.02,
+          "CONTINUATION": 0.1,
+          "NEW": 0.19,
+          "MEANINGFUL_UPDATE": 0.24
+        }
+      },
+      "addsNewInformation": {
+        "probability": 0.67,
+        "confidence": null
+      },
+      "historicalContextNeeded": {
+        "probability": 0.58,
+        "confidence": null
+      },
+      "angleRepeated": {
+        "probability": 0.67,
+        "confidence": null
+      }
+    }
+  ],
+  "telemetry": [
+    {
+      "candidateKey": "g-iran-response",
+      "status": 200,
+      "latencyMs": 324.48,
+      "attempts": 1,
+      "usage": {
+        "input_tokens": 1056,
+        "output_tokens": 190
+      },
+      "error": null
+    },
+    {
+      "candidateKey": "g-russia-asset-seizures",
+      "status": 200,
+      "latencyMs": 102.2,
+      "attempts": 1,
+      "usage": {
+        "input_tokens": 1065,
+        "output_tokens": 185
+      },
+      "error": null
+    },
+    {
+      "candidateKey": "g-us-diesel-export-ban",
+      "status": 200,
+      "latencyMs": 113.86,
+      "attempts": 1,
+      "usage": {
+        "input_tokens": 1048,
+        "output_tokens": 185
+      },
+      "error": null
+    },
+    {
+      "candidateKey": "n-escondida-talks-f",
+      "status": 200,
+      "latencyMs": 113.41,
+      "attempts": 1,
+      "usage": {
+        "input_tokens": 1026,
+        "output_tokens": 189
+      },
+      "error": null
+    },
+    {
+      "candidateKey": "n-escondida-restart-f",
+      "status": 200,
+      "latencyMs": 103.37,
+      "attempts": 1,
+      "usage": {
+        "input_tokens": 922,
+        "output_tokens": 189
+      },
+      "error": null
+    },
+    {
+      "candidateKey": "n-regional-gdp-f",
+      "status": 200,
+      "latencyMs": 76.37,
+      "attempts": 1,
+      "usage": {
+        "input_tokens": 1013,
+        "output_tokens": 189
+      },
+      "error": null
+    },
+    {
+      "candidateKey": "m-bonds-oil-f",
+      "status": 200,
+      "latencyMs": 92.17,
+      "attempts": 1,
+      "usage": {
+        "input_tokens": 1003,
+        "output_tokens": 189
+      },
+      "error": null
+    },
+    {
+      "candidateKey": "m-q4-data-f",
+      "status": 200,
+      "latencyMs": 80.63,
+      "attempts": 1,
+      "usage": {
+        "input_tokens": 1041,
+        "output_tokens": 188
+      },
+      "error": null
+    },
+    {
+      "candidateKey": "m-equity-ai-f",
+      "status": 200,
+      "latencyMs": 122.68,
+      "attempts": 1,
+      "usage": {
+        "input_tokens": 1022,
+        "output_tokens": 189
+      },
+      "error": null
+    }
+  ],
+  "status": "PASS"
+}

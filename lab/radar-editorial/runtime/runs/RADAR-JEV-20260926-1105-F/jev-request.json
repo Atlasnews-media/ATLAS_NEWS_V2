@@ -1,0 +1,187 @@
+{
+  "schemaVersion": 1,
+  "radarRunId": "RADAR-JEV-20260926-1105-F",
+  "sourceMainCommit": "beb0abc67cb24faa9f495d202f03e4949a9fe27c",
+  "radarStateVersion": "radar-state-v1",
+  "editorialDate": "2026-09-26",
+  "experimentMode": "RADAR_JEV",
+  "mode": "LAB_ONLY",
+  "productionWritesAllowed": false,
+  "candidateReviews": [
+    {
+      "candidateKey": "g-iran-response",
+      "section": "general",
+      "title": "Iran awaits US move after WSJ report says Trump rejects peace plan",
+      "description": "Iran awaits an official US response to its seven-day proposal to reopen the Strait of Hormuz and halt regional fighting, while a report says President Trump rejected the plan.",
+      "sourceName": "Reuters",
+      "publishedAt": "2026-09-26T00:00:00Z",
+      "priors": [
+        {
+          "origin": "editorial_state",
+          "title": "oil-geopolitics-inflation",
+          "relationHint": "Active memory tracks Hormuz and the energy-inflation channel; the reported rejection/awaited response is a new diplomatic state."
+        },
+        {
+          "origin": "recent LAB",
+          "title": "Iran proposal awaiting US response",
+          "relationHint": "Earlier LAB research saw the proposal itself; this candidate tests whether the reported rejection materially advances the same event."
+        }
+      ]
+    },
+    {
+      "candidateKey": "g-russia-asset-seizures",
+      "section": "general",
+      "title": "Top Russian banker says state asset grabs are spooking big business",
+      "description": "A senior Russian state banker says asset seizures are deterring corporate investment, with an estimate of 7.6 trillion roubles of assets seized since 2022.",
+      "sourceName": "Reuters",
+      "publishedAt": "2026-09-24T00:00:00Z",
+      "priors": [
+        {
+          "origin": "editorial_state",
+          "title": "global-growth-financial-conditions",
+          "relationHint": "Corporate investment and institutional risk are relevant to global growth, but this Russia-specific investment channel is distinct from the dominant energy thread."
+        },
+        {
+          "origin": "recent LAB",
+          "title": "No direct recent Russia asset-seizure selection",
+          "relationHint": "Recent LAB candidates were dominated by energy, trade and rates, lowering direct repetition risk."
+        }
+      ]
+    },
+    {
+      "candidateKey": "g-us-diesel-export-ban",
+      "section": "general",
+      "title": "US diesel exports ban would hurt global fuel markets, analysts say",
+      "description": "Analysts warn a potential US diesel export ban could worsen global fuel supply disruptions while doing little to lower US prices, extending the energy shock into refined-product trade.",
+      "sourceName": "Reuters",
+      "publishedAt": "2026-09-23T00:00:00Z",
+      "priors": [
+        {
+          "origin": "editorial_state",
+          "title": "oil-geopolitics-inflation",
+          "relationHint": "Energy and inflation are active memory; this candidate concerns a policy response in refined fuels rather than Hormuz logistics itself."
+        },
+        {
+          "origin": "recent LAB",
+          "title": "Italy fuel caps and energy-cost transmission",
+          "relationHint": "Recent LAB covered consumer fuel-price intervention, so policy-response repetition risk must be judged."
+        }
+      ]
+    },
+    {
+      "candidateKey": "n-escondida-talks-f",
+      "section": "national",
+      "title": "Union at BHP's Escondida mine refuses to pause contract talks after fatal accident",
+      "description": "An Escondida union rejected BHP's request to pause collective bargaining after a fatal accident, keeping labor negotiations active while operations recover.",
+      "sourceName": "Reuters",
+      "publishedAt": "2026-09-25T16:46:00Z",
+      "priors": [
+        {
+          "origin": "recent LAB",
+          "title": "Escondida contract talks",
+          "relationHint": "This exact development has appeared in recent LAB; strong repetition risk unless its editorial role remains justified."
+        },
+        {
+          "origin": "editorial_state",
+          "title": "chile-activity",
+          "relationHint": "Mining continuity matters to Chilean activity but the event is company/labor-specific."
+        }
+      ]
+    },
+    {
+      "candidateKey": "n-escondida-restart-f",
+      "section": "national",
+      "title": "Escondida gradually resumes operations after fatal accident",
+      "description": "BHP's Escondida progressively resumed operations after the fatal maintenance accident, restoring output while investigations and labor issues continue.",
+      "sourceName": "Reuters",
+      "publishedAt": "2026-09-25T00:22:00Z",
+      "priors": [
+        {
+          "origin": "recent LAB",
+          "title": "Escondida operational restart",
+          "relationHint": "The restart has already been evaluated in recent LAB and may be repetition of the same accident/recovery event."
+        }
+      ]
+    },
+    {
+      "candidateKey": "n-regional-gdp-f",
+      "section": "national",
+      "title": "Producto Interno Bruto Regional Segundo Trimestre 2026",
+      "description": "Banco Central regional accounts show Chilean GDP contracted 0.2% in the second quarter, with seven regions declining and household consumption expanding nationally.",
+      "sourceName": "Banco Central de Chile",
+      "publishedAt": "2026-09-23T11:30:00Z",
+      "priors": [
+        {
+          "origin": "editorial_state",
+          "title": "chile-inflation-activity-rates",
+          "relationHint": "Weak domestic activity is an active editorial thread."
+        },
+        {
+          "origin": "recent LAB",
+          "title": "Regional GDP Q2",
+          "relationHint": "The same release has already been considered, so novelty may be limited."
+        }
+      ]
+    },
+    {
+      "candidateKey": "m-bonds-oil-f",
+      "section": "markets",
+      "title": "Battered bonds draw support from falling oil prices",
+      "description": "US Treasury yields stabilized as oil fell after long yields reached multi-decade highs, while expectations for further Fed tightening remained elevated.",
+      "sourceName": "Reuters",
+      "publishedAt": "2026-09-25T21:00:00Z",
+      "priors": [
+        {
+          "origin": "editorial_state",
+          "title": "us-employment-fed-rates",
+          "relationHint": "Rates and Treasury yields remain active watch variables."
+        },
+        {
+          "origin": "recent LAB",
+          "title": "Bonds stabilize as oil falls",
+          "relationHint": "This exact market move has already been selected in LAB, implying high repetition risk."
+        }
+      ]
+    },
+    {
+      "candidateKey": "m-q4-data-f",
+      "section": "markets",
+      "title": "Take Five: It's Q4 already?",
+      "description": "Markets enter quarter-end focused on upcoming US payrolls and US/euro-zone inflation, with those releases set to shape rate expectations after a volatile bond and energy week.",
+      "sourceName": "Reuters",
+      "publishedAt": "2026-09-25T00:00:00Z",
+      "priors": [
+        {
+          "origin": "editorial_state",
+          "title": "us-employment-fed-rates",
+          "relationHint": "Payrolls and inflation directly map to the active rates thread, but this is forward-looking market positioning rather than a realized data surprise."
+        },
+        {
+          "origin": "recent LAB",
+          "title": "Rates volatility",
+          "relationHint": "Recent coverage emphasized high yields; this candidate shifts the angle toward the next catalysts."
+        }
+      ]
+    },
+    {
+      "candidateKey": "m-equity-ai-f",
+      "section": "markets",
+      "title": "Global equity funds snap two-week outflow as AI optimism returns",
+      "description": "Global equity funds recorded their strongest inflows since early July, reversing two weeks of withdrawals as AI optimism returned despite elevated rate and energy risks.",
+      "sourceName": "Reuters",
+      "publishedAt": "2026-09-25T12:00:00Z",
+      "priors": [
+        {
+          "origin": "editorial_state",
+          "title": "ai-monetization-selectivity",
+          "relationHint": "AI remains an active thread, while this evidence concerns investor flows rather than operating fundamentals."
+        },
+        {
+          "origin": "recent LAB",
+          "title": "Equity flow reversal",
+          "relationHint": "This flow reversal was recently considered and must be tested for repetition versus continuing significance."
+        }
+      ]
+    }
+  ]
+}
