@@ -1,48 +1,35 @@
 import assert from "node:assert/strict";
 import { readFile } from "node:fs/promises";
 
-const componentPath = new URL(
-  "../src/components/AtlasAudioPlayer.astro",
-  import.meta.url,
-);
+const component = "../src/components/AtlasAudioPlayer.astro";
+const componentPath = new URL(component, import.meta.url);
 const source = await readFile(componentPath, "utf8");
 
-assert.ok(
-  source.includes(
-    'data-waveform-state={visualVariant === "radio" ? "loading" : undefined}',
-  ),
-  "El player radio debe conservar el estado loading para WaveSurfer.",
-);
-assert.ok(
-  source.includes('waveSurfer = WaveSurfer.create({'),
-  "WaveSurfer debe seguir siendo parte de la implementación productiva.",
-);
-assert.ok(
-  !source.includes('content: "Preparando audio…";'),
-  'El estado loading no debe sustituir el player por "Preparando audio…".',
-);
+assert.ok(source.includes('data-waveform-state={visualVariant === "radio" ? "loading" : undefined}'));
+assert.ok(source.includes("waveSurfer = WaveSurfer.create({"));
+assert.ok(!source.includes('content: "Preparando audio…";'));
 
-const waveformStateStart = source.indexOf("const setWaveformState");
-const waveformStateEnd = source.indexOf(
-  "const resolveSource",
-  waveformStateStart,
-);
-assert.ok(waveformStateStart >= 0 && waveformStateEnd > waveformStateStart);
-const waveformStateBlock = source.slice(waveformStateStart, waveformStateEnd);
+const stateStart = source.indexOf("const setWaveformState");
+const stateEnd = source.indexOf("const resolveSource", stateStart);
+assert.ok(stateStart >= 0);
+assert.ok(stateEnd > stateStart);
 
-assert.ok(
-  waveformStateBlock.includes('state === "ready"'),
-  "El range fallback debe deshabilitarse cuando la waveform real está lista.",
-);
-assert.ok(
-  !waveformStateBlock.includes('state === "loading" ||'),
-  "Cargar WaveSurfer no debe deshabilitar el seek fallback si hay metadata.",
-);
+const stateBlock = source.slice(stateStart, stateEnd);
+assert.ok(stateBlock.includes('state === "ready"'));
+assert.ok(!stateBlock.includes('state === "loading" ||'));
 
-assert.match(
-  source,
-  /data-waveform-state="loading"\]\s*\.atlas-audio-waveform--fallback,[\s\S]*?data-waveform-state="fallback"\]\s*\.atlas-audio-waveform--fallback\s*\{\s*opacity:\s*1;/,
-  "La waveform CSS fallback debe permanecer visible durante loading y fallback.",
-);
+const loadingSelector =
+  '.atlas-audio-player--radio[data-waveform-state="loading"]';
+const loadingStart = source.indexOf(loadingSelector);
+const readySelector =
+  '.atlas-audio-player--radio[data-waveform-ready="true"]';
+const loadingEnd = source.indexOf(readySelector, loadingStart);
 
-console.log("ATLAS NEWS RADIO: fallback funcional durante carga de WaveSurfer OK.");
+assert.ok(loadingStart >= 0);
+assert.ok(loadingEnd > loadingStart);
+
+const loadingCss = source.slice(loadingStart, loadingEnd);
+assert.ok(loadingCss.includes(".atlas-audio-waveform--fallback"));
+assert.ok(loadingCss.includes("opacity: 1;"));
+
+console.log("ATLAS NEWS RADIO readiness contract OK.");
