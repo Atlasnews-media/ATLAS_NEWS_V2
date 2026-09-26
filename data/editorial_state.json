@@ -3,14 +3,14 @@
     {
       "id": "oil-geopolitics-inflation",
       "topic": "Petróleo, geopolítica e inflación",
-      "thesis": "El shock energético sigue activo: el bypass saudí mediante Omán alivia parte del riesgo inmediato de oferta y ya sostiene mayores volúmenes, pero el tráfico excepcionalmente bajo por Hormuz confirma que la redundancia logística todavía no equivale a normalización.",
-      "status": "confirmed",
-      "last_evidence": "El 18 de septiembre datos preliminares mostraron sólo cuatro tránsitos de buques de commodities por Hormuz el jueves frente a un promedio de diez días de 16, mientras operadores indicaron que Aramco planea mover cerca de 60 millones de barriles en septiembre y octubre mediante transferencias frente a Sohar, Omán.",
-      "effect": "La adaptación logística saudí reduce el riesgo inmediato de escasez y ayudó a moderar el petróleo, pero la baja circulación por Hormuz y la tensión regional mantienen riesgo sobre energía, transporte, seguros, inflación y tasas globales.",
-      "base_scenario": "Prima energética elevada y volátil con adaptación logística parcial de productores del Golfo, mientras Hormuz y el corredor del mar Rojo sigan expuestos a restricciones y ataques durante el resto de 2026.",
-      "invalidate_if": "Normalización sostenida del tráfico por Hormuz, reapertura estable del oleoducto Este-Oeste y ausencia de nuevas amenazas sobre rutas alternativas debilitarían la tesis; fallas del bypass omaní o nuevos ataques simultáneos la reforzarían.",
-      "watch": "Volumen efectivo transferido frente a Sohar, reapertura y capacidad del oleoducto Este-Oeste, tráfico por Hormuz, seguridad en Bab el-Mandeb y mar Rojo, seguros marítimos y transmisión a inflación.",
-      "last_publication": "/ediciones/2026-09-18-daily-bancos-centrales-endurecen-el-mapa-global/"
+      "thesis": "El shock energético entra en una fase de desescalada condicional: la propuesta iraní de reabrir Hormuz en siete días y la continuidad de los flujos reducen el riesgo inmediato, pero las exigencias a Estados Unidos, la ausencia de concesiones nucleares y los ataques hutíes impiden declarar una normalización.",
+      "status": "changed",
+      "last_evidence": "El 25 de septiembre Irán ofreció normalizar el paso por Hormuz en siete días si Estados Unidos reduce la presión militar, levanta bloqueos y flexibiliza sanciones, pero descartó ceder en su programa nuclear; el Brent cayó 2,1% a US$104,32 y los flujos semanales por el estrecho alcanzaron 33,7 millones de barriles.",
+      "effect": "La vía diplomática modera petróleo, seguros y expectativas de inflación en el margen, pero el alivio sigue siendo reversible hasta que aumente de forma sostenida el tránsito y se reduzcan los ataques sobre infraestructura y rutas regionales.",
+      "base_scenario": "Prima energética todavía elevada y volátil, con negociación capaz de mejorar gradualmente los flujos por Hormuz, pero sin una normalización completa mientras persistan condiciones cruzadas entre Washington y Teherán y riesgos sobre Arabia Saudita y el mar Rojo.",
+      "invalidate_if": "Una reapertura sostenida de Hormuz, levantamiento verificable de bloqueos y caída durable de ataques y seguros debilitarían la tesis de shock activo; el rechazo del plan, nuevos cierres o ataques simultáneos sobre rutas e infraestructura la reforzarían.",
+      "watch": "Respuesta de Estados Unidos al plan de siete días, volumen efectivo por Hormuz, cumplimiento de condiciones, ataques hutíes, seguridad saudí y del mar Rojo, seguros marítimos, Brent y transmisión a inflación y tasas.",
+      "last_publication": "/ediciones/2026-09-26-daily-treguas-acotan-riesgos-globales/"
     },
     {
       "id": "us-employment-fed-rates",
