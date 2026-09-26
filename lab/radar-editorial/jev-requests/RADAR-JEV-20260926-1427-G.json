@@ -1,0 +1,152 @@
+{
+  "schemaVersion": 1,
+  "radarRunId": "RADAR-JEV-20260926-1427-G",
+  "sourceMainCommit": "beb0abc67cb24faa9f495d202f03e4949a9fe27c",
+  "radarStateVersion": "radar-state-v1",
+  "editorialDate": "2026-09-26",
+  "experimentMode": "RADAR_JEV",
+  "mode": "LAB_ONLY",
+  "productionWritesAllowed": false,
+  "candidateReviews": [
+    {
+      "candidateKey": "g-trump-rejects-iran",
+      "section": "general",
+      "title": "Trump rejects Iranian proposal to open Hormuz and end fighting",
+      "description": "Trump said he rejected Iran's proposal to reopen Hormuz and end regional fighting within seven days, turning the prior diplomatic possibility into a confirmed US rejection.",
+      "sourceName": "Reuters",
+      "publishedAt": "2026-09-26T00:00:00Z",
+      "priors": [
+        {
+          "origin": "editorial_state",
+          "title": "oil-geopolitics-inflation",
+          "relationHint": "Hormuz is an active energy-inflation thread."
+        },
+        {
+          "origin": "recent LAB",
+          "title": "Iran awaits US response",
+          "relationHint": "The previous state was awaiting a formal response; a direct rejection is a new state of the same event."
+        }
+      ]
+    },
+    {
+      "candidateKey": "g-iran-talks-gap",
+      "section": "general",
+      "title": "Iran, US still far apart in peace talks",
+      "description": "Iran and the US remain far apart on ending the war, providing context for the diplomatic gap behind the latest Hormuz proposal.",
+      "sourceName": "Reuters",
+      "publishedAt": "2026-09-23T00:00:00Z",
+      "priors": [
+        {
+          "origin": "recent LAB",
+          "title": "Iran diplomacy",
+          "relationHint": "Closely related diplomatic thread; repetition risk is substantial."
+        }
+      ]
+    },
+    {
+      "candidateKey": "g-france-hormuz-un",
+      "section": "general",
+      "title": "France mulls new UN Security Council resolution on Hormuz",
+      "description": "France is considering a UN Security Council initiative to safeguard shipping through Hormuz, adding a multilateral diplomatic route around the same energy-security problem.",
+      "sourceName": "Reuters",
+      "publishedAt": "2026-09-22T00:00:00Z",
+      "priors": [
+        {
+          "origin": "editorial_state",
+          "title": "oil-geopolitics-inflation",
+          "relationHint": "Same active Hormuz shock but a distinct multilateral policy response."
+        }
+      ]
+    },
+    {
+      "candidateKey": "n-escondida-talks-g",
+      "section": "national",
+      "title": "Union at BHP's Escondida mine refuses to pause contract talks after fatal accident",
+      "description": "An Escondida union rejected BHP's request to pause contract talks after a worker death, leaving bargaining active during operational recovery.",
+      "sourceName": "Reuters",
+      "publishedAt": "2026-09-25T16:46:00Z",
+      "priors": [
+        {
+          "origin": "recent LAB",
+          "title": "Escondida contract talks",
+          "relationHint": "Exact development has been repeatedly evaluated; strong repetition risk."
+        }
+      ]
+    },
+    {
+      "candidateKey": "n-escondida-restart-g",
+      "section": "national",
+      "title": "Escondida gradually resumes operations after fatal accident",
+      "description": "Escondida progressively resumed operations after the fatal accident while assessments continued.",
+      "sourceName": "Reuters",
+      "publishedAt": "2026-09-25T00:22:00Z",
+      "priors": [
+        {
+          "origin": "recent LAB",
+          "title": "Escondida restart",
+          "relationHint": "Already covered in recent LAB; high repetition risk."
+        }
+      ]
+    },
+    {
+      "candidateKey": "n-escondida-halt-g",
+      "section": "national",
+      "title": "World's largest copper mine halts operations after worker death",
+      "description": "Escondida suspended operations following a fatal accident, the initial operational shock preceding the subsequent restart and labor developments.",
+      "sourceName": "Reuters",
+      "publishedAt": "2026-09-23T00:00:00Z",
+      "priors": [
+        {
+          "origin": "recent LAB",
+          "title": "Escondida accident",
+          "relationHint": "Earlier stage of the same event; likely repetition or historical context rather than fresh selection."
+        }
+      ]
+    },
+    {
+      "candidateKey": "m-week-ahead-data",
+      "section": "markets",
+      "title": "Jobs report, inflation data to test US rate path, economic strength",
+      "description": "Investors face employment and inflation reports next week that could reshape expectations for the pace of US rate hikes after a surge in bond yields.",
+      "sourceName": "Reuters",
+      "publishedAt": "2026-09-25T00:00:00Z",
+      "priors": [
+        {
+          "origin": "editorial_state",
+          "title": "us-employment-fed-rates",
+          "relationHint": "Directly linked to active rates memory but shifts from realized yield moves to upcoming macro catalysts."
+        }
+      ]
+    },
+    {
+      "candidateKey": "m-bonds-oil-g",
+      "section": "markets",
+      "title": "Battered bonds draw support from falling oil prices",
+      "description": "Treasury yields stabilized as oil fell after reaching multi-decade highs, while traders continued pricing further Fed hikes.",
+      "sourceName": "Reuters",
+      "publishedAt": "2026-09-25T21:00:00Z",
+      "priors": [
+        {
+          "origin": "recent LAB",
+          "title": "Bonds stabilize as oil falls",
+          "relationHint": "Exact market move has already been selected; high repetition risk."
+        }
+      ]
+    },
+    {
+      "candidateKey": "m-oil-yields-g",
+      "section": "markets",
+      "title": "Oil jump sends 30-year yields to two-decade high",
+      "description": "Higher oil prices pushed long US yields to a more than 20-year high as inflation and Fed-hike concerns intensified.",
+      "sourceName": "Reuters",
+      "publishedAt": "2026-09-24T00:00:00Z",
+      "priors": [
+        {
+          "origin": "recent LAB",
+          "title": "Oil and bond selloff",
+          "relationHint": "Precedes the later stabilization and belongs to the same rates-energy sequence."
+        }
+      ]
+    }
+  ]
+}
