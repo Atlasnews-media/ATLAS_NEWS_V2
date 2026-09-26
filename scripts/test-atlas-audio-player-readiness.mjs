@@ -8,7 +8,9 @@ const componentPath = new URL(
 const source = await readFile(componentPath, "utf8");
 
 assert.ok(
-  source.includes('data-waveform-state={visualVariant === "radio" ? "loading" : undefined}'),
+  source.includes(
+    'data-waveform-state={visualVariant === "radio" ? "loading" : undefined}',
+  ),
   "El player radio debe conservar el estado loading para WaveSurfer.",
 );
 assert.ok(
@@ -21,7 +23,10 @@ assert.ok(
 );
 
 const waveformStateStart = source.indexOf("const setWaveformState");
-const waveformStateEnd = source.indexOf("const resolveSource", waveformStateStart);
+const waveformStateEnd = source.indexOf(
+  "const resolveSource",
+  waveformStateStart,
+);
 assert.ok(waveformStateStart >= 0 && waveformStateEnd > waveformStateStart);
 const waveformStateBlock = source.slice(waveformStateStart, waveformStateEnd);
 
