@@ -1,0 +1,172 @@
+{
+  "schemaVersion": 1,
+  "radarRunId": "RADAR-JEV-20260926-0900-E",
+  "sourceMainCommit": "beb0abc67cb24faa9f495d202f03e4949a9fe27c",
+  "radarStateVersion": "radar-state-v1",
+  "editorialDate": "2026-09-26",
+  "experimentMode": "RADAR_JEV",
+  "mode": "LAB_ONLY",
+  "productionWritesAllowed": false,
+  "candidateReviews": [
+    {
+      "candidateKey": "g-iran-proposal",
+      "section": "general",
+      "title": "Iran awaits US move after report Trump rejects peace plan",
+      "description": "Iran is awaiting an official US response to a proposal that could reopen the Strait of Hormuz and halt regional fighting within seven days, creating a fresh diplomatic branch in the energy shock.",
+      "sourceName": "Reuters",
+      "publishedAt": "2026-09-26T06:00:00Z",
+      "priors": [
+        {
+          "origin": "editorial_state",
+          "title": "oil-geopolitics-inflation",
+          "relationHint": "Active thread tracks the Hormuz energy shock; a concrete seven-day reopening proposal is a new diplomatic development."
+        },
+        {
+          "origin": "recent LAB",
+          "title": "Oman transfer capacity and Hormuz bypass",
+          "relationHint": "Recent LAB focused on physical bypass constraints, not this new peace proposal."
+        }
+      ]
+    },
+    {
+      "candidateKey": "g-india-max-output",
+      "section": "general",
+      "title": "India orders captive coal plants to maximise power output on surging demand",
+      "description": "India ordered 112 captive coal-fired plants to run at maximum capacity from October through year-end under emergency powers as electricity demand rises and coal stocks tighten.",
+      "sourceName": "Reuters",
+      "publishedAt": "2026-09-26T06:41:00Z",
+      "priors": [
+        {
+          "origin": "recent LAB",
+          "title": "India imported-coal blending",
+          "relationHint": "Previous LAB evaluated possible mandatory imported-coal blending; today's maximum-output order is a distinct policy action within the same power-supply stress."
+        }
+      ]
+    },
+    {
+      "candidateKey": "g-moldova-emergency",
+      "section": "general",
+      "title": "Moldova's 60-day energy and water emergency takes effect",
+      "description": "Moldova's previously approved 60-day emergency for energy and water supply takes effect today, giving the government powers to guard against shortages amid high energy costs and hydrological stress.",
+      "sourceName": "Reuters",
+      "publishedAt": "2026-09-22T17:18:00Z",
+      "priors": [
+        {
+          "origin": "editorial_state",
+          "title": "oil-geopolitics-inflation",
+          "relationHint": "Energy-cost transmission is active memory, while Moldova's emergency is a country-specific policy response."
+        }
+      ]
+    },
+    {
+      "candidateKey": "n-escondida-talks",
+      "section": "national",
+      "title": "Union at BHP's Escondida mine refuses to pause contract talks after fatal accident",
+      "description": "An Escondida supervisors union rejected BHP's request to pause collective bargaining after a worker death, so contract talks remain active while the mine recovers operations.",
+      "sourceName": "Reuters",
+      "publishedAt": "2026-09-25T16:46:00Z",
+      "priors": [
+        {
+          "origin": "recent LAB",
+          "title": "Escondida labor talks",
+          "relationHint": "Selected in the reference LAB run; repetition risk is high unless the bargaining state materially changes."
+        }
+      ]
+    },
+    {
+      "candidateKey": "n-escondida-restart",
+      "section": "national",
+      "title": "Escondida gradually resumes operations after fatal accident",
+      "description": "BHP's Escondida mine is progressively resuming operations after a fatal maintenance accident while assessments continue.",
+      "sourceName": "Reuters",
+      "publishedAt": "2026-09-25T00:22:00Z",
+      "priors": [
+        {
+          "origin": "recent LAB",
+          "title": "Escondida restart",
+          "relationHint": "Repeated across recent LAB runs and closely linked to the same accident."
+        }
+      ]
+    },
+    {
+      "candidateKey": "n-regional-gdp",
+      "section": "national",
+      "title": "Producto Interno Bruto Regional Segundo Trimestre 2026",
+      "description": "Central bank regional accounts show Chilean GDP contracted 0.2% in the second quarter, with seven regions declining while household consumption expanded nationally.",
+      "sourceName": "Banco Central de Chile",
+      "publishedAt": "2026-09-23T11:30:00Z",
+      "priors": [
+        {
+          "origin": "editorial_state",
+          "title": "chile-inflation-activity-rates",
+          "relationHint": "Weak domestic activity is an active thread."
+        },
+        {
+          "origin": "recent LAB",
+          "title": "Regional GDP Q2",
+          "relationHint": "The exact release has already been evaluated repeatedly."
+        }
+      ]
+    },
+    {
+      "candidateKey": "m-bonds-stabilize",
+      "section": "markets",
+      "title": "Battered bonds draw support from falling oil prices",
+      "description": "US Treasury yields stabilized and the 10-year edged lower as oil fell after long yields had reached multi-decade highs, while traders still priced further Fed hikes.",
+      "sourceName": "Reuters",
+      "publishedAt": "2026-09-25T21:00:00Z",
+      "priors": [
+        {
+          "origin": "editorial_state",
+          "title": "us-employment-fed-rates",
+          "relationHint": "Treasury yields and Fed tightening are active watch variables."
+        },
+        {
+          "origin": "recent LAB",
+          "title": "Bonds stabilize as oil falls",
+          "relationHint": "Selected in the reference LAB run, so repetition risk is now high."
+        }
+      ]
+    },
+    {
+      "candidateKey": "m-equity-inflows",
+      "section": "markets",
+      "title": "Global equity funds snap two-week outflow as AI optimism returns",
+      "description": "Global equity funds recorded their strongest inflows since early July in the week to September 25, reversing two weeks of withdrawals as AI optimism returned despite rate and energy risks.",
+      "sourceName": "Reuters",
+      "publishedAt": "2026-09-25T12:00:00Z",
+      "priors": [
+        {
+          "origin": "recent market coverage",
+          "title": "Equity fund outflows on inflation fears",
+          "relationHint": "Previous weeks showed outflows; the reversal in weekly flows is a fresh directional change."
+        },
+        {
+          "origin": "editorial_state",
+          "title": "ai-monetization-selectivity",
+          "relationHint": "AI demand and selectivity are active memory, while this candidate measures investor flows rather than company fundamentals."
+        }
+      ]
+    },
+    {
+      "candidateKey": "m-oil-diplomacy",
+      "section": "markets",
+      "title": "Oil prices slide about 2% as US, Iran explore path out of war",
+      "description": "Oil fell about 2% as US-Iran diplomacy and improved Hormuz crude flows reduced immediate supply-risk pricing, directly affecting the inflation-rates cross-asset channel.",
+      "sourceName": "Reuters",
+      "publishedAt": "2026-09-25T20:00:00Z",
+      "priors": [
+        {
+          "origin": "editorial_state",
+          "title": "oil-geopolitics-inflation",
+          "relationHint": "Oil and Hormuz are heavily represented in active memory."
+        },
+        {
+          "origin": "recent LAB",
+          "title": "Falling oil supports bonds",
+          "relationHint": "The latest LAB already used falling oil as the explanation for bond stabilization."
+        }
+      ]
+    }
+  ]
+}
