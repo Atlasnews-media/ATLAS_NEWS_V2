@@ -31,6 +31,7 @@ BASELINE_PATH = Path(__file__).resolve().parent / "baseline.json"
 PUBLIC_BASE = "/lab/audio/number-phonemes-v1"
 
 CASES = [
+    ("euro-1098", "El euro se ubicó en 1.098 pesos con 15 centavos."),
     ("euro-1099", "El euro se ubicó en 1.099 pesos con 86 centavos."),
     ("euro-1100", "El euro se ubicó en 1.100 pesos con 95 centavos."),
     ("euro-1101", "El euro se ubicó en 1.101 pesos con 20 centavos."),
@@ -39,7 +40,7 @@ CASES = [
     ("uf-40983", "La UF vigente alcanza los 40.983 pesos con 58 centavos."),
 ]
 
-PHONEME_AB_CASES = {"euro-1099", "euro-1100", "euro-1101", "uf-40983"}
+PHONEME_AB_CASES = {"euro-1098", "euro-1099", "euro-1100", "euro-1101", "uf-40983"}
 
 PORTADA_PARAGRAPH = (
     "En monedas, el dólar observado marcó 958 pesos con 42 centavos, con una variación positiva de 0,37% frente a la jornada hábil anterior. "

@@ -16,10 +16,81 @@ import "../../../src/styles/global.css";
       <p class="lab-kicker">ATLAS NEWS · AUDIO LAB</p>
       <h1>Miles con Dora</h1>
       <p class="lead">
-        Prueba aislada sobre la segmentación de cantidades en miles. Speech V5,
-        Lexicon V3 rev. 5, ef_dora y Kokoro 0.9.4 permanecen intactos. No se
-        modifica el texto editorial ni Audio V2 productivo.
+        Diagnóstico aislado del fallo audible de <strong>1.098 pesos</strong> en Portada.
+        Speech V5, Lexicon V3 rev. 6, ef_dora y Kokoro 0.9.4 permanecen intactos.
+        La prueba compara la ruta normal con fonemas entregados directamente a Kokoro.
+        No modifica Audio V2 productivo.
       </p>
+
+      <div class="rule" aria-hidden="true"></div>
+
+      <section>
+        <p class="status">Prueba actual · Portada 26-09-2026</p>
+        <h2>1.098 pesos · ¿dónde desaparece “mil”?</h2>
+        <p>
+          Escucha las cinco pistas. A usa la ruta normal. B–E saltan la
+          conversión texto→fonemas y entregan fonemas directamente a Kokoro. Si
+          alguna de B–E conserva “mil” con claridad, el defecto queda antes de
+          la síntesis final; si todas fallan, el problema está en Kokoro/Dora.
+        </p>
+
+        <div class="comparison-grid">
+          <article class="audio-card">
+            <p class="card-kicker">A · Ruta normal</p>
+            <h3>Speech V5 → G2P → Dora</h3>
+            <audio controls preload="metadata">
+              <source
+                src="/lab/audio/number-phonemes-v1/euro-1098-dora.mp3"
+                type="audio/mpeg"
+              />
+            </audio>
+          </article>
+
+          <article class="audio-card audio-card--candidate">
+            <p class="card-kicker">B · Fonema directo</p>
+            <h3>Baseline G2P</h3>
+            <audio controls preload="metadata">
+              <source
+                src="/lab/audio/number-phonemes-v1/euro-1098-phoneme-baseline.mp3"
+                type="audio/mpeg"
+              />
+            </audio>
+          </article>
+
+          <article class="audio-card audio-card--candidate">
+            <p class="card-kicker">C · Fonema directo</p>
+            <h3>“mil” unido</h3>
+            <audio controls preload="metadata">
+              <source
+                src="/lab/audio/number-phonemes-v1/euro-1098-phoneme-mil-joined.mp3"
+                type="audio/mpeg"
+              />
+            </audio>
+          </article>
+
+          <article class="audio-card audio-card--candidate">
+            <p class="card-kicker">D · Fonema directo</p>
+            <h3>“mil” sin acento</h3>
+            <audio controls preload="metadata">
+              <source
+                src="/lab/audio/number-phonemes-v1/euro-1098-phoneme-mil-unstressed.mp3"
+                type="audio/mpeg"
+              />
+            </audio>
+          </article>
+
+          <article class="audio-card audio-card--candidate">
+            <p class="card-kicker">E · Fonema directo</p>
+            <h3>Unido + sin acento</h3>
+            <audio controls preload="metadata">
+              <source
+                src="/lab/audio/number-phonemes-v1/euro-1098-phoneme-mil-joined-unstressed.mp3"
+                type="audio/mpeg"
+              />
+            </audio>
+          </article>
+        </div>
+      </section>
 
       <div class="rule" aria-hidden="true"></div>
 

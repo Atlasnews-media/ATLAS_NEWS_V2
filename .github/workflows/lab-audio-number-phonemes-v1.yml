@@ -57,7 +57,7 @@ jobs:
             .fallbackAllowed == false and
             .speechNormalizerVersion == 5 and
             .lexiconVersion == 3 and
-            .lexiconRevision == 5 and
+            .lexiconRevision == 6 and
             (.sourceRepoCommit | type == "string")
           ' lab/audio-number-phonemes-v1/out/manifest.json >/dev/null
 
