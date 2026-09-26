@@ -1,0 +1,1232 @@
+{
+  "schemaVersion": 1,
+  "radarRunId": "RADAR-JEV-20260926-1427-G",
+  "sourceMainCommit": "beb0abc67cb24faa9f495d202f03e4949a9fe27c",
+  "radarStateVersion": "radar-state-v1",
+  "editorialDate": "2026-09-26",
+  "experimentMode": "RADAR_JEV",
+  "mode": "LAB_ONLY",
+  "productionWritesAllowed": false,
+  "createdAt": "2026-09-26T14:31:00-03:00",
+  "producer": "CHATGPT_TASK",
+  "artifacts": {
+    "run.json": {
+      "schemaVersion": 1,
+      "radarRunId": "RADAR-JEV-20260926-1427-G",
+      "sourceMainCommit": "beb0abc67cb24faa9f495d202f03e4949a9fe27c",
+      "radarStateVersion": "radar-state-v1",
+      "editorialDate": "2026-09-26",
+      "experimentMode": "RADAR_JEV",
+      "mode": "LAB_ONLY",
+      "productionWritesAllowed": false,
+      "startedAt": "2026-09-26T14:27:00-03:00",
+      "completedAt": "2026-09-26T14:31:00-03:00",
+      "memoryMode": "RADAR_PLUS_CORPUS",
+      "radarInterventionUsed": true,
+      "jevUsed": true,
+      "corpusUsed": true,
+      "frameworkRead": [
+        "AGENTS.md",
+        "docs/PROCEDIMIENTO_GPT_PUBLICACION.md",
+        "docs/CONTRATO_EDITORIAL.md",
+        "data/editorial_state.json"
+      ],
+      "phases": {
+        "general": "PASS",
+        "national": "PASS",
+        "markets": "PASS"
+      }
+    },
+    "search-log.json": {
+      "schemaVersion": 1,
+      "radarRunId": "RADAR-JEV-20260926-1427-G",
+      "sourceMainCommit": "beb0abc67cb24faa9f495d202f03e4949a9fe27c",
+      "radarStateVersion": "radar-state-v1",
+      "editorialDate": "2026-09-26",
+      "experimentMode": "RADAR_JEV",
+      "mode": "LAB_ONLY",
+      "productionWritesAllowed": false,
+      "entries": [
+        {
+          "queryId": "g-q1",
+          "section": "general",
+          "query": "Reuters September 26 2026 Iran Hormuz peace proposal latest",
+          "executedAt": "2026-09-26T14:27:10-03:00",
+          "resultCount": 10
+        },
+        {
+          "queryId": "g-q2",
+          "section": "general",
+          "query": "Reuters Iran US peace talks September 23 2026",
+          "executedAt": "2026-09-26T14:27:14-03:00",
+          "resultCount": 5
+        },
+        {
+          "queryId": "g-q3",
+          "section": "general",
+          "query": "Reuters France UN Security Council Hormuz September 22 2026",
+          "executedAt": "2026-09-26T14:27:18-03:00",
+          "resultCount": 5
+        },
+        {
+          "queryId": "n-q1",
+          "section": "national",
+          "query": "Reuters September 26 2026 Chile Escondida latest",
+          "executedAt": "2026-09-26T14:27:22-03:00",
+          "resultCount": 5
+        },
+        {
+          "queryId": "n-q2",
+          "section": "national",
+          "query": "Reuters Escondida restart September 25 2026",
+          "executedAt": "2026-09-26T14:27:26-03:00",
+          "resultCount": 5
+        },
+        {
+          "queryId": "n-q3",
+          "section": "national",
+          "query": "Reuters Escondida halt worker death September 23 2026",
+          "executedAt": "2026-09-26T14:27:30-03:00",
+          "resultCount": 5
+        },
+        {
+          "queryId": "m-q1",
+          "section": "markets",
+          "query": "Reuters jobs report inflation data rate path September 25 2026",
+          "executedAt": "2026-09-26T14:27:34-03:00",
+          "resultCount": 10
+        },
+        {
+          "queryId": "m-q2",
+          "section": "markets",
+          "query": "Reuters battered bonds falling oil September 25 2026",
+          "executedAt": "2026-09-26T14:27:38-03:00",
+          "resultCount": 5
+        },
+        {
+          "queryId": "m-q3",
+          "section": "markets",
+          "query": "Reuters oil jump 30-year yields September 24 2026",
+          "executedAt": "2026-09-26T14:27:42-03:00",
+          "resultCount": 5
+        }
+      ]
+    },
+    "candidates.json": {
+      "schemaVersion": 1,
+      "radarRunId": "RADAR-JEV-20260926-1427-G",
+      "sourceMainCommit": "beb0abc67cb24faa9f495d202f03e4949a9fe27c",
+      "radarStateVersion": "radar-state-v1",
+      "editorialDate": "2026-09-26",
+      "experimentMode": "RADAR_JEV",
+      "mode": "LAB_ONLY",
+      "productionWritesAllowed": false,
+      "candidates": [
+        {
+          "candidateId": "g-trump-rejects-iran",
+          "section": "general",
+          "titleOriginal": "Trump rejects Iranian proposal to open Hormuz and end fighting",
+          "sourceName": "Reuters",
+          "sourceUrl": "https://www.reuters.com/world/middle-east/iran-awaits-us-move-after-wsj-report-says-trump-rejects-peace-plan-2026-09-26/",
+          "publishedAt": "2026-09-26T00:00:00Z",
+          "discoveredAt": "2026-09-26T14:27:12-03:00",
+          "description": "Trump confirmó que rechazó la propuesta iraní para reabrir Hormuz y terminar las hostilidades en siete días.",
+          "retrievalOrigin": "g-q1",
+          "selected": true,
+          "selectionStage": "selected-final"
+        },
+        {
+          "candidateId": "g-iran-talks-gap",
+          "section": "general",
+          "titleOriginal": "Iran, US still far apart in peace talks",
+          "sourceName": "Reuters",
+          "sourceUrl": "https://www.reuters.com/world/middle-east/hope-progress-after-us-iran-hold-first-shuttle-talks-months-2026-09-23/",
+          "publishedAt": "2026-09-23T00:00:00Z",
+          "discoveredAt": "2026-09-26T14:27:15-03:00",
+          "description": "Irán y Estados Unidos seguían distantes en las conversaciones de paz, antecedente directo del rechazo posterior.",
+          "retrievalOrigin": "g-q2",
+          "selected": false,
+          "selectionStage": "screened-out"
+        },
+        {
+          "candidateId": "g-france-hormuz-un",
+          "section": "general",
+          "titleOriginal": "France mulls new UN Security Council resolution on Hormuz",
+          "sourceName": "Reuters",
+          "sourceUrl": "https://www.reuters.com/world/france-mulls-new-un-security-council-resolution-hormuz-diplomats-say-2026-09-22/",
+          "publishedAt": "2026-09-22T00:00:00Z",
+          "discoveredAt": "2026-09-26T14:27:18-03:00",
+          "description": "Francia evalúa una nueva resolución del Consejo de Seguridad para proteger la navegación por Hormuz.",
+          "retrievalOrigin": "g-q3",
+          "selected": false,
+          "selectionStage": "screened-out"
+        },
+        {
+          "candidateId": "n-escondida-talks-g",
+          "section": "national",
+          "titleOriginal": "Union at BHP's Escondida mine refuses to pause contract talks after fatal accident",
+          "sourceName": "Reuters",
+          "sourceUrl": "https://www.reuters.com/business/world-at-work/unions-chiles-escondida-mine-reject-bid-pause-contract-talks-after-workers-death-2026-09-25/",
+          "publishedAt": "2026-09-25T16:46:00Z",
+          "discoveredAt": "2026-09-26T14:27:21-03:00",
+          "description": "El sindicato rechazó pausar la negociación colectiva tras el accidente fatal.",
+          "retrievalOrigin": "n-q1",
+          "selected": true,
+          "selectionStage": "selected-final"
+        },
+        {
+          "candidateId": "n-escondida-restart-g",
+          "section": "national",
+          "titleOriginal": "Escondida gradually resumes operations after fatal accident",
+          "sourceName": "Reuters",
+          "sourceUrl": "https://www.reuters.com/world/americas/chiles-escondida-mine-gradually-resumes-operations-after-fatal-accident-2026-09-25/",
+          "publishedAt": "2026-09-25T00:22:00Z",
+          "discoveredAt": "2026-09-26T14:27:24-03:00",
+          "description": "La mina reanudó progresivamente sus operaciones después del accidente.",
+          "retrievalOrigin": "n-q2",
+          "selected": false,
+          "selectionStage": "screened-out"
+        },
+        {
+          "candidateId": "n-escondida-halt-g",
+          "section": "national",
+          "titleOriginal": "World's largest copper mine halts operations after worker death",
+          "sourceName": "Reuters",
+          "sourceUrl": "https://finance.yahoo.com/news/fatal-accident-occurs-bhps-chile-181850851.html",
+          "publishedAt": "2026-09-23T00:00:00Z",
+          "discoveredAt": "2026-09-26T14:27:27-03:00",
+          "description": "La paralización inicial tras la muerte de un trabajador es el antecedente del reinicio y la negociación posterior.",
+          "retrievalOrigin": "n-q3",
+          "selected": false,
+          "selectionStage": "screened-out"
+        },
+        {
+          "candidateId": "m-week-ahead-data",
+          "section": "markets",
+          "titleOriginal": "Jobs report, inflation data to test US rate path, economic strength",
+          "sourceName": "Reuters",
+          "sourceUrl": "https://www.reuters.com/business/wall-st-week-ahead-jobs-report-inflation-data-test-us-rate-path-economic-2026-09-25/",
+          "publishedAt": "2026-09-25T00:00:00Z",
+          "discoveredAt": "2026-09-26T14:27:30-03:00",
+          "description": "Empleo e inflación de Estados Unidos serán los próximos catalizadores para la trayectoria de tasas y la fortaleza económica.",
+          "retrievalOrigin": "m-q1",
+          "selected": true,
+          "selectionStage": "selected-final"
+        },
+        {
+          "candidateId": "m-bonds-oil-g",
+          "section": "markets",
+          "titleOriginal": "Battered bonds draw support from falling oil prices",
+          "sourceName": "Reuters",
+          "sourceUrl": "https://www.reuters.com/world/china/global-markets-warpup-1-pix-2026-09-25/",
+          "publishedAt": "2026-09-25T21:00:00Z",
+          "discoveredAt": "2026-09-26T14:27:33-03:00",
+          "description": "Los Treasury se estabilizaron con la caída del petróleo tras tocar rendimientos de varias décadas.",
+          "retrievalOrigin": "m-q2",
+          "selected": false,
+          "selectionStage": "screened-out"
+        },
+        {
+          "candidateId": "m-oil-yields-g",
+          "section": "markets",
+          "titleOriginal": "Oil jump sends 30-year yields to two-decade high",
+          "sourceName": "Reuters",
+          "sourceUrl": "https://www.reuters.com/world/china/global-markets-global-markets-2026-09-24/",
+          "publishedAt": "2026-09-24T00:00:00Z",
+          "discoveredAt": "2026-09-26T14:27:36-03:00",
+          "description": "El salto del petróleo llevó los rendimientos a 30 años a máximos de más de dos décadas.",
+          "retrievalOrigin": "m-q3",
+          "selected": false,
+          "selectionStage": "screened-out"
+        }
+      ]
+    },
+    "general/input.json": {
+      "schemaVersion": 1,
+      "radarRunId": "RADAR-JEV-20260926-1427-G",
+      "sourceMainCommit": "beb0abc67cb24faa9f495d202f03e4949a9fe27c",
+      "radarStateVersion": "radar-state-v1",
+      "editorialDate": "2026-09-26",
+      "experimentMode": "RADAR_JEV",
+      "mode": "LAB_ONLY",
+      "productionWritesAllowed": false,
+      "section": "general",
+      "startedAt": "2026-09-26T14:29:10-03:00",
+      "frameworkRead": [
+        "AGENTS.md",
+        "docs/PROCEDIMIENTO_GPT_PUBLICACION.md",
+        "docs/CONTRATO_EDITORIAL.md",
+        "data/editorial_state.json"
+      ],
+      "searchQueryIds": [
+        "g-q1",
+        "g-q2",
+        "g-q3"
+      ],
+      "candidateIds": [
+        "g-trump-rejects-iran",
+        "g-iran-talks-gap",
+        "g-france-hormuz-un"
+      ]
+    },
+    "general/metadata.json": {
+      "schemaVersion": 1,
+      "radarRunId": "RADAR-JEV-20260926-1427-G",
+      "sourceMainCommit": "beb0abc67cb24faa9f495d202f03e4949a9fe27c",
+      "radarStateVersion": "radar-state-v1",
+      "editorialDate": "2026-09-26",
+      "experimentMode": "RADAR_JEV",
+      "mode": "LAB_ONLY",
+      "productionWritesAllowed": false,
+      "section": "general",
+      "status": "PASS",
+      "startedAt": "2026-09-26T14:29:10-03:00",
+      "completedAt": "2026-09-26T14:29:49-03:00",
+      "title": "Trump rechaza propuesta iraní para reabrir Hormuz",
+      "summary": "El rechazo confirmado por Trump cambia el estado de la vía diplomática que buscaba reabrir Hormuz en siete días y mantiene elevada la incertidumbre sobre energía e inflación.",
+      "tags": [
+        "internacional"
+      ],
+      "sources": [
+        {
+          "name": "Reuters",
+          "url": "https://www.reuters.com/world/middle-east/iran-awaits-us-move-after-wsj-report-says-trump-rejects-peace-plan-2026-09-26/",
+          "publishedAt": "2026-09-26T00:00:00Z"
+        },
+        {
+          "name": "Reuters",
+          "url": "https://www.reuters.com/world/middle-east/hope-progress-after-us-iran-hold-first-shuttle-talks-months-2026-09-23/",
+          "publishedAt": "2026-09-23T00:00:00Z"
+        },
+        {
+          "name": "Reuters",
+          "url": "https://www.reuters.com/world/france-mulls-new-un-security-council-resolution-hormuz-diplomats-say-2026-09-22/",
+          "publishedAt": "2026-09-22T00:00:00Z"
+        }
+      ],
+      "highlights": [
+        {
+          "label": "Trump rechaza la propuesta iraní",
+          "text": "El presidente estadounidense confirmó que no aceptó el plan para reabrir Hormuz y terminar los combates."
+        },
+        {
+          "label": "La propuesta contemplaba siete días",
+          "text": "Irán planteaba reabrir el estrecho y detener las hostilidades dentro de ese plazo."
+        },
+        {
+          "label": "JEV detecta una actualización significativa",
+          "text": "El rechazo es el mismo evento diplomático, pero agrega información nueva frente al estado previo de espera."
+        },
+        {
+          "label": "La brecha diplomática persiste",
+          "text": "Las conversaciones previas ya mostraban distancia entre Washington y Teherán."
+        },
+        {
+          "label": "Francia mantiene una vía multilateral",
+          "text": "París evalúa una iniciativa del Consejo de Seguridad para proteger la navegación por Hormuz."
+        }
+      ],
+      "selectedCandidateIds": [
+        "g-trump-rejects-iran"
+      ],
+      "discardedCandidateIds": [
+        "g-iran-talks-gap",
+        "g-france-hormuz-un"
+      ],
+      "outputPath": "lab/radar-editorial/runtime/runs/RADAR-JEV-20260926-1427-G/general/output.md"
+    },
+    "general/output.md": "## Hecho central\n\nDonald Trump confirmó que rechazó la propuesta iraní para reabrir el estrecho de Hormuz y terminar las hostilidades regionales. El plan planteaba una reapertura dentro de siete días. El cambio es relevante porque la historia deja de estar en un estado de espera por una respuesta formal estadounidense: ahora existe un rechazo explícito.\n\n## En una mirada\n\n- **Trump rechaza la propuesta iraní:** Washington no aceptó el plan para reabrir Hormuz.\n- **La propuesta contemplaba siete días:** Teherán vinculaba la reapertura con el fin de las hostilidades.\n- **JEV detecta una actualización significativa:** es el mismo evento, pero con información nueva material.\n- **La brecha diplomática persiste:** las conversaciones previas ya mostraban posiciones alejadas.\n- **Francia mantiene una vía multilateral:** París estudia una iniciativa del Consejo de Seguridad sobre navegación.\n\n## Por qué importa\n\nJEV clasificó el rechazo como SAME_EVENT con probabilidad 1,00, pero MEANINGFUL_UPDATE con 0,95 y 0,87 de probabilidad de agregar información. Eso distingue esta selección de repetir simplemente el bloqueo de Hormuz: cambia el estado verificable de la negociación.\n\n## Mercados globales\n\nLa falta de acuerdo mantiene abierta la prima de riesgo sobre el transporte energético. Una reapertura del estrecho habría reducido una de las principales restricciones del mercado; el rechazo estadounidense prolonga la incertidumbre sobre ese canal.\n\n## Chile\n\nPara Chile, la transmisión continúa siendo externa mediante petróleo, combustibles, inflación importada y condiciones financieras. No se interpreta el episodio como una señal doméstica.\n\n## Tasas, monedas y commodities\n\nLa conexión entre petróleo e inflación sigue siendo central para las tasas. Los Treasury encontraron algo de alivio con la baja reciente del crudo, pero la trayectoria sigue expuesta a cualquier cambio en Hormuz y a los próximos datos macroeconómicos.\n\n## Qué observar\n\nNuevas propuestas diplomáticas, cambios en las condiciones de Washington o Teherán, navegación efectiva por Hormuz, petróleo y combustibles refinados.\n",
+    "checkpoints/general.json": {
+      "schemaVersion": 1,
+      "radarRunId": "RADAR-JEV-20260926-1427-G",
+      "sourceMainCommit": "beb0abc67cb24faa9f495d202f03e4949a9fe27c",
+      "radarStateVersion": "radar-state-v1",
+      "editorialDate": "2026-09-26",
+      "experimentMode": "RADAR_JEV",
+      "mode": "LAB_ONLY",
+      "productionWritesAllowed": false,
+      "phase": "general",
+      "status": "PASS",
+      "completedAt": "2026-09-26T14:29:49-03:00"
+    },
+    "national/input.json": {
+      "schemaVersion": 1,
+      "radarRunId": "RADAR-JEV-20260926-1427-G",
+      "sourceMainCommit": "beb0abc67cb24faa9f495d202f03e4949a9fe27c",
+      "radarStateVersion": "radar-state-v1",
+      "editorialDate": "2026-09-26",
+      "experimentMode": "RADAR_JEV",
+      "mode": "LAB_ONLY",
+      "productionWritesAllowed": false,
+      "section": "national",
+      "startedAt": "2026-09-26T14:29:50-03:00",
+      "frameworkRead": [
+        "AGENTS.md",
+        "docs/PROCEDIMIENTO_GPT_PUBLICACION.md",
+        "docs/CONTRATO_EDITORIAL.md",
+        "data/editorial_state.json"
+      ],
+      "searchQueryIds": [
+        "n-q1",
+        "n-q2",
+        "n-q3"
+      ],
+      "candidateIds": [
+        "n-escondida-talks-g",
+        "n-escondida-restart-g",
+        "n-escondida-halt-g"
+      ]
+    },
+    "national/metadata.json": {
+      "schemaVersion": 1,
+      "radarRunId": "RADAR-JEV-20260926-1427-G",
+      "sourceMainCommit": "beb0abc67cb24faa9f495d202f03e4949a9fe27c",
+      "radarStateVersion": "radar-state-v1",
+      "editorialDate": "2026-09-26",
+      "experimentMode": "RADAR_JEV",
+      "mode": "LAB_ONLY",
+      "productionWritesAllowed": false,
+      "section": "national",
+      "status": "PASS",
+      "startedAt": "2026-09-26T14:29:50-03:00",
+      "completedAt": "2026-09-26T14:30:24-03:00",
+      "title": "Escondida mantiene negociación laboral durante su recuperación operacional",
+      "summary": "El sindicato mantiene abiertas las conversaciones contractuales mientras la mina avanza en la recuperación posterior al accidente fatal.",
+      "tags": [
+        "chile"
+      ],
+      "sources": [
+        {
+          "name": "Reuters",
+          "url": "https://www.reuters.com/business/world-at-work/unions-chiles-escondida-mine-reject-bid-pause-contract-talks-after-workers-death-2026-09-25/",
+          "publishedAt": "2026-09-25T16:46:00Z"
+        },
+        {
+          "name": "Reuters",
+          "url": "https://www.reuters.com/world/americas/chiles-escondida-mine-gradually-resumes-operations-after-fatal-accident-2026-09-25/",
+          "publishedAt": "2026-09-25T00:22:00Z"
+        },
+        {
+          "name": "Reuters",
+          "url": "https://finance.yahoo.com/news/fatal-accident-occurs-bhps-chile-181850851.html",
+          "publishedAt": "2026-09-23T00:00:00Z"
+        }
+      ],
+      "highlights": [
+        {
+          "label": "La negociación sigue abierta",
+          "text": "El sindicato rechazó la solicitud de BHP de pausar las conversaciones."
+        },
+        {
+          "label": "La operación se recupera",
+          "text": "Escondida reanudó progresivamente sus faenas después del accidente."
+        },
+        {
+          "label": "JEV advierte repetición",
+          "text": "Los tres candidatos nacionales pertenecen al mismo episodio reciente y muestran alta repetición frente al corpus."
+        }
+      ],
+      "selectedCandidateIds": [
+        "n-escondida-talks-g"
+      ],
+      "discardedCandidateIds": [
+        "n-escondida-restart-g",
+        "n-escondida-halt-g"
+      ],
+      "outputPath": "lab/radar-editorial/runtime/runs/RADAR-JEV-20260926-1427-G/national/output.md"
+    },
+    "national/output.md": "## Desarrollo\n\nLa negociación colectiva en Escondida permanece abierta después de que un sindicato rechazara la solicitud de BHP de suspender temporalmente las conversaciones tras el accidente fatal. La mina, al mismo tiempo, avanza en una recuperación gradual de sus operaciones.\n\nJEV entrega una advertencia importante para la lectura editorial: los tres candidatos nacionales pertenecen al mismo episodio y fueron clasificados como repetición, con probabilidades de ángulo repetido entre 0,77 y 0,86. Por eso esta vertical no presenta el hecho como un acontecimiento completamente nuevo, sino como continuidad operacional y laboral de una historia vigente.\n\n## Implicancias y riesgos\n\nLa coexistencia de recuperación productiva y negociación laboral mantiene dos variables abiertas para la principal mina de cobre del país. Ninguna de ellas equivale por sí sola a una nueva paralización.\n\n## Qué observar\n\nCambios formales en la negociación, normalización completa de las operaciones y cualquier nueva medida de empresa o sindicato que modifique el estado actual.\n",
+    "checkpoints/national.json": {
+      "schemaVersion": 1,
+      "radarRunId": "RADAR-JEV-20260926-1427-G",
+      "sourceMainCommit": "beb0abc67cb24faa9f495d202f03e4949a9fe27c",
+      "radarStateVersion": "radar-state-v1",
+      "editorialDate": "2026-09-26",
+      "experimentMode": "RADAR_JEV",
+      "mode": "LAB_ONLY",
+      "productionWritesAllowed": false,
+      "phase": "national",
+      "status": "PASS",
+      "completedAt": "2026-09-26T14:30:24-03:00"
+    },
+    "markets/input.json": {
+      "schemaVersion": 1,
+      "radarRunId": "RADAR-JEV-20260926-1427-G",
+      "sourceMainCommit": "beb0abc67cb24faa9f495d202f03e4949a9fe27c",
+      "radarStateVersion": "radar-state-v1",
+      "editorialDate": "2026-09-26",
+      "experimentMode": "RADAR_JEV",
+      "mode": "LAB_ONLY",
+      "productionWritesAllowed": false,
+      "section": "markets",
+      "startedAt": "2026-09-26T14:30:25-03:00",
+      "frameworkRead": [
+        "AGENTS.md",
+        "docs/PROCEDIMIENTO_GPT_PUBLICACION.md",
+        "docs/CONTRATO_EDITORIAL.md",
+        "data/editorial_state.json"
+      ],
+      "searchQueryIds": [
+        "m-q1",
+        "m-q2",
+        "m-q3"
+      ],
+      "candidateIds": [
+        "m-week-ahead-data",
+        "m-bonds-oil-g",
+        "m-oil-yields-g"
+      ]
+    },
+    "markets/metadata.json": {
+      "schemaVersion": 1,
+      "radarRunId": "RADAR-JEV-20260926-1427-G",
+      "sourceMainCommit": "beb0abc67cb24faa9f495d202f03e4949a9fe27c",
+      "radarStateVersion": "radar-state-v1",
+      "editorialDate": "2026-09-26",
+      "experimentMode": "RADAR_JEV",
+      "mode": "LAB_ONLY",
+      "productionWritesAllowed": false,
+      "section": "markets",
+      "status": "PASS",
+      "startedAt": "2026-09-26T14:30:25-03:00",
+      "completedAt": "2026-09-26T14:30:59-03:00",
+      "title": "Empleo e inflación ponen a prueba la trayectoria de tasas en Estados Unidos",
+      "summary": "Los próximos datos de empleo e inflación pueden redefinir la expectativa de alzas de tasas después de una semana de fuertes movimientos en petróleo y bonos.",
+      "tags": [
+        "mercados"
+      ],
+      "sources": [
+        {
+          "name": "Reuters",
+          "url": "https://www.reuters.com/business/wall-st-week-ahead-jobs-report-inflation-data-test-us-rate-path-economic-2026-09-25/",
+          "publishedAt": "2026-09-25T00:00:00Z"
+        },
+        {
+          "name": "Reuters",
+          "url": "https://www.reuters.com/world/china/global-markets-warpup-1-pix-2026-09-25/",
+          "publishedAt": "2026-09-25T21:00:00Z"
+        },
+        {
+          "name": "Reuters",
+          "url": "https://www.reuters.com/world/china/global-markets-global-markets-2026-09-24/",
+          "publishedAt": "2026-09-24T00:00:00Z"
+        }
+      ],
+      "highlights": [
+        {
+          "label": "Los datos toman el relevo",
+          "text": "Empleo e inflación serán los próximos catalizadores para la trayectoria de tasas."
+        },
+        {
+          "label": "Los bonos llegan tensionados",
+          "text": "Los rendimientos largos alcanzaron máximos de varias décadas antes de estabilizarse."
+        },
+        {
+          "label": "JEV penaliza repetir la estabilización",
+          "text": "El movimiento de bonos asociado a la caída del petróleo aparece con alta repetición y ángulo repetido."
+        }
+      ],
+      "selectedCandidateIds": [
+        "m-week-ahead-data"
+      ],
+      "discardedCandidateIds": [
+        "m-bonds-oil-g",
+        "m-oil-yields-g"
+      ],
+      "outputPath": "lab/radar-editorial/runtime/runs/RADAR-JEV-20260926-1427-G/markets/output.md"
+    },
+    "markets/output.md": "## Desarrollo\n\nLos mercados entran en la próxima semana con empleo e inflación de Estados Unidos como pruebas principales para la trayectoria de tasas. Después de que los rendimientos largos alcanzaran máximos de varias décadas y luego encontraran apoyo en la caída del petróleo, el siguiente movimiento dependerá en buena medida de si los datos refuerzan o moderan las expectativas de nuevas alzas de la Reserva Federal.\n\nJEV favorece este cambio de foco. El candidato sobre próximos datos fue clasificado como NEW_EVENT con 0,72 y agrega información con probabilidad 0,72. En contraste, la estabilización de bonos asociada al petróleo fue marcada como REPETITION con 0,90 y angleRepeated de 0,92.\n\n## Implicancias y riesgos\n\nUn empleo más fuerte o una inflación persistente pueden volver a presionar los rendimientos y las valorizaciones de acciones. Datos más moderados podrían consolidar parte del alivio reciente, aunque el petróleo continúa siendo una variable externa importante.\n\n## Qué observar\n\nEmpleo estadounidense, inflación, rendimientos del Treasury, dólar, petróleo y reacción de la renta variable a cualquier cambio en la trayectoria esperada de tasas.\n",
+    "checkpoints/markets.json": {
+      "schemaVersion": 1,
+      "radarRunId": "RADAR-JEV-20260926-1427-G",
+      "sourceMainCommit": "beb0abc67cb24faa9f495d202f03e4949a9fe27c",
+      "radarStateVersion": "radar-state-v1",
+      "editorialDate": "2026-09-26",
+      "experimentMode": "RADAR_JEV",
+      "mode": "LAB_ONLY",
+      "productionWritesAllowed": false,
+      "phase": "markets",
+      "status": "PASS",
+      "completedAt": "2026-09-26T14:30:59-03:00"
+    },
+    "result.json": {
+      "schemaVersion": 1,
+      "radarRunId": "RADAR-JEV-20260926-1427-G",
+      "sourceMainCommit": "beb0abc67cb24faa9f495d202f03e4949a9fe27c",
+      "radarStateVersion": "radar-state-v1",
+      "editorialDate": "2026-09-26",
+      "experimentMode": "RADAR_JEV",
+      "mode": "LAB_ONLY",
+      "productionWritesAllowed": false,
+      "status": "PASS",
+      "completedAt": "2026-09-26T14:31:00-03:00",
+      "message": "ATLAS NEWS LAB radar+jev PASS"
+    },
+    "publish-request.json": {
+      "schemaVersion": 1,
+      "radarRunId": "RADAR-JEV-20260926-1427-G",
+      "sourceMainCommit": "beb0abc67cb24faa9f495d202f03e4949a9fe27c",
+      "radarStateVersion": "radar-state-v1",
+      "editorialDate": "2026-09-26",
+      "experimentMode": "RADAR_JEV",
+      "mode": "LAB_ONLY",
+      "productionWritesAllowed": false,
+      "status": "READY",
+      "createdAt": "2026-09-26T14:31:00-03:00",
+      "runPath": "lab/radar-editorial/runtime/runs/RADAR-JEV-20260926-1427-G",
+      "viewPath": "lab/radar-editorial/runtime/runs/RADAR-JEV-20260926-1427-G/index.html"
+    },
+    "index.html": "<!doctype html><html lang=\"es\"><head><meta charset=\"utf-8\"><title>ATLAS NEWS LAB RADAR-JEV-20260926-1427-G</title></head><body><main><h1>ATLAS NEWS LAB</h1><p>RADAR + CORPUS + JEV · RADAR-JEV-20260926-1427-G</p><h2>General</h2><p>Trump rechaza la propuesta iraní para reabrir Hormuz.</p><h2>Nacional</h2><p>Escondida mantiene negociación laboral durante su recuperación operacional.</p><h2>Mercados</h2><p>Empleo e inflación toman el relevo como catalizadores para la trayectoria de tasas.</p></main></body></html>\n",
+    "radar-context.json": {
+      "schemaVersion": 1,
+      "radarRunId": "RADAR-JEV-20260926-1427-G",
+      "sourceMainCommit": "beb0abc67cb24faa9f495d202f03e4949a9fe27c",
+      "radarStateVersion": "radar-state-v1",
+      "editorialDate": "2026-09-26",
+      "experimentMode": "RADAR_JEV",
+      "mode": "LAB_ONLY",
+      "productionWritesAllowed": false,
+      "signals": [
+        {
+          "signalId": "radar-hormuz",
+          "source": "data/editorial_state.json",
+          "topic": "oil-geopolitics-inflation",
+          "interpretation": "Hormuz remains an active energy-inflation transmission channel; test diplomatic updates for novelty rather than repeating the disruption."
+        },
+        {
+          "signalId": "radar-chile-activity",
+          "source": "data/editorial_state.json",
+          "topic": "chile-inflation-activity-rates",
+          "interpretation": "Domestic activity remains weak; compare fresh mining continuity against already-covered regional GDP."
+        },
+        {
+          "signalId": "radar-rates",
+          "source": "data/editorial_state.json",
+          "topic": "us-employment-fed-rates",
+          "interpretation": "High yields and Fed expectations remain active; prioritize genuinely new cross-asset catalysts over repeated yield stabilization."
+        }
+      ]
+    },
+    "corpus-retrieval.json": {
+      "schemaVersion": 1,
+      "radarRunId": "RADAR-JEV-20260926-1427-G",
+      "sourceMainCommit": "beb0abc67cb24faa9f495d202f03e4949a9fe27c",
+      "radarStateVersion": "radar-state-v1",
+      "editorialDate": "2026-09-26",
+      "experimentMode": "RADAR_JEV",
+      "mode": "LAB_ONLY",
+      "productionWritesAllowed": false,
+      "candidateRetrievals": [
+        {
+          "candidateId": "g-iran-response",
+          "section": "general",
+          "retrievalMethod": "deterministic_recent_context",
+          "priors": [
+            {
+              "origin": "editorial_state.json",
+              "title": "oil-geopolitics-inflation",
+              "relationHint": "Hormuz energy shock is active."
+            },
+            {
+              "origin": "recent LAB",
+              "title": "Iran proposal",
+              "relationHint": "Proposal already observed; reported US rejection is the incremental state."
+            }
+          ]
+        },
+        {
+          "candidateId": "g-russia-asset-seizures",
+          "section": "general",
+          "retrievalMethod": "deterministic_recent_context",
+          "priors": [
+            {
+              "origin": "recent LAB",
+              "title": "Recent international selections",
+              "relationHint": "No direct Russia asset-seizure selection found in recent LAB context."
+            }
+          ]
+        },
+        {
+          "candidateId": "g-us-diesel-export-ban",
+          "section": "general",
+          "retrievalMethod": "deterministic_recent_context",
+          "priors": [
+            {
+              "origin": "editorial_state.json",
+              "title": "oil-geopolitics-inflation",
+              "relationHint": "Energy-inflation thread active."
+            },
+            {
+              "origin": "recent LAB",
+              "title": "Fuel-price interventions",
+              "relationHint": "Compare policy-response angle with recent fuel coverage."
+            }
+          ]
+        },
+        {
+          "candidateId": "n-escondida-talks-f",
+          "section": "national",
+          "retrievalMethod": "deterministic_recent_context",
+          "priors": [
+            {
+              "origin": "editorial_state.json",
+              "title": "chile-inflation-activity-rates",
+              "relationHint": "Chile activity thread active."
+            },
+            {
+              "origin": "recent LAB",
+              "title": "Union at BHP's Escondida mine refuses to pause contract talks after fatal accident",
+              "relationHint": "Candidate or closely related event has appeared recently; repetition must be tested."
+            }
+          ]
+        },
+        {
+          "candidateId": "n-escondida-restart-f",
+          "section": "national",
+          "retrievalMethod": "deterministic_recent_context",
+          "priors": [
+            {
+              "origin": "editorial_state.json",
+              "title": "chile-inflation-activity-rates",
+              "relationHint": "Chile activity thread active."
+            },
+            {
+              "origin": "recent LAB",
+              "title": "Escondida gradually resumes operations after fatal accident",
+              "relationHint": "Candidate or closely related event has appeared recently; repetition must be tested."
+            }
+          ]
+        },
+        {
+          "candidateId": "n-regional-gdp-f",
+          "section": "national",
+          "retrievalMethod": "deterministic_recent_context",
+          "priors": [
+            {
+              "origin": "editorial_state.json",
+              "title": "chile-inflation-activity-rates",
+              "relationHint": "Chile activity thread active."
+            },
+            {
+              "origin": "recent LAB",
+              "title": "Producto Interno Bruto Regional Segundo Trimestre 2026",
+              "relationHint": "Candidate or closely related event has appeared recently; repetition must be tested."
+            }
+          ]
+        },
+        {
+          "candidateId": "m-bonds-oil-f",
+          "section": "markets",
+          "retrievalMethod": "deterministic_recent_context",
+          "priors": [
+            {
+              "origin": "editorial_state.json",
+              "title": "us-employment-fed-rates",
+              "relationHint": "Rates and macro catalysts active."
+            },
+            {
+              "origin": "recent LAB",
+              "title": "Battered bonds draw support from falling oil prices",
+              "relationHint": "Compare with recent market coverage for repetition and angle novelty."
+            }
+          ]
+        },
+        {
+          "candidateId": "m-q4-data-f",
+          "section": "markets",
+          "retrievalMethod": "deterministic_recent_context",
+          "priors": [
+            {
+              "origin": "editorial_state.json",
+              "title": "us-employment-fed-rates",
+              "relationHint": "Rates and macro catalysts active."
+            },
+            {
+              "origin": "recent LAB",
+              "title": "Take Five: It's Q4 already?",
+              "relationHint": "Compare with recent market coverage for repetition and angle novelty."
+            }
+          ]
+        },
+        {
+          "candidateId": "m-equity-ai-f",
+          "section": "markets",
+          "retrievalMethod": "deterministic_recent_context",
+          "priors": [
+            {
+              "origin": "editorial_state.json",
+              "title": "us-employment-fed-rates",
+              "relationHint": "Rates and macro catalysts active."
+            },
+            {
+              "origin": "recent LAB",
+              "title": "Global equity funds snap two-week outflow as AI optimism returns",
+              "relationHint": "Compare with recent market coverage for repetition and angle novelty."
+            }
+          ]
+        }
+      ]
+    },
+    "jev-judgments.json": {
+      "schemaVersion": 1,
+      "radarRunId": "RADAR-JEV-20260926-1427-G",
+      "sourceMainCommit": "beb0abc67cb24faa9f495d202f03e4949a9fe27c",
+      "radarStateVersion": "radar-state-v1",
+      "editorialDate": "2026-09-26",
+      "experimentMode": "RADAR_JEV",
+      "mode": "LAB_ONLY",
+      "productionWritesAllowed": false,
+      "engine": "JEV_TYPESAFE",
+      "modelRequested": "jev-latest",
+      "modelObserved": "jev-1.13.0",
+      "thresholdsApplied": false,
+      "generatedAt": "2026-09-26T17:28:30.972Z",
+      "judgments": [
+        {
+          "candidateKey": "g-trump-rejects-iran",
+          "section": "general",
+          "eventRelation": {
+            "value": "SAME_EVENT",
+            "confidence": 1,
+            "probabilities": {
+              "UNRELATED": 0,
+              "SAME_EVENT": 1,
+              "UNCERTAIN": 0,
+              "NEW_EVENT": 0
+            }
+          },
+          "informationRelation": {
+            "value": "MEANINGFUL_UPDATE",
+            "confidence": 0.92,
+            "probabilities": {
+              "REPETITION": 0.02,
+              "CONTRADICTION": 0,
+              "CONTINUATION": 0,
+              "NEW": 0.03,
+              "UNCERTAIN": 0,
+              "MEANINGFUL_UPDATE": 0.95
+            }
+          },
+          "addsNewInformation": {
+            "probability": 0.87,
+            "confidence": null
+          },
+          "historicalContextNeeded": {
+            "probability": 0.62,
+            "confidence": null
+          },
+          "angleRepeated": {
+            "probability": 0.5,
+            "confidence": null
+          }
+        },
+        {
+          "candidateKey": "g-iran-talks-gap",
+          "section": "general",
+          "eventRelation": {
+            "value": "SAME_EVENT",
+            "confidence": 0.47,
+            "probabilities": {
+              "UNCERTAIN": 0.02,
+              "UNRELATED": 0,
+              "SAME_EVENT": 0.6,
+              "NEW_EVENT": 0.38
+            }
+          },
+          "informationRelation": {
+            "value": "REPETITION",
+            "confidence": 0.59,
+            "probabilities": {
+              "CONTRADICTION": 0,
+              "REPETITION": 0.66,
+              "UNCERTAIN": 0.02,
+              "CONTINUATION": 0.2,
+              "NEW": 0.05,
+              "MEANINGFUL_UPDATE": 0.07
+            }
+          },
+          "addsNewInformation": {
+            "probability": 0.44,
+            "confidence": null
+          },
+          "historicalContextNeeded": {
+            "probability": 0.6,
+            "confidence": null
+          },
+          "angleRepeated": {
+            "probability": 0.74,
+            "confidence": null
+          }
+        },
+        {
+          "candidateKey": "g-france-hormuz-un",
+          "section": "general",
+          "eventRelation": {
+            "value": "NEW_EVENT",
+            "confidence": 0.71,
+            "probabilities": {
+              "SAME_EVENT": 0.22,
+              "UNCERTAIN": 0,
+              "UNRELATED": 0,
+              "NEW_EVENT": 0.78
+            }
+          },
+          "informationRelation": {
+            "value": "NEW",
+            "confidence": 0.48,
+            "probabilities": {
+              "CONTRADICTION": 0,
+              "NEW": 0.57,
+              "MEANINGFUL_UPDATE": 0.32,
+              "REPETITION": 0.06,
+              "CONTINUATION": 0.04,
+              "UNCERTAIN": 0.01
+            }
+          },
+          "addsNewInformation": {
+            "probability": 0.8,
+            "confidence": null
+          },
+          "historicalContextNeeded": {
+            "probability": 0.55,
+            "confidence": null
+          },
+          "angleRepeated": {
+            "probability": 0.23,
+            "confidence": null
+          }
+        },
+        {
+          "candidateKey": "n-escondida-talks-g",
+          "section": "national",
+          "eventRelation": {
+            "value": "SAME_EVENT",
+            "confidence": 0.91,
+            "probabilities": {
+              "SAME_EVENT": 0.93,
+              "UNRELATED": 0,
+              "NEW_EVENT": 0.07,
+              "UNCERTAIN": 0
+            }
+          },
+          "informationRelation": {
+            "value": "REPETITION",
+            "confidence": 0.54,
+            "probabilities": {
+              "MEANINGFUL_UPDATE": 0.22,
+              "NEW": 0.1,
+              "REPETITION": 0.62,
+              "CONTRADICTION": 0,
+              "CONTINUATION": 0.04,
+              "UNCERTAIN": 0.02
+            }
+          },
+          "addsNewInformation": {
+            "probability": 0.59,
+            "confidence": null
+          },
+          "historicalContextNeeded": {
+            "probability": 0.53,
+            "confidence": null
+          },
+          "angleRepeated": {
+            "probability": 0.77,
+            "confidence": null
+          }
+        },
+        {
+          "candidateKey": "n-escondida-restart-g",
+          "section": "national",
+          "eventRelation": {
+            "value": "SAME_EVENT",
+            "confidence": 0.98,
+            "probabilities": {
+              "NEW_EVENT": 0.02,
+              "SAME_EVENT": 0.98,
+              "UNCERTAIN": 0,
+              "UNRELATED": 0
+            }
+          },
+          "informationRelation": {
+            "value": "REPETITION",
+            "confidence": 0.61,
+            "probabilities": {
+              "CONTRADICTION": 0,
+              "MEANINGFUL_UPDATE": 0.15,
+              "CONTINUATION": 0.14,
+              "UNCERTAIN": 0,
+              "NEW": 0.03,
+              "REPETITION": 0.68
+            }
+          },
+          "addsNewInformation": {
+            "probability": 0.45,
+            "confidence": null
+          },
+          "historicalContextNeeded": {
+            "probability": 0.48,
+            "confidence": null
+          },
+          "angleRepeated": {
+            "probability": 0.86,
+            "confidence": null
+          }
+        },
+        {
+          "candidateKey": "n-escondida-halt-g",
+          "section": "national",
+          "eventRelation": {
+            "value": "SAME_EVENT",
+            "confidence": 0.99,
+            "probabilities": {
+              "UNCERTAIN": 0,
+              "NEW_EVENT": 0.01,
+              "UNRELATED": 0,
+              "SAME_EVENT": 0.99
+            }
+          },
+          "informationRelation": {
+            "value": "REPETITION",
+            "confidence": 0.41,
+            "probabilities": {
+              "MEANINGFUL_UPDATE": 0.23,
+              "NEW": 0.12,
+              "UNCERTAIN": 0.01,
+              "REPETITION": 0.52,
+              "CONTINUATION": 0.12,
+              "CONTRADICTION": 0
+            }
+          },
+          "addsNewInformation": {
+            "probability": 0.52,
+            "confidence": null
+          },
+          "historicalContextNeeded": {
+            "probability": 0.51,
+            "confidence": null
+          },
+          "angleRepeated": {
+            "probability": 0.8,
+            "confidence": null
+          }
+        },
+        {
+          "candidateKey": "m-week-ahead-data",
+          "section": "markets",
+          "eventRelation": {
+            "value": "NEW_EVENT",
+            "confidence": 0.62,
+            "probabilities": {
+              "UNCERTAIN": 0,
+              "SAME_EVENT": 0.28,
+              "NEW_EVENT": 0.72,
+              "UNRELATED": 0
+            }
+          },
+          "informationRelation": {
+            "value": "NEW",
+            "confidence": 0.31,
+            "probabilities": {
+              "CONTINUATION": 0.16,
+              "MEANINGFUL_UPDATE": 0.24,
+              "REPETITION": 0.16,
+              "NEW": 0.42,
+              "CONTRADICTION": 0,
+              "UNCERTAIN": 0.02
+            }
+          },
+          "addsNewInformation": {
+            "probability": 0.72,
+            "confidence": null
+          },
+          "historicalContextNeeded": {
+            "probability": 0.54,
+            "confidence": null
+          },
+          "angleRepeated": {
+            "probability": 0.63,
+            "confidence": null
+          }
+        },
+        {
+          "candidateKey": "m-bonds-oil-g",
+          "section": "markets",
+          "eventRelation": {
+            "value": "SAME_EVENT",
+            "confidence": 0.99,
+            "probabilities": {
+              "UNRELATED": 0,
+              "UNCERTAIN": 0,
+              "NEW_EVENT": 0.01,
+              "SAME_EVENT": 0.99
+            }
+          },
+          "informationRelation": {
+            "value": "REPETITION",
+            "confidence": 0.88,
+            "probabilities": {
+              "CONTRADICTION": 0,
+              "MEANINGFUL_UPDATE": 0.04,
+              "UNCERTAIN": 0,
+              "REPETITION": 0.9,
+              "CONTINUATION": 0.04,
+              "NEW": 0.02
+            }
+          },
+          "addsNewInformation": {
+            "probability": 0.47,
+            "confidence": null
+          },
+          "historicalContextNeeded": {
+            "probability": 0.44,
+            "confidence": null
+          },
+          "angleRepeated": {
+            "probability": 0.92,
+            "confidence": null
+          }
+        },
+        {
+          "candidateKey": "m-oil-yields-g",
+          "section": "markets",
+          "eventRelation": {
+            "value": "SAME_EVENT",
+            "confidence": 0.47,
+            "probabilities": {
+              "UNCERTAIN": 0.01,
+              "NEW_EVENT": 0.38,
+              "UNRELATED": 0,
+              "SAME_EVENT": 0.61
+            }
+          },
+          "informationRelation": {
+            "value": "MEANINGFUL_UPDATE",
+            "confidence": 0.34,
+            "probabilities": {
+              "MEANINGFUL_UPDATE": 0.45,
+              "UNCERTAIN": 0.02,
+              "REPETITION": 0.09,
+              "CONTINUATION": 0.11,
+              "NEW": 0.33,
+              "CONTRADICTION": 0
+            }
+          },
+          "addsNewInformation": {
+            "probability": 0.83,
+            "confidence": null
+          },
+          "historicalContextNeeded": {
+            "probability": 0.58,
+            "confidence": null
+          },
+          "angleRepeated": {
+            "probability": 0.6,
+            "confidence": null
+          }
+        }
+      ],
+      "telemetry": [
+        {
+          "candidateKey": "g-trump-rejects-iran",
+          "status": 200,
+          "latencyMs": 201.53,
+          "attempts": 1,
+          "usage": {
+            "input_tokens": 1023,
+            "output_tokens": 190
+          },
+          "error": null
+        },
+        {
+          "candidateKey": "g-iran-talks-gap",
+          "status": 200,
+          "latencyMs": 81,
+          "attempts": 1,
+          "usage": {
+            "input_tokens": 895,
+            "output_tokens": 189
+          },
+          "error": null
+        },
+        {
+          "candidateKey": "g-france-hormuz-un",
+          "status": 200,
+          "latencyMs": 96.04,
+          "attempts": 1,
+          "usage": {
+            "input_tokens": 923,
+            "output_tokens": 185
+          },
+          "error": null
+        },
+        {
+          "candidateKey": "n-escondida-talks-g",
+          "status": 200,
+          "latencyMs": 82.72,
+          "attempts": 1,
+          "usage": {
+            "input_tokens": 911,
+            "output_tokens": 189
+          },
+          "error": null
+        },
+        {
+          "candidateKey": "n-escondida-restart-g",
+          "status": 200,
+          "latencyMs": 121.64,
+          "attempts": 1,
+          "usage": {
+            "input_tokens": 886,
+            "output_tokens": 189
+          },
+          "error": null
+        },
+        {
+          "candidateKey": "n-escondida-halt-g",
+          "status": 200,
+          "latencyMs": 87.59,
+          "attempts": 1,
+          "usage": {
+            "input_tokens": 910,
+            "output_tokens": 189
+          },
+          "error": null
+        },
+        {
+          "candidateKey": "m-week-ahead-data",
+          "status": 200,
+          "latencyMs": 69.37,
+          "attempts": 1,
+          "usage": {
+            "input_tokens": 932,
+            "output_tokens": 185
+          },
+          "error": null
+        },
+        {
+          "candidateKey": "m-bonds-oil-g",
+          "status": 200,
+          "latencyMs": 72.27,
+          "attempts": 1,
+          "usage": {
+            "input_tokens": 903,
+            "output_tokens": 189
+          },
+          "error": null
+        },
+        {
+          "candidateKey": "m-oil-yields-g",
+          "status": 200,
+          "latencyMs": 110.84,
+          "attempts": 1,
+          "usage": {
+            "input_tokens": 910,
+            "output_tokens": 190
+          },
+          "error": null
+        }
+      ],
+      "status": "PASS"
+    }
+  }
+}
