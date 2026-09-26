@@ -1,16 +1,14 @@
 {
-  "schemaVersion": 2,
+  "schemaVersion": 1,
   "radarRunId": "RADAR-JEV-20260926-0018-D",
   "sourceMainCommit": "51ab2e4cacefbde565892a40fad86a9ea4458a31",
   "radarStateVersion": "radar-state-v1",
   "editorialDate": "2026-09-26",
-  "mode": "LAB_ONLY",
   "experimentMode": "RADAR_JEV",
-  "status": "READY",
+  "mode": "LAB_ONLY",
   "productionWritesAllowed": false,
+  "status": "READY",
   "runPath": "lab/radar-editorial/runtime/runs/RADAR-JEV-20260926-0018-D",
   "resultPath": "lab/radar-editorial/runtime/runs/RADAR-JEV-20260926-0018-D/result.json",
-  "publishRequestPath": "lab/radar-editorial/runtime/runs/RADAR-JEV-20260926-0018-D/publish-request.json",
-  "viewPath": "lab/radar-editorial/runtime/runs/RADAR-JEV-20260926-0018-D/index.html",
-  "message": "ATLAS NEWS LAB radar+jev READY"
+  "viewPath": "lab/radar-editorial/runtime/runs/RADAR-JEV-20260926-0018-D/index.html"
 }

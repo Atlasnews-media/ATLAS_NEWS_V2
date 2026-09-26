@@ -1,0 +1,31 @@
+{
+  "schemaVersion": 1,
+  "radarRunId": "RADAR-JEV-20260926-0018-D",
+  "sourceMainCommit": "51ab2e4cacefbde565892a40fad86a9ea4458a31",
+  "radarStateVersion": "radar-state-v1",
+  "editorialDate": "2026-09-26",
+  "experimentMode": "RADAR_JEV",
+  "mode": "LAB_ONLY",
+  "productionWritesAllowed": false,
+  "status": "PASS",
+  "sections": {
+    "general": {
+      "status": "PASS",
+      "effectOfJev": "CHANGED_SELECTION",
+      "preJev": "g-oman-transfer",
+      "postJev": "g-italy-fuel-cap"
+    },
+    "national": {
+      "status": "PASS",
+      "effectOfJev": "CONFIRMED_SELECTION",
+      "preJev": "n-escondida-talks",
+      "postJev": "n-escondida-talks"
+    },
+    "markets": {
+      "status": "PASS",
+      "effectOfJev": "CHANGED_SELECTION",
+      "preJev": "m-dollar-eases",
+      "postJev": "m-bonds-stabilize"
+    }
+  }
+}

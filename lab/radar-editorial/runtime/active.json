@@ -6,8 +6,8 @@
   "editorialDate": "2026-09-26",
   "mode": "LAB_ONLY",
   "experimentMode": "RADAR_JEV",
-  "status": "MARKETS_PASS",
+  "status": "READY",
   "productionWritesAllowed": false,
   "runPath": "lab/radar-editorial/runtime/runs/RADAR-JEV-20260926-0018-D",
-  "updatedAt": "2026-09-26T00:21:50-03:00"
+  "updatedAt": "2026-09-26T00:22:00-03:00"
 }
