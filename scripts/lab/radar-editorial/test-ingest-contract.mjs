@@ -6,6 +6,7 @@ import {
   validateBaselineRequest,
 } from "./validate-baseline-request.mjs";
 import { materializeRequest } from "./materialize-baseline-request.mjs";
+import { validateRadarArtifact } from "./validate-radar-artifact.mjs";
 
 const runId = "RADAR-BASELINE-INGEST-TEST-001";
 const sourceMainCommit = "0123456789abcdef0123456789abcdef01234567";
@@ -212,3 +213,17 @@ for (const evidence of [
   );
 }
 console.log("INGEST RADAR_JEV MATERIALIZATION: PASS");
+
+// Regression: RADAR_JEV READY must emit the canonical runtime message accepted by the validator.
+await materializeRequest(jevRequestFile, jevTemp, "ready");
+const jevLatest = JSON.parse(
+  await fs.readFile(
+    path.join(jevTemp, "lab/radar-editorial/runtime/latest.json"),
+    "utf8",
+  ),
+);
+validateRadarArtifact(jevLatest);
+if (jevLatest.message !== "ATLAS NEWS LAB radar+jev READY") {
+  throw new Error("RADAR_JEV latest.message no coincide con contrato canónico");
+}
+console.log("INGEST RADAR_JEV RUNTIME MESSAGE: PASS");
