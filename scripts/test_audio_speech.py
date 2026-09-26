@@ -17,8 +17,8 @@ def check(source: str, expected: str, reference_date: str | None = None):
 
 if SPEECH_NORMALIZER_VERSION != 5:
     raise AssertionError("Speech Normalizer debe publicar versión 5.")
-if LEXICON_REVISION != 5:
-    raise AssertionError("Lexicon productivo debe publicar revisión 5.")
+if LEXICON_REVISION != 6:
+    raise AssertionError("Lexicon productivo debe publicar revisión 6.")
 
 check("Powell habló en Wall Street.", "Páuel habló en Uól Strít.")
 check(
@@ -26,6 +26,17 @@ check(
     "Para Uélth Mánichment, la novedad reduce el valor de una apuesta simple.",
 )
 check("El Dow Jones retrocede 1,86%.", "El Dáu Yóuns retrocede uno coma ochenta y seis por ciento.")
+
+# Golden tests Lexicon rev.6: cobertura general de S&P sin romper S&P 500.
+check("S&P mantuvo la nota.", "ese y pe mantuvo la nota.")
+check(
+    "S&P Global Ratings mantuvo la nota soberana.",
+    "ese y pe Global Ratings mantuvo la nota soberana.",
+)
+check(
+    "El S&P 500 ganó 0,51%.",
+    "El ese y pe quinientos ganó cero coma cincuenta y uno por ciento.",
+)
 
 # Golden tests Lexicon V4: bypass aprobado por escucha humana.
 check(
