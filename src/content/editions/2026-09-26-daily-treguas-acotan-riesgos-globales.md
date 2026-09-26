@@ -49,7 +49,7 @@ marketSummary:
       category: "commodities"
     - label: "Flujo semanal por Hormuz"
       value: "33,7 millones de barriles"
-      category: "energia"
+      category: "commodities"
 ---
 
 ## Hecho central
