@@ -214,7 +214,6 @@ for (const evidence of [
 }
 console.log("INGEST RADAR_JEV MATERIALIZATION: PASS");
 
-
 // Regression: RADAR_JEV READY must emit the canonical runtime message accepted by the validator.
 await materializeRequest(jevRequestFile, jevTemp, "ready");
 const jevLatest = JSON.parse(
