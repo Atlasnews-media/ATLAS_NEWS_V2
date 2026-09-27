@@ -42,6 +42,10 @@ CASES = [
 
 PHONEME_AB_CASES = {"euro-1098", "euro-1099", "euro-1100", "euro-1101", "uf-40983"}
 
+PORTADA_REAL_SENTENCE = (
+    "El euro se ubicó en 1.098 pesos con 15 centavos, con un avance de 0,58%."
+)
+
 PORTADA_PARAGRAPH = (
     "En monedas, el dólar observado marcó 958 pesos con 42 centavos, con una variación positiva de 0,37% frente a la jornada hábil anterior. "
     "El euro se ubicó en 1.099 pesos con 86 centavos, con un retroceso de 0,1%. "
@@ -276,6 +280,39 @@ def main() -> None:
                 )
 
         manifest["cases"].append(case_entry)
+
+    real_sentence_speech = normalize_for_speech(PORTADA_REAL_SENTENCE)
+    real_sentence_phonemes, _ = pipeline.g2p(real_sentence_speech)
+
+    normal_samples, normal_trace = run_pipeline(pipeline, real_sentence_speech)
+    normal_file = "portada-real-euro-1098-normal.mp3"
+    write_mp3(OUT / normal_file, normal_samples)
+
+    baseline_samples, baseline_windows = run_raw_phonemes(
+        pipeline, real_sentence_phonemes
+    )
+    baseline_file = "portada-real-euro-1098-phoneme-baseline.mp3"
+    write_mp3(OUT / baseline_file, baseline_samples)
+
+    manifest["routeBBaselineValidation"] = {
+        "source": PORTADA_REAL_SENTENCE,
+        "speechText": real_sentence_speech,
+        "phonemes": real_sentence_phonemes,
+        "normal": {
+            "audio": normal_file,
+            "publicPath": f"{PUBLIC_BASE}/{normal_file}",
+            "trace": normal_trace,
+            "durationSeconds": round(normal_samples.size / SAMPLE_RATE, 3),
+            "bytes": (OUT / normal_file).stat().st_size,
+        },
+        "phonemeBaseline": {
+            "audio": baseline_file,
+            "publicPath": f"{PUBLIC_BASE}/{baseline_file}",
+            "milDurationWindows": baseline_windows,
+            "durationSeconds": round(baseline_samples.size / SAMPLE_RATE, 3),
+            "bytes": (OUT / baseline_file).stat().st_size,
+        },
+    }
 
     paragraph_entry = {
         "source": PORTADA_PARAGRAPH,
