@@ -47,7 +47,30 @@ const { expectedDate } = Astro.props;
     }
 
     const expectedDate = root.dataset.expectedDate;
-    if (!expectedDate) return;
+    if (!expectedDate || !/^\\d{4}-\\d{2}-\\d{2}$/.test(expectedDate)) return;
+
+    const player = root.querySelector("[data-atlas-audio-engine]");
+    const source = root.querySelector("[data-atlas-audio-source]");
+
+    if (
+      !(player instanceof HTMLAudioElement) ||
+      !(source instanceof HTMLSourceElement)
+    ) {
+      return;
+    }
+
+    // I3: adelanta sólo trabajo de red determinista. El MP3 diario conserva
+    // el contrato AAAA-MM-DD-resumen-diario.mp3, por lo que metadata del
+    // audio + peaks + WaveSurfer pueden comenzar mientras latest.json valida
+    // la autoridad. El componente permanece oculto hasta esa validación.
+    const speculativePath = `/audio/${expectedDate}-resumen-diario.mp3`;
+    const currentSource = source.getAttribute("src") ?? "";
+    if (currentSource !== speculativePath) {
+      source.src = speculativePath;
+      player.load();
+    } else if (player.error) {
+      player.load();
+    }
 
     fetch(`/audio/latest.json?v=${Date.now()}`, { cache: "no-store" })
       .then((response) => {
@@ -63,20 +86,12 @@ const { expectedDate } = Astro.props;
           return;
         }
 
-        const player = root.querySelector("[data-atlas-audio-engine]");
-        const source = root.querySelector("[data-atlas-audio-source]");
-
-        if (
-          !(player instanceof HTMLAudioElement) ||
-          !(source instanceof HTMLSourceElement)
-        ) {
-          return;
-        }
-
         const contentKey = `${metadata.date}|${metadata.path}`;
-        const currentSource = source.getAttribute("src") ?? "";
-        if (currentSource !== metadata.path) {
+        const resolvedSource = source.getAttribute("src") ?? "";
+        if (resolvedSource !== metadata.path) {
           source.src = metadata.path;
+          player.load();
+        } else if (player.error) {
           player.load();
         }
 
