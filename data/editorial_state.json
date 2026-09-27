@@ -3,14 +3,14 @@
     {
       "id": "oil-geopolitics-inflation",
       "topic": "Petróleo, geopolítica e inflación",
-      "thesis": "El shock energético entra en una fase de desescalada condicional: la propuesta iraní de reabrir Hormuz en siete días y la continuidad de los flujos reducen el riesgo inmediato, pero las exigencias a Estados Unidos, la ausencia de concesiones nucleares y los ataques hutíes impiden declarar una normalización.",
+      "thesis": "El rechazo estadounidense al plan iraní de reapertura en siete días cerró la vía inmediata de desescalada y volvió a elevar el riesgo sobre Hormuz; la insistencia iraní en negociar y la falta de una comunicación formal de los mediadores mantienen abierta una salida, pero sin cronograma verificable.",
       "status": "changed",
-      "last_evidence": "El 25 de septiembre Irán ofreció normalizar el paso por Hormuz en siete días si Estados Unidos reduce la presión militar, levanta bloqueos y flexibiliza sanciones, pero descartó ceder en su programa nuclear; el Brent cayó 2,1% a US$104,32 y los flujos semanales por el estrecho alcanzaron 33,7 millones de barriles.",
-      "effect": "La vía diplomática modera petróleo, seguros y expectativas de inflación en el margen, pero el alivio sigue siendo reversible hasta que aumente de forma sostenida el tránsito y se reduzcan los ataques sobre infraestructura y rutas regionales.",
-      "base_scenario": "Prima energética todavía elevada y volátil, con negociación capaz de mejorar gradualmente los flujos por Hormuz, pero sin una normalización completa mientras persistan condiciones cruzadas entre Washington y Teherán y riesgos sobre Arabia Saudita y el mar Rojo.",
-      "invalidate_if": "Una reapertura sostenida de Hormuz, levantamiento verificable de bloqueos y caída durable de ataques y seguros debilitarían la tesis de shock activo; el rechazo del plan, nuevos cierres o ataques simultáneos sobre rutas e infraestructura la reforzarían.",
-      "watch": "Respuesta de Estados Unidos al plan de siete días, volumen efectivo por Hormuz, cumplimiento de condiciones, ataques hutíes, seguridad saudí y del mar Rojo, seguros marítimos, Brent y transmisión a inflación y tasas.",
-      "last_publication": "/ediciones/2026-09-26-daily-treguas-acotan-riesgos-globales/"
+      "last_evidence": "El 26 de septiembre Donald Trump rechazó la propuesta iraní para reabrir Hormuz y terminar los combates regionales en siete días; el 27 de septiembre Teherán insistió en que sólo una negociación puede resolver el conflicto y afirmó que aún esperaba una respuesta definitiva transmitida por los mediadores.",
+      "effect": "El cierre de la vía rápida devuelve presión potencial sobre petróleo, seguros, fletes e inflación global; el acuerdo comercial entre Estados Unidos y China ofrece alivio parcial en costos y riesgo, pero no neutraliza una nueva escalada energética.",
+      "base_scenario": "Flujos energéticos restringidos y alta volatilidad, con conversaciones intermitentes pero sin reapertura normalizada de Hormuz hasta que Washington y Teherán acuerden condiciones y el tránsito se sostenga de forma verificable.",
+      "invalidate_if": "Un acuerdo formal y una reapertura sostenida de Hormuz debilitarían la tesis de shock activo; nuevos ataques, una caída adicional del tránsito o la ruptura explícita de las conversaciones la reforzarían.",
+      "watch": "Respuesta formal transmitida por los mediadores, contrapropuestas de Estados Unidos e Irán, tránsito efectivo por Hormuz, ataques regionales, seguros marítimos, seguridad saudí, Brent y transmisión a inflación y tasas.",
+      "last_publication": "/ediciones/2026-09-27-daily-comercio-gana-estabilidad-hormuz-eleva-riesgo/"
     },
     {
       "id": "us-employment-fed-rates",
