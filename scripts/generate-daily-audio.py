@@ -8,6 +8,8 @@ import numpy as np
 import soundfile as sf
 from kokoro import KPipeline
 
+from audio_waveform import peaks_path_for_audio, write_waveform_sidecar
+
 
 PLAN_PATH = Path(os.environ["ATLAS_AUDIO_PLAN"])
 PUBLIC_DIR = Path(os.environ["ATLAS_PUBLIC_REPO_DIR"])
@@ -81,6 +83,20 @@ for old_audio in audio_dir.glob("*-resumen-diario.mp3"):
         old_audio.unlink()
 
 duration_seconds = round(len(samples) / SAMPLE_RATE, 1)
+audio_public_path = f"/audio/{filename}"
+peaks_public_path = peaks_path_for_audio(audio_public_path)
+peaks_path = PUBLIC_DIR / peaks_public_path.lstrip("/")
+write_waveform_sidecar(
+    mp3_path,
+    audio_public_path,
+    duration_seconds,
+    peaks_path,
+)
+
+for old_peaks in audio_dir.glob("*-resumen-diario.peaks.json"):
+    if old_peaks.name != peaks_path.name:
+        old_peaks.unlink()
+
 metadata = {
     "schemaVersion": 1,
     "scriptVersion": plan.get("scriptVersion", 1),
@@ -88,7 +104,7 @@ metadata = {
     "date": date,
     "title": plan["title"],
     "summary": plan["summary"],
-    "path": f"/audio/{filename}",
+    "path": audio_public_path,
     "durationSeconds": duration_seconds,
     "durationLabel": duration_label(duration_seconds),
     "generatedAt": datetime.now(timezone.utc).isoformat(),

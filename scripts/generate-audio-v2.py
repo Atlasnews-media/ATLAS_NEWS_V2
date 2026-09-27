@@ -19,6 +19,7 @@ from audio_alexc import (
     synthesize_alexc,
 )
 from audio_question_prosody import raise_terminal_pitch
+from audio_waveform import peaks_path_for_audio, write_waveform_sidecar
 from audio_speech import (
     LEXICON_REVISION,
     LEXICON_VERSION,
@@ -559,7 +560,22 @@ with tempfile.TemporaryDirectory(prefix="atlas-audio-v2-") as temp_dir_name:
         cover_temp = temp_dir / cover_filename
         write_mp3(cover_temp, samples)
         duration, size_bytes = probe_mp3(cover_temp)
+        cover_public_path = f"/audio/{cover_filename}"
+        cover_peaks_public_path = peaks_path_for_audio(cover_public_path)
+        cover_peaks_temp = temp_dir / Path(cover_peaks_public_path).name
+        write_waveform_sidecar(
+            cover_temp,
+            cover_public_path,
+            duration,
+            cover_peaks_temp,
+        )
         staged_files.append((cover_temp, audio_dir / cover_filename))
+        staged_files.append(
+            (
+                cover_peaks_temp,
+                PUBLIC_DIR / cover_peaks_public_path.lstrip("/"),
+            )
+        )
         cover_metadata = {
             "schemaVersion": 1,
             "scriptVersion": cover_plan.get("scriptVersion", 1),
@@ -572,7 +588,7 @@ with tempfile.TemporaryDirectory(prefix="atlas-audio-v2-") as temp_dir_name:
             "date": date,
             "title": cover_plan["title"],
             "summary": cover_plan["summary"],
-            "path": f"/audio/{cover_filename}",
+            "path": cover_public_path,
             "durationSeconds": duration,
             "durationLabel": duration_label(duration),
             "bytes": size_bytes,
@@ -584,6 +600,29 @@ with tempfile.TemporaryDirectory(prefix="atlas-audio-v2-") as temp_dir_name:
             "sourceIds": cover_plan["sourceIds"],
             "sourceCommit": source_commit,
         }
+    elif cover_product.get("needsPeaks"):
+        existing_path = str(cover_product.get("existingPath") or "")
+        if not existing_path.startswith("/audio/") or not existing_path.endswith(".mp3"):
+            raise RuntimeError("Audio de Portada vigente inválido para backfill de peaks.")
+        existing_mp3 = PUBLIC_DIR / existing_path.lstrip("/")
+        duration = float(
+            cover_product.get("existingDurationSeconds")
+            or probe_mp3(existing_mp3)[0]
+        )
+        peaks_public_path = peaks_path_for_audio(existing_path)
+        peaks_temp = temp_dir / Path(peaks_public_path).name
+        write_waveform_sidecar(
+            existing_mp3,
+            existing_path,
+            duration,
+            peaks_temp,
+        )
+        staged_files.append(
+            (
+                peaks_temp,
+                PUBLIC_DIR / peaks_public_path.lstrip("/"),
+            )
+        )
 
     # Portada nunca necesita Chatterbox; libera referencias no utilizadas antes
     # de entrar a la generación de análisis.
@@ -704,7 +743,7 @@ with tempfile.TemporaryDirectory(prefix="atlas-audio-v2-") as temp_dir_name:
 
 print(
     "Audio V2 preparado: "
-    f"portada={'nueva' if cover_metadata else 'conservada'}, "
+    f"portada={'nueva' if cover_metadata else ('peaks' if cover_product.get('needsPeaks') else 'conservada')}, "
     f"internacional={analysis_manifest['international']['status']}, "
     f"nacional={analysis_manifest['national']['status']}, "
     f"mercados={analysis_manifest['markets']['status']}."

@@ -49,6 +49,20 @@ async function readScript(filePath) {
   }
 }
 
+async function hashFile(filePath) {
+  try {
+    const bytes = await readFile(filePath);
+    return createHash("sha256").update(bytes).digest("hex");
+  } catch {
+    return null;
+  }
+}
+
+function peaksPathForAudio(audioPath) {
+  if (typeof audioPath !== "string" || !audioPath.endsWith(".mp3")) return null;
+  return `${audioPath.slice(0, -4)}.peaks.json`;
+}
+
 async function setOutput(name, value) {
   if (!process.env.GITHUB_OUTPUT) return;
   await appendFile(process.env.GITHUB_OUTPUT, `${name}=${value}\n`);
@@ -56,6 +70,7 @@ async function setOutput(name, value) {
 
 function productState(product) {
   if (product.needsGeneration) return "generar";
+  if (product.needsPeaks) return "peaks";
   if (product.unavailableReason) return product.unavailableReason;
   return "conservar";
 }
@@ -93,6 +108,30 @@ const manifestPath = path.join(publicDir, "audio", "analysis-latest.json");
 const coverManifestPath = path.join(publicDir, "audio", "latest.json");
 const existingAnalysis = await readJson(manifestPath);
 const existingCover = await readJson(coverManifestPath);
+const existingCoverAudioPath =
+  typeof existingCover?.path === "string"
+    ? path.join(publicDir, existingCover.path.replace(/^\/+/, ""))
+    : null;
+const existingCoverAudioSha = existingCoverAudioPath
+  ? await hashFile(existingCoverAudioPath)
+  : null;
+const existingCoverPeaksPublicPath = peaksPathForAudio(existingCover?.path);
+const existingCoverPeaksPath = existingCoverPeaksPublicPath
+  ? path.join(publicDir, existingCoverPeaksPublicPath.replace(/^\/+/, ""))
+  : null;
+const existingCoverPeaks = existingCoverPeaksPath
+  ? await readJson(existingCoverPeaksPath)
+  : null;
+const coverPeaksCurrent = Boolean(
+  existingCoverAudioSha &&
+    existingCoverPeaks?.schemaVersion === 1 &&
+    existingCoverPeaks?.audioPath === existingCover?.path &&
+    existingCoverPeaks?.audioSha256 === existingCoverAudioSha &&
+    Number(existingCoverPeaks?.durationSeconds) > 0 &&
+    Array.isArray(existingCoverPeaks?.peaks) &&
+    Array.isArray(existingCoverPeaks.peaks[0]) &&
+    existingCoverPeaks.peaks[0].length > 0,
+);
 const presentationInstant =
   process.env.ATLAS_AUDIO_PRESENTATION_INSTANT ?? new Date().toISOString();
 const coverPlan = upgradeCoverPlanToV15(coverPlanBase, {
@@ -205,6 +244,21 @@ const national = await dialogueProduct("national");
 const markets = await dialogueProduct("markets");
 const coverLexiconCurrent = sameLexicon(existingCover);
 const coverContractValid = coverPlan?.contract?.valid !== false;
+const coverNeedsGeneration = Boolean(
+  coverContractValid &&
+    (coverPlan.needsGeneration ||
+      !coverLexiconCurrent ||
+      existingCover?.speechNormalizerVersion !== SPEECH_NORMALIZER_VERSION ||
+      existingCover?.coverRenderVersion !== COVER_RENDER_VERSION),
+);
+const coverNeedsPeaks = Boolean(
+  coverContractValid &&
+    !coverNeedsGeneration &&
+    existingCover?.status === "published" &&
+    existingCover?.date === date &&
+    existingCoverAudioSha &&
+    !coverPeaksCurrent,
+);
 const cover = {
   section: "cover",
   sourceId: sourceIds.general,
@@ -212,13 +266,10 @@ const cover = {
   lexiconVersion: LEXICON_VERSION,
   lexiconRevision: LEXICON_REVISION,
   coverRenderVersion: COVER_RENDER_VERSION,
-  needsGeneration: Boolean(
-    coverContractValid &&
-      (coverPlan.needsGeneration ||
-        !coverLexiconCurrent ||
-        existingCover?.speechNormalizerVersion !== SPEECH_NORMALIZER_VERSION ||
-        existingCover?.coverRenderVersion !== COVER_RENDER_VERSION),
-  ),
+  needsGeneration: coverNeedsGeneration,
+  needsPeaks: coverNeedsPeaks,
+  existingPath: existingCover?.path ?? null,
+  existingDurationSeconds: existingCover?.durationSeconds ?? null,
   unavailableReason: coverContractValid ? null : "cover_contract_failed",
   plan: {
     ...coverPlan,
@@ -247,7 +298,7 @@ const plan = {
 };
 
 plan.needsGeneration = Object.values(products).some(
-  (product) => product.needsGeneration,
+  (product) => product.needsGeneration || product.needsPeaks,
 );
 
 await writeFile(outputPath, `${JSON.stringify(plan, null, 2)}\n`, "utf8");
