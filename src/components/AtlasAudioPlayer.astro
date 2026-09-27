@@ -29,8 +29,8 @@ const waveformHeights = [
   class={`atlas-audio-player atlas-audio-player--${visualVariant}`}
   data-atlas-audio
   data-playing="false"
-  data-waveform-state={visualVariant === "radio" ? "loading" : undefined}
-  aria-busy={visualVariant === "radio" ? "true" : undefined}
+  data-waveform-state={visualVariant === "radio" ? "idle" : undefined}
+  aria-busy={visualVariant === "radio" ? "false" : undefined}
 >
   <button
     class="atlas-audio-toggle"
@@ -233,7 +233,7 @@ const waveformHeights = [
       }
     };
 
-    type WaveformState = "loading" | "ready" | "fallback";
+    type WaveformState = "idle" | "loading" | "ready" | "fallback";
 
     const setWaveformState = (state: WaveformState) => {
       waveformReady = state === "ready";
@@ -257,7 +257,7 @@ const waveformHeights = [
       return new URL(value, window.location.href).href;
     };
 
-    const destroyWaveform = (nextState: WaveformState = "loading") => {
+    const destroyWaveform = (nextState: WaveformState = "idle") => {
       if (waveSurfer) {
         waveSurfer.destroy();
         waveSurfer = undefined;
@@ -281,7 +281,7 @@ const waveformHeights = [
       }
 
       const generation = ++waveLoadGeneration;
-      destroyWaveform();
+      destroyWaveform("loading");
       waveSource = resolvedSource;
 
       try {
@@ -382,7 +382,8 @@ const waveformHeights = [
 
     const sourceObserver = isRadio
       ? new MutationObserver(() => {
-          void mountWaveform();
+          waveLoadGeneration += 1;
+          destroyWaveform();
         })
       : undefined;
     sourceObserver?.observe(source, {
@@ -393,11 +394,13 @@ const waveformHeights = [
     audio.addEventListener("loadedmetadata", () => {
       syncDuration();
       syncProgress();
-      void mountWaveform();
     });
     audio.addEventListener("durationchange", syncDuration);
     audio.addEventListener("timeupdate", syncProgress);
-    audio.addEventListener("play", () => setPlaying(true));
+    audio.addEventListener("play", () => {
+      setPlaying(true);
+      void mountWaveform();
+    });
     audio.addEventListener("pause", () => setPlaying(false));
     audio.addEventListener("ended", () => {
       setPlaying(false);
@@ -414,7 +417,7 @@ const waveformHeights = [
       });
       setPlaying(false);
       if (isRadio) {
-        setWaveformState("loading");
+        setWaveformState("idle");
       }
     });
 
@@ -430,7 +433,6 @@ const waveformHeights = [
     setPlaying(!audio.paused && !audio.ended);
     syncDuration();
     syncProgress();
-    void mountWaveform();
   };
 
   const initAtlasAudioPlayers = () => {
@@ -740,6 +742,8 @@ const waveformHeights = [
     pointer-events: none;
   }
 
+  .atlas-audio-player--radio[data-waveform-state="idle"]
+    .atlas-audio-waveform--fallback,
   .atlas-audio-player--radio[data-waveform-state="loading"]
     .atlas-audio-waveform--fallback,
   .atlas-audio-player--radio[data-waveform-state="fallback"]
