@@ -240,8 +240,9 @@ const waveformHeights = [
       root.dataset.waveformState = state;
       root.dataset.waveformReady = String(waveformReady);
       root.setAttribute("aria-busy", String(state === "loading"));
+      // WaveSurfer is progressive enhancement: while it loads, keep the
+      // fallback seek control usable as soon as native audio metadata is ready.
       progress.disabled =
-        state === "loading" ||
         state === "ready" ||
         !(Number.isFinite(audio.duration) && audio.duration > 0);
 
@@ -740,24 +741,7 @@ const waveformHeights = [
   }
 
   .atlas-audio-player--radio[data-waveform-state="loading"]
-    > :not(.atlas-audio-engine) {
-    visibility: hidden;
-  }
-
-  .atlas-audio-player--radio[data-waveform-state="loading"]::after {
-    position: absolute;
-    inset: 0;
-    display: flex;
-    align-items: center;
-    padding: 0 0.15rem;
-    color: var(--ink-soft);
-    content: "Preparando audio…";
-    font: 800 0.62rem/1 var(--sans);
-    letter-spacing: 0.09em;
-    pointer-events: none;
-    text-transform: uppercase;
-  }
-
+    .atlas-audio-waveform--fallback,
   .atlas-audio-player--radio[data-waveform-state="fallback"]
     .atlas-audio-waveform--fallback {
     opacity: 1;
