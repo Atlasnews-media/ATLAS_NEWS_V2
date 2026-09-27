@@ -1,10 +1,10 @@
 ---
 title: "El comercio gana estabilidad mientras Hormuz vuelve a elevar el riesgo"
 summary: "Estados Unidos y China acordaron recortes arancelarios y nuevos canales de coordinación, pero el rechazo de Washington al plan iraní cerró la vía inmediata para reabrir Hormuz y volvió a elevar el riesgo energético y geopolítico."
-publishedAt: "2026-09-27T06:08:58-03:00"
+publishedAt: "2026-09-27T07:10:31-03:00"
 cutoffAt: "2026-09-27T06:03:36-03:00"
 type: "daily"
-status: "draft"
+status: "published"
 tags:
   - geopolitica
   - comercio-global
