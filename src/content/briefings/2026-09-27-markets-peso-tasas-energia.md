@@ -1,10 +1,10 @@
 ---
 title: "El peso chileno llega a la reapertura sobre $960 con tasas largas y energía definiendo el riesgo"
 summary: "El dólar cerró el viernes en $961,5 y completó otra semana de presión sobre el peso; la reapertura encontrará alivio parcial en acciones, pero tasas estadounidenses altas y petróleo volátil mantienen frágil el equilibrio."
-publishedAt: "2026-09-27T09:30:00-03:00"
+publishedAt: "2026-09-27T09:41:10-03:00"
 cutoffAt: "2026-09-27T09:30:00-03:00"
 section: "markets"
-status: "draft"
+status: "published"
 tags:
   - mercados
   - dolar
