@@ -10,10 +10,7 @@ assert.match(
   source,
   /const speculativePath = `\/audio\/\$\{expectedDate\}-resumen-diario\.mp3`;/,
 );
-assert.match(
-  source,
-  /fetch\(`\/audio\/latest\.json\?v=\$\{Date\.now\(\)\}`/,
-);
+assert.match(source, /fetch\(`\/audio\/latest\.json\?v=\$\{Date\.now\(\)\}`/);
 assert.match(source, /\{ cache: "no-store" \}/);
 
 const speculativeIndex = source.indexOf("const speculativePath");
