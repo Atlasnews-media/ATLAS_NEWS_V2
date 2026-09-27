@@ -9,6 +9,17 @@ const source = await readFile(
 assert.match(source, /WaveSurfer\.create/);
 assert.doesNotMatch(source, /Preparando audio/);
 assert.doesNotMatch(source, /state === "loading" \|\|/);
-assert.match(source, /data-waveform-state="loading"[\s\S]*opacity: 1;/);
+assert.match(source, /data-waveform-state=.*"idle"/);
+assert.match(source, /aria-busy=.*"false"/);
+assert.match(source, /data-waveform-state="idle"[\s\S]*opacity: 1;/);
 
-console.log("ATLAS NEWS RADIO readiness contract OK.");
+const mounts = source.match(/void mountWaveform\(\);/g) ?? [];
+assert.equal(mounts.length, 1);
+
+const playStart = source.indexOf('audio.addEventListener("play"');
+const pauseStart = source.indexOf('audio.addEventListener("pause"', playStart);
+assert.ok(playStart >= 0);
+assert.ok(pauseStart > playStart);
+assert.match(source.slice(playStart, pauseStart), /mountWaveform/);
+
+console.log("ATLAS NEWS RADIO progressive WaveSurfer contract OK.");
