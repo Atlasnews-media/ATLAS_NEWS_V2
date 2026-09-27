@@ -168,7 +168,10 @@ const waveformHeights = [
     if (
       payload?.schemaVersion !== 1 ||
       payload.audioPath !== audioPath ||
-      !(Number.isFinite(payload.durationSeconds) && payload.durationSeconds > 0) ||
+      !(
+        Number.isFinite(payload.durationSeconds) &&
+        payload.durationSeconds > 0
+      ) ||
       !validPeaks
     ) {
       throw new Error("Waveform sidecar inválido para el audio vigente.");
