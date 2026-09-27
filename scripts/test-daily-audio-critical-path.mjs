@@ -13,6 +13,9 @@ assert.match(
 assert.match(source, /fetch\(`\/audio\/latest\.json\?v=\$\{Date\.now\(\)\}`/);
 assert.match(source, /\{ cache: "no-store" \}/);
 
+const expectedDateGuard = String.raw`if (!expectedDate || !/^\d{4}-\d{2}-\d{2}$/.test(expectedDate)) return;`;
+assert.ok(source.includes(expectedDateGuard));
+
 const speculativeIndex = source.indexOf("const speculativePath");
 const loadIndex = source.indexOf("player.load();", speculativeIndex);
 const metadataFetchIndex = source.indexOf(
