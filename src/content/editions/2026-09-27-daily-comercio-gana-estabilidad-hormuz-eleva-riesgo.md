@@ -1,7 +1,7 @@
 ---
 title: "El comercio gana estabilidad mientras Hormuz vuelve a elevar el riesgo"
 summary: "Estados Unidos y China acordaron recortes arancelarios y nuevos canales de coordinación, pero el rechazo de Washington al plan iraní cerró la vía inmediata para reabrir Hormuz y volvió a elevar el riesgo energético y geopolítico."
-publishedAt: "2026-09-27T06:05:13-03:00"
+publishedAt: "2026-09-27T06:07:09-03:00"
 cutoffAt: "2026-09-27T06:03:36-03:00"
 type: "daily"
 status: "draft"
@@ -25,12 +25,12 @@ featured: false
 demo: false
 highlights:
   - label: "Estados Unidos rechaza la apertura de Hormuz en siete días"
-    text: "Donald Trump descartó la propuesta iraní que vinculaba la reapertura del estrecho con el fin de los combates regionales, reduciendo la probabilidad de una desescalada inmediata."
+    text: "Donald Trump descartó la propuesta iraní de reapertura del estrecho, reduciendo la probabilidad de una desescalada inmediata."
   - label: "Irán mantiene la vía diplomática, pero conserva sus condiciones"
     text: "Teherán sostiene que sólo una negociación puede resolver el conflicto y dice esperar una respuesta formal transmitida por los mediadores."
   - label: "Washington y Pekín recortan aranceles sobre US$30.000 millones por lado"
     text: "El acuerdo cubre bienes no sensibles en ambas direcciones y extiende por dos meses la tregua comercial entre las dos mayores economías."
-  - label: "Estados Unidos y China abren un canal para incidentes de inteligencia artificial"
+  - label: "Estados Unidos y China abren un canal para incidentes de IA"
     text: "Las potencias iniciarán en noviembre un diálogo sobre IA y establecerán una vía de comunicación para evitar que incidentes tecnológicos escalen."
   - label: "Rusia y Alemania reabren el diálogo sobre el grano del mar Negro"
     text: "Sus cancilleres sostuvieron las primeras conversaciones desde 2022 y abordaron condiciones para recuperar exportaciones agrícolas y navegación segura."
@@ -60,7 +60,7 @@ Europa aportó una señal más acotada: los cancilleres de Rusia y Alemania sost
 - **Estados Unidos rechaza la apertura de Hormuz en siete días.** Washington descartó la propuesta iraní y redujo la probabilidad de una desescalada inmediata.
 - **Irán mantiene la vía diplomática, pero conserva sus condiciones.** Teherán insiste en negociar y dice esperar una respuesta formal transmitida por los mediadores.
 - **Washington y Pekín recortan aranceles sobre US$30.000 millones por lado.** El acuerdo cubre bienes no sensibles y extiende la tregua comercial por dos meses.
-- **Estados Unidos y China abren un canal para incidentes de inteligencia artificial.** El mecanismo busca impedir que episodios tecnológicos se conviertan en crisis políticas.
+- **Estados Unidos y China abren un canal para incidentes de IA.** El mecanismo busca impedir que episodios tecnológicos se conviertan en crisis políticas.
 - **Rusia y Alemania reabren el diálogo sobre el grano del mar Negro.** El primer contacto ministerial desde 2022 explora una salida práctica para navegación y exportaciones agrícolas.
 
 ## Por qué importa
