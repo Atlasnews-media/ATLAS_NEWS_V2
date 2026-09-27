@@ -3,20 +3,24 @@ name: Publicar ATLAS NEWS
 on:
   push:
     branches: [main]
-    paths-ignore:
-      - "lab/**"
-      - "lab-site/**"
-      - "public/lab/**"
-      - "scripts/lab/**"
-      - ".github/workflows/*lab*.yml"
+    paths:
+      - "**"
+      - "!lab/**"
+      - "lab/audio-v2/**"
+      - "!lab-site/**"
+      - "!public/lab/**"
+      - "!scripts/lab/**"
+      - "!.github/workflows/*lab*.yml"
   pull_request:
     branches: [main]
-    paths-ignore:
-      - "lab/**"
-      - "lab-site/**"
-      - "public/lab/**"
-      - "scripts/lab/**"
-      - ".github/workflows/*lab*.yml"
+    paths:
+      - "**"
+      - "!lab/**"
+      - "lab/audio-v2/**"
+      - "!lab-site/**"
+      - "!public/lab/**"
+      - "!scripts/lab/**"
+      - "!.github/workflows/*lab*.yml"
   workflow_dispatch:
 
 permissions:
