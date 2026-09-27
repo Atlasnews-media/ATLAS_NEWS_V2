@@ -10,12 +10,12 @@ assert.match(
   source,
   /const speculativePath = `\/audio\/\$\{expectedDate\}-resumen-diario\.mp3`;/,
 );
-assert.match(source, /fetch\(`\/audio\/latest\.json\?v=\$\{Date\.now\(\)\}`/);
+assert.match(\n  source,\n  /fetch\\(`\\/audio\\/latest\\.json\\?v=\\$\\{Date\\.now\\(\\)\\}`/,\n);
 assert.match(source, /\{ cache: "no-store" \}/);
 
 const speculativeIndex = source.indexOf("const speculativePath");
 const loadIndex = source.indexOf("player.load();", speculativeIndex);
-const metadataFetchIndex = source.indexOf("fetch(`/audio/latest.json", speculativeIndex);
+const metadataFetchIndex = source.indexOf(\n  "fetch(`/audio/latest.json",\n  speculativeIndex,\n);
 
 assert.ok(speculativeIndex >= 0);
 assert.ok(loadIndex > speculativeIndex);
