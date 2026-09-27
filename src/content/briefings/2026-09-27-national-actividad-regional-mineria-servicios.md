@@ -16,11 +16,11 @@ sources:
   - name: "Banco Central de Chile — IPoM septiembre 2026"
     url: "https://www.bcentral.cl/es/web/banco-central/contenido/-/details/prensa/nota-de-prensa/bcch-publica-ipom-septiembre-2026"
 highlights:
-  - label: "Siete regiones se contrajeron"
+  - label: "Siete regiones caen"
     text: "La caída nacional de 0,2% en el segundo trimestre estuvo concentrada en minería y construcción, con fuerte incidencia de la zona Norte."
-  - label: "Servicios amortiguan la caída"
+  - label: "Servicios amortiguan"
     text: "La Región Metropolitana creció 1,6% y el consumo de los hogares avanzó en ocho regiones, apoyado principalmente por servicios."
-  - label: "La minería abre una brecha territorial"
+  - label: "Brecha minera regional"
     text: "Antofagasta cayó 6,3% por menor extracción de cobre, mientras Atacama creció 8,3% con mayor producción de oro y plata."
 demo: false
 ---
