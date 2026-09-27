@@ -1,10 +1,10 @@
 ---
 title: "La debilidad chilena se concentra en minería y construcción, pero los servicios sostienen parte de la actividad regional"
 summary: "El PIB del segundo trimestre cayó 0,2% y siete regiones se contrajeron; minería y construcción explicaron buena parte del retroceso, mientras servicios, comercio y consumo amortiguaron el resultado en varias zonas."
-publishedAt: "2026-09-27T09:30:00-03:00"
+publishedAt: "2026-09-27T09:41:10-03:00"
 cutoffAt: "2026-09-27T09:30:00-03:00"
 section: "national"
-status: "draft"
+status: "published"
 tags:
   - chile
   - actividad
