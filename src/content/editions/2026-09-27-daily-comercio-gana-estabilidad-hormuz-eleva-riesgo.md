@@ -45,7 +45,7 @@ marketSummary:
       value: "US$92,41"
       change: "-2,3%"
       category: "commodities"
-    - label: "Bienes con recorte arancelario bilateral"
+    - label: "Bienes con recorte arancelario"
       value: "US$30.000 millones por lado"
       category: "mercados"
 ---
