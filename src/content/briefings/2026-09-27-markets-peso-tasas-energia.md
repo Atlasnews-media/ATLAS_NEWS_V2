@@ -20,9 +20,9 @@ sources:
 highlights:
   - label: "Dólar termina sobre $960"
     text: "El tipo de cambio cerró en $961,5 vendedor tras moverse entre aproximadamente $957 y $970 durante la sesión del viernes."
-  - label: "El alivio bursátil sigue condicionado"
+  - label: "Alivio bursátil frágil"
     text: "La bolsa chilena acompañó el rebote internacional, pero el costo de capital continúa alto por las tasas largas de Estados Unidos."
-  - label: "La apertura vuelve a depender de energía"
+  - label: "Energía marca apertura"
     text: "El retroceso del petróleo ayudó al cierre del viernes, pero las noticias del fin de semana vuelven a elevar el riesgo de una reversión."
 demo: false
 ---
