@@ -47,7 +47,7 @@ const { expectedDate } = Astro.props;
     }
 
     const expectedDate = root.dataset.expectedDate;
-    if (!expectedDate || !/^\\d{4}-\\d{2}-\\d{2}$/.test(expectedDate)) return;
+    if (!expectedDate || !/^\d{4}-\d{2}-\d{2}$/.test(expectedDate)) return;
 
     const player = root.querySelector("[data-atlas-audio-engine]");
     const source = root.querySelector("[data-atlas-audio-source]");
