@@ -128,6 +128,55 @@ const waveformHeights = [
     return waveSurferModulePromise;
   };
 
+  interface AtlasWaveformPayload {
+    schemaVersion: number;
+    audioPath: string;
+    durationSeconds: number;
+    peaks: number[][];
+  }
+
+  const resolveWaveformUrl = (audioUrl: string) => {
+    const url = new URL(audioUrl);
+    if (!url.pathname.endsWith(".mp3")) return "";
+    url.pathname = url.pathname.replace(/\.mp3$/, ".peaks.json");
+    url.search = "";
+    url.hash = "";
+    return url.href;
+  };
+
+  const loadWaveformPayload = async (audioUrl: string) => {
+    const waveformUrl = resolveWaveformUrl(audioUrl);
+    if (!waveformUrl) throw new Error("Ruta de waveform no disponible.");
+
+    const response = await fetch(waveformUrl, { cache: "force-cache" });
+    if (!response.ok) {
+      throw new Error(`Waveform HTTP ${response.status}`);
+    }
+
+    const payload = (await response.json()) as AtlasWaveformPayload;
+    const audioPath = new URL(audioUrl).pathname;
+    const validPeaks =
+      Array.isArray(payload?.peaks) &&
+      payload.peaks.length > 0 &&
+      payload.peaks.every(
+        (channel) =>
+          Array.isArray(channel) &&
+          channel.length > 0 &&
+          channel.every((value) => Number.isFinite(value)),
+      );
+
+    if (
+      payload?.schemaVersion !== 1 ||
+      payload.audioPath !== audioPath ||
+      !(Number.isFinite(payload.durationSeconds) && payload.durationSeconds > 0) ||
+      !validPeaks
+    ) {
+      throw new Error("Waveform sidecar inválido para el audio vigente.");
+    }
+
+    return payload;
+  };
+
   const formatAtlasAudioTime = (seconds: number) => {
     if (!Number.isFinite(seconds) || seconds < 0) return "--:--";
     const wholeSeconds = Math.floor(seconds);
@@ -276,7 +325,7 @@ const waveformHeights = [
       }
 
       const resolvedSource = resolveSource();
-      if (!resolvedSource || (waveSurfer && waveSource === resolvedSource)) {
+      if (!resolvedSource || waveSource === resolvedSource) {
         return;
       }
 
@@ -285,7 +334,10 @@ const waveformHeights = [
       waveSource = resolvedSource;
 
       try {
-        const { default: WaveSurfer } = await loadWaveSurferModule();
+        const [{ default: WaveSurfer }, waveform] = await Promise.all([
+          loadWaveSurferModule(),
+          loadWaveformPayload(resolvedSource),
+        ]);
         if (
           generation !== waveLoadGeneration ||
           resolveSource() !== resolvedSource
@@ -297,6 +349,8 @@ const waveformHeights = [
           container: waveformReal,
           media: audio,
           url: resolvedSource,
+          peaks: waveform.peaks,
+          duration: waveform.durationSeconds,
           waveColor: "#45433f",
           progressColor: "#9b3428",
           cursorColor: "#9b3428",
@@ -740,8 +794,6 @@ const waveformHeights = [
     pointer-events: none;
   }
 
-  .atlas-audio-player--radio[data-waveform-state="loading"]
-    .atlas-audio-waveform--fallback,
   .atlas-audio-player--radio[data-waveform-state="fallback"]
     .atlas-audio-waveform--fallback {
     opacity: 1;
