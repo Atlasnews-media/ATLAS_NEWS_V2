@@ -76,15 +76,19 @@ Una falla preserva la última publicación READY válida.
 
 La superficie pública sigue bajo `/lab/radar-editorial/` y la trazabilidad enlaza los tres artefactos experimentales.
 
-## Handoff de productor
+## Motor JEV durable y compatibilidad de productor
 
-Mientras el productor sea una tarea externa de ChatGPT, RADAR_JEV usa dos handoffs acotados sobre `radar-ingress/editorial`:
+El motor JEV es una superficie durable reutilizable en GitHub Actions:
 
-1. `lab/radar-editorial/jev-requests/<radarRunId>.json`: candidatos + priors recuperados antes de la selección final.
-2. `lab/radar-editorial/requests/<radarRunId>.json`: paquete editorial final, después de observar los juicios JEV.
+- `.github/workflows/lab-radar-editorial-jev-engine.yml` recibe la ruta y el commit exacto de un `jev-request` canónico.
+- ejecuta sin cambios `scripts/lab/radar-editorial/run-jev-memory-judge.mjs` y `typesafe-jev-client.mjs`;
+- valida identidad, `engine: JEV_TYPESAFE`, `thresholdsApplied: false` y judgments no vacíos;
+- persiste de forma fail-closed e idempotente `jev-request.json` y `jev-judgments.json` en `radar-runtime/editorial`.
 
-ChatGPT no escribe en `radar-runtime/editorial`. El resolver JEV y el ingest durable son los únicos escritores de runtime.
+La ejecución del motor ya no depende de que ChatGPT sea el orquestador ni de que el core conozca la rama `radar-ingress/editorial`. Un productor/retrieval durable puede invocar el workflow reusable directamente con la misma request canónica.
 
-El ingest final exige que `artifacts["jev-judgments.json"]` coincida byte a byte con el juicio persistido por el resolver TypeSafe para el mismo `radarRunId`. Así, el productor no puede fabricar ni modificar la evidencia JEV.
+Mientras exista el productor externo actual, `.github/workflows/lab-radar-jev-resolver.yml` permanece como adaptador de compatibilidad: detecta un único `lab/radar-editorial/jev-requests/<radarRunId>.json` agregado en `radar-ingress/editorial` y delega la ejecución al motor durable. El adaptador no contiene lógica JEV.
 
-Este doble handoff es una compatibilidad temporal del productor ChatGPT. Un productor futuro que pueda invocar TypeSafe directamente puede conservar el mismo contrato editorial sin usar GitHub como transporte intermedio del juicio.
+El paquete editorial final continúa en `lab/radar-editorial/requests/<radarRunId>.json` después de la selección editorial. El ingest exige que `artifacts["jev-judgments.json"]` coincida byte a byte con el juicio persistido para el mismo `radarRunId`, por lo que el consumidor no puede fabricar ni modificar evidencia JEV.
+
+ChatGPT no escribe en `radar-runtime/editorial`. El motor JEV durable y el ingest siguen siendo los únicos escritores de runtime en sus respectivas fases.
