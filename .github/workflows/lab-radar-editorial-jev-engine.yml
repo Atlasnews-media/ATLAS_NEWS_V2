@@ -31,11 +31,19 @@ jobs:
       TYPESAFE_API_KEY: ${{ secrets.TYPESAFE_API_KEY }}
 
     steps:
-      - name: Checkout request exacta
+      - name: Checkout motor JEV fijado por workflow
+        uses: actions/checkout@v5
+        with:
+          repository: ${{ job.workflow_repository }}
+          ref: ${{ job.workflow_sha }}
+          fetch-depth: 0
+
+      - name: Checkout request exacta y separada del motor
         uses: actions/checkout@v5
         with:
           ref: ${{ inputs.request_ref }}
-          fetch-depth: 0
+          path: .request
+          fetch-depth: 1
 
       - name: Setup Node
         uses: actions/setup-node@v4
@@ -54,7 +62,7 @@ jobs:
           test -f "$REQUEST_PATH"
           run_id="$(node -p "JSON.parse(require('fs').readFileSync('$REQUEST_PATH','utf8')).radarRunId")"
           [[ "$run_id" =~ ^[A-Za-z0-9._:-]{8,128}$ ]]
-          echo "path=$REQUEST_PATH" >> "$GITHUB_OUTPUT"
+          echo "path=$request_file" >> "$GITHUB_OUTPUT"
           echo "run_id=$run_id" >> "$GITHUB_OUTPUT"
 
       - name: Verificar credencial TypeSafe
