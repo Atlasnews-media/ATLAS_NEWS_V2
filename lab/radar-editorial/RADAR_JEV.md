@@ -80,7 +80,8 @@ La superficie pública sigue bajo `/lab/radar-editorial/` y la trazabilidad enla
 
 El motor JEV es una superficie durable reutilizable en GitHub Actions:
 
-- `.github/workflows/lab-radar-editorial-jev-engine.yml` recibe la ruta y el commit exacto de un `jev-request` canónico.
+- `.github/workflows/lab-radar-editorial-jev-engine.yml` recibe la ruta y el commit exacto de un `jev-request` canónico;
+- fija la versión del motor con `job.workflow_sha`, hace checkout de ese SHA como código ejecutable y hace un segundo checkout aislado del `request_ref` bajo `.request/`; el commit que transporta la request no puede elegir ni sustituir la versión del motor;
 - ejecuta sin cambios `scripts/lab/radar-editorial/run-jev-memory-judge.mjs` y `typesafe-jev-client.mjs`;
 - valida identidad, `engine: JEV_TYPESAFE`, `thresholdsApplied: false` y judgments no vacíos;
 - persiste de forma fail-closed e idempotente `jev-request.json` y `jev-judgments.json` en `radar-runtime/editorial`.
@@ -88,6 +89,8 @@ El motor JEV es una superficie durable reutilizable en GitHub Actions:
 La ejecución del motor ya no depende de que ChatGPT sea el orquestador ni de que el core conozca la rama `radar-ingress/editorial`. Un productor/retrieval durable puede invocar el workflow reusable directamente con la misma request canónica.
 
 Mientras exista el productor externo actual, `.github/workflows/lab-radar-jev-resolver.yml` permanece como adaptador de compatibilidad: detecta un único `lab/radar-editorial/jev-requests/<radarRunId>.json` agregado en `radar-ingress/editorial` y delega la ejecución al motor durable. El adaptador no contiene lógica JEV.
+
+`radar-ingress/editorial` es una rama divergida y no se supone que un merge a `main` la actualice. `.github/workflows/lab-radar-jev-adapter-sync.yml` sincroniza exclusivamente el archivo del adaptador después de un cambio canónico del motor en `main`, preserva y compara SHA-256 de todos los requests antes/después, conserva la historia de la rama mediante commit normal + rebase acotado y fija la llamada del adapter al SHA exacto de `main` que contiene el motor. No copia ni reescribe requests.
 
 El paquete editorial final continúa en `lab/radar-editorial/requests/<radarRunId>.json` después de la selección editorial. El ingest exige que `artifacts["jev-judgments.json"]` coincida byte a byte con el juicio persistido para el mismo `radarRunId`, por lo que el consumidor no puede fabricar ni modificar evidencia JEV.
 
