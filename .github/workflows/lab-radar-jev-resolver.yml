@@ -50,7 +50,7 @@ jobs:
   resolve-jev:
     name: Ejecutar motor JEV durable
     needs: detect-request
-    uses: ./.github/workflows/lab-radar-editorial-jev-engine.yml
+    uses: Atlasnews-media/ATLAS_NEWS_V2/.github/workflows/lab-radar-editorial-jev-engine.yml@main
     with:
       request_path: ${{ needs.detect-request.outputs.request_path }}
       request_ref: ${{ needs.detect-request.outputs.request_ref }}
