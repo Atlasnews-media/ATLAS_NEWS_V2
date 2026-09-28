@@ -7,6 +7,7 @@ on:
     paths:
       - ".github/workflows/lab-radar-jev-reusable-smoke.yml"
 
+# rerun after isolated-request fix
 permissions:
   contents: write
 
