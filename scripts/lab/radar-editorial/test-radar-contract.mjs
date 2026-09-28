@@ -44,11 +44,19 @@ const jevIngressWorkflow = await fs.readFile(
   ".github/workflows/lab-radar-jev-resolver.yml",
   "utf8",
 );
+const jevAdapterSyncWorkflow = await fs.readFile(
+  ".github/workflows/lab-radar-jev-adapter-sync.yml",
+  "utf8",
+);
 
 for (const required of [
   "workflow_call:",
   "request_path:",
   "request_ref:",
+  "job.workflow_repository",
+  "job.workflow_sha",
+  "path: .request",
+  "git -C .request rev-parse HEAD",
   "run-jev-memory-judge.mjs",
   "jev-request.json",
   "jev-judgments.json",
@@ -65,10 +73,25 @@ if (
 ) {
   throw new Error("CASE D durable JEV engine still depends on ingress branch");
 }
-if (!jevIngressWorkflow.includes("lab-radar-editorial-jev-engine.yml")) {
+if (
+  !jevIngressWorkflow.includes(
+    "Atlasnews-media/ATLAS_NEWS_V2/.github/workflows/lab-radar-editorial-jev-engine.yml@main",
+  )
+) {
   throw new Error("CASE D ingress does not delegate to durable JEV engine");
 }
 if (jevIngressWorkflow.includes("run-jev-memory-judge.mjs")) {
   throw new Error("CASE D ingress duplicates JEV execution");
+}
+for (const required of [
+  "radar-ingress/editorial",
+  "requests-before.sha256",
+  "requests-after.sha256",
+  'cmp -s "$before" "$after"',
+  "lab-radar-editorial-jev-engine.yml@$GITHUB_SHA",
+]) {
+  if (!jevAdapterSyncWorkflow.includes(required)) {
+    throw new Error(`CASE D ingress sync missing: ${required}`);
+  }
 }
 console.log("CASE D DURABLE JEV ENGINE: PASS");
