@@ -57,10 +57,11 @@ jobs:
           REQUEST_REF: ${{ inputs.request_ref }}
         run: |
           set -euo pipefail
-          test "$(git rev-parse HEAD)" = "$REQUEST_REF"
+          test "$(git -C .request rev-parse HEAD)" = "$REQUEST_REF"
           [[ "$REQUEST_PATH" =~ ^lab/radar-editorial/jev-requests/[A-Za-z0-9._-]+\.json$ ]]
-          test -f "$REQUEST_PATH"
-          run_id="$(node -p "JSON.parse(require('fs').readFileSync('$REQUEST_PATH','utf8')).radarRunId")"
+          request_file=".request/$REQUEST_PATH"
+          test -f "$request_file"
+          run_id="$(node -p "JSON.parse(require('fs').readFileSync('$request_file','utf8')).radarRunId")"
           [[ "$run_id" =~ ^[A-Za-z0-9._:-]{8,128}$ ]]
           echo "path=$request_file" >> "$GITHUB_OUTPUT"
           echo "run_id=$run_id" >> "$GITHUB_OUTPUT"
