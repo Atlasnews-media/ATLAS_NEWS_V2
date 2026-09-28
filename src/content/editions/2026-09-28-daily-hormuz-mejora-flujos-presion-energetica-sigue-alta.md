@@ -1,10 +1,10 @@
 ---
 title: "Hormuz mejora sus flujos, pero el conflicto mantiene alta la presión energética"
 summary: "Las exportaciones petroleras del Golfo se recuperan, aunque el rechazo estadounidense al plan iraní sostiene la prima geopolítica; Japón y Tailandia añaden señales de inflación y riesgo climático."
-publishedAt: "2026-09-28T06:00:32-03:00"
+publishedAt: "2026-09-28T06:45:33-03:00"
 cutoffAt: "2026-09-28T05:59:32-03:00"
 type: "daily"
-status: "draft"
+status: "published"
 tags:
   - geopolitica
   - energia

@@ -1,10 +1,10 @@
 ---
 title: "El mercado cobra duración: petróleo alto eleva tasas y separa ganadores"
 summary: "La señal cross-asset no es sólo el rebote del crudo: el mercado extiende el escenario de tasas altas, fortalece al dólar y castiga duración, mientras energía y defensivos resisten."
-publishedAt: "2026-09-28T06:31:00-03:00"
+publishedAt: "2026-09-28T06:45:33-03:00"
 cutoffAt: "2026-09-28T06:29:00-03:00"
 section: "markets"
-status: "draft"
+status: "published"
 tags:
   - mercados-globales
   - tasas

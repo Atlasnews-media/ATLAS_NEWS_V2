@@ -1,10 +1,10 @@
 ---
 title: "Vivienda enfrenta una prueba de ejecución antes del Presupuesto 2027"
 summary: "El plan de 400.000 soluciones habitacionales necesita acelerar obras y asegurar financiamiento plurianual; el desafío es transformar presupuesto y subsidios en empleo formal y oferta efectiva."
-publishedAt: "2026-09-28T06:25:00-03:00"
+publishedAt: "2026-09-28T06:45:33-03:00"
 cutoffAt: "2026-09-28T06:22:00-03:00"
 section: "national"
-status: "draft"
+status: "published"
 tags:
   - chile
   - vivienda
