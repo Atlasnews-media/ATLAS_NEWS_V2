@@ -1,0 +1,20 @@
+name: LAB — PR230 reusable JEV real smoke
+
+on:
+  push:
+    branches:
+      - "refactor/lab-jev-durable-engine"
+    paths:
+      - ".github/workflows/lab-radar-jev-reusable-smoke.yml"
+
+permissions:
+  contents: write
+
+jobs:
+  real-reusable-jev:
+    name: Request canónico → JEV reusable → runtime
+    uses: Atlasnews-media/ATLAS_NEWS_V2/.github/workflows/lab-radar-editorial-jev-engine.yml@refactor/lab-jev-durable-engine
+    with:
+      request_path: lab/radar-editorial/jev-requests/RADAR-JEV-PR230-SMOKE-20260928-A.json
+      request_ref: b1da532f9df5ad35305177480982589b50cfc24e
+    secrets: inherit
