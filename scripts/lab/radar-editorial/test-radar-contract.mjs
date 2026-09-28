@@ -36,7 +36,6 @@ try {
 if (!identityFailed) throw new Error("CASE C no rechazó identidad alterada");
 console.log("CASE C IDENTITY MISMATCH: PASS");
 
-
 const jevEngineWorkflow = await fs.readFile(
   ".github/workflows/lab-radar-editorial-jev-engine.yml",
   "utf8",
@@ -59,7 +58,11 @@ for (const required of [
     throw new Error(`CASE D durable JEV engine missing: ${required}`);
   }
 }
-if (jevEngineWorkflow.includes('test "$GITHUB_REF_NAME" = "radar-ingress/editorial"')) {
+if (
+  jevEngineWorkflow.includes(
+    'test "$GITHUB_REF_NAME" = "radar-ingress/editorial"',
+  )
+) {
   throw new Error("CASE D durable JEV engine still depends on ingress branch");
 }
 if (!jevIngressWorkflow.includes("lab-radar-editorial-jev-engine.yml")) {
