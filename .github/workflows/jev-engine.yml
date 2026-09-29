@@ -1,0 +1,82 @@
+name: JEV — Canonical TypeSafe engine
+
+on:
+  workflow_call:
+    inputs:
+      request_path:
+        required: true
+        type: string
+      request_ref:
+        required: true
+        type: string
+    secrets:
+      TYPESAFE_API_KEY:
+        required: true
+  workflow_dispatch:
+    inputs:
+      request_path:
+        description: Neutral JEV request path
+        required: true
+        type: string
+      request_ref:
+        description: Exact commit/ref containing request
+        required: true
+        type: string
+
+permissions:
+  contents: read
+
+jobs:
+  jev:
+    name: Canonical JEV TypeSafe
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    env:
+      TYPESAFE_API_KEY: ${{ secrets.TYPESAFE_API_KEY }}
+    steps:
+      - name: Checkout trusted engine revision
+        uses: actions/checkout@v5
+        with:
+          ref: ${{ github.sha }}
+          path: .engine
+          fetch-depth: 1
+      - name: Checkout request revision as data only
+        uses: actions/checkout@v5
+        with:
+          ref: ${{ inputs.request_ref }}
+          path: .request
+          fetch-depth: 1
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: Validate request path
+        shell: bash
+        run: |
+          set -euo pipefail
+          p="${{ inputs.request_path }}"
+          [[ "$p" =~ ^[A-Za-z0-9._/-]+\.json$ ]]
+          test -f ".request/$p"
+      - name: Execute canonical JEV
+        shell: bash
+        run: |
+          set -euo pipefail
+          test -n "${TYPESAFE_API_KEY:-}"
+          node .engine/scripts/jev/run-jev.mjs             --request ".request/${{ inputs.request_path }}"             --output "$RUNNER_TEMP/jev-result.json"
+      - name: Validate canonical result
+        shell: bash
+        run: |
+          set -euo pipefail
+          node - "$RUNNER_TEMP/jev-result.json" <<'NODE'
+          const fs=require("fs");
+          const r=JSON.parse(fs.readFileSync(process.argv[2],"utf8"));
+          if(r.engine!=="JEV_TYPESAFE"||r.thresholdsApplied!==false||r.status!=="PASS") throw new Error("canonical JEV result invalid");
+          if(!Array.isArray(r.judgments)||r.judgments.length<1) throw new Error("judgments missing");
+          NODE
+      - name: Persist canonical evidence
+        uses: actions/upload-artifact@v4
+        with:
+          name: jev-result-${{ github.run_id }}
+          path: ${{ runner.temp }}/jev-result.json
+          if-no-files-found: error
+          retention-days: 30
