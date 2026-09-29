@@ -1,0 +1,83 @@
+name: Instagram Carousel — Controlled recovery V2
+
+on:
+  workflow_dispatch:
+    inputs:
+      source_commit:
+        description: "Full sourceCommit SHA of the published daily edition to recover"
+        required: true
+        type: string
+      recovery_confirmation:
+        description: "Type exactly: RECUPERAR CARRUSEL V2 / AUTORIZADO"
+        required: true
+        type: string
+      recovery_reason:
+        description: "Short operator reason recorded in the canonical V2 run"
+        required: true
+        default: manual-controlled-recovery
+        type: string
+
+permissions:
+  actions: write
+  contents: read
+
+concurrency:
+  group: instagram-carousel-controlled-recovery
+  cancel-in-progress: false
+
+jobs:
+  dispatch-canonical-v2:
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    env:
+      GH_TOKEN: ${{ github.token }}
+      SOURCE_COMMIT: ${{ inputs.source_commit }}
+      RECOVERY_CONFIRMATION: ${{ inputs.recovery_confirmation }}
+      RECOVERY_REASON: ${{ inputs.recovery_reason }}
+      CANONICAL_WORKFLOW: instagram-carousel-publish-automatic.yml
+
+    steps:
+      - name: Verify explicit recovery gate
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          test "$RECOVERY_CONFIRMATION" = "RECUPERAR CARRUSEL V2 / AUTORIZADO" || {
+            echo "Fail-closed: controlled recovery was not explicitly authorized."
+            exit 2
+          }
+
+          [[ "$SOURCE_COMMIT" =~ ^[0-9a-f]{40}$ ]] || {
+            echo "Fail-closed: source_commit must be a full 40-character lowercase SHA."
+            exit 3
+          }
+
+          gh api \
+            -H "Accept: application/vnd.github+json" \
+            "repos/${GITHUB_REPOSITORY}/commits/${SOURCE_COMMIT}" \
+            --jq '.sha' | grep -qx "$SOURCE_COMMIT" || {
+              echo "Fail-closed: source_commit is not a reachable commit in ${GITHUB_REPOSITORY}."
+              exit 4
+            }
+
+      - name: Dispatch canonical Instagram V2 pipeline
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          gh workflow run "$CANONICAL_WORKFLOW" \
+            --repo "$GITHUB_REPOSITORY" \
+            --ref main \
+            -f source_commit="$SOURCE_COMMIT" \
+            -f retry_depth="0" \
+            -f retry_reason="controlled:${RECOVERY_REASON}"
+
+          {
+            echo "### Instagram Controlled Recovery — V2 dispatched"
+            echo "Source commit: \`${SOURCE_COMMIT}\`"
+            echo "Canonical workflow: \`${CANONICAL_WORKFLOW}\`"
+            echo "Reason: \`${RECOVERY_REASON}\`"
+            echo ""
+            echo "This workflow does not render or publish to Meta directly."
+            echo "The canonical V2 pipeline owns readiness, 5-slide rendering, VERIFY_FIRST, sourceCommit idempotency, account verification and publication evidence."
+          } >> "$GITHUB_STEP_SUMMARY"

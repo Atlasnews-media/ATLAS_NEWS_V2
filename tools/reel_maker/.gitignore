@@ -1,0 +1,4 @@
+output/
+.generated/
+__pycache__/
+*.pyc

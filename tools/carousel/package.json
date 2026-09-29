@@ -1,0 +1,15 @@
+{
+  "name": "atlas-news-carousel",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=22.19 <23"
+  },
+  "scripts": {
+    "render": "node carousel-renderer.mjs",
+    "publish:instagram": "node publish-instagram.mjs"
+  },
+  "dependencies": {
+    "playwright": "1.62.1"
+  }
+}

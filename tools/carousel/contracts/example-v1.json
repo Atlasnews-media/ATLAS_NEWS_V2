@@ -1,0 +1,44 @@
+{
+  "version": "1",
+  "sourceCommit": "da946bf25b7dfc65858d898891f194968c43911c",
+  "sourceId": "src/content/editions/2026-09-12-daily-shock-energetico-pierde-via-de-escape.md",
+  "canonicalUrl": "https://atlasnews-media.github.io/ediciones/2026-09-12-daily-shock-energetico-pierde-via-de-escape/",
+  "publishedDate": "2026-09-12T09:03:16-03:00",
+  "productType": "daily",
+  "sectionLabel": "PORTADA · HECHO CENTRAL",
+  "title": "El shock energético pierde una vía de escape y endurece el escenario de tasas",
+  "dek": "Arabia Saudita pierde una ruta alternativa a Hormuz · La inflación deja a la Fed más cerca de subir · Wall Street rebota, pero no borra la semana negativa",
+  "ideaCentral": "El ataque que obligó a cerrar el oleoducto saudí Este-Oeste reduce una ruta alternativa a Hormuz justo cuando el IPC de Estados Unidos consolidó una subida de la Fed como escenario dominante.",
+  "ideaSupport": "Arabia Saudita cerró su oleoducto Este-Oeste después de un ataque con drones, abriendo una nueva dimensión del shock energético: ya no está bajo presión solamente el tránsito por Hormuz, sino también una de las principales rutas diseñadas precisamente para evitar ese estrecho.",
+  "keyPoints": [
+    {
+      "iconKey": "trend-up",
+      "text": "Un ataque obligó a cerrar el oleoducto Este-Oeste, capaz de transportar entre 4 y 5 millones de barriles diarios."
+    },
+    {
+      "iconKey": "cash-card",
+      "text": "El IPC subió 0,4% mensual y el núcleo 0,3%; el mercado elevó a cerca de 87% la probabilidad de una subida en septiembre."
+    },
+    {
+      "iconKey": "risk-triangle",
+      "text": "El S&P 500 ganó 0,9% el viernes, aunque terminó la semana con una caída de 0,8% y el Treasury a diez años rozó 5%."
+    }
+  ],
+  "impactItems": [
+    {
+      "iconKey": "portfolio-grid",
+      "label": "Carteras",
+      "text": "Para wealth management, la novedad reduce el valor de una apuesta simple por normalización rápida."
+    },
+    {
+      "iconKey": "decision-check",
+      "label": "Decisiones",
+      "text": "La renta fija corta conserva carry, mientras la duración larga sigue expuesta a una combinación incómoda de inflación energética y mayor prima fiscal."
+    },
+    {
+      "iconKey": "context-target",
+      "label": "Contexto",
+      "text": "En renta variable, el rebote del viernes muestra que no existe liquidación generalizada, pero la dispersión favorece negocios capaces de absorber costos y financiarse sin depender de tasas largas más bajas."
+    }
+  ]
+}

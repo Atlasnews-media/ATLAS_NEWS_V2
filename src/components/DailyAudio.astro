@@ -1,0 +1,163 @@
+---
+import AtlasAudioPlayer from "./AtlasAudioPlayer.astro";
+
+interface Props {
+  expectedDate?: string;
+}
+
+const { expectedDate } = Astro.props;
+---
+
+<section
+  class="daily-audio"
+  data-daily-audio
+  data-expected-date={expectedDate}
+  aria-labelledby="daily-audio-title"
+  hidden
+>
+  <div class="audio-copy">
+    <p class="audio-kicker" id="daily-audio-title">ATLAS NEWS RADIO</p>
+  </div>
+  <div class="audio-player">
+    <AtlasAudioPlayer
+      preload="metadata"
+      ariaLabel="Resumen diario de ATLAS NEWS"
+      engineRole="daily"
+      visualVariant="radio"
+    />
+  </div>
+</section>
+
+<script is:inline data-astro-rerun>
+  (() => {
+    const root = document.querySelector("[data-daily-audio]");
+    if (!(root instanceof HTMLElement)) return;
+
+    // El resumen diario pertenece exclusivamente a Portada.
+    // Al salir de esta vista, el componente se desmonta junto con la página.
+    if (window.location.pathname !== "/") {
+      root.hidden = true;
+      return;
+    }
+
+    // Evita repetir player.load() si esta instancia ya resolvió su audio.
+    if (root.dataset.audioContentKey) {
+      root.hidden = false;
+      return;
+    }
+
+    const expectedDate = root.dataset.expectedDate;
+    if (!expectedDate || !/^\d{4}-\d{2}-\d{2}$/.test(expectedDate)) return;
+
+    const player = root.querySelector("[data-atlas-audio-engine]");
+    const source = root.querySelector("[data-atlas-audio-source]");
+
+    if (
+      !(player instanceof HTMLAudioElement) ||
+      !(source instanceof HTMLSourceElement)
+    ) {
+      return;
+    }
+
+    // I3: adelanta sólo trabajo de red determinista. El MP3 diario conserva
+    // el contrato AAAA-MM-DD-resumen-diario.mp3, por lo que metadata del
+    // audio + peaks + WaveSurfer pueden comenzar mientras latest.json valida
+    // la autoridad. El componente permanece oculto hasta esa validación.
+    const speculativePath = `/audio/${expectedDate}-resumen-diario.mp3`;
+    const currentSource = source.getAttribute("src") ?? "";
+    if (currentSource !== speculativePath) {
+      source.src = speculativePath;
+      player.load();
+    } else if (player.error) {
+      player.load();
+    }
+
+    fetch(`/audio/latest.json?v=${Date.now()}`, { cache: "no-store" })
+      .then((response) => {
+        if (!response.ok) throw new Error("audio metadata unavailable");
+        return response.json();
+      })
+      .then((metadata) => {
+        if (
+          metadata?.status !== "published" ||
+          metadata?.date !== expectedDate ||
+          !metadata?.path
+        ) {
+          return;
+        }
+
+        const contentKey = `${metadata.date}|${metadata.path}`;
+        const resolvedSource = source.getAttribute("src") ?? "";
+        if (resolvedSource !== metadata.path) {
+          source.src = metadata.path;
+          player.load();
+        } else if (player.error) {
+          player.load();
+        }
+
+        root.dataset.audioContentKey = contentKey;
+        root.hidden = false;
+      })
+      .catch(() => {
+        if (!root.dataset.audioContentKey) root.hidden = true;
+      });
+  })();
+</script>
+
+<style>
+  .daily-audio {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0.28rem;
+    align-items: center;
+    padding: 0.68rem 0 0.72rem;
+    border-bottom: 4px double var(--rule);
+  }
+
+  .daily-audio[hidden] {
+    display: none;
+  }
+
+  .audio-copy {
+    min-width: 0;
+  }
+
+  .audio-kicker {
+    margin: 0;
+    color: var(--accent);
+    font: 800 0.72rem/1.2 var(--sans);
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+  }
+
+  .audio-player {
+    min-width: 0;
+    width: 100%;
+  }
+
+  @media (min-width: 70.01rem) {
+    .daily-audio {
+      gap: 0.24rem;
+      padding: 0.62rem 0 0.68rem;
+    }
+
+    .audio-kicker {
+      font-size: 0.64rem;
+      letter-spacing: 0.12em;
+    }
+  }
+
+  @media (max-width: 42rem) {
+    .daily-audio {
+      gap: 0.2rem;
+      padding: 0.58rem 0 0.62rem;
+      border-bottom: 0;
+    }
+
+    .audio-kicker {
+      font-size: 0.61rem;
+      line-height: 1.35;
+      letter-spacing: 0.12em;
+    }
+  }
+</style>

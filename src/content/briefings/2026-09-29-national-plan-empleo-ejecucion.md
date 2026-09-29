@@ -1,10 +1,10 @@
 ---
 title: "Chile Despega convierte el empleo en una prueba de ejecución territorial"
 summary: "El plan moviliza cerca de US$1.350 millones y proyecta más de 100.000 empleos. Su aporte dependerá de convertir presupuestos, subsidios y garantías en obras y contrataciones verificables."
-publishedAt: "2026-09-29T07:10:00-03:00"
+publishedAt: "2026-09-29T06:17:20-03:00"
 cutoffAt: "2026-09-29T06:16:50-03:00"
 section: "national"
-status: "published"
+status: "draft"
 tags:
   - chile
   - empleo

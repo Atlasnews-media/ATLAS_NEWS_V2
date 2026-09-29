@@ -1,0 +1,77 @@
+---
+import AtlasAudioPlayer from "./AtlasAudioPlayer.astro";
+
+interface Props {
+  audio?: {
+    src: string;
+    durationLabel: string;
+    voice: string;
+  };
+}
+
+const { audio } = Astro.props;
+---
+
+<section
+  class="reading-audio"
+  aria-label="Audio de Contingencia"
+  hidden={!audio}
+>
+  <div class="audio-copy">
+    <p class="audio-kicker">ATLAS NEWS RADIO</p>
+    <p>
+      Una síntesis breve de ATLAS NEWS para escuchar la noticia, sus señales y
+      sus límites.
+    </p>
+  </div>
+  <div class="audio-player">
+    <AtlasAudioPlayer
+      src={audio?.src}
+      preload="metadata"
+      ariaLabel="Contingencia de ATLAS NEWS"
+      visualVariant="radio"
+    />
+  </div>
+</section>
+
+<style>
+  .reading-audio {
+    display: grid;
+    grid-template-columns: minmax(0, 1.4fr) minmax(18rem, 1fr);
+    gap: clamp(1.25rem, 4vw, 3rem);
+    align-items: center;
+    margin: 0;
+    padding: 1.25rem 0 1.5rem;
+    border-top: 4px double var(--rule);
+  }
+  .reading-audio[hidden] {
+    display: none;
+  }
+  .audio-copy {
+    min-width: 0;
+  }
+  .audio-kicker {
+    margin: 0;
+    color: var(--accent);
+    font: 800 0.72rem/1.2 var(--sans);
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+  }
+  .audio-copy > p:last-child {
+    max-width: 45rem;
+    margin: 0.55rem 0 0;
+    color: var(--ink-soft);
+    line-height: 1.4;
+  }
+  .audio-player {
+    min-width: 0;
+  }
+
+  @media (max-width: 42rem) {
+    .reading-audio {
+      grid-template-columns: 1fr;
+      gap: 1rem;
+      padding: 1.1rem 0 1.25rem;
+    }
+  }
+</style>

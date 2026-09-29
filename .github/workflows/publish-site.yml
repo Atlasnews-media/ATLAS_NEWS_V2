@@ -1,0 +1,576 @@
+name: Publicar ATLAS NEWS
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "**"
+      - "!lab/**"
+      - "lab/audio-v2/**"
+      - "!lab-site/**"
+      - "!public/lab/**"
+      - "!scripts/lab/**"
+      - "!.github/workflows/*lab*.yml"
+  pull_request:
+    branches: [main]
+    paths:
+      - "**"
+      - "!lab/**"
+      - "lab/audio-v2/**"
+      - "!lab-site/**"
+      - "!public/lab/**"
+      - "!scripts/lab/**"
+      - "!.github/workflows/*lab*.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  id-token: write
+
+concurrency:
+  group: atlas-news-${{ github.event_name == 'pull_request' && format('pr-{0}', github.event.pull_request.number) || 'production' }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
+jobs:
+  build-and-publish:
+    name: Validar, construir y publicar
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    env:
+      ATLAS_SOURCE_SHA: ${{ github.event_name == 'pull_request' && github.event.pull_request.head.sha || github.sha }}
+      ATLAS_STATE_ENDPOINT: https://zukkeurioymejoffarrp.supabase.co/functions/v1/atlas-news-state
+
+    steps:
+      - name: Descargar el repositorio privado
+        uses: actions/checkout@v5
+        with:
+          fetch-depth: 2
+
+      - name: Detectar paquete o edición asociada
+        id: edition
+        shell: bash
+        env:
+          PR_TITLE: ${{ github.event.pull_request.title || '' }}
+        run: |
+          set -euo pipefail
+          track=false
+          package_kind="single"
+          edition_date=""
+          edition_type=""
+          edition_key=""
+          edition_id=""
+          national_id=""
+          markets_id=""
+          branch="${GITHUB_HEAD_REF:-${GITHUB_REF_NAME}}"
+          changed_files=""
+
+          if [[ "${GITHUB_EVENT_NAME}" == "pull_request" ]]; then
+            if git rev-parse HEAD^2 >/dev/null 2>&1; then
+              changed_files="$(git diff --name-only HEAD^1 HEAD^2)"
+            else
+              changed_files="$(git diff --name-only HEAD^ HEAD)"
+            fi
+
+            if [[ "$branch" =~ ^editorial/([0-9]{4}-[0-9]{2}-[0-9]{2})-morning$ ]]; then
+              package_kind="morning"
+              edition_date="${BASH_REMATCH[1]}"
+              edition_type="daily"
+              edition_key="${edition_date}-daily"
+
+              expected_title="Paquete editorial matutino — ${edition_date}"
+              if [[ "$PR_TITLE" != "$expected_title" ]]; then
+                echo "El PR matutino debe llamarse: $expected_title" >&2
+                exit 1
+              fi
+
+              general_files="$(printf '%s\n' "$changed_files" | grep -E "^src/content/editions/${edition_date}-daily-.*\.md$" || true)"
+              national_files="$(printf '%s\n' "$changed_files" | grep -E "^src/content/briefings/${edition_date}-national-.*\.md$" || true)"
+              markets_files="$(printf '%s\n' "$changed_files" | grep -E "^src/content/briefings/${edition_date}-markets-.*\.md$" || true)"
+
+              general_count="$(printf '%s\n' "$general_files" | grep -c . || true)"
+              national_count="$(printf '%s\n' "$national_files" | grep -c . || true)"
+              markets_count="$(printf '%s\n' "$markets_files" | grep -c . || true)"
+
+              if [[ "$general_count" -ne 1 ]]; then
+                echo "El paquete matutino requiere exactamente una edición General diaria; detectadas: $general_count." >&2
+                exit 1
+              fi
+              if [[ "$national_count" -gt 1 || "$markets_count" -gt 1 ]]; then
+                echo "El paquete matutino admite como máximo una pieza Nacional y una de Mercados." >&2
+                exit 1
+              fi
+
+              edition_id="$(basename "$general_files" .md)"
+              if [[ -n "$national_files" ]]; then
+                national_id="$(basename "$national_files" .md)"
+              fi
+              if [[ -n "$markets_files" ]]; then
+                markets_id="$(basename "$markets_files" .md)"
+              fi
+              track=true
+            elif [[ "$branch" =~ ^editorial/([0-9]{4}-[0-9]{2}-[0-9]{2})-(daily|weekly)$ ]]; then
+              edition_date="${BASH_REMATCH[1]}"
+              edition_type="${BASH_REMATCH[2]}"
+              edition_key="${edition_date}-${edition_type}"
+              file="$(printf '%s\n' "$changed_files" | grep -E "^src/content/editions/${edition_date}-${edition_type}-.*\.md$" | head -n1 || true)"
+              if [[ -n "$file" ]]; then
+                edition_id="$(basename "$file" .md)"
+                track=true
+              fi
+            fi
+          elif [[ "${GITHUB_EVENT_NAME}" == "push" ]]; then
+            changed_files="$(git diff-tree --no-commit-id --name-only -r HEAD)"
+            file="$(printf '%s\n' "$changed_files" | grep -E '^src/content/editions/[0-9]{4}-[0-9]{2}-[0-9]{2}-(daily|weekly)-.*\.md$' | head -n1 || true)"
+            if [[ -n "$file" ]]; then
+              base="$(basename "$file" .md)"
+              edition_date="${base:0:10}"
+              rest="${base:11}"
+              edition_type="${rest%%-*}"
+              edition_key="${edition_date}-${edition_type}"
+              edition_id="$base"
+              track=true
+
+              if [[ "$edition_type" == "daily" ]]; then
+                national_file="$(printf '%s\n' "$changed_files" | grep -E "^src/content/briefings/${edition_date}-national-.*\.md$" | head -n1 || true)"
+                markets_file="$(printf '%s\n' "$changed_files" | grep -E "^src/content/briefings/${edition_date}-markets-.*\.md$" | head -n1 || true)"
+                if [[ -n "$national_file" ]]; then
+                  national_id="$(basename "$national_file" .md)"
+                fi
+                if [[ -n "$markets_file" ]]; then
+                  markets_id="$(basename "$markets_file" .md)"
+                fi
+                if [[ -n "$national_id" || -n "$markets_id" ]]; then
+                  package_kind="morning"
+                fi
+              fi
+            fi
+          fi
+
+          echo "track=$track" >> "$GITHUB_OUTPUT"
+          echo "package_kind=$package_kind" >> "$GITHUB_OUTPUT"
+          echo "edition_date=$edition_date" >> "$GITHUB_OUTPUT"
+          echo "edition_type=$edition_type" >> "$GITHUB_OUTPUT"
+          echo "edition_key=$edition_key" >> "$GITHUB_OUTPUT"
+          echo "edition_id=$edition_id" >> "$GITHUB_OUTPUT"
+          echo "national_id=$national_id" >> "$GITHUB_OUTPUT"
+          echo "markets_id=$markets_id" >> "$GITHUB_OUTPUT"
+          echo "branch=$branch" >> "$GITHUB_OUTPUT"
+
+      - name: Registrar PR abierto en memoria operacional
+        if: github.event_name == 'pull_request' && steps.edition.outputs.track == 'true'
+        continue-on-error: true
+        env:
+          EDITION_KEY: ${{ steps.edition.outputs.edition_key }}
+          EDITION_DATE: ${{ steps.edition.outputs.edition_date }}
+          EDITION_TYPE: ${{ steps.edition.outputs.edition_type }}
+          EDITION_BRANCH: ${{ steps.edition.outputs.branch }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+          HEAD_SHA: ${{ github.event.pull_request.head.sha }}
+        run: |
+          token="$(curl -fsSL -H "Authorization: bearer $ACTIONS_ID_TOKEN_REQUEST_TOKEN" \
+            "${ACTIONS_ID_TOKEN_REQUEST_URL}&audience=atlas-news-supabase" | jq -r '.value')"
+          jq -n \
+            --arg edition_key "$EDITION_KEY" \
+            --arg edition_date "$EDITION_DATE" \
+            --arg edition_type "$EDITION_TYPE" \
+            --arg status "pr_open" \
+            --arg branch "$EDITION_BRANCH" \
+            --argjson pr_number "$PR_NUMBER" \
+            --arg head_sha "$HEAD_SHA" \
+            --arg run_url "https://github.com/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID}" \
+            '{edition_key:$edition_key,edition_date:$edition_date,edition_type:$edition_type,status:$status,branch:$branch,pr_number:$pr_number,head_sha:$head_sha,metadata:{run_url:$run_url}}' \
+            | curl -fsSL -X POST "$ATLAS_STATE_ENDPOINT" -H "Authorization: Bearer $token" -H 'content-type: application/json' --data-binary @-
+
+      - name: Registrar merge en memoria operacional
+        if: github.event_name == 'push' && steps.edition.outputs.track == 'true'
+        continue-on-error: true
+        env:
+          EDITION_KEY: ${{ steps.edition.outputs.edition_key }}
+          EDITION_DATE: ${{ steps.edition.outputs.edition_date }}
+          EDITION_TYPE: ${{ steps.edition.outputs.edition_type }}
+          SOURCE_COMMIT: ${{ github.sha }}
+        run: |
+          token="$(curl -fsSL -H "Authorization: bearer $ACTIONS_ID_TOKEN_REQUEST_TOKEN" \
+            "${ACTIONS_ID_TOKEN_REQUEST_URL}&audience=atlas-news-supabase" | jq -r '.value')"
+          jq -n \
+            --arg edition_key "$EDITION_KEY" \
+            --arg edition_date "$EDITION_DATE" \
+            --arg edition_type "$EDITION_TYPE" \
+            --arg status "merged" \
+            --arg source_commit "$SOURCE_COMMIT" \
+            --arg run_url "https://github.com/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID}" \
+            '{edition_key:$edition_key,edition_date:$edition_date,edition_type:$edition_type,status:$status,source_commit:$source_commit,metadata:{run_url:$run_url}}' \
+            | curl -fsSL -X POST "$ATLAS_STATE_ENDPOINT" -H "Authorization: Bearer $token" -H 'content-type: application/json' --data-binary @-
+
+      - name: Preparar Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Instalar dependencias
+        run: npm ci
+
+      - name: Preflight social de la edición diaria
+        if: github.event_name == 'push' && steps.edition.outputs.track == 'true' && steps.edition.outputs.edition_type == 'daily'
+        env:
+          ATLAS_SOURCE_COMMIT: ${{ env.ATLAS_SOURCE_SHA }}
+          ATLAS_SOCIAL_PREFLIGHT_ONLY: "true"
+          ATLAS_SOCIAL_CONTRACT_OUTPUT: tools/carousel/.generated/preflight-contract.json
+        run: node tools/carousel/prepare-carousel-contract.mjs
+
+      - name: Probar frontera histórica del contrato social
+        if: github.event_name == 'pull_request'
+        shell: bash
+        run: |
+          set -euo pipefail
+          positives=(
+            "src/content/editions/2026-09-14-daily-energia-se-convierte-en-riesgo-macro-global.md"
+            "src/content/editions/2026-09-15-daily-hormuz-pierde-dos-vias-de-alivio.md"
+            "src/content/editions/2026-09-16-daily-arabia-saudi-ensaya-un-bypass-maritimo.md"
+            "src/content/editions/2026-09-17-daily-fed-endurece-el-mapa-global-de-tasas.md"
+          )
+
+          for source_id in "${positives[@]}"; do
+            ATLAS_SOURCE_COMMIT="$ATLAS_SOURCE_SHA" \
+            ATLAS_SOCIAL_PREFLIGHT_ONLY=true \
+            ATLAS_SOCIAL_PREFLIGHT_SOURCE_ID="$source_id" \
+            ATLAS_SOCIAL_CONTRACT_OUTPUT="tools/carousel/.generated/historical-preflight.json" \
+              node tools/carousel/prepare-carousel-contract.mjs
+          done
+
+          historical="src/content/editions/2026-09-13-daily-doble-vulnerabilidad-logistica-golfo.md"
+          if ATLAS_SOURCE_COMMIT="$ATLAS_SOURCE_SHA" \
+            ATLAS_SOCIAL_PREFLIGHT_ONLY=true \
+            ATLAS_SOCIAL_PREFLIGHT_SOURCE_ID="$historical" \
+            ATLAS_SOCIAL_CONTRACT_OUTPUT="tools/carousel/.generated/historical-negative.json" \
+              node tools/carousel/prepare-carousel-contract.mjs; then
+            echo "Fail-closed: 13-09 historical edition unexpectedly passed the five-highlight social contract."
+            exit 1
+          fi
+          echo "PASS: 14-17/09 satisfy the current social contract; 13/09 remains correctly grandfathered/incompatible."
+
+      - name: Validar contrato Señales (fail-open)
+        id: signals_contract
+        if: steps.edition.outputs.package_kind == 'morning'
+        continue-on-error: true
+        shell: bash
+        env:
+          EDITION_DATE: ${{ steps.edition.outputs.edition_date }}
+        run: |
+          set -euo pipefail
+          signal_path="data/senales-del-dia/${EDITION_DATE}.json"
+          if [[ ! -f "$signal_path" ]]; then
+            echo "Señales ausentes para ${EDITION_DATE}: FAIL-OPEN, el núcleo continúa."
+            exit 0
+          fi
+          npm run signals:validate -- "$signal_path"
+
+      - name: Probar el respaldo económico
+        if: github.event_name == 'pull_request'
+        env:
+          ATLAS_INDICATORS_API_BASE: http://127.0.0.1:9
+          ATLAS_PUBLIC_SNAPSHOT_URL: http://127.0.0.1:9/snapshot.json
+        run: npm run update:indicators
+
+      - name: Actualizar indicadores económicos
+        run: npm run update:indicators
+
+      - name: Comprobar formato técnico
+        run: npm run format:check
+
+      - name: Validar y construir el sitio
+        run: npm run build:site
+
+      - name: Comprobar manifiesto de publicación
+        run: |
+          jq -e --arg sha "$ATLAS_SOURCE_SHA" '
+            .schemaVersion == 1 and
+            .sourceCommit == $sha and
+            (.latestDaily == null or .latestDaily.issueNumber >= 1) and
+            (.latestNational == null or (.latestNational.id | type == "string")) and
+            (.latestMarkets == null or (.latestMarkets.id | type == "string")) and
+            (.publications.national >= 0) and
+            (.publications.markets >= 0)
+          ' dist/status.json > /dev/null
+
+      - name: Probar el auditor contra el build
+        env:
+          ATLAS_PUBLIC_DIR: dist
+        run: npm run audit:production
+
+      - name: Registrar validación correcta
+        if: github.event_name == 'pull_request' && steps.edition.outputs.track == 'true'
+        continue-on-error: true
+        env:
+          EDITION_KEY: ${{ steps.edition.outputs.edition_key }}
+          EDITION_DATE: ${{ steps.edition.outputs.edition_date }}
+          EDITION_TYPE: ${{ steps.edition.outputs.edition_type }}
+          EDITION_BRANCH: ${{ steps.edition.outputs.branch }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+          HEAD_SHA: ${{ github.event.pull_request.head.sha }}
+        run: |
+          token="$(curl -fsSL -H "Authorization: bearer $ACTIONS_ID_TOKEN_REQUEST_TOKEN" \
+            "${ACTIONS_ID_TOKEN_REQUEST_URL}&audience=atlas-news-supabase" | jq -r '.value')"
+          jq -n \
+            --arg edition_key "$EDITION_KEY" \
+            --arg edition_date "$EDITION_DATE" \
+            --arg edition_type "$EDITION_TYPE" \
+            --arg status "validated" \
+            --arg branch "$EDITION_BRANCH" \
+            --argjson pr_number "$PR_NUMBER" \
+            --arg head_sha "$HEAD_SHA" \
+            '{edition_key:$edition_key,edition_date:$edition_date,edition_type:$edition_type,status:$status,branch:$branch,pr_number:$pr_number,head_sha:$head_sha}' \
+            | curl -fsSL -X POST "$ATLAS_STATE_ENDPOINT" -H "Authorization: Bearer $token" -H 'content-type: application/json' --data-binary @-
+
+      - name: Preparar acceso al repositorio público
+        if: github.event_name != 'pull_request'
+        env:
+          DEPLOY_KEY: ${{ secrets.ATLAS_PAGES_DEPLOY_KEY }}
+        run: |
+          install -m 700 -d ~/.ssh
+          printf '%s\n' "$DEPLOY_KEY" > ~/.ssh/atlas_news_pages
+          chmod 600 ~/.ssh/atlas_news_pages
+          ssh-keyscan -H github.com >> ~/.ssh/known_hosts
+
+      - name: Publicar la salida estática
+        id: deploy
+        if: github.event_name != 'pull_request'
+        env:
+          GIT_SSH_COMMAND: ssh -i ~/.ssh/atlas_news_pages -o IdentitiesOnly=yes
+        run: |
+          atlas_publish_dir="$RUNNER_TEMP/atlas-news-public"
+          git clone --depth 1 git@github.com:Atlasnews-media/Atlasnews-media.github.io.git "$atlas_publish_dir"
+          rsync -a --delete --exclude='.git' --exclude='audio/' --exclude='lab/' --exclude='data/funds-beagf.json' dist/ "$atlas_publish_dir/"
+          cd "$atlas_publish_dir"
+          git config user.name "ATLAS NEWS Publisher"
+          git config user.email "actions@users.noreply.github.com"
+          git add --all
+          if git diff --cached --quiet; then
+            echo "La versión pública ya está actualizada."
+          else
+            git commit -m "Publica ATLAS NEWS desde ${ATLAS_SOURCE_SHA::7}"
+            for attempt in 1 2 3; do
+              git pull --rebase origin main
+              if git push origin main; then
+                break
+              fi
+              if [[ "$attempt" -eq 3 ]]; then
+                echo "No fue posible publicar tras tres intentos de conciliación con escritores laterales." >&2
+                exit 1
+              fi
+              sleep 2
+            done
+          fi
+          echo "public_commit=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
+
+      - name: Registrar despliegue
+        if: github.event_name == 'push' && steps.edition.outputs.track == 'true'
+        continue-on-error: true
+        env:
+          EDITION_KEY: ${{ steps.edition.outputs.edition_key }}
+          EDITION_DATE: ${{ steps.edition.outputs.edition_date }}
+          EDITION_TYPE: ${{ steps.edition.outputs.edition_type }}
+          SOURCE_COMMIT: ${{ github.sha }}
+          PUBLIC_COMMIT: ${{ steps.deploy.outputs.public_commit }}
+        run: |
+          token="$(curl -fsSL -H "Authorization: bearer $ACTIONS_ID_TOKEN_REQUEST_TOKEN" \
+            "${ACTIONS_ID_TOKEN_REQUEST_URL}&audience=atlas-news-supabase" | jq -r '.value')"
+          jq -n \
+            --arg edition_key "$EDITION_KEY" \
+            --arg edition_date "$EDITION_DATE" \
+            --arg edition_type "$EDITION_TYPE" \
+            --arg status "deployed" \
+            --arg source_commit "$SOURCE_COMMIT" \
+            --arg public_commit "$PUBLIC_COMMIT" \
+            '{edition_key:$edition_key,edition_date:$edition_date,edition_type:$edition_type,status:$status,source_commit:$source_commit,public_commit:$public_commit}' \
+            | curl -fsSL -X POST "$ATLAS_STATE_ENDPOINT" -H "Authorization: Bearer $token" -H 'content-type: application/json' --data-binary @-
+
+      - name: Verificar la versión pública
+        id: public_verify
+        if: github.event_name != 'pull_request'
+        continue-on-error: true
+        run: |
+          set -euo pipefail
+          atlas_publish_dir="$RUNNER_TEMP/atlas-news-public"
+          test -f "$atlas_publish_dir/status.json"
+          jq -e --arg sha "$ATLAS_SOURCE_SHA" '.sourceCommit == $sha' \
+            "$atlas_publish_dir/status.json" > /dev/null
+
+          latest_id="$(jq -r '.latestDaily.id // empty' "$atlas_publish_dir/status.json")"
+          if [[ -n "$latest_id" ]]; then
+            test -f "$atlas_publish_dir/ediciones/$latest_id/index.html"
+            grep -Fq "/ediciones/$latest_id/" "$atlas_publish_dir/index.html"
+          fi
+
+          national_id="$(jq -r '.latestNational.id // empty' "$atlas_publish_dir/status.json")"
+          if [[ -n "$national_id" ]]; then
+            test -f "$atlas_publish_dir/nacional/$national_id/index.html"
+            grep -Fq "/nacional/$national_id/" "$atlas_publish_dir/index.html"
+          fi
+
+          markets_id="$(jq -r '.latestMarkets.id // empty' "$atlas_publish_dir/status.json")"
+          if [[ -n "$markets_id" ]]; then
+            test -f "$atlas_publish_dir/mercados/$markets_id/index.html"
+            grep -Fq "/mercados/$markets_id/" "$atlas_publish_dir/index.html"
+          fi
+
+          public_status_url="https://atlasnews-media.github.io/status.json"
+          public_base_url="https://atlasnews-media.github.io"
+          public_ready=false
+          routes=()
+          [[ -n "$latest_id" ]] && routes+=("/ediciones/$latest_id/")
+          [[ -n "$national_id" ]] && routes+=("/nacional/$national_id/")
+          [[ -n "$markets_id" ]] && routes+=("/mercados/$markets_id/")
+
+          for attempt in $(seq 1 15); do
+            body="$(mktemp)"
+            nonce="${GITHUB_RUN_ID}-${attempt}-$(date +%s)"
+            code="$(curl -L -sS -o "$body" -w '%{http_code}' \
+              -H 'Accept: application/json' \
+              -H 'Cache-Control: no-cache' \
+              "${public_status_url}?verify=${ATLAS_SOURCE_SHA}&readiness=${nonce}" || true)"
+
+            if [[ "$code" == "200" ]] && jq -e . "$body" >/dev/null 2>&1; then
+              observed_commit="$(jq -r '.sourceCommit // empty' "$body")"
+              observed_latest="$(jq -r '.latestDaily.id // empty' "$body")"
+              observed_national="$(jq -r '.latestNational.id // empty' "$body")"
+              observed_markets="$(jq -r '.latestMarkets.id // empty' "$body")"
+
+              if [[ "$observed_commit" == "$ATLAS_SOURCE_SHA" && \
+                    "$observed_latest" == "$latest_id" && \
+                    "$observed_national" == "$national_id" && \
+                    "$observed_markets" == "$markets_id" ]]; then
+                routes_ready=true
+                for route in "${routes[@]}"; do
+                  route_code="$(curl -L -sS -o /dev/null -w '%{http_code}' \
+                    -H 'Cache-Control: no-cache' \
+                    "${public_base_url}${route}?verify=${nonce}" || true)"
+                  if [[ "$route_code" != "200" ]]; then
+                    routes_ready=false
+                    break
+                  fi
+                done
+
+                if [[ "$routes_ready" == "true" ]]; then
+                  public_ready=true
+                  echo "GitHub Pages confirmó sourceCommit=${ATLAS_SOURCE_SHA} y rutas de la edición en intento ${attempt}."
+                  break
+                fi
+              fi
+
+              echo "Pages aún no confirma la edición esperada (${attempt}/15): sourceCommit=${observed_commit:-<missing>} latestDaily=${observed_latest:-<missing>}."
+            else
+              echo "Pages aún no entrega status.json válido (${attempt}/15): HTTP ${code}."
+            fi
+
+            sleep 8
+          done
+
+          if [[ "$public_ready" != "true" ]]; then
+            echo "GitHub Pages no confirmó la versión pública esperada dentro de la ventana de verificación." >&2
+            exit 1
+          fi
+
+          echo "Versión pública verificada en repositorio y GitHub Pages: $(git -C "$atlas_publish_dir" rev-parse HEAD)"
+
+      - name: Registrar publicación verificada
+        if: >-
+          github.event_name == 'push' &&
+          steps.edition.outputs.track == 'true' &&
+          steps.public_verify.outcome == 'success'
+        continue-on-error: true
+        env:
+          EDITION_KEY: ${{ steps.edition.outputs.edition_key }}
+          EDITION_DATE: ${{ steps.edition.outputs.edition_date }}
+          EDITION_TYPE: ${{ steps.edition.outputs.edition_type }}
+          EDITION_ID: ${{ steps.edition.outputs.edition_id }}
+          SOURCE_COMMIT: ${{ github.sha }}
+          PUBLIC_COMMIT: ${{ steps.deploy.outputs.public_commit }}
+        run: |
+          token="$(curl -fsSL -H "Authorization: bearer $ACTIONS_ID_TOKEN_REQUEST_TOKEN" \
+            "${ACTIONS_ID_TOKEN_REQUEST_URL}&audience=atlas-news-supabase" | jq -r '.value')"
+          public_url="https://atlasnews-media.github.io/ediciones/${EDITION_ID}/"
+          jq -n \
+            --arg edition_key "$EDITION_KEY" \
+            --arg edition_date "$EDITION_DATE" \
+            --arg edition_type "$EDITION_TYPE" \
+            --arg status "verified" \
+            --arg source_commit "$SOURCE_COMMIT" \
+            --arg public_commit "$PUBLIC_COMMIT" \
+            --arg published_url "$public_url" \
+            '{edition_key:$edition_key,edition_date:$edition_date,edition_type:$edition_type,status:$status,source_commit:$source_commit,public_commit:$public_commit,published_url:$published_url}' \
+            | curl -fsSL -X POST "$ATLAS_STATE_ENDPOINT" -H "Authorization: Bearer $token" -H 'content-type: application/json' --data-binary @-
+
+      - name: Planificar edición sonora diaria
+        id: audio_plan
+        if: github.event_name != 'pull_request'
+        continue-on-error: true
+        env:
+          ATLAS_PUBLIC_REPO_DIR: ${{ runner.temp }}/atlas-news-public
+          ATLAS_AUDIO_PLAN: ${{ runner.temp }}/atlas-audio-plan.json
+          ATLAS_AUDIO_VOICE: ef_dora
+        run: node scripts/prepare-daily-audio.mjs
+
+      - name: Restaurar caché de Kokoro
+        if: github.event_name != 'pull_request' && steps.audio_plan.outputs.needs_generation == 'true'
+        continue-on-error: true
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/huggingface
+          key: kokoro-82m-v1-${{ runner.os }}
+
+      - name: Generar y publicar edición sonora con Kokoro
+        if: github.event_name != 'pull_request' && steps.audio_plan.outputs.needs_generation == 'true'
+        continue-on-error: true
+        env:
+          ATLAS_PUBLIC_REPO_DIR: ${{ runner.temp }}/atlas-news-public
+          ATLAS_AUDIO_PLAN: ${{ runner.temp }}/atlas-audio-plan.json
+          ATLAS_AUDIO_SPEED: "1.0"
+          GIT_SSH_COMMAND: ssh -i ~/.ssh/atlas_news_pages -o IdentitiesOnly=yes
+        run: |
+          set -euo pipefail
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq espeak-ng ffmpeg python3-venv
+          python3 -m venv "$RUNNER_TEMP/kokoro-venv"
+          source "$RUNNER_TEMP/kokoro-venv/bin/activate"
+          python -m pip install --quiet --upgrade pip
+          python -m pip install --quiet "kokoro==0.9.4" soundfile
+          python scripts/generate-daily-audio.py
+
+          cd "$ATLAS_PUBLIC_REPO_DIR"
+          git add audio/
+          if git diff --cached --quiet; then
+            echo "El audio público ya está actualizado."
+          else
+            git commit -m "Publica audio ATLAS NEWS — ${{ steps.audio_plan.outputs.audio_date }}"
+            git push origin main
+          fi
+
+      - name: Registrar fallo operacional
+        if: failure() && steps.edition.outputs.track == 'true'
+        continue-on-error: true
+        env:
+          EDITION_KEY: ${{ steps.edition.outputs.edition_key }}
+          EDITION_DATE: ${{ steps.edition.outputs.edition_date }}
+          EDITION_TYPE: ${{ steps.edition.outputs.edition_type }}
+          EDITION_BRANCH: ${{ steps.edition.outputs.branch }}
+          HEAD_SHA: ${{ github.event.pull_request.head.sha || github.sha }}
+          PR_NUMBER: ${{ github.event.pull_request.number || 0 }}
+        run: |
+          token="$(curl -fsSL -H "Authorization: bearer $ACTIONS_ID_TOKEN_REQUEST_TOKEN" \
+            "${ACTIONS_ID_TOKEN_REQUEST_URL}&audience=atlas-news-supabase" | jq -r '.value')"
+          run_url="https://github.com/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID}"
+          jq -n \
+            --arg edition_key "$EDITION_KEY" \
+            --arg edition_date "$EDITION_DATE" \
+            --arg edition_type "$EDITION_TYPE" \
+            --arg status "failed" \
+            --arg branch "$EDITION_BRANCH" \
+            --arg head_sha "$HEAD_SHA" \
+            --arg error_stage "github_action" \
+            --arg error "Falló el workflow Publicar ATLAS NEWS. Revisar run_url." \
+            --arg run_url "$run_url" \
+            --argjson pr_number "$PR_NUMBER" \
+            '{edition_key:$edition_key,edition_date:$edition_date,edition_type:$edition_type,status:$status,branch:$branch,pr_number:(if $pr_number > 0 then $pr_number else null end),head_sha:$head_sha,error_stage:$error_stage,error:$error,metadata:{run_url:$run_url}}' \
+            | curl -fsSL -X POST "$ATLAS_STATE_ENDPOINT" -H "Authorization: Bearer $token" -H 'content-type: application/json' --data-binary @-

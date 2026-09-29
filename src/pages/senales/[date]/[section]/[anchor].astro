@@ -1,0 +1,158 @@
+---
+import ArticleHeader from "../../../../components/ArticleHeader.astro";
+import BaseLayout from "../../../../layouts/BaseLayout.astro";
+import {
+  getSignalStaticPaths,
+  signalSectionConfig,
+  type SignalPageProps,
+} from "../../../../lib/signal-pages";
+
+export function getStaticPaths() {
+  return getSignalStaticPaths();
+}
+
+const { date, section, signal, visual } = Astro.props as SignalPageProps;
+const currentSection = signalSectionConfig[section];
+---
+
+<BaseLayout title={`${signal.headline} — ATLAS NEWS`} description={signal.deck}>
+  <main class="signal-page">
+    <nav
+      class="signal-page__nav"
+      aria-label={`Navegación desde ${signal.headline}`}
+    >
+      <a class="signal-page__back" href="/#senales-del-dia">
+        ← Volver a Señales del Día
+      </a>
+      <a class="signal-page__secondary" href="/">Ir a Portada</a>
+      <a class="signal-page__secondary" href={currentSection.href}>
+        Ir a {currentSection.label}
+      </a>
+    </nav>
+
+    <ArticleHeader
+      eyebrow={`Señales del día · ${currentSection.label}`}
+      title={signal.headline}
+      summary={signal.deck}
+      date={date}
+      tags={[section, signal.slot]}
+      visual={visual}
+    />
+
+    <article class="signal-page__body">{signal.development}</article>
+
+    {
+      signal.sources.length > 0 && (
+        <section
+          class="signal-page__sources"
+          aria-labelledby="signal-sources-title"
+        >
+          <h2 id="signal-sources-title">Fuentes</h2>
+          <ul>
+            {signal.sources.map((source) => (
+              <li>
+                <a href={source.url}>{source.name}</a>
+              </li>
+            ))}
+          </ul>
+        </section>
+      )
+    }
+  </main>
+</BaseLayout>
+
+<style>
+  .signal-page {
+    width: min(88rem, calc(100% - 2rem));
+    margin: 0 auto;
+  }
+  .signal-page__nav {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    width: min(52rem, 100%);
+    margin: 2.5rem auto;
+    border: 1px solid var(--rule);
+    border-top: 4px double var(--rule);
+    border-bottom: 4px double var(--rule);
+    font: 800 0.68rem/1.2 var(--sans);
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+  }
+  .signal-page__nav a {
+    display: flex;
+    align-items: center;
+    min-height: 2.8rem;
+    padding: 0.68rem 0.85rem;
+    color: var(--ink);
+    text-decoration: none;
+  }
+  .signal-page__back {
+    grid-column: 1 / -1;
+    border-bottom: 1px solid var(--rule);
+    color: var(--accent) !important;
+  }
+  .signal-page__back::after {
+    margin-left: auto;
+    color: var(--accent);
+    content: "◆";
+    font-size: 0.62rem;
+  }
+  .signal-page__secondary + .signal-page__secondary {
+    border-left: 1px solid var(--rule);
+  }
+  .signal-page__nav a:hover,
+  .signal-page__nav a:focus-visible {
+    color: var(--paper) !important;
+    background: var(--ink);
+    outline: none;
+  }
+  .signal-page__back:hover::after,
+  .signal-page__back:focus-visible::after {
+    color: var(--paper);
+  }
+  .signal-page__body,
+  .signal-page__sources {
+    max-width: 52rem;
+    margin-right: auto;
+    margin-left: auto;
+  }
+  .signal-page__body {
+    margin-top: 2rem;
+    color: var(--ink);
+    font-size: 1.08rem;
+    line-height: 1.68;
+    white-space: pre-line;
+  }
+  .signal-page__sources {
+    margin-top: 1.5rem;
+    margin-bottom: 4rem;
+    padding-top: 0.9rem;
+    border-top: 1px solid var(--rule);
+    font: 0.78rem/1.45 var(--sans);
+  }
+  .signal-page__sources h2 {
+    margin: 0;
+    font: 800 0.78rem/1.2 var(--sans);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .signal-page__sources ul {
+    margin: 0.45rem 0 0;
+    padding-left: 1.15rem;
+  }
+  .signal-page__sources li {
+    margin: 0.3rem 0;
+  }
+  @media (max-width: 42rem) {
+    .signal-page {
+      width: min(100% - 1.25rem, 88rem);
+    }
+    .signal-page__nav {
+      margin: 1.6rem auto 2rem;
+    }
+    .signal-page__body {
+      font-size: 1.03rem;
+      line-height: 1.62;
+    }
+  }
+</style>

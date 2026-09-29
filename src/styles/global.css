@@ -1,0 +1,1183 @@
+:root {
+  --paper: #f2efe5;
+  --paper-deep: #e7e1d2;
+  --ink: #161611;
+  --ink-soft: #4b493f;
+  --rule: #23231d;
+  --accent: #8e2f24;
+  --serif: Georgia, "Times New Roman", serif;
+  --display: Georgia, "Times New Roman", serif;
+  --sans: "Arial Narrow", var(--font-atlas-sans), Arial, sans-serif;
+  color-scheme: light;
+  font-family: var(--serif);
+  background: var(--paper);
+  color: var(--ink);
+  font-synthesis: none;
+}
+
+* {
+  box-sizing: border-box;
+}
+html {
+  min-width: 20rem;
+  background: #d9d4c8;
+}
+body {
+  position: relative;
+  min-height: 100vh;
+  margin: 0;
+  background:
+    radial-gradient(
+      circle at 18% 12%,
+      rgb(255 255 255 / 42%),
+      transparent 32rem
+    ),
+    repeating-linear-gradient(
+      0deg,
+      transparent 0 3px,
+      rgb(22 22 17 / 1.5%) 3px 4px
+    ),
+    var(--paper);
+}
+
+body::before {
+  position: fixed;
+  z-index: 20;
+  inset: 0;
+  pointer-events: none;
+  content: "";
+  opacity: 0.18;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.14'/%3E%3C/svg%3E");
+  mix-blend-mode: multiply;
+}
+
+a {
+  color: inherit;
+}
+a:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 3px;
+}
+::selection {
+  color: var(--paper);
+  background: var(--accent);
+}
+
+.skip-link {
+  position: fixed;
+  z-index: 100;
+  top: 0.5rem;
+  left: 0.5rem;
+  padding: 0.75rem 1rem;
+  color: var(--paper);
+  background: var(--ink);
+  transform: translateY(-150%);
+}
+.skip-link:focus {
+  transform: translateY(0);
+}
+
+.page-shell {
+  width: min(88rem, calc(100% - 2rem));
+  margin: 0 auto;
+  padding: clamp(1.25rem, 3vw, 2.5rem) 0 clamp(2.5rem, 6vw, 5rem);
+}
+.page-kicker {
+  margin: 0;
+  color: var(--accent);
+  font: 800 0.72rem/1.2 var(--sans);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+.page-title {
+  max-width: 68rem;
+  margin: 0.45rem 0 1rem;
+  font-size: clamp(3.4rem, 10vw, 8.5rem);
+  font-weight: 700;
+  line-height: 0.82;
+  letter-spacing: -0.065em;
+}
+.page-intro {
+  max-width: 48rem;
+  margin: 0 0 4rem;
+  color: var(--ink-soft);
+  font-size: clamp(1.12rem, 2vw, 1.4rem);
+  line-height: 1.45;
+}
+
+.front-page > .issue-line p:nth-child(2) {
+  display: none;
+}
+
+@media (max-width: 42rem) {
+  .page-shell {
+    width: min(100% - 1.25rem, 88rem);
+    padding-top: 1rem;
+  }
+
+  /* Portada V2: titulares compactos, navegables y con jerarquía aprobada. */
+  .front-page .headline-list {
+    margin-top: 0.45rem !important;
+  }
+  .front-page .headline-item {
+    padding: 0.62rem 0 0.68rem !important;
+  }
+  .front-page .headline-item .headline-label {
+    margin-bottom: 0.22rem !important;
+    font-size: 0.66rem !important;
+  }
+  .front-page .headline-item h2 {
+    font-size: clamp(1.173rem, 4.93vw, 1.513rem) !important;
+    line-height: 0.98 !important;
+    letter-spacing: -0.025em !important;
+  }
+  .front-page .headline-item h2 a {
+    display: block;
+    text-decoration: none;
+  }
+  .front-page .headline-item h2 a::after {
+    display: block;
+    margin-top: 0.42rem;
+    color: var(--accent);
+    font: 800 0.58rem/1.2 var(--sans);
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+  }
+  .front-page .headline-item:nth-child(1) h2 a::after {
+    content: "Ir a Internacional →";
+  }
+  .front-page .headline-item:nth-child(2) h2 a::after {
+    content: "Ir a Nacional →";
+  }
+  .front-page .headline-item:nth-child(3) h2 a::after {
+    content: "Ir a Mercados →";
+  }
+}
+
+@media (max-width: 36rem) {
+  body .site-header {
+    padding-top: 0.55rem;
+  }
+  body .site-header nav {
+    font-size: clamp(0.61rem, 2.65vw, 0.67rem);
+    font-weight: 800;
+    letter-spacing: 0.03em;
+  }
+  body .site-header nav a {
+    min-height: 2.05rem;
+    padding: 0.28rem 0.02rem;
+  }
+  body .site-header .edition-bar {
+    gap: 0.4rem;
+    padding: 0.32rem 0;
+    font-size: 0.62rem;
+    letter-spacing: 0.06em;
+  }
+  body .site-header .brand-lockup {
+    gap: 0.45rem;
+    margin: 0.22rem 0 0.48rem;
+  }
+  body .site-header .brand-mark {
+    width: clamp(2.85rem, 11.8vw, 3.3rem);
+  }
+  body .site-header .brand {
+    font-size: clamp(2.35rem, 11.3vw, 3.8rem);
+    line-height: 0.9;
+  }
+}
+
+/* Calendario económico: tratarlo como una página interior del diario,
+   no como una landing independiente. Sólo afecta la ruta del calendario. */
+body:has(.calendar-lab) .calendar-lab {
+  padding-top: 0.2rem;
+}
+
+body:has(.calendar-lab) .calendar-heading {
+  padding: 0.9rem 0 0.85rem;
+}
+
+body:has(.calendar-lab) .calendar-heading .page-kicker {
+  font-size: clamp(0.72rem, 1.05vw, 0.82rem);
+  line-height: 1.1;
+}
+
+body:has(.calendar-lab) .calendar-heading h1 {
+  max-width: 48rem;
+  margin-top: 0.22rem;
+  font-size: clamp(2.15rem, 4vw, 3.35rem);
+  line-height: 0.96;
+  letter-spacing: -0.035em;
+}
+
+body:has(.calendar-lab) .calendar-intro {
+  max-width: 45rem;
+  margin-top: 0.58rem;
+  font-size: clamp(0.92rem, 1.35vw, 1.08rem);
+  line-height: 1.3;
+}
+
+body:has(.calendar-lab) .calendar-section {
+  margin-top: 0.9rem;
+}
+
+body:has(.calendar-lab) .section-heading {
+  padding-bottom: 0.32rem;
+}
+
+body:has(.calendar-lab) .section-heading h2 {
+  font-size: clamp(0.86rem, 1.35vw, 1rem);
+  letter-spacing: 0.14em;
+}
+
+body:has(.calendar-lab) .section-heading span {
+  font-size: 0.54rem;
+  letter-spacing: 0.065em;
+}
+
+body:has(.calendar-lab) .event-row,
+body:has(.calendar-lab) .event-empty {
+  grid-template-columns: minmax(3.8rem, 0.42fr) minmax(0, 6fr);
+  gap: 0.52rem;
+  padding: 0.42rem 0;
+}
+
+body:has(.calendar-lab) .event-row > time {
+  font-size: clamp(0.84rem, 1.3vw, 0.98rem);
+}
+
+body:has(.calendar-lab) .event-copy {
+  gap: 0.55rem;
+}
+
+body:has(.calendar-lab) .event-copy h3 {
+  font-size: clamp(0.84rem, 1.2vw, 0.98rem);
+  line-height: 1.08;
+}
+
+body:has(.calendar-lab) .event-copy p {
+  font-size: 0.6rem;
+}
+
+body:has(.calendar-lab) .calendar-source {
+  padding-top: 0.62rem;
+  font-size: 0.52rem;
+}
+
+@media (max-width: 42rem) {
+  body:has(.calendar-lab) .calendar-lab {
+    padding-top: 0.08rem;
+  }
+
+  body:has(.calendar-lab) .calendar-heading {
+    padding-top: 0.62rem;
+    padding-bottom: 0.72rem;
+  }
+
+  body:has(.calendar-lab) .calendar-heading .page-kicker {
+    font-size: 0.72rem;
+  }
+
+  body:has(.calendar-lab) .calendar-heading h1 {
+    margin-top: 0.18rem;
+    font-size: clamp(1.86rem, 7.4vw, 2.35rem);
+    line-height: 0.97;
+    letter-spacing: -0.03em;
+  }
+
+  body:has(.calendar-lab) .calendar-intro {
+    max-width: 23rem;
+    margin-top: 0.48rem;
+    font-size: 0.86rem;
+    line-height: 1.28;
+  }
+
+  body:has(.calendar-lab) .calendar-section {
+    margin-top: 0.78rem;
+  }
+
+  body:has(.calendar-lab) .section-heading {
+    padding-bottom: 0.28rem;
+  }
+
+  body:has(.calendar-lab) .section-heading h2 {
+    font-size: 0.84rem;
+    letter-spacing: 0.13em;
+  }
+
+  body:has(.calendar-lab) .section-heading span {
+    font-size: 0.5rem;
+  }
+
+  body:has(.calendar-lab) .event-row,
+  body:has(.calendar-lab) .event-empty {
+    grid-template-columns: 3.35rem minmax(0, 1fr);
+    gap: 0.38rem;
+    padding: 0.36rem 0;
+  }
+
+  body:has(.calendar-lab) .event-row > time {
+    font-size: 0.78rem;
+  }
+
+  body:has(.calendar-lab) .event-copy h3 {
+    font-size: 0.86rem;
+    line-height: 1.05;
+  }
+
+  body:has(.calendar-lab) .event-copy p {
+    margin-top: 0.12rem;
+    font-size: 0.57rem;
+  }
+
+  body:has(.calendar-lab) .calendar-source {
+    font-size: 0.5rem;
+  }
+}
+
+/* Portada V2: "En una mirada" deja de ser un rail lateral y funciona como briefing editorial. */
+.front-page.front-page--v2 .lead-grid {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+.front-page.front-page--v2 .lead-story {
+  padding-right: 0;
+  border-right: 0;
+}
+
+.front-page.front-page--v2 .edition-rail {
+  padding: clamp(1.9rem, 3.8vw, 3.2rem) 0 clamp(2.1rem, 4vw, 3.6rem);
+  border-top: 4px double var(--rule);
+}
+
+.front-page.front-page--v2 .rail-title {
+  margin: 0;
+  padding: 0 0 clamp(1rem, 1.9vw, 1.45rem);
+  color: var(--ink);
+  border-bottom: 1px solid var(--rule);
+  font: 700 clamp(2.2rem, 4.4vw, 4.25rem) / 0.95 var(--serif);
+  letter-spacing: -0.04em;
+  text-transform: none;
+}
+
+.front-page.front-page--v2 .edition-rail ol {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  counter-reset: point;
+}
+
+.front-page.front-page--v2 .edition-rail li {
+  display: grid;
+  grid-template-columns: clamp(3rem, 5vw, 4.5rem) minmax(0, 1fr);
+  padding: clamp(1rem, 1.7vw, 1.35rem) 0;
+  border-top: 1px solid var(--rule);
+  counter-increment: point;
+}
+
+.front-page.front-page--v2 .edition-rail li:first-child {
+  border-top: 0;
+}
+
+.front-page.front-page--v2 .edition-rail li::before {
+  content: "0" counter(point);
+  color: var(--accent);
+  font: 800 clamp(0.9rem, 1.35vw, 1.1rem) / 1.2 var(--sans);
+}
+
+.front-page.front-page--v2 .edition-rail strong,
+.front-page.front-page--v2 .edition-rail span {
+  grid-column: 2;
+}
+
+.front-page.front-page--v2 .edition-rail strong {
+  margin-bottom: 0.35rem;
+  font: 800 clamp(0.95rem, 1.45vw, 1.18rem) / 1.1 var(--sans);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.front-page.front-page--v2 .edition-rail span {
+  color: var(--ink-soft);
+  font: 400 clamp(1.08rem, 1.9vw, 1.45rem) / 1.28 var(--serif);
+}
+
+@media (max-width: 42rem) {
+  .front-page.front-page--v2 .edition-rail {
+    padding-top: 1.05rem;
+    padding-bottom: 1.65rem;
+    border-top: 0;
+  }
+
+  .front-page.front-page--v2 .rail-title {
+    padding-bottom: 0.85rem;
+    font: 700 clamp(1.75rem, 7vw, 2.25rem) / 0.98 var(--serif);
+    letter-spacing: -0.03em;
+  }
+
+  .front-page.front-page--v2 .edition-rail li {
+    grid-template-columns: 2.65rem minmax(0, 1fr);
+    padding: 0.82rem 0 0.9rem;
+  }
+
+  .front-page.front-page--v2 .edition-rail li::before {
+    font-size: 0.82rem;
+  }
+
+  .front-page.front-page--v2 .edition-rail strong {
+    margin-bottom: 0.28rem;
+    font-size: 0.86rem;
+    line-height: 1.08;
+  }
+
+  .front-page.front-page--v2 .edition-rail span {
+    font-size: 1.04rem;
+    line-height: 1.3;
+  }
+}
+
+/* Tablet: conserva la composición editorial, pero eleva la escala de lectura. */
+@media (min-width: 42.01rem) and (max-width: 70rem) {
+  html {
+    font-size: 112.5%;
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+  }
+
+  .page-shell {
+    width: min(100% - 2.5rem, 88rem);
+  }
+
+  .page-intro {
+    max-width: 44rem;
+    margin-bottom: 3rem;
+  }
+
+  body .site-header .edition-bar {
+    font-size: 0.76rem;
+  }
+
+  body .site-header nav {
+    font-size: clamp(0.88rem, 1.9vw, 0.97rem);
+    font-weight: 800;
+    letter-spacing: 0.05em;
+  }
+
+  body .site-header nav a {
+    min-height: 3.45rem;
+    padding: 0.72rem 0.35rem;
+  }
+
+  body .site-footer {
+    font-size: 0.78rem;
+  }
+}
+
+/* Desktop: identidad vigente y escala editorial propia, sin tocar móvil/tablet. */
+@media (min-width: 70.01rem) {
+  html {
+    font-size: 118.75%;
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+  }
+
+  body .site-header {
+    padding-top: 0.75rem;
+  }
+
+  body .site-header .edition-bar {
+    font-size: 0.76rem;
+  }
+
+  body .site-header nav {
+    font-size: clamp(1.05rem, 1.265vw, 1.15rem);
+    font-weight: 800;
+    letter-spacing: 0.05em;
+  }
+
+  body .site-header .edition-bar {
+    padding: 0.44rem 0;
+  }
+
+  body .site-header .brand-lockup {
+    gap: clamp(0.75rem, 1.2vw, 1rem);
+    margin: 0.34rem 0 0.62rem;
+  }
+
+  body .site-header .brand-mark {
+    width: clamp(3rem, 3.6vw, 4rem);
+  }
+
+  body .site-header .brand {
+    font-size: clamp(5.25rem, 7.5vw, 7rem);
+    line-height: 0.88;
+    letter-spacing: -0.045em;
+  }
+
+  body .site-header .brand-subtitle {
+    gap: clamp(0.4rem, 0.65vw, 0.62rem);
+    margin-top: 0.14rem;
+    font-size: clamp(0.9rem, 1.15vw, 1.15rem);
+  }
+
+  body .site-header nav a {
+    min-height: 3rem;
+    padding: 0.62rem 0.55rem;
+  }
+
+  body.primary-section-page .page-title {
+    font-size: clamp(3.6rem, 6.2vw, 5.6rem);
+    line-height: 0.9;
+  }
+
+  body .page-intro {
+    max-width: 52rem;
+    font-size: clamp(1.16rem, 1.55vw, 1.34rem);
+  }
+
+  body:has(.calendar-lab) .section-heading span,
+  body:has(.calendar-lab) .calendar-source {
+    font-size: 0.62rem;
+  }
+
+  body:has(.calendar-lab) .event-copy p {
+    font-size: 0.7rem;
+  }
+
+  body .market-indices-page .update-stamp strong {
+    font-size: 0.56rem;
+  }
+
+  body .market-indices-page .update-stamp span {
+    font-size: 0.62rem;
+  }
+
+  body .market-indices-page .update-stamp small,
+  body .market-indices-page .asset-name small {
+    font-size: 0.48rem;
+  }
+
+  body .market-indices-page .section-header span {
+    font-size: 0.62rem;
+  }
+
+  body .market-indices-page .indices-source {
+    font-size: 0.62rem;
+  }
+
+  body .site-footer {
+    font-size: 0.78rem;
+  }
+
+  /* ATLAS NEWS Desktop V1 — cabecera horizontal inspirada en la maqueta aprobada. */
+  body .site-header,
+  body .site-footer,
+  body .front-page,
+  body .page-shell,
+  body .article-page {
+    width: min(96rem, calc(100% - 3rem));
+  }
+
+  body .site-header {
+    display: grid;
+    grid-template-columns: minmax(19rem, 0.95fr) minmax(30rem, 1.35fr);
+    align-items: end;
+    column-gap: 1.2rem;
+  }
+
+  body .site-header .edition-bar {
+    grid-column: 2;
+    grid-row: 1;
+    align-self: start;
+    margin-top: 0.15rem;
+    padding: 0.35rem 0 0.42rem;
+  }
+
+  body .site-header .brand-lockup {
+    grid-column: 1;
+    grid-row: 1;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 0.62rem;
+    margin: 0;
+    padding: 0.25rem 0 0.48rem;
+  }
+
+  body .site-header .brand-copy {
+    align-items: flex-start;
+  }
+
+  body .site-header .brand-mark {
+    width: clamp(2.55rem, 3vw, 3.3rem);
+  }
+
+  body .site-header .brand {
+    font-size: clamp(3.7rem, 5.3vw, 4.9rem);
+    line-height: 0.88;
+    letter-spacing: -0.05em;
+  }
+
+  body .site-header .brand-subtitle {
+    justify-content: flex-start;
+    gap: 0.34rem;
+    margin-top: 0.12rem;
+    font-size: clamp(0.78rem, 0.9vw, 0.95rem);
+  }
+
+  body .site-header nav {
+    grid-column: 1 / -1;
+    grid-row: 2;
+  }
+
+  body .site-header nav a {
+    min-height: 2.85rem;
+    padding: 0.56rem 0.45rem;
+  }
+
+  /* Portada: composición editorial de dos zonas, con rail de inteligencia. */
+  body .front-page.front-page--v2 {
+    display: grid;
+    grid-template-columns: minmax(0, 3.15fr) minmax(17rem, 1fr);
+    column-gap: 1.05rem;
+    align-items: start;
+  }
+
+  body .front-page.front-page--v2 > .issue-line,
+  body .front-page.front-page--v2 > .economic-strip,
+  body .front-page.front-page--v2 > .daily-audio,
+  body .front-page.front-page--v2 > .editorial-double-rule,
+  body .front-page.front-page--v2 > .closing-grid,
+  body .front-page.front-page--v2 > .empty {
+    grid-column: 1 / -1;
+  }
+
+  body .front-page.front-page--v2 .lead-grid {
+    display: contents !important;
+  }
+
+  body .front-page.front-page--v2 .lead-grid > .editorial-double-rule {
+    display: none !important;
+  }
+
+  body .front-page.front-page--v2 .lead-story {
+    grid-column: 1;
+    grid-row: span 2;
+    min-width: 0;
+    padding: 0.8rem 0 1.2rem;
+    padding-right: 1.05rem;
+    border-right: 1px solid var(--rule);
+  }
+
+  body .front-page.front-page--v2 .headline-board-title {
+    margin-bottom: 0.45rem;
+    font-size: 0.88rem;
+  }
+
+  body .front-page.front-page--v2 .headline-list {
+    display: grid;
+    grid-template-columns: minmax(0, 1.25fr) minmax(0, 0.9fr);
+    grid-template-rows: auto auto;
+    margin-top: 0.15rem !important;
+    border-top: 1px solid var(--rule);
+    border-bottom: 1px solid var(--rule);
+  }
+
+  body .front-page.front-page--v2 .headline-list .headline-item {
+    min-width: 0;
+    padding: 0.7rem 0.72rem 0.78rem !important;
+    border-top: 1px solid var(--rule);
+  }
+
+  body .front-page.front-page--v2 .headline-list .headline-item:first-child {
+    grid-column: 1;
+    grid-row: 1 / span 2;
+    padding-right: 0.9rem !important;
+    padding-left: 0 !important;
+    border-top: 0;
+    border-right: 1px solid var(--rule);
+  }
+
+  body .front-page.front-page--v2 .headline-list .headline-item:nth-child(2) {
+    grid-column: 2;
+    grid-row: 1;
+    border-top: 0;
+  }
+
+  body .front-page.front-page--v2 .headline-list .headline-item:nth-child(3) {
+    grid-column: 2;
+    grid-row: 2;
+  }
+
+  body .front-page.front-page--v2 .headline-list .headline-item:first-child h2 {
+    max-width: 76%;
+    font-size: clamp(1.95rem, 2.8vw, 2.55rem) !important;
+    line-height: 0.96 !important;
+  }
+
+  body .front-page.front-page--v2 .headline-list .headline-item:nth-child(n + 2) h2 {
+    max-width: 78%;
+    font-size: clamp(1.2rem, 1.55vw, 1.48rem) !important;
+    line-height: 0.98 !important;
+  }
+
+  body .front-page.front-page--v2 .headline-list .headline-item .headline-label {
+    color: var(--accent);
+    font-size: 0.64rem !important;
+  }
+
+  body .front-page.front-page--v2 .headline-list .headline-item .headline-cta {
+    margin-top: 0.5rem;
+    font-size: 0.58rem !important;
+  }
+
+  body .front-page.front-page--v2 .headline-list .headline-item .headline-visual {
+    width: 31% !important;
+  }
+
+  body .front-page.front-page--v2 .headline-list .headline-item:first-child .headline-visual {
+    width: 35% !important;
+  }
+
+  body .front-page.front-page--v2 .calendar-entry {
+    display: inline-block;
+    width: calc(50% - 0.4rem);
+    margin-top: 0.5rem;
+    padding: 0.72rem 0 0.18rem;
+    vertical-align: top;
+  }
+
+  body .front-page.front-page--v2 .calendar-entry + .calendar-entry {
+    margin-left: 0.55rem;
+    border-top: 4px double var(--rule);
+  }
+
+  body .front-page.front-page--v2 .calendar-link {
+    font-size: 0.62rem;
+  }
+
+  body .front-page.front-page--v2 .edition-rail {
+    grid-column: 2;
+    min-width: 0;
+    padding: 0.82rem 0 0;
+    padding-left: 0.9rem;
+    border-top: 4px double var(--rule);
+    border-left: 1px solid var(--rule);
+  }
+
+  body .front-page.front-page--v2 .rail-title {
+    padding: 0 0 0.55rem;
+    font-size: clamp(1.55rem, 2.1vw, 1.9rem);
+    line-height: 1;
+  }
+
+  body .front-page.front-page--v2 .edition-rail li {
+    grid-template-columns: 1.85rem minmax(0, 1fr);
+    padding: 0.68rem 0 0.72rem;
+  }
+
+  body .front-page.front-page--v2 .edition-rail li::before {
+    font-size: 0.66rem;
+  }
+
+  body .front-page.front-page--v2 .edition-rail strong {
+    margin-bottom: 0.2rem;
+    font-size: 0.7rem !important;
+    line-height: 1.05;
+  }
+
+  body .front-page.front-page--v2 .edition-rail span {
+    font-size: 0.9rem !important;
+    line-height: 1.22;
+  }
+
+  body .front-page.front-page--v2 .news-grid {
+    grid-column: 2;
+    min-width: 0;
+    padding: 0.82rem 0 0 0.9rem;
+    border-left: 1px solid var(--rule);
+  }
+
+  body .front-page.front-page--v2 .news-grid .section-rule {
+    margin-bottom: 0.18rem;
+    padding: 0.42rem 0.48rem;
+    border: 0;
+    color: var(--paper);
+    background: var(--ink);
+  }
+
+  body .front-page.front-page--v2 .news-grid .section-rule h2 {
+    font-family: var(--serif);
+    font-size: 1.35rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    text-transform: none;
+  }
+
+  body .front-page.front-page--v2 .news-grid .columns {
+    grid-template-columns: 1fr;
+  }
+
+  body .front-page.front-page--v2 .news-grid .card {
+    padding: 0.7rem 0 0.78rem !important;
+    border-top: 1px solid var(--rule) !important;
+  }
+
+  body .front-page.front-page--v2 .news-grid .card + .card {
+    padding-left: 0 !important;
+    border-left: 0 !important;
+  }
+
+  body .front-page.front-page--v2 .news-grid .card h2 {
+    margin: 0.38rem 0;
+    font-size: 1.15rem !important;
+    line-height: 0.98;
+  }
+
+  body .front-page.front-page--v2 .news-grid .card p {
+    margin: 0.35rem 0;
+    font-size: 0.76rem !important;
+    line-height: 1.35;
+  }
+
+  body .front-page.front-page--v2 .news-grid .card-footer,
+  body .front-page.front-page--v2 .news-grid .card .read,
+  body .front-page.front-page--v2 .news-grid .card time,
+  body .front-page.front-page--v2 .news-grid .card .meta {
+    font-size: 0.56rem !important;
+  }
+
+  body .front-page.front-page--v2 .closing-grid {
+    margin-top: 1.3rem;
+  }
+
+  /* Páginas de sección: portada interna con hero y mosaico de piezas. */
+  body.primary-section-page .section-page {
+    padding-top: 0.9rem;
+  }
+
+  body.primary-section-page .section-page > .page-kicker {
+    font-size: 0.68rem;
+  }
+
+  body.primary-section-page .section-page > .page-title {
+    margin: 0.18rem 0 0.35rem;
+    font-size: clamp(3.15rem, 4.8vw, 4.4rem);
+    line-height: 0.9;
+  }
+
+  body.primary-section-page .section-page > .page-intro {
+    max-width: 54rem;
+    margin-bottom: 1.15rem;
+    font-size: 1.03rem;
+    line-height: 1.35;
+  }
+
+  body.primary-section-page .section-analysis-audio,
+  body.primary-section-page .reading-audio {
+    margin-top: 0.6rem !important;
+    padding: 0.82rem 0 0.95rem !important;
+  }
+
+  body.primary-section-page .briefing-list,
+  body.primary-section-page .reading-list {
+    display: grid !important;
+    grid-template-columns: repeat(12, minmax(0, 1fr)) !important;
+    max-width: none !important;
+    gap: 0 !important;
+    border-top: 5px double var(--rule) !important;
+  }
+
+  body.primary-section-page .briefing-list .card,
+  body.primary-section-page .reading-list .card {
+    grid-column: span 6;
+    min-height: 12rem;
+    padding: 0.95rem 1rem 1.05rem !important;
+    border-top: 1px solid var(--rule) !important;
+    border-right: 1px solid var(--rule);
+  }
+
+  body.primary-section-page .briefing-list .card:first-child,
+  body.primary-section-page .reading-list .card:first-child {
+    grid-column: span 7;
+    min-height: 18rem;
+    padding-right: 1.15rem !important;
+    padding-left: 0 !important;
+  }
+
+  body.primary-section-page .briefing-list .card:nth-child(2),
+  body.primary-section-page .reading-list .card:nth-child(2) {
+    grid-column: span 5;
+    min-height: 18rem;
+    border-right: 0;
+  }
+
+  body.primary-section-page .briefing-list .card:nth-child(2n + 4),
+  body.primary-section-page .reading-list .card:nth-child(2n + 4) {
+    border-right: 0;
+  }
+
+  body.primary-section-page .briefing-list .card.has-visual .card-copy,
+  body.primary-section-page .reading-list .card.has-visual .card-copy {
+    width: 66% !important;
+  }
+
+  body.primary-section-page
+    .briefing-list
+    .card:first-child.has-visual
+    .card-copy,
+  body.primary-section-page
+    .reading-list
+    .card:first-child.has-visual
+    .card-copy {
+    width: 61% !important;
+  }
+
+  body.primary-section-page .briefing-list .card-visual,
+  body.primary-section-page .reading-list .card-visual {
+    position: absolute !important;
+    z-index: 1 !important;
+    top: 0.8rem !important;
+    right: 0.55rem !important;
+    bottom: 0.8rem !important;
+    display: block !important;
+    width: 36% !important;
+    margin: 0 !important;
+    overflow: hidden !important;
+    pointer-events: none !important;
+    -webkit-mask-image: linear-gradient(
+      to bottom,
+      transparent 0%,
+      #000 8%,
+      #000 92%,
+      transparent 100%
+    ) !important;
+    mask-image: linear-gradient(
+      to bottom,
+      transparent 0%,
+      #000 8%,
+      #000 92%,
+      transparent 100%
+    ) !important;
+  }
+
+  body.primary-section-page .briefing-list .card:first-child .card-visual,
+  body.primary-section-page .reading-list .card:first-child .card-visual {
+    width: 43% !important;
+  }
+
+  body.primary-section-page .briefing-list .card-visual img,
+  body.primary-section-page .reading-list .card-visual img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    object-position: center !important;
+    opacity: 0.68 !important;
+    filter: saturate(0.72) sepia(0.1) contrast(0.94) brightness(1.04) !important;
+    -webkit-mask-image: linear-gradient(
+      to right,
+      transparent 0%,
+      rgba(0, 0, 0, 0.38) 22%,
+      #000 58%
+    ) !important;
+    mask-image: linear-gradient(
+      to right,
+      transparent 0%,
+      rgba(0, 0, 0, 0.38) 22%,
+      #000 58%
+    ) !important;
+  }
+
+  body.primary-section-page .briefing-list .card h2,
+  body.primary-section-page .reading-list .card h2 {
+    margin: 0.45rem 0;
+    font-size: clamp(1.4rem, 1.7vw, 1.75rem) !important;
+  }
+
+  body.primary-section-page .briefing-list .card:first-child h2,
+  body.primary-section-page .reading-list .card:first-child h2 {
+    font-size: clamp(2rem, 2.65vw, 2.55rem) !important;
+  }
+
+  body.primary-section-page .briefing-list .card p,
+  body.primary-section-page .reading-list .card p {
+    max-width: 38rem;
+    font-size: 0.84rem !important;
+    line-height: 1.36;
+  }
+
+  /* Artículos: columna de lectura + rail documental. */
+  body .article-page {
+    display: grid;
+    grid-template-columns: minmax(0, 2.35fr) minmax(14rem, 0.65fr);
+    column-gap: 1.6rem;
+    align-items: start;
+  }
+
+  body .article-page > .article-header {
+    grid-column: 1 / -1;
+    padding-top: 1rem;
+    padding-bottom: 1.05rem;
+  }
+
+  body .article-page .article-header h1 {
+    max-width: 62%;
+    margin: 0.55rem 0 0.7rem;
+    font-size: clamp(3.25rem, 4.8vw, 4.65rem) !important;
+    line-height: 0.9;
+  }
+
+  body .article-page .article-header .summary {
+    max-width: 58%;
+    font-size: 1.08rem;
+  }
+
+  body .article-page .article-header .article-visual {
+    top: 0.7rem !important;
+    right: 0 !important;
+    bottom: 0.85rem !important;
+    width: 37% !important;
+  }
+
+  body .article-page > .prose {
+    grid-column: 1;
+    max-width: none;
+    margin: 1.7rem 0 3rem;
+    padding-right: 1.2rem;
+    font-size: 1.04rem;
+    line-height: 1.66;
+  }
+
+  body .article-page > .sources {
+    grid-column: 2;
+    align-self: start;
+    max-width: none;
+    margin: 1.7rem 0 0;
+    padding: 0.85rem 0 0 0.9rem;
+    border-top: 4px double var(--rule);
+    border-left: 1px solid var(--rule);
+    position: sticky;
+    top: 1rem;
+  }
+
+  body .article-page > .sources h2 {
+    margin-top: 0;
+    font-size: 0.78rem;
+  }
+
+  body .article-page > .sources ul {
+    padding-left: 1rem;
+  }
+
+  body .article-page > .sources li {
+    margin: 0.55rem 0;
+    font-size: 0.78rem;
+    line-height: 1.3;
+  }
+
+  /* Calendario: agenda más compacta, ancha y legible. */
+  body:has(.calendar-lab) .calendar-lab {
+    width: min(96rem, calc(100% - 3rem));
+    padding-top: 0.55rem;
+  }
+
+  body:has(.calendar-lab) .calendar-heading {
+    display: grid;
+    grid-template-columns: minmax(0, 1.2fr) minmax(18rem, 0.8fr);
+    column-gap: 2rem;
+    align-items: end;
+    padding: 0.45rem 0 0.75rem;
+  }
+
+  body:has(.calendar-lab) .calendar-heading .page-kicker,
+  body:has(.calendar-lab) .calendar-heading h1 {
+    grid-column: 1;
+  }
+
+  body:has(.calendar-lab) .calendar-heading h1 {
+    font-size: clamp(2.8rem, 4.2vw, 4rem);
+  }
+
+  body:has(.calendar-lab) .calendar-intro {
+    grid-column: 2;
+    grid-row: 1 / span 2;
+    align-self: end;
+    margin: 0 0 0.15rem;
+    font-size: 1rem;
+  }
+
+  body:has(.calendar-lab) .event-row,
+  body:has(.calendar-lab) .event-empty {
+    grid-template-columns: 6rem minmax(0, 1fr);
+    gap: 1rem;
+    padding: 0.58rem 0;
+  }
+
+  body:has(.calendar-lab) .event-row > time {
+    font-size: 1rem;
+  }
+
+  body:has(.calendar-lab) .event-copy h3 {
+    font-size: 1rem;
+  }
+
+  body:has(.calendar-lab) .event-copy p {
+    font-size: 0.72rem;
+  }
+
+  /* Índices: tablero editorial de dos columnas. */
+  body .market-indices-page {
+    width: min(96rem, calc(100% - 3rem));
+  }
+
+  body .market-indices-page .indices-heading {
+    padding-top: 0.55rem;
+    padding-bottom: 0.7rem;
+  }
+
+  body .market-indices-page .indices-heading h1 {
+    font-size: clamp(2.7rem, 4.1vw, 3.9rem) !important;
+  }
+
+  body .market-indices-page .market-table {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: 1.4rem;
+    align-items: start;
+  }
+
+  body .market-indices-page .market-section {
+    min-width: 0;
+    border-top: 4px double var(--rule);
+  }
+
+  body .market-indices-page .market-section:first-child,
+  body .market-indices-page .market-section:nth-child(2) {
+    border-top: 0;
+  }
+
+  body .market-indices-page .section-header {
+    padding: 0.5rem 0 0.35rem;
+  }
+
+  body .market-indices-page .section-header h2 {
+    font-size: 0.9rem;
+  }
+
+  body .market-indices-page .data-row {
+    padding: 0.45rem 0 0.5rem;
+  }
+
+  body .market-indices-page .asset-name,
+  body .market-indices-page .asset-value,
+  body .market-indices-page .asset-change {
+    font-size: 0.92rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+}

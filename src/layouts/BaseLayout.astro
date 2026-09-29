@@ -1,0 +1,736 @@
+---
+import { Font } from "astro:assets";
+import "../styles/global.css";
+import "../styles/desktop-workspace-panel.css";
+import {
+  dailyIssueNumber,
+  formatIssueNumber,
+  getPublishedDailies,
+  getPublishedEditions,
+} from "../lib/content";
+import { socialImageFor } from "../lib/social-images";
+
+declare const process: {
+  env: Record<string, string | undefined>;
+};
+
+interface Props {
+  title: string;
+  description?: string;
+}
+
+const {
+  title,
+  description = "ATLAS NEWS — Inteligencia financiera, contexto y criterio editorial.",
+} = Astro.props;
+
+const editions = await getPublishedEditions();
+const currentDaily = getPublishedDailies(editions)[0];
+const currentIssueNumber = currentDaily
+  ? dailyIssueNumber(currentDaily, editions)
+  : undefined;
+const headerDateCandidate = currentDaily?.data.publishedAt ?? new Date();
+const headerDate = Number.isFinite(headerDateCandidate.valueOf())
+  ? headerDateCandidate
+  : new Date();
+const currentDate = new Intl.DateTimeFormat("es-CL", {
+  dateStyle: "full",
+  timeZone: "America/Santiago",
+}).format(headerDate);
+const issueLabel = currentIssueNumber
+  ? `Edición • ${formatIssueNumber(currentIssueNumber)}`
+  : "Edición • En preparación";
+const sourceCommit = (
+  process.env.ATLAS_SOURCE_SHA ??
+  process.env.GITHUB_SHA ??
+  "local"
+).slice(0, 7);
+
+const siteOrigin = Astro.site ?? Astro.url.origin;
+const canonicalUrl = new URL(Astro.url.pathname, siteOrigin).href;
+const isArticle =
+  /^\/(ediciones|nacional|mercados|lecturas)\/[^/]+\/?$/.test(
+    Astro.url.pathname,
+  ) || /^\/senales\/[^/]+\/[^/]+\/[^/]+\/?$/.test(Astro.url.pathname);
+const generatedSocialImage = isArticle
+  ? await socialImageFor(Astro.url.pathname)
+  : null;
+const socialImageUrl = generatedSocialImage
+  ? generatedSocialImage
+  : new URL("/brand/atlas-icon.png", siteOrigin).href;
+const socialImageWidth = generatedSocialImage ? "1200" : "1172";
+const socialImageHeight = generatedSocialImage ? "630" : "1172";
+const socialImageAlt = generatedSocialImage
+  ? `${title} — ATLAS NEWS`
+  : "ATLAS NEWS";
+const socialType = isArticle ? "article" : "website";
+
+const primaryEntry = { href: "/", label: "Portada" };
+const primaryNavEntries = [
+  primaryEntry,
+  { href: "/internacional/", label: "Internacional" },
+  { href: "/nacional/", label: "Nacional" },
+  { href: "/mercados/", label: "Mercados" },
+  { href: "/lecturas/", label: "Contingencia" },
+];
+const activePrimaryHref = primaryNavEntries.some(
+  ({ href }) => href === Astro.url.pathname,
+)
+  ? Astro.url.pathname
+  : null;
+const isPrimarySectionLanding = [
+  "/internacional/",
+  "/nacional/",
+  "/mercados/",
+  "/lecturas/",
+].includes(Astro.url.pathname);
+---
+
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content={description} />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <meta name="theme-color" content="#f2efe5" />
+    <meta name="atlas-source-commit" content={sourceCommit} />
+    <meta property="og:site_name" content="ATLAS NEWS" />
+    <meta property="og:locale" content="es_CL" />
+    <meta property="og:type" content={socialType} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:image" content={socialImageUrl} />
+    <meta property="og:image:type" content="image/png" />
+    <meta property="og:image:width" content={socialImageWidth} />
+    <meta property="og:image:height" content={socialImageHeight} />
+    <meta property="og:image:alt" content={socialImageAlt} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={socialImageUrl} />
+    <link rel="canonical" href={canonicalUrl} />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="/brand/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="/brand/favicon-16x16.png"
+    />
+    <link rel="apple-touch-icon" href="/brand/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <title>{title}</title>
+    <Font
+      cssVariable="--font-atlas-sans"
+      preload={[{ weight: 800, style: "normal", subset: "latin" }]}
+    />
+  </head>
+  <body class={isPrimarySectionLanding ? "primary-section-page" : undefined}>
+    <a class="skip-link" href="#contenido">Saltar al contenido</a>
+    <header class="site-header">
+      <div class="edition-bar">
+        <span>{issueLabel}</span>
+        <time>{currentDate}</time>
+        <span>Santiago de Chile</span>
+      </div>
+      <div class="brand-lockup">
+        <img
+          class="brand-mark"
+          src="/brand/atlas-icon.png"
+          alt=""
+          width="1172"
+          height="1172"
+        />
+        <div class="brand-copy">
+          <a
+            class="brand"
+            href="/"
+            aria-label="ATLAS NEWS, portada"
+            data-brand="ATLAS NEWS"
+          >
+            ATLAS NEWS
+          </a>
+          <p class="brand-subtitle" aria-label="Economía, Mercados, Contexto">
+            <span>Economía</span>
+            <span aria-hidden="true">•</span>
+            <span>Mercados</span>
+            <span aria-hidden="true">•</span>
+            <span>Contexto</span>
+          </p>
+        </div>
+      </div>
+      <nav aria-label="Navegación principal">
+        {
+          primaryNavEntries.map(({ href, label }) => (
+            <a
+              href={href}
+              class={activePrimaryHref === href ? "is-active" : undefined}
+              aria-current={activePrimaryHref === href ? "page" : undefined}
+            >
+              {label}
+            </a>
+          ))
+        }
+      </nav>
+    </header>
+    <div id="contenido"><slot /></div>
+    <footer class="site-footer">
+      <div class="footer-meta">
+        <a class="footer-brand" href="/">ATLAS NEWS</a>
+        <p>
+          Información y análisis editorial. No constituye una recomendación de
+          inversión.<br /><a href="/archivo/">Archivo</a>
+        </p>
+        <p>
+          <a href="/estado/">Estado de publicación</a><br />Santiago de Chile ·
+          código {sourceCommit}
+        </p>
+      </div>
+
+      <div class="footer-hub" aria-label="ATLAS Learning Hub">
+        <img
+          class="footer-hub-mark"
+          src="/brand/atlas-icon.png"
+          alt=""
+          width="1172"
+          height="1172"
+        />
+        <div class="footer-hub-copy">
+          <a
+            class="footer-hub-title"
+            href="https://atlas-learning-hub-web.vercel.app"
+            target="_blank"
+            rel="noreferrer"
+          >
+            ATLAS Learning Hub
+          </a>
+          <p>
+            ATLAS NEWS es parte de ATLAS Learning Hub, ecosistema público de
+            conocimiento y productos digitales de ATLAS Group Hub. Reúne ATLAS
+            News, ATLAS Games, ATLAS Learning y ATLAS Tools bajo una
+            arquitectura común orientada a convertir conocimiento, tecnología y
+            experimentación en contenidos, experiencias y herramientas de valor
+            práctico.
+          </p>
+          <a
+            class="footer-hub-link"
+            href="https://atlas-learning-hub-web.vercel.app"
+            target="_blank"
+            rel="noreferrer"
+          >
+            Conoce el ecosistema →
+          </a>
+        </div>
+      </div>
+    </footer>
+    <script>
+      const desktopWorkspaceQuery = window.matchMedia("(min-width: 80rem)");
+      const workspacePrefixes = [
+        "/internacional/",
+        "/nacional/",
+        "/mercados/",
+        "/lecturas/",
+        "/calendario-economico/",
+        "/ediciones/",
+      ];
+
+      const supportsDesktopWorkspacePath = (pathname: string) =>
+        pathname === "/" ||
+        workspacePrefixes.some((prefix) => pathname.startsWith(prefix));
+
+      const syncDesktopWorkspaceRouterBypass = () => {
+        document
+          .querySelectorAll<HTMLAnchorElement>(
+            'a[data-atlas-workspace-router-bypass="true"]',
+          )
+          .forEach((link) => {
+            link.removeAttribute("data-astro-reload");
+            link.removeAttribute("data-atlas-workspace-router-bypass");
+          });
+
+        if (
+          !desktopWorkspaceQuery.matches ||
+          !document.querySelector("[data-atlas-workspace-panel]")
+        ) {
+          return;
+        }
+
+        document
+          .querySelectorAll<HTMLAnchorElement>("a[href]")
+          .forEach((link) => {
+            if (link.target || link.hasAttribute("download")) return;
+
+            const url = new URL(link.href, window.location.href);
+            if (
+              url.origin !== window.location.origin ||
+              !supportsDesktopWorkspacePath(url.pathname)
+            ) {
+              return;
+            }
+
+            link.setAttribute("data-astro-reload", "");
+            link.dataset.atlasWorkspaceRouterBypass = "true";
+          });
+      };
+
+      syncDesktopWorkspaceRouterBypass();
+      document.addEventListener(
+        "astro:page-load",
+        syncDesktopWorkspaceRouterBypass,
+      );
+      document.addEventListener(
+        "atlas:desktop-panel-change",
+        syncDesktopWorkspaceRouterBypass,
+      );
+      desktopWorkspaceQuery.addEventListener(
+        "change",
+        syncDesktopWorkspaceRouterBypass,
+      );
+    </script>
+  </body>
+</html>
+
+<style is:global>
+  .site-header,
+  .site-footer {
+    position: relative;
+    z-index: 1;
+    width: min(88rem, calc(100% - 2rem));
+    margin: 0 auto;
+  }
+  .site-header {
+    padding-top: 1rem;
+  }
+  .brand-lockup {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: clamp(0.65rem, 1.5vw, 1.25rem);
+    margin: 0.45rem 0 0.8rem;
+  }
+  .brand-copy {
+    display: flex;
+    min-width: 0;
+    flex-direction: column;
+    align-items: center;
+  }
+  .brand-mark {
+    display: block;
+    flex: 0 0 auto;
+    width: clamp(3rem, 4.8vw, 5rem);
+    height: auto;
+  }
+  .brand {
+    position: relative;
+    display: block;
+    min-width: 0;
+    color: inherit;
+    font: 700 clamp(3.8rem, 11vw, 9.5rem)/0.82 var(--display);
+    letter-spacing: -0.04em;
+    text-align: center;
+    text-decoration: none;
+    white-space: nowrap;
+  }
+  .brand::after {
+    position: absolute;
+    inset: 0;
+    display: block;
+    color: transparent;
+    content: attr(data-brand);
+    font: inherit;
+    letter-spacing: inherit;
+    text-align: inherit;
+    white-space: inherit;
+    pointer-events: none;
+    transform: scale(0.978, 0.956);
+    transform-origin: 50% 51%;
+    -webkit-text-stroke: 0.015em rgba(242, 239, 229, 0.82);
+  }
+  .brand-subtitle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: clamp(0.35rem, 0.85vw, 0.75rem);
+    margin: 0.22rem 0 0;
+    color: inherit;
+    font: 400 clamp(0.82rem, 2vw, 1.35rem)/1 var(--serif);
+    letter-spacing: 0.01em;
+    white-space: nowrap;
+  }
+  .edition-bar,
+  .site-header nav {
+    font: 800 0.72rem/1.2 var(--sans);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .edition-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem 1.25rem;
+    padding: 0.5rem 0;
+    border-top: 3px double var(--rule);
+    border-bottom: 1px solid var(--rule);
+  }
+  .site-header nav {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 0;
+    justify-content: stretch;
+    padding: 0;
+    border-top: 1px solid var(--rule);
+    border-bottom: 4px double var(--rule);
+  }
+  .site-header nav a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 0;
+    min-height: 3.3rem;
+    padding: 0.8rem 0.55rem;
+    border-left: 1px solid rgba(31, 29, 23, 0.16);
+    color: inherit;
+    text-align: center;
+    text-decoration: none;
+    white-space: nowrap;
+    transition: background-color 140ms ease;
+  }
+  .site-header nav a:first-child {
+    border-left: 0;
+  }
+  .site-header nav a + a::before {
+    content: none;
+  }
+  .site-header nav a.is-active {
+    background: rgba(31, 29, 23, 0.045);
+  }
+  .site-header nav a:hover {
+    background: rgba(31, 29, 23, 0.035);
+  }
+  .primary-section-page .page-title {
+    font-size: clamp(2.55rem, 7.5vw, 6.375rem);
+  }
+  .site-footer {
+    margin-top: 5rem;
+    padding: 1.5rem 0 3rem;
+    border-top: 4px double var(--rule);
+    font: 0.72rem/1.5 var(--sans);
+    text-transform: uppercase;
+  }
+  .footer-meta {
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+    gap: 1rem;
+  }
+  .site-footer p {
+    margin: 0;
+  }
+  .footer-meta > p:last-child {
+    text-align: right;
+  }
+  .footer-meta p a {
+    font-weight: 800;
+    text-underline-offset: 0.15em;
+  }
+  .footer-brand {
+    font: 700 1.15rem/1 var(--serif);
+    text-decoration: none;
+  }
+  .footer-hub {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+    gap: 1rem;
+    align-items: start;
+    margin-top: 1.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--rule);
+    text-transform: none;
+  }
+  .footer-hub-mark {
+    display: block;
+    width: clamp(2.5rem, 4vw, 4rem);
+    height: auto;
+  }
+  .footer-hub-copy {
+    max-width: 56rem;
+  }
+  .footer-hub-title {
+    display: inline-block;
+    color: inherit;
+    font: 700 1.15rem/1.15 var(--serif);
+    text-decoration: none;
+  }
+  .footer-hub-copy p {
+    margin-top: 0.5rem;
+    color: var(--ink-soft);
+    font: 0.82rem/1.55 var(--serif);
+  }
+  .footer-hub-link {
+    display: inline-block;
+    margin-top: 0.65rem;
+    color: inherit;
+    font: 800 0.7rem/1.2 var(--sans);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    text-underline-offset: 0.18em;
+  }
+
+  @media (max-width: 42rem) {
+    .site-header nav {
+      height: auto;
+      min-height: 0;
+      align-items: stretch;
+      gap: 0;
+      font-size: 0.4462rem;
+      line-height: 1;
+    }
+    .site-header nav a {
+      box-sizing: border-box;
+      align-self: stretch;
+      height: auto;
+      min-height: 1.62rem;
+      padding: 0.18rem 0.04rem;
+    }
+  }
+
+  @media (max-width: 36rem) {
+    .site-header,
+    .site-footer {
+      width: min(100% - 1.25rem, 88rem);
+    }
+    .edition-bar span:last-child {
+      display: none;
+    }
+    .brand-lockup {
+      gap: clamp(0.4rem, 2vw, 0.65rem);
+      margin-top: 0.35rem;
+      width: 100%;
+    }
+    .brand-mark {
+      width: clamp(3.25rem, 13.5vw, 3.45rem);
+    }
+    .brand {
+      flex: 0 1 auto;
+      max-width: 100%;
+      font-size: clamp(2.25rem, 12vw, 4.15rem);
+    }
+    .brand-subtitle {
+      gap: clamp(0.22rem, 1.6vw, 0.38rem);
+      margin-top: 0.12rem;
+      font-size: clamp(0.62rem, 3vw, 0.78rem);
+    }
+    .site-header nav {
+      text-align: center;
+    }
+    .site-header nav a {
+      position: relative;
+      min-width: 0;
+      white-space: nowrap;
+    }
+    .footer-meta {
+      grid-template-columns: 1fr;
+    }
+    .footer-meta > p:last-child {
+      text-align: left;
+    }
+    .footer-hub {
+      grid-template-columns: auto minmax(0, 1fr);
+      gap: 0.75rem;
+    }
+    .footer-hub-mark {
+      width: 2.5rem;
+    }
+  }
+
+  /* En una mirada: una sola voz tipográfica institucional en todas las vistas. */
+  .front-page.front-page--v2 .edition-rail li::before,
+  .front-page.front-page--v2 .edition-rail strong,
+  .front-page.front-page--v2 .edition-rail span {
+    font-family: var(--serif) !important;
+  }
+  .front-page.front-page--v2 .edition-rail strong {
+    font-weight: 700 !important;
+    letter-spacing: 0.035em !important;
+  }
+
+  /* Mobile ancho: conserva la escala efectiva vigente y la reduce exactamente 3%. */
+  @media (min-width: 36.01rem) and (max-width: 42rem) {
+    .site-header nav {
+      font-size: 0.82935rem !important;
+    }
+  }
+
+  /* Tablet: navegación tipográfica también para tablets con viewport CSS compacto. */
+  @media (min-width: 36.01rem) and (max-width: 70rem) {
+    .front-page .headline-tab {
+      font-size: 0.855rem !important;
+    }
+  }
+
+  @media (min-width: 42.01rem) and (max-width: 70rem) {
+    .site-header nav {
+      font-size: 0.855rem !important;
+    }
+  }
+
+  /* Tablet: escala editorial propia y refuerzos de legibilidad. */
+  @media (min-width: 42.01rem) and (max-width: 70rem) {
+    html {
+      font-size: 140% !important;
+      -webkit-text-size-adjust: 100%;
+      text-size-adjust: 100%;
+    }
+
+    .page-shell {
+      width: min(100% - 1.75rem, 88rem) !important;
+    }
+
+    .site-header .brand-mark {
+      width: clamp(3.45rem, 7.4vw, 4.5rem) !important;
+    }
+
+    .front-page .economic-strip {
+      padding-top: 0.75rem !important;
+      padding-bottom: 0.85rem !important;
+    }
+    .front-page .economic-strip__context {
+      font-size: 0.78rem !important;
+    }
+    .front-page .economic-strip__item {
+      padding: 0.58rem 0.75rem !important;
+    }
+    .front-page .economic-strip__item dt {
+      font-size: 0.76rem !important;
+    }
+    .front-page .economic-strip__item dd {
+      font-size: 1.06rem !important;
+    }
+    .front-page .economic-strip__source {
+      font-size: 0.5rem !important;
+    }
+
+    .front-page .headline-board-title {
+      font-size: 0.9rem !important;
+    }
+    .front-page .headline-item .headline-label {
+      font-size: 0.8rem !important;
+    }
+    .front-page .headline-item .headline-cta {
+      font-size: 0.76rem !important;
+    }
+    .front-page .calendar-entry {
+      padding-top: 1.15rem !important;
+      padding-bottom: 0.45rem !important;
+    }
+    .front-page .calendar-link {
+      font-size: 0.86rem !important;
+      line-height: 1.15 !important;
+    }
+
+    body.primary-section-page .card.has-visual .card-copy {
+      width: 78% !important;
+    }
+    body.primary-section-page .card-visual {
+      position: absolute !important;
+      z-index: 1 !important;
+      top: 0.7rem !important;
+      right: -0.35rem !important;
+      bottom: 0.7rem !important;
+      display: block !important;
+      width: 40% !important;
+      margin: 0 !important;
+      overflow: hidden !important;
+      pointer-events: none !important;
+      -webkit-mask-image: linear-gradient(
+        to bottom,
+        transparent 0%,
+        #000 10%,
+        #000 90%,
+        transparent 100%
+      ) !important;
+      mask-image: linear-gradient(
+        to bottom,
+        transparent 0%,
+        #000 10%,
+        #000 90%,
+        transparent 100%
+      ) !important;
+    }
+    body.primary-section-page .card-visual img {
+      display: block !important;
+      width: 100% !important;
+      height: 100% !important;
+      object-fit: cover !important;
+      object-position: center !important;
+      opacity: 0.72 !important;
+      filter: saturate(0.7) sepia(0.1) contrast(0.92) brightness(1.06) !important;
+      -webkit-mask-image: linear-gradient(
+        to right,
+        transparent 0%,
+        rgba(0, 0, 0, 0.34) 24%,
+        #000 60%
+      ) !important;
+      mask-image: linear-gradient(
+        to right,
+        transparent 0%,
+        rgba(0, 0, 0, 0.34) 24%,
+        #000 60%
+      ) !important;
+    }
+    body.primary-section-page .card-visual figcaption {
+      position: absolute !important;
+      right: 0.38rem !important;
+      bottom: 0.2rem !important;
+      max-width: 82% !important;
+      color: var(--ink-soft) !important;
+      font: 600 0.36rem/1.1 var(--sans) !important;
+      text-align: right !important;
+      opacity: 0.66 !important;
+    }
+
+    .market-indices-page .indices-heading h1 {
+      font-size: 2.2rem !important;
+    }
+    .market-indices-page .update-stamp strong {
+      font-size: 0.48rem !important;
+    }
+    .market-indices-page .update-stamp span {
+      font-size: 0.56rem !important;
+    }
+    .market-indices-page .update-stamp small {
+      font-size: 0.4rem !important;
+    }
+    .market-indices-page .section-header {
+      padding-top: 0.44rem !important;
+      padding-bottom: 0.34rem !important;
+    }
+    .market-indices-page .section-header h2 {
+      font-size: 0.85rem !important;
+    }
+    .market-indices-page .section-header span {
+      font-size: 0.62rem !important;
+    }
+    .market-indices-page .data-row {
+      padding-top: 0.44rem !important;
+      padding-bottom: 0.48rem !important;
+    }
+    .market-indices-page .asset-name,
+    .market-indices-page .asset-value,
+    .market-indices-page .asset-change {
+      font-size: 1.05rem !important;
+    }
+    .market-indices-page .asset-name small {
+      font-size: 0.42rem !important;
+    }
+    .market-indices-page .indices-source {
+      font-size: 0.5rem !important;
+    }
+  }
+</style>

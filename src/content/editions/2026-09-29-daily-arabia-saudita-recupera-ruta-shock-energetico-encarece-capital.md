@@ -1,10 +1,10 @@
 ---
 title: "Arabia Saudita recupera una ruta clave, pero el shock energético sigue encareciendo el capital"
 summary: "La reapertura de Yanbu mejora la resiliencia física del petróleo de Oriente Medio, mientras energía y rendimientos altos endurecen las condiciones financieras y China prepara nuevo apoyo."
-publishedAt: "2026-09-29T07:10:00-03:00"
+publishedAt: "2026-09-29T06:03:49-03:00"
 cutoffAt: "2026-09-29T06:03:29-03:00"
 type: "daily"
-status: "published"
+status: "draft"
 tags:
   - energia
   - geopolitica

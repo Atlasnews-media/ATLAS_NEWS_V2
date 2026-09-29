@@ -1,0 +1,33 @@
+{
+  "version": 1,
+  "profile": "alex-c-v1",
+  "engine": "ResembleAI/Chatterbox-Multilingual-es-mx-latam",
+  "spaceCommit": "0d2648c4c1637eccfa8d45c7e192a0ad8d5b1fca",
+  "modelRevision": "27e595bf2fe7be0533ca299d9afafcde08b7cca7",
+  "baseModelRevision": "5bb1f6ee58e50c3b8d408bc82a6d3740c2db6e18",
+  "reference": {
+    "publicPath": "lab/audio/alex-chatterbox-v1/c-chatterbox-neutral.mp3",
+    "gitBlobSha": "b0a882c4b9c32b01a4127ccef72b37c3bcb70e71",
+    "label": "Alex C — Chatterbox LatAm neutral aprobado en LAB"
+  },
+  "parameters": {
+    "languageId": "es",
+    "exaggeration": 0.5,
+    "temperature": 0.8,
+    "cfg": 0.5
+  },
+  "chunking": {
+    "maxChars": 280,
+    "hardMaxChars": 300,
+    "pauseSeconds": 0.24,
+    "sectionPauseSeconds": 0.34
+  },
+  "dialogue": {
+    "statementPauseSeconds": 0.34,
+    "questionPauseSeconds": 0.4
+  },
+  "fallback": {
+    "engine": "Kokoro-82M",
+    "voice": "em_alex"
+  }
+}

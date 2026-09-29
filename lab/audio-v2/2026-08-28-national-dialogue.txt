@@ -1,0 +1,27 @@
+VOZ 1: Hoy Nacional no repite empleo, inflación ni TPM porque la novedad local está en otra parte. Hacienda abrió un proceso para modernizar cómo se negocian los bonos soberanos en pesos y UF mediante un Programa de Formadores de Mercado.
+VOZ 2: ¿Qué significa exactamente ser formador de mercado?
+VOZ 1: Significa que bancos e intermediarios que entren voluntariamente al programa asumirán obligaciones concretas. Entre ellas, mantener precios firmes de compra y venta para determinados bonos del Fisco durante ventanas definidas.
+VOZ 2: O sea, no basta con decir que están disponibles para operar. Tienen que mostrar las dos puntas.
+VOZ 1: Exactamente. Una punta de compra y otra de venta, ejecutables, con condiciones de tamaño, spread y presencia. La idea es que el mercado tenga referencias más continuas y que sea más fácil encontrar contraparte cuando alguien necesita comprar o vender.
+VOZ 2: ¿Y por qué eso es importante si los bonos del Estado ya se negocian hoy?
+VOZ 1: Porque se negocian, pero no todos con la misma profundidad y una parte relevante de las operaciones ocurre por distintos canales. Hacienda reconoce que esa actividad no siempre queda observada de manera consolidada. El programa busca ordenar esa información y mejorar la formación de precios.
+VOZ 2: ¿Eso podría beneficiar a un fondo mutuo o a una AFP?
+VOZ 1: Sí, potencialmente. Un fondo necesita valorizar su cartera y también poder vender activos cuando tiene rescates o cuando cambia su estrategia. Si hay más cotizaciones firmes y mejores referencias, la ejecución puede ser más eficiente y el precio observado puede representar mejor lo que realmente ocurre en el mercado.
+VOZ 2: Pero eso no significa que automáticamente bajen las tasas de los bonos.
+VOZ 1: Correcto. Ese sería el error de lectura. El programa no decide el nivel de las tasas. Las tasas siguen respondiendo a inflación, política monetaria, riesgo fiscal y condiciones globales. Lo que intenta mejorar es la liquidez y la transparencia con que esos precios se forman.
+VOZ 2: ¿Y cómo van a incentivar a las instituciones para que hagan ese trabajo?
+VOZ 1: El diseño contempla evaluar su desempeño. Se medirá cuánto aportan en mercado primario, cuánto negocian efectivamente y si mantienen liquidez en firme. Los participantes con mejor desempeño podrán acceder a beneficios vinculados a las emisiones soberanas.
+VOZ 2: También aparece algo llamado repo. ¿Por qué importa?
+VOZ 1: Porque un repo permite obtener liquidez temporal entregando bonos como garantía. Para un formador de mercado eso es útil: si necesita mantener inventario de bonos para poder comprar y vender de forma continua, un mercado repo funcional reduce parte del costo de financiar ese inventario.
+VOZ 2: Entonces no se trata solo de obligarlos a cotizar, sino también de darles una infraestructura que haga viable esa cotización.
+VOZ 1: Esa es la lógica. La liquidez sostenible depende de ambas cosas: reglas que exijan presencia y mecanismos que permitan financiar posiciones sin una fricción excesiva.
+VOZ 2: ¿Cómo conecta esto con la General de hoy, que está hablando de inteligencia artificial y disciplina de capital?
+VOZ 1: La conexión está en el costo y la calidad del financiamiento. General muestra que, con tasas largas todavía elevadas, el mercado global premia a quienes convierten capital en ingresos y caja. Nacional mira la misma disciplina desde otra capa: un mercado de deuda más líquido y transparente puede mejorar cómo se asigna y se valora el capital dentro de Chile.
+VOZ 2: Pero el programa todavía no está funcionando.
+VOZ 1: No. Eso es importante. Hacienda abrió una consulta que cierra el 23 de septiembre. Después vienen ajustes normativos, contractuales y operativos, y se contempla una marcha blanca referencial de seis meses.
+VOZ 2: Entonces, ¿qué deberíamos mirar para saber si esto termina siendo una reforma relevante y no solo un buen documento?
+VOZ 1: Primero, cuántos participantes realmente se incorporan. Segundo, si las cotizaciones mejoran no solo en los bonos que ya son líquidos, sino también en otros tramos de la curva. Y tercero, si el mercado repo adquiere suficiente actividad como para apoyar de verdad a los formadores.
+VOZ 2: ¿Cuál sería el principal riesgo?
+VOZ 1: Una mala calibración. Si las obligaciones son demasiado exigentes, puede haber poco interés en participar. Si son demasiado suaves, el programa puede existir formalmente sin mejorar la liquidez. También hay que evitar que la actividad termine concentrada en muy pocos actores.
+VOZ 2: Entonces la noticia no es que mañana los bonos chilenos serán más baratos.
+VOZ 1: No. La noticia es más estructural: Hacienda pasó de una idea preliminar a un diseño operativo para mejorar la forma en que se negocia, se observa y se financia la deuda soberana local. Si funciona, puede hacer que la curva chilena sea una referencia más profunda y útil para fondos, empresas y todo el mercado de capitales.

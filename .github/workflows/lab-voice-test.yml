@@ -1,0 +1,101 @@
+name: LAB — comparar voces Kokoro
+
+on:
+  pull_request:
+    paths:
+      - "lab/exp1-voice-test.txt"
+      - "lab/exp2-national-dialogue.txt"
+      - "lab/exp2-markets-dialogue.txt"
+      - "scripts/lab-generate-voice-test.py"
+      - "lab-site/src/pages/index.astro"
+      - ".github/workflows/lab-voice-test.yml"
+  push:
+    branches:
+      - main
+    paths:
+      - "lab/exp1-voice-test.txt"
+      - "lab/exp2-national-dialogue.txt"
+      - "lab/exp2-markets-dialogue.txt"
+      - "scripts/lab-generate-voice-test.py"
+      - "lab-site/src/pages/index.astro"
+      - ".github/workflows/lab-voice-test.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  generate-lab-voices:
+    name: Generar voces LAB
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+
+    steps:
+      - name: Descargar repositorio privado
+        uses: actions/checkout@v5
+
+      - name: Preparar acceso al repositorio público
+        env:
+          DEPLOY_KEY: ${{ secrets.ATLAS_PAGES_DEPLOY_KEY }}
+        run: |
+          install -m 700 -d ~/.ssh
+          printf '%s\n' "$DEPLOY_KEY" > ~/.ssh/atlas_news_pages
+          chmod 600 ~/.ssh/atlas_news_pages
+          ssh-keyscan -H github.com >> ~/.ssh/known_hosts
+
+      - name: Descargar repositorio público
+        env:
+          GIT_SSH_COMMAND: ssh -i ~/.ssh/atlas_news_pages -o IdentitiesOnly=yes
+        run: |
+          git clone --depth 1 git@github.com:Atlasnews-media/Atlasnews-media.github.io.git \
+            "$RUNNER_TEMP/atlas-news-public"
+
+      - name: Restaurar caché de Kokoro
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/huggingface
+          key: kokoro-82m-v1-${{ runner.os }}
+
+      - name: Generar comparación y diálogos con diagnóstico
+        env:
+          ATLAS_PUBLIC_REPO_DIR: ${{ runner.temp }}/atlas-news-public
+        run: |
+          set +e
+          mkdir -p "$RUNNER_TEMP/atlas-news-public/lab/audio"
+          log="$RUNNER_TEMP/lab-kokoro.log"
+          {
+            sudo apt-get update -qq && \
+            sudo apt-get install -y -qq espeak-ng ffmpeg python3-venv && \
+            python3 -m venv "$RUNNER_TEMP/kokoro-lab-venv" && \
+            source "$RUNNER_TEMP/kokoro-lab-venv/bin/activate" && \
+            python -m pip install --quiet --upgrade pip && \
+            python -m pip install --quiet "kokoro==0.9.4" soundfile numpy && \
+            python scripts/lab-generate-voice-test.py
+          } >"$log" 2>&1
+          code=$?
+          if [[ $code -eq 0 ]]; then
+            printf '%s\n' \
+              '{"status":"success","experiments":["exp1","exp2"],"exp1Voices":["em_alex","em_santa","af_heart"],"exp2Voices":{"voice1":"ef_dora","voice2":"em_alex"},"exp2Outputs":["exp2-national-dialogue.mp3","exp2-markets-dialogue.mp3"]}' \
+              > "$RUNNER_TEMP/atlas-news-public/lab/audio/status.json"
+          else
+            tail -n 60 "$log" | python3 -c 'import json,sys; print(json.dumps({"status":"failure","experiments":["exp1","exp2"],"log":sys.stdin.read()}, ensure_ascii=False))' > "$RUNNER_TEMP/atlas-news-public/lab/audio/status.json"
+          fi
+          cat "$log"
+          exit 0
+
+      - name: Publicar resultados LAB
+        env:
+          GIT_SSH_COMMAND: ssh -i ~/.ssh/atlas_news_pages -o IdentitiesOnly=yes
+        run: |
+          set -euo pipefail
+          cd "$RUNNER_TEMP/atlas-news-public"
+          git config user.name "ATLAS NEWS LAB"
+          git config user.email "actions@users.noreply.github.com"
+          git add lab/audio/
+          if git diff --cached --quiet; then
+            echo "Los resultados LAB ya estaban actualizados."
+          else
+            git commit -m "LAB exp2 — diálogos Nacional y Mercados"
+            git pull --rebase origin main
+            git push origin main
+          fi

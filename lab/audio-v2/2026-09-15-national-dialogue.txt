@@ -1,0 +1,19 @@
+VOZ 1: La señal local de este martes combina dos cosas que conviene mirar juntas: desde hoy rigen nuevas tasas de interés corriente y máxima convencional publicadas por la Comisión para el Mercado Financiero, y al mismo tiempo la economía chilena llega a septiembre con una proyección de crecimiento bastante más baja que la de comienzos de año.
+VOZ 2: Partamos por lo primero. ¿Qué son exactamente esas tasas que publica la CMF?
+VOZ 1: La tasa de interés corriente es una referencia construida a partir de operaciones efectivas del mercado. La tasa máxima convencional, en cambio, funciona como límite legal para determinados créditos. Ambas cambian según plazo, monto y tipo de operación.
+VOZ 2: ¿Eso significa que hoy todos los bancos tienen que cambiar inmediatamente la tasa que cobran?
+VOZ 1: No. Esa sería una interpretación incorrecta. Cada institución mantiene su política comercial y de riesgo dentro del marco legal. Lo que cambia desde hoy es la referencia regulatoria vigente para los distintos segmentos de crédito.
+VOZ 2: ¿Y por qué importa especialmente ahora?
+VOZ 1: Porque el contexto macroeconómico se ha debilitado. En el Informe de Política Monetaria de septiembre, el Banco Central redujo el rango de crecimiento esperado para 2026 desde 1,0%-1,75% a 0,25%-0,75%. La demanda interna perdió fuerza, el mercado laboral se deterioró y la confianza también mostró debilidad.
+VOZ 2: Pero la inflación sigue por encima de la meta.
+VOZ 1: Sí. El IPC anual se ubicó en 4,1%, mientras la Tasa de Política Monetaria permanece en 4,5%. Eso genera una tensión interesante: por un lado, una economía más débil reduce presión sobre los precios; por otro, el shock energético internacional sigue elevando costos.
+VOZ 2: Entonces no es evidente que la próxima decisión del Banco Central sea bajar tasas.
+VOZ 1: Exactamente. El propio Banco Central ha señalado que evaluará la TPM reunión a reunión. No hay una trayectoria predeterminada. El resultado depende de cuál de esas fuerzas gane persistencia: la debilidad doméstica o las presiones externas sobre inflación.
+VOZ 2: ¿Qué significa esto para una persona que hoy está evaluando un crédito de consumo?
+VOZ 1: Que no basta con mirar una tasa nominal aislada. Hay que comparar el costo total, especialmente la CAE, además de seguros, comisiones y plazo. Dos créditos con una tasa parecida pueden terminar teniendo costos finales bastante distintos.
+VOZ 2: ¿Y para los bancos y cooperativas?
+VOZ 1: El nuevo certificado de la CMF redefine los límites aplicables a cada segmento. Eso obliga a revisar pricing, originación y cobranza dentro de los techos vigentes. El efecto comercial depende de cuánto espacio tenga cada institución entre su tasa efectiva y la máxima convencional.
+VOZ 2: Entonces la noticia no es que el crédito se encareció automáticamente hoy.
+VOZ 1: Correcto. La noticia es que cambia el marco de referencia justo cuando hogares y empresas enfrentan una economía con menos crecimiento, empleo más débil y condiciones financieras todavía exigentes. Es esa combinación la que merece atención.
+VOZ 2: ¿Qué conviene observar ahora?
+VOZ 1: Tres cosas. Primero, cómo se trasladan las nuevas referencias de la CMF a las ofertas efectivas de consumo, tarjetas y financiamiento empresarial. Segundo, la evolución del empleo y de la demanda interna. Y tercero, las próximas cifras de inflación y la comunicación del Banco Central. Ahí veremos si el costo del crédito comienza a encontrar alivio o si las presiones externas obligan a mantener condiciones restrictivas por más tiempo.

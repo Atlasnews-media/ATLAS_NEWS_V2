@@ -1,0 +1,102 @@
+{
+  "date": "2026-09-16",
+  "generatedAt": "2026-09-16T23:46:00-03:00",
+  "contract": "atlas-en-una-mirada-v2",
+  "items": [
+    {
+      "territory": "international_technology",
+      "section": "internacional",
+      "anchor": "tecnologia",
+      "headline": "Google y Nvidia llevan flexibilidad eléctrica a los centros de IA",
+      "deck": "Una nueva alianza busca que centros de datos ajusten carga en horas críticas para acelerar conexiones a la red sin exigir capacidad fija permanente.",
+      "development": "Emerald AI, Google y Nvidia lanzaron la AI Energy Management Alliance junto a empresas de tecnología, eléctricas y generación. El modelo propone convertir grandes centros de datos en cargas controlables: desplazar cómputo no urgente, usar almacenamiento o reducir demanda cuando la red se tensiona. La alianza plantea métricas comunes de respuesta, intercambio de datos operacionales y vías de conexión más rápidas para instalaciones que demuestren flexibilidad. El cambio importa porque la disponibilidad eléctrica se volvió un cuello de botella para nueva infraestructura de IA; parte del crecimiento podría apoyarse en capacidad existente en vez de requerir siempre nuevas obras de red.",
+      "publishedAt": "2026-09-16",
+      "sources": [
+        {
+          "name": "NVIDIA — Emerald AI, Google and NVIDIA Launch Alliance to Advance Flexible AI Data Centers",
+          "url": "https://blogs.nvidia.com/blog/ai-energy-management-alliance/"
+        },
+        {
+          "name": "Axios — Tech giants launch flexible-power coalition for data centers",
+          "url": "https://www.axios.com/2026/09/16/tech-giants-launch-flexible-power-coalition-data-centers"
+        }
+      ]
+    },
+    {
+      "territory": "international_world",
+      "section": "internacional",
+      "anchor": "mundo",
+      "headline": "Canadá amplía la deducción inmediata para nueva inversión",
+      "deck": "Ottawa hará permanente el gasto inmediato y ampliará los activos elegibles; además buscará capital privado para operar sus cuatro mayores aeropuertos.",
+      "development": "En el Canada Investment Summit, el gobierno anunció la Productivity Mega Deduction, que permite descontar de inmediato una gama mucho más amplia de activos, desde software y fibra hasta equipos e infraestructura. Ottawa también hará permanente la deducción inmediata. Según sus estimaciones, la tasa efectiva marginal sobre nueva inversión bajaría de cerca de 13% a 6,4%. En paralelo, abrirá concesiones de largo plazo para operar los cuatro mayores aeropuertos, manteniendo la propiedad pública de terrenos y activos. El mecanismo adelanta la recuperación fiscal del gasto de capital y abre infraestructura aeroportuaria a inversión privada.",
+      "publishedAt": "2026-09-15",
+      "sources": [
+        {
+          "name": "Gobierno de Canadá — Productivity Mega Deduction",
+          "url": "https://www.pm.gc.ca/en/news/news-releases/2026/09/15/prime-minister-carney-introduces-new-productivity-mega-deduction"
+        },
+        {
+          "name": "Reuters — Canada offers permanent tax incentive on capital investment",
+          "url": "https://www.reuters.com/business/canada-seek-private-investment-major-airports-says-carney-2026-09-15/"
+        }
+      ]
+    },
+    {
+      "territory": "chile_ipsa_company",
+      "section": "nacional",
+      "anchor": "empresas",
+      "headline": "Cencosud lleva Don Salva a 11 tiendas en cuatro meses",
+      "deck": "El grupo expandió su hard discount desde la primera apertura de mayo a 11 locales en Santiago, sumando un formato pequeño para compras cotidianas.",
+      "development": "Don Salva pasó de una primera tienda en mayo a 11 locales operativos en la Región Metropolitana. Cencosud está usando superficies cercanas a 180 m², surtido concentrado en categorías esenciales y marcas propias para combinar proximidad con precios permanentes bajos. El formato complementa a Jumbo, Santa Isabel y Spid, en vez de reemplazarlos, y amplía la cobertura en compras de reposición y barrio. Económicamente, el cambio introduce otra plataforma competitiva en hard discount, un segmento donde ya operan formatos de Walmart, SMU y nuevos actores regionales, y prueba un modelo con menor complejidad operativa.",
+      "publishedAt": "2026-09-16",
+      "sources": [
+        {
+          "name": "ANDA — Cencosud alcanza 11 tiendas Don Salva",
+          "url": "https://anda.cl/supermercados-don-salva-cencosud-11-tiendas-santiago/"
+        },
+        {
+          "name": "Diario Financiero vía La República — Cencosud acelera apuesta por el hard discount",
+          "url": "https://www.larepublica.co/globoeconomia/cencosud-acelera-apuesta-por-el-hard-discount-con-11-locales-don-salva-4483497"
+        }
+      ]
+    },
+    {
+      "territory": "chile_policy_market",
+      "section": "nacional",
+      "anchor": "regulacion",
+      "headline": "SEC suspende cobros ligados a medidores anómalos de Enel",
+      "deck": "El regulador formuló cargos y ordenó frenar facturación y cortes, además de recambiar equipos con anomalías; más de 56 mil medidores están bajo revisión.",
+      "development": "La fiscalización surgió por reclamos de cobros excesivos en Pudahuel y detectó equipos que seguían registrando energía con las cargas eléctricas desconectadas. La SEC formuló cargos contra Enel Distribución y ordenó medidas preventivas sobre los medidores con anomalías: suspensión de facturación, ausencia de cortes por deuda y reemplazo de equipos. El universo informado supera 56 mil unidades Nansen instaladas en la concesión, pero esa cifra no implica que todas tengan la falla. Enel dispone de 15 días hábiles para presentar descargos. El mecanismo económico pasa por eventuales regularizaciones de cuentas, costos de recambio y posibles sanciones.",
+      "publishedAt": "2026-09-14T12:31:00-03:00",
+      "sources": [
+        {
+          "name": "Diario Financiero — SEC formula cargos a Enel por medidores",
+          "url": "https://www.df.cl/empresas/energia/sec-formula-cargos-a-enel-por-medidores-que-continuaban-registrando-consumo"
+        },
+        {
+          "name": "Pauta — SEC ordena suspender cobros y reemplazar medidores",
+          "url": "https://www.pauta.cl/actualidad/2026/09/14/sec-ordena-a-enel-suspender-cobros-y-reemplazar-medidores-que-registraban-consumo-sin-artefactos-conectados.html"
+        }
+      ]
+    },
+    {
+      "territory": "markets_investments",
+      "section": "mercados",
+      "anchor": "inversiones",
+      "headline": "Un ETF QDII chino llega a 24% de prima por exposición al Nasdaq",
+      "deck": "La demanda por activos externos llevó a gestores a restringir suscripciones; un ETF tecnológico de Shenzhen operó 24% sobre su valor neto.",
+      "development": "Los vehículos QDII, una de las vías autorizadas para que capital chino invierta fuera del país, muestran una fuerte presión de demanda. Reuters reportó que gestores volvieron a restringir suscripciones tras haber ampliado límites, mientras un ETF de Shenzhen ligado al Nasdaq-100 Technology Sector llegó a transarse 24% sobre su valor neto. El trasfondo es una cuota QDII récord de US$183.000 millones, ampliada por el regulador cambiario, junto con controles más estrictos sobre canales no autorizados. La señal relevante es el costo que algunos inversionistas chinos están pagando por acceder a diversificación internacional mediante los canales habilitados.",
+      "publishedAt": "2026-09-16T03:37:00Z",
+      "sources": [
+        {
+          "name": "Reuters — Chinese investors rush into US stocks as Beijing opens wider path overseas",
+          "url": "https://www.reuters.com/world/china/chinese-investors-rush-into-us-stocks-beijing-opens-wider-path-overseas-2026-09-16/"
+        },
+        {
+          "name": "State Administration of Foreign Exchange — QDII investment quotas",
+          "url": "https://www.safe.gov.cn/en/2019/0731/1537.html"
+        }
+      ]
+    }
+  ]
+}

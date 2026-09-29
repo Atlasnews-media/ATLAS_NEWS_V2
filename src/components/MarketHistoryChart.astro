@@ -1,0 +1,398 @@
+---
+type HistoryPoint = {
+  date: string;
+  value: number;
+};
+
+type Props = {
+  id: string;
+  label: string;
+  unit: string;
+  provider: string;
+  points: HistoryPoint[];
+};
+
+const { id, label, unit, provider, points = [] } = Astro.props as Props;
+const cleanPoints = points.filter(
+  (point) =>
+    typeof point?.date === "string" &&
+    Number.isFinite(point?.value) &&
+    point.value > 0,
+);
+
+const WIDTH = 960;
+const HEIGHT = 248;
+const LEFT = 72;
+const RIGHT = 18;
+const TOP = 18;
+const BOTTOM = 34;
+const plotWidth = WIDTH - LEFT - RIGHT;
+const plotHeight = HEIGHT - TOP - BOTTOM;
+const values = cleanPoints.map((point) => point.value);
+const rawMin = values.length > 0 ? Math.min(...values) : 0;
+const rawMax = values.length > 0 ? Math.max(...values) : 1;
+const rawRange = Math.max(rawMax - rawMin, Math.abs(rawMax) * 0.01, 1);
+const minValue = rawMin - rawRange * 0.08;
+const maxValue = rawMax + rawRange * 0.08;
+const valueRange = Math.max(maxValue - minValue, 1);
+
+function xFor(index: number) {
+  if (cleanPoints.length <= 1) return LEFT;
+  return LEFT + (index / (cleanPoints.length - 1)) * plotWidth;
+}
+
+function yFor(value: number) {
+  return TOP + ((maxValue - value) / valueRange) * plotHeight;
+}
+
+const linePath = cleanPoints
+  .map(
+    (point, index) =>
+      `${index === 0 ? "M" : "L"}${xFor(index).toFixed(2)},${yFor(point.value).toFixed(2)}`,
+  )
+  .join(" ");
+const firstX = cleanPoints.length > 0 ? xFor(0) : LEFT;
+const lastX = cleanPoints.length > 0 ? xFor(cleanPoints.length - 1) : LEFT;
+const baselineY = TOP + plotHeight;
+const areaPath = linePath
+  ? `${linePath} L${lastX.toFixed(2)},${baselineY.toFixed(2)} L${firstX.toFixed(2)},${baselineY.toFixed(2)} Z`
+  : "";
+
+const firstPoint = cleanPoints.at(0);
+const lastPoint = cleanPoints.at(-1);
+const change30d =
+  firstPoint && lastPoint && firstPoint.value !== 0
+    ? (lastPoint.value / firstPoint.value - 1) * 100
+    : null;
+const trend =
+  change30d === null || Math.abs(change30d) < 0.01
+    ? "flat"
+    : change30d > 0
+      ? "up"
+      : "down";
+const arrow = trend === "up" ? "↑" : trend === "down" ? "↓" : "●";
+
+const decimal0 = new Intl.NumberFormat("es-CL", { maximumFractionDigits: 0 });
+const decimal2 = new Intl.NumberFormat("es-CL", {
+  minimumFractionDigits: 2,
+  maximumFractionDigits: 2,
+});
+const signed2 = new Intl.NumberFormat("es-CL", {
+  minimumFractionDigits: 2,
+  maximumFractionDigits: 2,
+  signDisplay: "always",
+});
+const shortDate = new Intl.DateTimeFormat("es-CL", {
+  day: "2-digit",
+  month: "short",
+  timeZone: "UTC",
+});
+
+function formatValue(value: number) {
+  switch (unit) {
+    case "clp":
+      return `$${decimal2.format(value)}`;
+    case "usd-per-pound":
+      return `US$${decimal2.format(value)}/lb`;
+    case "usd-per-barrel":
+      return `US$${decimal2.format(value)}`;
+    case "points":
+      return decimal2.format(value);
+    default:
+      return decimal2.format(value);
+  }
+}
+
+function formatAxisValue(value: number) {
+  if (unit === "clp" || unit === "points") return decimal0.format(value);
+  if (unit === "usd-per-pound") return decimal2.format(value);
+  return decimal0.format(value);
+}
+
+function formatDate(value?: string) {
+  if (!value) return "—";
+  const parsed = new Date(`${value}T12:00:00Z`);
+  if (!Number.isFinite(parsed.valueOf())) return value;
+  return shortDate.format(parsed).replaceAll(".", "").toUpperCase();
+}
+
+const yTicks = [0, 0.5, 1].map((ratio) => ({
+  y: TOP + ratio * plotHeight,
+  value: maxValue - ratio * valueRange,
+}));
+const dateTickIndexes = cleanPoints.length
+  ? Array.from(
+      new Set([
+        0,
+        Math.floor((cleanPoints.length - 1) / 2),
+        cleanPoints.length - 1,
+      ]),
+    )
+  : [];
+const providerLabel =
+  provider === "mindicador"
+    ? "Mi Indicador"
+    : provider === "stooq"
+      ? "Stooq"
+      : provider === "yahoo-public-chart"
+        ? "Yahoo Finance"
+        : provider;
+const gradientId = `history-fill-${id}`;
+---
+
+<article class="market-history-card" data-trend={trend}>
+  <header class="market-history-card__heading">
+    <div>
+      <h3>{label}</h3>
+      <p>Últimos 30 días · cierre diario disponible</p>
+    </div>
+    <div class="market-history-card__summary">
+      <strong>{lastPoint ? formatValue(lastPoint.value) : "—"}</strong>
+      <span>
+        <b aria-hidden="true">{arrow}</b>
+        {
+          change30d === null
+            ? "sin variación"
+            : `${signed2.format(change30d)}% 30D`
+        }
+      </span>
+    </div>
+  </header>
+
+  {
+    cleanPoints.length >= 2 ? (
+      <div class="market-history-card__plot">
+        <svg
+          viewBox={`0 0 ${WIDTH} ${HEIGHT}`}
+          role="img"
+          aria-label={`${label}: evolución de los últimos 30 días`}
+        >
+          <defs>
+            <linearGradient id={gradientId} x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="currentColor" stop-opacity="0.12" />
+              <stop
+                offset="100%"
+                stop-color="currentColor"
+                stop-opacity="0.015"
+              />
+            </linearGradient>
+          </defs>
+
+          {yTicks.map((tick) => (
+            <g class="chart-grid">
+              <line x1={LEFT} x2={WIDTH - RIGHT} y1={tick.y} y2={tick.y} />
+              <text x={LEFT - 10} y={tick.y + 4} text-anchor="end">
+                {formatAxisValue(tick.value)}
+              </text>
+            </g>
+          ))}
+
+          {dateTickIndexes.map((index) => {
+            const point = cleanPoints[index];
+            const x = xFor(index);
+            return (
+              <g class="chart-date">
+                <line x1={x} x2={x} y1={TOP} y2={baselineY} />
+                <text x={x} y={HEIGHT - 8} text-anchor="middle">
+                  {formatDate(point?.date)}
+                </text>
+              </g>
+            );
+          })}
+
+          <path class="chart-area" d={areaPath} fill={`url(#${gradientId})`} />
+          <path class="chart-line" d={linePath} />
+          <circle
+            class="chart-last-point"
+            cx={lastX}
+            cy={lastPoint ? yFor(lastPoint.value) : baselineY}
+            r="3.8"
+          />
+        </svg>
+      </div>
+    ) : (
+      <p class="market-history-card__empty">Serie temporal no disponible.</p>
+    )
+  }
+
+  <footer>
+    Fuente: {providerLabel} · {cleanPoints.length} observaciones disponibles.
+  </footer>
+</article>
+
+<style>
+  .market-history-card {
+    padding: 0.68rem 0 0.72rem;
+    border-top: 1px solid rgb(35 35 29 / 28%);
+  }
+
+  .market-history-card:first-child {
+    border-top: 0;
+  }
+
+  .market-history-card__heading {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 0.75rem;
+    align-items: end;
+    margin-bottom: 0.34rem;
+  }
+
+  .market-history-card__heading h3,
+  .market-history-card__heading p,
+  .market-history-card__summary strong,
+  .market-history-card__summary span,
+  .market-history-card footer,
+  .market-history-card__empty {
+    margin: 0;
+  }
+
+  .market-history-card__heading h3 {
+    font: 800 clamp(0.78rem, 1.5vw, 1rem)/1 var(--sans);
+    letter-spacing: 0.055em;
+    text-transform: uppercase;
+  }
+
+  .market-history-card__heading p {
+    margin-top: 0.13rem;
+    color: var(--ink-soft);
+    font: 700 0.4rem/1.25 var(--sans);
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+
+  .market-history-card__summary {
+    display: grid;
+    gap: 0.06rem;
+    justify-items: end;
+    text-align: right;
+  }
+
+  .market-history-card__summary strong {
+    font: 700 clamp(0.78rem, 1.5vw, 1rem)/1 var(--serif);
+    font-variant-numeric: tabular-nums;
+  }
+
+  .market-history-card__summary span {
+    font: 700 clamp(0.66rem, 1.25vw, 0.84rem)/1 var(--serif);
+    font-variant-numeric: tabular-nums;
+  }
+
+  .market-history-card[data-trend="up"] .market-history-card__summary span {
+    color: #17623d;
+  }
+
+  .market-history-card[data-trend="down"] .market-history-card__summary span {
+    color: #9b1f1f;
+  }
+
+  .market-history-card[data-trend="flat"] .market-history-card__summary span {
+    color: #68665e;
+  }
+
+  .market-history-card__plot {
+    color: var(--ink);
+  }
+
+  .market-history-card svg {
+    display: block;
+    width: 100%;
+    height: auto;
+    overflow: visible;
+  }
+
+  .chart-grid line,
+  .chart-date line {
+    stroke: rgb(35 35 29 / 13%);
+    stroke-width: 1;
+    vector-effect: non-scaling-stroke;
+  }
+
+  .chart-date line {
+    stroke: rgb(35 35 29 / 7%);
+  }
+
+  .chart-grid text,
+  .chart-date text {
+    fill: var(--ink-soft);
+    font: 700 12px/1 var(--sans);
+    letter-spacing: 0.02em;
+  }
+
+  .chart-area {
+    color: var(--ink);
+  }
+
+  .chart-line {
+    fill: none;
+    stroke: currentColor;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-width: 1.8;
+    vector-effect: non-scaling-stroke;
+  }
+
+  .chart-last-point {
+    fill: var(--paper);
+    stroke: currentColor;
+    stroke-width: 1.8;
+    vector-effect: non-scaling-stroke;
+  }
+
+  .market-history-card footer,
+  .market-history-card__empty {
+    color: var(--ink-soft);
+    font: 600 0.4rem/1.35 var(--sans);
+  }
+
+  .market-history-card footer {
+    margin-top: 0.14rem;
+  }
+
+  .market-history-card__empty {
+    padding: 1.2rem 0;
+  }
+
+  @media (max-width: 42rem) {
+    .market-history-card {
+      padding: 0.58rem 0 0.62rem;
+    }
+
+    .market-history-card__heading {
+      gap: 0.4rem;
+      margin-bottom: 0.22rem;
+    }
+
+    .market-history-card__heading h3,
+    .market-history-card__summary strong {
+      font-size: clamp(0.78rem, 3.5vw, 0.92rem);
+    }
+
+    .market-history-card__heading p,
+    .market-history-card footer {
+      font-size: 0.34rem;
+    }
+
+    .market-history-card__summary span {
+      font-size: clamp(0.64rem, 3vw, 0.78rem);
+    }
+
+    .chart-grid text,
+    .chart-date text {
+      font-size: 15px;
+    }
+  }
+
+  @media (max-width: 24rem) {
+    .market-history-card__heading {
+      grid-template-columns: 1fr;
+    }
+
+    .market-history-card__summary {
+      grid-auto-flow: column;
+      justify-content: space-between;
+      justify-items: start;
+      text-align: left;
+    }
+  }
+</style>

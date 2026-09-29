@@ -1,0 +1,345 @@
+{
+  "schemaVersion": 1,
+  "experimentId": "EXP-011",
+  "experimentName": "Memoria editorial semántica",
+  "mode": "LAB_ONLY",
+  "status": "PASS_WITH_OBSERVATIONS",
+  "generatedAt": "2026-09-18T19:25:00.000Z",
+  "skill": {
+    "name": "atlas-editorial-memory",
+    "version": "0.2.0-candidate",
+    "snapshot": "SNAPSHOT — SKILL-003 — atlas-editorial-memory — v0.2.0-candidate — 2026-09-18"
+  },
+  "run": {
+    "runId": "MANUAL-2026-09-18-16c4cbf",
+    "editorialDate": "2026-09-18",
+    "sourceCommit": "16c4cbf88f2d704a587b10a7e05427718684176a",
+    "inputGeneratedAt": "2026-09-18T19:20:20.960Z",
+    "productionWrites": 0
+  },
+  "metrics": {
+    "candidates": 3,
+    "shadowAlerts": 0,
+    "semanticFlags": 2,
+    "disagreements": 2,
+    "recoveredFalseNegatives": 2,
+    "possibleFalsePositives": 0,
+    "processingMs": null
+  },
+  "control": {
+    "engine": "scripts/editorial-shadow-audit.mjs",
+    "thresholds": {
+      "titleSimilarity": 0.45,
+      "thesisSimilarity": 0.35,
+      "crossSectionSimilarity": 0.32,
+      "lowNoveltyScore": 55
+    },
+    "candidateResults": [
+      {
+        "candidate_id": "CAND-b84242c85dbd52ca",
+        "novelty": {
+          "date": "2026-09-18",
+          "section": "general",
+          "title": "Bancos centrales endurecen el mapa global mientras la energía mantiene presión",
+          "noveltyScore": 80,
+          "closestPrevious": {
+            "date": "2026-09-17",
+            "section": "general",
+            "title": "La Fed endurece el mapa global de tasas mientras la energía mantiene el riesgo",
+            "similarity": 0.196
+          }
+        },
+        "repetition": [],
+        "cross_section_overlap": []
+      },
+      {
+        "candidate_id": "CAND-69ce53ec1e1bae9b",
+        "novelty": {
+          "date": "2026-09-18",
+          "section": "markets",
+          "title": "Tasas globales y flujos elevan la selectividad mientras el petróleo da alivio parcial",
+          "noveltyScore": 93,
+          "closestPrevious": {
+            "date": "2026-09-11",
+            "section": "markets",
+            "title": "El IPC decidirá si el Treasury rompe 5% o si el mercado desarma parte del shock",
+            "similarity": 0.07
+          }
+        },
+        "repetition": [],
+        "cross_section_overlap": []
+      },
+      {
+        "candidate_id": "CAND-2b7ac8af686dc430",
+        "novelty": {
+          "date": "2026-09-18",
+          "section": "national",
+          "title": "El plan laboral enfrenta su prueba: convertir ejecución rápida en empleo efectivo",
+          "noveltyScore": 98,
+          "closestPrevious": {
+            "date": "2026-09-11",
+            "section": "general",
+            "title": "La inflación vuelve a mandar y deja a la Fed frente a una prueba decisiva",
+            "similarity": 0.024
+          }
+        },
+        "repetition": [],
+        "cross_section_overlap": []
+      }
+    ]
+  },
+  "experimental": {
+    "judge": "CHATGPT_SEMANTIC_LAB_V1",
+    "contractVersion": "0.2",
+    "confidencePolicy": "UNSCORED_NO_AUTOMATIC_ACTION",
+    "thresholdsApplied": false,
+    "lineageAssigned": false,
+    "canonicalMemoryWritten": false,
+    "productionWrites": 0,
+    "observations": [
+      "El juicio semántico detectó repetición de ángulo en General y Mercados que el Shadow léxico no marcó.",
+      "General y Mercados son piezas compuestas: un único event_relation a nivel artículo pierde información frente a las relaciones por claim.",
+      "Los highlights publicados no son siempre claims factuales atómicos; Nacional CLM-03 es una tesis editorial. Debe separarse evidence_units de claims verificados antes de automatizar lineage."
+    ]
+  },
+  "cases": [
+    {
+      "candidateId": "CAND-b84242c85dbd52ca",
+      "title": "Bancos centrales endurecen el mapa global mientras la energía mantiene presión",
+      "section": "general",
+      "summary": "Actualización material, pero la pieza mezcla varias líneas factuales distintas bajo una sola publicación; el label de evento a nivel artículo queda deliberadamente UNCERTAIN.",
+      "shadow": {
+        "noveltyScore": 80,
+        "repetitionFlags": 0,
+        "result": "NO_REPETITION_FLAG"
+      },
+      "semantic": {
+        "eventRelation": "UNCERTAIN",
+        "proposedPriorRecordRef": "src/content/editions/2026-09-17-daily-fed-endurece-el-mapa-global-de-tasas.md",
+        "proposedLineageId": null,
+        "confidence": null,
+        "informationRelation": "MEANINGFUL_UPDATE",
+        "informationConfidence": null,
+        "claimRelations": [
+          {
+            "candidateClaimId": "CAND-b84242c85dbd52ca-CLM-01",
+            "priorClaimRef": "src/content/editions/2026-09-17-daily-fed-endurece-el-mapa-global-de-tasas.md#CLM-03",
+            "label": "MATERIAL_UPDATE",
+            "confidence": null
+          },
+          {
+            "candidateClaimId": "CAND-b84242c85dbd52ca-CLM-02",
+            "priorClaimRef": "src/content/editions/2026-09-17-daily-fed-endurece-el-mapa-global-de-tasas.md#CLM-01",
+            "label": "SAME_FACT",
+            "confidence": null
+          },
+          {
+            "candidateClaimId": "CAND-b84242c85dbd52ca-CLM-03",
+            "priorClaimRef": null,
+            "label": "UNRELATED",
+            "confidence": null
+          },
+          {
+            "candidateClaimId": "CAND-b84242c85dbd52ca-CLM-04",
+            "priorClaimRef": "src/content/editions/2026-09-17-daily-fed-endurece-el-mapa-global-de-tasas.md#CLM-02",
+            "label": "NEW_EVIDENCE",
+            "confidence": null
+          },
+          {
+            "candidateClaimId": "CAND-b84242c85dbd52ca-CLM-05",
+            "priorClaimRef": "src/content/editions/2026-09-16-daily-arabia-saudi-ensaya-un-bypass-maritimo.md#CLM-01",
+            "label": "MATERIAL_UPDATE",
+            "confidence": null
+          }
+        ],
+        "addsNewInformation": {
+          "value": true,
+          "confidence": null
+        },
+        "historicalContextNeeded": {
+          "value": true,
+          "confidence": null
+        },
+        "angleRepeated": {
+          "value": true,
+          "confidence": null
+        },
+        "angleSummary": "Endurecimiento coordinado de bancos centrales con energía/Hormuz como presión inflacionaria persistente.",
+        "confidenceSummary": null
+      },
+      "decisionReason": "El 18 de septiembre aporta hechos nuevos —alza efectiva del BOJ, votación del BoE y cuantificación de exportaciones saudíes—, pero conserva casi intacto el encuadre macro de tasas más energía usado el 17. No se asigna lineage porque la pieza es compuesta y no existe threshold autorizado.",
+      "evidenceRefs": [
+        "src/content/editions/2026-09-17-daily-fed-endurece-el-mapa-global-de-tasas.md",
+        "src/content/editions/2026-09-16-daily-arabia-saudi-ensaya-un-bypass-maritimo.md"
+      ],
+      "policyAction": "HOLD_FOR_HUMAN_REVIEW"
+    },
+    {
+      "candidateId": "CAND-69ce53ec1e1bae9b",
+      "title": "Tasas globales y flujos elevan la selectividad mientras el petróleo da alivio parcial",
+      "section": "markets",
+      "summary": "Hay nueva información de flujos y una actualización monetaria, pero el ángulo de tasas altas + petróleo + selectividad continúa una familia editorial ya usada.",
+      "shadow": {
+        "noveltyScore": 93,
+        "repetitionFlags": 0,
+        "result": "NO_REPETITION_FLAG"
+      },
+      "semantic": {
+        "eventRelation": "UNCERTAIN",
+        "proposedPriorRecordRef": "src/content/briefings/2026-09-16-markets-petroleo-cede-pero-tasas-mantienen-la-presion.md",
+        "proposedLineageId": null,
+        "confidence": null,
+        "informationRelation": "MEANINGFUL_UPDATE",
+        "informationConfidence": null,
+        "claimRelations": [
+          {
+            "candidateClaimId": "CAND-69ce53ec1e1bae9b-CLM-01",
+            "priorClaimRef": "src/content/editions/2026-09-17-daily-fed-endurece-el-mapa-global-de-tasas.md#CLM-03",
+            "label": "MATERIAL_UPDATE",
+            "confidence": null
+          },
+          {
+            "candidateClaimId": "CAND-69ce53ec1e1bae9b-CLM-02",
+            "priorClaimRef": null,
+            "label": "NEW_EVIDENCE",
+            "confidence": null
+          },
+          {
+            "candidateClaimId": "CAND-69ce53ec1e1bae9b-CLM-03",
+            "priorClaimRef": "src/content/briefings/2026-09-16-markets-petroleo-cede-pero-tasas-mantienen-la-presion.md#CLM-01",
+            "label": "NEW_EVIDENCE",
+            "confidence": null
+          }
+        ],
+        "addsNewInformation": {
+          "value": true,
+          "confidence": null
+        },
+        "historicalContextNeeded": {
+          "value": true,
+          "confidence": null
+        },
+        "angleRepeated": {
+          "value": true,
+          "confidence": null
+        },
+        "angleSummary": "Tasas elevadas mantienen presión financiera mientras el petróleo sólo ofrece alivio parcial; la novedad se desplaza a flujos y selección de riesgo.",
+        "confidenceSummary": null
+      },
+      "decisionReason": "El dato de salidas de fondos es realmente nuevo y la subida del BOJ actualiza el régimen de tasas, pero el marco editorial de costo de capital alto y alivio energético incompleto aparece reiteradamente en los días previos. Sin threshold calibrado, no hay acción automática.",
+      "evidenceRefs": [
+        "src/content/briefings/2026-09-16-markets-petroleo-cede-pero-tasas-mantienen-la-presion.md",
+        "src/content/briefings/2026-09-17-markets-fed-aplana-la-curva-y-el-dolar-toma-el-relevo.md",
+        "src/content/editions/2026-09-17-daily-fed-endurece-el-mapa-global-de-tasas.md"
+      ],
+      "policyAction": "HOLD_FOR_HUMAN_REVIEW"
+    },
+    {
+      "candidateId": "CAND-2b7ac8af686dc430",
+      "title": "El plan laboral enfrenta su prueba: convertir ejecución rápida en empleo efectivo",
+      "section": "national",
+      "summary": "Evento nuevo respecto de la memoria reciente: pasa del diagnóstico de debilidad laboral a un plan gubernamental de respuesta. El contexto previo ayuda, pero no convierte la pieza en repetición.",
+      "shadow": {
+        "noveltyScore": 98,
+        "repetitionFlags": 0,
+        "result": "NO_REPETITION_FLAG"
+      },
+      "semantic": {
+        "eventRelation": "NEW_EVENT",
+        "proposedPriorRecordRef": null,
+        "proposedLineageId": null,
+        "confidence": null,
+        "informationRelation": "NEW",
+        "informationConfidence": null,
+        "claimRelations": [
+          {
+            "candidateClaimId": "CAND-2b7ac8af686dc430-CLM-01",
+            "priorClaimRef": "src/content/briefings/2026-09-17-national-minuta-confirma-pausa-pero-eleva-el-valor-del-empleo.md#CLM-03",
+            "label": "NEW_EVIDENCE",
+            "confidence": null
+          },
+          {
+            "candidateClaimId": "CAND-2b7ac8af686dc430-CLM-02",
+            "priorClaimRef": null,
+            "label": "UNRELATED",
+            "confidence": null
+          },
+          {
+            "candidateClaimId": "CAND-2b7ac8af686dc430-CLM-03",
+            "priorClaimRef": null,
+            "label": "UNCERTAIN",
+            "confidence": null,
+            "note": "El highlight expresa una tesis/criterio editorial y no un hecho atómico verificable."
+          }
+        ],
+        "addsNewInformation": {
+          "value": true,
+          "confidence": null
+        },
+        "historicalContextNeeded": {
+          "value": true,
+          "confidence": null
+        },
+        "angleRepeated": {
+          "value": false,
+          "confidence": null
+        },
+        "angleSummary": "Del diagnóstico de deterioro laboral a la prueba de ejecución y sostenibilidad del plan de empleo.",
+        "confidenceSummary": null
+      },
+      "decisionReason": "La debilidad del empleo ya estaba en la memoria, pero la preparación de un plan de emergencia laboral introduce un evento y una pregunta editorial nuevos. El tercer highlight revela además que highlights y claims factuales no son equivalentes.",
+      "evidenceRefs": [
+        "src/content/briefings/2026-09-17-national-minuta-confirma-pausa-pero-eleva-el-valor-del-empleo.md",
+        "src/content/briefings/2026-09-15-national-credito-tasas-economia-debil.md"
+      ],
+      "policyAction": "HOLD_FOR_HUMAN_REVIEW"
+    }
+  ],
+  "notes": [
+    "Primera corrida controlada de EXP-011 sobre la edición publicada del 2026-09-18.",
+    "No se inventaron confidencias ni thresholds; todos los confidence permanecen null.",
+    "No se asignó lineage, no se modificó memoria canónica y no se tocó producción.",
+    "Resultado de laboratorio; no implica promoción de SKILL-003."
+  ],
+  "experimentalArticle": {
+    "candidateId": "CAND-b84242c85dbd52ca",
+    "section": "general",
+    "eyebrow": "Internacional",
+    "title": "Japón sube la tasa y Arabia Saudita amplía su vía alternativa mientras Hormuz sigue restringido",
+    "summary": "El Banco de Japón llevó su referencia a 1,25%, el Banco de Inglaterra mantuvo 3,75% con una minoría a favor de subir y Aramco prepara mayores transferencias vía Omán mientras el tránsito por Hormuz continúa deprimido.",
+    "publishedAt": "2026-09-18T10:20:57-03:00",
+    "cutoffAt": "2026-09-18T09:49:25-03:00",
+    "tags": [
+      "economia-global",
+      "bancos-centrales",
+      "energia"
+    ],
+    "bodyMarkdown": "## Hecho central\n\nLa novedad de este viernes está en dos movimientos concretos dentro de un escenario que ATLAS NEWS ya venía siguiendo: Japón ejecutó una nueva subida de tasas y Arabia Saudita amplió su adaptación logística para sostener exportaciones de crudo. El Banco de Japón elevó su tasa de referencia de 1,0% a 1,25%, el nivel más alto en 31 años, mientras Aramco planea mover cerca de 60 millones de barriles en septiembre y octubre mediante transferencias frente a Sohar, Omán.\n\nLa Reserva Federal queda como antecedente inmediato, no como hecho nuevo del día. Su alza de 25 puntos base esta semana ya había endurecido el mapa global de tasas. La información nueva es que Japón se suma de forma efectiva a ese movimiento y que el Banco de Inglaterra, aunque mantuvo Bank Rate en 3,75%, mostró una división mayor: tres de sus nueve miembros prefirieron elevarla a 4%.\n\n## En una mirada\n\nJapón subió su tasa a 1,25%. El Banco de Inglaterra mantuvo 3,75%, con tres votos por un alza. El Brent retrocedió hacia US$103 por barril al moderarse el temor inmediato sobre la oferta saudí. Al mismo tiempo, Hormuz siguió lejos de normalizarse: el jueves se registraron sólo cuatro tránsitos de buques de commodities frente a un promedio reciente de 16.\n\nArabia Saudita está intentando compensar parte de esa restricción mediante una ruta alternativa. Operadores esperan que Aramco amplíe transferencias de crudo frente a Omán durante septiembre y octubre, una señal de adaptación operativa más que de resolución del cuello de botella.\n\n## Por qué importa\n\nLa combinación muestra que el shock de energía y tasas no está simplemente repitiéndose: está cambiando de forma. En política monetaria, más economías están reaccionando al riesgo inflacionario. En energía, el foco se desplaza desde la interrupción inicial hacia la capacidad de los productores para rediseñar rutas y sostener volúmenes.\n\nEso importa porque un sistema que logra adaptarse puede reducir la presión inmediata sobre precios sin eliminar el riesgo estructural. El petróleo puede retroceder mientras Hormuz continúa operando muy por debajo de su tráfico habitual. Del mismo modo, una pausa del Banco de Inglaterra no equivale a relajación si una parte creciente del comité considera necesario subir.\n\n## Mercados globales\n\nEl Brent cayó alrededor de 2% hacia US$103 por barril y el WTI se acercó a US$100, apoyados por la recuperación gradual de capacidad saudí, mayores inventarios y alternativas de exportación. La caída del crudo ofrece alivio frente a las sesiones previas, pero todavía no confirma una normalización logística.\n\nEn Asia, las bolsas cerraron mayoritariamente al alza y el Nikkei avanzó pese a la subida del Banco de Japón. El yen, en cambio, se debilitó después de la decisión. La reacción recuerda que el efecto de una subida de tasas depende también de las expectativas previas, de la trayectoria relativa frente a otros bancos centrales y de la percepción de riesgo.\n\n## Chile\n\nPara Chile, la señal internacional combina un alivio parcial en energía con condiciones financieras externas todavía exigentes. Un petróleo algo más bajo reduce presión marginal sobre costos importados, pero el endurecimiento de tasas en economías desarrolladas mantiene elevado el costo global del capital.\n\nLa variable relevante será cuál de esas dos fuerzas persiste. Si la adaptación logística saudí permite contener el precio del crudo mientras los flujos por Hormuz se recuperan, el canal inflacionario externo perdería presión. Si las interrupciones continúan, el alivio observado este viernes podría ser transitorio.\n\n## Tasas, monedas y commodities\n\nLa Fed dejó su rango objetivo en 3,75%-4,00% tras la subida de esta semana. Japón elevó su referencia a 1,25% y el Banco de Inglaterra mantuvo 3,75%, aunque con una minoría de tres miembros inclinada por 4%.\n\nEn energía, Aramco planea mover cerca de 60 millones de barriles durante septiembre y octubre mediante transferencias frente a Omán. Esa capacidad alternativa ayuda a sostener envíos, pero no elimina la relevancia estratégica de Hormuz, donde el tránsito de commodities sigue muy por debajo del promedio reciente.\n\n## Qué observar\n\nLa primera señal a seguir es si la ruta alternativa saudí logra sostener volúmenes suficientes durante varias jornadas y si eso continúa reflejándose en menores precios del petróleo. La segunda es si el tráfico por Hormuz comienza a recuperarse de forma persistente.\n\nEn política monetaria, el foco pasa a la comunicación posterior del Banco de Japón y a la evolución del debate dentro del Banco de Inglaterra. Si más bancos centrales convierten la preocupación inflacionaria en alzas efectivas, el costo global del capital seguirá siendo una restricción. Si el alivio energético se consolida, parte de esa presión podría moderarse.",
+    "sources": [
+      {
+        "name": "Federal Reserve — FOMC statement, 16 septiembre 2026",
+        "url": "https://www.federalreserve.gov/newsevents/pressreleases/monetary20260916a.htm"
+      },
+      {
+        "name": "Bank of England — Monetary Policy Summary, septiembre 2026",
+        "url": "https://www.bankofengland.co.uk/monetary-policy-summary-and-minutes/2026/september-2026"
+      },
+      {
+        "name": "AP — Banco de Japón eleva la tasa a 1,25%",
+        "url": "https://apnews.com/article/67e71246d3af41bcfc61aa788f9959c7"
+      },
+      {
+        "name": "Reuters — Petróleo cae al aliviarse el temor por oferta saudí",
+        "url": "https://www.reuters.com/business/energy/oil-prices-fall-1-hopes-limited-supply-disruptions-2026-09-18/"
+      },
+      {
+        "name": "Reuters — Tráfico por Hormuz sigue bajo el promedio",
+        "url": "https://www.reuters.com/world/middle-east/shipping-traffic-via-strait-hormuz-stays-below-10-day-average-data-shows-2026-09-18/"
+      },
+      {
+        "name": "Reuters — Aramco aumenta exportaciones vía transferencias en Omán",
+        "url": "https://www.reuters.com/business/energy/aramco-boost-exports-strait-hormuz-60-million-bbl-september-october-traders-say-2026-09-18/"
+      }
+    ]
+  }
+}

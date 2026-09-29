@@ -1,0 +1,78 @@
+{
+  "SQM-B": {
+    "articles": [
+      {
+        "url": "https://example.com/mercados/sqm-calendario?utm_source=gdelt",
+        "title": "SQM informa un nuevo calendario corporativo para agosto",
+        "seendate": "20260803T200000Z",
+        "domain": "example.com",
+        "language": "Spanish",
+        "sourcecountry": "Chile"
+      },
+      {
+        "url": "https://example.com/mercados/sqm-calendario?utm_medium=feed",
+        "title": "SQM informa un nuevo calendario corporativo para agosto",
+        "seendate": "20260803T195500Z",
+        "domain": "example.com",
+        "language": "Spanish",
+        "sourcecountry": "Chile"
+      },
+      {
+        "url": "https://example.net/empresas/sqm-produccion",
+        "title": "Mercado sigue las próximas señales operativas de SQM",
+        "seendate": "20260803T160000Z",
+        "domain": "example.net",
+        "language": "Spanish",
+        "sourcecountry": "Chile"
+      }
+    ]
+  },
+  "CHILE": {
+    "articles": [
+      {
+        "url": "https://example.org/banca/banco-de-chile-resultados",
+        "title": "Banco de Chile concentra la atención antes de sus resultados",
+        "seendate": "20260803T190000Z",
+        "domain": "example.org",
+        "language": "Spanish",
+        "sourcecountry": "Chile"
+      },
+      {
+        "url": "https://example.com/banca/banco-de-chile-dividendos",
+        "title": "Inversionistas revisan la política de dividendos de Banco de Chile",
+        "seendate": "20260803T150000Z",
+        "domain": "example.com",
+        "language": "Spanish",
+        "sourcecountry": "Chile"
+      }
+    ]
+  },
+  "LTM": {
+    "articles": [
+      {
+        "url": "https://example.net/aerolineas/latam-capacidad",
+        "title": "LATAM Airlines actualiza sus señales de capacidad regional",
+        "seendate": "20260803T180000Z",
+        "domain": "example.net",
+        "language": "Spanish",
+        "sourcecountry": "Chile"
+      },
+      {
+        "url": "https://example.org/aerolineas/latam-demanda",
+        "title": "La demanda internacional vuelve al foco para LATAM Airlines",
+        "seendate": "20260803T140000Z",
+        "domain": "example.org",
+        "language": "Spanish",
+        "sourcecountry": "Chile"
+      },
+      {
+        "url": "https://facebook.com/example/latam",
+        "title": "Publicación social sobre LATAM Airlines",
+        "seendate": "20260803T130000Z",
+        "domain": "facebook.com",
+        "language": "Spanish",
+        "sourcecountry": "Chile"
+      }
+    ]
+  }
+}

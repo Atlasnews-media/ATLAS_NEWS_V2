@@ -1,0 +1,1364 @@
+---
+import ContentCard from "../components/ContentCard.astro";
+import DailyAudio from "../components/DailyAudio.astro";
+import DailySignals from "../components/DailySignals.astro";
+import EconomicIndicators from "../components/EconomicIndicators.astro";
+import EditorialDoubleRule from "../components/EditorialDoubleRule.astro";
+import FrontPageHeadline from "../components/FrontPageHeadline.astro";
+import MarketPulse from "../components/MarketPulse.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import {
+  dailyIssueNumber,
+  formatEditorialDate,
+  formatIssueNumber,
+  getLatestDaily,
+  getLatestMarkets,
+  getLatestNational,
+  getPublishedEditions,
+  getPublishedReadings,
+} from "../lib/content";
+import { resolveFrontPageVisual } from "../lib/front-page-visuals";
+
+const [latestDaily, editions, latestNational, latestMarkets, readings] =
+  await Promise.all([
+    getLatestDaily(),
+    getPublishedEditions(),
+    getLatestNational(),
+    getLatestMarkets(),
+    getPublishedReadings(),
+  ]);
+const currentIssueNumber = latestDaily
+  ? dailyIssueNumber(latestDaily, editions)
+  : undefined;
+const latestReading = readings[0];
+const penultimateReading = readings[1];
+const hasAnalysisContent = Boolean(latestNational || latestMarkets);
+
+const dailyVisual = latestDaily
+  ? resolveFrontPageVisual({
+      section: "international",
+      id: latestDaily.id,
+      title: latestDaily.data.title,
+      tags: latestDaily.data.tags,
+      editorialVisual: latestDaily.data.editorialVisual,
+    })
+  : undefined;
+
+const nationalVisual = latestNational
+  ? resolveFrontPageVisual({
+      section: "national",
+      id: latestNational.id,
+      title: latestNational.data.title,
+      tags: latestNational.data.tags,
+      editorialVisual: latestNational.data.editorialVisual,
+    })
+  : undefined;
+
+const marketsVisual = latestMarkets
+  ? resolveFrontPageVisual({
+      section: "markets",
+      id: latestMarkets.id,
+      title: latestMarkets.data.title,
+      tags: latestMarkets.data.tags,
+      editorialVisual: latestMarkets.data.editorialVisual,
+    })
+  : undefined;
+---
+
+<BaseLayout
+  title="ATLAS NEWS — Portada"
+  description="ATLAS NEWS — Inteligencia financiera, contexto y criterio editorial. Portada general con titulares de Internacional, Nacional y Mercados."
+>
+  <main class="front-page front-page--v2">
+    <div class="issue-line">
+      <p>Portada</p>
+      <p>
+        {
+          currentIssueNumber
+            ? formatIssueNumber(currentIssueNumber)
+            : "En preparación"
+        }
+      </p>
+      <p>Edición matutina</p>
+    </div>
+
+    <EconomicIndicators />
+    <DailyAudio expectedDate={latestDaily?.id.slice(0, 10)} />
+
+    {
+      latestDaily ? (
+        <>
+          <EditorialDoubleRule />
+          <section class="lead-grid" aria-label="Titulares y Señales del Día">
+            <article class="lead-story headline-board" data-front-page-switcher>
+              <div
+                class="headline-tabs"
+                role="tablist"
+                aria-label="Contenido principal de Portada"
+              >
+                <button
+                  id="portada-tab-titulares"
+                  class="headline-tab is-active"
+                  type="button"
+                  role="tab"
+                  aria-selected="true"
+                  aria-controls="portada-panel-titulares"
+                  data-front-page-tab="titulares"
+                >
+                  Titulares
+                </button>
+                <button
+                  id="portada-tab-senales"
+                  class="headline-tab"
+                  type="button"
+                  role="tab"
+                  aria-selected="false"
+                  aria-controls="portada-panel-senales"
+                  data-front-page-tab="senales"
+                >
+                  Señales del día
+                </button>
+              </div>
+
+              <div
+                id="portada-panel-titulares"
+                class="headline-tab-panel"
+                role="tabpanel"
+                aria-labelledby="portada-tab-titulares"
+                data-front-page-panel="titulares"
+              >
+                <div class="headline-list">
+                  <FrontPageHeadline
+                    label="Internacional"
+                    title={latestDaily.data.title}
+                    href={`/ediciones/${latestDaily.id}/`}
+                    cta="Ir a Internacional"
+                    visual={dailyVisual}
+                    eager
+                  />
+
+                  {latestNational && (
+                    <FrontPageHeadline
+                      label="Nacional"
+                      title={latestNational.data.title}
+                      href={`/nacional/${latestNational.id}/`}
+                      cta="Ir a Nacional"
+                      visual={nationalVisual}
+                    />
+                  )}
+
+                  {latestMarkets && (
+                    <FrontPageHeadline
+                      label="Mercados"
+                      title={latestMarkets.data.title}
+                      href={`/mercados/${latestMarkets.id}/`}
+                      cta="Ir a Mercados"
+                      visual={marketsVisual}
+                    />
+                  )}
+                </div>
+              </div>
+
+              <div
+                id="portada-panel-senales"
+                class="headline-tab-panel headline-tab-panel--signals"
+                role="tabpanel"
+                aria-labelledby="portada-tab-senales"
+                data-front-page-panel="senales"
+                hidden
+              >
+                <DailySignals />
+              </div>
+            </article>
+
+            <EditorialDoubleRule />
+
+            <aside class="edition-rail" aria-label="Claves de la edición">
+              <p class="rail-title">En una mirada</p>
+              <ol>
+                {latestDaily.data.highlights?.map((highlight) => (
+                  <li>
+                    <strong>{highlight.label}</strong>
+                    <span>{highlight.text}</span>
+                  </li>
+                ))}
+              </ol>
+            </aside>
+          </section>
+        </>
+      ) : (
+        <section class="empty">
+          <h1>La próxima edición está en preparación</h1>
+        </section>
+      )
+    }
+
+    {
+      hasAnalysisContent && (
+        <section class="news-grid" aria-labelledby="analisis">
+          <div class="section-rule">
+            <h2 id="analisis">Análisis</h2>
+          </div>
+          <div class="columns">
+            {latestNational && (
+              <ContentCard
+                href={`/nacional/${latestNational.id}/`}
+                eyebrow="Nacional · Profundidad"
+                title={latestNational.data.title}
+                summary={latestNational.data.summary}
+                date={formatEditorialDate(latestNational.data.publishedAt)}
+                demo={latestNational.data.demo}
+                visual={nationalVisual}
+                visualAlways
+                compact
+              />
+            )}
+            {latestMarkets && (
+              <ContentCard
+                href={`/mercados/${latestMarkets.id}/`}
+                eyebrow="Mercados · Profundidad"
+                title={latestMarkets.data.title}
+                summary={latestMarkets.data.summary}
+                date={formatEditorialDate(latestMarkets.data.publishedAt)}
+                demo={latestMarkets.data.demo}
+                visual={marketsVisual}
+                visualAlways
+                compact
+              />
+            )}
+          </div>
+        </section>
+      )
+    }
+
+    <section class="closing-grid" aria-label="Seguimiento editorial">
+      <article>
+        {
+          latestReading ? (
+            <>
+              <p class="kicker">Última contingencia</p>
+              <h2>
+                <a href={`/lecturas/${latestReading.id}/`}>
+                  {latestReading.data.title}
+                </a>
+              </h2>
+              <p class="closing-summary">{latestReading.data.summary}</p>
+              <a class="closing-link" href={`/lecturas/${latestReading.id}/`}>
+                Abrir contingencia <span aria-hidden="true">→</span>
+              </a>
+            </>
+          ) : (
+            <>
+              <p class="kicker">Contingencia</p>
+              <h2>Próxima contingencia en preparación</h2>
+            </>
+          )
+        }
+      </article>
+      <article>
+        {
+          latestDaily?.data.marketSummary ? (
+            <MarketPulse
+              asOf={latestDaily.data.marketSummary.asOf}
+              items={latestDaily.data.marketSummary.items}
+            />
+          ) : (
+            <>
+              <p class="kicker">Qué observar</p>
+              <h2>Las señales que pueden cambiar la lectura</h2>
+              <p class="closing-summary">
+                Cada edición separa los hechos, las implicancias y las
+                condiciones que podrían invalidar la interpretación inicial.
+              </p>
+            </>
+          )
+        }
+      </article>
+      <article>
+        {
+          penultimateReading ? (
+            <>
+              <p class="kicker">Panorama semanal</p>
+              <h2>
+                <a href={`/lecturas/${penultimateReading.id}/`}>
+                  {penultimateReading.data.title}
+                </a>
+              </h2>
+              <p class="closing-summary">{penultimateReading.data.summary}</p>
+              <a
+                class="closing-link"
+                href={`/lecturas/${penultimateReading.id}/`}
+              >
+                Abrir panorama <span aria-hidden="true">→</span>
+              </a>
+            </>
+          ) : (
+            <>
+              <p class="kicker">Panorama semanal</p>
+              <h2>Próximo panorama en preparación</h2>
+            </>
+          )
+        }
+      </article>
+    </section>
+  </main>
+
+  <aside
+    class="desktop-workspace-panel"
+    data-atlas-workspace-panel
+    aria-label="Panel contextual de ATLAS NEWS"
+    aria-live="polite"
+    aria-busy="true"
+  >
+    <div class="desktop-workspace-panel__status" data-atlas-workspace-status>
+      Cargando índices de mercado…
+    </div>
+    <div class="desktop-workspace-panel__content" data-atlas-workspace-content>
+    </div>
+    <noscript>
+      <p class="desktop-workspace-panel__noscript">
+        <a href="/mercados/indices/">Abrir índices de mercado</a>
+      </p>
+    </noscript>
+  </aside>
+
+  <script>
+    const setupFrontPageSwitcher = () => {
+      const switcher = document.querySelector<HTMLElement>(
+        "[data-front-page-switcher]",
+      );
+      if (!switcher) return;
+
+      const tabs = Array.from(
+        switcher.querySelectorAll<HTMLButtonElement>("[data-front-page-tab]"),
+      );
+      const panels = Array.from(
+        switcher.querySelectorAll<HTMLElement>("[data-front-page-panel]"),
+      );
+
+      const activate = (name: string) => {
+        tabs.forEach((tab) => {
+          const active = tab.dataset.frontPageTab === name;
+          tab.classList.toggle("is-active", active);
+          tab.setAttribute("aria-selected", String(active));
+        });
+
+        panels.forEach((panel) => {
+          panel.hidden = panel.dataset.frontPagePanel !== name;
+        });
+      };
+
+      tabs.forEach((tab) => {
+        if (tab.dataset.frontPageTabReady === "true") return;
+        tab.dataset.frontPageTabReady = "true";
+        tab.addEventListener("click", () => {
+          const name = tab.dataset.frontPageTab;
+          if (name) activate(name);
+        });
+      });
+
+      activate("titulares");
+    };
+
+    setupFrontPageSwitcher();
+    document.addEventListener("astro:page-load", setupFrontPageSwitcher);
+  </script>
+
+  <script>
+    const DESKTOP_WORKSPACE_QUERY = "(min-width: 80rem)";
+    const DEFAULT_PANEL_PATH = "/mercados/indices/";
+    const PANEL_PREFIXES = [
+      "/internacional/",
+      "/nacional/",
+      "/mercados/",
+      "/lecturas/",
+      "/calendario-economico/",
+      "/ediciones/",
+    ];
+
+    const desktopWorkspace = window.matchMedia(DESKTOP_WORKSPACE_QUERY);
+    const panel = document.querySelector<HTMLElement>(
+      "[data-atlas-workspace-panel]",
+    );
+    const panelContent = panel?.querySelector<HTMLElement>(
+      "[data-atlas-workspace-content]",
+    );
+    const panelStatus = panel?.querySelector<HTMLElement>(
+      "[data-atlas-workspace-status]",
+    );
+    let activeRequest: AbortController | null = null;
+
+    const loadedStyles = new Set(
+      Array.from(
+        document.querySelectorAll<HTMLLinkElement>('link[rel="stylesheet"]'),
+      ).map((link) => link.href),
+    );
+
+    const supportsPanelPath = (pathname: string) =>
+      pathname === "/" ||
+      PANEL_PREFIXES.some((prefix) => pathname.startsWith(prefix));
+
+    const navPathFor = (pathname: string) => {
+      if (pathname.startsWith("/nacional/")) return "/nacional/";
+      if (
+        pathname.startsWith("/mercados/") &&
+        pathname !== DEFAULT_PANEL_PATH
+      ) {
+        return "/mercados/";
+      }
+      if (pathname.startsWith("/lecturas/")) return "/lecturas/";
+      if (
+        pathname.startsWith("/internacional/") ||
+        pathname.startsWith("/ediciones/")
+      ) {
+        return "/internacional/";
+      }
+      return "/";
+    };
+
+    const syncPrimaryNavigation = (pathname: string) => {
+      const activeHref = navPathFor(pathname);
+      document
+        .querySelectorAll<HTMLAnchorElement>(".site-header nav a")
+        .forEach((link) => {
+          const active = link.getAttribute("href") === activeHref;
+          link.classList.toggle("is-active", active);
+          if (active) link.setAttribute("aria-current", "page");
+          else link.removeAttribute("aria-current");
+        });
+    };
+
+    const panelPathFromLocation = () => {
+      const requested = new URL(window.location.href).searchParams.get("panel");
+      if (!requested) return "/";
+
+      try {
+        const url = new URL(requested, window.location.origin);
+        if (
+          url.origin === window.location.origin &&
+          supportsPanelPath(url.pathname)
+        ) {
+          return `${url.pathname}${url.search}${url.hash}`;
+        }
+      } catch {
+        return "/";
+      }
+
+      return "/";
+    };
+
+    const ensurePanelStyles = async (documentFragment: Document) => {
+      const pending = Array.from(
+        documentFragment.querySelectorAll<HTMLLinkElement>(
+          'link[rel="stylesheet"][href]',
+        ),
+      )
+        .map((source) => {
+          const href = new URL(
+            source.getAttribute("href") ?? "",
+            window.location.origin,
+          ).href;
+          if (!href || loadedStyles.has(href)) return null;
+
+          loadedStyles.add(href);
+          return new Promise<void>((resolve) => {
+            const link = document.createElement("link");
+            link.rel = "stylesheet";
+            link.href = href;
+            link.dataset.atlasWorkspaceStyle = "true";
+            link.addEventListener("load", () => resolve(), { once: true });
+            link.addEventListener("error", () => resolve(), { once: true });
+            document.head.append(link);
+          });
+        })
+        .filter((promise): promise is Promise<void> => Boolean(promise));
+
+      await Promise.all(pending);
+    };
+
+    const activatePanelScripts = (root: HTMLElement) => {
+      root
+        .querySelectorAll<HTMLScriptElement>("script")
+        .forEach((oldScript) => {
+          const script = document.createElement("script");
+          Array.from(oldScript.attributes).forEach(({ name, value }) => {
+            script.setAttribute(name, value);
+          });
+          script.textContent = oldScript.textContent;
+          oldScript.replaceWith(script);
+        });
+    };
+
+    const updateHistory = (requestedPath: string) => {
+      const next = new URL(window.location.href);
+      if (requestedPath === "/") next.searchParams.delete("panel");
+      else next.searchParams.set("panel", requestedPath);
+
+      window.history.pushState(
+        { atlasPanel: requestedPath },
+        "",
+        `${next.pathname}${next.search}${next.hash}`,
+      );
+    };
+
+    const showPanelError = (targetPath: string) => {
+      if (!panelContent || !panelStatus || !panel) return;
+
+      panelStatus.hidden = true;
+      panel.removeAttribute("aria-busy");
+      panelContent.replaceChildren();
+
+      const message = document.createElement("section");
+      message.className = "desktop-workspace-panel__error";
+      const title = document.createElement("h2");
+      title.textContent = "No fue posible cargar esta vista";
+      const link = document.createElement("a");
+      link.href = targetPath;
+      link.textContent = "Abrir como página completa →";
+      message.append(title, link);
+      panelContent.append(message);
+    };
+
+    const loadPanel = async (
+      requestedPath: string,
+      options: { pushHistory?: boolean } = {},
+    ) => {
+      if (
+        !panel ||
+        !panelContent ||
+        !panelStatus ||
+        !desktopWorkspace.matches
+      ) {
+        return;
+      }
+
+      const requestedUrl = new URL(requestedPath, window.location.origin);
+      if (!supportsPanelPath(requestedUrl.pathname)) return;
+
+      const targetPath =
+        requestedUrl.pathname === "/"
+          ? DEFAULT_PANEL_PATH
+          : `${requestedUrl.pathname}${requestedUrl.search}`;
+      const targetHash = requestedUrl.hash;
+
+      activeRequest?.abort();
+      activeRequest = new AbortController();
+      const { signal } = activeRequest;
+
+      panel.setAttribute("aria-busy", "true");
+      panelStatus.hidden = false;
+      panelStatus.textContent = "Cargando vista…";
+      panelContent.replaceChildren();
+
+      try {
+        const response = await fetch(targetPath, {
+          signal,
+          credentials: "same-origin",
+          headers: { "X-Atlas-Workspace": "desktop" },
+        });
+        if (!response.ok) throw new Error(`HTTP ${response.status}`);
+
+        const sourceHtml = await response.text();
+        const sourceDocument = new DOMParser().parseFromString(
+          sourceHtml,
+          "text/html",
+        );
+        const sourceContent =
+          sourceDocument.querySelector<HTMLElement>("#contenido");
+        if (!sourceContent)
+          throw new Error("Contenido de destino no disponible");
+
+        await ensurePanelStyles(sourceDocument);
+        if (signal.aborted) return;
+
+        panelContent.innerHTML = sourceContent.innerHTML;
+        activatePanelScripts(panelContent);
+
+        const targetId = targetHash
+          ? decodeURIComponent(targetHash.slice(1))
+          : undefined;
+        let anchorTarget: HTMLElement | undefined;
+        if (targetId) {
+          for (const element of panelContent.querySelectorAll<HTMLElement>(
+            "[id]",
+          )) {
+            if (element.id === targetId) {
+              anchorTarget = element;
+              break;
+            }
+          }
+        }
+
+        if (anchorTarget) {
+          const panelTop = panel.getBoundingClientRect().top;
+          const targetTop = anchorTarget.getBoundingClientRect().top;
+          panel.scrollTo({
+            top: panel.scrollTop + targetTop - panelTop - 16,
+            behavior: "auto",
+          });
+        } else {
+          panel.scrollTo({ top: 0, behavior: "auto" });
+        }
+
+        panelStatus.hidden = true;
+        panel.removeAttribute("aria-busy");
+        syncPrimaryNavigation(requestedUrl.pathname);
+
+        if (options.pushHistory) updateHistory(requestedPath);
+
+        document.dispatchEvent(
+          new CustomEvent("atlas:desktop-panel-change", {
+            detail: { path: targetPath },
+          }),
+        );
+      } catch (error) {
+        if (error instanceof DOMException && error.name === "AbortError")
+          return;
+        showPanelError(targetPath);
+      }
+    };
+
+    const interceptWorkspaceLink = (event: MouseEvent) => {
+      if (
+        !desktopWorkspace.matches ||
+        event.defaultPrevented ||
+        event.button !== 0 ||
+        event.metaKey ||
+        event.ctrlKey ||
+        event.shiftKey ||
+        event.altKey
+      ) {
+        return;
+      }
+
+      const target = event.target;
+      if (!(target instanceof Element)) return;
+
+      const link = target.closest<HTMLAnchorElement>("a[href]");
+      if (!link || link.target || link.hasAttribute("download")) return;
+
+      const url = new URL(link.href, window.location.href);
+      if (
+        url.origin !== window.location.origin ||
+        !supportsPanelPath(url.pathname)
+      ) {
+        return;
+      }
+
+      event.preventDefault();
+      void loadPanel(`${url.pathname}${url.search}${url.hash}`, {
+        pushHistory: true,
+      });
+    };
+
+    if (panel && panelContent && panelStatus) {
+      document.addEventListener("click", interceptWorkspaceLink);
+      window.addEventListener("popstate", () => {
+        void loadPanel(panelPathFromLocation());
+      });
+      desktopWorkspace.addEventListener("change", ({ matches }) => {
+        if (matches) void loadPanel(panelPathFromLocation());
+      });
+
+      if (desktopWorkspace.matches) {
+        void loadPanel(panelPathFromLocation());
+      }
+    }
+  </script>
+</BaseLayout>
+
+<style>
+  .front-page {
+    width: min(88rem, calc(100% - 2rem));
+    margin: 0 auto;
+  }
+  .issue-line {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    gap: 1rem;
+    padding: 0.75rem 0;
+    border-bottom: 1px solid var(--rule);
+    font: 800 0.68rem/1.2 var(--sans);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+  .issue-line p {
+    margin: 0;
+  }
+  .issue-line p:last-child {
+    text-align: right;
+  }
+  .lead-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 0;
+    border-bottom: 5px double var(--rule);
+  }
+  .lead-story {
+    padding: clamp(2rem, 5vw, 4.5rem) 0 3rem;
+    border-right: 0;
+  }
+  .headline-tabs {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    margin: 0 0 0.8rem;
+    border-top: 1px solid var(--rule);
+    border-bottom: 4px double var(--rule);
+  }
+  .headline-tab {
+    position: relative;
+    min-width: 0;
+    padding: 0.62rem 0.55rem;
+    border: 0;
+    background: transparent;
+    color: var(--ink);
+    cursor: pointer;
+    font: 800 0.68rem/1.2 var(--sans);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+  .headline-tab + .headline-tab {
+    border-left: 1px solid rgba(31, 29, 23, 0.16);
+  }
+  .headline-tab.is-active {
+    background: rgba(31, 29, 23, 0.045);
+    color: var(--accent);
+  }
+  .headline-tab[data-front-page-tab="senales"] {
+    padding-right: 3.35rem;
+  }
+  .headline-tab[data-front-page-tab="senales"]::after {
+    position: absolute;
+    top: 50%;
+    right: 0.62rem;
+    color: var(--accent);
+    content: "VER ›";
+    font-size: 0.62rem;
+    font-weight: 800;
+    line-height: 1;
+    letter-spacing: 0.06em;
+    white-space: nowrap;
+    transform: translateY(-50%);
+    animation: headline-signal-cue 520ms ease-out 1;
+  }
+  @keyframes headline-signal-cue {
+    0% {
+      opacity: 0;
+      transform: translate(-3px, -50%);
+    }
+
+    100% {
+      opacity: 1;
+      transform: translate(0, -50%);
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .headline-tab[data-front-page-tab="senales"]::after {
+      animation: none;
+    }
+  }
+  .headline-tab:hover,
+  .headline-tab:focus-visible {
+    background: rgba(31, 29, 23, 0.035);
+  }
+  .headline-tab-panel[hidden] {
+    display: none !important;
+  }
+  .headline-tab-panel--signals :global(.daily-signals) {
+    padding: 0.15rem 0 0.35rem;
+    border-top: 0;
+  }
+  .headline-tab-panel--signals :global(.daily-signals__title) {
+    display: none;
+  }
+  .headline-tab-panel--signals :global(.daily-signals__group:first-child) {
+    padding-top: 0.3rem;
+  }
+  .kicker,
+  .headline-board-title {
+    margin: 0;
+    color: var(--accent);
+    font: 800 0.72rem/1.2 var(--sans);
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+  }
+  .headline-list {
+    margin-top: 0.8rem;
+  }
+  .edition-rail {
+    padding: clamp(1.9rem, 3.8vw, 3.2rem) 0 clamp(2.1rem, 4vw, 3.6rem);
+    border-top: 4px double var(--rule);
+  }
+  .rail-title {
+    margin: 0;
+    padding: 0 0 clamp(1rem, 1.9vw, 1.45rem);
+    color: var(--ink);
+    border-bottom: 1px solid var(--rule);
+    font: 700 clamp(2.2rem, 4.4vw, 4.25rem) / 0.95 var(--serif);
+    letter-spacing: -0.04em;
+    text-transform: none;
+  }
+  .edition-rail ol {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    counter-reset: point;
+  }
+  .edition-rail li {
+    display: grid;
+    grid-template-columns: clamp(3.5rem, 5vw, 4.5rem) minmax(0, 1fr);
+    padding: clamp(1rem, 1.7vw, 1.35rem) 0;
+    border-top: 1px solid var(--rule);
+    counter-increment: point;
+  }
+  .edition-rail li:first-child {
+    border-top: 0;
+  }
+  .edition-rail li::before {
+    content: "0" counter(point);
+    color: var(--accent);
+    font: 700 clamp(1.55rem, 2.6vw, 2rem) / 1 var(--serif);
+    font-variant-numeric: tabular-nums;
+  }
+  .edition-rail strong,
+  .edition-rail span {
+    grid-column: 2;
+  }
+  .edition-rail strong {
+    margin-bottom: 0.35rem;
+    font: 700 clamp(1rem, 1.5vw, 1.2rem) / 1.14 var(--serif);
+    letter-spacing: -0.01em;
+    text-transform: none;
+  }
+  .edition-rail span {
+    color: var(--ink-soft);
+    font: 400 clamp(1.08rem, 1.9vw, 1.45rem) / 1.28 var(--serif);
+  }
+  .news-grid {
+    padding-top: 2.5rem;
+  }
+  .section-rule {
+    padding: 0.65rem 0;
+    border-top: 4px double var(--rule);
+    border-bottom: 1px solid var(--rule);
+  }
+  .section-rule h2 {
+    margin: 0;
+    font: 800 1.2rem/1 var(--sans);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .columns {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+  }
+  .columns :global(.card) {
+    padding-right: 1.5rem;
+  }
+  .columns :global(.card + .card) {
+    padding-left: 1.5rem;
+    border-left: 1px solid var(--rule);
+  }
+  .closing-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    margin-top: 3rem;
+    border-top: 5px double var(--rule);
+    border-bottom: 1px solid var(--rule);
+  }
+  .closing-grid article {
+    padding: 1.5rem;
+  }
+  .closing-grid article:first-child {
+    padding-left: 0;
+  }
+  .closing-grid article + article {
+    border-left: 1px solid var(--rule);
+  }
+  .closing-grid h2 {
+    margin: 0.6rem 0;
+    font-size: 1.55rem;
+    line-height: 1;
+  }
+  .closing-grid h2 a {
+    text-decoration: none;
+  }
+  .closing-grid h2 a:hover {
+    color: var(--accent);
+  }
+  .closing-summary {
+    color: var(--ink-soft);
+    line-height: 1.45;
+  }
+  .closing-link {
+    display: inline-block;
+    margin-top: 0.8rem;
+    font: 800 0.68rem/1.2 var(--sans);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  :global(.site-header nav) {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 0;
+    justify-content: stretch;
+    padding: 0;
+    border-top: 1px solid var(--rule);
+    border-bottom: 4px double var(--rule);
+  }
+  :global(.site-header nav a) {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 0;
+    min-height: 3.3rem;
+    padding: 0.8rem 0.55rem;
+    border-left: 1px solid rgba(31, 29, 23, 0.16);
+    text-align: center;
+    white-space: nowrap;
+    transition: background-color 140ms ease;
+  }
+  :global(.site-header nav a:first-child) {
+    border-left: 0;
+    background: rgba(31, 29, 23, 0.045);
+  }
+  :global(.site-header nav a + a::before) {
+    content: none;
+  }
+  :global(.site-header nav a:hover) {
+    background: rgba(31, 29, 23, 0.035);
+  }
+
+  @media (min-width: 42.01rem) and (max-width: 58rem) {
+    .lead-story {
+      padding-right: 0;
+      border-right: 0;
+    }
+    .edition-rail {
+      padding-left: 0;
+    }
+  }
+  @media (min-width: 42.01rem) and (max-width: 70rem) {
+    .headline-tab {
+      padding: 0.45rem 0.55rem;
+      font-size: 1rem;
+      letter-spacing: 0.05em;
+    }
+  }
+
+  @media (min-width: 70.01rem) and (max-width: 79.99rem) {
+    .headline-tab {
+      padding: 0.45rem 0.55rem;
+      font-size: clamp(0.91rem, 1.1vw, 1rem);
+      letter-spacing: 0.05em;
+    }
+  }
+
+  @media (max-width: 42rem) {
+    .front-page {
+      width: min(100% - 1.25rem, 88rem);
+    }
+    .issue-line {
+      display: none;
+    }
+    :global(.site-header nav) {
+      height: auto;
+      min-height: 0;
+      align-items: stretch;
+      gap: 0;
+      font-size: 0.46rem;
+      line-height: 1;
+    }
+    :global(.site-header nav a) {
+      box-sizing: border-box;
+      height: auto;
+      min-height: 1.62rem;
+      padding: 0.18rem 0.04rem;
+      align-self: stretch;
+    }
+    :global(.editorial-double-rule) + .lead-grid {
+      margin-top: 16px;
+    }
+    .lead-grid {
+      grid-template-columns: 1fr;
+    }
+    .lead-grid > :global(.editorial-double-rule) {
+      grid-column: 1 / -1;
+    }
+    .lead-story {
+      padding-top: 0;
+      padding-right: 0;
+      padding-bottom: 0.95rem;
+      border-right: 0;
+    }
+    .headline-board-title {
+      margin-top: 0;
+      margin-bottom: 0;
+    }
+    .headline-tabs {
+      margin-bottom: 0.72rem;
+    }
+    .headline-tab {
+      padding: 0.5rem 0.35rem;
+      font-size: 0.62rem;
+      letter-spacing: 0.075em;
+    }
+    .headline-tab[data-front-page-tab="senales"] {
+      padding-right: 2.9rem;
+    }
+    .headline-tab[data-front-page-tab="senales"]::after {
+      right: 0.4rem;
+      font-size: 0.54rem;
+    }
+    .headline-list {
+      margin-top: 0.75rem;
+    }
+    .edition-rail {
+      padding-top: 1.05rem;
+      padding-bottom: 1.65rem;
+      padding-left: 0;
+      border-top: 0;
+    }
+    .rail-title {
+      padding-bottom: 0.85rem;
+      font: 700 clamp(1.75rem, 7vw, 2.25rem) / 0.98 var(--serif);
+      letter-spacing: -0.03em;
+    }
+    .edition-rail li {
+      grid-template-columns: 3.4rem minmax(0, 1fr);
+      padding: 0.82rem 0 0.9rem;
+    }
+    .edition-rail li::before {
+      font-size: clamp(1.45rem, 6vw, 1.65rem);
+      line-height: 1;
+    }
+    .edition-rail strong {
+      margin-bottom: 0.28rem;
+      font-size: 0.86rem;
+      line-height: 1.12;
+    }
+    .edition-rail span {
+      font-size: 1.04rem;
+      line-height: 1.3;
+    }
+    .columns,
+    .closing-grid {
+      grid-template-columns: 1fr;
+    }
+    .columns :global(.card),
+    .columns :global(.card + .card),
+    .closing-grid article,
+    .closing-grid article:first-child {
+      padding-right: 0;
+      padding-left: 0;
+      border-left: 0;
+    }
+    .closing-grid article + article {
+      border-top: 1px solid var(--rule);
+    }
+  }
+</style>
+
+<style is:global>
+  .desktop-workspace-panel {
+    display: none;
+  }
+
+  @media (min-width: 80rem) {
+    body:has(.desktop-workspace-panel) .site-header,
+    body:has(.desktop-workspace-panel) .site-footer,
+    body:has(.desktop-workspace-panel) .front-page {
+      width: calc(50vw - 2rem) !important;
+      margin-right: auto !important;
+      margin-left: 1rem !important;
+    }
+
+    body:has(.desktop-workspace-panel) .site-header {
+      display: block !important;
+      padding-top: 0.65rem !important;
+    }
+
+    body:has(.desktop-workspace-panel) .site-header .edition-bar {
+      display: flex !important;
+      grid-column: auto !important;
+      grid-row: auto !important;
+      margin: 0 !important;
+      padding: 0.34rem 0 !important;
+      font-size: 0.667rem !important;
+    }
+
+    body:has(.desktop-workspace-panel) .site-header .brand-lockup {
+      display: flex !important;
+      grid-column: auto !important;
+      grid-row: auto !important;
+      justify-content: center !important;
+      gap: 0.5rem !important;
+      margin: 0.24rem 0 0.48rem !important;
+      padding: 0 !important;
+    }
+
+    body:has(.desktop-workspace-panel) .site-header .brand-copy {
+      align-items: center !important;
+    }
+
+    body:has(.desktop-workspace-panel) .site-header .brand-mark {
+      width: 3rem !important;
+    }
+
+    body:has(.desktop-workspace-panel) .site-header .brand {
+      font-size: clamp(3.15rem, 4.15vw, 3.85rem) !important;
+      line-height: 0.9 !important;
+      text-align: center !important;
+    }
+
+    body:has(.desktop-workspace-panel) .site-header .brand-subtitle {
+      justify-content: center !important;
+      font-size: 0.72rem !important;
+    }
+
+    body:has(.desktop-workspace-panel) .site-header nav {
+      grid-column: auto !important;
+      grid-row: auto !important;
+      font-size: 0.667rem !important;
+    }
+
+    body:has(.desktop-workspace-panel) .site-header nav a {
+      min-height: 2.1rem !important;
+      padding: 0.34rem 0.25rem !important;
+    }
+
+    body:has(.desktop-workspace-panel) .front-page.front-page--v2 {
+      display: block !important;
+    }
+
+    body:has(.desktop-workspace-panel) .front-page > .issue-line,
+    body:has(.desktop-workspace-panel) .front-page > .economic-strip {
+      display: none !important;
+    }
+
+    body:has(.desktop-workspace-panel) .front-page .daily-audio {
+      grid-template-columns: 1fr !important;
+      gap: 0.35rem !important;
+      padding: 0.7rem 0 0.78rem !important;
+    }
+
+    body:has(.desktop-workspace-panel) .front-page .audio-copy > p:last-child {
+      display: none !important;
+    }
+
+    body:has(.desktop-workspace-panel) .front-page .lead-grid {
+      display: grid !important;
+      grid-template-columns: 1fr !important;
+      border-bottom: 5px double var(--rule) !important;
+    }
+
+    body:has(.desktop-workspace-panel)
+      .front-page
+      .lead-grid
+      > .editorial-double-rule {
+      display: none !important;
+    }
+
+    body:has(.desktop-workspace-panel) .front-page .lead-story {
+      grid-column: auto !important;
+      grid-row: auto !important;
+      padding: 0.75rem 0 1rem !important;
+      border-right: 0 !important;
+    }
+
+    body:has(.desktop-workspace-panel) .front-page .headline-list {
+      display: block !important;
+      margin-top: 0.25rem !important;
+      border-top: 1px solid var(--rule) !important;
+      border-bottom: 1px solid var(--rule) !important;
+    }
+
+    body:has(.desktop-workspace-panel)
+      .front-page
+      .headline-list
+      .headline-item,
+    body:has(.desktop-workspace-panel)
+      .front-page
+      .headline-list
+      .headline-item:first-child,
+    body:has(.desktop-workspace-panel)
+      .front-page
+      .headline-list
+      .headline-item:nth-child(2),
+    body:has(.desktop-workspace-panel)
+      .front-page
+      .headline-list
+      .headline-item:nth-child(3) {
+      grid-column: auto !important;
+      grid-row: auto !important;
+      padding: 0.72rem 0 !important;
+      border-right: 0 !important;
+    }
+
+    body:has(.desktop-workspace-panel)
+      .front-page
+      .headline-list
+      .headline-item:first-child
+      h2,
+    body:has(.desktop-workspace-panel)
+      .front-page
+      .headline-list
+      .headline-item:nth-child(n + 2)
+      h2 {
+      max-width: 72% !important;
+      font-size: clamp(1.38rem, 2vw, 1.75rem) !important;
+      line-height: 0.98 !important;
+    }
+
+    body:has(.desktop-workspace-panel)
+      .front-page
+      .headline-list
+      .headline-item
+      .headline-visual,
+    body:has(.desktop-workspace-panel)
+      .front-page
+      .headline-list
+      .headline-item:first-child
+      .headline-visual {
+      width: 31% !important;
+      right: 0 !important;
+    }
+
+    body:has(.desktop-workspace-panel) .front-page .edition-rail {
+      grid-column: auto !important;
+      padding: 1rem 0 1.2rem !important;
+      border-top: 4px double var(--rule) !important;
+      border-left: 0 !important;
+    }
+
+    body:has(.desktop-workspace-panel) .front-page .rail-title {
+      font-size: clamp(1.65rem, 2.25vw, 2.05rem) !important;
+    }
+
+    body:has(.desktop-workspace-panel) .front-page .edition-rail li {
+      grid-template-columns: 2.9rem minmax(0, 1fr) !important;
+      padding: 0.72rem 0 0.78rem !important;
+    }
+
+    body:has(.desktop-workspace-panel) .front-page .edition-rail li::before {
+      font-size: 1.4rem !important;
+    }
+
+    body:has(.desktop-workspace-panel) .front-page .edition-rail strong {
+      font-size: 0.84rem !important;
+    }
+
+    body:has(.desktop-workspace-panel) .front-page .edition-rail span {
+      font-size: 0.98rem !important;
+    }
+
+    body:has(.desktop-workspace-panel) .front-page .news-grid {
+      grid-column: auto !important;
+      padding: 1rem 0 0 !important;
+      border-left: 0 !important;
+    }
+
+    body:has(.desktop-workspace-panel) .front-page .news-grid .columns {
+      grid-template-columns: 1fr !important;
+    }
+
+    body:has(.desktop-workspace-panel) .front-page .news-grid .card,
+    body:has(.desktop-workspace-panel) .front-page .news-grid .card + .card {
+      padding-right: 0 !important;
+      padding-left: 0 !important;
+      border-left: 0 !important;
+    }
+
+    body:has(.desktop-workspace-panel) .front-page .closing-grid {
+      grid-template-columns: 1fr !important;
+      margin-top: 1.25rem !important;
+    }
+
+    body:has(.desktop-workspace-panel) .front-page .closing-grid article,
+    body:has(.desktop-workspace-panel)
+      .front-page
+      .closing-grid
+      article:first-child {
+      padding-right: 0 !important;
+      padding-left: 0 !important;
+      border-left: 0 !important;
+    }
+
+    body:has(.desktop-workspace-panel)
+      .front-page
+      .closing-grid
+      article
+      + article {
+      border-top: 1px solid var(--rule) !important;
+    }
+
+    body:has(.desktop-workspace-panel) .site-footer {
+      margin-top: 2rem !important;
+    }
+
+    .desktop-workspace-panel {
+      position: fixed;
+      z-index: 12;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      display: block;
+      width: 50vw;
+      overflow-x: hidden;
+      overflow-y: auto;
+      overscroll-behavior: contain;
+      border-left: 1px solid var(--rule);
+      background:
+        radial-gradient(
+          circle at 18% 12%,
+          rgb(255 255 255 / 42%),
+          transparent 32rem
+        ),
+        repeating-linear-gradient(
+          0deg,
+          transparent 0 3px,
+          rgb(22 22 17 / 1.5%) 3px 4px
+        ),
+        var(--paper);
+      scrollbar-gutter: stable;
+    }
+
+    .desktop-workspace-panel__content {
+      min-height: 100%;
+    }
+
+    .desktop-workspace-panel__content > .page-shell,
+    .desktop-workspace-panel__content > .article-page,
+    .desktop-workspace-panel__content > .market-indices-page,
+    .desktop-workspace-panel__content > .calendar-lab {
+      width: calc(100% - 1.7rem) !important;
+      max-width: none !important;
+      margin-right: auto !important;
+      margin-left: auto !important;
+    }
+
+    .desktop-workspace-panel__status,
+    .desktop-workspace-panel__error,
+    .desktop-workspace-panel__noscript {
+      width: calc(100% - 1.7rem);
+      margin: 0 auto;
+      padding: 1rem 0;
+      font: 800 0.68rem/1.3 var(--sans);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .desktop-workspace-panel__error {
+      padding-top: 2rem;
+      border-top: 4px double var(--rule);
+    }
+
+    .desktop-workspace-panel__error h2 {
+      margin: 0 0 0.75rem;
+      font: 700 1.8rem/1 var(--serif);
+      letter-spacing: -0.03em;
+      text-transform: none;
+    }
+  }
+</style>

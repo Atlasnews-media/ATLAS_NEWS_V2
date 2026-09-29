@@ -1,0 +1,80 @@
+name: LAB — RADAR Editorial runtime gate
+
+on:
+  push:
+    branches:
+      - "radar-runtime/editorial"
+
+permissions:
+  contents: read
+
+concurrency:
+  group: lab-radar-editorial-runtime
+  cancel-in-progress: false
+
+jobs:
+  validate-runtime:
+    name: Scope + RADAR mode-aware
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - name: Checkout rama runtime
+        uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: Gate fail-closed de rama y scope
+        id: scope
+        run: |
+          set -euo pipefail
+          test "$GITHUB_REF_NAME" = "radar-runtime/editorial"
+          before="${{ github.event.before }}"
+          if [[ "$before" =~ ^0+$ ]] || ! git cat-file -e "${before}^{commit}" 2>/dev/null; then
+            git diff-tree --no-commit-id --name-only -r "$GITHUB_SHA"
+          else
+            git diff --name-only "$before" "$GITHUB_SHA"
+          fi | tee "$RUNNER_TEMP/radar-paths.txt" | node scripts/lab/radar-editorial/assert-runtime-scope.mjs
+
+      - name: Exigir checkpoint activo
+        run: test -f lab/radar-editorial/runtime/active.json
+
+      - name: Validar checkpoint durable
+        run: >-
+          node scripts/lab/radar-editorial/validate-baseline-run.mjs
+          --active lab/radar-editorial/runtime/active.json
+
+      - name: Validar sourceMainCommit contra historia de main
+        run: |
+          set -euo pipefail
+          source_main="$(node -p "JSON.parse(require('fs').readFileSync('lab/radar-editorial/runtime/active.json','utf8')).sourceMainCommit")"
+          git fetch --quiet origin main
+          git cat-file -e "${source_main}^{commit}"
+          git merge-base --is-ancestor "$source_main" origin/main
+
+      - name: Detectar handoff READY
+        id: handoff
+        run: |
+          set -euo pipefail
+          if grep -Fxq 'lab/radar-editorial/runtime/latest.json' "$RUNNER_TEMP/radar-paths.txt"; then
+            echo "ready=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "ready=false" >> "$GITHUB_OUTPUT"
+            echo "RADAR checkpoint durable; publisher no elegible."
+          fi
+
+      - name: Validar handoff publicable
+        if: steps.handoff.outputs.ready == 'true'
+        run: |
+          set -euo pipefail
+          node scripts/lab/radar-editorial/validate-radar-artifact.mjs lab/radar-editorial/runtime/latest.json
+          experiment="$(node -p "JSON.parse(require('fs').readFileSync('lab/radar-editorial/runtime/latest.json','utf8')).experimentMode || ''")"
+          case "$experiment" in
+            BASELINE|RADAR_JEV) ;;
+            *) echo "experimentMode no autorizado: $experiment" >&2; exit 1 ;;
+          esac
+          node scripts/lab/radar-editorial/validate-baseline-run.mjs --latest lab/radar-editorial/runtime/latest.json

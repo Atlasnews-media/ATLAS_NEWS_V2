@@ -1,0 +1,41 @@
+VOZ 1: La señal de mercados de hoy es una rotación del riesgo. El petróleo vuelve a caer, pero eso no está produciendo un rally uniforme en acciones, tecnología y commodities.
+
+VOZ 2: Si baja el petróleo, ¿no debería ser simplemente una buena noticia para los mercados?
+
+VOZ 1: Es una buena noticia para algunos. El Brent cayó por tercer día y se movía alrededor de ochenta y seis dólares por barril después de nuevas conversaciones entre Irán y Omán sobre Hormuz. Menor petróleo reduce costos para importadores y presión inflacionaria en el margen.
+
+VOZ 2: ¿Y quién pierde con ese movimiento?
+
+VOZ 1: Los productores de energía. En Europa, energía caía alrededor de uno coma dos por ciento, mientras sectores más ligados al consumidor recibían alivio. El índice agregado estaba casi plano, pero debajo había una transferencia bastante clara entre ganadores y perdedores.
+
+VOZ 2: Entonces eso explica por qué hablas de rotación y no de un risk-on general.
+
+VOZ 1: Exactamente. Además, la tecnología no acompaña de manera uniforme. Europa tecnológica retrocedía antes de los resultados de Nvidia y varias compañías de software estaban bajo presión después de señales débiles de crecimiento y guidance.
+
+VOZ 2: ¿Eso quiere decir que el mercado ya no está tratando a toda la inteligencia artificial como una sola historia?
+
+VOZ 1: Esa es la señal. Nvidia sigue concentrando la prueba sobre demanda de chips e infraestructura, pero empresas de software están siendo evaluadas por su capacidad real de monetizar. Un buen resultado de Nvidia podría ayudar a semiconductores sin necesariamente reparar a todo el sector.
+
+VOZ 2: Y al mismo tiempo el cobre sigue cerca de máximos. ¿No contradice la idea de menor presión en commodities?
+
+VOZ 1: No, porque el mecanismo del cobre es distinto. El contrato a tres meses de la Bolsa de Metales de Londres llegó cerca de catorce mil trescientos cuarenta y tres dólares por tonelada, muy próximo a su récord, pero una parte importante de esa fortaleza viene de inventarios que están migrando hacia Estados Unidos antes de posibles aranceles.
+
+VOZ 2: Entonces el precio alto no necesariamente significa que la demanda industrial global esté acelerando.
+
+VOZ 1: Correcto. Puede existir un superávit global y, al mismo tiempo, una escasez relativa fuera de Estados Unidos si el metal queda concentrado en depósitos norteamericanos. El precio incorpora logística, regulación y arbitraje, no sólo crecimiento económico.
+
+VOZ 2: Petróleo y cobre, entonces, están contando historias casi opuestas.
+
+VOZ 1: Sí. El petróleo pierde prima porque el mercado imagina una ruta física más abierta por Hormuz. El cobre conserva prima porque la política comercial está fragmentando la disponibilidad del metal entre regiones.
+
+VOZ 2: ¿Y las tasas acompañan el alivio del petróleo?
+
+VOZ 1: Sólo parcialmente. Las tasas cortas bajaron algo, coherentes con menor presión energética, pero Australia mostró el límite de esa narrativa: su inflación subyacente sorprendió al alza y el dólar australiano se fortaleció. Los bancos centrales siguen respondiendo a datos locales.
+
+VOZ 2: ¿Qué pruebas van a decirnos si esta rotación se convierte en algo más amplio?
+
+VOZ 1: Primero, la amplitud después de Nvidia. Segundo, el tráfico físico por Hormuz, no sólo los titulares diplomáticos. Tercero, los inventarios y spreads de cobre. Y cuarto, el PCE estadounidense, porque una sorpresa de inflación podría borrar parte del alivio que hoy viene desde energía.
+
+VOZ 2: Entonces la conclusión no es que el riesgo desapareció.
+
+VOZ 1: No. La conclusión es que el riesgo cambió de lugar. El crudo reduce una prima, la tecnología se fragmenta y el cobre mantiene otra prima por inventarios y política comercial. La dispersión entre mecanismos es hoy más informativa que mirar un solo índice.

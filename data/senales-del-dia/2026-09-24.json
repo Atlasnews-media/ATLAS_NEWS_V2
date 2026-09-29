@@ -1,0 +1,75 @@
+{
+  "status": "READY",
+  "date": "2026-09-24",
+  "contract": "atlas-senales-del-dia-v1",
+  "senalesDelDia": {
+    "internacional": [
+      {
+        "slot": "technology",
+        "headline": "España eleva la presión por reglas públicas para la IA",
+        "deck": "Pedro Sánchez rechazó la autorregulación del sector y vinculó el desarrollo de infraestructura de IA con supervisión, transparencia y autonomía de datos.",
+        "development": "El presidente del Gobierno español, Pedro Sánchez, afirmó el 21 de septiembre que la industria de inteligencia artificial no puede quedar entregada a la autorregulación y defendió una supervisión pública capaz de abordar riesgos de privacidad, discriminación, empleo y desinformación. El planteamiento fue acompañado por una agenda de doce meses para impulsar desarrollo responsable de IA, incluida infraestructura de cómputo y nuevos modelos desarrollados junto al Barcelona Supercomputing Center.\n\nLa señal tecnológica está en la combinación de política industrial y regulación. España no plantea únicamente restricciones: busca ampliar capacidad propia de cómputo y modelos, pero condicionando centros de datos a estándares ambientales y protección de la autonomía de los datos. Esa fórmula intenta evitar que la discusión europea quede reducida a regular productos creados fuera del continente y conecta capacidad tecnológica con gobernanza.\n\nLa prueba será la ejecución. Habrá que observar cómo se traducen los anuncios en requisitos concretos para centros de datos, acceso a capacidad computacional y desarrollo de modelos, y cómo se coordinan con el marco europeo de IA. También será relevante si otros gobiernos europeos adoptan una lógica similar: inversión pública y capacidad soberana a cambio de mayores obligaciones de transparencia y control.",
+        "anchor": "espana-reglas-publicas-ia-infraestructura",
+        "sources": [
+          {"name": "Reuters", "url": "https://www.reuters.com/world/spanish-pm-sanchez-says-ai-industry-cannot-be-self-regulated-2026-09-21/"}
+        ]
+      },
+      {
+        "slot": "world",
+        "headline": "El Niño eleva el riesgo alimentario en Asia hacia fin de año",
+        "deck": "Sequías, calor e incendios ya afectan partes de Asia mientras un episodio potencialmente extremo amenaza arroz, aceite de palma, pesca y seguridad alimentaria.",
+        "development": "Un episodio de El Niño que podría alcanzar una intensidad excepcional durante los próximos meses está aumentando los riesgos climáticos sobre Asia, especialmente el sudeste del continente. Associated Press reportó el 22 de septiembre señales de sequía, calor, incendios y menores precipitaciones, junto con presión sobre niveles de agua y pesquerías en la cuenca del Mekong. El fenómeno se encamina a su fase más intensa hacia diciembre, en una región central para la producción y exportación mundial de alimentos.\n\nLa señal internacional importa por su capacidad de propagación. India, Vietnam y Tailandia tienen un peso relevante en arroz, mientras Indonesia y Malasia son actores centrales en aceite de palma. Una reducción simultánea de rendimientos agrícolas puede trasladar un shock climático regional hacia precios internacionales y seguridad alimentaria, en un contexto donde energía y fertilizantes ya enfrentan presiones geopolíticas. El riesgo no depende de una sola cosecha, sino de la coincidencia de calor, agua escasa y costos elevados.\n\nLos indicadores a seguir son precipitaciones, niveles de embalses y ríos, restricciones a exportaciones agrícolas y revisiones de cosechas durante el cuarto trimestre. También será importante distinguir entre escenarios meteorológicos y pérdidas efectivamente observadas: el riesgo es creciente, pero su magnitud final dependerá de la duración e intensidad del episodio y de la capacidad de respuesta de los países productores.",
+        "anchor": "el-nino-riesgo-alimentario-asia-2026",
+        "sources": [
+          {"name": "Associated Press", "url": "https://apnews.com/article/31c88df9ce8f67bcbfe3ea7f39431d57"}
+        ]
+      }
+    ],
+    "nacional": [
+      {
+        "slot": "ipsa_company",
+        "headline": "CMPC vende Corrugados por US$420 millones y concentra su cartera",
+        "deck": "La forestal acordó traspasar a Smurfit Westrock su negocio chileno de corrugados; la operación incluye plantas y cerca de 1.500 trabajadores y requiere aprobación de la FNE.",
+        "development": "CMPC acordó el 23 de septiembre vender por US$420 millones su negocio de cartones corrugados en Chile a Smurfit Westrock. La transacción comprende Envases Impresos Cordillera y Chilena de Moldeados, además de instalaciones productivas y una red de recuperación y reciclaje de papel. El perímetro reúne aproximadamente 1.500 trabajadores y continuará bajo operación de CMPC mientras se cumplen las condiciones para el cierre. La operación está sujeta a aprobación de la Fiscalía Nacional Económica.\n\nLa compañía explicó que la venta busca concentrar capacidades y recursos en áreas donde posee mayor escala y ventajas competitivas. El precio acordado equivale aproximadamente a 7,6 veces el EBITDA de los últimos doce meses, según antecedentes divulgados sobre la transacción. Para CMPC, la lectura relevante es de asignación de capital: monetiza un negocio local de packaging mientras preserva otras operaciones, incluida Softys en Puente Alto, que no forma parte del acuerdo.\n\nLa materialización no es inmediata. La primera variable a observar es la revisión de competencia de la FNE y las eventuales condiciones para aprobar el traspaso. Después importará el destino de los recursos y su efecto sobre deuda, inversiones y retorno al accionista. Sin esa información, el anuncio permite identificar una simplificación de cartera, pero no atribuir todavía un impacto definitivo sobre resultados consolidados.",
+        "anchor": "cmpc-venta-corrugados-smurfit-westrock-420-millones",
+        "sources": [
+          {"name": "BioBioChile", "url": "https://www.biobiochile.cl/noticias/economia/negocios-y-empresas/2026/09/23/cmpc-acuerda-venta-de-su-negocio-de-corrugados-a-smurfit-westrock-por-us420-millones.shtml"},
+          {"name": "CNN Chile", "url": "https://www.cnnchile.com/negocios/cmpc-vende-negocio-corrugados-a-smurfit-westrock-por-us420-millones/"}
+        ]
+      },
+      {
+        "slot": "policy_economy",
+        "headline": "Gobernadores y Hacienda quedan sin acuerdo por recursos de 2027",
+        "deck": "Los gobiernos regionales cuestionan una rebaja presupuestaria propuesta para 2027 y piden al menos igual tratamiento que otros servicios antes del ingreso del proyecto al Congreso.",
+        "development": "La Asociación de Gobernadores de Chile y el Ministerio de Hacienda terminaron sin acuerdo una reunión realizada el 23 de septiembre para discutir los recursos regionales del Presupuesto 2027. Los gobernadores señalaron que la propuesta inicial contempla una reducción nominal de 7%, que según sus cálculos se aproximaría a 10% en términos reales, y pidieron reemplazarla por un tratamiento equivalente al de otros servicios públicos, con un incremento cercano a 1%.\n\nLa discusión todavía no corresponde a una asignación definitiva. El Ejecutivo debe ingresar el proyecto de Presupuesto al Congreso el 30 de septiembre y las cifras pueden cambiar durante la etapa previa y la tramitación legislativa. Los gobiernos regionales sostienen que una rebaja afectaría inversión territorial, obras en ejecución y programas locales; Hacienda, en discusiones previas, ha puesto atención en niveles de ejecución presupuestaria. Esa diferencia convierte la metodología de medición en parte sustantiva del debate.\n\nLa señal de política económica será verificable cuando se publique el proyecto. Habrá que comparar los montos efectivos por región con el presupuesto 2026, separar variaciones nominales de reales y revisar las glosas que determinen flexibilidad y autonomía de gasto. Hasta entonces, una reducción cercana a 7% debe tratarse como propuesta en discusión y no como recorte aprobado.",
+        "anchor": "gobernadores-hacienda-presupuesto-regional-2027",
+        "sources": [
+          {"name": "Gobierno Regional de Tarapacá", "url": "https://www.goretarapaca.gov.cl/gobernadores-piden-al-gobierno-no-reducir-recursos-a-las-regiones-para-2027/"},
+          {"name": "Diario Financiero", "url": "https://www.df.cl/economia-y-politica/politica/gobernadores-regionales-no-logran-acuerdo-con-hacienda-y-se-declaran-en"}
+        ]
+      }
+    ],
+    "mercados": [
+      {
+        "slot": "markets_chile",
+        "headline": "S&P eleva a BB+ la nota de Latam tras fortalecer caja y resultados",
+        "deck": "La agencia llevó la calificación de la aerolínea a su mayor nivel desde la integración LAN-TAM y destacó desempeño operativo y métricas de crédito pese al combustible caro.",
+        "development": "S&P Global Ratings elevó la calificación crediticia de Latam Airlines Group desde BB a BB+, el nivel más alto alcanzado por la compañía desde la integración de LAN y TAM. La agencia destacó el desempeño del primer semestre de 2026, período en que la aerolínea reportó ganancias por US$701 millones, 17,5% superiores a las del año anterior, pese a un entorno de combustible significativamente más costoso.\n\nPara el mercado local, el movimiento importa porque una mejor nota de crédito modifica la lectura sobre riesgo financiero de uno de los emisores corporativos chilenos con mayor exposición internacional. S&P destacó la estructura de costos, diversificación de ingresos y fortaleza esperada de EBITDA, flujo de caja y fondos provenientes de operaciones frente a deuda. La mejora no convierte a Latam en grado de inversión, pero reduce en un escalón la distancia respecto de esa categoría.\n\nLa continuidad dependerá de que las métricas resistan un escenario menos favorable. La agencia anticipa una expansión más moderada del EBITDA en 2027 a medida que se normalicen precios y rendimientos. Por eso, los próximos resultados deberán leerse junto con deuda, generación de caja, capacidad, tarifas y combustible. Una calificación más alta es una señal de menor riesgo percibido, no una garantía sobre el precio futuro de la acción o de sus bonos.",
+        "anchor": "sp-eleva-bb-plus-calificacion-latam",
+        "sources": [
+          {"name": "Diario Financiero", "url": "https://www.df.cl/empresas/industria/s-p-sube-calificacion-de-latam-a-su-nivel-mas-alto-desde-su-existencia-como"}
+        ]
+      },
+      {
+        "slot": "markets_global",
+        "headline": "BCE conecta dinero de banco central con mercados blockchain",
+        "deck": "Pontes permite liquidar operaciones sobre blockchain con euros respaldados por el BCE y abre una vía institucional entre infraestructura tradicional y activos tokenizados.",
+        "development": "El Banco Central Europeo puso en marcha Pontes, un servicio que conecta su infraestructura de pagos con mercados financieros basados en blockchain. La plataforma permite que bancos e inversionistas liquiden transacciones registradas en redes distribuidas utilizando dinero de banco central en euros, en lugar de depender de stablecoins u otros instrumentos privados para completar el pago. Entre las instituciones iniciales figuran Deutsche Bank, Santander y Clearstream.\n\nLa señal de mercados está en la infraestructura, no en el precio de un criptoactivo. La tokenización de bonos y otros valores necesita una pata de efectivo que reduzca riesgo de contraparte y permita liquidación segura. Al conectar esos activos con euros del banco central, Pontes busca conservar las propiedades del sistema monetario existente mientras automatiza partes del ciclo de negociación y liquidación. El BCE también señaló que destinará una pequeña fracción de sus propios fondos a valores altamente calificados denominados en euros y emitidos mediante blockchain.\n\nEl siguiente paso será medir adopción y volumen. Importará observar cuántas entidades se incorporan, qué clases de activos se liquidan y si la conexión reduce costos y tiempos sin fragmentar liquidez. El proyecto también ofrece una referencia para otros bancos centrales que exploran infraestructura tokenizada: la competencia puede desplazarse desde crear monedas privadas hacia integrar tecnología de registro distribuido con dinero público ya existente.",
+        "anchor": "bce-pontes-liquidacion-blockchain-euros",
+        "sources": [
+          {"name": "Reuters", "url": "https://www.reuters.com/business/finance/ecb-opens-blockchain-link-financial-markets-2026-09-21/"}
+        ]
+      }
+    ]
+  }
+}

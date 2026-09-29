@@ -1,0 +1,75 @@
+{
+  "status": "READY",
+  "date": "2026-09-22",
+  "contract": "atlas-senales-del-dia-v1",
+  "senalesDelDia": {
+    "internacional": [
+      {
+        "slot": "technology",
+        "headline": "Alibaba escala su apuesta con nuevo chip y modelo de IA",
+        "deck": "El grupo presentó el Zhenwu V900 y proyectó entrenar un modelo de 5 a 10 billones de parámetros, junto con una fuerte expansión de capacidad cloud.",
+        "development": "Alibaba presentó este 22 de septiembre una nueva ofensiva de infraestructura para inteligencia artificial que combina hardware, modelos y centros de datos. La compañía dio a conocer el chip Zhenwu V900, que describe como el más potente desarrollado en China y con un rendimiento tres veces superior al de su antecesor. También anunció que planea entrenar un modelo de entre 5 y 10 billones de parámetros y mostró Qwen3.8-Max, con 2,4 billones de parámetros. En paralelo, fijó como objetivo superar 20 gigavatios de capacidad global de centros de datos de Alibaba Cloud hacia 2032.\n\nLa señal tecnológica está en la integración vertical. En vez de depender únicamente de modelos o servicios cloud, Alibaba está intentando controlar una mayor parte de la cadena de cómputo, desde aceleradores hasta infraestructura y software. Esa estrategia adquiere relevancia en un entorno de restricciones estadounidenses sobre tecnología avanzada y de búsqueda china por reducir dependencias externas. El tamaño de un modelo no determina por sí solo su calidad, por lo que las cifras anunciadas deben leerse como escala de inversión y ambición, no como una prueba de desempeño.\n\nLa siguiente prueba será operacional: rendimiento real del V900, disponibilidad de capacidad, costos de entrenamiento y adopción de Qwen frente a alternativas chinas y estadounidenses. Si Alibaba logra convertir esa expansión en servicios competitivos y utilizables a escala, reforzará su posición como plataforma integral de IA; si la capacidad física crece más rápido que la demanda rentable, el desafío se trasladará desde la tecnología hacia el retorno sobre la inversión.",
+        "anchor": "alibaba-zhenwu-v900-modelo-ia-capacidad-cloud",
+        "sources": [
+          {"name": "Reuters", "url": "https://www.reuters.com/world/china/alibaba-plans-ai-model-with-5-trillion-10-trillion-parameters-unveils-new-chip-2026-09-22/"},
+          {"name": "Associated Press", "url": "https://apnews.com/article/b29908e516faff9f5a82b201ba954aab"}
+        ]
+      },
+      {
+        "slot": "world",
+        "headline": "Rusia y Ucrania intensifican ataques antes de cita con Trump",
+        "deck": "Una nueva ola de drones y misiles dejó víctimas y daños mientras Zelensky llega a Estados Unidos buscando defensa aérea y respaldo diplomático.",
+        "development": "Rusia y Ucrania intercambiaron durante la noche una nueva serie de ataques aéreos antes de las reuniones de Volodymyr Zelensky en Estados Unidos. Autoridades ucranianas reportaron cuatro muertos y daños en distintas regiones, mientras Ucrania atacó la refinería de Kuibyshev, en Samara, donde se produjo un incendio. Moscú afirmó haber derribado 297 drones ucranianos y confirmó ataques contra infraestructura militar e industrial. La secuencia ocurre con posiciones terrestres relativamente estables, pero con una campaña aérea que sigue ampliando el costo sobre infraestructura y población civil.\n\nLa señal internacional está en la combinación de presión militar y negociación política. Zelensky viajó a la Asamblea General de Naciones Unidas y tiene previsto reunirse con Donald Trump, con dos objetivos concretos: reforzar la defensa aérea ucraniana, incluidos sistemas Patriot, y sostener apoyo para una salida al conflicto que preserve capacidad de negociación de Kiev. Francia, en paralelo, ofreció radares para proteger la red eléctrica y discutió la posibilidad de una tregua sobre ataques a infraestructura energética.\n\nNinguno de esos contactos equivale todavía a un acuerdo. La intensidad de los ataques muestra que ambas partes mantienen capacidad y voluntad de imponer costos mientras buscan mejorar su posición diplomática. Los indicadores inmediatos serán nuevos compromisos de defensa aérea, cualquier avance hacia una tregua limitada sobre energía y la respuesta rusa a esas gestiones. Hasta entonces, la diplomacia y la escalada militar seguirán avanzando simultáneamente.",
+        "anchor": "rusia-ucrania-ataques-zelensky-trump-defensa-aerea",
+        "sources": [
+          {"name": "Associated Press", "url": "https://apnews.com/article/9c3d38e7e97132884f915e157dbf9ef1"}
+        ]
+      }
+    ],
+    "nacional": [
+      {
+        "slot": "ipsa_company",
+        "headline": "SQM absorbe rebaja de JPMorgan tras el feriado local",
+        "deck": "La acción B cayó con fuerza en su regreso a la Bolsa de Santiago, incorporando una rebaja de precio objetivo conocida durante el cierre por Fiestas Patrias.",
+        "development": "SQM-B cayó 3,7% en la sesión del 21 de septiembre, cuando la Bolsa de Santiago reabrió después del receso de Fiestas Patrias y el mercado local incorporó información acumulada durante el cierre. Entre los factores específicos estuvo una rebaja de JPMorgan al precio objetivo de los ADR de SQM conocida el jueves anterior, cuando la plaza chilena no estaba operando normalmente. El ajuste convirtió a la minera no metálica en uno de los principales lastres del IPSA durante una jornada en que el índice retrocedió alrededor de 0,2%.\n\nLa señal corporativa no es sólo la variación diaria, sino la sensibilidad que mantiene SQM a cambios de valoración externa en un momento de alta dispersión entre materias primas. La compañía conserva exposición relevante al litio, yodo y fertilizantes, por lo que las revisiones de analistas incorporan supuestos sobre precios, volúmenes, costos y retornos de proyectos que pueden cambiar más rápido que los resultados contables trimestrales. Tras varios días sin negociación local, parte de esa información se concentró en una sola rueda.\n\nPara distinguir una corrección técnica de una reevaluación más persistente habrá que observar la reacción de los ADR, nuevas revisiones de consenso y el comportamiento de SQM-B una vez absorbido el efecto calendario. La cotización por sí sola no modifica los fundamentos de la empresa, pero sí muestra que las expectativas sobre su generación futura de caja siguen siendo un canal importante para el IPSA.",
+        "anchor": "sqm-rebaja-jpmorgan-retorno-bolsa-santiago",
+        "sources": [
+          {"name": "Diario Financiero", "url": "https://www.df.cl/mercados/bolsa-monedas/bolsas-hoy-x8n52"}
+        ]
+      },
+      {
+        "slot": "policy_economy",
+        "headline": "Chile prepara un giro regulatorio para atraer inversión en IA",
+        "deck": "El Gobierno busca reemplazar un enfoque más restrictivo por reglas orientadas a inversión y uso público, en medio de estrategias divergentes en América Latina.",
+        "development": "Chile está revisando su enfoque regulatorio sobre inteligencia artificial con la intención de favorecer inversión, adopción tecnológica y uso de estas herramientas en el Estado. La orientación conocida durante los últimos días apunta a reemplazar una arquitectura considerada más restrictiva por un marco que facilite proyectos y aplicaciones en áreas públicas, dentro de una estrategia regional en la que distintos gobiernos latinoamericanos están tomando caminos regulatorios divergentes. El cambio todavía debe traducirse en instrumentos concretos antes de poder medir su alcance efectivo.\n\nLa señal de política económica está en el equilibrio que el país intenta construir entre atraer capital tecnológico y establecer salvaguardas. Para Chile, la discusión no es sólo normativa: centros de datos, infraestructura digital, energía, formación de talento y modernización del Estado pueden convertir la regulación de IA en una variable de inversión. Un marco más permisivo puede reducir fricciones de entrada, pero también exige definir responsabilidades sobre datos, seguridad, transparencia y uso de sistemas automatizados.\n\nPor ahora corresponde separar intención de implementación. No existe evidencia suficiente para asumir que un cambio de orientación producirá por sí mismo nuevas inversiones o mejoras de productividad. Lo observable será el texto de las normas o proyectos que se presenten, sus mecanismos de supervisión y la reacción de empresas y organismos públicos. Esos elementos permitirán evaluar si Chile construye una ventaja regulatoria sostenible o simplemente reduce exigencias sin generar capacidad tecnológica adicional.",
+        "anchor": "chile-giro-regulatorio-ia-inversion-estado",
+        "sources": [
+          {"name": "El País", "url": "https://elpais.com/america/2026-09-20/la-ia-se-abre-paso-entre-los-gobiernos-ultras-de-america-latina-y-encuentra-limites-en-los-de-izquierda.html"}
+        ]
+      }
+    ],
+    "mercados": [
+      {
+        "slot": "markets_chile",
+        "headline": "Cobre avanza por quinta sesión y refuerza soporte para Chile",
+        "deck": "El metal subió cerca de 0,9% en Londres y volvió a acercarse a máximos, apoyado por expectativas de demanda china y compras especulativas.",
+        "development": "El cobre avanzó por quinta sesión consecutiva el 21 de septiembre y el contrato a tres meses en Londres subió cerca de 0,9% hasta US$14.654 por tonelada, después de tocar US$14.710,5. El movimiento dejó al metal nuevamente cerca de los máximos alcanzados durante septiembre y se apoyó en expectativas de una mejora estacional de la demanda china, junto con un retorno de compras especulativas. El avance ocurre después de que fondos redujeran posiciones largas en futuros de Comex durante la semana previa, lo que añade una capa de reposicionamiento financiero al impulso físico esperado.\n\nPara Chile, la señal es relevante porque el cobre opera como referencia simultánea para términos de intercambio, ingresos mineros y sensibilidad del peso. Un precio alto puede entregar soporte a activos locales, pero no elimina otros factores que están tensionando las condiciones financieras, entre ellos un dólar global firme y tasas estadounidenses elevadas. Además, el movimiento del metal no debe confundirse automáticamente con una mejora de producción doméstica, que enfrenta sus propios desafíos operacionales.\n\nLa prueba será la persistencia. Si la demanda china se materializa y el cobre logra sostener niveles cercanos a sus máximos con inventarios ajustados, el soporte externo para Chile ganará profundidad. Si el avance responde principalmente a posiciones especulativas, una toma de utilidades podría revertir parte del movimiento rápidamente. Inventarios, importaciones chinas y posicionamiento de fondos serán las referencias más útiles para separar ambos escenarios.",
+        "anchor": "cobre-quinta-sesion-demanda-china-soporte-chile",
+        "sources": [
+          {"name": "Reuters vía Business Recorder", "url": "https://www.brecorder.com/news/40440514/copper-rises-as-chinese-demand-expectations-add-to-speculative-momentum"},
+          {"name": "Cochilco", "url": "https://www.cochilco.cl/web/la-rueda-diaria/"}
+        ]
+      },
+      {
+        "slot": "markets_global",
+        "headline": "BCE conecta dinero central con mercados financieros en blockchain",
+        "deck": "Pontes permite liquidar operaciones tokenizadas en euros del banco central y suma a grandes bancos europeos en una nueva infraestructura de mercado.",
+        "development": "El Banco Central Europeo puso en marcha Pontes, un servicio que conecta su infraestructura de pagos con mercados financieros basados en blockchain. El sistema permite que bancos e inversionistas liquiden operaciones con activos tokenizados utilizando euros respaldados por el banco central, en lugar de depender de stablecoins privadas. Deutsche Bank, Santander y Clearstream figuran entre las primeras instituciones participantes. El servicio opera en días hábiles y busca integrar la liquidación de dinero central con nuevas plataformas de registro distribuido sin modificar la naturaleza del activo de pago utilizado.\n\nLa señal para mercados globales está en la entrada de infraestructura oficial a un espacio que hasta ahora se desarrollaba principalmente mediante pilotos privados y activos digitales. Si títulos tokenizados pueden liquidarse directamente contra dinero del banco central, disminuye una de las fricciones centrales del mercado: el riesgo de separar el activo negociado del medio final de pago. El BCE también anunció que destinará una pequeña parte de sus propios fondos a valores blockchain de alta calidad denominados en euros y emitidos por instituciones públicas.\n\nEl impacto inmediato será limitado por escala y horarios, pero la arquitectura importa. La adopción dependerá de volumen, interoperabilidad, costos y capacidad de integrarse con custodios y mercados existentes. Si Pontes atrae emisiones y liquidez, Europa podría acelerar la tokenización institucional sin desplazar el euro central; si permanece como infraestructura marginal, su efecto será principalmente experimental.",
+        "anchor": "bce-pontes-liquidacion-blockchain-euros-banco-central",
+        "sources": [
+          {"name": "Reuters", "url": "https://www.reuters.com/business/finance/ecb-opens-blockchain-link-financial-markets-2026-09-21/"}
+        ]
+      }
+    ]
+  }
+}

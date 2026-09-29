@@ -1,0 +1,117 @@
+---
+import "../../../src/styles/global.css";
+---
+
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="robots" content="noindex, nofollow, noarchive" />
+    <meta name="theme-color" content="#f2efe5" />
+    <title>ATLAS NEWS LAB · Prosodia semántica Alex C</title>
+  </head>
+  <body>
+    <main class="lab-shell">
+      <p class="lab-kicker">ATLAS NEWS · AUDIO LAB</p>
+      <h1>Prosodia semántica Alex C</h1>
+      <p class="lead">
+        Una sola muestra del mismo Internacional del 18 de septiembre. Alex C
+        conserva su voz, referencia y parámetros canónicos. Speech V5 y Lexicon
+        actúan antes de dividir el reporte en frases y cláusulas naturales.
+      </p>
+
+      <div class="rule" aria-hidden="true"></div>
+
+      <section class="audio-card">
+        <p class="status">Candidato único · Internacional</p>
+        <h2>Alex C · segmentación natural</h2>
+        <p class="lead">
+          Escucha especialmente intensidad, será, escenario y normalización. No
+          hay límite mecánico de palabras ni ajuste experimental de CFG.
+        </p>
+        <audio controls preload="metadata">
+          <source
+            src="/lab/audio/alexc-semantic-prosody-v1/international-semantic-v1.mp3"
+            type="audio/mpeg"
+          />
+        </audio>
+      </section>
+
+      <div class="rule" aria-hidden="true"></div>
+
+      <p class="note">
+        LAB_ONLY. Producción no fue modificada. CFG 0,50, temperature 0,80,
+        semillas 9200+, ortografía intacta y segmentación manual por sentido.
+      </p>
+
+      <a class="lab-link" href="/lab/">← Volver a ATLAS NEWS LAB</a>
+    </main>
+  </body>
+</html>
+
+<style>
+  :global(body) {
+    margin: 0;
+    background: #f2efe5;
+    color: #151515;
+  }
+
+  .lab-shell {
+    width: min(52rem, calc(100% - 2rem));
+    margin: 0 auto;
+    padding: clamp(3.5rem, 10vw, 7rem) 0;
+  }
+
+  .lab-kicker,
+  .status {
+    margin: 0;
+    font: 800 0.72rem/1.2 var(--sans);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  h1 {
+    margin: 0.75rem 0 1rem;
+    font: 700 clamp(2.7rem, 9vw, 6rem) / 0.92 var(--display);
+    letter-spacing: -0.04em;
+  }
+
+  h2 {
+    margin: 0.45rem 0 1rem;
+    font: 700 clamp(1.6rem, 4vw, 2.5rem) / 1 var(--display);
+  }
+
+  .lead,
+  .note {
+    max-width: 46rem;
+    font: 400 1rem/1.6 var(--serif);
+  }
+
+  .rule {
+    height: 4px;
+    margin: 2.5rem 0;
+    border-top: 1px solid #151515;
+    border-bottom: 1px solid #151515;
+  }
+
+  .audio-card {
+    padding: 1.25rem;
+    border: 1px solid #151515;
+    border-top: 5px solid #a71920;
+    background: rgba(255, 255, 255, 0.18);
+  }
+
+  audio {
+    width: 100%;
+  }
+
+  .lab-link {
+    display: inline-block;
+    margin-top: 1rem;
+    color: inherit;
+    font: 800 0.86rem/1.2 var(--sans);
+    text-decoration-thickness: 2px;
+    text-underline-offset: 0.2em;
+  }
+</style>

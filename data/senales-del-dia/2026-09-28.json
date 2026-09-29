@@ -1,0 +1,103 @@
+{
+  "status": "READY",
+  "date": "2026-09-28",
+  "contract": "atlas-senales-del-dia-v1",
+  "senalesDelDia": {
+    "internacional": [
+      {
+        "slot": "technology",
+        "headline": "Perplexity lleva su agente local a equipos con AMD Ryzen AI Max",
+        "deck": "Portable Computer ejecuta tareas y flujos recurrentes en Windows sobre hardware compatible, con opción de recurrir a la nube cuando necesita más capacidad.",
+        "development": "AMD y Perplexity anunciaron el 24 de septiembre que Portable Computer ya puede ejecutarse en computadores Windows equipados con procesadores Ryzen AI Max, incluida la plataforma para desarrolladores Ryzen AI Halo. La aplicación permite correr tareas locales y flujos recurrentes en el propio equipo sin consumir créditos de inferencia de Perplexity Computer. La arquitectura combina CPU, GPU y memoria compartida para mantener modelos y aplicaciones de uso diario en una misma máquina.\n\nLa señal tecnológica es el traslado de agentes desde una interfaz exclusivamente alojada en la nube hacia un esquema híbrido. El procesamiento local puede reducir latencia y mantener ciertos datos en el dispositivo, mientras el servicio conserva la posibilidad de acudir a razonamiento de mayor escala en la nube. Eso amplía el campo de uso para tareas repetitivas, pero no equivale por sí solo a demostrar que un agente es más seguro, preciso o autónomo.\n\nEl anuncio proviene de las dos empresas involucradas y describe disponibilidad y capacidades, no pruebas independientes de desempeño. Los siguientes antecedentes relevantes serán la compatibilidad efectiva con aplicaciones, la memoria exigida por cada flujo, el consumo energético y los controles que recibe el usuario para decidir qué información permanece local. También importará comparar costo y rendimiento frente a estaciones de trabajo tradicionales y servicios totalmente remotos.",
+        "anchor": "perplexity-agente-local-amd-ryzen-ai-max",
+        "sources": [
+          {
+            "name": "AMD Newsroom",
+            "url": "https://newsroom.amd.com/news/amd-perplexity-agentic-pcs/"
+          },
+          {
+            "name": "Perplexity",
+            "url": "https://www.perplexity.ai/uk/hub/blog/portable-computer-comes-to-amd-powered-agentic-pcs"
+          }
+        ]
+      },
+      {
+        "slot": "world",
+        "headline": "La sucesión de Guterres abre una prueba institucional para la ONU",
+        "deck": "El mandato del secretario general termina el 31 de diciembre y la búsqueda de reemplazo avanza sin favorito claro, con presupuestos menores y conflictos abiertos.",
+        "development": "La Asamblea General cerró su semana de alto nivel con la sucesión de António Guterres ya instalada como una tarea inmediata. Su segundo mandato termina el 31 de diciembre de 2026 y el proceso para elegir a la próxima persona al frente de Naciones Unidas todavía no tiene un favorito claro. Reuters identificó entre las candidaturas mejor posicionadas a Rebeca Grynspan, exvicepresidenta de Costa Rica, y Carolyn Rodrigues-Birkett, embajadora de Guyana ante la ONU.\n\nEl hecho no es sólo una competencia de nombres. La designación requiere una recomendación del Consejo de Seguridad y una decisión de la Asamblea General, por lo que las potencias con poder de veto influyen directamente en el resultado. La próxima jefatura recibirá una organización con presupuestos reducidos, menor margen político y guerras activas en las que los Estados miembros no han alcanzado acuerdos duraderos.\n\nLa carrera sigue abierta y las posiciones pueden cambiar durante las consultas y votaciones informales. Corresponde separar los antecedentes confirmados del proceso de cualquier interpretación sobre preferencias nacionales. Los próximos hitos verificables serán la evolución de las candidaturas, las señales públicas del Consejo de Seguridad y la existencia de una recomendación formal antes de que termine el mandato. Una demora prolongada aumentaría la presión operativa, pero no permite anticipar por sí sola quién será seleccionado.",
+        "anchor": "onu-sucesion-guterres-prueba-institucional",
+        "sources": [
+          {
+            "name": "Naciones Unidas — selección del próximo secretario general",
+            "url": "https://www.un.org/sg/en/content/selection-and-appointment-of-the-next-secretary-general"
+          },
+          {
+            "name": "Reuters vía Media Selangor",
+            "url": "https://mediaselangor.com/en/2026/09/397743"
+          }
+        ]
+      }
+    ],
+    "nacional": [
+      {
+        "slot": "ipsa_company",
+        "headline": "Cencosud actualiza controles para operaciones con relacionados",
+        "deck": "El directorio aprobó una nueva política de habitualidad que entra en vigor el 1 de octubre y fija requisitos, autorizaciones y límites para transacciones ordinarias.",
+        "development": "El directorio de Cencosud aprobó el 25 de septiembre una actualización de su Política General de Operaciones Habituales con Partes Relacionadas, con vigencia desde el 1 de octubre. El documento regula las transacciones ordinarias que pueden acogerse a la excepción contemplada en el artículo 147 de la Ley de Sociedades Anónimas. Para ello exige que la operación sea recurrente dentro del giro, contribuya al interés social, se pacte en condiciones de mercado y se celebre con contrapartes previamente autorizadas.\n\nLa señal corporativa es de gobierno y control, no el anuncio de una compraventa específica. La política distribuye responsabilidades entre las áreas que originan las operaciones, control de gestión, contabilidad y asuntos legales, y establece umbrales diferenciados según la contraparte. Las transacciones que no cumplan los criterios de habitualidad deben seguir los procedimientos generales aplicables a operaciones con partes relacionadas.\n\nLa actualización no informa un impacto inmediato en ingresos, márgenes o caja, por lo que no corresponde atribuirle un efecto financiero que la compañía no comunicó. Su importancia para accionistas está en la trazabilidad de decisiones dentro de un grupo con múltiples filiales y negocios. Habrá que observar los reportes semestrales exigidos por la normativa, la aplicación de los límites y cualquier operación material que quede fuera de esta política y requiera aprobación por otra vía.",
+        "anchor": "cencosud-controles-operaciones-partes-relacionadas",
+        "sources": [
+          {
+            "name": "Cencosud — documentos legales",
+            "url": "https://www.cencosud.com/documentos-legales"
+          },
+          {
+            "name": "CMF — política de operaciones habituales de Cencosud",
+            "url": "https://www.cmfchile.cl/sitio/aplic/serdoc/ver_sgd.php?s567=01fe6c3978d56c8aa452a12f89229481VFdwQmVVNXFRVFZOUkZsNVRucEpOVTVCUFQwPQ%3D%3D&secuencia=-1&t=1790504761"
+          }
+        ]
+      },
+      {
+        "slot": "policy_economy",
+        "headline": "La CMF consulta un nuevo monitoreo de liquidez para aseguradoras",
+        "deck": "El regulador propone pasar de una medición de stock a proyecciones de flujos y ordenar los reportes del sector en un manual único.",
+        "development": "La Comisión para el Mercado Financiero abrió el 23 de septiembre dos consultas para la industria aseguradora. La primera crea el Manual de Sistema de Información de Seguros, que reunirá bajo una estructura única requerimientos que hoy están distribuidos en distintas normas. La etapa inicial reubica 35 archivos y 11 formularios sin cambiar su contenido, periodicidad ni mecanismo de envío. La segunda consulta establece instrucciones para proyectar la liquidez de compañías de seguros y reaseguros.\n\nEl cambio sustantivo propuesto es pasar de una mirada concentrada en el stock disponible a una evaluación prospectiva de flujos. Tras una consulta anterior, la CMF redujo la estructura del requerimiento de ocho a seis registros, ajustó plazos de implementación y eliminó el horizonte de proyección de seis meses. La consulta del manual estará abierta seis semanas y la de liquidez, cuatro semanas; mientras no exista una norma definitiva, las obligaciones vigentes no cambian.\n\nLa señal de política económica está en fortalecer información comparable y anticipar tensiones de caja dentro de un sector que administra obligaciones de largo plazo. El beneficio esperado es supervisor y operativo, pero debe contrastarse con los costos de implementación y la calidad de los datos entregados. Los próximos hitos serán las observaciones recibidas, el texto final, su fecha de entrada en vigor y cualquier transición exigida a las compañías.",
+        "anchor": "cmf-consulta-liquidez-aseguradoras-flujos",
+        "sources": [
+          {
+            "name": "Comisión para el Mercado Financiero",
+            "url": "https://www.cmfchile.cl/portal/prensa/625/w4-article-113746.html"
+          }
+        ]
+      }
+    ],
+    "mercados": [
+      {
+        "slot": "markets_chile",
+        "headline": "La CMF sanciona a Vulion por reportes financieros tardíos",
+        "deck": "El regulador aplicó censura a la administradora de fondos privados por no remitir oportunamente información trimestral obligatoria.",
+        "development": "La Comisión para el Mercado Financiero informó el 25 de septiembre que sancionó con censura a Vulion Capital S.A., administradora de fondos de inversión privados, por incumplir deberes de información continua. Según la Resolución Exenta N° 10.269, la entidad no envió oportunamente información financiera trimestral que debía reportar bajo la Norma de Carácter General N° 475. La resolución es un acto sancionatorio del regulador y no una estimación de terceros.\n\nPara el mercado chileno, la señal está en la calidad y puntualidad de los antecedentes disponibles sobre vehículos privados. Estos fondos no se transan como una acción del IPSA, pero participan en el ecosistema de inversión y requieren información periódica para que la autoridad supervise cumplimiento y riesgos. La sanción de censura deja constancia formal de la infracción; el comunicado no informa pérdidas para aportantes ni irregularidades en la valorización de activos.\n\nConviene mantener esa distinción antes de extraer conclusiones sobre solvencia o desempeño. El hecho acreditado es el atraso en los reportes obligatorios, no un daño financiero demostrado. Lo siguiente será observar si la administradora regulariza completamente los envíos, si adopta controles internos para evitar nuevas demoras y si la CMF publica actuaciones posteriores. Para inversionistas profesionales, el caso refuerza la relevancia de revisar calendarios, estados financieros y disciplina de divulgación además de la rentabilidad ofrecida.",
+        "anchor": "cmf-sancion-vulion-reportes-financieros",
+        "sources": [
+          {
+            "name": "Comisión para el Mercado Financiero",
+            "url": "https://www.cmfchile.cl/portal/prensa/625/w4-article-113795.html"
+          }
+        ]
+      },
+      {
+        "slot": "markets_global",
+        "headline": "Binance invierte US$100 millones en la emisora de USDC",
+        "deck": "La compra de una participación en Circle amplía la alianza entre una gran plataforma de intercambio y el emisor de la segunda stablecoin por circulación.",
+        "development": "Binance acordó invertir US$100 millones en Circle Internet Group, emisora de la stablecoin USDC, según informaron ambas compañías el 22 de septiembre. La operación amplía una relación comercial ya existente entre la plataforma de intercambio y el proveedor del activo digital vinculado al dólar. Tras conocerse el acuerdo, las acciones de Circle avanzaron cerca de 2% en las operaciones previas a la apertura de Wall Street.\n\nLa señal para mercados globales es la integración de capital entre dos eslabones distintos de la infraestructura cripto: una bolsa que concentra distribución y liquidez, y un emisor que administra reservas y redención de tokens. Para Circle, el respaldo puede ampliar uso y acceso a USDC; para Binance, fortalece una oferta denominada en dólares sin convertirla en emisor directo del activo. El monto, sin embargo, no permite inferir control ni elimina los riesgos regulatorios y de contraparte.\n\nEl anuncio debe evaluarse junto con la estructura definitiva de la inversión y la evolución de los saldos de USDC en Binance. También importan la composición y custodia de las reservas, las condiciones de conversión a dólares y las reglas que adopten Estados Unidos y otras jurisdicciones. La reacción bursátil inicial registra una recepción de mercado, pero no prueba por sí sola que la alianza elevará ingresos o participación de manera sostenida.",
+        "anchor": "binance-inversion-circle-usdc",
+        "sources": [
+          {
+            "name": "Reuters",
+            "url": "https://www.reuters.com/legal/transactional/binance-buys-100-million-stake-circle-expands-partnership-2026-09-22/"
+          }
+        ]
+      }
+    ]
+  }
+}

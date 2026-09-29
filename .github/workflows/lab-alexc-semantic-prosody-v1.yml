@@ -1,0 +1,197 @@
+name: LAB — Prosodia semántica Alex C Internacional
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - "lab-site/src/pages/audio-alexc-semantic-prosody-v1.astro"
+      - "scripts/lab/generate-alexc-semantic-prosody-v1.py"
+      - ".github/workflows/lab-alexc-semantic-prosody-v1.yml"
+  push:
+    branches: [main]
+    paths:
+      - "lab-site/src/pages/audio-alexc-semantic-prosody-v1.astro"
+      - "scripts/lab/generate-alexc-semantic-prosody-v1.py"
+      - ".github/workflows/lab-alexc-semantic-prosody-v1.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: atlas-news-lab-alexc-semantic-prosody-v1
+  cancel-in-progress: true
+
+jobs:
+  validate:
+    name: Validar generador LAB
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Descargar repositorio
+        uses: actions/checkout@v5
+      - name: Compilar generador Python
+        run: python3 -m py_compile scripts/lab/generate-alexc-semantic-prosody-v1.py
+
+  render:
+    name: Generar muestra Internacional aislada
+    if: github.event_name != 'pull_request'
+    needs: validate
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+
+    steps:
+      - name: Descargar repositorio
+        uses: actions/checkout@v5
+
+      - name: Preparar Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: 22
+
+      - name: Preparar plan Internacional bloqueado
+        env:
+          ATLAS_INTERNATIONAL_PLAN: ${{ runner.temp }}/atlas-international-plan.json
+        run: node scripts/prepare-international-audio.mjs
+
+      - name: Preparar Python y motores de voz
+        run: |
+          set -euo pipefail
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq espeak-ng ffmpeg python3-venv
+
+          python3 -m venv "$RUNNER_TEMP/alexc-semantic-lab-venv"
+          source "$RUNNER_TEMP/alexc-semantic-lab-venv/bin/activate"
+          python -m pip install --quiet --upgrade pip
+          python -m pip install --quiet --index-url https://download.pytorch.org/whl/cpu \
+            torch==2.8.0 torchaudio==2.8.0
+          python -m pip install --quiet \
+            "kokoro==0.9.4" \
+            numpy==1.26.0 \
+            soundfile \
+            resampy==0.4.3 \
+            librosa==0.10.0 \
+            s3tokenizer \
+            transformers==4.46.3 \
+            diffusers==0.29.0 \
+            omegaconf==2.3.0 \
+            resemble-perth==1.0.1 \
+            silero-vad==5.1.2 \
+            conformer==0.3.2 \
+            safetensors \
+            huggingface_hub
+
+          git clone --quiet \
+            https://huggingface.co/spaces/ResembleAI/Chatterbox-Multilingual-TTS-es-mx-latam \
+            "$RUNNER_TEMP/chatterbox-latam"
+          git -C "$RUNNER_TEMP/chatterbox-latam" checkout --quiet \
+            0d2648c4c1637eccfa8d45c7e192a0ad8d5b1fca
+
+          python - <<'PY'
+          import os
+          import shutil
+          from pathlib import Path
+          from huggingface_hub import snapshot_download
+
+          base = Path(snapshot_download(
+              repo_id="ResembleAI/chatterbox",
+              revision="5bb1f6ee58e50c3b8d408bc82a6d3740c2db6e18",
+              allow_patterns=["ve.pt", "grapheme_mtl_merged_expanded_v1.json", "conds.pt"],
+          ))
+          latam = Path(snapshot_download(
+              repo_id="ResembleAI/Chatterbox-Multilingual-es-mx-latam",
+              revision="27e595bf2fe7be0533ca299d9afafcde08b7cca7",
+              allow_patterns=["t3_es_mx_latam.safetensors", "s3gen_v3.pt"],
+          ))
+          target = Path(os.environ["RUNNER_TEMP"]) / "chatterbox-ckpt"
+          target.mkdir(parents=True, exist_ok=True)
+
+          for name in ("ve.pt", "grapheme_mtl_merged_expanded_v1.json", "conds.pt"):
+              shutil.copy2(base / name, target / name)
+          for name in ("t3_es_mx_latam.safetensors", "s3gen_v3.pt"):
+              shutil.copy2(latam / name, target / name)
+          PY
+
+      - name: Preparar acceso al repo público
+        env:
+          DEPLOY_KEY: ${{ secrets.ATLAS_PAGES_DEPLOY_KEY }}
+        run: |
+          set -euo pipefail
+          install -m 700 -d ~/.ssh
+          printf '%s\n' "$DEPLOY_KEY" > ~/.ssh/atlas_news_pages
+          chmod 600 ~/.ssh/atlas_news_pages
+          ssh-keyscan -H github.com >> ~/.ssh/known_hosts
+          GIT_SSH_COMMAND="ssh -i ~/.ssh/atlas_news_pages -o IdentitiesOnly=yes" \
+            git clone --depth 1 \
+            git@github.com:Atlasnews-media/Atlasnews-media.github.io.git \
+            "$RUNNER_TEMP/atlas-news-public"
+
+      - name: Generar una sola muestra de Internacional
+        env:
+          ATLAS_PUBLIC_REPO_DIR: ${{ runner.temp }}/atlas-news-public
+          ATLAS_INTERNATIONAL_PLAN: ${{ runner.temp }}/atlas-international-plan.json
+          ATLAS_CHATTERBOX_SPACE_DIR: ${{ runner.temp }}/chatterbox-latam
+          ATLAS_CHATTERBOX_CKPT_DIR: ${{ runner.temp }}/chatterbox-ckpt
+        run: |
+          set -euo pipefail
+          source "$RUNNER_TEMP/alexc-semantic-lab-venv/bin/activate"
+          python scripts/lab/generate-alexc-semantic-prosody-v1.py
+
+      - name: Publicar sólo audio LAB
+        env:
+          GIT_SSH_COMMAND: ssh -i ~/.ssh/atlas_news_pages -o IdentitiesOnly=yes
+        run: |
+          set -euo pipefail
+          cd "$RUNNER_TEMP/atlas-news-public"
+          git config user.name "ATLAS NEWS Audio LAB"
+          git config user.email "actions@users.noreply.github.com"
+          git add lab/audio/alexc-semantic-prosody-v1/
+
+          if git diff --cached --quiet; then
+            echo "Muestra LAB ya estaba actualizada."
+            exit 0
+          fi
+
+          git commit -m "LAB audio — prosodia semántica Alex C Internacional"
+
+          for attempt in 1 2 3; do
+            git pull --rebase origin main
+            if git push origin main; then
+              exit 0
+            fi
+            if [[ "$attempt" -eq 3 ]]; then
+              echo "No fue posible publicar la muestra LAB." >&2
+              exit 1
+            fi
+            sleep 2
+          done
+
+      - name: Verificar muestra remota
+        env:
+          GIT_SSH_COMMAND: ssh -i ~/.ssh/atlas_news_pages -o IdentitiesOnly=yes
+        run: |
+          set -euo pipefail
+          cd "$RUNNER_TEMP/atlas-news-public"
+          git fetch --quiet origin main
+
+          manifest="$RUNNER_TEMP/alexc-semantic-manifest.json"
+          git show origin/main:lab/audio/alexc-semantic-prosody-v1/manifest.json > "$manifest"
+
+          jq -e '
+            .scope == "LAB_ONLY" and
+            .productionTouched == false and
+            .sourceId == "2026-09-18-daily-bancos-centrales-endurecen-el-mapa-global" and
+            .scriptHash == "df99671f0c9d0a43107b837e0919c2a2a4c9866786830bbcefeb5cbd223eb8e4" and
+            .strategy == "correct-orthography-semantic-prosody-segmentation" and
+            .cfgWeight == 0.5 and
+            .temperature == 0.8 and
+            .seedBase == 9200 and
+            .segmentation.mode == "manual-semantic-breakpoints" and
+            .segmentation.maxWords == null and
+            (.listeningTargets | sort) == (["intensidad", "será", "escenario", "normalización"] | sort)
+          ' "$manifest" >/dev/null
+
+          git cat-file -e \
+            "origin/main:lab/audio/alexc-semantic-prosody-v1/international-semantic-v1.mp3"
+
+          echo "Muestra LAB semántica remota verificada."

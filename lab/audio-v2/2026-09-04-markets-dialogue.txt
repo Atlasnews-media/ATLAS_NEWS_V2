@@ -1,0 +1,27 @@
+VOZ 1: Hoy la señal más interesante no es otro movimiento de la Fed ni repetir el petróleo. Está en quién está dejando de ser comprador automático de deuda soberana.
+VOZ 2: ¿Te refieres a Japón otra vez?
+VOZ 1: Japón sigue siendo parte de la historia, pero hoy se sumó Noruega. El fondo soberano noruego, que administra unos 2,3 billones de dólares, propuso reducir el peso de deuda pública en su índice de bonos desde 70% a 50%.
+VOZ 2: ¿Y eso cuánto significa en Treasuries?
+VOZ 1: Según cálculos de Reuters, cerca de 80.000 millones de dólares menos sobre una posición de aproximadamente 215.000 millones. No sería una venta inmediata: la propuesta todavía debe ser respondida por el Ministerio de Finanzas y cualquier cambio sería gradual.
+VOZ 2: Entonces, ¿por qué importa hoy si todavía no están vendiendo?
+VOZ 1: Porque cambia la lectura del comprador marginal. Ayer Japón ya mostraba que rendimientos locales más altos estaban atrayendo capital de vuelta y reduciendo la necesidad de comprar deuda extranjera. Hoy Noruega agrega otra señal: un gran inversor institucional considera que puede obtener mejor compensación reduciendo soberanos y aumentando crédito no gubernamental.
+VOZ 2: Pero los Treasuries bajaron de rendimiento después de Waller. ¿No contradice eso la tesis?
+VOZ 1: No. Son dos fuerzas distintas. Waller redujo la probabilidad de una subida inmediata de la Fed y eso alivió sobre todo el tramo corto. El dos años quedó cerca de 4,33% después de caer unos cinco puntos base. Esa es la parte cíclica.
+VOZ 2: ¿Y la parte estructural?
+VOZ 1: La parte estructural es quién financia la deuda a diez o treinta años. Si Japón repatria más capital y Noruega reduce su benchmark soberano, Estados Unidos necesita que otros compradores absorban esa oferta o debe pagar una prima mayor.
+VOZ 2: O sea, una nómina débil puede bajar tasas, pero quizá no todas por igual.
+VOZ 1: Exacto. Si el empleo decepciona, el dos años puede caer porque la Fed parece menos agresiva. Pero si el diez y el treinta años bajan mucho menos, eso sería una señal de que la prima por plazo está empezando a independizarse de la política monetaria.
+VOZ 2: ¿Noruega está saliendo del dólar?
+VOZ 1: No realmente. Ese detalle es importante. La propuesta reduce fuertemente Treasuries, pero aumenta deuda estadounidense no soberana. El peso total del dólar en el índice bajaría muy poco, desde 52,9% a 52,5%.
+VOZ 2: Entonces el mensaje no es “Estados Unidos pierde capital”.
+VOZ 1: Correcto. El mensaje es que el capital está cambiando de riesgo soberano hacia primas privadas. Eso puede encarecer la deuda pública sin implicar una fuga general del dólar.
+VOZ 2: ¿Y Japón aporta qué evidencia nueva hoy?
+VOZ 1: El yen acumula alrededor de 2,3% de apreciación semanal y el posicionamiento pasó de bajista a alcista desde comienzos de agosto. Además, el mercado asigna una probabilidad cercana a 97% a una subida de 25 puntos base del Banco de Japón en septiembre.
+VOZ 2: Eso sí podría acelerar el cierre del carry.
+VOZ 1: Sí. Si el yen sigue fortaleciéndose y los JGB ofrecen más retorno, mantener capital japonés afuera se vuelve menos atractivo. No significa una liquidación abrupta de Treasuries, pero sí una menor demanda marginal.
+VOZ 2: ¿Y las bolsas están reaccionando como si esto fuera un problema sistémico?
+VOZ 1: Por ahora no. Asia subió y Europa se mueve poco, con mucha dispersión sectorial. El mensaje de mercado es más específico: presión sobre duración y reasignación de capital, no una salida general de riesgo.
+VOZ 2: Entonces, ¿qué mirar después del dato de empleo?
+VOZ 1: La forma de la curva. Si una nómina débil hace caer mucho el dos años pero el largo resiste, la estructura de compradores estará ganando peso. También hay que seguir la decisión final de Noruega y los flujos japoneses hacia deuda extranjera.
+VOZ 2: Y si todo el Treasury cae con fuerza y esa presión desaparece, la tesis se debilita.
+VOZ 1: Exactamente. La lectura se fortalece si el extremo largo sigue caro incluso con una Fed más paciente. La idea central de hoy es simple: el precio de la deuda soberana no depende solo de lo que haga la Fed, sino también de quién decide dejar de comprarla.

@@ -1,0 +1,200 @@
+name: LAB — gateway runtime memoria EXP-011
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - "scripts/lab/validate-editorial-memory-judge.mjs"
+      - ".github/workflows/lab-editorial-memory-runtime.yml"
+      - "lab/editorial-memory-judge/**"
+  push:
+    branches:
+      - "lab-runtime/editorial-memory-judge"
+    paths:
+      - "lab/editorial-memory-judge/runtime/latest.json"
+
+permissions:
+  contents: read
+
+concurrency:
+  group: lab-editorial-memory-runtime
+  cancel-in-progress: true
+
+jobs:
+  validate-contract:
+    if: github.event_name == 'pull_request'
+    name: Validar contrato runtime
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+
+    steps:
+      - name: Descargar PR
+        uses: actions/checkout@v5
+
+      - name: Preparar Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: Validar bootstrap compatible
+        run: >-
+          node scripts/lab/validate-editorial-memory-judge.mjs
+          lab/editorial-memory-judge/bootstrap.json
+
+      - name: Validar fixture semántico
+        run: >-
+          node scripts/lab/validate-editorial-memory-judge.mjs
+          lab/editorial-memory-judge/runtime-example.json
+
+  publish-runtime:
+    if: github.event_name == 'push'
+    name: Publicar sólo latest.json en LAB
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: Descargar rama runtime
+        uses: actions/checkout@v5
+        with:
+          fetch-depth: 2
+
+      - name: Preparar Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: Gate de rama y scope del commit
+        run: |
+          set -euo pipefail
+          expected_branch="lab-runtime/editorial-memory-judge"
+          expected_path="lab/editorial-memory-judge/runtime/latest.json"
+
+          if [[ "$GITHUB_REF_NAME" != "$expected_branch" ]]; then
+            echo "RUNTIME BRANCH GUARD FAIL: $GITHUB_REF_NAME" >&2
+            exit 1
+          fi
+
+          changed="$(git diff-tree --no-commit-id --name-only -r "$GITHUB_SHA")"
+          if [[ "$changed" != "$expected_path" ]]; then
+            echo "RUNTIME SCOPE GUARD FAIL" >&2
+            printf '%s\n' "$changed" >&2
+            exit 1
+          fi
+
+      - name: Validar contrato de salida EXP-011
+        run: >-
+          node scripts/lab/validate-editorial-memory-judge.mjs
+          lab/editorial-memory-judge/runtime/latest.json
+
+      - name: Descargar input público vigente
+        run: |
+          set -euo pipefail
+          mkdir -p "$RUNNER_TEMP/exp011"
+          curl -fsSL \
+            "https://raw.githubusercontent.com/Atlasnews-media/Atlasnews-media.github.io/main/lab/editorial-memory-judge/input.json" \
+            -o "$RUNNER_TEMP/exp011/input.json"
+
+      - name: Verificar identidad entre input y salida
+        run: |
+          node - <<'NODE'
+          const fs = require("fs");
+          const output = JSON.parse(
+            fs.readFileSync(
+              "lab/editorial-memory-judge/runtime/latest.json",
+              "utf8",
+            ),
+          );
+          const input = JSON.parse(
+            fs.readFileSync(
+              process.env.RUNNER_TEMP + "/exp011/input.json",
+              "utf8",
+            ),
+          );
+
+          const fail = (message) => {
+            console.error("IDENTITY GUARD FAIL:", message);
+            process.exit(1);
+          };
+
+          if (input.mode !== "LAB_ONLY") fail("input no es LAB_ONLY");
+          if (input.safety?.production_writes_allowed !== false)
+            fail("input permite escritura productiva");
+          if (
+            input.safety?.judge_public_write_target !==
+            "Atlasnews-media/Atlasnews-media.github.io:lab/editorial-memory-judge/latest.json"
+          )
+            fail("write target de input no coincide");
+
+          if (output.run?.editorialDate !== input.source?.editorial_date)
+            fail("editorialDate desalineada");
+          if (output.run?.sourceCommit !== input.source?.source_commit)
+            fail("sourceCommit desalineado");
+          if (output.run?.inputGeneratedAt !== input.generated_at)
+            fail("inputGeneratedAt desalineado");
+
+          const expected = [...input.candidates.map((item) => item.candidate_id)].sort();
+          const actual = [...output.cases.map((item) => item.candidateId)].sort();
+
+          if (JSON.stringify(expected) !== JSON.stringify(actual))
+            fail("candidateIds desalineados");
+
+          console.log(
+            `EXP-011 IDENTITY OK — ${actual.length} candidatos · ${output.run.editorialDate}`,
+          );
+          NODE
+
+      - name: Preparar acceso al repositorio público
+        env:
+          DEPLOY_KEY: ${{ secrets.ATLAS_PAGES_DEPLOY_KEY }}
+        run: |
+          set -euo pipefail
+          install -m 700 -d ~/.ssh
+          printf '%s\n' "$DEPLOY_KEY" > ~/.ssh/atlas_news_pages
+          chmod 600 ~/.ssh/atlas_news_pages
+          ssh-keyscan -H github.com >> ~/.ssh/known_hosts
+
+      - name: Publicar exclusivamente latest.json
+        env:
+          GIT_SSH_COMMAND: ssh -i ~/.ssh/atlas_news_pages -o IdentitiesOnly=yes
+        run: |
+          set -euo pipefail
+          public="$RUNNER_TEMP/atlas-news-public"
+          target="lab/editorial-memory-judge/latest.json"
+
+          git clone --depth 1 \
+            git@github.com:Atlasnews-media/Atlasnews-media.github.io.git \
+            "$public"
+
+          mkdir -p "$public/lab/editorial-memory-judge"
+          cp lab/editorial-memory-judge/runtime/latest.json "$public/$target"
+
+          cd "$public"
+          git config user.name "ATLAS NEWS LAB Runtime Publisher"
+          git config user.email "actions@users.noreply.github.com"
+          git add -- "$target"
+
+          staged="$(git diff --cached --name-only)"
+          if [[ -z "$staged" ]]; then
+            echo "latest.json ya estaba actualizado."
+            exit 0
+          fi
+
+          if [[ "$staged" != "$target" ]]; then
+            echo "PUBLIC SCOPE GUARD FAIL: escritura fuera de $target" >&2
+            printf '%s\n' "$staged" >&2
+            exit 1
+          fi
+
+          date="$(node -p "JSON.parse(require('fs').readFileSync('$target','utf8')).run.editorialDate")"
+          git commit -m "LAB EXP-011 resultado semántico ${date}"
+
+          for attempt in 1 2 3; do
+            if git pull --rebase origin main && git push origin main; then
+              exit 0
+            fi
+            if [[ "$attempt" -eq 3 ]]; then
+              echo "No fue posible publicar latest LAB tras tres intentos." >&2
+              exit 1
+            fi
+            sleep 2
+          done

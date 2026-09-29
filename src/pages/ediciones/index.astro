@@ -1,0 +1,70 @@
+---
+import ContentCard from "../../components/ContentCard.astro";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import {
+  dailyIssueNumber,
+  editionDisplayLabel,
+  formatEditorialDate,
+  getPublishedEditions,
+} from "../../lib/content";
+const editions = await getPublishedEditions();
+---
+
+<BaseLayout
+  title="Ediciones — ATLAS NEWS"
+  description="Ediciones diarias y panoramas semanales de ATLAS NEWS."
+>
+  <main class="page-shell">
+    <p class="page-kicker">Publicaciones</p>
+    <h1 class="page-title">Ediciones</h1>
+    <p class="page-intro">
+      Ediciones diarias y panoramas semanales, ordenadas desde el cierre más
+      reciente. La numeración corresponde exclusivamente a las ediciones diarias
+      publicadas.
+    </p>
+    <div class="edition-list">
+      {
+        editions.map((edition) => (
+          <ContentCard
+            href={`/ediciones/${edition.id}/`}
+            eyebrow={editionDisplayLabel(
+              edition,
+              dailyIssueNumber(edition, editions),
+            )}
+            title={edition.data.title}
+            summary={edition.data.summary}
+            date={formatEditorialDate(edition.data.publishedAt)}
+            demo={edition.data.demo}
+          />
+        ))
+      }
+    </div>
+  </main>
+</BaseLayout>
+
+<style>
+  .edition-list {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    border-top: 5px double var(--rule);
+  }
+  .edition-list :global(.card) {
+    padding: 1.75rem;
+    border-top-width: 1px;
+  }
+  .edition-list :global(.card:nth-child(odd)) {
+    padding-left: 0;
+    border-right: 1px solid var(--rule);
+  }
+  @media (max-width: 42rem) {
+    .edition-list {
+      grid-template-columns: 1fr;
+    }
+    .edition-list :global(.card),
+    .edition-list :global(.card:nth-child(odd)) {
+      padding-right: 0;
+      padding-left: 0;
+      border-right: 0;
+    }
+  }
+</style>

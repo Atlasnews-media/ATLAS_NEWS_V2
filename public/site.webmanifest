@@ -1,0 +1,19 @@
+{
+  "name": "ATLAS NEWS",
+  "short_name": "ATLAS NEWS",
+  "icons": [
+    {
+      "src": "/brand/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/brand/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "theme_color": "#f8f5ee",
+  "background_color": "#f8f5ee",
+  "display": "standalone"
+}

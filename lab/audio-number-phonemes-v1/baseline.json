@@ -1,0 +1,45 @@
+{
+  "experiment": "audio-number-phonemes-v1",
+  "capturedAt": "2026-09-26 18:19 America/Santiago",
+  "hypothesis": "Si Speech V5 produce 'mil noventa y ocho' pero Dora omite acústicamente 'mil', la comparación con fonemas directos debe aislar si la pérdida ocurre antes o dentro de Kokoro.",
+  "primaryVariable": "entrada de texto normal versus fonemas directos a Kokoro para 1.098 pesos",
+  "productionTouched": false,
+  "fallbackAllowed": false,
+  "doNotTouch": [
+    "contenido editorial visible",
+    "scripts/audio_speech.py",
+    "config/audio/lexicon-v3.json",
+    "voz ef_dora",
+    "Kokoro 0.9.4",
+    "Audio V2 productivo",
+    "F4A",
+    "RRSS",
+    "repositorio público /audio/"
+  ],
+  "sourceRepo": {
+    "repository": "Atlasnews-media/ATLAS_NEWS_V2",
+    "mainSha": "151b75b60619d7db7d073814477ea938996bbc03"
+  },
+  "publicRepo": {
+    "repository": "Atlasnews-media/Atlasnews-media.github.io",
+    "mainSha": "a5f2c7513653ddef1ec27fa0d02919f274726679"
+  },
+  "productionAudio": {
+    "date": "2026-09-26",
+    "sourceCommit": "151b75b60619d7db7d073814477ea938996bbc03",
+    "speechNormalizerVersion": 5,
+    "lexiconVersion": 3,
+    "lexiconRevision": 6,
+    "cover": {
+      "sourceId": "2026-09-26-daily-treguas-acotan-riesgos-globales",
+      "scriptVersion": 15,
+      "scriptHash": null,
+      "voice": "ef_dora",
+      "engine": "Kokoro-82M",
+      "path": "/audio/2026-09-26-resumen-diario.mp3",
+      "durationSeconds": 307.4,
+      "bytes": 3689037,
+      "blobSha": "d1850195543c02ad049aad7735f8297f8ef8cf21"
+    }
+  }
+}

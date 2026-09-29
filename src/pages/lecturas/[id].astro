@@ -1,0 +1,111 @@
+---
+import { render } from "astro:content";
+import ArticleHeader from "../../components/ArticleHeader.astro";
+import ReadingAudio from "../../components/ReadingAudio.astro";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import {
+  formatEditorialDate,
+  getPublishedReadings,
+  type Reading,
+} from "../../lib/content";
+import { resolveFrontPageVisual } from "../../lib/front-page-visuals";
+
+export async function getStaticPaths() {
+  const readings = await getPublishedReadings();
+  return readings.map((reading) => ({
+    params: { id: reading.id },
+    props: { reading },
+  }));
+}
+
+interface Props {
+  reading: Reading;
+}
+const { reading } = Astro.props;
+const { Content } = await render(reading);
+const visual = resolveFrontPageVisual({
+  section: "national",
+  id: reading.id,
+  title: reading.data.title,
+  tags: reading.data.tags,
+  editorialVisual: reading.data.editorialVisual,
+});
+---
+
+<BaseLayout
+  title={`${reading.data.title} — ATLAS NEWS`}
+  description={reading.data.summary}
+>
+  <main class="article-page">
+    <ArticleHeader
+      eyebrow="Contingencia"
+      title={reading.data.title}
+      summary={reading.data.summary}
+      date={formatEditorialDate(reading.data.publishedAt)}
+      demo={reading.data.demo}
+      tags={reading.data.tags}
+      visual={visual}
+    />
+    <div class="reading-audio-slot">
+      <ReadingAudio audio={reading.data.audio} />
+    </div>
+    <article class="prose"><Content /></article>
+    <p class="source">
+      <strong>Fuente original:</strong>
+      <a href={reading.data.source.url}>{reading.data.source.name}</a>
+    </p>
+  </main>
+</BaseLayout>
+
+<style>
+  .article-page {
+    width: min(88rem, calc(100% - 2rem));
+    margin: 0 auto;
+  }
+  .reading-audio-slot {
+    max-width: 52rem;
+    margin: 0 auto;
+  }
+  .prose {
+    max-width: 52rem;
+    margin: 2rem auto 3.5rem;
+    font-size: 1.1rem;
+    line-height: 1.72;
+  }
+  .prose :global(p:first-of-type:first-letter) {
+    float: left;
+    margin: 0.08em 0.08em 0 0;
+    color: var(--accent);
+    font-size: 4.6rem;
+    font-weight: 700;
+    line-height: 0.72;
+  }
+  .prose :global(h2) {
+    margin: 3rem 0 1rem;
+    padding-top: 0.65rem;
+    border-top: 4px double var(--rule);
+    font: 800 clamp(1.55rem, 4vw, 2.45rem)/1 var(--sans);
+  }
+  .prose :global(blockquote) {
+    margin: 2rem 0;
+    padding: 1.25rem 1.5rem;
+    border-top: 2px solid var(--rule);
+    border-bottom: 2px solid var(--rule);
+    font: 700 1.25rem/1.45 var(--serif);
+  }
+  .source {
+    max-width: 52rem;
+    margin: 4rem auto;
+    padding-top: 1.5rem;
+    border-top: 4px double var(--rule);
+  }
+  @media (max-width: 42rem) {
+    .article-page {
+      width: min(100% - 1.25rem, 88rem);
+    }
+    .prose {
+      margin-top: 1.55rem;
+      font-size: 1.03rem;
+    }
+  }
+</style>

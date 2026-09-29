@@ -1,0 +1,67 @@
+---
+import FundsTable from "../../components/FundsTable.astro";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import {
+  dailyIssueNumber,
+  formatIssueNumber,
+  getLatestDaily,
+  getPublishedEditions,
+} from "../../lib/content";
+
+const [latestDaily, editions] = await Promise.all([
+  getLatestDaily(),
+  getPublishedEditions(),
+]);
+const currentIssueNumber = latestDaily
+  ? dailyIssueNumber(latestDaily, editions)
+  : undefined;
+---
+
+<BaseLayout
+  title="ATLAS NEWS — Fondos"
+  description="Resumen de rentabilidades de la oferta comercial seleccionada de fondos mutuos de BancoEstado AGF."
+>
+  <main class="funds-page">
+    <div class="issue-line">
+      <p>Fondos</p>
+      <p>
+        {
+          currentIssueNumber
+            ? formatIssueNumber(currentIssueNumber)
+            : "En preparación"
+        }
+      </p>
+    </div>
+
+    <FundsTable />
+  </main>
+</BaseLayout>
+
+<style>
+  .funds-page {
+    width: min(88rem, calc(100% - 2rem));
+    margin: 0 auto;
+  }
+  .issue-line {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 1rem;
+    padding: 0.75rem 0;
+    border-bottom: 1px solid var(--rule);
+    font: 800 0.68rem/1.2 var(--sans);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+  .issue-line p {
+    margin: 0;
+  }
+  .issue-line p:last-child {
+    text-align: right;
+  }
+
+  @media (max-width: 42rem) {
+    .funds-page {
+      width: min(100% - 1.25rem, 88rem);
+    }
+  }
+</style>
