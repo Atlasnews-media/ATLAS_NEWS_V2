@@ -70,3 +70,11 @@ jobs:
           }
           console.log("REAL_TYPESAFE_THREE_PATHS=PASS");
           NODE
+
+  reusable-neutral:
+    name: Reusable neutral workflow smoke
+    uses: ./.github/workflows/jev-engine.yml
+    with:
+      request_path: tests/jev/neutral-smoke.json
+      request_ref: ${{ github.sha }}
+    secrets: inherit
