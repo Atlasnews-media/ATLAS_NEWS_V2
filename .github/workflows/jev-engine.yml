@@ -37,7 +37,7 @@ jobs:
       - name: Checkout trusted engine revision
         uses: actions/checkout@v5
         with:
-          ref: ${{ github.sha }}
+          ref: ${{ github.workflow_sha }}
           path: .engine
           fetch-depth: 1
       - name: Checkout request revision as data only
