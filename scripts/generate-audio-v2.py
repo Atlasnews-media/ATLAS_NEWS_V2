@@ -25,7 +25,6 @@ from audio_speech import (
     LEXICON_VERSION,
     SPEECH_NORMALIZER_VERSION,
     is_question,
-    normalize_dora_longform_paragraphs,
     normalize_for_kokoro_dora,
     normalize_for_speech,
     split_dora_sentences,
@@ -55,7 +54,7 @@ QUESTION_PITCH_CROSSFADE_SECONDS = float(
 MIN_AUDIO_BYTES = 10_000
 MIN_DURATION_SECONDS = 5.0
 QUESTION_PROSODY_VERSION = 2
-COVER_RENDER_VERSION = 2
+COVER_RENDER_VERSION = 3
 COVER_SENTENCE_PAUSE_SECONDS = 0.08
 COVER_PARAGRAPH_PAUSE_SECONDS = 0.22
 INTERNATIONAL_DORA_RENDER_VERSION = 2
@@ -111,9 +110,43 @@ def synthesize(
     return np.concatenate(chunks)
 
 
+def synthesize_cover_dora_sentence(
+    text: str,
+    reference_date: str,
+) -> np.ndarray:
+    """Ruta B validada en LAB: Speech V5 -> G2P baseline -> Kokoro."""
+    pipeline = pipeline_for("e")
+    speech_text = normalize_for_speech(text, reference_date)
+    phonemes, _ = pipeline.g2p(speech_text)
+    if not phonemes:
+        raise RuntimeError("G2P no devolvió fonemas para Portada Dora.")
+
+    speed = float(os.environ.get("ATLAS_AUDIO_SPEED", "1.0"))
+    chunks = []
+    for result in pipeline.generate_from_tokens(
+        tokens=phonemes,
+        voice="ef_dora",
+        speed=speed,
+    ):
+        audio = result.audio
+        if audio is None:
+            continue
+        array = np.asarray(audio, dtype=np.float32).reshape(-1)
+        if array.size:
+            chunks.append(array)
+
+    if not chunks:
+        raise RuntimeError("Kokoro no devolvió audio para Portada Dora vía fonemas.")
+    return np.concatenate(chunks)
+
+
 def synthesize_cover_dora(text: str, reference_date: str) -> np.ndarray:
-    """Renderiza Portada en segmentos cortos para evitar cortes internos de cifras."""
-    paragraphs = normalize_dora_longform_paragraphs(text, reference_date)
+    """Renderiza Portada por oración usando la ruta B fonética validada en LAB."""
+    paragraphs = [
+        part.strip()
+        for part in re.split(r"\n\s*\n+", str(text))
+        if part.strip()
+    ]
     if not paragraphs:
         raise RuntimeError("El guion de Portada no produjo párrafos para Dora.")
 
@@ -142,10 +175,8 @@ def synthesize_cover_dora(text: str, reference_date: str) -> np.ndarray:
             if sentence_index:
                 parts.append(sentence_pause)
             parts.append(
-                synthesize(
+                synthesize_cover_dora_sentence(
                     sentence,
-                    "ef_dora",
-                    "e",
                     reference_date=reference_date,
                 )
             )

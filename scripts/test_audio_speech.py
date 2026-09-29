@@ -1,3 +1,5 @@
+from pathlib import Path
+
 from audio_speech import (
     LEXICON_REVISION,
     SPEECH_NORMALIZER_VERSION,
@@ -145,6 +147,7 @@ check(
 )
 
 dora_continuous_cases = (
+    ("1.098 pesos", "mil noventa y ocho pesos"),
     ("1.099 pesos", "mil noventa y nueve pesos"),
     ("1.100 pesos", "mil cien pesos"),
     ("1.101 pesos", "mil ciento un pesos"),
@@ -214,5 +217,36 @@ if not is_question("¿Qué significa esto?"):
     raise AssertionError("No se detectó una pregunta explícita.")
 if is_question("Esto es una afirmación."):
     raise AssertionError("Se clasificó una afirmación como pregunta.")
+
+# Contrato de promoción Ruta B: sólo Portada usa fonemas directos.
+scripts_dir = Path(__file__).resolve().parent
+generator_source = (scripts_dir / "generate-audio-v2.py").read_text(encoding="utf-8")
+planner_source = (scripts_dir / "prepare-audio-v2.mjs").read_text(encoding="utf-8")
+
+required_generator_fragments = (
+    "COVER_RENDER_VERSION = 3",
+    "def synthesize_cover_dora_sentence(",
+    "speech_text = normalize_for_speech(text, reference_date)",
+    "phonemes, _ = pipeline.g2p(speech_text)",
+    "pipeline.generate_from_tokens(",
+    "tokens=phonemes",
+    "voice=\"ef_dora\"",
+    "synthesize_cover_dora_sentence(",
+)
+for fragment in required_generator_fragments:
+    if fragment not in generator_source:
+        raise AssertionError(
+            f"Ruta B de Portada incompleta en generate-audio-v2.py: {fragment!r}"
+        )
+
+if generator_source.count("generate_from_tokens(") != 1:
+    raise AssertionError(
+        "generate_from_tokens debe permanecer exclusivo de la ruta B de Portada."
+    )
+
+if "const COVER_RENDER_VERSION = 3;" not in planner_source:
+    raise AssertionError(
+        "prepare-audio-v2.mjs debe forzar una regeneración con coverRenderVersion 3."
+    )
 
 print("Audio speech V5 + Lexicon V4: golden tests OK")
