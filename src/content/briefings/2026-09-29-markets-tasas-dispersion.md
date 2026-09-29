@@ -1,10 +1,10 @@
 ---
 title: "El castigo a la duración domina y obliga a buscar protección más allá del oro"
 summary: "Los máximos del Treasury y la deuda francesa encarecen el capital, mientras la tecnología resiste, el dólar gana tracción y el oro rebota sin recuperar su función defensiva."
-publishedAt: "2026-09-29T06:19:00-03:00"
+publishedAt: "2026-09-29T07:27:56-03:00"
 cutoffAt: "2026-09-29T06:18:30-03:00"
 section: "markets"
-status: "draft"
+status: "published"
 tags:
   - tasas
   - renta-variable
