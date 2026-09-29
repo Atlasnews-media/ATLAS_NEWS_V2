@@ -3,14 +3,14 @@
     {
       "id": "oil-geopolitics-inflation",
       "topic": "Petróleo, geopolítica e inflación",
-      "thesis": "Hormuz combina una normalización física parcial con un bloqueo diplomático: el tránsito y las exportaciones del Golfo se recuperan, pero el rechazo estadounidense al plan iraní, la falta de concesiones de Teherán y el frente hutí mantienen alta la prima energética.",
+      "thesis": "Arabia Saudita amplía la normalización física al reactivar Yanbu y la tubería Este-Oeste, llevando las exportaciones regionales a casi 80% del nivel previo al conflicto; aun así, la recuperación sigue incompleta y el shock energético continúa transmitiéndose a inflación, tasas y Europa.",
       "status": "changed",
-      "last_evidence": "El 28 de septiembre los flujos por Hormuz se encaminaban a 7,4 millones de barriles diarios y las exportaciones regionales a 12,8 millones, su máximo desde febrero aunque todavía 6 millones por debajo del nivel previo a la guerra; el Brent subió 2,49% a US$106,92 después del rechazo estadounidense al plan iraní, mientras Trump anticipó nuevas conversaciones esta semana.",
-      "effect": "La mejora de los embarques reduce el riesgo inmediato de escasez extrema, pero la ausencia de acuerdo mantiene presión sobre petróleo, seguros, fletes e inflación y expone los flujos recuperados a una reversión rápida.",
-      "base_scenario": "Oferta regional en recuperación incompleta y volátil, con conversaciones intermitentes y tránsito superior a los mínimos del conflicto, pero sin normalización durable hasta que exista un acuerdo sobre Hormuz y disminuyan los ataques regionales.",
-      "invalidate_if": "Un acuerdo formal, reapertura sostenida y exportaciones cercanas al nivel previo a la guerra debilitarían la tesis de shock activo; nuevos ataques, caída del tránsito o ruptura explícita de las conversaciones la reforzarían.",
-      "watch": "Conversaciones previstas esta semana, condiciones de Estados Unidos e Irán, tránsito efectivo por Hormuz, exportaciones saudíes, ataques hutíes, seguros marítimos, Brent y transmisión a inflación y tasas.",
-      "last_publication": "/ediciones/2026-09-28-daily-hormuz-mejora-flujos-presion-energetica-sigue-alta/"
+      "last_evidence": "El 29 de septiembre Yanbu cargaba cerca de 2 millones de barriles diarios y la tubería Este-Oeste movía 2,65 millones, con una subida hacia 3-4 millones prevista próximamente; Hormuz promediaba 9 millones en siete días, las exportaciones regionales rozaban 80% del nivel previo, el Brent rondaba US$106 y el gas europeo superaba €80 por megavatio hora.",
+      "effect": "La diversificación por Yanbu y Fujairah reduce el riesgo de una interrupción extrema, pero la oferta incompleta y la energía todavía cara sostienen presión sobre costos, inflación y rendimientos globales.",
+      "base_scenario": "Recuperación física gradual mediante Yanbu, Fujairah y Hormuz, todavía vulnerable a ataques y al bloqueo diplomático; la normalización exige que la tubería recupere su flujo previo y que cedan de forma sostenida los precios y la prima geopolítica.",
+      "invalidate_if": "Flujos sostenidos cerca de los niveles previos al conflicto junto con una baja durable del petróleo y el gas debilitarían la tesis de shock activo; nuevos ataques, fallas de la tubería o una caída del tránsito por Hormuz la reforzarían.",
+      "watch": "Caudal de la tubería Este-Oeste, cargas de Yanbu, tránsito por Hormuz, exportaciones de Fujairah, negociaciones, nuevos ataques, Brent, gas europeo y rendimientos globales.",
+      "last_publication": "/ediciones/2026-09-29-daily-arabia-saudita-recupera-ruta-shock-energetico-encarece-capital/"
     },
     {
       "id": "us-employment-fed-rates",
