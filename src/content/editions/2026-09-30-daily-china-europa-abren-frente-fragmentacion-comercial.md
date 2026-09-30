@@ -48,7 +48,7 @@ marketSummary:
       category: "tasas"
     - label: "Inflación francesa"
       value: "3,4% anual"
-      category: "inflacion"
+      category: "mercados"
     - label: "Brent noviembre"
       value: "US$102,43"
       change: "-0,2%"
