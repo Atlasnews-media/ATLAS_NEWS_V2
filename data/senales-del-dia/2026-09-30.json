@@ -1,0 +1,115 @@
+{
+  "status": "READY",
+  "date": "2026-09-30",
+  "contract": "atlas-senales-del-dia-v1",
+  "senalesDelDia": {
+    "internacional": [
+      {
+        "slot": "technology",
+        "headline": "OpenAI lanza Dots y lleva los agentes a tareas persistentes",
+        "deck": "Los nuevos agentes operan en computadores propios, siguen objetivos entre aplicaciones y exigen permisos explícitos para acciones sensibles.",
+        "development": "OpenAI presentó Dots, agentes persistentes que pueden trabajar sobre objetivos que cambian con el tiempo y continuar tareas entre ChatGPT, Slack, Teams y otras aplicaciones conectadas. Cada agente dispone de un computador en la nube y un navegador, y puede apoyarse en herramientas como Codex. La compañía comenzó el despliegue para planes Pro, Business Premium y Enterprise, con una configuración inicial de un agente por usuario.\n\nLa diferencia frente a un chatbot está en la continuidad: el sistema no sólo responde una instrucción aislada, sino que puede revisar avances, actualizar entregables y retomar un proyecto. Esa mayor autonomía amplía la utilidad empresarial, pero también el riesgo de ejecutar una acción fuera de contexto. OpenAI informó reglas personalizables y confirmación explícita para cambios sensibles, entre ellos modificar contraseñas o borrar información de forma permanente. Su documentación de seguridad describe pruebas contra instrucciones ocultas, suplantación y extracción de datos.\n\nEl lanzamiento no elimina la necesidad de supervisión. Las demostraciones públicas tuvieron fallas de voz y la evaluación divulgada reconoce áreas que debieron reforzarse antes del despliegue. Los indicadores verificables serán la disponibilidad efectiva por mercado, el funcionamiento de los controles de permiso, la tasa de intervenciones humanas y la capacidad de completar tareas largas sin perder contexto ni exceder el alcance autorizado.",
+        "anchor": "openai-dots-agentes-tareas-persistentes",
+        "sources": [
+          {
+            "name": "OpenAI — evaluación de seguridad de Dots",
+            "url": "https://deploymentsafety.openai.com/gpt-6-astra/evaluating-auto-review"
+          },
+          {
+            "name": "Reuters",
+            "url": "https://www.reuters.com/business/openai-takes-meta-with-always-on-dots-agent-enterprise-ai-push-2026-09-29/"
+          }
+        ]
+      },
+      {
+        "slot": "world",
+        "headline": "Estados Unidos completa su retirada militar de Irak",
+        "deck": "La misión de la coalición contra Estado Islámico termina tras la salida desde Irbil; Washington mantendrá entrenamiento e inteligencia acotados.",
+        "development": "Estados Unidos completó la retirada de sus últimas fuerzas militares en Irak y dio por terminada la misión de la coalición encabezada por Washington contra Estado Islámico. Los últimos efectivos y equipos salieron de una base en Irbil, en la región autónoma del Kurdistán, conforme al acuerdo bilateral anunciado en 2024. El Pentágono describió el hito como una transición hacia una relación de seguridad normalizada y un esfuerzo dirigido por las instituciones iraquíes.\n\nEl término de la misión no equivale a cortar toda cooperación. Estados Unidos prevé mantener apoyo focalizado en entrenamiento e inteligencia, mientras las fuerzas de Irak asumen la responsabilidad principal de contener las células remanentes de Estado Islámico. El Gobierno iraquí presentó la salida como un avance de soberanía. Al mismo tiempo, autoridades kurdas y analistas de seguridad han expresado inquietud por la defensa aérea y por la capacidad de grupos armados no estatales para ampliar su influencia.\n\nLa retirada cierra la fase militar iniciada nuevamente en 2014, después de la ofensiva de Estado Islámico, y ocurre 23 años después de la invasión de 2003. Sus efectos no deben darse por establecidos antes de observarlos. Los próximos datos serán la frecuencia de ataques, la coordinación de inteligencia, el control estatal sobre las milicias y cualquier cambio en la presencia estadounidense en países vecinos desde donde continúen operaciones regionales.",
+        "anchor": "estados-unidos-retirada-militar-irak",
+        "sources": [
+          {
+            "name": "Reuters",
+            "url": "https://www.reuters.com/world/us-forces-exit-iraq-emboldening-irans-proxies-islamic-state-2026-09-30/"
+          },
+          {
+            "name": "Associated Press",
+            "url": "https://apnews.com/article/a097a39f3d1a3515adc2ba3298a6816f"
+          }
+        ]
+      }
+    ],
+    "nacional": [
+      {
+        "slot": "ipsa_company",
+        "headline": "Cencosud lleva a la Suprema disputa por terreno fiscal",
+        "deck": "La empresa impugna un fallo que ordena restituir un paño de 378 metros cuadrados en Ñuñoa; una eventual indemnización sigue sin monto.",
+        "development": "Cencosud recurrió a la Corte Suprema después de que la Corte de Apelaciones de Santiago confirmara que ocupa sin título vigente un terreno fiscal de 378 metros cuadrados en Ñuñoa. El paño, cercano a Avenida Grecia con José Pedro Alessandri, funciona como patio de carga y descarga para operaciones del grupo. La sentencia de alzada mantuvo la obligación de restituirlo cuando el fallo quede firme.\n\nLa controversia se originó en una autorización municipal de 1998, cuando el espacio era un bien nacional de uso público. El terreno fue desafectado en 2008 y pasó al Fisco; según la decisión judicial, desde entonces no se acreditó una concesión, autorización o contrato suficiente para ocuparlo. Cencosud sostiene que el uso proviene de la relación contractual con el Seminario Pontificio y de permisos y pagos municipales anteriores. El Fisco demandó en 2020.\n\nEl riesgo económico todavía no está cuantificado. La Corte de Apelaciones dejó sin efecto la condena indemnizatoria dentro de este mismo juicio y señaló que el Estado podrá reclamar perjuicios una vez firme la declaración de ocupación. El Fisco también acudió a la Suprema para intentar restablecer esa obligación. Para los accionistas, los hitos verificables son la admisibilidad y resolución de ambos recursos, la fecha de una eventual restitución y, sólo si corresponde, un proceso posterior que determine daños. No hay base pública para estimar ahora un impacto material en resultados.",
+        "anchor": "cencosud-suprema-terreno-fiscal-nunoa",
+        "sources": [
+          {
+            "name": "Diario Financiero",
+            "url": "https://www.df.cl/empresas/retail/cencosud-recurre-a-la-corte-suprema-tras-fallo-que-confirma-ocupacion"
+          },
+          {
+            "name": "CMF — ficha de Cencosud",
+            "url": "https://www.cmfchile.cl/institucional/mercados/entidad.php?control=svs&grupo=&mercado=V&pestania=25&row=&rut=93834000&tipoentidad=RVEMI&vig=VI"
+          }
+        ]
+      },
+      {
+        "slot": "policy_economy",
+        "headline": "Plan de obras acelera 241 contratos para impulsar empleo",
+        "deck": "El MOP añadirá cerca de US$400 millones en 2027 y elevará 25% sus licitaciones anuales, con proyectos de rápida ejecución en todas las regiones.",
+        "development": "El Ministerio de Obras Públicas detalló que el componente sectorial de Chile Despega incorporará 241 contratos de rápida ejecución y cerca de US$400 millones adicionales al marco presupuestario de 2027. La cartera incluye pavimentación, puentes, infraestructura portuaria, aeródromos, control de aguas y servicios sanitarios rurales. El Gobierno estima que estas obras permitirían crear alrededor de 23.000 empleos y llegarán a todas las regiones.\n\nEl anuncio combina dos calendarios. Entre septiembre y diciembre de 2026, el MOP pretende acelerar la ejecución de $1,4 billones ya contemplados en su presupuesto. Para 2027, agregaría $377 mil millones y busca elevar en 25% el número de licitaciones respecto de las cerca de 1.000 que publica habitualmente cada año. Algunas convocatorias comenzarían durante 2026, mientras la mayoría de las obras se iniciaría desde enero. Esas cifras son metas administrativas y estimaciones de empleo, no resultados ya observados.\n\nLa señal de política económica es el uso de proyectos de menor plazo para trasladar gasto presupuestado hacia actividad y contratación. Su efecto dependerá de que los procesos competitivos se adjudiquen, los contratistas movilicen personal y los pagos sigan el avance físico. Los controles relevantes serán el calendario de licitaciones, contratos adjudicados, ejecución mensual, distribución regional y empleos efectivamente registrados. También debe distinguirse el gasto acelerado del presupuesto vigente de los recursos adicionales que requerirá el marco fiscal de 2027.",
+        "anchor": "mop-241-contratos-plan-empleo",
+        "sources": [
+          {
+            "name": "Ministerio de Obras Públicas",
+            "url": "https://www.mop.gob.cl/plan-chile-despega-mop-sumara-us400-millones-a-su-presupuesto-para-crear-23-mil-nuevos-empleos/"
+          },
+          {
+            "name": "Reuters",
+            "url": "https://www.reuters.com/world/americas/chiles-kast-unveils-13-billion-plan-create-100000-jobs-2026-09-28/"
+          }
+        ]
+      }
+    ],
+    "mercados": [
+      {
+        "slot": "markets_chile",
+        "headline": "Centinela entra en mediación con riesgo de huelga",
+        "deck": "Dos sindicatos que reúnen a 708 trabajadores rechazaron la última oferta; la instancia obligatoria dura cinco días y puede extenderse por acuerdo.",
+        "development": "Los sindicatos Minera Esperanza y Distrito Centinela rechazaron la última propuesta contractual de Antofagasta Minerals e iniciaron una mediación obligatoria de cinco días. Ambas organizaciones reúnen a 708 trabajadores de la mina Centinela y han señalado que están preparadas para una huelga si no alcanzan un acuerdo. La mediación puede prorrogarse por consentimiento de las partes y, según dirigentes sindicales, una paralización podría comenzar legalmente el 13 de octubre.\n\nEl punto informado por los representantes laborales es la igualdad de beneficios entre trabajadores afiliados a distintas organizaciones. La empresa y los sindicatos todavía disponen de una ventana formal para negociar, por lo que una huelga no es un hecho consumado. Esa distinción importa para el mercado: el riesgo inmediato es una interrupción posible, no una pérdida de producción ya registrada. Centinela produjo 240.400 toneladas métricas de cobre en 2025, volumen suficiente para que cualquier paralización prolongada sea seguida por operadores del metal.\n\nLa señal local combina exposición minera y precio internacional del cobre. Un acuerdo dentro de la mediación retiraría el riesgo operativo sin afectar producción; una huelga trasladaría la atención a inventarios, embarques y duración de la detención. Los hitos verificables son la extensión o cierre de la mediación, una nueva oferta, la votación sindical y cualquier comunicación operacional de Antofagasta Minerals. No corresponde proyectar toneladas perdidas antes de conocer fecha, alcance y continuidad de faenas.",
+        "anchor": "centinela-mediacion-riesgo-huelga",
+        "sources": [
+          {
+            "name": "Reuters",
+            "url": "https://www.reuters.com/business/world-at-work/unions-antofagastas-centinela-copper-mine-ready-strike-2026-09-29/"
+          },
+          {
+            "name": "Antofagasta — operación Centinela",
+            "url": "https://www.antofagasta.co.uk/operations/centinela/"
+          }
+        ]
+      },
+      {
+        "slot": "markets_global",
+        "headline": "Northern Star rechaza oferta de US$27.100 millones",
+        "deck": "La propuesta de Gold Fields mezclaba efectivo y acciones y buscaba formar el segundo mayor productor mundial de oro; el directorio la consideró insuficiente.",
+        "development": "Northern Star Resources rechazó una propuesta no solicitada de Gold Fields que valoraba a la minera australiana en unos A$38.700 millones, equivalentes a US$27.100 millones. La oferta combinaba efectivo y acciones de Gold Fields y habría dejado a los actuales accionistas de Northern Star con cerca de 33% de la empresa fusionada. El grupo resultante habría producido aproximadamente 4,1 millones de onzas de oro al año y sería el segundo mayor productor mundial del metal.\n\nEl directorio de Northern Star calificó la propuesta como oportunista e insuficiente. La prima, cercana a 22% cuando se formuló, se redujo a alrededor de 14% después de la caída de las acciones usadas como parte del pago. La compañía también cuestionó la exposición de sus accionistas a una empresa con cotización principal en Johannesburgo y defendió el valor de sus activos de larga vida. Gold Fields planteó una cotización secundaria en Australia y sinergias estimadas entre US$4.000 millones y US$5.000 millones.\n\nEl rechazo no constituye un acuerdo ni asegura una oferta mejorada. Para el mercado, fija una referencia visible sobre precio, mezcla de efectivo y acciones, gobierno corporativo y riesgo jurisdiccional en una eventual negociación. Los siguientes hitos serán una revisión formal de los términos por Gold Fields, la aparición de otro interesado, las posiciones de accionistas comunes y la respuesta de Northern Star bajo su nueva dirección. Hasta entonces, las sinergias son estimaciones del oferente y no valor realizado.",
+        "anchor": "northern-star-rechaza-oferta-gold-fields",
+        "sources": [
+          {
+            "name": "Northern Star Resources",
+            "url": "https://www.nsrltd.com/"
+          },
+          {
+            "name": "Reuters",
+            "url": "https://www.reuters.com/world/asia-pacific/australias-northern-star-rejects-27-billion-takeover-approach-gold-fields-2026-09-28/"
+          }
+        ]
+      }
+    ]
+  }
+}
