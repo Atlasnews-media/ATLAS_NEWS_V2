@@ -3,14 +3,14 @@
     {
       "id": "oil-geopolitics-inflation",
       "topic": "Petróleo, geopolítica e inflación",
-      "thesis": "Arabia Saudita amplía la normalización física al reactivar Yanbu y la tubería Este-Oeste, llevando las exportaciones regionales a casi 80% del nivel previo al conflicto; aun así, la recuperación sigue incompleta y el shock energético continúa transmitiéndose a inflación, tasas y Europa.",
-      "status": "changed",
-      "last_evidence": "El 29 de septiembre Yanbu cargaba cerca de 2 millones de barriles diarios y la tubería Este-Oeste movía 2,65 millones, con una subida hacia 3-4 millones prevista próximamente; Hormuz promediaba 9 millones en siete días, las exportaciones regionales rozaban 80% del nivel previo, el Brent rondaba US$106 y el gas europeo superaba €80 por megavatio hora.",
-      "effect": "La diversificación por Yanbu y Fujairah reduce el riesgo de una interrupción extrema, pero la oferta incompleta y la energía todavía cara sostienen presión sobre costos, inflación y rendimientos globales.",
-      "base_scenario": "Recuperación física gradual mediante Yanbu, Fujairah y Hormuz, todavía vulnerable a ataques y al bloqueo diplomático; la normalización exige que la tubería recupere su flujo previo y que cedan de forma sostenida los precios y la prima geopolítica.",
-      "invalidate_if": "Flujos sostenidos cerca de los niveles previos al conflicto junto con una baja durable del petróleo y el gas debilitarían la tesis de shock activo; nuevos ataques, fallas de la tubería o una caída del tránsito por Hormuz la reforzarían.",
-      "watch": "Caudal de la tubería Este-Oeste, cargas de Yanbu, tránsito por Hormuz, exportaciones de Fujairah, negociaciones, nuevos ataques, Brent, gas europeo y rendimientos globales.",
-      "last_publication": "/ediciones/2026-09-29-daily-arabia-saudita-recupera-ruta-shock-energetico-encarece-capital/"
+      "thesis": "La recuperación de Yanbu y Hormuz llevó los flujos petroleros del Golfo cerca de los niveles de 2025, debilitando el riesgo de escasez física inmediata; aun así, la falta de acuerdo entre Estados Unidos e Irán, la escasez de combustibles refinados y los fletes altos mantienen presión energética.",
+      "status": "weakened",
+      "last_evidence": "El 30 de septiembre Goldman Sachs estimó exportaciones del Golfo de 23,3 millones de barriles diarios durante la última semana, en línea con el promedio de 2025; JPMorgan calculó 20,5 millones en diez días, 89% del nivel de 2025, mientras el Brent acumulaba cerca de 13% en septiembre y las conversaciones entre Estados Unidos e Irán seguían estancadas.",
+      "effect": "La normalización de los flujos de crudo reduce el riesgo de una escasez extrema y modera la presión física, pero los déficits de productos refinados, los costos de transporte y la prima diplomática mantienen abierta la transmisión hacia inflación y tasas.",
+      "base_scenario": "Oferta de crudo del Golfo cerca de la normalización, con precios que pueden moderarse si los flujos se sostienen; el alivio económico seguirá incompleto mientras no cedan combustibles refinados, fletes y tensión entre Estados Unidos e Irán.",
+      "invalidate_if": "Una nueva interrupción de Hormuz, Yanbu o Fujairah junto con una caída persistente de exportaciones reforzaría nuevamente la tesis de shock físico; flujos sostenidos, menores fletes y una baja durable de combustibles permitirían cerrar el hilo.",
+      "watch": "Exportaciones semanales del Golfo, tránsito por Hormuz, cargas de Yanbu y Fujairah, inventarios de destilados, fletes, negociaciones entre Estados Unidos e Irán y Brent.",
+      "last_publication": "/ediciones/2026-09-30-daily-china-europa-abren-frente-fragmentacion-comercial/"
     },
     {
       "id": "us-employment-fed-rates",
