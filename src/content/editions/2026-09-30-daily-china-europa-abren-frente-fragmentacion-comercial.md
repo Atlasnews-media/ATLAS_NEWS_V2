@@ -1,10 +1,10 @@
 ---
 title: "China amenaza con responder a Europa y abre otro frente de fragmentación comercial"
 summary: "Pekín advierte represalias si la Unión Europea adopta un instrumento más duro contra sus empresas, mientras nuevas barreras alcanzan a Brasil y la energía sigue presionando la inflación global."
-publishedAt: "2026-09-30T06:09:17-03:00"
+publishedAt: "2026-09-30T06:49:44-03:00"
 cutoffAt: "2026-09-30T06:09:04-03:00"
 type: "daily"
-status: "draft"
+status: "published"
 tags:
   - comercio
   - china

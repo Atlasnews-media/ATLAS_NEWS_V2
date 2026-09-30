@@ -1,10 +1,10 @@
 ---
 title: "Extender las ayudas energéticas reconoce que el shock dejó de ser transitorio"
 summary: "El Gobierno propone prolongar hasta diciembre el bono de $100.000 para transportistas y pescadores, y mantener Fogape hasta 2028. El efecto depende de aprobación legislativa, focalización y costo fiscal."
-publishedAt: "2026-09-30T06:18:45-03:00"
+publishedAt: "2026-09-30T06:49:44-03:00"
 cutoffAt: "2026-09-30T06:18:35-03:00"
 section: "national"
-status: "draft"
+status: "published"
 tags:
   - chile
   - combustibles

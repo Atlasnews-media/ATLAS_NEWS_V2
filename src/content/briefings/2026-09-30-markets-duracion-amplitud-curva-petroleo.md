@@ -1,10 +1,10 @@
 ---
 title: "El alivio diario de tasas no borra un mes de duración castigada y bolsas estrechas"
 summary: "El Treasury retrocede desde máximos, pero cierra septiembre con fuertes alzas de rendimiento. Las acciones resisten con amplitud débil y la curva del Brent conserva tensión inmediata."
-publishedAt: "2026-09-30T06:23:15-03:00"
+publishedAt: "2026-09-30T06:49:44-03:00"
 cutoffAt: "2026-09-30T06:23:00-03:00"
 section: "markets"
-status: "draft"
+status: "published"
 tags:
   - bonos
   - renta-variable
