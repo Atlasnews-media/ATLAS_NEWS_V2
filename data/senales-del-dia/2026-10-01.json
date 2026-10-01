@@ -1,0 +1,119 @@
+{
+  "status": "READY",
+  "date": "2026-10-01",
+  "contract": "atlas-senales-del-dia-v1",
+  "senalesDelDia": {
+    "internacional": [
+      {
+        "slot": "technology",
+        "headline": "Visa abre su defensa autónoma para acelerar parches de seguridad",
+        "deck": "El sistema abierto descubre, prioriza y valida vulnerabilidades con agentes, pero conserva revisión humana antes de llevar cambios a producción.",
+        "development": "Visa expuso nuevas lecciones de su sistema de defensa cibernética asistido por inteligencia artificial, después de probarlo frente a modelos capaces de detectar fallas a escala. La compañía dejó disponible como código abierto el Visa Vulnerability Agentic Harness, una referencia que mapea repositorios, asigna agentes a la búsqueda de vulnerabilidades, clasifica hallazgos y genera reportes para equipos de desarrollo. La versión ampliada incorpora apoyo para remediación y validación, no sólo detección.\n\nEl cambio relevante es operativo: cuando la identificación de fallas se acelera, el cuello de botella pasa a confirmar si una vulnerabilidad es explotable, corregirla y demostrar que la ruta de ataque quedó cerrada. Visa sostiene que el sistema puede interpretar objetivos en lenguaje natural y adaptarse sin mantener guiones manuales, pero mantiene intervención humana en las decisiones críticas. Sus equipos revisan la severidad, el camino de remediación y la promoción de cambios antes de producción.\n\nLa apertura del marco permite que otras organizaciones inspeccionen y adapten el método, pero no demuestra por sí sola que los parches sean seguros en todos los entornos. Las pruebas verificables serán la calidad de los hallazgos, la tasa de falsos positivos, el tiempo entre detección y cierre, y la capacidad de evitar que agentes con más autonomía alteren sistemas fuera del alcance autorizado.",
+        "anchor": "visa-defensa-autonoma-parches-seguridad",
+        "sources": [
+          {
+            "name": "Visa — Vulnerability Agentic Harness",
+            "url": "https://corporate.visa.com/en/sites/visa-perspectives/security-trust/visa-cybersecurity-mythos-project-glasswing.html"
+          },
+          {
+            "name": "Reuters",
+            "url": "https://www.reuters.com/legal/government/visa-joins-growing-alarm-over-ai-powered-risks-2026-09-29/"
+          }
+        ]
+      },
+      {
+        "slot": "world",
+        "headline": "Marruecos nombra a su primera jefa de Gobierno",
+        "deck": "Fatima Ezzahra El Mansouri recibió el encargo de formar una coalición después de que su partido obtuviera la mayor bancada en las legislativas.",
+        "development": "El rey Mohammed VI nombró a Fatima Ezzahra El Mansouri como jefa de Gobierno de Marruecos y le encargó formar el nuevo gabinete. Es la primera mujer que ocupa el cargo. La designación siguió a las elecciones legislativas del 23 de septiembre, en las que el Partido Autenticidad y Modernidad obtuvo 97 escaños y se convirtió en la mayor fuerza de la Cámara de Representantes. El nombramiento se realizó conforme al artículo 47 de la Constitución, que vincula la jefatura de Gobierno con el partido más votado.\n\nEl Mansouri, abogada y exministra de Vivienda, debe ahora negociar una mayoría parlamentaria y presentar una coalición. El Partido Reagrupamiento Nacional de los Independientes obtuvo 66 escaños e Istiqlal, 65, mientras el Partido Justicia y Desarrollo consiguió 54 y pasará a la oposición. La existencia de una primera fuerza no equivale por sí sola a una mayoría, de modo que la composición final dependerá de acuerdos entre partidos.\n\nLa transición tiene un hito institucional claro, pero sus efectos de política pública no deben anticiparse antes de conocer el programa y los ministros. Marruecos es una monarquía constitucional en la que el rey mantiene amplias competencias en asuntos estratégicos. Los próximos hechos verificables serán los socios de la coalición, la distribución de carteras, la aprobación parlamentaria y las prioridades presupuestarias del nuevo Gobierno.",
+        "anchor": "marruecos-primera-jefa-gobierno",
+        "sources": [
+          {
+            "name": "Portal oficial de Marruecos",
+            "url": "https://www.maroc.ma/fr/actualites/sm-le-roi-nomme-fatima-ezzahra-el-mansouri-cheffe-du-gouvernement-et-la-charge-de-former-le-nouveau"
+          },
+          {
+            "name": "Reuters",
+            "url": "https://www.reuters.com/world/africa/moroccos-king-appoints-first-woman-pm-following-sept-23-election-2026-09-29/"
+          }
+        ]
+      }
+    ],
+    "nacional": [
+      {
+        "slot": "ipsa_company",
+        "headline": "Falabella aprueba dividendo provisorio de $46 por acción",
+        "deck": "El pago con cargo a utilidades de 2026 suma $115.407 millones y se realizará el 22 de octubre a los accionistas inscritos al día 16.",
+        "development": "El directorio de Falabella aprobó un dividendo provisorio de $46 por acción con cargo a las utilidades líquidas distribuibles del ejercicio 2026. El desembolso total informado a la Comisión para el Mercado Financiero asciende a $115.406,9 millones sobre 2.508,8 millones de acciones de serie única. El pago está programado para el 22 de octubre y tendrán derecho quienes figuren inscritos en el registro de accionistas al 16 de octubre.\n\nLa decisión es una distribución en dinero y tiene una calificación tributaria provisoria con crédito de primera categoría de 27%, según el formulario presentado por la compañía. Al ser un dividendo provisorio, no fija todavía la distribución total del ejercicio: el monto definitivo dependerá de las utilidades anuales, de los acuerdos societarios posteriores y de cualquier reparto adicional que corresponda conforme a la política de la empresa y la normativa aplicable.\n\nPara los accionistas, la señal comprobable es el flujo de caja definido por acción y su calendario, no una nueva estimación de resultados. El precio del título puede ajustarse alrededor de la fecha límite por la separación del derecho económico, pero esa variación dependerá también de las condiciones del mercado. Los siguientes hitos son la publicación del aviso, el cierre del registro con derecho y el pago efectivo del 22 de octubre.",
+        "anchor": "falabella-dividendo-provisorio-46-pesos",
+        "sources": [
+          {
+            "name": "CMF — hecho esencial de Falabella",
+            "url": "https://www.cmfchile.cl/sitio/aplic/serdoc/ver_sgd.php?s567=e67ff7fd00cfc5f8b3ee22e4ce399f43VFdwQmVVNXFRVFZOUkZsNlRucEpORTFCUFQwPQ%3D%3D&secuencia=-1&t=1790805121"
+          },
+          {
+            "name": "Estrategia",
+            "url": "https://www.diarioestrategia.cl/texto-diario/mostrar/6034103/falabella-repartira-dividendo-provisorio"
+          }
+        ]
+      },
+      {
+        "slot": "policy_economy",
+        "headline": "Mesa turística fija meta sectorial de 3,8% del PIB a 2030",
+        "deck": "La iniciativa trabajará durante un año para convertir una meta de inversión, empleo y desestacionalización en prioridades, responsables e hitos medibles.",
+        "development": "El Ministerio de Economía y la Subsecretaría de Turismo lanzaron Chile Potencia Turística, una mesa público-privada que trabajará durante un año para elaborar una hoja de ruta sectorial. La iniciativa reúne al Gobierno, el Congreso, empresas, academia, comunidades y sociedad civil. Su meta declarada es elevar la participación del turismo desde cerca de 2,8% del PIB hasta 3,8% en 2030, con medidas orientadas a inversión, conectividad, empleo regional y actividad durante todo el año.\n\nEl lanzamiento abre un proceso de coordinación; no contiene todavía un paquete normativo, presupuesto ni cartera cerrada de proyectos. La instancia deberá traducir la visión a prioridades, responsables e hitos verificables, cuyos resultados se presentarían en Congreso Futuro Turismo 2027. La agenda planteada incluye agilizar permisos, atraer inversión, preparar la temporada alta y reducir la estacionalidad, además de resguardar el patrimonio natural y cultural.\n\nLos datos oficiales entregan una base para medir avances: las actividades características del turismo registraron 673.000 ocupados en junio-agosto, 5,7% más que un año antes, y 68,4% de esos puestos fueron formales. Esas cifras describen el punto de partida y no prueban un efecto de la nueva mesa. La evaluación deberá concentrarse en acuerdos publicados, plazos, inversión movilizada, ejecución regional y cambios observables en empleo formal y aporte al producto.",
+        "anchor": "mesa-turistica-meta-pib-2030",
+        "sources": [
+          {
+            "name": "Ministerio de Economía",
+            "url": "https://www.economia.gob.cl/2026/09/30/gobierno-lanza-chile-potencia-turistica-para-proyectar-al-turismo-como-una-de-las-grandes-industrias-del-pais.htm"
+          },
+          {
+            "name": "ESO Chile",
+            "url": "https://eso.org/public/chile/announcements/annlocal26006-es-cl/"
+          }
+        ]
+      }
+    ],
+    "mercados": [
+      {
+        "slot": "markets_chile",
+        "headline": "Itaú Chile coloca bonos por $22.825 millones en dos plazos",
+        "deck": "El banco emitió deuda con vencimientos en 2030 y 2034, a tasas promedio de 2,80% y 6,73%, respectivamente, según informó a la CMF.",
+        "development": "Banco Itaú Chile colocó dos series de bonos en el mercado local y recaudó en conjunto $22.825,4 millones. La Serie DE, denominada en UF por un monto de UF 135.000, aportó $5.542,3 millones, vence el 9 de mayo de 2030 y se adjudicó a una tasa promedio de 2,80%. La subserie F-2 recaudó $17.283,1 millones, vence el 10 de abril de 2034 y registró una tasa promedio de 6,73%.\n\nLas emisiones se realizaron con cargo a líneas inscritas en la Comisión para el Mercado Financiero y son títulos desmaterializados y al portador. Los porcentajes no deben compararse directamente sin considerar que la primera serie está expresada en UF y la segunda en pesos: cada estructura distribuye de manera diferente el riesgo de inflación y la rentabilidad nominal. El hecho esencial informa monto, plazo y tasa de colocación, pero no detalla en ese documento el uso específico de los recursos.\n\nLa operación entrega dos referencias recientes para la curva de deuda bancaria chilena en horizontes de aproximadamente cuatro y ocho años. Su lectura de mercado requiere observar demanda, transacciones secundarias y nuevas emisiones comparables, además del costo ajustado por unidad de cuenta. Los siguientes indicadores verificables serán el comportamiento de ambos papeles en el mercado secundario y las condiciones que obtengan otros bancos en plazos similares.",
+        "anchor": "itau-chile-bonos-dos-plazos",
+        "sources": [
+          {
+            "name": "CMF — hecho esencial de Banco Itaú Chile",
+            "url": "https://www.cmfchile.cl/sitio/aplic/serdoc/ver_sgd.php?s567=8f1c1f3a41284522615b8d5b0ea6a1dcVFdwQmVVNXFRVFZOUkZsNlRXcG5NMDVCUFQwPQ%3D%3D&secuencia=-1&t=1790805121"
+          },
+          {
+            "name": "Visfin — registro de hechos esenciales",
+            "url": "https://visfin.cl/hechos-esenciales"
+          }
+        ]
+      },
+      {
+        "slot": "markets_global",
+        "headline": "Un juez despeja la compra de Warner por Paramount",
+        "deck": "La operación queda habilitada para cerrar tras un acuerdo antimonopolio con 12 estados que impone producción mínima, inversión y reglas de negociación.",
+        "development": "Una jueza federal de Estados Unidos aprobó el acuerdo que permite a Paramount cerrar la adquisición de Warner Bros. Discovery, después de una demanda antimonopolio presentada por una coalición de 12 estados. La operación, valorada por Reuters en unos US$110.000 millones incluida la deuda, espera completarse el 6 de octubre. El fallo retira el último obstáculo judicial informado, pero deja obligaciones exigibles durante la integración.\n\nEl acuerdo obliga a la compañía combinada a estrenar al menos 30 películas al año durante los primeros dos años y 32 anuales en los tres siguientes, con mínimos para lanzamientos amplios e independientes. También compromete US$1.500 millones adicionales de producción en Estados Unidos durante cinco años, un fondo de US$47,5 millones para trabajadores afectados y negociaciones separadas para determinados canales de cable. Incumplir la cuota de películas puede activar multas y la venta de Miramax.\n\nLa autorización cambia la señal para accionistas y acreedores desde incertidumbre judicial hacia riesgo de ejecución. Paramount deberá integrar estudios, redes y plataformas de streaming mientras cumple restricciones de producción y competencia. Los hitos siguientes son el cierre efectivo, la estructura de liderazgo compartida por David Ellison y Ynon Kreiz, el calendario de integración y la capacidad de obtener los ahorros anunciados sin vulnerar los compromisos asumidos.",
+        "anchor": "paramount-compra-warner-autorizacion-judicial",
+        "sources": [
+          {
+            "name": "Fiscalía General de California",
+            "url": "https://oag.ca.gov/news/press-releases/attorney-general-bonta-announces-settlement-warner-brosparamount-litigation"
+          },
+          {
+            "name": "Reuters",
+            "url": "https://www.reuters.com/world/us-judge-allows-paramount-close-warner-bros-acquisition-2026-09-30/"
+          },
+          {
+            "name": "Associated Press",
+            "url": "https://apnews.com/article/f30a8a9a4d26393177bc1af5bff1e990"
+          }
+        ]
+      }
+    ]
+  }
+}

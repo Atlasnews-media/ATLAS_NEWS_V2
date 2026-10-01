@@ -27,14 +27,14 @@
     {
       "id": "ai-monetization-selectivity",
       "topic": "Inteligencia artificial y selectividad bursátil",
-      "thesis": "Nvidia confirma demanda y monetización de IA, pero la pausa de un programa de apoyo financiero a nubes pequeñas muestra que la transparencia de la demanda y la disciplina de capital pasan a ser filtros explícitos junto con márgenes y caja.",
-      "status": "changed",
-      "last_evidence": "Tras subir 8,7% por una guía que validó la demanda de IA, Nvidia pausó parte de un programa que facilitaba financiamiento a pequeñas nubes y contemplaba recomprar capacidad no utilizada, en medio de escrutinio por posibles estructuras circulares y control excesivo sobre clientes.",
-      "effect": "Fortalece la exposición selectiva a líderes con demanda final y caja visibles, mientras aumenta el descuento exigido a modelos dependientes de garantías, deuda o demanda apoyada por el propio proveedor.",
-      "base_scenario": "Crecimiento tecnológico acompañado por monetización efectiva en líderes, con mayor dispersión según retorno del capital, transparencia de la demanda y estructura de financiamiento.",
-      "invalidate_if": "La financiación apoyada por proveedores demuestra ser marginal y transparente sin afectar calidad de demanda, o los márgenes y el flujo de caja se deterioran materialmente pese al crecimiento de ingresos.",
-      "watch": "Resultados, márgenes, flujo de caja, emisiones de deuda y acciones, garantías y apoyo financiero a clientes, utilización de infraestructura y Treasury a diez y treinta años.",
-      "last_publication": "/ediciones/2026-08-28-daily-ia-sostiene-mercado-disciplina-capital/"
+      "thesis": "La demanda por inteligencia artificial ya se transmite desde chips y plataformas hacia producción, pedidos y exportaciones fabriles en Asia y Europa; el ciclo gana respaldo económico real, aunque los rendimientos soberanos altos elevan el costo de financiar su expansión.",
+      "status": "confirmed",
+      "last_evidence": "El 1 de octubre los PMI manufactureros de septiembre alcanzaron 53,9 en Corea del Sur, 56,7 en Taiwán y 54,1 en Japón, con los pedidos externos coreanos creciendo al mayor ritmo en quince años y medio; Micron informó compromisos de suministro de largo plazo por US$32.000 millones, frente a US$22.000 millones en junio, mientras el Treasury a diez años llegó a 5,342%.",
+      "effect": "Confirma que la monetización de IA genera demanda industrial y exportadora medible, pero mantiene la selección: las empresas y economías beneficiadas deben absorber un costo de capital mucho mayor y demostrar que pedidos e inversión son sostenibles.",
+      "base_scenario": "La IA sostiene semiconductores, memoria y bienes de capital y extiende el ciclo hacia proveedores industriales, con mayor dispersión entre beneficiarios directos y sectores rezagados; las tasas altas limitan proyectos débiles o dependientes de deuda.",
+      "invalidate_if": "Una caída sostenida de pedidos de chips, exportaciones asiáticas, utilización de capacidad o compromisos de compra debilitaría la tesis; una expansión más amplia con márgenes y caja sólidos la reforzaría.",
+      "watch": "PMI y pedidos de exportación de Corea del Sur, Taiwán, Japón y Europa, compromisos de memoria, inversión en centros de datos, márgenes, flujo de caja, emisiones de deuda y Treasury a diez años.",
+      "last_publication": "/ediciones/2026-10-01-daily-ia-reactiva-fabricas-asia-capital-se-encarece/"
     },
     {
       "id": "chile-inflation-activity-rates",
