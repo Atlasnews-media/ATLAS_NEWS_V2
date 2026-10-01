@@ -1,10 +1,10 @@
 ---
 title: "La IA separa a las bolsas mientras la curva larga encarece todo el mercado"
 summary: "Micron impulsa chips y futuros del Nasdaq, pero la deuda soberana no acompaña. La baja en apuestas de alza de la Fed afloja el tramo corto; inflación, oferta y déficit mantienen alta la duración."
-publishedAt: "2026-10-01T06:16:40-03:00"
+publishedAt: "2026-10-01T06:47:21-03:00"
 cutoffAt: "2026-10-01T06:16:28-03:00"
 section: "markets"
-status: "draft"
+status: "published"
 tags:
   - mercados
   - inteligencia-artificial

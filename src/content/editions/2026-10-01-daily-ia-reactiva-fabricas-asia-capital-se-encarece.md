@@ -1,10 +1,10 @@
 ---
 title: "La IA reactiva las fábricas de Asia, pero el capital se encarece"
 summary: "La demanda de chips impulsa producción y exportaciones desde Corea del Sur hasta Taiwán, mientras el Treasury a diez años alcanza su mayor rendimiento desde 2002 y Europa enfrenta más inflación."
-publishedAt: "2026-10-01T05:56:34-03:00"
+publishedAt: "2026-10-01T06:47:21-03:00"
 cutoffAt: "2026-10-01T05:56:26-03:00"
 type: "daily"
-status: "draft"
+status: "published"
 tags:
   - inteligencia-artificial
   - manufactura

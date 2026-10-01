@@ -1,10 +1,10 @@
 ---
 title: "El desempleo de 9,6% convierte el subsidio laboral en una prueba de ejecución"
 summary: "La desocupación subió 1 punto en doce meses y el empleo formal asalariado cayó 2,9%. El nuevo subsidio enfrenta una prueba inmediata, con menor margen para compensar fallas mediante más gasto."
-publishedAt: "2026-10-01T06:13:34-03:00"
+publishedAt: "2026-10-01T06:47:21-03:00"
 cutoffAt: "2026-10-01T06:13:20-03:00"
 section: "national"
-status: "draft"
+status: "published"
 tags:
   - chile
   - empleo
