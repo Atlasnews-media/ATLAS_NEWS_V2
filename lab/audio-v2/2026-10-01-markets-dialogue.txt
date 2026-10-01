@@ -1,0 +1,25 @@
+VOZ 1: La apertura de mercados deja una imagen partida. Micron validó la demanda de memoria para inteligencia artificial y disparó a los índices con más peso de chips, pero los bonos soberanos no acompañaron.
+VOZ 2: ¿Qué tan concentrado fue el movimiento?
+VOZ 1: Bastante. El Nikkei subió más de 3%, el KOSPI 1,7% y Taiwán 0,8%. Los futuros del Nasdaq avanzaron 0,7% y los del S&P 500, 0,4%. En cambio, los futuros europeos retrocedieron 0,75% y varias plazas asiáticas menos expuestas a IA quedaron atrás.
+VOZ 2: O sea, no es un apetito general por riesgo.
+VOZ 1: Exacto. Es una preferencia por empresas con evidencia visible de demanda, contratos y caja. Micron informó ingresos trimestrales de 54.230 millones de dólares y flujo de caja operativo de 43.970 millones. Además, los compromisos financieros de clientes bajo acuerdos de suministro de largo plazo llegaron a 32.000 millones, frente a 22.000 millones en junio.
+VOZ 2: ¿Por qué esos compromisos importan para el precio?
+VOZ 1: Porque reducen incertidumbre. El mercado puede estimar con más confianza cuánto de la demanda por IA se convierte en ventas y flujo de caja. Con rendimientos altos, esa visibilidad vale más: ayuda a distinguir a las empresas capaces de financiar inversión y sostener beneficios de aquellas que sólo comparten la narrativa.
+VOZ 2: Pero la General ya mostraba un Treasury a diez años en máximos. ¿Qué agrega la lectura de hoy?
+VOZ 1: Agrega la forma de la curva. La inflación estadounidense fue menor a lo previsto y la probabilidad implícita de un alza de la Reserva Federal en octubre cayó a 38%, desde 50% un día antes. Eso alivió algo el tramo corto. Sin embargo, los rendimientos largos siguieron cerca de máximos.
+VOZ 2: ¿Cómo se interpreta que el corto ceda y el largo no?
+VOZ 1: El mercado está separando la próxima decisión de la Fed de riesgos más persistentes. Inflación energética, mayor emisión de deuda, déficit fiscal y demanda de capital para infraestructura de IA pueden mantener alta la compensación exigida a diez o treinta años, aunque no haya un alza inmediata de la tasa oficial.
+VOZ 2: Entonces el costo de capital no depende sólo de la reunión de octubre.
+VOZ 1: Correcto. Para una empresa, una hipoteca o un proyecto de infraestructura, importa la referencia de largo plazo. Si esa tasa permanece alta, los flujos futuros valen menos hoy y refinanciar deuda cuesta más. Por eso los beneficios de Micron pueden impulsar chips sin levantar todo el mercado.
+VOZ 2: ¿Dónde aparece esa divergencia fuera de las acciones?
+VOZ 1: En el dólar. Su índice tocó 101,66, máximo desde el 25 de junio, y acumuló 2% en septiembre. El euro bajó a 1,1317 dólares y el yen se debilitó medio punto porcentual, hasta 158,29 por dólar.
+VOZ 2: Pero si bajaron las apuestas de alza de la Fed, ¿no debería debilitarse el dólar?
+VOZ 1: Esa sería la reacción habitual si sólo importara el tramo corto. Hoy el dólar sigue más de cerca al Treasury largo. Los rendimientos elevados ofrecen carry y, si la tensión en bonos empieza a dañar a las bolsas, la moneda también puede recibir demanda defensiva.
+VOZ 2: ¿Cuál es el principal riesgo para el rally de IA?
+VOZ 1: Que el costo de capital termine comprimiendo incluso las valorizaciones de las empresas con mejores resultados. El otro riesgo es operativo: que los contratos actuales representen un máximo de escasez de memoria y el mercado descubra que la oferta futura crece más rápido de lo esperado.
+VOZ 2: ¿Y qué podría ampliar el avance hacia otros sectores?
+VOZ 1: Una caída sostenida de los rendimientos largos, un dólar menos firme y revisiones de beneficios que se extiendan desde chips hacia software, industriales y consumo. Si Europa y los índices menos tecnológicos dejan de rezagarse, la señal sería de mayor amplitud.
+VOZ 2: ¿Qué conviene vigilar primero durante la sesión?
+VOZ 1: Tres cosas. La amplitud de las bolsas, para saber si el impulso sale de semiconductores. La pendiente de la curva, para comprobar si el largo sigue desacoplado de la Fed. Y la relación entre dólar y Treasury: si ambos suben juntos, las condiciones financieras globales se están endureciendo.
+VOZ 2: Entonces la lectura no es que la IA venció a las tasas.
+VOZ 1: No. La evidencia es más selectiva: la IA permite que algunas empresas compensen tasas altas con caja y demanda contratada. El resto del mercado todavía debe demostrarlo. La condición que cambiaría esa lectura sería una baja del costo de capital acompañada por un rally más amplio, no sólo por nuevos máximos en chips.
