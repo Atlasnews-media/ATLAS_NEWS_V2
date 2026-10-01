@@ -1,0 +1,23 @@
+VOZ 1: El dato que cambia la conversación laboral en Chile es concreto: la desocupación llegó a 9,6% en el trimestre junio-agosto, un punto porcentual más que hace un año.
+VOZ 2: ¿Ese aumento se explica porque más personas salieron a buscar trabajo?
+VOZ 1: Sólo en parte. La fuerza de trabajo creció 0,3%, pero el número de ocupados cayó 0,9% y el de desocupados aumentó 13,0%. Además, la tasa ajustada por estacionalidad subió una décima frente al trimestre móvil anterior, hasta 9,4%. Hay, por tanto, una pérdida efectiva de tracción.
+VOZ 2: ¿Dónde se ve con mayor claridad?
+VOZ 1: En la composición. Los asalariados formales disminuyeron 2,9% en doce meses. Al mismo tiempo, la tasa de ocupación informal subió tres décimas y llegó a 26,3%. Por sectores, la ocupación cayó 7,6% en manufactura, 16,8% en información y comunicaciones y 1,1% en comercio.
+VOZ 2: Entonces no es sólo cuántos empleos hay, sino qué tipo de empleos se están perdiendo.
+VOZ 1: Exactamente. También bajaron 2,4% las horas efectivamente trabajadas. Eso muestra menor utilización laboral incluso entre quienes siguen ocupados. El deterioro combina menos puestos, menos formalidad y menos horas.
+VOZ 2: Y hoy entra en vigor el Subsidio Unificado al Empleo. ¿Por qué el dato lo vuelve una prueba tan inmediata?
+VOZ 1: Porque el instrumento reúne apoyos anteriores y busca incentivar contrataciones formales de jóvenes, mujeres, personas mayores de 55 años y personas con discapacidad. El aporte puede distribuirse entre trabajador y empleador durante un máximo de doce meses. Con el empleo formal retrocediendo, ya no basta con abrir postulaciones: hay que demostrar que el beneficio crea relaciones laborales adicionales.
+VOZ 2: ¿Qué significa adicionales?
+VOZ 1: Que la contratación no habría ocurrido sin el subsidio. Si una empresa recibe apoyo por un puesto que de todos modos iba a crear, aumenta la cobertura del programa, pero no cambia el empleo agregado. La evaluación correcta debe mirar nuevos contratos, permanencia y qué sucede cuando termina el aporte.
+VOZ 2: ¿El subsidio puede revertir por sí solo la tendencia?
+VOZ 1: No. Puede reducir el costo inicial de contratar y ayudar a grupos con mayores barreras, pero no reemplaza la demanda por trabajo. Si una empresa enfrenta ventas débiles o financiamiento caro, el incentivo puede ser insuficiente. Tampoco corrige automáticamente las pérdidas concentradas en manufactura, tecnología y comercio.
+VOZ 2: ¿Cómo entra la situación fiscal en esta lectura?
+VOZ 1: Chile ha reducido el déficit efectivo acumulado en doce meses a 1,8% del PIB, desde 2,8% al cierre de 2025. Esa consolidación protege la solvencia, pero el gasto de capital acumulado cayó 13,0% hasta agosto. Hay menos espacio para responder a cada deterioro con más gasto general.
+VOZ 2: Entonces la focalización no es un detalle técnico.
+VOZ 1: Es central. El subsidio debe concentrarse donde realmente cambia decisiones de contratación. Si eleva el empleo formal, mejora ingresos, cotizaciones y trayectorias laborales. Si sólo remunera empleos ya previstos o genera puestos que desaparecen al terminar el beneficio, el costo fiscal permanece y el efecto laboral se diluye.
+VOZ 2: ¿Qué indicadores permiten saber cuál de esas dos historias está ocurriendo?
+VOZ 1: Primero, cuántos contratos nuevos reciben el subsidio. Segundo, cuánto duran y cuántos sobreviven después del apoyo. Tercero, si deja de caer el número de asalariados formales. También importa la distribución por sexo, edad, tamaño de empresa y sector.
+VOZ 2: ¿Y qué cambiaría la lectura actual?
+VOZ 1: La fortalecería una recuperación del empleo formal acompañada por menor informalidad y mayor permanencia de los beneficiarios. La debilitarían muchas postulaciones sin nuevas contrataciones netas, o una mejora que desaparezca al vencer el subsidio.
+VOZ 2: En síntesis, el 9,6% no convierte automáticamente el problema en una discusión de tasas o de más gasto.
+VOZ 1: Correcto. El hecho observado es un mercado laboral que perdió ocupados, formalidad y horas. La interpretación es que el nuevo subsidio llega con una prueba más exigente de la prevista. Y la condición decisiva será su capacidad de producir empleo formal adicional sin abandonar la consolidación fiscal.
