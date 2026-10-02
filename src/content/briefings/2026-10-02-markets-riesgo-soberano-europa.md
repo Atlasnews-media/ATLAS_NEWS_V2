@@ -1,10 +1,10 @@
 ---
 title: "El riesgo soberano europeo rompe el rebote: bonos, bancos y euro se desacoplan"
 summary: "Las bolsas europeas rebotan, pero el spread Francia-Alemania ronda 150 puntos base y el euro desarma posiciones de carry. El mercado distingue alivio táctico en acciones de una prima fiscal que sigue endureciendo las condiciones financieras."
-publishedAt: "2026-10-02T06:21:30-03:00"
+publishedAt: "2026-10-02T06:50:56-03:00"
 cutoffAt: "2026-10-02T06:21:18-03:00"
 section: "markets"
-status: "draft"
+status: "published"
 tags:
   - mercados
   - bonos

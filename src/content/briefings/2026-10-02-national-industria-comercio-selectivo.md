@@ -1,10 +1,10 @@
 ---
 title: "La caída del cobre parte la actividad: producción débil y demanda selectiva"
 summary: "La producción industrial cayó 5,7% interanual por minería y manufactura, mientras comercio quedó plano. El avance de ventas digitales, movilidad y encomiendas muestra una economía con focos de demanda, no una contracción uniforme."
-publishedAt: "2026-10-02T06:19:54-03:00"
+publishedAt: "2026-10-02T06:50:56-03:00"
 cutoffAt: "2026-10-02T06:19:42-03:00"
 section: "national"
-status: "draft"
+status: "published"
 tags:
   - chile
   - actividad

@@ -1,10 +1,10 @@
 ---
 title: "Energía, deuda y El Niño estrechan el margen de los países en desarrollo"
 summary: "El PNUD advierte que combustibles caros, tasas en máximos de décadas y el episodio climático más intenso desde 1950 agotan los colchones fiscales y elevan el riesgo de estrés financiero y alimentario."
-publishedAt: "2026-10-02T06:08:23-03:00"
+publishedAt: "2026-10-02T06:50:56-03:00"
 cutoffAt: "2026-10-02T06:06:51-03:00"
 type: "daily"
-status: "draft"
+status: "published"
 tags:
   - economia-global
   - energia
