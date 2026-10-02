@@ -1,0 +1,115 @@
+{
+  "status": "READY",
+  "date": "2026-10-02",
+  "contract": "atlas-senales-del-dia-v1",
+  "senalesDelDia": {
+    "internacional": [
+      {
+        "slot": "technology",
+        "headline": "India fuerza una revisión de cámaras conectadas sin licencia",
+        "deck": "Amazon y Flipkart comenzaron a retirar modelos sin certificación; una revisión halló que más de 700 de 770 publicaciones no figuraban en el registro oficial.",
+        "development": "Amazon y Flipkart comenzaron a revisar las cámaras de seguridad conectadas que ofrecen terceros en sus plataformas de India, después de detectarse cientos de modelos sin la certificación obligatoria. Una revisión de Reuters encontró que más de 700 de unas 770 publicaciones no aparecían en la base pública de equipos aprobados por la Oficina de Estándares de India. Al menos doce avisos fueron retirados y Amazon dejó de mostrar la página de una marca vinculada con Dahua.\n\nLa exigencia obliga a someter hardware y software a pruebas antes de comercializar cámaras capaces de transmitir imágenes por internet. El objetivo es comprobar requisitos de seguridad en dispositivos que pueden transformarse en puntos de acceso a redes o canales de vigilancia remota. Amazon y Flipkart indicaron mediante sus acciones que revisarían el catálogo, pero no se ha publicado todavía una cifra consolidada de productos eliminados ni un plazo de término.\n\nLa señal tecnológica está en la responsabilidad de las plataformas sobre dispositivos conectados vendidos por terceros. La certificación previa reduce una parte del riesgo, aunque no garantiza que un equipo permanezca seguro después de actualizaciones o nuevas vulnerabilidades. Los controles verificables serán la proporción de avisos retirados, la validación en el registro oficial, la respuesta de los fabricantes y la existencia de actualizaciones de seguridad para cámaras ya instaladas.",
+        "anchor": "india-revision-camaras-conectadas-sin-licencia",
+        "sources": [
+          {
+            "name": "Reuters",
+            "url": "https://www.reuters.com/world/amazon-walmarts-flipkart-launch-review-unlicensed-security-camera-listings-india-2026-10-01/"
+          },
+          {
+            "name": "Bureau of Indian Standards — vigilancia de certificaciones",
+            "url": "https://www.bis.gov.in/system-certification-overview/system-certification-licence/surveillance/?lang=en"
+          }
+        ]
+      },
+      {
+        "slot": "world",
+        "headline": "Eritrea rompe relaciones diplomáticas con Etiopía",
+        "deck": "El cierre de embajadas y la expulsión de diplomáticos siguen a una escalada militar en el norte etíope; la Unión Africana pidió contención.",
+        "development": "Eritrea anunció la ruptura de relaciones diplomáticas con Etiopía después de que Addis Abeba ordenara cerrar su embajada en Asmara y expulsara a diez diplomáticos eritreos en un plazo de 48 horas. Eritrea respondió que la salida de todo su personal equivalía al cierre de su propia misión y que actuaría de manera recíproca. La medida ocurrió tras explosiones en la capital etíope y nuevos combates en el norte del país.\n\nEl Gobierno de Etiopía acusa a Eritrea, Sudán y Egipto de apoyar a una alianza opositora encabezada por el Frente de Liberación Popular de Tigray. Los tres países niegan esa acusación. La tensión representa la mayor escalada desde el fin de la guerra civil de 2020-2022, conflicto en el que fuerzas eritreas combatieron junto al Gobierno federal etíope. La Unión Africana pidió a los involucrados evitar acciones o declaraciones que agraven la situación.\n\nLa ruptura diplomática elimina canales formales justo cuando aumenta el riesgo de que los enfrentamientos traspasen fronteras. No confirma por sí sola una guerra entre Estados, y las responsabilidades por las explosiones y ataques siguen disputadas. Los próximos hechos verificables serán la salida efectiva de los diplomáticos, nuevos movimientos militares, mecanismos de mediación regional y cualquier cambio en las posiciones oficiales de Eritrea, Etiopía, Sudán y Egipto.",
+        "anchor": "eritrea-rompe-relaciones-etiopia",
+        "sources": [
+          {
+            "name": "Reuters",
+            "url": "https://www.reuters.com/world/africa/explosions-heard-overnight-ethiopias-capital-diplomatic-sources-say-2026-10-01/"
+          },
+          {
+            "name": "Unión Africana",
+            "url": "https://au.int/en/pressreleases"
+          }
+        ]
+      }
+    ],
+    "nacional": [
+      {
+        "slot": "ipsa_company",
+        "headline": "Mallplaza toma control de ocho centros comerciales en Colombia",
+        "deck": "La operación por unos US$354 millones suma 180.000 metros cuadrados arrendables y queda sujeta al impacto contable que informen los próximos estados financieros.",
+        "development": "Plaza S.A., operadora de Mallplaza, completó la adquisición del control y administración de ocho centros comerciales Gran Plaza en Colombia. La compañía informó a la Comisión para el Mercado Financiero que obtuvo la autorización de libre competencia y firmó los documentos definitivos el 30 de septiembre. El precio base, después de los mecanismos de ajuste pactados, asciende a 1,178 billones de pesos colombianos, equivalentes aproximadamente a US$354 millones.\n\nLos activos incorporan cerca de 180.000 metros cuadrados de superficie arrendable. La operación se ejecutó mediante la compra de la totalidad de los derechos fiduciarios de los patrimonios autónomos vinculados con Pactia. El acuerdo vinculante había sido anunciado el 31 de julio, pero todavía dependía de condiciones suspensivas; el hecho nuevo es el cierre y la toma de control una vez obtenida la autorización de la Superintendencia de Industria y Comercio de Colombia.\n\nLa empresa señaló que aún no puede cuantificar con precisión el impacto contable final en sus resultados consolidados. Por eso, el precio y la superficie adquirida son datos cerrados, mientras las sinergias, costos de integración y contribución a utilidades permanecen por demostrar. Los siguientes hitos serán la incorporación en los estados financieros, la evolución de ocupación y arriendos, y cualquier actualización sobre financiamiento y rentabilidad de los nuevos activos.",
+        "anchor": "mallplaza-control-ocho-centros-colombia",
+        "sources": [
+          {
+            "name": "CMF — hecho esencial de Plaza S.A.",
+            "url": "https://www.cmfchile.cl/sitio/aplic/serdoc/ver_sgd.php?s567=11688b65ac01f950169b882c338bf3aeVFdwQmVVNXFSWGROUkZrd1RXcEpkMDVSUFQwPQ%3D%3D&secuencia=-1&t=1790929081"
+          },
+          {
+            "name": "Mallplaza",
+            "url": "https://corporativo.mallplaza.com/en/noticia/mallplaza-bets-on-colombia-after-binding-agreement-with-pactia-to-acquire-eight-shopping-centers/"
+          }
+        ]
+      },
+      {
+        "slot": "policy_economy",
+        "headline": "Presupuesto 2027 propone elevar el gasto público en 1,5%",
+        "deck": "El proyecto inicia dos meses de discusión legislativa con prioridades en crecimiento, seguridad, niñez y beneficios sociales, además de revisión de programas.",
+        "development": "El Gobierno ingresó el proyecto de Presupuesto 2027 con un crecimiento real del gasto público de 1,5% respecto de 2026. La propuesta fija como prioridades el crecimiento y el empleo, la seguridad, la protección de la niñez vulnerable y la continuidad de beneficios sociales establecidos por ley. El texto inicia ahora la discusión en el Congreso, que puede modificar partidas antes de aprobar la ley dentro del plazo constitucional.\n\nEl Ejecutivo informó que los ministerios proyectaron sus gastos a cinco años y que se revisaron 632 programas para reasignar recursos según resultados. En pensiones, la comunicación oficial contempla $9,5 billones, un aumento de 8,1%. La comparación del crecimiento total depende de la base utilizada: el Gobierno presenta 1,5% frente a la ejecución estimada de 2026, mientras otras comparaciones con la ley aprobada pueden entregar una cifra distinta. Esa diferencia debe mantenerse explícita durante el debate.\n\nEl anuncio no equivale todavía a gasto autorizado ni ejecutado. La evaluación fiscal deberá separar prioridades declaradas, asignaciones por ministerio y eventuales recortes o reasignaciones, además de comprobar los supuestos de ingresos. Los próximos hitos son la publicación del articulado y partidas detalladas, el informe de finanzas públicas, las indicaciones parlamentarias y la aprobación final. Cualquier efecto sobre crecimiento o empleo dependerá de la composición y ejecución, no sólo de la variación agregada.",
+        "anchor": "presupuesto-2027-gasto-publico-uno-cinco",
+        "sources": [
+          {
+            "name": "Gobierno de Chile",
+            "url": "https://www.gob.cl/noticias/presupuesto-2027-prioriza-crecimiento-seguridad-ninez-y-protecci/"
+          },
+          {
+            "name": "El País Chile",
+            "url": "https://elpais.com/chile/2026-10-01/kast-presenta-el-presupuesto-2027-con-un-alza-del-15-el-estado-verificara-cada-peso-del-gasto-social.html"
+          }
+        ]
+      }
+    ],
+    "mercados": [
+      {
+        "slot": "markets_chile",
+        "headline": "Banco BICE emite CHF115 millones a cuatro años",
+        "deck": "El bono internacional vence en octubre de 2030 y fue colocado a una tasa anual de 1,98%; su liquidación está prevista para el 29 de octubre.",
+        "development": "Banco BICE emitió un bono por 115 millones de francos suizos en el mercado internacional. El instrumento vence el 29 de octubre de 2030, fue colocado a una tasa anual de 1,98% y tendrá liquidación el 29 de octubre de 2026, según el hecho esencial remitido a la Comisión para el Mercado Financiero. La comunicación confirma monto, moneda, vencimiento y tasa, sin detallar en ese documento el destino específico de los recursos.\n\nLa moneda de emisión es central para interpretar la operación. Una tasa nominal en francos suizos no es directamente comparable con deuda en pesos, UF o dólares, porque cada mercado incorpora referencias monetarias, inflación y costos de cobertura distintos. Para medir el costo económico para el banco se necesitarían además las condiciones de conversión o cobertura cambiaria y los gastos asociados, información que no figura en el hecho esencial.\n\nLa colocación amplía las fuentes de financiamiento externo del emisor y entrega una referencia para deuda chilena en un mercado menos habitual que el dólar. No permite concluir por sí sola que el costo total sea inferior a alternativas locales. Los próximos indicadores verificables son la liquidación efectiva, el registro del pasivo en los estados financieros, cualquier información sobre uso de fondos y las condiciones que obtengan otros emisores chilenos en moneda suiza.",
+        "anchor": "banco-bice-bono-francos-suizos",
+        "sources": [
+          {
+            "name": "CMF — hecho esencial de Banco BICE",
+            "url": "https://www.cmfchile.cl/sitio/aplic/serdoc/ver_sgd.php?s567=48680e3878484b25434875f4d609ed39VFdwQmVVNXFSWGROUkZrd1RXcFJlazFuUFQwPQ%3D%3D&secuencia=-1&t=1790929081"
+          },
+          {
+            "name": "CMF — últimos hechos esenciales",
+            "url": "https://www.cmfchile.cl/institucional/hechos/hechos_portada.php"
+          }
+        ]
+      },
+      {
+        "slot": "markets_global",
+        "headline": "GCash fija en US$845 millones el tamaño base de su apertura",
+        "deck": "Mynt venderá hasta 8.030 millones de acciones a 6,60 pesos filipinos; con la sobreasignación, la recaudación podría acercarse a US$971 millones.",
+        "development": "Mynt, matriz de la billetera digital filipina GCash, fijó el precio de su oferta pública inicial en 6,60 pesos filipinos por acción. La colocación contempla hasta 8.030 millones de títulos y recaudaría cerca de 53.000 millones de pesos, equivalentes a US$844,7 millones. Si se ejerce por completo la opción de sobreasignación por hasta 1.200 millones de acciones adicionales, el monto podría llegar a 60.900 millones de pesos, unos US$970,6 millones.\n\nLa operación llega a un mercado accionario con baja actividad. Las empresas filipinas habían captado sólo US$227,1 millones mediante ventas de acciones hasta el 29 de septiembre, 71% menos que un año antes. Inversionistas institucionales comprometieron 36.500 millones de pesos antes de la apertura al público, entre ellos Capital Group, Citadel, HSBC Global Asset Management, International Finance Corporation y Lazard, además de administradores locales.\n\nEl precio definitivo reduce el tamaño frente a los máximos indicativos divulgados en etapas anteriores, pero mantiene la operación entre las mayores aperturas de la historia filipina. La demanda comprometida no garantiza el desempeño posterior del título. Los próximos hitos son el período de oferta, la reunión con inversionistas del 6 de octubre, la asignación final, el eventual ejercicio de la sobreasignación y el inicio de transacciones previsto para el 20 de octubre.",
+        "anchor": "gcash-ipo-precio-tamano-base",
+        "sources": [
+          {
+            "name": "Philippine Stock Exchange — oferta pública de Mynt",
+            "url": "https://edge.pse.com.ph/openDiscViewer.do?edge_no=9790b2654f75600964d70b69f0a3140b"
+          },
+          {
+            "name": "Reuters",
+            "url": "https://www.reuters.com/world/asia-pacific/gcash-parent-mynt-prices-845-million-ipo-set-bolster-philippine-share-market-2026-10-02/"
+          }
+        ]
+      }
+    ]
+  }
+}
