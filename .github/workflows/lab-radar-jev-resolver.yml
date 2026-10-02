@@ -70,7 +70,7 @@ jobs:
       - name: Resolver juicios reales con TypeSafe JEV
         run: |
           set -euo pipefail
-          node scripts/lab/radar-editorial/run-jev-memory-judge.mjs \
+          node scripts/jev/adapters/lab-radar-adapter.mjs \
             --request "${{ steps.request.outputs.path }}" \
             --output "$RUNNER_TEMP/jev-judgments.json"
 
