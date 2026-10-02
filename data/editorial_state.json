@@ -3,14 +3,14 @@
     {
       "id": "oil-geopolitics-inflation",
       "topic": "Petróleo, geopolítica e inflación",
-      "thesis": "La recuperación de Yanbu y Hormuz llevó los flujos petroleros del Golfo cerca de los niveles de 2025, debilitando el riesgo de escasez física inmediata; aun así, la falta de acuerdo entre Estados Unidos e Irán, la escasez de combustibles refinados y los fletes altos mantienen presión energética.",
-      "status": "weakened",
-      "last_evidence": "El 30 de septiembre Goldman Sachs estimó exportaciones del Golfo de 23,3 millones de barriles diarios durante la última semana, en línea con el promedio de 2025; JPMorgan calculó 20,5 millones en diez días, 89% del nivel de 2025, mientras el Brent acumulaba cerca de 13% en septiembre y las conversaciones entre Estados Unidos e Irán seguían estancadas.",
-      "effect": "La normalización de los flujos de crudo reduce el riesgo de una escasez extrema y modera la presión física, pero los déficits de productos refinados, los costos de transporte y la prima diplomática mantienen abierta la transmisión hacia inflación y tasas.",
-      "base_scenario": "Oferta de crudo del Golfo cerca de la normalización, con precios que pueden moderarse si los flujos se sostienen; el alivio económico seguirá incompleto mientras no cedan combustibles refinados, fletes y tensión entre Estados Unidos e Irán.",
-      "invalidate_if": "Una nueva interrupción de Hormuz, Yanbu o Fujairah junto con una caída persistente de exportaciones reforzaría nuevamente la tesis de shock físico; flujos sostenidos, menores fletes y una baja durable de combustibles permitirían cerrar el hilo.",
-      "watch": "Exportaciones semanales del Golfo, tránsito por Hormuz, cargas de Yanbu y Fujairah, inventarios de destilados, fletes, negociaciones entre Estados Unidos e Irán y Brent.",
-      "last_publication": "/ediciones/2026-09-30-daily-china-europa-abren-frente-fragmentacion-comercial/"
+      "thesis": "La normalización de los flujos de crudo reduce el riesgo de escasez física inmediata, pero no cerró el shock energético: el alza del gas licuado, la escasez de combustibles y el agotamiento de subsidios trasladan el costo hacia inflación, deuda y estrés social, especialmente en economías en desarrollo.",
+      "status": "confirmed",
+      "last_evidence": "El 2 de octubre el PNUD advirtió que energía cara, costos de endeudamiento en máximos de décadas y el El Niño más intenso desde 1950 acercan a países en desarrollo a las condiciones de estrés de la pandemia; la UE ya había destinado €17.900 millones a amortiguar la energía y Aramco y Sonatrach elevaron sus referencias de gas licuado para octubre entre 9%-11% y 20%-23%, respectivamente.",
+      "effect": "Confirma que el alivio en los flujos de crudo no elimina la transmisión macroeconómica: los gobiernos pierden capacidad fiscal para absorber combustibles caros justo cuando tasas elevadas y shocks climáticos amplían el riesgo de deuda, inseguridad alimentaria y conflictividad social.",
+      "base_scenario": "La oferta física evita por ahora una escasez extrema de crudo, pero energía y financiamiento seguirán presionando presupuestos públicos y hogares; los apoyos tenderán a ser más focalizados y parte del costo pasará a precios finales.",
+      "invalidate_if": "Una caída durable de combustibles y gas licuado, menores fletes y rendimientos soberanos, junto con reconstrucción de colchones fiscales, debilitaría la tesis; nuevas interrupciones de oferta o retiro acelerado de subsidios la reforzarían.",
+      "watch": "Brent y combustibles refinados, referencias de gas licuado, fletes, rendimientos soberanos, subsidios energéticos, reuniones FMI-Banco Mundial del 12 al 18 de octubre, protestas y efectos de El Niño sobre alimentos.",
+      "last_publication": "/ediciones/2026-10-02-daily-energia-deuda-el-nino-presion-emergentes/"
     },
     {
       "id": "us-employment-fed-rates",
