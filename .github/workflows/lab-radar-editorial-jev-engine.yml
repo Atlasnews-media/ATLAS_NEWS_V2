@@ -1,0 +1,163 @@
+name: LAB — RADAR JEV durable engine
+
+on:
+  workflow_call:
+    inputs:
+      request_path:
+        description: Canonical JEV request path in the caller commit
+        required: true
+        type: string
+      request_ref:
+        description: Exact commit SHA containing the canonical JEV request
+        required: true
+        type: string
+    secrets:
+      TYPESAFE_API_KEY:
+        required: true
+
+permissions:
+  contents: write
+
+concurrency:
+  group: lab-radar-jev-engine
+  cancel-in-progress: false
+
+jobs:
+  resolve-jev:
+    name: Resolver JEV TypeSafe
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    env:
+      TYPESAFE_API_KEY: ${{ secrets.TYPESAFE_API_KEY }}
+
+    steps:
+      - name: Checkout motor JEV fijado por workflow
+        uses: actions/checkout@v5
+        with:
+          repository: ${{ job.workflow_repository }}
+          ref: ${{ job.workflow_sha }}
+          fetch-depth: 0
+
+      - name: Checkout request exacta y separada del motor
+        uses: actions/checkout@v5
+        with:
+          ref: ${{ inputs.request_ref }}
+          path: .request
+          fetch-depth: 1
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: Verificar request durable
+        id: request
+        env:
+          REQUEST_PATH: ${{ inputs.request_path }}
+          REQUEST_REF: ${{ inputs.request_ref }}
+        run: |
+          set -euo pipefail
+          test "$(git -C .request rev-parse HEAD)" = "$REQUEST_REF"
+          [[ "$REQUEST_PATH" =~ ^lab/radar-editorial/jev-requests/[A-Za-z0-9._-]+\.json$ ]]
+          request_file=".request/$REQUEST_PATH"
+          test -f "$request_file"
+          run_id="$(node -p "JSON.parse(require('fs').readFileSync('$request_file','utf8')).radarRunId")"
+          [[ "$run_id" =~ ^[A-Za-z0-9._:-]{8,128}$ ]]
+          echo "path=$request_file" >> "$GITHUB_OUTPUT"
+          echo "run_id=$run_id" >> "$GITHUB_OUTPUT"
+
+      - name: Verificar credencial TypeSafe
+        run: |
+          set -euo pipefail
+          if [[ -z "${TYPESAFE_API_KEY:-}" ]]; then
+            echo "JEV_CREDENTIAL=FAIL"
+            echo "ERROR=TYPESAFE_API_KEY unavailable in ATLAS_NEWS_V2"
+            exit 1
+          fi
+          echo "JEV_CREDENTIAL=AVAILABLE"
+
+      - name: Resolver juicios reales con TypeSafe JEV
+        run: |
+          set -euo pipefail
+          node scripts/lab/radar-editorial/run-jev-memory-judge.mjs \
+            --request "${{ steps.request.outputs.path }}" \
+            --output "$RUNNER_TEMP/jev-judgments.json"
+
+      - name: Validar identidad del resultado
+        env:
+          REQUEST: ${{ steps.request.outputs.path }}
+          OUTPUT: ${{ runner.temp }}/jev-judgments.json
+        run: |
+          set -euo pipefail
+          node - <<'NODE'
+          const fs = require("fs");
+          const request = JSON.parse(fs.readFileSync(process.env.REQUEST, "utf8"));
+          const result = JSON.parse(fs.readFileSync(process.env.OUTPUT, "utf8"));
+          for (const key of ["radarRunId","sourceMainCommit","radarStateVersion","editorialDate"]) {
+            if (request[key] !== result[key]) throw new Error(`identity mismatch: ${key}`);
+          }
+          if (request.experimentMode !== "RADAR_JEV") throw new Error("request is not RADAR_JEV");
+          if (result.engine !== "JEV_TYPESAFE" || result.status !== "PASS") {
+            throw new Error("JEV result is not PASS");
+          }
+          if (result.thresholdsApplied !== false) {
+            throw new Error("JEV thresholdsApplied must remain false");
+          }
+          if (!Array.isArray(result.judgments) || result.judgments.length < 1) {
+            throw new Error("JEV result has no judgments");
+          }
+          NODE
+
+      - name: Checkout runtime durable
+        uses: actions/checkout@v5
+        with:
+          ref: radar-runtime/editorial
+          path: .runtime
+          fetch-depth: 0
+
+      - name: Persistir request y juicio JEV en runtime
+        env:
+          REQUEST: ${{ steps.request.outputs.path }}
+          RUN_ID: ${{ steps.request.outputs.run_id }}
+        run: |
+          set -euo pipefail
+          target=".runtime/lab/radar-editorial/runtime/runs/$RUN_ID"
+          mkdir -p "$target"
+
+          for pair in \
+            "$REQUEST:$target/jev-request.json" \
+            "$RUNNER_TEMP/jev-judgments.json:$target/jev-judgments.json"
+          do
+            source_file="${pair%%:*}"
+            target_file="${pair#*:}"
+            if [[ -f "$target_file" ]] && ! cmp -s "$source_file" "$target_file"; then
+              echo "JEV IDEMPOTENCY FAIL: $target_file ya existe con contenido distinto" >&2
+              exit 1
+            fi
+            cp "$source_file" "$target_file"
+          done
+
+          git -C .runtime config user.name "ATLAS NEWS RADAR JEV"
+          git -C .runtime config user.email "actions@users.noreply.github.com"
+          git -C .runtime add -- "lab/radar-editorial/runtime/runs/$RUN_ID/jev-request.json" \
+            "lab/radar-editorial/runtime/runs/$RUN_ID/jev-judgments.json"
+          git -C .runtime diff --cached --name-only | \
+            node scripts/lab/radar-editorial/assert-runtime-scope.mjs
+
+          if git -C .runtime diff --cached --quiet; then
+            echo "JEV_PERSIST=IDEMPOTENT"
+            exit 0
+          fi
+
+          git -C .runtime commit -m "LAB RADAR JEV judgments $GITHUB_RUN_ID"
+          for attempt in 1 2 3; do
+            if git -C .runtime pull --rebase origin radar-runtime/editorial && \
+              git -C .runtime push origin HEAD:radar-runtime/editorial; then
+              echo "JEV_PERSIST=PASS"
+              exit 0
+            fi
+            git -C .runtime rebase --abort 2>/dev/null || true
+            if [[ "$attempt" -lt 3 ]]; then sleep 2; fi
+          done
+          echo "JEV_PERSIST=FAIL" >&2
+          exit 1
