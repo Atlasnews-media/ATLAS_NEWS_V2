@@ -25,7 +25,7 @@ highlights:
     text: "El spread a diez años frente a Alemania ronda 150 puntos base, su mayor nivel desde la crisis soberana de 2011."
   - label: "Rebote sin confirmación"
     text: "El STOXX 600 sube cerca de 0,9% tras caer 1,3%, pero los bancos se encaminan a su peor semana desde abril."
-  - label: "Carry del euro se desarma"
+  - label: "Carry del euro cede"
     text: "La moneda cayó 1,3% frente al franco suizo y el dólar permanece cerca de un máximo de 17 meses."
 demo: false
 ---
