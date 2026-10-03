@@ -1,10 +1,10 @@
 ---
 title: "El Imacec cae por minería, pero la economía no minera recupera tracción"
 summary: "La actividad bajó 1,0% interanual en agosto por el desplome del cobre, mientras el Imacec no minero creció 1,4% anual y 0,7% mensual. La composición acota la debilidad y traslada la prueba hacia la persistencia de servicios y comercio."
-publishedAt: "2026-10-03T06:13:30-03:00"
+publishedAt: "2026-10-03T06:45:42-03:00"
 cutoffAt: "2026-10-03T06:12:45-03:00"
 section: "national"
-status: "draft"
+status: "published"
 tags:
   - chile
   - actividad

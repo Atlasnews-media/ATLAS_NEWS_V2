@@ -1,10 +1,10 @@
 ---
 title: "El empleo enfría a la Fed, pero los bonos niegan el alivio"
 summary: "Wall Street subió al caer la probabilidad de un alza en octubre, pero el Treasury a diez años revirtió su baja y terminó en 5,281%. La divergencia separa el alivio monetario de corto plazo de la prima por energía, deuda e inflación."
-publishedAt: "2026-10-03T06:15:20-03:00"
+publishedAt: "2026-10-03T06:45:42-03:00"
 cutoffAt: "2026-10-03T06:14:30-03:00"
 section: "markets"
-status: "draft"
+status: "published"
 tags:
   - mercados
   - tasas

@@ -1,10 +1,10 @@
 ---
 title: "La IA enfrenta la prueba de productividad antes de que se agote el capital"
 summary: "El gasto en centros de datos podría superar US$30 billones hacia 2050, pero la infraestructura necesita nuevos mercados, ingresos y productividad antes de que el costo de la deuda exponga sus retornos."
-publishedAt: "2026-10-03T05:59:48-03:00"
+publishedAt: "2026-10-03T06:45:42-03:00"
 cutoffAt: "2026-10-03T05:58:07-03:00"
 type: "daily"
-status: "draft"
+status: "published"
 tags:
   - inteligencia-artificial
   - productividad
