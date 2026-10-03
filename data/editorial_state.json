@@ -15,26 +15,26 @@
     {
       "id": "us-employment-fed-rates",
       "topic": "Empleo de Estados Unidos y Reserva Federal",
-      "thesis": "La Fed materializó el giro restrictivo con su primera subida en más de tres años y dejó abierta la puerta a más endurecimiento; el foco pasa de si subiría en septiembre a la velocidad y persistencia del nuevo ciclo.",
-      "status": "changed",
-      "last_evidence": "El 16 de septiembre el FOMC votó 12-0 por elevar 25 puntos base el rango de fondos federales a 3,75%-4,00%, señalando que la inflación sigue elevada y que la acción busca un retorno más oportuno a la meta de 2%.",
-      "effect": "La subida confirma que empleo resiliente e inflación persistente superaron el umbral para volver a endurecer; ahora la incertidumbre relevante es cuántas alzas adicionales serán necesarias mientras energía mantiene riesgo alcista sobre precios.",
-      "base_scenario": "La Fed mantiene sesgo restrictivo tras la subida de septiembre, con al menos una nueva alza en 2026 como posibilidad central si inflación y actividad no se enfrían con claridad.",
-      "invalidate_if": "Una desaceleración clara y sostenida de inflación subyacente, deterioro laboral material o comunicación explícita de la Fed que cierre la puerta a nuevas alzas debilitarían la tesis.",
-      "watch": "Comunicación de la Fed, reunión de octubre, inflación subyacente, salarios, solicitudes de desempleo, Treasury a dos y diez años, petróleo y dólar.",
-      "last_publication": "/ediciones/2026-09-17-daily-fed-endurece-el-mapa-global-de-tasas/"
+      "thesis": "La Fed inició un nuevo ciclo restrictivo en septiembre, pero la fuerte desaceleración del empleo reduce la urgencia de una segunda alza en octubre; energía e inflación mantienen abierta una acción posterior, con diciembre como ventana más plausible.",
+      "status": "weakened",
+      "last_evidence": "El 2 de octubre las nóminas estadounidenses aumentaron sólo 29.000 en septiembre frente a 90.000 esperadas, agosto fue revisado a 133.000 y el desempleo subió de 4,1% a 4,2%; la probabilidad implícita de un alza en octubre cayó hasta 12% antes de volver cerca de 21%.",
+      "effect": "Debilita la tesis de endurecimiento inmediato sin cerrar el ciclo: el mercado laboral pierde impulso y da espacio para una pausa en octubre, mientras energía cara y cadenas tensas todavía pueden reactivar presión inflacionaria hacia fin de año.",
+      "base_scenario": "Pausa de la Fed en octubre para evaluar empleo e inflación, con una nueva alza en diciembre todavía posible si la energía o los precios subyacentes vuelven a acelerarse.",
+      "invalidate_if": "Una recuperación clara de nóminas, salarios e inflación reforzaría una alza temprana; varios meses de empleo débil y desinflación sostenida reducirían la probabilidad de nuevas alzas durante 2026.",
+      "watch": "Nóminas y revisiones, desempleo, salarios, inflación subyacente, energía, reunión de octubre, comunicación de la Fed y Treasury a dos y diez años.",
+      "last_publication": "/ediciones/2026-10-03-daily-ia-enfrenta-prueba-productividad-capital/"
     },
     {
       "id": "ai-monetization-selectivity",
       "topic": "Inteligencia artificial y selectividad bursátil",
-      "thesis": "La demanda por inteligencia artificial ya se transmite desde chips y plataformas hacia producción, pedidos y exportaciones fabriles en Asia y Europa; el ciclo gana respaldo económico real, aunque los rendimientos soberanos altos elevan el costo de financiar su expansión.",
-      "status": "confirmed",
-      "last_evidence": "El 1 de octubre los PMI manufactureros de septiembre alcanzaron 53,9 en Corea del Sur, 56,7 en Taiwán y 54,1 en Japón, con los pedidos externos coreanos creciendo al mayor ritmo en quince años y medio; Micron informó compromisos de suministro de largo plazo por US$32.000 millones, frente a US$22.000 millones en junio, mientras el Treasury a diez años llegó a 5,342%.",
-      "effect": "Confirma que la monetización de IA genera demanda industrial y exportadora medible, pero mantiene la selección: las empresas y economías beneficiadas deben absorber un costo de capital mucho mayor y demostrar que pedidos e inversión son sostenibles.",
-      "base_scenario": "La IA sostiene semiconductores, memoria y bienes de capital y extiende el ciclo hacia proveedores industriales, con mayor dispersión entre beneficiarios directos y sectores rezagados; las tasas altas limitan proyectos débiles o dependientes de deuda.",
-      "invalidate_if": "Una caída sostenida de pedidos de chips, exportaciones asiáticas, utilización de capacidad o compromisos de compra debilitaría la tesis; una expansión más amplia con márgenes y caja sólidos la reforzaría.",
-      "watch": "PMI y pedidos de exportación de Corea del Sur, Taiwán, Japón y Europa, compromisos de memoria, inversión en centros de datos, márgenes, flujo de caja, emisiones de deuda y Treasury a diez años.",
-      "last_publication": "/ediciones/2026-10-01-daily-ia-reactiva-fabricas-asia-capital-se-encarece/"
+      "thesis": "La demanda de inteligencia artificial ya genera producción y pedidos reales, pero la prueba decisiva se desplaza a la monetización: nuevas aplicaciones, ingresos y productividad deben llegar antes de que el costo del capital y los vencimientos expongan el apalancamiento de la infraestructura.",
+      "status": "changed",
+      "last_evidence": "El 3 de octubre Reuters recopiló proyecciones según las cuales el gasto mundial acumulado en centros de datos podría superar US$30 billones hacia 2050; las grandes plataformas necesitarían más de US$4,2 billones de ingresos nuevos en cinco años, mientras Anthropic proyecta gastar US$518.000 millones y las mejoras amplias de productividad en Estados Unidos todavía no aparecen.",
+      "effect": "Cambia el foco desde la existencia de demanda industrial hacia el plazo y la calidad del retorno: el ciclo puede seguir impulsando fábricas y proveedores, pero una demora de aplicaciones, ingresos o productividad aumentaría las pérdidas en estructuras financiadas con deuda.",
+      "base_scenario": "La inversión en IA continúa sosteniendo semiconductores, energía, centros de datos y bienes de capital, con beneficios económicos reales pero concentrados; la selección se endurece entre infraestructura con contratos e ingresos verificables y proyectos dependientes de crecimiento futuro.",
+      "invalidate_if": "Una aceleración amplia y persistente de productividad, ingresos de nuevas aplicaciones, flujo de caja y utilización de centros de datos validaría el gasto; cancelaciones, menor demanda, refinanciaciones difíciles o deterioro de activos reforzarían el riesgo financiero.",
+      "watch": "Gasto y utilización de centros de datos, ingresos de nuevas aplicaciones, productividad, flujo de caja, deuda y vencimientos de infraestructura, compromisos de compra de chips y contratación en ocupaciones expuestas a IA.",
+      "last_publication": "/ediciones/2026-10-03-daily-ia-enfrenta-prueba-productividad-capital/"
     },
     {
       "id": "chile-inflation-activity-rates",

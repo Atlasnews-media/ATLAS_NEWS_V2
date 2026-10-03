@@ -1,0 +1,35 @@
+VOZ 1: El cierre del viernes dejó una divergencia clara. El empleo estadounidense fue más débil de lo esperado, las acciones subieron, pero los bonos del Tesoro no lograron conservar el alivio inicial.
+VOZ 2: Partamos por el dato. ¿Qué tan débil fue?
+VOZ 1: Las nóminas aumentaron 29.000 en septiembre, frente a una expectativa de 90.000. Además, julio y agosto fueron revisados en conjunto 60.000 puestos a la baja. El desempleo quedó en 4,2%.
+VOZ 2: ¿Y los salarios?
+VOZ 1: Crecieron 0,1% en el mes y 3,0% en doce meses. Es una señal de menor presión laboral, aunque un solo informe no define por sí mismo la trayectoria de inflación.
+VOZ 2: ¿Cómo cambió la expectativa sobre la Reserva Federal?
+VOZ 1: La probabilidad implícita de un alza de al menos 25 puntos base en octubre bajó a 22,7%. Una semana antes estaba en 64,2%. El mercado pasó a descontar una pausa como escenario ampliamente dominante.
+VOZ 2: Eso explica la subida de las acciones.
+VOZ 1: Sí. El Nasdaq ganó 1,19%, el S&P 500 avanzó 0,73% y el Dow subió 0,49%. El Russell 2000 agregó 0,9%, su mejor sesión en un mes, y el sector inmobiliario del S&P ganó 0,4%.
+VOZ 2: Pequeñas empresas e inmobiliario suelen ser sensibles a las tasas.
+VOZ 1: Exactamente. Menor riesgo de un alza inmediata reduce presión sobre empresas que dependen más del crédito y sobre activos cuyos flujos están más alejados en el tiempo.
+VOZ 2: Pero dijiste que los bonos negaron el alivio. ¿Qué ocurrió?
+VOZ 1: El rendimiento del Treasury a diez años bajó al conocerse el empleo, pero luego revirtió y terminó 4,72 puntos base arriba, en 5,281%. El dos años también subió, casi cuatro puntos base, hasta 4,827%.
+VOZ 2: ¿Cómo pueden subir las acciones y subir también los rendimientos?
+VOZ 1: Porque están respondiendo a horizontes distintos. Las acciones celebraron una menor probabilidad de alza en octubre. El bono largo sigue incorporando energía, déficit, emisión de deuda e inflación futura. La próxima reunión de la Fed es sólo una parte de su precio.
+VOZ 2: Entonces el dato enfrió el corto plazo, pero no resolvió la prima por plazo.
+VOZ 1: Esa es la lectura. El diez años completó además una quinta semana consecutiva de aumento. Un empleo débil que no logra sostener una baja de rendimientos muestra que la presión estructural sigue activa.
+VOZ 2: ¿La subida de acciones fue amplia?
+VOZ 1: La amplitud diaria fue positiva. Hubo más acciones al alza que a la baja y avanzaron tanto tecnología como pequeñas empresas. Pero la semana fue menos favorable: el S&P 500 perdió 0,27% y el Dow 1,26%. Sólo el Nasdaq terminó arriba, con 0,45%.
+VOZ 2: ¿Qué pasó dentro de tecnología?
+VOZ 1: Hubo dispersión. Nvidia subió 1,3% y Tesla 4,7%. En cambio, Western Digital y Seagate cayeron cerca de 10% después de conocerse un plan de Toshiba para duplicar capacidad de discos duros destinados a centros de datos.
+VOZ 2: ¿Eso conecta con la prueba de monetización de IA que plantea la General?
+VOZ 1: Sí, pero desde la formación de precios. La expansión de infraestructura crea demanda, aunque también agrega oferta y competencia. El mercado puede premiar el ciclo de IA y castigar a empresas concretas si espera presión sobre precios o márgenes.
+VOZ 2: ¿Qué señales dejaron las monedas y los commodities?
+VOZ 1: El dólar cedió frente al euro y el yen, coherente con menor probabilidad de un alza inmediata. El Brent subió 0,45% a 102 dólares con 77 centavos, mientras el WTI cayó 1% a 91 dólares con 90. El oro perdió 1,01% y quedó en 4.135 dólares con 68 centavos la onza.
+VOZ 2: Esa dispersión no parece una operación defensiva única.
+VOZ 1: No lo fue. Hubo alivio monetario en acciones y monedas, presión persistente en Treasuries y movimientos distintos entre petróleo y oro. El mercado no cerró una tesis común para todos los activos.
+VOZ 2: ¿Cuál es la primera confirmación que hay que buscar?
+VOZ 1: Que el rendimiento a diez años vuelva bajo el nivel previo al informe laboral y consiga mantenerse. Si sigue subiendo con empleo débil, la prima por plazo y la inflación dominarán la lectura.
+VOZ 2: ¿Y en acciones?
+VOZ 1: Que la recuperación se extienda de forma sostenida a pequeñas empresas, inmobiliario y sectores financiados con deuda. Si sólo resisten las megacapitalizaciones, el alivio será estrecho.
+VOZ 2: ¿Qué papel juega el petróleo?
+VOZ 1: Es decisivo. Un Brent persistentemente sobre 100 dólares puede mantener elevadas las expectativas de inflación y limitar la baja de rendimientos, aunque el empleo se enfríe.
+VOZ 2: Entonces la pausa de octubre no equivale a condiciones financieras más blandas.
+VOZ 1: Correcto. El mercado redujo el riesgo de una alza inmediata, pero el costo del capital de largo plazo sigue alto. El alivio será convincente sólo si bonos, energía y amplitud bursátil empiezan a confirmar la misma dirección.

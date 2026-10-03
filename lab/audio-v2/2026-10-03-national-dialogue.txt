@@ -1,0 +1,29 @@
+VOZ 1: El dato local nuevo cambia la lectura que dejaron los indicadores sectoriales de agosto. El Imacec cayó 1,0% frente al mismo mes del año anterior y bajó 0,7% respecto de julio en términos desestacionalizados.
+VOZ 2: Eso parece confirmar una economía bastante débil.
+VOZ 1: Confirma debilidad en el agregado, pero el desglose muestra que no está repartida de manera uniforme. El Imacec no minero creció 1,4% anual y 0,7% mensual.
+VOZ 2: Entonces el principal problema fue la minería.
+VOZ 1: Exactamente. La producción minera cayó 17,4% en doce meses, principalmente por menor extracción de cobre. El Banco Central atribuyó el resultado a menores leyes del mineral, mantenciones y condiciones climáticas adversas.
+VOZ 2: ¿Qué significa una menor ley del mineral?
+VOZ 1: Que la roca procesada contiene menos cobre. Para obtener la misma cantidad de metal hay que mover y tratar más material, de modo que la producción puede bajar aunque la faena siga operando.
+VOZ 2: ¿Y cuánto pesó eso sobre el conjunto de bienes?
+VOZ 1: La producción de bienes retrocedió 4,9% anual. Sin embargo, el resto de bienes creció también 4,9%, apoyado por una mayor generación eléctrica gracias a la disponibilidad de agua. La industria, medida dentro del Imacec, avanzó 0,3%.
+VOZ 2: Eso parece distinto de una contracción generalizada.
+VOZ 1: Lo es. El titular negativo está dominado por un shock de volumen y operación en cobre. Fuera de la minería aparecen señales de actividad positiva, aunque todavía concentradas.
+VOZ 2: ¿Dónde se ve esa actividad?
+VOZ 1: El comercio creció 2,2% interanual. Avanzaron las ventas de vehículos, vestuario, almacenes de comestibles y plataformas online. Los servicios subieron 0,8%, principalmente por salud.
+VOZ 2: ¿Todo el sector servicios mejoró?
+VOZ 1: No. Restaurantes y hoteles disminuyeron. Esa diferencia importa porque evita convertir un agregado positivo en una señal de recuperación amplia.
+VOZ 2: ¿Cómo se conecta este dato con la Nacional anterior, que mostraba industria débil y comercio agregado plano?
+VOZ 1: La nueva información confirma que el cobre fue el principal freno, pero modifica la amplitud del diagnóstico. El Imacec integra el valor agregado de toda la economía y muestra que el componente no minero creció. Por eso la actividad doméstica no está paralizada, aunque el sector exportador más importante sufrió una caída fuerte.
+VOZ 2: ¿El día hábil adicional cambia algo?
+VOZ 1: Agosto tuvo un día hábil más que el mismo mes de 2025. Que el Imacec igual haya caído refuerza la magnitud del golpe minero. Al mismo tiempo, el crecimiento no minero conserva valor porque también avanzó frente a julio en cifras desestacionalizadas.
+VOZ 2: ¿Qué consecuencia económica deja una caída concentrada en cobre?
+VOZ 1: Reduce producción exportable, actividad de proveedores, transporte y uso de capacidad minera. Puede afectar ingresos y empleo en las zonas vinculadas al sector, aun cuando comercio y servicios nacionales sigan creciendo.
+VOZ 2: La mayor generación hidráulica, ¿es sólo un detalle estadístico?
+VOZ 1: No. Ayuda a la producción de bienes y reduce parcialmente la necesidad de generación con combustibles importados. Es un amortiguador local frente al entorno internacional de energía cara, aunque depende de la disponibilidad de agua y no reemplaza el aporte del cobre.
+VOZ 2: ¿Qué tendría que pasar para que la lectura mejore?
+VOZ 1: Que terminen las mantenciones, se normalicen las faenas afectadas por el clima y la extracción de cobre se recupere, mientras comercio, servicios e industria mantienen su avance.
+VOZ 2: ¿Y qué invalidaría la idea de una debilidad concentrada?
+VOZ 1: Que el componente no minero empiece a caer, especialmente si se debilitan comercio y servicios antes de que la minería se recupere. En ese caso ya no hablaríamos sólo de un shock minero, sino de una desaceleración más amplia.
+VOZ 2: Entonces el mensaje central no es simplemente que Chile cayó 1,0%.
+VOZ 1: Correcto. El agregado retrocedió por minería, pero la economía no minera ganó tracción. Septiembre mostrará si esa separación fue transitoria o si Chile entra en una recuperación de dos velocidades.
