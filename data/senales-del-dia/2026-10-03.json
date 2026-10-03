@@ -1,0 +1,115 @@
+{
+  "status": "READY",
+  "date": "2026-10-03",
+  "contract": "atlas-senales-del-dia-v1",
+  "senalesDelDia": {
+    "internacional": [
+      {
+        "slot": "technology",
+        "headline": "Un satélite indio estrena computación comercial en órbita",
+        "deck": "MOI-1A despegó en Transporter-18 con procesadores Nvidia y clientes que podrán ejecutar modelos sobre datos espaciales antes de bajarlos a Tierra.",
+        "development": "El satélite MOI-1A de la empresa india TakeMe2Space fue lanzado el 1 de octubre en la misión compartida Transporter-18 de SpaceX. La nave, de menos de 50 kilogramos, incorpora procesadores Nvidia Orin NX para ejecutar aplicaciones y modelos de inteligencia artificial sobre los datos que capta en órbita. En vez de transmitir archivos completos a estaciones terrestres, el sistema puede enviar resultados seleccionados, reduciendo el volumen de enlace necesario.\n\nTakeMe2Space informó que la misión reúne a 23 clientes de agricultura, minería, seguros, cadenas de suministro, educación y análisis geoespacial. Los usuarios podrán cargar aplicaciones en contenedores y activarlas cuando el satélite pase sobre una zona definida. La compañía había validado inferencia en órbita en una demostración de 2024, pero perdió una misión posterior por una falla de la etapa superior del vehículo lanzador. El despegue exitoso de Transporter-18 confirma la puesta en órbita; no demuestra todavía el desempeño comercial ni la continuidad del servicio.\n\nLa señal tecnológica es el paso desde una prueba cerrada hacia capacidad compartida por clientes reales. Procesar cerca del sensor puede acelerar alertas y abaratar transmisiones, aunque la ventaja dependerá de potencia, latencia, confiabilidad y costo por tarea frente al cómputo terrestre. Los siguientes controles serán la activación de aplicaciones, la entrega de resultados, la permanencia operativa del satélite y el avance del plan de naves mayores conectadas en red desde 2027.",
+        "anchor": "moi-1a-computacion-comercial-en-orbita",
+        "sources": [
+          {
+            "name": "Reuters",
+            "url": "https://www.reuters.com/business/media-telecom/indias-takeme2space-launch-orbital-computing-satellite-spacex-rocket-2026-09-28/"
+          },
+          {
+            "name": "Space.com — misión Transporter-18",
+            "url": "https://www.space.com/space-exploration/satellites/spacex-google-project-suncatcher-ai-satellite-transporter-18-mission"
+          }
+        ]
+      },
+      {
+        "slot": "world",
+        "headline": "El Senado de EE.UU. votará el pacto nuclear con Arabia Saudita",
+        "deck": "El acuerdo civil entró en revisión por 90 días y un grupo de senadores aseguró una votación antes del 13 de diciembre.",
+        "development": "Senadores de Estados Unidos anunciaron el 2 de octubre que aseguraron una votación sobre el acuerdo de cooperación nuclear civil firmado por la administración de Donald Trump con Arabia Saudita. El pacto, conocido como acuerdo 123 por la sección de la Ley de Energía Atómica que lo regula, fue remitido al Congreso el 27 de agosto y quedó registrado para revisión en septiembre. Los legisladores esperan votar antes del 13 de diciembre, dentro del plazo legal de 90 días.\n\nEl documento autoriza cooperación estadounidense para usos pacíficos de la energía nuclear y fue publicado como comunicación presidencial en GovInfo. Una votación no implica que el acuerdo será rechazado: el Congreso tendría que aprobar una resolución de desaprobación y superar cualquier eventual veto presidencial para bloquearlo. Parte del debate se concentra en las condiciones sobre enriquecimiento y reprocesamiento, la supervisión internacional y dos cartas laterales clasificadas cuya divulgación han solicitado senadores de ambos partidos.\n\nEl hecho nuevo es la apertura de una instancia legislativa concreta, no una decisión final sobre el programa saudí. También deben distinguirse las objeciones de los senadores de las obligaciones que figuran en el texto público y de cualquier condición política adicional comunicada por el Ejecutivo. Los próximos hitos verificables serán la fecha y el texto de la resolución, la publicación de información complementaria, la posición de las comisiones competentes y el resultado nominal de la votación.",
+        "anchor": "senado-eeuu-votacion-pacto-nuclear-saudita",
+        "sources": [
+          {
+            "name": "GovInfo — H. Doc. 119-191",
+            "url": "https://www.govinfo.gov/app/details/CDOC-119hdoc191/CDOC-119hdoc191"
+          },
+          {
+            "name": "Reuters",
+            "url": "https://www.reuters.com/world/middle-east/us-senators-expect-vote-before-december-13-trumps-nuclear-power-pact-with-saudi-2026-10-02/"
+          }
+        ]
+      }
+    ],
+    "nacional": [
+      {
+        "slot": "ipsa_company",
+        "headline": "Enel Distribución cambia su gerencia general en Chile",
+        "deck": "Mónica Hodor dejó el cargo y el directorio nombró a Paolo Leidi, ejecutivo con trayectoria operativa en redes eléctricas de Italia y Sudamérica.",
+        "development": "Enel Distribución Chile informó el 1 de octubre la renuncia de Mónica Hodor a la gerencia general y el nombramiento inmediato de Paolo Leidi como reemplazante. Hodor, que había asumido en abril de 2025, continuará en otro desafío dentro del Grupo Enel, según la compañía. Leidi se desempeñaba como gerente de operaciones regionales para Emilia-Romagna en Enel Distribuzione y acumula más de veinte años de experiencia en el sector eléctrico europeo y sudamericano.\n\nLa filial distribuye electricidad a más de 2,1 millones de clientes en 33 comunas de la Región Metropolitana. Por esa escala, el cambio directivo importa para Enel Chile y para la operación de una red sometida a exigencias regulatorias, continuidad de suministro e inversión. El comunicado no atribuyó la salida a resultados financieros o regulatorios, tampoco anunció cambios de estrategia, metas ni presupuesto. Cualquier vínculo causal distinto del traslado interno informado sería una inferencia no respaldada por la comunicación oficial.\n\nLa señal corporativa será material si el relevo modifica prioridades de mantenimiento, automatización, resiliencia o relación con el regulador. La trayectoria operativa del nuevo gerente sugiere experiencia aplicable a redes, pero no permite anticipar decisiones. Los próximos datos verificables serán las comunicaciones al mercado, el plan de inversiones, indicadores de interrupciones y compensaciones, eventuales cambios en la administración superior y la forma en que la matriz refleje el desempeño de distribución en sus próximos resultados.",
+        "anchor": "enel-distribucion-cambio-gerencia-general",
+        "sources": [
+          {
+            "name": "Enel Distribución Chile",
+            "url": "https://www.enel.cl/es/conoce-enel/prensa/press-enel-distribucion/d202610-enel-distribucion-informa-cambio-en-la-gerencia-general-de-la-compania.html"
+          },
+          {
+            "name": "La Tercera Pulso",
+            "url": "https://www.latercera.com/pulso/noticia/monica-hodor-deja-la-gerencia-general-de-enel-distribucion-para-asumir-otro-cargo-en-el-grupo/"
+          }
+        ]
+      },
+      {
+        "slot": "policy_economy",
+        "headline": "El TC despeja la promulgación de la ley de reconstrucción",
+        "deck": "La sentencia validó normas orgánicas y ordenó eliminar disposiciones inconstitucionales; el proyecto queda listo para completar su trámite formal.",
+        "development": "El Tribunal Constitucional publicó el 2 de octubre su sentencia sobre el proyecto de Ley para la Reconstrucción Nacional y el Desarrollo Económico y Social, aprobado previamente por el Congreso. El fallo declaró conformes con la Constitución varias disposiciones de carácter orgánico y ordenó eliminar otras, entre ellas el artículo 12 y partes del artículo 32. Concluido el control preventivo, el texto depurado puede avanzar hacia su promulgación conforme al procedimiento legal.\n\nLa iniciativa contiene 35 artículos permanentes y 24 disposiciones transitorias. Según los antecedentes legislativos reproducidos por el tribunal, agrupa medidas de reconstrucción física, reactivación económica, institucionalidad y ajuste fiscal. La sentencia no aprueba nuevamente el mérito económico del proyecto ni revive normas expulsadas en decisiones anteriores: delimita cuáles disposiciones pueden convertirse en ley y cuáles deben quedar fuera. Tampoco equivale a que los beneficios, impuestos o cambios administrativos ya estén vigentes antes de la publicación de la ley.\n\nPara empresas y hogares, el efecto concreto dependerá del texto final promulgado, de sus fechas de vigencia y de la reglamentación que requieran sus medidas. La neutralidad exige separar la decisión jurídica de las evaluaciones políticas sobre la reforma. Los siguientes hitos serán la remisión del fallo al Congreso, la promulgación presidencial, la publicación en el Diario Oficial y los instructivos de Hacienda u otros organismos que cuantifiquen aplicación, recaudación, gasto y plazos.",
+        "anchor": "tc-ley-reconstruccion-control-constitucional",
+        "sources": [
+          {
+            "name": "Tribunal Constitucional — sentencia Rol 17.917-26 CPR",
+            "url": "https://www1.tribunalconstitucional.cl/wp-content/uploads/2026/10/STC_Rol_17_917-26-CPR_-_Proyecto_de_Ley_de_Reconstruccion_Nacional_-_Bol__18_216.pdf"
+          },
+          {
+            "name": "Diario Financiero",
+            "url": "https://www.df.cl/economia-y-politica/df-tax/ley-de-reconstruccion-se-promulga-en-octubre-hacienda-incluira-ingresos"
+          }
+        ]
+      }
+    ],
+    "mercados": [
+      {
+        "slot": "markets_chile",
+        "headline": "Chile reduce un riesgo inmediato de suministro de diésel",
+        "deck": "Trump descartó prohibir exportaciones estadounidenses, una decisión relevante para Chile, que obtiene desde ese mercado más de la mitad de su consumo.",
+        "development": "El presidente de Estados Unidos, Donald Trump, declaró el 2 de octubre que no aplicará una prohibición a las exportaciones de diésel. La decisión reduce un riesgo inmediato para Chile: estimaciones citadas por Reuters señalan que los envíos estadounidenses cubren más de la mitad del consumo chileno. El anuncio llegó después de que países del G7 acordaran liberar crudo y combustibles desde reservas de emergencia para aliviar un mercado tensionado por menores suministros desde Rusia, Medio Oriente y China.\n\nLa exposición local sigue siendo alta aunque la amenaza haya retrocedido. Datos del Monitor de Comercio Exterior del Banco Central, recopilados por BioBioChile, muestran compras chilenas de diésel por US$4.190 millones entre enero y agosto de 2026, de las cuales US$3.900 millones provinieron de Estados Unidos. Japón y Corea del Sur aparecen como alternativas, pero con volúmenes mucho menores. Cambiar de proveedor exige disponibilidad de producto, fletes, compatibilidad técnica y tiempo, por lo que no elimina automáticamente el costo de una interrupción.\n\nLa señal de mercado es un alivio de cola, no una normalización del combustible. Los precios internacionales permanecen elevados y la concentración de origen continúa, de modo que transporte, minería y agricultura siguen expuestos a nuevos cambios de política o disponibilidad. Los controles serán los cargamentos efectivamente programados hacia Chile, los inventarios de Enap y distribuidores, el costo de importación, la evolución del diésel de ultra bajo azufre y cualquier diversificación contractual hacia Asia.",
+        "anchor": "chile-alivio-riesgo-suministro-diesel",
+        "sources": [
+          {
+            "name": "Reuters — Estados Unidos descarta prohibición",
+            "url": "https://www.reuters.com/business/energy/trump-not-going-be-doing-diesel-export-ban-2026-10-02/"
+          },
+          {
+            "name": "BioBioChile — exposición importadora de Chile",
+            "url": "https://www.biobiochile.cl/noticias/economia/actualidad-economica/2026/09/25/chile-analiza-importar-mas-diesel-desde-japon-o-china-en-caso-de-que-donald-trump-frene-exportaciones.shtml"
+          }
+        ]
+      },
+      {
+        "slot": "markets_global",
+        "headline": "Las fusiones globales bajan de US$1 billón en el tercer trimestre",
+        "deck": "El valor anunciado cayó 41% trimestral a US$993.000 millones, aunque el acumulado de 2026 sigue 28% sobre el año anterior.",
+        "development": "El valor mundial de fusiones y adquisiciones anunciadas sumó US$993.000 millones en el tercer trimestre de 2026, según datos de LSEG difundidos el 1 de octubre. La cifra cayó 41% frente al trimestre anterior y marcó el primer período por debajo de US$1 billón desde el segundo trimestre de 2025. Sólo diez operaciones superaron US$10.000 millones, el menor número de megadeals desde fines de 2024.\n\nLa caída trimestral convive con un año todavía fuerte. Entre enero y septiembre, el valor de las operaciones aumentó 28% interanual a US$3,9 billones, máximo para ese lapso desde 2001, mientras el número de transacciones bajó 8%. Asia-Pacífico fue la excepción regional del trimestre: llegó a US$242.000 millones, 8% más que en el segundo trimestre y 36% sobre un año antes. Las compras de participaciones estratégicas en tecnología representaron alrededor de 24% del valor mundial acumulado.\n\nLa señal no confirma el fin del ciclo, pero muestra mayor selectividad cuando suben el costo de financiamiento y la exigencia sobre valorizaciones. Un trimestre excepcionalmente fuerte puede amplificar la comparación, por lo que importa separar normalización de deterioro persistente. Los próximos controles serán el número de operaciones cerradas, cancelaciones, diferenciales de crédito, nuevas emisiones para financiar compras y la distribución regional. Una recuperación con más transacciones, y no sólo pocas operaciones grandes, entregaría evidencia más sólida de profundidad.",
+        "anchor": "fusiones-globales-bajo-billon-tercer-trimestre",
+        "sources": [
+          {
+            "name": "Reuters",
+            "url": "https://www.reuters.com/business/finance/global-ma-deal-rush-fades-third-quarter-rising-borrowing-costs-bite-2026-10-01/"
+          },
+          {
+            "name": "LSEG — datos de transacciones",
+            "url": "https://www.lseg.com/en/data-analytics/financial-data/deals-data"
+          }
+        ]
+      }
+    ]
+  }
+}
