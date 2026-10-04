@@ -24,7 +24,7 @@ demo: false
 highlights:
   - label: "Escondida en mediación"
     text: "El 94,8% de los supervisores que votaron aprobó la huelga; la negociación pasó a una etapa obligatoria antes de cualquier paro."
-  - label: "Centinela también negocia"
+  - label: "Centinela negocia"
     text: "Dos sindicatos que reúnen a 708 trabajadores rechazaron la oferta y mantienen abierta la búsqueda de un acuerdo."
   - label: "Riesgo aún condicionado"
     text: "No hay paralización en curso: el impacto dependerá de si ambas mesas cierran acuerdos dentro de la mediación."
