@@ -1,10 +1,10 @@
 ---
 title: "Dos mediaciones mineras concentran el riesgo operativo del cobre chileno"
 summary: "Escondida y Centinela negocian bajo mediación obligatoria tras aprobar huelgas. Aún no hay paralización, pero el riesgo se concentra en dos grandes faenas."
-publishedAt: "2026-10-04T06:21:10-03:00"
+publishedAt: "2026-10-04T06:47:16-03:00"
 cutoffAt: "2026-10-04T06:20:40-03:00"
 section: national
-status: draft
+status: "published"
 tags:
   - chile
   - mineria

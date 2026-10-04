@@ -1,10 +1,10 @@
 ---
 title: "Las acciones compran una pausa, pero bonos y diésel retienen la prima de riesgo"
 summary: "Wall Street celebró el empleo débil, pero los bonos no acompañaron. El fin de semana añadió un riesgo aún no transado sobre refinerías y diésel."
-publishedAt: "2026-10-04T06:25:20-03:00"
+publishedAt: "2026-10-04T06:47:16-03:00"
 cutoffAt: "2026-10-04T06:24:50-03:00"
 section: markets
-status: draft
+status: "published"
 tags:
   - mercados
   - renta-variable

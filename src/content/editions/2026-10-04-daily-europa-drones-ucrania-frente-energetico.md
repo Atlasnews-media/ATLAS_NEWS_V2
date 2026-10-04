@@ -1,10 +1,10 @@
 ---
 title: "Europa lleva la industria de drones a Ucrania y abre otro frente energético"
 summary: "Alemania acuerda producción conjunta de drones y refuerza la reparación energética ucraniana, mientras Kyiv prepara más ataques contra refinerías rusas."
-publishedAt: "2026-10-04T06:01:35-03:00"
+publishedAt: "2026-10-04T06:47:16-03:00"
 cutoffAt: "2026-10-04T06:01:10-03:00"
 type: "daily"
-status: "draft"
+status: "published"
 tags:
   - geopolitica
   - ucrania
