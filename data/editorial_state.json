@@ -3,14 +3,14 @@
     {
       "id": "oil-geopolitics-inflation",
       "topic": "Petróleo, geopolítica e inflación",
-      "thesis": "La normalización de los flujos de crudo reduce el riesgo de escasez física inmediata, pero no cerró el shock energético: el alza del gas licuado, la escasez de combustibles y el agotamiento de subsidios trasladan el costo hacia inflación, deuda y estrés social, especialmente en economías en desarrollo.",
-      "status": "confirmed",
-      "last_evidence": "El 2 de octubre el PNUD advirtió que energía cara, costos de endeudamiento en máximos de décadas y el El Niño más intenso desde 1950 acercan a países en desarrollo a las condiciones de estrés de la pandemia; la UE ya había destinado €17.900 millones a amortiguar la energía y Aramco y Sonatrach elevaron sus referencias de gas licuado para octubre entre 9%-11% y 20%-23%, respectivamente.",
-      "effect": "Confirma que el alivio en los flujos de crudo no elimina la transmisión macroeconómica: los gobiernos pierden capacidad fiscal para absorber combustibles caros justo cuando tasas elevadas y shocks climáticos amplían el riesgo de deuda, inseguridad alimentaria y conflictividad social.",
-      "base_scenario": "La oferta física evita por ahora una escasez extrema de crudo, pero energía y financiamiento seguirán presionando presupuestos públicos y hogares; los apoyos tenderán a ser más focalizados y parte del costo pasará a precios finales.",
-      "invalidate_if": "Una caída durable de combustibles y gas licuado, menores fletes y rendimientos soberanos, junto con reconstrucción de colchones fiscales, debilitaría la tesis; nuevas interrupciones de oferta o retiro acelerado de subsidios la reforzarían.",
-      "watch": "Brent y combustibles refinados, referencias de gas licuado, fletes, rendimientos soberanos, subsidios energéticos, reuniones FMI-Banco Mundial del 12 al 18 de octubre, protestas y efectos de El Niño sobre alimentos.",
-      "last_publication": "/ediciones/2026-10-02-daily-energia-deuda-el-nino-presion-emergentes/"
+      "thesis": "Aunque la normalización de algunos flujos de crudo reduce el riesgo de escasez física inmediata, los combustibles refinados enfrentan ahora dos frentes de conflicto: las disrupciones de Oriente Medio y la intensificación de los ataques entre Ucrania y Rusia contra refinerías e infraestructura energética.",
+      "status": "changed",
+      "last_evidence": "El 4 de octubre Alemania anunció €1.000 millones de ayuda militar y €350 millones para reparar la red ucraniana mientras cerraba acuerdos de producción conjunta de drones; un día antes, Kyiv dijo que intensificará sus ataques contra refinerías rusas en respuesta a la nueva campaña de Moscú contra ciudades e infraestructura civil.",
+      "effect": "Amplía la tesis desde un shock concentrado en flujos y precios de energía hacia una vulnerabilidad específica de refinación e infraestructura: el crudo puede seguir circulando y, aun así, diésel, transporte y logística quedar expuestos a paradas, represalias y mayores costos.",
+      "base_scenario": "La oferta de crudo evita por ahora una escasez extrema, pero los productos refinados seguirán vulnerables a ataques y restricciones; Europa sostendrá energía y defensa ucranianas, mientras parte del costo internacional puede transmitirse por diésel, fletes e inflación.",
+      "invalidate_if": "Reparaciones rápidas, ausencia de nuevas paradas en refinerías y una desescalada verificable en ambos frentes reducirían el riesgo; daños prolongados, restricciones de exportación o represalias contra redes energéticas lo reforzarían.",
+      "watch": "Refinerías rusas fuera de servicio, exportaciones de diésel, reparaciones de la red ucraniana, represalias rusas, seguros y fletes, capacidad de refinación alternativa, ejecución de la ayuda alemana y continuidad del financiamiento europeo.",
+      "last_publication": "/ediciones/2026-10-04-daily-europa-drones-ucrania-frente-energetico/"
     },
     {
       "id": "us-employment-fed-rates",

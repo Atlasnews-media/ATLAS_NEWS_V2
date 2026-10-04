@@ -1,0 +1,119 @@
+{
+  "status": "READY",
+  "date": "2026-10-04",
+  "contract": "atlas-senales-del-dia-v1",
+  "senalesDelDia": {
+    "internacional": [
+      {
+        "slot": "technology",
+        "headline": "Apple endurecerá el acceso total al disco para agentes de IA",
+        "deck": "macOS añadirá controles explícitos cuando una aplicación pida acceso a archivos, correos, mensajes e historial de navegación.",
+        "development": "Apple anunció el 2 de octubre que modificará los controles de Full Disk Access en macOS. Esa autorización permite que ciertas aplicaciones, como servicios de respaldo, accedan a prácticamente toda la información almacenada en un Mac. La compañía sostuvo que algunos desarrolladores la están usando de formas que pueden exponer archivos, correo, mensajes e historial de navegación sin que las personas comprendan plenamente el alcance del permiso. El cambio exigirá una acción más explícita del usuario antes de conceder ese nivel de acceso.\n\nLa decisión llega mientras los agentes de inteligencia artificial amplían su capacidad para ejecutar tareas entre aplicaciones. Reuters vinculó el anuncio con quejas contra Muse, el agente de Meta: un columnista afirmó que la herramienta había leído mensajes privados, mientras Meta respondió que ese acceso requiere activar tanto Full Disk Access como el conector de Mensajes y que puede revocarse. Apple no resolvió esa disputa puntual; su comunicado se concentró en reforzar el diseño general de permisos.\n\nLa señal tecnológica es un cambio de arquitectura de consentimiento, no una prohibición a los agentes. Falta conocer la versión de macOS que incorporará los controles, el flujo exacto de autorización y si habrá requisitos diferenciados para aplicaciones de respaldo, seguridad y automatización. Esos detalles determinarán cuánto reduce el riesgo sin limitar funciones legítimas.",
+        "anchor": "apple-refuerza-acceso-total-disco-agentes-ia",
+        "sources": [
+          {
+            "name": "Apple Developer",
+            "url": "https://developer.apple.com/news/?id=p6zjojqw"
+          },
+          {
+            "name": "Reuters",
+            "url": "https://www.reuters.com/business/retail-consumer/apple-says-it-will-flag-ai-requests-mac-data-after-metas-muse-draws-complaints-2026-10-02/"
+          }
+        ]
+      },
+      {
+        "slot": "world",
+        "headline": "Reino Unido retira su plan amplio de juicios sin jurado",
+        "deck": "El Gobierno mantendrá jurados para los casos más graves, pero conservará excepciones para fraudes complejos y cambios en tribunales inferiores.",
+        "development": "El Ministerio de Justicia británico anunció el 4 de octubre que retirará del proyecto de ley la creación de una división amplia de la Crown Court para juzgar sin jurado casos con penas probables de hasta tres años. El Gobierno afirmó que cambiará el texto cuando vuelva al Parlamento durante octubre. La medida revierte una parte central de la reforma presentada para reducir una acumulación cercana a 81.000 causas pendientes en las cortes de Inglaterra y Gales.\n\nEl giro no elimina todos los cambios. La propuesta seguirá permitiendo que fraudes técnicos y extensos sean conocidos por un juez sin jurado. También mantendrá la ampliación de facultades de sentencia para los tribunales de magistrados y la eliminación del derecho automático del acusado a escoger un juicio ante jurado en delitos que pueden tramitarse en más de una jurisdicción. Por eso, la decisión anunciada preserva jurados en más causas, pero no restablece sin cambios el sistema previo.\n\nReuters informó que asociaciones de abogados recibieron favorablemente el retiro, aunque expresaron reparos sobre las facultades que permanecen. La próxima evidencia será el texto de las enmiendas, su calendario parlamentario y los recursos asignados a jueces, tecnología y capacidad de audiencias. La magnitud del rezago judicial seguirá siendo el dato operativo para evaluar la reforma.",
+        "anchor": "reino-unido-retira-plan-amplio-juicios-sin-jurado",
+        "sources": [
+          {
+            "name": "Ministerio de Justicia del Reino Unido",
+            "url": "https://www.gov.uk/government/news/justice-reforms-to-be-rolled-out-faster-as-justice-secretary-sets-out-changes-to-courts-bill"
+          },
+          {
+            "name": "Reuters",
+            "url": "https://www.reuters.com/world/uk/britain-scraps-heavily-criticised-plans-curb-jury-trials-after-backlash-2026-10-03/"
+          }
+        ]
+      }
+    ],
+    "nacional": [
+      {
+        "slot": "ipsa_company",
+        "headline": "Cencosud amplía Jumbo y renueva Portal Rosario",
+        "deck": "El plan suma seis marcas internacionales, cerca de 4.000 m² comerciales y una expansión del supermercado dentro del activo argentino.",
+        "development": "Cencosud comunicó un nuevo tramo de la modernización de Portal Rosario, uno de sus centros comerciales en Argentina. El proyecto incorpora seis marcas internacionales, renueva espacios comunes y amplía la oferta gastronómica y comercial. Decathlon ocupará 3.900 metros cuadrados en su primera tienda de la provincia de Santa Fe; Kiabi, Indian, Balmohk, Only y Jack & Jones añadirán en conjunto cerca de 4.000 metros cuadrados de superficie comercial.\n\nLa compañía también ampliará Jumbo, tienda ancla del complejo. Cencosud no informó oficialmente el metraje final ni el desembolso asociado a esta etapa. Medios locales reportaron que el supermercado pasaría de unos 4.500 a 9.200 metros cuadrados, dato que debe mantenerse separado de las cifras confirmadas por la empresa. El grupo señaló que comunicará las siguientes obras y nuevas propuestas durante los próximos meses.\n\nLa señal corporativa es la ejecución sobre un activo existente dentro de la estrategia de inversión y modernización en Argentina. Al cierre de junio, Cencosud operaba allí 348 tiendas de retail y 22 centros comerciales. Para medir materialidad faltan el calendario de apertura, el capital comprometido, la ocupación incremental y el efecto sobre ventas y rentas. La ampliación aporta capacidad, pero por sí sola no permite anticipar retorno financiero ni tráfico futuro.",
+        "anchor": "cencosud-amplia-jumbo-renueva-portal-rosario",
+        "sources": [
+          {
+            "name": "Diario Financiero",
+            "url": "https://www.df.cl/df-sud/multilatinas/cencosud-transformara-centro-comercial-en-rosario-como-parte-de-su"
+          },
+          {
+            "name": "Rosario Times",
+            "url": "https://rosariotimes.com/la-cadena-de-supermercados-jumbo-se-amplia-en-portal-rosario-shopping-y-tendra-9-200-m2/"
+          }
+        ]
+      },
+      {
+        "slot": "policy_economy",
+        "headline": "Isapres deberán emitir bonos aunque falle la huella digital",
+        "deck": "Desde diciembre, la cédula, su número de documento o el código QR permitirán completar la compra cuando fallen los mecanismos biométricos.",
+        "development": "La Superintendencia de Salud reforzó las instrucciones para que las isapres aseguren el acceso universal al bono electrónico cuando la huella digital no pueda validarse. Si fallan tanto el sistema biométrico como el mecanismo auxiliar, la aseguradora deberá emitir el bono utilizando la cédula de identidad o elementos de verificación contenidos en ella, como el número de documento o el código QR. La aplicación de la exigencia comienza el 1 de diciembre de 2026.\n\nLa medida complementa la Circular IF/N°476 de 2024, que ya había ordenado implementar una vía alternativa para afiliados cuya identidad no pudiera verificarse mediante el lector de huella. La instrucción de septiembre de 2026 aclara que la falla de ambos mecanismos no autoriza a interrumpir la venta ni a imponer trámites que puedan causar la pérdida de una atención médica. No modifica por sí misma coberturas, aranceles o condiciones de los planes de salud.\n\nEl efecto económico esperado se concentra en la continuidad del acceso y en los procesos operativos de aseguradoras y prestadores. La autoridad no publicó una estimación de costos de adaptación ni del número de transacciones afectadas, de modo que no corresponde cuantificar el impacto financiero. Los controles verificables serán la implementación en puntos de venta, reclamos desde diciembre, tiempos de emisión y eventuales fiscalizaciones o sanciones por incumplimiento.",
+        "anchor": "isapres-bonos-electronicos-sin-huella-digital",
+        "sources": [
+          {
+            "name": "Superintendencia de Salud",
+            "url": "https://www.superdesalud.gob.cl/noticias/2026/09/comunicado-de-prensa-3/"
+          },
+          {
+            "name": "Diario Financiero",
+            "url": "https://www.df.cl/empresas/salud/super-de-salud-cuando-no-se-reconoce-la-huella-digital-la-isapre-debera"
+          }
+        ]
+      }
+    ],
+    "mercados": [
+      {
+        "slot": "markets_chile",
+        "headline": "MK4 avanza y el Fonavi concentra el debate fiscal",
+        "deck": "La Comisión de Hacienda aprobó en general la reforma por 11 votos contra dos; las indicaciones se recibirán hasta el 15 de octubre.",
+        "development": "La Comisión de Hacienda de la Cámara de Diputadas y Diputados aprobó en general el 1 de octubre la reforma al mercado de capitales y financiamiento de la casa propia, conocida como MK4. La votación fue de 11 votos a favor y dos en contra. El proyecto, ingresado en septiembre, reúne más de treinta medidas sobre vivienda, financiamiento empresarial y regulación financiera. El plazo para presentar indicaciones quedó fijado para el 15 de octubre al mediodía.\n\nUno de sus componentes es el Fondo Nacional para la Vivienda, que sería administrado por BancoEstado. La propuesta del Ejecutivo contempla aportes estatales de hasta US$2.000 millones, con un aporte inicial de US$500 millones, para apoyar financiamiento habitacional. Durante la discusión, el Consejo Fiscal Autónomo planteó la necesidad de limitar la exposición del Fisco y señaló que el gasto reconocido en el informe financiero no tendría compensación hasta 2031. Esas observaciones son antecedentes técnicos, no decisiones ya incorporadas al texto.\n\nLa aprobación general mantiene abierto el trámite y no convierte las medidas en ley. Para el mercado local importan las indicaciones que definan garantías, gobierno del fondo, límites de riesgo y tratamiento fiscal. Los próximos hitos serán la discusión particular en comisión, un eventual informe actualizado de Hacienda y la votación en sala. Hasta entonces, cualquier cálculo de profundidad financiera o acceso hipotecario sigue condicionado al diseño final.",
+        "anchor": "mk4-avanza-fonavi-debate-fiscal",
+        "sources": [
+          {
+            "name": "Ministerio de Hacienda",
+            "url": "https://www.hacienda.cl/noticias-y-eventos/noticias/ministro-de-hacienda-presenta-proyecto-de-ley-de-reforma-al-mercado-de"
+          },
+          {
+            "name": "Diario Financiero",
+            "url": "https://www.df.cl/mercados/banca-fintech/comision-de-hacienda-de-la-camara-aprueba-con-mayoria-la-reforma-al-mercado"
+          },
+          {
+            "name": "BioBioChile",
+            "url": "https://www.biobiochile.cl/noticias/nacional/chile/2026/10/01/reforma-al-mercado-de-capitales-avanza-en-comision-de-hacienda-con-11-votos-a-favor-y-2-en-contra.shtml"
+          }
+        ]
+      },
+      {
+        "slot": "markets_global",
+        "headline": "Intesa mejora su oferta por MPS y fija una condición",
+        "deck": "El banco añadió €800 millones en efectivo, pero advirtió que retirará la propuesta si MPS aprueba alguna de sus dos compras alternativas.",
+        "development": "Intesa Sanpaolo elevó el 3 de octubre su oferta por Monte dei Paschi di Siena. El banco aumentó de €1 a €1,25 el componente en efectivo por cada acción de MPS, manteniendo el canje de 1,6 acciones nuevas de Intesa por cada título del objetivo. La mejora añade unos €800 millones y eleva una operación anunciada en junio como la mayor entre las transacciones bancarias recientes en Italia.\n\nLa oferta compite con el plan del director ejecutivo de MPS, Luigi Lovaglio, que propone adquirir mediante acciones a Banca Generali y Banco BPM. Los accionistas de MPS votarán esas alternativas el 29 de octubre. Intesa señaló que, si se aprueba cualquiera de ellas, considerará incumplidas las condiciones de eficacia de su propuesta y no renunciará a ese derecho, lo que implica retirar la oferta. El aumento de precio, por tanto, viene acompañado de un límite contractual explícito.\n\nLa señal de mercado es una bifurcación concreta en la consolidación bancaria italiana, no el cierre de la compra. La valoración final dependerá del precio de las acciones ofrecidas, de la respuesta de los accionistas y de autorizaciones regulatorias. Los próximos controles son la documentación actualizada de la oferta, el voto del 29 de octubre, el porcentaje de adhesión y cualquier cambio en las condiciones. Hasta entonces, ni la integración ni las sinergias proyectadas están aseguradas.",
+        "anchor": "intesa-mejora-oferta-mps-condicion",
+        "sources": [
+          {
+            "name": "Intesa Sanpaolo — operación MPS",
+            "url": "https://group.intesasanpaolo.com/it/investor-relations/bancamps"
+          },
+          {
+            "name": "Reuters",
+            "url": "https://www.reuters.com/business/finance/italys-intesa-raises-mps-takeover-offer-price-warns-it-could-drop-bid-2026-10-03/"
+          }
+        ]
+      }
+    ]
+  }
+}
