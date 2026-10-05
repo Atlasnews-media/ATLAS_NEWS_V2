@@ -1,0 +1,195 @@
+---
+import ContentCard from "../../components/ContentCard.astro";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { getLatestSignalsLanding } from "../../lib/signal-pages";
+
+const landing = getLatestSignalsLanding();
+
+const formattedDate = landing
+  ? new Intl.DateTimeFormat("es-CL", {
+      dateStyle: "long",
+      timeZone: "UTC",
+    }).format(
+      new Date(
+        Date.UTC(
+          Number(landing.date.slice(0, 4)),
+          Number(landing.date.slice(5, 7)) - 1,
+          Number(landing.date.slice(8, 10)),
+        ),
+      ),
+    )
+  : undefined;
+---
+
+<BaseLayout
+  title="Señales del día — ATLAS NEWS"
+  description="Seis señales editoriales de ATLAS NEWS: dos internacionales, dos nacionales y dos de mercados, reunidas en una sola página."
+>
+  <main class="page-shell section-page signals-landing">
+    <p class="page-kicker">Radar editorial</p>
+    <h1 class="page-title">Señales del día</h1>
+    <p class="page-intro">
+      Seis hechos para seguir durante la jornada: dos internacionales, dos
+      nacionales y dos de mercados, seleccionados fuera de los titulares
+      principales de la edición.
+    </p>
+
+    {
+      landing ? (
+        <>
+          <div class="signals-landing__date">
+            <span>Edición</span>
+            <time datetime={landing.date}>{formattedDate}</time>
+          </div>
+
+          <div class="signals-landing__sections">
+            {landing.sections.map(({ section, label, items }) => (
+              <section
+                class="signals-landing__section"
+                aria-labelledby={`signals-${section}`}
+              >
+                <div class="signals-landing__section-heading">
+                  <p>2 señales</p>
+                  <h2 id={`signals-${section}`}>{label}</h2>
+                </div>
+
+                <div class="signals-landing__grid">
+                  {items.map(({ signal, visual, href }, index) => (
+                    <ContentCard
+                      href={href}
+                      eyebrow={`Señales del día · ${label}`}
+                      title={signal.headline}
+                      summary={signal.deck}
+                      date={formattedDate ?? landing.date}
+                      compact
+                      visual={visual}
+                      visualAlways
+                      eagerVisual={section === "internacional" && index === 0}
+                    />
+                  ))}
+                </div>
+              </section>
+            ))}
+          </div>
+        </>
+      ) : (
+        <p class="empty-state">Aún no hay señales del día disponibles.</p>
+      )
+    }
+  </main>
+</BaseLayout>
+
+<style>
+  .signals-landing__date {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-top: 2rem;
+    padding: 0.72rem 0;
+    border-top: 1px solid var(--rule);
+    border-bottom: 4px double var(--rule);
+    font: 800 0.68rem/1.2 var(--sans);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  .signals-landing__date time {
+    color: var(--ink-soft);
+    font-weight: 600;
+    letter-spacing: 0.05em;
+  }
+
+  .signals-landing__sections {
+    display: grid;
+  }
+
+  .signals-landing__section {
+    padding: 2rem 0 0;
+    border-bottom: 4px double var(--rule);
+  }
+
+  .signals-landing__section-heading {
+    display: flex;
+    align-items: end;
+    justify-content: space-between;
+    gap: 1rem;
+    padding-bottom: 0.65rem;
+  }
+
+  .signals-landing__section-heading p {
+    margin: 0;
+    color: var(--accent);
+    font: 800 0.65rem/1.2 var(--sans);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  .signals-landing__section-heading h2 {
+    margin: 0;
+    font-size: clamp(2.2rem, 5vw, 4rem);
+    line-height: 0.92;
+    letter-spacing: -0.035em;
+  }
+
+  .signals-landing__grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    border-top: 1px solid var(--rule);
+  }
+
+  .signals-landing__grid :global(.card) {
+    min-height: 17rem;
+    padding: 1.25rem 1.35rem 1.5rem;
+    border-top: 0;
+  }
+
+  .signals-landing__grid :global(.card:first-child) {
+    padding-left: 0;
+    border-right: 1px solid var(--rule);
+  }
+
+  .empty-state {
+    margin-top: 2rem;
+    padding: 2rem 0;
+    border-top: 5px double var(--rule);
+    border-bottom: 1px solid var(--rule);
+    color: var(--ink-soft);
+    font: 0.95rem/1.5 var(--sans);
+  }
+
+  @media (max-width: 42rem) {
+    .page-intro {
+      display: none;
+    }
+
+    .signals-landing__date {
+      margin-top: 1.2rem;
+    }
+
+    .signals-landing__section {
+      padding-top: 1.4rem;
+    }
+
+    .signals-landing__section-heading {
+      align-items: baseline;
+    }
+
+    .signals-landing__section-heading h2 {
+      font-size: clamp(2rem, 11vw, 3rem);
+    }
+
+    .signals-landing__grid {
+      grid-template-columns: 1fr;
+    }
+
+    .signals-landing__grid :global(.card),
+    .signals-landing__grid :global(.card:first-child) {
+      min-height: 12rem;
+      padding-right: 0;
+      padding-left: 0;
+      border-right: 0;
+      border-top: 1px solid var(--rule);
+    }
+  }
+</style>
