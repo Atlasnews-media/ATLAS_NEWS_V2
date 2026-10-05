@@ -18,14 +18,14 @@ const menuEntries = [
   { href: "/lecturas/", label: "Lecturas" },
 ] as const;
 
-const activeMenuHref = menuEntries
-  .map(({ href }) => href)
-  .filter((href): href is string => href !== null)
+const linkedHrefs: string[] = [];
+for (const { href } of menuEntries) {
+  if (href !== null) linkedHrefs.push(href);
+}
+
+const activeMenuHref = linkedHrefs
   .sort((a, b) => b.length - a.length)
-  .find(
-    (href) =>
-      currentPath === href || (href !== "/" && currentPath.startsWith(href)),
-  );
+  .find((href) => currentPath === href || currentPath.startsWith(href));
 ---
 
 <div
