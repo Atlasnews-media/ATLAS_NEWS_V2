@@ -47,6 +47,18 @@
       "invalidate_if": "Una aceleración sostenida de la inflación subyacente confirmaría una presión más amplia; una normalización durable del petróleo y de las tasas globales reduciría el riesgo externo; una recuperación clara de consumo, inversión y empleo debilitaría la tesis de demanda interna frágil.",
       "watch": "Consumo, inversión, empleo, confianza, IPC sin volátiles, combustibles, Brent, Treasury a diez años, decisión de la Fed, expectativas de inflación y próximas RPM.",
       "last_publication": "/lecturas/2026-09-14-reading-chile-cierra-semana-senales-cruzadas/"
+    },
+    {
+      "id": "france-eurozone-fiscal-risk",
+      "topic": "Riesgo fiscal francés y estabilidad de la eurozona",
+      "thesis": "La deuda elevada y el bloqueo político de Francia están transformando un ajuste presupuestario nacional en un riesgo para la moneda, los costos soberanos y la estabilidad financiera de la eurozona, justo cuando crecimiento e inflación reducen el margen del BCE.",
+      "status": "new",
+      "last_evidence": "El 5 de octubre la brecha entre los bonos franceses y alemanes venía de superar 150 puntos base, su máximo desde 2011, y el euro cayó a un mínimo de 17 meses; el presupuesto sólo reduciría el déficit de 5,4% a 5% del PIB en 2027, con deuda en 119% y una emisión récord prevista de €340.000 millones.",
+      "effect": "Abre un hilo soberano europeo distinto del endurecimiento monetario global: la actividad de la eurozona acelera, pero la fragilidad fiscal de su segunda economía puede elevar primas, presionar bancos y debilitar el euro antes de la elección presidencial francesa.",
+      "base_scenario": "Francia atraviesa volatilidad elevada y costos de financiamiento mayores mientras negocia un ajuste parcial; el riesgo permanece contenido dentro de la eurozona si el presupuesto avanza y no se extiende la venta a otros soberanos.",
+      "invalidate_if": "La aprobación estable del presupuesto, una reducción sostenida de la brecha Francia-Alemania y una trayectoria fiscal creíble debilitarían la tesis; bloqueo legislativo, nuevas rebajas de calificación o contagio a bancos y otros bonos soberanos la reforzarían.",
+      "watch": "Trámite del presupuesto francés de 2027, brecha OAT-Bund, emisión de €340.000 millones, calificaciones soberanas, CDS bancarios, euro, inflación y comunicación del BCE.",
+      "last_publication": "/ediciones/2026-10-05-daily-deuda-francesa-riesgo-soberano-europa/"
     }
   ]
 }
