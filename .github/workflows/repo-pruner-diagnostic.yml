@@ -1,0 +1,83 @@
+name: Repo Pruner Diagnostic
+
+on:
+  workflow_dispatch:
+    inputs:
+      inactive_days:
+        description: "Days without commits before a branch is considered inactive"
+        required: false
+        default: "30"
+        type: string
+
+permissions:
+  contents: read
+  pull-requests: read
+  issues: write
+
+jobs:
+  diagnose-branches:
+    name: Diagnose inactive branches
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout diagnostic branch
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          submodules: recursive
+
+      - name: Run pinned Repo Pruner diagnostic
+        uses: ./tools/third_party/repo-pruner
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          inactive_days: ${{ inputs.inactive_days }}
+
+      - name: Export Repo Pruner summary to Markdown
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          gh issue list \
+            --repo "$GITHUB_REPOSITORY" \
+            --state open \
+            --limit 100 \
+            --json number,title,body,url,createdAt \
+            > /tmp/issues.json
+
+          jq '[.[] | select(.title | test("Repo Pruner"; "i"))] | sort_by(.createdAt) | reverse | .[0:1]' \
+            /tmp/issues.json > /tmp/repo-pruner-issue.json
+
+          if [ "$(jq 'length' /tmp/repo-pruner-issue.json)" -eq 0 ]; then
+            {
+              echo "# Diagnóstico de ramas"
+              echo
+              echo "Repo Pruner terminó, pero no se encontró un Issue resumen abierto para exportar."
+              echo
+              echo "Repositorio: $GITHUB_REPOSITORY"
+              echo "Run: $GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID"
+            } > diagnostico-ramas.md
+            exit 1
+          fi
+
+          jq -r --arg repo "$GITHUB_REPOSITORY" --arg run "$GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID" '
+            .[0] |
+            "# Diagnóstico de ramas\n\n" +
+            "- Repositorio: `" + $repo + "`\n" +
+            "- Issue resumen: [#" + (.number|tostring) + "](" + .url + ")\n" +
+            "- Generado: " + .createdAt + "\n" +
+            "- GitHub Actions run: " + $run + "\n\n" +
+            "---\n\n" +
+            (.body // "")
+          ' /tmp/repo-pruner-issue.json > diagnostico-ramas.md
+
+      - name: Upload Markdown diagnostic artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: diagnostico-ramas
+          path: diagnostico-ramas.md
+          if-no-files-found: error
+          retention-days: 30
