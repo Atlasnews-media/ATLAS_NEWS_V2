@@ -1,0 +1,119 @@
+{
+  "status": "READY",
+  "date": "2026-10-05",
+  "contract": "atlas-senales-del-dia-v1",
+  "senalesDelDia": {
+    "internacional": [
+      {
+        "slot": "technology",
+        "headline": "Foxconn acelera 47% sus ingresos trimestrales por la IA",
+        "deck": "El fabricante taiwanés superó las estimaciones con la demanda de servidores y componentes, una señal operativa previa a sus resultados completos.",
+        "development": "Foxconn informó el 5 de octubre que sus ingresos del tercer trimestre crecieron 47% frente al mismo período de 2025, por encima de las estimaciones de mercado recopiladas por Reuters. La compañía, formalmente Hon Hai Precision Industry, atribuyó el avance principalmente a la demanda de productos vinculados con inteligencia artificial. El dato corresponde a ventas, no a utilidades, y antecede a la publicación de resultados financieros completos del período.\n\nLa magnitud del crecimiento convierte a los fabricantes por contrato en una referencia adicional para medir la inversión física detrás de la IA. Foxconn ensambla equipos electrónicos y participa en la cadena de servidores, pero el aumento de facturación no permite separar todavía el efecto de volumen, mezcla de productos, precios o tipo de cambio. Tampoco demuestra por sí solo que los márgenes hayan mejorado al mismo ritmo.\n\nLa próxima verificación estará en el desglose por divisiones, el margen operativo y la guía de la empresa para el cuarto trimestre. También importará si la demanda se concentra en pocos clientes o se extiende a una base más amplia. Hasta entonces, la señal es de expansión de actividad industrial asociada a IA, no una estimación de rentabilidad futura.",
+        "anchor": "foxconn-ingresos-trimestrales-demanda-ia",
+        "sources": [
+          {
+            "name": "Hon Hai — información mensual de ingresos",
+            "url": "https://www.honhai.com/en-us/investor-relations/monthly-revenues"
+          },
+          {
+            "name": "Reuters",
+            "url": "https://www.reuters.com/world/china/foxconn-third-quarter-revenue-jumps-47-yy-beats-market-forecast-2026-10-05/"
+          }
+        ]
+      },
+      {
+        "slot": "world",
+        "headline": "Turquía, Arabia Saudita y Pakistán activan comité de defensa",
+        "deck": "Los tres gobiernos reúnen en Riad a sus responsables de exteriores y defensa para institucionalizar el pacto firmado en La Meca.",
+        "development": "Turquía informó que sus ministros de Relaciones Exteriores y Defensa, junto con el jefe del Estado Mayor, participarían el 5 de octubre en Riad en una reunión del comité estratégico del pacto de defensa de La Meca. La instancia reúne a Turquía, Arabia Saudita y Pakistán y, según el anuncio oficial citado por Reuters, abordará acontecimientos regionales y los pasos para institucionalizar el mecanismo.\n\nLa reunión ocurre mientras el gobierno yemení respaldado por Arabia Saudita desarrolla una ofensiva contra los hutíes apoyados por Irán. Pakistán también comunicó que Teherán propuso un diálogo político con los hutíes tras nuevos ataques. Esos antecedentes sitúan la cita en un entorno de seguridad activo, pero no acreditan que los tres participantes hayan acordado una operación conjunta ni una ampliación automática de compromisos militares.\n\nEl dato comprobable es la activación del comité y el nivel de las delegaciones. Para evaluar su alcance habrá que revisar el comunicado posterior, cualquier estructura permanente que se adopte y la definición de consultas, mando o asistencia entre los miembros. Sin esos documentos, corresponde describir la reunión como un paso institucional del pacto y no como una alianza operativa plenamente definida.",
+        "anchor": "comite-defensa-turquia-arabia-saudi-pakistan",
+        "sources": [
+          {
+            "name": "Ministerio de Relaciones Exteriores de Turquía",
+            "url": "https://www.mfa.gov.tr/default.en.mfa"
+          },
+          {
+            "name": "Reuters",
+            "url": "https://www.reuters.com/world/asia-pacific/turkey-says-mecca-pact-committee-meet-riyadh-october-5-2026-10-04/"
+          }
+        ]
+      }
+    ],
+    "nacional": [
+      {
+        "slot": "ipsa_company",
+        "headline": "Copec prueba hidrógeno para transporte difícil de electrificar",
+        "deck": "La compañía reporta 2.399 puntos de carga y ensaya otra tecnología para segmentos pesados donde las baterías enfrentan restricciones.",
+        "development": "Copec señaló el 1 de octubre que está probando soluciones de hidrógeno para segmentos de transporte donde la electrificación mediante baterías enfrenta mayores dificultades. El gerente general, Arturo Natho, explicó en una entrevista con Diario Financiero que la transición energética combinará tecnologías durante un período prolongado. La empresa, integrante de Empresas Copec, mantiene al mismo tiempo su despliegue de infraestructura eléctrica.\n\nLa compañía reporta 2.399 puntos de carga en Chile a través de Copec Voltex y opera una red de carga continua que conecta parte importante del territorio. El ensayo con hidrógeno no equivale todavía a una decisión de inversión masiva ni a una nueva línea con ingresos materiales. La información publicada no detalla capacidad, localización, proveedores, calendario comercial o capital comprometido, por lo que esas variables deben permanecer abiertas.\n\nPara la empresa IPSA, la señal está en la diversificación tecnológica de su negocio de movilidad, no en un reemplazo inmediato de combustibles. Los hitos verificables serán la escala de los pilotos, los clientes participantes, el origen del hidrógeno y cualquier aprobación de inversión. También será relevante conocer costos por kilómetro y utilización de la red eléctrica antes de inferir efectos sobre resultados.",
+        "anchor": "copec-prueba-hidrogeno-transporte-pesado",
+        "sources": [
+          {
+            "name": "Copec Voltex",
+            "url": "https://copecvoltex.cl/"
+          },
+          {
+            "name": "Diario Financiero",
+            "url": "https://www.df.cl/empresas/energia/ceo-de-copec-ante-el-nuevo-ritmo-de-la-descarbonizacion-me-cuesta-pensar"
+          }
+        ]
+      },
+      {
+        "slot": "policy_economy",
+        "headline": "La CMF revierte cambios a límites de crédito bancario",
+        "deck": "La Circular 2.379 mantiene el marco vigente sobre préstamos alcanzados por el artículo 84 N°4 de la Ley General de Bancos.",
+        "development": "La Comisión para el Mercado Financiero resolvió el 2 de octubre dejar sin efecto las modificaciones que había introducido al Capítulo 12-12 de la Recopilación Actualizada de Normas. Ese capítulo regula la aplicación de determinadas prohibiciones al otorgamiento de créditos previstas en el artículo 84 N°4 de la Ley General de Bancos. La decisión quedó formalizada mediante la Circular N°2.379.\n\nLa autoridad indicó que la interpretación anterior tenía fundamento jurídico, pero optó por conservar las disposiciones que ya estaban aplicándose. Su razón declarada fue que el marco vigente cuenta con un entendimiento y cumplimiento consolidados por parte de la industria bancaria. El comunicado no elimina la prohibición legal ni crea una autorización general para prestar; retira cambios reglamentarios y mantiene las reglas que regían antes de ellos.\n\nEl efecto inmediato es de continuidad normativa para bancos y supervisión, no una expansión cuantificada del crédito. Para evaluar consecuencias prácticas será necesario revisar el texto de la circular, las instrucciones posteriores y cualquier cambio en políticas internas de las entidades. También corresponde observar si la CMF abre una nueva consulta o propone otra interpretación. Sin esa evidencia, no procede atribuir impactos sobre oferta, tasas o riesgo crediticio.",
+        "anchor": "cmf-revierte-cambios-limites-credito-bancario",
+        "sources": [
+          {
+            "name": "Comisión para el Mercado Financiero",
+            "url": "https://www.cmfchile.cl/portal/prensa/625/w4-article-113968.html"
+          }
+        ]
+      }
+    ],
+    "mercados": [
+      {
+        "slot": "markets_chile",
+        "headline": "Escondida entra a mediación con una huelga ya aprobada",
+        "deck": "El 94,8% de los supervisores respaldó paralizar; la negociación dispone de una instancia legal antes de una eventual detención.",
+        "development": "El Sindicato N°2 de Supervisores y Staff de Minera Escondida aprobó la huelga con 955 votos, equivalentes a 94,8% de los sufragios, después de rechazar la última oferta de la compañía. El proceso involucra a una organización de alrededor de 1.020 miembros en la mayor mina de cobre del mundo. BHP informó que la votación abre la posibilidad de solicitar mediación obligatoria ante la Inspección del Trabajo.\n\nLa mediación legal entrega cinco días hábiles para continuar negociando y puede extenderse por otros cinco si ambas partes lo acuerdan. Mientras esa instancia esté abierta, la aprobación de la huelga no equivale a una paralización efectiva. La empresa sostuvo que su propuesta incluía mejoras y nuevos beneficios; el sindicato cuestionó su contenido y planteó diferencias sobre remuneraciones, evaluación de desempeño y funciones operativas.\n\nPara el mercado chileno, la variable relevante es la continuidad productiva de un activo central para las exportaciones de cobre. No corresponde estimar pérdida de toneladas mientras la operación siga funcionando y no exista un acuerdo o una detención confirmada. Los próximos controles serán el inicio formal de la mediación, su plazo, cualquier nueva oferta y la comunicación operacional de BHP.",
+        "anchor": "escondida-mediacion-huelga-supervisores",
+        "sources": [
+          {
+            "name": "BHP — declaración sobre Escondida",
+            "url": "https://www.redimin.cl/declaracion-escondida-bhp"
+          },
+          {
+            "name": "Reuters",
+            "url": "https://www.reuters.com/business/world-at-work/supervisors-bhps-escondida-mine-chile-reject-offer-paving-way-strike-2026-09-30/"
+          },
+          {
+            "name": "Poder Laboral",
+            "url": "https://poderlaboral.cl/2026/09/30/supervisores-de-escondida-aprueban-huelga-con-948-fuerte-respaldo-a-la-conduccion-sindical-en-etapa-decisiva-de-la-negociacion/"
+          }
+        ]
+      },
+      {
+        "slot": "markets_global",
+        "headline": "Schneider acuerda comprar PTC por US$22.600 millones",
+        "deck": "La operación en efectivo paga US$205 por acción y combina software industrial con automatización; el cierre se prevé para 2027.",
+        "development": "Schneider Electric acordó comprar la estadounidense PTC por aproximadamente US$22.600 millones en acciones, mediante una oferta totalmente en efectivo de US$205 por título. El precio implica una prima de 42,3% sobre el último cierre previo y un valor empresa cercano a US$23.700 millones. La transacción, la mayor en la historia de Schneider, está prevista para cerrar en el tercer trimestre de 2027.\n\nPTC desarrolla software para diseño, fabricación y mantenimiento de productos. Schneider busca integrarlo con sus plataformas de automatización, energía y datos industriales. La compañía proyecta alrededor de €250 millones en ahorros anuales y €800 millones en sinergias de ingresos al tercer año posterior al cierre. Esas cifras son objetivos corporativos, no beneficios realizados, y dependen de integración, demanda y autorizaciones.\n\nLa reacción inicial separó la lógica industrial del costo financiero: las acciones de Schneider cayeron mientras el mercado evaluaba la prima y el financiamiento con capital y nueva deuda. Los hitos verificables serán la recomendación formal a accionistas de PTC, las aprobaciones regulatorias, la estructura final de financiamiento y cualquier cambio en el calendario. Hasta completar esas condiciones, el acuerdo no constituye una adquisición cerrada.",
+        "anchor": "schneider-compra-ptc-software-industrial",
+        "sources": [
+          {
+            "name": "Schneider Electric — sala de prensa",
+            "url": "https://www.se.com/ww/en/about-us/newsroom/news/"
+          },
+          {
+            "name": "Reuters",
+            "url": "https://www.reuters.com/business/frances-schneider-electric-nears-20-billion-deal-buy-us-software-group-ptc-ft-2026-10-04/"
+          },
+          {
+            "name": "Financial Times",
+            "url": "https://www.ft.com/content/2084f349-0829-4130-a5e6-b98929a6e633"
+          }
+        ]
+      }
+    ]
+  }
+}
