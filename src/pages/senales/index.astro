@@ -115,9 +115,9 @@ const formattedDate = landing
 
   .signals-landing__section-heading h2 {
     margin: 0;
-    font-size: clamp(1.65rem, 3.75vw, 3rem);
-    line-height: 0.92;
-    letter-spacing: -0.035em;
+    font-size: clamp(1.15rem, 2.25vw, 1.55rem);
+    line-height: 0.98;
+    letter-spacing: -0.02em;
   }
 
   .signals-landing__grid {
@@ -130,6 +130,10 @@ const formattedDate = landing
     min-height: 17rem;
     padding: 1.25rem 1.35rem 1.5rem;
     border-top: 0;
+  }
+
+  .signals-landing__grid :global(.card.compact h2) {
+    font-size: clamp(1.7rem, 3.7vw, 2.8rem);
   }
 
   .signals-landing__grid :global(.card:first-child) {
@@ -160,11 +164,15 @@ const formattedDate = landing
     }
 
     .signals-landing__section-heading h2 {
-      font-size: clamp(1.5rem, 8.25vw, 2.25rem);
+      font-size: clamp(1.05rem, 5vw, 1.35rem);
     }
 
     .signals-landing__grid {
       grid-template-columns: 1fr;
+    }
+
+    .signals-landing__grid :global(.card.compact h2) {
+      font-size: clamp(1.58rem, 7vw, 2.12rem);
     }
 
     .signals-landing__grid :global(.card),
