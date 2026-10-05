@@ -38,6 +38,23 @@ export interface SignalPageProps {
   visual: EditorialVisual;
 }
 
+export interface SignalLandingItem {
+  signal: CanonicalSignal;
+  visual: EditorialVisual;
+  href: string;
+}
+
+export interface SignalLandingSection {
+  section: SignalSection;
+  label: string;
+  items: SignalLandingItem[];
+}
+
+export interface SignalsLandingData {
+  date: string;
+  sections: SignalLandingSection[];
+}
+
 export const signalSectionConfig: Record<
   SignalSection,
   {
@@ -125,6 +142,13 @@ function isReadySignalsArtifact(value: unknown): value is SignalsArtifact {
   return [...internacional, ...nacional, ...mercados].every(isCanonicalSignal);
 }
 
+function getReadySignalsArtifacts(): SignalsArtifact[] {
+  return Object.values(signalFiles)
+    .map(parseSignalsArtifact)
+    .filter(isReadySignalsArtifact)
+    .sort((a, b) => b.date.localeCompare(a.date));
+}
+
 function resolveSignalVisuals(artifact: SignalsArtifact) {
   const usedSources = new Set<string>();
   const visuals = new Map<string, EditorialVisual>();
@@ -149,13 +173,42 @@ function resolveSignalVisuals(artifact: SignalsArtifact) {
   return visuals;
 }
 
+export function getLatestSignalsLanding(): SignalsLandingData | undefined {
+  const artifact = getReadySignalsArtifacts()[0];
+  if (!artifact) return undefined;
+
+  const visuals = resolveSignalVisuals(artifact);
+
+  return {
+    date: artifact.date,
+    sections: SIGNAL_SECTIONS.map((section) => {
+      const config = signalSectionConfig[section];
+      const items = artifact.senalesDelDia[section].flatMap((signal) => {
+        const visual = visuals.get(`${section}:${signal.anchor}`);
+        if (!visual) return [];
+
+        return [
+          {
+            signal,
+            visual,
+            href: `/senales/${artifact.date}/${section}/${signal.anchor}/`,
+          },
+        ];
+      });
+
+      return {
+        section,
+        label: config.label,
+        items,
+      };
+    }),
+  };
+}
+
 export function getSignalStaticPaths() {
   const paths = [];
 
-  for (const raw of Object.values(signalFiles)) {
-    const parsed = parseSignalsArtifact(raw);
-    if (!isReadySignalsArtifact(parsed)) continue;
-
+  for (const parsed of getReadySignalsArtifacts()) {
     const visuals = resolveSignalVisuals(parsed);
 
     for (const section of SIGNAL_SECTIONS) {
