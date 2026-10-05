@@ -49,7 +49,6 @@ const formattedDate = landing
                 aria-labelledby={`signals-${section}`}
               >
                 <div class="signals-landing__section-heading">
-                  <p>2 señales</p>
                   <h2 id={`signals-${section}`}>{label}</h2>
                 </div>
 
@@ -110,24 +109,13 @@ const formattedDate = landing
   }
 
   .signals-landing__section-heading {
-    display: flex;
-    align-items: end;
-    justify-content: space-between;
-    gap: 1rem;
     padding-bottom: 0.65rem;
-  }
-
-  .signals-landing__section-heading p {
-    margin: 0;
-    color: var(--accent);
-    font: 800 0.65rem/1.2 var(--sans);
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
+    text-align: left;
   }
 
   .signals-landing__section-heading h2 {
     margin: 0;
-    font-size: clamp(2.2rem, 5vw, 4rem);
+    font-size: clamp(1.65rem, 3.75vw, 3rem);
     line-height: 0.92;
     letter-spacing: -0.035em;
   }
@@ -171,12 +159,8 @@ const formattedDate = landing
       padding-top: 1.4rem;
     }
 
-    .signals-landing__section-heading {
-      align-items: baseline;
-    }
-
     .signals-landing__section-heading h2 {
-      font-size: clamp(2rem, 11vw, 3rem);
+      font-size: clamp(1.5rem, 8.25vw, 2.25rem);
     }
 
     .signals-landing__grid {
