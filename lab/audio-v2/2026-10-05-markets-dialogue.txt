@@ -1,0 +1,31 @@
+VOZ 1: La señal de mercado de este lunes es poco intuitiva: bajó la probabilidad de una nueva alza de la Reserva Federal en octubre, pero el dólar avanzó.
+VOZ 2: Normalmente una Fed menos agresiva debilita al dólar. ¿Qué cambió?
+VOZ 1: Cambió el otro lado del cruce. El euro cayó más de 0,8% hasta 1,1161 dólares antes de recuperar una parte. La preocupación fiscal francesa pesó más que el alivio monetario estadounidense.
+VOZ 2: ¿Cuánto cambió la expectativa sobre la Fed?
+VOZ 1: El mercado redujo la probabilidad de un alza en octubre desde 64% una semana antes a menos de 20%. Además, el rendimiento del Treasury a diez años retrocedió levemente hacia 5,27%.
+VOZ 2: Y aun así el índice dólar subió.
+VOZ 1: Sí, avanzó 0,5%. Eso muestra que la fortaleza de una moneda no depende sólo de su tasa esperada. También importa la debilidad relativa de las alternativas y la demanda por liquidez o refugio.
+VOZ 2: ¿Cómo se observó el problema francés en los bonos?
+VOZ 1: Los futuros de bonos franceses bajaron 0,23%, mientras los del Bund alemán subieron 0,1%. Los inversores vendieron riesgo francés y compraron el refugio de la misma unión monetaria.
+VOZ 2: ¿Eso ya es contagio a toda Europa?
+VOZ 1: Todavía no necesariamente. Puede ser una repricing concentrada en Francia. La prueba es si el movimiento se extiende hacia Italia, España, bancos europeos o crédito privado.
+VOZ 2: Entonces la dispersión importa más que el promedio.
+VOZ 1: Exactamente. Dos bonos denominados en euros tomaron direcciones opuestas. Esa diferencia revela mejor dónde se concentra el riesgo que un índice agregado de renta fija.
+VOZ 2: ¿Qué hicieron las acciones?
+VOZ 1: Asia mantuvo una lectura favorable del empleo débil estadounidense. El Nikkei subió 2% y el índice MSCI de Asia-Pacífico fuera de Japón avanzó 0,9%.
+VOZ 2: ¿Fue una sesión representativa?
+VOZ 1: Con cautela. Hubo feriados en China, Corea del Sur y parte de Australia, por lo que el volumen fue menor. Los futuros de Estados Unidos y Europa mostraron cambios pequeños o negativos.
+VOZ 2: ¿La renta variable está ignorando el riesgo de bonos?
+VOZ 1: Más bien está separando dos historias. Una Fed menos agresiva beneficia a tecnología y activos de duración. Pero los rendimientos globales siguen cerca de máximos de varios años y el riesgo fiscal limita cuánto puede ampliarse ese alivio.
+VOZ 2: ¿Qué ocurrió con petróleo y oro?
+VOZ 1: El Brent bajó 0,5% y el WTI 0,9% por mayores exportaciones de Oriente Medio y liberaciones de reservas del G7. El oro retrocedió 0,24%.
+VOZ 2: ¿Eso elimina la presión inflacionaria?
+VOZ 1: No. Es un alivio marginal. El petróleo sigue elevado y una sesión de baja no cambia por sí sola el costo acumulado de energía ni la prima que exigen los mercados de bonos.
+VOZ 2: ¿Cuál es la primera señal que debemos seguir?
+VOZ 1: Si el dólar continúa subiendo mientras los rendimientos estadounidenses bajan. Eso confirmaría que el impulso proviene de fragilidad europea y demanda relativa por la moneda estadounidense.
+VOZ 2: ¿Qué invalidaría esa lectura?
+VOZ 1: Un rebote sostenido del euro acompañado por una reducción de la brecha entre Francia y Alemania. También ayudaría que los bancos franceses dejaran de rezagarse frente al índice regional.
+VOZ 2: ¿Y qué confirmaría contagio?
+VOZ 1: Ventas simultáneas en deuda de Italia y España, mayor presión sobre bancos y ampliación de spreads de crédito. Ahí el problema dejaría de ser sólo francés.
+VOZ 2: La síntesis parece ser dos fuerzas opuestas.
+VOZ 1: Así es. Estados Unidos entrega menos urgencia monetaria, mientras Europa agrega riesgo fiscal. La relación entre dólar, euro, OAT, Bund y bancos mostrará cuál de esas fuerzas domina durante la sesión completa.
