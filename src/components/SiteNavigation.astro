@@ -45,6 +45,9 @@ const activeMenuHref = linkedHrefs
   >
     Portada
   </a>
+  <div class="site-navigation__edition" aria-label="Edición matutina">
+    Edición matutina
+  </div>
   <button
     class="site-navigation__toggle"
     type="button"
@@ -337,6 +340,20 @@ const activeMenuHref = linkedHrefs
     white-space: nowrap;
   }
 
+  .site-navigation__edition {
+    display: flex;
+    flex: 1 1 auto;
+    min-width: 0;
+    min-height: 3.3rem;
+    align-items: center;
+    justify-content: center;
+    padding: 0.65rem 0.5rem;
+    font: 700 clamp(0.92rem, 2.2vw, 1.35rem) / 1 var(--display);
+    letter-spacing: -0.025em;
+    text-align: center;
+    white-space: nowrap;
+  }
+
   .site-navigation__home.is-active,
   .site-navigation__home:hover,
   .site-navigation__toggle:hover {
@@ -510,6 +527,7 @@ const activeMenuHref = linkedHrefs
   @media (max-width: 42rem) {
     .site-navigation,
     .site-navigation__home,
+    .site-navigation__edition,
     .site-navigation__toggle {
       min-height: 2.85rem;
     }
@@ -522,6 +540,11 @@ const activeMenuHref = linkedHrefs
       flex-basis: 28%;
       min-width: 6.6rem;
       padding: 0.55rem 0.4rem;
+    }
+
+    .site-navigation__edition {
+      padding: 0.5rem 0.35rem;
+      font-size: 0.96rem;
     }
 
     .site-navigation__toggle {
