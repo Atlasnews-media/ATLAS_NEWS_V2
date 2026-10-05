@@ -1,0 +1,63 @@
+name: TEMP — Remove economic shortcuts
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+permissions:
+  contents: write
+
+jobs:
+  apply-change:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout PR branch
+        uses: actions/checkout@v5
+        with:
+          ref: ${{ github.event.pull_request.head.ref }}
+      - name: Setup Node
+        uses: actions/setup-node@v6
+        with:
+          node-version: 22
+          cache: npm
+      - name: Install dependencies
+        run: npm ci
+      - name: Remove shortcut row and close indicator grid
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+
+          path = Path('src/components/EconomicIndicators.astro')
+          text = path.read_text(encoding='utf-8')
+
+          start_marker = '  <nav class="economic-strip__actions" aria-label="Herramientas de mercado">\n'
+          end_marker = '  <p class="economic-strip__source">\n'
+
+          if start_marker in text:
+              start = text.index(start_marker)
+              end = text.index(end_marker, start)
+              text = text[:start] + text[end:]
+
+          grid_rule = '    border-top: 1px solid var(--rule);\n'
+          grid_block = '  .economic-strip__grid {\n'
+          grid_start = text.index(grid_block)
+          grid_end = text.index('  }\n', grid_start)
+          block = text[grid_start:grid_end]
+          if 'border-bottom:' not in block:
+              insert_at = text.index(grid_rule, grid_start, grid_end) + len(grid_rule)
+              text = text[:insert_at] + '    border-bottom: 1px solid var(--rule);\n' + text[insert_at:]
+
+          path.write_text(text, encoding='utf-8')
+          PY
+          npx prettier --write src/components/EconomicIndicators.astro
+      - name: Commit change
+        run: |
+          if git diff --quiet -- src/components/EconomicIndicators.astro; then
+            echo "No changes required."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add src/components/EconomicIndicators.astro
+          git commit -m "style(indicators): remove shortcut action row"
+          git push origin HEAD:${{ github.event.pull_request.head.ref }}
