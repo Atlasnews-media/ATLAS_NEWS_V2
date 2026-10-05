@@ -1,0 +1,26 @@
+name: TEMP — Format diagnostic
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+permissions:
+  contents: read
+
+jobs:
+  format-diagnostic:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+      - name: Setup Node
+        uses: actions/setup-node@v6
+        with:
+          node-version: 22
+          cache: npm
+      - name: Install dependencies
+        run: npm ci
+      - name: Show canonical Prettier diff
+        run: |
+          npx prettier --write src/components/SiteNavigation.astro src/layouts/BaseLayout.astro
+          git diff -- src/components/SiteNavigation.astro src/layouts/BaseLayout.astro
