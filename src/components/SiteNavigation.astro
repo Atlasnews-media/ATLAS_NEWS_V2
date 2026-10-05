@@ -18,23 +18,28 @@ const menuEntries = [
   { href: "/lecturas/", label: "Lecturas" },
 ] as const;
 
-const linkedEntries = menuEntries.filter(
-  (entry): entry is Extract<(typeof menuEntries)[number], { href: string }> =>
-    entry.href !== null,
-);
-const activeMenuHref = linkedEntries
-  .slice()
-  .sort((a, b) => b.href.length - a.href.length)
+const activeMenuHref = menuEntries
+  .map(({ href }) => href)
+  .filter((href): href is string => href !== null)
+  .sort((a, b) => b.length - a.length)
   .find(
-    ({ href }) =>
+    (href) =>
       currentPath === href ||
       (href !== "/" && currentPath.startsWith(href)),
-  )?.href;
+  );
 ---
 
-<div class="site-navigation" role="navigation" aria-label="Navegación principal" data-site-navigation>
+<div
+  class="site-navigation"
+  role="navigation"
+  aria-label="Navegación principal"
+  data-site-navigation
+>
   <a
-    class:list={["site-navigation__home", { "is-active": currentPath === "/" }]}
+    class:list={[
+      "site-navigation__home",
+      { "is-active": currentPath === "/" },
+    ]}
     href="/"
     aria-current={currentPath === "/" ? "page" : undefined}
   >
@@ -96,7 +101,10 @@ const activeMenuHref = linkedEntries
               <span class="section-menu__arrow" aria-hidden="true">›</span>
             </a>
           ) : (
-            <span class="section-menu__link is-unavailable" aria-disabled="true">
+            <span
+              class="section-menu__link is-unavailable"
+              aria-disabled="true"
+            >
               <span>{label}</span>
             </span>
           ),
@@ -186,11 +194,11 @@ const activeMenuHref = linkedEntries
       { signal },
     );
 
-    menu.querySelectorAll<HTMLAnchorElement>("[data-section-menu-link]").forEach(
-      (link) => {
+    menu
+      .querySelectorAll<HTMLAnchorElement>("[data-section-menu-link]")
+      .forEach((link) => {
         link.addEventListener("click", () => closeMenu(false), { signal });
-      },
-    );
+      });
 
     document.addEventListener(
       "keydown",
@@ -381,7 +389,7 @@ const activeMenuHref = linkedEntries
     padding: 0.82rem 1.25rem;
     border-bottom: 1px solid rgba(31, 29, 23, 0.16);
     color: inherit;
-    font: 700 clamp(1.22rem, 2.8vw, 1.9rem)/1.1 var(--serif);
+    font: 700 clamp(1.22rem, 2.8vw, 1.9rem) / 1.1 var(--serif);
     text-decoration: none;
   }
 
