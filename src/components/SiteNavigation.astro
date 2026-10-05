@@ -6,16 +6,20 @@ interface Props {
 const { currentPath } = Astro.props;
 
 const menuEntries = [
-  { href: "/internacional/", label: "Internacional" },
-  { href: "/nacional/", label: "Nacional" },
-  { href: "/mercados/", label: "Mercados" },
-  { href: "/senales/", label: "Señales del día" },
-  { href: null, label: "Medio día" },
-  { href: null, label: "Tarde" },
-  { href: "/calendario-economico/", label: "Calendario económico" },
-  { href: "/mercados/indices/", label: "Índices de mercado" },
-  { href: null, label: "Contingencia" },
-  { href: "/lecturas/", label: "Lecturas" },
+  { href: "/internacional/", label: "Internacional", icon: "globe" },
+  { href: "/nacional/", label: "Nacional", icon: "pin" },
+  { href: "/mercados/", label: "Mercados", icon: "trend" },
+  { href: "/senales/", label: "Señales del día", icon: "signal" },
+  { href: null, label: "Medio día", icon: "sun" },
+  { href: null, label: "Tarde", icon: "sunset" },
+  {
+    href: "/calendario-economico/",
+    label: "Calendario económico",
+    icon: "calendar",
+  },
+  { href: "/mercados/indices/", label: "Índices de mercado", icon: "bars" },
+  { href: null, label: "Contingencia", icon: "alert" },
+  { href: "/lecturas/", label: "Lecturas", icon: "book" },
 ] as const;
 
 const linkedHrefs: string[] = [];
@@ -55,6 +59,54 @@ const activeMenuHref = linkedHrefs
   </button>
 </div>
 
+<svg class="section-menu__icon-defs" aria-hidden="true">
+  <symbol id="atlas-menu-globe" viewBox="0 0 24 24">
+    <circle cx="12" cy="12" r="8"></circle>
+    <path
+      d="M4.5 12h15M12 4c2.2 2.2 3.2 4.9 3.2 8S14.2 17.8 12 20c-2.2-2.2-3.2-4.9-3.2-8S9.8 6.2 12 4Z"
+    ></path>
+  </symbol>
+  <symbol id="atlas-menu-pin" viewBox="0 0 24 24">
+    <path d="M12 21s6-5.2 6-11a6 6 0 1 0-12 0c0 5.8 6 11 6 11Z"></path>
+    <circle cx="12" cy="10" r="2"></circle>
+  </symbol>
+  <symbol id="atlas-menu-trend" viewBox="0 0 24 24">
+    <path d="M4 18 9 13l3 3 7-8"></path>
+    <path d="M15 8h4v4"></path>
+  </symbol>
+  <symbol id="atlas-menu-signal" viewBox="0 0 24 24">
+    <circle cx="12" cy="12" r="2"></circle>
+    <path d="M8.5 8.5a5 5 0 0 0 0 7M15.5 8.5a5 5 0 0 1 0 7"></path>
+    <path d="M5.5 5.5a9.2 9.2 0 0 0 0 13M18.5 5.5a9.2 9.2 0 0 1 0 13"></path>
+  </symbol>
+  <symbol id="atlas-menu-sun" viewBox="0 0 24 24">
+    <circle cx="12" cy="12" r="3.5"></circle>
+    <path
+      d="M12 3v2M12 19v2M3 12h2M19 12h2M5.6 5.6 7 7M17 17l1.4 1.4M18.4 5.6 17 7M7 17l-1.4 1.4"
+    ></path>
+  </symbol>
+  <symbol id="atlas-menu-sunset" viewBox="0 0 24 24">
+    <path d="M4 18h16M6 14a6 6 0 0 1 12 0M12 4v3M5.5 7.5l2 2M18.5 7.5l-2 2"
+    ></path>
+  </symbol>
+  <symbol id="atlas-menu-calendar" viewBox="0 0 24 24">
+    <rect x="4" y="5" width="16" height="15" rx="1.5"></rect>
+    <path d="M8 3v4M16 3v4M4 9h16M8 13h2M12 13h2M16 13h1M8 17h2M12 17h2"></path>
+  </symbol>
+  <symbol id="atlas-menu-bars" viewBox="0 0 24 24">
+    <path d="M5 20v-6h3v6H5ZM10.5 20V9h3v11h-3ZM16 20V4h3v16h-3Z"></path>
+  </symbol>
+  <symbol id="atlas-menu-alert" viewBox="0 0 24 24">
+    <path d="M12 4 21 20H3L12 4Z"></path>
+    <path d="M12 9v5M12 17.2v.1"></path>
+  </symbol>
+  <symbol id="atlas-menu-book" viewBox="0 0 24 24">
+    <path
+      d="M4 5.5c3.2-.6 5.7.1 8 2.1v12c-2.3-2-4.8-2.7-8-2.1v-12ZM20 5.5c-3.2-.6-5.7.1-8 2.1v12c2.3-2 4.8-2.7 8-2.1v-12Z"
+    ></path>
+  </symbol>
+</svg>
+
 <div class="section-menu-backdrop" data-section-menu-backdrop hidden></div>
 <div
   class="section-menu"
@@ -82,7 +134,7 @@ const activeMenuHref = linkedHrefs
 
     <div class="section-menu__links" role="navigation" aria-label="Secciones">
       {
-        menuEntries.map(({ href, label }) =>
+        menuEntries.map(({ href, label, icon }) =>
           href ? (
             <a
               class:list={[
@@ -93,7 +145,12 @@ const activeMenuHref = linkedHrefs
               aria-current={activeMenuHref === href ? "page" : undefined}
               data-section-menu-link
             >
-              <span>{label}</span>
+              <span class="section-menu__item-main">
+                <svg class="section-menu__icon" aria-hidden="true">
+                  <use href={`#atlas-menu-${icon}`} />
+                </svg>
+                <span>{label}</span>
+              </span>
               <span class="section-menu__arrow" aria-hidden="true">
                 ›
               </span>
@@ -103,7 +160,12 @@ const activeMenuHref = linkedHrefs
               class="section-menu__link is-unavailable"
               aria-disabled="true"
             >
-              <span>{label}</span>
+              <span class="section-menu__item-main">
+                <svg class="section-menu__icon" aria-hidden="true">
+                  <use href={`#atlas-menu-${icon}`} />
+                </svg>
+                <span>{label}</span>
+              </span>
             </span>
           ),
         )
@@ -300,6 +362,13 @@ const activeMenuHref = linkedHrefs
     background: currentColor;
   }
 
+  .section-menu__icon-defs {
+    position: absolute;
+    width: 0;
+    height: 0;
+    overflow: hidden;
+  }
+
   .section-menu-backdrop,
   .section-menu {
     position: fixed;
@@ -311,8 +380,7 @@ const activeMenuHref = linkedHrefs
 
   .section-menu-backdrop {
     z-index: 1098;
-    background: rgba(31, 29, 23, 0.38);
-    backdrop-filter: blur(1.5px);
+    background: rgba(31, 29, 23, 0.2);
   }
 
   .section-menu {
@@ -324,14 +392,17 @@ const activeMenuHref = linkedHrefs
 
   .section-menu__panel {
     width: min(88rem, calc(100% - 2rem));
-    max-height: calc(100dvh - var(--atlas-section-menu-top, 0px));
+    max-height: min(
+      70dvh,
+      calc(100dvh - var(--atlas-section-menu-top, 0px) - 4rem)
+    );
     margin: 0 auto;
     overflow-y: auto;
     border-right: 1px solid rgba(31, 29, 23, 0.14);
     border-bottom: 1px solid var(--rule);
     border-left: 1px solid rgba(31, 29, 23, 0.14);
     background: #f2efe5;
-    box-shadow: 0 1.2rem 2.5rem rgba(31, 29, 23, 0.16);
+    box-shadow: 0 1rem 2rem rgba(31, 29, 23, 0.14);
     pointer-events: auto;
   }
 
@@ -339,18 +410,18 @@ const activeMenuHref = linkedHrefs
     display: flex;
     align-items: center;
     justify-content: space-between;
-    min-height: 3.2rem;
-    padding: 0.55rem 1rem 0.55rem 1.25rem;
+    min-height: 2.7rem;
+    padding: 0.38rem 0.82rem 0.38rem 1rem;
     border-bottom: 1px solid rgba(31, 29, 23, 0.2);
-    font: 800 0.66rem/1 var(--sans);
+    font: 800 0.6rem/1 var(--sans);
     letter-spacing: 0.12em;
     text-transform: uppercase;
   }
 
   .section-menu__close {
     position: relative;
-    width: 2.6rem;
-    height: 2.6rem;
+    width: 2.25rem;
+    height: 2.25rem;
     border: 0;
     background: transparent;
     color: inherit;
@@ -361,7 +432,7 @@ const activeMenuHref = linkedHrefs
     position: absolute;
     top: 50%;
     left: 50%;
-    width: 1.55rem;
+    width: 1.35rem;
     height: 2px;
     background: currentColor;
     transform-origin: center;
@@ -383,16 +454,34 @@ const activeMenuHref = linkedHrefs
     display: flex;
     align-items: center;
     justify-content: space-between;
-    min-height: 4rem;
-    padding: 0.82rem 1.25rem;
-    border-bottom: 1px solid rgba(31, 29, 23, 0.16);
+    min-height: 3rem;
+    padding: 0.55rem 1rem;
+    border-bottom: 1px solid rgba(31, 29, 23, 0.14);
     color: inherit;
-    font: 700 clamp(1.22rem, 2.8vw, 1.9rem) / 1.1 var(--serif);
+    font: 700 clamp(0.94rem, 2.1vw, 1.42rem) / 1.08 var(--serif);
     text-decoration: none;
   }
 
   .section-menu__link:last-child {
     border-bottom: 0;
+  }
+
+  .section-menu__item-main {
+    display: flex;
+    min-width: 0;
+    align-items: center;
+    gap: 0.72rem;
+  }
+
+  .section-menu__icon {
+    width: 1.15rem;
+    height: 1.15rem;
+    flex: 0 0 1.15rem;
+    fill: none;
+    stroke: currentColor;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-width: 1.55;
   }
 
   a.section-menu__link:hover,
@@ -403,7 +492,7 @@ const activeMenuHref = linkedHrefs
   .section-menu__arrow {
     flex: 0 0 auto;
     margin-left: 1rem;
-    font: 400 1.8rem/1 var(--serif);
+    font: 400 1.35rem/1 var(--serif);
   }
 
   .section-menu__link.is-unavailable {
@@ -446,17 +535,40 @@ const activeMenuHref = linkedHrefs
 
     .section-menu__panel {
       width: min(100% - 1.25rem, 88rem);
+      max-height: min(
+        68dvh,
+        calc(100dvh - var(--atlas-section-menu-top, 0px) - 4rem)
+      );
     }
 
     .section-menu__heading {
-      min-height: 2.9rem;
-      padding-left: 0.95rem;
+      min-height: 2.45rem;
+      padding: 0.3rem 0.72rem 0.3rem 0.85rem;
+    }
+
+    .section-menu__close {
+      width: 2rem;
+      height: 2rem;
     }
 
     .section-menu__link {
-      min-height: 3.75rem;
-      padding: 0.72rem 0.95rem;
-      font-size: clamp(1.18rem, 6.2vw, 1.6rem);
+      min-height: 2.8rem;
+      padding: 0.48rem 0.85rem;
+      font-size: clamp(0.92rem, 4.65vw, 1.2rem);
+    }
+
+    .section-menu__item-main {
+      gap: 0.62rem;
+    }
+
+    .section-menu__icon {
+      width: 1.05rem;
+      height: 1.05rem;
+      flex-basis: 1.05rem;
+    }
+
+    .section-menu__arrow {
+      font-size: 1.2rem;
     }
   }
 
