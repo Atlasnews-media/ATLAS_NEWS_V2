@@ -1,0 +1,4 @@
+[submodule "tools/third_party/repo-pruner"]
+	path = tools/third_party/repo-pruner
+	url = https://github.com/arminbro/repo-pruner.git
+	branch = master
