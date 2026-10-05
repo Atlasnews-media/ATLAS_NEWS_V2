@@ -1,18 +1,20 @@
-name: TEMP — Format diagnostic
+name: TEMP — Apply canonical format
 
 on:
   pull_request:
     types: [opened, synchronize, reopened]
 
 permissions:
-  contents: read
+  contents: write
 
 jobs:
-  format-diagnostic:
+  apply-format:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
+      - name: Checkout PR branch
         uses: actions/checkout@v5
+        with:
+          ref: ${{ github.event.pull_request.head.ref }}
       - name: Setup Node
         uses: actions/setup-node@v6
         with:
@@ -20,7 +22,16 @@ jobs:
           cache: npm
       - name: Install dependencies
         run: npm ci
-      - name: Show canonical Prettier diff
+      - name: Apply canonical Prettier format
+        run: npx prettier --write src/components/SiteNavigation.astro src/layouts/BaseLayout.astro
+      - name: Commit canonical format
         run: |
-          npx prettier --write src/components/SiteNavigation.astro src/layouts/BaseLayout.astro
-          git diff -- src/components/SiteNavigation.astro src/layouts/BaseLayout.astro
+          if git diff --quiet -- src/components/SiteNavigation.astro src/layouts/BaseLayout.astro; then
+            echo "No formatting changes required."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add src/components/SiteNavigation.astro src/layouts/BaseLayout.astro
+          git commit -m "style(navigation): apply canonical formatting"
+          git push origin HEAD:${{ github.event.pull_request.head.ref }}
