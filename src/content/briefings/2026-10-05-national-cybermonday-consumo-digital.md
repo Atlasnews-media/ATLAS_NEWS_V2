@@ -1,10 +1,10 @@
 ---
 title: "CyberMonday abre una prueba de consumo para el comercio chileno"
 summary: "El evento parte con una meta de US$460 millones y 4,5 millones de transacciones. La prueba será si el dinamismo digital se traduce en ventas adicionales."
-publishedAt: "2026-10-05T06:22:35-03:00"
+publishedAt: "2026-10-05T06:46:15-03:00"
 cutoffAt: "2026-10-05T06:22:05-03:00"
 section: national
-status: draft
+status: "published"
 tags:
   - chile
   - comercio

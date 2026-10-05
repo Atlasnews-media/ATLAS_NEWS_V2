@@ -1,10 +1,10 @@
 ---
 title: "El dólar ignora el alivio de la Fed mientras Europa se fragmenta"
 summary: "El empleo débil redujo las apuestas de alza en Estados Unidos, pero el dólar avanzó por la caída del euro. Bonos franceses y alemanes tomaron direcciones opuestas."
-publishedAt: "2026-10-05T06:27:25-03:00"
+publishedAt: "2026-10-05T06:46:15-03:00"
 cutoffAt: "2026-10-05T06:26:55-03:00"
 section: markets
-status: draft
+status: "published"
 tags:
   - mercados
   - divisas

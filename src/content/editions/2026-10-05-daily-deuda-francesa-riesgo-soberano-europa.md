@@ -1,10 +1,10 @@
 ---
 title: "La deuda francesa reabre el riesgo soberano justo cuando Europa acelera"
 summary: "La prima francesa frente a Alemania alcanza niveles de la crisis del euro, mientras el bloque crece con más fuerza pero enfrenta inflación y costos financieros más altos."
-publishedAt: "2026-10-05T06:01:38-03:00"
+publishedAt: "2026-10-05T06:46:15-03:00"
 cutoffAt: "2026-10-05T05:58:22-03:00"
 type: "daily"
-status: "draft"
+status: "published"
 tags:
   - europa
   - francia
