@@ -1,0 +1,29 @@
+VOZ 1: El CyberMonday comenzó a las cero horas de este lunes y abre una prueba muy concentrada para el consumo chileno.
+VOZ 2: ¿Qué escala tiene el evento este año?
+VOZ 1: Participan 514 marcas. La Cámara de Comercio de Santiago proyecta ventas cercanas a 460 millones de dólares y alrededor de 4,5 millones de transacciones durante las tres jornadas que terminan el miércoles.
+VOZ 2: ¿Esos 460 millones ya son ventas observadas?
+VOZ 1: No. Es una proyección previa. Esa diferencia es central: el evento recién comenzó y todavía no permite afirmar que el consumo se aceleró.
+VOZ 2: ¿Cuál es la comparación con el año pasado?
+VOZ 1: La edición de 2025 registró 447 millones de dólares. La meta actual supone un crecimiento cercano a 3%.
+VOZ 2: Parece modesto frente a la expansión que ha tenido el comercio electrónico.
+VOZ 1: Exactamente. El canal digital ya representa cerca de 13% de las ventas totales del comercio. Entre enero y julio acumuló unos 6.500 millones de dólares y creció 12,2% real frente al mismo período anterior.
+VOZ 2: Entonces, ¿qué pondrá realmente a prueba este CyberMonday?
+VOZ 1: Primero, si el canal mantiene dinamismo en un momento de actividad y empleo débiles. Segundo, si las ventas son adicionales o simplemente adelantan compras que se habrían realizado durante las semanas siguientes.
+VOZ 2: ¿Cómo se distingue una cosa de la otra?
+VOZ 1: No basta con mirar el monto total. Hay que observar el número de transacciones, el ticket promedio, las categorías y el comportamiento posterior. Un gran salto seguido por semanas débiles apuntaría a anticipación de compras.
+VOZ 2: ¿Y si hay muchas operaciones, pero por montos menores?
+VOZ 1: Eso puede mostrar mayor sensibilidad a descuentos. Los hogares comprarían, pero seleccionando promociones y reduciendo el gasto promedio por transacción.
+VOZ 2: ¿El crecimiento online significa automáticamente más empleo?
+VOZ 1: Tampoco. El comercio electrónico genera demanda en tecnología, bodegas, logística y distribución, pero el efecto laboral depende de nuevas contrataciones, horas trabajadas y continuidad. Tres días de ventas no prueban por sí solos creación de empleo formal.
+VOZ 2: ¿Qué dato local ayudará a poner el evento en contexto?
+VOZ 1: El Banco Central publicará este lunes el Índice de Ventas Online del Comercio Minorista. Esa referencia permite mirar el canal digital de manera más amplia y no depender sólo de una campaña promocional.
+VOZ 2: Hay también un riesgo operativo, ¿cierto?
+VOZ 1: Sí. Después del CyberDay de junio, SERNAC recibió 2.099 reclamos y la cancelación unilateral de compras fue el principal motivo. Si las ventas crecen más rápido que el inventario, los despachos o la posventa, aumenta el volumen, pero puede caer la calidad del servicio.
+VOZ 2: Entonces el resultado no se resume en cumplir la meta de ventas.
+VOZ 1: Correcto. Importan las ventas efectivas frente a los 460 millones de dólares esperados, pero también transacciones, ticket promedio, distribución entre empresas y categorías, plazos de entrega y reclamos.
+VOZ 2: ¿Qué lectura confirmaría una señal favorable?
+VOZ 1: Superar la meta con crecimiento distribuido, buen cumplimiento y continuidad después del evento. Eso reforzaría la resiliencia del canal digital.
+VOZ 2: ¿Y qué debilitaría esa lectura?
+VOZ 1: Que las compras sólo se adelanten, se concentren en pocas categorías o terminen en cancelaciones e incumplimientos. En ese caso habría una campaña exitosa, pero no evidencia de una recuperación amplia del consumo.
+VOZ 2: La clave, entonces, es separar expectativa, venta observada y efecto económico.
+VOZ 1: Exactamente. Hoy el hecho nuevo es el comienzo de una prueba relevante. La conclusión llegará cuando conozcamos el resultado y su composición.
