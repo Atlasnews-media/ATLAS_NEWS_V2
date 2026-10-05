@@ -24,8 +24,7 @@ const activeMenuHref = menuEntries
   .sort((a, b) => b.length - a.length)
   .find(
     (href) =>
-      currentPath === href ||
-      (href !== "/" && currentPath.startsWith(href)),
+      currentPath === href || (href !== "/" && currentPath.startsWith(href)),
   );
 ---
 
@@ -36,10 +35,7 @@ const activeMenuHref = menuEntries
   data-site-navigation
 >
   <a
-    class:list={[
-      "site-navigation__home",
-      { "is-active": currentPath === "/" },
-    ]}
+    class:list={["site-navigation__home", { "is-active": currentPath === "/" }]}
     href="/"
     aria-current={currentPath === "/" ? "page" : undefined}
   >
@@ -98,7 +94,9 @@ const activeMenuHref = menuEntries
               data-section-menu-link
             >
               <span>{label}</span>
-              <span class="section-menu__arrow" aria-hidden="true">›</span>
+              <span class="section-menu__arrow" aria-hidden="true">
+                ›
+              </span>
             </a>
           ) : (
             <span
