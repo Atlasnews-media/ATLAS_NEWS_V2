@@ -1,0 +1,38 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+---
+
+<BaseLayout
+  title="Mediodía — ATLAS NEWS"
+  description="Edición de mediodía de ATLAS NEWS: actualización de Internacional, Nacional y Mercados durante la jornada."
+>
+  <main class="page-shell section-page">
+    <p class="page-kicker">Actualización de la jornada</p>
+    <h1 class="page-title">Mediodía</h1>
+    <p class="page-intro">
+      La edición de mediodía reúne las principales novedades de Internacional,
+      Nacional y Mercados posteriores a la apertura matutina.
+    </p>
+
+    <p class="empty-state">
+      Aún no hay una edición de mediodía publicada.
+    </p>
+  </main>
+</BaseLayout>
+
+<style>
+  .empty-state {
+    margin-top: 2rem;
+    padding: 2rem 0;
+    border-top: 5px double var(--rule);
+    border-bottom: 1px solid var(--rule);
+    color: var(--ink-soft);
+    font: 0.95rem/1.5 var(--sans);
+  }
+
+  @media (max-width: 42rem) {
+    .page-intro {
+      display: none;
+    }
+  }
+</style>
