@@ -1,14 +1,16 @@
 ---
+import {
+  getPublishedEditions,
+  getPublishedMarkets,
+  getPublishedNational,
+  getPublishedReadings,
+} from "../lib/content";
+import {
+  resolveFrontPageVisual,
+  type EditorialVisual,
+  type FrontPageSection,
+} from "../lib/front-page-visuals";
 import ResponsiveEditorialImage from "./ResponsiveEditorialImage.astro";
-
-interface EditorialVisual {
-  src: string;
-  alt: string;
-  source: string;
-  sourceUrl: string;
-  author: string;
-  license: string;
-}
 
 interface Props {
   label: string;
@@ -19,52 +21,189 @@ interface Props {
   eager?: boolean;
 }
 
+interface HeadlineItem {
+  label: string;
+  title: string;
+  href: string;
+  cta: string;
+  visual?: EditorialVisual;
+  publishedAt: number;
+}
+
 const { label, title, href, cta, visual, eager = false } = Astro.props;
 
-const visualAllowed = (() => {
-  if (!visual) return false;
-  if (visual.src.startsWith("/images/editorial/")) return true;
+const isHomeFeed = Astro.url.pathname === "/";
+const feedRoot = isHomeFeed && eager;
+const suppressLegacySibling = isHomeFeed && !eager;
+
+const hrefId = href.split("/").filter(Boolean).at(-1) ?? "";
+const editorialDate = hrefId.match(/^\d{4}-\d{2}-\d{2}/)?.[0];
+
+const readingSection = (tags: string[]): FrontPageSection => {
+  if (tags.includes("mercados") || tags.includes("markets")) return "markets";
+  if (tags.includes("internacional") || tags.includes("international")) {
+    return "international";
+  }
+  return "national";
+};
+
+let headlineItems: HeadlineItem[] = suppressLegacySibling
+  ? []
+  : [
+      {
+        label,
+        title,
+        href,
+        cta,
+        visual,
+        publishedAt: 0,
+      },
+    ];
+
+if (feedRoot && editorialDate) {
+  const [editions, national, markets, readings] = await Promise.all([
+    getPublishedEditions(),
+    getPublishedNational(),
+    getPublishedMarkets(),
+    getPublishedReadings(),
+  ]);
+
+  const internationalItems: HeadlineItem[] = editions
+    .filter(
+      ({ id, data }) => data.type === "daily" && id.startsWith(editorialDate),
+    )
+    .map((entry) => ({
+      label: "Internacional",
+      title: entry.data.title,
+      href: `/ediciones/${entry.id}/`,
+      cta: "Ir a Internacional",
+      visual: resolveFrontPageVisual({
+        section: "international",
+        id: entry.id,
+        title: entry.data.title,
+        tags: entry.data.tags,
+        editorialVisual: entry.data.editorialVisual,
+      }),
+      publishedAt: entry.data.publishedAt.valueOf(),
+    }));
+
+  const nationalItems: HeadlineItem[] = national
+    .filter(({ id }) => id.startsWith(editorialDate))
+    .map((entry) => ({
+      label: "Nacional",
+      title: entry.data.title,
+      href: `/nacional/${entry.id}/`,
+      cta: "Ir a Nacional",
+      visual: resolveFrontPageVisual({
+        section: "national",
+        id: entry.id,
+        title: entry.data.title,
+        tags: entry.data.tags,
+        editorialVisual: entry.data.editorialVisual,
+      }),
+      publishedAt: entry.data.publishedAt.valueOf(),
+    }));
+
+  const marketItems: HeadlineItem[] = markets
+    .filter(({ id }) => id.startsWith(editorialDate))
+    .map((entry) => ({
+      label: "Mercados",
+      title: entry.data.title,
+      href: `/mercados/${entry.id}/`,
+      cta: "Ir a Mercados",
+      visual: resolveFrontPageVisual({
+        section: "markets",
+        id: entry.id,
+        title: entry.data.title,
+        tags: entry.data.tags,
+        editorialVisual: entry.data.editorialVisual,
+      }),
+      publishedAt: entry.data.publishedAt.valueOf(),
+    }));
+
+  const contingencyItems: HeadlineItem[] = readings
+    .filter(({ id }) => id.startsWith(editorialDate))
+    .map((entry) => {
+      const section = readingSection(entry.data.tags);
+      return {
+        label: "Contingencia",
+        title: entry.data.title,
+        href: `/lecturas/${entry.id}/`,
+        cta: "Ir a Contingencia",
+        visual: resolveFrontPageVisual({
+          section,
+          id: entry.id,
+          title: entry.data.title,
+          tags: entry.data.tags,
+          editorialVisual: entry.data.editorialVisual,
+        }),
+        publishedAt: entry.data.publishedAt.valueOf(),
+      };
+    });
+
+  headlineItems = [
+    ...internationalItems,
+    ...nationalItems,
+    ...marketItems,
+    ...contingencyItems,
+  ].sort((a, b) => b.publishedAt - a.publishedAt);
+}
+
+const visualAllowed = (itemVisual?: EditorialVisual) => {
+  if (!itemVisual) return false;
+  if (itemVisual.src.startsWith("/images/editorial/")) return true;
 
   try {
-    const hostname = new URL(visual.src).hostname;
-    return ["upload.wikimedia.org", "commons.wikimedia.org"].includes(hostname);
+    const hostname = new URL(itemVisual.src).hostname;
+    return [
+      "upload.wikimedia.org",
+      "commons.wikimedia.org",
+      "cdn.hacienda.cl",
+    ].includes(hostname);
   } catch {
     return false;
   }
-})();
+};
 ---
 
-<section
-  class="headline-item"
-  data-has-visual={visualAllowed ? "true" : "false"}
-  data-explicit-cta="true"
->
-  <div class="headline-copy">
-    <p class="headline-label">{label}</p>
-    <h2><a href={href}>{title}</a></h2>
-    <a class="headline-cta" href={href}
-      >{cta} <span aria-hidden="true">→</span></a
-    >
-  </div>
+{
+  headlineItems.map((item, index) => {
+    const hasVisual = visualAllowed(item.visual);
+    const eagerVisual = feedRoot ? index === 0 : eager;
 
-  {
-    visual && visualAllowed && (
-      <figure class="headline-visual">
-        <ResponsiveEditorialImage
-          src={visual.src}
-          alt={visual.alt}
-          sizes="(max-width: 42rem) 40vw, (max-width: 79.99rem) 34vw, 16vw"
-          loading={eager ? "eager" : "lazy"}
-          fetchpriority={eager ? "high" : "auto"}
-          decoding={eager ? "sync" : "async"}
-        />
-        <figcaption>
-          {visual.source} · {visual.author} · {visual.license}
-        </figcaption>
-      </figure>
-    )
-  }
-</section>
+    return (
+      <section
+        class="headline-item"
+        data-has-visual={hasVisual ? "true" : "false"}
+        data-explicit-cta="true"
+      >
+        <div class="headline-copy">
+          <p class="headline-label">{item.label}</p>
+          <h2><a href={item.href}>{item.title}</a></h2>
+          <a class="headline-cta" href={item.href}>
+            {item.cta} <span aria-hidden="true">→</span>
+          </a>
+        </div>
+
+        {item.visual && hasVisual && (
+          <figure class="headline-visual">
+            <ResponsiveEditorialImage
+              src={item.visual.src}
+              alt={item.visual.alt}
+              sizes="(max-width: 42rem) 40vw, (max-width: 79.99rem) 34vw, 16vw"
+              loading={eagerVisual ? "eager" : "lazy"}
+              fetchpriority={eagerVisual ? "high" : "auto"}
+              decoding={eagerVisual ? "sync" : "async"}
+            />
+            <figcaption>
+              {item.visual.source} · {item.visual.author} · {item.visual.license}
+            </figcaption>
+          </figure>
+        )}
+      </section>
+    );
+  })
+}
 
 <style>
   .headline-item {
