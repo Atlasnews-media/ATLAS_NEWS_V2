@@ -175,29 +175,30 @@ const visualAllowed = (itemVisual?: EditorialVisual) => {
       >
         <div class="headline-copy">
           <p class="headline-label">{item.label}</p>
-          <h2><a href={item.href}>{item.title}</a></h2>
-          <a class="headline-cta" href={item.href}
-            >{item.cta} <span aria-hidden="true">→</span></a
-          >
+          <h2>
+            <a href={item.href}>{item.title}</a>
+          </h2>
+          <a class="headline-cta" href={item.href}>
+            {item.cta} <span aria-hidden="true">→</span>
+          </a>
         </div>
 
-        {
-          item.visual && hasVisual && (
-            <figure class="headline-visual">
-              <ResponsiveEditorialImage
-                src={item.visual.src}
-                alt={item.visual.alt}
-                sizes="(max-width: 42rem) 40vw, (max-width: 79.99rem) 34vw, 16vw"
-                loading={eagerVisual ? "eager" : "lazy"}
-                fetchpriority={eagerVisual ? "high" : "auto"}
-                decoding={eagerVisual ? "sync" : "async"}
-              />
-              <figcaption>
-                {item.visual.source} · {item.visual.author} · {item.visual.license}
-              </figcaption>
-            </figure>
-          )
-        }
+        {item.visual && hasVisual && (
+          <figure class="headline-visual">
+            <ResponsiveEditorialImage
+              src={item.visual.src}
+              alt={item.visual.alt}
+              sizes="(max-width: 42rem) 40vw, (max-width: 79.99rem) 34vw, 16vw"
+              loading={eagerVisual ? "eager" : "lazy"}
+              fetchpriority={eagerVisual ? "high" : "auto"}
+              decoding={eagerVisual ? "sync" : "async"}
+            />
+            <figcaption>
+              {item.visual.source} · {item.visual.author} ·{" "}
+              {item.visual.license}
+            </figcaption>
+          </figure>
+        )}
       </section>
     );
   })
