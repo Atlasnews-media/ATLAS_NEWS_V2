@@ -505,9 +505,14 @@ const activeMenuHref = linkedHrefs
     color: var(--accent);
   }
 
-  a.section-menu__link:hover,
   a.section-menu__link.is-active {
     background: rgba(31, 29, 23, 0.045);
+  }
+
+  @media (hover: hover) and (pointer: fine) {
+    a.section-menu__link:hover {
+      background: rgba(31, 29, 23, 0.045);
+    }
   }
 
   .section-menu__arrow {
