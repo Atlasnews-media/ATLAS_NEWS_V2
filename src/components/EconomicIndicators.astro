@@ -1,4 +1,5 @@
 ---
+import IndicatorIcon from "./IndicatorIcon.astro";
 import marketPulse from "../data/market-pulse.json";
 import { economicIndicatorsSnapshot } from "../data/economic-indicators";
 
@@ -26,7 +27,7 @@ type DisplayIndicator = {
 };
 
 const dateFormatter = new Intl.DateTimeFormat("es-CL", {
-  day: "numeric",
+  day: "2-digit",
   month: "short",
   year: "numeric",
   timeZone: "America/Santiago",
@@ -107,6 +108,8 @@ const indicators: DisplayIndicator[] = [
   normalizeMarket("sp500", "S&P 500"),
 ].filter((indicator): indicator is DisplayIndicator => Boolean(indicator));
 
+const priorityIndicators = new Set(["dolar", "cobre", "ipsa", "sp500"]);
+
 function formatDate(date: string) {
   const normalized = date.includes("T") ? date : `${date}T12:00:00-04:00`;
   return dateFormatter.format(new Date(normalized));
@@ -167,149 +170,227 @@ const freshnessLabel =
 ---
 
 <section
-  class="economic-strip"
+  class="economic-panel"
   data-status={economicIndicatorsSnapshot.status}
-  aria-label="Indicadores económicos de referencia"
+  aria-labelledby="economic-panel-title"
 >
-  <div class="economic-strip__context">
-    <strong>Indicadores económicos</strong>
-  </div>
+  <header class="economic-panel__header">
+    <span class="economic-panel__accent" aria-hidden="true"></span>
+    <h2 id="economic-panel-title">
+      <span>Indicadores</span> económicos
+    </h2>
+    <span class="economic-panel__rule" aria-hidden="true"></span>
+  </header>
 
-  <dl class="economic-strip__grid">
+  <div class="economic-panel__grid" role="list">
     {
       indicators.map((indicator) => {
         const trend = formatTrend(indicator);
+        const isPriority = priorityIndicators.has(indicator.id);
+
         return (
-          <div class="economic-strip__item">
-            <dt>{indicator.label}</dt>
-            <dd
-              title={
-                indicator.effectiveAt
-                  ? `Dato efectivo al ${formatDate(indicator.effectiveAt)}`
-                  : undefined
-              }
-            >
-              <span class="economic-strip__value">
+          <div
+            class="economic-panel__item"
+            data-priority={isPriority ? "true" : undefined}
+            role="listitem"
+          >
+            <IndicatorIcon id={indicator.id} />
+
+            <div class="economic-panel__metric">
+              <span class="economic-panel__label">{indicator.label}</span>
+              <span
+                class="economic-panel__value"
+                title={
+                  indicator.effectiveAt
+                    ? `Dato efectivo al ${formatDate(indicator.effectiveAt)}`
+                    : undefined
+                }
+              >
                 {formatValue(indicator)}
               </span>
-              {trend && (
-                <span
-                  class="economic-strip__trend"
-                  data-trend={indicator.trend}
-                >
-                  {trend}
-                </span>
-              )}
-            </dd>
+            </div>
+
+            {trend ? (
+              <span
+                class="economic-panel__trend"
+                data-trend={indicator.trend}
+                aria-label={`Variación ${trend}`}
+              >
+                {trend}
+              </span>
+            ) : (
+              <span
+                class="economic-panel__trend economic-panel__trend--neutral"
+                aria-hidden="true"
+              >
+                —
+              </span>
+            )}
           </div>
         );
       })
     }
-  </dl>
+  </div>
 
-  <p class="economic-strip__source">
+  <p class="economic-panel__source">
     Fuentes: {economicIndicatorsSnapshot.sourceName} · Índices de mercado ATLAS ·
     {freshnessLabel}: <time datetime={asOf}>{asOfLabel}</time>
   </p>
 </section>
 
 <style>
-  .economic-strip {
-    padding: 0.55rem 0 0.65rem;
-    border-bottom: 1px solid var(--rule);
+  .economic-panel {
+    margin: 0.55rem 0 0.7rem;
+    padding: 0.8rem 0.85rem 0.55rem;
+    border: 1px solid rgb(35 35 29 / 13%);
+    border-radius: 0.72rem;
+    background: rgb(242 239 229 / 38%);
     font-family: var(--sans);
   }
 
-  .economic-strip__context,
-  .economic-strip__source {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: baseline;
-    justify-content: space-between;
-    gap: 0.25rem 1rem;
+  .economic-panel__header {
+    display: grid;
+    grid-template-columns: auto minmax(2rem, 1fr);
+    grid-template-rows: auto auto;
+    align-items: center;
+    gap: 0.28rem 0.65rem;
+    min-width: 0;
+    margin-bottom: 0.42rem;
+  }
+
+  .economic-panel__accent {
+    grid-column: 1;
+    grid-row: 1;
+    width: clamp(2.8rem, 6vw, 4.4rem);
+    height: 0.18rem;
+    background: var(--accent);
+  }
+
+  .economic-panel__header h2 {
+    grid-column: 1;
+    grid-row: 2;
     margin: 0;
-    font-size: 0.61rem;
-    line-height: 1.35;
-    letter-spacing: 0.06em;
+    color: var(--ink);
+    font-family: var(--display);
+    font-size: clamp(1.42rem, 3.5vw, 2.35rem);
+    font-weight: 700;
+    line-height: 0.95;
+    letter-spacing: -0.035em;
     text-transform: uppercase;
+    white-space: nowrap;
   }
 
-  .economic-strip__context strong {
+  .economic-panel__header h2 span {
     color: var(--accent);
-    font-weight: 800;
-    letter-spacing: 0.12em;
   }
 
-  .economic-strip__source {
-    justify-content: flex-end;
-    color: var(--ink-soft);
+  .economic-panel__rule {
+    grid-column: 2;
+    grid-row: 2;
+    width: 100%;
+    height: 1px;
+    background: rgb(35 35 29 / 72%);
   }
 
-  .economic-strip__grid {
+  .economic-panel__grid {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    margin: 0.45rem 0 0;
-    padding: 0;
-    border-top: 1px solid var(--rule);
-    border-bottom: 1px solid var(--rule);
+    border-bottom: 1px solid rgb(35 35 29 / 62%);
   }
 
-  .economic-strip__item {
-    display: flex;
-    align-items: baseline;
-    gap: 0.45rem;
+  .economic-panel__item {
+    --indicator-icon-size: 2.6rem;
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr) auto;
+    align-items: center;
+    gap: 0.62rem;
     min-width: 0;
-    padding: 0.48rem 0.65rem;
+    padding: 0.52rem 0.72rem 0.52rem 0.12rem;
+    border-top: 1px solid rgb(35 35 29 / 10%);
   }
 
-  .economic-strip__item:nth-child(even) {
-    border-left: 1px solid var(--rule);
+  .economic-panel__item:nth-child(even) {
+    padding-right: 0.15rem;
+    padding-left: 0.72rem;
+    border-left: 1px solid rgb(35 35 29 / 9%);
   }
 
-  .economic-strip__item:nth-child(n + 3) {
-    border-top: 1px solid var(--rule);
+  .economic-panel__item:nth-child(-n + 2) {
+    border-top: 0;
   }
 
-  .economic-strip__item dt {
-    flex: 0 0 auto;
-    margin: 0;
-    font-size: 0.63rem;
+  .economic-panel__metric {
+    display: grid;
+    min-width: 0;
+    align-content: center;
+    gap: 0.02rem;
+  }
+
+  .economic-panel__label {
+    overflow: hidden;
+    color: var(--ink-soft);
+    font-size: 0.61rem;
     font-weight: 800;
-    line-height: 1.2;
-    letter-spacing: 0.065em;
+    line-height: 1.1;
+    letter-spacing: 0.11em;
+    text-overflow: ellipsis;
     text-transform: uppercase;
     white-space: nowrap;
   }
 
-  .economic-strip__item dd {
-    display: flex;
-    align-items: baseline;
-    justify-content: flex-end;
-    gap: 0.34rem;
-    min-width: 0;
-    margin: 0 0 0 auto;
+  .economic-panel__value {
+    overflow: hidden;
+    color: var(--ink);
     font-family: var(--serif);
-    font-size: clamp(0.8rem, 1.35vw, 1rem);
-    font-variant-numeric: tabular-nums;
+    font-size: clamp(1.08rem, 2.65vw, 1.72rem);
+    font-variant-numeric: tabular-nums lining-nums;
     font-weight: 700;
-    line-height: 1.15;
+    line-height: 1.02;
+    letter-spacing: -0.025em;
+    text-overflow: clip;
     white-space: nowrap;
   }
 
-  .economic-strip__trend {
-    font-size: 0.86em;
+  .economic-panel__item[data-priority="true"] .economic-panel__value {
+    font-size: clamp(1.12rem, 2.75vw, 1.78rem);
   }
 
-  .economic-strip__trend[data-trend="up"] {
+  .economic-panel__trend {
+    min-width: max-content;
+    font-family: var(--serif);
+    font-size: clamp(0.76rem, 1.75vw, 1.05rem);
+    font-variant-numeric: tabular-nums lining-nums;
+    font-weight: 700;
+    line-height: 1;
+    white-space: nowrap;
+  }
+
+  .economic-panel__trend[data-trend="up"] {
     color: #17623d;
   }
 
-  .economic-strip__trend[data-trend="down"] {
+  .economic-panel__trend[data-trend="down"] {
     color: #9b1f1f;
   }
 
-  .economic-strip__trend[data-trend="flat"] {
+  .economic-panel__trend[data-trend="flat"] {
     color: var(--ink-soft);
+  }
+
+  .economic-panel__trend--neutral {
+    color: rgb(75 73 63 / 43%);
+    font-size: 1.1rem;
+    font-weight: 400;
+  }
+
+  .economic-panel__source {
+    margin: 0.34rem 0 0;
+    color: var(--ink-soft);
+    font-size: 0.47rem;
+    line-height: 1.25;
+    letter-spacing: 0.035em;
+    text-align: right;
+    text-transform: uppercase;
   }
 
   :global(.front-page .headline-board > .calendar-entry) {
@@ -317,89 +398,119 @@ const freshnessLabel =
   }
 
   @media (min-width: 70.01rem) {
-    .economic-strip {
-      padding-top: 0.48rem;
-      padding-bottom: 0.55rem;
+    .economic-panel {
+      padding: 0.95rem 1rem 0.6rem;
     }
 
-    .economic-strip__grid {
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-      margin-top: 0.34rem;
+    .economic-panel__header {
+      margin-bottom: 0.5rem;
     }
 
-    .economic-strip__item {
-      padding: 0.36rem 0.48rem;
-      border-top: 0 !important;
-      border-left: 1px solid var(--rule);
+    .economic-panel__item {
+      --indicator-icon-size: 2.8rem;
+      padding-top: 0.58rem;
+      padding-bottom: 0.58rem;
     }
 
-    .economic-strip__item:nth-child(4n + 1) {
-      border-left: 0;
+    .economic-panel__label {
+      font-size: 0.64rem;
     }
 
-    .economic-strip__item:nth-child(n + 5) {
-      border-top: 1px solid var(--rule) !important;
-    }
-
-    .economic-strip__item dt {
-      font-size: 0.59rem;
-    }
-
-    .economic-strip__item dd {
-      gap: 0.24rem;
-      font-size: 0.82rem;
-    }
-
-    .economic-strip__source {
-      font-size: 0.48rem;
+    .economic-panel__source {
+      font-size: 0.5rem;
     }
   }
 
-  @media (max-width: 36rem) {
-    .economic-strip {
-      padding-top: 0.45rem;
-      padding-bottom: 0.5rem;
-      border-bottom: 0;
+  @media (max-width: 42rem) {
+    .economic-panel {
+      margin-top: 0.42rem;
+      margin-bottom: 0.55rem;
+      padding: 0.6rem 0.55rem 0.45rem;
+      border-radius: 0.55rem;
     }
 
-    .economic-strip__context {
-      display: grid;
+    .economic-panel__header {
+      gap: 0.22rem 0.46rem;
+      margin-bottom: 0.3rem;
     }
 
-    .economic-strip__grid {
-      margin-top: 0.35rem;
+    .economic-panel__accent {
+      width: 2.55rem;
+      height: 0.15rem;
     }
 
-    .economic-strip__item {
-      gap: 0.3rem;
-      padding: 0.38rem 0.45rem;
+    .economic-panel__header h2 {
+      font-size: clamp(1.12rem, 5.1vw, 1.55rem);
+      letter-spacing: -0.025em;
     }
 
-    .economic-strip__item dt {
-      font-size: 0.603rem;
-      letter-spacing: 0.045em;
+    .economic-panel__item {
+      --indicator-icon-size: 2.05rem;
+      grid-template-columns: auto minmax(0, 1fr) auto;
+      gap: 0.38rem;
+      padding: 0.4rem 0.38rem 0.4rem 0.04rem;
     }
 
-    .economic-strip__item dd {
-      flex: 1 1 0;
-      flex-wrap: wrap;
-      column-gap: 0.25rem;
-      row-gap: 0.08rem;
-      font-size: 0.72rem;
-      line-height: 1;
-      letter-spacing: -0.015em;
+    .economic-panel__item:nth-child(even) {
+      padding-right: 0.02rem;
+      padding-left: 0.38rem;
     }
 
-    .economic-strip__trend {
-      font-size: 0.9em;
+    .economic-panel__label {
+      font-size: 0.5rem;
+      letter-spacing: 0.07em;
     }
 
-    .economic-strip__source {
-      display: block;
+    .economic-panel__value {
+      font-size: clamp(0.82rem, 3.75vw, 1.08rem);
+      letter-spacing: -0.035em;
+    }
+
+    .economic-panel__item[data-priority="true"] .economic-panel__value {
+      font-size: clamp(0.84rem, 3.85vw, 1.11rem);
+    }
+
+    .economic-panel__trend {
+      font-size: clamp(0.58rem, 2.55vw, 0.74rem);
+    }
+
+    .economic-panel__trend--neutral {
+      font-size: 0.83rem;
+    }
+
+    .economic-panel__source {
+      margin-top: 0.28rem;
+      font-size: 0.4rem;
+      line-height: 1.15;
+      letter-spacing: 0.015em;
+    }
+  }
+
+  @media (max-width: 25rem) {
+    .economic-panel__item {
+      --indicator-icon-size: 1.8rem;
+      gap: 0.25rem;
+      padding-right: 0.18rem;
+    }
+
+    .economic-panel__item:nth-child(even) {
+      padding-left: 0.24rem;
+    }
+
+    .economic-panel__label {
       font-size: 0.46rem;
-      line-height: 1.2;
-      letter-spacing: 0.02em;
-      text-align: right;
+    }
+
+    .economic-panel__value {
+      font-size: 0.78rem;
+    }
+
+    .economic-panel__item[data-priority="true"] .economic-panel__value {
+      font-size: 0.8rem;
+    }
+
+    .economic-panel__trend {
+      font-size: 0.54rem;
     }
   }
 </style>
