@@ -1,5 +1,5 @@
 ---
-title: "Ministro Quiroz rebaja crecimiento 2026 a 0,7% y eleva proyección 2027 a 3,3%"
+title: "Hacienda recorta a 0,7% la proyección de crecimiento para 2026 y la eleva a 3,3% en 2027"
 summary: "Hacienda actualizó el escenario macroeconómico que sostiene el Presupuesto 2027: recortó con fuerza la proyección para este año, elevó la de 2027 y estima un déficit efectivo de 1,8% del PIB en 2026."
 publishedAt: "2026-10-06T13:58:00-03:00"
 status: "published"
