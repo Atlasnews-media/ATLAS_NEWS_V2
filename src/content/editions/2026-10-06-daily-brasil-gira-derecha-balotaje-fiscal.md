@@ -1,10 +1,10 @@
 ---
 title: "Brasil gira a la derecha y lleva la disputa fiscal al balotaje"
 summary: "Flávio Bolsonaro supera a Lula en la primera vuelta y el Partido Liberal amplía su poder legislativo, dejando deuda, reformas e instituciones en el centro del balotaje del 25 de octubre."
-publishedAt: "2026-10-06T06:05:47-03:00"
+publishedAt: "2026-10-06T06:49:45-03:00"
 cutoffAt: "2026-10-06T06:04:38-03:00"
 type: "daily"
-status: "draft"
+status: "published"
 tags:
   - brasil
   - elecciones

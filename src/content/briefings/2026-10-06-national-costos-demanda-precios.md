@@ -1,10 +1,10 @@
 ---
 title: "Empresas ven menos presión de costos, pero la demanda sigue perdiendo fuerza"
 summary: "La nueva encuesta empresarial del Banco Central muestra costos y precios de venta moderándose, ventas nuevamente a la baja y mayor presión cambiaria, mientras la expectativa de inflación a 24 meses desciende a 3,3%."
-publishedAt: "2026-10-06T06:24:00-03:00"
+publishedAt: "2026-10-06T06:49:45-03:00"
 cutoffAt: "2026-10-06T06:20:00-03:00"
 section: "national"
-status: "draft"
+status: "published"
 tags:
   - chile
   - empresas

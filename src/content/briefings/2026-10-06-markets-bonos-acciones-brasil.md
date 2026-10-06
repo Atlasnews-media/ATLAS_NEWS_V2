@@ -1,10 +1,10 @@
 ---
 title: "Acciones desafían el castigo en bonos mientras Brasil reprecifica riesgo político"
 summary: "El Nasdaq cerró en récord pese a máximos de 24 años en los Treasury largos; Brasil concentró el giro emergente con alzas en acciones, moneda y deuda, mientras el euro siguió bajo presión fiscal."
-publishedAt: "2026-10-06T06:30:00-03:00"
+publishedAt: "2026-10-06T06:49:45-03:00"
 cutoffAt: "2026-10-06T06:27:00-03:00"
 section: "markets"
-status: "draft"
+status: "published"
 tags:
   - mercados
   - renta-fija
