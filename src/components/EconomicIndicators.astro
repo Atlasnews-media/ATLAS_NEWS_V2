@@ -240,7 +240,7 @@ const freshnessLabel =
 
 <style>
   .economic-panel {
-    margin: 0.55rem 0 0.7rem;
+    margin: 0.55rem 0 0.3rem;
     padding: 0.8rem 0.85rem 0.55rem;
     border: 1px solid rgb(35 35 29 / 13%);
     border-radius: 0.72rem;
@@ -272,10 +272,10 @@ const freshnessLabel =
     margin: 0;
     color: var(--ink);
     font-family: var(--display);
-    font-size: clamp(1.42rem, 3.5vw, 2.35rem);
+    font-size: clamp(0.78rem, 1.75vw, 1.18rem);
     font-weight: 700;
-    line-height: 0.95;
-    letter-spacing: -0.035em;
+    line-height: 1;
+    letter-spacing: -0.02em;
     text-transform: uppercase;
     white-space: nowrap;
   }
@@ -342,7 +342,7 @@ const freshnessLabel =
     overflow: hidden;
     color: var(--ink);
     font-family: var(--serif);
-    font-size: clamp(1.08rem, 2.65vw, 1.72rem);
+    font-size: clamp(0.86rem, 2.12vw, 1.38rem);
     font-variant-numeric: tabular-nums lining-nums;
     font-weight: 700;
     line-height: 1.02;
@@ -352,7 +352,7 @@ const freshnessLabel =
   }
 
   .economic-panel__item[data-priority="true"] .economic-panel__value {
-    font-size: clamp(1.12rem, 2.75vw, 1.78rem);
+    font-size: clamp(0.9rem, 2.2vw, 1.42rem);
   }
 
   .economic-panel__trend {
@@ -397,6 +397,26 @@ const freshnessLabel =
     display: none !important;
   }
 
+  :global(.front-page.front-page--v2 .headline-tab) {
+    font-size: 0.78rem !important;
+  }
+
+  :global(.front-page.front-page--v2 > .daily-audio) {
+    padding-top: 0.42rem !important;
+  }
+
+  @media (min-width: 42.01rem) and (max-width: 70rem) {
+    :global(.front-page.front-page--v2 .headline-tab) {
+      font-size: 1.15rem !important;
+    }
+  }
+
+  @media (min-width: 70.01rem) and (max-width: 79.99rem) {
+    :global(.front-page.front-page--v2 .headline-tab) {
+      font-size: clamp(1.05rem, 1.265vw, 1.15rem) !important;
+    }
+  }
+
   @media (min-width: 70.01rem) {
     .economic-panel {
       padding: 0.95rem 1rem 0.6rem;
@@ -424,7 +444,7 @@ const freshnessLabel =
   @media (max-width: 42rem) {
     .economic-panel {
       margin-top: 0.42rem;
-      margin-bottom: 0.55rem;
+      margin-bottom: 0.18rem;
       padding: 0.6rem 0.55rem 0.45rem;
       border-radius: 0.55rem;
     }
@@ -440,8 +460,8 @@ const freshnessLabel =
     }
 
     .economic-panel__header h2 {
-      font-size: clamp(1.12rem, 5.1vw, 1.55rem);
-      letter-spacing: -0.025em;
+      font-size: clamp(0.58rem, 2.55vw, 0.78rem);
+      letter-spacing: -0.01em;
     }
 
     .economic-panel__item {
@@ -462,12 +482,12 @@ const freshnessLabel =
     }
 
     .economic-panel__value {
-      font-size: clamp(0.82rem, 3.75vw, 1.08rem);
-      letter-spacing: -0.035em;
+      font-size: clamp(0.66rem, 3vw, 0.86rem);
+      letter-spacing: -0.025em;
     }
 
     .economic-panel__item[data-priority="true"] .economic-panel__value {
-      font-size: clamp(0.84rem, 3.85vw, 1.11rem);
+      font-size: clamp(0.67rem, 3.08vw, 0.89rem);
     }
 
     .economic-panel__trend {
@@ -483,6 +503,14 @@ const freshnessLabel =
       font-size: 0.4rem;
       line-height: 1.15;
       letter-spacing: 0.015em;
+    }
+
+    :global(.front-page.front-page--v2 .headline-tab) {
+      font-size: 0.71rem !important;
+    }
+
+    :global(.front-page.front-page--v2 > .daily-audio) {
+      padding-top: 0.3rem !important;
     }
   }
 
@@ -502,11 +530,11 @@ const freshnessLabel =
     }
 
     .economic-panel__value {
-      font-size: 0.78rem;
+      font-size: 0.62rem;
     }
 
     .economic-panel__item[data-priority="true"] .economic-panel__value {
-      font-size: 0.8rem;
+      font-size: 0.64rem;
     }
 
     .economic-panel__trend {
