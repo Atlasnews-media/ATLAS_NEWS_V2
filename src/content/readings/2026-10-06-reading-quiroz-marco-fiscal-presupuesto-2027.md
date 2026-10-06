@@ -1,7 +1,7 @@
 ---
-title: "Quiroz presenta hoy el marco fiscal del Presupuesto 2027"
-summary: "Hacienda y Dipres exponen hoy ante la Comisión Especial Mixta de Presupuestos. El foco estará en las nuevas proyecciones fiscales que sostienen el erario de 2027."
-publishedAt: "2026-10-06T08:23:17-03:00"
+title: "Ministro Quiroz rebaja crecimiento 2026 a 0,7% y eleva proyección 2027 a 3,3%"
+summary: "Hacienda actualizó el escenario macroeconómico que sostiene el Presupuesto 2027: recortó con fuerza la proyección para este año, elevó la de 2027 y estima un déficit efectivo de 1,8% del PIB en 2026."
+publishedAt: "2026-10-06T13:58:00-03:00"
 status: "published"
 tags:
   - contingencia
@@ -10,13 +10,13 @@ tags:
   - politica-fiscal
   - hacienda
 source:
-  name: "Dirección de Presupuestos — Informe de Finanzas Públicas Tercer Trimestre 2026"
-  url: "https://www.dipres.gob.cl/598/w3-article-426537.html"
-  publishedAt: "2026-09-25T00:00:00-03:00"
+  name: "Diario Financiero — Estado de la Hacienda Pública 2026"
+  url: "https://www.df.cl/economia-y-politica/macro/quiroz-oficializa-correcciones-en-proyecciones-de-crecimiento-y-anticipa"
+  publishedAt: "2026-10-06T11:22:00-03:00"
 author: "ATLAS NEWS"
 editorialVisual:
   src: "https://commons.wikimedia.org/wiki/Special:FilePath/JORGE-QUIROZ.jpg?width=1280"
-  alt: "Jorge Quiroz, ministro de Hacienda de Chile, en su fotografía oficial de 2026."
+  alt: "Ministro de Hacienda Jorge Quiroz, en su fotografía oficial de 2026."
   source: "Gobierno de Chile / Wikimedia Commons"
   sourceUrl: "https://commons.wikimedia.org/wiki/File:JORGE-QUIROZ.jpg"
   author: "Gobierno de Chile"
@@ -26,42 +26,68 @@ demo: false
 
 ## Tesis principal
 
-La discusión del **Presupuesto 2027** entra hoy en una fase decisiva para su lectura económica: Hacienda y la Dirección de Presupuestos deben exponer ante la Comisión Especial Mixta de Presupuestos los antecedentes fiscales que sostienen el proyecto.
+El ministro de Hacienda, **Jorge Quiroz**, actualizó este martes ante la Comisión Especial Mixta de Presupuestos el escenario macroeconómico y fiscal que sostiene el **Presupuesto 2027**.
 
-La presentación permitirá pasar desde el debate sobre partidas y prioridades hacia una pregunta más concreta: **qué escenario de crecimiento, ingresos, gasto, déficit y deuda hace posible el presupuesto propuesto para el próximo año**.
+La principal corrección está en crecimiento. Hacienda redujo su proyección para 2026 desde **1,8% a 0,7%**, mientras elevó la estimación para 2027 desde **2,8% a 3,3%**.
 
-Dipres modificó expresamente la fecha de publicación del **Informe de Finanzas Públicas del tercer trimestre de 2026** para hacerla coincidir con la exposición prevista para este martes 6 de octubre ante la Comisión Mixta. El documento actualizará la fotografía de las finanzas públicas utilizada en la discusión presupuestaria.
+El cambio confirma una economía más débil de lo previsto durante este año, pero al mismo tiempo supone una recuperación más intensa para el próximo. Esa combinación pasa a ser uno de los supuestos centrales con los que deberá evaluarse el Presupuesto 2027.
 
-## Qué mirar hoy
+## Qué cambió desde esta mañana
 
-El primer foco estará en las nuevas proyecciones macroeconómicas y fiscales de Hacienda.
+Cuando ATLAS NEWS publicó inicialmente esta Contingencia, las nuevas cifras todavía no habían sido presentadas.
 
-La actualización permitirá contrastar el Presupuesto 2027 con la evolución efectiva de los ingresos, el balance fiscal y la deuda durante 2026, y observar si cambió el espacio disponible para financiar el gasto del próximo año.
+Ahora el cuadro es concreto.
 
-También será relevante la forma en que los nuevos antecedentes dialogan con los dos parámetros estructurales ya conocidos para la formulación presupuestaria. En septiembre, los comités consultivos estimaron un crecimiento de **2,6% para el PIB no minero tendencial de 2027** y un **precio de referencia del cobre de US$5,37 por libra**. Ambos parámetros son utilizados para calcular los ingresos estructurales del Gobierno Central.
+Quiroz informó que el **déficit efectivo de 2026 se proyecta en 1,8% del PIB** y que el déficit estructural llegaría a **2,3% del PIB**, por debajo de la meta de 2,6% fijada para este año.
 
-A fines de septiembre, Dipres informó además que el déficit fiscal efectivo acumulado en doce meses a agosto había bajado a **1,8% del PIB**, desde 2,8% al cierre de 2025. La exposición de hoy permitirá conocer cómo esa evolución se incorpora al escenario del Presupuesto 2027.
+Para 2027, Hacienda ratificó una meta de **déficit estructural de 1,8% del PIB**.
+
+El Gobierno sostiene así que puede avanzar en consolidación fiscal aun cuando el crecimiento de 2026 resulte sustancialmente menor al estimado hace tres meses.
+
+## El Presupuesto 2027 parte con un escenario distinto
+
+El proyecto considera un crecimiento del gasto público de **1,5% respecto de la ejecución proyectada para 2026**.
+
+Ese aumento debe leerse ahora junto con dos movimientos simultáneos: una base económica 2026 más débil y una expectativa de recuperación de 3,3% para 2027.
+
+La trayectoria fiscal oficial mantiene además un ancla de deuda bruta del Gobierno Central de **45% del PIB** en el mediano plazo.
+
+El proyecto solicita al Congreso una autorización de endeudamiento de hasta **US$25.000 millones**, más una autorización adicional de hasta US$600 millones. El monto corresponde a un techo máximo y no implica que esa deuda vaya a emitirse íntegramente.
+
+Quiroz explicó que la autorización considera, entre otros factores, vencimientos de deuda, financiamiento del déficit y otros requerimientos presupuestarios.
+
+## Ajustes que también entran a la discusión
+
+Más allá de las proyecciones macroeconómicas, el articulado del Presupuesto 2027 incorpora cambios que afectan directamente a regiones, empleo público y municipios.
+
+Entre ellos, el proyecto reduce desde **65% a 35%** la participación de los gobiernos regionales en los recursos provenientes de la venta de determinados inmuebles fiscales y disminuye de **6.500 a 1.500** los cupos contemplados para traspasos desde honorarios a contrata.
+
+También propone suspender durante 2027 el traspaso de cinco Servicios Locales de Educación Pública y establece mecanismos para exigir la ejecución o restitución de recursos SEP pendientes.
+
+Estas medidas no son consecuencia de la exposición macroeconómica de hoy, sino disposiciones contenidas en el proyecto que ahora comienza su tramitación legislativa.
 
 ## Por qué importa
 
-El monto de un presupuesto no explica por sí solo su posición fiscal.
+La presentación cambia la lectura respecto de la mañana porque ya no se discute sólo cuánto crecerá el gasto.
 
-Para evaluar su sostenibilidad es necesario observar simultáneamente los ingresos esperados, el crecimiento de la economía, el precio estructural del cobre, el resultado fiscal y la trayectoria de la deuda.
+El Presupuesto 2027 deberá evaluarse sobre una economía que Hacienda espera que crezca apenas **0,7% en 2026**, pero que se acelere a **3,3% en 2027**, mientras el Ejecutivo busca continuar reduciendo el déficit estructural.
 
-Por eso el Informe de Finanzas Públicas es una pieza central de la discusión: entrega el marco con el que pueden evaluarse las decisiones de gasto sin confundir una diferencia política sobre prioridades con una conclusión técnica sobre sostenibilidad fiscal.
+Si esa recuperación no se materializa, los ingresos fiscales y la trayectoria de deuda podrían enfrentar una presión mayor. Si ocurre, el ajuste presupuestario tendría un escenario macroeconómico más favorable para ejecutarse.
 
-Si las proyecciones que Hacienda presente hoy cambian materialmente respecto de las conocidas hasta ahora, también puede cambiar la lectura económica del Presupuesto 2027 aunque sus partidas todavía no hayan sido modificadas por el Congreso.
+Por eso, desde ahora el seguimiento relevante pasa por tres variables: **crecimiento efectivo, ejecución de ingresos y evolución de la deuda pública**.
 
 ## Por qué fue seleccionada
 
-El tema no formó parte de los tres titulares principales de la edición matutina de ATLAS NEWS y la presentación ocurre después de su corte editorial.
+La pieza original se publicó antes de la exposición del ministro Quiroz y quedó desactualizada una vez conocidos los nuevos supuestos macroeconómicos y fiscales.
 
-Además, durante esta jornada deben conocerse antecedentes fiscales nuevos. Eso permite una secuencia editorial clara: **esta Contingencia identifica las cifras que deben observarse; la edición de Mediodía podrá informar qué cambió efectivamente una vez conocidos los datos**.
+La rebaja de la proyección de crecimiento 2026 desde 1,8% a 0,7%, el aumento de la estimación 2027 a 3,3% y la actualización de las cifras de déficit constituyen información materialmente nueva. Por eso la Contingencia se actualiza en lugar de mantener un texto prospectivo que ya perdió vigencia.
 
 ## Contexto y límites
 
-Esta pieza se publica **antes de la exposición de Hacienda y Dipres**.
+Las cifras presentadas por Hacienda son proyecciones y pueden cambiar con nueva información macroeconómica o fiscal.
 
-No anticipa cuáles serán las nuevas estimaciones ni atribuye consecuencias a cifras que todavía no han sido presentadas. La actualización de Mediodía deberá construirse exclusivamente sobre los antecedentes efectivamente informados ante la Comisión Mixta y en el Informe de Finanzas Públicas.
+El techo de endeudamiento de US$25.000 millones es una autorización máxima y no equivale a una emisión automática por ese monto.
 
-**Fuentes complementarias:** [Dipres — parámetros estructurales para el Presupuesto 2027](https://www.dipres.gob.cl/598/w3-article-426526.html) · [Dipres — cifras fiscales a agosto de 2026](https://www.dipres.gob.cl/598/w3-article-429613.html)
+Del mismo modo, las modificaciones a partidas y artículos del Presupuesto todavía deben ser discutidas por el Congreso y pueden cambiar durante su tramitación.
+
+**Fuentes:** [Diario Financiero — presentación del Estado de la Hacienda Pública](https://www.df.cl/economia-y-politica/macro/quiroz-oficializa-correcciones-en-proyecciones-de-crecimiento-y-anticipa) · [Cooperativa — proyección de crecimiento y endeudamiento](https://www.cooperativa.cl/noticias/economia/crecimiento/chile/presupuesto-quiroz-proyecto-crecimiento-de-0-7-para-2026-y-justifico/2026-10-06/112302.html) · [Ministerio de Hacienda — trayectoria fiscal y ancla de deuda](https://www.hacienda.cl/noticias-y-eventos/noticias/ministerio-de-hacienda-fija-la-trayectoria-de-las-finanzas-publicas-con-una) · [BioBioChile — articulado del Presupuesto 2027](https://www.biobiochile.cl/noticias/nacional/chile/2026/10/05/presupuesto-de-quiroz-cambia-las-reglas-regiones-pierden-recursos-frenazo-a-contratas-y-mas-deuda.shtml)
