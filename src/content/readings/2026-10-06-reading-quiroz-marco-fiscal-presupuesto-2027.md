@@ -76,6 +76,12 @@ Si esa recuperación no se materializa, los ingresos fiscales y la trayectoria d
 
 Por eso, desde ahora el seguimiento relevante pasa por tres variables: **crecimiento efectivo, ejecución de ingresos y evolución de la deuda pública**.
 
+## Por qué fue seleccionada
+
+La pieza original se publicó antes de la exposición del ministro Quiroz y quedó desactualizada una vez conocidos los nuevos supuestos macroeconómicos y fiscales.
+
+La rebaja de la proyección de crecimiento 2026 desde 1,8% a 0,7%, el aumento de la estimación 2027 a 3,3% y la actualización de las cifras de déficit constituyen información materialmente nueva. Por eso la Contingencia se actualiza en lugar de mantener un texto prospectivo que ya perdió vigencia.
+
 ## Contexto y límites
 
 Las cifras presentadas por Hacienda son proyecciones y pueden cambiar con nueva información macroeconómica o fiscal.
