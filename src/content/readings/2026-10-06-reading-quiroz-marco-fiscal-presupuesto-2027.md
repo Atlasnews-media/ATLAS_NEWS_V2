@@ -15,11 +15,11 @@ source:
   publishedAt: "2026-09-25T00:00:00-03:00"
 author: "ATLAS NEWS"
 editorialVisual:
-  src: "https://cdn.hacienda.cl/asset/hacienda_prod/img/363f5bb724ac20a9ec9b01fa2ce052659015068fc933774eac27613ac2fc63b3/1777067127/2048?_expiration=1791240310&_hash=Vv4i8fTJUP96zArs8ftvAn1_zdXC2dh3qBOdYD4bShE"
-  alt: "Jorge Quiroz, ministro de Hacienda de Chile, durante una actividad oficial."
-  source: "Ministerio de Hacienda"
-  sourceUrl: "https://www.hacienda.cl/index.php/noticias-y-eventos/noticias/jorge-quiroz-asume-como-ministro-de-hacienda-del-gobierno-del-presidente-jose"
-  author: "Ministerio de Hacienda"
+  src: "https://commons.wikimedia.org/wiki/Special:FilePath/JORGE-QUIROZ.jpg?width=1280"
+  alt: "Jorge Quiroz, ministro de Hacienda de Chile, en su fotografía oficial de 2026."
+  source: "Gobierno de Chile / Wikimedia Commons"
+  sourceUrl: "https://commons.wikimedia.org/wiki/File:JORGE-QUIROZ.jpg"
+  author: "Gobierno de Chile"
   license: "CC BY 3.0 CL"
 demo: false
 ---
