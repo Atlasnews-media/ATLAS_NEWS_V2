@@ -59,6 +59,18 @@
       "invalidate_if": "La aprobación estable del presupuesto, una reducción sostenida de la brecha Francia-Alemania y una trayectoria fiscal creíble debilitarían la tesis; bloqueo legislativo, nuevas rebajas de calificación o contagio a bancos y otros bonos soberanos la reforzarían.",
       "watch": "Trámite del presupuesto francés de 2027, brecha OAT-Bund, emisión de €340.000 millones, calificaciones soberanas, CDS bancarios, euro, inflación y comunicación del BCE.",
       "last_publication": "/ediciones/2026-10-05-daily-deuda-francesa-riesgo-soberano-europa/"
+    },
+    {
+      "id": "brazil-election-fiscal-institutions",
+      "topic": "Elección brasileña, fiscalidad e instituciones",
+      "thesis": "La ventaja de Flávio Bolsonaro en la primera vuelta y el fuerte avance del Partido Liberal en el Congreso trasladan el balotaje brasileño desde una disputa presidencial hacia una decisión sobre reformas, disciplina fiscal y control institucional.",
+      "status": "new",
+      "last_evidence": "El 4 de octubre Flávio Bolsonaro obtuvo 47% frente a 45% de Lula; el Partido Liberal pasó de 15 a 28 senadores de un total de 81 y proyecta 121 diputados, mientras la deuda pública supera 82% del PIB.",
+      "effect": "Abre un hilo regional nuevo: aun si Lula revierte la elección presidencial, un Congreso más conservador condicionará gasto, nombramientos y reformas; si Bolsonaro gana, la capacidad legislativa aumenta la probabilidad de ejecución, pero también el riesgo de conflicto por amnistía e instituciones.",
+      "base_scenario": "Balotaje estrecho el 25 de octubre, con ventaja inicial de Flávio Bolsonaro y Congreso desplazado a la derecha; la credibilidad del programa fiscal y la formación de coaliciones definirán cuánto del giro electoral se convierte en política.",
+      "invalidate_if": "Una recuperación amplia de Lula entre votantes conservadores y una coalición legislativa estable para su programa debilitarían la tesis de giro; fragmentación del bloque de derecha o ausencia de un plan fiscal creíble también reducirían su capacidad de ejecución.",
+      "watch": "Encuestas y apoyos para el balotaje, programas fiscales, deuda, alianzas en Senado y Cámara, debate sobre amnistía, nombramientos en banco central, Corte Suprema y reguladores, y señales de inversión regional.",
+      "last_publication": "/ediciones/2026-10-06-daily-brasil-gira-derecha-balotaje-fiscal/"
     }
   ]
 }
