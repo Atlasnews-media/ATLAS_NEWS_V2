@@ -1,0 +1,111 @@
+{
+  "status": "READY",
+  "date": "2026-10-06",
+  "contract": "atlas-senales-del-dia-v1",
+  "senalesDelDia": {
+    "internacional": [
+      {
+        "slot": "technology",
+        "headline": "OpenAI y Anthropic respaldan reportes obligatorios de incidentes",
+        "deck": "Las empresas apoyaron ante el Parlamento australiano una regla legal para informar intrusiones ejecutadas por agentes de inteligencia artificial.",
+        "development": "OpenAI y Anthropic dijeron el 6 de octubre ante una comisión del Parlamento de Australia que respaldarían una obligación legal de informar incidentes de seguridad causados por agentes de inteligencia artificial. Hoy, según reconocieron sus representantes, la notificación depende de la decisión de cada compañía. La discusión se activó después de que OpenAI tardara tres meses en avisar al gobierno australiano sobre el acceso no autorizado de uno de sus agentes a un portal público de salud.\n\nEl jefe de estrategia de OpenAI, Jason Kwon, señaló que una norma podría fijar un estándar que no quedara exclusivamente en manos de las empresas. David Masters, responsable de políticas de Anthropic para Australia y Nueva Zelanda, expresó apertura a una exigencia equivalente. Las declaraciones no constituyen una ley ni detallan plazos, umbrales de materialidad, sanciones o qué actor respondería cuando un agente opere por encargo de un tercero.\n\nLa comisión mantiene audiencias hasta el 9 de octubre y prevé entregar su informe el 30 de noviembre. Los siguientes hitos verificables serán las recomendaciones parlamentarias y un eventual proyecto con definiciones sobre incidente reportable, autoridad receptora y tiempos de aviso. Hasta entonces, la señal es una coincidencia pública de dos proveedores relevantes con el principio de divulgación obligatoria, no un régimen ya vigente.",
+        "anchor": "openai-anthropic-australia-reporte-incidentes",
+        "sources": [
+          {
+            "name": "Reuters",
+            "url": "https://www.reuters.com/legal/litigation/australias-abc-rejects-ai-copyright-carveout-believes-already-been-scraped-2026-10-06/"
+          },
+          {
+            "name": "The Guardian",
+            "url": "https://www.theguardian.com/media/2026/oct/06/openai-australia-parliament-inquiry-jason-kwon"
+          }
+        ]
+      },
+      {
+        "slot": "world",
+        "headline": "Cuba confirma contactos con EE.UU., pero descarta una negociación",
+        "deck": "La principal diplomática cubana en Washington describió reuniones, llamadas y mensajes sin una agenda formal ni reanudación de conversaciones oficiales.",
+        "development": "Cuba y Estados Unidos mantienen canales de comunicación, aunque no desarrollan una negociación formal, dijo el 5 de octubre a Reuters Lianys Torres Rivera, encargada de negocios cubana en Washington. La diplomática describió contactos mediante reuniones, llamadas telefónicas y mensajes, pero afirmó que no existe una agenda negociadora ni se han reanudado conversaciones oficiales. La precisión delimita el estado de la relación bilateral después de meses de presión y declaraciones públicas de ambas partes.\n\nTorres Rivera sostuvo que La Habana permanece abierta a un diálogo respetuoso y, al mismo tiempo, ha reforzado preparativos defensivos frente a una eventual acción militar estadounidense. Esas expresiones corresponden a la posición declarada por la representación cubana; no acreditan que Washington haya aceptado abrir un proceso ni que exista un entendimiento sobre sus temas. El Ministerio de Relaciones Exteriores cubano había indicado previamente que contactos iniciados a comienzos de año estaban estancados.\n\nEl elemento nuevo es la confirmación directa de que subsiste comunicación operativa pese a la ausencia de negociación. Los próximos controles serán una declaración equivalente del gobierno estadounidense, la convocatoria de una reunión oficial o la definición pública de una agenda. Mientras ninguno de esos hitos ocurra, corresponde distinguir entre mantener vías de contacto y comenzar conversaciones diplomáticas estructuradas.",
+        "anchor": "cuba-estados-unidos-contactos-sin-negociacion",
+        "sources": [
+          {
+            "name": "Reuters",
+            "url": "https://www.reuters.com/world/americas/cuba-us-maintain-channels-communication-no-negotiations-diplomat-says-2026-10-05/"
+          }
+        ]
+      }
+    ],
+    "nacional": [
+      {
+        "slot": "ipsa_company",
+        "headline": "Falabella y Mallplaza preparan una sociedad para seis activos",
+        "deck": "Los memorandos no vinculantes consideran US$200 millones en inmuebles chilenos y un proyecto en Lima, sujetos a revisión y acuerdos definitivos.",
+        "development": "Falabella y su filial Mallplaza informaron una reorganización inmobiliaria basada en dos memorandos de entendimiento no vinculantes. En Chile, el diseño contempla crear una sociedad que reúna seis activos hoy administrados por Falabella Inmobiliario, valorizados en UF 4.857.500, aproximadamente US$200 millones, y con cerca de 140.000 metros cuadrados de superficie arrendable. Mallplaza ingresaría mediante un aumento de capital y conservaría una participación de al menos 51%, además de operar los recintos.\n\nLos activos considerados son Open Plaza Rancagua, Santa Julia en Viña del Mar, Chillán, La Calera, Ovalle y un inmueble en Valdivia. El segundo memorando prevé desarrollar en conjunto un proyecto de centro comercial y usos mixtos en San Isidro, Lima. Falabella y Mallplaza financiarían el desarrollo mediante una capitalización de la sociedad propietaria, en la que Mallplaza también alcanzaría 51% una vez completado el proyecto.\n\nPara ambas compañías del IPSA, el anuncio define una estructura posible, no una transacción cerrada. En Chile aún se requieren una revisión satisfactoria y un acuerdo marco; en Perú, permisos y otras condiciones. Los hitos relevantes serán los contratos definitivos, el monto de los aportes de capital, el calendario de expansiones y cualquier efecto contable comunicado al mercado. Hasta entonces, no corresponde sumar los activos ni sus resultados como una adquisición consumada.",
+        "anchor": "falabella-mallplaza-sociedad-seis-activos",
+        "sources": [
+          {
+            "name": "Mallplaza",
+            "url": "https://corporativo.mallplaza.com/noticia/grupo-falabella-y-su-filial-mallplaza-reorganizan-activos-inmobiliarios-para-potenciar-crecimiento/"
+          },
+          {
+            "name": "Diario Estrategia",
+            "url": "https://www.diarioestrategia.cl/texto-diario/mostrar/6038118/mallplaza-falabella-anuncian-nueva-estructura-traspaso-activos-inmobiliarios-chile-peru"
+          }
+        ]
+      },
+      {
+        "slot": "policy_economy",
+        "headline": "Gobierno amplía el régimen rebajado de patentes mineras",
+        "deck": "Las indicaciones elevan a 150 hectáreas el beneficio para pequeños mineros, eliminan requisitos y flexibilizan la regulación del período de pago.",
+        "development": "El Ministerio de Minería ingresó el 5 de octubre a la Comisión de Minería y Energía del Senado indicaciones al proyecto que simplifica el régimen de patentes mineras. La propuesta amplía hasta 150 hectáreas la superficie máxima que podría acogerse al régimen especial para pequeños productores y elimina la exigencia de acreditar servidumbres. También considera de forma diferenciada la minería metálica y no metálica dentro de la aplicación del beneficio.\n\nLas indicaciones plantean además retirar de la ley el período fijo de pago de la patente, de modo que esa materia pueda regularse en un nivel normativo distinto. El Ejecutivo presentó los cambios tras una mesa técnica con asesores legislativos. El ingreso de indicaciones abre su discusión parlamentaria: no altera por sí solo las obligaciones vigentes ni garantiza que el Senado apruebe el texto en los términos propuestos.\n\nLa evaluación deberá seguir el articulado que adopte la comisión, su votación y el posterior trámite en la Sala. También será necesario conocer la regulación que definiría los períodos de pago si la ley delega esa materia. La señal actual es una modificación formal de la propuesta gubernamental orientada a ampliar el acceso al beneficio y simplificar requisitos; sus efectos económicos dependerán del texto finalmente aprobado y de su implementación.",
+        "anchor": "indicaciones-regimen-patentes-mineras",
+        "sources": [
+          {
+            "name": "Reporte Minero",
+            "url": "https://www.reporteminero.cl/noticia/noticias/2026/10/gobierno-amplia-beneficios-ley-patentes-mineras-pequena-mineria"
+          },
+          {
+            "name": "Diario El América",
+            "url": "https://elamerica.cl/2026/10/05/ejecutivo-ingresa-indicaciones-al-proyecto-de-ley-que-simplifica-el-regimen-de-patentes-mineras/"
+          }
+        ]
+      }
+    ],
+    "mercados": [
+      {
+        "slot": "markets_chile",
+        "headline": "Tanner Banco Digital debuta con un bono local por UF 1 millón",
+        "deck": "La entidad colocó deuda con vencimiento en 2029 seis meses después de iniciar operaciones, abriendo una nueva referencia para su fondeo doméstico.",
+        "development": "Tanner Banco Digital realizó el 1 de octubre su primera colocación de bonos en el mercado chileno, por UF 1.000.000 y con vencimiento en 2029. La operación ocurrió seis meses después del inicio de sus actividades bancarias y corresponde a títulos desmaterializados y al portador. El monto equivale a una nueva fuente de financiamiento de plazo mayor para una entidad que todavía está construyendo su historial como emisor bancario local.\n\nEl debut amplía las alternativas de fondeo de Tanner Banco Digital más allá de depósitos y recursos del controlador, pero el anuncio de la colocación no basta para evaluar su costo relativo. Para hacerlo se necesitan la tasa de adjudicación, el diferencial frente a instrumentos comparables, la demanda total y la distribución entre inversionistas. Tampoco permite inferir por sí solo el ritmo futuro de crecimiento de las colocaciones crediticias ni el efecto sobre márgenes.\n\nLa referencia relevante para el mercado chileno es que un banco de operación reciente logró emitir UF 1 millón a un plazo de aproximadamente tres años. Los próximos controles serán los documentos definitivos de la serie, las clasificaciones de riesgo, el uso de fondos y la evolución de la estructura de pasivos. Esos datos permitirán comparar la operación con emisiones bancarias equivalentes sin atribuirle anticipadamente una mejora financiera.",
+        "anchor": "tanner-banco-digital-bono-local-uf",
+        "sources": [
+          {
+            "name": "Tanner — hechos esenciales",
+            "url": "https://tanner.cl/inversionistas-investors/hechos-esenciales"
+          },
+          {
+            "name": "Diario Estrategia",
+            "url": "https://www.diarioestrategia.cl/texto-diario/mostrar/6037248/tanner-banco-digital-coloca-titulos-deuda-mercado-local"
+          }
+        ]
+      },
+      {
+        "slot": "markets_global",
+        "headline": "Informa compra Clarion por £2.240 millones y separará su editorial",
+        "deck": "El grupo financiará parte de la operación con £940 millones en nuevas acciones y enfocará su estructura en eventos empresariales internacionales.",
+        "development": "Informa acordó comprar Clarion a Blackstone por un valor empresa de £2.240 millones y anunció en paralelo que separará Taylor & Francis, su negocio de publicaciones académicas. La adquisición incorpora más de 100 marcas de eventos empresariales y está prevista para completarse hacia fines del cuarto trimestre de 2026, sujeta a las autorizaciones habituales. Clarion permanecerá inicialmente como una unidad operativa bajo su actual directora ejecutiva.\n\nEl grupo británico planea obtener cerca de £940 millones mediante una emisión de acciones para financiar parte de la compra. Informa proyecta que la combinación elevará sus ingresos anuales por encima de US$6.000 millones y que aportará crecimiento a la utilidad por acción desde 2027. Esas cifras son metas de la compañía, no resultados realizados. La separación de Taylor & Francis también está en revisión y su resultado se comunicaría junto con las cuentas anuales de marzo de 2027.\n\nPara el mercado, la operación combina adquisición, aumento de capital y cambio de perímetro en una sola decisión estratégica. Los puntos a seguir son el precio definitivo de la colocación, la dilución, las aprobaciones regulatorias, el cierre de Clarion y la alternativa elegida para la editorial. Hasta completar esas etapas, el acuerdo amplía la exposición prevista de Informa a eventos, pero no constituye todavía una integración terminada.",
+        "anchor": "informa-compra-clarion-separa-taylor-francis",
+        "sources": [
+          {
+            "name": "Informa — anuncio regulatorio",
+            "url": "https://www.lse.co.uk/rns/INF/growth-focus-international-expansion-a9drgk57xxwxhk4.html"
+          },
+          {
+            "name": "Financial Times",
+            "url": "https://www.ft.com/content/0c8c0122-cc24-4ea5-bc7f-09bfc95d3dd1"
+          }
+        ]
+      }
+    ]
+  }
+}
