@@ -2,7 +2,7 @@
 title: "Quiroz presenta hoy el marco fiscal del Presupuesto 2027"
 summary: "Hacienda y Dipres exponen hoy ante la Comisión Especial Mixta de Presupuestos. El foco estará en las nuevas proyecciones fiscales que sostienen el erario de 2027."
 publishedAt: "2026-10-06T08:23:17-03:00"
-status: "draft"
+status: "published"
 tags:
   - contingencia
   - chile
