@@ -70,12 +70,12 @@ for (const entry of await readdir(editionDir, { withFileTypes: true })) {
   });
 }
 
-records.sort(
-  (a, b) => Date.parse(b.publishedAt) - Date.parse(a.publishedAt),
-);
+records.sort((a, b) => Date.parse(b.publishedAt) - Date.parse(a.publishedAt));
 const current = records[0];
 if (!current) {
-  throw new Error("No existe una edición daily publicada para resolver identidad.");
+  throw new Error(
+    "No existe una edición daily publicada para resolver identidad.",
+  );
 }
 
 let sourceCommit;
