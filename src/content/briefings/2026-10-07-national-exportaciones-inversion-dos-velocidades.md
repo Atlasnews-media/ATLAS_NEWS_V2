@@ -1,11 +1,11 @@
 ---
 title: "Exportaciones superan US$10.500 millones, pero la compra de maquinaria cae 9,4%"
 summary: "El comercio exterior chileno aceleró en septiembre gracias al cobre, el litio y la industria, mientras las importaciones de bienes de capital prolongaron su descenso y mostraron una inversión todavía débil."
-publishedAt: "2026-10-07T12:05:00-03:00"
+publishedAt: "2026-10-07T18:58:19-03:00"
 cutoffAt: "2026-10-07T12:00:00-03:00"
 section: "national"
 editionSlot: "midday"
-status: "draft"
+status: "published"
 tags:
   - chile
   - comercio-exterior
