@@ -24,9 +24,17 @@ export function briefingIdentityKey(date, section, value) {
   return `${date}:${section}:${normalizeEditionSlot(value)}`;
 }
 
+function recordId(record) {
+  const id = record?.id ?? record?.slug;
+  if (!id || typeof id !== "string") {
+    throw new Error("No se pudo resolver la identidad de una edición daily.");
+  }
+  return id;
+}
+
 export function dailyIssueNumberFromRecords(target, records) {
   if (!target) return undefined;
-  const date = target.id.slice(0, 10);
+  const date = recordId(target).slice(0, 10);
   const dates = [
     ...new Set(
       [...records]
@@ -34,7 +42,7 @@ export function dailyIssueNumberFromRecords(target, records) {
           (a, b) =>
             Date.parse(a.publishedAt ?? "") - Date.parse(b.publishedAt ?? ""),
         )
-        .map((record) => record.id.slice(0, 10)),
+        .map((record) => recordId(record).slice(0, 10)),
     ),
   ];
   const position = dates.indexOf(date);
