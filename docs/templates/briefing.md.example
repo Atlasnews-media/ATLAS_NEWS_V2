@@ -4,6 +4,7 @@ summary: "Resumen ejecutivo suficiente para explicar el foco sin sustituir la le
 publishedAt: "2026-08-09T06:30:00-04:00"
 cutoffAt: "2026-08-09T06:15:00-04:00"
 section: "national"
+editionSlot: "morning" # usar "midday" únicamente para la Edición Mediodía
 status: "draft"
 tags:
   - chile
