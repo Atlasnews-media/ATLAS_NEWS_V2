@@ -1,5 +1,11 @@
 import { access, readdir, readFile } from "node:fs/promises";
 
+import {
+  dailyIssueNumberFromRecords,
+  editionIdentityKey,
+  normalizeEditionSlot,
+} from "./edition-slot-contract.mjs";
+
 const root = new URL("../", import.meta.url);
 const briefingDir = new URL("src/content/briefings/", root);
 
@@ -174,13 +180,18 @@ async function validateContentGroup(group) {
         title: frontmatterValue(markdown, "title") ?? "",
         publishedAt: frontmatterValue(markdown, "publishedAt") ?? "",
         type: frontmatterValue(markdown, "type"),
+        editionSlot: frontmatterValue(markdown, "editionSlot"),
       };
       published.push(record);
 
       if (group.outputDir === "dist/ediciones") {
         const match = filename.match(/^(\d{4}-\d{2}-\d{2})-(daily|weekly)-/);
         if (match) {
-          const editionKey = `${match[1]}:${match[2]}`;
+          const editionKey = editionIdentityKey(
+            match[1],
+            match[2],
+            frontmatterValue(markdown, "editionSlot"),
+          );
           const previous = publishedEditionKeys.get(editionKey);
           if (previous) {
             throw new Error(
@@ -237,6 +248,9 @@ async function validateBriefings() {
         title: frontmatterValue(markdown, "title") ?? "",
         publishedAt: frontmatterValue(markdown, "publishedAt") ?? "",
         section,
+        editionSlot: normalizeEditionSlot(
+          frontmatterValue(markdown, "editionSlot"),
+        ),
         route,
       };
       published.push(record);
@@ -300,7 +314,8 @@ const publishedMarkets = briefingResult.published
 const latestDaily = publishedDailies.at(-1);
 const latestNational = publishedNational.at(-1);
 const latestMarkets = publishedMarkets.at(-1);
-const currentIssueNumber = publishedDailies.length;
+const currentIssueNumber =
+  dailyIssueNumberFromRecords(latestDaily, publishedDailies) ?? 0;
 const currentIssueLabel = `N.º ${String(currentIssueNumber).padStart(3, "0")}`;
 
 if (latestDaily) {
@@ -344,6 +359,14 @@ if (latestDaily) {
       "El manifiesto no identifica la edición diaria más reciente.",
     );
   }
+  if (
+    status.latestDaily?.editionSlot !==
+    normalizeEditionSlot(latestDaily.editionSlot)
+  ) {
+    throw new Error(
+      "El manifiesto no conserva el tramo de la edición diaria vigente.",
+    );
+  }
   if (status.latestDaily?.issueNumber !== currentIssueNumber) {
     throw new Error(
       "El manifiesto contiene una numeración editorial incorrecta.",
@@ -369,7 +392,10 @@ if (status.latestMarkets?.id !== (latestMarkets?.slug ?? undefined)) {
   }
 }
 if (!status.sourceCommit || typeof status.sourceCommit !== "string") {
-  throw new Error("El manifiesto no identifica el commit de origen.");
+  throw new Error("El manifiesto no identifica el sourceCommit editorial.");
+}
+if (!status.buildCommit || typeof status.buildCommit !== "string") {
+  throw new Error("El manifiesto no identifica el buildCommit técnico.");
 }
 
 const statePage = htmlToText(
