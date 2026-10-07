@@ -22,7 +22,13 @@ const titleId = `section-analysis-audio-${section}`;
   hidden
 >
   <div class="audio-copy">
-    <p class="audio-kicker" id={titleId}>{title}</p>
+    <div class="audio-heading">
+      <span class="audio-accent" aria-hidden="true"></span>
+      <p class="audio-kicker" id={titleId} title={title}>
+        <span>ATLAS NEWS</span> RADIO
+      </p>
+      <span class="audio-rule" aria-hidden="true"></span>
+    </div>
     <p>{summary}</p>
   </div>
   <div class="audio-player">
@@ -197,12 +203,47 @@ const titleId = `section-analysis-audio-${section}`;
   .section-analysis-audio[hidden] {
     display: none;
   }
+  .audio-copy {
+    min-width: 0;
+  }
+  .audio-heading {
+    display: grid;
+    grid-template-columns: auto minmax(2rem, 1fr);
+    grid-template-rows: auto auto;
+    align-items: center;
+    gap: 0.28rem 0.65rem;
+    min-width: 0;
+    margin-bottom: 0.42rem;
+  }
+  .audio-accent {
+    grid-column: 1;
+    grid-row: 1;
+    width: clamp(2.8rem, 6vw, 4.4rem);
+    height: 0.18rem;
+    background: var(--accent);
+  }
   .audio-kicker {
+    grid-column: 1;
+    grid-row: 2;
     margin: 0;
-    color: var(--accent);
-    font: 800 0.72rem/1.2 var(--sans);
-    letter-spacing: 0.16em;
+    color: var(--ink);
+    font-family: var(--display);
+    font-size: clamp(0.78rem, 1.75vw, 1.18rem);
+    font-weight: 700;
+    line-height: 1;
+    letter-spacing: -0.02em;
     text-transform: uppercase;
+    white-space: nowrap;
+  }
+  .audio-kicker span {
+    color: var(--accent);
+  }
+  .audio-rule {
+    grid-column: 2;
+    grid-row: 2;
+    width: 100%;
+    height: 1px;
+    background: rgb(35 35 29 / 72%);
   }
   .audio-copy > p:last-child {
     max-width: 45rem;
@@ -220,6 +261,18 @@ const titleId = `section-analysis-audio-${section}`;
       gap: 1rem;
       margin-top: 1.35rem;
       padding: 1.1rem 0 1.25rem;
+    }
+    .audio-heading {
+      gap: 0.22rem 0.46rem;
+      margin-bottom: 0.3rem;
+    }
+    .audio-accent {
+      width: 2.55rem;
+      height: 0.15rem;
+    }
+    .audio-kicker {
+      font-size: clamp(0.58rem, 2.55vw, 0.78rem);
+      letter-spacing: -0.01em;
     }
   }
 </style>
