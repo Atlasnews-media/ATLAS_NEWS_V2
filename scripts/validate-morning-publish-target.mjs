@@ -22,9 +22,7 @@ async function publishedRecord(path, label) {
     );
   }
   return {
-    editionSlot: normalizeEditionSlot(
-      frontmatterValue(source, "editionSlot"),
-    ),
+    editionSlot: normalizeEditionSlot(frontmatterValue(source, "editionSlot")),
   };
 }
 
