@@ -4,19 +4,20 @@
 
 Una edición diaria o semanal debe incluir los siguientes metadatos:
 
-| Campo           | Regla                                        |
-| --------------- | -------------------------------------------- |
-| `title`         | Entre 8 y 140 caracteres                     |
-| `summary`       | Entre 40 y 320 caracteres                    |
-| `publishedAt`   | Fecha ISO 8601 con zona horaria              |
-| `cutoffAt`      | Cierre informativo ISO 8601 con zona horaria |
-| `type`          | `daily` o `weekly`                           |
-| `status`        | `draft` o `published`                        |
-| `tags`          | Al menos una etiqueta                        |
-| `sources`       | Al menos una fuente con nombre y URL válida  |
-| `featured`      | Indicador booleano; por defecto `false`      |
-| `editionNumber` | Entero positivo opcional                     |
-| `highlights`    | Entre 3 y 6 claves breves para la portada    |
+| Campo           | Regla                                                                     |
+| --------------- | ------------------------------------------------------------------------- |
+| `title`         | Entre 8 y 140 caracteres                                                  |
+| `summary`       | Entre 40 y 320 caracteres                                                 |
+| `publishedAt`   | Fecha ISO 8601 con zona horaria                                           |
+| `cutoffAt`      | Cierre informativo ISO 8601 con zona horaria                              |
+| `type`          | `daily` o `weekly`                                                        |
+| `editionSlot`   | En `daily`: `morning` o `midday`; ausencia = `morning` por compatibilidad |
+| `status`        | `draft` o `published`                                                     |
+| `tags`          | Al menos una etiqueta                                                     |
+| `sources`       | Al menos una fuente con nombre y URL válida                               |
+| `featured`      | Indicador booleano; por defecto `false`                                   |
+| `editionNumber` | Entero positivo opcional                                                  |
+| `highlights`    | Entre 3 y 6 claves breves para la portada                                 |
 
 En toda nueva edición General diaria, `highlights` debe contener **exactamente cinco** claves. Ni cuatro ni seis son válidos para una nueva General diaria. Las cinco claves deben derivar de la misma investigación internacional verificada y del mismo cuerpo editorial de la edición; esos mismos cinco elementos alimentan Portada y los consumidores sociales posteriores. Ningún proceso downstream debe inventar, completar o sustituir un highlight con contenido de otras secciones. El schema mantiene el rango histórico de 3 a 6 únicamente por compatibilidad con ediciones anteriores y otros tipos de edición; esa flexibilidad técnica no modifica el contrato funcional de nuevas General diarias.
 
@@ -64,18 +65,19 @@ La publicación debe escribirse para el lector. No debe mencionar el documento d
 
 Las piezas de Nacional y Mercados comparten la colección `briefings` y deben incluir:
 
-| Campo         | Regla                                        |
-| ------------- | -------------------------------------------- |
-| `title`       | Entre 8 y 160 caracteres                     |
-| `summary`     | Entre 40 y 320 caracteres                    |
-| `publishedAt` | Fecha ISO 8601 con zona horaria              |
-| `cutoffAt`    | Cierre informativo ISO 8601 con zona horaria |
-| `section`     | `national` o `markets`                       |
-| `status`      | `draft` o `published`                        |
-| `tags`        | Al menos una etiqueta                        |
-| `sources`     | Al menos una fuente con nombre y URL válida  |
-| `highlights`  | Opcional; si existe, exactamente tres claves |
-| `demo`        | Debe ser `false`                             |
+| Campo         | Regla                                                         |
+| ------------- | ------------------------------------------------------------- |
+| `title`       | Entre 8 y 160 caracteres                                      |
+| `summary`     | Entre 40 y 320 caracteres                                     |
+| `publishedAt` | Fecha ISO 8601 con zona horaria                               |
+| `cutoffAt`    | Cierre informativo ISO 8601 con zona horaria                  |
+| `section`     | `national` o `markets`                                        |
+| `editionSlot` | `morning` o `midday`; ausencia = `morning` por compatibilidad |
+| `status`      | `draft` o `published`                                         |
+| `tags`        | Al menos una etiqueta                                         |
+| `sources`     | Al menos una fuente con nombre y URL válida                   |
+| `highlights`  | Opcional; si existe, exactamente tres claves                  |
+| `demo`        | Debe ser `false`                                              |
 
 El cuerpo debe desarrollar análisis propio de la vertical. Los hechos y fuentes pueden coincidir con la edición General cuando exista una conexión internacional pertinente, pero el texto no debe duplicar sus párrafos. Nacional es el propietario exclusivo de hechos domésticos chilenos y profundiza contexto, transmisión y consecuencias locales. Mercados es el propietario de precios, activos, flujos, posicionamiento y dinámica cross-asset. General conserva la señal internacional y no absorbe el desarrollo propio de estas verticales.
 
@@ -114,6 +116,21 @@ La promoción es una transición mecánica, no una nueva etapa editorial. Para c
 
 La memoria editorial `data/editorial_state.json` puede ser leída por las tres piezas, pero dentro del paquete matutino solo la edición General puede modificarla. General solo evalúa y actualiza hilos efectivamente investigados dentro de su alcance internacional en esa ejecución; los demás hilos permanecen intactos. Nacional y Mercados no escriben memoria editorial de forma independiente.
 
+## Paquete editorial mediodía
+
+La edición de mediodía utiliza la misma colección, schemas, rutas públicas y publicador que la edición matutina. Su identidad se expresa mediante `editionSlot: "midday"`; la ausencia de `editionSlot` conserva semántica matutina para no exigir una reescritura de T1 → T4 ni del histórico.
+
+```text
+Rama: editorial/AAAA-MM-DD-midday
+PR: Paquete editorial mediodía — AAAA-MM-DD
+```
+
+El paquete puede contener exactamente una General `daily` de la fecha objetivo y, como máximo, una pieza Nacional y una pieza Mercados con el mismo `editionSlot: "midday"`. Una publicación Matutina y una Mediodía de la misma fecha son válidas porque tienen identidades distintas; dos publicaciones del mismo tipo, fecha y `editionSlot` continúan siendo inválidas.
+
+La promoción de Mediodía usa el mismo contrato mecánico de producción: sólo cambia `status: draft → published` y `publishedAt`; `cutoffAt`, contenido, fuentes, highlights y demás metadatos editoriales permanecen intactos. La publicación de Mediodía no elimina ni reescribe Matutina.
+
+El número diario corresponde a la fecha editorial, no al número de archivos `daily`: Matutina y Mediodía de una misma fecha comparten el mismo N.º. La edición vigente de Portada es la publicación `daily` con `publishedAt` más reciente; su `editionSlot` determina si la navegación muestra `EDICIÓN MATUTINA` o `EDICIÓN MEDIODÍA`.
+
 ## Lecturas seleccionadas
 
 Cada lectura debe tener título, resumen, fecha, estado, etiquetas y una fuente principal. El autor es opcional.
@@ -128,7 +145,7 @@ AAAA-MM-DD-markets-titulo-breve.md
 AAAA-MM-DD-reading-titulo-breve.md
 ```
 
-Los nombres usan minúsculas, caracteres ASCII y guiones. No se reemplaza un archivo existente salvo que se esté corrigiendo expresamente esa misma publicación.
+Los nombres usan minúsculas, caracteres ASCII y guiones. No se reemplaza un archivo existente salvo que se esté corrigiendo expresamente esa misma publicación. En una misma fecha pueden coexistir dos archivos `daily` únicamente si sus identidades productivas difieren por `editionSlot`; sus IDs y rutas siguen siendo los nombres completos de archivo.
 
 ## Estados
 

@@ -1,18 +1,29 @@
 import { access, readdir, readFile } from "node:fs/promises";
 import { resolve } from "node:path";
 
+import {
+  dailyIssueNumberFromRecords,
+  normalizeEditionSlot,
+  packageForSlot,
+} from "./edition-slot-contract.mjs";
+
 const root = new URL("../", import.meta.url);
 const editionDir = new URL("src/content/editions/", root);
 const briefingDir = new URL("src/content/briefings/", root);
 const readingDir = new URL("src/content/readings/", root);
 const publicDir = process.env.ATLAS_PUBLIC_DIR;
-const expectedCommit = process.env.ATLAS_SOURCE_SHA ?? process.env.GITHUB_SHA;
+const expectedBuildCommit =
+  process.env.ATLAS_SOURCE_SHA ?? process.env.GITHUB_SHA;
+const expectedEditorialCommit =
+  process.env.ATLAS_EDITORIAL_SOURCE_SHA ?? expectedBuildCommit;
 
 if (!publicDir) {
   throw new Error("ATLAS_PUBLIC_DIR es obligatorio para auditar producción.");
 }
-if (!expectedCommit) {
-  throw new Error("ATLAS_SOURCE_SHA o GITHUB_SHA es obligatorio.");
+if (!expectedBuildCommit || !expectedEditorialCommit) {
+  throw new Error(
+    "ATLAS_SOURCE_SHA/GITHUB_SHA y la identidad editorial son obligatorios.",
+  );
 }
 
 function frontmatterValue(text, field) {
@@ -51,26 +62,32 @@ for (const filename of editionFiles) {
     id: filename.replace(/\.mdx?$/, ""),
     title: frontmatterValue(text, "title") ?? "",
     publishedAt: frontmatterValue(text, "publishedAt") ?? "",
+    editionSlot: normalizeEditionSlot(frontmatterValue(text, "editionSlot")),
   });
 }
 publishedDailies.sort(oldestFirst);
 
-const publishedNational = [];
-const publishedMarkets = [];
+const publishedBriefings = [];
 for (const filename of briefingFiles) {
   const text = await readFile(new URL(filename, briefingDir), "utf8");
   if (frontmatterValue(text, "status") !== "published") continue;
-  const record = {
+  const section = frontmatterValue(text, "section");
+  if (!["national", "markets"].includes(section)) continue;
+  publishedBriefings.push({
     id: filename.replace(/\.mdx?$/, ""),
     title: frontmatterValue(text, "title") ?? "",
     publishedAt: frontmatterValue(text, "publishedAt") ?? "",
-  };
-  const section = frontmatterValue(text, "section");
-  if (section === "national") publishedNational.push(record);
-  if (section === "markets") publishedMarkets.push(record);
+    section,
+    editionSlot: normalizeEditionSlot(frontmatterValue(text, "editionSlot")),
+  });
 }
-publishedNational.sort(oldestFirst);
-publishedMarkets.sort(oldestFirst);
+publishedBriefings.sort(oldestFirst);
+const publishedNational = publishedBriefings.filter(
+  ({ section }) => section === "national",
+);
+const publishedMarkets = publishedBriefings.filter(
+  ({ section }) => section === "markets",
+);
 
 let publishedReadingCount = 0;
 for (const filename of readingFiles) {
@@ -89,21 +106,33 @@ const status = JSON.parse(await readFile(statusPath, "utf8"));
 const index = await readFile(indexPath, "utf8");
 const errors = [];
 
-if (status.sourceCommit !== expectedCommit) {
+if (status.sourceCommit !== expectedEditorialCommit) {
   errors.push(
-    `producción usa ${status.sourceCommit}, pero main está en ${expectedCommit}`,
+    `producción usa sourceCommit ${status.sourceCommit}, pero la edición vigente espera ${expectedEditorialCommit}`,
+  );
+}
+if (status.buildCommit !== expectedBuildCommit) {
+  errors.push(
+    `producción usa buildCommit ${status.buildCommit}, pero el build espera ${expectedBuildCommit}`,
   );
 }
 
 if (latestDaily) {
+  const issueNumber = dailyIssueNumberFromRecords(
+    latestDaily,
+    publishedDailies,
+  );
   if (status.latestDaily?.id !== latestDaily.id) {
     errors.push(
       `producción muestra ${status.latestDaily?.id ?? "ninguna edición"}, pero main espera ${latestDaily.id}`,
     );
   }
-  if (status.latestDaily?.issueNumber !== publishedDailies.length) {
+  if (status.latestDaily?.editionSlot !== latestDaily.editionSlot) {
+    errors.push("latestDaily no conserva la identidad de tramo editorial.");
+  }
+  if (status.latestDaily?.issueNumber !== issueNumber) {
     errors.push(
-      `producción informa N° ${status.latestDaily?.issueNumber ?? "sin número"}, pero main espera N° ${publishedDailies.length}`,
+      `producción informa N° ${status.latestDaily?.issueNumber ?? "sin número"}, pero main espera N° ${issueNumber}`,
     );
   }
   if (!index.includes(`/ediciones/${latestDaily.id}/`)) {
@@ -126,6 +155,9 @@ async function auditBriefing({ record, statusKey, route, label }) {
     errors.push(
       `${statusKey} informa ${manifestRecord?.id ?? "ninguno"}, pero se espera ${record.id}`,
     );
+  }
+  if (manifestRecord?.editionSlot !== record.editionSlot) {
+    errors.push(`${statusKey} no conserva editionSlot de ${label}.`);
   }
 
   const outputPath = resolve(publicDir, route, record.id, "index.html");
@@ -153,6 +185,27 @@ await auditBriefing({
   label: "Mercados",
 });
 
+const expectedMorning = packageForSlot({
+  dailies: publishedDailies,
+  briefings: publishedBriefings,
+  slot: "morning",
+});
+const expectedMidday = packageForSlot({
+  dailies: publishedDailies,
+  briefings: publishedBriefings,
+  slot: "midday",
+});
+for (const [key, expected] of [
+  ["morningPackage", expectedMorning],
+  ["middayPackage", expectedMidday],
+]) {
+  if (
+    JSON.stringify(status[key] ?? null) !== JSON.stringify(expected ?? null)
+  ) {
+    errors.push(`${key} no coincide con el contenido publicado.`);
+  }
+}
+
 const expectedTotal =
   publishedDailies.length +
   publishedWeeklyCount +
@@ -167,22 +220,18 @@ if (status.publications?.daily !== publishedDailies.length) {
 }
 if (status.publications?.weekly !== publishedWeeklyCount) {
   errors.push(
-    "el conteo weekly de status.json no coincide con el contenido publicado",
+    "el conteo weekly de status.json no coincide con los panoramas semanales",
   );
 }
 if (status.publications?.national !== publishedNational.length) {
-  errors.push(
-    "el conteo national de status.json no coincide con el contenido publicado",
-  );
+  errors.push("el conteo national de status.json no coincide con Nacional");
 }
 if (status.publications?.markets !== publishedMarkets.length) {
-  errors.push(
-    "el conteo markets de status.json no coincide con el contenido publicado",
-  );
+  errors.push("el conteo markets de status.json no coincide con Mercados");
 }
 if (status.publications?.readings !== publishedReadingCount) {
   errors.push(
-    "el conteo readings de status.json no coincide con el contenido publicado",
+    "el conteo readings de status.json no coincide con las publicaciones publicadas",
   );
 }
 if (status.publications?.total !== expectedTotal) {
@@ -197,5 +246,5 @@ if (errors.length) {
 }
 
 console.log(
-  `Producción alineada: N° ${publishedDailies.length}, Nacional ${publishedNational.length}, Mercados ${publishedMarkets.length}, commit ${expectedCommit.slice(0, 7)}.`,
+  `Producción alineada: edición vigente ${latestDaily?.id ?? "ninguna"} (${latestDaily?.editionSlot ?? "sin slot"}), Nacional ${publishedNational.length}, Mercados ${publishedMarkets.length}, sourceCommit ${expectedEditorialCommit.slice(0, 7)}, buildCommit ${expectedBuildCommit.slice(0, 7)}.`,
 );

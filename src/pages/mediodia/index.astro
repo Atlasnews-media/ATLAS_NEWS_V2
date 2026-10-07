@@ -1,5 +1,28 @@
 ---
+import ContentCard from "../../components/ContentCard.astro";
 import BaseLayout from "../../layouts/BaseLayout.astro";
+import {
+  formatEditorialDate,
+  getPublishedDailiesForSlot,
+  getPublishedEditions,
+  getPublishedMarketsForSlot,
+  getPublishedNationalForSlot,
+} from "../../lib/content";
+
+const [editions, nationalMidday, marketsMidday] = await Promise.all([
+  getPublishedEditions(),
+  getPublishedNationalForSlot("midday"),
+  getPublishedMarketsForSlot("midday"),
+]);
+const middayDailies = getPublishedDailiesForSlot(editions, "midday");
+const currentMidday = middayDailies[0];
+const currentDate = currentMidday?.id.slice(0, 10);
+const currentNational = currentDate
+  ? nationalMidday.find(({ id }) => id.startsWith(`${currentDate}-national-`))
+  : undefined;
+const currentMarkets = currentDate
+  ? marketsMidday.find(({ id }) => id.startsWith(`${currentDate}-markets-`))
+  : undefined;
 ---
 
 <BaseLayout
@@ -14,11 +37,65 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
       Nacional y Mercados posteriores a la apertura matutina.
     </p>
 
-    <p class="empty-state">Aún no hay una edición de mediodía publicada.</p>
+    {
+      currentMidday ? (
+        <div class="midday-grid">
+          <ContentCard
+            href={`/ediciones/${currentMidday.id}/`}
+            eyebrow="Internacional · Mediodía"
+            title={currentMidday.data.title}
+            summary={currentMidday.data.summary}
+            date={formatEditorialDate(currentMidday.data.publishedAt)}
+            demo={currentMidday.data.demo}
+          />
+          {currentNational && (
+            <ContentCard
+              href={`/nacional/${currentNational.id}/`}
+              eyebrow="Nacional · Mediodía"
+              title={currentNational.data.title}
+              summary={currentNational.data.summary}
+              date={formatEditorialDate(currentNational.data.publishedAt)}
+              demo={currentNational.data.demo}
+            />
+          )}
+          {currentMarkets && (
+            <ContentCard
+              href={`/mercados/${currentMarkets.id}/`}
+              eyebrow="Mercados · Mediodía"
+              title={currentMarkets.data.title}
+              summary={currentMarkets.data.summary}
+              date={formatEditorialDate(currentMarkets.data.publishedAt)}
+              demo={currentMarkets.data.demo}
+            />
+          )}
+        </div>
+      ) : (
+        <p class="empty-state">Aún no hay una edición de mediodía publicada.</p>
+      )
+    }
   </main>
 </BaseLayout>
 
 <style>
+  .midday-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    border-top: 5px double var(--rule);
+  }
+
+  .midday-grid :global(.card) {
+    padding: 1.4rem;
+    border-top-width: 1px;
+  }
+
+  .midday-grid :global(.card:first-child) {
+    padding-left: 0;
+  }
+
+  .midday-grid :global(.card + .card) {
+    border-left: 1px solid var(--rule);
+  }
+
   .empty-state {
     margin-top: 2rem;
     padding: 2rem 0;
@@ -31,6 +108,17 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
   @media (max-width: 42rem) {
     .page-intro {
       display: none;
+    }
+
+    .midday-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .midday-grid :global(.card),
+    .midday-grid :global(.card:first-child) {
+      padding-right: 0;
+      padding-left: 0;
+      border-left: 0;
     }
   }
 </style>

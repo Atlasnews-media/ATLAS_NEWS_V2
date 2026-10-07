@@ -3,11 +3,13 @@ import indicators from "../../data/economic-indicators.json";
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import {
   dailyIssueNumber,
+  editionNavigationLabel,
   formatEditorialDate,
   formatIssueNumber,
   getPublishedDailies,
   getPublishedEditions,
   getPublishedReadings,
+  resolveEditionSlot,
 } from "../../lib/content";
 
 declare const process: {
@@ -62,7 +64,7 @@ const indicatorDate = new Intl.DateTimeFormat("es-CL", {
         <span>
           {
             currentDaily
-              ? formatEditorialDate(currentDaily.data.publishedAt)
+              ? `${editionNavigationLabel(resolveEditionSlot(currentDaily.data))} · ${formatEditorialDate(currentDaily.data.publishedAt)}`
               : "Sin edición diaria publicada"
           }
         </span>

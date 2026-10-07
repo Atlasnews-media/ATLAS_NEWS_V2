@@ -32,6 +32,7 @@ Nacional es el propietario editorial exclusivo de los hechos domésticos de Chil
 - Lecturas: `src/content/readings/`.
 - Memoria editorial: `data/editorial_state.json`.
 - Nombre diario General: `AAAA-MM-DD-daily-titulo-breve.md`.
+- Tramo editorial diario: `editionSlot: morning | midday`; si falta, se interpreta `morning` por compatibilidad.
 - Nombre semanal: `AAAA-MM-DD-weekly-titulo-breve.md`.
 - Nombre Nacional: `AAAA-MM-DD-national-titulo-breve.md`.
 - Nombre Mercados: `AAAA-MM-DD-markets-titulo-breve.md`.
@@ -58,7 +59,7 @@ Nacional es el propietario editorial exclusivo de los hechos domésticos de Chil
    - Tasas, monedas y commodities.
    - Qué observar.
 6. En General, todo el cuerpo debe derivar de la investigación internacional. `Chile` solo explica transmisión de esa evidencia internacional. En Nacional, desarrollar exclusivamente los hechos locales de Chile. En Mercados, desarrollar precios, activos, flujos, posicionamiento y dinámica cross-asset. Las verticales deben evitar clonar párrafos de General.
-7. Crear inicialmente todo contenido automatizado con `status: draft`.
+7. Crear inicialmente todo contenido automatizado con `status: draft`. En Matutina puede omitirse `editionSlot` por compatibilidad; toda pieza de Mediodía debe declarar explícitamente `editionSlot: "midday"`.
 8. No agregar una sección duplicada de fuentes cuando el sitio ya la construye desde el frontmatter.
 
 Los `highlights` de toda nueva General diaria son exactamente cinco y se generan a partir de la misma investigación internacional verificada y del mismo cuerpo editorial. No abren una segunda búsqueda ni introducen hechos nuevos. Esos mismos cinco alimentan Portada y los consumidores sociales posteriores; ningún proceso downstream debe inventar, completar o sustituir un highlight con contenido de `Qué observar`, `Chile`, `Mercados globales`, `Hecho central` ni otra sección. Deben priorizar las cinco señales que más valor entregan al lector y evitar una secuencia fija de categorías.
@@ -147,13 +148,33 @@ La edición General es obligatoria para completar el paquete matutino. Nacional 
 
 No es necesario ejecutar una aprobación humana ni convertir un Draft PR en Ready for review porque los PR editoriales se crean como PR normales. Si el paquete no se fusiona, la memoria editorial tampoco avanza en `main`.
 
+## Paquete editorial mediodía
+
+Mediodía es una segunda unidad editorial productiva de la misma fecha, no una mutación retrospectiva de Matutina.
+
+```text
+Rama: editorial/AAAA-MM-DD-midday
+PR: Paquete editorial mediodía — AAAA-MM-DD
+```
+
+1. Partir del `main` remoto vigente, que ya contiene Matutina publicada.
+2. Crear una nueva General `daily` como `draft` y declarar `editionSlot: "midday"`.
+3. Nacional y Mercados de Mediodía, cuando existan, usan sus mismas colecciones y nombres y también declaran `editionSlot: "midday"`.
+4. No modificar los archivos matutinos para representar Mediodía.
+5. El PR puede contener una General y como máximo una Nacional y una Mercados para ese tramo.
+6. Validar el HEAD exacto con los mismos principios de schema, `validate:content`, build, manifiesto y auditor.
+7. La promoción usa el mismo contrato mecánico: `status: draft → published` y `publishedAt` real; no reescribir cuerpo ni `cutoffAt`.
+8. Tras el merge, el publicador general preserva Matutina y convierte Mediodía en la edición vigente porque tiene el `publishedAt` posterior.
+9. Verificar en `status.json` fecha, `editionSlot: "midday"`, ID de General y `sourceCommit` editorial correspondiente.
+10. La Portada debe mostrar `EDICIÓN MEDIODÍA` derivada de esa identidad. Este flujo no define Audio, Reel, Carrusel ni Vespertina.
+
 ## Formato y validaciones
 
 El formato cosmético de los Markdown editoriales y de `data/editorial_state.json` no es un criterio editorial y no debe bloquear por sí solo una publicación. Esos archivos quedan fuera del gate general de Prettier.
 
 La integridad se protege mediante validaciones objetivas: `validate:content`, esquema Astro, build, manifiesto y auditor. El formato técnico de código, workflows, componentes y documentación técnica continúa protegido por `format:check`.
 
-El workflow reconoce el paquete matutino por su rama, exige exactamente una edición General diaria y admite como máximo una pieza Nacional y una Mercados. La memoria operacional se registra una sola vez usando la identidad de General; las verticales no crean secuencias operacionales separadas.
+El workflow reconoce el paquete matutino por su rama y el paquete Mediodía por `editorial/AAAA-MM-DD-midday`. Cada uno exige exactamente una General de su propio `editionSlot` y admite como máximo una Nacional y una Mercados del mismo tramo. La memoria operacional se registra una sola vez por paquete usando la identidad de General; las verticales no crean secuencias operacionales separadas.
 
 ## Panorama semanal
 

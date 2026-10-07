@@ -1,5 +1,11 @@
 import { mkdir, readdir, readFile, writeFile } from "node:fs/promises";
 
+import {
+  dailyIssueNumberFromRecords,
+  normalizeEditionSlot,
+  packageForSlot,
+} from "./edition-slot-contract.mjs";
+
 const root = new URL("../", import.meta.url);
 const editionDir = new URL("src/content/editions/", root);
 const briefingDir = new URL("src/content/briefings/", root);
@@ -45,6 +51,7 @@ async function markdownRecords(directory) {
         cutoffAt: field(text, "cutoffAt"),
         type: field(text, "type"),
         section: field(text, "section"),
+        editionSlot: field(text, "editionSlot"),
         status: field(text, "status"),
       };
     }),
@@ -59,6 +66,7 @@ function latestBriefingRecord(record) {
   return record
     ? {
         id: record.id,
+        editionSlot: normalizeEditionSlot(record.editionSlot),
         title: record.title,
         publishedAt: record.publishedAt,
         cutoffAt: record.cutoffAt,
@@ -101,28 +109,35 @@ const latestDaily = publishedDailies.at(-1);
 const latestNational = publishedNational.at(-1);
 const latestMarkets = publishedMarkets.at(-1);
 const sourceCommit =
+  process.env.ATLAS_EDITORIAL_SOURCE_SHA ??
+  process.env.ATLAS_SOURCE_SHA ??
+  process.env.GITHUB_SHA ??
+  "local";
+const buildCommit =
   process.env.ATLAS_SOURCE_SHA ?? process.env.GITHUB_SHA ?? "local";
 
-const morningDate = latestDaily?.id.slice(0, 10);
-const generalPublished = Boolean(latestDaily);
-const nationalPublished = Boolean(
-  morningDate && latestNational?.id.startsWith(`${morningDate}-national-`),
-);
-const marketsPublished = Boolean(
-  morningDate && latestMarkets?.id.startsWith(`${morningDate}-markets-`),
-);
-const morningCompleteness =
-  Number(generalPublished) +
-  Number(nationalPublished) +
-  Number(marketsPublished);
+const packageInput = {
+  dailies: publishedDailies,
+  briefings: publishedBriefings,
+};
+const morningPackage = packageForSlot({
+  ...packageInput,
+  slot: "morning",
+});
+const middayPackage = packageForSlot({
+  ...packageInput,
+  slot: "midday",
+});
 
 const status = {
   schemaVersion: 1,
   sourceCommit,
+  buildCommit,
   latestDaily: latestDaily
     ? {
         id: latestDaily.id,
-        issueNumber: publishedDailies.length,
+        editionSlot: normalizeEditionSlot(latestDaily.editionSlot),
+        issueNumber: dailyIssueNumberFromRecords(latestDaily, publishedDailies),
         title: latestDaily.title,
         publishedAt: latestDaily.publishedAt,
         cutoffAt: latestDaily.cutoffAt,
@@ -130,15 +145,8 @@ const status = {
     : null,
   latestNational: latestBriefingRecord(latestNational),
   latestMarkets: latestBriefingRecord(latestMarkets),
-  morningPackage: morningDate
-    ? {
-        date: morningDate,
-        generalPublished,
-        nationalPublished,
-        marketsPublished,
-        completeness: morningCompleteness,
-      }
-    : null,
+  morningPackage,
+  middayPackage,
   publications: {
     daily: publishedDailies.length,
     weekly: publishedWeeklies.length,
@@ -163,5 +171,5 @@ await mkdir(outputDir, { recursive: true });
 await writeFile(outputFile, `${JSON.stringify(status, null, 2)}\n`, "utf8");
 
 console.log(
-  `Estado generado: ${publishedDailies.length} diarias, ${publishedNational.length} nacionales, ${publishedMarkets.length} de mercados y ${publishedReadings.length} lecturas; paquete matutino ${morningDate ?? "sin fecha"}: ${morningCompleteness}/3.`,
+  `Estado generado: ${publishedDailies.length} publicaciones daily, ${publishedNational.length} nacionales, ${publishedMarkets.length} de mercados y ${publishedReadings.length} lecturas; Matutina ${morningPackage?.date ?? "sin fecha"}: ${morningPackage?.completeness ?? 0}/3; Mediodía ${middayPackage?.date ?? "sin fecha"}: ${middayPackage?.completeness ?? 0}/3.`,
 );

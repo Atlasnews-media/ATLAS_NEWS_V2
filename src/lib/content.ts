@@ -3,12 +3,26 @@ import { getCollection, type CollectionEntry } from "astro:content";
 export type Edition = CollectionEntry<"editions">;
 export type Briefing = CollectionEntry<"briefings">;
 export type Reading = CollectionEntry<"readings">;
+export type EditionSlot = "morning" | "midday";
+
+export const MORNING_EDITION_SLOT: EditionSlot = "morning";
+export const MIDDAY_EDITION_SLOT: EditionSlot = "midday";
 
 const newestFirst = <T extends { data: { publishedAt: Date } }>(a: T, b: T) =>
   b.data.publishedAt.valueOf() - a.data.publishedAt.valueOf();
 
 const oldestFirst = <T extends { data: { publishedAt: Date } }>(a: T, b: T) =>
   a.data.publishedAt.valueOf() - b.data.publishedAt.valueOf();
+
+export function resolveEditionSlot(data: {
+  editionSlot?: EditionSlot;
+}): EditionSlot {
+  return data.editionSlot ?? MORNING_EDITION_SLOT;
+}
+
+export function editionNavigationLabel(slot: EditionSlot): string {
+  return slot === MIDDAY_EDITION_SLOT ? "Edición mediodía" : "Edición matutina";
+}
 
 export async function getPublishedEditions(): Promise<Edition[]> {
   return (
@@ -42,6 +56,22 @@ export async function getLatestMarkets(): Promise<Briefing | undefined> {
   return (await getPublishedMarkets())[0];
 }
 
+export async function getPublishedNationalForSlot(
+  slot: EditionSlot,
+): Promise<Briefing[]> {
+  return (await getPublishedNational()).filter(
+    ({ data }) => resolveEditionSlot(data) === slot,
+  );
+}
+
+export async function getPublishedMarketsForSlot(
+  slot: EditionSlot,
+): Promise<Briefing[]> {
+  return (await getPublishedMarkets()).filter(
+    ({ data }) => resolveEditionSlot(data) === slot,
+  );
+}
+
 export async function getPublishedReadings(): Promise<Reading[]> {
   return (
     await getCollection("readings", ({ data }) => data.status === "published")
@@ -52,6 +82,15 @@ export function getPublishedDailies(editions: Edition[]): Edition[] {
   return editions.filter(({ data }) => data.type === "daily");
 }
 
+export function getPublishedDailiesForSlot(
+  editions: Edition[],
+  slot: EditionSlot,
+): Edition[] {
+  return getPublishedDailies(editions).filter(
+    ({ data }) => resolveEditionSlot(data) === slot,
+  );
+}
+
 export async function getPublishedInternational(): Promise<Edition[]> {
   return getPublishedDailies(await getPublishedEditions());
 }
@@ -60,16 +99,24 @@ export async function getLatestDaily(): Promise<Edition | undefined> {
   return getPublishedDailies(await getPublishedEditions())[0];
 }
 
+function dailyEditionDate(edition: Edition): string {
+  return edition.id.slice(0, 10);
+}
+
 export function dailyIssueNumber(
   edition: Edition,
   editions: Edition[],
 ): number | undefined {
   if (edition.data.type !== "daily") return undefined;
 
-  const chronologicalDailies = getPublishedDailies(editions).sort(oldestFirst);
-  const position = chronologicalDailies.findIndex(
-    ({ id }) => id === edition.id,
-  );
+  const chronologicalDates = [
+    ...new Set(
+      getPublishedDailies(editions)
+        .sort(oldestFirst)
+        .map((daily) => dailyEditionDate(daily)),
+    ),
+  ];
+  const position = chronologicalDates.indexOf(dailyEditionDate(edition));
   return position >= 0 ? position + 1 : undefined;
 }
 
@@ -101,7 +148,12 @@ export function editionDisplayLabel(
   issueNumber?: number,
 ): string {
   const typeLabel = editionTypeLabel(edition.data.type);
+  const slotLabel =
+    edition.data.type === "daily" &&
+    resolveEditionSlot(edition.data) === MIDDAY_EDITION_SLOT
+      ? " · Mediodía"
+      : "";
   return issueNumber
-    ? `${typeLabel} · ${formatIssueNumber(issueNumber)}`
-    : typeLabel;
+    ? `${typeLabel}${slotLabel} · ${formatIssueNumber(issueNumber)}`
+    : `${typeLabel}${slotLabel}`;
 }

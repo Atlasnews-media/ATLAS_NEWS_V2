@@ -1,9 +1,10 @@
 ---
 interface Props {
   currentPath: string;
+  editionLabel: string;
 }
 
-const { currentPath } = Astro.props;
+const { currentPath, editionLabel } = Astro.props;
 
 const menuEntries = [
   { href: "/internacional/", label: "Internacional", icon: "globe" },
@@ -45,8 +46,8 @@ const activeMenuHref = linkedHrefs
   >
     Portada
   </a>
-  <div class="site-navigation__edition" aria-label="Edición matutina">
-    Edición matutina
+  <div class="site-navigation__edition" aria-label={editionLabel}>
+    {editionLabel}
   </div>
   <button
     class="site-navigation__toggle"
