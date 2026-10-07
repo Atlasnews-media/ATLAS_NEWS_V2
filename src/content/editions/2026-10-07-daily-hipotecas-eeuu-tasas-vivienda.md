@@ -1,11 +1,11 @@
 ---
 title: "Las hipotecas de EE.UU. saltan a 7,49% y trasladan el shock de tasas a la vivienda"
 summary: "El costo del crédito hipotecario alcanzó su mayor nivel en casi tres años y las solicitudes cayeron a un mínimo desde febrero de 2025, mostrando cómo petróleo y rendimientos largos ya restringen la demanda."
-publishedAt: "2026-10-07T12:05:00-03:00"
+publishedAt: "2026-10-07T18:58:19-03:00"
 cutoffAt: "2026-10-07T12:00:00-03:00"
 type: "daily"
 editionSlot: "midday"
-status: "draft"
+status: "published"
 tags:
   - estados-unidos
   - vivienda
