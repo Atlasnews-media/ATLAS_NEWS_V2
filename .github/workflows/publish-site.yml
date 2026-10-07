@@ -44,7 +44,7 @@ jobs:
       - name: Descargar el repositorio privado
         uses: actions/checkout@v5
         with:
-          fetch-depth: 2
+          fetch-depth: 0
 
       - name: Detectar paquete o edición asociada
         id: edition
@@ -280,8 +280,14 @@ jobs:
       - name: Instalar dependencias
         run: npm ci
 
+      - name: Resolver identidad editorial vigente
+        id: editorial_identity
+        env:
+          ATLAS_PUBLIC_STATUS_URL: https://atlasnews-media.github.io/status.json
+        run: node scripts/resolve-editorial-source-commit.mjs
+
       - name: Preflight social de la edición diaria
-        if: github.event_name == 'push' && steps.edition.outputs.track == 'true' && steps.edition.outputs.edition_type == 'daily'
+        if: github.event_name == 'push' && steps.edition.outputs.track == 'true' && steps.edition.outputs.edition_type == 'daily' && steps.edition.outputs.edition_slot != 'midday'
         env:
           ATLAS_SOURCE_COMMIT: ${{ env.ATLAS_SOURCE_SHA }}
           ATLAS_SOCIAL_PREFLIGHT_ONLY: "true"
@@ -353,10 +359,16 @@ jobs:
 
       - name: Comprobar manifiesto de publicación
         run: |
-          jq -e --arg sha "$ATLAS_SOURCE_SHA" '
+          jq -e --arg sha "$ATLAS_SOURCE_SHA" --arg editorial "$ATLAS_EDITORIAL_SOURCE_SHA" '
             .schemaVersion == 1 and
-            .sourceCommit == $sha and
-            (.latestDaily == null or .latestDaily.issueNumber >= 1) and
+            .buildCommit == $sha and
+            .sourceCommit == $editorial and
+            (.latestDaily == null or (
+              .latestDaily.issueNumber >= 1 and
+              (.latestDaily.editionSlot == "morning" or .latestDaily.editionSlot == "midday")
+            )) and
+            (.morningPackage == null or .morningPackage.editionSlot == "morning") and
+            (.middayPackage == null or .middayPackage.editionSlot == "midday") and
             (.latestNational == null or (.latestNational.id | type == "string")) and
             (.latestMarkets == null or (.latestMarkets.id | type == "string")) and
             (.publications.national >= 0) and
@@ -463,10 +475,12 @@ jobs:
           set -euo pipefail
           atlas_publish_dir="$RUNNER_TEMP/atlas-news-public"
           test -f "$atlas_publish_dir/status.json"
-          jq -e --arg sha "$ATLAS_SOURCE_SHA" '.sourceCommit == $sha' \
-            "$atlas_publish_dir/status.json" > /dev/null
+          jq -e --arg sha "$ATLAS_SOURCE_SHA" --arg editorial "$ATLAS_EDITORIAL_SOURCE_SHA" '
+            .buildCommit == $sha and .sourceCommit == $editorial
+          ' "$atlas_publish_dir/status.json" > /dev/null
 
           latest_id="$(jq -r '.latestDaily.id // empty' "$atlas_publish_dir/status.json")"
+          latest_slot="$(jq -r '.latestDaily.editionSlot // empty' "$atlas_publish_dir/status.json")"
           if [[ -n "$latest_id" ]]; then
             test -f "$atlas_publish_dir/ediciones/$latest_id/index.html"
             grep -Fq "/ediciones/$latest_id/" "$atlas_publish_dir/index.html"
@@ -491,6 +505,7 @@ jobs:
           [[ -n "$latest_id" ]] && routes+=("/ediciones/$latest_id/")
           [[ -n "$national_id" ]] && routes+=("/nacional/$national_id/")
           [[ -n "$markets_id" ]] && routes+=("/mercados/$markets_id/")
+          [[ "$latest_slot" == "midday" ]] && routes+=("/mediodia/")
 
           for attempt in $(seq 1 15); do
             body="$(mktemp)"
@@ -502,12 +517,16 @@ jobs:
 
             if [[ "$code" == "200" ]] && jq -e . "$body" >/dev/null 2>&1; then
               observed_commit="$(jq -r '.sourceCommit // empty' "$body")"
+              observed_build="$(jq -r '.buildCommit // empty' "$body")"
               observed_latest="$(jq -r '.latestDaily.id // empty' "$body")"
+              observed_slot="$(jq -r '.latestDaily.editionSlot // empty' "$body")"
               observed_national="$(jq -r '.latestNational.id // empty' "$body")"
               observed_markets="$(jq -r '.latestMarkets.id // empty' "$body")"
 
-              if [[ "$observed_commit" == "$ATLAS_SOURCE_SHA" && \
+              if [[ "$observed_commit" == "$ATLAS_EDITORIAL_SOURCE_SHA" && \
+                    "$observed_build" == "$ATLAS_SOURCE_SHA" && \
                     "$observed_latest" == "$latest_id" && \
+                    "$observed_slot" == "$latest_slot" && \
                     "$observed_national" == "$national_id" && \
                     "$observed_markets" == "$markets_id" ]]; then
                 routes_ready=true
@@ -523,12 +542,12 @@ jobs:
 
                 if [[ "$routes_ready" == "true" ]]; then
                   public_ready=true
-                  echo "GitHub Pages confirmó sourceCommit=${ATLAS_SOURCE_SHA} y rutas de la edición en intento ${attempt}."
+                  echo "GitHub Pages confirmó sourceCommit=${ATLAS_EDITORIAL_SOURCE_SHA}, buildCommit=${ATLAS_SOURCE_SHA} y rutas de la edición en intento ${attempt}."
                   break
                 fi
               fi
 
-              echo "Pages aún no confirma la edición esperada (${attempt}/15): sourceCommit=${observed_commit:-<missing>} latestDaily=${observed_latest:-<missing>}."
+              echo "Pages aún no confirma la edición esperada (${attempt}/15): sourceCommit=${observed_commit:-<missing>} buildCommit=${observed_build:-<missing>} latestDaily=${observed_latest:-<missing>} slot=${observed_slot:-<missing>}."
             else
               echo "Pages aún no entrega status.json válido (${attempt}/15): HTTP ${code}."
             fi
@@ -573,7 +592,7 @@ jobs:
 
       - name: Planificar edición sonora diaria
         id: audio_plan
-        if: github.event_name != 'pull_request'
+        if: github.event_name != 'pull_request' && steps.edition.outputs.edition_slot != 'midday'
         continue-on-error: true
         env:
           ATLAS_PUBLIC_REPO_DIR: ${{ runner.temp }}/atlas-news-public
