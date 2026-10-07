@@ -71,6 +71,18 @@
       "invalidate_if": "Una recuperación amplia de Lula entre votantes conservadores y una coalición legislativa estable para su programa debilitarían la tesis de giro; fragmentación del bloque de derecha o ausencia de un plan fiscal creíble también reducirían su capacidad de ejecución.",
       "watch": "Encuestas y apoyos para el balotaje, programas fiscales, deuda, alianzas en Senado y Cámara, debate sobre amnistía, nombramientos en banco central, Corte Suprema y reguladores, y señales de inversión regional.",
       "last_publication": "/ediciones/2026-10-06-daily-brasil-gira-derecha-balotaje-fiscal/"
+    },
+    {
+      "id": "korea-green-industrial-policy",
+      "topic": "Transición verde y política industrial de Corea del Sur",
+      "thesis": "Corea del Sur convirtió la descarbonización en una estrategia de crecimiento y seguridad económica, combinando gasto fiscal, financiamiento climático e inversión privada para transformar energía, transporte e industria pesada hasta 2035.",
+      "status": "new",
+      "last_evidence": "El 7 de octubre Seúl anunció la estrategia K-GX por 1.000 billones de wones hasta 2035, con 200 billones fiscales, más de 790 billones de financiamiento climático y proyectos privados separados por 220 billones; el plan apunta a 100 GW renovables en 2030 y más de 70% de vehículos nuevos eléctricos o de hidrógeno en 2035.",
+      "effect": "Abre un hilo asiático de política industrial: la transición ya no se presenta sólo como reducción de emisiones, sino como competencia por acero verde, baterías, redes, semiconductores de potencia y cadenas de suministro, con el Estado absorbiendo parte del riesgo de inversión.",
+      "base_scenario": "Corea del Sur acelera generación renovable, redes y reconversión manufacturera mediante apoyo público y financiero; la ejecución será gradual y dependerá de inversión privada, viabilidad tecnológica y coordinación entre energía e industria.",
+      "invalidate_if": "Baja asignación presupuestaria, escasa movilización de capital privado, sobrecostos persistentes o retrasos en redes y tecnologías debilitarían la tesis; capacidad instalada, producción y exportaciones verificables la confirmarían.",
+      "watch": "Presupuesto K-GX, criterios del financiamiento climático, bonos verdes, capacidad renovable y transmisión, acero reducido con hidrógeno, baterías avanzadas, celdas solares tándem, ventas de vehículos eléctricos e hidrógeno y proyectos privados.",
+      "last_publication": "/ediciones/2026-10-07-daily-corea-transicion-verde-industrial/"
     }
   ]
 }
