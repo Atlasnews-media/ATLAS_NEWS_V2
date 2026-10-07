@@ -5,9 +5,11 @@ import "../styles/global.css";
 import "../styles/desktop-workspace-panel.css";
 import {
   dailyIssueNumber,
+  editionNavigationLabel,
   formatIssueNumber,
   getPublishedDailies,
   getPublishedEditions,
+  resolveEditionSlot,
 } from "../lib/content";
 import { socialImageFor } from "../lib/social-images";
 
@@ -30,6 +32,9 @@ const currentDaily = getPublishedDailies(editions)[0];
 const currentIssueNumber = currentDaily
   ? dailyIssueNumber(currentDaily, editions)
   : undefined;
+const currentEditionLabel = editionNavigationLabel(
+  currentDaily ? resolveEditionSlot(currentDaily.data) : "morning",
+);
 const headerDateCandidate = currentDaily?.data.publishedAt ?? new Date();
 const headerDate = Number.isFinite(headerDateCandidate.valueOf())
   ? headerDateCandidate
@@ -42,6 +47,12 @@ const issueLabel = currentIssueNumber
   ? `Edición • ${formatIssueNumber(currentIssueNumber)}`
   : "Edición • En preparación";
 const sourceCommit = (
+  process.env.ATLAS_EDITORIAL_SOURCE_SHA ??
+  process.env.ATLAS_SOURCE_SHA ??
+  process.env.GITHUB_SHA ??
+  "local"
+).slice(0, 7);
+const buildCommit = (
   process.env.ATLAS_SOURCE_SHA ??
   process.env.GITHUB_SHA ??
   "local"
@@ -86,6 +97,7 @@ const isPrimarySectionLanding = [
     <meta name="generator" content={Astro.generator} />
     <meta name="theme-color" content="#f2efe5" />
     <meta name="atlas-source-commit" content={sourceCommit} />
+    <meta name="atlas-build-commit" content={buildCommit} />
     <meta property="og:site_name" content="ATLAS NEWS" />
     <meta property="og:locale" content="es_CL" />
     <meta property="og:type" content={socialType} />
@@ -157,7 +169,10 @@ const isPrimarySectionLanding = [
           </p>
         </div>
       </div>
-      <SiteNavigation currentPath={Astro.url.pathname} />
+      <SiteNavigation
+        currentPath={Astro.url.pathname}
+        editionLabel={currentEditionLabel}
+      />
     </header>
     <div id="contenido"><slot /></div>
     <footer class="site-footer">
