@@ -8,6 +8,7 @@ import {
   getPublishedMarkets,
   getPublishedNational,
   getPublishedReadings,
+  resolveEditionSlot,
 } from "../../lib/content";
 
 const [editions, national, markets, readings] = await Promise.all([
@@ -54,7 +55,11 @@ const [editions, national, markets, readings] = await Promise.all([
             <li>
               <time>{formatEditorialDate(briefing.data.publishedAt)}</time>
               <a href={`/nacional/${briefing.id}/`}>{briefing.data.title}</a>
-              <span>Nacional</span>
+              <span>
+                {resolveEditionSlot(briefing.data) === "midday"
+                  ? "Nacional · Mediodía"
+                  : "Nacional"}
+              </span>
             </li>
           ))
         }
@@ -69,7 +74,11 @@ const [editions, national, markets, readings] = await Promise.all([
             <li>
               <time>{formatEditorialDate(briefing.data.publishedAt)}</time>
               <a href={`/mercados/${briefing.id}/`}>{briefing.data.title}</a>
-              <span>Mercados</span>
+              <span>
+                {resolveEditionSlot(briefing.data) === "midday"
+                  ? "Mercados · Mediodía"
+                  : "Mercados"}
+              </span>
             </li>
           ))
         }
