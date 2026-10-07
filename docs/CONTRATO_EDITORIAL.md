@@ -11,6 +11,7 @@ Una edición diaria o semanal debe incluir los siguientes metadatos:
 | `publishedAt`   | Fecha ISO 8601 con zona horaria              |
 | `cutoffAt`      | Cierre informativo ISO 8601 con zona horaria |
 | `type`          | `daily` o `weekly`                           |
+| `editionSlot`   | En `daily`: `morning` o `midday`; ausencia = `morning` por compatibilidad |
 | `status`        | `draft` o `published`                        |
 | `tags`          | Al menos una etiqueta                        |
 | `sources`       | Al menos una fuente con nombre y URL válida  |
@@ -71,6 +72,7 @@ Las piezas de Nacional y Mercados comparten la colección `briefings` y deben in
 | `publishedAt` | Fecha ISO 8601 con zona horaria              |
 | `cutoffAt`    | Cierre informativo ISO 8601 con zona horaria |
 | `section`     | `national` o `markets`                       |
+| `editionSlot` | `morning` o `midday`; ausencia = `morning` por compatibilidad |
 | `status`      | `draft` o `published`                        |
 | `tags`        | Al menos una etiqueta                        |
 | `sources`     | Al menos una fuente con nombre y URL válida  |
@@ -114,6 +116,21 @@ La promoción es una transición mecánica, no una nueva etapa editorial. Para c
 
 La memoria editorial `data/editorial_state.json` puede ser leída por las tres piezas, pero dentro del paquete matutino solo la edición General puede modificarla. General solo evalúa y actualiza hilos efectivamente investigados dentro de su alcance internacional en esa ejecución; los demás hilos permanecen intactos. Nacional y Mercados no escriben memoria editorial de forma independiente.
 
+## Paquete editorial mediodía
+
+La edición de mediodía utiliza la misma colección, schemas, rutas públicas y publicador que la edición matutina. Su identidad se expresa mediante `editionSlot: "midday"`; la ausencia de `editionSlot` conserva semántica matutina para no exigir una reescritura de T1 → T4 ni del histórico.
+
+```text
+Rama: editorial/AAAA-MM-DD-midday
+PR: Paquete editorial mediodía — AAAA-MM-DD
+```
+
+El paquete puede contener exactamente una General `daily` de la fecha objetivo y, como máximo, una pieza Nacional y una pieza Mercados con el mismo `editionSlot: "midday"`. Una publicación Matutina y una Mediodía de la misma fecha son válidas porque tienen identidades distintas; dos publicaciones del mismo tipo, fecha y `editionSlot` continúan siendo inválidas.
+
+La promoción de Mediodía usa el mismo contrato mecánico de producción: sólo cambia `status: draft → published` y `publishedAt`; `cutoffAt`, contenido, fuentes, highlights y demás metadatos editoriales permanecen intactos. La publicación de Mediodía no elimina ni reescribe Matutina.
+
+El número diario corresponde a la fecha editorial, no al número de archivos `daily`: Matutina y Mediodía de una misma fecha comparten el mismo N.º. La edición vigente de Portada es la publicación `daily` con `publishedAt` más reciente; su `editionSlot` determina si la navegación muestra `EDICIÓN MATUTINA` o `EDICIÓN MEDIODÍA`.
+
 ## Lecturas seleccionadas
 
 Cada lectura debe tener título, resumen, fecha, estado, etiquetas y una fuente principal. El autor es opcional.
@@ -128,7 +145,7 @@ AAAA-MM-DD-markets-titulo-breve.md
 AAAA-MM-DD-reading-titulo-breve.md
 ```
 
-Los nombres usan minúsculas, caracteres ASCII y guiones. No se reemplaza un archivo existente salvo que se esté corrigiendo expresamente esa misma publicación.
+Los nombres usan minúsculas, caracteres ASCII y guiones. No se reemplaza un archivo existente salvo que se esté corrigiendo expresamente esa misma publicación. En una misma fecha pueden coexistir dos archivos `daily` únicamente si sus identidades productivas difieren por `editionSlot`; sus IDs y rutas siguen siendo los nombres completos de archivo.
 
 ## Estados
 
