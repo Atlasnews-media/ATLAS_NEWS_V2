@@ -1,5 +1,11 @@
 import { readdir, readFile } from "node:fs/promises";
 
+import {
+  briefingIdentityKey,
+  editionIdentityKey,
+  normalizeEditionSlot,
+} from "./edition-slot-contract.mjs";
+
 const root = new URL("../", import.meta.url);
 const editionDir = new URL("src/content/editions/", root);
 const briefingDir = new URL("src/content/briefings/", root);
@@ -274,6 +280,19 @@ async function validateFile(
   }
 
   const filenameDate = filename.match(/^(\d{4}-\d{2}-\d{2})-/)?.[1];
+  const type = frontmatterValue(text, "type");
+  const rawEditionSlot = frontmatterValue(text, "editionSlot");
+  if (filename.includes("-daily-")) {
+    try {
+      normalizeEditionSlot(rawEditionSlot);
+    } catch (error) {
+      errors.push(error.message);
+    }
+  }
+  if (type === "weekly" && rawEditionSlot) {
+    errors.push("editionSlot sólo aplica a ediciones daily");
+  }
+
   const editorialDate = santiagoDate(publishedAt);
   if (filenameDate && editorialDate && filenameDate !== editorialDate) {
     errors.push(
@@ -375,6 +394,12 @@ async function validateBriefingFile(filename) {
     errors.push(`${filename}: cutoffAt es obligatorio`);
   }
 
+  try {
+    normalizeEditionSlot(frontmatterValue(text, "editionSlot"));
+  } catch (error) {
+    errors.push(`${filename}: ${error.message}`);
+  }
+
   return errors;
 }
 
@@ -414,7 +439,17 @@ async function duplicatePublishedEditionErrors(files) {
     const match = filename.match(/^(\d{4}-\d{2}-\d{2})-(daily|weekly)-/);
     if (!match) continue;
 
-    const key = `${match[1]}:${match[2]}`;
+    let key;
+    try {
+      key = editionIdentityKey(
+        match[1],
+        match[2],
+        frontmatterValue(text, "editionSlot"),
+      );
+    } catch (error) {
+      errors.push(`${filename}: ${error.message}`);
+      continue;
+    }
     const previousOwner = ownersByEdition.get(key);
     if (previousOwner) {
       errors.push(
@@ -439,7 +474,17 @@ async function duplicatePublishedBriefingErrors(files) {
     const match = filename.match(/^(\d{4}-\d{2}-\d{2})-(national|markets)-/);
     if (!match) continue;
 
-    const key = `${match[1]}:${match[2]}`;
+    let key;
+    try {
+      key = briefingIdentityKey(
+        match[1],
+        match[2],
+        frontmatterValue(text, "editionSlot"),
+      );
+    } catch (error) {
+      errors.push(`${filename}: ${error.message}`);
+      continue;
+    }
     const previousOwner = ownersByBriefing.get(key);
     if (previousOwner) {
       errors.push(
