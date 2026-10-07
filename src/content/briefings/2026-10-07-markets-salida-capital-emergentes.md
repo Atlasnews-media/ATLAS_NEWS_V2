@@ -15,11 +15,11 @@ sources:
   - name: "Reuters — La Fed impulsa salidas desde mercados emergentes"
     url: "https://www.reuters.com/business/finance/hawkish-fed-triggers-emerging-market-outflows-september-2026-10-07/"
 highlights:
-  - label: "US$26.300 millones salen de emergentes"
+  - label: "Salida de US$26.300 MM"
     text: "Septiembre registró el primer retiro mensual neto desde junio."
-  - label: "Las acciones concentran el ajuste"
+  - label: "Acciones lideran ajuste"
     text: "La renta variable perdió US$19.200 millones, con ventas intensas en Corea del Sur."
-  - label: "La deuda también vuelve a flujos negativos"
+  - label: "Bonos vuelven a salidas"
     text: "Los bonos emergentes registraron salidas por US$7.000 millones, las primeras desde marzo."
 demo: false
 ---
