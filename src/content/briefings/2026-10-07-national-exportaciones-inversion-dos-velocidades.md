@@ -19,11 +19,11 @@ sources:
   - name: "La Tercera — Exportaciones chilenas superan US$10.000 millones"
     url: "https://www.latercera.com/pulso/noticia/el-valor-de-las-exportaciones-chilenas-supera-los-us-10000-millones-en-septiembre-y-se-encamina-a-otro-ano-record/"
 highlights:
-  - label: "Las exportaciones crecen 14,1%"
+  - label: "Exportaciones al alza"
     text: "Los envíos de septiembre alcanzaron US$10.584 millones, impulsados por minería e industria."
-  - label: "El cobre aporta US$5.971 millones"
+  - label: "Cobre impulsa los envíos"
     text: "Los embarques del metal aumentaron 14% anual y explicaron buena parte del avance mensual."
-  - label: "La maquinaria prolonga la señal débil"
+  - label: "Maquinaria sigue débil"
     text: "Las importaciones de bienes de capital bajaron 9,4% anual hasta cerca de US$1.699 millones."
 demo: false
 ---
