@@ -118,10 +118,7 @@ if (status.buildCommit !== expectedBuildCommit) {
 }
 
 if (latestDaily) {
-  const issueNumber = dailyIssueNumberFromRecords(
-    latestDaily,
-    publishedDailies,
-  );
+  const issueNumber = dailyIssueNumberFromRecords(latestDaily, publishedDailies);
   if (status.latestDaily?.id !== latestDaily.id) {
     errors.push(
       `producción muestra ${status.latestDaily?.id ?? "ninguna edición"}, pero main espera ${latestDaily.id}`,
@@ -222,14 +219,10 @@ if (status.publications?.weekly !== publishedWeeklyCount) {
   );
 }
 if (status.publications?.national !== publishedNational.length) {
-  errors.push(
-    "el conteo national de status.json no coincide con Nacional",
-  );
+  errors.push("el conteo national de status.json no coincide con Nacional");
 }
 if (status.publications?.markets !== publishedMarkets.length) {
-  errors.push(
-    "el conteo markets de status.json no coincide con Mercados",
-  );
+  errors.push("el conteo markets de status.json no coincide con Mercados");
 }
 if (status.publications?.readings !== publishedReadingCount) {
   errors.push(
