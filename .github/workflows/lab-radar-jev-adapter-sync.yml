@@ -1,0 +1,97 @@
+name: LAB — Sync RADAR JEV ingress adapter
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/lab-radar-editorial-jev-engine.yml"
+      - ".github/workflows/lab-radar-jev-resolver.yml"
+      - ".github/workflows/lab-radar-jev-adapter-sync.yml"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: lab-radar-jev-adapter-sync
+  cancel-in-progress: false
+
+jobs:
+  sync-adapter:
+    name: Sincronizar adapter sin tocar requests
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+
+    steps:
+      - name: Checkout main exacto
+        uses: actions/checkout@v5
+        with:
+          ref: ${{ github.sha }}
+          path: .engine
+          fetch-depth: 1
+
+      - name: Checkout ingress divergido
+        uses: actions/checkout@v5
+        with:
+          ref: radar-ingress/editorial
+          path: .ingress
+          fetch-depth: 0
+
+      - name: Preservar requests y actualizar sólo adapter
+        run: |
+          set -euo pipefail
+          adapter=".github/workflows/lab-radar-jev-resolver.yml"
+          requests="lab/radar-editorial/jev-requests"
+
+          before="$RUNNER_TEMP/requests-before.sha256"
+          after="$RUNNER_TEMP/requests-after.sha256"
+          (
+            cd .ingress
+            if [[ -d "$requests" ]]; then
+              find "$requests" -type f -print0 | sort -z | xargs -0 -r sha256sum
+            fi
+          ) > "$before"
+
+          cp ".engine/$adapter" ".ingress/$adapter"
+          sed -i "s#lab-radar-editorial-jev-engine.yml@main#lab-radar-editorial-jev-engine.yml@$GITHUB_SHA#" ".ingress/$adapter"
+          grep -Fq "lab-radar-editorial-jev-engine.yml@$GITHUB_SHA" ".ingress/$adapter"
+
+          (
+            cd .ingress
+            if [[ -d "$requests" ]]; then
+              find "$requests" -type f -print0 | sort -z | xargs -0 -r sha256sum
+            fi
+          ) > "$after"
+          cmp -s "$before" "$after"
+
+          changed="$(git -C .ingress status --short)"
+          echo "$changed"
+          test "$(printf '%s\n' "$changed" | sed '/^$/d' | wc -l | tr -d ' ')" -le 1
+          if [[ -n "$changed" ]]; then
+            printf '%s\n' "$changed" | grep -Fq "$adapter"
+          fi
+
+      - name: Commit adapter preservando historia ingress
+        run: |
+          set -euo pipefail
+          adapter=".github/workflows/lab-radar-jev-resolver.yml"
+          git -C .ingress config user.name "ATLAS NEWS RADAR JEV"
+          git -C .ingress config user.email "actions@users.noreply.github.com"
+          git -C .ingress add -- "$adapter"
+
+          if git -C .ingress diff --cached --quiet; then
+            echo "JEV_ADAPTER_SYNC=IDEMPOTENT"
+            exit 0
+          fi
+
+          git -C .ingress commit -m "LAB sync durable JEV ingress adapter"
+          for attempt in 1 2 3; do
+            if git -C .ingress pull --rebase origin radar-ingress/editorial && \
+              git -C .ingress push origin HEAD:radar-ingress/editorial; then
+              echo "JEV_ADAPTER_SYNC=PASS"
+              exit 0
+            fi
+            git -C .ingress rebase --abort 2>/dev/null || true
+            if [[ "$attempt" -lt 3 ]]; then sleep 2; fi
+          done
+          echo "JEV_ADAPTER_SYNC=FAIL" >&2
+          exit 1

@@ -52,8 +52,8 @@ jobs:
         run: |
           set -euo pipefail
           grep -Fq 'branches: [main]' .github/workflows/publish-site.yml
-          grep -Fq '"lab/**"' .github/workflows/publish-site.yml
-          grep -Fq '"scripts/lab/**"' .github/workflows/publish-site.yml
+          grep -Fq '"!lab/**"' .github/workflows/publish-site.yml
+          grep -Fq '"!scripts/lab/**"' .github/workflows/publish-site.yml
           grep -Fq 'branches: [main]' .github/workflows/audio-v2.yml
           ! grep -Fq 'radar-runtime/editorial' .github/workflows/publish-site.yml
           ! grep -Fq 'radar-runtime/editorial' .github/workflows/audio-v2.yml
