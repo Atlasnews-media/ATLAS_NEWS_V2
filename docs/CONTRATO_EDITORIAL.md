@@ -4,20 +4,20 @@
 
 Una edición diaria o semanal debe incluir los siguientes metadatos:
 
-| Campo           | Regla                                        |
-| --------------- | -------------------------------------------- |
-| `title`         | Entre 8 y 140 caracteres                     |
-| `summary`       | Entre 40 y 320 caracteres                    |
-| `publishedAt`   | Fecha ISO 8601 con zona horaria              |
-| `cutoffAt`      | Cierre informativo ISO 8601 con zona horaria |
-| `type`          | `daily` o `weekly`                           |
+| Campo           | Regla                                                                     |
+| --------------- | ------------------------------------------------------------------------- |
+| `title`         | Entre 8 y 140 caracteres                                                  |
+| `summary`       | Entre 40 y 320 caracteres                                                 |
+| `publishedAt`   | Fecha ISO 8601 con zona horaria                                           |
+| `cutoffAt`      | Cierre informativo ISO 8601 con zona horaria                              |
+| `type`          | `daily` o `weekly`                                                        |
 | `editionSlot`   | En `daily`: `morning` o `midday`; ausencia = `morning` por compatibilidad |
-| `status`        | `draft` o `published`                        |
-| `tags`          | Al menos una etiqueta                        |
-| `sources`       | Al menos una fuente con nombre y URL válida  |
-| `featured`      | Indicador booleano; por defecto `false`      |
-| `editionNumber` | Entero positivo opcional                     |
-| `highlights`    | Entre 3 y 6 claves breves para la portada    |
+| `status`        | `draft` o `published`                                                     |
+| `tags`          | Al menos una etiqueta                                                     |
+| `sources`       | Al menos una fuente con nombre y URL válida                               |
+| `featured`      | Indicador booleano; por defecto `false`                                   |
+| `editionNumber` | Entero positivo opcional                                                  |
+| `highlights`    | Entre 3 y 6 claves breves para la portada                                 |
 
 En toda nueva edición General diaria, `highlights` debe contener **exactamente cinco** claves. Ni cuatro ni seis son válidos para una nueva General diaria. Las cinco claves deben derivar de la misma investigación internacional verificada y del mismo cuerpo editorial de la edición; esos mismos cinco elementos alimentan Portada y los consumidores sociales posteriores. Ningún proceso downstream debe inventar, completar o sustituir un highlight con contenido de otras secciones. El schema mantiene el rango histórico de 3 a 6 únicamente por compatibilidad con ediciones anteriores y otros tipos de edición; esa flexibilidad técnica no modifica el contrato funcional de nuevas General diarias.
 
@@ -65,19 +65,19 @@ La publicación debe escribirse para el lector. No debe mencionar el documento d
 
 Las piezas de Nacional y Mercados comparten la colección `briefings` y deben incluir:
 
-| Campo         | Regla                                        |
-| ------------- | -------------------------------------------- |
-| `title`       | Entre 8 y 160 caracteres                     |
-| `summary`     | Entre 40 y 320 caracteres                    |
-| `publishedAt` | Fecha ISO 8601 con zona horaria              |
-| `cutoffAt`    | Cierre informativo ISO 8601 con zona horaria |
-| `section`     | `national` o `markets`                       |
+| Campo         | Regla                                                         |
+| ------------- | ------------------------------------------------------------- |
+| `title`       | Entre 8 y 160 caracteres                                      |
+| `summary`     | Entre 40 y 320 caracteres                                     |
+| `publishedAt` | Fecha ISO 8601 con zona horaria                               |
+| `cutoffAt`    | Cierre informativo ISO 8601 con zona horaria                  |
+| `section`     | `national` o `markets`                                        |
 | `editionSlot` | `morning` o `midday`; ausencia = `morning` por compatibilidad |
-| `status`      | `draft` o `published`                        |
-| `tags`        | Al menos una etiqueta                        |
-| `sources`     | Al menos una fuente con nombre y URL válida  |
-| `highlights`  | Opcional; si existe, exactamente tres claves |
-| `demo`        | Debe ser `false`                             |
+| `status`      | `draft` o `published`                                         |
+| `tags`        | Al menos una etiqueta                                         |
+| `sources`     | Al menos una fuente con nombre y URL válida                   |
+| `highlights`  | Opcional; si existe, exactamente tres claves                  |
+| `demo`        | Debe ser `false`                                              |
 
 El cuerpo debe desarrollar análisis propio de la vertical. Los hechos y fuentes pueden coincidir con la edición General cuando exista una conexión internacional pertinente, pero el texto no debe duplicar sus párrafos. Nacional es el propietario exclusivo de hechos domésticos chilenos y profundiza contexto, transmisión y consecuencias locales. Mercados es el propietario de precios, activos, flujos, posicionamiento y dinámica cross-asset. General conserva la señal internacional y no absorbe el desarrollo propio de estas verticales.
 
