@@ -118,7 +118,10 @@ if (status.buildCommit !== expectedBuildCommit) {
 }
 
 if (latestDaily) {
-  const issueNumber = dailyIssueNumberFromRecords(latestDaily, publishedDailies);
+  const issueNumber = dailyIssueNumberFromRecords(
+    latestDaily,
+    publishedDailies,
+  );
   if (status.latestDaily?.id !== latestDaily.id) {
     errors.push(
       `producción muestra ${status.latestDaily?.id ?? "ninguna edición"}, pero main espera ${latestDaily.id}`,
@@ -196,7 +199,9 @@ for (const [key, expected] of [
   ["morningPackage", expectedMorning],
   ["middayPackage", expectedMidday],
 ]) {
-  if (JSON.stringify(status[key] ?? null) !== JSON.stringify(expected ?? null)) {
+  if (
+    JSON.stringify(status[key] ?? null) !== JSON.stringify(expected ?? null)
+  ) {
     errors.push(`${key} no coincide con el contenido publicado.`);
   }
 }
