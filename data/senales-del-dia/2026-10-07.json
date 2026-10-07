@@ -1,0 +1,111 @@
+{
+  "status": "READY",
+  "date": "2026-10-07",
+  "contract": "atlas-senales-del-dia-v1",
+  "senalesDelDia": {
+    "internacional": [
+      {
+        "slot": "technology",
+        "headline": "ElevenLabs compromete inversión y voces locales para crecer en India",
+        "deck": "La firma ampliará equipos, modelos en idiomas indios y servicios públicos de voz mediante un acuerdo con el estado de Karnataka.",
+        "development": "ElevenLabs anunció el 6 de octubre que invertirá cientos de millones de dólares en India durante los próximos años para ampliar equipos locales, desarrollar modelos de voz en idiomas del país y evaluar adquisiciones. La compañía no entregó una cifra exacta ni un calendario anual de desembolsos. Su cofundador, Mati Staniszewski, dijo a Reuters que la expansión busca atender un mercado donde la empresa ya trabaja con alrededor de 250 organizaciones y procesa más de 100 millones de conversaciones anuales mediante agentes de voz en catorce idiomas.\n\nEn paralelo, ElevenLabs firmó un memorando con el gobierno de Karnataka para explorar usos públicos de inteligencia artificial de voz. El programa considera restauración de voz para personas que la perdieron, interfaces multilingües para servicios estatales y un marco de seguridad frente a clonación no autorizada, fraude y contenidos sintéticos. Un memorando define áreas de cooperación, pero no equivale a un contrato de despliegue ni cuantifica beneficiarios.\n\nLa señal combina capital, localización lingüística y adopción pública, tres barreras relevantes para escalar sistemas de voz. Los controles serán los montos efectivamente invertidos, contrataciones, adquisiciones, modelos liberados y servicios que Karnataka implemente. Hasta entonces, la inversión comunicada es un compromiso corporativo sin desglose y el acuerdo público permanece en fase exploratoria.",
+        "anchor": "elevenlabs-inversion-india-voz-karnataka",
+        "sources": [
+          {
+            "name": "Reuters",
+            "url": "https://www.reuters.com/world/india/ai-firm-elevenlabs-invest-hundreds-millions-dollars-india-2026-10-06/"
+          },
+          {
+            "name": "Express Computer",
+            "url": "https://www.expresscomputer.in/news/karnataka-takes-a-citizen-first-step-towards-using-ai-for-public-good/139508/"
+          }
+        ]
+      },
+      {
+        "slot": "world",
+        "headline": "Canadá prepara la primera visita bilateral de un premier a Turquía",
+        "deck": "Mark Carney viajará del 21 al 23 de octubre para tratar comercio, energía, minería, defensa y seguridad con Recep Tayyip Erdoğan.",
+        "development": "El primer ministro canadiense, Mark Carney, anunció el 6 de octubre que viajará a Ankara y Estambul entre el 21 y el 23 de octubre. Su oficina describió la gira como la primera visita bilateral de un jefe de Gobierno canadiense a Turquía. En Ankara se reunirá con el presidente Recep Tayyip Erdoğan para abordar energía, minería, clima, defensa, seguridad y vínculos entre ambas sociedades; en Estambul mantendrá encuentros con empresarios e inversionistas.\n\nLa visita ocurre después de que ambos gobiernos iniciaran negociaciones formales para un tratado de libre comercio durante la cumbre de la OTAN de julio. Turquía también aceptó participar como miembro fundador del banco multilateral de Defensa, Seguridad y Resiliencia promovido por Canadá. Ottawa presenta la relación como parte de su estrategia para diversificar comercio e inversión más allá de Estados Unidos, aunque el anuncio no contiene acuerdos cerrados, metas comerciales ni compromisos de compra.\n\nEl hecho verificable es la confirmación oficial del calendario, participantes y materias de trabajo. Los próximos hitos serán la realización efectiva de la visita, comunicados conjuntos, avances documentados del tratado comercial y eventuales convenios en energía o defensa. Hasta entonces, corresponde tratarla como una agenda diplomática confirmada, no como una asociación económica ya ampliada.",
+        "anchor": "canada-visita-bilateral-turquia-carney",
+        "sources": [
+          {
+            "name": "Oficina del Primer Ministro de Canadá",
+            "url": "https://www.pm.gc.ca/en/news/news-releases/2026/10/06/prime-minister-carney-visit-turkiye-advance-partnership-across-trade"
+          },
+          {
+            "name": "Reuters",
+            "url": "https://www.reuters.com/world/americas/canadas-carney-visit-turkey-meet-erdogan-2026-10-06/"
+          }
+        ]
+      }
+    ],
+    "nacional": [
+      {
+        "slot": "ipsa_company",
+        "headline": "Falabella nombra nuevo gerente para su operación minorista chilena",
+        "deck": "Juan Cristóbal López asumirá el 15 de octubre tras más de veinte años en el grupo; Tomás Platovsky conservará el liderazgo regional.",
+        "development": "Falabella Retail designó a Juan Cristóbal López como gerente general de su operación en Chile a partir del 15 de octubre. El ejecutivo reemplazará a Tomás Platovsky, quien desde octubre encabeza corporativamente el negocio de tiendas por departamento en Chile, Perú y Colombia. La estructura separa así la conducción local de la responsabilidad regional, después de la reorganización ejecutiva comunicada por el grupo a fines de agosto.\n\nLópez acumula más de veinte años en Falabella. Ingresó en 2005, dirigió funciones de abastecimiento y logística en Asia y hasta ahora era gerente corporativo de comercio electrónico. La compañía señaló que sus prioridades incluirán acelerar el crecimiento local, profundizar la integración entre tiendas y canales digitales y fortalecer capacidades tecnológicas. Esas prioridades son lineamientos declarados; el nombramiento no incluye nuevas metas financieras, inversiones adicionales ni cambios en la guía del grupo.\n\nPara Falabella, integrante del IPSA, la señal es de ejecución y gobierno operativo, no de impacto inmediato en resultados. Los controles serán la fecha efectiva de asunción, modificaciones posteriores del equipo ejecutivo y métricas de ventas digitales, rentabilidad, inventarios y productividad en Chile. Sin objetivos cuantificados, no corresponde atribuir al cambio directivo un efecto anticipado sobre ingresos, márgenes o valorización.",
+        "anchor": "falabella-lopez-gerencia-retail-chile",
+        "sources": [
+          {
+            "name": "Diario Financiero",
+            "url": "https://www.df.cl/empresas/retail/falabella-retail-recurre-a-ingeniero-con-dos-decadas-de-experiencia-en-la"
+          },
+          {
+            "name": "La Tercera",
+            "url": "https://www.latercera.com/pulso/noticia/juan-cristobal-lopez-es-el-nuevo-gerente-general-de-falabella-retail-y-reemplaza-a-tomas-platovsky/"
+          }
+        ]
+      },
+      {
+        "slot": "policy_economy",
+        "headline": "La CMF regula el reaseguro extranjero de rentas vitalicias",
+        "deck": "La nueva norma permite transferir parte del riesgo previsional fuera de Chile bajo límites de reserva, solvencia y activos segregados.",
+        "development": "La Comisión para el Mercado Financiero publicó el 5 de octubre una norma que regula el reaseguro de rentas vitalicias con entidades extranjeras. El marco define requisitos mínimos para que las aseguradoras chilenas transfieran parte de los riesgos asociados a obligaciones previsionales de largo plazo, después de dos consultas públicas realizadas durante 2026. La autoridad presenta la medida como una vía para diversificar y administrar riesgos sin reducir los resguardos prudenciales.\n\nLa regulación exige condiciones sobre solvencia y supervisión del reasegurador, respaldo de las obligaciones y activos segregados administrados en Chile. También establece un límite máximo de 30% para la deducción de reservas técnicas, calculado sobre la cartera total de rentas vitalicias. La publicación de la norma habilita operaciones bajo esas reglas, pero no obliga a las compañías a contratar reaseguro ni demuestra que una transacción específica sea conveniente para asegurados o accionistas.\n\nLos efectos dependerán de los contratos que autorice la CMF, su costo, contrapartes y estructura de garantías. Los próximos controles serán la entrada en vigencia, instrucciones complementarias, primeras solicitudes y cualquier información sobre capital, reservas o exposición transferida. La lectura neutral es regulatoria: se abre una herramienta de gestión de riesgos con límites explícitos, no una reducción automática de obligaciones previsionales.",
+        "anchor": "cmf-reaseguro-extranjero-rentas-vitalicias",
+        "sources": [
+          {
+            "name": "Comisión para el Mercado Financiero",
+            "url": "https://www.cmfchile.cl/portal/prensa/625/w4-article-113993.html"
+          }
+        ]
+      }
+    ],
+    "mercados": [
+      {
+        "slot": "markets_chile",
+        "headline": "Dipres fija ventas de hasta US$600 millones por semana",
+        "deck": "El anuncio para octubre elevó la oferta local de divisas y llevó al dólar desde niveles cercanos a $995 hasta un cierre alrededor de $973.",
+        "development": "La Dirección de Presupuestos informó que durante octubre podrá liquidar hasta US$600 millones por semana como parte de las operaciones de financiamiento del Fisco. La institución señaló además que, en adelante, comunicará hasta el día 5 de cada mes el monto máximo semanal previsto. El anuncio del 5 de octubre llegó cuando el dólar había rozado $995 y cambió el balance inmediato de oferta en el mercado cambiario chileno.\n\nTras conocerse la medida, la divisa revirtió el alza y cerró cerca de $973, con una caída aproximada de $17 en la sesión. El movimiento coincidió con otros factores externos, entre ellos el desempeño regional de activos y materias primas, por lo que no corresponde atribuir cada peso de variación exclusivamente a Dipres. El límite semanal tampoco asegura que el Fisco venda el máximo ni fija de antemano precios, días o contrapartes de cada operación.\n\nPara el mercado chileno, la señal es una fuente programada de oferta de dólares que puede influir en liquidez y expectativas durante octubre. Los controles serán los calendarios y montos efectivamente liquidados, la reacción del tipo de cambio, las condiciones externas y el anuncio correspondiente a noviembre. El impacto persistente dependerá de ejecución y contexto, no sólo del techo comunicado.",
+        "anchor": "dipres-venta-dolares-octubre-mercado",
+        "sources": [
+          {
+            "name": "Dirección de Presupuestos",
+            "url": "https://www.dipres.gob.cl/598/w3-propertyvalue-25351.html"
+          },
+          {
+            "name": "La Tercera",
+            "url": "https://www.latercera.com/pulso/noticia/el-valor-del-dolar-en-chile-el-5-de-octubre-de-2026/"
+          }
+        ]
+      },
+      {
+        "slot": "markets_global",
+        "headline": "KKR acuerda comprar Gen II por US$5.100 millones",
+        "deck": "La operación incorpora una plataforma que administra más de US$2 billones para 275 gestores de capital privado y espera cerrar en 2027.",
+        "development": "KKR acordó adquirir Gen II Fund Services a Hg, General Atlantic y otros accionistas por un valor empresa de US$5.100 millones. La operación se realizará mediante la estrategia Core Private Equity de KKR y está sujeta a condiciones de cierre y autorizaciones regulatorias. Las partes prevén completarla en 2027; hasta entonces, Gen II continuará bajo su equipo directivo, encabezado por el cofundador y gerente general Steven Millner.\n\nGen II presta administración, contabilidad, cumplimiento, tesorería y tecnología a más de 275 gestores de inversión que representan sobre US$2 billones en activos privados. Sus actuales propietarios entraron en 2020 y afirman que desde entonces la empresa cuadruplicó ingresos y EBITDA mediante crecimiento orgánico y cuatro adquisiciones. KKR plantea ampliar su presencia internacional, servicios y herramientas tecnológicas, pero no divulgó financiamiento, múltiplos de valoración ni sinergias cuantificadas.\n\nLa transacción muestra que la infraestructura operativa de los mercados privados se volvió un activo de escala para los grandes administradores alternativos. Los hitos verificables serán las aprobaciones, la estructura final de financiamiento, el cierre y la evolución de clientes y márgenes. El acuerdo no implica todavía transferencia de control ni garantiza el crecimiento proyectado después de la integración.",
+        "anchor": "kkr-compra-gen-ii-administracion-fondos",
+        "sources": [
+          {
+            "name": "KKR",
+            "url": "https://media.kkr.com/news-details?news_id=1d75b2ff-2791-473b-8167-3177ef93948a"
+          },
+          {
+            "name": "Reuters",
+            "url": "https://www.reuters.com/legal/transactional/kkr-buy-fund-administrator-gen-ii-51-billion-deal-including-debt-2026-10-06/"
+          }
+        ]
+      }
+    ]
+  }
+}
