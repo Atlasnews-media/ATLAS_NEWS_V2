@@ -79,7 +79,11 @@ const marketsVisual = latestMarkets
             : "En preparación"
         }
       </p>
-      <p>Edición matutina</p>
+      <p>
+        {latestDaily?.data.editionSlot === "midday"
+          ? "EDICIÓN MEDIODÍA"
+          : "Edición matutina"}
+      </p>
     </div>
 
     <EconomicIndicators />
