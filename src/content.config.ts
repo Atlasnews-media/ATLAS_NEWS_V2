@@ -17,6 +17,8 @@ const frontPageHighlightSchema = highlightSchema.extend({
   label: z.string().min(2).max(72),
 });
 
+const editionSlotSchema = z.enum(["morning", "midday"]);
+
 const marketItemSchema = z.object({
   label: z.string().min(2).max(32),
   value: z.string().min(1).max(32),
@@ -51,6 +53,7 @@ const editionSchema = z
     publishedAt: z.coerce.date(),
     cutoffAt: z.coerce.date(),
     type: z.enum(["daily", "weekly"]),
+    editionSlot: editionSlotSchema.optional(),
     status: z.enum(["draft", "published"]).default("draft"),
     tags: z.array(z.string().min(2)).min(1),
     sources: z.array(sourceSchema).min(1),
@@ -61,6 +64,13 @@ const editionSchema = z
     editorialVisual: editorialVisualSchema.optional(),
   })
   .superRefine((edition, context) => {
+    if (edition.type === "weekly" && edition.editionSlot) {
+      context.addIssue({
+        code: "custom",
+        path: ["editionSlot"],
+        message: "editionSlot sólo aplica a ediciones daily.",
+      });
+    }
     if (
       edition.marketSummary &&
       edition.marketSummary.asOf > edition.cutoffAt
@@ -81,6 +91,7 @@ const briefingSchema = z
     publishedAt: z.coerce.date(),
     cutoffAt: z.coerce.date(),
     section: z.enum(["national", "markets"]),
+    editionSlot: editionSlotSchema.optional(),
     status: z.enum(["draft", "published"]).default("draft"),
     tags: z.array(z.string().min(2)).min(1),
     sources: z.array(sourceSchema).min(1),
