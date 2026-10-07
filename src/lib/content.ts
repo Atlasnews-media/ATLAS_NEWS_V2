@@ -21,9 +21,7 @@ export function resolveEditionSlot(data: {
 }
 
 export function editionNavigationLabel(slot: EditionSlot): string {
-  return slot === MIDDAY_EDITION_SLOT
-    ? "Edición mediodía"
-    : "Edición matutina";
+  return slot === MIDDAY_EDITION_SLOT ? "Edición mediodía" : "Edición matutina";
 }
 
 export async function getPublishedEditions(): Promise<Edition[]> {
