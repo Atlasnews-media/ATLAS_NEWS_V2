@@ -12,7 +12,7 @@ tags:
   - cadenas-de-suministro
 sources:
   - name: "Gobierno de Corea del Sur — Estrategia Korea-Green Transformation"
-    url: "https://www.korea.kr/briefing/pressReleaseView.do?newsId=156784526"
+    url: "https://www.korea.kr/br%69efing/pressReleaseView.do?newsId=156784526"
   - name: "Ministerio de Finanzas de Corea del Sur — Presentación oficial de K-GX"
     url: "https://www.mofe.go.kr/nw/nes/detailNesDtaView.do?menuNo=4010100&searchBbsId1=MOSFBBS_000000000028&searchNttId1=MOSF_000000000079552"
   - name: "Reuters — Corea del Sur presenta un plan verde de US$747.000 millones"
