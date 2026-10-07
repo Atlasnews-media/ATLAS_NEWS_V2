@@ -41,6 +41,17 @@ Mantener un periódico financiero digital donde el código, los datos y el conte
 - No crear ramas, Pull Requests, merges o despliegues independientes para Nacional o Mercados durante el flujo matutino.
 - Las ramas `editorial/AAAA-MM-DD-daily` y `editorial/AAAA-MM-DD-weekly` se conservan por compatibilidad con flujos existentes; la rama `-morning` es la convención canónica del nuevo paquete diario.
 
+## Edición mediodía
+
+- La rama canónica es `editorial/AAAA-MM-DD-midday`.
+- El Pull Request canónico se titula `Paquete editorial mediodía — AAAA-MM-DD`.
+- General, Nacional y Mercados continúan usando sus colecciones y rutas existentes; no se crea un segundo publicador.
+- `editionSlot: midday` identifica explícitamente las piezas de Mediodía. La ausencia de `editionSlot` equivale canónicamente a `morning` para preservar el histórico y T1 → T4 sin reescritura.
+- Puede coexistir una publicación Matutina y una Mediodía en la misma fecha. Continúa prohibido duplicar la misma fecha + tipo/sección + `editionSlot`.
+- Matutina y Mediodía de una misma fecha comparten el mismo número diario; la edición vigente de Portada se decide por `publishedAt` y su `editionSlot`.
+- Mediodía debe pasar los mismos gates fail-closed, manifiesto, auditor, publicador y verificación pública. Publicarla no elimina ni modifica retrospectivamente Matutina.
+- Este contrato habilita la identidad web de Mediodía; no define Audio, Reel, Carrusel ni Vespertina.
+
 ## Memoria editorial mínima
 
 - Cada generación parte del archivo vigente en `main`: la edición diaria compara solo los hilos pertinentes y el panorama semanal puede considerar todos los hilos activos.
