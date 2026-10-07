@@ -1,10 +1,10 @@
 ---
 title: "Chile vuelve a financiar al resto, pero por menor inversión y más deuda de hogares"
 summary: "La economía alcanzó una capacidad de financiamiento de 0,2% del PIB en el segundo trimestre, explicada por menor inversión y un déficit fiscal más acotado, mientras los hogares elevaron su deuda hipotecaria."
-publishedAt: "2026-10-07T06:24:00-03:00"
+publishedAt: "2026-10-07T06:46:50-03:00"
 cutoffAt: "2026-10-07T06:21:00-03:00"
 section: "national"
-status: "draft"
+status: "published"
 tags:
   - chile
   - ahorro

@@ -1,10 +1,10 @@
 ---
 title: "Corea del Sur apuesta US$747.000 millones para liderar la transición verde"
 summary: "Seúl movilizará gasto público, financiamiento climático e inversión privada para transformar energía, transporte e industria pesada y competir por las cadenas verdes hasta 2035."
-publishedAt: "2026-10-07T06:00:55-03:00"
+publishedAt: "2026-10-07T06:46:50-03:00"
 cutoffAt: "2026-10-07T06:00:13-03:00"
 type: "daily"
-status: "draft"
+status: "published"
 tags:
   - corea-del-sur
   - transicion-energetica

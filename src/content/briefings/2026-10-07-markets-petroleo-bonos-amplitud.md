@@ -1,10 +1,10 @@
 ---
 title: "Petróleo y bonos rompen la calma tras nuevos récords de Wall Street"
 summary: "El Brent volvió sobre US$101 y los rendimientos largos subieron mientras Europa y Asia retrocedieron; los récords del S&P 500 y Nasdaq esconden menor amplitud y una selección soberana más dura."
-publishedAt: "2026-10-07T06:31:00-03:00"
+publishedAt: "2026-10-07T06:46:50-03:00"
 cutoffAt: "2026-10-07T06:28:00-03:00"
 section: "markets"
-status: "draft"
+status: "published"
 tags:
   - mercados
   - petroleo
