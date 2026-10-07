@@ -1,11 +1,11 @@
 ---
 title: "Inversionistas retiran US$26.300 millones de emergentes y castigan acciones y bonos"
 summary: "El primer flujo mensual negativo desde junio combinó salidas por US$19.200 millones en renta variable y US$7.000 millones en deuda, mientras el dólar y las tasas estadounidenses elevaron el costo de mantener riesgo emergente."
-publishedAt: "2026-10-07T12:05:00-03:00"
+publishedAt: "2026-10-07T18:58:19-03:00"
 cutoffAt: "2026-10-07T12:00:00-03:00"
 section: "markets"
 editionSlot: "midday"
-status: "draft"
+status: "published"
 tags:
   - mercados-emergentes
   - flujos
