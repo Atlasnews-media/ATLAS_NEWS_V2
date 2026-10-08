@@ -1,0 +1,115 @@
+{
+  "status": "READY",
+  "date": "2026-10-08",
+  "contract": "atlas-senales-del-dia-v1",
+  "senalesDelDia": {
+    "internacional": [
+      {
+        "slot": "technology",
+        "headline": "Microsoft lleva agentes de IA al PC con aislamiento local",
+        "deck": "Windows estrena contenedores para limitar accesos de agentes y combina modelos locales con nube en nuevos equipos Surface con chips Nvidia.",
+        "development": "Microsoft presentó el 7 de octubre una arquitectura de “inteligencia híbrida” para Windows que distribuye tareas de inteligencia artificial entre el computador y la nube. La compañía puso en disponibilidad general Microsoft Execution Containers, un entorno de aislamiento que restringe los archivos, credenciales y recursos a los que puede acceder cada agente. También anunció que Copilot podrá usar modelos locales y contexto del dispositivo, con enrutamiento hacia servicios remotos cuando la carga lo requiera.\n\nEl despliegue incluye Surface Laptop Ultra y Surface RTX Spark Dev Box, equipos construidos alrededor de procesadores Nvidia RTX Spark. Microsoft afirma que la estación de escritorio admite hasta 128 GB de memoria unificada y modelos de más de 120.000 millones de parámetros. La empresa también mostró MAI-Code-1.1-Flash ejecutándose localmente para tareas de programación. Las capacidades publicadas describen el producto y no demuestran todavía desempeño, autonomía o costos en usos sostenidos.\n\nLa señal relevante es que parte del cómputo de agentes puede trasladarse desde centros de datos a equipos pagados y administrados por clientes, mientras el aislamiento se vuelve una función del sistema operativo. Los controles serán pruebas independientes, compatibilidad real con agentes de terceros, precio final, consumo energético y adopción empresarial. El anuncio abre una alternativa técnica; no prueba que el procesamiento local sustituya a la nube en cargas de frontera.",
+        "anchor": "microsoft-agentes-ia-pc-aislamiento-local",
+        "sources": [
+          {
+            "name": "Microsoft",
+            "url": "https://news.microsoft.com/windows-surface-october-2026-news/"
+          },
+          {
+            "name": "Reuters",
+            "url": "https://www.reuters.com/business/microsoft-nvidia-ceos-unveil-new-ai-laptop-san-francisco-event-2026-10-07/"
+          }
+        ]
+      },
+      {
+        "slot": "world",
+        "headline": "Reino Unido y Alemania coordinan respuesta a amenazas híbridas",
+        "deck": "La alianza contempla compartir información y actuar contra sabotaje, ciberataques y riesgos para infraestructura crítica en Europa.",
+        "development": "Los gobiernos de Reino Unido y Alemania anunciaron el 8 de octubre una asociación bilateral para identificar, atribuir y desarticular sabotajes, ciberataques y otras amenazas híbridas. El primer ministro británico Andy Burnham viajó a Berlín para reunirse con el canciller Friedrich Merz, en el primer encuentro presencial entre ambos. El comunicado británico incluye intercambio de información, coordinación operativa y medidas de resiliencia para infraestructura crítica.\n\nLa iniciativa se apoya en el Tratado de Kensington de 2025, cuya ratificación fue comunicada junto con la nueva alianza. Londres identifica a Rusia como el principal origen de la amenaza, aunque el mecanismo anunciado se plantea para actores hostiles en general. Los dos líderes también convocaron un foro empresarial sobre crecimiento regional e inversión y prevén tratar Ucrania, Medio Oriente y las disrupciones al comercio por el estrecho de Ormuz.\n\nEl hecho verificable es el lanzamiento de un marco de cooperación; el anuncio no publica presupuesto, dotación, protocolos de atribución ni operaciones conjuntas concretas. Tampoco convierte por sí solo la coordinación política en una capacidad nueva. Los siguientes hitos serán la estructura de mando, los organismos participantes, ejercicios, legislación habilitante y resultados comunicados. Hasta que esos elementos aparezcan, corresponde describir la medida como un compromiso institucional en ejecución, no como una reducción ya comprobada del riesgo híbrido.",
+        "anchor": "reino-unido-alemania-amenazas-hibridas",
+        "sources": [
+          {
+            "name": "Gobierno del Reino Unido",
+            "url": "https://www.gov.uk/government/news/uk-and-germany-launch-joint-partnership-to-counter-sabotage-and-cyber-attacks"
+          },
+          {
+            "name": "Reuters",
+            "url": "https://www.reuters.com/world/uk/uk-germany-launch-new-partnership-counter-sabotage-cyberattacks-2026-10-07/"
+          }
+        ]
+      }
+    ],
+    "nacional": [
+      {
+        "slot": "ipsa_company",
+        "headline": "LATAM reabrirá vuelos directos entre Santiago y Caracas",
+        "deck": "La aerolínea programó cuatro frecuencias semanales desde el 3 de enero de 2027 en aviones Airbus A320; los pasajes ya están a la venta.",
+        "development": "LATAM Airlines informó el 7 de octubre que reabrirá la ruta directa entre Santiago y Caracas a partir del 3 de enero de 2027. La programación considera vuelos de ida y regreso los lunes, miércoles, viernes y domingos, operados con Airbus A320 en cabinas Economy y Premium Economy. La compañía señaló que los pasajes ya están disponibles en sus sistemas de distribución.\n\nLa apertura restablece una conexión suspendida por casi tres años y agrega capacidad internacional desde el principal centro de operaciones chileno. La frecuencia anunciada equivale a ocho tramos semanales si se cuentan ambos sentidos, pero LATAM no publicó estimaciones de ocupación, ingresos, tarifas promedio ni efecto en su capacidad consolidada. La venta disponible confirma la programación comercial; no garantiza que la operación se mantenga sin ajustes regulatorios o de demanda antes del inicio.\n\nPara la empresa integrante del IPSA, la señal es una decisión de red y utilización de flota, no una revisión de resultados. Los controles serán autorizaciones aeroportuarias y aeronáuticas, horarios definitivos, ocupación, continuidad de las cuatro frecuencias y eventuales cambios de capacidad. También importa si la ruta capta tráfico directo o desplaza conexiones existentes. Sin información financiera cuantificada, no corresponde atribuirle todavía un impacto material sobre ingresos, costos o valoración de LATAM.",
+        "anchor": "latam-ruta-santiago-caracas-2027",
+        "sources": [
+          {
+            "name": "LATAM Trade",
+            "url": "https://www.latamtrade.com/es_ca/comunicados/RUTAS_Nueva_operacion_entre_Santiago_y_Caracas_SP"
+          },
+          {
+            "name": "Panorama",
+            "url": "https://panorama.onl/economia/latam-reabrira-ruta-santiago-caracas-con-4-vuelos-semanales-20261007-1203.html"
+          }
+        ]
+      },
+      {
+        "slot": "policy_economy",
+        "headline": "Farmacias Ahumada se integra a la red de precios Cenabast",
+        "deck": "Sus 413 sucursales ofrecerán 26 medicamentos con precios máximos durante octubre; la red nacional sube a 1.696 locales adheridos.",
+        "development": "El Ministerio de Salud informó el 7 de octubre la incorporación de 413 sucursales de Farmacias Ahumada a la Ley Cenabast. Diecisiete medicamentos quedaron disponibles de inmediato y la oferta aumentará a 26 a fines de mes. Con la adhesión, la red alcanza 1.696 farmacias en todas las regiones, incluidos locales independientes, Salcobrand y ahora Farmacias Ahumada.\n\nEl mecanismo utiliza el poder de compra de Cenabast para negociar con laboratorios y fija un Precio Máximo de Venta al Público para cada producto. Las farmacias adheridas no pueden superar ese techo. El Gobierno citó ejemplos como clozapina de 100 mg a un máximo de $5.210 y carvedilol de 6,25 mg a $1.490, con diferencias de 87% y 88% frente a precios promedio de locales no adheridos. Esos porcentajes corresponden a productos específicos y no deben extrapolarse a toda la canasta.\n\nLa señal combina cobertura comercial y regulación de precios máximos sin crear una obligación general para todos los medicamentos. El efecto dependerá de disponibilidad de stock, ubicación de los locales, continuidad de los convenios y precios comparables fuera de la red. Los controles serán el ingreso efectivo de los nueve productos restantes, fiscalización del máximo, volúmenes dispensados y ahorro promedio observado. La incorporación amplía acceso potencial; no demuestra por sí sola una baja equivalente en el gasto farmacéutico total de los hogares.",
+        "anchor": "farmacias-ahumada-red-precios-cenabast",
+        "sources": [
+          {
+            "name": "Gobierno de Chile",
+            "url": "https://www.gob.cl/noticias/413-sucursales-de-farmacias-ahumada-se-incorporan-a-la-ley-cenab/"
+          },
+          {
+            "name": "Cenabast",
+            "url": "https://www.remediosmasbaratos.cl/"
+          }
+        ]
+      }
+    ],
+    "mercados": [
+      {
+        "slot": "markets_chile",
+        "headline": "El crédito bancario acelera y las tasas se separan en Chile",
+        "deck": "Las colocaciones crecieron 6,1% anual en septiembre; bajó la tasa comercial a 8,4%, mientras consumo y vivienda subieron a 25,9% y 4,1%.",
+        "development": "El Banco Central de Chile informó el 7 de octubre que las colocaciones bancarias crecieron 6,1% anual en septiembre, frente a 4,8% en agosto. Los créditos comerciales aumentaron 6,8%, los de consumo 5,9%, los de vivienda 6,3% y los de comercio exterior 0,2%. Las cifras son provisionales y comparan saldos nominales del sistema, por lo que el crecimiento no equivale directamente a una expansión real del financiamiento.\n\nLas tasas mostraron una dirección menos uniforme. El promedio de créditos comerciales bajó a 8,4% desde 8,6% y el comercio exterior se mantuvo en 5,8%. En cambio, consumo subió a 25,9% desde 25,5% y vivienda a 4,1% desde 4,0%. Dentro de consumo, los préstamos en cuotas promediaron 14,5%, mientras el rotativo de tarjetas llegó a 33,2% y los sobregiros a 35,4%.\n\nPara el mercado chileno, la señal es una aceleración del saldo de crédito junto con costos divergentes entre segmentos. La mejora comercial no implica alivio para hogares, donde las tasas aumentaron. Los controles serán las cifras definitivas, crecimiento real descontada la inflación, morosidad, estándares de aprobación y composición por producto. Una sola lectura mensual tampoco establece tendencia: importa si el mayor dinamismo persiste y si se traduce en inversión y consumo sin deterioro de calidad crediticia.",
+        "anchor": "chile-credito-bancario-tasas-septiembre",
+        "sources": [
+          {
+            "name": "Banco Central de Chile",
+            "url": "https://www.bcentral.cl/web/banco-central/contenido/-/details/publicaciones/estadistica/informe-mensual-de-estadisticas-monetarias-y-financieras-septiembre-2026"
+          },
+          {
+            "name": "Estrategia",
+            "url": "https://www.diarioestrategia.cl/texto-diario/mostrar/6043217/b-central-tasas-interes-creditos-comerciales-consumo-e-hipotecarios-bajaron-septiembre"
+          }
+        ]
+      },
+      {
+        "slot": "markets_global",
+        "headline": "Pakistán acuerda con el FMI acceso potencial a US$1.210 millones",
+        "deck": "El pacto técnico cubre dos revisiones y requiere aprobación del directorio; combinaría US$1.000 millones del EFF y US$210 millones del RSF.",
+        "development": "El Fondo Monetario Internacional y Pakistán alcanzaron un acuerdo a nivel técnico tras las revisiones de dos programas vigentes, informó el organismo el 7 de octubre. Si el Directorio Ejecutivo lo aprueba, el país podrá acceder a unos US$1.000 millones bajo el Extended Fund Facility y US$210 millones mediante el Resilience and Sustainability Facility. El total potencial asciende a US$1.210 millones.\n\nLas conversaciones se realizaron entre el 23 de septiembre y el 7 de octubre en Karachi e Islamabad y abarcaron la cuarta revisión del programa EFF por US$7.000 millones y la tercera del RSF. El FMI señaló que los riesgos siguen elevados por tensiones geopolíticas, precios volátiles de la energía, condiciones financieras globales más restrictivas y disrupciones comerciales. Un acuerdo técnico refleja conformidad del equipo negociador, pero no constituye desembolso ni aprobación final.\n\nPara los mercados, el siguiente hito es la inclusión del caso en la agenda del Directorio y su decisión formal. También importarán las condiciones fiscales, energéticas y de reservas asociadas al programa, además de la reacción de bonos, rupia y bolsa pakistaní. Hasta que se complete ese proceso, la lectura correcta es acceso potencial a financiamiento multilateral y continuidad del programa, no fondos ya recibidos ni eliminación del riesgo soberano.",
+        "anchor": "pakistan-fmi-acuerdo-usd-1210-millones",
+        "sources": [
+          {
+            "name": "Reuters",
+            "url": "https://www.reuters.com/world/asia-pacific/imf-reaches-staff-deal-with-pakistan-potentially-unlocking-12-billion-2026-10-07/"
+          },
+          {
+            "name": "Radio Pakistan",
+            "url": "https://www.radio.gov.pk/08-10-2026/pakistan-imf-reach-staff-level-agreement-for-12b-tranche"
+          }
+        ]
+      }
+    ]
+  }
+}
