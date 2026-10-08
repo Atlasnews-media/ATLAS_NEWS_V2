@@ -27,14 +27,14 @@
     {
       "id": "ai-monetization-selectivity",
       "topic": "Inteligencia artificial y selectividad bursátil",
-      "thesis": "La demanda de inteligencia artificial ya genera producción y pedidos reales, pero la prueba decisiva se desplaza a la monetización: nuevas aplicaciones, ingresos y productividad deben llegar antes de que el costo del capital y los vencimientos expongan el apalancamiento de la infraestructura.",
-      "status": "changed",
-      "last_evidence": "El 3 de octubre Reuters recopiló proyecciones según las cuales el gasto mundial acumulado en centros de datos podría superar US$30 billones hacia 2050; las grandes plataformas necesitarían más de US$4,2 billones de ingresos nuevos en cinco años, mientras Anthropic proyecta gastar US$518.000 millones y las mejoras amplias de productividad en Estados Unidos todavía no aparecen.",
-      "effect": "Cambia el foco desde la existencia de demanda industrial hacia el plazo y la calidad del retorno: el ciclo puede seguir impulsando fábricas y proveedores, pero una demora de aplicaciones, ingresos o productividad aumentaría las pérdidas en estructuras financiadas con deuda.",
-      "base_scenario": "La inversión en IA continúa sosteniendo semiconductores, energía, centros de datos y bienes de capital, con beneficios económicos reales pero concentrados; la selección se endurece entre infraestructura con contratos e ingresos verificables y proyectos dependientes de crecimiento futuro.",
-      "invalidate_if": "Una aceleración amplia y persistente de productividad, ingresos de nuevas aplicaciones, flujo de caja y utilización de centros de datos validaría el gasto; cancelaciones, menor demanda, refinanciaciones difíciles o deterioro de activos reforzarían el riesgo financiero.",
-      "watch": "Gasto y utilización de centros de datos, ingresos de nuevas aplicaciones, productividad, flujo de caja, deuda y vencimientos de infraestructura, compromisos de compra de chips y contratación en ocupaciones expuestas a IA.",
-      "last_publication": "/ediciones/2026-10-03-daily-ia-enfrenta-prueba-productividad-capital/"
+      "thesis": "La demanda de inteligencia artificial ya produce pedidos reales, pero el ciclo entró en una fase crediticia: bonos y préstamos por decenas de miles de millones deben pagarse antes de que ingresos y productividad justifiquen la infraestructura, trasladando el riesgo desde accionistas hacia acreedores y ahorro institucional.",
+      "status": "confirmed",
+      "last_evidence": "El 8 de octubre, SpaceX preparaba US$30.000 millones de deuda con grado de inversión y US$10.000 millones en préstamos para chips de Nvidia, Broadcom buscaba otros US$50.000 millones y Morgan Stanley estimaba US$1,5 billones de financiamiento externo para infraestructura de IA hacia 2028.",
+      "effect": "Confirma y vuelve concreta la tesis del 3 de octubre: el riesgo de monetización ya no es sólo una proyección de gasto, porque la expansión está creando vencimientos, primas de crédito y competencia directa con la deuda soberana; parte de la exposición alcanza fondos de bonos, aseguradoras y carteras previsionales.",
+      "base_scenario": "La inversión en IA continúa sosteniendo chips, memoria, energía y centros de datos, pero una proporción creciente se financia con deuda; ingresos, utilización y flujo de caja deberán crecer antes de las refinanciaciones para evitar que el ajuste pase de acciones a crédito.",
+      "invalidate_if": "Ingresos y productividad acelerados, alta utilización y flujo de caja suficiente para servir la deuda validarían una expansión sostenible; ampliación persistente de primas, cancelaciones, refinanciaciones difíciles o impagos reforzarían el riesgo sistémico.",
+      "watch": "Tamaño, tasa y vencimientos de emisiones de SpaceX, Broadcom y Oracle; CDS y spreads; compradores institucionales; utilización de centros de datos; contratos de capacidad; ingresos de aplicaciones; flujo de caja; demanda de chips; competencia con emisiones soberanas.",
+      "last_publication": "/ediciones/2026-10-08-daily-ia-migra-credito-capital/"
     },
     {
       "id": "chile-inflation-activity-rates",
