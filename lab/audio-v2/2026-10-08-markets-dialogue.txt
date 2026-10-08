@@ -1,0 +1,21 @@
+VOZ 1: La lectura de mercados de esta mañana empieza en los bonos, no en las bolsas. La nueva deuda para financiar infraestructura de inteligencia artificial compite con emisiones soberanas justo cuando el petróleo vuelve a subir. Esa combinación presiona las tasas largas, sostiene al dólar y debilita a las acciones.
+VOZ 2: ¿Qué cambió en la curva estadounidense?
+VOZ 1: El Treasury a diez años volvió hacia 5,30%, después de tocar 5,326% durante la sesión anterior, un máximo de 24 años. En cambio, el bono a dos años se mantenía cerca de 4,78%. El mercado sólo asignaba 19% de probabilidad a un alza de la Reserva Federal en octubre, pero 80% a un movimiento en diciembre.
+VOZ 2: Entonces, ¿la subida de la tasa larga no depende sólo de la Fed?
+VOZ 1: Exacto. La parte larga también refleja inflación, déficit y prima por plazo. A eso se suma una oferta corporativa enorme: SpaceX prepara US$30.000 millones en bonos y US$10.000 millones en préstamos. Además, se busca estructurar US$50.000 millones de financiamiento ligado a equipos de inteligencia artificial de Broadcom.
+VOZ 2: ¿El mercado está rechazando la inteligencia artificial?
+VOZ 1: No de manera uniforme. El gasto todavía favorece a fabricantes de chips, memoria y equipos. Pero el seguro de incumplimiento a cinco años de SpaceX se amplió cerca de 15 puntos base a un récord. Eso muestra una separación entre el potencial de crecimiento y el riesgo de repago.
+VOZ 2: ¿Dónde entra el petróleo?
+VOZ 1: El Brent avanzaba 2,1% hasta US$102,30 por barril y el crudo estadounidense 1,7% hasta US$89,79, por nuevos ataques a embarcaciones en el Golfo. Si la energía se mantiene cara, la inflación puede tardar más en bajar y los bonos largos pierden atractivo a los rendimientos anteriores.
+VOZ 2: ¿Cómo reaccionaron las acciones?
+VOZ 1: Asia fue claramente negativa. El Nikkei cayó 1,1%, el Kospi 2,1% y el índice MSCI de Asia-Pacífico fuera de Japón 1,2%. Los futuros del S&P 500 y Nasdaq bajaban 0,1%, después de que ambos índices al contado perdieran 0,22% el miércoles.
+VOZ 2: ¿Hubo señales de mayor castigo en algunos segmentos?
+VOZ 1: Sí. El Russell 2000, que agrupa empresas más pequeñas y sensibles al financiamiento, cayó 1,3%. Samsung proyectó un aumento de 783% en su beneficio operativo trimestral, pero su acción bajó 1,2%. Incluso una mejora fuerte de utilidades no bastó para neutralizar el efecto de tasas altas y posicionamiento.
+VOZ 2: Sin embargo, el cobre subió. ¿Por qué se separó del resto?
+VOZ 1: Porque ahí dominó una señal física de oferta. El cobre a tres meses en Londres avanzaba 0,96% a US$14.614,50 por tonelada y Shanghái subía 1,41%. Se esperaba reposición de compradores chinos después de la semana festiva, mientras aumentaban los riesgos en minas.
+VOZ 2: ¿La huelga chilena influyó?
+VOZ 1: Sí. La huelga en Centinela comenzó y existe otro frente de negociación en Escondida. Además, los inventarios fuera de Estados Unidos están bajos. El diferencial entre cobre al contado y a tres meses se amplió a un backwardation de US$89,06, señal de que el metal inmediato tiene una prima.
+VOZ 2: ¿Eso garantiza que el cobre seguirá subiendo?
+VOZ 1: No. Si las huelgas se resuelven rápido y la reposición china es transitoria, el dólar firme y las tasas altas pueden volver a pesar. Si aparecen pérdidas de producción e inventarios aún menores, la prima física se refuerza.
+VOZ 2: ¿Cuáles son los tres puntos de control para hoy?
+VOZ 1: Primero, la subasta del Treasury a treinta años y si rendimientos cercanos a 5,70% atraen demanda. Segundo, si el petróleo se sostiene sobre US$100 y alimenta expectativas de inflación. Tercero, si la inversión en inteligencia artificial genera flujo de caja antes de que aumenten deuda y refinanciaciones. En cobre, hay que observar la duración efectiva de los conflictos mineros, no sólo sus titulares.
