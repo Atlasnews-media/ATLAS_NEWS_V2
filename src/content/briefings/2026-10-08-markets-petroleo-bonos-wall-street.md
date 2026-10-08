@@ -1,11 +1,11 @@
 ---
 title: "Brent salta 4,2% y Wall Street abre a la baja mientras los bonos amplían el ajuste"
 summary: "El petróleo superó US$104, el Treasury a diez años se mantuvo cerca de 5,29% y las acciones tecnológicas retrocedieron, confirmando que la presión matutina se extendió a la apertura estadounidense."
-publishedAt: "2026-10-08T12:05:00-03:00"
+publishedAt: "2026-10-08T12:03:50-03:00"
 cutoffAt: "2026-10-08T12:00:00-03:00"
 section: "markets"
 editionSlot: "midday"
-status: "draft"
+status: "published"
 tags:
   - mercados
   - petroleo
