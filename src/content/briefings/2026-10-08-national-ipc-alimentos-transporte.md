@@ -1,11 +1,11 @@
 ---
 title: "IPC sube 0,4% y queda bajo lo esperado, pero alimentos y transporte mantienen la presión"
 summary: "La inflación mensual fue menor al 0,5% previsto por operadores, aunque la variación anual siguió en 4,1% y los aumentos de alimentos, combustibles y transporte limitaron el alivio."
-publishedAt: "2026-10-08T12:05:00-03:00"
+publishedAt: "2026-10-08T12:03:50-03:00"
 cutoffAt: "2026-10-08T12:00:00-03:00"
 section: "national"
 editionSlot: "midday"
-status: "draft"
+status: "published"
 tags:
   - chile
   - inflacion
