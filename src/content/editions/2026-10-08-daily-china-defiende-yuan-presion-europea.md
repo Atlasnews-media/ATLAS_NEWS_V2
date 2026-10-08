@@ -1,11 +1,11 @@
 ---
 title: "China niega devaluar el yuan mientras Europa eleva la presión por su superávit récord"
 summary: "El banco central chino rechazó que use la moneda para ganar competitividad y prometió más transparencia cambiaria, mientras la Unión Europea busca reducir un déficit bilateral de €360.600 millones."
-publishedAt: "2026-10-08T12:05:00-03:00"
+publishedAt: "2026-10-08T12:03:50-03:00"
 cutoffAt: "2026-10-08T12:00:00-03:00"
 type: "daily"
 editionSlot: "midday"
-status: "draft"
+status: "published"
 tags:
   - china
   - union-europea
