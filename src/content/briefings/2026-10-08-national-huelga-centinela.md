@@ -1,11 +1,11 @@
 ---
 title: "La huelga en Centinela abre una prueba operativa para el cobre chileno"
 summary: "Dos sindicatos que reúnen al 22% de la dotación propia de Centinela iniciaron una huelga. La empresa mantiene su producción proyectada, pero la duración del conflicto definirá el impacto real."
-publishedAt: "2026-10-08T06:23:00-03:00"
+publishedAt: "2026-10-08T06:47:18-03:00"
 cutoffAt: "2026-10-08T06:20:00-03:00"
 section: "national"
 editionSlot: "morning"
-status: "draft"
+status: "published"
 tags:
   - chile
   - mineria

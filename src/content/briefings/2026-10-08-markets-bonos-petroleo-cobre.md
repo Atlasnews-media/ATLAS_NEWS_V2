@@ -1,11 +1,11 @@
 ---
 title: "Bonos, petróleo y deuda de IA rompen la calma de las bolsas"
 summary: "La nueva oferta de deuda tecnológica y el repunte del petróleo elevaron la presión sobre las tasas largas y debilitaron las bolsas; el cobre subió por una señal de oferta distinta."
-publishedAt: "2026-10-08T06:29:00-03:00"
+publishedAt: "2026-10-08T06:47:18-03:00"
 cutoffAt: "2026-10-08T06:26:00-03:00"
 section: "markets"
 editionSlot: "morning"
-status: "draft"
+status: "published"
 tags:
   - mercados
   - bonos

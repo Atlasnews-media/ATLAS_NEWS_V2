@@ -1,11 +1,11 @@
 ---
 title: "La carrera por la IA migra al crédito y disputa capital con los gobiernos"
 summary: "SpaceX y Broadcom buscan cerca de US$90.000 millones para infraestructura de inteligencia artificial, trasladando el auge tecnológico desde la caja y las acciones hacia préstamos y bonos."
-publishedAt: "2026-10-08T05:57:58-03:00"
+publishedAt: "2026-10-08T06:47:18-03:00"
 cutoffAt: "2026-10-08T05:57:09-03:00"
 type: "daily"
 editionSlot: "morning"
-status: "draft"
+status: "published"
 tags:
   - inteligencia-artificial
   - deuda
