@@ -28,6 +28,13 @@ highlights:
     text: "Los fondos globales de renta fija captaron US$26.030 millones y los estadounidenses marcaron un récord semanal."
   - label: "Acciones pierden flujos"
     text: "Fondos estadounidenses registraron salidas por US$5.110 millones, aunque tecnología continuó recibiendo aportes."
+editorialVisual:
+  src: "https://commons.wikimedia.org/wiki/Special:FilePath/US_Treasuries_from_Iran_War.webp"
+  alt: "Gráfico de rendimientos de bonos del Tesoro de Estados Unidos a dos, diez y treinta años"
+  source: "Wikimedia Commons"
+  sourceUrl: "https://commons.wikimedia.org/wiki/File:US_Treasuries_from_Iran_War.webp"
+  author: "Wikideas1"
+  license: "CC0 1.0 Universal"
 demo: false
 ---
 
