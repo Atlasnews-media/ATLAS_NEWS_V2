@@ -1,11 +1,11 @@
 ---
 title: "US$153.810 millones entran a fondos monetarios mientras acciones de EE.UU. pierden flujos"
 summary: "La venta de bonos y el temor a inflación llevaron el mayor ingreso semanal desde mayo hacia liquidez; al mismo tiempo, fondos de renta fija captaron capital y las acciones estadounidenses registraron rescates."
-publishedAt: "2026-10-09T12:01:00-03:00"
+publishedAt: "2026-10-09T12:04:32-03:00"
 cutoffAt: "2026-10-09T12:00:00-03:00"
 section: "markets"
 editionSlot: "midday"
-status: "draft"
+status: "published"
 tags:
   - mercados
   - flujos

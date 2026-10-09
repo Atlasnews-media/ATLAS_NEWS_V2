@@ -1,11 +1,11 @@
 ---
 title: "Aluvión deja más de 2.000 viviendas dañadas y abre una investigación sobre su origen"
 summary: "El balance matinal elevó el daño habitacional, mantuvo diez comunas en alerta y trasladó la emergencia de Las Condes hacia la evaluación de infraestructura, prevención y responsabilidades."
-publishedAt: "2026-10-09T12:01:00-03:00"
+publishedAt: "2026-10-09T12:04:32-03:00"
 cutoffAt: "2026-10-09T12:00:00-03:00"
 section: "national"
 editionSlot: "midday"
-status: "draft"
+status: "published"
 tags:
   - chile
   - aluvion

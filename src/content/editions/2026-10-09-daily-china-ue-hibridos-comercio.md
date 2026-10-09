@@ -1,11 +1,11 @@
 ---
 title: "China y la UE acuerdan reducir a la mitad los híbridos chinos y destraban tierras raras"
 summary: "Beijing y Bruselas alcanzaron su primer resultado concreto para moderar las exportaciones de híbridos, facilitar licencias de tierras raras y ampliar el acceso europeo al mercado chino."
-publishedAt: "2026-10-09T12:01:00-03:00"
+publishedAt: "2026-10-09T12:04:32-03:00"
 cutoffAt: "2026-10-09T12:00:00-03:00"
 type: "daily"
 editionSlot: "midday"
-status: "draft"
+status: "published"
 tags:
   - china
   - union-europea
