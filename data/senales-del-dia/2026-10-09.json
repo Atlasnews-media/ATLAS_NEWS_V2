@@ -1,0 +1,115 @@
+{
+  "status": "READY",
+  "date": "2026-10-09",
+  "contract": "atlas-senales-del-dia-v1",
+  "senalesDelDia": {
+    "internacional": [
+      {
+        "slot": "technology",
+        "headline": "Upscale conecta aceleradores rivales con una sola red de IA",
+        "deck": "Token Fabric unifica chips, redes y operación en centros de datos heterogéneos; el acceso general está previsto para comienzos de 2027.",
+        "development": "Upscale presentó el 8 de octubre Token Fabric, una arquitectura que busca conectar distintos aceleradores de inteligencia artificial dentro de una misma red de centro de datos. La propuesta combina sistemas de escala horizontal basados en Nvidia Spectrum-X, silicio propio SkyFabriX para comunicación dentro de cada conjunto de servidores y una capa común de software, SkyOS y SkyCMD. La empresa afirma que el diseño admite GPU, XPU y tarjetas de red de varios proveedores mediante estándares abiertos.\n\nEl anuncio aborda un problema operativo: integrar procesadores rivales suele exigir redes y herramientas de administración separadas. Upscale plantea que una sola base de software pueda coordinar ambos niveles de conexión y reducir ese trabajo de integración. Reuters informó que la startup, respaldada por Nvidia y valorada en US$2.000 millones en junio, planea liberar componentes por etapas. La compañía fijó la disponibilidad general para comienzos de 2027 y mantiene programas de acceso anticipado y validación conjunta.\n\nLa señal es una oferta técnica para infraestructura heterogénea, no una prueba de rendimiento a escala comercial. Upscale no publicó precios, resultados comparativos independientes ni clientes identificados en el anuncio. Los controles serán la entrega efectiva del silicio y los sistemas, su interoperabilidad con aceleradores ajenos a Nvidia, las pruebas de latencia y utilización, y la adopción cuando el producto pase de validaciones a disponibilidad general.",
+        "anchor": "upscale-token-fabric-red-ia-heterogenea",
+        "sources": [
+          {
+            "name": "Upscale",
+            "url": "https://upscale.com/blogs/upscale-introduces-token-fabric-the-industrys-most-comprehensive-standards-based-networking-portfolio-for-ai-factories"
+          },
+          {
+            "name": "Reuters",
+            "url": "https://www.reuters.com/business/nvidia-backed-upscale-ai-launches-platform-connect-chips-rival-suppliers-2026-10-08/"
+          }
+        ]
+      },
+      {
+        "slot": "world",
+        "headline": "Estados Unidos abre un canal directo con el gobierno de Myanmar",
+        "deck": "El contacto de mayor nivel desde el golpe de 2021 abordó la liberación de un estadounidense y los centros de estafas, sin levantar sanciones.",
+        "development": "La administración estadounidense abrió conversaciones directas con el gobierno instalado por los militares en Myanmar, según informó Reuters el 8 de octubre tras consultar a siete funcionarios y exfuncionarios. Michael Vance, secretario adjunto de Estado para Inteligencia e Investigación, participó en reuniones con Min Aung Hlaing en Naypyitaw los días 15 y 16 de septiembre. El contacto, conocido públicamente esta semana, fue descrito como el de mayor nivel desde el golpe de 2021.\n\nLas gestiones se concentraron inicialmente en la liberación del empresario estadounidense Adam Castillo y en los centros de estafas digitales que operan desde territorio birmano. El Departamento de Estado confirmó que mantiene contactos con distintos actores sobre asuntos de interés estadounidense y que plantea el cese de la violencia y la liberación de presos políticos. El gobierno militar no respondió a Reuters. Min Aung Hlaing continúa sujeto a sanciones de Estados Unidos; el diálogo comunicado no equivale a reconocimiento diplomático ni a su retiro.\n\nEl canal aparece mientras el dirigente birmano amplía contactos regionales. Associated Press informó por separado sobre su visita a Malasia del 8 de octubre, parte de una ofensiva diplomática posterior a su asunción como presidente. Falta conocer si Washington formalizará el mecanismo, qué funcionarios participarán y si habrá resultados verificables sobre estafas, detenidos o violencia. Por ahora, el hecho es la apertura del contacto, no un cambio completo y documentado de la política estadounidense.",
+        "anchor": "estados-unidos-canal-directo-gobierno-myanmar",
+        "sources": [
+          {
+            "name": "Reuters",
+            "url": "https://www.reuters.com/world/asia-pacific/us-opens-direct-talks-with-myanmars-generals-reversing-years-isolation-2026-10-08/"
+          },
+          {
+            "name": "Associated Press",
+            "url": "https://apnews.com/article/f2f19285f759b5d1d17638442e877112"
+          }
+        ]
+      }
+    ],
+    "nacional": [
+      {
+        "slot": "ipsa_company",
+        "headline": "Engie activa en Mejillones una batería de 802 MWh",
+        "deck": "BESS Lile inició operación comercial tras una inversión de US$174 millones y reutiliza infraestructura antes asociada a generación térmica.",
+        "development": "Engie Energía Chile informó el 8 de octubre el inicio de la operación comercial de BESS Lile en el Complejo Energético Mejillones. El sistema independiente de almacenamiento tiene 142 MW de potencia y 802 MWh de capacidad, con autonomía de descarga de hasta cinco horas. La compañía destinó US$174 millones al proyecto, compuesto por 160 contenedores de baterías y 40 equipos eléctricos de soporte. El Coordinador Eléctrico Nacional había autorizado su entrada comercial el 25 de septiembre.\n\nEl activo reutiliza subestaciones, caminos y áreas internas que originalmente se habían preparado para ampliar la generación térmica del complejo. Según Engie, puede entregar energía equivalente al consumo de más de 84.000 hogares durante cinco horas. BESS Lile es el quinto sistema de almacenamiento que la empresa pone en operación comercial durante 2026 y eleva a 803 MW su capacidad instalada en baterías. La cifra describe potencia disponible, no energía generada de forma continua.\n\nPara Engie Energía Chile, integrante del IPSA, el hito convierte una inversión en capacidad operativa y avanza la reconversión de Mejillones. No se informaron ingresos esperados, contratos específicos ni efecto en resultados. Los controles serán la disponibilidad real, los ciclos de carga y descarga, los ingresos por energía y servicios complementarios, y el avance de la conversión a gas y del retiro gradual de las unidades a carbón que permanecen en el complejo.",
+        "anchor": "engie-bess-lile-operacion-mejillones",
+        "sources": [
+          {
+            "name": "Engie Chile",
+            "url": "https://www.engie.cl/concluimos-la-primera-etapa-de-la-reconversion-del-complejo-energetico-mejillones/"
+          },
+          {
+            "name": "Coordinador Eléctrico Nacional",
+            "url": "https://www.coordinador.cl/parametros-operacionales/documentos/"
+          }
+        ]
+      },
+      {
+        "slot": "policy_economy",
+        "headline": "Subtel traza salida del 3G y prepara infraestructura para 6G",
+        "deck": "El Plan Nacional Digital 2026-2036 abre mesas con la industria sobre espectro, permisos, inversión, ciberseguridad y cobertura territorial.",
+        "development": "La Subsecretaría de Telecomunicaciones presentó el 7 de octubre los ejes del Plan Nacional Digital 2026-2036 y abrió un proceso de diálogo con operadores, asociaciones e instituciones públicas y multilaterales. La hoja de ruta, vinculada a la Ley de Internet como Servicio Público, contempla preparar espectro e infraestructura para 5G, 5.5G y una futura generación 6G, además de avanzar hacia el apagado de la red 3G. La autoridad no fijó una fecha obligatoria para ese cierre.\n\nEl plan se organiza en siete áreas: redes futuras, inversión, conectividad, ciberseguridad, accesibilidad universal, calidad de servicio e innovación y talento. Subtel mencionó un mecanismo regulatorio acelerado para facilitar despliegues y estimó inversiones potenciales de US$2.000 millones en telecomunicaciones hasta 2030 y de US$160.000 millones en centros de datos y nube hacia 2050. Esas cifras son proyecciones asociadas al entorno de inversión; no constituyen compromisos ya contratados ni gasto público aprobado.\n\nLa iniciativa está en fase de elaboración. Durante los próximos meses se realizarán nuevas mesas antes de cerrar el documento, por lo que todavía faltan calendario, normas, condiciones de permisos y resguardos para usuarios que dependan de 3G. La evaluación deberá separar las metas del plan de las decisiones posteriores de cada operador. Los hitos verificables serán el texto final, las consultas regulatorias, la reasignación de espectro y cronogramas públicos que aseguren continuidad de servicio.",
+        "anchor": "subtel-plan-digital-salida-3g-ruta-6g",
+        "sources": [
+          {
+            "name": "Subsecretaría de Telecomunicaciones",
+            "url": "https://www.subtel.gob.cl/subtel-presenta-ejes-del-plan-nacional-digital-para-fomentar-la-inversion-apagar-el-3g-y-preparar-el-camino-al-6g/"
+          },
+          {
+            "name": "BioBioChile",
+            "url": "https://www.biobiochile.cl/noticias/economia/actualidad-economica/2026/10/07/subtel-busca-preparar-el-camino-al-6g-y-avanzar-con-el-apagon-del-3g.shtml"
+          }
+        ]
+      }
+    ],
+    "mercados": [
+      {
+        "slot": "markets_chile",
+        "headline": "Chile requerirá $24,7 billones de financiamiento en 2027",
+        "deck": "Dipres proyecta amortizaciones por $15,4 billones y un déficit de $6,75 billones; la deuda bruta cerraría el año en 42,5% del PIB.",
+        "development": "El Informe de Finanzas Públicas del tercer trimestre, publicado por Dipres el 6 de octubre, estima necesidades de financiamiento del Gobierno Central por $24,665 billones en 2027. El cálculo incorpora un déficit efectivo de $6,752 billones y amortizaciones de deuda por $15,435 billones, además de otras operaciones. Una minuta de la Biblioteca del Congreso convirtió el total a US$27.842 millones y las amortizaciones a US$17.423 millones, usando los supuestos del informe.\n\nDipres proyecta que la deuda bruta cerrará 2027 en $163,578 billones, equivalentes a 42,5% del PIB. El porcentaje está un punto bajo la estimación previa, principalmente por un PIB nominal mayor y menores requerimientos acumulados de operaciones bajo la línea. Esa trayectoria convive con un monto bruto de financiamiento superior al cálculo anterior. El proyecto presupuestario solicita una autorización de endeudamiento de hasta US$25.000 millones, que funciona como techo legal y no como emisión automática.\n\nPara el mercado chileno, las cifras delimitan oferta soberana potencial, vencimientos y necesidades de caja que pueden incidir en calendarios de colocación y precios de la renta fija. No determinan por sí solas moneda, plazo ni oportunidad de cada bono. Los controles serán la autorización final del Congreso, el plan de emisiones de Hacienda, las colocaciones efectivas, el costo promedio y cualquier revisión de déficit, crecimiento o deuda durante 2027.",
+        "anchor": "chile-financiamiento-deuda-publica-2027",
+        "sources": [
+          {
+            "name": "Dirección de Presupuestos",
+            "url": "https://www.dipres.gob.cl/598/articles-433299_Informe_PDF.pdf"
+          },
+          {
+            "name": "Biblioteca del Congreso Nacional",
+            "url": "https://www.bcn.cl/asesoriasparlamentarias/detalle_documento.html?id=86220"
+          }
+        ]
+      },
+      {
+        "slot": "markets_global",
+        "headline": "Securitize lleva acciones estadounidenses a Solana",
+        "deck": "Los tokens estarán respaldados uno a uno por títulos y conservarán derechos económicos; el acceso dependerá de jurisdicción y controles regulatorios.",
+        "development": "Securitize lanzó el 8 de octubre una oferta de acciones estadounidenses tokenizadas para inversionistas elegibles en Estados Unidos, la Unión Europea y otras jurisdicciones permitidas. Cada token estará respaldado uno a uno por una acción y representará un derecho sobre el valor bajo el artículo 8 del Código Comercial Uniforme estadounidense. La estructura busca conservar dividendos y, cuando corresponda, derechos de voto, aunque el tenedor no figura como accionista registrado del emisor salvo que convierta el instrumento.\n\nEl servicio comienza en Solana, con liquidación en USDC y negociación inicial durante horarios extendidos mediante la plataforma de Securitize. Jump Trading actuará como formador de mercado. La empresa prevé que los instrumentos puedan incorporarse a los futuros mercados digitales de NYSE y OKXICE, sujetos a lanzamiento, revisión y requisitos regulatorios. Esas plazas todavía no están operativas y las compañías cuyas acciones respaldan los tokens no patrocinan ni avalan el producto.\n\nLa señal para los mercados globales es el paso desde productos que sólo replican precios hacia una estructura regulada que afirma mantener derechos económicos sobre acciones subyacentes. Quedan riesgos de contraparte, custodia, liquidez, elegibilidad y continuidad tecnológica. Los controles serán volúmenes, diferenciales, conversiones, tratamiento de dividendos y votaciones, y las autorizaciones de los futuros centros de negociación. El anuncio amplía infraestructura disponible; no demuestra aún adopción ni equivalencia operativa con los mercados tradicionales.",
+        "anchor": "securitize-acciones-tokenizadas-solana",
+        "sources": [
+          {
+            "name": "Securitize",
+            "url": "https://www.prnewswire.com/news-releases/securitize-launches-global-onchain-trading-of-us-stocks-with-security-entitlements-302902107.html"
+          },
+          {
+            "name": "Reuters",
+            "url": "https://www.reuters.com/legal/government/securitize-launches-blockchain-based-stocks-2026-10-08/"
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,23 @@
+VOZ 1: La inflación de septiembre entregó una sorpresa favorable en el número principal, pero la composición obliga a matizarla. El IPC subió 0,4% mensual, una décima menos que el 0,5% esperado por la mediana de operadores.
+VOZ 2: ¿Eso significa que el problema inflacionario ya está cediendo?
+VOZ 1: Significa que la aceleración fue menor de lo previsto, no que el problema desapareció. La inflación acumulada en 2026 llegó a 4,0% y la tasa a doce meses se mantuvo en 4,1%, todavía por encima de la meta de 3%.
+VOZ 2: ¿Qué empujó el índice?
+VOZ 1: Principalmente alimentos y transporte. Alimentos y bebidas no alcohólicas subieron 0,6% y aportaron 0,133 puntos porcentuales. Transporte avanzó 0,9% y agregó 0,122 puntos. Entre ambas divisiones explicaron más de la mitad del aumento mensual.
+VOZ 2: ¿Y dentro del transporte qué fue lo más relevante?
+VOZ 1: Los combustibles. La energía subió 1,9% en septiembre. El diésel aumentó 10,2% y ya acumula 36,8% en el año. La gasolina avanzó 2,7% y acumula 20,8%. También el suministro de electricidad subió 1,6%.
+VOZ 2: Esos son precios muy visibles para las familias.
+VOZ 1: Exacto. Y además tienen efectos indirectos. El diésel se usa en transporte de carga, minería, agricultura y distribución. Si el aumento persiste, puede trasladarse a otros bienes incluso cuando la demanda interna está débil.
+VOZ 2: Pero dijiste que la composición también tenía una señal más tranquila.
+VOZ 1: Sí. El IPC sin volátiles subió 0,3%, mientras el índice que excluye alimentos y energía avanzó sólo 0,1%. Eso indica que la presión no se extendió con la misma fuerza al núcleo de la canasta.
+VOZ 2: ¿Qué diferencia hay con agosto?
+VOZ 1: En agosto el IPC general había subido 0,6% y también había sorprendido al alza. Septiembre mantiene la inflación anual en 4,1%, pero debilita la idea de que todos los precios estén acelerándose al mismo tiempo.
+VOZ 2: ¿Hubo precios que ayudaron a bajar el promedio?
+VOZ 1: Sí. Seguros y servicios financieros cayeron 5,9% y restaron 0,056 puntos porcentuales al índice. El transporte aéreo internacional disminuyó 18,7%, aunque el nacional subió 16,3%. Esa dispersión muestra que el IPC mezcla movimientos muy distintos.
+VOZ 2: Entonces, para un hogar, ¿el dato puede sentirse peor que el 0,4%?
+VOZ 1: Puede ocurrir. Alimentación, transporte y electricidad son gastos frecuentes y difíciles de evitar. Una caída en seguros puede bajar el promedio estadístico, pero no compensa de la misma forma a todas las familias.
+VOZ 2: ¿Qué implica esto para la tasa de interés?
+VOZ 1: No conviene saltar directamente del IPC a una decisión de TPM. El Banco Central mira persistencia, expectativas, actividad y propagación. Un dato bajo el consenso ayuda, pero el 4,1% anual y la energía todavía elevada mantienen riesgos.
+VOZ 2: ¿Qué tendría que pasar para confirmar una mejora?
+VOZ 1: Primero, que gasolina, diésel y electricidad dejen de acelerar. Segundo, que alimentos frescos se normalicen. Tercero, que la inflación sin alimentos ni energía siga cerca de 0,1% y no aparezcan reajustes amplios en servicios y salarios.
+VOZ 2: ¿Y qué invalidaría la lectura más favorable?
+VOZ 1: Que el shock energético se propague a fletes, bienes y servicios, o que las medidas subyacentes vuelvan a acelerarse. La conclusión de hoy es precisa: septiembre fue mejor que lo esperado y mostró un núcleo contenido, pero energía y alimentos todavía impiden declarar una convergencia asegurada.
