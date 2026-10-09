@@ -83,6 +83,18 @@
       "invalidate_if": "Baja asignación presupuestaria, escasa movilización de capital privado, sobrecostos persistentes o retrasos en redes y tecnologías debilitarían la tesis; capacidad instalada, producción y exportaciones verificables la confirmarían.",
       "watch": "Presupuesto K-GX, criterios del financiamiento climático, bonos verdes, capacidad renovable y transmisión, acero reducido con hidrógeno, baterías avanzadas, celdas solares tándem, ventas de vehículos eléctricos e hidrógeno y proyectos privados.",
       "last_publication": "/ediciones/2026-10-07-daily-corea-transicion-verde-industrial/"
+    },
+    {
+      "id": "colombia-imf-fiscal-adjustment",
+      "topic": "Crisis fiscal colombiana y apoyo del FMI",
+      "thesis": "Colombia busca convertir el apoyo precautorio del FMI en un puente hacia la estabilidad, pero el resultado dependerá de que el gobierno transforme un ajuste fiscal anunciado en medidas legislativas y presupuestarias capaces de contener déficits y deuda.",
+      "status": "new",
+      "last_evidence": "El 9 de octubre, economistas y exautoridades estimaban que Colombia podría buscar entre US$8.000 millones y US$20.000 millones del FMI; el gobierno proyectaba déficits de 7,2% del PIB en 2026 y 9,4% en 2027 y preparaba recortes equivalentes a 2,2% del PIB.",
+      "effect": "Abre un hilo soberano regional: una línea multilateral puede reducir costos y atraer financiamiento adicional, pero no sustituye el ajuste estructural ni la aprobación legislativa necesaria para recuperar credibilidad.",
+      "base_scenario": "Colombia acuerda un respaldo precautorio condicionado y aprueba parte relevante de la Ley de Rescate; el financiamiento alivia vencimientos mientras el déficit comienza a corregirse gradualmente, con volatilidad elevada durante la ejecución.",
+      "invalidate_if": "Un acuerdo sin metas verificables o el rechazo legislativo del ajuste debilitarían la estabilización; una mejora sostenida de recaudación, balance primario, deuda y acceso a mercado confirmaría que el apoyo funciona como puente y no como sustituto de reformas.",
+      "watch": "Instrumento, monto, plazo y condiciones del FMI; trámite de la Ley de Rescate; recaudación; gasto primario; déficit y deuda; apoyo del Congreso; financiamiento del Banco Mundial y BID; primas soberanas regionales.",
+      "last_publication": "/ediciones/2026-10-09-daily-colombia-fmi-ajuste-fiscal/"
     }
   ]
 }
