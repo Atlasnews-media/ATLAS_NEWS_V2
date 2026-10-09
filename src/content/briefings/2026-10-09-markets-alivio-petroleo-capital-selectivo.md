@@ -1,11 +1,11 @@
 ---
 title: "El petróleo cede, pero el capital sigue caro y selectivo"
 summary: "La baja del crudo alivió acciones y bonos tras el salto del jueves, pero las tasas elevadas y las dudas sobre el financiamiento de la inteligencia artificial mantienen la selección de riesgo."
-publishedAt: "2026-10-09T06:36:00-03:00"
+publishedAt: "2026-10-09T06:42:33-03:00"
 cutoffAt: "2026-10-09T06:33:00-03:00"
 section: "markets"
 editionSlot: "morning"
-status: "draft"
+status: "published"
 tags:
   - mercados
   - petroleo

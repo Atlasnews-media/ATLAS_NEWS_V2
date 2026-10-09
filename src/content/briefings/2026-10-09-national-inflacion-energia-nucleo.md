@@ -1,11 +1,11 @@
 ---
 title: "La inflación cede en el margen, pero energía y alimentos sostienen la presión"
 summary: "El IPC de septiembre subió 0,4%, menos que lo esperado, con una composición dividida: combustibles y alimentos empujaron el índice, mientras las medidas subyacentes fueron más contenidas."
-publishedAt: "2026-10-09T06:28:00-03:00"
+publishedAt: "2026-10-09T06:42:33-03:00"
 cutoffAt: "2026-10-09T06:25:00-03:00"
 section: "national"
 editionSlot: "morning"
-status: "draft"
+status: "published"
 tags:
   - chile
   - inflacion

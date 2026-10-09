@@ -1,11 +1,11 @@
 ---
 title: "Colombia lleva su crisis fiscal al FMI y enfrenta un ajuste decisivo"
 summary: "Bogotá explora entre US$8.000 millones y US$20.000 millones de apoyo multilateral, pero deberá demostrar una senda sostenible para contener déficits crecientes y recuperar confianza."
-publishedAt: "2026-10-09T06:03:19-03:00"
+publishedAt: "2026-10-09T06:42:33-03:00"
 cutoffAt: "2026-10-09T06:02:04-03:00"
 type: "daily"
 editionSlot: "morning"
-status: "draft"
+status: "published"
 tags:
   - colombia
   - fondo-monetario-internacional
