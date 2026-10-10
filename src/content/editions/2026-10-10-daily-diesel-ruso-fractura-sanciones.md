@@ -1,11 +1,11 @@
 ---
 title: "Alemania mantiene las sanciones a Rusia y abre una fractura con EE.UU. por el diésel"
 summary: "Berlín rechazó acompañar el alivio estadounidense al combustible ruso: el intento de abaratar el diésel ya divide la presión occidental sobre Moscú y expone el costo geopolítico de contener la inflación energética."
-publishedAt: "2026-10-10T12:02:03-03:00"
+publishedAt: "2026-10-10T12:06:28-03:00"
 cutoffAt: "2026-10-10T12:00:00-03:00"
 type: "daily"
 editionSlot: "midday"
-status: "draft"
+status: "published"
 tags:
   - geopolitica
   - rusia

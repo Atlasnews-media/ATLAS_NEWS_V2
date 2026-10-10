@@ -1,11 +1,11 @@
 ---
 title: "Las barreras para el aluvión seguían pendientes pese a una alerta municipal de junio"
 summary: "Un concejal confirmó que las mallas previstas para septiembre no estaban instaladas, mientras antecedentes internos y versiones contradictorias trasladan la emergencia de Las Condes hacia la ejecución preventiva y la rendición de cuentas."
-publishedAt: "2026-10-10T12:02:03-03:00"
+publishedAt: "2026-10-10T12:06:28-03:00"
 cutoffAt: "2026-10-10T12:00:00-03:00"
 section: "national"
 editionSlot: "midday"
-status: "draft"
+status: "published"
 tags:
   - chile
   - aluvion

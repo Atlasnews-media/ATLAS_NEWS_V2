@@ -1,11 +1,11 @@
 ---
 title: "Bitcoin pierde 3% en la semana y el rebote vuelve a frenarse bajo US$83.000"
 summary: "La principal criptomoneda cayó 0,5% durante la mañana del sábado y no sostuvo la recuperación de fines de semana; Ether cedió bajo US$2.500 mientras las altcoins mostraron una dispersión que niega una venta uniforme."
-publishedAt: "2026-10-10T12:02:03-03:00"
+publishedAt: "2026-10-10T12:06:28-03:00"
 cutoffAt: "2026-10-10T12:00:00-03:00"
 section: "markets"
 editionSlot: "midday"
-status: "draft"
+status: "published"
 tags:
   - mercados
   - bitcoin
