@@ -3,14 +3,14 @@
     {
       "id": "oil-geopolitics-inflation",
       "topic": "Petróleo, geopolítica e inflación",
-      "thesis": "La normalización parcial de los flujos de crudo no elimina el daño macroeconómico del shock energético: combustibles caros y vulnerabilidades de refinación y logística ya reducen el crecimiento mundial y mantienen presión sobre inflación y financiamiento.",
-      "status": "confirmed",
-      "last_evidence": "El 9 de octubre UNCTAD proyectó que el crecimiento mundial bajará de 2,9% en 2025 a 2,6% en 2026 por el shock energético de Oriente Medio; al cierre, el Brent seguía cerca de US$104 y el diésel estadounidense por encima de US$6 por galón.",
-      "effect": "Confirma que la adaptación de rutas y el retorno de parte de la oferta no equivalen a normalización económica: el costo de energía continúa restando actividad, endureciendo tasas y ampliando la vulnerabilidad de países importadores.",
-      "base_scenario": "El crecimiento mundial se desacelera durante 2026 mientras energía y financiamiento permanecen caros; los flujos físicos evitan una escasez extrema, pero combustibles refinados y logística transmiten el shock hacia inflación, consumo e inversión.",
-      "invalidate_if": "Una caída sostenida de combustibles, normalización logística e inflación a la baja junto con crecimiento superior a las proyecciones debilitarían la tesis; nuevas disrupciones o revisiones adicionales de crecimiento la reforzarían.",
-      "watch": "Precios de crudo y diésel, capacidad de refinación, tránsito por Hormuz, fletes, inflación, revisiones de UNCTAD/FMI/Banco Mundial, crecimiento de importadores de energía y decisiones de bancos centrales.",
-      "last_publication": "/ediciones/2026-10-10-daily-energia-fragmentacion-frenan-crecimiento/"
+      "thesis": "El shock de los combustibles refinados ya no sólo frena crecimiento y sostiene inflación: también altera la coordinación sancionatoria occidental, porque la búsqueda de diésel barato abre excepciones que pueden reforzar ingresos rusos sin resolver la restricción global de refinación.",
+      "status": "changed",
+      "last_evidence": "El 10 de octubre Estados Unidos suspendió temporalmente sanciones para facilitar más de 300.000 toneladas de diésel ruso, mientras Alemania anunció dentro de la ventana de Mediodía que mantendrá sus medidas y trabajará con Europa en nuevas sanciones.",
+      "effect": "Cambia el hilo desde un shock principalmente macroeconómico hacia una tensión institucional verificable: el costo energético puede fragmentar la coalición occidental, aunque la nueva oferta prometida todavía no demuestra una baja duradera de precios.",
+      "base_scenario": "Los combustibles refinados siguen caros y restan actividad; Estados Unidos ensaya excepciones para aumentar oferta, Europa mantiene presión sobre Rusia y el alivio de precios será limitado mientras la capacidad de refinación y otras disrupciones no mejoren.",
+      "invalidate_if": "Entregas rusas adicionales producen una baja sostenida del diésel sin ampliar excepciones ni fracturar la coordinación occidental; nuevas exenciones, precios persistentes o menor apoyo europeo reforzarían la tesis.",
+      "watch": "Cargamentos rusos efectivamente entregados, precio y márgenes del diésel, capacidad de refinación, alcance jurídico de la excepción estadounidense, sanciones europeas, ingresos rusos, fletes, inflación y decisiones de bancos centrales.",
+      "last_publication": "/ediciones/2026-10-10-daily-diesel-ruso-fractura-sanciones/"
     },
     {
       "id": "us-employment-fed-rates",
