@@ -1,11 +1,11 @@
 ---
 title: "La insolvencia personal sube, pero la renegociación gana espacio antes de la liquidación"
 summary: "Chile registra más procedimientos concursales de personas: la liquidación sigue creciendo, mientras la renegociación administrativa se expande con mayor rapidez y cambia la lectura del sobreendeudamiento."
-publishedAt: "2026-10-10T06:23:00-03:00"
+publishedAt: "2026-10-10T06:44:16-03:00"
 cutoffAt: "2026-10-10T06:20:00-03:00"
 section: "national"
 editionSlot: "morning"
-status: "draft"
+status: "published"
 tags:
   - chile
   - deuda

@@ -1,11 +1,11 @@
 ---
 title: "Wall Street sube, pero las small caps y los bonos niegan un alivio amplio"
 summary: "Los grandes índices cerraron al alza, pero el Russell 2000 perdió en la semana, el Treasury a diez años volvió a 5,261% y el petróleo terminó sobre US$104: el riesgo sigue concentrado."
-publishedAt: "2026-10-10T06:32:00-03:00"
+publishedAt: "2026-10-10T06:44:16-03:00"
 cutoffAt: "2026-10-10T06:29:00-03:00"
 section: "markets"
 editionSlot: "morning"
-status: "draft"
+status: "published"
 tags:
   - mercados
   - acciones

@@ -1,11 +1,11 @@
 ---
 title: "Energía, fragmentación e IA frenan el crecimiento mundial"
 summary: "UNCTAD prevé una expansión global de sólo 2,6% en 2026: el shock energético resta actividad, el comercio se regionaliza y la inteligencia artificial concentra oportunidades y riesgos."
-publishedAt: "2026-10-10T06:04:19-03:00"
+publishedAt: "2026-10-10T06:44:16-03:00"
 cutoffAt: "2026-10-10T06:04:19-03:00"
 type: "daily"
 editionSlot: "morning"
-status: "draft"
+status: "published"
 tags:
   - economia-global
   - energia
