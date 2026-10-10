@@ -1,0 +1,35 @@
+VOZ 1: Wall Street terminó el viernes al alza, pero la señal importante no es sólo el color verde de los índices. Es la diferencia entre las grandes compañías, las empresas pequeñas, los bonos y el petróleo.
+VOZ 2: Empecemos por el cierre. ¿Cuánto subieron los índices?
+VOZ 1: El Dow ganó cero coma ochenta y tres por ciento, el S&P quinientos avanzó cero coma cincuenta y nueve y el Nasdaq subió cero coma sesenta y cuatro. Los tres cerraron la semana con ganancias.
+VOZ 2: ¿Por qué no es un alivio amplio?
+VOZ 1: Porque el Russell dos mil, que reúne empresas más pequeñas, perdió cero coma nueve por ciento durante la semana. El S&P, en cambio, ganó uno coma dos. Las compañías grandes resistieron mejor un entorno de petróleo caro y tasas altas.
+VOZ 2: ¿La amplitud del mercado confirma esa diferencia?
+VOZ 1: Sí, aunque con matices. El viernes hubo más acciones al alza que a la baja. Pero en Nueva York aparecieron ciento ochenta y tres nuevos mínimos de cincuenta y dos semanas y sólo ciento cuarenta y un nuevos máximos. En Nasdaq hubo doscientos nueve nuevos mínimos frente a cuarenta y un máximos.
+VOZ 2: Es decir, muchas acciones rebotaron durante el día, pero siguen débiles en una perspectiva más larga.
+VOZ 1: Exactamente. El índice sube, pero debajo hay compañías que aún no recuperan terreno. Esa dispersión importa porque muestra que el apetito por riesgo se concentra en empresas con escala, liquidez y acceso al financiamiento.
+VOZ 2: ¿Qué hicieron los bonos?
+VOZ 1: El rendimiento del Treasury a diez años subió dos coma ocho puntos base el viernes y terminó en cinco coma doscientos sesenta y uno por ciento. Durante la semana bajó tres coma cinco puntos base gracias, en parte, a buena demanda en subastas.
+VOZ 2: ¿Eso es una señal positiva?
+VOZ 1: Es una señal de que hay compradores cuando la rentabilidad ofrecida es alta. No significa que el costo del capital haya vuelto a ser bajo. Para empresas pequeñas o muy endeudadas, financiarse sigue siendo difícil.
+VOZ 2: ¿Y el petróleo? Durante la mañana parecía caer.
+VOZ 1: Ese movimiento se revirtió. Brent y WTI terminaron subiendo cero coma cuatro por ciento. Brent cerró cerca de ciento cuatro dólares por barril. La noticia de menor riesgo inmediato sobre Irán alivió parte de la tensión, pero no eliminó la prima de oferta.
+VOZ 2: Entonces tenemos acciones arriba, pero petróleo y tasas todavía altos.
+VOZ 1: Esa es la fotografía. Los índices pueden avanzar porque las grandes tecnológicas y otros sectores sostienen utilidades. Pero energía cara y rendimientos superiores a cinco por ciento siguen restringiendo la expansión del mercado.
+VOZ 2: También hubo movimientos sectoriales fuertes.
+VOZ 1: Sí. Las grandes compañías vinculadas con inteligencia artificial recuperaron parte de las pérdidas. En cambio, T-Mobile, AT&T y Verizon cayeron entre ocho coma ocho y trece coma tres por ciento después de que SpaceX compró espectro y aumentó el riesgo de competencia satelital.
+VOZ 2: ¿Qué nos dice esa caída?
+VOZ 1: Que el mercado está repricing riesgos específicos incluso dentro de una sesión positiva. Una tecnología nueva puede cambiar expectativas de ingresos y márgenes con mucha rapidez.
+VOZ 2: La próxima semana comienzan resultados. ¿Qué está descontado?
+VOZ 1: Los analistas esperan que las utilidades agregadas del S&P quinientos crezcan treinta coma seis por ciento interanual en el tercer trimestre. Tecnología y energía lideran esa expectativa.
+VOZ 2: Es una vara bastante alta.
+VOZ 1: Muy alta. Si las compañías cumplen, el rally puede sostenerse. Si decepcionan en márgenes, inversión o guías, las valorizaciones tendrán poco espacio para absorber la sorpresa.
+VOZ 2: ¿Por qué los bancos serán especialmente importantes?
+VOZ 1: Porque mostrarán cómo se transmite el nivel de tasas. Un rendimiento alto puede ampliar márgenes financieros, pero también encarece el fondeo, reduce operaciones y eleva el riesgo de crédito. JPMorgan, Goldman Sachs, Citigroup y Wells Fargo reportan primero; luego vienen Morgan Stanley y Bank of America.
+VOZ 2: También tendremos inflación de Estados Unidos.
+VOZ 1: El consenso espera un IPC general de cero coma seis por ciento mensual y una medida subyacente de cero coma dos. Una sorpresa alta podría reactivar apuestas por otra subida de la Reserva Federal.
+VOZ 2: ¿Cuál sería la combinación que validaría un alivio real?
+VOZ 1: Petróleo bajando, Treasury estabilizado, spreads corporativos sin ampliarse y small caps recuperando terreno. Eso mostraría que las condiciones mejoran para más empresas.
+VOZ 2: ¿Y la señal contraria?
+VOZ 1: Energía y tasas nuevamente al alza, spreads más amplios y grandes índices sostenidos por pocas compañías. En ese caso, el cierre del viernes sería un rebote táctico dentro de un mercado todavía caro y concentrado.
+VOZ 2: La conclusión, entonces.
+VOZ 1: Wall Street recuperó el viernes, pero los bonos, el petróleo y las empresas pequeñas todavía no confirman un alivio amplio. La próxima semana pondrá a prueba si utilidades e inflación pueden justificar los niveles actuales.
