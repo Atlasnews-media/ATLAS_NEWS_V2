@@ -1,0 +1,135 @@
+{
+  "status": "READY",
+  "date": "2026-10-10",
+  "contract": "atlas-senales-del-dia-v1",
+  "senalesDelDia": {
+    "internacional": [
+      {
+        "slot": "technology",
+        "headline": "China combina expansión de IA con controles contra burbujas",
+        "deck": "Una guía de 19 medidas impulsa infraestructura, pilotos industriales y productos inteligentes, pero exige frenar inversiones repetitivas y riesgos de seguridad.",
+        "development": "El Comité Central del Partido Comunista y el Consejo de Estado de China publicaron el 9 de octubre una guía de 19 medidas para desarrollar las llamadas nuevas fuerzas productivas. El texto ordena reforzar investigación básica, infraestructura científica y tecnologías críticas, y conectar con mayor rapidez los avances de laboratorio con la industria. En inteligencia artificial, dispone profundizar la iniciativa AI Plus, construir bases piloto para aplicaciones industriales y acelerar productos como vehículos conectados, teléfonos, computadores y robots humanoides.\n\nLa expansión viene acompañada de límites explícitos. La guía pide coordinar desarrollo y seguridad, crear sistemas de control de riesgo para IA y evitar inversiones repetitivas o concentraciones especulativas en sectores tecnológicos. Reuters destacó que las autoridades buscan contener burbujas provocadas por proyectos locales similares, sin abandonar la prioridad de autosuficiencia tecnológica. El documento también exige adaptar las políticas a condiciones regionales y mejorar la rendición de cuentas de funcionarios que impulsen proyectos sin fundamento suficiente.\n\nLa señal es un cambio en la forma de ejecutar la política tecnológica china: apoyo a escala nacional junto con una advertencia contra la expansión indiscriminada. No fija presupuestos, plazos de construcción ni una lista cerrada de empresas beneficiarias. Los controles verificables serán las reglas sectoriales que emitan ministerios y provincias, la selección de bases piloto, los mecanismos de evaluación de seguridad y cualquier consolidación o cancelación de proyectos duplicados.",
+        "anchor": "china-ia-controles-burbujas-tecnologicas",
+        "sources": [
+          {
+            "name": "Gobierno de China",
+            "url": "https://english.www.gov.cn/policies/latestreleases/202610/09/content_WS6ac8d93ec6d00ca5f9a0d95c.html"
+          },
+          {
+            "name": "Reuters",
+            "url": "https://www.reuters.com/world/asia-pacific/china-issues-guidelines-new-productive-forces-including-ai-2026-10-09/"
+          }
+        ]
+      },
+      {
+        "slot": "world",
+        "headline": "Etiopía invoca defensa propia frente a fuerzas de Eritrea",
+        "deck": "Addis Abeba comunicó al Consejo de Seguridad una incursión de hasta 60 kilómetros; Asmara rechaza la acusación y atribuye la escalada a Etiopía.",
+        "development": "El gobierno de Etiopía informó al Consejo de Seguridad de Naciones Unidas que fuerzas eritreas habrían avanzado hasta 60 kilómetros dentro de su territorio y que se reserva el derecho de actuar en defensa propia. La carta del canciller Gedion Timothewos, conocida el 9 de octubre, constituye la primera declaración formal de Addis Abeba sobre las incursiones reportadas esta semana en Tigray. El secretario general de la ONU pidió el mismo día el cese inmediato de las hostilidades, máxima contención y retorno al diálogo.\n\nEritrea niega que la secuencia corresponda a una invasión. Su ministro de Información sostuvo que Etiopía inició una guerra de agresión y citó declaraciones etíopes de 2023 sobre la búsqueda de acceso soberano al mar. Associated Press informó por separado que residentes y un comandante aliado del gobierno etíope vieron tropas eritreas en dos localidades del norte, mientras ACLED registró un cruce fronterizo y un ataque con drones. Esos reportes apoyan la existencia de movimientos militares, pero no resuelven todas las afirmaciones contrapuestas sobre alcance, mando y origen de la escalada.\n\nLa comunicación a la ONU eleva el conflicto desde acusaciones diplomáticas a una invocación jurídica de defensa propia, sin equivaler por sí sola a una declaración de guerra. Deben observarse una eventual sesión del Consejo de Seguridad, nuevas posiciones de la Unión Africana, confirmaciones independientes de despliegues y cualquier apertura de un canal bilateral. También importa distinguir los combates entre fuerzas etíopes y grupos de Tigray de los incidentes atribuibles directamente a Eritrea.",
+        "anchor": "etiopia-eritrea-defensa-propia-onu",
+        "sources": [
+          {
+            "name": "Naciones Unidas en Etiopía",
+            "url": "https://ethiopia.un.org/en/324191-un-secretary-generals-statement-ethiopia"
+          },
+          {
+            "name": "Reuters",
+            "url": "https://www.reuters.com/world/africa/ethiopia-says-it-must-defend-itself-against-eritreas-all-out-invasion-2026-10-09/"
+          },
+          {
+            "name": "Associated Press",
+            "url": "https://apnews.com/article/9386a16a06e537a29ffe2de273267c8b"
+          }
+        ]
+      }
+    ],
+    "nacional": [
+      {
+        "slot": "ipsa_company",
+        "headline": "Cencosud y Easy renovarán 2.600 m² del Mercado Central",
+        "deck": "La intervención de la fachada se extenderá hasta diciembre y forma parte de una alianza municipal para revitalizar el barrio Mapocho-La Chimba.",
+        "development": "Cencosud, mediante Easy y su programa Terapia de Hogar, participará en la renovación de más de 2.600 metros cuadrados de la fachada del Mercado Central de Santiago. La intervención comenzó esta semana y contempla limpieza, tratamiento de muros y pintura integral, con término previsto para diciembre. La Municipalidad de Santiago y la administración del recinto impulsan la alianza, que también incorpora a Fundación 7 Sueños y proveedores de materiales. La fachada no recibía una intervención de esta escala desde 2011.\n\nLa participación extiende un programa que inicialmente se concentró en viviendas y espacios comunitarios. Según Diario Financiero, Terapia de Hogar ha ejecutado más de 300 proyectos y recientemente intervino las fachadas del Teatro Municipal y del edificio de Correos de Chile. En el Mercado Central, Easy aporta coordinación, voluntariado y trabajo con proveedores; el municipio vinculó la obra con acciones de iluminación, cámaras, pavimentos y mobiliario ya financiadas en el eje Ahumada-Puente-Plaza de Armas.\n\nPara Cencosud, integrante del IPSA, se trata de una iniciativa corporativa y territorial, no de una inversión que la empresa haya cuantificado como material para sus resultados. Tampoco se informó un presupuesto propio, ingresos esperados ni un efecto comercial atribuible. Los hitos verificables serán el avance de la superficie comprometida, la entrega en diciembre, la continuidad de la actividad del mercado durante las obras y la coordinación efectiva con las intervenciones públicas del entorno.",
+        "anchor": "cencosud-easy-renovacion-mercado-central",
+        "sources": [
+          {
+            "name": "Municipalidad de Santiago",
+            "url": "https://www.munistgo.cl/mercado-central-inicia-recuperacion-de-su-fachada-y-avanza-la-revitalizacion-del-barrio-mapocho-la-chimba/"
+          },
+          {
+            "name": "Cencosud",
+            "url": "https://www.cencosud.com/terapia-de-hogar"
+          },
+          {
+            "name": "Diario Financiero",
+            "url": "https://www.df.cl/df-mas/coffee-break/terapia-de-hogar-el-desconocido-programa-de-cencosud-que-ahora-pone-foco"
+          }
+        ]
+      },
+      {
+        "slot": "policy_economy",
+        "headline": "Gobierno declara zona de catástrofe en Las Condes",
+        "deck": "El Decreto 148 activa un régimen excepcional tras el aluvión del 8 de octubre; la evaluación oficial contabiliza heridos y daños extensos en viviendas.",
+        "development": "El Gobierno declaró a Las Condes zona afectada por catástrofe mediante el Decreto 148, luego del aluvión que golpeó San Carlos de Apoquindo el 8 de octubre. La decisión fue adoptada tras un Comité para la Gestión del Riesgo de Desastres y permite coordinar recursos y medidas extraordinarias bajo el marco constitucional y legal aplicable. El texto publicado por la Biblioteca del Congreso ratifica las actuaciones de emergencia ya ejecutadas; no establece por sí solo una cifra final de gasto ni una compensación automática para cada afectado.\n\nEl balance preliminar comunicado el viernes registró seis personas heridas y daños en viviendas, calles, vehículos y servicios. Senapred reportó 75 viviendas con daño mayor y más de 2.000 con daño menor en la evaluación disponible, mientras autoridades mantuvieron en revisión el origen exacto del flujo. Sernageomin describió un evento súbito de crecida rápida con sedimentos. La Fiscalía abrió una investigación separada para determinar causas y eventuales responsabilidades; esa pesquisa no modifica el alcance administrativo inmediato del decreto.\n\nLa medida debe evaluarse por su ejecución, no sólo por su declaración. Los hitos serán la identificación oficial de daños, las obras de despeje y rehabilitación, las contrataciones o transferencias que se autoricen, y la rendición de los recursos públicos utilizados. También deberá distinguirse entre la respuesta de emergencia, la investigación técnica del aluvión y cualquier decisión posterior sobre prevención, infraestructura hidráulica o responsabilidades institucionales.",
+        "anchor": "las-condes-decreto-zona-catastrofe-aluvion",
+        "sources": [
+          {
+            "name": "Ministerio del Interior",
+            "url": "https://minterior.gob.cl/noticias/2026/10/09/gobierno-decreta-zona-de-catastrofe-en-la-comuna-de-las-condes/"
+          },
+          {
+            "name": "Biblioteca del Congreso Nacional",
+            "url": "https://www.bcn.cl/leychile/Navegar?idNorma=1228984&idVersion=2026-10-08"
+          },
+          {
+            "name": "El País Chile",
+            "url": "https://elpais.com/chile/2026-10-09/aluvion-en-las-condes-sobrevuelan-la-zona-para-determinar-las-causas.html"
+          }
+        ]
+      }
+    ],
+    "mercados": [
+      {
+        "slot": "markets_chile",
+        "headline": "La huelga en Centinela alcanza a 709 trabajadores",
+        "deck": "Dos sindicatos iniciaron la paralización tras fracasar la mediación; la empresa afirma que mantendrá la producción mientras continúa disponible para dialogar.",
+        "development": "Dos sindicatos de Minera Centinela iniciaron una huelga legal el 7 de octubre después de que la mediación obligatoria terminara sin acuerdo. La empresa confirmó que el Sindicato de Trabajadores Minera Esperanza reúne a 420 socios y el Sindicato de Trabajadores Distrito Centinela a 289, para un total de 709 personas. La operación, controlada por Antofagasta Minerals, señaló que activó su plan de continuidad y que la producción no se vería afectada en la etapa inicial.\n\nLos sindicatos sostienen que la negociación no resolvió diferencias de remuneraciones y beneficios entre trabajadores que realizan funciones comparables. La compañía afirmó que su última oferta incluía mejoras y mantuvo abierta la disposición a conversar. Reuters reportó que el riesgo de paralización apoyó el precio internacional del cobre en un contexto de oferta restringida por interrupciones y menores leyes minerales. Esa relación de mercado no permite atribuir cada movimiento del metal exclusivamente al conflicto de Centinela.\n\nPara los mercados chilenos, la señal combina continuidad operacional declarada con un riesgo que aumenta si la huelga se prolonga. Centinela sigue alimentando plantas con inventarios y la propia empresa ha indicado que el efecto productivo no sería inmediato. Los controles serán duración de la paralización, reinicio de negociaciones, niveles de procesamiento, eventuales ajustes de guía y cualquier comunicación de Antofagasta plc al mercado. Hasta que aparezcan esos datos, no corresponde estimar pérdidas ni toneladas diferidas.",
+        "anchor": "centinela-huelga-709-trabajadores",
+        "sources": [
+          {
+            "name": "Antofagasta Minerals",
+            "url": "https://www.aminerals.cl/noticias-detalle/2026/10/07/minera-centinela-lamenta-huelga-de-una-parte-de-sus-trabajadores"
+          },
+          {
+            "name": "Sindicato Distrito Centinela",
+            "url": "https://sindicatodistritocentinela.cl/negociacion-colectiva/"
+          },
+          {
+            "name": "Reuters",
+            "url": "https://www.reuters.com/business/world-at-work/workers-chiles-centinela-copper-mine-strike-after-talks-fail-2026-10-07/"
+          }
+        ]
+      },
+      {
+        "slot": "markets_global",
+        "headline": "Ecobank prepara su conexión al sistema chino de pagos CIPS",
+        "deck": "El banco panafricano busca liquidar operaciones en yuanes desde 34 mercados y negocia con Bank of China una oferta conjunta para comercio bilateral.",
+        "development": "Ecobank anunció que suscribirá un acuerdo para incorporarse al Sistema de Pagos Interbancarios Transfronterizos de China, CIPS, con el objetivo de facilitar liquidaciones en yuanes. El director ejecutivo Jeremy Awori comunicó el plan a Reuters antes de la firma prevista en China el 10 de octubre. El grupo opera en 34 países africanos y también mantiene conversaciones con Bank of China para ofrecer servicios conjuntos de liquidación en renminbi. Esa segunda iniciativa todavía no tiene un acuerdo público cerrado.\n\nCIPS es una infraestructura para pagos internacionales en moneda china. Según Awori, conecta a más de 5.000 bancos en más de 100 países y territorios. La adhesión de Ecobank ampliaría el acceso desde una red panafricana, después de que Standard Bank y otras entidades del continente avanzaran en conexiones similares. El anuncio ocurre mientras el comercio entre China y África creció cerca de 18% el último año y aumenta la demanda empresarial por liquidar operaciones sin convertir cada flujo primero a dólares.\n\nLa señal es una ampliación de los canales disponibles, no un desplazamiento inmediato del dólar ni una garantía de uso. Faltan conocer el tipo de participación de Ecobank, el calendario de activación, las monedas africanas habilitadas, costos y volúmenes. Los controles serán la confirmación de la firma, la incorporación efectiva en los registros de CIPS, el lanzamiento de productos para clientes y datos de transacciones. Hasta entonces, el efecto es de infraestructura potencial y no de cuota de mercado comprobada.",
+        "anchor": "ecobank-conexion-cips-pagos-yuanes",
+        "sources": [
+          {
+            "name": "Reuters",
+            "url": "https://www.reuters.com/world/asia-pacific/ecobank-join-chinas-cips-payments-platform-yuan-settlement-2026-10-09/"
+          },
+          {
+            "name": "Ecobank",
+            "url": "https://ecobank.com/group/news-and-media"
+          },
+          {
+            "name": "Channel Africa",
+            "url": "https://www.channelafrica.co.za/channelafrica/news/ecobank-to-join-chinas-cips-payments-platform-for-yuan-settlement/"
+          }
+        ]
+      }
+    ]
+  }
+}
