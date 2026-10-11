@@ -1,11 +1,11 @@
 ---
 title: "El shock energético salta del petróleo a monedas, reservas y transporte"
 summary: "El ataque al aeropuerto de Riad y la nueva defensa de la rupia muestran que el riesgo energético ya se transmite por aviación, demanda de dólares y reservas, antes de la reapertura del lunes."
-publishedAt: "2026-10-11T06:25:00-03:00"
+publishedAt: "2026-10-11T06:49:21-03:00"
 cutoffAt: "2026-10-11T06:20:00-03:00"
 section: "markets"
 editionSlot: "morning"
-status: "draft"
+status: "published"
 tags:
   - mercados
   - energia

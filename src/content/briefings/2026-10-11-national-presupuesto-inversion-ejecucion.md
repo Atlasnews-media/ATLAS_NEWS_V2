@@ -1,11 +1,11 @@
 ---
 title: "El Presupuesto 2027 depende de inversión y ejecución, no sólo de mayor espacio fiscal"
 summary: "El mayor ingreso estructural permite elevar 1,5% el gasto, pero el salto de crecimiento a 3,3% exige que inversión, minería y ejecución pública mejoren de forma verificable."
-publishedAt: "2026-10-11T06:15:00-03:00"
+publishedAt: "2026-10-11T06:49:21-03:00"
 cutoffAt: "2026-10-11T06:10:00-03:00"
 section: "national"
 editionSlot: "morning"
-status: "draft"
+status: "published"
 tags:
   - chile
   - presupuesto

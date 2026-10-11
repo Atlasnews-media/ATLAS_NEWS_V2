@@ -1,11 +1,11 @@
 ---
 title: "El Banco Mundial prepara hasta US$100.000 millones ante una nueva ola de crisis"
 summary: "La entidad conversa con 30 a 40 países afectados por energía, deuda y clima; la ayuda inicial podría llegar a US$60.000 millones y duplicarse si empeoran las condiciones."
-publishedAt: "2026-10-11T06:03:59-03:00"
+publishedAt: "2026-10-11T06:49:21-03:00"
 cutoffAt: "2026-10-11T06:00:34-03:00"
 type: "daily"
 editionSlot: "morning"
-status: "draft"
+status: "published"
 tags:
   - economia-global
   - deuda
