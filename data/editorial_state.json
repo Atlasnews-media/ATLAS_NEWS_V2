@@ -3,14 +3,14 @@
     {
       "id": "oil-geopolitics-inflation",
       "topic": "Petróleo, geopolítica e inflación",
-      "thesis": "El shock de los combustibles refinados ya no sólo frena crecimiento y sostiene inflación: también altera la coordinación sancionatoria occidental, porque la búsqueda de diésel barato abre excepciones que pueden reforzar ingresos rusos sin resolver la restricción global de refinación.",
+      "thesis": "La energía se convirtió simultáneamente en objetivo militar y palanca diplomática: tras la fractura sancionatoria por el diésel ruso, Washington anunció una tregua energética entre Rusia y Ucrania, pero su alcance y vigencia siguen abiertos hasta que Kyiv y Moscú la confirmen y detengan ataques.",
       "status": "changed",
-      "last_evidence": "El 10 de octubre Estados Unidos suspendió temporalmente sanciones para facilitar más de 300.000 toneladas de diésel ruso, mientras Alemania anunció dentro de la ventana de Mediodía que mantendrá sus medidas y trabajará con Europa en nuevas sanciones.",
-      "effect": "Cambia el hilo desde un shock principalmente macroeconómico hacia una tensión institucional verificable: el costo energético puede fragmentar la coalición occidental, aunque la nueva oferta prometida todavía no demuestra una baja duradera de precios.",
-      "base_scenario": "Los combustibles refinados siguen caros y restan actividad; Estados Unidos ensaya excepciones para aumentar oferta, Europa mantiene presión sobre Rusia y el alivio de precios será limitado mientras la capacidad de refinación y otras disrupciones no mejoren.",
-      "invalidate_if": "Entregas rusas adicionales producen una baja sostenida del diésel sin ampliar excepciones ni fracturar la coordinación occidental; nuevas exenciones, precios persistentes o menor apoyo europeo reforzarían la tesis.",
-      "watch": "Cargamentos rusos efectivamente entregados, precio y márgenes del diésel, capacidad de refinación, alcance jurídico de la excepción estadounidense, sanciones europeas, ingresos rusos, fletes, inflación y decisiones de bancos centrales.",
-      "last_publication": "/ediciones/2026-10-10-daily-diesel-ruso-fractura-sanciones/"
+      "last_evidence": "El 11 de octubre Donald Trump anunció que Rusia y Ucrania acordaron una tregua energética de efecto inmediato, sin confirmación inicial de Kyiv ni Moscú; horas antes, Volodymyr Zelenskiy había ofrecido detener ataques contra refinerías rusas si Moscú cesaba sus golpes sobre infraestructura energética ucraniana.",
+      "effect": "Cambia el hilo desde una divergencia principalmente sancionatoria hacia una posible desescalada operativa. La novedad puede reducir riesgo sobre refinerías y redes, pero por ahora es un anuncio unilateral y no demuestra cumplimiento ni una baja sostenida de combustibles.",
+      "base_scenario": "Kyiv y Moscú exploran una pausa recíproca limitada a infraestructura energética, mientras continúan la guerra y las tensiones por sanciones; el alivio de riesgo permanece parcial hasta que existan confirmaciones, reglas y cumplimiento verificable.",
+      "invalidate_if": "Nuevos ataques contra refinerías, centrales o redes desmentirían la tregua; confirmación bilateral, mecanismos de verificación y varias semanas sin golpes energéticos fortalecerían la desescalada.",
+      "watch": "Confirmación oficial de Kyiv y Moscú, definición de objetivos protegidos, mecanismo de verificación, ataques a refinerías y redes, sanciones al combustible ruso, entregas de diésel, precios de refinados y reacción europea.",
+      "last_publication": "/ediciones/2026-10-11-daily-tregua-energetica-rusia-ucrania/"
     },
     {
       "id": "us-employment-fed-rates",
