@@ -1,11 +1,11 @@
 ---
 title: "El Gobierno prepara diez medidas laborales y deja la indemnización para una segunda fase"
 summary: "Trabajo enviará antes de fin de año un paquete de adaptabilidad con contrato a prueba, aprendizaje y jornadas flexibles; los cambios al despido y al Sence quedarían para 2027."
-publishedAt: "2026-10-11T12:06:00-03:00"
+publishedAt: "2026-10-11T12:11:00-03:00"
 cutoffAt: "2026-10-11T12:00:00-03:00"
 section: "national"
 editionSlot: "midday"
-status: "draft"
+status: "published"
 tags:
   - chile
   - empleo

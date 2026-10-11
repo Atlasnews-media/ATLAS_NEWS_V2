@@ -1,11 +1,11 @@
 ---
 title: "La reacción al ataque de Riad lleva a Qatar a mínimos de 2020 y enfría al Golfo"
 summary: "Las bolsas regionales entregaron la primera señal negociada del riesgo: Arabia Saudita cayó 0,2%, Qatar 1,5% y Egipto 2%, con bancos y transporte bajo cautela."
-publishedAt: "2026-10-11T12:06:00-03:00"
+publishedAt: "2026-10-11T12:11:00-03:00"
 cutoffAt: "2026-10-11T12:00:00-03:00"
 section: "markets"
 editionSlot: "midday"
-status: "draft"
+status: "published"
 tags:
   - mercados
   - medio-oriente

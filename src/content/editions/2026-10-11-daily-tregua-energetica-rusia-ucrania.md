@@ -1,11 +1,11 @@
 ---
 title: "Trump anuncia una tregua energética entre Rusia y Ucrania sin confirmación bilateral"
 summary: "El anuncio de efecto inmediato llega después de que Zelenskiy ofreciera detener ataques a refinerías si Moscú cesa los golpes sobre la red ucraniana; el alcance y el cumplimiento siguen abiertos."
-publishedAt: "2026-10-11T12:06:00-03:00"
+publishedAt: "2026-10-11T12:11:00-03:00"
 cutoffAt: "2026-10-11T12:00:00-03:00"
 type: "daily"
 editionSlot: "midday"
-status: "draft"
+status: "published"
 tags:
   - geopolitica
   - rusia
