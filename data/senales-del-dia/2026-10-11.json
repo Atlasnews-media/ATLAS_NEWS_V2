@@ -1,0 +1,127 @@
+{
+  "status": "READY",
+  "date": "2026-10-11",
+  "contract": "atlas-senales-del-dia-v1",
+  "senalesDelDia": {
+    "internacional": [
+      {
+        "slot": "technology",
+        "headline": "La IA reduce la barrera de entrada para los ciberataques",
+        "deck": "Bancos surcoreanos y empresas japonesas afrontan una ola de incidentes mientras reguladores elevan controles y atribuciones sobre el uso ofensivo de agentes.",
+        "development": "Nueve bancos surcoreanos y dos grandes iglesias investigan ciberataques que podrían haber utilizado herramientas de inteligencia artificial, mientras Japón acumula más incidentes en los primeros nueve meses de 2026 que durante todo el año anterior. Reuters informó el 9 de octubre que los casos japoneses llegaron a 86 en septiembre, 18% más que en agosto y 37% sobre julio. Las autoridades todavía no han determinado en todos los expedientes si la IA fue decisiva, por lo que conviene separar el aumento comprobado de ataques de la atribución tecnológica aún bajo investigación.\n\nCrowdStrike evaluó que un atacante radicado en China, vinculado a los incidentes bancarios surcoreanos, utilizó un agente desarrollado en ese país y Claude Code. La firma sostuvo que su capacidad técnica era limitada, pero suficiente para automatizar búsqueda de vulnerabilidades y otras tareas. Corea del Sur registró 1.236 incidentes en el primer semestre: los ataques de denegación de servicio crecieron 56,7% y el ransomware 76,8%. Japón, en paralelo, reunió a ministerios y agencias para preparar nuevas advertencias a empresas.\n\nLa señal no demuestra que cada intrusión reciente haya sido ejecutada por IA. Sí muestra que los reguladores están cambiando su supuesto operativo: la automatización puede ampliar el número de atacantes capaces de producir campañas útiles. La Comisión de Servicios Financieros surcoreana ordenó una autoevaluación de 12 puntos al sector. Los próximos controles serán resultados forenses, sanciones, compensaciones, gasto adicional en seguridad y evidencia pública que permita distinguir el papel de modelos generales frente a herramientas tradicionales.",
+        "anchor": "asia-ia-ciberataques-reguladores",
+        "sources": [
+          {
+            "name": "Reuters",
+            "url": "https://www.reuters.com/legal/litigation/south-korea-japan-buffeted-by-hacks-ai-lowers-bar-cybercriminals-2026-10-09/"
+          },
+          {
+            "name": "Financial Services Commission de Corea del Sur",
+            "url": "https://www.fsc.go.kr/eng/index"
+          }
+        ]
+      },
+      {
+        "slot": "world",
+        "headline": "Navi Pillay recibe el Nobel de la Paz por defender el derecho",
+        "deck": "El comité noruego reconoció a la jurista sudafricana por su trayectoria en justicia internacional; el premio será entregado en Oslo el 10 de diciembre.",
+        "development": "El Comité Noruego del Nobel otorgó el Premio de la Paz 2026 a Navi Pillay por sus esfuerzos para promover la paz y el derecho internacional. La jurista sudafricana, de 85 años, fue alta comisionada de Naciones Unidas para los Derechos Humanos y jueza en tribunales internacionales, incluidos el Tribunal Penal Internacional para Ruanda y la Corte Penal Internacional. El anuncio se realizó el 9 de octubre y la ceremonia está prevista para el 10 de diciembre en Oslo, con una dotación de 12 millones de coronas suecas.\n\nLa decisión reconoce una trayectoria jurídica que comenzó bajo el apartheid, cuando Pillay defendió a activistas y a personas privadas de libertad, y que continuó en casos de crímenes internacionales. El comité presentó el premio como respaldo a un orden basado en reglas en un momento de presión sobre tribunales multilaterales. La Oficina de Derechos Humanos de la ONU celebró el anuncio. Israel, en cambio, criticó la selección por el papel de Pillay en una comisión de investigación sobre Gaza; esa reacción es una posición política y no modifica el fundamento formal publicado por el comité.\n\nEl hecho verificable es la adjudicación del premio y su motivación institucional. No implica que los gobiernos adopten las conclusiones de los órganos en los que Pillay ha trabajado ni resuelve controversias jurídicas pendientes. Deben observarse la ceremonia de diciembre, las reacciones de Estados vinculados a la Corte Penal Internacional y cualquier efecto sobre el respaldo diplomático y financiero a esas instituciones. La distinción entre reconocimiento personal, decisiones judiciales y políticas exteriores sigue siendo esencial.",
+        "anchor": "navi-pillay-nobel-paz-derecho-internacional",
+        "sources": [
+          {
+            "name": "Comité Noruego del Nobel",
+            "url": "https://www.nobelpeaceprize.org/laureates/"
+          },
+          {
+            "name": "Reuters",
+            "url": "https://www.reuters.com/world/navanethem-navi-pillay-wins-2026-nobel-peace-prize-2026-10-09/"
+          },
+          {
+            "name": "Associated Press",
+            "url": "https://apnews.com/article/f60744c07df969e50e9e69786fdb7de1"
+          }
+        ]
+      }
+    ],
+    "nacional": [
+      {
+        "slot": "ipsa_company",
+        "headline": "Banco de Chile concentra el 82% de la exposición AFP a Luksic",
+        "deck": "Los fondos de pensiones mantienen US$6.561 millones en el grupo; acciones y bonos del banco explican la mayor parte de esa posición.",
+        "development": "Un cruce de las carteras reportadas por la Superintendencia de Pensiones con la nómina de grupos empresariales de la Comisión para el Mercado Financiero situó al grupo Luksic como la mayor exposición empresarial de las AFP al cierre de agosto. Según el análisis publicado por Diario Financiero el 9 de octubre, el grupo representa 2,62% de la cartera previsional, equivalente a US$6.561 millones. Banco de Chile, integrante del IPSA, concentra 82% de ese monto mediante acciones, bonos bancarios y bonos subordinados.\n\nLa descomposición muestra US$3.715 millones en deuda del banco y US$1.644 millones en acciones. Los fondos de pensiones poseen, de acuerdo con la memoria citada, 7,2% de la propiedad de Banco de Chile. Quiñenco suma US$708 millones, CCU US$299 millones y SM SAAM US$125 millones. El dato describe posiciones de cartera a una fecha de corte; no equivale a una recomendación, una nueva compra ni una señal de incumplimiento. Ninguno de los fondos analizados excede el límite vigente ni el futuro máximo de 10% por grupo.\n\nLa relevancia es de concentración y transición regulatoria. Los fondos generacionales reemplazarán a los multifondos desde abril de 2027 y elevarán el número mínimo de vehículos, lo que puede redistribuir exposiciones sin alterar necesariamente la posición agregada. Para Banco de Chile, los controles serán cambios mensuales en tenencias, costo de financiamiento, peso relativo de deuda y acciones y adaptación al nuevo régimen. También importa distinguir la exposición al emisor bancario de la exposición consolidada al grupo.",
+        "anchor": "banco-chile-exposicion-afp-grupo-luksic",
+        "sources": [
+          {
+            "name": "Diario Financiero",
+            "url": "https://www.df.cl/senal-df/senales-financieras/los-grupos-economicos-favoritos-de-las-afp-y-como-los-financian"
+          },
+          {
+            "name": "Superintendencia de Pensiones",
+            "url": "https://www.spensiones.cl/portal/institucional/594/w3-channel.html"
+          },
+          {
+            "name": "Comisión para el Mercado Financiero",
+            "url": "https://www.cmfchile.cl/portal/principal/613/w3-channel.html"
+          }
+        ]
+      },
+      {
+        "slot": "policy_economy",
+        "headline": "La Ley de Reconstrucción queda a un paso de entrar en vigor",
+        "deck": "El Presidente firmó el decreto promulgatorio y lo remitió a Contraloría; la norma comenzará a regir después de la toma de razón y su publicación.",
+        "development": "El Presidente José Antonio Kast firmó el 9 de octubre el decreto que promulga la Ley de Reconstrucción Nacional, después de que la Cámara de Diputadas y Diputados remitiera el oficio final. El documento ingresó a la Contraloría General de la República para su toma de razón. La norma todavía no estaba vigente al momento del anuncio: su aplicación comienza después del control correspondiente y de la publicación en el Diario Oficial. Esa secuencia administrativa limita el alcance inmediato de beneficios, obligaciones y cambios tributarios.\n\nEl proyecto combina medidas para acelerar la recuperación de zonas afectadas y disposiciones económicas más amplias, entre ellas una reducción gradual del impuesto corporativo y mecanismos de estabilidad para grandes inversiones. El contenido definitivo debe leerse en el texto que publique el Diario Oficial, especialmente después de la revisión del Tribunal Constitucional y del trámite legislativo. La promulgación no equivale a ejecución automática ni fija por sí sola el costo fiscal efectivo; cada beneficio requiere cumplir sus condiciones y, cuando corresponda, reglamentos o actos posteriores.\n\nLa evaluación debe permanecer separada de la emergencia reciente en la Región Metropolitana. El decreto de zona de catástrofe habilita una respuesta administrativa específica, mientras esta ley establece un marco nacional y tributario de mayor duración. Los hitos verificables son la toma de razón, la fecha de publicación, el texto consolidado, los reglamentos y las estimaciones fiscales oficiales. También corresponderá observar la implementación municipal y la forma en que se compensen ingresos o se prioricen proyectos, sin atribuir motivaciones ni anticipar resultados electorales.",
+        "anchor": "ley-reconstruccion-promulgacion-contraloria",
+        "sources": [
+          {
+            "name": "Diario Financiero",
+            "url": "https://www.df.cl/economia-y-politica/df-tax/solo-resta-su-publicacion-en-el-diario-oficial-kast-firma-el-decreto-para"
+          },
+          {
+            "name": "BioBioChile",
+            "url": "https://www.biobiochile.cl/noticias/nacional/chile/2026/10/09/gobierno-promulgara-este-viernes-ley-de-reconstruccion-pese-a-suspension-de-ceremonia-por-aluvion.shtml"
+          },
+          {
+            "name": "Gobierno de Chile",
+            "url": "https://www.gob.cl/"
+          }
+        ]
+      }
+    ],
+    "mercados": [
+      {
+        "slot": "markets_chile",
+        "headline": "El Banco Central renovará US$497 millones en forwards",
+        "deck": "El programa del 13 al 16 de octubre añade compras spot por hasta US$100 millones y licitaciones de PDBC por $13,5 billones.",
+        "development": "El Banco Central de Chile publicó el 9 de octubre su programa de operaciones para la semana del 13 al 16. La institución renovará vencimientos de venta de dólares forward por US$497 millones, sin nueva emisión programada: US$84 millones el martes, US$142 millones el miércoles, US$121 millones el jueves y US$150 millones el viernes. Los contratos tendrán 27 días de plazo y vencerán entre el 9 y el 12 de noviembre. La distinción entre renovación y nueva colocación es clave para interpretar el efecto sobre cobertura cambiaria.\n\nEl mismo calendario contempla una ventanilla de compra spot de dólares por hasta US$100 millones, distribuida en cuatro operaciones diarias de US$25 millones. Esas compras son un máximo semanal y no garantizan que el monto se ejecute completo. Además, el Banco Central licitará pagarés descontables por $13,5 billones, frente a vencimientos informados por $13,3118 billones. Las colocaciones se reparten en instrumentos de 11 a 13 días con vencimientos entre el 27 y el 30 de octubre.\n\nLa señal para el mercado chileno es de calendario y composición de liquidez, no de una decisión nueva sobre la TPM. Renovar forwards preserva coberturas existentes sin ampliar el saldo por la vía anunciada, mientras las compras spot y los PDBC actúan sobre reservas y liquidez en pesos mediante mecanismos distintos. Los controles serán montos efectivamente adjudicados, demanda en cada licitación, tipo de cambio, tasas cortas y cualquier modificación del programa semanal. No corresponde inferir una meta cambiaria a partir de estas operaciones.",
+        "anchor": "bcch-renueva-forward-compra-spot-pdbc",
+        "sources": [
+          {
+            "name": "Banco Central de Chile — anuncio",
+            "url": "https://www.bcentral.cl/web/banco-central/contenido/-/detalle/prensa/anuncio/programa-operaciones-09102026"
+          },
+          {
+            "name": "Banco Central de Chile — programa de operaciones",
+            "url": "https://www.bcentral.cl/documents/33528/112466/Programa%2Boperaciones,%2Bsemana%2B13%2Bal%2B16%2Bde%2Boctubre%2Bde%2B2026.pdf/afeadd46-1f62-bc40-5e2b-7e074bbb497e?t=1791558655121"
+          }
+        ]
+      },
+      {
+        "slot": "markets_global",
+        "headline": "Glencore llevará certificados de depósito al mercado australiano",
+        "deck": "La minera iniciará el 14 de octubre su cotización secundaria en la ASX y aspira a integrar el índice S&P/ASX 200 dentro de doce meses.",
+        "development": "Glencore prepara para el 14 de octubre una cotización secundaria en la Bolsa de Australia mediante certificados de depósito, conocidos como CDI. Su director ejecutivo, Gary Nagle, dijo el 9 de octubre que la compañía recibió interés de inversionistas nuevos y actuales cuyos mandatos limitan la compra de acciones listadas fuera de Australia. La operación no es una oferta pública inicial ni implica por sí sola una ampliación de capital: crea un instrumento local vinculado a las acciones que ya cotizan en Londres.\n\nLa propuesta ofrece a inversionistas australianos exposición conjunta a minería y comercialización de materias primas. Glencore estima que su negocio de marketing superará US$5.000 millones de resultado operativo ajustado en 2026, por encima de su rango histórico de largo plazo. La empresa también destaca su cartera de cobre, que analistas citados por Reuters proyectan podría aportar cerca de la mitad de sus ganancias en 2030 si los proyectos se ejecutan a tiempo. Esas proyecciones dependen de inversión, precios y cronogramas, y no están garantizadas.\n\nEl objetivo declarado es ingresar al S&P/ASX 200 dentro de doce meses, aunque la inclusión dependerá de capitalización, liquidez y reglas del índice. Nagle sostuvo que el listado no responde a un plan específico de adquisiciones, pese a que una presencia local puede dar flexibilidad estratégica. Los hitos serán el inicio efectivo de negociación, volumen de CDI, participación de nuevos inversionistas y decisión futura del proveedor del índice. También debe observarse la coexistencia de cobre y carbón térmico dentro de la valoración.",
+        "anchor": "glencore-listado-secundario-asx-cdi",
+        "sources": [
+          {
+            "name": "Reuters",
+            "url": "https://www.reuters.com/business/retail-consumer/glencore-sees-electrification-trend-driving-strong-uptake-australia-listing-2026-10-09/"
+          },
+          {
+            "name": "Glencore — noticias corporativas",
+            "url": "https://www.glencore.com/media-and-insights/news"
+          }
+        ]
+      }
+    ]
+  }
+}
