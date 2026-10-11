@@ -1,7 +1,7 @@
 ---
 title: "El Banco Mundial prepara hasta US$100.000 millones ante una nueva ola de crisis"
 summary: "La entidad conversa con 30 a 40 países afectados por energía, deuda y clima; la ayuda inicial podría llegar a US$60.000 millones y duplicarse si empeoran las condiciones."
-publishedAt: "2026-10-11T06:00:34-03:00"
+publishedAt: "2026-10-11T06:03:59-03:00"
 cutoffAt: "2026-10-11T06:00:34-03:00"
 type: "daily"
 editionSlot: "morning"
@@ -30,7 +30,7 @@ highlights:
   - label: "Un tercio de los pagos externos corresponde a intereses"
     text: "El costo financiero consume recursos fiscales antes de que los gobiernos puedan atender energía, alimentos, clima e inversión."
   - label: "El capital privado no llega a los países más pobres"
-    text: "De un récord conjunto de US$235.000 millones movilizados, sólo cerca de US$3.000 millones alcanzaron a economías de bajos ingresos."
+    text: "De US$112.000 millones de capital privado movilizado, sólo cerca de US$3.000 millones alcanzaron a economías de bajos ingresos."
 ---
 
 ## Hecho central
@@ -47,7 +47,7 @@ La presión financiera explica la urgencia. Los países en desarrollo deben cerc
 - **La ayuda podría crecer hasta US$100.000 millones.** La capacidad inicial sería de entre US$50.000 millones y US$60.000 millones.
 - **La deuda externa emergente llega a US$400.000 millones.** El monto corresponde a pagos previstos durante 2026.
 - **Un tercio de los pagos externos corresponde a intereses.** El costo financiero desplaza recursos fiscales.
-- **El capital privado no llega a los países más pobres.** Sólo una fracción mínima de la movilización alcanzó a economías de bajos ingresos.
+- **El capital privado no llega a los países más pobres.** Sólo cerca de US$3.000 millones de los US$112.000 millones privados movilizados llegó a economías de bajos ingresos.
 
 ## Por qué importa
 
@@ -57,7 +57,7 @@ La advertencia convierte un conjunto de riesgos conocidos en demanda concreta de
 
 El dato central para los mercados es el cambio de escala del riesgo soberano. Un tercio de los US$400.000 millones que las economías en desarrollo deben pagar a acreedores externos corresponde a intereses, de modo que las tasas altas trasladan rápidamente el shock hacia presupuestos, refinanciaciones y calificaciones de crédito.
 
-El Banco Mundial informó que atrajo un récord de US$112.000 millones de capital privado y sumó US$123.000 millones de financiamiento propio, pero apenas cerca de US$3.000 millones llegaron a países de bajos ingresos. Esa distribución limita la capacidad del capital privado para sustituir ayuda oficial en los casos más frágiles. Mercados profundizará por separado precios, flujos y posicionamiento.
+El Banco Mundial informó que atrajo un récord de US$112.000 millones de capital privado y sumó US$123.000 millones de financiamiento propio. De ese capital privado, apenas cerca de US$3.000 millones llegaron a países de bajos ingresos. Esa distribución limita la capacidad del capital privado para sustituir ayuda oficial en los casos más frágiles. Mercados profundizará por separado precios, flujos y posicionamiento.
 
 ## Chile
 
