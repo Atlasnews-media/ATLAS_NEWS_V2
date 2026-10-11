@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "radarRunId": "RADAR-JEV-SMOKE-20260929",
+  "sourceMainCommit": "e67a319b230cbeafde5edb6a0662fee6403f8e48",
+  "radarStateVersion": "radar-state-v1",
+  "editorialDate": "2026-09-29",
+  "experimentMode": "RADAR_JEV",
+  "mode": "LAB_ONLY",
+  "productionWritesAllowed": false,
+  "candidateReviews": [
+    {
+      "candidateKey": "smoke:lab:1",
+      "section": "general",
+      "title": "Synthetic LAB adapter smoke candidate",
+      "description": "Synthetic technical candidate used only to verify the RADAR adapter to the same canonical JEV TypeSafe core.",
+      "priors": [
+        {
+          "id": "smoke-prior-lab",
+          "title": "Synthetic prior",
+          "description": "Synthetic historical prior for LAB adapter smoke."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "adapter": "ATLAS_PRODUCTION_JEV_V1",
+  "requestId": "JEV-SMOKE-PROD-20260929",
+  "consumer": "T1",
+  "sourceCommit": "e67a319b230cbeafde5edb6a0662fee6403f8e48",
+  "editorialDate": "2026-09-29",
+  "candidate": {
+    "candidateKey": "smoke:prod:1",
+    "section": "general",
+    "title": "Synthetic production adapter smoke candidate",
+    "description": "Synthetic technical candidate used only to verify the production adapter to canonical JEV without writing editorial content.",
+    "historicalPriors": [
+      {
+        "id": "smoke-prior-prod",
+        "title": "Synthetic prior",
+        "description": "Synthetic historical prior for production adapter smoke."
+      }
+    ]
+  }
+}
