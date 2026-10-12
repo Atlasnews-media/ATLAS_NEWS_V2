@@ -1,0 +1,135 @@
+{
+  "status": "READY",
+  "date": "2026-10-12",
+  "contract": "atlas-senales-del-dia-v1",
+  "senalesDelDia": {
+    "internacional": [
+      {
+        "slot": "technology",
+        "headline": "EE.UU. incauta herramientas ligadas a Flax Typhoon",
+        "deck": "Siete dominios asociados a Microscan y FishHub fueron intervenidos por orden judicial; Washington atribuye su operación a la china Integrity Technology.",
+        "development": "El Departamento de Justicia y el FBI de Estados Unidos anunciaron el 8 de octubre la incautación judicial de siete dominios vinculados a Microscan y FishHub, dos herramientas usadas para buscar vulnerabilidades y ejecutar campañas de phishing dirigido. Según documentos judiciales, operadores de Integrity Technology Group, empresa con sede en China, administraban esas plataformas. La atribución forma parte de una investigación estadounidense y no constituye por sí sola una sentencia contra la compañía.\n\nMicroscan habría utilizado una red de dispositivos conectados infectados con una variante de Mirai para reconocer sistemas vulnerables. Los objetivos identificados por las autoridades incluyen una eléctrica de Carolina del Sur, aeropuertos de Japón y Polonia, empresas taiwanesas de gas y electricidad y universidades. FishHub, en tanto, habría entregado malware mediante correos dirigidos y facilitado acceso remoto o búsqueda de archivos. El Departamento de Justicia considera esta operación su segunda disrupción pública contra infraestructura atribuida a Integrity Tech desde 2024.\n\nReuters informó que la embajada china en Washington rechazó las acusaciones y afirmó que su país combate el hacking. El resultado verificable de esta semana es la pérdida de acceso a los dominios y la publicación de indicadores técnicos para defensores de redes; no prueba que la capacidad haya desaparecido. Los próximos hitos son nuevas acciones judiciales, reconstrucción de infraestructura por los operadores y evidencia independiente sobre cambios en la actividad de Flax Typhoon.",
+        "anchor": "eeuu-incauta-herramientas-flax-typhoon",
+        "sources": [
+          {
+            "name": "Departamento de Justicia de Estados Unidos",
+            "url": "https://www.justice.gov/opa/pr/justice-department-and-fbi-seize-vulnerability-scanning-and-spear-phishing-tools-operated"
+          },
+          {
+            "name": "Reuters",
+            "url": "https://www.reuters.com/technology/us-announces-effort-disrupt-hacking-infrastructure-run-by-chinas-integrity-tech-2026-10-09/"
+          },
+          {
+            "name": "Associated Press",
+            "url": "https://apnews.com/article/8948c5d83180675bcf21cd98426eabf7"
+          }
+        ]
+      },
+      {
+        "slot": "world",
+        "headline": "Abbas aplaza las elecciones palestinas hasta septiembre de 2027",
+        "deck": "Un decreto reemplaza la votación legislativa de noviembre por comicios presidenciales y parlamentarios simultáneos el 11 de septiembre de 2027.",
+        "development": "El presidente palestino, Mahmoud Abbas, emitió el 10 de octubre un decreto que fija elecciones presidenciales y legislativas simultáneas para el 11 de septiembre de 2027. La medida deja sin efecto la convocatoria previa a elegir el Consejo Legislativo el 28 de noviembre de 2026. El texto encarga a la Comisión Electoral Central preparar, organizar y supervisar ambos comicios bajo la ley electoral vigente, con participación prevista en Jerusalén Este, Cisjordania y la Franja de Gaza.\n\nLa presidencia palestina atribuyó la postergación a obstáculos de seguridad, logística y acceso, entre ellos restricciones israelíes sobre el ingreso de personal electoral y observadores a Gaza y Jerusalén Este. Esa explicación corresponde a la posición oficial consignada en el decreto. Reuters informó además que dirigentes de Fatah y Hamas habían acordado el aplazamiento durante conversaciones en El Cairo. Israel no había respondido públicamente al decreto en las fuentes consultadas al cierre.\n\nLa nueva fecha no equivale a que estén resueltas las condiciones operativas para votar. Los palestinos no celebran elecciones legislativas desde 2006 ni presidenciales desde 2005, de modo que el calendario prolonga mandatos ya extendidos. Los hitos verificables serán el cronograma de la Comisión Electoral Central, el registro de candidaturas y electores, los acuerdos de acceso territorial y la presencia de observadores. Cualquier evaluación sobre participación o resultado debe esperar esos actos formales.",
+        "anchor": "abbas-elecciones-palestinas-septiembre-2027",
+        "sources": [
+          {
+            "name": "Presidencia del Estado de Palestina",
+            "url": "https://www.president.ps/Eng/NewsPage/493202"
+          },
+          {
+            "name": "WAFA",
+            "url": "https://english.wafa.ps/Pages/Details/175699"
+          },
+          {
+            "name": "Reuters",
+            "url": "https://www.reuters.com/world/middle-east/abbas-postpones-palestinian-elections-sets-presidential-poll-september-2027-2026-10-10/"
+          }
+        ]
+      }
+    ],
+    "nacional": [
+      {
+        "slot": "ipsa_company",
+        "headline": "Itaú Chile coloca UF 380.000 en bonos a 2,61%",
+        "deck": "La serie EA recaudó $15.139,7 millones y vence en julio de 2032; la operación amplía el financiamiento local del banco integrante del IPSA.",
+        "development": "Banco Itaú Chile informó el 8 de octubre una colocación de bonos desmaterializados y al portador en el mercado local. La serie EA, código BITAEA0125, alcanzó UF 380.000 y recaudó $15.139.702.827, con vencimiento el 5 de julio de 2032 y una tasa promedio de colocación de 2,61%. La emisión se efectuó con cargo a la línea inscrita en el Registro de Valores de la Comisión para el Mercado Financiero bajo el número 3/2022.\n\nEl hecho esencial describe el monto efectivamente colocado, no un programa completo ni una proyección de demanda futura. Para un banco que integra el IPSA, la operación añade financiamiento de largo plazo en unidades de fomento y permite comparar el costo marginal de esta serie con otras emisiones propias y con la curva local. El pago en UF reduce para los inversionistas el riesgo de inflación chilena, mientras el emisor mantiene una obligación indexada que debe administrar dentro de su estructura de activos y pasivos.\n\nLa lectura financiera dependerá de la prima frente a instrumentos soberanos de duración semejante, la liquidez secundaria y el uso que el banco dé a los recursos. La tasa de colocación no es equivalente a la rentabilidad futura del bono ni anticipa cambios en resultados. Los próximos datos útiles serán la incorporación definitiva a los registros de tenedores, transacciones en el mercado secundario, nuevas colocaciones bajo la misma línea y la evolución del costo de fondeo reportado por Itaú Chile.",
+        "anchor": "itau-chile-colocacion-bonos-serie-ea",
+        "sources": [
+          {
+            "name": "Banco Itaú Chile — Relaciones con inversionistas",
+            "url": "https://ir.itau.cl/"
+          },
+          {
+            "name": "MarketScreener",
+            "url": "https://es.marketscreener.com/noticias/banco-ita-chile-colocaciones-relacionadas-ce7e5ed2de8bf222"
+          },
+          {
+            "name": "Feller Rate — Banco Itaú Chile",
+            "url": "https://www.feller-rate.com/clasificacion-riesgo/14398/itau-chile"
+          }
+        ]
+      },
+      {
+        "slot": "policy_economy",
+        "headline": "CNE fija reglas para pagar la deuda de normalización eléctrica",
+        "deck": "La Resolución 500 incorpora el Saldo NT y su componente tarifaria al mecanismo creado por la Ley 21.833, con horizonte máximo hasta fines de 2035.",
+        "development": "La Comisión Nacional de Energía publicó el 8 de octubre la Resolución Exenta 500, que consolida las reglas técnicas del mecanismo de estabilización eléctrica después de los cambios introducidos por la Ley 21.833. El texto incorpora el Saldo de Normalización Tarifaria, correspondiente a deudas que debe determinar la Superintendencia de Electricidad y Combustibles para cada empresa, y regula la emisión de documentos de pago por parte de la Tesorería General de la República.\n\nEsos documentos son títulos de crédito transferibles y desmaterializados, pero la norma señala que no cuentan con garantía fiscal. Su pago se financiará mediante una nueva componente NT dentro del Cargo MPC, aplicable desde 2028 y hasta extinguir el saldo, con límite en el último día hábil de 2035. La resolución también establece procedimientos de información, facturación, cesión y contabilidad entre generadoras, distribuidoras, la SEC, la Tesorería y otras entidades participantes.\n\nLa publicación vuelve operativa la arquitectura administrativa del mecanismo, pero no determina por sí sola el monto final de cada deuda ni el valor futuro del cargo para cada cliente. Esas cifras dependen de las reliquidaciones, los cálculos oficiales y los procesos tarifarios posteriores. Los próximos hitos verificables son la determinación de saldos por la SEC, las instrucciones de Hacienda a Tesorería, la emisión de documentos y las resoluciones semestrales que incorporen la componente NT. Cualquier efecto distributivo debe evaluarse con esos datos oficiales, separado de estimaciones preliminares.",
+        "anchor": "cne-reglas-saldo-normalizacion-tarifaria",
+        "sources": [
+          {
+            "name": "Comisión Nacional de Energía",
+            "url": "https://www.cne.cl/tarificacion/electrica/"
+          },
+          {
+            "name": "Biblioteca del Congreso Nacional — Ley 21.833",
+            "url": "https://www.leychile.cl/navegar?idNorma=1226550"
+          },
+          {
+            "name": "Biblioteca del Congreso Nacional — Ley 21.472",
+            "url": "https://www.bcn.cl/leychile/navegar?i=1179524"
+          }
+        ]
+      }
+    ],
+    "mercados": [
+      {
+        "slot": "markets_chile",
+        "headline": "IPC de septiembre sube 0,4% y mantiene 4,1% anual",
+        "deck": "El registro mensual quedó bajo la mediana esperada de 0,5%; alimentos y transporte lideraron las alzas, mientras seguros y servicios financieros bajaron.",
+        "development": "El Índice de Precios al Consumidor de Chile aumentó 0,4% en septiembre, acumuló 4,0% en 2026 y se mantuvo en 4,1% a doce meses, informó el Instituto Nacional de Estadísticas el 8 de octubre. El avance mensual fue inferior a la mediana de 0,5% de la Encuesta de Operadores Financieros del Banco Central citada por El País. Ocho de las trece divisiones aportaron incidencias positivas, cuatro negativas y una no tuvo incidencia.\n\nAlimentos y bebidas no alcohólicas subieron 0,6% y contribuyeron 0,133 puntos porcentuales. Transporte avanzó 0,9% y agregó 0,122 puntos, mientras seguros y servicios financieros retrocedieron 5,9% y restaron 0,056 puntos. La composición importa porque una sorpresa mensual moderada puede coexistir con presiones concentradas en rubros de alta frecuencia para los hogares. El dato anual continúa, además, por encima de la meta de inflación de 3% del Banco Central.\n\nPara el mercado local, el registro entrega una nueva referencia para tasas nominales, instrumentos en UF y expectativas de política monetaria, pero no define por sí solo la próxima decisión del Consejo. Esa evaluación incorporará actividad, tipo de cambio y persistencia de los componentes subyacentes. Los controles inmediatos son la encuesta económica posterior al dato, la curva swap, las compensaciones inflacionarias y el IPC de octubre. Una lectura de tendencia requiere varios meses y no sólo la diferencia de una décima frente al consenso.",
+        "anchor": "ipc-chile-septiembre-2026",
+        "sources": [
+          {
+            "name": "Instituto Nacional de Estadísticas",
+            "url": "https://www.ine.gob.cl/sala-de-prensa/prensa/general/noticia/2026/10/08/%C3%ADndice-de-precios-al-consumidor-(ipc)-de-septiembre-present%C3%B3-una-variaci%C3%B3n-mensual-de-0-4"
+          },
+          {
+            "name": "El País Chile",
+            "url": "https://elpais.com/chile/2026-10-08/la-inflacion-en-chile-sube-menos-de-lo-previsto-en-septiembre-pero-se-mantiene-en-el-41-anual.html"
+          }
+        ]
+      },
+      {
+        "slot": "markets_global",
+        "headline": "SpaceX compra espectro de 800 MHz y tensiona a las telecos",
+        "deck": "La operación por la cartera nacional de Grain queda sujeta a aprobación de la FCC y refuerza el plan de combinar cobertura satelital y terrestre.",
+        "development": "SpaceX acordó el 8 de octubre adquirir el 100% de la cartera nacional de espectro de 800 MHz de Grain Management en Estados Unidos. Los activos comprenden hasta 14 megahercios de espectro pareado de baja frecuencia, útil para cubrir grandes distancias y penetrar edificios. Las compañías no divulgaron el precio; The Wall Street Journal lo situó cerca de US$8.000 millones, según personas conocedoras de la operación. Ese monto debe tratarse como una cifra informada por terceros, no como un valor confirmado por comprador o vendedor.\n\nEl acuerdo está sujeto a aprobación de la Comisión Federal de Comunicaciones. Grain había adquirido esta cartera a T-Mobile en una transacción aprobada en julio, con condiciones de despliegue terrestre e incentivos para usos directos a dispositivos. SpaceX plantea integrar el espectro con su arquitectura Starlink Mobile y una capa terrestre. La compra no concede automáticamente autorización para operar ni demuestra que la red híbrida pueda reemplazar a las redes móviles existentes en capacidad o cobertura interior.\n\nLa reacción bursátil convirtió la operación en una señal para el sector: las acciones de grandes operadoras estadounidenses cayeron después del anuncio y sus pares de Australia y Nueva Zelanda retrocedieron al inicio de esta semana. El punto verificable es una ampliación potencial del perímetro competitivo. Los siguientes hitos son la solicitud regulatoria, condiciones que imponga la FCC, financiamiento de la compra, calendario de despliegue y acuerdos de itinerancia o acceso. Hasta entonces, los efectos sobre ingresos y cuotas de mercado siguen siendo escenarios, no resultados.",
+        "anchor": "spacex-compra-espectro-grain-800-mhz",
+        "sources": [
+          {
+            "name": "Grain Management",
+            "url": "https://www.prnewswire.com/news-releases/grain-management-announces-definitive-agreement-to-sell-nationwide-800-mhz-spectrum-portfolio-to-spacex-302902974.html"
+          },
+          {
+            "name": "Reuters",
+            "url": "https://www.reuters.com/business/media-telecom/spacex-acquire-spectrum-that-enables-starlink-mobile-services-2026-10-08/"
+          },
+          {
+            "name": "Federal Communications Commission",
+            "url": "https://docs.fcc.gov/public/attachments/FCC-26-55A1.pdf"
+          }
+        ]
+      }
+    ]
+  }
+}

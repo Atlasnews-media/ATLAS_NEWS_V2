@@ -1,0 +1,31 @@
+VOZ 1: La señal principal de esta mañana es un alivio en el petróleo, pero todavía no un cambio de régimen. El Brent pasó de subir en Asia a caer 0,3%, hasta 104 dólares con 37 centavos por barril, y el WTI perdió 0,6%, hasta 91 dólares con 33 centavos.
+VOZ 2: ¿Qué hizo girar al crudo si el riesgo en el Golfo sigue presente?
+VOZ 1: El mercado reaccionó a la posibilidad de que un acuerdo energético entre Rusia y Ucrania permita aumentar la oferta de diésel ruso. Eso redujo parte de la prima inmediata. Pero faltan detalles operativos, existe oposición política en Washington y siguen los ataques contra navegación e infraestructura en el Golfo.
+VOZ 2: Entonces, ¿es una baja convincente o sólo una pausa?
+VOZ 1: Por ahora, una pausa con efecto favorable sobre algunos activos. El Brent sigue casi 45% por encima del nivel previo a la guerra. El precio incorpora una probabilidad de mayor oferta, pero conserva una prima por riesgo de transporte, refinación y rutas marítimas.
+VOZ 2: ¿Cómo se trasladó eso a las bolsas?
+VOZ 1: Europa abrió mejor. El STOXX 600 subió 0,6%, apoyado por el retroceso del crudo y por avances de automotrices después de acuerdos entre China y la Unión Europea sobre exportaciones de vehículos híbridos. Los futuros del S&P 500 y del Nasdaq ganaron cerca de 0,3%.
+VOZ 2: Pero Asia no acompañó.
+VOZ 1: Exactamente. El índice amplio de Asia-Pacífico sin Japón bajó 0,5%, las acciones líderes chinas cedieron 0,7% y Corea del Sur cayó 3,6%. Taiwán quedó sin cambios y Japón estuvo cerrado por feriado. No hay un giro global uniforme hacia el riesgo; hay dispersión entre regiones y sectores.
+VOZ 2: ¿Qué nos dice esa dispersión?
+VOZ 1: Que un petróleo algo más bajo ayuda a importadores y empresas sensibles a costos, pero no elimina las dudas sobre China, tecnología o condiciones financieras. Europa recibe un alivio táctico. Asia muestra que otros factores todavía pesan.
+VOZ 2: ¿Y el dólar? Uno esperaría que perdiera fuerza si mejora el ánimo.
+VOZ 1: No ocurrió. El índice dólar se mantuvo cerca de máximos de 17 meses, alrededor de 102,21. Además, las posiciones alcistas en la moneda llegaron a unos 36 mil millones de dólares en la semana al 7 de octubre, frente a 8.400 millones tres semanas antes.
+VOZ 2: Ese aumento es grande. ¿Es una apuesta exclusiva a nuevas alzas de la Reserva Federal?
+VOZ 1: No. El mercado asigna sólo cerca de 18% a un aumento en octubre, aunque la probabilidad sube a alrededor de 85% para diciembre. La firmeza del dólar combina política monetaria con demanda de liquidez y refugio por riesgos geopolíticos y fiscales, especialmente en Europa.
+VOZ 2: ¿El oro confirma esa búsqueda de refugio?
+VOZ 1: La confirma con matices. El oro cayó 0,2%, hasta 4.185 dólares con 13 centavos la onza, después de tocar su mayor nivel desde el 2 de octubre. El petróleo más bajo reduce una parte de la cobertura inflacionaria, mientras el dólar fuerte y las tasas reales altas presionan a un activo que no paga intereses.
+VOZ 2: O sea, tampoco vemos una salida masiva del oro.
+VOZ 1: Correcto. Vemos espera. El dato que puede ordenar estas señales es el IPC de Estados Unidos del miércoles. El consenso citado por Reuters espera 0,6% mensual y 3,7% anual en la inflación general, impulsada por energía. Para el núcleo se proyecta 0,2% mensual y 2,5% anual.
+VOZ 2: ¿Qué combinación sería más favorable para las acciones?
+VOZ 1: Una inflación general alta por energía, pero un núcleo moderado, permitiría interpretar el episodio como un shock de oferta que no exige necesariamente otra alza inmediata. Un núcleo más fuerte aumentaría la presión sobre bonos, dólar y valoraciones bursátiles.
+VOZ 2: ¿Podemos leer algo hoy desde los Treasuries?
+VOZ 1: Con mucha cautela. El mercado contado de Treasuries está cerrado por Columbus Day y la actividad global es más liviana. Las referencias recientes venían de máximos de rendimiento de 24 años, pero el ajuste completo a esta baja del petróleo y al próximo dato de inflación se verá cuando reabra.
+VOZ 2: Además del IPC, ¿qué otro catalizador importa?
+VOZ 1: Comienza la temporada de resultados. Los grandes bancos estadounidenses reportan desde el martes, ASML el miércoles y TSMC el jueves. Las utilidades del S&P 500 se esperan más de 30% arriba del tercer trimestre anterior, pero buena parte del crecimiento está concentrada en tecnología.
+VOZ 2: ¿Cómo se conecta eso con la historia de inteligencia artificial de la edición general?
+VOZ 1: La conexión material está en los resultados de TSMC y ASML. Si confirman demanda, inversión y márgenes, respaldarán la idea de que el gasto en inteligencia artificial todavía sostiene actividad y beneficios. Si decepcionan, quedará más expuesta la dependencia del mercado de un grupo reducido de empresas.
+VOZ 2: Entonces, ¿cuál es el resumen operativo?
+VOZ 1: El petróleo ofrece alivio y permite avances selectivos en Europa y futuros estadounidenses, pero Asia sigue dispersa, el dólar conserva cobertura y el oro no se desarma. La lectura es de alivio táctico, no de normalización.
+VOZ 2: ¿Y qué la invalidaría?
+VOZ 1: Un acuerdo energético verificable, más exportaciones y menor riesgo para la navegación podrían extender la baja del crudo hacia inflación, bonos y monedas. En sentido contrario, nuevos ataques, problemas de suministro o un IPC subyacente fuerte devolverían rápidamente el foco al shock inflacionario.

@@ -27,14 +27,14 @@
     {
       "id": "ai-monetization-selectivity",
       "topic": "Inteligencia artificial y selectividad bursátil",
-      "thesis": "La inteligencia artificial sostiene el comercio de semiconductores y la inversión tecnológica, pero concentra actividad, valorizaciones y deuda en pocas compañías; la prueba ya combina monetización, servicio financiero y amplitud de los beneficios productivos.",
+      "thesis": "La inteligencia artificial ya actúa como soporte macroeconómico al sostener inversión y crecimiento global pese al shock energético, pero sus beneficios se concentran en las economías y empresas que controlan infraestructura, capital y habilidades, ampliando el riesgo de divergencia laboral y de desarrollo.",
       "status": "changed",
-      "last_evidence": "El 9 de octubre UNCTAD identificó los productos de IA, incluidos semiconductores, como principal motor del comercio de mercancías, pero advirtió que ese impulso no garantiza desarrollo amplio y que la exposición de los mercados a pocas compañías eleva el riesgo financiero.",
-      "effect": "Amplía el hilo desde el financiamiento corporativo hacia la economía global: la IA puede sostener comercio y crecimiento asiático al mismo tiempo que concentra riesgo, de modo que un auge sectorial no equivale a una expansión productiva generalizada.",
-      "base_scenario": "La demanda de chips e infraestructura de IA continúa impulsando comercio e inversión, pero los beneficios permanecen concentrados; ingresos, productividad y utilización deberán ampliarse antes de las refinanciaciones para evitar una corrección transmitida a crédito y mercados.",
-      "invalidate_if": "Una difusión verificable de productividad, ingresos y comercio hacia más empresas y economías, junto con flujo de caja suficiente para servir la deuda, validaría un ciclo amplio; mayor concentración, cancelaciones o estrés crediticio reforzarían el riesgo.",
-      "watch": "Comercio de semiconductores, participación de Asia, concentración de índices e ingresos, spreads y vencimientos de deuda, utilización de centros de datos, productividad, aplicaciones y difusión de inversión fuera de las grandes tecnológicas.",
-      "last_publication": "/ediciones/2026-10-10-daily-energia-fragmentacion-frenan-crecimiento/"
+      "last_evidence": "El 12 de octubre el FMI estimó que la inversión en IA mantiene el crecimiento mundial cerca de 3%, puede añadir entre 0,5 y 1 punto porcentual a Asia avanzada y entre 0,2 y 0,8 puntos a Asia emergente; también advirtió que 40% de los empleos podría ser aumentado, degradado o eliminado y que cae la demanda por trabajadores recién graduados.",
+      "effect": "Amplía el hilo desde concentración comercial, bursátil y crediticia hacia una disyuntiva macroeconómica y laboral: la IA compensa parte del freno energético, pero no garantiza que el crecimiento se traduzca en empleos iniciales ni en convergencia entre economías.",
+      "base_scenario": "La inversión en infraestructura de IA sostiene demanda global y favorece a proveedores asiáticos, mientras capital, capacidad tecnológica y habilidades permanecen concentrados; el crecimiento resiste, pero la difusión de productividad y empleo avanza de forma desigual.",
+      "invalidate_if": "Una difusión amplia y verificable de productividad, nuevos empleos y oportunidades de entrada entre sectores y países, junto con menor concentración de infraestructura y financiamiento, debilitaría la tesis; mayor sustitución laboral o concentración la reforzaría.",
+      "watch": "Perspectivas del FMI, inversión y financiamiento de infraestructura, producción y exportaciones tecnológicas de Asia, vacantes de entrada, exigencias de habilidades de IA, salarios, productividad, adopción de IA práctica en economías en desarrollo y distribución de ingresos fiscales.",
+      "last_publication": "/ediciones/2026-10-12-daily-ia-sostiene-crecimiento-brecha-laboral/"
     },
     {
       "id": "chile-inflation-activity-rates",
