@@ -1,0 +1,27 @@
+VOZ 1: La inteligencia artificial ya está entrando al trabajo en Chile, pero todavía no hay evidencia suficiente para decir que explica el deterioro general del empleo. Un nuevo reporte de CENDA no identifica una ola masiva de desempleo atribuible a esta tecnología.
+VOZ 2: ¿Eso significa que no existe un impacto laboral?
+VOZ 1: No. Significa que el impacto más visible aparece primero en las tareas, la intensidad del trabajo, la contratación y las oportunidades de entrada. Es distinto decir que una función cambia a afirmar que un puesto desapareció por causa directa de la IA.
+VOZ 2: ¿Por qué es importante esa precisión en Chile?
+VOZ 1: Porque el desempleo es elevado y hay una tentación de buscar una causa única. La actividad débil, la caída minera, el costo laboral, la inversión y la composición de la demanda también pesan. Que aumente el uso de IA al mismo tiempo que cae la contratación no prueba causalidad.
+VOZ 2: ¿Qué sí sabemos sobre el uso de estas herramientas?
+VOZ 1: Un estudio de la Universidad Adolfo Ibáñez y Mutual de Seguridad encuestó a 1.400 personas. El 30,2% dijo usar chatbots frecuentemente para tareas laborales. Entre quienes usan inteligencia artificial en el trabajo, 77% aprendió por cuenta propia y sólo 16% recibió capacitación pagada por su organización.
+VOZ 2: Entonces la adopción está ocurriendo desde los trabajadores, no necesariamente desde una estrategia de las empresas.
+VOZ 1: Exactamente. Tutoriales, videos, prueba y error. Eso acelera el uso, pero también crea una brecha: quien tiene más tiempo, acceso o familiaridad tecnológica aprende antes. Quien necesita formación estructurada puede quedar atrás.
+VOZ 2: ¿Los usuarios perciben una mejora real?
+VOZ 1: El 65% considera que mejoró su productividad y el 63% percibe mayor calidad en su trabajo. Las aplicaciones más comunes son investigar, redactar o editar documentos, resumir información, generar ideas y ayudar con datos o código.
+VOZ 2: ¿Esa productividad reduce la carga laboral?
+VOZ 1: No necesariamente. Un 54% dijo que su carga se mantuvo y 15,7% siente que ahora se espera que trabaje más rápido. La herramienta puede ahorrar minutos en una tarea, pero la organización puede responder elevando el volumen o el estándar exigido.
+VOZ 2: ¿Qué está pasando con las vacantes?
+VOZ 1: SENCE analizó más de 920.000 ofertas laborales de 2025 mediante su sistema SABE. Detectó mayor demanda por habilidades digitales, perfiles técnicos, desarrollo de software, logística y operación de maquinaria. También aparecen con fuerza adaptabilidad, responsabilidad, trabajo en equipo y resolución de problemas.
+VOZ 2: Eso parece indicar complementariedad entre tecnología y habilidades humanas.
+VOZ 1: En parte, sí. Pero el dato describe lo que piden los avisos, no demuestra cuántos puestos creó la IA ni cuánto duran. Tampoco cubre todo el empleo informal o las contrataciones que no pasan por portales.
+VOZ 2: La General de hoy advierte que los cargos iniciales pueden perder demanda. ¿Existe esa señal en Chile?
+VOZ 1: Hay una preocupación fundada, pero falta medición sistemática local. Los puestos de entrada suelen incluir tareas de búsqueda, redacción y procesamiento de información que la IA puede acelerar. Si esas tareas se reducen, el riesgo no es sólo perder una vacante: también desaparece el espacio donde un recién egresado adquiere experiencia.
+VOZ 2: ¿Qué deberían hacer empresas y política pública?
+VOZ 1: Primero, dejar de depender exclusivamente del aprendizaje individual. La capacitación debe incluir revisión humana, calidad de fuentes, trazabilidad y protección de información. Segundo, vincular los avisos laborales con datos de contratos, salarios, duración del empleo y productividad.
+VOZ 2: ¿Cuál sería una mala lectura de la evidencia?
+VOZ 1: Decir que la IA ya causó el desempleo chileno. Tampoco sería correcto ignorarla porque todavía no aparece una ola de despidos atribuible. La transformación ocurre antes en tareas, exigencias y contratación.
+VOZ 2: ¿Qué indicadores conviene seguir?
+VOZ 1: Vacantes para cargos iniciales, requisitos de IA, salarios, capacitación financiada por empresas y productividad por sector. Si la formación organizacional sigue cerca de 16%, la brecha dependerá demasiado de la iniciativa personal.
+VOZ 2: Entonces la pregunta central cambia.
+VOZ 1: Sí. No es sólo cuántos empleos eliminará la inteligencia artificial. Es quién recibe capacitación, quién captura la productividad, cómo se gobierna el uso y qué trabajadores pierden el primer peldaño de su carrera. Chile ya observa adopción; ahora necesita medir resultados.
