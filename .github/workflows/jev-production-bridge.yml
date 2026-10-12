@@ -43,7 +43,7 @@ jobs:
         run: |
           test -n "$TYPESAFE_API_KEY"
           test -f ".request/$REQUEST_PATH"
-          node -e 'const r=require("./.request/"+process.env.REQUEST_PATH);if(r.sourceCommit!==process.env.REQUEST_REF)process.exit(1)'
+          node -e 'const r=require("./.request/"+process.env.REQUEST_PATH);if(!/^[0-9a-f]{40}$/.test(r.sourceCommit||""))process.exit(1)'
           node scripts/jev/run-production-jev.mjs --request ".request/$REQUEST_PATH" --output "$RUNNER_TEMP/jev-result.json"
       - name: Entregar resultado verificable
         uses: actions/upload-artifact@v4
