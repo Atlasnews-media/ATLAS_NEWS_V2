@@ -1,11 +1,11 @@
 ---
 title: "El petróleo cede, pero el mercado no desarma la cobertura contra inflación"
 summary: "Europa y los futuros de Wall Street suben con el retroceso del crudo, mientras el dólar firme, la dispersión asiática y las tasas elevadas muestran que el riesgo inflacionario sigue abierto."
-publishedAt: "2026-10-12T06:29:00-03:00"
+publishedAt: "2026-10-12T06:49:16-03:00"
 cutoffAt: "2026-10-12T06:27:00-03:00"
 section: "markets"
 editionSlot: "morning"
-status: "draft"
+status: "published"
 tags:
   - mercados-globales
   - petroleo

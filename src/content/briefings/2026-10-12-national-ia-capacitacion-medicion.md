@@ -1,11 +1,11 @@
 ---
 title: "Chile adopta IA por cuenta propia, sin medir aún su efecto real en el empleo"
 summary: "La evidencia local muestra uso y demanda de habilidades digitales, pero no permite atribuir a la IA el desempleo actual; la brecha está en capacitación, gobernanza y medición."
-publishedAt: "2026-10-12T06:22:00-03:00"
+publishedAt: "2026-10-12T06:49:16-03:00"
 cutoffAt: "2026-10-12T06:20:00-03:00"
 section: "national"
 editionSlot: "morning"
-status: "draft"
+status: "published"
 tags:
   - chile
   - empleo

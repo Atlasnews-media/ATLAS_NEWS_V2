@@ -1,11 +1,11 @@
 ---
 title: "La IA sostiene el crecimiento mundial, pero abre una brecha laboral"
 summary: "El FMI estima que la inversión tecnológica mantiene la expansión global cerca de 3% y puede añadir hasta un punto a Asia avanzada, mientras 40% de los empleos enfrenta transformación y cae la demanda por trabajadores recién graduados."
-publishedAt: "2026-10-12T06:01:44-03:00"
+publishedAt: "2026-10-12T06:49:16-03:00"
 cutoffAt: "2026-10-12T06:01:44-03:00"
 type: "daily"
 editionSlot: "morning"
-status: "draft"
+status: "published"
 tags:
   - economia-global
   - inteligencia-artificial
