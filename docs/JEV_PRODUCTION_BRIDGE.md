@@ -8,14 +8,14 @@ Un productor editorial versiona `data/jev/requests/<requestId>.json` en su rama 
 `editionSlot:"morning"|"midday"`, `sourceCommit` (SHA exacto del commit con la solicitud),
 `candidates:[{candidateKey,title,description,priors:[{title,publishedAt,sourcePath}]}]`.
 
-**Importante:** existe un problema de identidad circular si se exige que el JSON dentro de un commit contenga el SHA de ese mismo commit. Por ello este contrato necesita una corrección antes de activarse: `sourceCommit` debe representar el commit base editorial anterior a la solicitud, mientras `request_ref` identifica el commit que contiene el JSON. El gate del workflow debe comprobar ambos por separado. No habilitar en producción hasta corregirlo.
+**Identidad:** `sourceCommit` representa el commit editorial base usado para generar los candidatos, mientras `request_ref` identifica el commit exacto que contiene la solicitud. Nunca exigir que un archivo contenga el SHA de su propio commit. La correlación del resultado debe conservar ambas identidades antes de habilitar la publicación.
 
 ## Resultado
 El workflow entrega un artifact `production-jev-result` con juicios TypeSafe y telemetría.
 No modifica publicaciones ni decide automáticamente la selección. El productor debe consumir el resultado y registrar su decisión antes de redactar.
 
 ## Pendiente de integración E2E
-1. Resolver la identidad de solicitud/commit.
+1. Validar la correlación de identidades y la pertenencia del commit de solicitud a la rama editorial autorizada.
 2. Automatizar el despacho desde T1/T2/Vespertina y la recuperación del artifact.
 3. Incorporar gate de consumo del juicio en el flujo editorial.
 4. Probar con candidatos duplicados y nuevos, y verificar titulares resultantes.
