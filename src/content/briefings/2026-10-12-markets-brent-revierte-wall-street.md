@@ -1,11 +1,11 @@
 ---
 title: "El Brent revierte la baja matinal y supera US$106 al abrir Wall Street"
 summary: "Las dudas sobre la tregua energética y los ataques en Riad devolvieron la prima al crudo; energía sube, tecnología cede y los índices estadounidenses quedan casi planos."
-publishedAt: "2026-10-12T12:04:50-03:00"
+publishedAt: "2026-10-12T12:10:26-03:00"
 cutoffAt: "2026-10-12T12:00:00-03:00"
 section: "markets"
 editionSlot: "midday"
-status: "draft"
+status: "published"
 tags:
   - mercados-globales
   - petroleo

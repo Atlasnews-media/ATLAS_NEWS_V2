@@ -1,11 +1,11 @@
 ---
 title: "El comercio abre en el feriado del 12 de octubre por no ser irrenunciable"
 summary: "Supermercados, centros comerciales y tiendas operan este lunes bajo horarios propios: la ley reserva el cierre obligatorio del comercio para cinco feriados específicos."
-publishedAt: "2026-10-12T12:04:50-03:00"
+publishedAt: "2026-10-12T12:10:26-03:00"
 cutoffAt: "2026-10-12T12:00:00-03:00"
 section: "national"
 editionSlot: "midday"
-status: "draft"
+status: "published"
 tags:
   - chile
   - comercio

@@ -1,11 +1,11 @@
 ---
 title: "India lleva a la Corte Suprema la disputa por 130 millones de bajas del padrón"
 summary: "La oposición marchó contra la revisión electoral y organizaciones de prensa denunciaron la detención de casi tres decenas de periodistas, mientras la comisión niega favoritismo."
-publishedAt: "2026-10-12T12:04:50-03:00"
+publishedAt: "2026-10-12T12:10:26-03:00"
 cutoffAt: "2026-10-12T12:00:00-03:00"
 type: "daily"
 editionSlot: "midday"
-status: "draft"
+status: "published"
 tags:
   - india
   - elecciones
