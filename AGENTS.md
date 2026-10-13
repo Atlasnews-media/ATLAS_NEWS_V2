@@ -52,6 +52,15 @@ Mantener un periódico financiero digital donde el código, los datos y el conte
 - Mediodía debe pasar los mismos gates fail-closed, manifiesto, auditor, publicador y verificación pública. Publicarla no elimina ni modifica retrospectivamente Matutina.
 - Este contrato habilita la identidad web de Mediodía; no define Audio, Reel, Carrusel ni Vespertina.
 
+
+## Edición vespertina
+
+- `editionSlot: evening` identifica las piezas de la Edición Vespertina y utiliza las colecciones General, Nacional y Mercados existentes.
+- La Edición Vespertina es adicional a Matutina y Mediodía, sin alterar publicaciones previas.
+- La rama editorial propuesta es `editorial/AAAA-MM-DD-evening`; la promoción exige gates productivos y verificación pública de identidad y Portada.
+- JEV no forma parte del productor editorial de Vespertina; la selección editorial permanece en el productor.
+- Reel y Carrusel son consumidores downstream independientes de la publicación web.
+
 ## Memoria editorial mínima
 
 - Cada generación parte del archivo vigente en `main`: la edición diaria compara solo los hilos pertinentes y el panorama semanal puede considerar todos los hilos activos.
