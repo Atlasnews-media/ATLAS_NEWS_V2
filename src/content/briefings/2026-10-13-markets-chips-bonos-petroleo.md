@@ -1,11 +1,11 @@
 ---
 title: "La venta de semiconductores separa al mercado tecnológico del alivio en petróleo y bonos"
 summary: "Las acciones ligadas a IA retroceden por dudas sobre competencia y rentabilidad, mientras caen petróleo y rendimientos soberanos. La divergencia revela una rotación defensiva, no un alivio uniforme."
-publishedAt: "2026-10-13T12:00:00-03:00"
+publishedAt: "2026-10-13T07:36:09-03:00"
 cutoffAt: "2026-10-13T09:00:00-03:00"
 section: "markets"
 editionSlot: "morning"
-status: "draft"
+status: "published"
 tags:
   - mercados-globales
   - inteligencia-artificial
