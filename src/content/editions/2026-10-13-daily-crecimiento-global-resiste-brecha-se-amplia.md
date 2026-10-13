@@ -1,11 +1,11 @@
 ---
 title: "El crecimiento global resiste, pero la brecha entre ganadores se amplía"
 summary: "El FMI eleva a 3,1% su proyección mundial para 2026 gracias al impulso de la IA, mientras energía, deuda y concentración tecnológica mantienen elevados los riesgos."
-publishedAt: "2026-10-13T06:33:23-03:00"
+publishedAt: "2026-10-13T07:10:39-03:00"
 cutoffAt: "2026-10-13T06:32:29-03:00"
 type: "daily"
 editionSlot: "morning"
-status: "draft"
+status: "published"
 tags:
   - economia-global
   - inteligencia-artificial
