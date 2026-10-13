@@ -17,7 +17,7 @@ const frontPageHighlightSchema = highlightSchema.extend({
   label: z.string().min(2).max(72),
 });
 
-const editionSlotSchema = z.enum(["morning", "midday"]);
+const editionSlotSchema = z.enum(["morning", "midday", "evening"]);
 
 const marketItemSchema = z.object({
   label: z.string().min(2).max(32),
