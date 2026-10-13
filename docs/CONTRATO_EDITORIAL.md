@@ -11,7 +11,7 @@ Una edición diaria o semanal debe incluir los siguientes metadatos:
 | `publishedAt`   | Fecha ISO 8601 con zona horaria                                           |
 | `cutoffAt`      | Cierre informativo ISO 8601 con zona horaria                              |
 | `type`          | `daily` o `weekly`                                                        |
-| `editionSlot`   | En `daily`: `morning` o `midday`; ausencia = `morning` por compatibilidad |
+| `editionSlot`   | En `daily`: `morning`, `midday` o `evening`; ausencia = `morning` por compatibilidad |
 | `status`        | `draft` o `published`                                                     |
 | `tags`          | Al menos una etiqueta                                                     |
 | `sources`       | Al menos una fuente con nombre y URL válida                               |
