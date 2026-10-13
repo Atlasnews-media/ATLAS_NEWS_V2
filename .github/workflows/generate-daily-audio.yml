@@ -4,11 +4,6 @@ on:
   # Flujo de contingencia solamente. Audio V2 es el único escritor automático
   # de Portada + Nacional + Mercados en producción.
   workflow_dispatch:
-  # Activación puntual de contingencia: cambios explícitos a este workflow.
-  push:
-    branches: [main]
-    paths:
-      - ".github/workflows/generate-daily-audio.yml"
 
 permissions:
   contents: read
