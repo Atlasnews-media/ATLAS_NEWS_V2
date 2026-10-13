@@ -1,0 +1,54 @@
+name: JEV — evaluación editorial productiva (puente)
+on:
+  workflow_dispatch:
+    inputs:
+      request_path:
+        description: "Ruta JSON versionada en la rama de edición"
+        required: true
+        type: string
+      request_ref:
+        description: "SHA exacto de la rama editorial (40 hex)"
+        required: true
+        type: string
+permissions:
+  contents: read
+jobs:
+  evaluate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    env:
+      TYPESAFE_API_KEY: ${{ secrets.TYPESAFE_API_KEY }}
+      REQUEST_PATH: ${{ inputs.request_path }}
+      REQUEST_REF: ${{ inputs.request_ref }}
+    steps:
+      - name: Validar identidad y scope
+        run: |
+          [[ "$REQUEST_REF" =~ ^[0-9a-f]{40}$ ]]
+          [[ "$REQUEST_PATH" =~ ^data/jev/requests/[A-Za-z0-9._-]+\.json$ ]]
+      - name: Checkout código canónico
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Checkout request en SHA exacto
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ inputs.request_ref }}
+          path: .request
+          persist-credentials: false
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: Validar solicitud y evaluar con JEV TypeSafe
+        run: |
+          test -n "$TYPESAFE_API_KEY"
+          test -f ".request/$REQUEST_PATH"
+          node -e 'const r=require("./.request/"+process.env.REQUEST_PATH);if(!/^[0-9a-f]{40}$/.test(r.sourceCommit||""))process.exit(1)'
+          node scripts/jev/run-production-jev.mjs --request ".request/$REQUEST_PATH" --output "$RUNNER_TEMP/jev-result.json"
+      - name: Entregar resultado verificable
+        uses: actions/upload-artifact@v4
+        with:
+          name: production-jev-result
+          path: ${{ runner.temp }}/jev-result.json
+          if-no-files-found: error
+          retention-days: 14
