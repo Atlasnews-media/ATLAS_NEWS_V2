@@ -2,7 +2,7 @@
 title: "La caída minera chilena profundiza la brecha entre el precio del cobre y la actividad"
 summary: "La contracción de la producción cuprífera limita el crecimiento local aun cuando el entorno internacional sostenga demanda. La clave está en volúmenes, operación e inversión, no sólo en precios."
 publishedAt: "2026-10-13T07:36:09-03:00"
-cutoffAt: "2026-10-13T09:00:00-03:00"
+cutoffAt: "2026-10-13T07:30:00-03:00"
 section: "national"
 editionSlot: "morning"
 status: "published"
