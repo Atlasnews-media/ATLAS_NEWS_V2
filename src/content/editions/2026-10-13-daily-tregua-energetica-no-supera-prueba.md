@@ -1,7 +1,7 @@
 ---
 title: "La tregua energética anunciada por Trump no supera su primera prueba"
 summary: "Ucrania reporta nuevos ataques rusos sobre seis objetivos energéticos, Moscú sólo confirma conversaciones y la UE responde con su mayor paquete de sanciones desde 2022."
-publishedAt: "2026-10-13T05:59:10-03:00"
+publishedAt: "2026-10-13T05:59:50-03:00"
 cutoffAt: "2026-10-13T05:57:45-03:00"
 type: "daily"
 editionSlot: "morning"
@@ -19,8 +19,7 @@ sources:
     url: "https://www.president.gov.ua/en/news/yevropa-ta-ssha-mayut-posilyuvati-tisk-na-rosiyu-shob-stvori-106861"
     publishedAt: "2026-10-12T14:40:00-03:00"
   - name: "Consejo de la UE — Sanciones a 1.569 personas y entidades rusas"
-    url: "https://www.consilium.europa.eu/cs/press/press-releases/2026/10/12/russia-s-war-of-aggression-against-ukraine-eu-agrees-largest-ever-package-of-listings-targeting-almost-1600-individuals-and-entities-in-russia-s-military-industrial-complex/"
-    publishedAt: "2026-10-12T12:00:00-03:00"
+    url: "https://www.consilium.europa.eu/en/press/press-releases/2026/10/12/russia-s-war-of-aggression-against-ukraine-eu-agrees-largest-ever-package-of-listings-targeting-almost-1600-individuals-and-entities-in-russia-s-military-industrial-complex/"
   - name: "Reuters — El diésel ruso compensa parcialmente el riesgo del Golfo"
     url: "https://www.reuters.com/business/energy/oil-ticks-lower-russia-diesel-supply-prospects-counter-gulf-supply-risks-2026-10-13/"
     publishedAt: "2026-10-12T21:25:00-03:00"
@@ -71,7 +70,7 @@ El canal hacia Chile pasa por el costo internacional del diésel, los fletes y l
 
 ## Tasas, monedas y commodities
 
-El Brent cayó a cerca de US$105 por barril durante la sesión asiática del 13 de octubre, después de cerrar la jornada previa en su nivel más alto desde el 15 de septiembre. OPEC+ redujo a 400.000 barriles diarios su previsión de crecimiento de la demanda petrolera para 2026, mientras los costos de flete y seguro siguen absorbiendo una parte elevada del valor transportado.
+El Brent cayó a cerca de US$105 por barril durante la sesión asiática del 13 de octubre, después de cerrar la jornada previa en su nivel más alto desde el 15 de septiembre. OPEC redujo a 400.000 barriles diarios su previsión de crecimiento de la demanda petrolera para 2026, mientras los costos de flete y seguro siguen absorbiendo una parte elevada del valor transportado.
 
 La energía conserva capacidad para trasladarse a inflación y rendimientos largos porque el alivio de oferta todavía depende de promesas, excepciones sancionatorias y rutas expuestas. Una tregua verificable reduciría ese canal; nuevos ataques lo reforzarían.
 
