@@ -10,7 +10,7 @@
       "base_scenario": "No existe una tregua energética efectiva. Los ataques sobre infraestructura continúan mientras Kyiv ofrece reciprocidad, Moscú negocia sin aceptar una pausa breve y Estados Unidos y la Unión Europea combinan alivio de oferta y presión sancionatoria.",
       "invalidate_if": "Un acuerdo bilateral publicado, con objetivos protegidos, hora de inicio, verificación y varias semanas sin ataques energéticos, reabriría la tesis de desescalada; nuevos golpes o incumplimientos la confirmarían como fallida.",
       "watch": "Texto y confirmación bilateral, objetivos protegidos, verificación, ataques a refinerías, plantas de gas y redes, exportaciones rusas de diésel, sanciones europeas, rutas del Golfo, fletes y precios de refinados.",
-      "last_publication": "/ediciones/2026-10-13-daily-tregua-energetica-no-supera-prueba/"
+      "last_publication": "/ediciones/2026-10-13-daily-crecimiento-global-resiste-brecha-se-amplia/"
     },
     {
       "id": "us-employment-fed-rates",
@@ -27,14 +27,14 @@
     {
       "id": "ai-monetization-selectivity",
       "topic": "Inteligencia artificial y selectividad bursátil",
-      "thesis": "La inteligencia artificial ya actúa como soporte macroeconómico al sostener inversión y crecimiento global pese al shock energético, pero sus beneficios se concentran en las economías y empresas que controlan infraestructura, capital y habilidades, ampliando el riesgo de divergencia laboral y de desarrollo.",
-      "status": "changed",
-      "last_evidence": "El 12 de octubre el FMI estimó que la inversión en IA mantiene el crecimiento mundial cerca de 3%, puede añadir entre 0,5 y 1 punto porcentual a Asia avanzada y entre 0,2 y 0,8 puntos a Asia emergente; también advirtió que 40% de los empleos podría ser aumentado, degradado o eliminado y que cae la demanda por trabajadores recién graduados.",
-      "effect": "Amplía el hilo desde concentración comercial, bursátil y crediticia hacia una disyuntiva macroeconómica y laboral: la IA compensa parte del freno energético, pero no garantiza que el crecimiento se traduzca en empleos iniciales ni en convergencia entre economías.",
-      "base_scenario": "La inversión en infraestructura de IA sostiene demanda global y favorece a proveedores asiáticos, mientras capital, capacidad tecnológica y habilidades permanecen concentrados; el crecimiento resiste, pero la difusión de productividad y empleo avanza de forma desigual.",
-      "invalidate_if": "Una difusión amplia y verificable de productividad, nuevos empleos y oportunidades de entrada entre sectores y países, junto con menor concentración de infraestructura y financiamiento, debilitaría la tesis; mayor sustitución laboral o concentración la reforzaría.",
-      "watch": "Perspectivas del FMI, inversión y financiamiento de infraestructura, producción y exportaciones tecnológicas de Asia, vacantes de entrada, exigencias de habilidades de IA, salarios, productividad, adopción de IA práctica en economías en desarrollo y distribución de ingresos fiscales.",
-      "last_publication": "/ediciones/2026-10-12-daily-ia-sostiene-crecimiento-brecha-laboral/"
+      "thesis": "La inteligencia artificial ya sostiene crecimiento y comercio global, pero el FMI confirma que sus beneficios están concentrados en pocas economías y conviven con riesgos de corrección financiera, presión energética y divergencia laboral.",
+      "status": "confirmed",
+      "last_evidence": "El 13 de octubre el FMI elevó a 3,1% su proyección de crecimiento mundial para 2026 y mantuvo 3,4% para 2027; estimó inflación global de 4,7%, informó que el comercio ligado a IA creció 29% entre 2023 y 2025 y que sólo 32 países explican 95% del crecimiento mundial.",
+      "effect": "Confirma y cuantifica la tesis: la IA ya compensa parte del shock energético a escala macroeconómica, pero la resiliencia depende de una cadena tecnológica concentrada y queda expuesta a una corrección si inversión, productividad o utilidades decepcionan.",
+      "base_scenario": "La inversión en IA continúa sosteniendo crecimiento, comercio e infraestructura durante 2026-2027, mientras los beneficios permanecen concentrados y energía, deuda y costos de capital limitan la difusión hacia economías menos integradas.",
+      "invalidate_if": "Una difusión amplia y verificable de productividad, comercio y empleo hacia más países reduciría la tesis de concentración; una caída brusca de inversión o rentabilidad de IA, acompañada por corrección financiera, debilitaría su papel como soporte del crecimiento.",
+      "watch": "Inversión y productividad de IA, comercio tecnológico, utilidades de proveedores, difusión geográfica del crecimiento, empleo inicial, energía, rendimientos soberanos, deuda, correcciones de activos tecnológicos y riesgos cibernéticos.",
+      "last_publication": "/ediciones/2026-10-13-daily-crecimiento-global-resiste-brecha-se-amplia/"
     },
     {
       "id": "chile-inflation-activity-rates",
