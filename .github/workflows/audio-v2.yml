@@ -16,7 +16,7 @@ on:
       - "scripts/prepare-audio-v2.mjs"
       - "scripts/generate-audio-v2.py"
       - ".github/workflows/audio-v2.yml"
-      - ".github/workflows/audio-v2-recovery-20261013.flag"
+      - "src/content/briefings/**"
   schedule:
     # Red de seguridad diaria: si el disparo por push falla o queda incompleto,
     # estos barridos idempotentes recuperan y verifican el audio publicado.
