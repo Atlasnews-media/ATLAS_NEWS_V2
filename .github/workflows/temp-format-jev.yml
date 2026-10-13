@@ -1,0 +1,32 @@
+name: TEMP — format JEV bridge
+on:
+  push:
+    branches:
+      - fix/jev-prettier-gate-2026-10-13
+
+permissions:
+  contents: write
+
+jobs:
+  format:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: fix/jev-prettier-gate-2026-10-13
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: npm
+      - run: npm ci
+      - name: Formatear exclusivamente puente JEV
+        run: npx prettier --write docs/JEV_PRODUCTION_BRIDGE.md scripts/jev/run-production-jev.mjs
+      - name: Commit de formato
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add docs/JEV_PRODUCTION_BRIDGE.md scripts/jev/run-production-jev.mjs
+          git diff --cached --quiet && exit 0
+          git commit -m "Fix: format JEV bridge files"
+          git push
