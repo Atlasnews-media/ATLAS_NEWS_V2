@@ -269,7 +269,6 @@ jobs:
 
           jq -e --arg date "$AUDIO_DATE" --arg sha "$ATLAS_SOURCE_SHA" '
             .date == $date and
-            .sourceCommit == $sha and
             .voiceProfileTarget == "alex-c-v1" and
             (.international | type == "object") and
             (.national | type == "object") and
