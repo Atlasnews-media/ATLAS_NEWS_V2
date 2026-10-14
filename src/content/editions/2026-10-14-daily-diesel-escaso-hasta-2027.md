@@ -26,7 +26,7 @@ highlights:
   - label: "La demanda mundial de petróleo bajaría 2,6 mbd"
     text: "Los precios altos y el deterioro económico reducirían el consumo en 2026, pero no eliminarían la estrechez de los destilados medios."
   - label: "Los inventarios están 509 millones de barriles más bajos"
-    text: "Las existencias globales observadas cerraron septiembre muy por debajo del nivel previo a la guerra y las reservas terrestres tocaron mínimos desde al menos 2016."
+    text: "Las existencias globales cerraron septiembre bajo el nivel previo a la guerra y las reservas terrestres tocaron mínimos desde al menos 2016."
   - label: "La producción refinada no repone el déficit de 2026"
     text: "Aunque las refinerías vuelvan a elevar su actividad, la AIE no espera una reposición extraordinaria de inventarios antes del segundo semestre de 2027."
 ---
