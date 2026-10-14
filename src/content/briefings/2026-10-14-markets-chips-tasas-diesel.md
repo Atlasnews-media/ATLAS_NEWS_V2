@@ -1,11 +1,11 @@
 ---
 title: "El rebote de chips convive con una prima energética persistente"
 summary: "La baja de los Treasury permitió un rebote selectivo en semiconductores, pero el diésel y el petróleo mantienen una señal inflacionaria que limita la expansión del apetito por riesgo."
-publishedAt: "2026-10-14T06:32:00-03:00"
+publishedAt: "2026-10-14T06:47:37-03:00"
 cutoffAt: "2026-10-14T06:29:00-03:00"
 section: "markets"
 editionSlot: "morning"
-status: "draft"
+status: "published"
 tags:
   - mercados
   - tasas

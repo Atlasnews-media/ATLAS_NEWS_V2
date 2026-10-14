@@ -1,11 +1,11 @@
 ---
 title: "El cobre caro no compensa la caída de producción minera en Chile"
 summary: "La minería restó crecimiento pese al precio récord del cobre: el desafío local es recuperar volumen y distinguir un shock operativo de un estancamiento productivo más persistente."
-publishedAt: "2026-10-14T06:24:00-03:00"
+publishedAt: "2026-10-14T06:47:37-03:00"
 cutoffAt: "2026-10-14T06:21:00-03:00"
 section: "national"
 editionSlot: "morning"
-status: "draft"
+status: "published"
 tags:
   - chile
   - mineria

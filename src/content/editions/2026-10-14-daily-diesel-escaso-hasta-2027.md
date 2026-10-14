@@ -1,11 +1,11 @@
 ---
 title: "El diésel seguirá escaso hasta 2027 pese a la caída de la demanda"
 summary: "La AIE advierte que la recuperación de las refinerías no compensará el déficit acumulado: los inventarios siguen bajos y el combustible mantiene abierto un canal de inflación y menor crecimiento."
-publishedAt: "2026-10-14T06:08:23-03:00"
+publishedAt: "2026-10-14T06:47:37-03:00"
 cutoffAt: "2026-10-14T06:06:15-03:00"
 type: "daily"
 editionSlot: "morning"
-status: "draft"
+status: "published"
 tags:
   - energia
   - diesel
