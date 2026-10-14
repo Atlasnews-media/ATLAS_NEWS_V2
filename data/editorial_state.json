@@ -3,14 +3,14 @@
     {
       "id": "oil-geopolitics-inflation",
       "topic": "Petróleo, geopolítica e inflación",
-      "thesis": "La tregua energética anunciada por Washington quedó contradicha por nuevos ataques rusos sobre infraestructura ucraniana; sin aceptación bilateral ni verificación, la energía sigue siendo objetivo militar y palanca diplomática, mientras la excepción estadounidense al diésel ruso puede aliviar oferta sin producir desescalada.",
-      "status": "contradicted",
-      "last_evidence": "El 12 de octubre Ucrania informó que Rusia golpeó al menos seis objetivos energéticos después del anuncio de Donald Trump, incluidos una instalación de gas y una estación de combustible; Moscú sólo confirmó conversaciones, rechazó una pausa breve y la UE sancionó a 1.569 personas y entidades rusas.",
-      "effect": "Contradice la expectativa de una tregua ya vigente y devuelve el hilo a un escenario de ataques activos, negociación incompleta y estrategias occidentales divergentes: Washington habilita diésel ruso para contener precios mientras Europa amplía sanciones.",
-      "base_scenario": "No existe una tregua energética efectiva. Los ataques sobre infraestructura continúan mientras Kyiv ofrece reciprocidad, Moscú negocia sin aceptar una pausa breve y Estados Unidos y la Unión Europea combinan alivio de oferta y presión sancionatoria.",
-      "invalidate_if": "Un acuerdo bilateral publicado, con objetivos protegidos, hora de inicio, verificación y varias semanas sin ataques energéticos, reabriría la tesis de desescalada; nuevos golpes o incumplimientos la confirmarían como fallida.",
-      "watch": "Texto y confirmación bilateral, objetivos protegidos, verificación, ataques a refinerías, plantas de gas y redes, exportaciones rusas de diésel, sanciones europeas, rutas del Golfo, fletes y precios de refinados.",
-      "last_publication": "/ediciones/2026-10-13-daily-crecimiento-global-resiste-brecha-se-amplia/"
+      "thesis": "El shock energético se ha desplazado desde la disponibilidad agregada de crudo hacia el cuello de botella del diésel: refinerías dañadas, exportaciones restringidas e inventarios agotados pueden sostener inflación y menor crecimiento hasta bien entrado 2027 aunque caiga la demanda mundial de petróleo.",
+      "status": "confirmed",
+      "last_evidence": "El 14 de octubre la AIE proyectó que la demanda petrolera mundial caerá 2,6 millones de barriles diarios en 2026, pero advirtió que la escasez de diésel persistirá hasta 2027; Rusia y Oriente Medio perdieron 1,3 millones de barriles diarios de exportaciones en septiembre y los inventarios observados quedaron 509 millones de barriles bajo el nivel previo a la guerra.",
+      "effect": "Confirma la persistencia del shock y cambia su mecanismo dominante: una recuperación del crudo o de la actividad refinadora no basta para reponer rápidamente los destilados medios, por lo que la presión sobre transporte, bienes, ingresos reales e inflación puede sobrevivir a la contracción de la demanda.",
+      "base_scenario": "Las refinerías elevan actividad hacia fin de 2026 y el balance del diésel mejora estacionalmente en el primer trimestre de 2027, pero los inventarios no se reponen de forma extraordinaria antes del segundo semestre y el mercado sigue dependiendo de una recuperación del suministro desde Oriente Medio.",
+      "invalidate_if": "Una recuperación sostenida de exportaciones de productos desde Oriente Medio y Rusia, acompañada por reposición verificable de inventarios antes del segundo semestre de 2027, debilitaría la tesis; nuevas interrupciones o mayor destrucción de demanda la reforzarían.",
+      "watch": "Actividad de refinerías, inventarios de gasóleo y diésel, exportaciones de Rusia y Oriente Medio, liberación de reservas de la AIE, licencias chinas, rutas y fletes, demanda industrial y agrícola, inflación de bienes y actividad global.",
+      "last_publication": "/ediciones/2026-10-14-daily-diesel-escaso-hasta-2027/"
     },
     {
       "id": "us-employment-fed-rates",
