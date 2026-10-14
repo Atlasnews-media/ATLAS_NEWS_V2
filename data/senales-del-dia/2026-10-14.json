@@ -1,0 +1,123 @@
+{
+  "status": "READY",
+  "date": "2026-10-14",
+  "contract": "atlas-senales-del-dia-v1",
+  "senalesDelDia": {
+    "internacional": [
+      {
+        "slot": "technology",
+        "headline": "Google abre Gemini 4 Argon a desarrolladores y empresas",
+        "deck": "El modelo pasó de un acceso limitado a disponibilidad pagada en la API, Gemini y Antigravity, con precios introductorios y controles reforzados para ciberseguridad.",
+        "development": "Google amplió el 13 de octubre la disponibilidad de Gemini 4 Argon, su modelo de frontera para tareas complejas, después de una fase inicial restringida a defensores de ciberseguridad seleccionados. La compañía habilitó el modelo para clientes pagos mediante Gemini API y AI Studio, para suscriptores Pro y Ultra en la aplicación Gemini y el modo IA de Search, y para usuarios Ultra en la plataforma de desarrollo Antigravity. El precio introductorio de la API es de US$2 por millón de tokens de entrada y US$10 por millón de salida; Google indicó que esas tarifas se duplicarán después del 30 de noviembre.\n\nLa apertura convierte un anuncio previo en un producto accesible, pero las comparaciones de desempeño publicadas siguen siendo evaluaciones del proveedor y no garantizan resultados en cada carga de trabajo. Google orienta Argon a ingeniería de software, finanzas, asuntos legales, ciencia y defensa cibernética, y publicó una ficha del modelo junto con documentación de seguridad. Reuters informó además que empresas como Deloitte, LexisNexis y Ambience Healthcare figuran entre los primeros usuarios corporativos.\n\nLos controles verificables serán la estabilidad de la API, el costo efectivo después del período promocional, evaluaciones independientes y eventuales cambios en los límites de acceso. En ciberseguridad, también importará cómo Google amplía su programa Fairwind sin retirar las barreras aplicadas al servicio público.",
+        "anchor": "google-gemini-4-argon-disponibilidad-publica",
+        "sources": [
+          {
+            "name": "Google",
+            "url": "https://blog.google/innovation-and-ai/technology/developers-tools/build-with-gemini-4-argon/"
+          },
+          {
+            "name": "Reuters",
+            "url": "https://www.reuters.com/business/google-launches-flagship-ai-model-gemini-4-argon-developers-businesses-2026-10-13/"
+          }
+        ]
+      },
+      {
+        "slot": "world",
+        "headline": "Pakistán suspende el gobierno provincial de Khyber Pakhtunkhwa",
+        "deck": "El presidente impuso emergencia y gobierno del gobernador por seis meses; Islamabad invoca seguridad y el partido PTI rechaza la intervención federal.",
+        "development": "El presidente de Pakistán, Asif Ali Zardari, declaró el 11 de octubre el estado de emergencia en Khyber Pakhtunkhwa y suspendió el gobierno provincial dirigido por Pakistan Tehreek-e-Insaf, el partido del ex primer ministro encarcelado Imran Khan. La medida fue adoptada por recomendación del gabinete federal y bajo los artículos 232 y 234 de la Constitución. Radio Pakistan informó que la administración quedó a cargo del gobernador y de un consejo asesor por un período inicial de seis meses.\n\nEl gobierno federal sostiene que la intervención responde al aumento de la violencia militante y a una coordinación insuficiente de las autoridades provinciales con las operaciones antiterroristas. PTI rechaza esa justificación y afirma que la decisión busca impedir una movilización hacia Islamabad para exigir la liberación de Khan. Esas son posiciones enfrentadas: por ahora, el hecho comprobado es la transferencia temporal de funciones provinciales y no una resolución judicial sobre las acusaciones de ninguna de las partes.\n\nReuters informó que el jefe de gobierno provincial, Sohail Afridi, y otros dirigentes fueron detenidos después de la declaración. Los próximos hitos serán el control parlamentario y judicial de la emergencia, las reglas del consejo asesor, la situación de los detenidos y cualquier cronograma para restituir las instituciones electas.",
+        "anchor": "pakistan-emergencia-khyber-pakhtunkhwa",
+        "sources": [
+          {
+            "name": "Radio Pakistan",
+            "url": "https://www.radio.gov.pk/11-10-2026/president-promulgates-emergency-governors-rule-in-kp"
+          },
+          {
+            "name": "Reuters",
+            "url": "https://www.reuters.com/world/asia-pacific/pakistan-president-imposes-emergency-province-ruled-by-ex-pm-imran-khans-party-2026-10-11/"
+          },
+          {
+            "name": "Associated Press",
+            "url": "https://apnews.com/article/3fee40be73c3f5632f2be3204e9c47f8"
+          }
+        ]
+      }
+    ],
+    "nacional": [
+      {
+        "slot": "ipsa_company",
+        "headline": "BCI coloca bono por MXN 2.000 millones en México",
+        "deck": "La emisión a cuatro años paga TIIE de Fondeo más 64 puntos base y abre un programa revolvente que diversifica el financiamiento internacional del banco.",
+        "development": "Banco de Crédito e Inversiones informó el 13 de octubre a la Comisión para el Mercado Financiero que completó una colocación de certificados bursátiles por MXN 2.000 millones en el mercado mexicano. Los bonos vencen el 8 de octubre de 2030 y pagan una tasa variable equivalente a la TIIE de Fondeo más 0,64%. La emisión se realizó bajo un programa revolvente autorizado por la Comisión Nacional Bancaria y de Valores de México, que permite instrumentos denominados en pesos mexicanos, unidades de inversión, dólares u otras divisas.\n\nDiario Financiero situó el monto en torno a US$111 millones y reportó que la demanda alcanzó 1,95 veces la oferta colocada, con cerca de 20 cuentas participantes. La publicación añadió que se trata de la primera emisión de un programa por hasta MXN 20.000 millones. Esos antecedentes entregan contexto de demanda y escala; el hecho esencial de la CMF confirma el monto, vencimiento y margen financiero de la operación.\n\nPara BCI, integrante del IPSA, la transacción diversifica mercados y monedas de financiamiento, pero no define por sí sola su costo final después de coberturas ni su efecto en resultados. Los controles serán el tratamiento cambiario, las futuras emisiones bajo el programa, la evolución de la TIIE y el costo de fondeo consolidado que el banco reporte.",
+        "anchor": "bci-bono-mexico-dos-mil-millones",
+        "sources": [
+          {
+            "name": "Comisión para el Mercado Financiero",
+            "url": "https://www.cmfchile.cl/sitio/aplic/serdoc/ver_sgd.php?s567=7494c10c7890a33140319dcc9a31a58eVFdwQmVVNXFSWGROUkZreFRtcFJNMDFCUFQwPQ%3D%3D&secuencia=-1&t=1791970201"
+          },
+          {
+            "name": "Diario Financiero",
+            "url": "https://www.df.cl/mercados/renta-fija/bci-aprovecha-el-crecimiento-del-mercado-de-renta-fija-mexicano-y-coloca"
+          }
+        ]
+      },
+      {
+        "slot": "policy_economy",
+        "headline": "Gobierno llevará dos proyectos Pro-Pyme al Congreso",
+        "deck": "El Ejecutivo propone mantener la tasa de primera categoría en 12,5%, mejorar el pago de facturas y simplificar patentes; los textos ingresarían en noviembre.",
+        "development": "El Gobierno anunció el 13 de octubre que presentará en noviembre dos proyectos de ley dirigidos a micro, pequeñas y medianas empresas. El primer texto abordará formalización y tributación: la propuesta es mantener una tasa de impuesto de primera categoría de 12,5% para las empresas acogidas al régimen Pro-Pyme y establecer una transición gradual cuando crezcan y cambien de tramo. El segundo se concentrará en liquidez, pago oportuno de facturas y reducción de barreras administrativas.\n\nEl Ministerio de Economía señaló que la agenda también buscará armonizar los requisitos para obtener patentes municipales provisorias y crear un procedimiento administrativo para regularizar deudas antiguas de patentes cuya acción de cobro esté prescrita. Emol reportó que el Ejecutivo prevé ingresar ambas iniciativas al Congreso a comienzos de noviembre. Hasta que se publiquen los mensajes y articulados, el anuncio no modifica las reglas vigentes ni permite calcular recaudación, beneficiarios o costos de implementación.\n\nLa distinción institucional es relevante: el Ejecutivo ha definido objetivos y un calendario, mientras la redacción final y su aprobación dependerán de la tramitación legislativa. Los hitos verificables serán el ingreso formal, los informes financieros, los umbrales de elegibilidad, la mecánica de la transición tributaria, los plazos de pago de facturas y las modificaciones aprobadas por ambas cámaras.",
+        "anchor": "gobierno-proyectos-pro-pyme-noviembre",
+        "sources": [
+          {
+            "name": "Ministerio de Economía",
+            "url": "https://www.economia.gob.cl/2026/10/13/gobierno-anuncia-nuevas-medidas-de-apoyo-para-las-empresas-de-menor-tamano.htm"
+          },
+          {
+            "name": "Emol",
+            "url": "https://www.emol.com/noticias/Nacional/2026/10/13/1214005/gobierno-anuncia-paquete-reformas-propyme.html"
+          },
+          {
+            "name": "Senado de Chile",
+            "url": "https://www.senado.cl/comunicaciones/noticias/valoran-anuncio-de-paquete-de-reformas-pro-pymes"
+          }
+        ]
+      }
+    ],
+    "mercados": [
+      {
+        "slot": "markets_chile",
+        "headline": "Mercado recorta a 0,2% la proyección de crecimiento de Chile",
+        "deck": "La encuesta de octubre del Banco Central bajó cinco décimas su mediana para 2026, mantuvo la TPM en 4,5% y situó la inflación de diciembre en 4,6%.",
+        "development": "La Encuesta de Expectativas Económicas de octubre del Banco Central redujo desde 0,7% a 0,2% la mediana de crecimiento del PIB chileno para 2026. El rango entre los deciles uno y nueve va de -0,2% a 0,6%, reflejo de una dispersión relevante entre los consultados. Para 2027, la mediana sube a 3,0%. El sondeo fue enviado el 5 de octubre, recibió respuestas hasta el día 9 y reunió a académicos, consultores y ejecutivos o asesores de instituciones financieras.\n\nEn precios, la mediana proyecta una variación mensual del IPC de 0,4% en octubre y una inflación de 4,6% en diciembre de 2026. Para la inflación sin volátiles, la estimación de cierre es 3,5%. Los 49 participantes que respondieron sobre política monetaria ubicaron la Tasa de Política Monetaria en 4,5% para las siguientes dos reuniones y para diciembre. La encuesta también sitúa el dólar en $950 al cierre del año.\n\nPara el mercado local, estas cifras son expectativas y no decisiones del Banco Central ni pronósticos oficiales. Su relevancia está en la referencia que entregan para curvas de tasas, instrumentos en UF y valoraciones de activos chilenos. Los próximos controles serán la reunión monetaria, el IPC de octubre, los datos de actividad y la evolución de las medianas en el sondeo de noviembre.",
+        "anchor": "eee-octubre-crecimiento-chile-cero-coma-dos",
+        "sources": [
+          {
+            "name": "Banco Central de Chile",
+            "url": "https://www.bcentral.cl/documents/33528/8691614/Gr%C3%A1ficos%2B%28distribuci%C3%B3n%2Bde%2Brespuestas%29%2Boctubre%2B2026.pdf/85cb4a95-3c7d-1a37-2177-3c5461a63bfc?t=1791892078622"
+          },
+          {
+            "name": "Chócale",
+            "url": "https://chocale.cl/2026/10/encuesta-del-banco-central-proyecta-un-crecimiento-cercano-a-0-y-una-inflacion-sobre-la-meta-para-2026/"
+          }
+        ]
+      },
+      {
+        "slot": "markets_global",
+        "headline": "Singapur sorprende al mantener sin cambios su política monetaria",
+        "deck": "La autoridad dejó intacta la pendiente, el ancho y el centro de la banda cambiaria S$NEER, pese a que los diez analistas consultados esperaban un ajuste.",
+        "development": "La Autoridad Monetaria de Singapur mantuvo el 14 de octubre sin cambios los tres parámetros de su banda para el tipo de cambio efectivo nominal del dólar singapurense, S$NEER. Conservó la tasa de apreciación, el ancho y el nivel central después de haber endurecido ligeramente la política en julio. La decisión sorprendió a los diez economistas consultados por Reuters, que esperaban un nuevo ajuste. El dólar singapurense permaneció cerca de 1,2802 por dólar estadounidense tras el anuncio.\n\nSingapur conduce su política monetaria mediante el tipo de cambio y no con una tasa de referencia. La autoridad sostuvo que la banda apreciativa vigente permite contener el aumento esperado de la inflación importada. Proyectó que la inflación subyacente permanecerá algo elevada en los próximos trimestres y disminuirá con mayor claridad desde mediados de 2027. Para 2026 acotó su previsión de inflación subyacente a 1,5%-2,0% y situó la inflación general alrededor de 2,0%.\n\nEl mantenimiento no equivale a una señal permanente de pausa. La autoridad identificó riesgos por energía y alimentos, mientras espera que el ciclo de inversión en inteligencia artificial se modere gradualmente. Los próximos controles serán la trayectoria del S$NEER dentro de la banda no publicada, los datos de precios, el crecimiento y la revisión de enero.",
+        "anchor": "singapur-mantiene-politica-cambiaria-octubre",
+        "sources": [
+          {
+            "name": "Autoridad Monetaria de Singapur",
+            "url": "https://www.mas.gov.sg/news/monetary-policy-statements/2026/mas-monetary-policy-statement-14oct26"
+          },
+          {
+            "name": "Reuters",
+            "url": "https://www.reuters.com/world/asia-pacific/singapore-keeps-monetary-policy-unchanged-surprising-analysts-2026-10-14/"
+          }
+        ]
+      }
+    ]
+  }
+}
