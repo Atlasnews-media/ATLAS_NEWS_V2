@@ -24,7 +24,7 @@ sources:
 highlights:
   - label: "La IA pierde amplitud"
     text: "El KOSPI cayó casi 8%, el Nikkei 5% y los futuros del Nasdaq retrocedían 1,3%."
-  - label: "El crédito marca la brecha"
+  - label: "Crédito abre la brecha"
     text: "Los bonos de CoreWeave y Oracle sufrieron ventas mientras los Treasury recuperaron demanda defensiva."
   - label: "Refugios vuelven"
     text: "El Treasury a diez años bajó cerca de 10 puntos base, el oro subió 1% y el Brent cayó 2%."

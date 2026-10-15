@@ -11,7 +11,7 @@ VOZ 2: Son caídas muy fuertes.
 VOZ 1: Especialmente en fabricantes de chips. Samsung cayó 9,9%, SK Hynix y Kioxia más de 11%, y TSMC retrocedió 2%. Los futuros del Nasdaq también bajaban 1,3%, mientras los del Dow subían 0,4%.
 VOZ 2: Esa diferencia entre Nasdaq y Dow sugiere rotación.
 VOZ 1: Exacto. El mercado reduce exposición a crecimiento intensivo en capital y busca sectores menos sensibles a tasas y financiamiento.
-VOZ 2: ¿Dónde aparece el problema de deuda?
+VOZ 2: ¿Dónde se hace visible el problema de deuda?
 VOZ 1: CoreWeave, un operador de centros de datos, tiene una deuda cercana a 50.000 millones de dólares según LSEG. Sus acciones cayeron 15% el miércoles y su deuda con vencimiento en 2032 superó un rendimiento de 15%.
 VOZ 2: ¿Y es un caso aislado?
 VOZ 1: No completamente. Oracle perdió cerca de 9% y sus bonos también alcanzaron rendimientos récord. Además, aumentó el costo de asegurar contra incumplimiento a varias empresas ligadas a inteligencia artificial.
