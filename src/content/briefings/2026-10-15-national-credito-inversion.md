@@ -1,11 +1,11 @@
 ---
 title: "El crédito mejora antes que la inversión efectiva en Chile"
 summary: "Los bancos flexibilizan vivienda e inmobiliario, pero mantienen restricciones en consumo mientras las expectativas de inversión para 2026 caen de 5,5% a 0,3%."
-publishedAt: "2026-10-15T06:28:00-03:00"
+publishedAt: "2026-10-15T06:45:36-03:00"
 cutoffAt: "2026-10-15T06:25:00-03:00"
 section: "national"
 editionSlot: "morning"
-status: "draft"
+status: "published"
 tags:
   - chile
   - credito

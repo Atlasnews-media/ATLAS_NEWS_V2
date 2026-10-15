@@ -1,11 +1,11 @@
 ---
 title: "La UE prepara una defensa comercial más amplia frente a China"
 summary: "La tregua sobre vehículos híbridos no resuelve el desequilibrio: los líderes europeos debaten extender la respuesta a químicos, acero y maquinaria mientras Alemania endurece su posición."
-publishedAt: "2026-10-15T06:00:43-03:00"
+publishedAt: "2026-10-15T06:45:36-03:00"
 cutoffAt: "2026-10-15T05:59:51-03:00"
 type: "daily"
 editionSlot: "morning"
-status: "draft"
+status: "published"
 tags:
   - china
   - union-europea

@@ -1,11 +1,11 @@
 ---
 title: "La deuda redefine el precio del crecimiento ligado a la IA"
 summary: "La venta tecnológica dejó de ser sólo una reacción al IPC: el crédito de centros de datos se deteriora mientras Treasury, oro y sectores defensivos recuperan demanda."
-publishedAt: "2026-10-15T06:35:00-03:00"
+publishedAt: "2026-10-15T06:45:36-03:00"
 cutoffAt: "2026-10-15T06:32:00-03:00"
 section: "markets"
 editionSlot: "morning"
-status: "draft"
+status: "published"
 tags:
   - mercados
   - inteligencia-artificial
