@@ -1,0 +1,41 @@
+VOZ 1: El movimiento clave de hoy no es sólo que caigan las acciones tecnológicas. Es que el mercado empezó a distinguir entre la deuda segura de los gobiernos y la deuda de empresas que deben financiar la infraestructura de inteligencia artificial.
+VOZ 2: ¿Qué detonó la corrección?
+VOZ 1: El primer impulso fue la inflación estadounidense. El IPC subyacente de septiembre subió 0,3% mensual, por encima del 0,2% esperado, y la inflación general llegó a 3,7% anual.
+VOZ 2: Eso reactivó el temor a nuevas alzas de la Fed.
+VOZ 1: Sí. La probabilidad de un aumento en octubre subió inmediatamente después del dato. Luego retrocedió a cerca de 25%, pero la posibilidad de un alza en diciembre seguía alrededor de 67%.
+VOZ 2: ¿Por qué la venta se concentró tanto en inteligencia artificial?
+VOZ 1: Porque es un sector intensivo en capital. Construir centros de datos, comprar chips y asegurar energía exige gastar grandes montos antes de obtener todos los ingresos. Cuando suben las tasas, financiar esa espera se vuelve más caro.
+VOZ 2: ¿Qué muestran los precios?
+VOZ 1: El miércoles, el S&P 500 cayó 1,1% y el Nasdaq 1,9%. El jueves la presión se extendió a Asia: el KOSPI surcoreano perdió casi 8% y el Nikkei japonés 5%.
+VOZ 2: Son caídas muy fuertes.
+VOZ 1: Especialmente en fabricantes de chips. Samsung cayó 9,9%, SK Hynix y Kioxia más de 11%, y TSMC retrocedió 2%. Los futuros del Nasdaq también bajaban 1,3%, mientras los del Dow subían 0,4%.
+VOZ 2: Esa diferencia entre Nasdaq y Dow sugiere rotación.
+VOZ 1: Exacto. El mercado reduce exposición a crecimiento intensivo en capital y busca sectores menos sensibles a tasas y financiamiento.
+VOZ 2: ¿Dónde aparece el problema de deuda?
+VOZ 1: CoreWeave, un operador de centros de datos, tiene una deuda cercana a 50.000 millones de dólares según LSEG. Sus acciones cayeron 15% el miércoles y su deuda con vencimiento en 2032 superó un rendimiento de 15%.
+VOZ 2: ¿Y es un caso aislado?
+VOZ 1: No completamente. Oracle perdió cerca de 9% y sus bonos también alcanzaron rendimientos récord. Además, aumentó el costo de asegurar contra incumplimiento a varias empresas ligadas a inteligencia artificial.
+VOZ 2: Pero las utilidades del sector siguen creciendo.
+VOZ 1: Esa es la parte que vuelve interesante la lectura. TSMC informó un aumento de 69% en su utilidad trimestral, hasta un récord. ASML dijo que algunos clientes ya estudian pedidos para 2029 y 2030.
+VOZ 2: Entonces el mercado no está diciendo que desapareció la demanda por IA.
+VOZ 1: Está haciendo otra pregunta: qué precio pagar por ese crecimiento y qué empresas pueden financiarse hasta que la inversión genere retornos suficientes.
+VOZ 2: ¿Por qué los Treasury subieron si la inflación sorprendió al alza?
+VOZ 1: Porque después del impacto inicial apareció demanda defensiva. El rendimiento del Treasury a diez años cayó cerca de 10 puntos base y volvió a aproximarse a 5%. Los inversionistas salieron de posiciones riesgosas y compraron bonos soberanos.
+VOZ 2: O sea, el costo financiero baja para el gobierno, pero sube para algunas empresas.
+VOZ 1: Exactamente. Esa es la señal cross-asset central. La tasa libre de riesgo recibe flujos de refugio, mientras la prima de crédito aumenta para emisores apalancados.
+VOZ 2: ¿Qué hicieron los otros refugios?
+VOZ 1: El oro subió 1% y el dólar retrocedió desde un máximo de dieciocho meses. El Brent cayó 2%, hasta cerca de 103 dólares con 80 centavos por barril.
+VOZ 2: ¿La baja del petróleo cambia la lectura inflacionaria?
+VOZ 1: Ayuda marginalmente, pero no borra el IPC. Además, la caída de los rendimientos puede ser cobertura defensiva y cierre de posiciones cortas, no una certeza de que la Fed terminó de subir tasas.
+VOZ 2: ¿Cómo se conecta esto con la General sobre comercio entre Europa y China?
+VOZ 1: Por la composición de los índices. Corea, Japón y Taiwán tienen una exposición mucho mayor a semiconductores y proveedores de IA. Europa cayó menos porque su mercado pesa menos en tecnología y más en sectores defensivos.
+VOZ 2: ¿Y Nacional aporta alguna conexión material?
+VOZ 1: Sí, pero indirecta. Chile espera que la inversión se recupere en 2027. Si el costo global del capital aumenta y la inversión tecnológica se desacelera, el financiamiento externo y la demanda por equipos y materias primas pueden volverse más selectivos.
+VOZ 2: ¿Qué deberíamos mirar para saber si esto es una corrección o un problema mayor?
+VOZ 1: Primero, la diferencia entre Treasury y deuda tecnológica. Si los bonos soberanos siguen subiendo mientras se amplían los spreads corporativos, el riesgo permanece concentrado en crédito.
+VOZ 2: ¿Qué más?
+VOZ 1: La reacción de empresas rentables como TSMC y de proveedores con pedidos visibles. Si se estabilizan, el mercado estará seleccionando balances. Si todo el sector continúa cayendo, estará reduciendo la valoración de la inteligencia artificial como tema completo.
+VOZ 2: ¿Y los próximos datos?
+VOZ 1: Precios al productor, ventas minoristas y solicitudes de desempleo en Estados Unidos. Inflación firme y actividad resistente mantendrían el riesgo de nuevas alzas. Datos débiles podrían sostener los Treasury, pero también aumentar dudas sobre crecimiento.
+VOZ 2: Entonces el mercado dejó de preguntar si la IA crecerá.
+VOZ 1: Ahora pregunta quién puede pagar ese crecimiento. Esa diferencia entre demanda tecnológica y capacidad financiera es la señal que puede definir la próxima fase del ciclo.
