@@ -1,0 +1,131 @@
+{
+  "status": "READY",
+  "date": "2026-10-15",
+  "contract": "atlas-senales-del-dia-v1",
+  "senalesDelDia": {
+    "internacional": [
+      {
+        "slot": "technology",
+        "headline": "Anthropic prueba autorreplicación de modelos en dispositivos IoT",
+        "deck": "El ensayo logró ejecutar un modelo de 9.000 millones de parámetros en ocho de nueve tipos de hardware, pero no demostró una propagación autónoma en internet.",
+        "development": "Anthropic publicó el 12 de octubre un ensayo de su equipo Frontier Red Team sobre la posibilidad de que modelos pequeños se copien y ejecuten en dispositivos conectados sin depender de un centro de datos. Un modelo de 9.000 millones de parámetros logró poner en marcha inferencia en ocho de los nueve tipos de hardware evaluados. Modelos de hasta 30.000 millones ya completan varias tareas individuales necesarias para replicarse, mientras GLM-5.2 y sistemas más capaces completaron el proceso de extremo a extremo en una red simplificada.\n\nEl alcance debe leerse con cautela. La prueba no mostró un agente propagándose de manera autónoma por internet ni estableció que una red de dispositivos domésticos pueda sostener hoy un modelo útil a gran escala. Anthropic estima que una eventual expansión sería lenta, con tiempos de duplicación de días. Reuters recogió además escepticismo de especialistas que cuestionaron la movilidad del software, la disponibilidad de cómputo y el riesgo de exageración del proveedor.\n\nLa señal verificable es de seguridad, no una demostración de daño real. El trabajo identifica una ruta técnica que combina credenciales vulnerables, dispositivos IoT heterogéneos y modelos capaces de adaptar instrucciones. Los próximos controles son reproducciones independientes, tasas completas de éxito, consumo de memoria y energía, y medidas concretas de fabricantes para endurecer autenticación, actualizaciones y segmentación de redes.",
+        "anchor": "anthropic-autorreplicacion-modelos-iot",
+        "sources": [
+          {
+            "name": "Anthropic",
+            "url": "https://www.anthropic.com/research/self-replicating-ai"
+          },
+          {
+            "name": "Reuters",
+            "url": "https://www.reuters.com/business/ai-models-may-soon-self-replicate-without-access-data-centers-anthropic-warns-2026-10-13/"
+          }
+        ]
+      },
+      {
+        "slot": "world",
+        "headline": "ONU busca abrir un corredor de fertilizantes por Ormuz",
+        "deck": "El mecanismo podría activarse en siete a diez días tras un acuerdo entre Estados Unidos e Irán y permitiría el paso controlado de al menos cinco buques diarios.",
+        "development": "La ONU mantiene listo un mecanismo para mover fertilizantes por el estrecho de Ormuz, pero su activación depende de un acuerdo entre Estados Unidos e Irán. Jorge Moreira da Silva, subsecretario general de Naciones Unidas y director ejecutivo de UNOPS, dijo el 14 de octubre que la operación podría comenzar entre siete y diez días después de recibir ese consentimiento. El diseño prevé un centro de coordinación en Omán, registro de buques, verificación de cargas en puertos del Golfo y seguimiento durante el tránsito.\n\nLa propuesta busca sostener un flujo mínimo de materias primas agrícolas mientras continúan las negociaciones más amplias sobre navegación y seguridad. Según Moreira da Silva, el paso de al menos cinco embarcaciones por día permitiría atender a países con necesidades críticas. La urgencia está en los calendarios de siembra de Asia y África: una demora de semanas puede reducir el uso oportuno de fertilizantes y trasladar el problema marítimo hacia cosechas y precios de alimentos.\n\nEl corredor todavía no está operativo y la ONU no ha atribuido públicamente el bloqueo a una sola condición. Irán y Estados Unidos mantienen diferencias sobre la reapertura del estrecho y el programa nuclear iraní. La evolución debe medirse por un acuerdo formal, la instalación del centro en Omán, la cantidad efectiva de buques autorizados y la llegada comprobada de fertilizantes a los destinos prioritarios.",
+        "anchor": "onu-corredor-fertilizantes-ormuz",
+        "sources": [
+          {
+            "name": "UNOPS",
+            "url": "https://www.unops.org/news-and-stories/speeches/note-to-correspondents-on-the-strait-of-hormuz"
+          },
+          {
+            "name": "Reuters",
+            "url": "https://www.reuters.com/world/middle-east/failure-activate-hormuz-fertilizer-plan-could-trigger-food-crisis-un-official-2026-10-14/"
+          }
+        ]
+      }
+    ],
+    "nacional": [
+      {
+        "slot": "ipsa_company",
+        "headline": "Fitch eleva a BBB la clasificación internacional de Falabella",
+        "deck": "La agencia subió también la nota nacional a AA(cl) y mantuvo perspectiva estable, citando menor deuda, mejores márgenes y mayor generación de caja.",
+        "development": "Fitch Ratings elevó el 14 de octubre la clasificación de largo plazo en moneda extranjera y local de Falabella desde BBB- hasta BBB, con perspectiva estable. También subió desde AA-(cl) hasta AA(cl) la nota nacional de largo plazo de la compañía y de Sodimac, y reafirmó la clasificación de sus acciones en Primera Clase Nivel 1(cl). Falabella integra el IPSA, por lo que la decisión actualiza una referencia de riesgo crediticio relevante para sus bonos y para el costo de financiamiento del grupo.\n\nLa agencia fundamentó el cambio en la recuperación de márgenes, la reducción de deuda y la acumulación de caja derivada de ventas de activos. Fitch espera que el margen EBITDAR avance desde 13,3% en 2025 hacia cerca de 14% en 2027 y proyecta un EBITDAR de alrededor de $1,9 billones durante 2026-2028. Su escenario incorpora un apalancamiento ajustado promedio próximo a 2,5 veces entre 2026 y 2029.\n\nUna clasificación es una opinión prospectiva de riesgo y no una garantía de resultados ni una recomendación sobre la acción. La tesis depende de que la mejora operativa se sostenga, que el grupo preserve liquidez y que la expansión de retail, banca y centros comerciales no revierta la reducción del apalancamiento. Los controles serán deuda neta, flujo de caja libre, márgenes por país y nuevas acciones de las clasificadoras.",
+        "anchor": "falabella-fitch-eleva-clasificacion-bbb",
+        "sources": [
+          {
+            "name": "Fitch Ratings",
+            "url": "https://www.fitchratings.com/research/corporate-finance/fitch-upgrades-falabella-to-bbb-from-bbb-outlook-stable-14-10-2026"
+          },
+          {
+            "name": "Diario Financiero",
+            "url": "https://www.df.cl/empresas/retail/falabella-fortalece-su-perfil-financiero-fitch-eleva-clasificacion-tras"
+          },
+          {
+            "name": "La Tercera",
+            "url": "https://www.latercera.com/pulso/noticia/agencia-fitch-mejora-clasificacion-de-riesgo-crediticio-de-falabella/"
+          }
+        ]
+      },
+      {
+        "slot": "policy_economy",
+        "headline": "Senado amplía debate sobre límite a call centers extranjeros",
+        "deck": "La Comisión de Economía mantuvo en estudio el proyecto que restringe la subcontratación fuera de Chile y extendió hasta el 2 de noviembre el plazo de indicaciones.",
+        "development": "La Comisión de Economía del Senado continuó el 14 de octubre el estudio del proyecto que prohíbe subcontratar servicios de teleoperadores ubicados fuera de Chile para contactar a clientes o potenciales clientes del país. La iniciativa, boletín 17.381-03, está en segundo trámite constitucional después de que la Cámara la aprobara en mayo por 76 votos a favor, 68 en contra y cuatro abstenciones. El texto despachado contempla una multa de hasta 1.000 UF por incumplimiento.\n\nEn la audiencia participaron representantes sindicales y de empresas de procesos de negocio. Los trabajadores defendieron la restricción como protección del empleo y de datos personales; el gremio empresarial planteó que diferencias regulatorias elevan los costos de operar en Chile. Durante la discusión se indicó que el sector reúne más de 30.000 puestos de trabajo y que entre 60% y 70% corresponden a mujeres. Esas cifras y argumentos provienen de los participantes y no constituyen una evaluación aprobada por la comisión.\n\nEl proyecto no es ley y su contenido puede cambiar. La comisión dejó pendiente una audiencia con la Cámara Nacional de Comercio y amplió hasta el 2 de noviembre el plazo para presentar indicaciones. Los próximos hitos verificables son el texto comparado, la votación en particular del Senado, una eventual revisión por la Cámara y la definición final de actividades, sanciones y excepciones.",
+        "anchor": "senado-call-centers-extranjero-segundo-tramite",
+        "sources": [
+          {
+            "name": "Senado de Chile",
+            "url": "https://www.senado.cl/comunicaciones/noticias/exponen-sobre-proyecto-que-prohibe-subcontratar-call-center-que-operen"
+          },
+          {
+            "name": "Cámara de Diputadas y Diputados",
+            "url": "https://www.camara.cl/legislacion/ProyectosDeLey/oficios.aspx?prmBOLETIN=17381-03&prmID=18016"
+          },
+          {
+            "name": "La Tercera",
+            "url": "https://www.latercera.com/nacional/noticia/camara-aprueba-proyecto-que-prohibe-subcontratar-call-centers-en-el-extranjero-y-lo-despacha-al-senado/"
+          }
+        ]
+      }
+    ],
+    "mercados": [
+      {
+        "slot": "markets_chile",
+        "headline": "Escondida evita huelga y reduce un riesgo inmediato para el cobre",
+        "deck": "El 64% del sindicato de supervisores aprobó un contrato por 36 meses, retirando una amenaza de interrupción en la mayor mina de cobre del mundo.",
+        "development": "BHP y el Sindicato N°2 de Supervisores y Staff de Escondida cerraron el 14 de octubre su negociación colectiva y evitaron una huelga en la mayor mina de cobre del mundo. El 64% de los afiliados aprobó la última oferta y el 35% la rechazó. El nuevo contrato tendrá una vigencia de 36 meses e incorpora mejoras en remuneraciones fijas y variables, beneficios existentes y bonos adicionales, según la empresa y el sindicato citados por Reuters.\n\nLa posibilidad de una paralización había respaldado al cobre junto con los bajos inventarios de la Bolsa de Metales de Londres. El acuerdo retira ese riesgo específico de oferta, pero no equivale a una normalización completa del mercado. La huelga en Centinela seguía abierta y la disponibilidad global del metal continúa expuesta a interrupciones operacionales, menores leyes minerales y demanda industrial. Tampoco se publicaron todos los costos económicos del contrato para la operación.\n\nPara los activos chilenos, Escondida importa por su peso en producción, exportaciones y recaudación minera. La señal inmediata es la continuidad operacional, no una dirección asegurada para el precio del cobre, el peso o las acciones locales. Los controles serán la firma y ejecución del contrato, la producción efectiva de la mina, los inventarios de LME y la evolución separada del conflicto laboral en Centinela.",
+        "anchor": "escondida-acuerdo-supervisores-evita-huelga",
+        "sources": [
+          {
+            "name": "Reuters",
+            "url": "https://www.reuters.com/business/world-at-work/bhps-escondida-supervisors-union-avert-strike-with-preliminary-agreement-2026-10-14/"
+          },
+          {
+            "name": "Dirección del Trabajo",
+            "url": "https://www.dt.gob.cl/portal/1627/w3-article-129832.html"
+          },
+          {
+            "name": "Diario Financiero",
+            "url": "https://www.df.cl/empresas/mineria/sindicato-de-supervisores-y-minera-escondida-no-logran-acuerdo-y-huelga"
+          }
+        ]
+      },
+      {
+        "slot": "markets_global",
+        "headline": "FMI eleva alerta fiscal ante el salto de los bonos soberanos",
+        "deck": "El rendimiento promedio a diez años del G7 subió más de 110 puntos base desde febrero, mientras la deuda pública global se encamina a 100% del PIB.",
+        "development": "El Fondo Monetario Internacional elevó el 14 de octubre la urgencia de su llamado a ordenar las finanzas públicas tras un aumento sostenido de los costos de endeudamiento. El rendimiento promedio de los bonos soberanos a diez años del Grupo de los Siete subió más de 110 puntos base entre febrero y septiembre, hasta su mayor nivel en casi dos décadas. Al mismo tiempo, el organismo proyecta que la deuda pública mundial alcance alrededor de 100% del PIB hacia el final de la década.\n\nEl problema para el mercado es la interacción entre tasas, déficits y refinanciamiento. El FMI calcula que los pagos de intereses de Estados Unidos podrían llegar a 5,3% del PIB en 2031. En países de bajos ingresos, esos pagos ya absorben más de 15% de la recaudación tributaria. Una base de inversionistas que exige mayores rendimientos reduce el espacio para responder a shocks y puede obligar a ajustar impuestos, gasto o vencimientos en condiciones menos favorables.\n\nEl informe no fija un umbral automático de crisis ni prescribe la misma combinación de medidas para todos los países. El Fondo recomienda consolidación gradual, mejor diseño tributario y apoyos focalizados, preservando inversión productiva. Para evaluar la señal deben observarse nuevas subastas soberanas, primas por plazo, curvas de rendimiento, planes fiscales verificables y revisiones de calificación, separando la volatilidad diaria de una tendencia estructural de financiamiento.",
+        "anchor": "fmi-bonos-soberanos-alerta-fiscal",
+        "sources": [
+          {
+            "name": "Fondo Monetario Internacional",
+            "url": "https://www.imf.org/en/blogs/articles/2026/10/13/rising-sovereign-yields-raise-the-fiscal-stakes"
+          },
+          {
+            "name": "FMI — Fiscal Monitor octubre de 2026",
+            "url": "https://www.imf.org/en/publications/fm/issues/2026/10/05/fiscal-monitor-october-2026"
+          },
+          {
+            "name": "Reuters",
+            "url": "https://www.reuters.com/world/china/imf-says-higher-bond-yields-underscore-urgency-fiscal-consolidation-2026-10-14/"
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -99,14 +99,14 @@
     {
       "id": "china-eu-industrial-trade",
       "topic": "Comercio industrial entre China y la Unión Europea",
-      "thesis": "China y la Unión Europea trasladaron su disputa comercial desde acusaciones cambiarias hacia un ajuste sectorial negociado: Beijing moderará en más de la mitad sus exportaciones de híbridos y enchufables durante cuatro años, mientras facilita licencias de tierras raras y acceso a mercado.",
-      "status": "new",
-      "last_evidence": "El 9 de octubre ambas partes acordaron reducir en más de 50% los envíos chinos de híbridos y enchufables a Europa durante cuatro años, mejorar el acceso de productos europeos y agilizar licencias de tierras raras e imanes permanentes.",
-      "effect": "Abre un hilo industrial verificable: la UE obtiene alivio para su sector automotor y China evita por ahora una escalada más amplia, pero la implementación dependerá de cuotas, licencias y compromisos de precios todavía no publicados.",
-      "base_scenario": "El entendimiento contiene la disputa automotriz y mejora la previsibilidad de insumos críticos sin eliminar las investigaciones europeas sobre subsidios; ambas partes preservan la relación comercial mientras negocian reglas de ejecución.",
-      "invalidate_if": "La ausencia de mecanismos verificables, desvíos mediante otras categorías o nuevas restricciones a tierras raras debilitarían la tregua; cumplimiento de los volúmenes y licencias más rápidas la confirmarían.",
-      "watch": "Cuotas y licencias de vehículos, definición de híbridos cubiertos, compromisos de precios, investigación europea de subsidios, tiempos de licencias de tierras raras, acceso europeo al mercado chino y relocalización de oferta hacia terceros países.",
-      "last_publication": "/ediciones/2026-10-09-daily-china-ue-hibridos-comercio/"
+      "thesis": "La tregua automotriz entre China y la Unión Europea no resolvió el desequilibrio industrial: el bloque prepara una defensa comercial más amplia para químicos, acero y maquinaria, ahora con Alemania alineada con respuestas más rápidas.",
+      "status": "confirmed",
+      "last_evidence": "El 15 de octubre los líderes europeos iniciaron una cumbre cuyo borrador pide usar plenamente las defensas comerciales y añadir nuevos instrumentos; el déficit de bienes con China alcanzó €360.000 millones en 2025 y Alemania pasó de oponerse a los aranceles antisubsidios en 2024 a respaldar una reacción más ágil.",
+      "effect": "Cambia el ángulo del hilo: el acuerdo sobre híbridos sigue siendo una desescalada sectorial, pero coexiste con una postura europea potencialmente más defensiva en varias cadenas industriales y con menor división entre Francia y Alemania.",
+      "base_scenario": "La UE implementa el entendimiento automotor y mantiene el diálogo con Beijing, mientras amplía gradualmente investigaciones y herramientas defensivas en químicos, acero y maquinaria sin cerrar de inmediato su mercado.",
+      "invalidate_if": "La cumbre elimina del texto final la ampliación de defensas, la Comisión no presenta medidas verificables y el desequilibrio industrial comienza a corregirse; nuevas investigaciones, salvaguardias o represalias chinas confirmarían la ampliación del conflicto.",
+      "watch": "Conclusiones finales de la cumbre, propuestas de la Comisión, investigaciones en químicos, PET, acero y maquinaria, cuotas y compromisos de precios para híbridos, licencias de tierras raras, respuesta de Beijing y desvío de exportaciones.",
+      "last_publication": "/ediciones/2026-10-15-daily-ue-defensa-comercial-china/"
     },
     {
       "id": "developing-country-crisis-finance",
