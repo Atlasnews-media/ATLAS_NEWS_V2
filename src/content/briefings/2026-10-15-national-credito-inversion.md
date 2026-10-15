@@ -24,7 +24,7 @@ sources:
 highlights:
   - label: "Vivienda se flexibiliza"
     text: "El 30% de los bancos reportó condiciones hipotecarias más favorables y el 40% percibió mayor demanda."
-  - label: "Consumo sigue restringido"
+  - label: "Consumo aún restringido"
     text: "El 18% mantuvo estándares más estrictos para consumo, pese a una mejora en la demanda percibida."
   - label: "Inversión se posterga"
     text: "La expectativa de crecimiento de la inversión en 2026 cayó de 5,5% a 0,3%, pero subió a 5,8% para 2027."
