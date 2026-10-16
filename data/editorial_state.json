@@ -3,14 +3,14 @@
     {
       "id": "oil-geopolitics-inflation",
       "topic": "Petróleo, geopolítica e inflación",
-      "thesis": "El shock energético se ha desplazado desde la disponibilidad agregada de crudo hacia el cuello de botella del diésel: refinerías dañadas, exportaciones restringidas e inventarios agotados pueden sostener inflación y menor crecimiento hasta bien entrado 2027 aunque caiga la demanda mundial de petróleo.",
+      "thesis": "El shock energético sigue concentrado en combustibles refinados y ahora suma una fractura política: los ataques ucranianos a refinerías rusas continúan sin una tregua verificable, mientras Estados Unidos prioriza contener precios y Europa sostiene a Kyiv.",
       "status": "confirmed",
-      "last_evidence": "El 14 de octubre la AIE proyectó que la demanda petrolera mundial caerá 2,6 millones de barriles diarios en 2026, pero advirtió que la escasez de diésel persistirá hasta 2027; Rusia y Oriente Medio perdieron 1,3 millones de barriles diarios de exportaciones en septiembre y los inventarios observados quedaron 509 millones de barriles bajo el nivel previo a la guerra.",
-      "effect": "Confirma la persistencia del shock y cambia su mecanismo dominante: una recuperación del crudo o de la actividad refinadora no basta para reponer rápidamente los destilados medios, por lo que la presión sobre transporte, bienes, ingresos reales e inflación puede sobrevivir a la contracción de la demanda.",
-      "base_scenario": "Las refinerías elevan actividad hacia fin de 2026 y el balance del diésel mejora estacionalmente en el primer trimestre de 2027, pero los inventarios no se reponen de forma extraordinaria antes del segundo semestre y el mercado sigue dependiendo de una recuperación del suministro desde Oriente Medio.",
-      "invalidate_if": "Una recuperación sostenida de exportaciones de productos desde Oriente Medio y Rusia, acompañada por reposición verificable de inventarios antes del segundo semestre de 2027, debilitaría la tesis; nuevas interrupciones o mayor destrucción de demanda la reforzarían.",
-      "watch": "Actividad de refinerías, inventarios de gasóleo y diésel, exportaciones de Rusia y Oriente Medio, liberación de reservas de la AIE, licencias chinas, rutas y fletes, demanda industrial y agrícola, inflación de bienes y actividad global.",
-      "last_publication": "/ediciones/2026-10-14-daily-diesel-escaso-hasta-2027/"
+      "last_evidence": "El 16 de octubre Ucrania reanudó ataques contra refinerías rusas, Trump los condenó por su efecto sobre la energía y la UE reafirmó apoyo a Kyiv; la tregua energética anunciada el 11 de octubre nunca obtuvo confirmación bilateral ni reglas públicas.",
+      "effect": "Confirma la persistencia del cuello de botella de refinación y debilita la expectativa de desescalada: proteger precios globales y reducir la capacidad económica rusa se convirtieron en objetivos divergentes entre aliados.",
+      "base_scenario": "Los ataques sobre infraestructura energética continúan de forma intermitente, Europa cubre una parte creciente de las necesidades ucranianas y Estados Unidos busca limitar el impacto sobre combustibles sin lograr una tregua verificable inmediata.",
+      "invalidate_if": "Una pausa bilateral con objetivos, duración y verificación pública, acompañada por recuperación sostenida de capacidad de refinación y menores restricciones comerciales, debilitaría la tesis; nuevos daños o sanciones la reforzarían.",
+      "watch": "Ataques a refinerías y redes, capacidad rusa de refinación, exportaciones de diésel, apoyo fiscal y militar europeo a Ucrania, posición de Estados Unidos, sanciones, seguros, fletes e inventarios de destilados.",
+      "last_publication": "/ediciones/2026-10-16-daily-europa-ucrania-guerra-energetica/"
     },
     {
       "id": "us-employment-fed-rates",
