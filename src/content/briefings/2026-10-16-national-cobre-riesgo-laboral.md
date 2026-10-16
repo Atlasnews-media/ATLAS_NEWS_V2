@@ -1,11 +1,11 @@
 ---
 title: "El riesgo laboral del cobre se concentra en Centinela"
 summary: "Escondida evitó una huelga, pero Centinela sigue sin acuerdo: la producción permanece normal por ahora y el riesgo se desplaza hacia costos, continuidad operacional y proyectos de 2027."
-publishedAt: "2026-10-16T06:27:00-03:00"
+publishedAt: "2026-10-16T06:46:48-03:00"
 cutoffAt: "2026-10-16T06:24:00-03:00"
 section: "national"
 editionSlot: "morning"
-status: "draft"
+status: "published"
 tags:
   - chile
   - cobre

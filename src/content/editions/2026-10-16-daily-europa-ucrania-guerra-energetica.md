@@ -1,11 +1,11 @@
 ---
 title: "Europa sostiene a Ucrania mientras Washington cuestiona su guerra energética"
 summary: "La reanudación de ataques ucranianos a refinerías rusas deshace la señal de tregua no confirmada y expone una diferencia transatlántica cuando Kyiv necesita más de US$72.000 millones."
-publishedAt: "2026-10-16T06:06:41-03:00"
+publishedAt: "2026-10-16T06:46:48-03:00"
 cutoffAt: "2026-10-16T06:05:41-03:00"
 type: "daily"
 editionSlot: "morning"
-status: "draft"
+status: "published"
 tags:
   - ucrania
   - rusia

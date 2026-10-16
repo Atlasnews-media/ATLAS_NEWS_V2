@@ -1,11 +1,11 @@
 ---
 title: "El rebote asiático no elimina la prima por concentración"
 summary: "Las bolsas tecnológicas recuperan parte de la caída, pero el dólar pierde apoyo con menores rendimientos y la amenaza de MSCI provoca una salida abrupta en Indonesia."
-publishedAt: "2026-10-16T06:36:00-03:00"
+publishedAt: "2026-10-16T06:46:48-03:00"
 cutoffAt: "2026-10-16T06:33:00-03:00"
 section: "markets"
 editionSlot: "morning"
-status: "draft"
+status: "published"
 tags:
   - mercados
   - tecnologia
