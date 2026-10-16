@@ -1,8 +1,8 @@
 ---
 title: "MK4 avanza en el Congreso con propuestas de cambios tributarios para inversiones y nuevas medidas de crédito"
 summary: "La reforma al mercado de capitales sigue en tramitación legislativa con propuestas sobre tributación de fondos, inversiones en dólares y financiamiento hipotecario. La votación en particular está prevista para el 20 y 21 de octubre."
-publishedAt: "2026-10-16T11:25:00-03:00"
-status: "draft"
+publishedAt: "2026-10-16T13:52:00-03:00"
+status: "published"
 tags:
   - contingencia
   - chile
