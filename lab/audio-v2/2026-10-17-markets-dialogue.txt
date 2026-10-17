@@ -1,0 +1,27 @@
+VOZ 1: El cierre del viernes dejó una señal importante: el mercado no cayó de manera uniforme. El Nasdaq perdió 2,1%, el S&P 500 retrocedió 1,09% y el Dow bajó 0,34%, pero la presión se concentró en tecnología y comunicaciones.
+VOZ 2: ¿Qué sectores resistieron?
+VOZ 1: Energía y utilities estuvieron entre los de mejor desempeño. Eso cambia la interpretación. No vimos una salida indiscriminada de riesgo, sino una rotación desde activos que dependen de beneficios lejanos hacia negocios con flujos más inmediatos y sectores defensivos.
+VOZ 2: ¿Por qué la inteligencia artificial quedó en el centro?
+VOZ 1: Porque el mercado está dejando de premiar el gasto por sí mismo. CoreWeave cayó 12% el viernes y cerca de 25% en la semana. Sus bonos llegaron a rendir más de 15%. La pregunta ahora es si los centros de datos y la infraestructura de IA generarán retornos antes de que el costo de la deuda presione la liquidez.
+VOZ 2: Entonces, ¿el problema es tecnológico o financiero?
+VOZ 1: Es la combinación. La demanda por capacidad de cómputo puede seguir creciendo, pero el valor de las empresas depende de financiar ese crecimiento a un costo razonable y convertir inversión en ganancias. Con tasas altas, el umbral de rentabilidad sube.
+VOZ 2: ¿Qué tan concentrado sigue el mercado?
+VOZ 1: Bastante. El S&P 500 acumula cerca de 12% en 2026, pero su componente mediano avanza alrededor de 6% y unas 185 compañías están en terreno negativo este año. Eso muestra que los grandes nombres ligados a IA explican una porción relevante del avance.
+VOZ 2: Y al mismo tiempo subió el petróleo.
+VOZ 1: Sí. El Brent ganó 3,72% y cerró en 109 dólares con 86 centavos por barril, impulsado por el riesgo de oferta en Oriente Medio. La energía cara beneficia al sector petrolero, pero también sostiene inflación y reduce el valor presente de beneficios futuros. Por eso puede castigar especialmente a tecnología.
+VOZ 2: La General dice que Estados Unidos suspendió sanciones vinculadas con Rusia para proteger la oferta. ¿Eso no debería aliviar el crudo?
+VOZ 1: Reduce un riesgo futuro, pero no eliminó las disrupciones físicas ni la tensión en torno al estrecho de Ormuz. El precio del viernes muestra que el mercado distinguió entre una decisión política sobre sanciones y un riesgo inmediato sobre rutas y suministro.
+VOZ 2: ¿Qué dijeron los bonos?
+VOZ 1: El Treasury a diez años terminó casi estable en 5,085%, después de revertir una baja intradía. En la semana, sin embargo, los rendimientos descendieron y los bonos soberanos del G7 tuvieron su mejor desempeño desde fines de mayo. Hubo demanda defensiva, aunque siguen vivas las expectativas de nuevas alzas de tasas más adelante.
+VOZ 2: ¿Eso no es contradictorio?
+VOZ 1: No necesariamente. Los inversores pueden comprar bonos por protección ante el estrés de acciones y, al mismo tiempo, pensar que la Reserva Federal mantendrá tasas altas por la inflación. El calendario importa: el mercado espera mayoritariamente una pausa en octubre, pero algunos pronósticos desplazan nuevas alzas a diciembre y enero.
+VOZ 2: ¿Qué pasó con el dólar y el oro?
+VOZ 1: El dólar cayó 0,26% el viernes y cerró su primera semana negativa después de cuatro avances. El oro apenas subió hasta 4.167 dólares con 14 centavos la onza. La cobertura se manifestó con más claridad en bonos y algunas monedas defensivas que en una compra indiscriminada de oro.
+VOZ 2: ¿Y el cobre? Nacional cuenta que Centinela alcanzó un preacuerdo.
+VOZ 1: Aquí hay que respetar el tiempo de mercado. El preacuerdo se conoció después del cierre del viernes, así que todavía no existe una reacción observable. Si los trabajadores lo ratifican, podría retirarse una fuente marginal de prima por riesgo de oferta. Pero no basta para anticipar la dirección del cobre, porque también importan inventarios, demanda y otras interrupciones.
+VOZ 2: ¿Cuál es el catalizador principal para la próxima semana?
+VOZ 1: Los resultados empresariales. Meta, Lam Research, Texas Instruments y Tesla, entre otras, deberán mostrar que los beneficios crecen lo suficiente para justificar el gasto de capital. Si los flujos de caja responden, la caída puede quedar como ajuste de valoración. Si no, el castigo podría extenderse.
+VOZ 2: ¿Qué invalidaría la lectura de presión sobre tecnología?
+VOZ 1: Una combinación de petróleo más bajo, rendimientos moderándose y resultados que demuestren retornos superiores al costo de capital. Lo contrario, energía persistentemente cara y tasas al alza, reforzaría el doble castigo.
+VOZ 2: Entonces el mensaje no es simplemente aversión al riesgo.
+VOZ 1: Exacto. Es una reevaluación del precio de financiar crecimiento. Tecnología apalancada perdió terreno, energía y defensivos resistieron, los bonos captaron cobertura y el dólar cedió. Esa dispersión explica mejor el cierre que una etiqueta general de mercado bajista.
