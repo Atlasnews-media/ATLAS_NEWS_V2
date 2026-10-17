@@ -1,0 +1,139 @@
+{
+  "status": "READY",
+  "date": "2026-10-17",
+  "contract": "atlas-senales-del-dia-v1",
+  "senalesDelDia": {
+    "internacional": [
+      {
+        "slot": "technology",
+        "headline": "Intel empaqueta inferencia de IA para servidores Xeon",
+        "deck": "Los contenedores ajustan modelos al procesador detectado y exponen una API compatible con OpenAI; el lanzamiento parte en Xeon y promete extenderse a GPU.",
+        "development": "Intel lanzó el 14 de octubre sus Inference Microservices, contenedores preparados para servir modelos de lenguaje en infraestructura propia. Cada imagen incluye un modelo detrás de una API compatible con OpenAI y detecta al iniciar el procesador disponible para aplicar una configuración que Intel dice haber afinado y validado para esa combinación de software y silicio. La versión inicial exige Docker y procesadores Xeon de cuarta, quinta o sexta generación.\n\nEl producto intenta reducir una tarea operativa concreta: elegir motores, parámetros y configuraciones para desplegar inferencia local. La empresa sostiene que la misma interfaz se mantendrá cuando el servicio se amplíe a sus GPU, incluida la aceleradora para centros de datos conocida como Crescent Island. Eso permitiría trasladar una aplicación entre hardware Intel sin reescribir la integración. No convierte cualquier servidor en un sustituto equivalente de un acelerador ni demuestra, por sí solo, menor costo total frente a alternativas.\n\nLa señal es de empaquetamiento y portabilidad, no de un nuevo modelo fundacional. Su valor dependerá de los modelos disponibles, el rendimiento medido con cargas reales, el consumo energético y la facilidad de actualización y seguridad de los contenedores. También debe observarse si Intel cumple la extensión anunciada hacia GPU y si proveedores independientes publican comparaciones reproducibles de latencia, rendimiento y costo.",
+        "anchor": "intel-inferencia-ia-contenedores-xeon",
+        "sources": [
+          {
+            "name": "Intel Newsroom",
+            "url": "https://www.intel.com/content/www/us/en/newsroom/news/artificial-intelligence/intel-inference-microservices-tuned-llm-processors.html"
+          },
+          {
+            "name": "Intel Software Catalog",
+            "url": "https://swcatalog.intel.com/developer/docs/intel-inference-microservices"
+          },
+          {
+            "name": "Public Technologies",
+            "url": "https://www.publicnow.com/view/79AF6789302FAF8BFBEA012B15AA5B085C0475E1"
+          }
+        ]
+      },
+      {
+        "slot": "world",
+        "headline": "El corte comercial vuelve frágil la mejora nutricional en Gaza",
+        "deck": "UNICEF advierte que el flujo irregular de alimentos puede revertir avances: sólo uno de cada tres menores de dos años alcanza diversidad dietaria mínima.",
+        "development": "UNICEF advirtió el 16 de octubre que la mejora reciente de la nutrición infantil en Gaza sigue expuesta a una reversión rápida. Israel informó esta semana que dejó de entrar mercancía comercial por una disputa tributaria entre comerciantes y Hamas. Ese canal complementa la ayuda humanitaria con frutas, carne, ropa y otros bienes que las agencias no distribuyen en volumen suficiente. UNICEF pidió mantener abiertos todos los cruces y asegurar flujos previsibles y continuos.\n\nLos indicadores muestran una recuperación parcial, no una normalización. El organismo informó que sólo uno de cada tres niños menores de dos años alcanza la diversidad dietaria mínima y que una encuesta de junio encontró retraso crónico del crecimiento en uno de cada ocho menores de cinco años. Cerca de 800.000 niños permanecen desplazados y gran parte vive en tiendas o edificios inseguros mientras se acerca el invierno. El alto el fuego amplió la entrada de ayuda y redujo el riesgo de hambruna, pero no recompuso vivienda, agua, salud ni mercados.\n\nLa causa inmediata del corte comercial es disputada y no corresponde atribuir motivaciones no verificadas. El control factual será el restablecimiento documentado de mercancías, la continuidad de la ayuda, los precios y la variedad de alimentos disponibles. Sin esos flujos, una mejora basada en acceso reciente puede perderse aun cuando no vuelva la intensidad anterior de los combates.",
+        "anchor": "gaza-corte-comercial-nutricion-infantil",
+        "sources": [
+          {
+            "name": "UNICEF",
+            "url": "https://www.unicef.org/mena/press-releases/childhood-defined-struggle-survival-gaza-strip"
+          },
+          {
+            "name": "Reuters",
+            "url": "https://www.reuters.com/world/middle-east/un-says-gaza-malnutrition-gains-fragile-commercial-supplies-halt-2026-10-16/"
+          },
+          {
+            "name": "Associated Press",
+            "url": "https://apnews.com/article/744d4b8c005b20d94ce6fc952a63e063"
+          }
+        ]
+      }
+    ],
+    "nacional": [
+      {
+        "slot": "ipsa_company",
+        "headline": "Cencosud duplica la escala de su apuesta por belleza en Paris",
+        "deck": "Paris espera 10.000 asistentes y más de 80 marcas en un espacio de 4.000 m², usando experiencias presenciales para conectar descubrimiento digital y compra.",
+        "development": "Paris, la cadena de tiendas por departamento de Cencosud, abrió el 16 de octubre la segunda edición de su Beauty Fest en Cenco Portal La Dehesa. La compañía espera recibir a 10.000 personas durante tres días, el doble de la convocatoria anterior. El encuentro reúne a más de 80 marcas y 12 emprendimientos chilenos en 4.000 metros cuadrados, también el doble de superficie, con demostraciones, asesorías, lanzamientos y venta directa de productos.\n\nLa iniciativa muestra cómo Cencosud busca transformar tráfico físico en una plataforma comercial para marcas y clientes. El festival cobra entrada y combina exposición, servicios y transacciones, mientras una alianza con TikTok conecta tendencias digitales con prueba presencial. La empresa indicó que el contenido de belleza creció 111% en Chile durante el último año y que el hashtag BeautyTok superó 237,6 millones de visualizaciones en el país. Esas cifras describen atención en la plataforma; no equivalen automáticamente a ventas de Paris ni a participación de mercado.\n\nEl hecho es relevante para una empresa del IPSA porque prueba un formato de tienda basado en experiencia, pero Cencosud no divulgó inversión, ingresos esperados ni margen del evento. Los controles serán asistencia efectiva, ventas incrementales, conversión de visitantes, repetición del formato y participación de marcas. Sin esos datos, el festival confirma una estrategia comercial ampliada, no un impacto financiero material.",
+        "anchor": "cencosud-paris-beauty-fest-escala",
+        "sources": [
+          {
+            "name": "Cencosud",
+            "url": "https://es.linkedin.com/posts/cencosud-s-a-_paris-beauty-activity-7516256648764674048-et4R"
+          },
+          {
+            "name": "Forbes Chile",
+            "url": "https://forbes.cl/negocios/2026-10-16/de-manfred-paulmann-a-fanaticas-de-belleza-la-apuesta-de-cencosud-por-reunir-10-mil-personas-este-fin-de-semana/"
+          },
+          {
+            "name": "Capital Digital",
+            "url": "https://capitaldigital.cl/2026/10/16/paris-beauty-fest-2026-vuelve-el-evento-de-belleza-mas-grande-de-chile-espera-reunir-a-10-mil-asistentes-y-mas-de-80-marcas/"
+          }
+        ]
+      },
+      {
+        "slot": "policy_economy",
+        "headline": "Dos proyectos Pro Pyme fijarán tasa y transición tributaria",
+        "deck": "El Ejecutivo anunció envíos para comienzos de noviembre con tasa de 12,5%, pagos oportunos y patentes más simples; aún no existen textos ingresados.",
+        "development": "El Gobierno anunció el 13 de octubre que enviará al Congreso dos proyectos Pro Pyme a comienzos de noviembre. El paquete anticipa una tasa permanente de impuesto de primera categoría de 12,5% para empresas del régimen, junto con una transición gradual para evitar un salto abrupto de carga cuando crecen. También contempla reglas para pagos oportunos de facturas, simplificación de patentes provisorias y un procedimiento más expedito para regularizar deudas municipales cuya acción de cobro esté prescrita.\n\nEl anuncio fija objetivos y componentes, pero todavía no contiene articulado ingresado ni informe financiero público. La tasa reducida de 12,5% rige hoy de forma transitoria para 2026 y 2027, por lo que el cambio prometido sería convertirla en una regla más estable y definir cómo opera el paso a un régimen general. La reducción de barreras de formalización y el control de demoras en facturas dependerán de plazos, sanciones, competencias municipales y coordinación tributaria que aún no se conocen.\n\nLa evaluación debe mantenerse separada de las declaraciones políticas. Los hitos verificables son el ingreso de ambos mensajes, sus textos, el costo fiscal, la fórmula de transición y el trámite parlamentario. Hasta entonces, no existe una nueva obligación tributaria ni un derecho adicional de cobro. La fecha comprometida para noviembre es el primer control de ejecución.",
+        "anchor": "pro-pyme-tasa-transicion-proyectos",
+        "sources": [
+          {
+            "name": "Ministerio de Economía de Chile",
+            "url": "https://www.economia.gob.cl/2026/10/13/gobierno-anuncia-nuevas-medidas-de-apoyo-para-las-empresas-de-menor-tamano.htm"
+          },
+          {
+            "name": "Diario Financiero",
+            "url": "https://www.df.cl/economia-y-politica/df-tax/gobierno-ingresara-al-congreso-en-noviembre-nuevo-regimen-tributario-para"
+          },
+          {
+            "name": "Emol",
+            "url": "https://www.emol.com/noticias/Nacional/2026/10/13/1214005/gobierno-anuncia-paquete-reformas-propyme.html"
+          }
+        ]
+      }
+    ],
+    "mercados": [
+      {
+        "slot": "markets_chile",
+        "headline": "Derivados de tasas exponen el riesgo del fondo E",
+        "deck": "Las posiciones extranjeras pasaron a una valoración negativa cercana a US$7.700 millones; AFP y regulador discrepan sobre cómo leer el daño y sus límites.",
+        "development": "Las AFP chilenas enfrentan una valoración negativa cercana a US$7.700 millones en posiciones vinculadas a tasas de interés extranjeras, después del alza de los rendimientos de los bonos del Tesoro estadounidense. El fondo E, presentado como la alternativa más conservadora, acumula una caída real de 10,39% entre enero y septiembre. Ejecutivos del sector habían pedido al regulador límites comunes porque reducir posiciones de manera unilateral podía dejar a una administradora en desventaja frente a sus competidoras.\n\nLa cifra no debe confundirse automáticamente con una pérdida ya realizada por el mismo monto. Corresponde a la valoración de contratos derivados y puede cambiar antes del cierre de las posiciones. La Asociación de AFP sostiene que estos instrumentos ajustan duración y forman parte de una estrategia de largo plazo; parlamentarios pidieron explicaciones, mientras la Superintendencia señaló que las entidades tuvieron tiempo adicional para adecuarse a nuevas reglas y ya redujeron una parte relevante de los excesos.\n\nLa señal de mercado es el descalce entre el perfil conservador ofrecido al afiliado y la sensibilidad efectiva a tasas externas. Los controles son la rentabilidad por cuota, cuánto de la valoración se materializa, el calendario de desarme, el cumplimiento de límites y cualquier exigencia adicional de liquidez. Separar valoración, flujo de caja y pérdida realizada es esencial antes de atribuir el monto completo a los ahorros.",
+        "anchor": "afp-fondo-e-derivados-tasas",
+        "sources": [
+          {
+            "name": "Reuters",
+            "url": "https://www.reuters.com/markets/wealth/chiles-pension-funds-requested-curbs-interest-rate-bets-before-losses-bloomberg-2026-10-16/"
+          },
+          {
+            "name": "Bloomberg Línea",
+            "url": "https://www.bloomberglinea.com/latinoamerica/chile/fondos-de-pensiones-de-chile-pidieron-limites-a-apuestas-por-tasas-de-eeuu-antes-de-perder-millones/"
+          },
+          {
+            "name": "Superintendencia de Pensiones",
+            "url": "https://www.spensiones.cl/portal/institucional/594/w3-propertyvalue-5935.html"
+          }
+        ]
+      },
+      {
+        "slot": "markets_global",
+        "headline": "Basilea limita el maquillaje de los bancos sistémicos",
+        "deck": "Desde 2030, los indicadores G-SIB usarán promedios anuales en vez de saldos de cierre; el umbral de reporte subirá a €350.000 millones en 2027.",
+        "development": "El Comité de Basilea cerró el 16 de octubre una reforma para reducir el maquillaje temporal de los indicadores usados en la clasificación de bancos globalmente sistémicos. Las entidades que participan en la evaluación deberán calcular y divulgar los indicadores de stock con promedios del año, en lugar de depender del dato de cierre. La implementación será obligatoria desde el 1 de enero de 2030, con tiempo para adaptar sistemas y procesos de reporte.\n\nLa regla responde a operaciones que reducen transitoriamente el tamaño o complejidad aparente de un banco cerca de la fecha de referencia. Esa práctica puede bajar su puntaje G-SIB y, con ello, los recargos de capital asociados, además de alterar liquidez en mercados de financiamiento al cierre del ejercicio. Basilea también elevará desde 2027 el umbral para reportar desde €200.000 millones hasta €350.000 millones de exposición medida por el ratio de apalancamiento.\n\nEn paralelo, el Comité abrió hasta el 14 de enero de 2027 una consulta sobre el tratamiento de exposiciones transfronterizas dentro de la Unión Bancaria Europea. La señal para mercados es gradual: no cambia hoy el capital exigido a una entidad específica, pero reduce el valor de ajustes de balance de último minuto y puede modificar puntajes futuros. Deben observarse las respuestas a la consulta, la adaptación de datos y cualquier cambio en los colchones de capital resultantes.",
+        "anchor": "basilea-gsib-promedios-anuales",
+        "sources": [
+          {
+            "name": "Banco de Pagos Internacionales — comunicado",
+            "url": "https://www.bis.org/media-releases/20261016-basel-committee-finalises-measures-address-window-dressing-g-sib-framework-and-consults-g-sib"
+          },
+          {
+            "name": "Comité de Basilea — enmiendas",
+            "url": "https://www.bis.org/publications/202610-standards-amendments-g-sib-framework-address-window-dressing"
+          },
+          {
+            "name": "Comité de Basilea — consulta",
+            "url": "https://www.bis.org/publications/202610-consultation-global-systemically-important-banks-methodology-review"
+          }
+        ]
+      }
+    ]
+  }
+}
