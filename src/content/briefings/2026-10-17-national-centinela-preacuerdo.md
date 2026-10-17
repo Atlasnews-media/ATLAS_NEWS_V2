@@ -1,11 +1,11 @@
 ---
 title: "Centinela descomprime el riesgo laboral, pero la ratificación sigue pendiente"
 summary: "Dos sindicatos y Minera Centinela alcanzaron un preacuerdo que pone fin a la huelga iniciada el 7 de octubre. La faena mantuvo producción normal; la votación de este sábado define si el cierre se vuelve definitivo."
-publishedAt: "2026-10-17T06:22:00-03:00"
+publishedAt: "2026-10-17T06:45:49-03:00"
 cutoffAt: "2026-10-17T06:18:00-03:00"
 section: "national"
 editionSlot: "morning"
-status: "draft"
+status: "published"
 tags:
   - chile
   - mineria

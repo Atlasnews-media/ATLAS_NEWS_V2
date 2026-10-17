@@ -1,11 +1,11 @@
 ---
 title: "El costo del capital rompe la uniformidad del rally de inteligencia artificial"
 summary: "El Nasdaq cayó 2,1% y el Brent subió 3,72% el viernes: la deuda de la infraestructura de IA y la energía cara elevaron la exigencia de retornos. Bonos, dólar y sectores defensivos muestran una rotación, no una liquidación indiscriminada."
-publishedAt: "2026-10-17T06:29:00-03:00"
+publishedAt: "2026-10-17T06:45:49-03:00"
 cutoffAt: "2026-10-17T06:26:00-03:00"
 section: "markets"
 editionSlot: "morning"
-status: "draft"
+status: "published"
 tags:
   - mercados
   - tecnologia

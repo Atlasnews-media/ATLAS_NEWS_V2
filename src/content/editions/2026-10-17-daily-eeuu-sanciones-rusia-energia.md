@@ -1,11 +1,11 @@
 ---
 title: "Washington prioriza el precio de la energía y reduce la presión sobre Rusia"
 summary: "Trump suspendió sanciones y aranceles que podían alcanzar a los mayores compradores de energía rusa, mientras Europa estudia otro préstamo para cubrir más de €70.000 millones que Ucrania necesita en 2027."
-publishedAt: "2026-10-17T06:01:13-03:00"
+publishedAt: "2026-10-17T06:45:49-03:00"
 cutoffAt: "2026-10-17T06:00:24-03:00"
 type: "daily"
 editionSlot: "morning"
-status: "draft"
+status: "published"
 tags:
   - rusia
   - ucrania
