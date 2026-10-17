@@ -32,7 +32,7 @@ Nacional es el propietario editorial exclusivo de los hechos domésticos de Chil
 - Lecturas: `src/content/readings/`.
 - Memoria editorial: `data/editorial_state.json`.
 - Nombre diario General: `AAAA-MM-DD-daily-titulo-breve.md`.
-- Tramo editorial diario: `editionSlot: morning | midday`; si falta, se interpreta `morning` por compatibilidad.
+- Tramo editorial diario: `editionSlot: morning | midday | evening`; si falta, se interpreta `morning` por compatibilidad.
 - Nombre semanal: `AAAA-MM-DD-weekly-titulo-breve.md`.
 - Nombre Nacional: `AAAA-MM-DD-national-titulo-breve.md`.
 - Nombre Mercados: `AAAA-MM-DD-markets-titulo-breve.md`.
