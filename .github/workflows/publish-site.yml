@@ -100,6 +100,10 @@ jobs:
               echo "El paquete ${expected_slot} admite como máximo una pieza Nacional y una de Mercados." >&2
               exit 1
             fi
+            if [[ "$expected_slot" == "evening" && ( "$national_count" -ne 1 || "$markets_count" -ne 1 ) ]]; then
+              echo "Vespertina exige una pieza Nacional y una de Mercados junto a General." >&2
+              exit 1
+            fi
 
             general_file="$general_files"
             general_slot="$(normalized_slot "$general_file")"
@@ -163,6 +167,21 @@ jobs:
 
               require_package_files "$edition_date" "midday"
               track=true
+            elif [[ "$branch" =~ ^editorial/([0-9]{4}-[0-9]{2}-[0-9]{2})-evening$ ]]; then
+              package_kind="evening"
+              edition_date="${BASH_REMATCH[1]}"
+              edition_type="daily"
+              edition_slot="evening"
+              edition_key="${edition_date}-daily-evening"
+
+              expected_title="Paquete editorial vespertino — ${edition_date}"
+              if [[ "$PR_TITLE" != "$expected_title" ]]; then
+                echo "El PR Vespertino debe llamarse: $expected_title" >&2
+                exit 1
+              fi
+
+              require_package_files "$edition_date" "evening"
+              track=true
             elif [[ "$branch" =~ ^editorial/([0-9]{4}-[0-9]{2}-[0-9]{2})-(daily|weekly)$ ]]; then
               edition_date="${BASH_REMATCH[1]}"
               edition_type="${BASH_REMATCH[2]}"
@@ -174,6 +193,10 @@ jobs:
                   edition_slot="$(normalized_slot "$file")"
                   if [[ "$edition_slot" == "midday" ]]; then
                     echo "Mediodía debe usar la rama canónica editorial/${edition_date}-midday." >&2
+                    exit 1
+                  fi
+                  if [[ "$edition_slot" == "evening" ]]; then
+                    echo "Vespertina debe usar la rama canónica editorial/${edition_date}-evening." >&2
                     exit 1
                   fi
                 fi
@@ -197,6 +220,9 @@ jobs:
                 if [[ "$edition_slot" == "midday" ]]; then
                   package_kind="midday"
                   edition_key="${edition_date}-daily-midday"
+                elif [[ "$edition_slot" == "evening" ]]; then
+                  package_kind="evening"
+                  edition_key="${edition_date}-daily-evening"
                 fi
 
                 national_file="$(printf '%s\n' "$changed_files" | grep -E "^src/content/briefings/${edition_date}-national-.*\.md$" | head -n1 || true)"
@@ -287,7 +313,7 @@ jobs:
         run: node scripts/resolve-editorial-source-commit.mjs
 
       - name: Preflight social de la edición diaria
-        if: github.event_name == 'push' && steps.edition.outputs.track == 'true' && steps.edition.outputs.edition_type == 'daily' && steps.edition.outputs.edition_slot != 'midday'
+        if: github.event_name == 'push' && steps.edition.outputs.track == 'true' && steps.edition.outputs.edition_type == 'daily' && steps.edition.outputs.edition_slot == 'morning'
         env:
           ATLAS_SOURCE_COMMIT: ${{ env.ATLAS_SOURCE_SHA }}
           ATLAS_SOCIAL_PREFLIGHT_ONLY: "true"
@@ -365,10 +391,11 @@ jobs:
             .sourceCommit == $editorial and
             (.latestDaily == null or (
               .latestDaily.issueNumber >= 1 and
-              (.latestDaily.editionSlot == "morning" or .latestDaily.editionSlot == "midday")
+              (.latestDaily.editionSlot == "morning" or .latestDaily.editionSlot == "midday" or .latestDaily.editionSlot == "evening")
             )) and
             (.morningPackage == null or .morningPackage.editionSlot == "morning") and
             (.middayPackage == null or .middayPackage.editionSlot == "midday") and
+            (.eveningPackage == null or .eveningPackage.editionSlot == "evening") and
             (.latestNational == null or (.latestNational.id | type == "string")) and
             (.latestMarkets == null or (.latestMarkets.id | type == "string")) and
             (.publications.national >= 0) and
@@ -485,6 +512,12 @@ jobs:
             test -f "$atlas_publish_dir/ediciones/$latest_id/index.html"
             grep -Fq "/ediciones/$latest_id/" "$atlas_publish_dir/index.html"
           fi
+          if [[ "$latest_slot" == "evening" ]]; then
+            grep -Fq "EDICIÓN VESPERTINA" "$atlas_publish_dir/index.html"
+            jq -e '.eveningPackage.completeness == 3 and .morningPackage.date == .eveningPackage.date' "$atlas_publish_dir/status.json" > /dev/null
+            morning_id="$(jq -r '.morningPackage.generalId' "$atlas_publish_dir/status.json")"
+            test -f "$atlas_publish_dir/ediciones/$morning_id/index.html"
+          fi
 
           national_id="$(jq -r '.latestNational.id // empty' "$atlas_publish_dir/status.json")"
           if [[ -n "$national_id" ]]; then
@@ -506,6 +539,8 @@ jobs:
           [[ -n "$national_id" ]] && routes+=("/nacional/$national_id/")
           [[ -n "$markets_id" ]] && routes+=("/mercados/$markets_id/")
           [[ "$latest_slot" == "midday" ]] && routes+=("/mediodia/")
+          [[ "$latest_slot" == "evening" ]] && routes+=("/vespertino/")
+          [[ "$latest_slot" == "evening" ]] && routes+=("/ediciones/$morning_id/")
 
           for attempt in $(seq 1 15); do
             body="$(mktemp)"
@@ -592,7 +627,7 @@ jobs:
 
       - name: Planificar edición sonora diaria
         id: audio_plan
-        if: github.event_name != 'pull_request' && steps.edition.outputs.edition_slot != 'midday'
+        if: github.event_name != 'pull_request' && steps.edition.outputs.edition_slot != 'midday' && steps.edition.outputs.edition_slot != 'evening'
         continue-on-error: true
         env:
           ATLAS_PUBLIC_REPO_DIR: ${{ runner.temp }}/atlas-news-public

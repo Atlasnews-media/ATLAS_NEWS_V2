@@ -128,6 +128,10 @@ const middayPackage = packageForSlot({
   ...packageInput,
   slot: "midday",
 });
+const eveningPackage = packageForSlot({
+  ...packageInput,
+  slot: "evening",
+});
 
 const status = {
   schemaVersion: 1,
@@ -147,6 +151,7 @@ const status = {
   latestMarkets: latestBriefingRecord(latestMarkets),
   morningPackage,
   middayPackage,
+  eveningPackage,
   publications: {
     daily: publishedDailies.length,
     weekly: publishedWeeklies.length,

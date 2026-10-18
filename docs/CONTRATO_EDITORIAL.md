@@ -4,20 +4,20 @@
 
 Una edición diaria o semanal debe incluir los siguientes metadatos:
 
-| Campo           | Regla                                                                     |
-| --------------- | ------------------------------------------------------------------------- |
-| `title`         | Entre 8 y 140 caracteres                                                  |
-| `summary`       | Entre 40 y 320 caracteres                                                 |
-| `publishedAt`   | Fecha ISO 8601 con zona horaria                                           |
-| `cutoffAt`      | Cierre informativo ISO 8601 con zona horaria                              |
-| `type`          | `daily` o `weekly`                                                        |
+| Campo           | Regla                                                                                |
+| --------------- | ------------------------------------------------------------------------------------ |
+| `title`         | Entre 8 y 140 caracteres                                                             |
+| `summary`       | Entre 40 y 320 caracteres                                                            |
+| `publishedAt`   | Fecha ISO 8601 con zona horaria                                                      |
+| `cutoffAt`      | Cierre informativo ISO 8601 con zona horaria                                         |
+| `type`          | `daily` o `weekly`                                                                   |
 | `editionSlot`   | En `daily`: `morning`, `midday` o `evening`; ausencia = `morning` por compatibilidad |
-| `status`        | `draft` o `published`                                                     |
-| `tags`          | Al menos una etiqueta                                                     |
-| `sources`       | Al menos una fuente con nombre y URL válida                               |
-| `featured`      | Indicador booleano; por defecto `false`                                   |
-| `editionNumber` | Entero positivo opcional                                                  |
-| `highlights`    | Entre 3 y 6 claves breves para la portada                                 |
+| `status`        | `draft` o `published`                                                                |
+| `tags`          | Al menos una etiqueta                                                                |
+| `sources`       | Al menos una fuente con nombre y URL válida                                          |
+| `featured`      | Indicador booleano; por defecto `false`                                              |
+| `editionNumber` | Entero positivo opcional                                                             |
+| `highlights`    | Entre 3 y 6 claves breves para la portada                                            |
 
 En toda nueva edición General diaria, `highlights` debe contener **exactamente cinco** claves. Ni cuatro ni seis son válidos para una nueva General diaria. Las cinco claves deben derivar de la misma investigación internacional verificada y del mismo cuerpo editorial de la edición; esos mismos cinco elementos alimentan Portada y los consumidores sociales posteriores. Ningún proceso downstream debe inventar, completar o sustituir un highlight con contenido de otras secciones. El schema mantiene el rango histórico de 3 a 6 únicamente por compatibilidad con ediciones anteriores y otros tipos de edición; esa flexibilidad técnica no modifica el contrato funcional de nuevas General diarias.
 
@@ -130,6 +130,14 @@ El paquete puede contener exactamente una General `daily` de la fecha objetivo y
 La promoción de Mediodía usa el mismo contrato mecánico de producción: sólo cambia `status: draft → published` y `publishedAt`; `cutoffAt`, contenido, fuentes, highlights y demás metadatos editoriales permanecen intactos. La publicación de Mediodía no elimina ni reescribe Matutina.
 
 El número diario corresponde a la fecha editorial, no al número de archivos `daily`: Matutina y Mediodía de una misma fecha comparten el mismo N.º. La edición vigente de Portada es la publicación `daily` con `publishedAt` más reciente; su `editionSlot` determina si la navegación muestra `EDICIÓN MATUTINA` o `EDICIÓN MEDIODÍA`.
+
+## Paquete editorial vespertino
+
+Vespertina agrega un tercer `editionSlot: "evening"` en las colecciones General, Nacional y Mercados, sin modificar ni retirar Matutina o Mediodía. La rama canónica es `editorial/AAAA-MM-DD-evening`, con PR `Paquete editorial vespertino — AAAA-MM-DD`.
+
+El productor exige exactamente una General `daily`, una Nacional y una Mercados del mismo día y slot. Las tres piezas empiezan en `draft` y sólo se promueven mediante `status: draft → published` y `publishedAt` efectivo, sin reescribir cuerpo, fuentes ni `cutoffAt`. Los gates fail-closed, manifiesto, auditor y publicador del sitio son compartidos; el HEAD validado debe ser el fusionado. Una Matutina productiva y verificable del mismo día es prerrequisito editorial.
+
+Vespertina comparte el N.º diario con Matutina. Al quedar publicada con `publishedAt` posterior, se convierte en la edición vigente de Portada, que debe mostrar exactamente `EDICIÓN VESPERTINA`. `status.json` conserva los paquetes históricos y agrega `eveningPackage`; `/vespertino/` y las tres rutas de sección deben ser accesibles. No se activa TARDE. Reel es downstream sólo después de la verificación web; Vespertina no genera Carrusel ni Audio por sí sola.
 
 ## Lecturas seleccionadas
 

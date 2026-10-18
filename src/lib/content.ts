@@ -3,10 +3,11 @@ import { getCollection, type CollectionEntry } from "astro:content";
 export type Edition = CollectionEntry<"editions">;
 export type Briefing = CollectionEntry<"briefings">;
 export type Reading = CollectionEntry<"readings">;
-export type EditionSlot = "morning" | "midday";
+export type EditionSlot = "morning" | "midday" | "evening";
 
 export const MORNING_EDITION_SLOT: EditionSlot = "morning";
 export const MIDDAY_EDITION_SLOT: EditionSlot = "midday";
+export const EVENING_EDITION_SLOT: EditionSlot = "evening";
 
 const newestFirst = <T extends { data: { publishedAt: Date } }>(a: T, b: T) =>
   b.data.publishedAt.valueOf() - a.data.publishedAt.valueOf();
@@ -21,6 +22,7 @@ export function resolveEditionSlot(data: {
 }
 
 export function editionNavigationLabel(slot: EditionSlot): string {
+  if (slot === EVENING_EDITION_SLOT) return "EDICIÓN VESPERTINA";
   return slot === MIDDAY_EDITION_SLOT ? "Edición mediodía" : "Edición matutina";
 }
 
@@ -148,11 +150,15 @@ export function editionDisplayLabel(
   issueNumber?: number,
 ): string {
   const typeLabel = editionTypeLabel(edition.data.type);
+  const slot = resolveEditionSlot(edition.data);
   const slotLabel =
-    edition.data.type === "daily" &&
-    resolveEditionSlot(edition.data) === MIDDAY_EDITION_SLOT
-      ? " · Mediodía"
-      : "";
+    edition.data.type !== "daily"
+      ? ""
+      : slot === EVENING_EDITION_SLOT
+        ? " · Vespertina"
+        : slot === MIDDAY_EDITION_SLOT
+          ? " · Mediodía"
+          : "";
   return issueNumber
     ? `${typeLabel}${slotLabel} · ${formatIssueNumber(issueNumber)}`
     : `${typeLabel}${slotLabel}`;

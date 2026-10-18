@@ -138,6 +138,35 @@ if (latestDaily) {
   if (!index.includes(`/ediciones/${latestDaily.id}/`)) {
     errors.push("la portada pública no enlaza la edición diaria más reciente");
   }
+  if (latestDaily.editionSlot === "evening") {
+    if (!index.includes("EDICIÓN VESPERTINA")) {
+      errors.push("la Portada no identifica EDICIÓN VESPERTINA");
+    }
+    if (status.eveningPackage?.completeness !== 3) {
+      errors.push("la Edición Vespertina requiere sus tres piezas publicadas");
+    }
+    if (status.morningPackage?.date !== latestDaily.id.slice(0, 10)) {
+      errors.push("la Matutina del mismo día no fue preservada");
+    } else {
+      try {
+        await access(
+          resolve(
+            publicDir,
+            "ediciones",
+            status.morningPackage.generalId,
+            "index.html",
+          ),
+        );
+      } catch {
+        errors.push("la Matutina del mismo día no está accesible");
+      }
+    }
+    try {
+      await access(resolve(publicDir, "vespertino", "index.html"));
+    } catch {
+      errors.push("falta la ruta pública /vespertino/");
+    }
+  }
 }
 
 async function auditBriefing({ record, statusKey, route, label }) {
@@ -195,9 +224,15 @@ const expectedMidday = packageForSlot({
   briefings: publishedBriefings,
   slot: "midday",
 });
+const expectedEvening = packageForSlot({
+  dailies: publishedDailies,
+  briefings: publishedBriefings,
+  slot: "evening",
+});
 for (const [key, expected] of [
   ["morningPackage", expectedMorning],
   ["middayPackage", expectedMidday],
+  ["eveningPackage", expectedEvening],
 ]) {
   if (
     JSON.stringify(status[key] ?? null) !== JSON.stringify(expected ?? null)

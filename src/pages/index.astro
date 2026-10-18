@@ -16,6 +16,8 @@ import {
   getLatestNational,
   getPublishedEditions,
   getPublishedReadings,
+  editionNavigationLabel,
+  resolveEditionSlot,
 } from "../lib/content";
 import { resolveFrontPageVisual } from "../lib/front-page-visuals";
 
@@ -80,11 +82,7 @@ const marketsVisual = latestMarkets
         }
       </p>
       <p>
-        {
-          latestDaily?.data.editionSlot === "midday"
-            ? "EDICIÓN MEDIODÍA"
-            : "Edición matutina"
-        }
+        {editionNavigationLabel(resolveEditionSlot(latestDaily?.data ?? {}))}
       </p>
     </div>
 

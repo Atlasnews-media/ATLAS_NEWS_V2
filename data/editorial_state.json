@@ -3,14 +3,14 @@
     {
       "id": "oil-geopolitics-inflation",
       "topic": "Petróleo, geopolítica e inflación",
-      "thesis": "La tregua energética anunciada por Washington quedó contradicha por nuevos ataques rusos sobre infraestructura ucraniana; sin aceptación bilateral ni verificación, la energía sigue siendo objetivo militar y palanca diplomática, mientras la excepción estadounidense al diésel ruso puede aliviar oferta sin producir desescalada.",
-      "status": "contradicted",
-      "last_evidence": "El 12 de octubre Ucrania informó que Rusia golpeó al menos seis objetivos energéticos después del anuncio de Donald Trump, incluidos una instalación de gas y una estación de combustible; Moscú sólo confirmó conversaciones, rechazó una pausa breve y la UE sancionó a 1.569 personas y entidades rusas.",
-      "effect": "Contradice la expectativa de una tregua ya vigente y devuelve el hilo a un escenario de ataques activos, negociación incompleta y estrategias occidentales divergentes: Washington habilita diésel ruso para contener precios mientras Europa amplía sanciones.",
-      "base_scenario": "No existe una tregua energética efectiva. Los ataques sobre infraestructura continúan mientras Kyiv ofrece reciprocidad, Moscú negocia sin aceptar una pausa breve y Estados Unidos y la Unión Europea combinan alivio de oferta y presión sancionatoria.",
-      "invalidate_if": "Un acuerdo bilateral publicado, con objetivos protegidos, hora de inicio, verificación y varias semanas sin ataques energéticos, reabriría la tesis de desescalada; nuevos golpes o incumplimientos la confirmarían como fallida.",
-      "watch": "Texto y confirmación bilateral, objetivos protegidos, verificación, ataques a refinerías, plantas de gas y redes, exportaciones rusas de diésel, sanciones europeas, rutas del Golfo, fletes y precios de refinados.",
-      "last_publication": "/ediciones/2026-10-13-daily-crecimiento-global-resiste-brecha-se-amplia/"
+      "thesis": "El shock energético ya está reordenando la política occidental: Estados Unidos suspendió sanciones y aranceles para proteger oferta y precios, mientras Europa asume más financiamiento de Ucrania y mantiene la presión sobre Rusia.",
+      "status": "changed",
+      "last_evidence": "El 17 de octubre Trump eximió antes de su vigencia sanciones y aranceles de hasta 100% vinculados con Rusia y sus grandes compradores de energía; la UE, en contraste, estudia otro préstamo para cubrir más de €70.000 millones que Ucrania necesita en 2027.",
+      "effect": "Cambia y confirma la tesis: la divergencia transatlántica dejó de ser retórica y se convirtió en política ejecutiva, con Washington priorizando combustibles y Europa absorbiendo una mayor carga fiscal y estratégica.",
+      "base_scenario": "Estados Unidos mantiene la exención mientras persistan precios energéticos altos, China e India conservan acceso a energía rusa y la UE intenta financiar la brecha ucraniana mediante nuevos préstamos, con ataques a infraestructura todavía intermitentes.",
+      "invalidate_if": "El restablecimiento verificable de sanciones estadounidenses, una tregua energética bilateral o una caída sostenida de combustibles que elimine la motivación de la exención debilitarían la tesis; nuevas exenciones o mayor financiamiento europeo la reforzarían.",
+      "watch": "Duración y condiciones de la exención estadounidense, respuesta del Congreso, compras de China e India, ingresos energéticos rusos, nuevo préstamo europeo, ataques a refinerías y redes, Ormuz, seguros, fletes e inventarios de destilados.",
+      "last_publication": "/ediciones/2026-10-17-daily-eeuu-sanciones-rusia-energia/"
     },
     {
       "id": "us-employment-fed-rates",
@@ -99,14 +99,14 @@
     {
       "id": "china-eu-industrial-trade",
       "topic": "Comercio industrial entre China y la Unión Europea",
-      "thesis": "China y la Unión Europea trasladaron su disputa comercial desde acusaciones cambiarias hacia un ajuste sectorial negociado: Beijing moderará en más de la mitad sus exportaciones de híbridos y enchufables durante cuatro años, mientras facilita licencias de tierras raras y acceso a mercado.",
-      "status": "new",
-      "last_evidence": "El 9 de octubre ambas partes acordaron reducir en más de 50% los envíos chinos de híbridos y enchufables a Europa durante cuatro años, mejorar el acceso de productos europeos y agilizar licencias de tierras raras e imanes permanentes.",
-      "effect": "Abre un hilo industrial verificable: la UE obtiene alivio para su sector automotor y China evita por ahora una escalada más amplia, pero la implementación dependerá de cuotas, licencias y compromisos de precios todavía no publicados.",
-      "base_scenario": "El entendimiento contiene la disputa automotriz y mejora la previsibilidad de insumos críticos sin eliminar las investigaciones europeas sobre subsidios; ambas partes preservan la relación comercial mientras negocian reglas de ejecución.",
-      "invalidate_if": "La ausencia de mecanismos verificables, desvíos mediante otras categorías o nuevas restricciones a tierras raras debilitarían la tregua; cumplimiento de los volúmenes y licencias más rápidas la confirmarían.",
-      "watch": "Cuotas y licencias de vehículos, definición de híbridos cubiertos, compromisos de precios, investigación europea de subsidios, tiempos de licencias de tierras raras, acceso europeo al mercado chino y relocalización de oferta hacia terceros países.",
-      "last_publication": "/ediciones/2026-10-09-daily-china-ue-hibridos-comercio/"
+      "thesis": "La disputa industrial entre China y Occidente ya opera en ambas direcciones: Europa prepara defensas frente a importaciones chinas, mientras Beijing extiende controles sobre la transferencia de tecnologías críticas de inteligencia artificial, biotecnología y manufactura solar.",
+      "status": "changed",
+      "last_evidence": "El 18 de octubre China mantenía en consulta hasta el 15 de noviembre una propuesta para controlar 40 tecnologías —23 de inteligencia artificial y 12 solares— y exigía registrar temporalmente las transferencias incluidas antes del catálogo definitivo.",
+      "effect": "Cambia el ángulo del hilo: el conflicto deja de concentrarse sólo en el acceso de bienes chinos al mercado europeo y pasa también al control chino sobre conocimiento, procesos y equipos capaces de reproducir capacidad industrial fuera del país.",
+      "base_scenario": "China aprueba un catálogo con licencias y prohibiciones selectivas, mantiene excepciones acotadas para servicios ordinarios y código abierto, y administra la transferencia de tecnología solar mientras Europa amplía gradualmente sus defensas comerciales.",
+      "invalidate_if": "La versión final retira los controles principales o concede licencias amplias y previsibles que no alteran inversiones ni transferencia tecnológica; restricciones adicionales, demoras de proyectos o represalias occidentales reforzarían la tesis.",
+      "watch": "Catálogo final después del 15 de noviembre, reglas y licencias, registro temporal, umbrales para modelos de inteligencia artificial, equipos y procesos solares, planes de plantas fuera de China, respuesta de Estados Unidos y la Unión Europea y nuevas investigaciones comerciales.",
+      "last_publication": "/ediciones/2026-10-18-daily-china-control-tecnologia-critica/"
     },
     {
       "id": "developing-country-crisis-finance",

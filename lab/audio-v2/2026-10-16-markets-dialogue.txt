@@ -1,0 +1,43 @@
+VOZ 1: Los mercados asiáticos rebotaron, pero la señal importante es que el riesgo no desapareció. Sólo cambió de forma.
+VOZ 2: ¿Qué recuperaron las bolsas?
+VOZ 1: El KOSPI surcoreano subió 3,3% después de caer casi 8% el jueves. El Nikkei avanzó 1,9% tras una pérdida cercana a 5%.
+VOZ 2: ¿Eso es una normalización?
+VOZ 1: Todavía no. Los futuros del Nasdaq y del S&P 500 subían apenas 0,2%. Es una estabilización después de ventas fuertes, pero no una recuperación amplia del apetito por riesgo.
+VOZ 2: ¿Qué sigue preocupando a los inversionistas?
+VOZ 1: La deuda que financia la infraestructura de inteligencia artificial. CoreWeave recuperó algo de calma, pero sus bonos habían alcanzado rendimientos asociados a deuda en dificultades y sus acciones cayeron 15,5% el miércoles.
+VOZ 2: La demanda por inteligencia artificial puede seguir creciendo y aun así existir un problema financiero.
+VOZ 1: Exactamente. Una empresa puede tener pedidos, pero si necesita invertir mucho antes de cobrar, una tasa más alta eleva el riesgo del balance.
+VOZ 2: ¿El problema se limita a CoreWeave?
+VOZ 1: No. La concentración aparece en todo el mercado estadounidense. El S&P 500 sigue cerca de máximos, pero el 62% de sus componentes cotizaba bajo su promedio móvil de 50 días.
+VOZ 2: ¿Cómo puede mantenerse alto el índice si la mayoría tiene un impulso débil?
+VOZ 1: Porque pocas empresas de gran capitalización pesan mucho. Las utilidades del S&P 500 crecerían 30,6% anual, pero fuera de las grandes tecnológicas y energía el avance sería de sólo 5%.
+VOZ 2: Entonces la superficie se ve estable y la base es más frágil.
+VOZ 1: Esa es la lectura. Un buen resultado de una empresa pequeña no compensa necesariamente una decepción de uno de los grandes líderes.
+VOZ 2: ¿Qué ocurrió en Indonesia?
+VOZ 1: Su índice cayó 11%, la mayor pérdida desde 1998, después de que MSCI planteara retirar al mercado de la categoría emergente.
+VOZ 2: ¿Por qué una clasificación provoca una caída tan grande?
+VOZ 1: Porque muchos fondos replican índices o tienen mandatos que sólo permiten invertir en determinados mercados. Si Indonesia deja de ser elegible, esas carteras podrían verse obligadas a vender.
+VOZ 2: No cambió la economía en una mañana, pero sí cambió la expectativa de flujos.
+VOZ 1: Correcto. Es formación de precios por estructura de mercado. La posibilidad de ventas pasivas puede adelantarse a cualquier efecto fundamental.
+VOZ 2: ¿Qué hicieron los bonos?
+VOZ 1: Los Treasury se estabilizaron después de recibir demanda defensiva el jueves. Los rendimientos más bajos redujeron el atractivo del dólar.
+VOZ 2: ¿El dólar no debería subir cuando aumenta la aversión al riesgo?
+VOZ 1: No necesariamente. Si la corrección tecnológica reduce expectativas de inversión y crecimiento en Estados Unidos, también puede bajar la trayectoria esperada de tasas. Ese efecto puede pesar más que la demanda tradicional de refugio.
+VOZ 2: ¿Qué muestran los precios?
+VOZ 1: El índice dólar bajaba 0,25% a 101,77 y se encaminaba a una pérdida semanal de 0,45%, la primera en cinco semanas.
+VOZ 2: ¿Y la Reserva Federal?
+VOZ 1: Los futuros asignaban 87% de probabilidad a que mantuviera la tasa en octubre. La inflación sigue siendo un riesgo, pero el mercado redujo la probabilidad de una acción inmediata.
+VOZ 2: ¿Dónde se refugió el capital?
+VOZ 1: Parte fue a bonos soberanos, oro y franco suizo. El oro cotizaba cerca de 4.173 dólares por onza.
+VOZ 2: ¿Qué pasó con el petróleo?
+VOZ 1: El Brent caía 0,7% a unos 105 dólares con 14 centavos. El mercado equilibraba los ataques en Medio Oriente con la posibilidad de que Estados Unidos flexibilice sanciones sobre algunos buques que transportan petróleo.
+VOZ 2: ¿Y el cobre, considerando la huelga de Centinela que aparece en Nacional?
+VOZ 1: El acuerdo de Escondida reduce una prima puntual de oferta y Centinela mantiene un riesgo abierto. Pero el precio también está distorsionado por inventarios: almacenes aprobados por Comex concentran alrededor del 70% del cobre visible mundial.
+VOZ 2: O sea, no todo movimiento del cobre puede atribuirse a una mina chilena.
+VOZ 1: Exactamente. Las amenazas arancelarias atrajeron metal hacia Estados Unidos y dejaron menos disponibilidad visible en otras regiones. La distribución geográfica importa tanto como el total.
+VOZ 2: ¿Cuál sería la señal de que el rebote es más confiable?
+VOZ 1: Que mejoren al mismo tiempo las acciones y los bonos de empresas ligadas a centros de datos, que aumente la amplitud del S&P 500 y que el crecimiento de utilidades se distribuya entre más sectores.
+VOZ 2: ¿Y la señal contraria?
+VOZ 1: Que los índices suban mientras los spreads crediticios siguen ampliándose, o que nuevas decisiones de índices provoquen ventas forzadas en emergentes.
+VOZ 2: Entonces el mercado no está volviendo simplemente al riesgo.
+VOZ 1: Está seleccionando. Premia liquidez y balances sólidos, castiga dependencia de deuda y puede vender mercados completos cuando cambia su elegibilidad. El rebote es real, pero la prima por concentración sigue presente.

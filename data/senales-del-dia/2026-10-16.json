@@ -1,0 +1,135 @@
+{
+  "status": "READY",
+  "date": "2026-10-16",
+  "contract": "atlas-senales-del-dia-v1",
+  "senalesDelDia": {
+    "internacional": [
+      {
+        "slot": "technology",
+        "headline": "China somete 40 tecnologías críticas a control previo de exportación",
+        "deck": "La propuesta cubre IA, biomedicina y fotovoltaica; mientras se consulta hasta el 15 de noviembre, las transferencias incluidas deberán registrarse antes de salir.",
+        "development": "Los ministerios de Comercio y de Ciencia y Tecnología de China propusieron el 16 de octubre incorporar 40 tecnologías al catálogo nacional de exportaciones prohibidas o restringidas. El paquete abarca 23 tecnologías de inteligencia artificial, cinco de biomedicina y 12 fotovoltaicas. Incluye modelos, agentes, clústeres de cómputo, terapia celular y génica, fabricación de polisilicio y equipos que contienen conocimiento técnico considerado crítico. La consulta pública permanecerá abierta hasta el 15 de noviembre.\n\nLa propuesta aún no es el catálogo definitivo, pero una medida transitoria ya exige registro previo para las tecnologías enumeradas. La obligación cubre transferencias de propiedad, licencias de uso en el extranjero y cambios de control hacia entidades foráneas. El ministerio aclaró que productos basados en esas tecnologías no quedan automáticamente restringidos y que material ya divulgado como código abierto o en publicaciones académicas queda fuera. También prevé licencias automáticas para determinados proyectos propios, investigación conjunta y cooperación internacional.\n\nLa señal es un nuevo filtro sobre la circulación de conocimiento, no una prohibición general a exportar software, medicamentos o paneles solares chinos. El efecto dependerá de qué umbrales sobrevivan a la consulta y de cómo se apliquen el registro temporal y las licencias. Deben observarse el texto final, los tiempos de autorización, las operaciones alcanzadas y eventuales respuestas de socios comerciales.",
+        "anchor": "china-control-exportacion-tecnologias-criticas",
+        "sources": [
+          {
+            "name": "Ministerio de Comercio de China",
+            "url": "https://www.mofcom.gov.cn/zcfb/dwmygl/art/2026/art_61446ab4beee4f63973d4d0ab3097648.html"
+          },
+          {
+            "name": "Ministerio de Comercio de China — preguntas y respuestas",
+            "url": "https://www.mofcom.gov.cn/zwgk/zcjd/art/2026/art_b11d5c1e9374421e93e85dc87eba6e38.html"
+          },
+          {
+            "name": "Reuters",
+            "url": "https://www.reuters.com/world/asia-pacific/china-proposes-adding-40-ai-biotech-solar-technologies-export-control-list-2026-10-16/"
+          }
+        ]
+      },
+      {
+        "slot": "world",
+        "headline": "La guerra corta ayuda para 800.000 personas en Yemen",
+        "deck": "El WFP perdió acceso a Taiz y otros frentes, mientras hospitales recibieron más de 700 heridos en una semana y operan con escasez de insumos.",
+        "development": "La intensificación de los combates en Yemen dejó sin asistencia vital a unas 800.000 personas, según el Programa Mundial de Alimentos. El desplazamiento de los frentes, los caminos bloqueados y la inseguridad impiden llegar a Taiz y otras zonas. Sólo en Taiz, más de 600.000 personas dependen de ayuda, incluidas unas 200.000 mujeres y niños. El WFP pudo atender a más de 115.000 desplazados recientes en lugares accesibles, pero advirtió que sin fondos adicionales reducirá operaciones desde noviembre.\n\nLa presión humanitaria coincide con una emergencia hospitalaria. El Comité Internacional de la Cruz Roja informó el 14 de octubre que centros de primera línea registraron más de 700 ingresos por heridas de guerra en una sola semana. Marib, Taiz y la costa del mar Rojo concentran algunas de las mayores cargas. La organización movilizó más de 500 toneladas de insumos médicos hacia Saná y Adén, pero hospitales siguen reportando falta de material quirúrgico, anestesia, oxígeno, medicamentos y personal especializado.\n\nLas cifras describen acceso y capacidad sanitaria, no atribuyen por sí solas responsabilidad por ataques específicos. El control verificable está en la reapertura sostenida de rutas, la llegada documentada de alimentos y suministros, y la financiación del WFP antes de noviembre. Sin esos cambios, el deterioro puede extenderse desde trauma de guerra hacia desnutrición, enfermedades crónicas y brotes que el sistema ya debilitado no puede absorber.",
+        "anchor": "yemen-ayuda-bloqueada-hospitales-saturados",
+        "sources": [
+          {
+            "name": "Naciones Unidas — Programa Mundial de Alimentos",
+            "url": "https://www.un.org/en/yemen-wfp-warns-potential-%E2%80%98humanitarian-catastrophe%E2%80%99-fighting-blocks-aid-delivery"
+          },
+          {
+            "name": "Comité Internacional de la Cruz Roja",
+            "url": "https://www.icrc.org/en/article/yemen-health-system-faces-mounting-pressure-fighting-intensifies"
+          },
+          {
+            "name": "Reuters",
+            "url": "https://www.reuters.com/world/middle-east/yemen-hospitals-overwhelmed-by-surge-war-casualties-red-cross-warns-2026-10-14/"
+          }
+        ]
+      }
+    ],
+    "nacional": [
+      {
+        "slot": "ipsa_company",
+        "headline": "SQM abre una agenda para integrar proveedores de Tarapacá",
+        "deck": "La minera, Economía y el gremio industrial regional firmaron una hoja de trabajo para elevar capacidades y conectar pymes con compras de la cadena minera.",
+        "development": "SQM, el Ministerio de Economía y la Asociación de Industriales de Iquique y el Tamarugal firmaron esta semana una Agenda Colaborativa para el Fortalecimiento Productivo y de Capacidades Locales. El acuerdo se presentó durante una jornada de vinculación que inauguró en Tarapacá la Semana de la Pyme 2026. La compañía, integrante del IPSA, expuso además un piloto de talento minero y un programa para conectar comunidades y oportunidades en la cadena de proveedores.\n\nEl alcance divulgado es de articulación y desarrollo de capacidades. Las partes buscan que empresas regionales mejoren su preparación comercial, incorporen innovación y tecnología y accedan con mayor información a demandas de minería, logística y servicios. La agenda pública no fijó un monto de compras, metas obligatorias de contratación, plazos de licitación ni impacto financiero para SQM. Por eso, el anuncio no debe interpretarse como un contrato adjudicado ni como una proyección de ingresos para proveedores específicos.\n\nLa relevancia empresarial está en convertir una política de relacionamiento local en resultados medibles. Los próximos controles son el calendario de la agenda, número de pymes capacitadas, procesos de compra abiertos, contratos efectivamente adjudicados y participación regional en el gasto de proveedores. Sin esos datos, la señal permanece como compromiso institucional; con ellos, podría mostrar una ampliación verificable de la base de suministro de SQM en Tarapacá.",
+        "anchor": "sqm-agenda-proveedores-tarapaca",
+        "sources": [
+          {
+            "name": "Semana de la Pyme — Ministerio de Economía",
+            "url": "https://www.semanadelapyme.cl/"
+          },
+          {
+            "name": "Minería Chilena",
+            "url": "https://www.mch.cl/ministerio-de-economia-y-sqm-impulsan-el-desarrollo-de-proveedores-locales-en-tarapaca/"
+          },
+          {
+            "name": "Reporte Minero",
+            "url": "https://www.reporteminero.cl/noticia/noticias/2026/10/sqm-ministerio-economia-proveedores-locales-tarapaca-2026"
+          }
+        ]
+      },
+      {
+        "slot": "policy_economy",
+        "headline": "Indicaciones acotan el Fonavi antes de su votación en la Cámara",
+        "deck": "La mesa técnica del proyecto MK4 limitó el fondo a primera vivienda, reforzó controles y dejó fuera los cambios a la Ley de Fraudes; el texto aún no se vota.",
+        "development": "La mesa técnica de la reforma al mercado de capitales, boletín 18.643-05, cerró el 15 de octubre una propuesta de indicaciones antes de la votación particular en la Comisión de Hacienda de la Cámara. El cambio central acota el Fondo Nacional para la Vivienda: los créditos serían para la única vivienda de personas naturales, de uso habitacional y con valor máximo de 6.000 UF incluyendo estacionamiento y bodega. Se elimina el refinanciamiento y la compra de otros instrumentos respaldados por activos habitacionales.\n\nEl diseño mantiene a BancoEstado como administrador y contempla que los originadores retengan una primera pérdida, cuyo nivel quedaría en el reglamento. También agrega una evaluación externa cada cuatro años, reportes a Hacienda, Dipres, CMF, Banco Central, Consejo Fiscal Autónomo y Congreso, y mayor protección para accionistas minoritarios. La mesa acordó retirar de esta iniciativa los cambios a la Ley de Fraudes, sin resolver por esa vía el debate separado sobre responsabilidades de bancos y usuarios.\n\nLas indicaciones todavía no son ley ni texto aprobado por la comisión. El Ejecutivo debe ingresarlas y la Comisión de Hacienda prevé sesionar la próxima semana para despachar el proyecto; después corresponderá la Sala. La evaluación factual debe separar el objetivo declarado de ampliar crédito hipotecario de sus efectos, que dependerán del deducible, la garantía estatal, la regulación de la CMF y la capacidad real de movilizar financiamiento privado.",
+        "anchor": "mk4-indicaciones-acotan-fonavi",
+        "sources": [
+          {
+            "name": "Cámara de Diputadas y Diputados — boletín 18.643-05",
+            "url": "https://www.camara.cl/verDoc.aspx?prmID=37177&prmTipo=DOCUMENTO_COMISIONDOCUMENTO"
+          },
+          {
+            "name": "Cámara de Diputadas y Diputados — presentación del proyecto",
+            "url": "https://www.camara.cl/verDoc.aspx?prmID=37034&prmTipo=DOCUMENTO_COMISIONDOCUMENTO"
+          },
+          {
+            "name": "La Tercera",
+            "url": "https://www.latercera.com/pulso/noticia/mk4-indicaciones-incluyen-bordes-al-fonavi-mas-proteccion-a-minoritarios-y-echa-pie-atras-a-cambios-en-ley-de-fraudes/"
+          }
+        ]
+      }
+    ],
+    "mercados": [
+      {
+        "slot": "markets_chile",
+        "headline": "Bancos amortiguan la caída del IPSA bajo 11.000 puntos",
+        "deck": "El índice perdió 0,49% hasta 10.966,21: Latam cayó 3,3%, mientras Itaú y Santander subieron 1,5% y 1,3%, respectivamente.",
+        "development": "El MSCI IPSA cerró el 14 de octubre con una baja de 0,49% en 10.966,21 puntos y volvió a situarse bajo la barrera de 11.000. La caída no fue uniforme. Latam Airlines retrocedió 3,3% y encabezó la presión negativa, mientras las cuatro acciones bancarias avanzaron: Itaú subió 1,5%, Santander 1,3%, Banco de Chile 0,3% y Bci 0,2%. Los registros de la Bolsa de Santiago confirman el nivel de cierre del índice.\n\nLa dispersión muestra una rotación defensiva dentro del mercado local durante una jornada marcada por inflación estadounidense más alta y ventas globales de acciones tecnológicas. Los bancos ofrecieron soporte, pero no bastaron para sostener el índice. El movimiento no demuestra por sí solo una mejora estructural del sector financiero ni un deterioro específico de Latam: una sesión combina ponderaciones, flujos tácticos y sensibilidad distinta a tasas, actividad y costos de combustible.\n\nLa señal debe comprobarse con más de un cierre. Una ampliación de la caída hacia bancos y otros sectores indicaría menor tolerancia general al riesgo; una recuperación de Latam y mayor amplitud devolverían al episodio un carácter puntual. También importan el peso chileno, las tasas locales y el cobre, pero no corresponde atribuirles causalidad exclusiva sin evidencia de flujos. Los controles son volumen negociado, amplitud del IPSA y desempeño relativo sectorial en las siguientes sesiones.",
+        "anchor": "ipsa-bajo-once-mil-bancos-amortiguan",
+        "sources": [
+          {
+            "name": "Bolsa de Santiago",
+            "url": "https://www.bolsadesantiago.com/"
+          },
+          {
+            "name": "Diario Financiero",
+            "url": "https://www.df.cl/mercados/bolsa-monedas/bolsas-hoy-et8a4"
+          }
+        ]
+      },
+      {
+        "slot": "markets_global",
+        "headline": "Hedge funds amplifican la tensión en los bonos europeos",
+        "deck": "Ya explican más de 50% del volumen secundario en deuda soberana del euro; su liquidez ayuda en calma, pero el apalancamiento puede acelerar ventas.",
+        "development": "La turbulencia de los bonos europeos volvió visible el peso de los hedge funds en un mercado soberano de alrededor de US$13 billones. Datos citados por el Banco Central Europeo indican que estos fondos ya representan más de 50% del volumen negociado en el mercado secundario de deuda pública de la zona euro, frente a cerca de 30% en 2020. Durante la venta reciente, el rendimiento francés a diez años alcanzó un máximo de 24 años y la liquidez de instrumentos cortos cayó a su nivel más bajo desde 2008.\n\nEl mecanismo importa tanto como la dirección de las tasas. Los fondos aportan contrapartida en subastas y transacciones cuando otros compradores retroceden, pero varias estrategias dependen de repos, derivados y pequeñas diferencias de precio multiplicadas con deuda. Si aumenta la volatilidad o se encarece el financiamiento, llamadas de margen pueden forzar cierres simultáneos. El FMI advierte que apalancamiento, posiciones concurridas y rescates de inversionistas pueden transformar a proveedores de liquidez en amplificadores del estrés.\n\nLa presencia de hedge funds no prueba que hayan originado el deterioro fiscal francés ni cada movimiento de precios. La señal es de estructura y transmisión: una base de negociación más sensible puede profundizar ajustes nacidos en inflación, deuda o política. Deben observarse liquidez bid-ask, volúmenes repo, exigencias de margen, posiciones concentradas y la respuesta regulatoria. Una recuperación estable de profundidad y menor apalancamiento reducirían el riesgo de ventas forzadas.",
+        "anchor": "hedge-funds-bonos-europeos-liquidez",
+        "sources": [
+          {
+            "name": "Reuters",
+            "url": "https://www.reuters.com/business/europes-bond-market-turmoil-shines-spotlight-hedge-funds-role-key-markets-2026-10-16/"
+          },
+          {
+            "name": "Banco Central Europeo",
+            "url": "https://www.ecb.europa.eu/press/financial-stability-publications/fsr/html/ecb.fsr202605~50566915a7.en.html"
+          },
+          {
+            "name": "Fondo Monetario Internacional",
+            "url": "https://www.imf.org/en/blogs/articles/2026/10/06/hedge-funds-improve-market-functioning-but-can-also-amplify-stress"
+          }
+        ]
+      }
+    ]
+  }
+}

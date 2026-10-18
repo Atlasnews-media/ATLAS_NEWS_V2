@@ -1,0 +1,35 @@
+VOZ 1: La apertura de mercados muestra dos fuerzas que conviven, pero todavía no se resuelven. Por un lado, bajan los rendimientos de los bonos y rebotan los semiconductores. Por otro, el diésel y el petróleo mantienen una prima energética que puede sostener la inflación.
+VOZ 2: ¿Estamos viendo entonces un regreso general del apetito por riesgo?
+VOZ 1: No todavía. El rebote es selectivo. ASML subió 3% después de entregar una perspectiva favorable, y Samsung Electronics y SK Hynix cerraron al alza en Asia. Pero el STOXX 600 avanzó 0,4% y el índice global MSCI apenas 0,1%.
+VOZ 2: Es decir, tecnología mejora, pero el resto del mercado no confirma con la misma fuerza.
+VOZ 1: Exacto. Incluso los bancos seguían bajo presión después de resultados mixtos. La señal es de dispersión: el mercado premia visibilidad de beneficios en chips, pero no está comprando una historia uniforme de crecimiento.
+VOZ 2: ¿Qué papel juegan los bonos en ese rebote?
+VOZ 1: El Treasury a diez años bajó 2 puntos base, hasta 5,20%, cerca de su menor rendimiento en dos semanas. El bono a treinta años también cedió 2 puntos base, a 5,58%, y acumulaba cuatro jornadas de descenso en su rendimiento.
+VOZ 2: ¿Por qué eso ayuda especialmente a tecnología?
+VOZ 1: Porque muchas empresas de crecimiento concentran una parte importante de sus beneficios esperados en el futuro. Cuando baja la tasa usada para descontar esos flujos, su valor presente sube. Pero este alivio ocurre justo antes del IPC de Estados Unidos, así que puede ser frágil.
+VOZ 2: ¿Qué espera el mercado de ese dato?
+VOZ 1: El consenso estimaba que la inflación general de septiembre se aceleró a 3,6% anual, principalmente por energía y otras materias primas. Los futuros monetarios asignaban cerca de 20% de probabilidad a un alza de la Fed en octubre y casi 100% a un aumento en diciembre.
+VOZ 2: Entonces la baja del Treasury no significa que el mercado haya descartado más alzas.
+VOZ 1: Correcto. Puede ser una pausa táctica antes del dato. Si el IPC sorprende al alza, podrían volver las ventas de bonos y la presión sobre las acciones de larga duración.
+VOZ 2: ¿Dónde entra la energía?
+VOZ 1: El Brent subía cerca de 1%, a unos 106 dólares con 50 centavos por barril, después de nuevos ataques a embarcaciones cerca del estrecho de Ormuz. Pero el dato más importante está en los productos refinados.
+VOZ 2: ¿Por qué mirar diésel y no sólo petróleo?
+VOZ 1: Porque el diésel muestra dónde está el cuello de botella. Los futuros estadounidenses del combustible subieron cerca de 5% el martes, pese a expectativas de que un acuerdo pudiera ampliar la oferta rusa. Además, la AIE informó que el margen de refinación del diésel rozó 95 dólares por barril en septiembre.
+VOZ 2: ¿Qué es ese margen?
+VOZ 1: Es la prima del producto refinado respecto del crudo. Cuando se dispara, indica que no basta con tener petróleo: faltan capacidad de refinación, rutas seguras o inventarios del combustible que realmente usan camiones, maquinaria, agricultura e industria.
+VOZ 2: La General del día habla de escasez de diésel hasta 2027. ¿Qué agrega Mercados?
+VOZ 1: La General explica el balance físico. Mercados observa cómo esa escasez se incorpora a precios y curvas. Aunque la AIE proyecta una caída de 2,6 millones de barriles diarios en la demanda mundial de petróleo este año, las exportaciones de diésel de Medio Oriente y Rusia bajaron juntas 1,3 millones de barriles diarios en septiembre.
+VOZ 2: O sea, puede caer la demanda total y aun así encarecerse un producto específico.
+VOZ 1: Exactamente. La composición domina al agregado. Y no es sólo un movimiento del contrato inmediato: los futuros de WTI para 2027 llegaron a 84 dólares y marcaron un récord por duodécima sesión consecutiva. El Brent para 2027 había alcanzado 90 dólares.
+VOZ 2: ¿Qué nos dice eso sobre la inflación?
+VOZ 1: Que la presión puede persistir en transporte y producción aun si la economía pierde impulso. El diésel caro encarece mover bienes y operar maquinaria. Esa transmisión puede reducir márgenes empresariales y retrasar la desinflación.
+VOZ 2: ¿Y cómo se conecta con el rebote de chips?
+VOZ 1: Es la tensión central. Los semiconductores se benefician de tasas largas algo más bajas y de noticias corporativas favorables. Pero la energía mantiene vivo el riesgo de inflación, y ese riesgo limita cuánto pueden caer las tasas.
+VOZ 2: ¿Qué tendría que pasar para que el mercado se vuelva claramente más optimista?
+VOZ 1: Un IPC menor de lo previsto, una baja de las probabilidades de nuevas alzas de la Fed y un avance bursátil que se amplíe más allá de tecnología. Las tres señales juntas serían más convincentes que un rebote de pocos nombres.
+VOZ 2: ¿Y qué invalidaría esa lectura?
+VOZ 1: Un IPC alto, especialmente en componentes ligados a energía, o una nueva escalada del diésel y del petróleo. Eso podría devolver al Treasury sobre máximos recientes y presionar otra vez a las acciones sensibles a tasas.
+VOZ 2: ¿Qué hay que mirar durante el día?
+VOZ 1: Primero, la reacción del Treasury a diez años y de las probabilidades implícitas de la Fed después del IPC. Segundo, la diferencia entre el precio del crudo y el margen del diésel. Tercero, la amplitud del rebote tecnológico.
+VOZ 2: Entonces la conclusión no es que el riesgo volvió, sino que encontró una ventana.
+VOZ 1: Esa es la lectura más precisa. Los bonos dieron aire a los chips, pero la prima energética sigue en la curva. Mientras esa contradicción no se resuelva, el mercado probablemente seguirá moviéndose por sectores y no como un bloque.

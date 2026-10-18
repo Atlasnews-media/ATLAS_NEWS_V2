@@ -1,0 +1,35 @@
+VOZ 1: La novedad local está en el crédito. Los bancos chilenos comenzaron a flexibilizar las condiciones para vivienda e inmobiliario, mientras la demanda mejora en varios segmentos. Pero todavía no es una recuperación uniforme.
+VOZ 2: ¿Dónde se ve el cambio con mayor claridad?
+VOZ 1: En vivienda. El 30% de los bancos reportó condiciones hipotecarias más favorables que en el trimestre anterior. Además, el 40% percibió una demanda más fuerte, asociada a mejores tasas, y sólo el 10% observó debilidad.
+VOZ 2: ¿Eso implica que la inversión ya está repuntando?
+VOZ 1: No. Es una señal previa, no inversión realizada. De hecho, la Encuesta de Expectativas Económicas de octubre redujo la proyección de crecimiento de la inversión para 2026 desde 5,5% a apenas 0,3%.
+VOZ 2: Es una corrección enorme. ¿Cómo se concilia con el crédito más flexible?
+VOZ 1: Porque ocurren en momentos distintos. La inversión de este año ya está muy condicionada por decisiones tomadas, proyectos retrasados y actividad débil. Una mejora del crédito durante el tercer trimestre puede ayudar hacia adelante, pero no recupera automáticamente lo que no se ejecutó antes.
+VOZ 2: ¿Qué ocurre en el sector inmobiliario?
+VOZ 1: El 30% de los bancos informó condiciones más favorables y el 40% vio una demanda fortalecida. En construcción, la señal es menos intensa: el 90% no modificó sus estándares y sólo el 20% percibió una mayor demanda.
+VOZ 2: Entonces no es lo mismo financiar vivienda que financiar nuevas obras.
+VOZ 1: Exacto. El crédito hipotecario puede apoyar compraventas y proyectos existentes. Para elevar inversión productiva se necesitan nuevas obras, maquinaria, permisos, importaciones de equipos y desembolsos efectivos.
+VOZ 2: ¿Qué pasa con las empresas?
+VOZ 1: Para grandes compañías, el 15% de las entidades flexibilizó sus condiciones y sólo el 8% las endureció. También se detuvo el deterioro de la demanda: la proporción que la veía más débil cayó de 31% a 8%.
+VOZ 2: ¿Y las Pymes?
+VOZ 1: Ahí la señal es más plana. Todos los bancos mantuvieron sus estándares y el 90% no cambió su percepción de la demanda. No hay un deterioro adicional, pero tampoco una flexibilización amplia.
+VOZ 2: ¿Mejoró también el acceso de los hogares al crédito de consumo?
+VOZ 1: La demanda dejó de caer con la intensidad anterior, pero la oferta sigue cautelosa. El 18% de las instituciones mantuvo estándares más estrictos para consumo y sólo el 9% los flexibilizó.
+VOZ 2: ¿Por qué importa distinguir consumo de vivienda?
+VOZ 1: Porque cuentan historias distintas. La recuperación hipotecaria puede reflejar mejores tasas y demanda acumulada. La cautela en consumo muestra que los bancos aún perciben riesgos en ingresos, empleo o capacidad de pago de los hogares.
+VOZ 2: ¿Qué dice la encuesta sobre el crecimiento general?
+VOZ 1: Los expertos redujeron a 0,2% la expansión esperada del PIB para 2026, desde 0,7% el mes anterior. Para 2027 proyectan 3%.
+VOZ 2: Y la inversión daría un salto desde 0,3% este año a 5,8% el próximo.
+VOZ 1: Sí, pero esa es una hipótesis exigente. Supone que proyectos actualmente postergados comienzan a ejecutarse y que la normalización crediticia se extiende hacia construcción, Pymes e inversión productiva.
+VOZ 2: ¿La tasa de política monetaria ayudaría con recortes?
+VOZ 1: La encuesta no anticipa ese impulso en el corto plazo. La proyección media mantiene la TPM en 4,5% durante los próximos 23 meses. Además, la inflación esperada para 2026 subió a 4,6%.
+VOZ 2: Entonces el crédito mejora aun sin una baja adicional de la TPM.
+VOZ 1: Esa es la lectura. Puede influir la competencia entre bancos, una evaluación algo mejor de ciertos segmentos o tasas de largo plazo más favorables. No corresponde convertir automáticamente esta mejora en una conclusión sobre la próxima decisión del Banco Central.
+VOZ 2: ¿Cómo se conecta esto con la General sobre la defensa comercial europea frente a China?
+VOZ 1: La conexión es indirecta. Una disputa industrial más amplia puede afectar inversión mundial, demanda por materias primas y costos de equipos. Para Chile, eso añade incertidumbre externa justo cuando la recuperación de inversión local se está desplazando hacia 2027.
+VOZ 2: ¿Qué confirmaría una recuperación real?
+VOZ 1: Más colocaciones efectivas de vivienda y empresas, mayor financiamiento de construcción, mejores condiciones para Pymes y ejecución verificable de proyectos. La encuesta bancaria mide percepciones; ahora los datos realizados deben acompañarlas.
+VOZ 2: ¿Y qué invalidaría la señal positiva?
+VOZ 1: Un nuevo endurecimiento de estándares, caída de la demanda de crédito o proyectos que sigan postergándose. También sería una señal débil si la mejora permanece concentrada en compraventas inmobiliarias y no llega a nuevas obras ni capacidad productiva.
+VOZ 2: Entonces el mensaje central es que el sistema financiero abrió una puerta, pero la economía todavía debe cruzarla.
+VOZ 1: Exactamente. El crédito dejó de empeorar y mejora en algunos segmentos, pero la inversión de 2026 prácticamente se estancó. La pregunta para los próximos meses es si esa normalización se convierte en actividad real durante 2027.
