@@ -99,14 +99,14 @@
     {
       "id": "china-eu-industrial-trade",
       "topic": "Comercio industrial entre China y la Unión Europea",
-      "thesis": "La tregua automotriz entre China y la Unión Europea no resolvió el desequilibrio industrial: el bloque prepara una defensa comercial más amplia para químicos, acero y maquinaria, ahora con Alemania alineada con respuestas más rápidas.",
-      "status": "confirmed",
-      "last_evidence": "El 15 de octubre los líderes europeos iniciaron una cumbre cuyo borrador pide usar plenamente las defensas comerciales y añadir nuevos instrumentos; el déficit de bienes con China alcanzó €360.000 millones en 2025 y Alemania pasó de oponerse a los aranceles antisubsidios en 2024 a respaldar una reacción más ágil.",
-      "effect": "Cambia el ángulo del hilo: el acuerdo sobre híbridos sigue siendo una desescalada sectorial, pero coexiste con una postura europea potencialmente más defensiva en varias cadenas industriales y con menor división entre Francia y Alemania.",
-      "base_scenario": "La UE implementa el entendimiento automotor y mantiene el diálogo con Beijing, mientras amplía gradualmente investigaciones y herramientas defensivas en químicos, acero y maquinaria sin cerrar de inmediato su mercado.",
-      "invalidate_if": "La cumbre elimina del texto final la ampliación de defensas, la Comisión no presenta medidas verificables y el desequilibrio industrial comienza a corregirse; nuevas investigaciones, salvaguardias o represalias chinas confirmarían la ampliación del conflicto.",
-      "watch": "Conclusiones finales de la cumbre, propuestas de la Comisión, investigaciones en químicos, PET, acero y maquinaria, cuotas y compromisos de precios para híbridos, licencias de tierras raras, respuesta de Beijing y desvío de exportaciones.",
-      "last_publication": "/ediciones/2026-10-15-daily-ue-defensa-comercial-china/"
+      "thesis": "La disputa industrial entre China y Occidente ya opera en ambas direcciones: Europa prepara defensas frente a importaciones chinas, mientras Beijing extiende controles sobre la transferencia de tecnologías críticas de inteligencia artificial, biotecnología y manufactura solar.",
+      "status": "changed",
+      "last_evidence": "El 18 de octubre China mantenía en consulta hasta el 15 de noviembre una propuesta para controlar 40 tecnologías —23 de inteligencia artificial y 12 solares— y exigía registrar temporalmente las transferencias incluidas antes del catálogo definitivo.",
+      "effect": "Cambia el ángulo del hilo: el conflicto deja de concentrarse sólo en el acceso de bienes chinos al mercado europeo y pasa también al control chino sobre conocimiento, procesos y equipos capaces de reproducir capacidad industrial fuera del país.",
+      "base_scenario": "China aprueba un catálogo con licencias y prohibiciones selectivas, mantiene excepciones acotadas para servicios ordinarios y código abierto, y administra la transferencia de tecnología solar mientras Europa amplía gradualmente sus defensas comerciales.",
+      "invalidate_if": "La versión final retira los controles principales o concede licencias amplias y previsibles que no alteran inversiones ni transferencia tecnológica; restricciones adicionales, demoras de proyectos o represalias occidentales reforzarían la tesis.",
+      "watch": "Catálogo final después del 15 de noviembre, reglas y licencias, registro temporal, umbrales para modelos de inteligencia artificial, equipos y procesos solares, planes de plantas fuera de China, respuesta de Estados Unidos y la Unión Europea y nuevas investigaciones comerciales.",
+      "last_publication": "/ediciones/2026-10-18-daily-china-control-tecnologia-critica/"
     },
     {
       "id": "developing-country-crisis-finance",
