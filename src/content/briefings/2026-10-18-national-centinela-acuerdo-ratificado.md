@@ -1,11 +1,11 @@
 ---
 title: "Centinela cierra la huelga y retira un riesgo adicional para la oferta de cobre"
 summary: "El 94,49% de los votantes ratificó el nuevo contrato colectivo en Centinela. La aprobación convierte el preacuerdo en cierre definitivo del conflicto, aunque no corrige por sí sola la debilidad productiva de la minería chilena."
-publishedAt: "2026-10-18T06:26:00-03:00"
+publishedAt: "2026-10-18T06:49:39-03:00"
 cutoffAt: "2026-10-18T06:23:00-03:00"
 section: "national"
 editionSlot: "morning"
-status: "draft"
+status: "published"
 tags:
   - chile
   - mineria

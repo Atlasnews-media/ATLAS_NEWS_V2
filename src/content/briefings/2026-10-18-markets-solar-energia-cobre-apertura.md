@@ -1,11 +1,11 @@
 ---
 title: "Tecnología solar, energía y cobre acumulan señales para la apertura del lunes"
 summary: "Los mercados tradicionales permanecen cerrados, pero el fin de semana agregó tres inputs: menores exportaciones solares chinas, una revisión estadounidense de sanciones rusas y el cierre laboral de Centinela. La primera reacción observable llegará con la reapertura."
-publishedAt: "2026-10-18T06:31:00-03:00"
+publishedAt: "2026-10-18T06:49:39-03:00"
 cutoffAt: "2026-10-18T06:29:00-03:00"
 section: "markets"
 editionSlot: "morning"
-status: "draft"
+status: "published"
 tags:
   - mercados
   - china

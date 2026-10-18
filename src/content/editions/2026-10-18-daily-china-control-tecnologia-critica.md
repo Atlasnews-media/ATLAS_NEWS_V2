@@ -1,11 +1,11 @@
 ---
 title: "China amplía la disputa industrial al control de tecnología crítica"
 summary: "Beijing propuso controlar 40 tecnologías de inteligencia artificial, biotecnología y manufactura solar, y exige registrar transferencias mientras consulta el catálogo definitivo hasta el 15 de noviembre."
-publishedAt: "2026-10-18T06:08:01-03:00"
+publishedAt: "2026-10-18T06:49:39-03:00"
 cutoffAt: "2026-10-18T06:07:43-03:00"
 type: "daily"
 editionSlot: "morning"
-status: "draft"
+status: "published"
 tags:
   - china
   - tecnologia
