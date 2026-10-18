@@ -134,7 +134,11 @@ if (manifest.latestDaily?.editionSlot !== editionSlot) {
 }
 
 const packageKey =
-  editionSlot === "midday" ? "middayPackage" : "morningPackage";
+  editionSlot === "evening"
+    ? "eveningPackage"
+    : editionSlot === "midday"
+      ? "middayPackage"
+      : "morningPackage";
 const packageState = manifest[packageKey];
 if (packageState?.date !== editionDate) {
   throw new Error(

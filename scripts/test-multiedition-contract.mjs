@@ -24,6 +24,12 @@ const middayDaily = {
   type: "daily",
   editionSlot: "midday",
 };
+const eveningDaily = {
+  id: "2026-10-07-daily-evening-fixture",
+  publishedAt: "2026-10-07T13:30:00-03:00",
+  type: "daily",
+  editionSlot: "evening",
+};
 
 const briefings = [
   {
@@ -48,10 +54,23 @@ const briefings = [
     section: "markets",
     editionSlot: "midday",
   },
+  {
+    id: "2026-10-07-national-evening-fixture",
+    publishedAt: "2026-10-07T13:30:00-03:00",
+    section: "national",
+    editionSlot: "evening",
+  },
+  {
+    id: "2026-10-07-markets-evening-fixture",
+    publishedAt: "2026-10-07T13:30:00-03:00",
+    section: "markets",
+    editionSlot: "evening",
+  },
 ];
 
 assert.equal(normalizeEditionSlot(undefined), "morning");
 assert.equal(normalizeEditionSlot("midday"), "midday");
+assert.equal(normalizeEditionSlot("evening"), "evening");
 assert.notEqual(
   editionIdentityKey("2026-10-07", "daily", undefined),
   editionIdentityKey("2026-10-07", "daily", "midday"),
@@ -61,9 +80,10 @@ assert.notEqual(
   briefingIdentityKey("2026-10-07", "national", "midday"),
 );
 
-const dailies = [previousDaily, morningDaily, middayDaily];
+const dailies = [previousDaily, morningDaily, middayDaily, eveningDaily];
 assert.equal(dailyIssueNumberFromRecords(morningDaily, dailies), 2);
 assert.equal(dailyIssueNumberFromRecords(middayDaily, dailies), 2);
+assert.equal(dailyIssueNumberFromRecords(eveningDaily, dailies), 2);
 
 const morningPackage = packageForSlot({
   dailies,
@@ -75,6 +95,11 @@ const middayPackage = packageForSlot({
   briefings,
   slot: "midday",
 });
+const eveningPackage = packageForSlot({
+  dailies,
+  briefings,
+  slot: "evening",
+});
 
 assert.equal(morningPackage?.generalId, morningDaily.id);
 assert.equal(middayPackage?.generalId, middayDaily.id);
@@ -82,7 +107,11 @@ assert.equal(morningPackage?.nationalId, "2026-10-07-national-morning-fixture");
 assert.equal(middayPackage?.nationalId, "2026-10-07-national-midday-fixture");
 assert.equal(morningPackage?.completeness, 3);
 assert.equal(middayPackage?.completeness, 3);
+assert.equal(eveningPackage?.generalId, eveningDaily.id);
+assert.equal(eveningPackage?.nationalId, "2026-10-07-national-evening-fixture");
+assert.equal(eveningPackage?.marketsId, "2026-10-07-markets-evening-fixture");
+assert.equal(eveningPackage?.completeness, 3);
 
 console.log(
-  "PASS multiedición: Matutina y Mediodía conservan identidades distintas, comparten número diario y preservan paquetes separados.",
+  "PASS multiedición: Matutina, Mediodía y Vespertina conservan identidades distintas, comparten número diario y preservan paquetes separados.",
 );

@@ -1,24 +1,96 @@
 ---
+import ContentCard from "../../components/ContentCard.astro";
 import BaseLayout from "../../layouts/BaseLayout.astro";
+import {
+  formatEditorialDate,
+  getPublishedDailiesForSlot,
+  getPublishedEditions,
+  getPublishedMarketsForSlot,
+  getPublishedNationalForSlot,
+} from "../../lib/content";
+
+const [editions, nationalEvening, marketsEvening] = await Promise.all([
+  getPublishedEditions(),
+  getPublishedNationalForSlot("evening"),
+  getPublishedMarketsForSlot("evening"),
+]);
+const currentEvening = getPublishedDailiesForSlot(editions, "evening")[0];
+const currentDate = currentEvening?.id.slice(0, 10);
+const currentNational = currentDate
+  ? nationalEvening.find(({ id }) => id.startsWith(`${currentDate}-national-`))
+  : undefined;
+const currentMarkets = currentDate
+  ? marketsEvening.find(({ id }) => id.startsWith(`${currentDate}-markets-`))
+  : undefined;
 ---
 
 <BaseLayout
   title="Vespertino — ATLAS NEWS"
-  description="Edición vespertina de ATLAS NEWS: cierre y actualización de Internacional, Nacional y Mercados al final de la jornada."
+  description="Edición vespertina de ATLAS NEWS: novedades de Internacional, Nacional y Mercados posteriores a la matutina."
 >
   <main class="page-shell section-page">
-    <p class="page-kicker">Cierre de la jornada</p>
-    <h1 class="page-title">Vespertino</h1>
+    <p class="page-kicker">Actualización de la jornada</p>
+    <h1 class="page-title">Edición Vespertina</h1>
     <p class="page-intro">
-      La edición vespertina reúne las principales novedades de Internacional,
-      Nacional y Mercados acumuladas durante la segunda mitad de la jornada.
+      Novedades de Internacional, Nacional y Mercados conocidas entre las 07:00
+      y las 12:00, posteriores a la edición matutina.
     </p>
 
-    <p class="empty-state">Aún no hay una edición vespertina publicada.</p>
+    {
+      currentEvening ? (
+        <div class="evening-grid">
+          <ContentCard
+            href={`/ediciones/${currentEvening.id}/`}
+            eyebrow="Internacional · Vespertina"
+            title={currentEvening.data.title}
+            summary={currentEvening.data.summary}
+            date={formatEditorialDate(currentEvening.data.publishedAt)}
+            demo={currentEvening.data.demo}
+          />
+          {currentNational && (
+            <ContentCard
+              href={`/nacional/${currentNational.id}/`}
+              eyebrow="Nacional · Vespertina"
+              title={currentNational.data.title}
+              summary={currentNational.data.summary}
+              date={formatEditorialDate(currentNational.data.publishedAt)}
+              demo={currentNational.data.demo}
+            />
+          )}
+          {currentMarkets && (
+            <ContentCard
+              href={`/mercados/${currentMarkets.id}/`}
+              eyebrow="Mercados · Vespertina"
+              title={currentMarkets.data.title}
+              summary={currentMarkets.data.summary}
+              date={formatEditorialDate(currentMarkets.data.publishedAt)}
+              demo={currentMarkets.data.demo}
+            />
+          )}
+        </div>
+      ) : (
+        <p class="empty-state">Aún no hay una edición vespertina publicada.</p>
+      )
+    }
   </main>
 </BaseLayout>
 
 <style>
+  .evening-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    border-top: 5px double var(--rule);
+  }
+  .evening-grid :global(.card) {
+    padding: 1.4rem;
+    border-top-width: 1px;
+  }
+  .evening-grid :global(.card:first-child) {
+    padding-left: 0;
+  }
+  .evening-grid :global(.card + .card) {
+    border-left: 1px solid var(--rule);
+  }
   .empty-state {
     margin-top: 2rem;
     padding: 2rem 0;
@@ -31,6 +103,18 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
   @media (max-width: 42rem) {
     .page-intro {
       display: none;
+    }
+    .evening-grid {
+      grid-template-columns: 1fr;
+    }
+    .evening-grid :global(.card),
+    .evening-grid :global(.card:first-child) {
+      padding-right: 0;
+      padding-left: 0;
+    }
+    .evening-grid :global(.card + .card) {
+      border-top: 1px solid var(--rule);
+      border-left: 0;
     }
   }
 </style>

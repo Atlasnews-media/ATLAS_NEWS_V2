@@ -50,7 +50,17 @@ Mantener un periódico financiero digital donde el código, los datos y el conte
 - Puede coexistir una publicación Matutina y una Mediodía en la misma fecha. Continúa prohibido duplicar la misma fecha + tipo/sección + `editionSlot`.
 - Matutina y Mediodía de una misma fecha comparten el mismo número diario; la edición vigente de Portada se decide por `publishedAt` y su `editionSlot`.
 - Mediodía debe pasar los mismos gates fail-closed, manifiesto, auditor, publicador y verificación pública. Publicarla no elimina ni modifica retrospectivamente Matutina.
-- Este contrato habilita la identidad web de Mediodía; no define Audio, Reel, Carrusel ni Vespertina.
+- Este apartado habilita la identidad web de Mediodía; no define Audio, Reel ni Carrusel. Vespertina tiene su contrato independiente a continuación.
+
+## Edición vespertina
+
+- `editionSlot: evening` identifica las piezas de la Edición Vespertina y utiliza las colecciones General, Nacional y Mercados existentes.
+- La Edición Vespertina es adicional a Matutina y Mediodía, sin alterar publicaciones previas.
+- La rama editorial canónica es `editorial/AAAA-MM-DD-evening` y el PR se titula `Paquete editorial vespertino — AAAA-MM-DD`; la promoción exige gates productivos y verificación pública de identidad y Portada.
+- El paquete productivo contiene exactamente una General, una Nacional y una Mercados con `editionSlot: evening`, sin reescribir Matutina, Mediodía, Señales ni Audio AM.
+- La Portada muestra `EDICIÓN VESPERTINA` sólo cuando una General evening publicada es la vigente por `publishedAt`; `/vespertino/` muestra las tres piezas y el manifiesto conserva `eveningPackage`.
+- JEV no forma parte del productor editorial de Vespertina; la selección editorial permanece en el productor.
+- Reel es un downstream independiente de una publicación web verificada; Vespertina no genera Carrusel ni Audio por sí sola.
 
 ## Memoria editorial mínima
 

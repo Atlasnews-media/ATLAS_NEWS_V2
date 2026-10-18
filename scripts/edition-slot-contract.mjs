@@ -1,8 +1,10 @@
 export const MORNING_EDITION_SLOT = "morning";
 export const MIDDAY_EDITION_SLOT = "midday";
+export const EVENING_EDITION_SLOT = "evening";
 export const EDITION_SLOTS = Object.freeze([
   MORNING_EDITION_SLOT,
   MIDDAY_EDITION_SLOT,
+  EVENING_EDITION_SLOT,
 ]);
 
 export function normalizeEditionSlot(value) {

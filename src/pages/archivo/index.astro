@@ -56,9 +56,11 @@ const [editions, national, markets, readings] = await Promise.all([
               <time>{formatEditorialDate(briefing.data.publishedAt)}</time>
               <a href={`/nacional/${briefing.id}/`}>{briefing.data.title}</a>
               <span>
-                {resolveEditionSlot(briefing.data) === "midday"
-                  ? "Nacional · Mediodía"
-                  : "Nacional"}
+                {resolveEditionSlot(briefing.data) === "evening"
+                  ? "Nacional · Vespertina"
+                  : resolveEditionSlot(briefing.data) === "midday"
+                    ? "Nacional · Mediodía"
+                    : "Nacional"}
               </span>
             </li>
           ))
@@ -75,9 +77,11 @@ const [editions, national, markets, readings] = await Promise.all([
               <time>{formatEditorialDate(briefing.data.publishedAt)}</time>
               <a href={`/mercados/${briefing.id}/`}>{briefing.data.title}</a>
               <span>
-                {resolveEditionSlot(briefing.data) === "midday"
-                  ? "Mercados · Mediodía"
-                  : "Mercados"}
+                {resolveEditionSlot(briefing.data) === "evening"
+                  ? "Mercados · Vespertina"
+                  : resolveEditionSlot(briefing.data) === "midday"
+                    ? "Mercados · Mediodía"
+                    : "Mercados"}
               </span>
             </li>
           ))
