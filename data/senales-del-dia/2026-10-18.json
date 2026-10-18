@@ -1,0 +1,139 @@
+{
+  "status": "READY",
+  "date": "2026-10-18",
+  "contract": "atlas-senales-del-dia-v1",
+  "senalesDelDia": {
+    "internacional": [
+      {
+        "slot": "technology",
+        "headline": "Scaleway abre una ruta europea de IA fuera de Nvidia",
+        "deck": "El proveedor francés desplegará en Suecia un supercomputador comercial con AMD MI355X y ROCm, ampliando las opciones de cómputo bajo jurisdicción europea.",
+        "development": "Scaleway anunció el 13 de octubre que desplegará en Suecia un supercomputador de inteligencia artificial basado en aceleradores AMD Instinct MI355X. La compañía francesa lo presenta como el primer sistema comercial de esta escala en Europa sustentado en hardware AMD y abierto a startups, empresas de IA y clientes corporativos. Será además su primera instalación de este tipo fuera de Francia y estará ensamblada y mantenida por Bull, con componentes de Giga Computing, HPE, VAST Data y Motul.\n\nLa decisión agrega una alternativa a la infraestructura dominada por Nvidia. AMD acompaña sus chips con ROCm, un ecosistema de software abierto que admite herramientas de desarrollo ampliamente usadas, mientras CUDA funciona exclusivamente sobre hardware Nvidia. Esa diferencia puede reducir costos de cambio y ampliar la negociación de compradores europeos, aunque el anuncio no entrega capacidad total, fecha exacta de entrada en servicio, inversión ni precios comparables.\n\nSuecia fue elegida por su electricidad de baja emisión, clima y ecosistema tecnológico. La señal relevante es diversificación de proveedor y jurisdicción, no una prueba de rendimiento superior. Habrá que observar configuración final, disponibilidad comercial, utilización, consumo energético y pruebas independientes frente a sistemas Blackwell. También importa si la compatibilidad de ROCm permite trasladar cargas reales sin costos de adaptación que neutralicen la mayor libertad de hardware.",
+        "anchor": "scaleway-supercomputador-amd-suecia",
+        "sources": [
+          {
+            "name": "Scaleway",
+            "url": "https://www.scaleway.com/en/news/scaleway-expands-ai-infrastructure-in-europe-with-new-amd-instinct-gpu-based-supercomputer-in-sweden/"
+          },
+          {
+            "name": "Reuters",
+            "url": "https://www.reuters.com/business/media-telecom/scaleway-build-amd-powered-ai-supercomputer-sweden-2026-10-13/"
+          },
+          {
+            "name": "Euronext",
+            "url": "https://live.euronext.com/en/financial-news/scaleway-build-amd-powered-ai-supercomputer-sweden"
+          }
+        ]
+      },
+      {
+        "slot": "world",
+        "headline": "El ébola alcanza una octava provincia en el Congo",
+        "deck": "El instituto sanitario congoleño confirmó casos en Ubangi del Norte, junto a la frontera centroafricana, ampliando la dispersión territorial del brote.",
+        "development": "El Instituto Nacional de Salud Pública de la República Democrática del Congo confirmó el 18 de octubre que el brote de enfermedad por virus del Ébola llegó a una octava provincia. Los nuevos casos se ubican en Ubangi del Norte, territorio fronterizo con la República Centroafricana. Reuters había informado dos confirmaciones en esa zona el jueves con base en autoridades sanitarias, pero la declaración nacional transforma ese antecedente en confirmación oficial del aumento de la huella geográfica.\n\nLa extensión importa porque agrega otro frente de vigilancia y respuesta en un contexto de movilidad interna y transfronteriza. El Centro Europeo para la Prevención y el Control de Enfermedades ya había registrado reportes de dos casos en la zona sanitaria de Wapinda, cerca de Bas-Uele. La OMS mantiene una página de situación para el brote de la variante Bundibugyo, para la cual no existe una vacuna ni un tratamiento específico aprobados, aunque hay candidatos en evaluación.\n\nLa confirmación no permite inferir por sí sola transmisión sostenida en el país vecino ni estimar la trayectoria del brote. Los controles verificables serán la secuenciación de casos, el rastreo de contactos, la evolución de sospechosos y muertes, y cualquier alerta conjunta con la República Centroafricana. También debe observarse si la expansión territorial exige redistribuir equipos, laboratorios y capacidad de aislamiento desde provincias ya afectadas.",
+        "anchor": "ebola-octava-provincia-congo",
+        "sources": [
+          {
+            "name": "Reuters",
+            "url": "https://www.reuters.com/business/healthcare-pharmaceuticals/congo-confirms-ebola-outbreak-spreads-eighth-province-2026-10-18/"
+          },
+          {
+            "name": "ECDC",
+            "url": "https://www.ecdc.europa.eu/en/ebola-outbreak-democratic-republic-congo-and-uganda"
+          },
+          {
+            "name": "OMS",
+            "url": "https://www.who.int/emergencies/situations/ebola-outbreak---drc-2026"
+          }
+        ]
+      }
+    ],
+    "nacional": [
+      {
+        "slot": "ipsa_company",
+        "headline": "Fitch eleva a BBB la nota internacional de Falabella",
+        "deck": "La clasificadora subió también la nota local de Falabella y Sodimac a AA(cl); la acción alcanzó un máximo y el grupo superó a SQM en valor bursátil.",
+        "development": "Fitch elevó la clasificación internacional de Grupo Falabella desde BBB- hasta BBB, con perspectiva estable, y la nota nacional de largo plazo de Falabella y Sodimac desde AA-(cl) hasta AA(cl). La compañía informó el cambio el 15 de octubre y señaló que la agencia destacó posición de mercado, diversificación, mejores márgenes, reducción de deuda y menor apalancamiento. La clasificación de las acciones fue reafirmada en Primera Clase Nivel 1(cl).\n\nLa reacción bursátil llegó el viernes 16: Falabella avanzó 3,17%, cerró en un máximo histórico de $6.824,9 y alcanzó una capitalización aproximada de US$17.394 millones, por encima de los US$16.854 millones de SQM según Diario Financiero. El cruce cambia el orden relativo de valorización en bolsa, pero no implica que el retailer tenga más ingresos, activos o utilidad que la minera; depende del precio de mercado y del número de acciones de cada empresa.\n\nLa mejora crediticia puede reducir gradualmente el costo de nuevas emisiones y ampliar la base de inversionistas, aunque no modifica automáticamente las condiciones de deuda ya contratada. Los controles serán spreads de bonos, próximas colocaciones, generación de caja, deuda neta sobre EBITDA y continuidad de márgenes. También debe separarse el efecto de la nota del movimiento general del IPSA y de factores técnicos de una sesión.",
+        "anchor": "falabella-fitch-bbb-maximo-bursatil",
+        "sources": [
+          {
+            "name": "Grupo Falabella",
+            "url": "https://investors.grupofalabella.com/blog/2026/10/15/fitch-ratings-mejora-la-clasificacion-de-grupo-falabella-a-bbb/"
+          },
+          {
+            "name": "Diario Financiero",
+            "url": "https://www.df.cl/senal-df/senales-financieras/falabella-marca-un-nuevo-record-en-bolsa-y-supera-a-sqm-en-valor-de-mercado"
+          },
+          {
+            "name": "La Tercera",
+            "url": "https://copesa-la-tercera-prod.web.arc-cdn.net/pulso/noticia/agencia-fitch-mejora-clasificacion-de-riesgo-crediticio-de-falabella/"
+          }
+        ]
+      },
+      {
+        "slot": "policy_economy",
+        "headline": "La Ley 21.850 entra en fase de implementación",
+        "deck": "La norma de Reconstrucción Nacional fue publicada el 17 de octubre; sus medidas tributarias y económicas comenzarán a regir en fechas escalonadas.",
+        "development": "La Ley 21.850 para la Reconstrucción Nacional y el Desarrollo Económico y Social fue publicada el 17 de octubre en la edición 44.576-B del Diario Oficial. La publicación cierra su tramitación y activa un calendario escalonado: las primeras disposiciones comenzarán a regir el 1 de noviembre, mientras otras tendrán vigencia posterior según lo establecido en el texto. La norma reúne cambios tributarios, incentivos a la inversión, medidas de vivienda y mecanismos de regularización de deudas y activos.\n\nEntre sus componentes informados figura una ventana de doce meses, desde enero de 2027, para declarar bienes y rentas mantenidos en el extranjero mediante un impuesto extraordinario de 10%, reducible a 7% cuando se cumplan las condiciones legales de ingreso o inversión de recursos en Chile. La existencia de esa opción no anticipa cuánto capital será regularizado ni su efecto recaudatorio; ambos dependerán de reglamentos, conducta de contribuyentes y fiscalización.\n\nLa distinción central es entre publicación y ejecución. Desde ahora corresponde seguir las fechas de entrada en vigencia, instrucciones del Servicio de Impuestos Internos, reglamentos y costos fiscales efectivos. Las interpretaciones sobre beneficiarios o impacto macroeconómico deben contrastarse con el texto de 46 páginas y normas complementarias. La señal verificable de corto plazo será la implementación de las disposiciones previstas para noviembre, no una estimación política sobre sus resultados.",
+        "anchor": "ley-21850-reconstruccion-implementacion",
+        "sources": [
+          {
+            "name": "Diario Oficial de Chile",
+            "url": "https://www.diariooficial.interior.gob.cl/publicaciones/2026/10/17/44576-B/01/2888352.pdf"
+          },
+          {
+            "name": "Cámara Abierta",
+            "url": "https://camaraabierta.cl/monitoreo/diario-oficial/2888352"
+          },
+          {
+            "name": "Emol",
+            "url": "https://www.emol.com/noticias/Nacional/2026/10/17/1214405/ley-reconstruccion-diario-oficial-medidas.html"
+          }
+        ]
+      }
+    ],
+    "mercados": [
+      {
+        "slot": "markets_chile",
+        "headline": "Hacienda actualiza las tasas del subsidio hipotecario",
+        "deck": "Desde noviembre, las referencias serán 4,45% para bancos, 4,71% para cooperativas y 5,36% para mutuarias y otros oferentes no bancarios.",
+        "development": "El Ministerio de Hacienda publicó el 16 de octubre la resolución exenta 668, que fija las tasas de referencia aplicables en noviembre al subsidio para créditos hipotecarios de viviendas nuevas. La referencia será 4,45% para bancos, 4,71% para cooperativas de ahorro y crédito y 5,36% para administradoras de mutuos hipotecarios y otras entidades no bancarias. Los valores entran en vigencia el 1 de noviembre y sirven para calcular el descuento cubierto por el programa.\n\nLa actualización no cambia por sí sola el beneficio legal, definido como una rebaja de hasta 60 puntos base sobre la tasa de crédito elegible. En el caso bancario, la referencia sube desde 4,35% en octubre hasta 4,45% en noviembre; aplicada la rebaja máxima, la tasa resultante de referencia sería 3,85%. La oferta final puede variar por evaluación de riesgo, plazo, pie, seguros, costos operacionales y condiciones de cada institución.\n\nLa señal para el mercado hipotecario chileno es que el subsidio opera sobre una referencia periódica y no congela el costo base del crédito. Deben observarse las tasas efectivamente ofrecidas, número de operaciones cursadas, stock de viviendas elegibles y velocidad de uso de los cupos. Comparar sólo el dividendo inicial puede ocultar seguros, gastos y diferencias de plazo; la medida relevante es el costo total del crédito.",
+        "anchor": "tasas-subsidio-hipotecario-noviembre",
+        "sources": [
+          {
+            "name": "Biblioteca del Congreso Nacional",
+            "url": "https://www.bcn.cl/leychile/Navegar?idNorma=1229168"
+          },
+          {
+            "name": "Cámara Abierta",
+            "url": "https://camaraabierta.cl/monitoreo/diario-oficial/2886884"
+          },
+          {
+            "name": "Ventanilla Única Social",
+            "url": "https://www.ventanillaunicasocial.gob.cl/ficha/463/subsidio-al-dividendo-para-adquirir-viviendas-nuevas"
+          }
+        ]
+      },
+      {
+        "slot": "markets_global",
+        "headline": "Los hedge funds amplifican la tensión en bonos europeos",
+        "deck": "Su peso supera la mitad del volumen en deuda soberana europea y sus posiciones apalancadas aceleraron movimientos durante el reciente castigo a Francia.",
+        "development": "La liquidación reciente de bonos soberanos europeos volvió visible el peso de los hedge funds en un mercado cercano a US$13 billones. El Banco Central Europeo estima que ya representan más de la mitad del volumen transado, frente a 30% en 2020, mientras el Fondo Monetario Internacional calcula que su exposición a deuda pública se duplicó desde 2022. En Francia, el rendimiento a diez años se aproximó a 4,9% y el diferencial frente a Alemania rondó 140 puntos base.\n\nLos fundamentos siguen siendo centrales: deuda elevada, inflación, presión fiscal y dudas sobre el presupuesto francés. Sin embargo, gestores consultados por Reuters atribuyeron parte de la velocidad a la salida de estrategias apalancadas de base y carry. Cuando sube la volatilidad, ventas simultáneas pueden reforzar la caída de precios y deteriorar liquidez. Al mismo tiempo, esos fondos aportan negociación y absorben bonos cuando bancos, pensiones y bancos centrales reducen su demanda, por lo que su presencia no es únicamente desestabilizadora.\n\nLa señal es de estructura de mercado, no una prueba de crisis. El FMI considera manejable el aumento actual del costo francés y el mercado continuó funcionando. Deben observarse spreads, profundidad de órdenes, repo utilizado como financiamiento, exigencias de margen y concentración de posiciones. Un deterioro conjunto indicaría que el apalancamiento está convirtiendo un ajuste fiscal en tensión de liquidez; su normalización separaría volatilidad transitoria de riesgo sistémico.",
+        "anchor": "hedge-funds-bonos-europeos-liquidez",
+        "sources": [
+          {
+            "name": "Reuters",
+            "url": "https://www.reuters.com/business/europes-bond-market-turmoil-shines-spotlight-hedge-funds-role-key-markets-2026-10-16/"
+          },
+          {
+            "name": "Fondo Monetario Internacional",
+            "url": "https://www.imf.org/en/publications/gfsr/issues/2026/10/13/global-financial-stability-report-october-2026"
+          },
+          {
+            "name": "Reuters — evaluación del FMI",
+            "url": "https://www.reuters.com/business/rise-french-yields-is-manageable-now-consolidation-pressure-might-grow-imf-says-2026-10-16/"
+          }
+        ]
+      }
+    ]
+  }
+}
