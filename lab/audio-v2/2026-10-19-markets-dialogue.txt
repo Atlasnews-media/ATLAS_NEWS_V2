@@ -1,0 +1,23 @@
+VOZ 1: La señal de mercados de esta mañana no es una subida o una caída uniforme. Hay alivio en bonos y futuros de Wall Street, pero Asia sigue castigando a la tecnología. El punto común es el costo del capital.
+VOZ 2: Empecemos por el alivio. ¿Qué cambió?
+VOZ 1: El petróleo retrocedió después de que Estados Unidos abriera la puerta a una exención parcial de sanciones vinculadas con Rusia. A las doce treinta y ocho UTC, el Brent perdía 1,8% y cotizaba en 107 dólares con 83 centavos por barril. El WTI bajaba 1,2% hasta 100 dólares con 20 centavos.
+VOZ 2: ¿Una caída de menos de dos por ciento basta para mover bonos y acciones?
+VOZ 1: Importa porque el petróleo venía alimentando inflación y tasas. Con la baja, el rendimiento del Treasury a diez años cedía 4 puntos base hasta 5,0525%. Los futuros del S&P 500 avanzaban 0,8% y los del Nasdaq 1,3%. Es un respiro para activos sensibles a tasas.
+VOZ 2: ¿Podemos llamarlo una normalización de la energía?
+VOZ 1: Todavía no. Reuters informó otro incidente con un petrolero en el estrecho de Ormuz. Además, seguros y fletes siguen encareciendo el crudo para entrega física. Los futuros bajan, pero el riesgo geopolítico no desaparece. Si Ormuz vuelve a tensionarse, el movimiento puede revertirse.
+VOZ 2: Entonces, ¿por qué la tecnología asiática no participa del alivio?
+VOZ 1: Porque el mercado está separando el costo de financiar inteligencia artificial de su promesa de crecimiento. Japón caía 0,7% y Taiwán 1,1%. Corea del Sur rebotaba 0,6%, pero venía de perder más de 14% la semana anterior. Además, el índice de semiconductores de Filadelfia cayó 11,4% la semana pasada.
+VOZ 2: ¿Es el fin de la historia de la IA?
+VOZ 1: No. Es una repricing selectiva. Los inversores preguntan cuánto capital se necesita, cuánto se deprecia la infraestructura y cuándo llegan ingresos suficientes. Los cinco grandes proveedores podrían elevar la inversión conjunta a cerca de 1,2 billones de dólares el próximo año, según Goldman Sachs citado por Reuters.
+VOZ 2: ¿Qué puede resolver esa duda?
+VOZ 1: Los resultados de esta semana. Meta, Tesla, Lam Research y Texas Instruments entregarán cifras. El mercado mirará utilidades, pero también gasto de capital, caja y visibilidad de ingresos asociados a IA. Más inversión sin monetización proporcional mantendría la presión.
+VOZ 2: China reportó un PIB mejor de lo esperado. ¿No debería haber ayudado más?
+VOZ 1: Ayudó, pero poco. El CSI 300 ganaba apenas 0,1% después del crecimiento de 4,5% del tercer trimestre. El yuan sí se fortaleció hasta 6,6828 por dólar, su nivel más firme desde julio de 2022. La economía evita una desaceleración brusca, pero la dependencia de exportaciones y la debilidad interna frenan el entusiasmo bursátil.
+VOZ 2: ¿Hay otra señal de dispersión fuera de tecnología?
+VOZ 1: Sí. Indonesia llegó a perder 5% después de que MSCI planteara degradarla desde mercado emergente a mercado independiente. Es un recordatorio de que los flujos pasivos y la clasificación de índices pueden dominar a los fundamentales locales, incluso en una sesión con futuros estadounidenses al alza.
+VOZ 2: ¿Cuál es la lectura para Chile?
+VOZ 1: El cruce relevante es energía contra cobre y condiciones financieras. Menor petróleo alivia costos importados y tasas globales, pero el dato chino tiene una composición mixta para metales: industria firme y propiedad débil. No conviene transformar un buen titular de PIB en una señal lineal para todos los activos chilenos.
+VOZ 2: ¿Qué invalidaría el alivio de esta mañana?
+VOZ 1: Un rebote del petróleo por Ormuz, un regreso del Treasury sobre sus máximos recientes o resultados tecnológicos que anuncien todavía más gasto sin generación de caja. Cualquiera de esos factores volvería a endurecer el costo del capital.
+VOZ 2: ¿Y qué confirmaría una mejora más duradera?
+VOZ 1: Que el petróleo ceda de forma persistente, los rendimientos bajen y la recuperación se amplíe desde futuros estadounidenses hacia semiconductores asiáticos, crédito corporativo y mercados emergentes. Si sólo suben los bonos mientras acciones y spreads siguen frágiles, la señal seguirá siendo defensiva.
