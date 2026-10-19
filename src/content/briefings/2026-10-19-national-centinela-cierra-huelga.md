@@ -1,11 +1,11 @@
 ---
 title: "Centinela cierra la huelga sin pérdida de producción"
 summary: "El acuerdo ratificado por dos sindicatos elimina un riesgo operativo inmediato para una faena relevante, pero no resuelve la caída más amplia de la producción cuprífera chilena."
-publishedAt: "2026-10-19T06:25:30-03:00"
+publishedAt: "2026-10-19T06:45:38-03:00"
 cutoffAt: "2026-10-19T06:25:00-03:00"
 section: "national"
 editionSlot: "morning"
-status: "draft"
+status: "published"
 tags:
   - chile
   - cobre

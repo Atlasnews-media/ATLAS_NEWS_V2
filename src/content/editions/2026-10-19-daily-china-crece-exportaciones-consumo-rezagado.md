@@ -1,11 +1,11 @@
 ---
 title: "China acelera, pero profundiza su dependencia de las exportaciones"
 summary: "El PIB avanzó 4,5% en el tercer trimestre y dejó el objetivo anual al alcance, pero consumo, inversión privada y propiedad siguen débiles mientras la industria exportadora gana peso."
-publishedAt: "2026-10-19T06:04:15-03:00"
+publishedAt: "2026-10-19T06:45:38-03:00"
 cutoffAt: "2026-10-19T06:03:49-03:00"
 type: "daily"
 editionSlot: "morning"
-status: "draft"
+status: "published"
 tags:
   - china
   - comercio-global

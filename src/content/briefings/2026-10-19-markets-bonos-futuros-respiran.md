@@ -1,11 +1,11 @@
 ---
 title: "Bonos y futuros respiran, pero Asia castiga el costo de la IA"
 summary: "La caída del petróleo favorece Treasury y futuros de Wall Street, mientras el financiamiento de infraestructura de inteligencia artificial mantiene la presión sobre tecnología asiática."
-publishedAt: "2026-10-19T06:31:30-03:00"
+publishedAt: "2026-10-19T06:45:38-03:00"
 cutoffAt: "2026-10-19T06:31:00-03:00"
 section: "markets"
 editionSlot: "morning"
-status: "draft"
+status: "published"
 tags:
   - mercados-globales
   - renta-fija
