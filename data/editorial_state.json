@@ -99,14 +99,14 @@
     {
       "id": "china-eu-industrial-trade",
       "topic": "Comercio industrial entre China y la Unión Europea",
-      "thesis": "La disputa industrial entre China y Occidente ya opera en ambas direcciones: Europa prepara defensas frente a importaciones chinas, mientras Beijing extiende controles sobre la transferencia de tecnologías críticas de inteligencia artificial, biotecnología y manufactura solar.",
-      "status": "changed",
-      "last_evidence": "El 18 de octubre China mantenía en consulta hasta el 15 de noviembre una propuesta para controlar 40 tecnologías —23 de inteligencia artificial y 12 solares— y exigía registrar temporalmente las transferencias incluidas antes del catálogo definitivo.",
-      "effect": "Cambia el ángulo del hilo: el conflicto deja de concentrarse sólo en el acceso de bienes chinos al mercado europeo y pasa también al control chino sobre conocimiento, procesos y equipos capaces de reproducir capacidad industrial fuera del país.",
-      "base_scenario": "China aprueba un catálogo con licencias y prohibiciones selectivas, mantiene excepciones acotadas para servicios ordinarios y código abierto, y administra la transferencia de tecnología solar mientras Europa amplía gradualmente sus defensas comerciales.",
-      "invalidate_if": "La versión final retira los controles principales o concede licencias amplias y previsibles que no alteran inversiones ni transferencia tecnológica; restricciones adicionales, demoras de proyectos o represalias occidentales reforzarían la tesis.",
-      "watch": "Catálogo final después del 15 de noviembre, reglas y licencias, registro temporal, umbrales para modelos de inteligencia artificial, equipos y procesos solares, planes de plantas fuera de China, respuesta de Estados Unidos y la Unión Europea y nuevas investigaciones comerciales.",
-      "last_publication": "/ediciones/2026-10-18-daily-china-control-tecnologia-critica/"
+      "thesis": "El desequilibrio industrial entre China y Occidente ya es macroeconómico: China sostiene su crecimiento con exportaciones y manufactura avanzada mientras consumo, inversión privada y propiedad quedan rezagados, y sus socios responden con defensas comerciales y controles tecnológicos.",
+      "status": "confirmed",
+      "last_evidence": "El 19 de octubre China informó un crecimiento de 4,5% interanual en el tercer trimestre; en septiembre las exportaciones en yuanes subieron 29,6% y la producción industrial 5,5%, frente a ventas minoristas de 1,1%, mientras la inversión inmobiliaria cayó 20,6% en los primeros nueve meses.",
+      "effect": "Confirma y cuantifica la tesis: la competencia industrial no es sólo una sucesión de medidas comerciales, sino el resultado de un modelo chino que depende cada vez más de demanda externa para compensar la debilidad de hogares, propiedad e inversión privada.",
+      "base_scenario": "China alcanza la parte baja de su meta de crecimiento con exportaciones, manufactura avanzada y apoyo fiscal selectivo; el consumo y la propiedad mejoran lentamente, mientras Europa y otros socios amplían defensas sin cerrar por completo sus mercados.",
+      "invalidate_if": "Una recuperación sostenida de consumo, propiedad e inversión privada que reduzca el superávit sin nuevas barreras debilitaría la tesis; otra aceleración exportadora acompañada de salvaguardias, cuotas o controles tecnológicos la reforzaría.",
+      "watch": "Ventas minoristas, inversión privada e inmobiliaria, superávit y destinos de exportación, manufactura de alta tecnología, conclusiones europeas, investigaciones y salvaguardias, catálogo chino de tecnologías críticas y demanda global vinculada con inteligencia artificial.",
+      "last_publication": "/ediciones/2026-10-19-daily-china-crece-exportaciones-consumo-rezagado/"
     },
     {
       "id": "developing-country-crisis-finance",
