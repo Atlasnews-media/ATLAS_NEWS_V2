@@ -1,0 +1,119 @@
+{
+  "status": "READY",
+  "date": "2026-10-19",
+  "contract": "atlas-senales-del-dia-v1",
+  "senalesDelDia": {
+    "internacional": [
+      {
+        "slot": "technology",
+        "headline": "California expone el riesgo de terceros en datos escolares",
+        "deck": "Un acceso con credenciales comprometidas copió registros de alumnos desde un sistema de ETS; el proveedor reconstruyó el sitio y ofrece protección de identidad.",
+        "development": "El Departamento de Educación de California comenzó el 16 de octubre a distribuir las notificaciones por un incidente en Educational Testing Service, proveedor de las evaluaciones estatales. La investigación determinó que un tercero usó una credencial comprometida para entrar en distintos momentos, entre el 22 de mayo y el 18 de septiembre, a un sitio seguro de transferencia de archivos y copiar información de estudiantes. Los datos varían por persona e incluyen nombre, identificador estatal, fecha de nacimiento, dirección, datos demográficos, condición de discapacidad, participación en programas y resultados de evaluaciones.\n\nLa autoridad precisó que no estuvieron involucrados números de Seguro Social, cuentas financieras, contraseñas ni datos de padres o tutores. ETS retiró el sitio SFTP, construyó uno nuevo con controles reforzados y ofrece dos años de protección de identidad sin costo. La señal tecnológica es de arquitectura y gobernanza: un servicio estatal puede mantener sus sistemas principales intactos y, aun así, sufrir una exposición masiva por el acceso de un contratista. La revisión relevante abarca privilegios, credenciales, segmentación, retención de archivos y capacidad de auditar proveedores, no sólo la respuesta posterior a una intrusión.",
+        "anchor": "california-datos-escolares-proveedor-ets",
+        "sources": [
+          {
+            "name": "California Department of Education — comunicado del incidente ETS",
+            "url": "https://www.cde.ca.gov/nr/ne/yr26/yr26rel45.asp"
+          },
+          {
+            "name": "California Department of Education — aviso y preguntas frecuentes",
+            "url": "https://www.cde.ca.gov/nr/in/ets-incident.asp"
+          },
+          {
+            "name": "Reuters — acceso a datos de estudiantes de California",
+            "url": "https://www.reuters.com/world/us/hacker-gets-data-millions-california-students-state-education-department-says-2026-10-17/"
+          }
+        ]
+      },
+      {
+        "slot": "world",
+        "headline": "La carrera por dirigir la ONU entra en fase de vetos",
+        "deck": "Grynspan lideró el sexto sondeo informal, pero ningún candidato quedó libre de objeciones de miembros permanentes del Consejo de Seguridad.",
+        "development": "El sexto sondeo informal del Consejo de Seguridad dejó a Rebeca Grynspan como la candidata con más apoyos para suceder a António Guterres, pero sin una vía despejada. Según personas cercanas al proceso citadas por Reuters, la exvicepresidenta de Costa Rica obtuvo nueve votos de aliento, cinco de desaliento y una abstención; dos objeciones provinieron de miembros permanentes. Carolyn Rodrigues-Birkett y Rafael Grossi quedaron detrás y también recibieron señales negativas de países con poder de veto.\n\nEl resultado no equivale a una nominación. Para recomendar un nombre a la Asamblea General se requieren al menos nueve votos favorables y ninguna oposición de Estados Unidos, China, Rusia, Francia o Reino Unido. La página oficial de Naciones Unidas confirma las candidaturas, sus documentos y el paso del proceso a la 81ª Asamblea General, pero los sondeos continúan siendo deliberaciones del Consejo. La señal es institucional: el uso de papeletas diferenciadas ya permite identificar si la resistencia proviene del grupo con veto, acotando la negociación, aunque todavía puede abrir espacio a nuevas candidaturas antes del fin del mandato de Guterres el 31 de diciembre.",
+        "anchor": "onu-sondeo-vetos-secretaria-general",
+        "sources": [
+          {
+            "name": "Naciones Unidas — selección y nombramiento del próximo secretario general",
+            "url": "https://www.un.org/en/sg-selection-and-appointment"
+          },
+          {
+            "name": "Reuters — sexto sondeo informal del Consejo de Seguridad",
+            "url": "https://www.reuters.com/world/americas/grynspan-holds-lead-next-un-chief-race-enters-decisive-stage-2026-10-16/"
+          }
+        ]
+      }
+    ],
+    "nacional": [
+      {
+        "slot": "ipsa_company",
+        "headline": "LATAM deja a Chile como opción para su flota Embraer",
+        "deck": "La aerolínea prioriza Brasil para los primeros E195-E2, pero evalúa ubicar futuras opciones de compra en Chile, Perú o Argentina.",
+        "development": "LATAM abrió la posibilidad de operar en Chile parte de su nueva flota Embraer E195-E2, aunque la decisión no está tomada y la primera fase seguirá concentrada en Brasil. Jerome Cadier, presidente ejecutivo de LATAM Airlines Brasil, señaló que el grupo debe incorporar y conocer primero las 24 aeronaves firmes antes de llevar el modelo a otras filiales. Las 50 opciones de compra adicionales podrían basarse en Chile, Perú o Argentina, de acuerdo con declaraciones recogidas por Diario Financiero.\n\nEl dato relevante para la compañía es la flexibilidad de red, no una expansión chilena ya aprobada. El E195-E2 tiene 136 asientos en la configuración informada y un consumo por asiento hasta 30% inferior al de la primera generación de E-Jets. Embraer confirmó además el 13 de octubre un programa de soporte para más de 300 componentes de los 24 aviones pedidos, con inventario seleccionado en instalaciones de LATAM en Brasil. Para Chile, la señal dependerá de que el grupo ejerza opciones y asigne bases o rutas: sin esos pasos, el anuncio sigue siendo una alternativa operacional y no debe incorporarse como capacidad doméstica comprometida.",
+        "anchor": "latam-embraer-opcion-operar-chile",
+        "sources": [
+          {
+            "name": "Embraer — soporte de componentes para la flota E195-E2 de LATAM",
+            "url": "https://status.embraer.com/media-center/en/?detail=33018&mediatype=NEWS"
+          },
+          {
+            "name": "Diario Financiero — LATAM evalúa operar los nuevos Embraer en Chile",
+            "url": "https://www.df.cl/empresas/latam-abre-la-puerta-a-operar-sus-nuevos-aviones-embraer-en-chile-es-una"
+          }
+        ]
+      },
+      {
+        "slot": "policy_economy",
+        "headline": "Corfo crea garantía especial para pymes de transporte",
+        "deck": "Fogain Transporte cubrirá hasta 95% del crédito para microempresas y podría movilizar $205 mil millones sin requerir una nueva ley.",
+        "development": "El Consejo de Corfo aprobó un esquema especial dentro de Fogain para empresas pequeñas de transporte de carga por carretera. La cobertura podrá llegar a 95% del crédito para microempresas, con tope de UF 2.000, y a 90% para pequeñas y medianas empresas, con límites de UF 5.000 y UF 12.000. El instrumento permitirá financiar capital de trabajo, inversión, leasing y refinanciamiento en pesos o UF, con al menos seis meses antes de la primera cuota.\n\nLa medida responde al aumento del diésel y busca reducir la restricción de garantías que enfrentan más de 40 mil empresas del sector. Corfo estima que podría movilizar cerca de $205 mil millones en créditos, usando el patrimonio existente del programa y con un máximo agregado de garantías de UF 4,6 millones. No es un subsidio ni una aprobación automática: bancos, cooperativas y otras entidades seguirán evaluando riesgo, mora y condiciones de cada operación. También falta tramitar la resolución y fijar las normas especiales antes de que los intermediarios comiencen a cursar créditos, que podrán otorgarse hasta el 31 de diciembre de 2027.",
+        "anchor": "corfo-fogain-transporte-garantias-pymes",
+        "sources": [
+          {
+            "name": "Ministerio de Economía — aprobación de Fogain Transporte",
+            "url": "https://www.economia.gob.cl/2026/10/14/consejo-de-corfo-aprueba-nuevo-fogain-transporte-para-facilitar-el-acceso-a-financiamiento-de-pymes-del-sector.htm"
+          }
+        ]
+      }
+    ],
+    "mercados": [
+      {
+        "slot": "markets_chile",
+        "headline": "Nuevas tasas máximas comienzan a regir en el crédito chileno",
+        "deck": "La CMF publicó el certificado de octubre con las tasas corrientes y máximas convencionales; los límites rigen desde su publicación oficial.",
+        "development": "La Comisión para el Mercado Financiero publicó el 15 de octubre el certificado mensual que fija las tasas de interés corriente y máxima convencional para las distintas categorías de crédito. La publicación activa los nuevos parámetros de octubre conforme a la Ley 18.010. La tasa corriente refleja el costo promedio observado en operaciones comparables, mientras la máxima convencional establece el límite legal que no puede superarse en cada segmento.\n\nPara el mercado, el cambio no es una señal de política monetaria ni una tasa única aplicable a todos los deudores. Los valores difieren según moneda, reajustabilidad, plazo y monto, por lo que su efecto debe leerse por producto: consumo, líneas, operaciones comerciales u otros créditos pueden enfrentar techos distintos. Bancos y emisores deben ajustar contratos y originación desde la vigencia del certificado; hogares y empresas pueden usarlo para verificar el máximo permitido en su categoría. La comparación relevante será con septiembre y con las tasas efectivamente ofrecidas: un techo más alto amplía espacio legal, pero no implica que todos los precios suban, porque fondeo, riesgo y competencia siguen determinando la tasa final.",
+        "anchor": "cmf-tasas-maximas-credito-octubre",
+        "sources": [
+          {
+            "name": "CMF — publicación de tasas corrientes y máximas convencionales",
+            "url": "https://cmfchile.cl/portal/prensa/625/w4-article-114221.html"
+          },
+          {
+            "name": "CMF — certificado mensual de octubre de 2026",
+            "url": "https://www.cmfchile.cl/portal/estadisticas/626/w4-article-114222.html"
+          }
+        ]
+      },
+      {
+        "slot": "markets_global",
+        "headline": "Bonos asiáticos sufren su mayor salida desde 2020",
+        "deck": "Inversionistas extranjeros retiraron US$8.210 millones de cinco mercados en septiembre, con Corea del Sur concentrando la mayor venta.",
+        "development": "Los bonos de India, Indonesia, Malasia, Corea del Sur y Tailandia registraron ventas netas extranjeras por US$8.210 millones en septiembre, la mayor salida mensual conjunta desde marzo de 2020, según datos de reguladores y organismos de mercado recopilados por Reuters. Corea del Sur concentró cerca de US$6.300 millones, mientras el aumento de los rendimientos del Treasury y el endurecimiento esperado de la Reserva Federal redujeron el atractivo relativo de la deuda regional.\n\nLa cifra separa un problema de flujos de una evaluación uniforme sobre solvencia asiática. El Instituto de Finanzas Internacionales calcula que el conjunto de mercados emergentes pasó a salidas de cartera por US$26.300 millones en septiembre, después de entradas por US$11.400 millones en agosto. El Banco Asiático de Desarrollo también describió condiciones exigentes por petróleo caro, rendimientos globales altos y políticas monetarias locales cautelosas. Para los mercados, la persistencia importa más que un solo mes: ventas continuas pueden debilitar monedas, elevar costos de refinanciamiento y reducir liquidez; una estabilización de tasas estadounidenses permitiría distinguir salidas tácticas de una reasignación estructural fuera de deuda emergente.",
+        "anchor": "asia-bonos-salida-capital-septiembre",
+        "sources": [
+          {
+            "name": "Reuters — mayor salida extranjera de bonos asiáticos desde 2020",
+            "url": "https://www.reuters.com/world/asia-pacific/asian-bonds-record-biggest-monthly-foreign-outflow-since-march-2020-2026-10-16/"
+          },
+          {
+            "name": "IIF — Capital Flows Tracker de octubre de 2026",
+            "url": "https://www.iif.com/Products/Capital-Flows-Tracker/lapg-7321/1"
+          },
+          {
+            "name": "Asian Development Bank — Asia Bond Monitor de septiembre de 2026",
+            "url": "https://www.adb.org/publications/asia-bond-monitor-september-2026"
+          }
+        ]
+      }
+    ]
+  }
+}
