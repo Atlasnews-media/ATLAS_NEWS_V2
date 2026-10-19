@@ -18,9 +18,9 @@ sources:
 highlights:
   - label: "Diésel bajo presión"
     text: "Economistas estiman un incremento cercano a $90 por litro desde el jueves 22 de octubre."
-  - label: "Gasolinas también subirían"
+  - label: "Gasolinas subirían"
     text: "La proyección central apunta a un aumento aproximado de $41 por litro."
-  - label: "Mepco amortigua, no elimina"
+  - label: "Mepco sólo amortigua"
     text: "El mecanismo distribuye el traspaso de precios internacionales, dólar y refinados hacia el mercado local."
 demo: false
 ---
