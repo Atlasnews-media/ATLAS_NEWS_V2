@@ -3,14 +3,14 @@
     {
       "id": "oil-geopolitics-inflation",
       "topic": "Petróleo, geopolítica e inflación",
-      "thesis": "El shock energético ya está reordenando la política occidental: Estados Unidos suspendió sanciones y aranceles para proteger oferta y precios, mientras Europa asume más financiamiento de Ucrania y mantiene la presión sobre Rusia.",
+      "thesis": "El shock energético ya está reordenando la política occidental: Estados Unidos redujo presión sobre Rusia para proteger oferta y precios, mientras en Europa el costo de los combustibles alimenta protestas, tensiona presupuestos y erosiona el consenso sobre sanciones y apoyo a Ucrania.",
       "status": "changed",
-      "last_evidence": "El 17 de octubre Trump eximió antes de su vigencia sanciones y aranceles de hasta 100% vinculados con Rusia y sus grandes compradores de energía; la UE, en contraste, estudia otro préstamo para cubrir más de €70.000 millones que Ucrania necesita en 2027.",
-      "effect": "Cambia y confirma la tesis: la divergencia transatlántica dejó de ser retórica y se convirtió en política ejecutiva, con Washington priorizando combustibles y Europa absorbiendo una mayor carga fiscal y estratégica.",
-      "base_scenario": "Estados Unidos mantiene la exención mientras persistan precios energéticos altos, China e India conservan acceso a energía rusa y la UE intenta financiar la brecha ucraniana mediante nuevos préstamos, con ataques a infraestructura todavía intermitentes.",
-      "invalidate_if": "El restablecimiento verificable de sanciones estadounidenses, una tregua energética bilateral o una caída sostenida de combustibles que elimine la motivación de la exención debilitarían la tesis; nuevas exenciones o mayor financiamiento europeo la reforzarían.",
-      "watch": "Duración y condiciones de la exención estadounidense, respuesta del Congreso, compras de China e India, ingresos energéticos rusos, nuevo préstamo europeo, ataques a refinerías y redes, Ormuz, seguros, fletes e inventarios de destilados.",
-      "last_publication": "/ediciones/2026-10-17-daily-eeuu-sanciones-rusia-energia/"
+      "last_evidence": "El 20 de octubre el gas europeo acumulaba un alza cercana a 140% desde fines de febrero y el diésel había duplicado su precio; la Comisión Europea estimó €100.000 millones de gasto fósil adicional desde marzo, mientras protestas y bloqueos por el costo de vida se extendían por varias economías del bloque.",
+      "effect": "Amplía la tesis desde la divergencia transatlántica hacia la política interna europea: el shock ya condiciona elecciones, fortalece propuestas de recuperar energía rusa y enfrenta alivio fiscal con deuda, defensa, apoyo a Ucrania y transición energética.",
+      "base_scenario": "La energía permanece cara y los gobiernos europeos combinan ayudas focalizadas con diversificación e inversión, sin abandonar de inmediato las sanciones ni el apoyo a Ucrania; el costo político y fiscal aumenta de cara a las elecciones de 2027.",
+      "invalidate_if": "Una caída sostenida del gas y los combustibles que reduzca protestas y presión presupuestaria, sin retroceso en sanciones o apoyo a Ucrania, debilitaría la tesis; más bloqueos, subsidios generalizados o retorno efectivo a proveedores rusos la reforzarían.",
+      "watch": "Gas y diésel europeos, protestas y bloqueos, elecciones de 2027, impuestos y subsidios a combustibles, déficits y primas soberanas, apoyo a Ucrania, sanciones a Rusia, AccelerateEU, Ormuz, seguros y fletes.",
+      "last_publication": "/ediciones/2026-10-20-daily-energia-reordena-politica-europea/"
     },
     {
       "id": "us-employment-fed-rates",
