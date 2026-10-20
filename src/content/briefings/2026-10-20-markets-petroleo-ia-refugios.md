@@ -1,11 +1,11 @@
 ---
 title: "El petróleo y la duda sobre la IA fragmentan el refugio"
 summary: "El Brent sobre US$110 presiona acciones y tasas mientras el mercado exige retornos a la inversión en IA; bonos cortos, Bunds y franco suizo concentran la defensa."
-publishedAt: "2026-10-20T06:36:30-03:00"
+publishedAt: "2026-10-20T06:42:55-03:00"
 cutoffAt: "2026-10-20T06:35:30-03:00"
 section: "markets"
 editionSlot: "morning"
-status: "draft"
+status: "published"
 tags:
   - mercados
   - petroleo

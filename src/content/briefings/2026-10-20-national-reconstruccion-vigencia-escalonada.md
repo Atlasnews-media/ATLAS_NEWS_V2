@@ -1,11 +1,11 @@
 ---
 title: "La reconstrucción entra en vigor, pero sus incentivos llegan por etapas"
 summary: "La Ley 21.850 activa primero un impuesto sustitutivo; empleo, vivienda, capitales y rebaja corporativa seguirán calendarios distintos que condicionan su efecto económico."
-publishedAt: "2026-10-20T06:27:30-03:00"
+publishedAt: "2026-10-20T06:42:55-03:00"
 cutoffAt: "2026-10-20T06:27:00-03:00"
 section: "national"
 editionSlot: "morning"
-status: "draft"
+status: "published"
 tags:
   - chile
   - impuestos

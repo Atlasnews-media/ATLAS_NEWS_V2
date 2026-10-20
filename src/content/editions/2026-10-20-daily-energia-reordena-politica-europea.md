@@ -1,11 +1,11 @@
 ---
 title: "El shock energético se convierte en riesgo político para Europa"
 summary: "El encarecimiento del gas y el diésel ya alimenta protestas y campañas electorales en Europa, estrechando el margen fiscal de los gobiernos y tensionando el consenso sobre Rusia y Ucrania."
-publishedAt: "2026-10-20T06:04:58-03:00"
+publishedAt: "2026-10-20T06:42:55-03:00"
 cutoffAt: "2026-10-20T06:02:32-03:00"
 type: "daily"
 editionSlot: "morning"
-status: "draft"
+status: "published"
 tags:
   - europa
   - energia
