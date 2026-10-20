@@ -1,11 +1,11 @@
 ---
 title: "Pensiones abre procesos contra las siete AFP por las pérdidas de los fondos D y E"
 summary: "La Superintendencia de Pensiones abrió procedimientos sancionatorios separados para determinar si las siete administradoras incumplieron sus deberes de diligencia y lealtad durante las pérdidas de los fondos conservadores."
-publishedAt: "2026-10-20T13:03:00-03:00"
+publishedAt: "2026-10-20T13:08:45-03:00"
 cutoffAt: "2026-10-20T12:00:00-03:00"
 section: "national"
 editionSlot: "evening"
-status: "draft"
+status: "published"
 tags:
   - chile
   - pensiones
