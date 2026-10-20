@@ -1,11 +1,11 @@
 ---
 title: "Wall Street revierte la cautela: cae el petróleo y el S&P 500 sube 0,7%"
 summary: "La apertura estadounidense cambió la señal matutina: el Brent cedió 1,3%, Wall Street avanzó con amplitud y los semiconductores se estabilizaron, aunque resultados corporativos siguieron separando ganadores y perdedores."
-publishedAt: "2026-10-20T13:04:00-03:00"
+publishedAt: "2026-10-20T13:08:45-03:00"
 cutoffAt: "2026-10-20T12:00:00-03:00"
 section: "markets"
 editionSlot: "evening"
-status: "draft"
+status: "published"
 tags:
   - mercados
   - wall-street
