@@ -1,0 +1,119 @@
+{
+  "status": "READY",
+  "date": "2026-10-20",
+  "contract": "atlas-senales-del-dia-v1",
+  "senalesDelDia": {
+    "internacional": [
+      {
+        "slot": "technology",
+        "headline": "Estados Unidos ordena retirar DeepSeek de sistemas civiles",
+        "deck": "La orden del DHS excluye productos de la empresa china de futuras compras y alcanza servicios de terceros desarrollados con sus implementaciones.",
+        "development": "El Departamento de Seguridad Nacional de Estados Unidos publicó una orden que excluye de las compras de agencias civiles federales los productos y servicios tecnológicos desarrollados por DeepSeek y sus entidades afiliadas. La instrucción también exige retirar de los sistemas informáticos civiles tanto los productos propios de la compañía china como aquellos servicios de terceros construidos con implementaciones de DeepSeek. El aviso fue presentado para inspección pública el 19 de octubre y quedó programado para publicación en el Federal Register el 20 de octubre.\n\nLa medida se apoya en la Federal Acquisition Supply Chain Security Act y en una recomendación previa del consejo federal encargado de riesgos de la cadena de suministro. Su alcance va más allá de impedir nuevas licencias: obliga a las agencias a identificar dependencias incorporadas dentro de otros productos, una tarea más compleja que desinstalar una aplicación visible. Para proveedores que venden al gobierno estadounidense, la señal operacional es revisar componentes, modelos integrados y subcontratistas antes de certificar cumplimiento. La orden no constituye una prohibición general para usuarios privados ni para gobiernos estatales; se circunscribe a compras y sistemas de las agencias civiles federales.",
+        "anchor": "eeuu-retira-deepseek-sistemas-federales-civiles",
+        "sources": [
+          {
+            "name": "Federal Register — orden sobre productos y servicios de DeepSeek",
+            "url": "https://public-inspection.federalregister.gov/2026-21447.pdf"
+          },
+          {
+            "name": "Reuters — exclusión de DeepSeek de sistemas de agencias civiles",
+            "url": "https://www.reuters.com/technology/us-banning-chinese-ai-deepseek-government-agency-it-systems-2026-10-19/"
+          }
+        ]
+      },
+      {
+        "slot": "world",
+        "headline": "Alberta rechaza abrir otro referéndum para separarse",
+        "deck": "La opción de permanecer en Canadá obtuvo cerca de 76% en resultados preliminares de una consulta no vinculante celebrada el 19 de octubre.",
+        "development": "Los votantes de Alberta rechazaron iniciar el proceso legal para celebrar en el futuro un referéndum vinculante sobre la separación de Canadá. Con el conteo preliminar avanzado durante la madrugada del 20 de octubre, la alternativa de seguir como provincia canadiense reunía cerca de 76% frente a alrededor de 23% para comenzar ese procedimiento. Elections Alberta identifica el escrutinio como no oficial hasta el 29 de octubre y formuló la pregunta como una elección entre permanecer en Canadá o encargar al gobierno provincial los pasos constitucionales hacia una segunda consulta.\n\nEl resultado no era una votación directa de independencia: aun si hubiese ganado la segunda opción, la provincia debía iniciar un proceso jurídico adicional antes de una decisión vinculante. Esa distinción limita el efecto inmediato y evita interpretar el 23% como autorización para separarse. La consulta incluyó otras nueve preguntas sobre competencias y servicios públicos, cuyos conteos seguían su propio calendario. Para el gobierno de la primera ministra Danielle Smith, la consecuencia verificable es que no recibió mandato para abrir esa ruta constitucional. Los resultados definitivos, incluido el total de votos y la participación, corresponden a la autoridad electoral provincial y no a las primeras proyecciones de medios.",
+        "anchor": "alberta-rechaza-ruta-referendum-separacion",
+        "sources": [
+          {
+            "name": "Elections Alberta — resultados no oficiales del referéndum de 2026",
+            "url": "https://results.elections.ab.ca/"
+          },
+          {
+            "name": "Reuters — Alberta vota por permanecer en Canadá",
+            "url": "https://www.reuters.com/world/americas/alberta-votes-leaving-canada-separatist-movement-likely-outlast-expected-defeat-2026-10-19/"
+          }
+        ]
+      }
+    ],
+    "nacional": [
+      {
+        "slot": "ipsa_company",
+        "headline": "CAP enfrenta un Penco más valioso y también más costoso",
+        "deck": "La evaluación actualizada de Aclara estima un VAN después de impuestos de US$344 millones y eleva la inversión de construcción a US$244 millones.",
+        "development": "Aclara Resources actualizó la evaluación económica preliminar del Módulo Penco, proyecto de tierras raras que desarrolla en Biobío junto con CAP, dueña de 20% de la iniciativa. El estudio estima un valor presente neto después de impuestos de US$344 millones, con tasa de descuento de 8%, una tasa interna de retorno de 26,1% y recuperación en 3,2 años. El cálculo supone 17 años de operación y procesamiento de 30,8 millones de toneladas, frente a 19,9 millones consideradas en la evaluación de 2021.\n\nLa mejora del valor viene acompañada de un costo inicial mayor. El capex de construcción se estima en US$204 millones más US$39 millones de contingencia, para un total cercano a US$244 millones, US$115 millones por encima de la cifra anterior. Aclara atribuye el aumento a cambios de proceso, cotizaciones actualizadas, mejoras ambientales y escalada general de costos. Para CAP, la señal combina exposición a un proyecto de minerales críticos con mayores necesidades de capital; no equivale a una decisión final de inversión. La propia compañía advierte que la evaluación es preliminar, incluye recursos inferidos y no demuestra por sí sola reservas minerales económicamente explotables.",
+        "anchor": "cap-aclara-actualiza-economia-modulo-penco",
+        "sources": [
+          {
+            "name": "Aclara Resources — evaluación económica actualizada del Módulo Penco",
+            "url": "https://www.newswire.ca/news-releases/aclara-updates-penco-module-preliminary-economic-assessment-871833748.html"
+          },
+          {
+            "name": "Diario Financiero — nueva inversión estimada para el proyecto Penco",
+            "url": "https://www.df.cl/empresas/mineria/minera-canadiense-aumenta-en-casi-90-su-inversion-en-proyecto-de-tierras"
+          }
+        ]
+      },
+      {
+        "slot": "policy_economy",
+        "headline": "Alianza público-privada fija meta digital para 150 mil pymes",
+        "deck": "El compromiso coordinado por Economía reunirá durante 2027 programas de formación en IA, nube, datos, ciberseguridad y automatización.",
+        "development": "El Ministerio de Economía y empresas tecnológicas suscribieron un compromiso para que 150 mil pequeñas y medianas empresas accedan durante 2027 a formación en inteligencia artificial y herramientas digitales. La meta suma programas de Google, Amazon, Pacto Pyme y la continuidad de Hazlo con IA, desarrollado por Cenia y Futuro del Trabajo de Sofofa Capital Humano. La oferta anunciada contempla becas para capacitación en IA aplicada, automatización, marketing digital, análisis de datos, computación en la nube, ciberseguridad y uso de tecnología en procesos productivos y comerciales.\n\nLa política funciona como coordinación de iniciativas existentes y nuevas, no como un subsidio directo ni como garantía de que 150 mil empresas completarán cursos. El compromiso oficial habla de acceso a formación y no detalla en el anuncio un presupuesto fiscal agregado, criterios únicos de selección o una certificación común. Esa precisión será importante para evaluar resultados: cupos ofrecidos, inscripciones y finalización miden etapas distintas. El antecedente inmediato es Hazlo con IA, que según los organizadores ya convocó a más de 100 mil emprendedores durante 2026. La señal para las pymes es una ampliación prevista de la oferta, mientras la ejecución dependerá de calendarios, becas y condiciones de cada programa participante.",
+        "anchor": "alianza-formacion-digital-150-mil-pymes",
+        "sources": [
+          {
+            "name": "Ministerio de Economía — alianza de capacitación para 150 mil pymes",
+            "url": "https://www.economia.gob.cl/2026/10/15/ministerio-de-economia-firma-alianza-para-impulsar-la-capacitacion-a-150-mil-pymes-en-ia-y-tecnologias-digitales.htm"
+          },
+          {
+            "name": "Radio Infinita — participación privada en la Semana de la Pyme",
+            "url": "https://www.infinita.cl/infinita-te-explica/2026/10/16/abastible-refuerza-su-compromiso-con-el-emprendimiento-a-traves-de-diversas-iniciativas-en-la-semana-de-la-pyme.html"
+          }
+        ]
+      }
+    ],
+    "mercados": [
+      {
+        "slot": "markets_chile",
+        "headline": "Fondos mutuos superan US$100 mil millones administrados",
+        "deck": "La actualización de la CMF muestra un alza patrimonial de 6,1% al primer semestre y una brecha de costos favorable a las series digitales retail.",
+        "development": "El patrimonio administrado por los fondos mutuos chilenos alcanzó US$100.884 millones al cierre de junio, un aumento de 6,1% durante el primer semestre de 2026, según la actualización publicada por la Comisión para el Mercado Financiero. El sistema reunía 441 fondos y 3,95 millones de partícipes, 4,2% más que al término de 2025. El crecimiento patrimonial fue encabezado por fondos accionarios internacionales, con 11,4%, y accionarios nacionales, con 10,8%; las series retail representaban 40,9% de los activos y 74,3% de los aportantes.\n\nLa actualización permite contrastar rendimiento y costo sin tratarlos como una sola cifra. La tasa anualizada de costos promedio subió cinco puntos base hasta 1,1%, pero las series digitales retail promediaron 1,2%, frente a 1,6% en las no digitales, una diferencia reportada de 33 puntos base. En rentabilidad neta de remuneraciones y gastos, los accionarios internacionales avanzaron 11,9% nominal, mientras los fondos de deuda en pesos menores a 90 días rindieron 1,99%, equivalente a -0,7% real. Son datos al primer semestre y no anticipan el desempeño posterior; sirven como fotografía comparable de tamaño, participación, costos y retorno por familia.",
+        "anchor": "fondos-mutuos-chile-superan-cien-mil-millones",
+        "sources": [
+          {
+            "name": "CMF — actualización del Portal de Fondos Mutuos a junio de 2026",
+            "url": "https://www.cmfchile.cl/portal/prensa/625/w4-article-114271.html"
+          },
+          {
+            "name": "PlanFibra — cobertura de la actualización del portal de la CMF",
+            "url": "https://finanzas.planfibra.cl/noticia/2174-cmf-actualiza-el-portal-de-fondos-mutuos-con-informacion-a-junio-de-2026"
+          }
+        ]
+      },
+      {
+        "slot": "markets_global",
+        "headline": "Indonesia rebota tras una venta de US$82 mil millones",
+        "deck": "El índice de Yakarta recuperó 5,3% mientras autoridades ajustan reglas para responder a la consulta de MSCI sobre una eventual reclasificación.",
+        "development": "El índice compuesto de Yakarta rebotó 5,3% el 20 de octubre, después de perder cerca de 15% en dos sesiones y borrar unos US$82 mil millones de valor bursátil. La venta se aceleró tras la consulta de MSCI para reclasificar a Indonesia desde mercado emergente a mercado independiente. El proveedor de índices citó opacidad persistente en la propiedad accionaria, sospechas de negociación coordinada y falta de evidencia consistente sobre la aplicación de reformas. La decisión final está prevista a más tardar para el 30 de junio de 2027.\n\nLas autoridades respondieron con medidas de mercado y compromisos regulatorios. La Bolsa de Indonesia anunció que excluirá de su referencia acciones con alta concentración de propiedad, equivalentes a cerca de 18% del índice, y redujo límites diarios de precios para contener la volatilidad. La OJK reiteró planes de revelar participaciones superiores a 1%, mejorar la clasificación de inversionistas y elevar a 15% el mínimo de acciones en libre circulación. El rebote no cierra la consulta ni garantiza que Indonesia conserve su categoría: MSCI mantiene congelados ciertos aumentos y adiciones en sus índices hasta nueva información, por lo que la evidencia de implementación será tan relevante como los anuncios.",
+        "anchor": "indonesia-rebota-tras-alerta-reclasificacion-msci",
+        "sources": [
+          {
+            "name": "MSCI — consulta sobre reclasificación del mercado de Indonesia",
+            "url": "https://ir.msci.com/news-releases/news-release-details/msci-launches-consultation-proposal-reclassify-indonesia"
+          },
+          {
+            "name": "OJK — compromiso con reformas del mercado de capitales indonesio",
+            "url": "https://ojk.go.id/en/berita-dan-kegiatan/siaran-pers/Pages/OJK-Reaffirms-Commitment-to-Advancing-Indonesias-Capital-Market-Reform.aspx"
+          },
+          {
+            "name": "Reuters — rebote del mercado indonesio tras la venta masiva",
+            "url": "https://www.reuters.com/world/asia-pacific/indonesian-markets-inch-up-after-authorities-move-stem-rout-msci-expulsion-fears-2026-10-20/"
+          }
+        ]
+      }
+    ]
+  }
+}
