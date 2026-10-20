@@ -1,11 +1,11 @@
 ---
 title: "China exige revocar el veto a DeepSeek y amenaza con responder"
 summary: "Beijing convirtió la prohibición estadounidense de DeepSeek en sistemas federales en una disputa bilateral: exigió retirarla, invocó los entendimientos Xi-Trump y advirtió que protegerá a sus empresas."
-publishedAt: "2026-10-20T13:02:00-03:00"
+publishedAt: "2026-10-20T13:08:45-03:00"
 cutoffAt: "2026-10-20T12:00:00-03:00"
 type: "daily"
 editionSlot: "evening"
-status: "draft"
+status: "published"
 tags:
   - china
   - estados-unidos
