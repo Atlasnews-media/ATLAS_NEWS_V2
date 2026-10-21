@@ -16,6 +16,13 @@ sources:
     url: "https://www.reuters.com/business/energy/hungary-considers-replacing-russias-rosatom-nuclear-project-2026-10-21/"
 featured: false
 demo: false
+editorialVisual:
+  src: "https://commons.wikimedia.org/wiki/Special:FilePath/Paksi%20atomer%C5%91m%C5%B1.JPG?width=1280"
+  alt: "Vista de la central nuclear de Paks en Hungría, junto al río Danubio."
+  source: "Wikimedia Commons"
+  sourceUrl: "https://commons.wikimedia.org/wiki/File%3APaksi_atomer%C5%91m%C5%B1.JPG"
+  author: "Barna Rovács (Rovibroni)"
+  license: "CC BY-SA 4.0"
 highlights:
   - label: "Hungría revisa la salida de Rosatom del proyecto Paks"
     text: "El gobierno de Peter Magyar analiza todos los escenarios y se inclina por mantener la ampliación nuclear sin el contratista estatal ruso."
