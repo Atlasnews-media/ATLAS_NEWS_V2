@@ -2,6 +2,7 @@
 import marketPulse from "../data/market-pulse.json";
 
 interface MarketItem {
+  id: string;
   label: string;
   value: string;
   change?: string;
@@ -93,6 +94,7 @@ const selectedItems = [
 const items: MarketItem[] = selectedItems.map(({ id, label, category }) => {
   const asset = assetById.get(id);
   return {
+    id,
     label,
     value: formatValue(asset),
     change: formatChange(asset),
@@ -127,22 +129,24 @@ function changeDirection(change?: string) {
   <ul aria-label="Resumen de mercado con datos del tablero de índices">
     {
       items.map((item) => (
-        <li>
+        <li data-atlas-market-id={item.id}>
           <span class="market-label">{item.label}</span>
-          <strong>{item.value}</strong>
-          {item.change && (
-            <span
-              class="market-change"
-              data-direction={changeDirection(item.change)}
-            >
-              {item.change}
-            </span>
-          )}
+          <strong data-atlas-market-value>{item.value}</strong>
+          <span
+            class="market-change"
+            data-direction={changeDirection(item.change)}
+            data-atlas-market-change
+            hidden={!item.change}
+          >
+            {item.change ?? ""}
+          </span>
         </li>
       ))
     }
   </ul>
-  <p class="market-meta">Datos de mercado · Corte {asOfLabel}</p>
+  <p class="market-meta" data-atlas-market-stamp="pulse">
+    Datos de mercado · Corte {asOfLabel}
+  </p>
 </div>
 
 <style>

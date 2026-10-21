@@ -254,7 +254,7 @@ const marketVisual = resolveUtilityPageVisual(
       </div>
       <div class="update-stamp" aria-label="Última actualización de los datos">
         <strong>Última actualización</strong>
-        <span>{generatedDate} · {generatedTime}</span>
+        <span data-atlas-market-stamp="short">{generatedDate} · {generatedTime}</span>
         {
           staleCount > 0 && (
             <small>{staleCount} dato excluido por vigencia</small>
@@ -295,21 +295,28 @@ const marketVisual = resolveUtilityPageVisual(
               const asset = assetById.get(row.id);
               const state = direction(asset);
               return (
-                <div class="section-row data-row" data-state={state}>
+                <div
+                  class="section-row data-row"
+                  data-state={state}
+                  data-atlas-market-id={row.id}
+                >
                   <div class="asset-name">
                     <span>{row.label ?? asset?.label ?? row.id}</span>
-                    {asset?.displayEligible === false && (
-                      <small>
-                        {asset.staleReason ?? "dato fuera de vigencia"}
-                      </small>
-                    )}
+                    <small
+                      data-atlas-market-warning
+                      hidden={asset?.displayEligible !== false}
+                    >
+                      {asset?.staleReason ?? "dato fuera de vigencia"}
+                    </small>
                   </div>
-                  <strong class="asset-value">{formatValue(asset)}</strong>
+                  <strong class="asset-value" data-atlas-market-value>
+                    {formatValue(asset)}
+                  </strong>
                   <div class="asset-change">
-                    <span class="arrow" aria-hidden="true">
+                    <span class="arrow" aria-hidden="true" data-atlas-market-arrow>
                       {arrowFor(asset)}
                     </span>
-                    <span>{formatChange(asset)}</span>
+                    <span data-atlas-market-change>{formatChange(asset)}</span>
                   </div>
                 </div>
               );
