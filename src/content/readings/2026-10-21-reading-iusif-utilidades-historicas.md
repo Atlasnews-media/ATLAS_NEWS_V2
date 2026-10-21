@@ -1,8 +1,8 @@
 ---
 title: "SII abre ventana tributaria al 10% para utilidades históricas por más de US$155.000 millones"
 summary: "La autoridad tributaria activó un régimen voluntario de ocho meses para regularizar rentas empresariales históricas. El Gobierno estima recaudar más de $703.000 millones, pero los saldos registrados no equivalen a dinero disponible."
-publishedAt: "2026-10-21T13:20:54-03:00"
-status: "draft"
+publishedAt: "2026-10-21T13:24:10-03:00"
+status: "published"
 tags:
   - contingencia
   - chile
