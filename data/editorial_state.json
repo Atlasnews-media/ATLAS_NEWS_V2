@@ -119,6 +119,18 @@
       "invalidate_if": "La normalización sostenida de energía y fertilizantes reduce las solicitudes efectivas, bajan los costos de deuda y el Banco Mundial no necesita ampliar su capacidad; nuevas peticiones, desembolsos o reestructuraciones reforzarían la tesis.",
       "watch": "Solicitudes y desembolsos efectivos, ampliación del fondo de crisis, precios de diésel y fertilizantes, efectos de El Niño, servicio de deuda externa, canjes de deuda por desarrollo, decisiones del FMI y coordinación del G20.",
       "last_publication": "/ediciones/2026-10-11-daily-banco-mundial-prepara-ayuda-crisis/"
+    },
+    {
+      "id": "euro-international-liquidity",
+      "topic": "Liquidez internacional y papel global del euro",
+      "thesis": "El BCE está convirtiendo su red internacional de liquidez en infraestructura para proteger la transmisión monetaria y ampliar el uso global del euro, vinculando estabilidad de financiamiento, reservas oficiales y demanda por deuda europea.",
+      "status": "new",
+      "last_evidence": "El 21 de octubre más de 30 bancos centrales habían expresado interés en EUREP; los primeros participantes externos completaron su incorporación a comienzos de mes y podrán obtener el mismo día hasta €50.000 millones por institución contra colateral de alta calidad denominado en euros.",
+      "effect": "Abre un hilo monetario internacional: el BCE pasa de ofrecer un respaldo defensivo ante escasez de euros a usarlo también para reforzar la confianza en la moneda, integrar el mercado de bonos y atraer reservas oficiales fuera de la eurozona.",
+      "base_scenario": "La adopción de EUREP aumenta gradualmente y favorece tenencias oficiales de deuda en euros, mientras las líneas de swap permanecen reservadas para socios con vínculos financieros estrechos y capacidad de repago.",
+      "invalidate_if": "Una incorporación escasa, ausencia de mayor demanda por activos en euros o fallas del mecanismo durante un episodio de tensión debilitarían la tesis; nuevas adhesiones, más reservas oficiales y uso ordenado en una crisis la confirmarían.",
+      "watch": "Bancos centrales incorporados, uso de EUREP, composición de reservas, demanda por bonos soberanos y supranacionales europeos, revisión de líneas de swap, condiciones de colateral y episodios de tensión de financiamiento en euros.",
+      "last_publication": "/ediciones/2026-10-21-daily-bce-red-liquidez-euro/"
     }
   ]
 }
