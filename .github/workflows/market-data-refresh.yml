@@ -149,7 +149,7 @@ jobs:
             echo "Faltan fechas de generación o captura." >&2
             exit 1
           fi
-          for attempt in $(seq 1 12); do
+          for attempt in $(seq 1 40); do
             market_url="https://atlasnews-media.github.io/data/market-pulse.json?verify=${GITHUB_RUN_ID}-$attempt"
             economic_url="https://atlasnews-media.github.io/data/economic-indicators.json?verify=${GITHUB_RUN_ID}-$attempt"
             market_file="$RUNNER_TEMP/live-market.json"
@@ -161,8 +161,8 @@ jobs:
               echo "GitHub Pages confirma ambas capturas del corte $source_cut."
               exit 0
             fi
-            echo "Esperando propagación pública del snapshot ($attempt/12)."
-            sleep 5
+            echo "Esperando propagación pública del snapshot ($attempt/40)."
+            sleep 7
           done
           echo "Error: GitHub Pages no confirmó los snapshots nuevos." >&2
           exit 1
