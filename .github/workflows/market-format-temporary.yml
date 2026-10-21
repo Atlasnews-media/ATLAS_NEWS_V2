@@ -1,0 +1,44 @@
+name: Formatear reparación de mercado (temporal)
+
+on:
+  push:
+    branches:
+      - fix/market-data-independent-refresh-20261021
+
+permissions:
+  contents: write
+
+jobs:
+  format-market:
+    if: github.repository == 'Atlasnews-media/ATLAS_NEWS_V2'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          persist-credentials: true
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - name: Formatear exclusivamente archivos de esta reparación
+        run: |
+          npx prettier --write \
+            public/js/market-data-policy.mjs \
+            public/js/market-live.js \
+            scripts/test-market-runtime.mjs \
+            scripts/validate-market-pulse-freshness.mjs \
+            src/components/EconomicIndicators.astro \
+            src/pages/mercados/indices/index.astro
+      - name: Guardar formato canónico en la misma rama técnica
+        run: |
+          set -euo pipefail
+          git config user.name "ATLAS NEWS Technical Formatter"
+          git config user.email "actions@users.noreply.github.com"
+          git add -- public/js/market-data-policy.mjs public/js/market-live.js scripts/test-market-runtime.mjs scripts/validate-market-pulse-freshness.mjs src/components/EconomicIndicators.astro src/pages/mercados/indices/index.astro
+          if git diff --cached --quiet; then
+            echo "Formato ya es canónico."
+            exit 0
+          fi
+          git commit -m "style(market): aplicar Prettier al bloque de reparación"
+          git push origin "HEAD:refs/heads/fix/market-data-independent-refresh-20261021"
