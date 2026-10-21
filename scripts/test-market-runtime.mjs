@@ -68,3 +68,22 @@ test("Las fechas futuras inverosímiles se excluyen", () => {
   );
   assert.equal(asset.displayEligible, false);
 });
+
+test("El dato oficial del día tolera la hora simbólica de mediodía", () => {
+  const asset = assessMarketAsset(
+    quote("usdclp", "2026-10-21T12:00:00-03:00"),
+    new Date("2026-10-21T12:00:00Z"),
+  );
+  assert.equal(asset.displayEligible, true);
+  assert.equal(asset.freshnessState, "official");
+});
+
+test("Los IPSA antiguos sin hora de cotización se identifican", () => {
+  const asset = assessMarketAsset(
+    quote("ipsa", "2026-10-21T12:00:00Z", {
+      provider: "diario-financiero-public",
+    }),
+    new Date("2026-10-21T14:00:00Z"),
+  );
+  assert.equal(asset.displayEligible, false);
+});
