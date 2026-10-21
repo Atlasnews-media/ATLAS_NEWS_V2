@@ -16,11 +16,11 @@ sources:
     url: "https://www.df.cl/empresas/telecom-tecnologia/gobierno-continua-revision-de-86-fuerzas-mayores-presentadas-por-wom-y"
     publishedAt: "2026-10-21T11:14:00-03:00"
 highlights:
-  - label: "Subtel analiza 86 alegaciones"
+  - label: "Subtel analiza 86 casos"
     text: "Las solicitudes de fuerza mayor se relacionan con el segundo hito del despliegue comprometido en la concesión 5G."
-  - label: "El pago deberá ser en efectivo"
+  - label: "Pago en efectivo"
     text: "El Gobierno anticipó que exigirá US$38 millones y no aceptará las obras ofrecidas por la compañía como sustitución."
-  - label: "Las garantías podrían acercarse a $8.700 millones"
+  - label: "Garantías por $8.700 MM"
     text: "Su cobro dependerá del resultado de la revisión y de los incumplimientos que el regulador determine formalmente."
 demo: false
 ---

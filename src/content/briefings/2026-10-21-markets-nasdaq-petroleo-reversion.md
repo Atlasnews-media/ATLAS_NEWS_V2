@@ -21,9 +21,9 @@ sources:
 highlights:
   - label: "Nasdaq avanza 0,6%"
     text: "A las 10:54 de Santiago, el índice lideraba Wall Street por resultados sólidos en empresas vinculadas a inteligencia artificial."
-  - label: "SpaceX y Super Micro saltan"
+  - label: "SpaceX y Super Micro"
     text: "SpaceX ganaba 10,7% y Super Micro 12%, mientras Tesla subía 3,7% y los semiconductores avanzaban 1,2%."
-  - label: "El Brent devuelve el impulso"
+  - label: "Brent borra el impulso"
     text: "Después de subir hasta US$2, el crudo quedó casi estable cerca de US$109 al ponderarse diplomacia, inventarios y nuevos ataques."
 demo: false
 ---
