@@ -1,6 +1,7 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 import { assessMarketAsset } from "../public/js/market-data-policy.mjs";
+import { parseFindicIpsa } from "./lib/parse-findic-ipsa.mjs";
 
 const quote = (id, effectiveAt, extra = {}) => ({
   id,
@@ -86,4 +87,44 @@ test("Los IPSA antiguos sin hora de cotización se identifican", () => {
     new Date("2026-10-21T14:00:00Z"),
   );
   assert.equal(asset.displayEligible, false);
+});
+
+test("El IPSA diario se extrae con fecha bursátil verificable", () => {
+  const payload = {
+    codigo: "ipsa",
+    serie: [
+      { fecha: "2026-10-20", valor: 10926.5 },
+      { fecha: "2026-10-19", valor: 10972.4 },
+    ],
+  };
+  const quote = parseFindicIpsa(payload);
+  assert.equal(quote.value, 10926.5);
+  assert.equal(quote.effectiveAt, "2026-10-20T00:00:00Z");
+  assert.equal(quote.quoteBasis, "daily-close");
+  assert.ok(quote.changePercent < 0);
+  const guarded = assessMarketAsset(
+    { id: "ipsa", unit: "points", provider: "findic-public-close", ...quote },
+    new Date("2026-10-21T15:00:00Z"),
+  );
+  assert.equal(guarded.displayEligible, true);
+  assert.equal(guarded.freshnessState, "delayed");
+});
+
+test("Findic IPSA rechaza series sin fecha y código confiables", () => {
+  assert.throws(() => parseFindicIpsa({ codigo: "usd", serie: [] }));
+  assert.throws(() => parseFindicIpsa({ codigo: "ipsa", serie: [] }));
+});
+
+test("Referencia FX diaria no caduca por marca futura artificial", () => {
+  const asset = assessMarketAsset(
+    {
+      id: "eurusd",
+      value: 1.13,
+      effectiveAt: "2026-10-21T00:00:00Z",
+      quoteBasis: "daily-reference",
+    },
+    new Date("2026-10-21T14:00:00Z"),
+  );
+  assert.equal(asset.displayEligible, true);
+  assert.equal(asset.freshnessState, "reference");
 });
