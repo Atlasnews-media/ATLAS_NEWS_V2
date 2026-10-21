@@ -109,6 +109,15 @@ const indicators: DisplayIndicator[] = [
 ].filter((indicator): indicator is DisplayIndicator => Boolean(indicator));
 
 const priorityIndicators = new Set(["dolar", "cobre", "ipsa", "sp500"]);
+const marketIdByIndicator: Record<string, string> = {
+  uf: "uf",
+  dolar: "usdclp",
+  euro: "eurclp",
+  cobre: "copper",
+  brent: "brent",
+  ipsa: "ipsa",
+  sp500: "sp500",
+};
 
 function formatDate(date: string) {
   const normalized = date.includes("T") ? date : `${date}T12:00:00-04:00`;
@@ -192,6 +201,10 @@ const freshnessLabel =
           <div
             class="economic-panel__item"
             data-priority={isPriority ? "true" : undefined}
+            data-atlas-market-id={
+              marketIdByIndicator[indicator.id] ?? indicator.id
+            }
+            data-atlas-economic-code={indicator.id}
             role="listitem"
           >
             <IndicatorIcon id={indicator.id} />
@@ -200,6 +213,7 @@ const freshnessLabel =
               <span class="economic-panel__label">{indicator.label}</span>
               <span
                 class="economic-panel__value"
+                data-atlas-market-value
                 title={
                   indicator.effectiveAt
                     ? `Dato efectivo al ${formatDate(indicator.effectiveAt)}`
@@ -213,6 +227,7 @@ const freshnessLabel =
             {trend ? (
               <span
                 class="economic-panel__trend"
+                data-atlas-market-change
                 data-trend={indicator.trend}
                 aria-label={`Variación ${trend}`}
               >
@@ -221,6 +236,7 @@ const freshnessLabel =
             ) : (
               <span
                 class="economic-panel__trend economic-panel__trend--neutral"
+                data-atlas-market-change
                 aria-hidden="true"
               >
                 —
@@ -234,7 +250,10 @@ const freshnessLabel =
 
   <p class="economic-panel__source">
     Fuentes: {economicIndicatorsSnapshot.sourceName} · Índices de mercado ATLAS ·
-    {freshnessLabel}: <time datetime={asOf}>{asOfLabel}</time>
+    <span data-atlas-economic-freshness>{freshnessLabel}</span>: <time
+      datetime={asOf}
+      data-atlas-market-stamp="date">{asOfLabel}</time
+    >
   </p>
 </section>
 
