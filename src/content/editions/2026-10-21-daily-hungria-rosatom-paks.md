@@ -1,11 +1,11 @@
 ---
 title: "Hungría evalúa reemplazar a Rosatom en su proyecto nuclear de €12.500 millones"
 summary: "El nuevo gobierno revisa la continuidad del contratista ruso en la ampliación de Paks, una decisión que puede convertir más de €2.000 millones ya gastados en costo hundido y reordenar la dependencia energética húngara."
-publishedAt: "2026-10-21T13:03:40-03:00"
+publishedAt: "2026-10-21T13:09:57-03:00"
 cutoffAt: "2026-10-21T12:00:00-03:00"
 type: "daily"
 editionSlot: "evening"
-status: "draft"
+status: "published"
 tags:
   - hungria
   - energia-nuclear

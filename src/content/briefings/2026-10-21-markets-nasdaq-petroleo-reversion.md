@@ -1,11 +1,11 @@
 ---
 title: "El Nasdaq sube 0,6% con SpaceX y Super Micro mientras el petróleo borra su avance"
 summary: "La apertura estadounidense confirmó una mejora selectiva en inteligencia artificial, pero el Brent devolvió casi toda su subida temprana y la dispersión corporativa impidió leer el movimiento como un regreso uniforme al riesgo."
-publishedAt: "2026-10-21T13:03:40-03:00"
+publishedAt: "2026-10-21T13:09:57-03:00"
 cutoffAt: "2026-10-21T12:00:00-03:00"
 section: "markets"
 editionSlot: "evening"
-status: "draft"
+status: "published"
 tags:
   - mercados
   - nasdaq

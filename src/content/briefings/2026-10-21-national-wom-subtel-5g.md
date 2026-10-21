@@ -1,11 +1,11 @@
 ---
 title: "Subtel revisa 86 alegaciones de WOM y exigirá un pago en efectivo de US$38 millones"
 summary: "El regulador analiza solicitudes de fuerza mayor ligadas al despliegue 5G y anticipa que rechazará obras presentadas como pago, mientras garantías por incumplimientos podrían alcanzar cerca de $8.700 millones."
-publishedAt: "2026-10-21T13:03:40-03:00"
+publishedAt: "2026-10-21T13:09:57-03:00"
 cutoffAt: "2026-10-21T12:00:00-03:00"
 section: "national"
 editionSlot: "evening"
-status: "draft"
+status: "published"
 tags:
   - chile
   - telecomunicaciones
