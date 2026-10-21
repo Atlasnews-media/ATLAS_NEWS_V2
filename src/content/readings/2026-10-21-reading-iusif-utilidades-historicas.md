@@ -12,6 +12,10 @@ tags:
 source:
   name: "Servicio de Impuestos Internos — Entra en vigencia nuevo Impuesto Único Sustitutivo para rentas acumuladas pendientes de tributación"
   url: "https://www.sii.cl/noticias/2026/211026noti01pcr.htm"
+audio:
+  src: "/audio/readings/2026-10-21-reading-iusif-utilidades-historicas.mp3"
+  durationLabel: "2 min"
+  voice: "Dora"
 demo: false
 ---
 
