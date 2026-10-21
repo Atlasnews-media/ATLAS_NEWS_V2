@@ -15,6 +15,7 @@ const officialMaxDays = {
   usdclp: 7,
   eurclp: 7,
   uf: 3,
+  utm: 40,
   copper: 7,
   tpm: 45,
 };

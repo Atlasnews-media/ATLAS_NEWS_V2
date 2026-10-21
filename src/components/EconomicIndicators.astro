@@ -201,7 +201,7 @@ const freshnessLabel =
           <div
             class="economic-panel__item"
             data-priority={isPriority ? "true" : undefined}
-            data-atlas-market-id={marketIdByIndicator[indicator.id]}
+            data-atlas-market-id={marketIdByIndicator[indicator.id] ?? indicator.id}
             data-atlas-economic-code={indicator.id}
             role="listitem"
           >
@@ -248,7 +248,7 @@ const freshnessLabel =
 
   <p class="economic-panel__source">
     Fuentes: {economicIndicatorsSnapshot.sourceName} · Índices de mercado ATLAS ·
-    {freshnessLabel}: <time datetime={asOf} data-atlas-market-stamp="date">{asOfLabel}</time>
+    <span data-atlas-economic-freshness>{freshnessLabel}</span>: <time datetime={asOf} data-atlas-market-stamp="date">{asOfLabel}</time>
   </p>
 </section>
 

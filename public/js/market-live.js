@@ -221,6 +221,10 @@ async function refresh() {
       updateRow(row, assessMarketAsset(asset, now));
     }
     updateStamps(market.generatedAt);
+    const sourceLabel = document.querySelector("[data-atlas-economic-freshness]");
+    if (sourceLabel && economic) {
+      sourceLabel.textContent = economic.status === "current" ? "Datos al" : "Último dato disponible";
+    }
     document.dispatchEvent(new CustomEvent("atlas:market-data-updated", {
       detail: { generatedAt: market.generatedAt },
     }));
