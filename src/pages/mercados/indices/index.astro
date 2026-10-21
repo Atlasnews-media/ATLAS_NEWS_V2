@@ -254,7 +254,9 @@ const marketVisual = resolveUtilityPageVisual(
       </div>
       <div class="update-stamp" aria-label="Última actualización de los datos">
         <strong>Última actualización</strong>
-        <span data-atlas-market-stamp="short">{generatedDate} · {generatedTime}</span>
+        <span data-atlas-market-stamp="short"
+          >{generatedDate} · {generatedTime}</span
+        >
         {
           staleCount > 0 && (
             <small>{staleCount} dato excluido por vigencia</small>
@@ -313,7 +315,11 @@ const marketVisual = resolveUtilityPageVisual(
                     {formatValue(asset)}
                   </strong>
                   <div class="asset-change">
-                    <span class="arrow" aria-hidden="true" data-atlas-market-arrow>
+                    <span
+                      class="arrow"
+                      aria-hidden="true"
+                      data-atlas-market-arrow
+                    >
                       {arrowFor(asset)}
                     </span>
                     <span data-atlas-market-change>{formatChange(asset)}</span>

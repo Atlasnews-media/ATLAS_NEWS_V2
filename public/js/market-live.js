@@ -25,7 +25,11 @@ const absoluteChange = new Intl.NumberFormat("es-CL", {
 });
 
 function displayValue(asset) {
-  if (!asset || asset.displayEligible === false || !Number.isFinite(asset.value)) {
+  if (
+    !asset ||
+    asset.displayEligible === false ||
+    !Number.isFinite(asset.value)
+  ) {
     return "—";
   }
   switch (asset.unit) {
@@ -51,10 +55,17 @@ function displayValue(asset) {
 }
 
 function marketTrend(asset) {
-  if (asset.displayEligible === false || !Number.isFinite(asset.changePercent)) {
+  if (
+    asset.displayEligible === false ||
+    !Number.isFinite(asset.changePercent)
+  ) {
     return null;
   }
-  return asset.changePercent > 0 ? "up" : asset.changePercent < 0 ? "down" : "flat";
+  return asset.changePercent > 0
+    ? "up"
+    : asset.changePercent < 0
+      ? "down"
+      : "flat";
 }
 
 function setOptionalText(element, content) {
@@ -65,7 +76,8 @@ function setOptionalText(element, content) {
 }
 
 function effectiveLabel(asset) {
-  if (asset.displayEligible === false) return asset.staleReason ?? "sin dato vigente";
+  if (asset.displayEligible === false)
+    return asset.staleReason ?? "sin dato vigente";
   const date = new Date(asset.effectiveAt);
   const value = Number.isFinite(date.getTime())
     ? new Intl.DateTimeFormat("es-CL", {
@@ -74,11 +86,12 @@ function effectiveLabel(asset) {
         timeZone: CL_TIME_ZONE,
       }).format(date)
     : "fecha no disponible";
-  const prefix = asset.freshnessState === "closed"
-    ? "Último cierre / referencia"
-    : asset.freshnessState === "delayed"
-      ? "Último dato disponible"
-      : "Dato efectivo";
+  const prefix =
+    asset.freshnessState === "closed"
+      ? "Último cierre / referencia"
+      : asset.freshnessState === "delayed"
+        ? "Último dato disponible"
+        : "Dato efectivo";
   return `${prefix}: ${value} · ${asset.provider ?? "fuente sin identificar"}`;
 }
 
@@ -95,38 +108,64 @@ function updateRow(row, asset) {
   const arrow = row.querySelector("[data-atlas-market-arrow]");
   const warning = row.querySelector("[data-atlas-market-warning]");
   const isEconomic = row.classList.contains("economic-panel__item");
-  const isPulse = row.hasAttribute("data-atlas-market-id") &&
+  const isPulse =
+    row.hasAttribute("data-atlas-market-id") &&
     row.querySelector(".market-change") != null;
 
   row.dataset.state = asset.displayEligible === false ? "stale" : direction;
   row.dataset.freshness = asset.freshnessState;
   if (change) {
     if (isEconomic) {
-      const symbol = direction === "up" ? "▲" : direction === "down" ? "▼" : "→";
-      setOptionalText(change, raw == null ? "—" : `${symbol} ${absoluteChange.format(Math.abs(raw))}%`);
+      const symbol =
+        direction === "up" ? "▲" : direction === "down" ? "▼" : "→";
+      setOptionalText(
+        change,
+        raw == null
+          ? "—"
+          : `${symbol} ${absoluteChange.format(Math.abs(raw))}%`,
+      );
       change.dataset.trend = direction;
       change.classList.toggle("economic-panel__trend--neutral", raw == null);
-      change.setAttribute("aria-label", raw == null ? "Sin variación" : `Variación ${change.textContent}`);
+      change.setAttribute(
+        "aria-label",
+        raw == null ? "Sin variación" : `Variación ${change.textContent}`,
+      );
     } else if (isPulse) {
-      setOptionalText(change, raw == null ? null : `${signedChange.format(raw)}%`);
+      setOptionalText(
+        change,
+        raw == null ? null : `${signedChange.format(raw)}%`,
+      );
       change.dataset.direction = direction;
     } else {
-      change.textContent = asset.displayEligible === false
-        ? "sin dato vigente"
-        : raw == null
-          ? asset.id === "uf" ? "dato diario" : "sin variación"
-          : `${signedChange.format(raw)}%`;
+      change.textContent =
+        asset.displayEligible === false
+          ? "sin dato vigente"
+          : raw == null
+            ? asset.id === "uf"
+              ? "dato diario"
+              : "sin variación"
+            : `${signedChange.format(raw)}%`;
     }
   }
   if (arrow) {
-    arrow.textContent = asset.displayEligible === false
-      ? "●"
-      : direction === "up" ? "↑" : direction === "down" ? "↓" : "●";
+    arrow.textContent =
+      asset.displayEligible === false
+        ? "●"
+        : direction === "up"
+          ? "↑"
+          : direction === "down"
+            ? "↓"
+            : "●";
   }
   if (warning) {
-    setOptionalText(warning, asset.displayEligible === false
-      ? asset.staleReason ?? "dato fuera de vigencia"
-      : asset.freshnessState === "delayed" ? "último dato disponible" : null);
+    setOptionalText(
+      warning,
+      asset.displayEligible === false
+        ? (asset.staleReason ?? "dato fuera de vigencia")
+        : asset.freshnessState === "delayed"
+          ? "último dato disponible"
+          : null,
+    );
   }
 }
 
@@ -150,7 +189,9 @@ function updateStamps(generatedAt) {
     timeStyle: "short",
     timeZone: CL_TIME_ZONE,
   }).format(date);
-  for (const element of document.querySelectorAll("[data-atlas-market-stamp]")) {
+  for (const element of document.querySelectorAll(
+    "[data-atlas-market-stamp]",
+  )) {
     switch (element.dataset.atlasMarketStamp) {
       case "pulse":
         element.textContent = `Datos de mercado · Corte ${longLabel}`;
@@ -167,7 +208,8 @@ function updateStamps(generatedAt) {
 }
 
 function snapshotValid(snapshot) {
-  if (snapshot?.schemaVersion !== 1 || !Array.isArray(snapshot.assets)) return false;
+  if (snapshot?.schemaVersion !== 1 || !Array.isArray(snapshot.assets))
+    return false;
   const created = Date.parse(snapshot.generatedAt ?? "");
   return Number.isFinite(created) && created <= Date.now() + 10 * 60_000;
 }
@@ -201,7 +243,9 @@ async function refresh() {
       const id = row.dataset.atlasMarketId;
       let asset = assets.get(id);
       if (!asset && row.dataset.atlasEconomicCode === "utm" && economic) {
-        const indicator = economic.indicators?.find((item) => item.code === "utm");
+        const indicator = economic.indicators?.find(
+          (item) => item.code === "utm",
+        );
         if (indicator) {
           asset = {
             id: "utm",
@@ -215,19 +259,29 @@ async function refresh() {
         }
       }
       if (!asset) {
-        updateRow(row, { id, value: null, displayEligible: false, staleReason: "sin dato disponible" });
+        updateRow(row, {
+          id,
+          value: null,
+          displayEligible: false,
+          staleReason: "sin dato disponible",
+        });
         continue;
       }
       updateRow(row, assessMarketAsset(asset, now));
     }
     updateStamps(market.generatedAt);
-    const sourceLabel = document.querySelector("[data-atlas-economic-freshness]");
+    const sourceLabel = document.querySelector(
+      "[data-atlas-economic-freshness]",
+    );
     if (sourceLabel && economic) {
-      sourceLabel.textContent = economic.status === "current" ? "Datos al" : "Último dato disponible";
+      sourceLabel.textContent =
+        economic.status === "current" ? "Datos al" : "Último dato disponible";
     }
-    document.dispatchEvent(new CustomEvent("atlas:market-data-updated", {
-      detail: { generatedAt: market.generatedAt },
-    }));
+    document.dispatchEvent(
+      new CustomEvent("atlas:market-data-updated", {
+        detail: { generatedAt: market.generatedAt },
+      }),
+    );
   } catch (error) {
     // HTML preconstruido permanece disponible; su corte original no se sustituye sin datos válidos.
     console.warn("ATLAS NEWS: el pulso financiero no pudo actualizarse", error);

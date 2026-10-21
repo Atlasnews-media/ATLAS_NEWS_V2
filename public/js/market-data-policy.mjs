@@ -30,7 +30,9 @@ function clockInZone(now, timeZone) {
     minute: "2-digit",
     hourCycle: "h23",
   }).formatToParts(now);
-  const fields = Object.fromEntries(parts.map(({ type, value }) => [type, value]));
+  const fields = Object.fromEntries(
+    parts.map(({ type, value }) => [type, value]),
+  );
   return {
     weekday: fields.weekday,
     minuteOfDay: Number(fields.hour) * 60 + Number(fields.minute),
@@ -78,9 +80,11 @@ export function assessMarketAsset(asset, now = new Date()) {
     return unavailable(asset, "cotización con fecha futura no verificable");
   }
   const hours = Math.max(0, delta / HOUR);
-  const maxAge = officialMaxDays[asset.id] != null
-    ? officialMaxDays[asset.id] * DAY / HOUR
-    : referenceMaxHours[asset.id] ?? (asset.id === "bitcoin" ? 48 : HARD_MARKET_HOURS);
+  const maxAge =
+    officialMaxDays[asset.id] != null
+      ? (officialMaxDays[asset.id] * DAY) / HOUR
+      : (referenceMaxHours[asset.id] ??
+        (asset.id === "bitcoin" ? 48 : HARD_MARKET_HOURS));
   if (hours > maxAge) {
     return unavailable(asset, `cotización vencida: ${Math.round(hours)} horas`);
   }
@@ -111,10 +115,17 @@ export function assessMarketAsset(asset, now = new Date()) {
   const current = asset.quoteBasis !== "daily-close" && hours <= 0.75;
   return {
     ...asset,
-    status: asset.status === "fallback" ? "fallback" : current ? "current" : "delayed",
+    status:
+      asset.status === "fallback"
+        ? "fallback"
+        : current
+          ? "current"
+          : "delayed",
     displayEligible: true,
     freshnessState: current ? "current" : "delayed",
-    freshnessNote: current ? undefined : "último dato disponible; no es una cotización en tiempo real",
+    freshnessNote: current
+      ? undefined
+      : "último dato disponible; no es una cotización en tiempo real",
     staleReason: undefined,
   };
 }
