@@ -49,6 +49,7 @@ function makeAsset({
   provider,
   sourceUrl,
   status = "current",
+  quoteBasis = "exchange-quote",
 }) {
   return {
     id,
@@ -62,6 +63,7 @@ function makeAsset({
     provider,
     sourceUrl,
     status,
+    quoteBasis,
   };
 }
 
@@ -127,7 +129,8 @@ function parseStooqCsv(csv, symbol) {
   return {
     value: current.value,
     changePercent: (current.value / previous.value - 1) * 100,
-    effectiveAt: `${current.date}T23:59:00Z`,
+    effectiveAt: `${current.date}T00:00:00Z`,
+    quoteBasis: "daily-close",
   };
 }
 
@@ -182,6 +185,7 @@ async function yahooQuote(symbol) {
     effectiveAt: Number.isFinite(meta.regularMarketTime)
       ? new Date(meta.regularMarketTime * 1000).toISOString()
       : new Date().toISOString(),
+    quoteBasis: "exchange-quote",
     provider: "yahoo-public-chart",
     sourceUrl: `https://finance.yahoo.com/quote/${encodeURIComponent(symbol)}`,
   };
@@ -232,7 +236,8 @@ async function diarioFinancieroIpsaQuote() {
   return {
     value,
     changePercent,
-    effectiveAt: new Date().toISOString(),
+    effectiveAt: null,
+    quoteBasis: "unverified",
     provider: "diario-financiero-public",
     sourceUrl,
   };
@@ -327,11 +332,11 @@ async function quoteWithFallback(primary, fallback) {
 
 async function ipsaQuote() {
   return quoteWithFallback(
-    () => diarioFinancieroIpsaQuote(),
+    () => yahooQuote("^IPSA"),
     () =>
       quoteWithFallback(
         () => stooqQuote("^ipsa"),
-        () => yahooQuote("^IPSA"),
+        () => diarioFinancieroIpsaQuote(),
       ),
   );
 }
@@ -358,6 +363,7 @@ async function externalAsset(definition) {
     effectiveAt: quote.effectiveAt,
     provider: quote.provider,
     sourceUrl: quote.sourceUrl,
+    quoteBasis: quote.quoteBasis,
   });
 }
 

@@ -306,6 +306,9 @@ jobs:
       - name: Instalar dependencias
         run: npm ci
 
+      - name: Validar procedencia editorial (fail-closed)
+        run: npm run validate:publication-provenance
+
       - name: Resolver identidad editorial vigente
         id: editorial_identity
         env:

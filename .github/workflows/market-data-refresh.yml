@@ -68,62 +68,25 @@ jobs:
         if: steps.window.outputs.run == 'true'
         run: npm run update:indicators
 
-      - name: Construir sitio sin regenerar la edición
-        if: steps.window.outputs.run == 'true'
-        run: npm run build:site
-
-      - name: Verificar unificación Portada / Índices
+      - name: Validar contrato de datos sin construir páginas
         if: steps.window.outputs.run == 'true'
         shell: bash
         run: |
           set -euo pipefail
-          test -f dist/data/economic-indicators.json
-          test -f dist/data/market-pulse.json
-          test -f dist/index.html
-          test -f dist/mercados/indices/index.html
-
           node --input-type=module <<'NODE'
           import { readFile } from "node:fs/promises";
-
-          const pulse = JSON.parse(await readFile("dist/data/market-pulse.json", "utf8"));
-          const portada = await readFile("dist/index.html", "utf8");
-          const indices = await readFile("dist/mercados/indices/index.html", "utf8");
-
-          const decimal2 = new Intl.NumberFormat("es-CL", {
-            minimumFractionDigits: 2,
-            maximumFractionDigits: 2,
-          });
-
-          function visibleValue(asset) {
-            if (!asset || asset.displayEligible === false || !Number.isFinite(asset.value)) {
-              return null;
-            }
-            if (asset.unit === "points") return decimal2.format(asset.value);
-            if (asset.unit === "usd-per-barrel") return `US$${decimal2.format(asset.value)}`;
-            return null;
+          const market = JSON.parse(await readFile("public/data/market-pulse.json", "utf8"));
+          const economic = JSON.parse(await readFile("public/data/economic-indicators.json", "utf8"));
+          if (market.schemaVersion !== 1 || !Date.parse(market.generatedAt) || !Array.isArray(market.assets)) {
+            throw new Error("Snapshot de mercado inválido.");
           }
-
-          const commonIds = ["sp500", "brent", "ipsa"];
-          let checked = 0;
-
-          for (const id of commonIds) {
-            const asset = pulse.assets?.find((candidate) => candidate.id === id);
-            const expected = visibleValue(asset);
-            if (!expected) continue;
-            checked += 1;
-            if (!portada.includes(expected)) {
-              throw new Error(`Portada no contiene el corte ${id}=${expected}.`);
-            }
-            if (!indices.includes(expected)) {
-              throw new Error(`Índices no contiene el corte ${id}=${expected}.`);
-            }
+          if (economic.schemaVersion !== 1 || !Array.isArray(economic.indicators)) {
+            throw new Error("Snapshot económico inválido.");
           }
-
-          if (checked === 0) {
-            throw new Error("No hubo activos comunes vigentes para verificar Portada/Índices.");
-          }
-
-          console.log(`Consistencia Portada/Índices OK en ${checked} activo(s).`);
+          const primary = ["ipsa", "sp500", "brent"];
+          const found = primary.filter((id) => market.assets.some((item) => item.id === id));
+          if (found.length === 0) throw new Error("Sin indicadores principales recuperables.");
+          console.log(`Contrato de datos OK. Principales presentes: ${found.join(", ")}`);
           NODE
 
       - name: Preparar acceso al repositorio público
@@ -137,28 +100,7 @@ jobs:
           chmod 600 ~/.ssh/atlas_news_pages
           ssh-keyscan -H github.com >> ~/.ssh/known_hosts
 
-      - name: Publicar corte actualizado
-        if: steps.window.outputs.run == 'true'
-        env:
-          GIT_SSH_COMMAND: ssh -i ~/.ssh/atlas_news_pages -o IdentitiesOnly=yes
-        run: |
-          set -euo pipefail
-          atlas_publish_dir="$RUNNER_TEMP/atlas-news-public"
-          git clone --depth 1 git@github.com:Atlasnews-media/Atlasnews-media.github.io.git "$atlas_publish_dir"
-          rsync -a --delete --exclude='.git' --exclude='audio/' --exclude='data/funds-beagf.json' dist/ "$atlas_publish_dir/"
-          cd "$atlas_publish_dir"
-          git config user.name "ATLAS NEWS Data Refresh"
-          git config user.email "actions@users.noreply.github.com"
-          git add --all
-
-          if git diff --cached --quiet; then
-            echo "El corte público ya coincide con los datos generados."
-          else
-            git commit -m "Actualiza datos de mercado $(TZ=America/Santiago date '+%Y-%m-%d %H:%M')"
-            git push origin main
-          fi
-
-      - name: Verificar snapshot publicado
+      - name: Publicar solo snapshots financieros (sin rebuild editorial)
         if: steps.window.outputs.run == 'true'
         env:
           GIT_SSH_COMMAND: ssh -i ~/.ssh/atlas_news_pages -o IdentitiesOnly=yes
@@ -166,18 +108,56 @@ jobs:
         run: |
           set -euo pipefail
           atlas_publish_dir="$RUNNER_TEMP/atlas-news-public"
-          source_cut="$(jq -r '.generatedAt' dist/data/market-pulse.json)"
-          public_cut="$(jq -r '.generatedAt' "$atlas_publish_dir/data/market-pulse.json")"
+          for attempt in 1 2 3; do
+            rm -rf "$atlas_publish_dir"
+            git clone --depth 1 git@github.com:Atlasnews-media/Atlasnews-media.github.io.git "$atlas_publish_dir"
+            mkdir -p "$atlas_publish_dir/data"
+            cp public/data/economic-indicators.json "$atlas_publish_dir/data/economic-indicators.json"
+            cp public/data/market-pulse.json "$atlas_publish_dir/data/market-pulse.json"
+            cd "$atlas_publish_dir"
+            git config user.name "ATLAS NEWS Data Refresh"
+            git config user.email "actions@users.noreply.github.com"
+            git add -- data/economic-indicators.json data/market-pulse.json
+            if git diff --cached --quiet; then
+              echo "Los snapshots públicos ya coinciden con la captura."
+              exit 0
+            fi
+            git commit -m "Actualiza snapshots financieros $(TZ=America/Santiago date '+%Y-%m-%d %H:%M')"
+            if git push origin main; then
+              echo "Publicación atómica de snapshots completada."
+              exit 0
+            fi
+            echo "Colisión de escritor público: conciliando contra HEAD remoto ($attempt/3)." >&2
+            sleep 3
+          done
+          echo "No se pudo publicar el snapshot tras tres intentos." >&2
+          exit 1
 
-          if [[ -z "$source_cut" || "$source_cut" == "null" ]]; then
-            echo "El snapshot generado no contiene generatedAt." >&2
+      - name: Verificar snapshot público publicado
+        if: steps.window.outputs.run == 'true'
+        shell: bash
+        run: |
+          set -euo pipefail
+          source_cut="$(jq -r '.generatedAt // empty' public/data/market-pulse.json)"
+          source_economic="$(jq -r '.fetchedAt // empty' public/data/economic-indicators.json)"
+          if [[ -z "$source_cut" || -z "$source_economic" ]]; then
+            echo "Faltan fechas de generación o captura." >&2
             exit 1
           fi
-
-          if [[ "$source_cut" != "$public_cut" ]]; then
-            echo "El snapshot público no coincide con el corte generado." >&2
-            echo "origen=$source_cut público=$public_cut" >&2
-            exit 1
-          fi
-
-          echo "Snapshot público verificado: $public_cut"
+          for attempt in $(seq 1 12); do
+            market_url="https://atlasnews-media.github.io/data/market-pulse.json?verify=${GITHUB_RUN_ID}-$attempt"
+            economic_url="https://atlasnews-media.github.io/data/economic-indicators.json?verify=${GITHUB_RUN_ID}-$attempt"
+            market_file="$RUNNER_TEMP/live-market.json"
+            economic_file="$RUNNER_TEMP/live-economic.json"
+            if curl -fsSL --max-time 10 "$market_url" -o "$market_file" &&
+               curl -fsSL --max-time 10 "$economic_url" -o "$economic_file" &&
+               jq -e --arg cut "$source_cut" '.generatedAt == $cut' "$market_file" >/dev/null &&
+               jq -e --arg cut "$source_economic" '.fetchedAt == $cut' "$economic_file" >/dev/null; then
+              echo "GitHub Pages confirma ambas capturas del corte $source_cut."
+              exit 0
+            fi
+            echo "Esperando propagación pública del snapshot ($attempt/12)."
+            sleep 5
+          done
+          echo "Error: GitHub Pages no confirmó los snapshots nuevos." >&2
+          exit 1
