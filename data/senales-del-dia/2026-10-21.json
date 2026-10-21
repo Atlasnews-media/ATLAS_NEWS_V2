@@ -1,0 +1,111 @@
+{
+  "status": "READY",
+  "date": "2026-10-21",
+  "contract": "atlas-senales-del-dia-v1",
+  "senalesDelDia": {
+    "internacional": [
+      {
+        "slot": "technology",
+        "headline": "PHP prepara parches para dos fallas críticas",
+        "deck": "Las vulnerabilidades recibieron 9,2 sobre 10 y las agencias de ciberseguridad pidieron actualizar de inmediato o desconectar sistemas expuestos.",
+        "development": "El equipo de seguridad de PHP programó para las 14:00 UTC del 21 de octubre una versión que corrige dos vulnerabilidades críticas, ambas calificadas con 9,2 sobre 10 en la escala CVSS 4.0. El aviso previo no identificó todavía los fallos ni las versiones afectadas, pero pidió a todos los usuarios prepararse para actualizar en cuanto se publique el parche. CERT-EU señaló que la severidad es compatible con riesgo de ejecución remota de código sin autenticación, mientras el Centro Australiano de Ciberseguridad recomendó inventariar los sistemas PHP y vigilar señales de actividad maliciosa.\n\nLa exposición es amplia porque PHP sostiene sitios construidos con WordPress, Drupal, Joomla y Magento, además de plataformas de alojamiento y aplicaciones que no siempre muestran públicamente esa dependencia. Cloudflare informó que observaba ataques iniciales y ajustaba reglas de firewall, aunque describió esas mitigaciones como temporales. La autoridad australiana dijo no tener confirmación de explotación activa al emitir su alerta. La prioridad operacional es distinguir el parche definitivo de las protecciones intermedias: si una organización no puede actualizar con rapidez, CERT-EU aconsejó considerar la desconexión de los sitios afectados hasta reducir el riesgo.",
+        "anchor": "php-prepara-parches-dos-fallas-criticas",
+        "sources": [
+          {
+            "name": "PHP — aviso de próxima versión crítica de seguridad",
+            "url": "https://news-web.php.net/php.announce/509"
+          },
+          {
+            "name": "Reuters — alertas internacionales ante las fallas de PHP",
+            "url": "https://www.reuters.com/world/asia-pacific/eu-agency-warns-websites-may-need-be-taken-offline-php-prepares-patches-2026-10-21/"
+          }
+        ]
+      },
+      {
+        "slot": "world",
+        "headline": "WFP reduce ayuda alimentaria para medio millón en Gaza",
+        "deck": "La falta de financiamiento recorta la cobertura mensual a 1,1 millones de personas, reduce raciones a la mitad y elimina transferencias para 75 mil familias.",
+        "development": "El Programa Mundial de Alimentos redujo de 1,6 millones a 1,1 millones el número de personas que reciben asistencia mensual en Gaza por falta de financiamiento. El ajuste deja a unas 500.000 personas fuera de esa cobertura y reduce a la mitad las raciones de quienes permanecen en el programa. Cada familia recibirá un paquete de alimentos en vez de dos y una bolsa menor de harina. El organismo también suspendió las transferencias de efectivo para 75.000 familias y bajó de 250.000 a 150.000 la entrega diaria de comidas calientes para personas que no pueden cocinar.\n\nWFP estima que alrededor de 1,4 millones de habitantes, equivalentes a dos tercios de la población de Gaza, enfrentan inseguridad alimentaria en nivel de crisis o peor, incluidos unos 200.000 en condiciones de emergencia. El organismo indicó que necesita US$450 millones durante los próximos seis meses para sostener operaciones críticas en Gaza y Cisjordania. Las cifras describen una reducción presupuestaria ya aplicada, no una proyección: la cobertura, el tamaño de las raciones y las comidas servidas ya fueron rebajados. La evolución dependerá de nuevos aportes, de la capacidad logística y del acceso efectivo a las comunidades antes del invierno.",
+        "anchor": "wfp-recorta-ayuda-alimentaria-gaza",
+        "sources": [
+          {
+            "name": "WFP — recortes de asistencia por falta de financiamiento en Gaza",
+            "url": "https://www.wfp.org/news/funding-cuts-force-wfp-drastically-reduce-lifesaving-assistance-gaza"
+          },
+          {
+            "name": "Reuters — WFP deja a 500 mil personas sin ayuda mensual",
+            "url": "https://www.reuters.com/world/middle-east/world-food-programme-cuts-aid-500000-palestinians-gaza-citing-funding-shortages-2026-10-19/"
+          }
+        ]
+      }
+    ],
+    "nacional": [
+      {
+        "slot": "ipsa_company",
+        "headline": "BCI coloca UF 280 mil en bonos a quince años",
+        "deck": "El banco completó una colocación parcial de la subserie G5 a una tasa promedio de 3,26%, con vencimiento en diciembre de 2041.",
+        "development": "Banco de Crédito e Inversiones informó a la Comisión para el Mercado Financiero una colocación parcial de bonos por UF 280.000 en el mercado local. La operación corresponde a la subserie G5 de la serie AG, código BBCIG50626, emitida con cargo a una línea inscrita en junio de 2026. Los títulos son desmaterializados, al portador y fueron procesados mediante la plataforma DCV Digital. La tasa promedio de colocación fue de 3,26% y el vencimiento quedó fijado para el 1 de diciembre de 2041, lo que entrega al banco financiamiento de largo plazo en unidades de fomento.\n\nEl hecho esencial confirma monto, tasa y plazo, pero no detalla en esa comunicación el destino específico de los recursos ni identifica a los compradores. Por eso la señal verificable es la ejecución de la colocación y no una inferencia sobre crecimiento de cartera, liquidez o demanda institucional. Para BCI, integrante del IPSA, la operación amplía pasivos reajustables de largo vencimiento y fija una referencia observable de costo para esa subserie. La lectura posterior dependerá de cómo aparezca la emisión en los estados financieros, su uso de fondos y la evolución del costo de fondeo del banco frente a otras fuentes mayoristas.",
+        "anchor": "bci-coloca-bonos-uf-280-mil-2041",
+        "sources": [
+          {
+            "name": "CMF — hecho esencial de la colocación de bonos de BCI",
+            "url": "https://www.cmfchile.cl/sitio/aplic/serdoc/ver_sgd.php?s567=70359e4272a177a50f090d4f3caca06eVFdwQmVVNXFSWGROUkZrelRXcEpOVTFSUFQwPQ%3D%3D&secuencia=-1&t=1792548601"
+          }
+        ]
+      },
+      {
+        "slot": "policy_economy",
+        "headline": "Pensiones abre proceso sancionatorio contra las siete AFP",
+        "deck": "El regulador investigará si las administradoras incumplieron sus deberes de lealtad y diligencia en decisiones que afectaron a los fondos D y E.",
+        "development": "La Superintendencia de Pensiones inició procedimientos sancionatorios separados contra las siete AFP por su eventual responsabilidad en las pérdidas que afectaron especialmente a los fondos D y E. La decisión fue adoptada después de concluir acciones de fiscalización sobre las decisiones de inversión involucradas. El regulador examinará si las administradoras incumplieron el deber de lealtad y diligencia del artículo 147 del Decreto Ley 3.500 y las obligaciones de la Norma de Carácter General 340, que regula responsabilidades y controles vinculados con la gestión de inversiones previsionales.\n\nLa apertura del procedimiento no equivale a una sanción ni determina por anticipado que existió una infracción. Cada administradora podrá presentar antecedentes y ejercer las defensas previstas en el proceso administrativo antes de una resolución. La señal regulatoria es que la revisión preliminar avanzó a una etapa formal para todas las AFP del sistema, con foco en la conducta de las administradoras y no en garantizar un nivel de rentabilidad a los afiliados. Los próximos hitos verificables serán la formulación y respuesta de cargos, las diligencias probatorias y las resoluciones finales que establezcan o descarten responsabilidades conforme al marco vigente.",
+        "anchor": "pensiones-proceso-sancionatorio-siete-afp",
+        "sources": [
+          {
+            "name": "Superintendencia de Pensiones — inicio de procedimientos a las siete AFP",
+            "url": "https://www.spensiones.cl/portal/institucional/594/w3-article-17176.html"
+          },
+          {
+            "name": "Ministerio del Trabajo — antecedentes solicitados por las pérdidas del Fondo E",
+            "url": "https://www.mintrab.gob.cl/ministro-tomas-rau-por-caida-del-fondo-e-estamos-actuando-con-la-maxima-celeridad-para-esclarecer-lo-ocurrido-y-proteger-los-ahorros-previsionales/"
+          }
+        ]
+      }
+    ],
+    "mercados": [
+      {
+        "slot": "markets_chile",
+        "headline": "Los Héroes obtiene crédito CAF por hasta US$50 millones",
+        "deck": "El préstamo en dólares financiará colocaciones de crédito social, contempla doce meses de gracia y amortización semestral durante tres años.",
+        "development": "Caja de Compensación Los Héroes suscribió con CAF, Banco de Desarrollo de América Latina y el Caribe, un préstamo por hasta US$50 millones para financiar colocaciones de crédito social. El contrato, firmado el 19 de octubre, prevé un solo desembolso por el monto comprometido o uno menor y establece que el capital será pagado en dólares. Después de un período de gracia de doce meses desde el desembolso, la deuda se amortizará en cuotas semestrales iguales y consecutivas, con vencimiento final tres años después de la entrega de los recursos.\n\nLa operación incorpora condiciones habituales para financiamiento institucional, entre ellas declaraciones, pagos anticipados voluntarios y obligatorios, covenants financieros y causales de incumplimiento. El directorio de Los Héroes había aprobado la contratación en julio y la Superintendencia de Seguridad Social la autorizó en agosto. El hecho esencial no informa la tasa del préstamo ni confirma que el monto completo ya haya sido desembolsado, por lo que no corresponde calcular un costo financiero o una expansión inmediata de cartera. Para el mercado chileno, la señal es una nueva fuente externa en dólares destinada explícitamente al crédito social, cuyo efecto dependerá del desembolso, la cobertura cambiaria y el ritmo efectivo de colocaciones.",
+        "anchor": "los-heroes-credito-caf-50-millones",
+        "sources": [
+          {
+            "name": "CMF — hecho esencial del crédito entre Los Héroes y CAF",
+            "url": "https://www.cmfchile.cl/sitio/aplic/serdoc/ver_sgd.php?s567=ae09f539332a0e89c73793e4966a152bVFdwQmVVNXFSWGROUkZrelRXcFJNRTVuUFQwPQ%3D%3D&secuencia=-1&t=1792548601"
+          },
+          {
+            "name": "Los Héroes — información para inversionistas",
+            "url": "https://www.losheroes.cl/trabajadores/nuestra-empresa/relacion-con-inversionistas"
+          }
+        ]
+      },
+      {
+        "slot": "markets_global",
+        "headline": "Japón registra demanda récord por bonos a veinte años",
+        "deck": "Las ofertas alcanzaron 5,84 veces el monto adjudicado y el rendimiento del título cayó, tras acercarse este mes a su mayor nivel en tres décadas.",
+        "development": "La subasta japonesa de bonos soberanos a veinte años recibió ofertas equivalentes a 5,84 veces el monto adjudicado, el mayor registro desde que ese plazo comenzó a emitirse en 1987. La demanda superó la relación de 4,01 veces de la venta anterior y apareció después de que el rendimiento del bono se acercara a 4% durante octubre, su nivel más alto en más de tres décadas. Tras conocerse el resultado, el rendimiento a veinte años bajó cerca de cuatro puntos base hasta 3,74%; el movimiento refleja el alza de precio habitual cuando aumenta la demanda por un título.\n\nLa señal relevante es que los niveles de rendimiento atrajeron compradores suficientes para absorber una emisión de muy largo plazo en un mercado sometido a presión por inflación, petróleo y dudas fiscales. El resultado de una subasta no garantiza que la demanda permanezca igual en futuras ventas ni resuelve la trayectoria de la deuda japonesa. Sí entrega una observación concreta sobre el precio al que reapareció el apetito institucional. Para los mercados globales, Japón importa por el tamaño de sus ahorros y su tenencia de activos externos: rendimientos internos más atractivos pueden modificar gradualmente la asignación entre bonos en yenes y deuda extranjera.",
+        "anchor": "japon-demanda-record-bonos-veinte-anos",
+        "sources": [
+          {
+            "name": "Reuters — demanda récord en la subasta japonesa a veinte años",
+            "url": "https://www.reuters.com/commentary/reuters-open-interest/global-markets-trading-day-graphic-2026-10-20/"
+          },
+          {
+            "name": "MarketWatch — reacción global a la subasta de bonos japoneses",
+            "url": "https://www.marketwatch.com/livecoverage/stock-market-today-nasdaq-lower-dow-sp500-up-after-rally-spacex-and-netflix-earnings/card/treasury-yields-dip-after-strongest-ever-japan-auction-Ty4elD6TaKSbE7snZuLp"
+          }
+        ]
+      }
+    ]
+  }
+}
