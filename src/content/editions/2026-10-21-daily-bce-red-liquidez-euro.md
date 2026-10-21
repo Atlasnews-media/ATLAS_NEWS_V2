@@ -1,11 +1,11 @@
 ---
 title: "El BCE convierte la liquidez internacional en una palanca para el euro"
 summary: "Más de 30 bancos centrales buscan acceso al nuevo respaldo EUREP, que ofrecerá hasta €50.000 millones por institución y amplía la competencia monetaria más allá del dólar."
-publishedAt: "2026-10-21T05:59:45-03:00"
+publishedAt: "2026-10-21T06:45:56-03:00"
 cutoffAt: "2026-10-21T05:58:26-03:00"
 type: "daily"
 editionSlot: "morning"
-status: "draft"
+status: "published"
 tags:
   - euro
   - bancos-centrales

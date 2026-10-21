@@ -1,11 +1,11 @@
 ---
 title: "La nieve recorta cobre chileno, pero Anglo mantiene su meta anual"
 summary: "El clima extremo y mantenimiento no planificado redujeron la producción trimestral, aunque mejores leyes y precios realizados sostienen la guía chilena de Anglo American."
-publishedAt: "2026-10-21T06:23:30-03:00"
+publishedAt: "2026-10-21T06:45:56-03:00"
 cutoffAt: "2026-10-21T06:22:30-03:00"
 section: "national"
 editionSlot: "morning"
-status: "draft"
+status: "published"
 tags:
   - chile
   - cobre

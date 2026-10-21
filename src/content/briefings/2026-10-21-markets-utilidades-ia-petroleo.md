@@ -1,11 +1,11 @@
 ---
 title: "Las utilidades sostienen las bolsas, pero no cierran la prueba de la IA"
 summary: "Asia y Europa avanzan por resultados sólidos, mientras petróleo sobre US$110 y tensión en bonos franceses mantienen alto el costo de capital y separan ganadores tecnológicos."
-publishedAt: "2026-10-21T06:31:30-03:00"
+publishedAt: "2026-10-21T06:45:56-03:00"
 cutoffAt: "2026-10-21T06:30:30-03:00"
 section: "markets"
 editionSlot: "morning"
-status: "draft"
+status: "published"
 tags:
   - mercados
   - resultados
