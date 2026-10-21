@@ -1,0 +1,31 @@
+VOZ 1: La novedad local de esta mañana viene desde la producción de cobre. Anglo American cuantificó el efecto de las nevadas históricas en Chile y mostró una caída trimestral, pero mantuvo su meta anual para las operaciones del país.
+VOZ 2: ¿Cuál fue la caída exacta?
+VOZ 1: La producción mundial de cobre de Anglo bajó 5% interanual en el tercer trimestre, hasta 174.900 toneladas. La empresa atribuyó el resultado principalmente al clima extremo en Chile, al mantenimiento no planificado asociado y al uso de mineral acopiado de menor ley en Collahuasi.
+VOZ 2: ¿Eso significa que toda la caída ocurrió en Chile?
+VOZ 1: No conviene leerlo así. El número de 174.900 toneladas incluye la producción consolidada de cobre del grupo. Lo que Anglo identifica es que los eventos en Chile y la menor ley en Collahuasi fueron los factores principales. El informe no permite convertir automáticamente ese total en una pérdida nacional equivalente.
+VOZ 2: Entonces, ¿cuál es el dato propiamente chileno?
+VOZ 1: La guía para 2026. Anglo mantuvo un rango de 390.000 a 420.000 toneladas para sus operaciones chilenas y un costo unitario cercano a 210 centavos de dólar por libra.
+VOZ 2: ¿Por qué mantener la guía después de un trimestre débil?
+VOZ 1: Porque la compañía espera mejores leyes de mineral en el cuarto trimestre y considera que el episodio puede recuperarse dentro del año. Además, la producción chilena ya estaba prevista con mayor peso en el segundo semestre.
+VOZ 2: Pero eso también significa que queda menos tiempo para recuperar lo perdido.
+VOZ 1: Exactamente. Mantener la guía reduce la señal negativa inmediata, pero eleva la exigencia operativa para los últimos meses. Una previsión no es un resultado; debe confirmarse con toneladas efectivamente producidas.
+VOZ 2: ¿Cómo se comportó la producción acumulada?
+VOZ 1: Entre enero y septiembre, Anglo produjo 519.000 toneladas de cobre, 1% menos que un año antes. La caída acumulada es menor que la trimestral, lo que sugiere que el deterioro se concentró hacia el cierre del tercer trimestre.
+VOZ 2: ¿El precio del cobre compensa esa menor producción?
+VOZ 1: La amortigua financieramente, pero no la reemplaza. El precio realizado del cobre chileno promedió 628 centavos de dólar por libra en los primeros nueve meses, 39% más que en el mismo período de 2025.
+VOZ 2: ¿Qué diferencia hay entre amortiguar y compensar?
+VOZ 1: Un precio más alto puede sostener ingresos y margen por cada tonelada vendida. Pero una tonelada que no se produce no genera exportación física, y recuperar la operación puede implicar mantenimiento, energía y costos adicionales.
+VOZ 2: ¿La nieve es el único riesgo hacia adelante?
+VOZ 1: No. Anglo también señala la disponibilidad de agua como condición para su guía chilena. El clima extremo afectó accesos y continuidad durante el invierno; el agua puede restringir el procesamiento después. Son riesgos distintos.
+VOZ 2: ¿Esto cambia la lectura de toda la minería chilena?
+VOZ 1: No de manera automática. El informe cubre las operaciones y participaciones de Anglo. Codelco, BHP y Antofagasta Minerals tienen otras faenas, leyes y calendarios. Lo relevante es que una empresa importante ya midió un impacto climático concreto.
+VOZ 2: ¿Y qué pasa con Collahuasi?
+VOZ 1: Collahuasi procesó parte de sus inventarios de menor ley, lo que redujo el metal contenido. La empresa espera una mejora de leyes en el cuarto trimestre. Por eso hay que distinguir toneladas de mineral procesado de toneladas de cobre recuperado.
+VOZ 2: ¿Qué debe observarse para saber si el problema fue transitorio?
+VOZ 1: La producción del cuarto trimestre, la recuperación de leyes, la normalización del mantenimiento, la disponibilidad de agua y si el costo unitario se mantiene cerca de la guía.
+VOZ 2: ¿Qué confirmaría una lectura favorable?
+VOZ 1: Que Anglo recupere volumen sin elevar de forma importante sus costos y cierre el año dentro de las 390.000 a 420.000 toneladas previstas para Chile.
+VOZ 2: ¿Y qué la invalidaría?
+VOZ 1: Nuevas interrupciones, leyes que no mejoran, restricciones de agua o una revisión a la baja de la guía. En ese caso, la caída dejaría de parecer un desplazamiento puntual y mostraría un daño más persistente.
+VOZ 2: Resume la novedad en una frase.
+VOZ 1: El clima ya restó cobre chileno, pero el verdadero examen será si mejores leyes y continuidad operacional permiten recuperar el volumen antes de cerrar 2026.
