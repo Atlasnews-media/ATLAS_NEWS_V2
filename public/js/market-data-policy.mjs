@@ -80,8 +80,7 @@ export function assessMarketAsset(asset, now = new Date()) {
     return unavailable(asset, "cotización sin fecha efectiva válida");
   }
   const delta = now.getTime() - effective;
-  const futureTolerance =
-    officialMaxDays[asset.id] != null ? DAY : 10 * 60_000;
+  const futureTolerance = officialMaxDays[asset.id] != null ? DAY : 10 * 60_000;
   if (delta < -futureTolerance) {
     return unavailable(asset, "cotización con fecha futura no verificable");
   }
