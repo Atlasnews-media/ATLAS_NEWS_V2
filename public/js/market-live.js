@@ -78,6 +78,20 @@ function setOptionalText(element, content) {
 function effectiveLabel(asset) {
   if (asset.displayEligible === false)
     return asset.staleReason ?? "sin dato vigente";
+  if (asset.quoteBasis === "daily-close" || asset.quoteBasis === "daily-reference") {
+    const day = String(asset.effectiveAt).slice(0, 10);
+    const parsed = new Date(`${day}T12:00:00Z`);
+    const dateLabel = Number.isFinite(parsed.getTime())
+      ? new Intl.DateTimeFormat("es-CL", {
+          dateStyle: "medium",
+          timeZone: "UTC",
+        }).format(parsed)
+      : day;
+    const basis = asset.quoteBasis === "daily-close"
+      ? "Último cierre diario"
+      : "Referencia diaria";
+    return `${basis}: ${dateLabel} · ${asset.provider ?? "fuente sin identificar"}`;
+  }
   const date = new Date(asset.effectiveAt);
   const value = Number.isFinite(date.getTime())
     ? new Intl.DateTimeFormat("es-CL", {
