@@ -323,6 +323,8 @@ test("El refresco bursátil no comparte cola con publicación editorial", async 
   assert.match(refreshYaml, /workflow_run:/);
   assert.match(refreshYaml, /7,22,37,52|3,18,33,48/);
   assert.match(publishYaml, /group: atlas-news-\$\{\{/);
+  assert.match(publishYaml, /--exclude='data\\/market-pulse\\.json'/);
+  assert.match(publishYaml, /--exclude='data\\/economic-indicators\\.json'/);
   assert.match(client, /MARKET_SNAPSHOT_MAX_AGE_MS/);
   assert.match(client, /Último corte disponible/);
 });
