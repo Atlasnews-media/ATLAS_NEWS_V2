@@ -420,7 +420,12 @@ function economicAsset(snapshot, definition) {
       : null,
     provider: snapshot.provider ?? "economic-indicators",
     sourceUrl: snapshot.sourceUrl,
-    status: snapshot.status === "current" ? "current" : "stale",
+    status:
+      indicator.status === "stale"
+        ? "stale"
+        : snapshot.status === "stale"
+          ? "stale"
+          : "current",
   });
 }
 

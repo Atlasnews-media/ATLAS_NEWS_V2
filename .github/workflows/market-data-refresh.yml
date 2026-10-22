@@ -3,8 +3,12 @@ name: Actualizar datos de mercado
 # Scheduler resync marker: 2026-09-16
 on:
   schedule:
-    - cron: "7,22,37,52 11-23 * * 1-5"
+    - cron: "3,18,33,48 11-23 * * 1-5"
   workflow_dispatch:
+  # Refresco de datos después de una edición publicada, sin esperar al cron.
+  workflow_run:
+    workflows: ["Publicar ATLAS NEWS"]
+    types: [completed]
   push:
     branches:
       - main
@@ -15,11 +19,12 @@ permissions:
   contents: read
 
 concurrency:
-  group: atlas-news-production
+  group: atlas-news-market-refresh
   cancel-in-progress: false
 
 jobs:
   refresh-market-data:
+    if: github.event_name != 'workflow_run' || (github.event.workflow_run.conclusion == 'success' && github.event.workflow_run.event == 'push' && github.event.workflow_run.head_branch == 'main')
     name: Refrescar y publicar datos vivos
     runs-on: ubuntu-latest
     timeout-minutes: 30
@@ -48,6 +53,9 @@ jobs:
               ;;
             workflow_dispatch)
               echo "Ejecución manual desde main: se actualizan los snapshots financieros."
+              ;;
+            workflow_run)
+              echo "Edición publicada en main: sincronizando datos financieros."
               ;;
             *)
               echo "::error title=Evento no autorizado::Disparo financiero no admitido: ${GITHUB_EVENT_NAME}." >&2

@@ -1,6 +1,7 @@
 import { mkdir, readFile, writeFile } from "node:fs/promises";
 import { serializeCanonicalJson } from "./lib/serialize-canonical-json.mjs";
 import { computeEconomicVariation } from "./lib/economic-variation.mjs";
+import { reconcileEconomicIndicators } from "./lib/reconcile-economic-indicators.mjs";
 
 const root = new URL("../", import.meta.url);
 const snapshotPath = new URL("src/data/economic-indicators.json", root);
@@ -191,6 +192,7 @@ async function fetchIndicator(definition, today) {
     value: latest.valor,
     unit: definition.unit,
     effectiveDate,
+    status: "current",
     ...(variation
       ? { previousValue: previous.valor, previousEffectiveDate, ...variation }
       : {}),
@@ -199,25 +201,52 @@ async function fetchIndicator(definition, today) {
 
 async function fetchCurrentSnapshot(now) {
   const today = dateInSantiago(now);
-  const indicators = await Promise.all(
+  const outcomes = await Promise.allSettled(
     indicatorDefinitions.map((definition) => fetchIndicator(definition, today)),
   );
+
+  let fallbackIndicators = [];
+  if (outcomes.some((result) => result.status === "rejected")) {
+    try {
+      fallbackIndicators = (await loadFallbackSnapshot(now)).indicators;
+    } catch (error) {
+      console.warn(`Respaldo económico no disponible: ${error.message}`);
+    }
+  }
+
+  const combined = reconcileEconomicIndicators(
+    indicatorDefinitions,
+    outcomes,
+    fallbackIndicators,
+  );
+  if (combined.indicators.length === 0) {
+    throw new Error(
+      "No hay indicadores económicos actuales ni respaldos utilizables.",
+    );
+  }
+  for (const error of combined.errors) {
+    console.warn(`Indicador ${error.code}: ${error.reason}`);
+  }
   const attemptTime = now.toISOString();
-  const asOf = indicators
+  const asOf = combined.indicators
     .map(({ effectiveDate }) => effectiveDate)
     .sort()
     .at(-1);
 
+  console.log(
+    `Economía: ${combined.freshCount} frescos, ${combined.fallbackCount} en respaldo, ${combined.missingCount} ausentes.`,
+  );
   return {
     schemaVersion: 1,
-    status: "current",
+    status: combined.status,
     asOf,
     fetchedAt: attemptTime,
     lastAttemptAt: attemptTime,
     sourceName: "Mi Indicador (datos públicos de Chile)",
     sourceUrl: "https://mindicador.cl/",
     provider: "mindicador",
-    indicators,
+    indicators: combined.indicators,
+    diagnostics: combined.errors,
   };
 }
 
@@ -266,6 +295,7 @@ function validateStoredSnapshot(snapshot, today) {
       value: indicator.value,
       unit: definition.unit,
       effectiveDate: indicator.effectiveDate,
+      status: "stale",
       ...(variation
         ? {
             previousValue: indicator.previousValue,
@@ -352,7 +382,7 @@ let snapshot;
 try {
   snapshot = await fetchCurrentSnapshot(now);
   console.log(
-    `Indicadores actualizados desde ${snapshot.sourceName}: ${snapshot.asOf}.`,
+    `Indicadores económicos: ${snapshot.status} al ${snapshot.asOf}.`,
   );
 } catch (error) {
   console.warn(`La actualización económica falló: ${error.message}`);

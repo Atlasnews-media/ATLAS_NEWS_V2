@@ -2,6 +2,7 @@ import { assessMarketAsset } from "./market-data-policy.mjs";
 
 const MARKET_URL = "/data/market-pulse.json";
 const REFRESH_MS = 5 * 60_000;
+const MARKET_SNAPSHOT_MAX_AGE_MS = 45 * 60_000;
 const CL_TIME_ZONE = "America/Santiago";
 
 const number2 = new Intl.NumberFormat("es-CL", {
@@ -226,7 +227,7 @@ function updateStamps(generatedAt) {
         element.textContent = `${dateLabel.toUpperCase()} · ${timeLabel}`;
         break;
       case "date":
-        element.textContent = dateLabel;
+        element.textContent = `${dateLabel} · ${timeLabel}`;
         element.setAttribute("datetime", generatedAt);
         break;
     }
@@ -257,7 +258,9 @@ async function refresh() {
     if (!snapshotValid(market)) throw new Error("snapshot financiero inválido");
     const assets = new Map(market.assets.map((asset) => [asset.id, asset]));
     const now = new Date();
-    let degraded = market.status !== "current";
+    const snapshotAge = now.getTime() - Date.parse(market.generatedAt);
+    const snapshotDelayed = snapshotAge > MARKET_SNAPSHOT_MAX_AGE_MS;
+    let degraded = market.status !== "current" || snapshotDelayed;
     for (const row of marketRows) {
       const id = row.dataset.atlasMarketId;
       let asset = assets.get(id);
@@ -280,9 +283,11 @@ async function refresh() {
       "[data-atlas-economic-freshness]",
     );
     if (sourceLabel) {
-      sourceLabel.textContent = degraded
-        ? "Tablero parcial al"
-        : "Corte del tablero";
+      sourceLabel.textContent = snapshotDelayed
+        ? "Último corte disponible"
+        : degraded
+          ? "Tablero parcial al"
+          : "Corte del tablero";
     }
     document.dispatchEvent(
       new CustomEvent("atlas:market-data-updated", {
@@ -292,6 +297,10 @@ async function refresh() {
   } catch (error) {
     // HTML preconstruido permanece disponible; su corte original no se sustituye sin datos válidos.
     console.warn("ATLAS NEWS: el pulso financiero no pudo actualizarse", error);
+    const sourceLabel = document.querySelector(
+      "[data-atlas-economic-freshness]",
+    );
+    if (sourceLabel) sourceLabel.textContent = "Sin actualización confirmada";
   }
 }
 
