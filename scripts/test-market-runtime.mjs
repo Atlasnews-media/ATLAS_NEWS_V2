@@ -2,6 +2,7 @@ import assert from "node:assert/strict";
 import test from "node:test";
 import { assessMarketAsset } from "../public/js/market-data-policy.mjs";
 import { parseFindicIpsa } from "./lib/parse-findic-ipsa.mjs";
+import { computeEconomicVariation } from "./lib/economic-variation.mjs";
 
 const quote = (id, effectiveAt, extra = {}) => ({
   id,
@@ -150,4 +151,76 @@ test("Findic valida la serie actual y excluye fechas futuras", () => {
       ],
     }),
   );
+});
+
+test("IPSA: cierre de ayer queda excluido después de la sesión del día actual", () => {
+  const previousClose = quote("ipsa", "2026-10-21T00:00:00Z", {
+    value: 10987.14,
+    changePercent: 0.55,
+    provider: "findic-public-close",
+    quoteBasis: "daily-close",
+  });
+  const checked = assessMarketAsset(
+    previousClose,
+    new Date("2026-10-22T21:32:00Z"), // 18:32 Santiago
+  );
+  assert.equal(checked.displayEligible, false);
+  assert.equal(checked.freshnessState, "stale");
+  assert.match(checked.staleReason, /sin cierre de 2026-10-22/);
+});
+
+test("IPSA: ayer antes del cierre se identifica expresamente como cierre anterior", () => {
+  const checked = assessMarketAsset(
+    quote("ipsa", "2026-10-21T00:00:00Z", {
+      provider: "findic-public-close",
+      quoteBasis: "daily-close",
+    }),
+    new Date("2026-10-22T14:00:00Z"), // 11:00 Santiago
+  );
+  assert.equal(checked.displayEligible, true);
+  assert.equal(checked.freshnessState, "delayed");
+  assert.match(checked.freshnessNote, /Cierre anterior/);
+});
+
+test("IPSA: el cierre del mismo día sí puede presentarse al final de sesión", () => {
+  const checked = assessMarketAsset(
+    quote("ipsa", "2026-10-22T00:00:00Z", {
+      value: 10780.31,
+      changePercent: -1.88,
+      provider: "findic-public-close",
+      quoteBasis: "daily-close",
+    }),
+    new Date("2026-10-22T21:32:00Z"),
+  );
+  assert.equal(checked.displayEligible, true);
+  assert.equal(checked.freshnessState, "closed");
+});
+
+test("Recuperación: un precio de una versión publicada anterior nunca se certifica", () => {
+  const checked = assessMarketAsset(
+    quote("ipsa", "2026-10-22T00:00:00Z", {
+      provider: "findic-public-close",
+      quoteBasis: "daily-close",
+      recoverySource: "published-market-snapshot",
+    }),
+    new Date("2026-10-22T21:32:00Z"),
+  );
+  assert.equal(checked.displayEligible, false);
+});
+
+test("Las variaciones económicas deben tener un cierre previo válido", () => {
+  assert.deepEqual(computeEconomicVariation(1097.55, 1099.26), {
+    changePercent: -0.16,
+    trend: "down",
+  });
+  assert.deepEqual(computeEconomicVariation(72151, 71900), {
+    changePercent: 0.35,
+    trend: "up",
+  });
+  assert.deepEqual(computeEconomicVariation(72151, 72151), {
+    changePercent: 0,
+    trend: "flat",
+  });
+  assert.equal(computeEconomicVariation(72151, null), null);
+  assert.equal(computeEconomicVariation(72151, 0), null);
 });
