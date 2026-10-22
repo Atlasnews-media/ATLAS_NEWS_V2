@@ -1,6 +1,7 @@
 import { mkdir, readFile, writeFile } from "node:fs/promises";
 import { serializeCanonicalJson } from "./lib/serialize-canonical-json.mjs";
 import { parseFindicIpsa } from "./lib/parse-findic-ipsa.mjs";
+import { assessMarketAsset } from "../public/js/market-data-policy.mjs";
 
 const root = new URL("../", import.meta.url);
 const economicSnapshotPath = new URL("src/data/economic-indicators.json", root);
@@ -346,16 +347,30 @@ async function findicIpsaQuote() {
   };
 }
 
+async function verifiedIpsaQuote(fetchQuote) {
+  const quote = await fetchQuote();
+  const assessed = assessMarketAsset(
+    { id: "ipsa", unit: "points", ...quote },
+    new Date(),
+  );
+  if (assessed.displayEligible === false) {
+    throw new Error(
+      `IPSA: fuente ${quote.provider} no acredita la sesión vigente (${assessed.staleReason}).`,
+    );
+  }
+  return quote;
+}
+
 async function ipsaQuote() {
   return quoteWithFallback(
-    () => findicIpsaQuote(),
+    () => verifiedIpsaQuote(findicIpsaQuote),
     () =>
       quoteWithFallback(
-        () => yahooQuote("^IPSA"),
+        () => verifiedIpsaQuote(() => yahooQuote("^IPSA")),
         () =>
           quoteWithFallback(
-            () => stooqQuote("^ipsa"),
-            () => diarioFinancieroIpsaQuote(),
+            () => verifiedIpsaQuote(() => stooqQuote("^ipsa")),
+            () => verifiedIpsaQuote(diarioFinancieroIpsaQuote),
           ),
       ),
   );
