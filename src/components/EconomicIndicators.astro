@@ -12,6 +12,7 @@ type MarketAsset = {
   trend: Trend;
   effectiveAt: string | null;
   displayEligible?: boolean;
+  quoteBasis?: string;
 };
 
 type DisplayIndicator = {
@@ -23,6 +24,7 @@ type DisplayIndicator = {
   changePercent: number | null;
   trend: Trend;
   displayEligible?: boolean;
+  quoteBasis?: string;
 };
 
 const dateFormatter = new Intl.DateTimeFormat("es-CL", {
@@ -80,6 +82,7 @@ function normalizeMarket(
     changePercent: asset?.changePercent ?? null,
     trend: asset?.trend ?? "flat",
     displayEligible: asset?.displayEligible,
+    quoteBasis: asset?.quoteBasis,
   };
 }
 
@@ -195,7 +198,14 @@ const freshnessLabel =
             <IndicatorIcon id={indicator.id} />
 
             <div class="economic-panel__metric">
-              <span class="economic-panel__label">{indicator.label}</span>
+              <span class="economic-panel__label">
+                {indicator.id === "ipsa" &&
+                indicator.quoteBasis === "daily-close" &&
+                indicator.effectiveAt &&
+                isDisplayable(indicator)
+                  ? `IPSA · ${indicator.effectiveAt.slice(8, 10)}/${indicator.effectiveAt.slice(5, 7)}`
+                  : indicator.label}
+              </span>
               <span
                 class="economic-panel__value"
                 data-atlas-market-value
