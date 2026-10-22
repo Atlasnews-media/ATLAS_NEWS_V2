@@ -123,10 +123,17 @@ function updateRow(row, asset) {
     ".economic-panel__label, .market-label, .asset-name > span",
   );
   if (nameElement && asset.id === "ipsa") {
-    nameElement.textContent =
-      asset.quoteBasis === "daily-close" && asset.displayEligible !== false
-        ? "IPSA · cierre"
-        : "IPSA";
+    const lastClose =
+      asset.quoteBasis === "daily-close" &&
+      asset.displayEligible !== false &&
+      typeof asset.effectiveAt === "string";
+    const date = lastClose ? asset.effectiveAt.slice(0, 10) : "";
+    nameElement.textContent = lastClose
+      ? `IPSA · ${date.slice(8, 10)}/${date.slice(5, 7)}`
+      : "IPSA";
+    nameElement.title = lastClose
+      ? `Último cierre verificado: ${date}`
+      : (asset.freshnessNote ?? "");
   }
   const trend = marketTrend(asset);
   const raw = trend == null ? null : asset.changePercent;

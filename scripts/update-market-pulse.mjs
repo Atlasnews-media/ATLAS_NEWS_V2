@@ -362,17 +362,43 @@ async function verifiedIpsaQuote(fetchQuote) {
 }
 
 async function ipsaQuote() {
-  return quoteWithFallback(
-    () => verifiedIpsaQuote(findicIpsaQuote),
-    () =>
-      quoteWithFallback(
-        () => verifiedIpsaQuote(() => yahooQuote("^IPSA")),
-        () =>
-          quoteWithFallback(
-            () => verifiedIpsaQuote(() => stooqQuote("^ipsa")),
-            () => verifiedIpsaQuote(diarioFinancieroIpsaQuote),
-          ),
-      ),
+  const sources = [
+    findicIpsaQuote,
+    () => yahooQuote("^IPSA"),
+    () => stooqQuote("^ipsa"),
+    diarioFinancieroIpsaQuote,
+  ];
+  let best = null;
+  const failures = [];
+
+  for (const fetchQuote of sources) {
+    try {
+      const quote = await verifiedIpsaQuote(fetchQuote);
+      if (
+        !best ||
+        Date.parse(quote.effectiveAt) > Date.parse(best.effectiveAt)
+      ) {
+        best = quote;
+      }
+      // Una cotización de sesión fechada hoy tiene preferencia; si solo
+      // existe un cierre antiguo, seguir consultando proveedores alternos.
+      const localQuoteDate = dateKey(new Date(quote.effectiveAt));
+      const localToday = dateKey();
+      if (
+        (quote.quoteBasis === "exchange-quote" &&
+          localQuoteDate === localToday) ||
+        (quote.quoteBasis === "daily-close" &&
+          quote.effectiveAt.slice(0, 10) === localToday)
+      ) {
+        return quote;
+      }
+    } catch (error) {
+      failures.push(error.message);
+    }
+  }
+  if (best) return best;
+  throw new Error(
+    `Ningún proveedor entregó IPSA verificable: ${failures.join("; ")}`,
   );
 }
 
@@ -420,6 +446,7 @@ function economicAsset(snapshot, definition) {
       : null,
     provider: snapshot.provider ?? "economic-indicators",
     sourceUrl: snapshot.sourceUrl,
+    quoteBasis: "daily-reference",
     status:
       indicator.status === "stale"
         ? "stale"

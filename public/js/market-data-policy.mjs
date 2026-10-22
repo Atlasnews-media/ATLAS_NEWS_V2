@@ -64,10 +64,6 @@ function dateInZone(now, zone) {
   return `${fields.year}-${fields.month}-${fields.day}`;
 }
 
-function isBusinessDay(weekday) {
-  return !["Sat", "Sun"].includes(weekday);
-}
-
 function unavailable(asset, reason) {
   return {
     ...asset,
@@ -85,11 +81,24 @@ export function assessMarketAsset(asset, now = new Date()) {
   if (!Number.isFinite(asset.value)) {
     return unavailable(asset, "cotización no disponible");
   }
-  if (asset.recoverySource === "published-market-snapshot") {
-    return unavailable(
-      asset,
-      "precio recuperado de una publicación anterior; sin validación nueva",
-    );
+  // Un registro ya publicado puede conservarse si mantiene procedencia,
+  // fecha efectiva y naturaleza del dato. Recuperación != nueva cotización.
+  const recovered = asset.recoverySource === "published-market-snapshot";
+  const trustedPreviousRecord =
+    recovered &&
+    typeof asset.provider === "string" &&
+    [
+      "findic-public-close",
+      "stooq",
+      "yahoo-public-chart",
+      "mindicador",
+      "frankfurter-ecb",
+    ].includes(asset.provider) &&
+    asset.quoteBasis !== "unverified" &&
+    typeof asset.effectiveAt === "string" &&
+    Number.isFinite(Date.parse(asset.effectiveAt));
+  if (recovered && !trustedPreviousRecord) {
+    return unavailable(asset, "respaldo sin procedencia y fecha verificables");
   }
   if (
     asset.quoteBasis === "unverified" ||
@@ -113,35 +122,62 @@ export function assessMarketAsset(asset, now = new Date()) {
       ? (officialMaxDays[asset.id] * DAY) / HOUR
       : (referenceMaxHours[asset.id] ??
         (asset.id === "bitcoin" ? 48 : HARD_MARKET_HOURS));
-  if (hours > maxAge) {
+  const keepLastClose =
+    asset.id === "ipsa" &&
+    asset.quoteBasis === "daily-close" &&
+    typeof asset.provider === "string" &&
+    ["findic-public-close", "stooq", "yahoo-public-chart"].includes(
+      asset.provider,
+    );
+  const keepOfficialReference =
+    ["usdclp", "eurclp"].includes(asset.id) && asset.provider === "mindicador";
+  if (hours > maxAge && !keepLastClose && !keepOfficialReference) {
     return unavailable(asset, `cotización vencida: ${Math.round(hours)} horas`);
   }
-  // El cierre del IPSA corresponde a una sesión determinada. Al terminar
-  // la sesión actual, un cierre anterior nunca puede mostrarse como el de hoy.
-  if (asset.id === "ipsa") {
-    const local = clockInZone(now, "America/Santiago");
+  if (recovered && !keepLastClose && !keepOfficialReference) {
+    return unavailable(asset, "respaldo sin acreditación de último cierre");
+  }
+  if (recovered || (hours > maxAge && keepOfficialReference)) {
+    const observedDate = asset.effectiveAt.slice(0, 10);
+    return {
+      ...asset,
+      status: "delayed",
+      displayEligible: true,
+      freshnessState: "delayed",
+      freshnessNote: `Último registro verificado: ${observedDate}; sin nueva actualización`,
+      staleReason: undefined,
+    };
+  }
+  // El último cierre IPSA permanece visible durante la noche, fin de
+  // semana y hasta que exista otra sesión verificable. Nunca se fecha como hoy.
+  if (asset.id === "ipsa" && asset.quoteBasis === "daily-close") {
+    const sessionDate = asset.effectiveAt.slice(0, 10);
     const today = dateInZone(now, "America/Santiago");
-    const quoteDate =
-      asset.quoteBasis === "daily-close"
-        ? asset.effectiveAt.slice(0, 10)
-        : dateInZone(new Date(asset.effectiveAt), "America/Santiago");
-    if (
-      isBusinessDay(local.weekday) &&
-      quoteDate < today &&
-      local.minuteOfDay >= 17 * 60
-    ) {
-      return unavailable(
-        asset,
-        `IPSA sin cierre de ${today}; último cierre disponible: ${quoteDate}`,
-      );
-    }
-    if (isBusinessDay(local.weekday) && quoteDate < today) {
+    const current = sessionDate === today;
+    return {
+      ...asset,
+      status: current ? "current" : "delayed",
+      displayEligible: true,
+      freshnessState: current ? "closed" : "delayed",
+      freshnessNote: current
+        ? `Cierre de la sesión ${sessionDate}`
+        : `Último cierre verificado: ${sessionDate}; no corresponde a la sesión actual`,
+      staleReason: undefined,
+    };
+  }
+  if (asset.id === "ipsa" && asset.quoteBasis !== "daily-close") {
+    const quoteDate = dateInZone(
+      new Date(asset.effectiveAt),
+      "America/Santiago",
+    );
+    const today = dateInZone(now, "America/Santiago");
+    if (quoteDate < today) {
       return {
         ...asset,
         status: "delayed",
         displayEligible: true,
         freshnessState: "delayed",
-        freshnessNote: `Cierre anterior (${quoteDate}); no representa la sesión actual`,
+        freshnessNote: `Última cotización: ${quoteDate}; sin actualización de sesión`,
         staleReason: undefined,
       };
     }
