@@ -14,6 +14,10 @@ source:
   name: "Banco Central de Chile — Encuesta de Operadores Financieros, pre RPM octubre 2026"
   url: "https://www.bcentral.cl/web/banco-central/areas/encuestas-economicas"
 author: "ATLAS NEWS"
+audio:
+  src: "/audio/readings/2026-10-22-reading-eof-inflacion-dolar-tpm.mp3"
+  durationLabel: "2 min"
+  voice: "Dora"
 demo: false
 ---
 
