@@ -1,5 +1,6 @@
 import assert from "node:assert/strict";
 import test from "node:test";
+import { readFile } from "node:fs/promises";
 import { assessMarketAsset } from "../public/js/market-data-policy.mjs";
 import { parseFindicIpsa } from "./lib/parse-findic-ipsa.mjs";
 import { computeEconomicVariation } from "./lib/economic-variation.mjs";
@@ -223,4 +224,32 @@ test("Las variaciones económicas deben tener un cierre previo válido", () => {
   });
   assert.equal(computeEconomicVariation(72151, null), null);
   assert.equal(computeEconomicVariation(72151, 0), null);
+});
+
+test("Las vistas consumen la misma fuente canónica sin volver a bifurcar UTM", async () => {
+  const root = new URL("../", import.meta.url);
+  const [hero, indices, runtime, pulser] = await Promise.all([
+    readFile(new URL("src/components/EconomicIndicators.astro", root), "utf8"),
+    readFile(new URL("src/pages/mercados/indices/index.astro", root), "utf8"),
+    readFile(new URL("public/js/market-live.js", root), "utf8"),
+    readFile(new URL("scripts/update-market-pulse.mjs", root), "utf8"),
+  ]);
+  assert.match(hero, /import marketPulse from/);
+  assert.match(indices, /import marketPulse from/);
+  assert.doesNotMatch(hero, /economicIndicatorsSnapshot|normalizeEconomic/);
+  assert.doesNotMatch(runtime, /ECONOMIC_URL|fetchSnapshot\(ECONOMIC_URL\)/);
+  assert.match(pulser, /code: "utm"/);
+});
+
+test("La vigencia del IPSA se aplica también a feeds intradía alternativos", () => {
+  const assessed = assessMarketAsset(
+    quote("ipsa", "2026-10-21T19:00:00Z", {
+      value: 10987.14,
+      provider: "yahoo-public-chart",
+      quoteBasis: "exchange-quote",
+    }),
+    new Date("2026-10-22T21:32:00Z"),
+  );
+  assert.equal(assessed.displayEligible, false);
+  assert.equal(assessed.freshnessState, "stale");
 });
