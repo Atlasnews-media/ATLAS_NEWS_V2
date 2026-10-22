@@ -116,10 +116,13 @@ export function assessMarketAsset(asset, now = new Date()) {
   }
   // El cierre del IPSA corresponde a una sesión determinada. Al terminar
   // la sesión actual, un cierre anterior nunca puede mostrarse como el de hoy.
-  if (asset.id === "ipsa" && asset.quoteBasis === "daily-close") {
+  if (asset.id === "ipsa") {
     const local = clockInZone(now, "America/Santiago");
     const today = dateInZone(now, "America/Santiago");
-    const quoteDate = asset.effectiveAt.slice(0, 10);
+    const quoteDate =
+      asset.quoteBasis === "daily-close"
+        ? asset.effectiveAt.slice(0, 10)
+        : dateInZone(new Date(asset.effectiveAt), "America/Santiago");
     if (
       isBusinessDay(local.weekday) &&
       quoteDate < today &&
