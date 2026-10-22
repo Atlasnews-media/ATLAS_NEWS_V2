@@ -1,8 +1,8 @@
 ---
 title: "Encuesta de operadores eleva la inflación esperada a 3,7% y proyecta un dólar de $980"
 summary: "La nueva encuesta previa a la decisión monetaria de octubre reúne mayores expectativas de inflación y tipo de cambio, mientras los operadores prevén una TPM de 4,5%. Son proyecciones, no resultados ni decisiones del Banco Central."
-publishedAt: "2026-10-22T11:27:17-03:00"
-status: "draft"
+publishedAt: "2026-10-22T11:42:45-03:00"
+status: "published"
 tags:
   - contingencia
   - chile
