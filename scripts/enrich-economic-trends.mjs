@@ -81,8 +81,7 @@ async function enrichIndicator(indicator) {
   if (current.value !== indicator.value) return indicator;
   const previous = observations.find(
     (observation, index) =>
-      index > currentIndex &&
-      observation.effectiveDate < current.effectiveDate,
+      index > currentIndex && observation.effectiveDate < current.effectiveDate,
   );
 
   if (!current || !previous || previous.value === 0) return indicator;

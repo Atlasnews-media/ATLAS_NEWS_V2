@@ -115,7 +115,8 @@ for (const id of recovered) {
     id: `${id}-recovery`,
     ok: false,
     recovered: true,
-    error: "Dato recuperado; no acreditado como cotización de la sesión vigente.",
+    error:
+      "Dato recuperado; no acreditado como cotización de la sesión vigente.",
     source: "published-market-snapshot",
   });
 }

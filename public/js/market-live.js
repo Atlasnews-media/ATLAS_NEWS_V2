@@ -271,7 +271,8 @@ async function refresh() {
         continue;
       }
       const checked = assessMarketAsset(asset, now);
-      degraded ||= checked.displayEligible === false || checked.status === "delayed";
+      degraded ||=
+        checked.displayEligible === false || checked.status === "delayed";
       updateRow(row, checked);
     }
     updateStamps(market.generatedAt);

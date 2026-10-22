@@ -10,10 +10,6 @@ export function computeEconomicVariation(currentValue, previousValue) {
   const changePercent =
     Math.round((currentValue / previousValue - 1) * 10_000) / 100;
   const trend =
-    Math.abs(changePercent) < 0.01
-      ? "flat"
-      : changePercent > 0
-        ? "up"
-        : "down";
+    Math.abs(changePercent) < 0.01 ? "flat" : changePercent > 0 ? "up" : "down";
   return { changePercent, trend };
 }

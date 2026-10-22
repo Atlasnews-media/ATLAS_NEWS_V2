@@ -543,7 +543,8 @@ if (economicSnapshot.status !== "current") {
   diagnostics.push({
     id: "economic-indicators",
     ok: false,
-    error: "Indicadores económicos recuperados de respaldo: comprobar vigencia individual.",
+    error:
+      "Indicadores económicos recuperados de respaldo: comprobar vigencia individual.",
   });
 }
 

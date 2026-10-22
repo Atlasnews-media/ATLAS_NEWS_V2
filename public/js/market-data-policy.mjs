@@ -58,7 +58,9 @@ function dateInZone(now, zone) {
     month: "2-digit",
     day: "2-digit",
   }).formatToParts(now);
-  const fields = Object.fromEntries(parts.map(({ type, value }) => [type, value]));
+  const fields = Object.fromEntries(
+    parts.map(({ type, value }) => [type, value]),
+  );
   return `${fields.year}-${fields.month}-${fields.day}`;
 }
 
