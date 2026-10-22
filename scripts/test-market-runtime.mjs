@@ -4,6 +4,7 @@ import { readFile } from "node:fs/promises";
 import { assessMarketAsset } from "../public/js/market-data-policy.mjs";
 import { parseFindicIpsa } from "./lib/parse-findic-ipsa.mjs";
 import { computeEconomicVariation } from "./lib/economic-variation.mjs";
+import { reconcileEconomicIndicators } from "./lib/reconcile-economic-indicators.mjs";
 
 const quote = (id, effectiveAt, extra = {}) => ({
   id,
@@ -252,4 +253,51 @@ test("La vigencia del IPSA se aplica también a feeds intradía alternativos", (
   );
   assert.equal(assessed.displayEligible, false);
   assert.equal(assessed.freshnessState, "stale");
+});
+
+test("Un proveedor económico caído no revierte observaciones frescas de otros", () => {
+  const definitions = [{ code: "dolar" }, { code: "cobre" }, { code: "utm" }];
+  const outcomes = [
+    { status: "fulfilled", value: { code: "dolar", value: 976.82, effectiveDate: "2026-10-22" } },
+    { status: "rejected", reason: new Error("timeout") },
+    { status: "fulfilled", value: { code: "utm", value: 72151, effectiveDate: "2026-10-01" } },
+  ];
+  const backup = [{ code: "cobre", value: 6.61, effectiveDate: "2026-10-21", changePercent: 0.1 }];
+  const result = reconcileEconomicIndicators(definitions, outcomes, backup);
+  assert.equal(result.status, "partial");
+  assert.equal(result.freshCount, 2);
+  assert.equal(result.fallbackCount, 1);
+  assert.equal(result.missingCount, 0);
+  assert.equal(result.indicators.find((x) => x.code === "dolar").status, "current");
+  assert.equal(result.indicators.find((x) => x.code === "cobre").status, "stale");
+  assert.equal(result.indicators.find((x) => x.code === "utm").value, 72151);
+  assert.equal(result.errors.length, 1);
+});
+
+test("Sin respaldo de una serie, conservar todas las otras y registrar faltante", () => {
+  const result = reconcileEconomicIndicators(
+    [{ code: "uf" }, { code: "dolar" }],
+    [
+      { status: "fulfilled", value: { code: "uf", value: 41199.85, effectiveDate: "2026-10-22" } },
+      { status: "rejected", reason: new Error("offline") },
+    ],
+  );
+  assert.equal(result.indicators.length, 1);
+  assert.equal(result.missingCount, 1);
+  assert.equal(result.status, "partial");
+});
+
+test("El refresco bursátil no comparte cola con publicación editorial", async () => {
+  const root = new URL("../", import.meta.url);
+  const [refreshYaml, publishYaml, client] = await Promise.all([
+    readFile(new URL(".github/workflows/market-data-refresh.yml", root), "utf8"),
+    readFile(new URL(".github/workflows/publish-site.yml", root), "utf8"),
+    readFile(new URL("public/js/market-live.js", root), "utf8"),
+  ]);
+  assert.match(refreshYaml, /group: atlas-news-market-refresh/);
+  assert.match(refreshYaml, /workflow_run:/);
+  assert.match(refreshYaml, /7,22,37,52|3,18,33,48/);
+  assert.match(publishYaml, /group: atlas-news-\$\{\{/);
+  assert.match(client, /MARKET_SNAPSHOT_MAX_AGE_MS/);
+  assert.match(client, /Último corte disponible/);
 });
