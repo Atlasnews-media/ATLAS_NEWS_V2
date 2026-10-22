@@ -155,7 +155,7 @@ test("Findic valida la serie actual y excluye fechas futuras", () => {
   );
 });
 
-test("IPSA: cierre de ayer queda excluido después de la sesión del día actual", () => {
+test("IPSA: conserva el cierre del 21 y su variación al terminar la sesión del 22", () => {
   const previousClose = quote("ipsa", "2026-10-21T00:00:00Z", {
     value: 10987.14,
     changePercent: 0.55,
@@ -166,9 +166,11 @@ test("IPSA: cierre de ayer queda excluido después de la sesión del día actual
     previousClose,
     new Date("2026-10-22T21:32:00Z"), // 18:32 Santiago
   );
-  assert.equal(checked.displayEligible, false);
-  assert.equal(checked.freshnessState, "stale");
-  assert.match(checked.staleReason, /sin cierre de 2026-10-22/);
+  assert.equal(checked.displayEligible, true);
+  assert.equal(checked.value, 10987.14);
+  assert.equal(checked.changePercent, 0.55);
+  assert.equal(checked.freshnessState, "delayed");
+  assert.match(checked.freshnessNote, /2026-10-21/);
 });
 
 test("IPSA: ayer antes del cierre se identifica expresamente como cierre anterior", () => {
@@ -198,10 +200,27 @@ test("IPSA: el cierre del mismo día sí puede presentarse al final de sesión",
   assert.equal(checked.freshnessState, "closed");
 });
 
-test("Recuperación: un precio de una versión publicada anterior nunca se certifica", () => {
+test("Recuperación: último cierre de fuente identificada conserva valor y fecha", () => {
   const checked = assessMarketAsset(
-    quote("ipsa", "2026-10-22T00:00:00Z", {
+    quote("ipsa", "2026-10-21T00:00:00Z", {
+      value: 10987.14,
+      changePercent: 0.55,
       provider: "findic-public-close",
+      quoteBasis: "daily-close",
+      recoverySource: "published-market-snapshot",
+    }),
+    new Date("2026-10-22T21:32:00Z"),
+  );
+  assert.equal(checked.displayEligible, true);
+  assert.equal(checked.value, 10987.14);
+  assert.equal(checked.changePercent, 0.55);
+  assert.match(checked.freshnessNote, /2026-10-21/);
+});
+
+test("Recuperación: nunca publica como verificado un dato sin procedencia", () => {
+  const checked = assessMarketAsset(
+    quote("ipsa", "2026-10-21T00:00:00Z", {
+      provider: "fuente-no-validada",
       quoteBasis: "daily-close",
       recoverySource: "published-market-snapshot",
     }),
@@ -242,7 +261,7 @@ test("Las vistas consumen la misma fuente canónica sin volver a bifurcar UTM", 
   assert.match(pulser, /code: "utm"/);
 });
 
-test("La vigencia del IPSA se aplica también a feeds intradía alternativos", () => {
+test("IPSA intradía de ayer conserva su fecha sin simular nueva sesión", () => {
   const assessed = assessMarketAsset(
     quote("ipsa", "2026-10-21T19:00:00Z", {
       value: 10987.14,
@@ -251,8 +270,9 @@ test("La vigencia del IPSA se aplica también a feeds intradía alternativos", (
     }),
     new Date("2026-10-22T21:32:00Z"),
   );
-  assert.equal(assessed.displayEligible, false);
-  assert.equal(assessed.freshnessState, "stale");
+  assert.equal(assessed.displayEligible, true);
+  assert.equal(assessed.freshnessState, "delayed");
+  assert.match(assessed.freshnessNote, /2026-10-21/);
 });
 
 test("Un proveedor económico caído no revierte observaciones frescas de otros", () => {
@@ -327,4 +347,65 @@ test("El refresco bursátil no comparte cola con publicación editorial", async 
   assert.match(publishYaml, /--exclude='data\/economic-indicators\.json'/);
   assert.match(client, /MARKET_SNAPSHOT_MAX_AGE_MS/);
   assert.match(client, /Último corte disponible/);
+});
+
+test("IPSA: cierre del viernes queda hasta el siguiente cierre confirmado", () => {
+  const lastFriday = quote("ipsa", "2026-10-23T00:00:00Z", {
+    value: 10750,
+    changePercent: -0.28,
+    provider: "findic-public-close",
+    quoteBasis: "daily-close",
+  });
+  for (const now of [
+    "2026-10-23T21:00:00Z",
+    "2026-10-24T18:00:00Z",
+    "2026-10-25T18:00:00Z",
+    "2026-10-26T20:00:00Z",
+  ]) {
+    const checked = assessMarketAsset(lastFriday, new Date(now));
+    assert.equal(checked.displayEligible, true, now);
+    assert.equal(checked.value, 10750, now);
+    assert.equal(checked.changePercent, -0.28, now);
+  }
+});
+
+test("Dólar y euro oficiales del viernes permanecen durante el fin de semana", () => {
+  for (const id of ["usdclp", "eurclp"]) {
+    const official = quote(id, "2026-10-23T12:00:00-03:00", {
+      value: id === "usdclp" ? 971 : 1090,
+      unit: "clp",
+      provider: "mindicador",
+      changePercent: -0.17,
+    });
+    const checked = assessMarketAsset(
+      official,
+      new Date("2026-10-26T12:00:00Z"),
+    );
+    assert.equal(checked.displayEligible, true, id);
+    assert.equal(checked.changePercent, -0.17, id);
+  }
+});
+
+test("Dólar/euro: último dato oficial mayor de siete días no se borra sin relevo", () => {
+  const checked = assessMarketAsset(
+    quote("usdclp", "2026-10-23T12:00:00-03:00", {
+      provider: "mindicador",
+      changePercent: -0.17,
+      unit: "clp",
+    }),
+    new Date("2026-11-04T18:00:00Z"),
+  );
+  assert.equal(checked.displayEligible, true);
+  assert.equal(checked.freshnessState, "delayed");
+  assert.match(checked.freshnessNote, /2026-10-23/);
+});
+
+test("Hero muestra fecha original del último cierre IPSA en SSR y refresco", async () => {
+  const root = new URL("../", import.meta.url);
+  const [hero, runtime] = await Promise.all([
+    readFile(new URL("src/components/EconomicIndicators.astro", root), "utf8"),
+    readFile(new URL("public/js/market-live.js", root), "utf8"),
+  ]);
+  assert.match(hero, /indicator.quoteBasis === "daily-close"/);
+  assert.match(runtime, /Último cierre verificado/);
 });
