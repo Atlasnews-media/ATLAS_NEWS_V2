@@ -99,6 +99,15 @@ export function assessMarketAsset(asset, now = new Date()) {
   if (delta < -futureTolerance) {
     return unavailable(asset, "cotización con fecha futura no verificable");
   }
+  const hours = Math.max(0, delta / HOUR);
+  const maxAge =
+    officialMaxDays[asset.id] != null
+      ? (officialMaxDays[asset.id] * DAY) / HOUR
+      : (referenceMaxHours[asset.id] ??
+        (asset.id === "bitcoin" ? 48 : HARD_MARKET_HOURS));
+  if (hours > maxAge) {
+    return unavailable(asset, `cotización vencida: ${Math.round(hours)} horas`);
+  }
   // El cierre del IPSA corresponde a una sesión determinada. Al terminar
   // la sesión actual, un cierre anterior nunca puede mostrarse como el de hoy.
   if (asset.id === "ipsa" && asset.quoteBasis === "daily-close") {
@@ -125,15 +134,6 @@ export function assessMarketAsset(asset, now = new Date()) {
         staleReason: undefined,
       };
     }
-  }
-  const hours = Math.max(0, delta / HOUR);
-  const maxAge =
-    officialMaxDays[asset.id] != null
-      ? (officialMaxDays[asset.id] * DAY) / HOUR
-      : (referenceMaxHours[asset.id] ??
-        (asset.id === "bitcoin" ? 48 : HARD_MARKET_HOURS));
-  if (hours > maxAge) {
-    return unavailable(asset, `cotización vencida: ${Math.round(hours)} horas`);
   }
   if (officialMaxDays[asset.id] != null) {
     return {
