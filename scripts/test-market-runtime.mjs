@@ -407,5 +407,6 @@ test("Hero muestra fecha original del último cierre IPSA en SSR y refresco", as
     readFile(new URL("public/js/market-live.js", root), "utf8"),
   ]);
   assert.match(hero, /indicator.quoteBasis === "daily-close"/);
+  assert.match(hero, /T12:00:00Z/);
   assert.match(runtime, /Último cierre verificado/);
 });
