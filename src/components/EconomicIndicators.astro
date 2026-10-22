@@ -211,7 +211,11 @@ const freshnessLabel =
                 data-atlas-market-value
                 title={
                   indicator.effectiveAt
-                    ? `Dato efectivo al ${formatDate(indicator.effectiveAt)}`
+                    ? `Dato efectivo al ${formatDate(
+                        indicator.quoteBasis === "daily-close"
+                          ? `${indicator.effectiveAt.slice(0, 10)}T12:00:00Z`
+                          : indicator.effectiveAt,
+                      )}`
                     : undefined
                 }
               >
