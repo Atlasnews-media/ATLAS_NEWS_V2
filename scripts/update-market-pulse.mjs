@@ -444,6 +444,7 @@ function economicAsset(snapshot, definition) {
       : null,
     provider: snapshot.provider ?? "economic-indicators",
     sourceUrl: snapshot.sourceUrl,
+    quoteBasis: "daily-reference",
     status:
       indicator.status === "stale"
         ? "stale"
