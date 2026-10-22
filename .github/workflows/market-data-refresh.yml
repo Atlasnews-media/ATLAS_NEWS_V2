@@ -121,7 +121,10 @@ jobs:
         run: |
           set -euo pipefail
           atlas_publish_dir="$RUNNER_TEMP/atlas-news-public"
-          for attempt in 1 2 3; do
+          for attempt in 1 2 3 4 5; do
+            # El intento anterior puede terminar dentro del clon. Volver al
+            # workspace antes de borrarlo evita getcwd() failed en el retry.
+            cd "$GITHUB_WORKSPACE"
             rm -rf "$atlas_publish_dir"
             git clone --depth 1 git@github.com:Atlasnews-media/Atlasnews-media.github.io.git "$atlas_publish_dir"
             mkdir -p "$atlas_publish_dir/data"
@@ -140,10 +143,10 @@ jobs:
               echo "Publicación atómica de snapshots completada."
               exit 0
             fi
-            echo "Colisión de escritor público: conciliando contra HEAD remoto ($attempt/3)." >&2
+            echo "Colisión de escritor público: conciliando contra HEAD remoto ($attempt/5)." >&2
             sleep 3
           done
-          echo "No se pudo publicar el snapshot tras tres intentos." >&2
+          echo "No se pudo publicar el snapshot tras cinco intentos." >&2
           exit 1
 
       - name: Verificar snapshot público publicado
