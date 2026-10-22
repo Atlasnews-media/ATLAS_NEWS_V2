@@ -22,6 +22,10 @@ on:
       - "!scripts/lab/**"
       - "!.github/workflows/*lab*.yml"
   workflow_dispatch:
+  # 22:30 UTC = 19:30 hora de verano / 18:30 hora de invierno (Chile).
+  # Una sola recompilación bursátil por día hábil, sin duplicar la edición.
+  schedule:
+    - cron: "30 22 * * 1-5"
 
 permissions:
   contents: read

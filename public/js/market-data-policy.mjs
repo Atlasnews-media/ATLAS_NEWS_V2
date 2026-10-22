@@ -51,6 +51,23 @@ function sessionOpen(id, now) {
   );
 }
 
+function dateInZone(now, zone) {
+  const parts = new Intl.DateTimeFormat("en-CA", {
+    timeZone: zone,
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit",
+  }).formatToParts(now);
+  const fields = Object.fromEntries(
+    parts.map(({ type, value }) => [type, value]),
+  );
+  return `${fields.year}-${fields.month}-${fields.day}`;
+}
+
+function isBusinessDay(weekday) {
+  return !["Sat", "Sun"].includes(weekday);
+}
+
 function unavailable(asset, reason) {
   return {
     ...asset,
@@ -67,6 +84,12 @@ export function assessMarketAsset(asset, now = new Date()) {
   }
   if (!Number.isFinite(asset.value)) {
     return unavailable(asset, "cotización no disponible");
+  }
+  if (asset.recoverySource === "published-market-snapshot") {
+    return unavailable(
+      asset,
+      "precio recuperado de una publicación anterior; sin validación nueva",
+    );
   }
   if (
     asset.quoteBasis === "unverified" ||
@@ -92,6 +115,36 @@ export function assessMarketAsset(asset, now = new Date()) {
         (asset.id === "bitcoin" ? 48 : HARD_MARKET_HOURS));
   if (hours > maxAge) {
     return unavailable(asset, `cotización vencida: ${Math.round(hours)} horas`);
+  }
+  // El cierre del IPSA corresponde a una sesión determinada. Al terminar
+  // la sesión actual, un cierre anterior nunca puede mostrarse como el de hoy.
+  if (asset.id === "ipsa") {
+    const local = clockInZone(now, "America/Santiago");
+    const today = dateInZone(now, "America/Santiago");
+    const quoteDate =
+      asset.quoteBasis === "daily-close"
+        ? asset.effectiveAt.slice(0, 10)
+        : dateInZone(new Date(asset.effectiveAt), "America/Santiago");
+    if (
+      isBusinessDay(local.weekday) &&
+      quoteDate < today &&
+      local.minuteOfDay >= 17 * 60
+    ) {
+      return unavailable(
+        asset,
+        `IPSA sin cierre de ${today}; último cierre disponible: ${quoteDate}`,
+      );
+    }
+    if (isBusinessDay(local.weekday) && quoteDate < today) {
+      return {
+        ...asset,
+        status: "delayed",
+        displayEligible: true,
+        freshnessState: "delayed",
+        freshnessNote: `Cierre anterior (${quoteDate}); no representa la sesión actual`,
+        staleReason: undefined,
+      };
+    }
   }
   if (officialMaxDays[asset.id] != null) {
     return {

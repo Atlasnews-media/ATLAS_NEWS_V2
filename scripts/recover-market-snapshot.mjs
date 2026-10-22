@@ -93,7 +93,9 @@ for (const id of missingIds) {
   currentById.set(id, {
     ...previous,
     status: "fallback",
-    displayEligible: true,
+    // Nunca forzar elegibilidad: el validador debe reevaluar la
+    // fecha efectiva y la sesión antes de ofrecer esta cotización.
+    displayEligible: false,
     recoverySource: "published-market-snapshot",
     recoveredAt: new Date().toISOString(),
   });
@@ -111,8 +113,10 @@ const diagnostics = [...(current.diagnostics ?? [])];
 for (const id of recovered) {
   diagnostics.push({
     id: `${id}-recovery`,
-    ok: true,
+    ok: false,
     recovered: true,
+    error:
+      "Dato recuperado; no acreditado como cotización de la sesión vigente.",
     source: "published-market-snapshot",
   });
 }

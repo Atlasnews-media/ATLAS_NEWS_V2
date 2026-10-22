@@ -1,5 +1,6 @@
 import { mkdir, readFile, writeFile } from "node:fs/promises";
 import { serializeCanonicalJson } from "./lib/serialize-canonical-json.mjs";
+import { computeEconomicVariation } from "./lib/economic-variation.mjs";
 
 const root = new URL("../", import.meta.url);
 const snapshotPath = new URL("src/data/economic-indicators.json", root);
@@ -176,12 +177,23 @@ async function fetchIndicator(definition, today) {
     );
   }
 
+  const previous = candidates.find(
+    (candidate) => dateInSantiago(candidate.fecha) < effectiveDate,
+  );
+  const previousEffectiveDate = previous
+    ? dateInSantiago(previous.fecha)
+    : null;
+  const variation = computeEconomicVariation(latest.valor, previous?.valor);
+
   return {
     code: definition.code,
     label: definition.label,
     value: latest.valor,
     unit: definition.unit,
     effectiveDate,
+    ...(variation
+      ? { previousValue: previous.valor, previousEffectiveDate, ...variation }
+      : {}),
   };
 }
 
@@ -239,12 +251,28 @@ function validateStoredSnapshot(snapshot, today) {
     assertDate(indicator.effectiveDate, definition.label, today);
     assertValue(indicator.value, definition);
 
+    const previousValid =
+      Number.isFinite(indicator.previousValue) &&
+      indicator.previousValue > 0 &&
+      /^\d{4}-\d{2}-\d{2}$/.test(indicator.previousEffectiveDate ?? "") &&
+      indicator.previousEffectiveDate < indicator.effectiveDate;
+    const variation = previousValid
+      ? computeEconomicVariation(indicator.value, indicator.previousValue)
+      : null;
+
     return {
       code: definition.code,
       label: definition.label,
       value: indicator.value,
       unit: definition.unit,
       effectiveDate: indicator.effectiveDate,
+      ...(variation
+        ? {
+            previousValue: indicator.previousValue,
+            previousEffectiveDate: indicator.previousEffectiveDate,
+            ...variation,
+          }
+        : {}),
     };
   });
 

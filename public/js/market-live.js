@@ -1,7 +1,6 @@
 import { assessMarketAsset } from "./market-data-policy.mjs";
 
 const MARKET_URL = "/data/market-pulse.json";
-const ECONOMIC_URL = "/data/economic-indicators.json";
 const REFRESH_MS = 5 * 60_000;
 const CL_TIME_ZONE = "America/Santiago";
 
@@ -257,34 +256,11 @@ async function refresh() {
     const market = await fetchSnapshot(MARKET_URL);
     if (!snapshotValid(market)) throw new Error("snapshot financiero inválido");
     const assets = new Map(market.assets.map((asset) => [asset.id, asset]));
-    let economic = null;
-    if (document.querySelector("[data-atlas-economic-code='utm']")) {
-      try {
-        economic = await fetchSnapshot(ECONOMIC_URL);
-      } catch (error) {
-        console.warn("ATLAS NEWS: UTM sin actualización dinámica", error);
-      }
-    }
     const now = new Date();
+    let degraded = market.status !== "current";
     for (const row of marketRows) {
       const id = row.dataset.atlasMarketId;
       let asset = assets.get(id);
-      if (!asset && row.dataset.atlasEconomicCode === "utm" && economic) {
-        const indicator = economic.indicators?.find(
-          (item) => item.code === "utm",
-        );
-        if (indicator) {
-          asset = {
-            id: "utm",
-            value: indicator.value,
-            unit: indicator.unit,
-            effectiveAt: `${indicator.effectiveDate}T12:00:00Z`,
-            provider: economic.provider,
-            changePercent: null,
-            displayEligible: economic.status === "current",
-          };
-        }
-      }
       if (!asset) {
         updateRow(row, {
           id,
@@ -294,15 +270,19 @@ async function refresh() {
         });
         continue;
       }
-      updateRow(row, assessMarketAsset(asset, now));
+      const checked = assessMarketAsset(asset, now);
+      degraded ||=
+        checked.displayEligible === false || checked.status === "delayed";
+      updateRow(row, checked);
     }
     updateStamps(market.generatedAt);
     const sourceLabel = document.querySelector(
       "[data-atlas-economic-freshness]",
     );
-    if (sourceLabel && economic) {
-      sourceLabel.textContent =
-        economic.status === "current" ? "Datos al" : "Último dato disponible";
+    if (sourceLabel) {
+      sourceLabel.textContent = degraded
+        ? "Tablero parcial al"
+        : "Corte del tablero";
     }
     document.dispatchEvent(
       new CustomEvent("atlas:market-data-updated", {

@@ -1,6 +1,7 @@
 import { mkdir, readFile, writeFile } from "node:fs/promises";
 import { serializeCanonicalJson } from "./lib/serialize-canonical-json.mjs";
 import { parseFindicIpsa } from "./lib/parse-findic-ipsa.mjs";
+import { assessMarketAsset } from "../public/js/market-data-policy.mjs";
 
 const root = new URL("../", import.meta.url);
 const economicSnapshotPath = new URL("src/data/economic-indicators.json", root);
@@ -52,14 +53,17 @@ function makeAsset({
   status = "current",
   quoteBasis = "exchange-quote",
 }) {
+  const normalizedChange = Number.isFinite(changePercent)
+    ? round(changePercent)
+    : null;
   return {
     id,
     label,
     group,
     value: Number.isFinite(value) ? value : null,
     unit,
-    changePercent: Number.isFinite(changePercent) ? round(changePercent) : null,
-    trend: trendFor(changePercent),
+    changePercent: normalizedChange,
+    trend: trendFor(normalizedChange),
     effectiveAt,
     provider,
     sourceUrl,
@@ -343,16 +347,30 @@ async function findicIpsaQuote() {
   };
 }
 
+async function verifiedIpsaQuote(fetchQuote) {
+  const quote = await fetchQuote();
+  const assessed = assessMarketAsset(
+    { id: "ipsa", unit: "points", ...quote },
+    new Date(),
+  );
+  if (assessed.displayEligible === false) {
+    throw new Error(
+      `IPSA: fuente ${quote.provider} no acredita la sesión vigente (${assessed.staleReason}).`,
+    );
+  }
+  return quote;
+}
+
 async function ipsaQuote() {
   return quoteWithFallback(
-    () => findicIpsaQuote(),
+    () => verifiedIpsaQuote(findicIpsaQuote),
     () =>
       quoteWithFallback(
-        () => yahooQuote("^IPSA"),
+        () => verifiedIpsaQuote(() => yahooQuote("^IPSA")),
         () =>
           quoteWithFallback(
-            () => stooqQuote("^ipsa"),
-            () => diarioFinancieroIpsaQuote(),
+            () => verifiedIpsaQuote(() => stooqQuote("^ipsa")),
+            () => verifiedIpsaQuote(diarioFinancieroIpsaQuote),
           ),
       ),
   );
@@ -499,6 +517,13 @@ const economicDefinitions = [
     unit: "clp",
   },
   {
+    code: "utm",
+    id: "utm",
+    label: "UTM",
+    group: "chile",
+    unit: "clp-integer",
+  },
+  {
     code: "cobre",
     id: "copper",
     label: "Cobre",
@@ -514,6 +539,14 @@ const assets = economicDefinitions
   .map((definition) => economicAsset(economicSnapshot, definition))
   .filter(Boolean);
 const diagnostics = [];
+if (economicSnapshot.status !== "current") {
+  diagnostics.push({
+    id: "economic-indicators",
+    ok: false,
+    error:
+      "Indicadores económicos recuperados de respaldo: comprobar vigencia individual.",
+  });
+}
 
 const externalResults = await Promise.allSettled(
   externalDefinitions.map((definition) => externalAsset(definition)),
