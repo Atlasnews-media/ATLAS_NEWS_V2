@@ -31,6 +31,12 @@ const dateFormatter = new Intl.DateTimeFormat("es-CL", {
   year: "numeric",
   timeZone: "America/Santiago",
 });
+const timeFormatter = new Intl.DateTimeFormat("es-CL", {
+  hour: "2-digit",
+  minute: "2-digit",
+  hour12: false,
+  timeZone: "America/Santiago",
+});
 const clpFormatter = new Intl.NumberFormat("es-CL", {
   style: "currency",
   currency: "CLP",
@@ -150,7 +156,9 @@ function formatTrend(indicator: DisplayIndicator) {
 }
 
 const asOf = snapshot.generatedAt ?? null;
-const asOfLabel = asOf ? formatDate(asOf) : "sin corte disponible";
+const asOfLabel = asOf
+  ? `${formatDate(asOf)} · ${timeFormatter.format(new Date(asOf))}`
+  : "sin corte disponible";
 const freshnessLabel =
   snapshot.status === "current" ? "Corte del tablero" : "Tablero parcial al";
 ---
