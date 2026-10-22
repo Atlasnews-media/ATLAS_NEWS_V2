@@ -1,11 +1,11 @@
 ---
 title: "Nasdaq cae 1,5%, el riesgo de Meta marca récord y el dólar bordea $990"
 summary: "La apertura de Wall Street confirmó el giro defensivo anticipado en la mañana: tecnología y crédito ligado a IA retrocedieron mientras petróleo caro, bonos refugio y un peso chileno más débil expresaron una misma aversión al riesgo."
-publishedAt: "2026-10-22T12:00:00-03:00"
+publishedAt: "2026-10-22T13:11:25-03:00"
 cutoffAt: "2026-10-22T12:00:00-03:00"
 section: "markets"
 editionSlot: "evening"
-status: "draft"
+status: "published"
 tags:
   - mercados
   - tecnologia
