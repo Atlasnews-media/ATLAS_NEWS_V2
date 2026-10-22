@@ -1,0 +1,103 @@
+{
+  "status": "READY",
+  "date": "2026-10-22",
+  "contract": "atlas-senales-del-dia-v1",
+  "senalesDelDia": {
+    "internacional": [
+      {
+        "slot": "technology",
+        "headline": "MMX inicia su viaje para traer muestras de Fobos",
+        "deck": "JAXA completó las operaciones críticas tras el lanzamiento y confirmó que la nave está en buen estado; la misión busca regresar a la Tierra en 2031.",
+        "development": "La agencia espacial japonesa JAXA confirmó el 21 de octubre que la sonda Martian Moons eXploration, MMX, completó con éxito la secuencia crítica posterior a su lanzamiento del día anterior a bordo del cohete H3. La nave desplegó sus paneles solares, estableció el control de actitud en tres ejes y liberó el mecanismo de su antena de ganancia media. JAXA informó que el vehículo está en buen estado y que la siguiente etapa consiste en comprobar el funcionamiento de sus equipos antes de iniciar formalmente el crucero hacia el sistema de Marte.\n\nEl plan prevé llegar en 2027, observar Fobos desde una órbita cuasi-satelital y realizar dos aterrizajes suaves para recolectar al menos diez gramos de material. MMX también observará Deimos antes de abandonar el entorno marciano en 2030 y enviar una cápsula de retorno que debería recuperarse en Australia en 2031. La misión busca estudiar el origen de las lunas de Marte y probar tecnologías de viaje de ida y vuelta, descenso y muestreo para exploración profunda. Haber superado la fase inicial reduce un riesgo operativo inmediato, pero todavía quedan años de navegación, maniobras, aterrizaje y retorno antes de obtener las muestras.",
+        "anchor": "mmx-inicia-viaje-muestras-fobos",
+        "sources": [
+          {
+            "name": "JAXA — término de la fase inicial crítica de MMX",
+            "url": "https://global.jaxa.jp/press/2026/10/20261021-1_e.html"
+          },
+          {
+            "name": "JAXA — objetivos y calendario de la misión MMX",
+            "url": "https://www.mmx.jaxa.jp/en/index.html"
+          }
+        ]
+      },
+      {
+        "slot": "world",
+        "headline": "Malasia cancela el registro de su principal bloque opositor",
+        "deck": "Perikatan Nasional anunció una impugnación judicial; la medida impide por ahora que sus partidos compitan bajo una bandera común en las próximas elecciones.",
+        "development": "El Registro de Sociedades de Malasia canceló el 20 de octubre la inscripción de Perikatan Nasional, la principal coalición opositora del país. La autoridad dijo que las explicaciones entregadas por el bloque no lograron refutar los fundamentos de una notificación previa de cancelación. El proceso surgió después de que Bersatu, uno de sus principales integrantes, denunciara haber sido excluido de una reunión del consejo supremo en julio y atribuyera el hecho a un incumplimiento de la constitución interna por parte de PAS, la otra fuerza dominante de la alianza.\n\nEl secretario general de Perikatan Nasional, Takiyuddin Hassan, anunció que la coalición impugnará la orden y solicitará suspender sus efectos mientras se resuelve el caso. La cancelación significa, mientras permanezca vigente, que Bersatu, PAS y los partidos menores del bloque no pueden presentarse bajo un emblema común. El efecto inmediato se concentra en la elección estatal de Malaca: las nominaciones están previstas para el 31 de octubre y la votación para el 14 de noviembre. La decisión administrativa no disuelve a los partidos componentes ni anticipa el resultado del recurso judicial; sí obliga a la oposición a definir una fórmula electoral alternativa si no obtiene una suspensión a tiempo.",
+        "anchor": "malasia-cancela-registro-perikatan-nasional",
+        "sources": [
+          {
+            "name": "Reuters — cancelación del registro de Perikatan Nasional",
+            "url": "https://www.reuters.com/world/asia-pacific/malaysia-de-registers-main-opposition-bloc-elections-loom-2026-10-20/"
+          },
+          {
+            "name": "CNA — efectos electorales y recurso anunciado por la coalición",
+            "url": "https://www.channelnewsasia.com/asia/malaysia-perikatan-nasional-deregister-opposition-bersatu-pas-6474751"
+          }
+        ]
+      }
+    ],
+    "nacional": [
+      {
+        "slot": "ipsa_company",
+        "headline": "CMPC acuerda comprar trece centrales hidroeléctricas",
+        "deck": "La empresa pactó adquirir HydroChile, dueña de 167,4 MW de capacidad de pasada, con un valor empresa de US$96,3 millones y sujeto a aprobación de la FNE.",
+        "development": "Empresas CMPC informó a la Comisión para el Mercado Financiero que acordó comprar el 100% de HydroChile S.p.A., sociedad propietaria y operadora de trece centrales hidroeléctricas de pasada en Chile. El conjunto suma 167,4 megavatios de capacidad instalada. La operación considera un valor empresa de US$96,3 millones y un valor patrimonial estimado de US$86,3 millones, cifra que podrá variar por los ajustes habituales al momento del cierre. El acuerdo incorpora condiciones precedentes, entre ellas la autorización de la Fiscalía Nacional Económica, por lo que la transferencia aún no está perfeccionada.\n\nCMPC señaló que la compra forma parte de su plan para abastecer con fuentes renovables la totalidad de la energía que genera, pero esa es una meta corporativa y no un resultado ya consumado por el contrato. El hecho esencial tampoco detalla el financiamiento de la adquisición ni un calendario definitivo para el cierre. Para la compañía del IPSA, el activo agrega capacidad eléctrica operativa y modifica su exposición a generación propia una vez que se cumplan las condiciones. Los próximos hitos verificables serán la revisión de competencia, los ajustes al precio patrimonial y la consolidación efectiva de HydroChile en los estados financieros de CMPC.",
+        "anchor": "cmpc-acuerda-compra-hydrochile",
+        "sources": [
+          {
+            "name": "CMF — hecho esencial de la adquisición de HydroChile por CMPC",
+            "url": "https://www.cmfchile.cl/sitio/aplic/serdoc/ver_sgd.php?s567=dc01cda169fdfd57c47c2e8d364ef515VFdwQmVVNXFSWGROUkZrelRtcG5NazFuUFQwPQ%3D%3D&secuencia=-1&t=1792647061"
+          }
+        ]
+      },
+      {
+        "slot": "policy_economy",
+        "headline": "CMF propone nuevos ajustes al registro consolidado de deuda",
+        "deck": "La consulta busca ordenar solicitudes de rectificación, identificar mejor a los reportantes e incorporar un archivo para acreencias no administradas.",
+        "development": "La Comisión para el Mercado Financiero abrió hasta el 18 de noviembre una consulta pública para modificar las reglas operativas del Registro de Deuda Consolidada y su manual de información. La propuesta precisa cómo los reportantes deben tratar las solicitudes de actualización, rectificación, complementación y cancelación, incluidas las que llegan primero a la CMF. Si una entidad agrupa varias solicitudes en un solo proceso, deberá comunicarlo al deudor e identificar cada requerimiento. También se simplifica el archivo RDC40 cuando no existen movimientos que informar.\n\nEl proyecto agrega la obligación de registrar ante CMF Supervisa las marcas y nombres de fantasía utilizados por cada reportante, con el objetivo de facilitar su identificación por parte de los deudores. Además crea el archivo RDC21 para declarar acreencias reportables cuya administración no esté a cargo de quien informa y ajusta la definición de los asesores crediticios que pueden incorporarse al sistema. La entrada en vigor sería gradual: las reglas generales comenzarían con la norma definitiva, el cambio al RDC40 un mes después y el nuevo RDC21 a los tres meses. Mientras la consulta permanezca abierta, estas medidas son una propuesta regulatoria y pueden modificarse antes de su publicación final.",
+        "anchor": "cmf-consulta-ajustes-redec",
+        "sources": [
+          {
+            "name": "CMF — consulta pública de ajustes operativos al REDEC",
+            "url": "https://www.cmfchile.cl/portal/prensa/625/w4-article-114375.html"
+          }
+        ]
+      }
+    ],
+    "mercados": [
+      {
+        "slot": "markets_chile",
+        "headline": "Santander Chile emite US$700 millones en bonos AT1",
+        "deck": "Los títulos perpetuos pagan 8% anual, podrán rescatarse desde el quinto año y fueron adquiridos íntegramente por entidades del grupo Santander.",
+        "development": "Banco Santander Chile informó a la Comisión para el Mercado Financiero la colocación internacional de US$700 millones en bonos perpetuos adicionales de nivel uno, conocidos como AT1. Los títulos pagan un interés anual de 8% en cuotas semestrales, a partir del 26 de abril de 2027, y no tienen una fecha fija de vencimiento. El banco sólo podrá rescatarlos después de cinco años y bajo las condiciones regulatorias aplicables. La emisión se realizó conforme a Regulation S y fue comprada íntegramente por entidades pertenecientes al grupo Santander.\n\nLos instrumentos AT1 forman parte del capital regulatorio y absorben pérdidas antes que la deuda senior, por lo que su rendimiento no es directamente comparable con el de un bono bancario convencional. El hecho esencial confirma el monto, la tasa, el carácter perpetuo y los compradores, pero no implica que exista una referencia de precio formada mediante una colocación amplia entre inversionistas externos. Para el mercado chileno, la operación fortalece una capa específica de capital del banco y fija un costo explícito para ese financiamiento subordinado en dólares. Su efecto deberá observarse en los próximos reportes de suficiencia patrimonial, gastos financieros y estructura de capital regulatorio.",
+        "anchor": "santander-chile-emite-bonos-at1",
+        "sources": [
+          {
+            "name": "CMF — hecho esencial de la emisión AT1 de Santander Chile",
+            "url": "https://www.cmfchile.cl/sitio/aplic/serdoc/ver_sgd.php?s567=d465470096a806965c48bee20ceb6291VFdwQmVVNXFSWGROUkZrelRtcG5NazVSUFQwPQ%3D%3D&secuencia=-1&t=1792647061"
+          }
+        ]
+      },
+      {
+        "slot": "markets_global",
+        "headline": "Oferta pública de Jio cubre 3,16 veces sus acciones",
+        "deck": "La mayor apertura bursátil de India reunió demanda suficiente en menos de dos horas y cerró su primera jornada con ofertas por más de tres veces el cupo.",
+        "development": "La oferta pública inicial de Jio Platforms recibió el 21 de octubre solicitudes equivalentes a 3,16 veces las acciones disponibles al cierre de su primera jornada, después de cubrir el total ofrecido en menos de dos horas. La operación busca recaudar cerca de US$3.200 millones y es la mayor apertura bursátil registrada en India. También es la primera colocación pública de una empresa controlada por Reliance Industries en dos décadas. El libro permanecerá abierto hasta el 23 de octubre y la negociación de los títulos está prevista para el día 28.\n\nLa emisión contempla hasta 270 millones de acciones nuevas y una banda de precio de 1.065 a 1.119 rupias, con la que Jio podría alcanzar una valoración cercana a US$108.300 millones en el extremo superior. La demanda del primer día muestra capacidad de absorción, pero no garantiza el precio de estreno ni el desempeño posterior de la acción. Tampoco equivale a capital ya liquidado: las órdenes pueden cambiar hasta el cierre y la asignación depende de cada tramo del libro. Para los mercados globales, el tamaño de la operación entrega una prueba concreta del apetito por nuevas acciones en India, incluso durante una sesión débil para los principales índices locales.",
+        "anchor": "jio-oferta-publica-cubre-acciones",
+        "sources": [
+          {
+            "name": "Reuters — demanda del primer día por la oferta pública de Jio",
+            "url": "https://www.reuters.com/world/india/indias-jio-ipo-opens-public-bids-record-32-billion-sale-2026-10-20/"
+          },
+          {
+            "name": "Indian Express — demanda institucional y términos de la oferta de Jio",
+            "url": "https://indianexpress.com/article/business/jio-platforms-ipo-fully-subscribed-retail-portion-10931888/"
+          }
+        ]
+      }
+    ]
+  }
+}
