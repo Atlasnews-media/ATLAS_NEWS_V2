@@ -1,0 +1,32 @@
+name: Formatear cierre verificable
+on:
+  push:
+    branches: [fix/market-last-verified-close-20261022]
+permissions:
+  contents: write
+jobs:
+  prettier:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          ref: fix/market-last-verified-close-20261022
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - name: Formatear solo corrección de cierre
+        run: |
+          npx prettier --write docs/POLITICA_COTIZACIONES_CIERRE.md public/js/market-data-policy.mjs public/js/market-live.js scripts/update-market-pulse.mjs
+      - name: Guardar formato
+        run: |
+          git config user.name "ATLAS NEWS Format Bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add docs/POLITICA_COTIZACIONES_CIERRE.md public/js/market-data-policy.mjs public/js/market-live.js scripts/update-market-pulse.mjs
+          if git diff --cached --quiet; then
+            echo "Formato correcto"
+          else
+            git commit -m "style(market): format last-close retention fix"
+            git push origin HEAD:fix/market-last-verified-close-20261022
+          fi
