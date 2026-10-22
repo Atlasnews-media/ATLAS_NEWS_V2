@@ -83,6 +83,12 @@ export function assessMarketAsset(asset, now = new Date()) {
   if (!Number.isFinite(asset.value)) {
     return unavailable(asset, "cotización no disponible");
   }
+  if (asset.recoverySource === "published-market-snapshot") {
+    return unavailable(
+      asset,
+      "precio recuperado de una publicación anterior; sin validación nueva",
+    );
+  }
   if (
     asset.quoteBasis === "unverified" ||
     (asset.provider === "diario-financiero-public" &&
