@@ -1,11 +1,11 @@
 ---
 title: "FMI y OCDE alertan que la IA puede ampliar la brecha entre países y trabajadores"
 summary: "La promesa de productividad de la inteligencia artificial ya tiene una cifra, pero también una condición: sin electricidad, infraestructura digital y capacidades laborales, los beneficios pueden concentrarse en las economías y empresas que ya llevan ventaja."
-publishedAt: "2026-10-22T12:00:00-03:00"
+publishedAt: "2026-10-22T13:11:25-03:00"
 cutoffAt: "2026-10-22T12:00:00-03:00"
 type: "daily"
 editionSlot: "evening"
-status: "draft"
+status: "published"
 tags:
   - inteligencia-artificial
   - productividad
