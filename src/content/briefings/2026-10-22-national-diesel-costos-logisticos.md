@@ -1,11 +1,11 @@
 ---
 title: "El diésel concentra el nuevo shock de combustibles en Chile"
 summary: "La quinta alza consecutiva llega con un salto de $91,5 por litro en el diésel, más del doble que las gasolinas, y vuelve a tensar costos logísticos y apoyo fiscal."
-publishedAt: "2026-10-22T06:22:00-03:00"
+publishedAt: "2026-10-22T06:50:24-03:00"
 cutoffAt: "2026-10-22T06:20:00-03:00"
 section: "national"
 editionSlot: "morning"
-status: "draft"
+status: "published"
 tags:
   - chile
   - combustibles

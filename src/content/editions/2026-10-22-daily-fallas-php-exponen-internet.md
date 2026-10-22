@@ -1,11 +1,11 @@
 ---
 title: "Dos fallas críticas en PHP exponen una capa invisible de internet"
 summary: "Vulnerabilidades de ejecución remota obligan a actualizar servidores en todo el mundo mientras los intentos de explotación escalan a millones."
-publishedAt: "2026-10-22T06:06:29-03:00"
+publishedAt: "2026-10-22T06:50:24-03:00"
 cutoffAt: "2026-10-22T06:05:18-03:00"
 type: "daily"
 editionSlot: "morning"
-status: "draft"
+status: "published"
 tags:
   - ciberseguridad
   - infraestructura-digital

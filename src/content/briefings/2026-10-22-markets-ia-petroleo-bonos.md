@@ -1,11 +1,11 @@
 ---
 title: "Petróleo y gasto en IA rompen el rebote tecnológico"
 summary: "Las acciones globales ceden pese a resultados sólidos: el costo de financiar la IA y un Brent sobre US$112 empujan flujos hacia bonos y yen."
-publishedAt: "2026-10-22T06:29:00-03:00"
+publishedAt: "2026-10-22T06:50:24-03:00"
 cutoffAt: "2026-10-22T06:27:00-03:00"
 section: "markets"
 editionSlot: "morning"
-status: "draft"
+status: "published"
 tags:
   - mercados-globales
   - tecnologia
