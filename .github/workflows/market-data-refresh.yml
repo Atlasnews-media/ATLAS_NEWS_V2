@@ -28,7 +28,7 @@ jobs:
       - name: Descargar ATLAS NEWS V2
         uses: actions/checkout@v5
 
-      - name: Resolver ventana operativa Chile
+      - name: Autorizar disparo financiero desde main
         id: window
         shell: bash
         run: |
@@ -39,24 +39,24 @@ jobs:
             exit 1
           fi
 
-          if [[ "${GITHUB_EVENT_NAME}" == "workflow_dispatch" ]]; then
-            echo "run=true" >> "$GITHUB_OUTPUT"
-            echo "Ejecución manual: se omite el gate horario."
-            exit 0
-          fi
+          case "${GITHUB_EVENT_NAME}" in
+            schedule)
+              echo "Agenda autorizada: una ejecución retrasada no debe descartarse por la hora del runner."
+              ;;
+            push)
+              echo "Cambio validado en main: se actualizan los snapshots financieros."
+              ;;
+            workflow_dispatch)
+              echo "Ejecución manual desde main: se actualizan los snapshots financieros."
+              ;;
+            *)
+              echo "::error title=Evento no autorizado::Disparo financiero no admitido: ${GITHUB_EVENT_NAME}." >&2
+              exit 1
+              ;;
+          esac
 
-          local_day="$(TZ=America/Santiago date +%u)"
-          local_hour="$(TZ=America/Santiago date +%H)"
-          local_stamp="$(TZ=America/Santiago date '+%Y-%m-%d %H:%M:%S %Z')"
-
-          echo "Hora Chile: $local_stamp"
-
-          if (( 10#$local_day >= 1 && 10#$local_day <= 5 && 10#$local_hour >= 8 && 10#$local_hour < 20 )); then
-            echo "run=true" >> "$GITHUB_OUTPUT"
-          else
-            echo "run=false" >> "$GITHUB_OUTPUT"
-            echo "Fuera de ventana operativa 08:00–19:59 America/Santiago."
-          fi
+          echo "run=true" >> "$GITHUB_OUTPUT"
+          echo "Hora de ejecución Chile: $(TZ=America/Santiago date '+%Y-%m-%d %H:%M:%S %Z')"
 
       - name: Preparar Node.js
         if: steps.window.outputs.run == 'true'
@@ -149,20 +149,20 @@ jobs:
             echo "Faltan fechas de generación o captura." >&2
             exit 1
           fi
-          for attempt in $(seq 1 12); do
+          for attempt in $(seq 1 40); do
             market_url="https://atlasnews-media.github.io/data/market-pulse.json?verify=${GITHUB_RUN_ID}-$attempt"
             economic_url="https://atlasnews-media.github.io/data/economic-indicators.json?verify=${GITHUB_RUN_ID}-$attempt"
             market_file="$RUNNER_TEMP/live-market.json"
             economic_file="$RUNNER_TEMP/live-economic.json"
             if curl -fsSL --max-time 10 "$market_url" -o "$market_file" &&
                curl -fsSL --max-time 10 "$economic_url" -o "$economic_file" &&
-               jq -e --arg cut "$source_cut" '.generatedAt == $cut' "$market_file" >/dev/null &&
-               jq -e --arg cut "$source_economic" '.fetchedAt == $cut' "$economic_file" >/dev/null; then
+               jq -e --arg cut "$source_cut" '(.generatedAt // "") >= $cut' "$market_file" >/dev/null &&
+               jq -e --arg cut "$source_economic" '(.fetchedAt // "") >= $cut' "$economic_file" >/dev/null; then
               echo "GitHub Pages confirma ambas capturas del corte $source_cut."
               exit 0
             fi
-            echo "Esperando propagación pública del snapshot ($attempt/12)."
-            sleep 5
+            echo "Esperando propagación pública del snapshot ($attempt/40)."
+            sleep 7
           done
           echo "Error: GitHub Pages no confirmó los snapshots nuevos." >&2
           exit 1

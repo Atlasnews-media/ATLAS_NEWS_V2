@@ -1,5 +1,6 @@
 import { mkdir, readFile, writeFile } from "node:fs/promises";
 import { serializeCanonicalJson } from "./lib/serialize-canonical-json.mjs";
+import { parseFindicIpsa } from "./lib/parse-findic-ipsa.mjs";
 
 const root = new URL("../", import.meta.url);
 const economicSnapshotPath = new URL("src/data/economic-indicators.json", root);
@@ -278,7 +279,8 @@ async function frankfurterFx() {
       value: round(eurUsd, 4),
       unit: "ratio",
       changePercent: (eurUsd / previousEurUsd - 1) * 100,
-      effectiveAt: `${currentDate}T16:00:00Z`,
+      effectiveAt: `${currentDate}T00:00:00Z`,
+      quoteBasis: "daily-reference",
       provider: "frankfurter-ecb",
       sourceUrl,
     }),
@@ -289,7 +291,8 @@ async function frankfurterFx() {
       value: round(usdJpy, 3),
       unit: "ratio",
       changePercent: (usdJpy / previousUsdJpy - 1) * 100,
-      effectiveAt: `${currentDate}T16:00:00Z`,
+      effectiveAt: `${currentDate}T00:00:00Z`,
+      quoteBasis: "daily-reference",
       provider: "frankfurter-ecb",
       sourceUrl,
     }),
@@ -330,13 +333,27 @@ async function quoteWithFallback(primary, fallback) {
   }
 }
 
+async function findicIpsaQuote() {
+  const sourceUrl = "https://findic.cl/api/ipsa";
+  const payload = await fetchJson(sourceUrl);
+  return {
+    ...parseFindicIpsa(payload),
+    provider: "findic-public-close",
+    sourceUrl,
+  };
+}
+
 async function ipsaQuote() {
   return quoteWithFallback(
-    () => yahooQuote("^IPSA"),
+    () => findicIpsaQuote(),
     () =>
       quoteWithFallback(
-        () => stooqQuote("^ipsa"),
-        () => diarioFinancieroIpsaQuote(),
+        () => yahooQuote("^IPSA"),
+        () =>
+          quoteWithFallback(
+            () => stooqQuote("^ipsa"),
+            () => diarioFinancieroIpsaQuote(),
+          ),
       ),
   );
 }
