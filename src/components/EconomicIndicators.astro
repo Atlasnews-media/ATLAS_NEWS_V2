@@ -1,7 +1,6 @@
 ---
 import IndicatorIcon from "./IndicatorIcon.astro";
 import marketPulse from "../data/market-pulse.json";
-import { economicIndicatorsSnapshot } from "../data/economic-indicators";
 
 type Trend = "up" | "down" | "flat";
 
@@ -53,40 +52,21 @@ const variationFormatter = new Intl.NumberFormat("es-CL", {
 });
 
 const snapshot = marketPulse as {
+  status: string;
   generatedAt: string | null;
   assets: MarketAsset[];
 };
 
-const economicByCode = new Map(
-  economicIndicatorsSnapshot.indicators.map((indicator) => [
-    indicator.code,
-    indicator,
-  ]),
-);
 const marketById = new Map(snapshot.assets.map((asset) => [asset.id, asset]));
 
-function normalizeEconomic(
-  code: string,
+function normalizeMarket(
+  id: string,
   label: string,
-): DisplayIndicator | null {
-  const indicator = economicByCode.get(code);
-  if (!indicator) return null;
-
-  return {
-    id: code,
-    label,
-    value: indicator.value,
-    unit: indicator.unit,
-    effectiveAt: indicator.effectiveDate,
-    changePercent: indicator.changePercent ?? null,
-    trend: indicator.trend ?? "flat",
-  };
-}
-
-function normalizeMarket(id: string, label: string): DisplayIndicator {
+  economicCode = id,
+): DisplayIndicator {
   const asset = marketById.get(id);
   return {
-    id,
+    id: economicCode,
     label,
     value: asset?.value ?? null,
     unit: asset?.unit ?? "points",
@@ -98,15 +78,15 @@ function normalizeMarket(id: string, label: string): DisplayIndicator {
 }
 
 const indicators: DisplayIndicator[] = [
-  normalizeEconomic("uf", "UF"),
-  normalizeEconomic("dolar", "Dólar"),
-  normalizeEconomic("euro", "Euro"),
-  normalizeEconomic("utm", "UTM"),
+  normalizeMarket("uf", "UF"),
+  normalizeMarket("usdclp", "Dólar", "dolar"),
+  normalizeMarket("eurclp", "Euro", "euro"),
+  normalizeMarket("utm", "UTM"),
   normalizeMarket("brent", "Brent Oil"),
-  normalizeEconomic("cobre", "Cobre"),
+  normalizeMarket("copper", "Cobre", "cobre"),
   normalizeMarket("ipsa", "IPSA"),
   normalizeMarket("sp500", "S&P 500"),
-].filter((indicator): indicator is DisplayIndicator => Boolean(indicator));
+];
 
 const priorityIndicators = new Set(["dolar", "cobre", "ipsa", "sp500"]);
 const marketIdByIndicator: Record<string, string> = {
@@ -169,18 +149,15 @@ function formatTrend(indicator: DisplayIndicator) {
   return `${arrow} ${change}%`;
 }
 
-const marketGeneratedDate = snapshot.generatedAt?.slice(0, 10) ?? null;
-const asOf = marketGeneratedDate ?? economicIndicatorsSnapshot.asOf;
-const asOfLabel = formatDate(asOf);
+const asOf = snapshot.generatedAt ?? null;
+const asOfLabel = asOf ? formatDate(asOf) : "sin corte disponible";
 const freshnessLabel =
-  economicIndicatorsSnapshot.status === "stale"
-    ? "Último dato disponible"
-    : "Datos al";
+  snapshot.status === "current" ? "Corte del tablero" : "Tablero parcial al";
 ---
 
 <section
   class="economic-panel"
-  data-status={economicIndicatorsSnapshot.status}
+  data-status={snapshot.status}
   aria-labelledby="economic-panel-title"
 >
   <header class="economic-panel__header">
@@ -249,9 +226,9 @@ const freshnessLabel =
   </div>
 
   <p class="economic-panel__source">
-    Fuentes: {economicIndicatorsSnapshot.sourceName} · Índices de mercado ATLAS ·
+    Fuentes: Índices de mercado ATLAS ·
     <span data-atlas-economic-freshness>{freshnessLabel}</span>: <time
-      datetime={asOf}
+      datetime={asOf ?? undefined}
       data-atlas-market-stamp="date">{asOfLabel}</time
     >
   </p>
