@@ -1,5 +1,6 @@
 import { readFile, writeFile } from "node:fs/promises";
 import { serializeCanonicalJson } from "./lib/serialize-canonical-json.mjs";
+import { computeEconomicVariation } from "./lib/economic-variation.mjs";
 
 const root = new URL("../", import.meta.url);
 const snapshotPath = new URL("src/data/economic-indicators.json", root);
@@ -11,8 +12,10 @@ const providerBaseUrl =
   process.env.ATLAS_INDICATORS_API_BASE ?? "https://mindicador.cl/api";
 
 const trendDefinitions = new Map([
+  ["uf", "uf"],
   ["dolar", "dolar"],
   ["euro", "euro"],
+  ["utm", "utm"],
   ["cobre", "libra_cobre"],
 ]);
 
@@ -48,7 +51,9 @@ async function fetchJson(url) {
 
 async function enrichIndicator(indicator) {
   const providerCode = trendDefinitions.get(indicator.code);
-  if (!providerCode) return indicator;
+  if (!providerCode || Number.isFinite(indicator.changePercent)) {
+    return indicator;
+  }
 
   const payload = await fetchJson(`${providerBaseUrl}/${providerCode}`);
   const observations = (Array.isArray(payload?.serie) ? payload.serie : [])
@@ -71,28 +76,25 @@ async function enrichIndicator(indicator) {
   const currentIndex = observations.findIndex(
     (observation) => observation.effectiveDate === indicator.effectiveDate,
   );
-  const current =
-    currentIndex >= 0 ? observations[currentIndex] : observations[0];
+  if (currentIndex < 0) return indicator;
+  const current = observations[currentIndex];
+  if (current.value !== indicator.value) return indicator;
   const previous = observations.find(
     (observation, index) =>
       index > currentIndex &&
-      current &&
       observation.effectiveDate < current.effectiveDate,
   );
 
   if (!current || !previous || previous.value === 0) return indicator;
 
-  const rawChange = (current.value / previous.value - 1) * 100;
-  const changePercent = Math.round(rawChange * 100) / 100;
-  const trend =
-    Math.abs(changePercent) < 0.01 ? "flat" : changePercent > 0 ? "up" : "down";
+  const variation = computeEconomicVariation(current.value, previous.value);
+  if (!variation) return indicator;
 
   return {
     ...indicator,
     previousValue: previous.value,
     previousEffectiveDate: previous.effectiveDate,
-    changePercent,
-    trend,
+    ...variation,
   };
 }
 
@@ -119,4 +121,4 @@ await Promise.all([
   writeFile(publicSnapshotPath, serialized),
 ]);
 
-console.log("Tendencias económicas calculadas para dólar, euro y cobre.");
+console.log("Tendencias verificadas para UF, dólar, euro, UTM y cobre.");
