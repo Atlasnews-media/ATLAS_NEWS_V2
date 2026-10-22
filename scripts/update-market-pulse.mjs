@@ -397,7 +397,9 @@ async function ipsaQuote() {
     }
   }
   if (best) return best;
-  throw new Error(`Ningún proveedor entregó IPSA verificable: ${failures.join("; ")}`);
+  throw new Error(
+    `Ningún proveedor entregó IPSA verificable: ${failures.join("; ")}`,
+  );
 }
 
 async function externalAsset(definition) {

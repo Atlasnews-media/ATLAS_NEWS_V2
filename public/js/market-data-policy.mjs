@@ -87,7 +87,13 @@ export function assessMarketAsset(asset, now = new Date()) {
   const trustedPreviousRecord =
     recovered &&
     typeof asset.provider === "string" &&
-    ["findic-public-close", "stooq", "yahoo-public-chart", "mindicador", "frankfurter-ecb"].includes(asset.provider) &&
+    [
+      "findic-public-close",
+      "stooq",
+      "yahoo-public-chart",
+      "mindicador",
+      "frankfurter-ecb",
+    ].includes(asset.provider) &&
     asset.quoteBasis !== "unverified" &&
     typeof asset.effectiveAt === "string" &&
     Number.isFinite(Date.parse(asset.effectiveAt));
@@ -120,10 +126,11 @@ export function assessMarketAsset(asset, now = new Date()) {
     asset.id === "ipsa" &&
     asset.quoteBasis === "daily-close" &&
     typeof asset.provider === "string" &&
-    ["findic-public-close", "stooq", "yahoo-public-chart"].includes(asset.provider);
+    ["findic-public-close", "stooq", "yahoo-public-chart"].includes(
+      asset.provider,
+    );
   const keepOfficialReference =
-    ["usdclp", "eurclp"].includes(asset.id) &&
-    asset.provider === "mindicador";
+    ["usdclp", "eurclp"].includes(asset.id) && asset.provider === "mindicador";
   if (hours > maxAge && !keepLastClose && !keepOfficialReference) {
     return unavailable(asset, `cotización vencida: ${Math.round(hours)} horas`);
   }
@@ -159,7 +166,10 @@ export function assessMarketAsset(asset, now = new Date()) {
     };
   }
   if (asset.id === "ipsa" && asset.quoteBasis !== "daily-close") {
-    const quoteDate = dateInZone(new Date(asset.effectiveAt), "America/Santiago");
+    const quoteDate = dateInZone(
+      new Date(asset.effectiveAt),
+      "America/Santiago",
+    );
     const today = dateInZone(now, "America/Santiago");
     if (quoteDate < today) {
       return {

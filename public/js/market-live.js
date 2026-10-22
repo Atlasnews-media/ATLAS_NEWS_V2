@@ -133,7 +133,7 @@ function updateRow(row, asset) {
       : "IPSA";
     nameElement.title = lastClose
       ? `Último cierre verificado: ${date}`
-      : asset.freshnessNote ?? "";
+      : (asset.freshnessNote ?? "");
   }
   const trend = marketTrend(asset);
   const raw = trend == null ? null : asset.changePercent;
