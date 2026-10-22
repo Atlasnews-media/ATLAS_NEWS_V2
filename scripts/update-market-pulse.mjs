@@ -382,18 +382,8 @@ async function ipsaQuote() {
       }
       // Una cotización de sesión fechada hoy tiene preferencia; si solo
       // existe un cierre antiguo, seguir consultando proveedores alternos.
-      const localQuoteDate = new Intl.DateTimeFormat("en-CA", {
-        timeZone: "America/Santiago",
-        year: "numeric",
-        month: "2-digit",
-        day: "2-digit",
-      }).format(new Date(quote.effectiveAt));
-      const localToday = new Intl.DateTimeFormat("en-CA", {
-        timeZone: "America/Santiago",
-        year: "numeric",
-        month: "2-digit",
-        day: "2-digit",
-      }).format(new Date());
+      const localQuoteDate = dateKey(new Date(quote.effectiveAt));
+      const localToday = dateKey();
       if (
         (quote.quoteBasis === "exchange-quote" &&
           localQuoteDate === localToday) ||
