@@ -18,11 +18,11 @@ sources:
   - name: "Fiscalía Nacional Económica — investigación de la adquisición de AES"
     url: "https://www.fne.gob.cl/resolucion-de-inicio-de-investigacion-sobre-adquisicion-de-control-en-the-aes-corporation-por-parte-de-global-infrastructure-management-llc-y-eqt-fund-management-s-a-r-l/"
 highlights:
-  - label: "La FNE autoriza la operación"
+  - label: "FNE autoriza la compra"
     text: "El organismo concluyó que la adquisición conjunta de AES por GIM y EQT no reduce sustancialmente la competencia en los segmentos revisados."
-  - label: "Energía y centros de datos quedan bajo la misma lupa"
+  - label: "Energía y datos"
     text: "La revisión consideró generación renovable, transmisión, baterías y el suministro eléctrico a operadores de infraestructura digital."
-  - label: "Se descarta el cierre de insumos"
+  - label: "Sin bloqueo de insumos"
     text: "La FNE identificó al menos seis grupos independientes capaces de abastecer a centros de datos competidores."
 demo: false
 ---
