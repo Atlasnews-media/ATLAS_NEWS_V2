@@ -24,11 +24,11 @@ sources:
     url: "https://www.df.cl/mercados/bolsa-monedas/dolar-salta-a-maximos-del-dia-y-bordea-los-990-a-medida-que-el-petroleo"
     publishedAt: "2026-10-22T11:41:00-03:00"
 highlights:
-  - label: "La venta tecnológica se confirma"
+  - label: "Venta tecnológica"
     text: "El Nasdaq caía 1,46% a las 09:41 de Nueva York, con Meta, chips y otras acciones de crecimiento entre las mayores bajas."
-  - label: "El crédito también repricia la IA"
+  - label: "Riesgo de Meta"
     text: "El CDS a cinco años de Meta subió 7,3 puntos base hasta un récord de 114,5 puntos, ampliando la señal más allá de las acciones."
-  - label: "El peso chileno absorbe el shock externo"
+  - label: "Peso bajo presión"
     text: "El dólar bordeó $990 mientras el petróleo subía, el cobre retrocedía y los bonos del Tesoro recibían flujos defensivos."
 demo: false
 ---
