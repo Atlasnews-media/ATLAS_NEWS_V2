@@ -128,3 +128,26 @@ test("Referencia FX diaria no caduca por marca futura artificial", () => {
   assert.equal(asset.displayEligible, true);
   assert.equal(asset.freshnessState, "reference");
 });
+
+test("Findic valida la serie actual y excluye fechas futuras", () => {
+  const series = {
+    codigo: "ipsa",
+    serie: [
+      { fecha: "2026-10-21", valor: 10987.14 },
+      { fecha: "2026-10-20", valor: 10926.5 },
+    ],
+  };
+  const quote = parseFindicIpsa(series);
+  assert.equal(quote.effectiveAt, "2026-10-21T00:00:00Z");
+  assert.equal(quote.value, 10987.14);
+  assert.ok(quote.changePercent > 0);
+  assert.throws(() =>
+    parseFindicIpsa({
+      codigo: "ipsa",
+      serie: [
+        { fecha: "2099-10-21", valor: 10987.14 },
+        { fecha: "2026-10-20", valor: 10926.5 },
+      ],
+    }),
+  );
+});

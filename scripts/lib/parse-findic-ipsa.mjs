@@ -6,7 +6,7 @@ export function parseFindicIpsa(payload) {
   const rows = payload.serie
     .filter(
       (row) =>
-        /^\\d{4}-\\d{2}-\\d{2}$/.test(row?.fecha ?? "") &&
+        /^\d{4}-\d{2}-\d{2}$/.test(row?.fecha ?? "") &&
         Number.isFinite(row?.valor) &&
         row.valor > 0,
     )
@@ -17,6 +17,10 @@ export function parseFindicIpsa(payload) {
   }
 
   const [current, previous] = rows;
+  const time = Date.parse(`${current.fecha}T00:00:00Z`);
+  if (!Number.isFinite(time) || time > Date.now() + 86_400_000) {
+    throw new Error("Findic: fecha de cierre no verificable.");
+  }
   return {
     value: current.valor,
     changePercent: (current.valor / previous.valor - 1) * 100,

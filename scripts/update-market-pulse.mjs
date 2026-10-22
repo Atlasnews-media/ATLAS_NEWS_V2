@@ -345,13 +345,13 @@ async function findicIpsaQuote() {
 
 async function ipsaQuote() {
   return quoteWithFallback(
-    () => yahooQuote("^IPSA"),
+    () => findicIpsaQuote(),
     () =>
       quoteWithFallback(
-        () => stooqQuote("^ipsa"),
+        () => yahooQuote("^IPSA"),
         () =>
           quoteWithFallback(
-            () => findicIpsaQuote(),
+            () => stooqQuote("^ipsa"),
             () => diarioFinancieroIpsaQuote(),
           ),
       ),

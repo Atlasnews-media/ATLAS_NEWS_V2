@@ -115,6 +115,15 @@ function updateRow(row, asset) {
     price.textContent = displayValue(asset);
     price.title = effectiveLabel(asset);
   }
+  const nameElement = row.querySelector(
+    ".economic-panel__label, .market-label, .asset-name > span",
+  );
+  if (nameElement && asset.id === "ipsa") {
+    nameElement.textContent =
+      asset.quoteBasis === "daily-close" && asset.displayEligible !== false
+        ? "IPSA · cierre"
+        : "IPSA";
+  }
   const trend = marketTrend(asset);
   const raw = trend == null ? null : asset.changePercent;
   const direction = trend ?? "flat";

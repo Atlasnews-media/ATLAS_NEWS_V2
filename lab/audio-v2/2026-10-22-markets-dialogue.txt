@@ -1,0 +1,19 @@
+VOZ 1: La señal de mercados esta mañana es una reversión. Los resultados corporativos habían dado alivio, pero no alcanzaron para sostener el apetito por riesgo. El índice global de MSCI caía 0,4%, Europa perdía 1% y los futuros de Wall Street anticipaban bajas de entre 1% y 2%.
+VOZ 2: ¿Qué cambió si las empresas tecnológicas reportaron cifras sólidas?
+VOZ 1: Cambió el filtro del mercado. Meta superó las expectativas de ingresos y reportó 64.600 millones de dólares en el tercer trimestre, pero también mantuvo una inversión de capital muy elevada, entre 135.000 y 145.000 millones para 2026, y anunció una emisión de acciones sin voto. El mercado está preguntando cuánto cuesta financiar la inteligencia artificial y cuándo aparece el retorno.
+VOZ 2: O sea, ya no basta con crecer. Hay que demostrar que cada dólar invertido tendrá una rentabilidad visible.
+VOZ 1: Exacto. Meta cedía cerca de 0,8% antes de la apertura y Tesla caía casi 5% en el premercado, aunque Tesla redujo su previsión de gasto. Esa dispersión muestra que el castigo no es mecánico: depende de cómo cada empresa combina crecimiento, capital y flujo de caja.
+VOZ 2: ¿La tecnología explica todo el movimiento?
+VOZ 1: No. El segundo impulso viene del petróleo. Brent subía 3% hasta 112 dólares por barril, cerca de un máximo de cinco meses, tras nuevos ataques hutíes en Arabia Saudita. Eso aumenta el riesgo de interrupciones de oferta y añade una posible carga inflacionaria.
+VOZ 2: Pero si el petróleo sube por riesgo de oferta, uno podría esperar que también suban los rendimientos de los bonos por temor a la inflación.
+VOZ 1: Y ahí está la señal más interesante. El rendimiento del Treasury a diez años bajaba siete puntos base, hasta 5,075%, su mayor descenso en una semana. Los inversores compraron bonos porque, por ahora, parece pesar más el daño potencial al crecimiento que una inflación persistente.
+VOZ 2: Entonces el mercado está leyendo un shock energético que enfría la actividad antes de obligar a tasas todavía más altas.
+VOZ 1: Esa es la interpretación provisional. No es una certeza. Si el petróleo mantiene el avance y los rendimientos vuelven a subir, la lectura cambiaría hacia inflación y tasas. Si Brent devuelve rápidamente el movimiento, se debilita el componente energético del repliegue.
+VOZ 2: ¿Qué dicen las monedas y los otros refugios?
+VOZ 1: El yen se fortalecía 0,7%, hasta 157,1 por dólar, apoyado por demanda defensiva y por señales del Banco de Japón sobre disposición a elevar tasas. El índice dólar cedía 0,1%. Pero el oro bajaba 1,2% y bitcoin y ether perdían 3%. No hubo una compra indiscriminada de todo lo defensivo: los flujos se concentraron en bonos soberanos y yen.
+VOZ 2: Eso ayuda a distinguir una reducción selectiva de riesgo de un pánico general.
+VOZ 1: Sí. También importa recordar que Europa y Asia estaban abiertos y Wall Street aún no. Los futuros no son el cierre. La apertura y el final de la sesión estadounidense dirán si la venta se confirma o si las utilidades corporativas recuperan capacidad de soporte.
+VOZ 2: ¿Cuáles son las tres señales concretas para seguir?
+VOZ 1: Primero, si Brent se sostiene sobre 112 dólares. Segundo, si el Treasury a diez años permanece cerca de 5,075%. Tercero, si el yen conserva su avance. Si las tres continúan juntas, tendremos aversión al riesgo con un shock de oferta. Si se revierten de forma coordinada, la lectura pierde fuerza.
+VOZ 2: ¿Y cuál es la conexión material con Chile?
+VOZ 1: El petróleo. El ajuste local del diésel ya mostró hoy una presión importada mayor que en las gasolinas. Si el Brent permanece alto, aumenta la probabilidad de que esa presión dure. Si retrocede y el peso chileno ayuda, el canal local puede moderarse. Por eso la jornada global no es una repetición de Nacional: es la condición externa que puede confirmar o debilitar su transmisión.
