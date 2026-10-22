@@ -52,14 +52,17 @@ function makeAsset({
   status = "current",
   quoteBasis = "exchange-quote",
 }) {
+  const normalizedChange = Number.isFinite(changePercent)
+    ? round(changePercent)
+    : null;
   return {
     id,
     label,
     group,
     value: Number.isFinite(value) ? value : null,
     unit,
-    changePercent: Number.isFinite(changePercent) ? round(changePercent) : null,
-    trend: trendFor(changePercent),
+    changePercent: normalizedChange,
+    trend: trendFor(normalizedChange),
     effectiveAt,
     provider,
     sourceUrl,
@@ -499,6 +502,13 @@ const economicDefinitions = [
     unit: "clp",
   },
   {
+    code: "utm",
+    id: "utm",
+    label: "UTM",
+    group: "chile",
+    unit: "clp-integer",
+  },
+  {
     code: "cobre",
     id: "copper",
     label: "Cobre",
@@ -514,6 +524,13 @@ const assets = economicDefinitions
   .map((definition) => economicAsset(economicSnapshot, definition))
   .filter(Boolean);
 const diagnostics = [];
+if (economicSnapshot.status !== "current") {
+  diagnostics.push({
+    id: "economic-indicators",
+    ok: false,
+    error: "Indicadores económicos recuperados de respaldo: comprobar vigencia individual.",
+  });
+}
 
 const externalResults = await Promise.allSettled(
   externalDefinitions.map((definition) => externalAsset(definition)),
