@@ -1,11 +1,11 @@
 ---
 title: "La FNE despeja la compra de AES y descarta un bloqueo energético a centros de datos"
 summary: "El regulador aprobó la toma de control de AES por fondos ligados a BlackRock y EQT tras revisar generación, transmisión, baterías y centros de datos, y concluyó que existen alternativas suficientes de suministro eléctrico."
-publishedAt: "2026-10-22T12:00:00-03:00"
+publishedAt: "2026-10-22T13:11:25-03:00"
 cutoffAt: "2026-10-22T12:00:00-03:00"
 section: "national"
 editionSlot: "evening"
-status: "draft"
+status: "published"
 tags:
   - chile
   - energia
