@@ -258,18 +258,37 @@ test("La vigencia del IPSA se aplica también a feeds intradía alternativos", (
 test("Un proveedor económico caído no revierte observaciones frescas de otros", () => {
   const definitions = [{ code: "dolar" }, { code: "cobre" }, { code: "utm" }];
   const outcomes = [
-    { status: "fulfilled", value: { code: "dolar", value: 976.82, effectiveDate: "2026-10-22" } },
+    {
+      status: "fulfilled",
+      value: { code: "dolar", value: 976.82, effectiveDate: "2026-10-22" },
+    },
     { status: "rejected", reason: new Error("timeout") },
-    { status: "fulfilled", value: { code: "utm", value: 72151, effectiveDate: "2026-10-01" } },
+    {
+      status: "fulfilled",
+      value: { code: "utm", value: 72151, effectiveDate: "2026-10-01" },
+    },
   ];
-  const backup = [{ code: "cobre", value: 6.61, effectiveDate: "2026-10-21", changePercent: 0.1 }];
+  const backup = [
+    {
+      code: "cobre",
+      value: 6.61,
+      effectiveDate: "2026-10-21",
+      changePercent: 0.1,
+    },
+  ];
   const result = reconcileEconomicIndicators(definitions, outcomes, backup);
   assert.equal(result.status, "partial");
   assert.equal(result.freshCount, 2);
   assert.equal(result.fallbackCount, 1);
   assert.equal(result.missingCount, 0);
-  assert.equal(result.indicators.find((x) => x.code === "dolar").status, "current");
-  assert.equal(result.indicators.find((x) => x.code === "cobre").status, "stale");
+  assert.equal(
+    result.indicators.find((x) => x.code === "dolar").status,
+    "current",
+  );
+  assert.equal(
+    result.indicators.find((x) => x.code === "cobre").status,
+    "stale",
+  );
   assert.equal(result.indicators.find((x) => x.code === "utm").value, 72151);
   assert.equal(result.errors.length, 1);
 });
@@ -278,7 +297,10 @@ test("Sin respaldo de una serie, conservar todas las otras y registrar faltante"
   const result = reconcileEconomicIndicators(
     [{ code: "uf" }, { code: "dolar" }],
     [
-      { status: "fulfilled", value: { code: "uf", value: 41199.85, effectiveDate: "2026-10-22" } },
+      {
+        status: "fulfilled",
+        value: { code: "uf", value: 41199.85, effectiveDate: "2026-10-22" },
+      },
       { status: "rejected", reason: new Error("offline") },
     ],
   );
@@ -290,7 +312,10 @@ test("Sin respaldo de una serie, conservar todas las otras y registrar faltante"
 test("El refresco bursátil no comparte cola con publicación editorial", async () => {
   const root = new URL("../", import.meta.url);
   const [refreshYaml, publishYaml, client] = await Promise.all([
-    readFile(new URL(".github/workflows/market-data-refresh.yml", root), "utf8"),
+    readFile(
+      new URL(".github/workflows/market-data-refresh.yml", root),
+      "utf8",
+    ),
     readFile(new URL(".github/workflows/publish-site.yml", root), "utf8"),
     readFile(new URL("public/js/market-live.js", root), "utf8"),
   ]);

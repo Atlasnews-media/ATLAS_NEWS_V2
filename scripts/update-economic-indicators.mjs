@@ -220,7 +220,9 @@ async function fetchCurrentSnapshot(now) {
     fallbackIndicators,
   );
   if (combined.indicators.length === 0) {
-    throw new Error("No hay indicadores económicos actuales ni respaldos utilizables.");
+    throw new Error(
+      "No hay indicadores económicos actuales ni respaldos utilizables.",
+    );
   }
   for (const error of combined.errors) {
     console.warn(`Indicador ${error.code}: ${error.reason}`);

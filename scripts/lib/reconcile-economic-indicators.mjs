@@ -1,6 +1,10 @@
 // Reconcile independent provider reads: an outage for one series must never
 // replace successfully refreshed observations for other series.
-export function reconcileEconomicIndicators(definitions, outcomes, fallback = []) {
+export function reconcileEconomicIndicators(
+  definitions,
+  outcomes,
+  fallback = [],
+) {
   const backup = new Map(fallback.map((item) => [item.code, item]));
   const errors = [];
   let freshCount = 0;
@@ -14,7 +18,9 @@ export function reconcileEconomicIndicators(definitions, outcomes, fallback = []
     const previous = backup.get(definition.code);
     errors.push({
       code: definition.code,
-      reason: String(result?.reason?.message ?? result?.reason ?? "sin respuesta"),
+      reason: String(
+        result?.reason?.message ?? result?.reason ?? "sin respuesta",
+      ),
     });
     if (
       previous &&
