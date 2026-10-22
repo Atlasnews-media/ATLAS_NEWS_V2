@@ -183,7 +183,7 @@ test("IPSA: ayer antes del cierre se identifica expresamente como cierre anterio
   );
   assert.equal(checked.displayEligible, true);
   assert.equal(checked.freshnessState, "delayed");
-  assert.match(checked.freshnessNote, /Cierre anterior/);
+  assert.match(checked.freshnessNote, /Último cierre verificado/);
 });
 
 test("IPSA: el cierre del mismo día sí puede presentarse al final de sesión", () => {
