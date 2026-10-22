@@ -64,10 +64,6 @@ function dateInZone(now, zone) {
   return `${fields.year}-${fields.month}-${fields.day}`;
 }
 
-function isBusinessDay(weekday) {
-  return !["Sat", "Sun"].includes(weekday);
-}
-
 function unavailable(asset, reason) {
   return {
     ...asset,
