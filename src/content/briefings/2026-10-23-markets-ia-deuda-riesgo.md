@@ -1,11 +1,11 @@
 ---
 title: "La deuda de la IA cambia el mapa de riesgo entre acciones y bonos"
 summary: "El castigo a semiconductores y a empresas con gasto intensivo en IA activó refugio en Treasury, mientras el petróleo sostiene el riesgo inflacionario."
-publishedAt: "2026-10-23T06:34:00-03:00"
+publishedAt: "2026-10-23T06:45:21-03:00"
 cutoffAt: "2026-10-23T06:32:00-03:00"
 section: "markets"
 editionSlot: "morning"
-status: "draft"
+status: "published"
 tags:
   - mercados
   - inteligencia-artificial

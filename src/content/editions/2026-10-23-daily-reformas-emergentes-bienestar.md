@@ -1,11 +1,11 @@
 ---
 title: "Las reformas estabilizan economías emergentes, pero aún no llegan a los hogares"
 summary: "La inflación baja y vuelve la inversión en varios países, pero pobreza, desempleo y pérdida de ingresos amenazan la continuidad política de los ajustes."
-publishedAt: "2026-10-23T06:06:54-03:00"
+publishedAt: "2026-10-23T06:45:21-03:00"
 cutoffAt: "2026-10-23T06:05:36-03:00"
 type: "daily"
 editionSlot: "morning"
-status: "draft"
+status: "published"
 tags:
   - economias-emergentes
   - reformas

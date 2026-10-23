@@ -1,11 +1,11 @@
 ---
 title: "El alza salarial privada se concentra en operarios y profesionales"
 summary: "Una encuesta empresarial muestra reajustes mayores en cargos operativos y profesionales, mientras el IPC funciona como piso y la retención gana prioridad."
-publishedAt: "2026-10-23T06:26:00-03:00"
+publishedAt: "2026-10-23T06:45:21-03:00"
 cutoffAt: "2026-10-23T06:24:00-03:00"
 section: "national"
 editionSlot: "morning"
-status: "draft"
+status: "published"
 tags:
   - chile
   - salarios
