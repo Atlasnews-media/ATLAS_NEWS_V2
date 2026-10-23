@@ -1,0 +1,23 @@
+VOZ 1: La señal principal de mercados hoy es que la inteligencia artificial dejó de cotizar como una historia uniforme. El Nasdaq cayó 2,6% el jueves y el índice de semiconductores de Filadelfia perdió 6,7%, pero el Dow terminó prácticamente sin cambios.
+VOZ 2: ¿Por qué importa esa diferencia entre índices?
+VOZ 1: Porque muestra dispersión. El castigo se concentró en empresas cuyo valor depende de grandes inversiones, financiamiento y beneficios futuros. Meta cayó 7% después de informar su primer flujo de caja negativo en más de una década por gastos vinculados a inteligencia artificial. CoreWeave perdió 10% mientras subía el costo de asegurar su deuda.
+VOZ 2: Entonces, ¿el mercado dejó de creer en la inteligencia artificial?
+VOZ 1: No necesariamente. Está exigiendo una prueba más concreta de retorno. Hasta ahora, aumentar el gasto podía interpretarse automáticamente como crecimiento. Hoy los inversionistas separan tres preguntas: cuánto capital se necesita, cómo se financia y cuándo se convierte en caja.
+VOZ 2: ¿La venta afectó a todo el mercado por igual?
+VOZ 1: No. En la Bolsa de Nueva York hubo levemente más acciones al alza que a la baja. Procter & Gamble, Lockheed Martin, Spotify, Blackstone y Union Pacific subieron tras publicar resultados. Eso indica rotación, no una salida total de las acciones. Las compañías con poder de precios, utilidades mejores de lo esperado o caja visible resistieron mejor.
+VOZ 2: ¿Qué ocurrió en los bonos?
+VOZ 1: La búsqueda de seguridad llevó a los Treasury a su mayor rally diario en más de tres años. El rendimiento a diez años volvió a quedar por debajo de 5%. Al mismo tiempo, el mercado retiró casi un alza completa de 25 puntos base de la Reserva Federal para el próximo año y redujo a 85% la probabilidad implícita de un aumento en diciembre.
+VOZ 2: Eso suena a que el mercado ya espera menos inflación.
+VOZ 1: Hay que tener cuidado. El movimiento de los bonos refleja temor a una inversión excesiva y a tensiones de crédito, pero el petróleo está enviando la señal contraria. El Brent llegó cerca de 114 dólares por barril, máximo de cinco meses, después de ataques hutíes contra objetivos saudíes y reportes sobre posibles nuevos ataques a Irán.
+VOZ 2: ¿Cómo se combinan tecnología débil y petróleo alto?
+VOZ 1: Es una combinación incómoda. La debilidad tecnológica puede frenar actividad y llevar a buscar bonos. Pero la energía cara aumenta costos e inflación, reduce márgenes y dificulta que los bancos centrales relajen su postura. Por eso no conviene interpretar la baja de rendimientos como una promesa de recortes.
+VOZ 2: ¿El oro confirmó la búsqueda de refugio?
+VOZ 1: No. Estaba casi sin cambios cerca de 4.022 dólares por onza después de caer cerca de 3% el jueves, y acumulaba una baja semanal de 3,4%. El yen sí se encaminaba a su mayor avance en casi un mes. La demanda defensiva se concentró en bonos soberanos y algunas monedas, no en todos los refugios.
+VOZ 2: ¿Qué mostraron los mercados asiáticos?
+VOZ 1: Estabilización, pero no una recuperación completa. El Nikkei cerró 0,3% abajo y terminó la semana con una pérdida superior a 4%. El KOSPI logró cerrar positivo después de caer hasta 4% al comienzo. En China, el CSI 300 ganó 1,7% y el Hang Seng avanzó 0,7%.
+VOZ 2: ¿Y qué señal entregaban Europa y los futuros estadounidenses?
+VOZ 1: Las acciones europeas cedían alrededor de 0,3%. Los futuros del Nasdaq bajaban 0,1% y los del S&P 500, 0,2%. Es importante distinguirlos del cierre del jueves: son precios previos a la apertura, no un resultado definitivo de Wall Street.
+VOZ 2: ¿Cuál es entonces la lectura para hoy?
+VOZ 1: La prima por inteligencia artificial se está volviendo selectiva. El mercado todavía reconoce crecimiento, pero exige que el gasto tenga retorno y que la deuda siga siendo financiable. La corrección perdería fuerza si la tecnología recupera amplitud, los diferenciales de crédito se estabilizan y el petróleo retrocede.
+VOZ 2: ¿Y qué confirmaría un problema más profundo?
+VOZ 1: Nuevas caídas concentradas en semiconductores, mayor costo de asegurar deuda tecnológica y rendimientos a la baja por miedo, incluso con petróleo alto. Esa combinación mostraría que la preocupación dejó de ser una simple toma de ganancias y se convirtió en una revisión del riesgo financiero.
