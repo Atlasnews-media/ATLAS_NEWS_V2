@@ -110,15 +110,15 @@
     },
     {
       "id": "developing-country-crisis-finance",
-      "topic": "Financiamiento de crisis y deuda de países en desarrollo",
-      "thesis": "La combinación de energía y fertilizantes caros, deuda elevada y shocks climáticos ya se traduce en demanda concreta de financiamiento multilateral: el Banco Mundial conversa con decenas de países y prepara una capacidad de respuesta que podría superar la utilizada durante la pandemia.",
-      "status": "new",
-      "last_evidence": "El 11 de octubre el Banco Mundial informó que dialoga con 30 a 40 países sobre ayuda de crisis; estima que las economías en desarrollo deben cerca de US$400.000 millones a acreedores externos en 2026, un tercio en intereses, y podría movilizar hasta US$100.000 millones si la situación empeora.",
-      "effect": "Abre un hilo distinto del shock energético: la presión macroeconómica ya está entrando en la arquitectura de financiamiento internacional mediante ventanas de crisis, reestructuración de proyectos y canjes de deuda por desarrollo.",
-      "base_scenario": "El Banco Mundial moviliza inicialmente entre US$50.000 millones y US$60.000 millones mediante fondos de crisis y proyectos reorientados; los países más vulnerables enfrentan solicitudes selectivas, condicionalidad y escaso acceso a capital privado.",
-      "invalidate_if": "La normalización sostenida de energía y fertilizantes reduce las solicitudes efectivas, bajan los costos de deuda y el Banco Mundial no necesita ampliar su capacidad; nuevas peticiones, desembolsos o reestructuraciones reforzarían la tesis.",
-      "watch": "Solicitudes y desembolsos efectivos, ampliación del fondo de crisis, precios de diésel y fertilizantes, efectos de El Niño, servicio de deuda externa, canjes de deuda por desarrollo, decisiones del FMI y coordinación del G20.",
-      "last_publication": "/ediciones/2026-10-11-daily-banco-mundial-prepara-ayuda-crisis/"
+      "topic": "Reformas, financiamiento y estabilidad social en países en desarrollo",
+      "thesis": "El financiamiento y las reformas están estabilizando economías emergentes, pero su sostenibilidad depende de convertir credibilidad e inversión en empleo, ingresos y protección focalizada antes de que el costo de vida y la desigualdad erosionen el apoyo político.",
+      "status": "changed",
+      "last_evidence": "El 23 de octubre las economías emergentes crecían cerca de 4%, aproximadamente el doble que las avanzadas, pero Argentina, Marruecos y Sri Lanka mostraban una brecha persistente entre estabilización y bienestar; el Banco Mundial proyecta además sólo 420 millones de puestos para 1.200 millones de jóvenes que llegarán a edad laboral en el mundo en desarrollo.",
+      "effect": "Amplía el hilo desde la disponibilidad de financiamiento hacia la ejecución política del ajuste: restaurar balances y acceso a capital no basta si la pobreza, el desempleo y los costos transitorios impulsan protestas o una reversión de reformas.",
+      "base_scenario": "Las reformas continúan y la inversión mejora, pero el bienestar se recupera con rezago; los gobiernos combinan disciplina macroeconómica con transferencias focalizadas y políticas de empleo para sostener apoyo sin reconstruir desequilibrios.",
+      "invalidate_if": "Una mejora amplia y sostenida de empleo, salarios reales, pobreza y servicios confirmaría que la estabilización llegó a los hogares; reversión de reformas, subsidios generalizados, protestas persistentes o pérdida de acceso a mercado reforzarían el riesgo político.",
+      "watch": "Empleo juvenil y formal, salarios reales, pobreza, costo de alimentos y energía, protestas, transferencias focalizadas, inversión privada, acceso a mercado, programas del FMI y Banco Mundial y continuidad de reformas después de elecciones.",
+      "last_publication": "/ediciones/2026-10-23-daily-reformas-emergentes-bienestar/"
     },
     {
       "id": "euro-international-liquidity",
