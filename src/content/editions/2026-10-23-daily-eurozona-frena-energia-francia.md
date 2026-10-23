@@ -1,11 +1,11 @@
 ---
 title: "La eurozona frena a un mínimo de cuatro meses por energía cara y tensión francesa"
 summary: "El crecimiento privado se moderó en octubre, Francia volvió a contraerse y los costos subieron, aunque el traspaso a precios finales siguió contenido."
-publishedAt: "2026-10-23T12:58:15-03:00"
+publishedAt: "2026-10-23T13:03:30-03:00"
 cutoffAt: "2026-10-23T12:00:00-03:00"
 type: "daily"
 editionSlot: "evening"
-status: "draft"
+status: "published"
 tags:
   - eurozona
   - energia
