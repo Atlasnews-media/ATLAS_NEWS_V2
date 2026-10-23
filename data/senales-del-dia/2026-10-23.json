@@ -1,0 +1,111 @@
+{
+  "status": "READY",
+  "date": "2026-10-23",
+  "contract": "atlas-senales-del-dia-v1",
+  "senalesDelDia": {
+    "internacional": [
+      {
+        "slot": "technology",
+        "headline": "EE.UU. amplía el control propuesto a inversión tecnológica",
+        "deck": "El Tesoro incluyó biotecnología en un proyecto que también cubre chips, IA, computación cuántica, supercomputación y sistemas hipersónicos.",
+        "development": "El Departamento del Tesoro de Estados Unidos publicó el 22 de octubre una propuesta para actualizar el Programa de Seguridad de Inversiones Salientes conforme a la ley COINS aprobada para el año fiscal 2026. El proyecto mantiene un esquema dual: ciertas operaciones de personas estadounidenses con entidades extranjeras cubiertas quedarían sujetas a notificación, mientras otras serían prohibidas. El texto desarrolla parámetros para semiconductores y microelectrónica, inteligencia artificial, tecnologías cuánticas, computación de alto rendimiento y supercomputación, y sistemas hipersónicos. Además, el Tesoro propuso incorporar la biotecnología al perímetro regulado, usando la facultad legal para agregar tecnologías capaces de apoyar funciones militares, de inteligencia, vigilancia o ciberoperaciones de un país de preocupación.\n\nLa propuesta también define transacciones cubiertas, excepciones, requisitos de información, el estándar de conocimiento y las obligaciones de diligencia antes de invertir. Todavía no es una regla final: el Tesoro abrió un proceso de comentarios y señaló que la entrada en vigor será fijada en una regulación posterior. Para inversionistas y empresas tecnológicas, el cambio relevante es que el análisis de una operación ya no dependería sólo del sector o del domicilio de la contraparte, sino también de especificaciones técnicas y de la relación de la entidad con las tecnologías descritas. El alcance definitivo, las sanciones y la fecha de aplicación pueden cambiar durante la tramitación.",
+        "anchor": "eeuu-amplia-control-inversion-tecnologica",
+        "sources": [
+          {
+            "name": "U.S. Treasury — propuesta para implementar la ley COINS",
+            "url": "https://home.treasury.gov/news/press-releases/sb0667"
+          },
+          {
+            "name": "AP — alcance tecnológico de la propuesta de inversión saliente",
+            "url": "https://apnews.com/article/b742c292ff8eb19e6a4c8cf03d4d66b9"
+          }
+        ]
+      },
+      {
+        "slot": "world",
+        "headline": "Canadá y Turquía lanzan una asociación estratégica",
+        "deck": "El acuerdo establece un plan de tres años sobre comercio, energía, defensa y diálogo político, e incorpora el objetivo de concluir un tratado de libre comercio.",
+        "development": "El primer ministro canadiense Mark Carney y el presidente turco Recep Tayyip Erdoğan lanzaron el 22 de octubre una asociación estratégica acompañada por un plan de acción de tres años. El documento organiza la cooperación en cuatro pilares: comercio, inversión e innovación; energía y clima; defensa y seguridad; y vínculos entre gobiernos y sociedades. Ambos gobiernos acordaron trabajar para concluir un tratado de libre comercio, ampliar la relación en energía, defensa, industria aeroespacial e inteligencia artificial, y avanzar en la ratificación de un acuerdo de transporte aéreo. La declaración también contempla una reunión anual de diálogo estratégico y la continuidad del comité económico y comercial conjunto.\n\nEn energía, el marco incluye gas natural licuado, nuclear civil, renovables, minería sostenible y cadenas de minerales críticos. En defensa, los países suscribieron un memorando para facilitar alianzas industriales y mantuvieron como referencia su cooperación dentro de la OTAN. El plan define áreas y mecanismos de trabajo, pero no equivale por sí solo a un tratado comercial vigente ni fija calendarios de inversión. Los cancilleres supervisarán su ejecución y las medidas específicas deberán materializarse mediante negociaciones, acuerdos sectoriales o decisiones administrativas posteriores. El anuncio ocurrió durante la primera visita bilateral de un jefe de Gobierno canadiense a Turquía, según ambas partes.",
+        "anchor": "canada-turquia-asociacion-estrategica",
+        "sources": [
+          {
+            "name": "Gobierno de Canadá — declaración conjunta de la asociación estratégica",
+            "url": "https://www.pm.gc.ca/en/news/statements/2026/10/22/statement-prime-minister-carney-and-president-recep-tayyip-erdogan"
+          },
+          {
+            "name": "Reuters — visita de Carney y acuerdos entre Canadá y Turquía",
+            "url": "https://www.reuters.com/world/americas/canadas-carney-visits-turkey-push-ease-us-trade-dependence-2026-10-22/"
+          }
+        ]
+      }
+    ],
+    "nacional": [
+      {
+        "slot": "ipsa_company",
+        "headline": "SQM presenta una nueva arquitectura bajo SQM Group",
+        "deck": "La marca reúne a SQM, Novandino Litio y SQM Litio Internacional, pero mantiene funciones separadas para los negocios históricos, el Salar de Atacama y la expansión exterior.",
+        "development": "SQM presentó el 22 de octubre la marca corporativa SQM Group en actividades simultáneas en Santiago, Antofagasta e Iquique. La nueva arquitectura agrupa bajo una identidad común a tres compañías con funciones diferenciadas. SQM conserva los negocios de yodo, nutrición vegetal, potasio, químicos industriales y exploraciones metálicas. Novandino Litio, la sociedad constituida con Codelco, queda enfocada en el desarrollo de la producción del Salar de Atacama. SQM Litio Internacional concentra la expansión del conocimiento y las operaciones de litio fuera de Chile, incluida Australia. La compañía indicó que la reorganización de marca busca representar esa estructura y su presencia en más de cien países.\n\nEl anuncio es corporativo y no describe una fusión legal de las tres entidades, una modificación de capital, una compra de activos ni un cambio en los derechos de los accionistas de SQM. Tampoco incorpora nuevas metas de producción o inversión. Para el mercado, su efecto inmediato está en la forma de presentar y ordenar negocios que ya poseen vehículos y socios distintos, especialmente la relación con Codelco en Novandino y el proyecto australiano Mt. Holland con Wesfarmers. Los próximos elementos verificables serán la aplicación de la arquitectura en los reportes financieros, la delimitación de cada segmento y cualquier decisión societaria que la empresa comunique formalmente después del cambio de identidad.",
+        "anchor": "sqm-presenta-arquitectura-sqm-group",
+        "sources": [
+          {
+            "name": "SQM Group — información corporativa y estructura de negocios",
+            "url": "https://sqm.com/acerca-de-sqm/informacion-corporativa/"
+          },
+          {
+            "name": "El América — presentación de SQM Group y roles de sus compañías",
+            "url": "https://elamerica.cl/2026/10/22/nace-sqm-group-una-sola-identidad-para-proyectar-el-liderazgo-chileno-en-minerales-esenciales-para-el-futuro/"
+          }
+        ]
+      },
+      {
+        "slot": "policy_economy",
+        "headline": "Trabajo lanza estrategia para anticipar demanda laboral",
+        "deck": "ENADI recopilará necesidades de contratación de proyectos de inversión para orientar con anticipación la intermediación, capacitación y certificación en cada región.",
+        "development": "El Ministerio del Trabajo dio a conocer el 22 de octubre la Estrategia Nacional de Demanda Laboral por Inversión, ENADI 2026. El mecanismo busca recopilar directamente de empresas y responsables de proyectos públicos y privados información sobre obras, ubicación y perfiles de trabajadores requeridos. Con esos antecedentes, las Oficinas Municipales de Información Laboral, el Sence y la Bolsa Nacional de Empleo podrán identificar y convocar postulantes antes de que comiencen las contrataciones. La estrategia también prevé orientar cursos hacia las competencias solicitadas en cada región y utilizar a ChileValora para certificar conocimientos adquiridos por experiencia, incluso cuando la persona no tenga un título formal.\n\nEl diseño se estructura en cinco etapas: anticipación de puestos, búsqueda laboral, preparación, certificación y acceso a oportunidades. El anuncio define el flujo institucional y el propósito de sustituir estimaciones generales por información más específica de los proyectos, pero no garantiza cupos de trabajo ni establece un derecho automático a capacitación o contratación. Su efectividad dependerá de la oportunidad y calidad de los datos que entreguen los titulares de inversión y de la capacidad de los servicios para convertirlos en convocatorias y formación antes del inicio de las obras. El Gobierno indicó que el enfoque permitirá priorizar, cuando corresponda, a mujeres y jóvenes.",
+        "anchor": "trabajo-lanza-enadi-demanda-laboral",
+        "sources": [
+          {
+            "name": "Gobierno de Chile — Estrategia Nacional de Demanda Laboral por Inversión",
+            "url": "https://www.gob.cl/noticias/enadi-2026-nueva-estrategia-permitira-anticipar-oportunidades-de/"
+          },
+          {
+            "name": "Veredictum — etapas e instituciones participantes de ENADI 2026",
+            "url": "https://veredictum.cl/enadi-2026-permitira-anticipar-empleos-por-inversion/"
+          }
+        ]
+      }
+    ],
+    "mercados": [
+      {
+        "slot": "markets_chile",
+        "headline": "CMF abre datos comparables sobre inclusión financiera",
+        "deck": "Un nuevo visualizador y un reporte estadístico reúnen indicadores de acceso, uso y calidad del sistema financiero, con desagregaciones demográficas y actualización trimestral.",
+        "development": "La Comisión para el Mercado Financiero publicó el 21 de octubre un visualizador y un reporte estadístico de inclusión financiera para seguir el acceso, uso y calidad de productos y servicios en Chile. La herramienta interactiva permite comparar la evolución de los indicadores y, cuando la información disponible lo admite, desagregarlos por sexo, edad y otras características. El reporte complementario reúne las series utilizadas y documenta sus definiciones, fuentes, cobertura, periodicidad y aperturas. La CMF informó que ambos productos se actualizarán trimestralmente y que el conjunto de indicadores podrá ampliarse a medida que existan datos con cobertura y calidad suficientes.\n\nLa publicación no modifica reglas para bancos, aseguradoras o emisores ni constituye una evaluación individual de las entidades supervisadas. Su aporte al mercado es estadístico: establece una base pública y comparable para estudiar qué segmentos acceden al sistema financiero, cómo utilizan sus productos y qué evidencia existe sobre su calidad. También servirá para monitorear la Estrategia Nacional de Inclusión Financiera y para evaluaciones de autoridades, instituciones, investigadores y organismos internacionales. Las comparaciones deberán respetar la metodología y la cobertura de cada serie; la actualización trimestral no significa que todos los indicadores tengan idéntica frecuencia o el mismo nivel de desagregación.",
+        "anchor": "cmf-abre-datos-inclusion-financiera",
+        "sources": [
+          {
+            "name": "CMF — visualizador y reporte de inclusión financiera",
+            "url": "https://www.cmfchile.cl/portal/prensa/625/w4-article-114364.html"
+          }
+        ]
+      },
+      {
+        "slot": "markets_global",
+        "headline": "India rechaza todas las ofertas en subasta de letras",
+        "deck": "El banco central no adjudicó los tres plazos de deuda y dejó sin colocar 230.000 millones de rupias después de un fuerte aumento de las tasas de corto plazo.",
+        "development": "El Banco de la Reserva de India rechazó el 21 de octubre todas las ofertas recibidas en la subasta de letras del Tesoro a 91, 182 y 364 días. El programa contemplaba colocar 230.000 millones de rupias: 80.000 millones en cada uno de los dos plazos menores y 70.000 millones en el de un año. Una semana antes, las tasas de corte habían sido de 5,73%, 6,29% y 6,49%, respectivamente. En las cinco semanas terminadas el 14 de octubre, esos rendimientos aumentaron entre 64 y 83 puntos base, mientras la diferencia entre la letra a 364 días y la tasa de política alcanzó 99 puntos base, su mayor nivel en cuatro años.\n\nEl resultado oficial confirma que no hubo adjudicación, pero el banco central no atribuyó públicamente una causa específica a cada rechazo. Operadores citados por Reuters interpretaron que las tasas pedidas superaron lo que la autoridad estaba dispuesta a convalidar y que el Gobierno no enfrentaba una necesidad inmediata de fondos. La cancelación evita fijar una nueva referencia de rendimiento para los tres vencimientos y deja pendiente esa parte del financiamiento programado. No implica un cambio formal de la tasa de política monetaria ni asegura que las próximas subastas se resuelvan de la misma manera; sí muestra una distancia concreta entre los precios demandados por los inversionistas y los aceptables para la autoridad en esa jornada.",
+        "anchor": "india-rechaza-ofertas-subasta-letras",
+        "sources": [
+          {
+            "name": "Reserve Bank of India — convocatoria y resultado de la subasta de letras",
+            "url": "https://m.rbi.org.in/scripts/FS_PressRelease.aspx?fn=2757"
+          },
+          {
+            "name": "Reuters — rechazo de ofertas y evolución de las tasas de corto plazo",
+            "url": "https://www.reuters.com/world/india/indian-central-bank-rejects-all-bids-treasury-bill-auction-short-term-yields-2026-10-21/"
+          }
+        ]
+      }
+    ]
+  }
+}
