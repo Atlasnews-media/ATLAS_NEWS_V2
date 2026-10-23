@@ -1,0 +1,21 @@
+VOZ 1: La novedad local de hoy no es simplemente que los salarios subieron, sino dónde se concentraron los reajustes. Una encuesta de Marsh muestra que el salario total promedio aumentó 5,6% en 2026, pero el salario base de profesionales avanzó 8% y el de operarios 7%, mientras los ejecutivos recibieron 2%.
+VOZ 2: ¿Eso significa que los salarios de todo Chile aumentaron 5,6%?
+VOZ 1: No. Es importante separar las mediciones. La encuesta reúne 461 empresas, 2.359 cargos y más de 243.000 trabajadores de distintos sectores. Describe las prácticas de las compañías participantes, pero no reemplaza una estadística representativa de todo el mercado laboral.
+VOZ 2: ¿Cuál es entonces la referencia oficial más amplia?
+VOZ 1: El INE informó que el Índice Nominal de Remuneraciones creció 7,6% interanual en agosto y que las remuneraciones reales aumentaron 3,4%. Ese índice y la encuesta de Marsh miden cosas distintas. El INE entrega la evolución agregada; la encuesta privada permite observar cómo se distribuyeron los ajustes entre tipos de cargo.
+VOZ 2: Y esa distribución favorece a profesionales y operarios. ¿Por qué?
+VOZ 1: La interpretación de la encuesta es que allí la competencia por talento y el costo de la rotación son mayores. También influyó el aumento del salario mínimo. En cargos ejecutivos, las empresas fueron más cautas porque la base de remuneración ya es más elevada.
+VOZ 2: ¿Qué papel juega la inflación en estas decisiones?
+VOZ 1: Sigue siendo el punto de partida. El 84% de las compañías considera el IPC al definir incrementos. Un 52% garantiza el IPC y añade mérito o referencias de mercado. Otro 24% usa la inflación como orientación, pero no la garantiza, y un 8% reajusta únicamente por IPC.
+VOZ 2: Entonces una mayor inflación podría trasladarse a salarios, pero no de manera automática.
+VOZ 1: Exactamente. El resultado final depende además del desempeño, de la escasez de perfiles y de la capacidad financiera de cada empresa. Para 2027, las compañías proyectan un aumento promedio de 4,9%, por debajo del 5,6% observado este año. Pero esa cifra es un presupuesto, no una promesa: puede cambiar si la inflación o la rotación sorprenden.
+VOZ 2: ¿La prioridad para 2027 será seguir contratando?
+VOZ 1: La encuesta sugiere otra cosa. Más del 70% prioriza retener talento antes que atraerlo. Eso puede significar que el gasto salarial se concentre en conservar cargos críticos, incluso si la dotación total no se expande con la misma fuerza.
+VOZ 2: ¿Y cómo entra la inteligencia artificial en esa estrategia?
+VOZ 1: El 82% de las empresas dice asignar alguna parte de su presupuesto a inteligencia artificial. La acción más mencionada es capacitar a los trabajadores, con 49%. Después vienen automatizar procesos de recursos humanos, con 41%, y rediseñar roles para combinar trabajo humano e inteligencia artificial, con 39%.
+VOZ 2: Suena a que las compañías quieren proteger conocimiento interno y, al mismo tiempo, reorganizar el trabajo.
+VOZ 1: Esa es la lectura. Puede mejorar productividad y abrir espacio para salarios más altos en perfiles escasos, pero también limitar contrataciones si la automatización y el control de costos dominan. No debemos asumir ninguno de los dos resultados antes de ver la dotación y el empleo formal.
+VOZ 2: ¿Qué otra diferencia importante aparece dentro de las empresas?
+VOZ 1: La encuesta registra una brecha de género persistente. Las mujeres son 39% de la muestra, pero solo 7% de las gerencias generales. La diferencia salarial alcanza 17% en el nivel de directores. Un promedio salarial mejor no elimina esas diferencias de representación y pago.
+VOZ 2: Entonces, ¿qué debemos observar durante los próximos meses?
+VOZ 1: Primero, si el presupuesto salarial de 4,9% para 2027 resiste los próximos datos de inflación. Segundo, si los reajustes siguen concentrados en operarios y profesionales. Y tercero, si retención, capacitación y automatización vienen acompañadas por creación de empleo formal. Salarios crecientes dentro de las empresas y contratación débil pueden coexistir; esa composición será más informativa que un único promedio.
