@@ -1,11 +1,11 @@
 ---
 title: "Cobre contiene al dólar cerca de $990 mientras el Brent supera US$115"
 summary: "El peso chileno recibió apoyo del metal rojo, pero el salto del petróleo y la aversión global impidieron una apreciación clara durante la mañana."
-publishedAt: "2026-10-23T12:58:15-03:00"
+publishedAt: "2026-10-23T13:03:30-03:00"
 cutoffAt: "2026-10-23T11:00:00-03:00"
 section: "markets"
 editionSlot: "evening"
-status: "draft"
+status: "published"
 tags:
   - mercados
   - dolar
