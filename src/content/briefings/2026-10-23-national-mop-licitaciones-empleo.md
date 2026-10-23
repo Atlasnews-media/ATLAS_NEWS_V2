@@ -1,11 +1,11 @@
 ---
 title: "El MOP ya licitó más de 60% del plan que busca crear 23.000 empleos"
 summary: "La cartera publicó 157 de 241 procesos extraordinarios y adjudicó su primer contrato, convirtiendo el anuncio de reactivación en una prueba de ejecución regional."
-publishedAt: "2026-10-23T12:58:15-03:00"
+publishedAt: "2026-10-23T13:03:30-03:00"
 cutoffAt: "2026-10-23T11:45:00-03:00"
 section: "national"
 editionSlot: "evening"
-status: "draft"
+status: "published"
 tags:
   - chile
   - infraestructura
