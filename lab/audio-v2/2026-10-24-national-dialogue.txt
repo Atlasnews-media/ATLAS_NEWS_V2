@@ -1,0 +1,23 @@
+VOZ 1: La novedad local está en los precios que enfrentan y reciben las empresas antes de que los productos lleguen al consumidor. El Índice de Precios de Productor de Industrias subió 2,7% en septiembre y acumuló 17,1% durante los primeros nueve meses de 2026.
+VOZ 2: ¿Eso significa que el IPC debería subir 2,7%?
+VOZ 1: No. Son mediciones distintas. El IPP observa precios de productor en minería, manufactura y electricidad, gas y agua. El IPC mide el costo de una canasta para los hogares. Entre ambos existen contratos, inventarios, márgenes, tipo de cambio y decisiones empresariales que pueden acelerar, postergar o absorber el traspaso.
+VOZ 2: ¿Qué explica entonces el aumento del IPP?
+VOZ 1: Principalmente la minería. Su índice avanzó 4,0% mensual y la extracción y procesamiento de cobre subió 4,2%. Esa señal puede ser favorable para ingresos de compañías mineras y para la recaudación si se sostiene, porque refleja una mejor valorización de la producción.
+VOZ 2: Pero el cobre también puede encarecer insumos locales.
+VOZ 1: Sí, aunque la lectura dominante es exportadora porque su precio se forma internacionalmente y gran parte de la producción sale del país. Además, un mejor precio no asegura un mejor margen: también importan el volumen producido, los costos operacionales y el tipo de cambio.
+VOZ 2: ¿Dónde aparece un canal más directo hacia los costos internos?
+VOZ 1: En la manufactura, especialmente en la refinación de petróleo. El índice manufacturero subió 1,0% mensual, pero los productos de la refinación aumentaron 8,4%. Esa diferencia muestra que la presión no fue uniforme.
+VOZ 2: ¿Cómo se conecta con el transporte?
+VOZ 1: El Índice de Costos del Transporte de septiembre aumentó 2,9% mensual. El grupo combustibles subió 10,2% y explicó 2,728 puntos porcentuales del movimiento total. Es decir, casi toda la variación vino de esa fuente.
+VOZ 2: Entonces sí existe riesgo de que el costo se reparta por la economía.
+VOZ 1: Existe riesgo, sobre todo en distribución, alimentos, comercio y servicios que dependen de vehículos. Pero sigue siendo una condición, no un resultado confirmado. Las empresas pueden absorber una parte con márgenes, usar inventarios comprados antes o postergar reajustes si la demanda es débil.
+VOZ 2: ¿Qué mostró el IPC del mismo mes?
+VOZ 1: El IPC aumentó 0,4% mensual y 4,1% anual. Es una variación bastante menor que la del IPP industrial, la refinación o los combustibles del transporte. Esa brecha confirma que no hay una transmisión uno a uno.
+VOZ 2: ¿Los demás insumos también aceleraron?
+VOZ 1: No con la misma intensidad. El índice de distribución de electricidad, gas y agua subió 0,7% mensual y acumuló solo 0,6% en el año. Dentro de ese grupo, generación, transmisión y distribución eléctrica avanzó 1,3%.
+VOZ 2: Entonces el dato combina una señal positiva del cobre y una advertencia por energía.
+VOZ 1: Exactamente. El cobre puede apoyar ingresos exportadores. La refinación y el transporte pueden elevar costos domésticos. Mezclarlos en un solo promedio haría perder la información más importante, que es la composición.
+VOZ 2: ¿Qué deberíamos mirar en octubre?
+VOZ 1: Primero, si el alza de la refinación continúa o se revierte. Segundo, si el costo del transporte aparece en alimentos, comercio y servicios de distribución. Y tercero, si el IPC subyacente muestra una presión más amplia.
+VOZ 2: ¿Qué invalidaría la preocupación de traspaso?
+VOZ 1: Una moderación de combustibles, costos de transporte estables y márgenes capaces de absorber el shock. En cambio, aumentos simultáneos en refinación, logística y precios finales confirmarían que la presión dejó de estar concentrada y comenzó a difundirse.
