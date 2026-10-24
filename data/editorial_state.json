@@ -3,14 +3,14 @@
     {
       "id": "oil-geopolitics-inflation",
       "topic": "Petróleo, geopolítica e inflación",
-      "thesis": "El shock energético ya está reordenando la política occidental: Estados Unidos redujo presión sobre Rusia para proteger oferta y precios, mientras en Europa el costo de los combustibles alimenta protestas, tensiona presupuestos y erosiona el consenso sobre sanciones y apoyo a Ucrania.",
-      "status": "changed",
-      "last_evidence": "El 20 de octubre el gas europeo acumulaba un alza cercana a 140% desde fines de febrero y el diésel había duplicado su precio; la Comisión Europea estimó €100.000 millones de gasto fósil adicional desde marzo, mientras protestas y bloqueos por el costo de vida se extendían por varias economías del bloque.",
-      "effect": "Amplía la tesis desde la divergencia transatlántica hacia la política interna europea: el shock ya condiciona elecciones, fortalece propuestas de recuperar energía rusa y enfrenta alivio fiscal con deuda, defensa, apoyo a Ucrania y transición energética.",
-      "base_scenario": "La energía permanece cara y los gobiernos europeos combinan ayudas focalizadas con diversificación e inversión, sin abandonar de inmediato las sanciones ni el apoyo a Ucrania; el costo político y fiscal aumenta de cara a las elecciones de 2027.",
-      "invalidate_if": "Una caída sostenida del gas y los combustibles que reduzca protestas y presión presupuestaria, sin retroceso en sanciones o apoyo a Ucrania, debilitaría la tesis; más bloqueos, subsidios generalizados o retorno efectivo a proveedores rusos la reforzarían.",
-      "watch": "Gas y diésel europeos, protestas y bloqueos, elecciones de 2027, impuestos y subsidios a combustibles, déficits y primas soberanas, apoyo a Ucrania, sanciones a Rusia, AccelerateEU, Ormuz, seguros y fletes.",
-      "last_publication": "/ediciones/2026-10-20-daily-energia-reordena-politica-europea/"
+      "thesis": "El shock energético ya está reordenando la política occidental: su costo electoral llevó a Estados Unidos a aliviar presión sobre Rusia, presionar a Ucrania y aplazar una eventual escalada con Irán, mientras en Europa los combustibles caros tensionan presupuestos y el consenso sobre sanciones.",
+      "status": "confirmed",
+      "last_evidence": "El 24 de octubre una encuesta Reuters/Ipsos mostraba que 78% de los estadounidenses atribuía a las políticas de Trump parte del alza de costos; antes de las legislativas, Washington facilitó diésel ruso, pidió frenar ataques ucranianos a refinerías y descartó una nueva operación contra Irán antes del voto.",
+      "effect": "Confirma y amplía la tesis desde Europa hacia Estados Unidos: la energía cara ya condiciona elecciones y modifica instrumentos y calendario de política exterior, aun cuando las medidas de alivio no resuelven la oferta ni los conflictos de fondo.",
+      "base_scenario": "Hasta el 3 de noviembre Washington evita una nueva escalada con Irán y busca aliviar combustibles mediante oferta rusa y presión sobre Ucrania; después del voto reaparece el riesgo militar, mientras Europa mantiene con dificultad sus sanciones y apoyo a Kyiv.",
+      "invalidate_if": "Una caída sostenida de combustibles sin concesiones geopolíticas, acompañada de distensión verificable con Irán y continuidad coordinada del apoyo occidental a Ucrania, debilitaría la tesis; nuevas exenciones, presión sobre Kyiv o escalada posterior a las elecciones la reforzarían.",
+      "watch": "Elecciones legislativas de Estados Unidos, cargamentos de diésel ruso, sanciones y exenciones, ataques a refinerías, política hacia Ucrania, decisiones sobre Irán después del 3 de noviembre, Ormuz, gas y diésel europeos, protestas y apoyo a Kyiv.",
+      "last_publication": "/ediciones/2026-10-24-daily-politica-exterior-eeuu-costo-electoral/"
     },
     {
       "id": "us-employment-fed-rates",
