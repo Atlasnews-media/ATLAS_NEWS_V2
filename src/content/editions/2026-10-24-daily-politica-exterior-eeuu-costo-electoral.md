@@ -1,11 +1,11 @@
 ---
 title: "El costo de la política exterior de EE.UU. empieza a cambiar sus decisiones globales"
 summary: "La guerra con Irán y los aranceles ya pesan sobre el costo de vida y las elecciones de noviembre; la Casa Blanca responde aliviando sanciones a Rusia, presionando a Ucrania y aplazando una eventual escalada militar."
-publishedAt: "2026-10-24T06:04:49-03:00"
+publishedAt: "2026-10-24T06:48:06-03:00"
 cutoffAt: "2026-10-24T06:03:12-03:00"
 type: "daily"
 editionSlot: "morning"
-status: "draft"
+status: "published"
 tags:
   - geopolitica
   - estados-unidos

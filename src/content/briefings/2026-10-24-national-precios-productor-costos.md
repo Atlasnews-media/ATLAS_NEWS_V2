@@ -1,11 +1,11 @@
 ---
 title: "Los precios de productor suben por cobre y refinación, no por una presión uniforme"
 summary: "El IPP industrial aumentó 2,7% en septiembre, impulsado por cobre y refinación de petróleo. La composición separa mejores precios mineros de costos que sí pueden trasladarse."
-publishedAt: "2026-10-24T06:25:00-03:00"
+publishedAt: "2026-10-24T06:48:06-03:00"
 cutoffAt: "2026-10-24T06:23:00-03:00"
 section: "national"
 editionSlot: "morning"
-status: "draft"
+status: "published"
 tags:
   - chile
   - precios-productor

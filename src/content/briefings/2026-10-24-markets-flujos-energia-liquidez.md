@@ -1,11 +1,11 @@
 ---
 title: "Los flujos siguen entrando, pero el mercado rota desde la IA hacia energía y liquidez"
 summary: "La tecnología frenó su caída, aunque la amplitud siguió débil. Petróleo y energía lideraron mientras fondos compraron acciones, bonos cortos y liquidez."
-publishedAt: "2026-10-24T06:35:00-03:00"
+publishedAt: "2026-10-24T06:48:06-03:00"
 cutoffAt: "2026-10-24T06:33:00-03:00"
 section: "markets"
 editionSlot: "morning"
-status: "draft"
+status: "published"
 tags:
   - mercados
   - flujos
