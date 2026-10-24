@@ -20,11 +20,11 @@ sources:
     url: "https://elpais.com/chile/2026-10-24/mas-alla-del-fondo-e.html"
     publishedAt: "2026-10-24T07:00:00-03:00"
 highlights:
-  - label: "El caso llega al Ministerio Público"
+  - label: "Caso llega a fiscalía"
     text: "Una denuncia penal fue remitida a la Fiscalía Regional Metropolitana Norte para investigar eventuales responsabilidades."
-  - label: "El Senado fija una sesión especial"
+  - label: "Senado cita a actores"
     text: "La Cámara Alta citó para el martes 27 a autoridades, reguladores y representantes de la industria."
-  - label: "Las sanciones pueden alcanzar 15.000 UF"
+  - label: "Multas de 15.000 UF"
     text: "El procedimiento contempla desde censura y multas hasta, en casos extremos, cancelar la autorización de una administradora."
 demo: false
 ---

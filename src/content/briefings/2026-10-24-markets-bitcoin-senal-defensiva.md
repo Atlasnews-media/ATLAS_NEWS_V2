@@ -23,11 +23,11 @@ sources:
     url: "https://www.coindesk.com/markets/2026/10/23/live-updates-bitcoin-holds-above-usd81-000-as-the-ai-rout-fades-and-oil-climbs"
     publishedAt: "2026-10-23T08:13:00-03:00"
 highlights:
-  - label: "Bitcoin vuelve a probar el piso de US$80.000"
+  - label: "Bitcoin prueba US$80.000"
     text: "La principal criptomoneda se movió cerca de US$80.700 durante la mañana, por debajo de los US$81.000 observados al cierre del viernes."
-  - label: "Ether cae con mayor intensidad"
+  - label: "Ether cae más"
     text: "La segunda criptomoneda operó alrededor de US$2.370 y mostró una pérdida relativa mayor que bitcoin."
-  - label: "La señal es defensiva, no una causalidad probada"
+  - label: "Señal defensiva"
     text: "La caída coincide con petróleo alto y dudas sobre inversión en IA, pero esos mercados estaban cerrados y no transmitieron un precio nuevo."
 demo: false
 ---
