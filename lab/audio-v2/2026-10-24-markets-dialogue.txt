@@ -1,0 +1,31 @@
+VOZ 1: El cierre del viernes dejó una señal más compleja que una simple caída o recuperación. La tecnología se estabilizó después de la venta del jueves, pero el mercado siguió perdiendo amplitud y el liderazgo pasó hacia energía y liquidez.
+VOZ 2: ¿Qué significa que la tecnología se estabilizó?
+VOZ 1: El índice de semiconductores y el sector tecnológico del S&P 500 subieron 0,4%. Aun así, el Nasdaq cerró 0,21% abajo, el S&P 500 perdió 0,52% y el Dow cayó 1,23%. En la Bolsa de Nueva York hubo 1,72 acciones a la baja por cada una al alza.
+VOZ 2: Entonces no fue un rebote amplio.
+VOZ 1: Exactamente. Tecnología dejó de encabezar las pérdidas, pero la presión se trasladó a consumo, finanzas y telecomunicaciones. AT&T y T-Mobile cayeron cerca de 8% después de reportes de que SpaceX evaluaba convertirse en un cuarto operador móvil en Estados Unidos.
+VOZ 2: ¿Hubo ganadores dentro de esa misma noticia?
+VOZ 1: Sí. Los operadores de torres subieron porque un nuevo competidor necesitaría infraestructura. Crown Castle avanzó 9% y American Tower 4%. Esa dispersión muestra que el mercado está diferenciando modelos de negocio y no vendiendo todo por igual.
+VOZ 2: ¿Dónde apareció el liderazgo más claro?
+VOZ 1: En energía. El Brent subió 3,14% y cerró en 116 dólares con 72 centavos por barril, su máximo desde fines de abril. El WTI ganó 3,8% hasta 103 dólares con 27 centavos. El sector energético del S&P 500 avanzó 2,5% y alcanzó un récord.
+VOZ 2: ¿Ese petróleo alto cambió la lectura de los bonos?
+VOZ 1: La hizo más incómoda. El rendimiento del Treasury a diez años subió 3,7 puntos base hasta 4,99%, después de una fuerte caída defensiva el jueves. Se mantuvo bajo 5%, pero la energía cara limita una apuesta limpia por menor inflación o recortes de tasas.
+VOZ 2: ¿Cómo se conecta esto con la edición General?
+VOZ 1: General explica que Estados Unidos está ajustando sanciones y decisiones geopolíticas para contener el costo energético antes de las elecciones. El mercado muestra por qué importa: el petróleo sigue incorporando una prima de oferta y el sector energético captura esa presión.
+VOZ 2: ¿Y la señal local de Nacional?
+VOZ 1: Nacional mostró que en Chile la refinación de petróleo subió 8,4% en septiembre y que los combustibles explicaron casi todo el aumento mensual del costo del transporte. No es el mismo período que el cierre internacional del viernes, pero confirma el canal que debemos vigilar: energía externa, costos productivos y eventual traspaso.
+VOZ 2: ¿Qué pasó en Europa?
+VOZ 1: El STOXX 600 cayó 0,31% el viernes y 1,4% en la semana. El euro bajó 0,21% a 1,1191 dólares. El rendimiento francés a diez años cedió cinco puntos base en la sesión, pero había subido cerca de 27 puntos en la semana y la prima frente a Alemania alcanzó su mayor nivel desde 2011.
+VOZ 2: ¿Eso es alivio o deterioro?
+VOZ 1: Alivio diario dentro de un deterioro semanal. El viernes hubo una pausa en la venta de bonos franceses, pero el riesgo fiscal y político siguió reflejado en la semana completa.
+VOZ 2: Si los precios muestran cautela, ¿qué dicen los flujos de fondos?
+VOZ 1: Los inversionistas todavía están comprando acciones. Los fondos globales recibieron 28.160 millones de dólares en la semana terminada el 21 de octubre, su quinta semana consecutiva de entradas. Tecnología captó 5.050 millones después de registrar ventas netas la semana anterior.
+VOZ 2: ¿No contradice eso la debilidad de los índices?
+VOZ 1: No necesariamente. Los flujos se miden hasta el miércoles y pueden ir rezagados respecto de la venta del jueves y viernes. Además, los mismos inversionistas agregaron defensa: 9.440 millones entraron a fondos de bonos y 15.860 millones a fondos monetarios.
+VOZ 2: ¿Dónde aparece la mayor cautela dentro de los bonos?
+VOZ 1: Entraron 2.780 millones de dólares a bonos de corto plazo, mientras salieron 1.680 millones de alto rendimiento. El mensaje es que aún hay exposición al riesgo, pero acompañada por liquidez, menor duración crediticia y menos deuda de baja calidad.
+VOZ 2: ¿Cuál será la prueba principal de la próxima semana?
+VOZ 1: Los resultados de Alphabet, Microsoft y Amazon mostrarán si el gasto en inteligencia artificial puede sostener crecimiento y caja. La Reserva Federal también deberá explicar si el petróleo modifica la posibilidad de otra alza en diciembre.
+VOZ 2: ¿Qué cambiaría la lectura defensiva?
+VOZ 1: Una mejora de la amplitud, diferenciales de crédito estables y petróleo a la baja. En cambio, si siguen entrando fondos mientras cae la amplitud, sale dinero del alto rendimiento y la energía conserva su prima, la rotación defensiva será más profunda.
+VOZ 2: Y hoy es sábado. ¿Estos son precios en tiempo real?
+VOZ 1: No. Los mercados tradicionales están cerrados. Todos los precios corresponden al cierre efectivo del viernes 23 de octubre, y los flujos cubren la semana terminada el miércoles 21.

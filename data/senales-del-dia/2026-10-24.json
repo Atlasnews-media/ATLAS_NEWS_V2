@@ -1,0 +1,115 @@
+{
+  "status": "READY",
+  "date": "2026-10-24",
+  "contract": "atlas-senales-del-dia-v1",
+  "senalesDelDia": {
+    "internacional": [
+      {
+        "slot": "technology",
+        "headline": "EE.UU. asigna US$389 millones a semiconductores de potencia",
+        "deck": "Cuatro cartas de intención financiarán I+D para fusión, centros de datos y materiales críticos; el Estado recibirá participaciones minoritarias sin voto.",
+        "development": "El Departamento de Comercio de Estados Unidos firmó el 22 de octubre cuatro cartas de intención para entregar hasta US$389 millones en incentivos de investigación y desarrollo bajo la ley CHIPS. Helion podría recibir US$175 millones para semiconductores de alto voltaje y módulos destinados a sus generadores de fusión; Commonwealth Fusion Systems, US$85 millones para electrónica de potencia, calentamiento de plasma y componentes resistentes a radiación; Vertical Semiconductor, US$73 millones para dispositivos verticales de nitruro de galio; y Sibelco, US$56 millones para tecnologías de purificación de cuarzo de alta pureza usado en la fabricación de chips.\n\nLas cartas no son todavía adjudicaciones finales ni garantizan el desembolso total. Comercio señaló que las condiciones definitivas incluirán una participación accionaria minoritaria, no controladora y sin derecho a voto del Gobierno en cada receptor. El programa apunta a dispositivos, módulos y materiales que controlan, convierten y distribuyen electricidad para redes, centros de datos, defensa y sistemas de fusión. La señal tecnológica está en llevar la política industrial más allá de la capacidad de fabricación convencional hacia componentes de potencia y materiales especializados; el alcance efectivo dependerá de la negociación de los acuerdos finales y del cumplimiento de sus hitos de I+D.",
+        "anchor": "eeuu-financia-semiconductores-potencia",
+        "sources": [
+          {
+            "name": "NIST — cartas de intención para I+D en semiconductores de potencia",
+            "url": "https://www.nist.gov/news-events/news/2026/10/department-commerce-announces-letters-intent-4-companies-389-million-rd"
+          },
+          {
+            "name": "Reuters — incentivos y participaciones estatales en los cuatro proyectos",
+            "url": "https://www.reuters.com/technology/us-award-389-million-rd-funds-power-semiconductors-critical-materials-2026-10-22/"
+          }
+        ]
+      },
+      {
+        "slot": "world",
+        "headline": "Grecia prohíbe redes sociales a menores de quince años",
+        "deck": "La ley entrará en vigor el 1 de enero de 2027 y concede a las plataformas dos meses y medio para implementar verificación de edad con resguardo de privacidad.",
+        "development": "El Parlamento de Grecia aprobó el 23 de octubre una ley que prohíbe el uso de redes sociales a menores de quince años desde el 1 de enero de 2027. El primer ministro Kyriakos Mitsotakis indicó que las plataformas disponen de dos meses y medio para desarrollar mecanismos que verifiquen la edad de los usuarios y protejan su privacidad. La medida traslada a los servicios digitales la obligación de impedir el acceso de quienes no cumplan el umbral y se incorpora a una discusión europea más amplia sobre controles de edad y protección de menores. Grecia participa con otros seis países de la Unión Europea en el desarrollo de una solución común de verificación.\n\nLa aprobación parlamentaria convierte en ley una propuesta que el Gobierno había presentado en abril; no es sólo un anuncio de intención. Sin embargo, todavía deberán observarse las especificaciones técnicas, la supervisión y la respuesta ante incumplimientos cuando comience la aplicación. El Ejecutivo sostiene que la restricción busca reducir riesgos para la salud, la seguridad, el sueño y la concentración de los niños. Esos fundamentos corresponden a la justificación oficial y no prueban por sí solos el efecto futuro de la prohibición. El primer resultado verificable será si las plataformas implementan controles compatibles con la privacidad antes de la fecha de entrada en vigor.",
+        "anchor": "grecia-prohibe-redes-menores-quince",
+        "sources": [
+          {
+            "name": "Reuters — aprobación parlamentaria y fecha de entrada en vigor",
+            "url": "https://www.reuters.com/legal/litigation/greece-passes-social-media-ban-children-under-15-2026-10-23/"
+          },
+          {
+            "name": "AFP — ley griega sobre acceso de menores a redes sociales",
+            "url": "https://www.afp.com/en/new-greece-law-bans-social-media-under-15s"
+          }
+        ]
+      }
+    ],
+    "nacional": [
+      {
+        "slot": "ipsa_company",
+        "headline": "ILC coloca bonos por UF 2 millones a diez años",
+        "deck": "La Serie L vence en junio de 2036 y fue colocada a una tasa anual de 3,33%; la compañía no informó en el hecho esencial el destino específico de los fondos.",
+        "development": "Inversiones La Construcción informó el 22 de octubre la colocación en el mercado local de bonos Serie L por UF 2 millones. Los títulos fueron emitidos con cargo a la línea inscrita ante la Comisión para el Mercado Financiero bajo el número 957, vencen el 15 de junio de 2036 y se colocaron a una tasa anual de 3,33%. ILC integra el MSCI IPSA y controla o participa en negocios de seguros, salud, banca y previsión, por lo que la operación incorpora financiamiento de largo plazo a la estructura de un holding con exposición a varios segmentos financieros chilenos.\n\nEl hecho esencial confirma monto, plazo y tasa de colocación, pero no detalla el uso específico de los recursos, el calendario de amortización ni el costo total después de comisiones y otros gastos. Tampoco corresponde equiparar la tasa informada con el rendimiento posterior del bono en el mercado secundario. Para los accionistas, la señal inmediata es la obtención de UF 2 millones de financiamiento nominal con vencimiento a casi diez años; su efecto sobre deuda neta, liquidez y gastos financieros deberá verificarse en los próximos estados financieros y en las condiciones completas de la Serie L.",
+        "anchor": "ilc-coloca-bonos-serie-l",
+        "sources": [
+          {
+            "name": "ILC — hecho esencial de la colocación de bonos Serie L",
+            "url": "https://ilcinversiones.cl/app/uploads/2026/10/archivo.pdf"
+          },
+          {
+            "name": "ILC — información para inversionistas y publicación de la emisión",
+            "url": "https://ilcinversiones.cl/inversionistas/"
+          }
+        ]
+      },
+      {
+        "slot": "policy_economy",
+        "headline": "Tesorería abre convenio temporal para deudas del CAE",
+        "deck": "La modalidad permite repactar el total adeudado en hasta 48 cuotas iguales y estará disponible hasta el 15 de enero de 2027 bajo la Ley de Reconstrucción.",
+        "development": "La Tesorería General de la República habilitó el 19 de octubre un convenio temporal para personas con deuda fiscal originada en el Crédito con Aval del Estado. La modalidad, incorporada por la Ley de Reconstrucción, permite repactar el total adeudado en un solo acuerdo de hasta 48 cuotas mensuales iguales. El trámite se realiza en línea, exige pagar una primera cuota como pie y admite reducir el número de pagos o aumentar el monto inicial para recalcular la cuota. La ventana permanecerá abierta durante noventa días desde la publicación de la ley, hasta el 15 de enero de 2027.\n\nLa medida opera en paralelo al convenio ordinario del CAE, que puede extenderse hasta 24 meses y limita la cuota según ingresos. La Tesorería informó que quienes ya tengan otro acuerdo pueden optar por la nueva modalidad y que la solicitud temporal no impone requisitos previos de renta o comportamiento de pago. No se trata de una condonación: reorganiza el calendario para extinguir la deuda completa y el acceso sólo se perfecciona después del pago inicial y la suscripción correspondiente. El resultado fiscal y la cobertura efectiva dependerán de cuántos deudores completen el proceso y mantengan las cuotas pactadas.",
+        "anchor": "tesoreria-convenio-temporal-cae",
+        "sources": [
+          {
+            "name": "Tesorería General de la República — facilidades de pago de la Ley de Reconstrucción",
+            "url": "https://tgr.gob.cl/2026/10/19/ley-de-reconstruccion-tgr-aplica-facilidades-de-pago-a-deudores-cae-mipymes-y-personas-naturales/noticias/"
+          },
+          {
+            "name": "El País — plazos y funcionamiento del convenio temporal del CAE",
+            "url": "https://elpais.com/chile/2026-10-21/deudores-del-cae-como-funciona-fechas-y-los-plazos-del-convenio-temporal-de-la-tesoreria-para-pagar.html"
+          }
+        ]
+      }
+    ],
+    "mercados": [
+      {
+        "slot": "markets_chile",
+        "headline": "Moody's mantiene a Chile en A2 con perspectiva estable",
+        "deck": "La ratificación del 23 de octubre se suma a las notas A de S&P y A- de Fitch, ambas también estables, y conserva sin cambios la referencia soberana del país.",
+        "development": "Moody's Ratings ratificó el 23 de octubre la clasificación soberana de largo plazo de Chile en moneda local y extranjera en A2, con perspectiva estable. La decisión conserva la referencia utilizada por inversionistas para evaluar el riesgo crediticio del Estado y se suma a las reafirmaciones recientes de S&P Global Ratings en A y Fitch Ratings en A-, también con perspectivas estables. Las escalas no son idénticas entre agencias, por lo que las letras no deben compararse como si fueran una sola serie; en los tres casos, las calificaciones permanecen dentro del grado de inversión y no hubo cambio de nota en esta revisión.\n\nSegún la información difundida por el Ministerio de Hacienda, Moody's destacó el compromiso fiscal, el marco institucional y mejores perspectivas de crecimiento desde 2027 asociadas a inversión privada y reformas. Esas son consideraciones de la agencia, no garantías de desempeño económico ni una señal automática sobre el precio de los bonos. Para el mercado chileno, el dato verificable es la continuidad de A2 y de la perspectiva estable: evita un ajuste inmediato de los límites crediticios vinculados a una rebaja, pero los rendimientos seguirán respondiendo a tasas globales, inflación, ejecución fiscal y demanda por deuda en cada plazo.",
+        "anchor": "moodys-ratifica-chile-a2-estable",
+        "sources": [
+          {
+            "name": "Ministerio de Hacienda — ratificación soberana de Moody's",
+            "url": "https://www.hacienda.cl/noticias-y-eventos/noticias/-moody-s-se-suma-a-s-p-y-fitch-las-tres-principales-clasificadoras-de-riesgo-f4c11e96cbda6"
+          },
+          {
+            "name": "Ministerio de Hacienda — versión en inglés de la decisión y comparación de agencias",
+            "url": "https://www.hacienda.cl/english/news-and-events/news/7970029dbbda6"
+          }
+        ]
+      },
+      {
+        "slot": "markets_global",
+        "headline": "LSEG acuerda comprar Octus por US$3.535 millones",
+        "deck": "La operación en efectivo amplía la oferta de datos sobre crédito privado e ilíquido, será financiada con deuda externa y está sujeta a autorizaciones regulatorias.",
+        "development": "London Stock Exchange Group acordó el 22 de octubre adquirir Octus por US$3.535 millones en efectivo a fondos asesorados por Permira, a la administración y al fundador de la empresa, Kent Collier. Octus entrega información, datos, análisis y herramientas de trabajo para crédito privado, ilíquido y en dificultades; cuenta con más de 900 empleados, 750 clientes y 40.000 usuarios. LSEG busca combinar esas capacidades con sus bases de renta fija, precios, analítica y distribución. La compañía estima que Octus generará entre US$300 millones y US$320 millones de ingresos en 2026 y espera integrar el negocio en su división de datos y analítica.\n\nLSEG indicó que financiará la compra con deuda externa y que la transacción sería neutral para sus ganancias ajustadas en el primer año completo, para luego aportar positivamente. El acuerdo todavía requiere autorizaciones regulatorias y otras condiciones habituales, de modo que Octus no ha pasado a formar parte del grupo. La operación es relevante para los mercados porque amplía la concentración de infraestructura informativa en crédito público y privado y asigna un precio explícito a datos difíciles de observar en activos poco líquidos. Su efecto final dependerá del cierre, la financiación efectiva y la capacidad de integrar productos y clientes sin deteriorar márgenes.",
+        "anchor": "lseg-acuerda-compra-octus",
+        "sources": [
+          {
+            "name": "LSEG — acuerdo para adquirir Octus",
+            "url": "https://www.lseg.com/en/media-centre/press-releases/2026/lseg-acquire-octus-public-private-credit-solutions"
+          },
+          {
+            "name": "Reuters — términos, financiación y reacción del mercado",
+            "url": "https://www.reuters.com/business/finance/lseg-buy-octus-35-billion-data-analytics-push-2026-10-22/"
+          }
+        ]
+      }
+    ]
+  }
+}
