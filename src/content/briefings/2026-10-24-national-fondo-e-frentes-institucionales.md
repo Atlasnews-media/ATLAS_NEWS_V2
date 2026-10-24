@@ -1,11 +1,11 @@
 ---
 title: "La crisis del Fondo E pasa de las AFP a fiscalía, Senado y posibles multas de 15.000 UF"
 summary: "El caso ya no se limita a los siete procesos administrativos: suma una investigación penal, una sesión especial del Senado y un debate sobre responsabilidades y compensaciones."
-publishedAt: "2026-10-24T13:08:00-03:00"
+publishedAt: "2026-10-24T13:05:44-03:00"
 cutoffAt: "2026-10-24T11:45:00-03:00"
 section: "national"
 editionSlot: "evening"
-status: "draft"
+status: "published"
 tags:
   - chile
   - pensiones

@@ -1,11 +1,11 @@
 ---
 title: "China amenaza con responder si EE.UU. amplía los controles sobre inversión tecnológica"
 summary: "Beijing rechazó la propuesta estadounidense que incorpora biotecnología y amplía límites sobre computación avanzada y sistemas hipersónicos, y dejó abierta la adopción de contramedidas."
-publishedAt: "2026-10-24T13:08:00-03:00"
+publishedAt: "2026-10-24T13:05:44-03:00"
 cutoffAt: "2026-10-24T11:00:00-03:00"
 type: "daily"
 editionSlot: "evening"
-status: "draft"
+status: "published"
 tags:
   - china
   - estados-unidos

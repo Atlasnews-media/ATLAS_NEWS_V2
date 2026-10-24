@@ -1,11 +1,11 @@
 ---
 title: "Bitcoin cae hacia US$80.000 y ether profundiza la señal defensiva del fin de semana"
 summary: "Con acciones, bonos y petróleo cerrados, bitcoin y ether extendieron las pérdidas: el movimiento coincide con energía cara y dudas sobre la IA, pero no demuestra causalidad directa."
-publishedAt: "2026-10-24T13:08:00-03:00"
+publishedAt: "2026-10-24T13:05:44-03:00"
 cutoffAt: "2026-10-24T12:00:00-03:00"
 section: "markets"
 editionSlot: "evening"
-status: "draft"
+status: "published"
 tags:
   - mercados
   - bitcoin
