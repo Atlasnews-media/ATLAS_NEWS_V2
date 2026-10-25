@@ -1,0 +1,115 @@
+{
+  "status": "READY",
+  "date": "2026-10-25",
+  "contract": "atlas-senales-del-dia-v1",
+  "senalesDelDia": {
+    "internacional": [
+      {
+        "slot": "technology",
+        "headline": "Moonshot limita el uso ofensivo de Kimi K3.1 Pro",
+        "deck": "La empresa retiró datos cibernéticos antes de liberar los pesos del modelo; su prueba interna de explotación bajó de 90,5% a 81,0%.",
+        "development": "Moonshot AI presentó el 24 de octubre Kimi K3.1 Pro y anunció que publicará sus pesos el 4 de noviembre. Antes de esa liberación abierta, la empresa retiró datos relacionados con ciberataques tanto del corpus de entrenamiento como de los entornos usados para aprendizaje por refuerzo. El modelo conserva capacidades generales de programación y una ventana de contexto de un millón de tokens, pero la compañía afirma que buscó evitar que la versión descargable ampliara la frontera de las capacidades ofensivas disponibles fuera de servicios controlados.\n\nEn una prueba interna de detección y explotación de vulnerabilidades, el modelo final obtuvo 81,0%, frente a 90,5% de una versión comparable sin la reducción de riesgo. Esas cifras no han sido verificadas de manera independiente y no permiten medir por sí solas el desempeño en ataques reales. La señal tecnológica está en que un desarrollador de modelos abiertos decidió sacrificar una parte observable del rendimiento especializado antes de distribuir los pesos. Aun así, 81,0% representa una capacidad relevante y, una vez publicados los archivos, Moonshot tendrá menos control sobre modificaciones, acceso y uso que en una plataforma alojada. La evaluación deberá continuar después del 4 de noviembre con pruebas externas y análisis de la versión efectivamente liberada.",
+        "anchor": "moonshot-limita-kimi-k31-ciber",
+        "sources": [
+          {
+            "name": "Moonshot AI — presentación técnica de Kimi K3.1 Pro",
+            "url": "https://www.kimi.ai/blog/kimi-k3-1-pro"
+          },
+          {
+            "name": "Reuters — reducción de capacidades cibernéticas antes de liberar los pesos",
+            "url": "https://www.reuters.com/technology/moonshot-curbs-hacking-ability-new-kimi-model-fears-grow-over-ai-powered-2026-10-24/"
+          }
+        ]
+      },
+      {
+        "slot": "world",
+        "headline": "Sídney abre su segundo aeropuerto a pasajeros",
+        "deck": "Western Sydney International inició vuelos comerciales el 25 de octubre; opera sin toque de queda y puede escalar a más de 80 millones de pasajeros al año.",
+        "development": "Western Sydney International Airport abrió sus puertas a pasajeros el 25 de octubre, después de que las operaciones de carga comenzaran en julio. El primer vuelo comercial de pasajeros, operado por Jetstar, salió hacia Gold Coast. La infraestructura costó A$5.600 millones, fue construida durante siete años y está ubicada en Badgerys Creek, unos 60 kilómetros al oeste del centro de Sídney. Es el primer gran aeropuerto que Australia inaugura en más de cincuenta años y complementa al terminal de Kingsford Smith.\n\nLa diferencia operativa central es que el nuevo aeropuerto puede funcionar las veinticuatro horas, mientras Kingsford Smith restringe despegues y aterrizajes entre las 23:00 y las 6:00. Western Sydney informó que su capacidad futura supera los 80 millones de movimientos de pasajeros al año, aunque esa escala no corresponde al tráfico inicial. Air New Zealand iniciará la primera conexión internacional el 26 de octubre y Singapore Airlines prevé comenzar vuelos diarios en noviembre; otras aerolíneas tienen servicios anunciados para etapas posteriores. La apertura es un hecho operativo, pero el uso efectivo dependerá de la incorporación gradual de rutas, del acceso terrestre y de la demanda. Por ahora, el hito verificable es que Sídney dispone de un segundo terminal comercial y de una alternativa sin restricción nocturna.",
+        "anchor": "sidney-abre-segundo-aeropuerto",
+        "sources": [
+          {
+            "name": "Primer Ministro de Australia — primeros pasajeros de Western Sydney International",
+            "url": "https://www.pm.gov.au/media/first-passengers-lift-wsi"
+          },
+          {
+            "name": "Reuters — apertura del nuevo aeropuerto internacional de Sídney",
+            "url": "https://www.reuters.com/world/asia-pacific/sydneys-new-international-airport-opens-passengers-2026-10-25/"
+          }
+        ]
+      }
+    ],
+    "nacional": [
+      {
+        "slot": "ipsa_company",
+        "headline": "LATAM ajusta su expansión por el mayor costo del combustible",
+        "deck": "La aerolínea mantiene su guía anual, pero espera que el crecimiento de capacidad se ubique cerca del piso del rango de 9% a 10%.",
+        "development": "LATAM Airlines espera que el crecimiento de su capacidad en 2026 termine cerca del extremo inferior de su guía de 9% a 10%, después de recortar parte de la oferta prevista por el alto precio del combustible de aviación. El gerente general, Roberto Alvo, entregó la actualización el 20 de octubre y sostuvo que la compañía mantiene su proyección de EBITDA ajustado entre US$4.100 millones y US$4.400 millones. La señal no es una rebaja formal de ambos rangos, sino un desplazamiento de la expectativa operativa hacia su piso.\n\nEl grupo consume entre 36 millones y 38 millones de barriles de combustible al año. Según Alvo, un movimiento de US$10 por barril representa aproximadamente US$370 millones de costo anual, y la empresa no ha podido trasladar todo el incremento a las tarifas. LATAM busca compensar parte de la presión con control de costos y mayores ingresos del segmento premium. La guía oficial publicada en agosto ya incorporaba una expansión de capacidad de 9% a 10% y el rango vigente de EBITDA; la declaración más reciente precisa cómo el combustible está condicionando su ejecución. Para los accionistas, los próximos estados financieros deberán mostrar si los ajustes de vuelos bastan para proteger márgenes sin deteriorar tráfico, ingresos unitarios ni la estrategia de crecimiento de largo plazo.",
+        "anchor": "latam-ajusta-capacidad-combustible",
+        "sources": [
+          {
+            "name": "Reuters — LATAM apunta al piso de su guía de capacidad",
+            "url": "https://www.reuters.com/business/aerospace-defense/latam-says-capacity-growth-tracking-lower-end-guidance-fuel-stays-high-2026-10-20/"
+          },
+          {
+            "name": "LATAM — guía financiera y operacional vigente para 2026",
+            "url": "https://ir.latam.com/Spanish/noticias/comunicados-de-prensa/detalles-de-la-noticia/2026/LATAM-reporta-utilidades-por-US125-millones-al-segundo-trimestre-del-ao-en-un-contexto-de-significativa-alza-en-el-precio-del-combustible/default.aspx"
+          }
+        ]
+      },
+      {
+        "slot": "policy_economy",
+        "headline": "MOP licita 148 contratos del plan Chile Despega",
+        "deck": "La cartera publicada equivale al 61% de 241 proyectos y suma cerca de $214.880 millones; el ministerio vincula el programa completo con 23.000 empleos.",
+        "development": "El Ministerio de Obras Públicas informó el 23 de octubre que envió a publicación 148 de los 241 contratos incluidos en su componente del plan Chile Despega. La cifra representa 61% de la cartera y una inversión cercana a $214.880 millones. Los proyectos abarcan vialidad, obras portuarias, aeropuertos, infraestructura hidrométrica y meteorológica, además de sistemas sanitarios rurales en todas las regiones. El ministerio indicó que pretende completar las licitaciones durante 2026 y comenzar las adjudicaciones y algunas obras dentro del mismo año.\n\nEl programa total a cargo del MOP considera US$400 millones y el Gobierno estima que podría crear cerca de 23.000 puestos de trabajo. Esa cifra es una proyección oficial, no empleo ya contratado. Para los 148 procesos publicados, la autoridad asocia 12.800 puestos potenciales; hasta ahora, el primer contrato adjudicado corresponde a un sondaje para el Servicio Sanitario Rural Peñasmo, en Calbuco, por $103 millones. La diferencia entre licitar, adjudicar y ejecutar es relevante para evaluar el efecto económico: publicar un llamado abre competencia, pero no asegura todavía gasto, inicio de obras ni contratación. Los próximos hitos verificables serán las ofertas recibidas, los montos adjudicados, los plazos de inicio y la ejecución presupuestaria efectiva de cada proyecto.",
+        "anchor": "mop-licita-contratos-chile-despega",
+        "sources": [
+          {
+            "name": "Ministerio de Obras Públicas — avance de licitaciones de Chile Despega",
+            "url": "https://www.mop.gob.cl/plan-chile-despega-el-mop-ha-publicado-mas-del-60-de-las-nuevas-licitaciones-que-permitiran-crear-unos-23-000-empleos/"
+          },
+          {
+            "name": "Ministerio del Interior — presentación del plan Chile Despega",
+            "url": "https://interior.gob.cl/noticias/2026/09/28/gobierno-presenta-chile-despega-plan-orientado-a-crear-empleos-y-reactivar-la-economia/"
+          }
+        ]
+      }
+    ],
+    "mercados": [
+      {
+        "slot": "markets_chile",
+        "headline": "Chile renueva por cinco años el swap de monedas con China",
+        "deck": "La línea precautoria renminbi-peso equivale a unos US$7.500 millones y no modifica las reservas internacionales mientras no sea activada.",
+        "development": "El Banco Central de Chile informó el 23 de octubre que renovó por cinco años el acuerdo bilateral de swap de monedas renminbi-peso que mantiene con el Banco Popular de China desde 2015. La línea equivale a aproximadamente US$7.500 millones y sus recursos pueden solicitarse para contribuir a la estabilidad de los mercados financieros si fuera necesario. El banco precisó que el acuerdo tiene carácter precautorio y que, mientras permanezca sin activar, no cambia el nivel de las reservas internacionales del país.\n\nUn swap entre bancos centrales permite intercambiar monedas bajo condiciones acordadas y puede ampliar la disponibilidad de liquidez en episodios de tensión. Sin embargo, la renovación no significa que Chile haya recibido recursos, elevado reservas ni intervenido el mercado cambiario. Tampoco constituye una señal sobre la trayectoria inmediata del peso o de la tasa de política monetaria. Para el mercado chileno, el hecho verificable es la continuidad de un respaldo contingente durante otros cinco años y la mantención de un canal institucional con el banco central del principal socio comercial del país. Su impacto sólo podrá medirse si se activa la línea y se conocen monto utilizado, plazo, costo y destino de los fondos.",
+        "anchor": "chile-renueva-swap-monedas-china",
+        "sources": [
+          {
+            "name": "Banco Central de Chile — renovación del swap renminbi-peso",
+            "url": "https://www.bcentral.cl/web/banco-central/contenido/-/detalle/prensa/nota-de-prensa/bcch-renueva-acuerdo-bilateral-con-banco-central-de-la-republica-popular-china"
+          },
+          {
+            "name": "Council on Foreign Relations — funcionamiento de swaps entre bancos centrales",
+            "url": "https://www.cfr.org/articles/central-bank-currency-swaps-tracker"
+          }
+        ]
+      },
+      {
+        "slot": "markets_global",
+        "headline": "Norges votará contra las compras propuestas por MPS",
+        "deck": "El fondo soberano noruego rechazará las ofertas por Banco BPM y Banca Generali, además de la fusión de Mediobanca y un dividendo extraordinario.",
+        "development": "Norges Bank Investment Management, administrador del fondo soberano de Noruega, informó el 24 de octubre que votará contra las propuestas de Monte dei Paschi di Siena para comprar Banco BPM y Banca Generali. También rechazará la fusión de Mediobanca dentro de MPS y la distribución de un dividendo extraordinario con cargo a reservas. El fondo controlaba 2,98% de MPS al cierre de 2025 y publicará su decisión antes de la junta de accionistas convocada para el 29 de octubre.\n\nLa postura no resuelve por sí sola las votaciones ni equivale a que las operaciones hayan sido descartadas. Norges apoyará, en cambio, el programa de recompra de acciones y la adquisición de la participación que Mediobanca mantiene en la aseguradora Generali. El administrador explicó que aplica el principio de que fusiones, adquisiciones y otras transacciones deben maximizar el retorno para los accionistas. La señal para el mercado bancario italiano es que un inversionista institucional relevante separó las distintas piezas del plan de MPS y objetó las compras más amplias antes de la junta. El resultado dependerá del voto del resto del capital, y luego de las condiciones financieras, societarias y regulatorias que correspondan a cualquier transacción aprobada.",
+        "anchor": "norges-rechaza-compras-mps",
+        "sources": [
+          {
+            "name": "Norges Bank Investment Management — registro público de votaciones",
+            "url": "https://www.nbim.no/en/responsible-investment/voting/our-voting-records/"
+          },
+          {
+            "name": "Reuters — posición de Norges ante las propuestas de MPS",
+            "url": "https://www.reuters.com/legal/transactional/mps-investor-norges-oppose-monte-dei-paschis-bids-buy-banco-bpm-banca-generali-2026-10-24/"
+          }
+        ]
+      }
+    ]
+  }
+}
