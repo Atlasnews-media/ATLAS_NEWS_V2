@@ -1,11 +1,11 @@
 ---
 title: "El Banco de Israel rechaza usar cripto para eludir sanciones y advierte sobre aislamiento"
 summary: "Netanyahu planteó las criptomonedas y blockchain como vías para resistir eventuales sanciones. El banco central y más de cien economistas respondieron que el atajo no preserva comercio, inversión ni acceso financiero."
-publishedAt: "2026-10-25T13:12:00-03:00"
+publishedAt: "2026-10-25T13:08:38-03:00"
 cutoffAt: "2026-10-25T08:43:00-03:00"
 type: "daily"
 editionSlot: "evening"
-status: "draft"
+status: "published"
 tags:
   - israel
   - sanciones

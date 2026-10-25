@@ -1,11 +1,11 @@
 ---
 title: "La justicia chilena fija una frontera: la inteligencia artificial no puede decidir por jueces ni defensores"
 summary: "La Defensoría Penal Pública prohibió delegar estrategias y decisiones jurídicas a sistemas automatizados, mientras la Corte Suprema prepara reglas para jueces y la Fiscalía desarrolla herramientas institucionales."
-publishedAt: "2026-10-25T13:12:00-03:00"
+publishedAt: "2026-10-25T13:08:38-03:00"
 cutoffAt: "2026-10-25T11:49:00-03:00"
 section: "national"
 editionSlot: "evening"
-status: "draft"
+status: "published"
 tags:
   - chile
   - justicia

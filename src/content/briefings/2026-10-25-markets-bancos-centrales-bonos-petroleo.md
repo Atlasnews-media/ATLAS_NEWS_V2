@@ -1,11 +1,11 @@
 ---
 title: "Bonos franceses sobre 5% y petróleo caro elevan el costo de la semana de bancos centrales"
 summary: "La Fed, el BCE y el Banco de Japón llegan a sus reuniones con presión en la parte larga de las curvas. Francia paga más de 5% a diez años y el crudo mantiene vivo el riesgo inflacionario, aunque las plazas occidentales están cerradas este domingo."
-publishedAt: "2026-10-25T13:12:00-03:00"
+publishedAt: "2026-10-25T13:08:38-03:00"
 cutoffAt: "2026-10-25T12:00:00-03:00"
 section: "markets"
 editionSlot: "evening"
-status: "draft"
+status: "published"
 tags:
   - mercados
   - bancos-centrales
