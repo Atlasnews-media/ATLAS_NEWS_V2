@@ -1,11 +1,11 @@
 ---
 title: "Brasil ya descontó un giro político; el resultado probará cuánto queda en los precios"
 summary: "El Ibovespa subió 10,1% en octubre y el real cerró bajo cinco por dólar antes del balotaje. Con las encuestas empatadas, el lunes medirá si la prima electoral excedió la capacidad de ejecución."
-publishedAt: "2026-10-25T06:16:00-03:00"
+publishedAt: "2026-10-25T06:44:31-03:00"
 cutoffAt: "2026-10-25T06:14:00-03:00"
 section: "markets"
 editionSlot: "morning"
-status: "draft"
+status: "published"
 tags:
   - mercados
   - brasil

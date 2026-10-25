@@ -1,11 +1,11 @@
 ---
 title: "Brasil decide entre continuidad y un giro que reordenaría la región"
 summary: "Lula y Flávio Bolsonaro llegan prácticamente empatados al balotaje. La votación definirá la relación de Brasil con Estados Unidos y China, el acceso a minerales críticos y la gobernabilidad de una economía condicionada por un Congreso más conservador."
-publishedAt: "2026-10-25T06:05:37-03:00"
+publishedAt: "2026-10-25T06:44:31-03:00"
 cutoffAt: "2026-10-25T06:04:28-03:00"
 type: "daily"
 editionSlot: "morning"
-status: "draft"
+status: "published"
 tags:
   - brasil
   - elecciones

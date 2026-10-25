@@ -1,11 +1,11 @@
 ---
 title: "El fondo E convierte una pérdida de tasas en una prueba fiduciaria para las AFP"
 summary: "La caída real de 10,4% del fondo más conservador ya no se evalúa sólo como resultado financiero: el regulador investiga si las siete AFP cumplieron sus deberes de diligencia y lealtad."
-publishedAt: "2026-10-25T06:15:00-03:00"
+publishedAt: "2026-10-25T06:44:31-03:00"
 cutoffAt: "2026-10-25T06:13:00-03:00"
 section: "national"
 editionSlot: "morning"
-status: "draft"
+status: "published"
 tags:
   - chile
   - pensiones
