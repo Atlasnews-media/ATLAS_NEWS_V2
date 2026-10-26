@@ -1,0 +1,119 @@
+{
+  "status": "READY",
+  "date": "2026-10-26",
+  "contract": "atlas-senales-del-dia-v1",
+  "senalesDelDia": {
+    "internacional": [
+      {
+        "slot": "technology",
+        "headline": "Apple lleva su primer iPhone plegable a las tiendas",
+        "deck": "El iPhone Duo salió a la venta el 23 de octubre desde US$1.999; la escasez inicial extendió algunos plazos de entrega hasta enero.",
+        "development": "Apple inició el 23 de octubre la venta mundial del iPhone Duo, su primer teléfono plegable, con un precio de entrada de US$1.999 en Estados Unidos. El equipo combina una pantalla exterior de 5,4 pulgadas con una interior de 7,6 pulgadas y abre una categoría nueva dentro de la línea iPhone. La compañía había anunciado el producto en septiembre y abrió las reservas una semana antes del estreno comercial. Reuters constató filas de compradores en Asia, Europa y Estados Unidos, aunque varias tiendas restringieron las ventas sin reserva y Apple limitó a dos unidades los pedidos anticipados por cliente.\n\nLa señal tecnológica no es sólo el formato físico, que Samsung, Huawei y otros fabricantes ya ofrecen, sino la entrada de Apple a un segmento que todavía representa una fracción pequeña del mercado de smartphones. Los plazos estimados de entrega se desplazaron hasta fines de enero en algunos mercados después de agotarse las primeras reservas, pero Apple no publicó unidades vendidas ni capacidad de producción; por eso la escasez inicial no permite medir por sí sola la demanda sostenida. Las primeras reseñas destacaron la bisagra y el pliegue poco visible, mientras señalaron limitaciones de cámara y aplicaciones aún no adaptadas. La prueba relevante será si el lanzamiento amplía el mercado plegable más allá de compradores premium y si el ecosistema de aplicaciones aprovecha el nuevo tamaño de pantalla.",
+        "anchor": "apple-iphone-duo-llega-tiendas",
+        "sources": [
+          {
+            "name": "Apple — presentación y disponibilidad del iPhone Duo",
+            "url": "https://www.apple.com/"
+          },
+          {
+            "name": "Reuters — lanzamiento mundial y disponibilidad inicial",
+            "url": "https://www.reuters.com/business/retail-consumer/apple-bets-iphone-duo-can-remake-foldable-market-sales-begin-2026-10-22/"
+          }
+        ]
+      },
+      {
+        "slot": "world",
+        "headline": "Tíbet mantiene en 16 los muertos tras sismo de magnitud 7",
+        "deck": "El terremoto dejó 76 heridos y dañó o destruyó 339 viviendas; China elevó su respuesta de emergencia y desplegó equipos de rescate.",
+        "development": "Un terremoto de magnitud 7 golpeó el condado de Baqen, en la ciudad tibetana de Nagqu, a las 22:33 del 22 de octubre. El balance actualizado por las autoridades chinas registra 16 personas muertas y 76 heridas. Los equipos de emergencia informaron además 339 viviendas y 20 cobertizos ganaderos dañados o destruidos. El epicentro se ubicó en una zona remota y de gran altitud, lo que añadió dificultades logísticas al traslado de personal, suministros y atención médica. Al 24 de octubre, las 76 personas lesionadas recibían tratamiento y cinco de las once inicialmente clasificadas como graves habían mejorado a una condición leve.\n\nEl Consejo de Estado y el Ministerio de Gestión de Emergencias elevaron la respuesta sísmica nacional del nivel IV al III. China movilizó equipos de rescate, vehículos, drones y suministros, y asignó 80 millones de yuanes entre ayuda inmediata y recuperación de infraestructura y servicios públicos. La actualización del 26 de octubre indicó que no se habían registrado víctimas adicionales ni desastres geológicos secundarios, aunque el monitoreo y la asistencia continuaban. Ese dato reduce el riesgo inmediato de un deterioro rápido del balance, pero no cierra la evaluación de daños ni la reconstrucción. La señal internacional está en la magnitud del evento, la afectación de viviendas en comunidades aisladas y la escala de una respuesta que debe sostenerse en condiciones de altura y acceso limitado.",
+        "anchor": "tibet-sismo-magnitud-siete-balance",
+        "sources": [
+          {
+            "name": "Gobierno de China — respuesta de emergencia y despliegue de rescate",
+            "url": "https://english.www.gov.cn/news/202610/23/content_WS6adaeff9c6d00ca5f9a0dea2.html"
+          },
+          {
+            "name": "Xinhua — balance de víctimas, heridos y viviendas dañadas",
+            "url": "https://english.news.cn/20261024/f1b60483013649f78698627b6e8c5342/c.html"
+          },
+          {
+            "name": "Reuters — actualización sin nuevas víctimas ni desastres secundarios",
+            "url": "https://www.reuters.com/business/environment/china-says-no-secondary-disasters-casualties-tibet-earthquake-2026-10-26/"
+          }
+        ]
+      }
+    ],
+    "nacional": [
+      {
+        "slot": "ipsa_company",
+        "headline": "CMPC obtiene licencia previa para su proyecto Natureza",
+        "deck": "La autorización ambiental reconoce la viabilidad de una planta de celulosa por R$27.000 millones, pero aún no permite iniciar obras.",
+        "development": "CMPC recibió el 23 de octubre la licencia ambiental previa para el Proyecto Natureza, una nueva planta de celulosa prevista en Barra do Ribeiro, en el estado brasileño de Rio Grande do Sul. El gobierno estadual valoró la inversión en R$27.000 millones, mientras la empresa ha comunicado una referencia cercana a US$4.600 millones. La instalación proyecta capacidad para producir 2,5 millones de toneladas anuales de celulosa de fibra corta y considera infraestructura forestal, vial, logística y portuaria asociada. La autorización fue emitida por la Fundación Estadual de Protección Ambiental después de revisar los estudios y el proceso de participación pública.\n\nLa licencia previa acredita la viabilidad ambiental de la ubicación y permite continuar la tramitación, pero no autoriza a construir. CMPC todavía debe obtener una licencia de instalación y, más adelante, una licencia de operación; además, la compañía deberá tomar la decisión final de inversión. El proyecto acumuló retrasos y controversias por las consultas a comunidades indígenas, quilombolas y pescadores artesanales, de modo que el permiso marca un avance regulatorio concreto sin eliminar todos los riesgos de calendario, financiamiento y ejecución. Para una empresa del IPSA, el hito es relevante por la escala de capital comprometido y por la capacidad que agregaría en Brasil. La siguiente evidencia material será la licencia de instalación, la decisión definitiva del directorio y un cronograma financiado de construcción, no el anuncio de viabilidad por sí solo.",
+        "anchor": "cmpc-licencia-previa-proyecto-natureza",
+        "sources": [
+          {
+            "name": "Gobierno de Rio Grande do Sul — entrega de licencia previa a CMPC",
+            "url": "https://estado.rs.gov.br/governo-do-estado-entrega-licenca-previa-para-o-projeto-natureza-da-cmpc-em-barra-do-ribeiro"
+          },
+          {
+            "name": "Diario Financiero — alcance, capacidad y etapas pendientes del proyecto",
+            "url": "https://www.df.cl/df-sud/cmpc-destraba-megaproyecto-de-us-4-600-millones-en-brasil-tras-obtener"
+          }
+        ]
+      },
+      {
+        "slot": "policy_economy",
+        "headline": "Reforma al mercado de capitales avanza a la Sala",
+        "deck": "La Comisión de Hacienda despachó el proyecto que reúne más de 30 medidas sobre ahorro, vivienda, financiamiento y gobierno corporativo.",
+        "development": "La Comisión de Hacienda de la Cámara de Diputadas y Diputados aprobó en particular y despachó a la Sala el proyecto de reforma al mercado de capitales y financiamiento de la casa propia. El avance, informado el 21 de octubre, mantiene la iniciativa en su primer trámite constitucional: todavía debe ser votada por la Sala y continuar las etapas legislativas posteriores. El Ejecutivo señaló que el texto reúne más de treinta medidas organizadas en cuatro áreas, entre ellas acceso a vivienda y ahorro, financiamiento para empresas de distintos tamaños, actualización normativa y gobierno corporativo. Durante la discusión se incorporaron indicaciones consensuadas con parlamentarios de distintos sectores.\n\nEntre las herramientas descritas en los antecedentes oficiales figuran un vehículo de ahorro para vivienda, un fondo orientado a financiamiento hipotecario de largo plazo, ajustes para ampliar el acceso empresarial al capital y cambios a reglas del mercado bursátil y bancario. La señal de política económica es un avance procedimental verificable, no la entrada en vigencia de esas medidas ni un efecto inmediato sobre el crédito hipotecario. Tampoco implica que el texto vaya a salir del Congreso sin modificaciones. Para evaluar su alcance fiscal y financiero habrá que seguir el informe aprobado por la Comisión, la votación de Sala y las indicaciones de los trámites siguientes. La distinción importa porque los beneficios, costos y plazos dependen de la redacción final, de las normas de implementación y de las decisiones de los reguladores.",
+        "anchor": "reforma-mercado-capitales-avanza-sala",
+        "sources": [
+          {
+            "name": "Ministerio de Hacienda — despacho de la reforma a la Sala",
+            "url": "https://www.hacienda.cl/noticias-y-eventos/noticias/2b86cd7549da6"
+          },
+          {
+            "name": "Cámara de Diputadas y Diputados — tramitación del boletín 18.643-05",
+            "url": "https://www.camara.cl/legislacion/proyectosdeley/tramitacion.aspx?prmBOLETIN=18643-05&prmID=19325"
+          }
+        ]
+      }
+    ],
+    "mercados": [
+      {
+        "slot": "markets_chile",
+        "headline": "No residentes elevan su posición vendedora en USD-CLP",
+        "deck": "La posición de los bancos frente a contrapartes extranjeras llegó a US$27.098 millones en septiembre, desde US$23.483 millones en agosto.",
+        "development": "El informe mensual del Banco Central mostró que la posición vendedora de los bancos en derivados USD-CLP frente a no residentes aumentó a US$27.098 millones al cierre de septiembre, desde US$23.483 millones en agosto. En el conjunto de contrapartes, los bancos registraron derivados USD-CLP vigentes por un monto neto de US$5.289 millones, inferior a los US$5.418 millones del mes anterior. En el mercado al contado, las entidades efectuaron compras netas a terceros por US$1.548 millones, frente a US$1.223 millones en agosto. Las cifras describen contratos y flujos del sistema bancario, no una medición directa de apuestas direccionales de todos los inversionistas.\n\nEl mismo reporte señaló que el mercado bancario de derivados alcanzó un monto vigente total de US$2,036 billones, distribuido entre tasas de interés, monedas y UF-peso, y que durante septiembre se contrataron nuevas operaciones por US$367.396 millones. En swaps promedio cámara de hasta dos años, los bancos elevaron a $16.286 mil millones su posición neta compradora de tasa variable, desde $13.688 mil millones. Estos datos permiten observar cambios en cobertura, intermediación y exposición, pero no prueban por sí solos una trayectoria futura del peso o de la tasa de política monetaria. La señal para el mercado chileno es el incremento mensual de la posición con no residentes y de las compras spot, cuya interpretación requiere contrastar vencimientos, contrapartes y movimientos posteriores de precios.",
+        "anchor": "no-residentes-posicion-vendedora-usd-clp",
+        "sources": [
+          {
+            "name": "Banco Central de Chile — informe de derivados de septiembre de 2026",
+            "url": "https://www.bcentral.cl/web/banco-central/contenido/-/detalle/publicaciones/estadistica/informe-del-mercado-de-derivados-financieros-de-chile-septiembre-2026"
+          },
+          {
+            "name": "SIID-TR — resumen por mercado de derivados bancarios",
+            "url": "https://www.siid.cl/informe-derivados-financieros"
+          }
+        ]
+      },
+      {
+        "slot": "markets_global",
+        "headline": "SpaceX anuncia deuda por US$40.000 millones para chips",
+        "deck": "Elon Musk dijo que el financiamiento comprará GPU que llegarán en el primer semestre de 2027; la estructura y el precio aún no están claros.",
+        "development": "Elon Musk afirmó el 25 de octubre que SpaceX cerró US$40.000 millones de financiamiento de deuda para adquirir unidades de procesamiento gráfico destinadas a capacidad de inteligencia artificial. Según su declaración, los equipos llegarían principalmente durante el primer y segundo trimestre de 2027 y la deuda sería en gran parte exigible anticipadamente bajo condiciones contractuales. Reuters señaló que no estaba claro qué significaba exactamente que la operación estuviera cerrada ni si los inversionistas ya habían acordado su precio. Por ello, el monto debe tratarse como una afirmación del ejecutivo hasta que la empresa publique documentación contractual o regulatoria adicional.\n\nLa escala destaca en un mercado de crédito que examina con mayor rigor la inversión en centros de datos y la capacidad de sus operadores para generar caja. Musk atribuyó el acceso de SpaceX a su calificación de grado de inversión y a ingresos de Starlink y lanzamientos, y sostuvo que prestamistas están cerrando el financiamiento a proveedores de nube especializados sin negocios alternativos relevantes. El último informe trimestral presentado ante la SEC registraba US$38.006 millones de deuda principal al 30 de septiembre, antes del anuncio, y no incorpora necesariamente la estructura divulgada después por Musk. La señal global está en el tamaño del compromiso para asegurar chips y en la diferenciación que el mercado de deuda podría hacer entre emisores diversificados y proyectos dependientes casi exclusivamente de demanda de inteligencia artificial.",
+        "anchor": "spacex-deuda-chips-ia",
+        "sources": [
+          {
+            "name": "Reuters — anuncio de financiamiento para GPU y reservas sobre su cierre",
+            "url": "https://www.reuters.com/business/media-telecom/musk-says-spacex-raised-40-billion-debt-gpus-2026-10-25/"
+          },
+          {
+            "name": "SEC — informe trimestral de SpaceX al 30 de septiembre de 2026",
+            "url": "https://www.sec.gov/Archives/edgar/data/1181412/000162828026066880/spcx-20260930.htm"
+          }
+        ]
+      }
+    ]
+  }
+}
