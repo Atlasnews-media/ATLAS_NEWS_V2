@@ -1,0 +1,23 @@
+VOZ 1: La señal dominante de mercados esta mañana no es una caída global uniforme, sino la reversión de una apuesta muy específica: la que anticipaba un cambio de gobierno en Brasil.
+VOZ 2: ¿Qué precio mostró primero esa reversión si la bolsa brasileña todavía no había abierto?
+VOZ 1: Los activos que sí podían negociar fuera de Brasil. En Asia, el futuro de noviembre del real cayó 10% y un ETF de acciones brasileñas listado en Tokio perdió cerca de 15%. Son movimientos observados, pero todavía no equivalen al cierre del real al contado ni del Ibovespa.
+VOZ 2: ¿Por qué la reacción fue tan grande?
+VOZ 1: Porque el mercado venía posicionado en la dirección contraria. Después de la primera vuelta, las acciones brasileñas habían ganado casi 7% y el real se había fortalecido cerca de 5% frente al dólar. Esa subida incorporaba una victoria de Flávio Bolsonaro, una agenda más liberal y una política fiscal más restrictiva. La reelección de Lula obliga a desarmar parte de esa posición.
+VOZ 2: Entonces, ¿el mercado está diciendo que Lula necesariamente empeorará la economía?
+VOZ 1: No de manera tan simple. La caída inicial mezcla sorpresa electoral, cierre de posiciones y preocupación fiscal. La deuda pública supera 82% del PIB y gran parte del presupuesto es rígida. Los inversionistas quieren saber quién será ministro de Hacienda, cómo se financiarán las promesas sociales y qué trayectoria tendrá la deuda.
+VOZ 2: Pero Lula gobernará con un Congreso conservador. ¿Eso no impone disciplina?
+VOZ 1: Puede imponer límites al gasto, pero también puede bloquear ajustes o transformar cada decisión presupuestaria en una negociación. Ese contrapeso tiene dos lecturas. La positiva es disciplina. La negativa es parálisis. Por eso el precio de apertura no bastará para elegir entre ambas.
+VOZ 2: ¿Dónde se vio contagio fuera de Brasil?
+VOZ 1: En Europa fue selectivo. El Ibex 35 caía 0,7% mientras otros mercados europeos avanzaban. Telefónica retrocedía 8%, Santander 5,4% y Mapfre 2,5%, todas con exposición importante a Brasil. No era una venta general de Europa: el ajuste se concentraba en empresas cuyos beneficios en reales valdrían menos en euros si la moneda brasileña se debilita.
+VOZ 2: Esa dispersión parece más informativa que el índice completo.
+VOZ 1: Exactamente. También dentro de Brasil convendrá separar sectores. Bancos, comercio y constructoras son sensibles a tasas y demanda interna. Los exportadores pueden recibir cierto apoyo de un real más débil, aunque eso depende del precio de sus productos y de sus costos.
+VOZ 2: ¿Qué parte del movimiento podría venir del contexto global y no de la elección?
+VOZ 1: Una parte relevante. El Brent retrocedía 1,9% hacia 114 dólares con 45 centavos por barril después de una escalada reciente. El rendimiento del Treasury a diez años bajaba a 4,97%. Asia estaba mixta y la tecnología seguía frágil antes de resultados de Microsoft, Alphabet y Amazon. Además, esta semana deciden tasas la Reserva Federal, el Banco Central Europeo y el Banco de Japón.
+VOZ 2: O sea, hay que descontar ese ruido antes de atribuir cada precio a Brasil.
+VOZ 1: Sí. La elección explica la diferencia entre activos brasileños y el resto, pero las tasas globales, el petróleo y la tecnología explican parte del nivel general de aversión al riesgo.
+VOZ 2: ¿Qué confirma una prima fiscal persistente?
+VOZ 1: Cuando abra Brasil, una depreciación sostenida del real al contado, tasas largas al alza, ampliación del CDS y castigo a bancos y consumo. Si, en cambio, los precios se estabilizan rápido y el gobierno entrega mensajes fiscales concretos, la primera caída habrá sido sobre todo un cierre violento de posiciones.
+VOZ 2: ¿Cuál es la lista corta de catalizadores?
+VOZ 1: El equipo económico, el presupuesto de 2027, las reglas de gasto y la relación con el Congreso. También la impugnación anunciada por Bolsonaro, porque una disputa institucional prolongada mantendría una prima adicional.
+VOZ 2: Entonces la lectura de hoy es provisional por diseño.
+VOZ 1: Correcto. Ya vimos una reversión fuerte en derivados y activos externos. La formación de precio decisiva empieza cuando abran el real al contado, el Ibovespa y la curva local. Ahí sabremos cuánto fue sorpresa y cuánto se convierte en una evaluación duradera del riesgo fiscal.
