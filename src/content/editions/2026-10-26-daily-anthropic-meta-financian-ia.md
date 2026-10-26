@@ -1,11 +1,11 @@
 ---
 title: "Anthropic abre su IPO y Meta busca hasta US$95.000 millones para financiar la carrera de IA"
 summary: "La inteligencia artificial entra a una prueba de mercado público: Anthropic exhibe crecimiento y compromisos de gasto extraordinarios, mientras Meta recurre a capital externo tras quemar caja."
-publishedAt: "2026-10-26T12:00:00-03:00"
+publishedAt: "2026-10-26T13:10:00-03:00"
 cutoffAt: "2026-10-26T11:56:00-03:00"
 type: "daily"
 editionSlot: "evening"
-status: "draft"
+status: "published"
 tags:
   - inteligencia-artificial
   - mercados-de-capitales

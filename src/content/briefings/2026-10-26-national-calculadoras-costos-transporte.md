@@ -1,11 +1,11 @@
 ---
 title: "INE estrena calculadoras que separan el costo oficial del transporte del gasto real de cada empresa"
 summary: "Las nuevas herramientas permiten contrastar el ICT con la estructura propia de seis grupos de costos y simular reajustes ligados sólo al diésel, sin reemplazar la referencia estadística oficial."
-publishedAt: "2026-10-26T12:00:00-03:00"
+publishedAt: "2026-10-26T13:10:00-03:00"
 cutoffAt: "2026-10-26T11:56:00-03:00"
 section: "national"
 editionSlot: "evening"
-status: "draft"
+status: "published"
 tags:
   - chile
   - transporte

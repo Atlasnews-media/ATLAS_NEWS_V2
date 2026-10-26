@@ -1,11 +1,11 @@
 ---
 title: "Brasil activa el cortacircuitos: el Ibovespa cae más de 15% y el real pierde hasta 12%"
 summary: "La apertura local confirmó y amplió la señal matutina: B3 suspendió operaciones, subieron las tasas y el Tesoro canceló subastas mientras el mercado exige una ruta fiscal verificable."
-publishedAt: "2026-10-26T12:00:00-03:00"
+publishedAt: "2026-10-26T13:10:00-03:00"
 cutoffAt: "2026-10-26T11:56:00-03:00"
 section: "markets"
 editionSlot: "evening"
-status: "draft"
+status: "published"
 tags:
   - brasil
   - renta-variable
