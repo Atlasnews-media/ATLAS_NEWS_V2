@@ -28,13 +28,13 @@
       "id": "ai-monetization-selectivity",
       "topic": "Inteligencia artificial y selectividad bursátil",
       "thesis": "La inteligencia artificial puede elevar el crecimiento y la productividad, pero la adopción efectiva sigue concentrada: electricidad, infraestructura digital, capacidades empresariales y habilidades laborales determinan qué países, firmas y trabajadores capturan el beneficio.",
-      "status": "confirmed",
-      "last_evidence": "El 22 de octubre el FMI estimó que una adopción efectiva de IA podría añadir hasta 0,5 punto al crecimiento mundial anual de mediano plazo y la OCDE calculó entre 0,4 y 1,2 puntos de productividad adicional entre sus miembros; ambas advirtieron que el uso en funciones centrales de las empresas sigue rezagado y que cerca de 40% de los empleos está expuesto.",
-      "effect": "Confirma la concentración ya observada y precisa su mecanismo: la brecha no depende sólo de chips o capital, sino de electricidad, infraestructura digital, adopción empresarial y formación; los países pobres, las empresas pequeñas y los trabajadores de entrada enfrentan la mayor desventaja.",
+      "status": "continues",
+      "last_evidence": "El 26 de octubre Anthropic abrió su expediente de IPO con US$16.290 millones de ingresos en el primer semestre y más de US$500.000 millones de compromisos de infraestructura; Meta anunció que busca hasta US$95.000 millones en acciones después de registrar flujo de caja libre negativo en el tercer trimestre.",
+      "effect": "La prueba de la IA se desplaza hacia los mercados públicos: el costo de capital, la dilución, la circularidad entre proveedores e inversionistas y el control corporativo pasan a determinar si el gasto extraordinario puede convertirse en rentabilidad y productividad verificables.",
       "base_scenario": "La inversión en IA continúa apoyando crecimiento e infraestructura, pero la productividad se difunde de forma desigual; economías y empresas con energía, redes, capital y habilidades avanzan primero, mientras el resto adopta con retraso.",
       "invalidate_if": "Una difusión amplia y verificable de productividad, adopción empresarial y nuevos empleos hacia países de menor ingreso y firmas pequeñas debilitaría la tesis; una ampliación de brechas de infraestructura, uso o empleo la reforzaría.",
       "watch": "Adopción de IA en funciones empresariales centrales, productividad medida, inversión eléctrica y digital, acceso de pymes, empleo de entrada, capacitación, costo de capital y retornos de centros de datos.",
-      "last_publication": "/ediciones/2026-10-22-daily-ia-brecha-paises-trabajadores/"
+      "last_publication": "/ediciones/2026-10-26-daily-anthropic-meta-financian-ia/"
     },
     {
       "id": "chile-inflation-activity-rates",
