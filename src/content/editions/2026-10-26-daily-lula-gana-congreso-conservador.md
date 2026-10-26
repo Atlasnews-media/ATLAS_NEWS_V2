@@ -1,11 +1,11 @@
 ---
 title: "Lula retiene Brasil, pero gobernará con un Congreso más conservador"
 summary: "La remontada de Lula frena el giro regional hacia la derecha, aunque deuda superior a 82% del PIB, inflación elevada y un Congreso dominado por sus adversarios condicionarán su cuarto mandato."
-publishedAt: "2026-10-26T06:19:06-03:00"
+publishedAt: "2026-10-26T06:47:46-03:00"
 cutoffAt: "2026-10-26T06:18:03-03:00"
 type: "daily"
 editionSlot: "morning"
-status: "draft"
+status: "published"
 tags:
   - brasil
   - elecciones

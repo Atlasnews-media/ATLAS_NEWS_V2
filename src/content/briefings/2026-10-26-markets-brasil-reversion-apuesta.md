@@ -1,11 +1,11 @@
 ---
 title: "Brasil revierte la apuesta electoral antes de abrir su mercado"
 summary: "El real futuro y un ETF brasileño en Tokio deshicieron parte del rally previo tras la victoria de Lula. La sesión separa riesgo fiscal local de un telón global aún dominado por petróleo, tasas y resultados tecnológicos."
-publishedAt: "2026-10-26T06:29:00-03:00"
+publishedAt: "2026-10-26T06:47:46-03:00"
 cutoffAt: "2026-10-26T06:26:00-03:00"
 section: "markets"
 editionSlot: "morning"
-status: "draft"
+status: "published"
 tags:
   - brasil
   - renta-variable

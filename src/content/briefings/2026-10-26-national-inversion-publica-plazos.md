@@ -1,11 +1,11 @@
 ---
 title: "La inversión pública acelera su evaluación, pero el desafío pasa a la ejecución"
 summary: "El SNI redujo a 111 días el ciclo promedio para obtener recomendación satisfactoria. La mejora despeja una etapa, pero presupuesto, licitación y obras siguen concentrando la espera."
-publishedAt: "2026-10-26T06:27:00-03:00"
+publishedAt: "2026-10-26T06:47:46-03:00"
 cutoffAt: "2026-10-26T06:25:00-03:00"
 section: "national"
 editionSlot: "morning"
-status: "draft"
+status: "published"
 tags:
   - chile
   - inversion-publica
