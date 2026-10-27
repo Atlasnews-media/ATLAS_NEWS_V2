@@ -16,7 +16,7 @@ sources:
     url: "https://www.cmfchile.cl/sitio/aplic/serdoc/ver_sgd.php?s567=c964a805b975030c8bee3f12eefac06bVFdwQmVVNXFSWGROUkZrMFRsUkZlRTUzUFQwPQ%3D%3D&secuencia=-1&t=1793115601"
     publishedAt: "2026-10-27T11:48:50-03:00"
   - name: "CMF — hecho esencial de Schwager sobre dividendo provisional"
-    url: "https://www.cmfchile.cl/sitio/aplic/serdoc/ver_sgd.php?s567=3f25cba349225617600b7cb5af861e49VFdwQmVVNXFSWGROUkZrMFRsUkZlRTUzUFQwPQ%3D%3D&secuencia=-1&t=1793102401"
+    url: "https://www.cmfchile.cl/sitio/aplic/serdoc/ver_sgd.php?s567=46a1e6cb8b4b839938d5f4a34a373d84VFdwQmVVNXFSWGROUkZrMFRrUk5kMDFCUFQwPQ%3D%3D&secuencia=-1&t=1793108041"
     publishedAt: "2026-10-27T08:30:32-03:00"
 highlights:
   - label: "Los Lagos lleva a junta un reparto de hasta $5.822 millones"
