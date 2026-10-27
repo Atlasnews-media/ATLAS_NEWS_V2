@@ -1,11 +1,11 @@
 ---
 title: "Los Lagos propone repartir hasta $5.822 millones y Schwager fija un dividendo de $794 millones"
 summary: "Dos emisores informaron durante la mañana decisiones de distribución de caja con bases distintas: utilidades retenidas en la concesionaria y un dividendo provisional ligado al resultado semestral en Schwager."
-publishedAt: "2026-10-27T13:20:00-03:00"
+publishedAt: "2026-10-27T13:13:09-03:00"
 cutoffAt: "2026-10-27T12:00:00-03:00"
 section: "national"
 editionSlot: "evening"
-status: "draft"
+status: "published"
 tags:
   - chile
   - empresas
