@@ -27,14 +27,14 @@
     {
       "id": "ai-monetization-selectivity",
       "topic": "Inteligencia artificial y selectividad bursátil",
-      "thesis": "La inteligencia artificial puede elevar el crecimiento y la productividad, pero la adopción efectiva sigue concentrada: electricidad, infraestructura digital, capacidades empresariales y habilidades laborales determinan qué países, firmas y trabajadores capturan el beneficio.",
-      "status": "continues",
-      "last_evidence": "El 26 de octubre Anthropic abrió su expediente de IPO con US$16.290 millones de ingresos en el primer semestre y más de US$500.000 millones de compromisos de infraestructura; Meta anunció que busca hasta US$95.000 millones en acciones después de registrar flujo de caja libre negativo en el tercer trimestre.",
-      "effect": "La prueba de la IA se desplaza hacia los mercados públicos: el costo de capital, la dilución, la circularidad entre proveedores e inversionistas y el control corporativo pasan a determinar si el gasto extraordinario puede convertirse en rentabilidad y productividad verificables.",
-      "base_scenario": "La inversión en IA continúa apoyando crecimiento e infraestructura, pero la productividad se difunde de forma desigual; economías y empresas con energía, redes, capital y habilidades avanzan primero, mientras el resto adopta con retraso.",
-      "invalidate_if": "Una difusión amplia y verificable de productividad, adopción empresarial y nuevos empleos hacia países de menor ingreso y firmas pequeñas debilitaría la tesis; una ampliación de brechas de infraestructura, uso o empleo la reforzaría.",
-      "watch": "Adopción de IA en funciones empresariales centrales, productividad medida, inversión eléctrica y digital, acceso de pymes, empleo de entrada, capacitación, costo de capital y retornos de centros de datos.",
-      "last_publication": "/ediciones/2026-10-26-daily-anthropic-meta-financian-ia/"
+      "thesis": "La inteligencia artificial ya impulsa inversión empresarial y actividad medible, pero el costo de capital, la concentración de infraestructura y la conversión del gasto en caja determinan qué empresas y economías capturan el beneficio.",
+      "status": "changed",
+      "last_evidence": "El 27 de octubre los pedidos estadounidenses de bienes de capital básicos subieron 0,5% mensual y 10,9% interanual, los despachos avanzaron 1,2% y economistas estimaron que el gasto en equipos creció cerca de 20% anualizado por tercer trimestre consecutivo de expansión de dos dígitos.",
+      "effect": "Traslada el hilo desde la financiación extraordinaria de grandes tecnológicas hacia la economía real: el auge ya sostiene manufactura e inversión, pero tasas altas, deuda y retornos inciertos pueden frenar la siguiente fase.",
+      "base_scenario": "La inversión en IA continúa apoyando crecimiento, equipos e infraestructura, pero los beneficios se distribuyen de forma desigual; proveedores y empresas con energía, redes, capital y demanda verificable avanzan primero.",
+      "invalidate_if": "Una caída sostenida de pedidos y despachos, recortes generalizados de gasto o retornos insuficientes debilitarían la tesis de impulso macroeconómico; productividad amplia, caja creciente y adopción empresarial fuera de las grandes tecnológicas la reforzarían.",
+      "watch": "PIB e inversión en equipos de Estados Unidos, pedidos y despachos de capital, resultados de nube, gasto de capital, caja libre, emisiones de deuda y acciones, tasas, energía, productividad y adopción empresarial.",
+      "last_publication": "/ediciones/2026-10-27-daily-ia-inversion-equipos-eeuu/"
     },
     {
       "id": "chile-inflation-activity-rates",
