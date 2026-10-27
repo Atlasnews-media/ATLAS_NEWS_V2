@@ -1,0 +1,119 @@
+{
+  "status": "READY",
+  "date": "2026-10-27",
+  "contract": "atlas-senales-del-dia-v1",
+  "senalesDelDia": {
+    "internacional": [
+      {
+        "slot": "technology",
+        "headline": "Microsoft ofrece salida voluntaria a unos 60.000 empleados",
+        "deck": "El programa temporal abarca equipos elegibles en cuatro países y equivale a cerca del 27% de la plantilla mundial, sin una meta pública de adhesión.",
+        "development": "Microsoft anunció el 26 de octubre un programa temporal de salida voluntaria para empleados elegibles de equipos participantes en Estados Unidos, Canadá, Reino Unido e India. La compañía lo abrió hasta el nivel interno 70 y ofreció apoyo financiero y recursos de planificación profesional, pero precisó que no todas las organizaciones participan y que la cobertura depende de sus prioridades, compromisos con clientes y necesidades laborales. Reuters cifró el universo potencial en unos 60.000 trabajadores, más de una cuarta parte de los 223.000 empleados de jornada completa que Microsoft registraba al 30 de junio. La empresa no comunicó una meta de adhesión ni un ahorro esperado.\n\nLa escala convierte la iniciativa en una señal relevante sobre cómo una gran tecnológica está ajustando su estructura mientras mantiene un ciclo extraordinario de inversión en inteligencia artificial. Microsoft proyectó US$175.000 millones de gasto de capital para 2026 y el programa alcanza áreas como experiencias de IA, Copilot, finanzas, recursos humanos, Xbox y Windows, según Reuters. Aun así, una oferta voluntaria no equivale a 60.000 despidos: el resultado dependerá de cuántas personas sean efectivamente elegibles y acepten. La evidencia material siguiente será la adhesión final, el cargo contable asociado y cualquier actualización de plantilla en sus reportes corporativos.",
+        "anchor": "microsoft-salida-voluntaria-sesenta-mil",
+        "sources": [
+          {
+            "name": "Microsoft — anuncio del programa de salida voluntaria",
+            "url": "https://blogs.microsoft.com/blog/2026/10/26/introducing-a-voluntary-exit-offer/"
+          },
+          {
+            "name": "Reuters — alcance estimado, áreas incluidas y contexto financiero",
+            "url": "https://www.reuters.com/technology/microsoft-is-offering-buyouts-around-60000-employees-business-insider-reports-2026-10-26/"
+          }
+        ]
+      },
+      {
+        "slot": "world",
+        "headline": "Lista Estudiantil logra mayoría preliminar en Serbia",
+        "deck": "La comisión electoral le asignó 52,71% y 140 de 250 escaños; la alianza de Aleksandar Vučić obtuvo 39,17% y 104 bancas.",
+        "development": "La Comisión Electoral de Serbia informó el 26 de octubre resultados preliminares de las elecciones parlamentarias anticipadas celebradas el día anterior. Con datos de 8.187 mesas, la Lista Estudiantil obtuvo 2.267.615 votos, equivalentes a 52,71%, y una proyección de 140 escaños de los 250 de la Asamblea Nacional. La lista Aleksandar Vučić–Serbia Unida recibió 1.685.022 votos, 39,17%, y 104 escaños. Vučić había reconocido la derrota durante la noche electoral. El resultado preliminar entrega a los candidatos respaldados por el movimiento estudiantil una mayoría parlamentaria propia, aunque todavía debe completarse y proclamarse el escrutinio definitivo.\n\nLa elección siguió a casi dos años de protestas iniciadas tras el derrumbe de una marquesina ferroviaria en Novi Sad, que dejó 16 muertos. La misión internacional encabezada por la OSCE destacó una participación alta y una competencia vigorosa, pero también describió polarización profunda, uso indebido de recursos públicos y oportunidades de campaña desiguales. Esas observaciones son parte del balance institucional y no cambian por sí solas el conteo publicado. La próxima etapa verificable será la proclamación final, la constitución de la Asamblea y la formación de gobierno dentro de los plazos constitucionales; no corresponde anticipar su composición ni sus decisiones.",
+        "anchor": "serbia-lista-estudiantil-mayoria-preliminar",
+        "sources": [
+          {
+            "name": "Gobierno de Serbia — resultados preliminares de la comisión electoral",
+            "url": "https://www.srbija.gov.rs/vest/en/290661/preliminary-election-results-from-8187-polling-stations-determined.php"
+          },
+          {
+            "name": "OSCE/ODIHR — evaluación preliminar de las elecciones",
+            "url": "https://odihr.osce.org/odihr/669153"
+          },
+          {
+            "name": "Reuters — concesión de la derrota y proceso de formación de gobierno",
+            "url": "https://www.reuters.com/world/after-vucic-defeat-serbia-waits-see-how-student-backed-leaders-will-govern-2026-10-26/"
+          }
+        ]
+      }
+    ],
+    "nacional": [
+      {
+        "slot": "ipsa_company",
+        "headline": "SONDA eleva 49% sus cierres de negocios a septiembre",
+        "deck": "La tecnológica informó contratos por US$1.732 millones, ingresos por US$1.145 millones y una utilidad neta acumulada de US$13 millones.",
+        "development": "SONDA reportó el 23 de octubre que sus cierres de negocios consolidados alcanzaron US$1.732 millones durante los primeros nueve meses de 2026, un aumento interanual de 49,1%. La compañía del IPSA informó ingresos por US$1.145 millones, 10,8% más que en igual período de 2025, y EBITDA por US$94 millones, con un avance de 15,9%. La utilidad neta acumulada llegó a US$13 millones, US$7 millones por encima del registro comparable. En el tercer trimestre, los ingresos fueron US$395 millones y el EBITDA US$33 millones. Las cifras fueron convertidas a un tipo de cambio de cierre de septiembre de $972,60 por dólar.\n\nEl reporte también situó el pipeline comercial a doce meses en US$7.025 millones, 16,6% sobre diciembre, con Brasil representando 33% y Chile 26% del total. Un pipeline no constituye ingreso contratado y los cierres de negocios tampoco se reconocen íntegramente de inmediato: la conversión depende de ejecución, plazos y condiciones contractuales. Por eso, la señal corporativa está en la combinación de mayor contratación, crecimiento de ingresos y expansión del EBITDA, no en asumir que todas las oportunidades se materializarán. Los próximos estados financieros deberán mostrar cuánto del volumen contratado pasa a ingresos, margen y flujo de caja, especialmente en proyectos grandes y de larga duración.",
+        "anchor": "sonda-cierres-negocios-nueve-meses-2026",
+        "sources": [
+          {
+            "name": "SONDA — presentación de resultados del tercer trimestre de 2026",
+            "url": "https://www.sonda.com/docs/sondanewsitelibraries/inversionistas/informacion-financiera/reportes-trimestrales/2026/3q/earnings-presentation-3q26-esp.pdf?sfvrsn=f78dff6e_9"
+          },
+          {
+            "name": "SONDA — estados financieros consolidados a septiembre de 2026",
+            "url": "https://www.sonda.com/docs/sondanewsitelibraries/inversionistas/informacion-financiera/reportes-trimestrales/2026/3q/estados_financieros_%28pdf%2983628100_202609.pdf?sfvrsn=20116954_5"
+          }
+        ]
+      },
+      {
+        "slot": "policy_economy",
+        "headline": "SII reúne nuevas exigencias para facturas y guías",
+        "deck": "La Resolución 144 exige más datos para respaldar el traslado de bienes y reemplazará la norma dictada en 2025 cuando entre en vigencia.",
+        "development": "El Servicio de Impuestos Internos publicó el 23 de octubre la Resolución Exenta N°144, que actualiza y consolida en un solo cuerpo las exigencias aplicables a facturas y guías de despacho usadas para respaldar el traslado de bienes corporales muebles. La norma exige consignar el origen y destino efectivo de los bienes, la identificación del conductor y del transportista, la patente del vehículo y una descripción de la carga. El SII señaló que esta información busca reforzar la trazabilidad y facilitar la fiscalización del cumplimiento tributario. Cuando la resolución entre en vigor, dejará sin efecto la Resolución Exenta N°154 de 2025.\n\nLa medida afecta la documentación operacional de empresas que despachan o transportan bienes, pero su publicación no permite cuantificar por sí sola los costos de adaptación ni anticipar sanciones. Los contribuyentes deben revisar el texto normativo, sus plazos y los formatos de emisión aplicables antes de modificar sistemas internos; la noticia institucional resume el alcance, pero no reemplaza la resolución. El cambio tampoco crea un impuesto nuevo: ordena y amplía datos de respaldo para operaciones ya documentadas. La evidencia siguiente será su implementación efectiva en plataformas de facturación, las instrucciones técnicas complementarias y los criterios de fiscalización que el SII comunique.",
+        "anchor": "sii-resolucion-facturas-guias-despacho",
+        "sources": [
+          {
+            "name": "SII — actualización de exigencias para facturas y guías",
+            "url": "https://www.sii.cl/noticias/2026/231026noti03sss.htm"
+          },
+          {
+            "name": "SII — normativa y resoluciones tributarias",
+            "url": "https://www.sii.cl/normativa_legislacion/resoluciones/2026/res_ind2026.htm"
+          }
+        ]
+      }
+    ],
+    "mercados": [
+      {
+        "slot": "markets_chile",
+        "headline": "IPSA cae 1,59% por contagio desde el mercado brasileño",
+        "deck": "El índice cerró en 10.575,69 puntos; Enel Américas perdió 8,58% y Latam 5,80% tras la reelección de Lula en Brasil.",
+        "development": "El MSCI IPSA cerró el 26 de octubre con una baja de 1,59%, hasta 10.575,69 puntos, su menor nivel en cerca de cinco meses. La presión se concentró en compañías chilenas con exposición relevante a Brasil, después de que la reelección de Luiz Inácio Lula da Silva provocara una corrección abrupta en activos brasileños. Enel Américas cayó 8,58% y Latam Airlines retrocedió 5,80%; también bajaron SONDA, Cencosud, Itaú Chile y CMPC. En São Paulo, el Ibovespa terminó 13,88% abajo y durante la sesión activó una suspensión de operaciones de 30 minutos, la primera desde marzo de 2020.\n\nEl peso chileno también mostró volatilidad: el dólar llegó a $997,6 y cerró alrededor de $992,9 vendedor. La reacción local refleja canales financieros y operacionales distintos. La depreciación del real reduce al convertir a pesos o dólares los resultados generados en Brasil, mientras el aumento de tasas de descuento afecta valoraciones; en empresas exportadoras, ingresos en dólares pueden compensar parcialmente el movimiento cambiario. Una sesión no determina el efecto fundamental de largo plazo y las magnitudes pueden revertirse. La señal de mercado está en la sensibilidad inmediata de acciones chilenas a un shock regional y en la concentración de las pérdidas en emisores con negocios brasileños.",
+        "anchor": "ipsa-contagio-mercado-brasileno",
+        "sources": [
+          {
+            "name": "CNN Chile — cierre del IPSA y desempeño de acciones expuestas a Brasil",
+            "url": "https://www.cnnchile.com/negocios/bolsa-santiago-minimos-cinco-meses-impacto-reeleccion-lula-brasil/"
+          },
+          {
+            "name": "Emol — contagio regional, dólar y detalle de la sesión chilena",
+            "url": "https://www.emol.com/noticias/Economia/2026/10/26/1215250/efec-lula-mercados-bolsa-brasil.html"
+          }
+        ]
+      },
+      {
+        "slot": "markets_global",
+        "headline": "Bonos franceses rebotan tras decisión de Moody's",
+        "deck": "El rendimiento del OAT a diez años bajó seis puntos base a 4,963% después de que la agencia mantuviera la nota soberana en Aa3 negativa.",
+        "development": "La venta de deuda soberana francesa se moderó el 26 de octubre después de que Moody's mantuviera la calificación de Francia en Aa3 con perspectiva negativa. El rendimiento del bono OAT a diez años cayó seis puntos base, hasta 4,963%, tras haber alcanzado 5,1415% el jueves anterior, su mayor nivel desde 2002. Los precios de los bonos se mueven en sentido inverso a sus rendimientos. La decisión evitó la rebaja que parte del mercado había anticipado y permitió una recuperación relativa frente a la deuda alemana, aunque no eliminó la prima exigida a Francia por sus riesgos fiscales y políticos.\n\nMoody's indicó que la nota presupone la aprobación de un presupuesto para 2027 que reduzca el déficit y una moderación de los costos de financiamiento y de las tensiones sociales. Esas condiciones mantienen la perspectiva negativa y distinguen una pausa en el castigo de una mejora estructural del crédito. La Agence France Trésor conserva a Moody's como la principal agencia que aún asigna a Francia una calificación en el rango AA. Para los mercados globales, la señal es cuánto puede mover las curvas soberanas una decisión de rating cuando ya existe tensión fiscal. El seguimiento debe centrarse en el presupuesto, las próximas subastas y el diferencial del OAT frente al Bund, no sólo en una jornada de alivio.",
+        "anchor": "bonos-franceses-rebotan-moodys",
+        "sources": [
+          {
+            "name": "Agence France Trésor — calificaciones soberanas de Francia",
+            "url": "https://www.aft.gouv.fr/en/frances-credit-ratings"
+          },
+          {
+            "name": "Reuters — caída del rendimiento del OAT tras la decisión de Moody's",
+            "url": "https://live.euronext.com/en/financial-news/france-spared-moodys-ratings-downgrade-it-struggles-unrest"
+          }
+        ]
+      }
+    ]
+  }
+}

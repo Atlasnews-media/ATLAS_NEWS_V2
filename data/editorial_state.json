@@ -3,14 +3,14 @@
     {
       "id": "oil-geopolitics-inflation",
       "topic": "Petróleo, geopolítica e inflación",
-      "thesis": "El shock energético ya está reordenando la política occidental: su costo electoral llevó a Estados Unidos a aliviar presión sobre Rusia, presionar a Ucrania y aplazar una eventual escalada con Irán, mientras en Europa los combustibles caros tensionan presupuestos y el consenso sobre sanciones.",
-      "status": "confirmed",
-      "last_evidence": "El 24 de octubre una encuesta Reuters/Ipsos mostraba que 78% de los estadounidenses atribuía a las políticas de Trump parte del alza de costos; antes de las legislativas, Washington facilitó diésel ruso, pidió frenar ataques ucranianos a refinerías y descartó una nueva operación contra Irán antes del voto.",
-      "effect": "Confirma y amplía la tesis desde Europa hacia Estados Unidos: la energía cara ya condiciona elecciones y modifica instrumentos y calendario de política exterior, aun cuando las medidas de alivio no resuelven la oferta ni los conflictos de fondo.",
-      "base_scenario": "Hasta el 3 de noviembre Washington evita una nueva escalada con Irán y busca aliviar combustibles mediante oferta rusa y presión sobre Ucrania; después del voto reaparece el riesgo militar, mientras Europa mantiene con dificultad sus sanciones y apoyo a Kyiv.",
-      "invalidate_if": "Una caída sostenida de combustibles sin concesiones geopolíticas, acompañada de distensión verificable con Irán y continuidad coordinada del apoyo occidental a Ucrania, debilitaría la tesis; nuevas exenciones, presión sobre Kyiv o escalada posterior a las elecciones la reforzarían.",
-      "watch": "Elecciones legislativas de Estados Unidos, cargamentos de diésel ruso, sanciones y exenciones, ataques a refinerías, política hacia Ucrania, decisiones sobre Irán después del 3 de noviembre, Ormuz, gas y diésel europeos, protestas y apoyo a Kyiv.",
-      "last_publication": "/ediciones/2026-10-24-daily-politica-exterior-eeuu-costo-electoral/"
+      "thesis": "La crisis energética entra en una fase de doble vía: Arabia Saudita y sus aliados negocian directamente con Irán mientras mantienen defensa colectiva, pero los ataques hutíes y el tránsito restringido por Ormuz impiden tratar la diplomacia como normalización efectiva del suministro.",
+      "status": "changed",
+      "last_evidence": "El 27 de octubre Arabia Saudita informó la intercepción de tres misiles y cuatro drones hutíes tras el primer contacto conjunto de alto nivel en Teherán con Turquía, Pakistán e Irán; Ormuz operaba cerca de 60% de su flujo normal, las exportaciones del Golfo caían por cuarta semana y los inventarios de destilados estaban casi 5% bajo su media de cinco años.",
+      "effect": "Amplía el hilo desde el costo electoral occidental hacia una arquitectura regional de contención: existe un canal diplomático nuevo, pero la seguridad física de rutas e infraestructura sigue siendo la condición necesaria para aliviar energía e inflación.",
+      "base_scenario": "Las conversaciones regionales continúan sin un acuerdo inmediato; evitan por ahora una escalada mayor, pero los ataques intermitentes mantienen restringidos Ormuz y las rutas alternativas hasta que existan compromisos verificables y recuperación sostenida de flujos.",
+      "invalidate_if": "Un alto el fuego verificable, la normalización de Ormuz y del mar Rojo y la recuperación de exportaciones e inventarios debilitarían la tesis de vulnerabilidad; ruptura de conversaciones, daños a infraestructura o nuevos ataques de Estados Unidos e Israel contra Irán la reforzarían.",
+      "watch": "Calendario y compromisos de las conversaciones en Teherán, ataques hutíes, respuesta saudita, tránsito por Ormuz y Bab el-Mandeb, exportaciones del Golfo, inventarios de destilados y decisiones de Estados Unidos e Israel después de sus elecciones.",
+      "last_publication": "/ediciones/2026-10-27-daily-diplomacia-riesgo-energia/"
     },
     {
       "id": "us-employment-fed-rates",

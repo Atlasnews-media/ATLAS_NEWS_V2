@@ -1,0 +1,25 @@
+VOZ 1: La sesión asiática trae un rebote fuerte, pero no una señal uniforme de alivio. El Kospi de Corea del Sur subió 3,9%, su mayor avance diario desde febrero, el Nikkei ganó 1,9% y el índice regional sin Japón avanzó 0,9%.
+VOZ 2: ¿Qué impulsó esa diferencia a favor de Corea y Japón?
+VOZ 1: Principalmente una recompra de tecnología e inteligencia artificial. Después de varias sesiones de dudas sobre deuda, gasto y retorno, los inversionistas volvieron a tomar exposición antes de los resultados de Alphabet, Microsoft y Amazon.
+VOZ 2: ¿Cambió la evidencia sobre rentabilidad o sólo cambió el ánimo?
+VOZ 1: Por ahora cambió más el posicionamiento que la prueba económica. Anthropic presentó su expediente para salir a bolsa con ingresos creciendo rápido, pero también con pérdidas elevadas. Meta, al mismo tiempo, busca levantar hasta 95.000 millones de dólares en acciones. Eso confirma demanda por infraestructura, aunque todavía no demuestra que todo el capital invertido producirá retornos suficientes.
+VOZ 2: Entonces el 3,9% del Kospi no significa que desapareció el riesgo de la inteligencia artificial.
+VOZ 1: Exactamente. Corea tiene una exposición muy alta a memoria y semiconductores, de modo que amplifica tanto las ventas como las recompras. El movimiento de hoy es una rotación sectorial hacia crecimiento, no una validación definitiva del ciclo.
+VOZ 2: ¿Qué dicen los otros activos?
+VOZ 1: Que las condiciones financieras siguen exigentes. El Treasury estadounidense a diez años permanecía en 4,992%, prácticamente en 5%. El yen cotizaba cerca de 157,61 por dólar antes de la reunión del Banco de Japón. La Fed, el Banco Central Europeo y el Banco de Japón se preparan para mantener tasas, pero el mercado sigue considerando posible otra alza estadounidense en diciembre.
+VOZ 2: O sea, suben las acciones mientras el costo del capital continúa alto.
+VOZ 1: Sí. Esa divergencia es la señal central. Tecnología rebota porque los inversionistas quieren llegar posicionados a los resultados, pero los bonos no están confirmando dinero más barato.
+VOZ 2: ¿Y el petróleo? La General ya mostró que hay conversaciones regionales, pero siguen los ataques.
+VOZ 1: El petróleo hizo visible esa tensión dentro de la misma mañana. El Brent llegó a caer cerca de 1% por expectativas de avance diplomático y luego revirtió: subía 0,4% hasta 116 dólares con 24 centavos después de nuevos ataques hutíes. El WTI avanzaba 0,3% hasta 102 dólares con 7 centavos.
+VOZ 2: ¿Por qué una conversación diplomática no alcanza para bajar el precio de forma estable?
+VOZ 1: Porque el mercado necesita cambios físicos. El tránsito por Ormuz continúa cerca de 60% de su nivel habitual, las exportaciones del Golfo caen por cuarta semana y los inventarios de destilados están casi 5% bajo su promedio de cinco años. Mientras esos datos no mejoren, cada ataque puede reactivar la prima de suministro.
+VOZ 2: ¿Cómo se conectan petróleo y tecnología?
+VOZ 1: A través de inflación y tasas. Energía cara puede mantener elevada la inflación, reducir el margen de los bancos centrales y sostener rendimientos altos. Eso aumenta la tasa con que el mercado descuenta utilidades futuras, justamente las que explican gran parte de la valoración tecnológica.
+VOZ 2: Entonces, ¿qué está descontando realmente el mercado hoy?
+VOZ 1: Que los resultados de las grandes tecnológicas podrían ser suficientemente buenos para justificar una recompra táctica, pero sin asumir todavía que bajarán las tasas o que se normalizará la energía. Es apetito selectivo, no relajación general.
+VOZ 2: ¿Qué confirmaría una lectura más constructiva?
+VOZ 1: Que Alphabet, Microsoft y Amazon muestren crecimiento de nube e inteligencia artificial junto con flujo de caja y retornos verificables; que la Fed no endurezca su guía; y que Ormuz, las exportaciones y los inventarios se normalicen.
+VOZ 2: ¿Y qué haría retroceder el rebote?
+VOZ 1: Utilidades que no compensen el capital requerido, nuevas emisiones que diluyan a los accionistas, un tono más restrictivo de los bancos centrales o nuevos ataques que empujen otra vez el petróleo y las expectativas de inflación.
+VOZ 2: En una frase, ¿cómo queda la sesión?
+VOZ 1: Asia recompra inteligencia artificial, pero bonos, monedas y petróleo recuerdan que el capital sigue caro. El rebote es real; el cambio de régimen todavía no.
