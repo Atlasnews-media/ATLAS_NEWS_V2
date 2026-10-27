@@ -19,12 +19,12 @@ sources:
     url: "https://www.cmfchile.cl/sitio/aplic/serdoc/ver_sgd.php?s567=46a1e6cb8b4b839938d5f4a34a373d84VFdwQmVVNXFSWGROUkZrMFRrUk5kMDFCUFQwPQ%3D%3D&secuencia=-1&t=1793108041"
     publishedAt: "2026-10-27T08:30:32-03:00"
 highlights:
-  - label: "Los Lagos lleva a junta un reparto de hasta $5.822 millones"
+  - label: "Los Lagos propone pago"
     text: "La concesionaria propone usar utilidades retenidas de ejercicios anteriores y someter la decisión a sus accionistas el 4 de noviembre."
-  - label: "Schwager fija $0,03 por acción"
+  - label: "Schwager paga $0,03"
     text: "El dividendo provisional totaliza $794,4 millones y se pagará el 20 de noviembre a los accionistas inscritos al día 14."
-  - label: "Las bases financieras son distintas"
-    text: "Una operación depende de aprobación extraordinaria sobre utilidades acumuladas; la otra distribuye 25,44% de la ganancia atribuible al controlador al cierre de junio."
+  - label: "Dos bases financieras"
+    text: "Los Lagos usa utilidades retenidas; Schwager distribuye 25,44% de la ganancia de la controladora al cierre de junio."
 demo: false
 ---
 
