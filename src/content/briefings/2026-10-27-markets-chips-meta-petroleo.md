@@ -1,11 +1,11 @@
 ---
 title: "Chips suben 1,8% en Wall Street, pero Meta cae tras ampliar a US$97.500 millones su emisión"
 summary: "La apertura estadounidense confirmó el rebote selectivo de la inteligencia artificial: semiconductores y Nasdaq avanzaron mientras el petróleo cedió, pero el mercado castigó a Meta por el costo de financiar su expansión."
-publishedAt: "2026-10-27T13:20:00-03:00"
+publishedAt: "2026-10-27T13:13:09-03:00"
 cutoffAt: "2026-10-27T12:00:00-03:00"
 section: "markets"
 editionSlot: "evening"
-status: "draft"
+status: "published"
 tags:
   - mercados
   - wall-street
