@@ -1,11 +1,11 @@
 ---
 title: "La inversión en IA lleva el gasto empresarial de Estados Unidos a crecer cerca de 20% anualizado"
 summary: "Los pedidos y despachos de bienes de capital confirman que la infraestructura de inteligencia artificial ya sostiene la actividad, aunque el costo del financiamiento amenaza con moderar el impulso."
-publishedAt: "2026-10-27T13:20:00-03:00"
+publishedAt: "2026-10-27T13:13:09-03:00"
 cutoffAt: "2026-10-27T12:00:00-03:00"
 type: "daily"
 editionSlot: "evening"
-status: "draft"
+status: "published"
 tags:
   - inteligencia-artificial
   - inversion
