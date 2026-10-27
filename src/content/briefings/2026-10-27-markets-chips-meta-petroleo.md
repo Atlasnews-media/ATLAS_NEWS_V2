@@ -22,11 +22,11 @@ sources:
     url: "https://www.reuters.com/technology/big-tech-earnings-test-ai-boom-amid-market-turmoil-2026-10-27/"
     publishedAt: "2026-10-27T07:02:00-03:00"
 highlights:
-  - label: "Los semiconductores avanzaron 1,8%"
+  - label: "Chips suben 1,8%"
     text: "El índice del sector encadenó una tercera sesión al alza y confirmó en la apertura estadounidense la recuperación que Asia había anticipado."
-  - label: "Meta cayó 1,1% por el costo de la expansión"
+  - label: "Meta cae por la emisión"
     text: "La compañía elevó a US$97.500 millones su mayor levantamiento de capital, separándose del avance del resto de la infraestructura de IA."
-  - label: "Petróleo más bajo alivió el riesgo, no las tasas"
+  - label: "Brent baja, tasas altas"
     text: "Brent retrocedió por segunda sesión, mientras el Treasury a diez años seguía cerca de 5% antes de la decisión de la Reserva Federal."
 demo: false
 ---
