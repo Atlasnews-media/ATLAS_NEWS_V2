@@ -1,11 +1,11 @@
 ---
 title: "Capstone concentra US$3.000 millones en Atacama, pero la prueba será ejecutar Santo Domingo"
 summary: "El plan busca duplicar la producción chilena de Capstone hacia 2031 y concentra US$2.300 millones en Santo Domingo. Empleo y aporte regional dependerán de que la cartera pase del anuncio a construcción."
-publishedAt: "2026-10-27T06:15:00-03:00"
+publishedAt: "2026-10-27T06:43:57-03:00"
 cutoffAt: "2026-10-27T06:12:00-03:00"
 section: "national"
 editionSlot: "morning"
-status: "draft"
+status: "published"
 tags:
   - chile
   - mineria

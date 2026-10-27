@@ -1,11 +1,11 @@
 ---
 title: "Asia recompra inteligencia artificial mientras petróleo y tasas limitan el apetito"
 summary: "El Kospi saltó 3,9% y el Nikkei 1,9% por una recompra tecnológica, pero el Brent revirtió pérdidas intradía y el Treasury a diez años permaneció cerca de 5%. La dispersión muestra un rebote, no una relajación general."
-publishedAt: "2026-10-27T06:17:00-03:00"
+publishedAt: "2026-10-27T06:43:57-03:00"
 cutoffAt: "2026-10-27T06:13:00-03:00"
 section: "markets"
 editionSlot: "morning"
-status: "draft"
+status: "published"
 tags:
   - mercados-globales
   - inteligencia-artificial

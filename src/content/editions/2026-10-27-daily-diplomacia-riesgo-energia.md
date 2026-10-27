@@ -1,11 +1,11 @@
 ---
 title: "La diplomacia regional avanza, pero el suministro energético sigue expuesto"
 summary: "Arabia Saudita, Turquía y Pakistán abrieron conversaciones con Irán mientras continúan los ataques hutíes. El tránsito por Ormuz ronda 60% de lo normal y las exportaciones del Golfo acumulan cuatro semanas de caída."
-publishedAt: "2026-10-27T06:04:38-03:00"
+publishedAt: "2026-10-27T06:43:57-03:00"
 cutoffAt: "2026-10-27T06:03:57-03:00"
 type: "daily"
 editionSlot: "morning"
-status: "draft"
+status: "published"
 tags:
   - medio-oriente
   - iran
