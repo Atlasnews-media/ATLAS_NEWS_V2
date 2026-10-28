@@ -1,11 +1,11 @@
 ---
 title: "El peso gana 0,6%, pero el IPSA cae 0,9% con el petróleo sobre US$101"
 summary: "El cobre y el desarme de apuestas contra el peso favorecieron al tipo de cambio, mientras las acciones devolvieron parte del rebote previo y la energía volvió a endurecer el cuadro local."
-publishedAt: "2026-10-28T13:06:21-03:00"
+publishedAt: "2026-10-28T13:10:45-03:00"
 cutoffAt: "2026-10-28T12:00:00-03:00"
 section: "markets"
 editionSlot: "evening"
-status: "draft"
+status: "published"
 tags:
   - mercados
   - peso-chileno
