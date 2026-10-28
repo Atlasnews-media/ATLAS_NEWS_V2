@@ -1,0 +1,111 @@
+{
+  "status": "READY",
+  "date": "2026-10-28",
+  "contract": "atlas-senales-del-dia-v1",
+  "senalesDelDia": {
+    "internacional": [
+      {
+        "slot": "technology",
+        "headline": "Chrome retira una raíz tras compromiso de certificados",
+        "deck": "Google eliminó emSign ECC Root CA - G3 después de detectar claves débiles en ocho certificados intermedios de eMudhra.",
+        "development": "Google extendió el 27 de octubre a los dispositivos que usan Chrome Root Store la eliminación de confianza en emSign ECC Root CA - G3. La medida siguió al hallazgo de claves privadas recuperables en ocho certificados subordinados de eMudhra, generadas con entropía insuficiente. Chrome ya había bloqueado el 17 de octubre los identificadores de clave de los certificados intermedios afectados mediante CRLSet, mientras Android recibió una protección equivalente a través de Google Play Services. La compañía indicó que no observó certificados TLS fraudulentos registrados en Certificate Transparency antes del bloqueo, pero la debilidad permitía, en teoría, falsificar certificados confiables para suplantar sitios frente a clientes que aún aceptaran esas autoridades.\n\nLa retirada de la raíz amplía la protección a consumidores de Chrome Root Store que no reciben las actualizaciones de CRLSet, aunque también puede interrumpir certificados legítimos que dependían de esa cadena. Google pidió a los operadores afectados migrar de inmediato a otra jerarquía incluida en su almacén y mantiene bajo revisión las restantes autoridades de eMudhra. La señal tecnológica no es una explotación confirmada, sino una corrección de confianza a escala de navegador: el seguimiento verificable está en la migración de certificados, las actualizaciones de otros almacenes y cualquier evidencia posterior de uso indebido.",
+        "anchor": "chrome-retira-raiz-emudhra-certificados",
+        "sources": [
+          {
+            "name": "Google Security Blog — respuesta al compromiso de eMudhra",
+            "url": "https://blog.google/security/protecting-chrome-and-android-users-from-compromised-emudhra-intermediate-ca-certificates/"
+          },
+          {
+            "name": "Mozilla Dev Security Policy — coordinación sobre certificados comprometidos",
+            "url": "https://groups.google.com/a/mozilla.org/g/dev-security-policy/c/0R3XLJL6FuE/m/0XofdebrAAAJ"
+          }
+        ]
+      },
+      {
+        "slot": "world",
+        "headline": "Rusia y Ucrania inician tregua humanitaria en Oleshky",
+        "deck": "El alto el fuego local comenzó el 27 de octubre para permitir desminado, entrega de ayuda y preparación de evacuaciones civiles.",
+        "development": "Rusia y Ucrania comenzaron el 27 de octubre un alto el fuego limitado en torno a Oleshky, ciudad ocupada en la región de Jersón, para habilitar una operación humanitaria. El comisionado ucraniano de Derechos Humanos, Dmytro Lubinets, confirmó que Kyiv cumplía el acuerdo, mientras el Ministerio de Defensa ruso informó que suspendió el fuego desde las 4:00 de Moscú. La pausa busca permitir el desminado de accesos, la entrada de alimentos y medicinas y la preparación de una vía segura para civiles que quieran salir. El acuerdo había sido anunciado el 23 de octubre y fue coordinado con mediación estadounidense y participación de las oficinas de derechos humanos de ambos países.\n\nLa tregua es geográficamente acotada y no representa un cese general de hostilidades. Reuters reportó ataques paralelos en Kyiv y otras localidades el mismo día, con víctimas y daños a infraestructura, lo que delimita su alcance. Tampoco corresponde dar por completada la evacuación: primero deben despejarse rutas, entregar ayuda y registrar a los residentes. La evidencia siguiente será la continuidad del régimen de silencio, el acceso efectivo de los convoyes y el número de personas evacuadas, verificaciones separadas de cualquier negociación política más amplia.",
+        "anchor": "oleshky-tregua-humanitaria-local",
+        "sources": [
+          {
+            "name": "Presidencia de Ucrania — preparación de la operación en Oleshky",
+            "url": "https://www.president.gov.ua/en/news/vidnovili-robotu-starlinku-starshildu-na-shvidkosti-yaka-bul-107025"
+          },
+          {
+            "name": "Reuters — inicio y alcance de la tregua local",
+            "url": "https://www.investing.com/news/world-news/russia-ukraine-begin-oleshky-ceasefire-but-keep-up-strikes-elsewhere-4974577"
+          }
+        ]
+      }
+    ],
+    "nacional": [
+      {
+        "slot": "ipsa_company",
+        "headline": "Cencosud Shopping fija dividendo provisorio de $40",
+        "deck": "El directorio acordó cargar el pago a las utilidades de 2026 y distribuirlo desde el 18 de noviembre mediante SerCor.",
+        "development": "Cencosud Shopping informó como hecho esencial que su directorio acordó distribuir un dividendo provisorio de $40 por acción con cargo a las utilidades del ejercicio 2026. La decisión fue adoptada en la sesión del 26 de octubre y el pago comenzará el 18 de noviembre a través de Servicios Corporativos SerCor. El anuncio define monto, carácter y fecha de distribución, pero no equivale por sí solo a una actualización de resultados trimestrales ni permite inferir el cierre anual. Para los accionistas, el efecto económico dependerá también del número de títulos con derecho al pago, del tratamiento tributario aplicable y del ajuste de precio que normalmente acompaña a la fecha ex dividendo.\n\nLa señal corporativa está en una devolución de efectivo respaldada por utilidades del período en curso, separada de cualquier estimación sobre desempeño futuro. Cencosud Shopping opera activos de renta comercial y su flujo de dividendos debe evaluarse junto con ocupación, ingresos, inversión y deuda cuando publique sus estados financieros. El próximo dato verificable será el formulario de dividendo con la fecha límite para figurar en el registro de accionistas y, después, la ejecución del pago. Hasta entonces, el acuerdo del directorio es la información confirmada y no una promesa sobre nuevas distribuciones.",
+        "anchor": "cencosud-shopping-dividendo-provisorio-cuarenta",
+        "sources": [
+          {
+            "name": "Diario Estrategia — contenido del hecho esencial",
+            "url": "https://www.diarioestrategia.cl/texto-diario/mostrar/6067565/cencosud-shopping-comunica-distribucion-dividendo-provisorio"
+          },
+          {
+            "name": "CMF — registro de emisores de valores",
+            "url": "https://cmfchile.cl/institucional/mercados/consulta_busqueda.php?mercado=V"
+          }
+        ]
+      },
+      {
+        "slot": "policy_economy",
+        "headline": "CMF propone identificar depósitos desde $1 millón",
+        "deck": "La consulta abarcaría bancos, cooperativas y emisores no bancarios, y permitiría exigir identificación también bajo ese umbral.",
+        "development": "La Comisión para el Mercado Financiero abrió el 27 de octubre una consulta pública de cuatro semanas para exigir la exhibición de cédula de identidad en depósitos en efectivo iguales o superiores a $1 millón, o su equivalente en moneda extranjera. La propuesta establece instrucciones comunes para bancos, cooperativas de ahorro y crédito y emisores de tarjetas de pago no bancarias. También autoriza a cada entidad a aplicar el control a montos menores según sus políticas. Para implementarla, el borrador modifica el Capítulo 20-1 de la normativa bancaria, el Capítulo CAC-3 de cooperativas y la Circular N°1 de emisores no bancarios.\n\nEl objetivo declarado es identificar a quien ejecuta materialmente la operación, especialmente cuando no es titular de la cuenta receptora, y mejorar la trazabilidad para investigaciones y procesos judiciales. La iniciativa forma parte del plan nacional 2023-2027 contra el lavado de activos y se apoya en trabajo intersectorial con el Ministerio Público. Aún no es una obligación vigente: puede recibir observaciones y cambiar antes de su publicación definitiva. Por eso, el seguimiento debe centrarse en el texto final, la fecha efectiva y las instrucciones operativas para depósitos presenciales o automatizados, sin confundir la consulta con una norma ya exigible.",
+        "anchor": "cmf-identificacion-depositos-efectivo-millon",
+        "sources": [
+          {
+            "name": "CMF — propuesta normativa en consulta",
+            "url": "https://www.cmfchile.cl/portal/prensa/625/w4-article-114455.html"
+          },
+          {
+            "name": "Emol — alcance operativo de la propuesta",
+            "url": "https://www.emol.com/noticias/Economia/2026/10/27/1215331/exigir-cedilar-depositos-1-millon.html"
+          }
+        ]
+      }
+    ],
+    "mercados": [
+      {
+        "slot": "markets_chile",
+        "headline": "IPSA rebota 1,80% y recupera parte de la caída previa",
+        "deck": "El índice cerró el 27 de octubre en 10.766,07 puntos, con una reversión parcial tras la corrección regional de la sesión anterior.",
+        "development": "El MSCI IPSA avanzó 1,80% el 27 de octubre y cerró en 10.766,07 puntos, mientras el IGPA subió 1,72% hasta 54.415,84. El movimiento recuperó parte de la baja de 1,59% que el índice chileno había registrado en la sesión anterior, cuando las acciones con exposición a Brasil concentraron las pérdidas. La lectura diaria muestra una reversión parcial, no una recuperación completa: tras encadenar una caída y un rebote de magnitud distinta, el nivel del IPSA siguió por debajo del cierre previo a ambas sesiones. Datos de mercado publicados tras el cierre situaron además su avance acumulado de 2026 en 2,7% con dividendos reinvertidos.\n\nLa amplitud del rebote reduce la señal de que se trató sólo de un título aislado, pero una jornada no establece una tendencia. El cierre coincidió con volatilidad regional y con movimientos relevantes en acciones chilenas expuestas a materias primas y Brasil; separar esas fuerzas requiere más sesiones y volumen negociado. Tampoco corresponde atribuir todo el avance a una sola noticia. La evidencia siguiente será si el índice sostiene la recuperación, cómo evolucionan las compañías que lideraron el ajuste anterior y si el peso acompaña o compensa los retornos para inversionistas externos.",
+        "anchor": "ipsa-rebote-veintisiete-octubre",
+        "sources": [
+          {
+            "name": "Diario Estrategia — cierre del MSCI IPSA",
+            "url": "https://www.diarioestrategia.cl/texto-diario/mostrar/6068685/msci-ipsa-bolsa-santiago-martes-vario-180"
+          },
+          {
+            "name": "AI Acciones Chile — índices y variación al cierre",
+            "url": "https://www.aiacciones.cl/"
+          }
+        ]
+      },
+      {
+        "slot": "markets_global",
+        "headline": "Indonesia adjudica Rp20,65 billones en deuda soberana",
+        "deck": "La demanda por nueve series sumó Rp31,09 billones; el Tesoro concentró la colocación en letras y bonos con vencimientos hasta 2037.",
+        "development": "El Ministerio de Finanzas de Indonesia adjudicó el 27 de octubre Rp20,65 billones en una subasta de deuda soberana que recibió ofertas por Rp31,09 billones. La operación incluyó nueve series de letras y bonos con vencimientos entre noviembre de 2026 y julio de 2064. La mayor asignación recayó en el bono FR0110 con vencimiento en 2032, por Rp6,75 billones y rendimiento promedio ponderado de 7,37990%, seguido por una letra a doce meses por Rp6,35 billones con 6,65797% y el FR0111 de 2037 por Rp5,10 billones con 7,54971%. La liquidación fue fijada para el 29 de octubre.\n\nLa distribución muestra que el Tesoro tomó la mayor parte del financiamiento en los plazos corto e intermedio y aceptó montos pequeños en los bonos más largos. Las razones entre demanda y adjudicación variaron ampliamente: la serie 2045 recibió casi seis veces el monto colocado, pero sólo se asignaron Rp250.000 millones. Eso impide leer la cifra agregada como una demanda uniforme a lo largo de la curva. La señal para mercados globales está en los rendimientos que Indonesia debió validar y en la selectividad por plazo; el próximo contraste será la negociación secundaria después de la liquidación y las siguientes subastas del programa de financiamiento.",
+        "anchor": "indonesia-subasta-deuda-soberana-octubre",
+        "sources": [
+          {
+            "name": "Ministerio de Finanzas de Indonesia — resultados de la subasta",
+            "url": "https://djppr.kemenkeu.go.id/hasillelangsuratutangnegarapadahariselasa,tanggal27oktober2026"
+          }
+        ]
+      }
+    ]
+  }
+}
