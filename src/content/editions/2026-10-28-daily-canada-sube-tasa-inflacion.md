@@ -1,11 +1,11 @@
 ---
 title: "Canadá sube la tasa a 2,5% y eleva su inflación de 2027 a 3,1%"
 summary: "El Banco de Canadá ejecutó su primera alza en un año y dejó abierta otra: energía, importaciones y una economía más resistente cambiaron el balance frente a julio."
-publishedAt: "2026-10-28T13:06:21-03:00"
+publishedAt: "2026-10-28T13:10:45-03:00"
 cutoffAt: "2026-10-28T12:00:00-03:00"
 type: "daily"
 editionSlot: "evening"
-status: "draft"
+status: "published"
 tags:
   - canada
   - bancos-centrales
