@@ -1,11 +1,11 @@
 ---
 title: "Hacienda anticipa Imacec negativos pese a US$39.000 millones en nuevos proyectos"
 summary: "Jorge Quiroz reconoció debilidad inmediata en minería y actividad, pero contrapuso 151 iniciativas ingresadas a evaluación y una cartera privada que espera convertir en ejecución durante 2027."
-publishedAt: "2026-10-28T13:06:21-03:00"
+publishedAt: "2026-10-28T13:10:45-03:00"
 cutoffAt: "2026-10-28T12:00:00-03:00"
 section: "national"
 editionSlot: "evening"
-status: "draft"
+status: "published"
 tags:
   - chile
   - inversion
