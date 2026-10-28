@@ -1,11 +1,11 @@
 ---
 title: "La bolsa premia la IA, pero el crédito exige pruebas de retorno"
 summary: "El salto de semiconductores asiáticos elevó las acciones, mientras deuda, tasas y petróleo mantuvieron un filtro más exigente. La dispersión reemplaza al impulso uniforme del tema IA."
-publishedAt: "2026-10-28T06:20:30-03:00"
+publishedAt: "2026-10-28T06:45:41-03:00"
 cutoffAt: "2026-10-28T06:19:00-03:00"
 section: "markets"
 editionSlot: "morning"
-status: "draft"
+status: "published"
 tags:
   - mercados
   - inteligencia-artificial

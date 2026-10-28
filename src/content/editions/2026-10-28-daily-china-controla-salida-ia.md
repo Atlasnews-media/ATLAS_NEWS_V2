@@ -1,11 +1,11 @@
 ---
 title: "China restringe la salida de sus modelos de IA y privilegia vender acceso"
 summary: "El borrador de controles permite ofrecer servicios chinos de inteligencia artificial en el exterior, pero somete a aprobación la transferencia de modelos, datos, infraestructura y propiedad tecnológica."
-publishedAt: "2026-10-28T06:05:39-03:00"
+publishedAt: "2026-10-28T06:45:41-03:00"
 cutoffAt: "2026-10-28T06:04:02-03:00"
 type: "daily"
 editionSlot: "morning"
-status: "draft"
+status: "published"
 tags:
   - china
   - inteligencia-artificial

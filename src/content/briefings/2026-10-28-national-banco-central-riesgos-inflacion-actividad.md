@@ -1,11 +1,11 @@
 ---
 title: "Banco Central mantiene la TPM, pero cambia el balance entre inflación y actividad"
 summary: "El Consejo mantuvo la tasa en 4,5%, pero elevó su alerta por energía y alimentos justo cuando consumo, inversión y minería muestran debilidad. La señal es una política sin trayectoria predeterminada."
-publishedAt: "2026-10-28T06:18:30-03:00"
+publishedAt: "2026-10-28T06:45:41-03:00"
 cutoffAt: "2026-10-28T06:17:00-03:00"
 section: "national"
 editionSlot: "morning"
-status: "draft"
+status: "published"
 tags:
   - chile
   - banco-central
