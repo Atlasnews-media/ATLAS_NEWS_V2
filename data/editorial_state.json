@@ -99,14 +99,14 @@
     {
       "id": "china-eu-industrial-trade",
       "topic": "Comercio industrial entre China y la Unión Europea",
-      "thesis": "El desequilibrio industrial entre China y Occidente ya es macroeconómico: China sostiene su crecimiento con exportaciones y manufactura avanzada mientras consumo, inversión privada y propiedad quedan rezagados, y sus socios responden con defensas comerciales y controles tecnológicos.",
+      "thesis": "El desequilibrio industrial entre China y Occidente ya es macroeconómico y tecnológico: China sostiene crecimiento con exportaciones y manufactura avanzada mientras administra la salida de modelos, datos y conocimiento, y sus socios responden con defensas comerciales y controles a chips y capital.",
       "status": "confirmed",
-      "last_evidence": "El 19 de octubre China informó un crecimiento de 4,5% interanual en el tercer trimestre; en septiembre las exportaciones en yuanes subieron 29,6% y la producción industrial 5,5%, frente a ventas minoristas de 1,1%, mientras la inversión inmobiliaria cayó 20,6% en los primeros nueve meses.",
-      "effect": "Confirma y cuantifica la tesis: la competencia industrial no es sólo una sucesión de medidas comerciales, sino el resultado de un modelo chino que depende cada vez más de demanda externa para compensar la debilidad de hogares, propiedad e inversión privada.",
-      "base_scenario": "China alcanza la parte baja de su meta de crecimiento con exportaciones, manufactura avanzada y apoyo fiscal selectivo; el consumo y la propiedad mejoran lentamente, mientras Europa y otros socios amplían defensas sin cerrar por completo sus mercados.",
-      "invalidate_if": "Una recuperación sostenida de consumo, propiedad e inversión privada que reduzca el superávit sin nuevas barreras debilitaría la tesis; otra aceleración exportadora acompañada de salvaguardias, cuotas o controles tecnológicos la reforzaría.",
-      "watch": "Ventas minoristas, inversión privada e inmobiliaria, superávit y destinos de exportación, manufactura de alta tecnología, conclusiones europeas, investigaciones y salvaguardias, catálogo chino de tecnologías críticas y demanda global vinculada con inteligencia artificial.",
-      "last_publication": "/ediciones/2026-10-19-daily-china-crece-exportaciones-consumo-rezagado/"
+      "last_evidence": "El 28 de octubre el borrador chino de controles a la exportación distinguió entre vender acceso a IA por nube y transferir modelos, datos o capacidad de reproducción; agregó 23 tecnologías, alcanzó coordinación de más de 10.000 chips y sometió a registro operaciones que entreguen control extranjero.",
+      "effect": "Confirma y amplía la tesis: Beijing no sólo protege bienes y procesos industriales, sino que busca conservar propiedad intelectual e infraestructura de IA bajo control chino mientras monetiza servicios en el exterior, profundizando la fragmentación con Estados Unidos y Europa.",
+      "base_scenario": "China conserva propiedad intelectual y capacidades estratégicas, exporta acceso mediante servicios y nube y exige licencias para transferencias sensibles; Estados Unidos y Europa mantienen controles sobre chips, capital e inversión, con mayor duplicación de infraestructura y cumplimiento.",
+      "invalidate_if": "Reglas finales amplias que permitan transferir modelos, datos e infraestructura sin licencias, junto con una apertura occidental sostenida a chips y capital, debilitarían la tesis; separaciones obligatorias de productos, bloqueos de centros de datos o represalias adicionales la reforzarían.",
+      "watch": "Catálogo definitivo después del 15 de noviembre, guías de licencia, criterios de cómputo y desempeño, entrenamiento en servidores extranjeros, propiedad de centros de datos, inversiones en curso, respuestas de Estados Unidos y la Unión Europea y costos de infraestructura duplicada.",
+      "last_publication": "/ediciones/2026-10-28-daily-china-controla-salida-ia/"
     },
     {
       "id": "developing-country-crisis-finance",
