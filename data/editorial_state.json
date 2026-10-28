@@ -3,14 +3,14 @@
     {
       "id": "oil-geopolitics-inflation",
       "topic": "Petróleo, geopolítica e inflación",
-      "thesis": "La crisis energética entra en una fase de doble vía: Arabia Saudita y sus aliados negocian directamente con Irán mientras mantienen defensa colectiva, pero los ataques hutíes y el tránsito restringido por Ormuz impiden tratar la diplomacia como normalización efectiva del suministro.",
+      "thesis": "La crisis energética ya no sólo sostiene una prima geopolítica: la persistencia del petróleo y los márgenes de refinación comenzó a trasladarse a decisiones monetarias, mientras la diplomacia regional aún no normaliza rutas ni oferta.",
       "status": "changed",
-      "last_evidence": "El 27 de octubre Arabia Saudita informó la intercepción de tres misiles y cuatro drones hutíes tras el primer contacto conjunto de alto nivel en Teherán con Turquía, Pakistán e Irán; Ormuz operaba cerca de 60% de su flujo normal, las exportaciones del Golfo caían por cuarta semana y los inventarios de destilados estaban casi 5% bajo su media de cinco años.",
-      "effect": "Amplía el hilo desde el costo electoral occidental hacia una arquitectura regional de contención: existe un canal diplomático nuevo, pero la seguridad física de rutas e infraestructura sigue siendo la condición necesaria para aliviar energía e inflación.",
-      "base_scenario": "Las conversaciones regionales continúan sin un acuerdo inmediato; evitan por ahora una escalada mayor, pero los ataques intermitentes mantienen restringidos Ormuz y las rutas alternativas hasta que existan compromisos verificables y recuperación sostenida de flujos.",
-      "invalidate_if": "Un alto el fuego verificable, la normalización de Ormuz y del mar Rojo y la recuperación de exportaciones e inventarios debilitarían la tesis de vulnerabilidad; ruptura de conversaciones, daños a infraestructura o nuevos ataques de Estados Unidos e Israel contra Irán la reforzarían.",
-      "watch": "Calendario y compromisos de las conversaciones en Teherán, ataques hutíes, respuesta saudita, tránsito por Ormuz y Bab el-Mandeb, exportaciones del Golfo, inventarios de destilados y decisiones de Estados Unidos e Israel después de sus elecciones.",
-      "last_publication": "/ediciones/2026-10-27-daily-diplomacia-riesgo-energia/"
+      "last_evidence": "El 28 de octubre el Banco de Canadá subió su tasa 25 puntos base a 2,5%, elevó su previsión de inflación de 2027 desde 2,0% a 3,1% y atribuyó el giro a energía persistente, importaciones más caras y mayor riesgo de traslado de costos.",
+      "effect": "Amplía el hilo desde seguridad física y diplomacia hacia política monetaria: Canadá actuó preventivamente porque el crecimiento resistió, mostrando que el shock energético ya puede endurecer tasas antes de generalizarse por toda la canasta.",
+      "base_scenario": "El petróleo permanece alto y genera respuestas monetarias divergentes según la fortaleza de cada economía; las conversaciones regionales contienen una escalada mayor, pero la normalización de rutas y costos sigue incompleta.",
+      "invalidate_if": "Un alto el fuego verificable, la normalización sostenida de Ormuz y del mar Rojo y una caída durable de energía e inflación debilitarían la tesis; nuevos daños a infraestructura, mayor traslado a precios o más alzas de tasas la reforzarían.",
+      "watch": "Conversaciones regionales, ataques e infraestructura energética, tránsito por Ormuz y Bab el-Mandeb, Brent y márgenes de refinación, inflación subyacente, traslado de costos y decisiones de Canadá, Estados Unidos y Chile.",
+      "last_publication": "/ediciones/2026-10-28-daily-canada-sube-tasa-inflacion/"
     },
     {
       "id": "us-employment-fed-rates",
