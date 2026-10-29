@@ -1,11 +1,11 @@
 ---
 title: "El dólar supera $993 y el IPSA cae 0,97% mientras retroceden el cobre y las tecnológicas"
 summary: "El peso revirtió su avance previo, la bolsa chilena extendió su caída y el cobre cedió 0,79%. PIB e inflación de EE.UU. y el castigo a Alphabet endurecieron la lectura cross-asset."
-publishedAt: "2026-10-29T13:05:49-03:00"
+publishedAt: "2026-10-29T13:10:09-03:00"
 cutoffAt: "2026-10-29T12:00:00-03:00"
 section: "markets"
 editionSlot: "evening"
-status: "draft"
+status: "published"
 tags:
   - mercados
   - dolar
