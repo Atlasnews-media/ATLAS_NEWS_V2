@@ -80,7 +80,3 @@ Esa configuración mantendría presión sobre expectativas de inflación y limit
 La primera prueba será si la oferta petrolera efectivamente cae al ritmo previsto y si los inventarios dejan de reducirse. También importan el tránsito por Ormuz y el mar Rojo, los daños a infraestructura rusa y la seguridad de los embarques del mar Negro.
 
 En alimentos, las próximas cosechas y la intensidad de El Niño mostrarán si el escenario central sigue vigente. La tesis se debilitaría con una normalización sostenida de rutas, mayor oferta energética y buenas cosechas; se reforzaría si los shocks coinciden y obligan a más países a sostener subsidios o endurecer la política monetaria.
-
-## Fuentes
-
-Banco Mundial, *Commodity Markets Outlook*, octubre de 2026; comunicado del Banco Mundial del 28 de octubre de 2026; Reuters, 28 de octubre de 2026.
