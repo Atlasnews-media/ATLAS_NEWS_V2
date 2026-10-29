@@ -28,13 +28,13 @@
       "id": "ai-monetization-selectivity",
       "topic": "Inteligencia artificial y selectividad bursátil",
       "thesis": "La inteligencia artificial ya impulsa inversión empresarial y actividad medible, pero el costo de capital, la concentración de infraestructura y la conversión del gasto en caja determinan qué empresas y economías capturan el beneficio.",
-      "status": "changed",
-      "last_evidence": "El 27 de octubre los pedidos estadounidenses de bienes de capital básicos subieron 0,5% mensual y 10,9% interanual, los despachos avanzaron 1,2% y economistas estimaron que el gasto en equipos creció cerca de 20% anualizado por tercer trimestre consecutivo de expansión de dos dígitos.",
-      "effect": "Traslada el hilo desde la financiación extraordinaria de grandes tecnológicas hacia la economía real: el auge ya sostiene manufactura e inversión, pero tasas altas, deuda y retornos inciertos pueden frenar la siguiente fase.",
-      "base_scenario": "La inversión en IA continúa apoyando crecimiento, equipos e infraestructura, pero los beneficios se distribuyen de forma desigual; proveedores y empresas con energía, redes, capital y demanda verificable avanzan primero.",
-      "invalidate_if": "Una caída sostenida de pedidos y despachos, recortes generalizados de gasto o retornos insuficientes debilitarían la tesis de impulso macroeconómico; productividad amplia, caja creciente y adopción empresarial fuera de las grandes tecnológicas la reforzarían.",
-      "watch": "PIB e inversión en equipos de Estados Unidos, pedidos y despachos de capital, resultados de nube, gasto de capital, caja libre, emisiones de deuda y acciones, tasas, energía, productividad y adopción empresarial.",
-      "last_publication": "/ediciones/2026-10-27-daily-ia-inversion-equipos-eeuu/"
+      "status": "confirmed",
+      "last_evidence": "El 29 de octubre el PIB estadounidense creció 3,4% anualizado en el tercer trimestre, la inversión en equipos saltó 20,9% y aportó 1,16 puntos al crecimiento, mientras la inflación PCE subió a 3,6% interanual y la subyacente a 3,1%.",
+      "effect": "Confirma que el auge de IA ya tiene peso macroeconómico a través de equipos e infraestructura, pero también endurece su prueba financiera: crecimiento e inflación firmes mantienen altas las tasas y el mercado exige que el gasto se convierta en caja y productividad.",
+      "base_scenario": "La inversión en IA continúa apoyando crecimiento, equipos e infraestructura, pero los beneficios se distribuyen de forma desigual; proveedores y empresas con energía, redes, capital, demanda verificable y caja avanzan primero bajo un costo de financiamiento elevado.",
+      "invalidate_if": "Una caída sostenida de pedidos, inversión y despachos, recortes generalizados de gasto o retornos insuficientes debilitarían la tesis de impulso macroeconómico; productividad amplia, caja creciente y adopción empresarial fuera de las grandes tecnológicas la reforzarían.",
+      "watch": "PIB e inversión en equipos de Estados Unidos, resultados de nube, gasto de capital, caja libre, emisiones de deuda y acciones, inflación PCE, tasas largas, energía, productividad y adopción empresarial.",
+      "last_publication": "/ediciones/2026-10-29-daily-eeuu-crece-inflacion-bce-pausa/"
     },
     {
       "id": "chile-inflation-activity-rates",
