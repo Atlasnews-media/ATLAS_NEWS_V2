@@ -1,11 +1,11 @@
 ---
 title: "El desempleo sube a 9,8% y Chile pierde 1,1% de sus ocupados en un año"
 summary: "La desocupación alcanzó su mayor nivel desde la pandemia. El deterioro no provino sólo de más personas buscando trabajo: cayó el empleo, bajaron las horas y la RM llegó a 10,4%."
-publishedAt: "2026-10-29T13:05:49-03:00"
+publishedAt: "2026-10-29T13:10:09-03:00"
 cutoffAt: "2026-10-29T12:00:00-03:00"
 section: "national"
 editionSlot: "evening"
-status: "draft"
+status: "published"
 tags:
   - chile
   - empleo
