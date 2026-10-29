@@ -1,0 +1,27 @@
+VOZ 1: Hoy la inteligencia artificial dejó de comportarse como una sola operación bursátil. Alphabet cayó cerca de 10% fuera de rueda, mientras Microsoft subió alrededor de 3%. Las dos empresas invierten mucho en nube e infraestructura, pero el mercado valoró de forma muy distinta el gasto y su conversión en caja.
+VOZ 2: ¿Qué castigó específicamente en Alphabet?
+VOZ 1: El mercado vio presión en el negocio principal y un uso intensivo de efectivo. La preocupación no es que la nube no crezca, sino que la inversión avance más rápido que el retorno. La caída borró aproximadamente 400.000 millones de dólares de valor bursátil en operaciones posteriores al cierre.
+VOZ 2: ¿Y Microsoft qué hizo distinto?
+VOZ 1: Presentó una combinación más favorable de ingresos y flujo de caja. Eso permitió que los inversionistas vieran el gasto como algo más financiable. La diferencia confirma un cambio de criterio: ya no basta con anunciar centros de datos o capacidad de cómputo. Hay que demostrar demanda, márgenes y caja.
+VOZ 2: Esa selección también apareció en Asia.
+VOZ 1: Sí. Samsung informó utilidades récord, pero sus acciones bajaron cerca de 4% porque no anunció un aumento del retorno para accionistas. SK Hynix, en cambio, subió 4,6% después de comprometer una distribución relevante. El mercado premió no sólo el resultado, sino qué parte de ese resultado llega al accionista.
+VOZ 2: ¿Qué pasó con los índices regionales?
+VOZ 1: El Kospi retrocedió después del salto de la sesión anterior. En China, el CSI300 perdía alrededor de 1,2% y los índices tecnológicos caían bastante más. Los futuros del Nasdaq también bajaban cerca de 0,9%, arrastrados por Alphabet.
+VOZ 2: La Reserva Federal mantuvo la tasa. ¿Eso no debería haber ayudado a la tecnología?
+VOZ 1: La Fed dejó el rango en 3,75% a 4,00%, por diez votos contra dos. Pero la pausa no equivale a dinero barato. Durante la conferencia de Kevin Warsh, el Treasury corto bajó y los plazos largos subieron, empinando la curva.
+VOZ 2: ¿Cómo se interpreta esa diferencia entre corto y largo plazo?
+VOZ 1: El tramo corto reflejó que la Fed puede esperar más información. El largo mantuvo una prima por inflación persistente, deuda pública y demanda de financiamiento. Los inversionistas exigen más compensación para prestar a diez o treinta años, aunque el banco central no suba la tasa hoy.
+VOZ 2: ¿El mercado todavía espera un alza en diciembre?
+VOZ 1: Sí, la probabilidad implícita se mantenía cerca de 80%. Por eso el costo de capital sigue siendo un filtro. Una gran empresa con caja puede financiar inversión. Un operador que depende de deuda y de contratos futuros enfrenta una valoración mucho más exigente.
+VOZ 2: Eso conecta con la diferencia que vimos ayer entre acciones y crédito.
+VOZ 1: Exactamente, pero hoy la evidencia es más concreta. Ayer era una advertencia general sobre financiamiento. Hoy dos resultados corporativos mostraron cómo el mercado separa gasto con retorno visible de gasto que todavía consume caja.
+VOZ 2: ¿Y el petróleo? La General del día habla de una presión multicommodity.
+VOZ 1: El Brent bajaba 1,2% hasta 113,91 dólares por barril, ante expectativas de nuevas conversaciones entre Estados Unidos e Irán. Esa caída diaria no contradice la proyección anual del Banco Mundial. Una oferta restringida puede coexistir con correcciones cuando disminuye la probabilidad de una escalada inmediata.
+VOZ 2: Entonces no podemos hablar de normalización.
+VOZ 1: Todavía no. Para eso tendría que haber evidencia de producción recuperada, inventarios más holgados y rutas operando con normalidad. Por ahora cambió la probabilidad que asigna el mercado, no la infraestructura física.
+VOZ 2: ¿Cómo aterriza esta combinación en Chile?
+VOZ 1: La inversión en IA sostiene una demanda estructural por cobre, pero tasas largas altas dificultan financiar proyectos intensivos en capital. La baja diaria del petróleo alivia marginalmente el canal de importación, aunque un Brent sobre 113 dólares sigue siendo costoso. No hay una señal única favorable o adversa.
+VOZ 2: ¿Qué catalizadores siguen?
+VOZ 1: Amazon e Intel. Habrá que mirar crecimiento, márgenes, gasto de capital, utilización y flujo libre. En macro, los datos de inflación y PIB de Estados Unidos dirán si la Fed puede seguir esperando. Y en energía, las conversaciones deben traducirse en menos riesgo físico y flujos más normales.
+VOZ 2: La conclusión sería que el mercado ya no compra etiquetas.
+VOZ 1: Esa es la clave. IA, buenos resultados o una pausa de la Fed no bastan por sí solos. El precio depende de la calidad de la caja, la necesidad de deuda y la duración del riesgo. La sesión de hoy convirtió esa selección en movimientos muy visibles.

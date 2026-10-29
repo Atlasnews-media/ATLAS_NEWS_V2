@@ -1,0 +1,115 @@
+{
+  "status": "READY",
+  "date": "2026-10-29",
+  "contract": "atlas-senales-del-dia-v1",
+  "senalesDelDia": {
+    "internacional": [
+      {
+        "slot": "technology",
+        "headline": "Intel acuerda comprar Classiq para integrar computación cuántica",
+        "deck": "La operación combinará síntesis de algoritmos con qubits de silicio y fabricación; su cierre se proyecta para el primer semestre de 2027.",
+        "development": "Intel anunció el 26 de octubre un acuerdo definitivo para adquirir Classiq, empresa de software que automatiza la síntesis de algoritmos cuánticos. La compradora busca unir esa capa de programación con su tecnología de qubits de espín en silicio, electrónica criogénica y capacidad de fabricación de semiconductores. El objetivo corporativo es ofrecer una plataforma completa, desde el diseño de aplicaciones hasta el procesador, y añadir unidades de procesamiento cuántico a un portafolio que ya incluye CPU, GPU y circuitos especializados. Las compañías no divulgaron los términos financieros; una cifra difundida por Bloomberg y recogida por Reuters no fue verificada de manera independiente por esa agencia.\n\nEl acuerdo está sujeto a aprobaciones regulatorias y otras condiciones habituales, y se espera que cierre durante el primer semestre de 2027. Hasta entonces, Intel y Classiq continuarán como empresas separadas. Intel afirmó que, después de la operación, mantendrá las integraciones de Classiq con múltiples plataformas y la compatibilidad con hardware de terceros. Esa continuidad es relevante porque la propuesta del software es abstraer las diferencias entre modalidades de qubit. La señal verificable no es una promesa de ventaja cuántica inmediata: será el avance regulatorio, la preservación de la neutralidad tecnológica y la integración efectiva entre herramientas de desarrollo y hardware.",
+        "anchor": "intel-classiq-plataforma-cuantica-integrada",
+        "sources": [
+          {
+            "name": "Intel — acuerdo definitivo para adquirir Classiq",
+            "url": "https://www.intel.com/content/www/us/en/newsroom/news/corporate/intel-classiq-accelerate-scalable-quantum-computing.html"
+          },
+          {
+            "name": "Reuters — términos reportados y estado de la operación",
+            "url": "https://www.reuters.com/technology/intel-buy-quantum-firm-classiq-about-23-billion-bloomberg-news-reports-2026-10-27/"
+          }
+        ]
+      },
+      {
+        "slot": "world",
+        "headline": "Canadá y Emiratos Árabes Unidos firman acuerdo comercial",
+        "deck": "El pacto eliminaría o reduciría aranceles para más del 99% de las exportaciones canadienses actuales cuando sea implementado plenamente.",
+        "development": "Canadá y Emiratos Árabes Unidos firmaron el 27 de octubre un Acuerdo de Asociación Económica Integral para reducir aranceles, simplificar barreras y ampliar el acceso de bienes y servicios. Global Affairs Canada indicó que, una vez plenamente implementado, el pacto reducirá o eliminará aranceles sobre más del 99% de las exportaciones canadienses actuales al mercado emiratí. El comercio bilateral de mercancías alcanzó C$3.500 millones en 2025 y las negociaciones se cerraron en 47 días. El texto abarca sectores industriales, agrícolas, forestales, pesqueros, ambientales y de ingeniería, además de reglas para inversión y obstáculos no arancelarios.\n\nLa firma no significa que las preferencias ya estén vigentes. El registro oficial canadiense mantiene el acuerdo con estado de firmado pero no en vigor, y Reuters informó que aún debe pasar por ratificación parlamentaria; la expectativa gubernamental es que pueda entrar en vigor en 2027. Durante la visita a Ottawa también se suscribieron instrumentos preliminares sobre energía, defensa y cooperación diplomática, pero éstos tienen naturaleza y trámites distintos. La evidencia siguiente será la publicación del texto jurídico completo, su aprobación legislativa y los calendarios de desgravación. Hasta entonces, la apertura anunciada constituye un compromiso firmado, no una rebaja arancelaria disponible para operadores desde ahora.",
+        "anchor": "canada-emiratos-acuerdo-comercial-firmado",
+        "sources": [
+          {
+            "name": "Global Affairs Canada — firma del acuerdo Canadá-Emiratos",
+            "url": "https://www.canada.ca/en/global-affairs/news/2026/10/minister-sidhu-and-united-arab-emirates-minister-of-foreign-trade-sign-comprehensive-economic-partnership-agreement.html"
+          },
+          {
+            "name": "Reuters — alcance y ratificación pendiente del pacto",
+            "url": "https://www.marketscreener.com/news/canada-and-the-uae-to-sign-trade-deal-on-tuesday-source-says-ce785cdddc8ef620"
+          }
+        ]
+      }
+    ],
+    "nacional": [
+      {
+        "slot": "ipsa_company",
+        "headline": "Enel Chile eleva 10,7% su utilidad acumulada a septiembre",
+        "deck": "La ganancia atribuible llegó a US$390 millones y el EBITDA consolidado subió 1,7%, a US$1.021 millones, durante los primeros nueve meses.",
+        "development": "Enel Chile reportó una utilidad atribuible a los propietarios de la controladora de US$390 millones en los nueve meses terminados en septiembre, 10,7% más que los US$352 millones del mismo período de 2025. El EBITDA consolidado alcanzó US$1.021 millones, un aumento de US$17 millones o 1,7%. La compañía explicó la mejora principalmente por el desempeño operacional del segmento de generación, apoyado por la optimización del portafolio y una gestión más eficiente del abastecimiento y las compras de energía. Esas medidas compensaron los efectos de la sequía de junio y julio, mientras una recuperación hidroeléctrica durante agosto y septiembre apoyó el tercer trimestre.\n\nLa generación acumulada llegó a 16.966 GWh, 0,6% por encima del año anterior, y en el tercer trimestre aumentó 12% hasta 6.069 GWh. Las ventas físicas de energía de los primeros nueve meses bajaron 0,1%, a 23.974 GWh, porque menores ventas a clientes libres fueron compensadas en gran parte por mayores colocaciones en el mercado spot y a clientes regulados. En distribución y redes, las ventas físicas crecieron 1% y el número de clientes subió 1,5%. La señal corporativa combina expansión moderada del EBITDA con una utilidad creciendo a dos dígitos; su seguimiento requiere separar el aporte operacional recurrente de efectos financieros y de condiciones hidrológicas.",
+        "anchor": "enel-chile-resultados-nueve-meses-2026",
+        "sources": [
+          {
+            "name": "Enel Chile — resultados Q3 y 9M 2026",
+            "url": "https://www.enel.cl/es/inversionistas/inversionistas-enel-chile/informacion-para-accionista/resultados-trimestrales/Enel-Chile-Q3-9M-2026-Results.html"
+          },
+          {
+            "name": "Diario Financiero — utilidad y EBITDA acumulados",
+            "url": "https://www.df.cl/empresas/energia/enel-chile-anota-alza-de-10-7-en-sus-utilidades-a-septiembre-debido-a"
+          }
+        ]
+      },
+      {
+        "slot": "policy_economy",
+        "headline": "Senado aprueba postergar vigencia de ley de datos personales",
+        "deck": "El proyecto fija el 15 de octubre de 2027 como nueva fecha y amplía de tres a cinco integrantes el consejo de la futura agencia.",
+        "development": "El Senado aprobó el 28 de octubre, por 33 votos a favor y seis en contra, el proyecto que modifica la entrada en vigencia de la Ley N°21.719 sobre protección y tratamiento de datos personales. El texto despachado propone trasladar la fecha desde el 1 de diciembre de 2026 al 15 de octubre de 2027 y aumentar de tres a cinco los integrantes del Consejo Directivo de la Agencia de Protección de Datos Personales. También contempla períodos de seis años sin reelección y una renovación parcial del órgano, junto con ajustes de quórum. La iniciativa pasó a la Cámara de Diputadas y Diputados para su segundo trámite constitucional.\n\nLa postergación todavía no rige: mientras el proyecto no complete la tramitación y sea promulgado, la fecha legal vigente continúa siendo el 1 de diciembre de 2026. La distinción importa para empresas y organismos públicos que preparan procesos, contratos, sistemas y gobernanza de datos bajo la ley ya publicada. El debate legislativo se concentra en el tiempo de adecuación y en la estructura institucional, sin suprimir las obligaciones sustantivas de protección contenidas en la norma. Los próximos hitos verificables serán la votación en la Cámara, las eventuales diferencias entre ambas corporaciones y la publicación de una ley modificatoria; sólo entonces habrá una nueva fecha obligatoria.",
+        "anchor": "senado-postergacion-ley-datos-personales",
+        "sources": [
+          {
+            "name": "Senado de Chile — tramitación del proyecto de protección de datos",
+            "url": "https://www.senado.cl/comunicaciones/noticias/proteccion-de-datos-personales-avanza-proyecto-que-busca-postergar-entrada"
+          },
+          {
+            "name": "Diario Financiero — aprobación, fecha propuesta y siguiente trámite",
+            "url": "https://www.df.cl/senado-aprueba-modificaciones-al-proyecto-que-posterga-la-entrada-en"
+          }
+        ]
+      }
+    ],
+    "mercados": [
+      {
+        "slot": "markets_chile",
+        "headline": "Tasas chilenas divergen entre plazos nominales y reales",
+        "deck": "El BCP a dos años subió a 5,10%, mientras el BCU a cinco años bajó a 2,32%; los tramos largos nominales y reales también retrocedieron.",
+        "development": "Las pantallas de mercado consultadas el 29 de octubre mostraron movimientos distintos dentro de la curva soberana chilena. El rendimiento del BCP a dos años se ubicó en 5,10%, con un alza de nueve puntos base, y el BCP a cinco años llegó a 5,71%, tres puntos base más. En contraste, el BCP a diez años bajó dos puntos base hasta 5,97%. En instrumentos reajustables por inflación, el BCU a cinco años descendió un punto base a 2,32% y el BCU a diez años retrocedió cuatro puntos base a 2,63%. Los datos coincidentes de Santander y Consorcio permiten observar el cambio por nodo, pero no atribuirlo automáticamente a un único catalizador.\n\nLa combinación de avances en la parte corta nominal y retrocesos en los plazos largos muestra que la sesión no fue un desplazamiento paralelo de toda la curva. Tampoco basta restar directamente tasas nominales y reales de vencimientos diferentes para obtener una expectativa de inflación limpia: existen primas de liquidez, indexación y plazo. Para emisores y gestores locales, el punto verificable es el cambio en los costos de referencia según duración y unidad de cuenta. El seguimiento debe considerar volúmenes, precios de cierre y la persistencia en próximas ruedas antes de interpretar una modificación estable de las expectativas macroeconómicas.",
+        "anchor": "tasas-chile-curva-nominal-real-diverge",
+        "sources": [
+          {
+            "name": "Consorcio — indicadores de renta fija chilena",
+            "url": "https://mercadosenconsorcio.cl/Detected"
+          },
+          {
+            "name": "Santander — tasas de mercado BCP y BCU",
+            "url": "https://bancosantanderinversiones.finmarketslive.cl/www/mercados.html"
+          }
+        ]
+      },
+      {
+        "slot": "markets_global",
+        "headline": "Canadá sube su tasa a 2,50% y eleva rendimientos cortos",
+        "deck": "El banco central aumentó 25 puntos base por primera vez desde 2023; el bono canadiense a dos años tocó 3,441%, máximo desde agosto de 2024.",
+        "development": "El Banco de Canadá elevó el 28 de octubre su tasa objetivo overnight en 25 puntos base, a 2,50%, con la tasa bancaria en 2,75% y la remuneración de depósitos en 2,45%. Fue el primer aumento desde julio de 2023. La autoridad señaló que la economía creció más de lo anticipado y que la inflación se mantuvo alrededor de 3%, por encima de su proyección previa. Su nuevo escenario prevé crecimiento canadiense de 1% en 2026 y de 2% en 2027 y 2028, mientras la inflación llegaría a cerca de 3,5% al cierre de este año, promediaría alrededor de 3% en 2027 y retornaría a 2% hacia mediados de 2028.\n\nEl ajuste se trasladó con mayor fuerza al tramo corto: el rendimiento del bono canadiense a dos años subió hasta 7,2 puntos base y tocó 3,441%, su nivel más alto desde agosto de 2024, antes de cerrar cerca de 3,413%. El rendimiento a diez años avanzó 2,4 puntos base a 3,885%, y el dólar canadiense ganó alrededor de 0,1% frente al estadounidense, a 1,4035 por dólar. La reacción fue más pronunciada en vencimientos sensibles a la política monetaria. El banco dejó abierta la posibilidad de nuevos aumentos, pero indicó que procederá con cautela; por eso, la trayectoria dependerá de nuevos datos y no de una secuencia automática.",
+        "anchor": "canada-alza-tasa-rendimiento-dos-anos",
+        "sources": [
+          {
+            "name": "Banco de Canadá — decisión de tasa del 28 de octubre",
+            "url": "https://www.bankofcanada.ca/2026/10/fad-press-release-2026-10-28/"
+          },
+          {
+            "name": "Reuters — reacción de bonos y dólar canadiense",
+            "url": "https://www.marketscreener.com/news/canadian-2-year-yield-hits-two-year-high-as-boc-hikes-interest-rates-ce785cd2d08cf427"
+          }
+        ]
+      }
+    ]
+  }
+}
