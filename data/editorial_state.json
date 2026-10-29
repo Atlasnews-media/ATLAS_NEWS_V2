@@ -3,14 +3,14 @@
     {
       "id": "oil-geopolitics-inflation",
       "topic": "Petróleo, geopolítica e inflación",
-      "thesis": "La crisis energética ya no sólo sostiene una prima geopolítica: la persistencia del petróleo y los márgenes de refinación comenzó a trasladarse a decisiones monetarias, mientras la diplomacia regional aún no normaliza rutas ni oferta.",
+      "thesis": "La guerra regional, las interrupciones del mar Negro y El Niño están convirtiendo el shock energético en un alza multicommodity que combina inflación, inseguridad alimentaria y menor crecimiento, con los países endeudados como principal punto de fragilidad.",
       "status": "changed",
-      "last_evidence": "El 28 de octubre el Banco de Canadá subió su tasa 25 puntos base a 2,5%, elevó su previsión de inflación de 2027 desde 2,0% a 3,1% y atribuyó el giro a energía persistente, importaciones más caras y mayor riesgo de traslado de costos.",
-      "effect": "Amplía el hilo desde seguridad física y diplomacia hacia política monetaria: Canadá actuó preventivamente porque el crecimiento resistió, mostrando que el shock energético ya puede endurecer tasas antes de generalizarse por toda la canasta.",
-      "base_scenario": "El petróleo permanece alto y genera respuestas monetarias divergentes según la fortaleza de cada economía; las conversaciones regionales contienen una escalada mayor, pero la normalización de rutas y costos sigue incompleta.",
-      "invalidate_if": "Un alto el fuego verificable, la normalización sostenida de Ormuz y del mar Rojo y una caída durable de energía e inflación debilitarían la tesis; nuevos daños a infraestructura, mayor traslado a precios o más alzas de tasas la reforzarían.",
-      "watch": "Conversaciones regionales, ataques e infraestructura energética, tránsito por Ormuz y Bab el-Mandeb, Brent y márgenes de refinación, inflación subyacente, traslado de costos y decisiones de Canadá, Estados Unidos y Chile.",
-      "last_publication": "/ediciones/2026-10-28-daily-canada-sube-tasa-inflacion/"
+      "last_evidence": "El 28 de octubre el Banco Mundial proyectó un alza de 23% para los commodities en 2026: energía subiría 32%, alimentos cerca de 10%, metales 25% y la oferta mundial de petróleo caería 5,2%.",
+      "effect": "Amplía el hilo desde petróleo, refinación y tasas hacia un shock de oferta simultáneo: energía, granos, fertilizantes y metales pueden reforzarse entre sí y trasladar la presión a inflación, crecimiento, seguridad alimentaria y espacio fiscal.",
+      "base_scenario": "Los commodities permanecen altos en 2026 y se moderan parcialmente en 2027; el Brent promedia US$91 este año y US$79 el próximo, mientras alimentos y fertilizantes siguen presionados por el mar Negro, El Niño y costos energéticos.",
+      "invalidate_if": "La normalización sostenida de Ormuz, el mar Rojo y el mar Negro, una recuperación durable de oferta e inventarios y buenas cosechas debilitarían la tesis; una escalada conjunta que lleve el Brent hacia US$105 y alimentos sobre la base la reforzaría.",
+      "watch": "Tránsito por Ormuz y el mar Rojo, infraestructura petrolera rusa, embarques del mar Negro, oferta e inventarios de crudo, intensidad de El Niño, cosechas, fertilizantes, inflación alimentaria, subsidios y decisiones de bancos centrales.",
+      "last_publication": "/ediciones/2026-10-29-daily-banco-mundial-commodities-alimentos/"
     },
     {
       "id": "us-employment-fed-rates",
