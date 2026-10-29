@@ -1,11 +1,11 @@
 ---
 title: "El Banco Mundial proyecta un salto de 23% en commodities y más presión alimentaria"
 summary: "Energía, alimentos y metales suben a la vez por las guerras y El Niño. El escenario adverso combina un Brent de US$105 en 2027 con alimentos 12% sobre la proyección base."
-publishedAt: "2026-10-29T06:01:13-03:00"
+publishedAt: "2026-10-29T06:49:10-03:00"
 cutoffAt: "2026-10-29T05:59:30-03:00"
 type: "daily"
 editionSlot: "morning"
-status: "draft"
+status: "published"
 tags:
   - economia-global
   - commodities

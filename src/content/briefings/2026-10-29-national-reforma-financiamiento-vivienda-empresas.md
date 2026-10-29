@@ -1,11 +1,11 @@
 ---
 title: "La reforma financiera avanza al Senado, pero su efecto dependerá de convertir ahorro en crédito"
 summary: "La Cámara aprobó más de 30 medidas para vivienda y empresas. Fonavi, ahorro voluntario, mini-bonos y una Bolsa Junior amplían canales, aunque todavía no implican financiamiento disponible."
-publishedAt: "2026-10-29T06:21:30-03:00"
+publishedAt: "2026-10-29T06:49:10-03:00"
 cutoffAt: "2026-10-29T06:20:00-03:00"
 section: "national"
 editionSlot: "morning"
-status: "draft"
+status: "published"
 tags:
   - chile
   - mercado-de-capitales

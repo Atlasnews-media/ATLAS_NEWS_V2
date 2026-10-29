@@ -1,11 +1,11 @@
 ---
 title: "La IA deja de ser una sola operación: Alphabet cae y Microsoft sube"
 summary: "Los resultados separaron crecimiento de nube, gasto y caja: Alphabet perdió 10% fuera de rueda y Microsoft ganó 3%. La curva Treasury y el petróleo reforzaron la selección entre riesgos."
-publishedAt: "2026-10-29T06:23:00-03:00"
+publishedAt: "2026-10-29T06:49:10-03:00"
 cutoffAt: "2026-10-29T06:22:00-03:00"
 section: "markets"
 editionSlot: "morning"
-status: "draft"
+status: "published"
 tags:
   - mercados
   - inteligencia-artificial
