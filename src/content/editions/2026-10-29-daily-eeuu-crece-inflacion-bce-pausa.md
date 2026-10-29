@@ -1,11 +1,11 @@
 ---
 title: "EE.UU. crece 3,4% con inflación PCE en 3,6%, mientras el BCE mantiene su tasa en 2,5%"
 summary: "La inversión en equipos y el consumo aceleraron la economía estadounidense, pero la inflación volvió a subir. Europa pausó ante el doble riesgo de energía cara y menor crecimiento."
-publishedAt: "2026-10-29T13:05:49-03:00"
+publishedAt: "2026-10-29T13:10:09-03:00"
 cutoffAt: "2026-10-29T12:00:00-03:00"
 type: "daily"
 editionSlot: "evening"
-status: "draft"
+status: "published"
 tags:
   - economia-global
   - estados-unidos
