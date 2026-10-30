@@ -131,6 +131,18 @@
       "invalidate_if": "Una incorporación escasa, ausencia de mayor demanda por activos en euros o fallas del mecanismo durante un episodio de tensión debilitarían la tesis; nuevas adhesiones, más reservas oficiales y uso ordenado en una crisis la confirmarían.",
       "watch": "Bancos centrales incorporados, uso de EUREP, composición de reservas, demanda por bonos soberanos y supranacionales europeos, revisión de líneas de swap, condiciones de colateral y episodios de tensión de financiamiento en euros.",
       "last_publication": "/ediciones/2026-10-21-daily-bce-red-liquidez-euro/"
+    },
+    {
+      "id": "japan-monetary-normalization",
+      "topic": "Normalización monetaria y balance del Banco de Japón",
+      "thesis": "Japón pasó de combatir la deflación y sostener activos a administrar una inflación subyacente en torno a 2%, acercar gradualmente la tasa a neutral y reducir sus tenencias de ETF sin desestabilizar el financiamiento global.",
+      "status": "new",
+      "last_evidence": "El 30 de octubre el Banco de Japón mantuvo la tasa en 1,25% por ocho votos contra uno, declaró la inflación subyacente consistente con su meta de 2% y elevó la venta anual de ETF desde ¥330.000 millones a ¥860.000 millones desde enero de 2027.",
+      "effect": "Abre un hilo de normalización japonesa: el debate deja de ser cómo generar inflación y pasa a la velocidad de las alzas, el anclaje salarial y el retiro de estímulos que durante años sostuvieron activos y financiamiento barato en yenes.",
+      "base_scenario": "El Banco de Japón avanza de forma gradual, mantiene cada reunión abierta a nuevas alzas y ejecuta ventas de ETF equivalentes a cerca de 0,1% del volumen de mercado, mientras inflación y salarios convergen alrededor de 2% sin una contracción brusca.",
+      "invalidate_if": "Una caída sostenida de inflación y salarios, debilidad severa del consumo o suspensiones repetidas de las ventas de ETF debilitarían la tesis; expectativas sobre 2%, mayor traspaso de costos y nuevas alzas hacia una tasa neutral la reforzarían.",
+      "watch": "Reunión de diciembre, inflación subyacente y expectativas, negociaciones salariales de 2027, consumo e ingreso real, yen, diferencial de tasas, ritmo efectivo de ventas de ETF, liquidez y flujos de capital japoneses.",
+      "last_publication": "/ediciones/2026-10-30-daily-japon-normaliza-inflacion-etf/"
     }
   ]
 }
