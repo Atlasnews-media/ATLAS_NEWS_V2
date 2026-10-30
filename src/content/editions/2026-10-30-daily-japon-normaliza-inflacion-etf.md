@@ -1,11 +1,11 @@
 ---
 title: "Japón entra en una nueva fase monetaria: inflación en 2% y retiro acelerado de estímulos"
 summary: "El Banco de Japón mantuvo la tasa en 1,25%, pero declaró que la inflación subyacente ya es consistente con su meta. También más que duplicará la venta anual de ETF desde enero."
-publishedAt: "2026-10-30T06:03:03-03:00"
+publishedAt: "2026-10-30T06:44:01-03:00"
 cutoffAt: "2026-10-30T06:02:24-03:00"
 type: "daily"
 editionSlot: "morning"
-status: "draft"
+status: "published"
 tags:
   - japon
   - banco-de-japon

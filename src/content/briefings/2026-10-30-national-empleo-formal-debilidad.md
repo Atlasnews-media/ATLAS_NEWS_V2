@@ -1,11 +1,11 @@
 ---
 title: "El empleo chileno se debilita: cae la ocupación formal y sube la desocupación"
 summary: "La desocupación llegó a 9,8% en julio-septiembre, pero la señal más relevante está en la caída de ocupados y asalariados formales, con debilidad concentrada en sectores de mayor productividad."
-publishedAt: "2026-10-30T06:18:00-03:00"
+publishedAt: "2026-10-30T06:44:01-03:00"
 cutoffAt: "2026-10-30T06:14:00-03:00"
 section: "national"
 editionSlot: "morning"
-status: "draft"
+status: "published"
 tags:
   - chile
   - empleo

@@ -1,11 +1,11 @@
 ---
 title: "La duda sobre el retorno de la IA activa una búsqueda de refugio en bonos y yen"
 summary: "El castigo a las tecnológicas se extendió a Asia y empujó los rendimientos del Treasury a mínimos de más de un mes. El yen avanzó tras el Banco de Japón, mientras el petróleo conservó una prima de oferta propia."
-publishedAt: "2026-10-30T06:21:00-03:00"
+publishedAt: "2026-10-30T06:44:01-03:00"
 cutoffAt: "2026-10-30T06:19:00-03:00"
 section: "markets"
 editionSlot: "morning"
-status: "draft"
+status: "published"
 tags:
   - mercados
   - inteligencia-artificial
