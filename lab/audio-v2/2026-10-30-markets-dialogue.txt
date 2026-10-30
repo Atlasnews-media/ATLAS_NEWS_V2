@@ -1,0 +1,25 @@
+VOZ 1: La señal dominante de mercados cambió esta mañana. Ya no vemos sólo una rotación entre empresas tecnológicas; las dudas sobre el retorno del gasto en inteligencia artificial se propagaron a acciones asiáticas y empujaron capital hacia bonos y monedas de refugio.
+VOZ 2: ¿Cuál es la evidencia más clara de ese cambio cross-asset?
+VOZ 1: El rendimiento del Treasury estadounidense a diez años cayó hacia 4,91%, su menor nivel en más de un mes. En octubre acumula una baja cercana a 37 puntos básicos, la mayor caída mensual de rendimiento desde diciembre de 2023.
+VOZ 2: ¿Fue una reacción a menor inflación?
+VOZ 1: No principalmente. El catalizador fueron los resultados y la caja de las grandes tecnológicas. Alphabet cayó 12,6% después de que su gasto llevara el flujo de caja a terreno negativo. Intel y Amazon también retrocedieron. El mercado está pasando de premiar el gasto en IA a exigir evidencia de monetización.
+VOZ 2: Eso conecta con la historia de ayer, pero parece más amplia.
+VOZ 1: Exactamente. Ayer la clave era la divergencia entre empresas. Hoy esa selectividad se transformó en aversión al riesgo más general: el KOSPI surcoreano cayó más de 3% por su exposición a semiconductores, el CSI 300 chino se encaminó a su peor mes en una década y los futuros del Nasdaq apuntaron a una apertura débil.
+VOZ 2: ¿Por qué los bonos ganan si la economía estadounidense viene mostrando crecimiento firme?
+VOZ 1: Porque la compra tiene un componente de refugio. La Reserva Federal mantuvo su tasa y no entregó una guía clara sobre nuevas alzas, lo que dejó espacio para que el riesgo corporativo dominara la sesión. Pero no es una señal inequívoca de desaceleración macroeconómica.
+VOZ 2: ¿Cómo entra Japón en esta lectura?
+VOZ 1: El Banco de Japón mantuvo la tasa en 1,25%, pero reforzó su vigilancia sobre la inflación y dejó abierta la posibilidad de otra alza. El yen avanzó hasta cerca de 157,115 por dólar y recuperó buena parte de su caída mensual.
+VOZ 2: ¿Eso es sólo refugio?
+VOZ 1: Es una combinación. El yen recibe demanda defensiva, pero también cambia la expectativa sobre el costo de financiar posiciones con una moneda históricamente barata. Si Japón sigue normalizando, mantener operaciones apalancadas en yenes puede ser menos atractivo.
+VOZ 2: ¿Y el dólar? En episodios de miedo suele fortalecerse.
+VOZ 1: Esta vez la preocupación se originó en activos estadounidenses ligados a IA y coincidió con menores rendimientos del Treasury. Por eso el dólar estuvo más débil o estable, mientras yen y franco suizo captaron parte del refugio. Es una configuración distinta de un shock convencional.
+VOZ 2: Hay otro activo que no encaja del todo con el rally de bonos: el petróleo.
+VOZ 1: Correcto. El crudo mantiene una prima de oferta tras un ataque a un tanquero en el estrecho de Ormuz. Brent se encaminaba a subir 11,5% en el mes y a completar cuatro meses consecutivos al alza. Esa presión energética puede frenar el rally de bonos si vuelve a elevar expectativas de inflación.
+VOZ 2: Entonces tenemos dos riesgos compitiendo.
+VOZ 1: Sí. Por un lado, dudas sobre caja y retorno de la IA, que favorecen bonos y castigan acciones. Por otro, energía cara y normalización monetaria japonesa, que pueden endurecer las condiciones financieras. La dirección final depende de cuál señal gane persistencia.
+VOZ 2: ¿Qué debe mirar un lector durante la apertura de Wall Street?
+VOZ 1: Primero, si la venta sigue concentrada en tecnología o se amplía al resto del mercado. Segundo, los spreads de crédito y la demanda por emisiones de empresas que financian centros de datos. Tercero, si Treasury y yen siguen avanzando juntos.
+VOZ 2: ¿Qué invalidaría la lectura de refugio?
+VOZ 1: Una recuperación de caja y márgenes en las plataformas, una estabilización rápida de las acciones o una sorpresa inflacionaria que haga subir los rendimientos largos. También un petróleo más caro podría desplazar el foco desde riesgo corporativo hacia inflación.
+VOZ 2: ¿Y qué la confirmaría?
+VOZ 1: Más ventas en tecnología, ampliación hacia crédito, rendimientos a la baja y yen más firme. El mensaje del día es que la IA sigue impulsando inversión, pero el mercado ya separa crecimiento de rentabilidad y cobra un precio mayor cuando la caja no acompaña.
