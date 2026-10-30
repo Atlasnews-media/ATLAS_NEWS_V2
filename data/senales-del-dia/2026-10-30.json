@@ -1,0 +1,107 @@
+{
+  "status": "READY",
+  "date": "2026-10-30",
+  "contract": "atlas-senales-del-dia-v1",
+  "senalesDelDia": {
+    "internacional": [
+      {
+        "slot": "technology",
+        "headline": "Salesforce acuerda comprar Rune para logística militar desconectada",
+        "deck": "La adquisición incorporará software que anticipa suministros y coordina recursos en entornos con conectividad limitada o inexistente.",
+        "development": "Salesforce anunció el 29 de octubre un acuerdo definitivo para adquirir Rune Technologies, empresa que desarrolla software de logística para fuerzas armadas. La plataforma combina datos de sistemas empresariales con información operacional para pronosticar necesidades de suministro, asignar recursos y decidir movimientos en terreno. Está diseñada para seguir funcionando en ambientes con conectividad denegada, degradada, intermitente o limitada, una condición frecuente en operaciones de primera línea. El Ejército y el Cuerpo de Marines de Estados Unidos ya utilizan tecnología de Rune. Salesforce integrará esas capacidades en Missionforce, su oferta para organismos militares y gubernamentales, conectando la planificación táctica con procesos de abastecimiento, mantenimiento y gestión de activos.\n\nLas compañías no divulgaron el valor de la operación. Salesforce señaló que espera cerrarla en el cuarto trimestre de su año fiscal 2027, sujeto a condiciones habituales. La empresa informó además que su negocio de defensa crece 80% interanual y atiende a las seis ramas militares estadounidenses, aunque esa cifra corporativa no equivale a ingresos auditados del activo adquirido. La señal tecnológica está en llevar herramientas de decisión y sincronización de datos hacia el borde operativo, no sólo en añadir otro agente de inteligencia artificial a sistemas centrales. Los hitos verificables serán el cierre, la integración con Missionforce y el desempeño en escenarios sin conexión estable.",
+        "anchor": "salesforce-rune-logistica-militar-desconectada",
+        "sources": [
+          {
+            "name": "Salesforce — acuerdo definitivo para adquirir Rune Technologies",
+            "url": "https://www.salesforce.com/news/stories/salesforce-signs-definitive-agreement-to-acquire-rune-technologies/"
+          },
+          {
+            "name": "Reuters — alcance operativo y cierre esperado de la adquisición",
+            "url": "https://www.reuters.com/legal/transactional/salesforce-buy-defense-tech-firm-rune-military-business-push-2026-10-29/"
+          }
+        ]
+      },
+      {
+        "slot": "world",
+        "headline": "Elección israelí deja a los bloques sin mayoría parlamentaria",
+        "deck": "El bloque de Netanyahu obtuvo 53 escaños, la oposición 48 y las listas árabes 19; ninguno alcanzó los 61 necesarios para gobernar.",
+        "development": "El conteo final de la elección israelí dejó al bloque encabezado por Benjamin Netanyahu con 53 de los 120 escaños de la Knesset y a la alianza opositora liderada por Gadi Eisenkot con 48. Las listas árabes Ra’am y Joint List obtuvieron en conjunto 19 escaños, su mayor representación registrada. Likud quedó como el partido individual más grande, con 27, seguido por Yashar con 21. La participación alcanzó 77,9%, con 5.716.665 votos emitidos. Ninguno de los dos bloques principales llegó a los 61 escaños requeridos para una mayoría, por lo que el resultado abre una etapa de consultas y negociaciones antes de que exista un gobierno.\n\nEl Comité Central de Elecciones debe presentar formalmente los resultados al presidente Isaac Herzog el 4 de noviembre. Después, Herzog consultará a las fracciones y encargará formar gobierno al legislador que considere con mejores posibilidades de reunir una mayoría. La nueva Knesset está prevista para jurar el 10 de noviembre, aunque la formación de una coalición puede extenderse más allá de esa fecha. Autoridades electorales rechazaron que existiera un daño sistemático a la integridad de la votación, al tiempo que indicaron que revisarían denuncias específicas. La señal confirmada es un parlamento fragmentado; cualquier coalición, apoyo externo o repetición electoral seguirá siendo una posibilidad hasta que concluya el proceso constitucional.",
+        "anchor": "israel-eleccion-bloques-sin-mayoria",
+        "sources": [
+          {
+            "name": "Times of Israel — resultados finales publicados por el comité electoral",
+            "url": "https://www.timesofisrael.com/with-all-votes-counted-netanyahus-bloc-at-53-seats-eisenkots-48-arab-parties-19/"
+          },
+          {
+            "name": "Reuters — distribución de bloques y pasos para formar gobierno",
+            "url": "https://www.investing.com/news/world-news/netanyahu-at-risk-of-losing-power-steps-up-attacks-on-israels-arab-parties-4984260"
+          }
+        ]
+      }
+    ],
+    "nacional": [
+      {
+        "slot": "ipsa_company",
+        "headline": "Parque Arauco eleva 30,3% su utilidad trimestral",
+        "deck": "La operadora ganó $34.705 millones; sus ingresos crecieron 18,6% y el EBITDA aumentó 17,3% en el tercer trimestre.",
+        "development": "Parque Arauco reportó una utilidad atribuible a la controladora de $34.705 millones en el tercer trimestre de 2026, un aumento interanual de 30,3%. Los ingresos llegaron a $112.938 millones, 18,6% más que un año antes, y el EBITDA alcanzó $80.881 millones, con un avance de 17,3%. El margen EBITDA se ubicó en 71,6%, frente a 72,4% del mismo trimestre de 2025, de modo que el crecimiento absoluto convivió con una reducción de 81 puntos base en el margen reportado. Por país, la compañía informó que el EBITDA avanzó 44,7% en Colombia, 14,2% en Perú y 8,6% en Chile, apoyado por mayores rentas de arrendamiento en sus tres mercados.\n\nEn los primeros nueve meses, la utilidad de la controladora sumó $84.162 millones, 17,4% más, mientras el EBITDA acumulado creció 17,8% hasta $226.222 millones. La empresa también incorporó proyectos que amplían su exposición local: concretó la compra de Paseo Quilín por US$113 millones y anunció con Ripley una ampliación de Mall Curicó por US$53 millones. A ellos se agregan Arauco Chicureo y un outlet en Buin. La señal corporativa combina expansión regional y una cartera de inversión mayor; el seguimiento debe separar crecimiento comparable, aporte de nuevos activos, costos financieros y evolución del margen antes de extrapolar el trimestre.",
+        "anchor": "parque-arauco-utilidad-tercer-trimestre-2026",
+        "sources": [
+          {
+            "name": "Parque Arauco — información financiera del tercer trimestre",
+            "url": "https://www.parauco.com/"
+          },
+          {
+            "name": "Diario Financiero — resultados e inversiones de Parque Arauco",
+            "url": "https://www.df.cl/empresas/retail/parque-arauco-eleva-sus-utilidades-en-30-y-avanza-en-inversiones-por-us"
+          }
+        ]
+      },
+      {
+        "slot": "policy_economy",
+        "headline": "CMF habilita consulta masiva para transferencias a Bomberos",
+        "deck": "Las entidades fiscalizadas podrán verificar gratuitamente hasta dos veces al año si titulares de recursos no reclamados han fallecido.",
+        "development": "La Comisión para el Mercado Financiero emitió el 29 de octubre una norma que crea un mecanismo voluntario, masivo y gratuito para verificar si titulares de determinados recursos han fallecido. Las entidades fiscalizadas podrán remitir a la CMF los RUN que necesiten consultar hasta dos veces al año. La Comisión consolidará la información, realizará la revisión ante el Servicio de Registro Civil e Identificación y devolverá a cada institución el resultado correspondiente. El procedimiento busca evitar consultas individuales y facilitar la determinación de los recursos no reclamados que, cuando tampoco son cobrados por herederos o legatarios, deben ser enterados a la Junta Nacional de Cuerpos de Bomberos de Chile conforme a la ley.\n\nLa herramienta no cambia quién tiene derecho a reclamar los fondos ni transforma automáticamente todo saldo inactivo en una transferencia. Su función es reducir costos y tiempos de una verificación necesaria para que las entidades establezcan si se cumplen las condiciones legales. La CMF la presenta como complemento de medidas anteriores sobre acreencias caducas y su traspaso a Bomberos. Al ser voluntaria, su efecto dependerá de la adopción por bancos y otras instituciones alcanzadas, de la calidad de los registros enviados y de la frecuencia semestral disponible. Los próximos antecedentes verificables serán las instrucciones operativas, el uso efectivo del mecanismo y los montos que finalmente se determinen procedentes.",
+        "anchor": "cmf-consulta-fallecidos-recursos-bomberos",
+        "sources": [
+          {
+            "name": "CMF — norma para verificar titulares y transferir recursos a Bomberos",
+            "url": "https://www.cmfchile.cl/portal/prensa/625/w4-article-114552.html"
+          }
+        ]
+      }
+    ],
+    "mercados": [
+      {
+        "slot": "markets_chile",
+        "headline": "Bancos chilenos recuperan crédito y elevan utilidades a septiembre",
+        "deck": "Las colocaciones crecieron 0,93% real anual y las ganancias acumuladas llegaron a US$4.616 millones, con una mora de 90 días de 2,36%.",
+        "development": "El sistema bancario chileno cerró septiembre con colocaciones efectivas por US$297.749 millones, un crecimiento real de 0,93% en doce meses después de dos registros previos más débiles. La recuperación estuvo asociada principalmente a la cartera comercial, que aumentó 1,57% real anual, y en menor medida a vivienda; consumo mantuvo una contracción mayor. Las utilidades acumuladas alcanzaron US$4.616 millones, 2,78% más en términos reales que un año antes. La CMF atribuyó el avance sobre todo a mayores márgenes de intereses y reajustes, además de otros ingresos operacionales y comisiones, parcialmente compensados por más pérdidas crediticias y un menor resultado financiero neto.\n\nLos indicadores de riesgo entregaron una lectura mixta. La cartera deteriorada bajó de 5,88% en agosto a 5,81% y las provisiones cedieron de 2,51% a 2,49%, pero la morosidad de 90 días o más subió de 2,34% a 2,36%. El retorno promedio sobre patrimonio disminuyó a 15,07%, mientras el retorno sobre activos se mantuvo en 1,34%. En consumo aumentaron todos los indicadores de riesgo, a diferencia del predominio de descensos en comercial. Para bancos listados y tenedores de deuda, la señal combina recuperación del volumen y utilidades con presión todavía visible en calidad crediticia; las cifras por institución determinarán cuánto de ese patrón agregado es generalizable.",
+        "anchor": "bancos-chile-credito-utilidades-septiembre",
+        "sources": [
+          {
+            "name": "CMF — desempeño de bancos y cooperativas a septiembre de 2026",
+            "url": "https://www.cmfchile.cl/portal/prensa/625/w4-article-114516.html"
+          }
+        ]
+      },
+      {
+        "slot": "markets_global",
+        "headline": "Lagarde dejará anticipadamente la presidencia del BCE",
+        "deck": "La salida será efectiva el 7 de febrero de 2027, ocho meses antes del término previsto; el Consejo Europeo deberá nombrar a su sucesor.",
+        "development": "Christine Lagarde comunicó el 29 de octubre que dejará la presidencia del Banco Central Europeo el 7 de febrero de 2027, ocho meses antes del término previsto para octubre. La autoridad informó su decisión al Consejo de Gobierno del BCE y al presidente del Consejo Europeo, António Costa. Su sucesor será nombrado por el Consejo Europeo mediante el procedimiento del artículo 283 del Tratado de Funcionamiento de la Unión Europea. Lagarde dirige el banco desde noviembre de 2019 y anteriormente encabezó el Fondo Monetario Internacional. El anuncio ocurrió el mismo día de una reunión monetaria, pero el BCE sostuvo que su estructura de decisión continuará operando durante la transición.\n\nLagarde explicó que busca recuperar libertad para pronunciarse sobre asuntos ajenos al mandato monetario, respecto de los cuales las normas de neutralidad limitan a las autoridades del banco. También señaló que el proceso para identificar candidatos ya comenzó y descartó que la institución quede paralizada. Para los mercados, el hecho abre una sucesión en una entidad que fija las condiciones monetarias de veinte economías, sin modificar por sí mismo las tasas vigentes ni una trayectoria futura. Los hitos comprobables serán la nominación, las consultas institucionales y el nombramiento formal. Hasta entonces, atribuir una orientación expansiva o restrictiva al relevo sería prematuro.",
+        "anchor": "lagarde-salida-anticipada-bce-2027",
+        "sources": [
+          {
+            "name": "Banco Central Europeo — salida de Christine Lagarde",
+            "url": "https://www.ecb.europa.eu/press/pr/date/2026/html/ecb.pr261029~abbb6dc64b.en.html"
+          },
+          {
+            "name": "Reuters — razones declaradas y proceso de sucesión",
+            "url": "https://www.reuters.com/business/ecbs-lagarde-resigns-early-so-she-can-speak-freely-topics-beyond-monetary-policy-2026-10-29/"
+          }
+        ]
+      }
+    ]
+  }
+}
