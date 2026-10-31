@@ -21,11 +21,11 @@ sources:
 featured: false
 demo: false
 highlights:
-  - label: "Coopeuch cuestiona el deducible de Fonavi"
+  - label: "Fonavi: deducible 3,5%"
     text: "La cooperativa considera poco atractivo asumir el primer 3,5% de pérdida antes de activar la cobertura estatal."
-  - label: "La gobernanza concentra un conflicto de interés"
+  - label: "Gobernanza de Fonavi"
     text: "Propone una administración más independiente porque BancoEstado actuaría como administrador y originador de créditos."
-  - label: "La cooperativa pide acceso directo al Banco Central"
+  - label: "Acceso al Banco Central"
     text: "Solicitó cuenta corriente y entrada a LBTR y SOMA bajo el nuevo marco para entidades financieras no bancarias."
 ---
 
