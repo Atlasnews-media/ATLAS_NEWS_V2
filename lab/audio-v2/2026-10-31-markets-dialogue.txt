@@ -1,0 +1,27 @@
+VOZ 1: Los mercados están cerrados este sábado, así que trabajamos con el cierre efectivo del viernes 30 de octubre. La señal principal fue una repricing amplia del gasto en inteligencia artificial.
+VOZ 2: ¿Qué diferencia hay entre esa señal y la inquietud que ya vimos en sesiones anteriores?
+VOZ 1: La preocupación dejó de ser una divergencia entre dos o tres empresas. El Nasdaq cayó 2,86%, el S&P 500 perdió 1,82% y el índice de semiconductores bajó más de 7%. El mercado extendió la penalización desde resultados individuales hacia todo el complejo tecnológico.
+VOZ 2: ¿Qué empresa concentró la reacción más fuerte?
+VOZ 1: Intel cayó 28,6% después de mostrar consumo de caja y una demanda más débil de computadores personales. Amazon también retrocedió y Alphabet extendió su caída. La pregunta ya no es cuánto invierten en IA, sino cuándo esa inversión produce caja y retornos verificables.
+VOZ 2: ¿Cómo se transmitió esa duda hacia los bonos?
+VOZ 1: Los inversionistas buscaron refugio en Treasury. El rendimiento a diez años bajó 5,8 puntos básicos y cerró en 4,931%. Como precio y rendimiento se mueven en direcciones opuestas, eso significa que los bonos subieron.
+VOZ 2: ¿Podemos interpretar esa caída de rendimientos como menor riesgo de inflación?
+VOZ 1: No directamente. El movimiento tuvo un componente defensivo por la venta de acciones. Al mismo tiempo, el petróleo subió a máximos de seis meses, lo que mantiene un riesgo inflacionario separado.
+VOZ 2: ¿Cuáles fueron los cierres del crudo?
+VOZ 1: El WTI terminó en 104 dólares con 12 centavos por barril y Brent en 117 dólares con 63 centavos. El catalizador fue un ataque contra un tanquero en el estrecho de Ormuz, que elevó la preocupación por la oferta.
+VOZ 2: Entonces bonos y petróleo subieron por razones opuestas.
+VOZ 1: Exactamente. Los bonos recibieron refugio por riesgo corporativo y bursátil. El petróleo incorporó una prima por posible interrupción de suministro. Si esa prima energética persiste, puede limitar cuánto bajan los rendimientos, porque vuelve a elevar la preocupación por inflación.
+VOZ 2: ¿Qué sectores resistieron mejor?
+VOZ 1: Energía superó al mercado por el crudo y los márgenes de refinación. Servicios básicos y consumo defensivo también aguantaron mejor. Tecnología y semiconductores concentraron las pérdidas.
+VOZ 2: Eso suena más a rotación que a recesión general.
+VOZ 1: Esa es la lectura más prudente. El mercado castigó activos de larga duración y alto gasto de capital, pero no vendió todo de la misma manera. La dispersión muestra que está revisando el precio del financiamiento y la calidad de los flujos de caja.
+VOZ 2: ¿Y qué pasó con el yen?
+VOZ 1: Se fortaleció después de que el Banco de Japón mantuviera la tasa, elevara su previsión de inflación y dejara abierta la posibilidad de nuevas alzas. Si financiar posiciones en yenes se vuelve más caro, algunos inversionistas pueden reducir apalancamiento global.
+VOZ 2: ¿Oro y plata funcionaron como refugio?
+VOZ 1: No en esta sesión. Ambos retrocedieron. La inflación energética y la expectativa de tasas estadounidenses altas limitaron su atractivo. Eso confirma que no hubo una compra indiscriminada de activos defensivos.
+VOZ 2: ¿Qué señal indicaría que la corrección tecnológica se vuelve sistémica?
+VOZ 1: Una ampliación hacia spreads de crédito, bancos y empresas cíclicas, junto con dificultades para emitir deuda. Si el ajuste sigue concentrado en tecnología y semiconductores, permanecerá como una repricing sectorial.
+VOZ 2: ¿Qué debemos mirar cuando reabran los mercados?
+VOZ 1: Primero, la amplitud de la venta. Segundo, si Treasury sigue subiendo pese al petróleo caro. Tercero, si el yen mantiene fortaleza y acelera el cierre de posiciones financiadas en Japón.
+VOZ 2: ¿Qué podría revertir la lectura?
+VOZ 1: Mejoras claras en caja, márgenes y demanda de centros de datos; una caída de la prima petrolera; y flujos que vuelvan hacia crecimiento. Lo contrario, más consumo de caja y spreads al alza, confirmaría que el mercado está cobrando un costo mayor al financiamiento de la IA.

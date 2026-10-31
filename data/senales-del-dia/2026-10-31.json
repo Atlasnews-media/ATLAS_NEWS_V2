@@ -1,0 +1,115 @@
+{
+  "status": "READY",
+  "date": "2026-10-31",
+  "contract": "atlas-senales-del-dia-v1",
+  "senalesDelDia": {
+    "internacional": [
+      {
+        "slot": "technology",
+        "headline": "Thrive acuerda comprar ADT por US$15.300 millones",
+        "deck": "La operación llevará a la firma de seguridad y hogar conectado a control privado, con una ventana abierta para ofertas rivales hasta el 28 de noviembre.",
+        "development": "ADT acordó ser adquirida por Thrive Holdings en una transacción en efectivo valorada en US$15.300 millones, incluida la deuda. Los accionistas recibirán US$10 por título, 45,6% más que el cierre no afectado del 27 de octubre, según la compañía. El acuerdo combina la red de monitoreo, dispositivos conectados y automatización residencial de ADT con capital de largo plazo y capacidades de ingeniería de Thrive. La compradora plantea aplicar tecnología para reducir falsas alarmas, anticipar fallas de equipos y mejorar la operación; ADT indicó que sus políticas de privacidad y protección de datos no cambiarán por el anuncio.\n\nEl cierre está previsto para el primer trimestre de 2027 y requiere aprobación de accionistas y autorizaciones regulatorias. Hasta entonces, ADT seguirá operando de manera independiente. El contrato incluye un período de búsqueda de ofertas alternativas hasta el 28 de noviembre, con una posible extensión de diez días para ciertos interesados. Si se completa, la empresa dejará de cotizar en la Bolsa de Nueva York. La señal tecnológica no es una integración consumada: es una apuesta por modernizar una plataforma física y digital instalada en hogares y pequeños negocios, sujeta todavía a competencia, revisión y cierre.",
+        "anchor": "thrive-compra-adt-seguridad-hogar-conectado",
+        "sources": [
+          {
+            "name": "ADT — acuerdo definitivo con Thrive Holdings",
+            "url": "https://newsroom.adt.com/financial/adt-to-be-acquired-by-thrive-holdings-in-15-3-billion-transaction"
+          },
+          {
+            "name": "Reuters — valor, condiciones y objetivo tecnológico de la operación",
+            "url": "https://www.reuters.com/legal/transactional/thrive-holdings-buy-adt-deal-valuing-residential-security-firm-76-billion-2026-10-29/"
+          }
+        ]
+      },
+      {
+        "slot": "world",
+        "headline": "ONU renueva por un año la fuerza europea en Bosnia",
+        "deck": "El Consejo de Seguridad aprobó por unanimidad la Resolución 2834, que mantiene la autorización de EUFOR Althea durante doce meses.",
+        "development": "El Consejo de Seguridad de Naciones Unidas renovó por unanimidad durante doce meses la autorización de EUFOR Althea, la fuerza multinacional liderada por la Unión Europea en Bosnia y Herzegovina. La Resolución 2834 fue adoptada el 30 de octubre y mantiene el papel de la misión en la aplicación de los aspectos militares del Acuerdo de Paz de Dayton de 1995, incluida la preservación de un entorno seguro. La continuidad evita que expire el respaldo jurídico internacional de una operación desplegada desde 2004 como sucesora de la fuerza de estabilización de la OTAN.\n\nLa resolución conserva una fórmula de renovación directa y no reabre las diferencias políticas sobre la Oficina del Alto Representante. La votación ocurrió después de las elecciones generales bosnias del 4 de octubre y en medio de una transición aún inconclusa en esa oficina civil internacional. La decisión no resuelve esas disputas institucionales ni modifica por sí sola la estructura política del país; asegura la presencia militar autorizada mientras continúan. El próximo hito será la ejecución del mandato durante el nuevo período y cualquier ajuste operativo que decidan la Unión Europea y los países participantes dentro de la autorización del Consejo.",
+        "anchor": "onu-renueva-eufor-althea-bosnia-2026",
+        "sources": [
+          {
+            "name": "National Tribune — adopción de la Resolución 2834",
+            "url": "https://www.nationaltribune.com.au/security-council-renews-mandate-of-european-union-led-stabilization-force-in-bosnia-and-herzegovina-adopting-resolution-2834-2026/"
+          },
+          {
+            "name": "Unión Europea — declaración sobre la renovación del mandato",
+            "url": "https://www.eeas.europa.eu/delegations/un-new-york/eu-statement-un-security-council-briefing-bosnia-and-herzegovina_en"
+          }
+        ]
+      }
+    ],
+    "nacional": [
+      {
+        "slot": "ipsa_company",
+        "headline": "Santander Chile gana $237.000 millones en el tercer trimestre",
+        "deck": "La utilidad cayó 4,2% anual y 38% frente al trimestre previo; los préstamos avanzaron 1,8% y los fondos de clientes, 3,7%.",
+        "development": "Banco Santander Chile reportó una utilidad atribuible a los propietarios de $237.000 millones en el tercer trimestre de 2026. El resultado disminuyó 4,2% frente al mismo período de 2025 y 38% respecto del trimestre anterior, principalmente por menores ingresos por reajustes en un período de inflación más baja, además de menores comisiones y mayores provisiones. El retorno sobre patrimonio promedio alcanzó 19,1% en el trimestre. En los primeros nueve meses, en cambio, la utilidad acumulada subió 11,9% interanual hasta $893.000 millones y el retorno sobre patrimonio llegó a 24,5%.\n\nLa cartera de créditos creció 1,8% frente a junio y los fondos de clientes aumentaron 3,7% en igual comparación. El banco informó un índice de capital CET1 de 10,9% y una mora de 3,5% a septiembre, superior al 3,1% de un año antes. La lectura combina expansión comercial y mayor rentabilidad acumulada con un tercer trimestre más débil y una calidad crediticia que requiere seguimiento. La compañía prevé realizar el 4 de noviembre su conferencia con analistas, instancia en que podrá detallar los supuestos operativos; esas orientaciones no sustituyen las cifras ya reportadas ni garantizan resultados futuros.",
+        "anchor": "santander-chile-resultados-tercer-trimestre-2026",
+        "sources": [
+          {
+            "name": "Banco Santander Chile — resultados del tercer trimestre de 2026",
+            "url": "https://ir.santander.cl/"
+          },
+          {
+            "name": "SEC — reporte 6-K de Banco Santander Chile",
+            "url": "https://www.sec.gov/Archives/edgar/data/1027552/000102755226000124/coverpage1.htm"
+          }
+        ]
+      },
+      {
+        "slot": "policy_economy",
+        "headline": "SII fija devolución de IVA para ventas de viviendas nuevas",
+        "deck": "Desde el 1 de diciembre, vendedores podrán usar el formulario F3298 por cada operación tras restituir el impuesto al comprador.",
+        "development": "El Servicio de Impuestos Internos estableció un procedimiento especial para que vendedores soliciten la devolución del IVA restituido a compradores de determinadas viviendas nuevas. La Resolución Exenta N° 146 aplica a operaciones formalizadas por escritura pública entre el ingreso del proyecto de ley al Congreso, en abril de 2026, y el primer día hábil del mes siguiente a la publicación de la Ley 21.850. El mecanismo exige que el vendedor haya devuelto efectivamente el impuesto al comprador y que se cumplan condiciones legales, entre ellas que sea una primera venta, que el inmueble tenga destino habitacional y que exista recepción definitiva de las obras.\n\nDesde el 1 de diciembre, cada vendedor deberá presentar por separado el formulario F3298 para cada operación. El comprador tendrá que acompañar la declaración jurada simple F3299 para acreditar que recibió la restitución. El plazo para solicitar la devolución será de tres años contado desde esa fecha, y el SII indicó que resolverá en un máximo de cinco días hábiles, salvo que deba requerir antecedentes adicionales. La resolución implementa una exención transitoria ya establecida por ley; no crea una exención general para cualquier compraventa ni elimina la verificación fiscal de los requisitos.",
+        "anchor": "sii-devolucion-iva-viviendas-ley-21850",
+        "sources": [
+          {
+            "name": "SII — procedimiento especial de devolución de IVA",
+            "url": "https://www.sii.cl/noticias/2026/301026noti01smn.htm"
+          },
+          {
+            "name": "SII — Resolución Exenta N° 146 de 2026",
+            "url": "https://www.sii.cl/normativa_legislacion/resoluciones/2026/res_ind2026.htm"
+          }
+        ]
+      }
+    ],
+    "mercados": [
+      {
+        "slot": "markets_chile",
+        "headline": "CMF amplía BEST+ con datos de fondos y aseguradoras",
+        "deck": "Las nuevas series trimestrales incluyen activos, carteras, primas, solvencia y rentabilidad, con consulta y descarga mediante API.",
+        "development": "La Comisión para el Mercado Financiero incorporó a BEST+ nuevas series estadísticas sobre fondos de inversión y compañías de seguros. Para los fondos, la plataforma permite consultar número de administradoras, vehículos y aportantes, además de activos, patrimonio e inversiones. También abre la composición de cartera por tipo de instrumento, mercado de emisión y mecanismo de rescate. Los datos están disponibles a nivel de sistema y por administradora general de fondos, con frecuencia trimestral y una historia que comienza en diciembre de 2010. La ampliación convierte registros regulatorios dispersos en series comparables, visualizables y descargables.\n\nEn seguros, BEST+ agrega prima directa, resultado del ejercicio, inversiones e indicadores de rentabilidad, endeudamiento y solvencia, tanto agregados como por compañía. La CMF habilitó además un visualizador y acceso automatizado mediante API. La publicación amplía la información pública sin recomendar decisiones de inversión ni cambiar las exigencias prudenciales; amplía la información pública con la que inversionistas y analistas pueden evaluar ambos sectores. Su utilidad dependerá de la periodicidad de actualización, la consistencia de las clasificaciones y el uso de series homogéneas. Los documentos metodológicos y las estadísticas comentadas entregados por el regulador serán la referencia para interpretar comparaciones históricas.",
+        "anchor": "cmf-best-plus-fondos-seguros-series",
+        "sources": [
+          {
+            "name": "CMF — nuevas series de fondos y seguros en BEST+",
+            "url": "https://www.cmfchile.cl/portal/prensa/625/w4-article-114541.html"
+          },
+          {
+            "name": "CMF — plataforma estadística BEST+",
+            "url": "https://best.cmfchile.cl/"
+          }
+        ]
+      },
+      {
+        "slot": "markets_global",
+        "headline": "Europa prepara ajustes operativos para liquidar en T+1",
+        "deck": "El BCE adaptará en junio de 2027 el proceso nocturno de T2S antes del cambio coordinado de los mercados europeos en octubre.",
+        "development": "El Banco Central Europeo detalló los cambios operativos que prepara para la transición de los mercados europeos a liquidación T+1 el 11 de octubre de 2027. El ciclo reducirá de dos a un día hábil el tiempo entre una negociación y la entrega de valores y efectivo. El BCE prevé modificar en junio de 2027 el proceso nocturno de TARGET2-Securities, su plataforma de liquidación en dinero de banco central, para operar con el calendario más estrecho. La infraestructura ya procesa algunas transacciones en T+1 e incluso T+0, pero el cambio general exige adaptar secuencias, horarios e intercambios de información entre intermediarios.\n\nLa fecha está coordinada con Reino Unido y Suiza, lo que busca limitar fricciones entre mercados conectados. El menor plazo puede reducir riesgo de contraparte y capital inmovilizado en márgenes, aunque también deja menos tiempo para confirmar operaciones, corregir datos y financiar posiciones. Por eso, el BCE subrayó la necesidad de automatización, estandarización y pruebas durante los próximos meses. La transición está fijada normativamente, pero su ejecución aún no está completada. Los hitos verificables serán las pruebas sectoriales, los cambios de T2S de junio y la preparación efectiva de custodios, cámaras, bancos y gestores antes de octubre.",
+        "anchor": "europa-liquidacion-t1-ajustes-t2s-2027",
+        "sources": [
+          {
+            "name": "BCE — transición T+1 y cambios previstos en T2S",
+            "url": "https://www.ecb.europa.eu/press/key/date/2026/html/ecb.sp261029~e9b57c3495.en.html"
+          },
+          {
+            "name": "ESMA — marco y calendario europeo para T+1",
+            "url": "https://www.esma.europa.eu/press-news/esma-news/one-year-go-t1-settlement-regulatory-framework-complete-now-lets-make-it"
+          }
+        ]
+      }
+    ]
+  }
+}
