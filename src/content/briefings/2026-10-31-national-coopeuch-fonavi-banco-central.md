@@ -1,11 +1,11 @@
 ---
 title: "Coopeuch pide rediseñar el riesgo de Fonavi y solicita acceso directo al Banco Central"
 summary: "La cooperativa cuestiona el deducible de 3,5% y la gobernanza del fondo hipotecario, mientras busca operar directamente en los sistemas de pagos y liquidez del instituto emisor."
-publishedAt: "2026-10-31T12:59:00-03:00"
+publishedAt: "2026-10-31T13:03:51-03:00"
 cutoffAt: "2026-10-31T12:00:00-03:00"
 section: "national"
 editionSlot: "evening"
-status: "draft"
+status: "published"
 tags:
   - chile
   - vivienda
