@@ -1,11 +1,11 @@
 ---
 title: "Binance repone 90% del robo de US$6.300 millones y bitcoin se estabiliza sobre US$77.000"
 summary: "La plataforma destinó US$6.340 millones propios, prepara una nueva prueba de reservas y apunta a reabrir retiros el 1 de noviembre, aunque persiste un 10% en tokens menos líquidos."
-publishedAt: "2026-10-31T12:59:00-03:00"
+publishedAt: "2026-10-31T13:03:51-03:00"
 cutoffAt: "2026-10-31T12:00:00-03:00"
 section: "markets"
 editionSlot: "evening"
-status: "draft"
+status: "published"
 tags:
   - mercados
   - bitcoin
