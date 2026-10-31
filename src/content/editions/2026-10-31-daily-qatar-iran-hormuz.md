@@ -1,11 +1,11 @@
 ---
 title: "Qatar abre una vía de siete días para Hormuz mientras Irán eleva la alerta militar"
 summary: "Doha intenta acercar propuestas incompatibles para reabrir el estrecho antes de una posible reanudación de ataques estadounidenses tras las elecciones de medio término."
-publishedAt: "2026-10-31T12:59:00-03:00"
+publishedAt: "2026-10-31T13:03:51-03:00"
 cutoffAt: "2026-10-31T12:00:00-03:00"
 type: "daily"
 editionSlot: "evening"
-status: "draft"
+status: "published"
 tags:
   - iran
   - qatar
