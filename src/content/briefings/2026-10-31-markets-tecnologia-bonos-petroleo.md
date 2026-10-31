@@ -1,11 +1,11 @@
 ---
 title: "Tecnología cae, Treasury sube y el petróleo conserva su propia prima de riesgo"
 summary: "El cierre del viernes confirmó una repricing del gasto en IA: Nasdaq y semiconductores cayeron, los bonos recibieron refugio y el crudo terminó en máximos de seis meses por riesgo de oferta."
-publishedAt: "2026-10-31T06:23:00-03:00"
+publishedAt: "2026-10-31T06:50:58-03:00"
 cutoffAt: "2026-10-30T18:00:00-03:00"
 section: "markets"
 editionSlot: "morning"
-status: "draft"
+status: "published"
 tags:
   - mercados
   - tecnologia

@@ -1,11 +1,11 @@
 ---
 title: "La caída industrial se concentra en el cobre mientras manufactura y comercio avanzan"
 summary: "La producción industrial bajó 2,7% en septiembre por una contracción minera de 8,7%. Manufactura, electricidad y comercio crecieron, revelando una economía sectorialmente divergente."
-publishedAt: "2026-10-31T06:18:00-03:00"
+publishedAt: "2026-10-31T06:50:58-03:00"
 cutoffAt: "2026-10-31T06:14:00-03:00"
 section: "national"
 editionSlot: "morning"
-status: "draft"
+status: "published"
 tags:
   - chile
   - mineria

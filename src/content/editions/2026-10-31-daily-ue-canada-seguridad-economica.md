@@ -1,11 +1,11 @@
 ---
 title: "La UE y Canadá convierten su alianza en una plataforma de seguridad económica"
 summary: "El pacto amplía la relación hacia minerales críticos, energía, tecnología y comercio digital, con una asociación más estrecha prevista para 2027."
-publishedAt: "2026-10-31T06:01:40-03:00"
+publishedAt: "2026-10-31T06:50:58-03:00"
 cutoffAt: "2026-10-31T06:01:04-03:00"
 type: "daily"
 editionSlot: "morning"
-status: "draft"
+status: "published"
 tags:
   - union-europea
   - canada
