@@ -24,11 +24,11 @@ sources:
 featured: false
 demo: false
 highlights:
-  - label: "Binance cubre 90% de los activos sustraídos"
+  - label: "Cobertura sube a 90%"
     text: "La plataforma reservó US$6.340 millones de fondos propios para respaldar el faltante de US$6.300 millones."
-  - label: "Retiros podrían reabrir el 1 de noviembre"
+  - label: "Retiros: 1 de noviembre"
     text: "La fecha depende de completar la reposición y publicar una nueva prueba de reservas con cobertura mínima de uno a uno."
-  - label: "Bitcoin se mantiene sobre US$77.000"
+  - label: "Bitcoin sobre US$77.000"
     text: "A las 10:55 de Santiago cotizaba cerca de US$77.447, con un avance diario de 0,34%."
 ---
 
