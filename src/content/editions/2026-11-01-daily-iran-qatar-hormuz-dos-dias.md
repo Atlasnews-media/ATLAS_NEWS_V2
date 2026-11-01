@@ -1,11 +1,11 @@
 ---
 title: "Irán y Qatar reducen a dos días la hoja de ruta para reabrir Hormuz, pero aún no hay acuerdo"
 summary: "El tercer día de conversaciones acortó la secuencia para reabrir el estrecho después de un eventual acuerdo con Washington. La preparación militar y la falta de una conclusión mantienen el riesgo."
-publishedAt: "2026-11-01T13:08:12-03:00"
+publishedAt: "2026-11-01T13:11:32-03:00"
 cutoffAt: "2026-11-01T12:00:00-03:00"
 type: "daily"
 editionSlot: "evening"
-status: "draft"
+status: "published"
 tags:
   - iran
   - qatar

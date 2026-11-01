@@ -1,11 +1,11 @@
 ---
 title: "Dos encuestas sitúan la aprobación de Kast entre 22,1% y 25%, mínimos de su mandato"
 summary: "Pulso Ciudadano y Criteria convergen en el deterioro del respaldo presidencial y en el rechazo a la gestión de la crisis en Justicia. La señal estrecha el margen político, aunque no determina por sí sola el resultado de la agenda económica."
-publishedAt: "2026-11-01T13:08:12-03:00"
+publishedAt: "2026-11-01T13:11:32-03:00"
 cutoffAt: "2026-11-01T12:00:00-03:00"
 section: "national"
 editionSlot: "evening"
-status: "draft"
+status: "published"
 tags:
   - chile
   - politica

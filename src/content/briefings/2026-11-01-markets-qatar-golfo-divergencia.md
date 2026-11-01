@@ -1,11 +1,11 @@
 ---
 title: "Qatar salta 4,6% mientras Arabia Saudita y Egipto caen ante el riesgo regional"
 summary: "La bolsa de Doha tuvo su mayor avance intradía en más de ocho años, apoyada por QatarEnergy y la ratificación soberana de S&P. El resto de la región operó con cautela y factores locales."
-publishedAt: "2026-11-01T13:08:12-03:00"
+publishedAt: "2026-11-01T13:11:32-03:00"
 cutoffAt: "2026-11-01T12:00:00-03:00"
 section: "markets"
 editionSlot: "evening"
-status: "draft"
+status: "published"
 tags:
   - mercados
   - qatar
