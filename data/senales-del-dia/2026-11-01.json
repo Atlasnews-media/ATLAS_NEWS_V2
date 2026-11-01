@@ -1,0 +1,115 @@
+{
+  "status": "READY",
+  "date": "2026-11-01",
+  "contract": "atlas-senales-del-dia-v1",
+  "senalesDelDia": {
+    "internacional": [
+      {
+        "slot": "technology",
+        "headline": "Google ejecuta su primera respuesta de IA desde órbita",
+        "deck": "El prototipo Suncatcher encendió un TPU, procesó una instrucción y devolvió el resultado a tierra tras su lanzamiento del 1 de octubre.",
+        "development": "Google informó que el prototipo orbital de Project Suncatcher completó su primer ciclo de cómputo en el espacio. El equipo de control envió una instrucción desde tierra, encendió un acelerador Tensor Processing Unit instalado en el satélite, ejecutó el modelo Gemma 4 y recibió una respuesta completa. La nave fue lanzada el 1 de octubre en una misión compartida de SpaceX y fue construida junto con Planet. El hito confirma que un procesador de clase centro de datos puede arrancar, recibir comandos y devolver resultados después de atravesar el lanzamiento y operar en condiciones orbitales.\n\nLa prueba no equivale todavía a un centro de datos espacial ni demuestra viabilidad comercial. El programa debe medir durante meses cómo afectan la radiación, los cambios térmicos, la energía disponible y las comunicaciones al hardware y a su rendimiento. Google investiga si futuras constelaciones podrían aprovechar energía solar casi continua y procesar información cerca de sensores orbitales, pero no anunció fecha de despliegue ni capacidad productiva. Los próximos hitos verificables serán la estabilidad del TPU, el consumo energético, la tasa de errores y la transferencia sostenida de datos. La señal es un resultado técnico acotado: computación de IA ejecutada y recuperada desde órbita.",
+        "anchor": "google-suncatcher-tpu-respuesta-orbita",
+        "sources": [
+          {
+            "name": "Google — primer resultado de Project Suncatcher desde órbita",
+            "url": "https://blog.google/innovation-and-ai/models-and-research/google-research/project-suncatcher-satellite-response/"
+          },
+          {
+            "name": "The Verge — operación del prototipo orbital de Google",
+            "url": "https://www.theverge.com/tech/1023528/google-project-suncatcher-ai-satellite-transmission"
+          }
+        ]
+      },
+      {
+        "slot": "world",
+        "headline": "Consejo de Seguridad deja vencer la misión en Sahara Occidental",
+        "deck": "Dos resoluciones rivales fracasaron y MINURSO quedó sin renovación al expirar su mandato el 31 de octubre.",
+        "development": "El Consejo de Seguridad de Naciones Unidas no logró renovar el mandato de la Misión para el Referéndum del Sahara Occidental, MINURSO, antes de su vencimiento del 31 de octubre. Rusia vetó una resolución presentada por Estados Unidos que extendía la presencia por un año y modificaba el marco político de la misión. Después, un texto ruso que proponía una renovación directa obtuvo sólo tres votos favorables y tampoco alcanzó los nueve necesarios. El resultado interrumpe una práctica de extensiones anuales que había mantenido a la operación activa desde 1991.\n\nMINURSO fue creada para apoyar un alto el fuego y preparar una consulta de autodeterminación que nunca se realizó por desacuerdos sobre el censo y el estatus del territorio. Marruecos controla la mayor parte del Sahara Occidental y propone autonomía bajo su soberanía; el Frente Polisario reclama un proceso que mantenga la independencia entre las opciones. La falta de renovación no resuelve esa disputa ni define automáticamente cómo se retirarán los observadores y el personal civil. Naciones Unidas deberá aclarar las consecuencias administrativas y operativas del vencimiento. Los próximos hechos verificables serán cualquier nueva negociación del Consejo, instrucciones de repliegue y medidas para preservar el alto el fuego.",
+        "anchor": "onu-minurso-sahara-occidental-mandato-vencido",
+        "sources": [
+          {
+            "name": "Naciones Unidas — fracaso de las resoluciones sobre MINURSO",
+            "url": "https://press.un.org/en/2026/sc16498"
+          },
+          {
+            "name": "Associated Press — votaciones rivales sobre Sahara Occidental",
+            "url": "https://apnews.com/article/3267317ce19e61bd0f41d90012504c92"
+          }
+        ]
+      }
+    ],
+    "nacional": [
+      {
+        "slot": "ipsa_company",
+        "headline": "Banco de Chile gana $287.734 millones en el tercer trimestre",
+        "deck": "La utilidad bajó 1,8% anual, mientras los ingresos operacionales crecieron 3% y las pérdidas crediticias aumentaron 21,2%.",
+        "development": "Banco de Chile reportó una utilidad neta de $287.734 millones en el tercer trimestre de 2026, 1,8% menos que en igual período de 2025. Los ingresos operacionales aumentaron 3% hasta $757.587 millones, apoyados por mayores ingresos de clientes y comisiones, pero el avance fue absorbido por un incremento de 21,2% en las pérdidas crediticias y de 7,2% en los gastos operacionales. El banco vinculó el mayor costo por riesgo con un aumento de la morosidad en banca minorista desde niveles inferiores al promedio observados en años recientes.\n\nEn los primeros nueve meses, la utilidad acumulada subió 2,2% a $946.929 millones y los ingresos operacionales avanzaron 6,6%. Las pérdidas crediticias acumuladas, sin embargo, crecieron 41,2% hasta $375.650 millones. El trimestre muestra que la actividad transaccional y los ingresos por créditos todavía sostienen la operación, aunque la normalización del riesgo y los costos laborales reducen su traducción a resultados. La comparación no permite atribuir todo el deterioro a una sola cartera ni anticipa el cierre anual. Para evaluar la trayectoria serán relevantes la mora minorista, las recuperaciones, las provisiones y el margen de clientes en el cuarto trimestre.",
+        "anchor": "banco-chile-resultados-tercer-trimestre-2026",
+        "sources": [
+          {
+            "name": "SEC — reporte 6-K de resultados de Banco de Chile",
+            "url": "https://www.sec.gov/Archives/edgar/data/1161125/000121390026114044/ea0309879-6k_bank.htm"
+          },
+          {
+            "name": "FinancialFilings — informe financiero del tercer trimestre",
+            "url": "https://financialfilings.com/filings/bank-of-chile/interim-quarterly-report/2026/75086909/"
+          }
+        ]
+      },
+      {
+        "slot": "policy_economy",
+        "headline": "Gobierno propone que Corfo invierta en fondos de capital de riesgo",
+        "deck": "El proyecto permitiría aportes minoritarios directos y mediante fondos de fondos, con una capitalización inicial de US$25 millones.",
+        "development": "El Gobierno ingresó con suma urgencia un proyecto que autoriza a Corfo a participar como inversionista minoritario en fondos de capital de riesgo y en fondos de fondos. La iniciativa complementa las líneas de crédito que la agencia ya entrega a administradores privados: le permitiría comprar cuotas y actuar como aportante ancla, bajo fiscalización de la Comisión para el Mercado Financiero. En la estructura de fondo de fondos, la participación pública podría alcanzar 35%; en aportes directos a fondos nacionales, el límite propuesto es 30%. El Ejecutivo plantea una capitalización inicial de US$25 millones durante el primer año de vigencia.\n\nEl texto inició su trámite en la Cámara de Diputadas y Diputados y fue remitido a las comisiones de Economía y de Hacienda en lo que corresponda. Por tanto, los porcentajes, recursos y condiciones todavía son una propuesta y pueden cambiar durante la discusión legislativa. El diseño busca atraer capital privado hacia empresas innovadoras en etapa de escalamiento y diversificar el riesgo entre varios fondos, sin que Corfo controle individualmente las inversiones. El efecto fiscal y financiero dependerá de la versión aprobada, las reglas de selección, la gobernanza y la capacidad de movilizar aportes privados. Los próximos hitos serán la tramitación en comisión, las indicaciones y la votación.",
+        "anchor": "corfo-fondos-capital-riesgo-proyecto-ley",
+        "sources": [
+          {
+            "name": "Ministerio de Economía — proyecto Fondo de Fondos de Corfo",
+            "url": "https://www.economia.gob.cl/2026/10/29/ministerio-de-economia-y-corfo-presentan-proyecto-de-fondo-de-fondos.htm"
+          },
+          {
+            "name": "Portal Legislativo — tramitación del boletín 18819-03",
+            "url": "https://legislativo.lsvt.cl/proyecto/18819-03"
+          }
+        ]
+      }
+    ],
+    "mercados": [
+      {
+        "slot": "markets_chile",
+        "headline": "Déficit fiscal acumulado baja a 0,9% del PIB a septiembre",
+        "deck": "Los ingresos crecieron 7,6% real en nueve meses y superaron el avance de 1,2% del gasto; la deuda bruta llegó a 44,7% del PIB.",
+        "development": "El Gobierno Central acumuló a septiembre un déficit efectivo equivalente a 0,9% del PIB, frente a 2% en igual período de 2025 y 2,5% en 2024, según la Dirección de Presupuestos. En doce meses móviles, el saldo se mantuvo en -1,8% del PIB, un punto mejor que al cierre de 2025. Los ingresos acumulados crecieron 7,6% real, mientras el gasto presupuestario avanzó 1,2%. En septiembre, los traspasos de Codelco y los pagos de la gran minería privada impulsaron la recaudación; por el lado del gasto, aumentaron las erogaciones corrientes y siguió débil la inversión pública.\n\nLa mejora del flujo fiscal convive con un stock de deuda bruta de US$164.902 millones, equivalente a 44,7% del PIB al cierre del tercer trimestre. Los activos consolidados del Tesoro sumaron 6% del PIB, dejando una posición financiera neta de -38,7%. Para el mercado chileno, el menor déficit acumulado reduce necesidades inmediatas de financiamiento respecto de los dos años previos, pero no elimina la sensibilidad a ingresos mineros, tipo de cambio y ejecución del gasto. La señal debe seguirse con el cierre anual, la composición de las emisiones y el comportamiento del gasto de capital, que cayó 11,7% real en el acumulado.",
+        "anchor": "chile-deficit-fiscal-septiembre-2026",
+        "sources": [
+          {
+            "name": "Dipres — balance efectivo del Gobierno Central a septiembre",
+            "url": "https://www.dipres.gob.cl/598/w3-article-437431.html"
+          },
+          {
+            "name": "Dipres — Informes de Finanzas Públicas trimestrales",
+            "url": "https://www.dipres.gob.cl/598/w3-propertyvalue-24862.html"
+          }
+        ]
+      },
+      {
+        "slot": "markets_global",
+        "headline": "Banco de Canadá amplía contrapartes para sus operaciones repo",
+        "deck": "Distribuidores no primarios elegibles podrán acceder a repos, préstamo de valores y la facilidad permanente bajo límites menores.",
+        "development": "El Banco de Canadá amplió desde el 30 de octubre el acceso a varias operaciones de mercado para distribuidores de valores públicos que no son operadores primarios. Las entidades aprobadas podrán participar en repos y repos inversos a un día, repos a dos semanas, la facilidad permanente de repos y el programa de préstamo de valores. La medida busca fortalecer la ejecución de la política monetaria y la liquidez en los mercados de bonos y financiamiento garantizado del Gobierno de Canadá, al incorporar más contrapartes sin eliminar la función central de los operadores primarios.\n\nEl acceso no es automático. Cada distribuidor debe pertenecer a la plataforma tripartita Canadian Collateral Management Service, acreditar actividad suficiente en los mercados primario, secundario y repo, y someterse a revisión del banco central. Además, tendrá límites de participación inferiores a los aplicables a operadores primarios. La página de elegibilidad indicaba que todavía no había distribuidores aprobados, por lo que el cambio inicial es de infraestructura y competencia potencial, no un aumento observado de liquidez. Los hitos serán las primeras admisiones, el uso efectivo de las facilidades y cualquier efecto sobre tasas repo, profundidad y disponibilidad de títulos públicos.",
+        "anchor": "canada-amplia-contrapartes-operaciones-repo",
+        "sources": [
+          {
+            "name": "Banco de Canadá — ampliación de acceso a operaciones de mercado",
+            "url": "https://www.bankofcanada.ca/2026/10/market-notice-bank-of-canada-expands-access-to-eligible-non-primary-dealer-government-securities-distributors-to-select-market-operations/"
+          },
+          {
+            "name": "Banco de Canadá — requisitos de elegibilidad para distribuidores",
+            "url": "https://www.bankofcanada.ca/markets/market-operations-liquidity-provision/non-primary-dealer-government-securities-distributor-gsd-eligibility/"
+          }
+        ]
+      }
+    ]
+  }
+}
