@@ -15,8 +15,6 @@ tags:
 sources:
   - name: "Ministerio de Comercio, Industria y Recursos de Corea del Sur — comercio de octubre"
     url: "https://www.motir.go.kr/kor/article/ATCL3f49a5a8c/172360/view?mno=&pageIndex=1"
-  - name: "Gobierno de Corea del Sur — tendencias de exportaciones e importaciones de octubre"
-    url: "https://m.korea.kr/briefing/pressReleaseView.do?newsId=156787411&pWise=mSub&pWiseSub=C1"
   - name: "Reuters — las exportaciones coreanas casi se duplican por la inversión en IA"
     url: "https://www.reuters.com/world/asia-pacific/south-korea-exports-nearly-double-october-strongest-growth-since-1974-2026-11-01/"
   - name: "Yonhap — Corea del Sur registra US$115.300 millones exportados en octubre"
