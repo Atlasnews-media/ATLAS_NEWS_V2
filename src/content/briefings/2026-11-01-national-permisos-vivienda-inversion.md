@@ -1,11 +1,11 @@
 ---
 title: "Los permisos crecen por obras no residenciales mientras la vivienda pierde superficie"
 summary: "La superficie autorizada aumentó 10,7% en septiembre, pero vivienda nueva cayó 10,2% y ampliaciones 24,2%. El crecimiento se concentró en infraestructura no habitacional."
-publishedAt: "2026-11-01T06:21:00-03:00"
+publishedAt: "2026-11-01T06:47:17-03:00"
 cutoffAt: "2026-11-01T06:17:00-03:00"
 section: "national"
 editionSlot: "morning"
-status: "draft"
+status: "published"
 tags:
   - chile
   - construccion

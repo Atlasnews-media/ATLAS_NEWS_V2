@@ -1,11 +1,11 @@
 ---
 title: "Binance reabre retiros y OPEP+ mantiene la oferta: el fin de semana prueba la liquidez"
 summary: "Criptoactivos procesan la reposición de US$6.000 millones tras el robo a Binance, mientras OPEP+ mantiene cuotas de diciembre. Son riesgos distintos de liquidez digital y oferta física."
-publishedAt: "2026-11-01T06:25:00-03:00"
+publishedAt: "2026-11-01T06:47:17-03:00"
 cutoffAt: "2026-11-01T06:21:00-03:00"
 section: "markets"
 editionSlot: "morning"
-status: "draft"
+status: "published"
 tags:
   - mercados
   - criptoactivos

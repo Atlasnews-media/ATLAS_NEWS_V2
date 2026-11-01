@@ -1,11 +1,11 @@
 ---
 title: "Corea del Sur se acerca al billón de dólares exportados por el auge de la IA"
 summary: "Las exportaciones llegaron a US$115.280 millones en octubre, con chips y servidores como motores. El avance persiste incluso al ajustar por días hábiles."
-publishedAt: "2026-11-01T05:57:37-03:00"
+publishedAt: "2026-11-01T06:47:17-03:00"
 cutoffAt: "2026-11-01T05:57:09-03:00"
 type: "daily"
 editionSlot: "morning"
-status: "draft"
+status: "published"
 tags:
   - corea-del-sur
   - inteligencia-artificial
