@@ -1,0 +1,25 @@
+VOZ 1: Mercados abre con una divergencia. El petróleo baja y los futuros de Wall Street rebotan, pero los bonos y el oro todavía no confirman un regreso limpio al apetito por riesgo.
+VOZ 2: Vamos por partes. ¿Qué está haciendo el crudo?
+VOZ 1: A la hora de corte, el Brent cedía 1,5% a 111 dólares con 72 centavos por barril y el WTI bajaba 1,7% a 102 dólares con 37 centavos. El catalizador fue una tercera jornada de conversaciones entre Irán y Qatar para impulsar un acuerdo que termine la guerra entre Estados Unidos, Israel e Irán.
+VOZ 2: ¿Eso revierte el shock energético que describe la General?
+VOZ 1: Todavía no. El Brent subió 13,6% en octubre y el sistema consumió una parte importante de sus inventarios durante la disrupción de Hormuz. Una señal diplomática puede reducir la prima inmediata, pero no repone reservas, ni normaliza de un día para otro la refinación, los seguros y las rutas marítimas.
+VOZ 2: Sin embargo, los futuros de acciones sí reaccionan.
+VOZ 1: Los futuros del Nasdaq avanzaban 0,6% y los del S&P 500, 0,4%. Es un rebote después de un octubre difícil para tecnología. Pero los mercados asiáticos que ya estaban abiertos seguían débiles: el Nikkei caía 0,5%, Corea del Sur 0,8% y el índice regional fuera de Japón 0,4%.
+VOZ 2: ¿Por qué importa distinguir futuros de mercados abiertos?
+VOZ 1: Porque no representan el mismo grado de formación de precios. Los futuros muestran un intento de estabilización antes de Wall Street. Asia refleja transacciones efectivas y todavía descuenta dudas sobre la inversión en inteligencia artificial.
+VOZ 2: ¿La preocupación es que la IA no genere ingresos?
+VOZ 1: Es más precisa: el mercado pregunta si los ingresos y la caja justifican el costo del despliegue. Goldman Sachs estima que la inversión de los grandes proveedores de nube casi se duplicaría a 800.000 millones de dólares este año y subiría a 1,2 billones en 2027. Al mismo tiempo, el crecimiento de utilidades por acción del S&P 500 se moderaría desde cerca de 30% en 2026 a 18% el próximo año.
+VOZ 2: O sea, crecimiento todavía fuerte, pero menos aceleración y mucho capital comprometido.
+VOZ 1: Exactamente. Por eso el mercado empieza a discriminar entre empresas con demanda, márgenes y caja verificables, y compañías cuya valoración depende de que la inversión futura produzca retornos muy altos.
+VOZ 2: ¿Los bonos están funcionando como refugio?
+VOZ 1: Sólo parcialmente. El Treasury a diez años rondaba 4,952%, por debajo del máximo de octubre de 5,3645%, pero todavía cerca de 5%. El rendimiento a dos años estaba en 4,612%. La fragilidad de las acciones redujo algo la presión, pero las expectativas de nuevas alzas de la Reserva Federal limitan el rally de los bonos.
+VOZ 2: ¿Qué descuenta el mercado para diciembre?
+VOZ 1: Los futuros asignaban 72% de probabilidad a un alza de un cuarto de punto. Sin embargo, el ajuste total esperado bajó a 55 puntos base, desde más de 70 hace un mes. Es una mezcla: la próxima subida sigue siendo probable, pero el mercado recorta cuánto endurecimiento vendría después.
+VOZ 2: ¿Y el oro? Normalmente debería beneficiarse de la incertidumbre.
+VOZ 1: Rebotaba 0,6% a 3.898 dólares la onza después de caer 6,8% en octubre. La caída previa parece haber incluido ventas para obtener liquidez y cubrir llamados de margen. Eso explica por qué un activo defensivo puede bajar durante una corrección: a veces se vende lo líquido para financiar pérdidas en otra parte.
+VOZ 2: Entonces, ¿cuál es la lectura cross-asset?
+VOZ 1: El petróleo entrega alivio inflacionario marginal y ayuda a los futuros de acciones. Pero las tasas largas siguen elevadas, Asia permanece débil y el oro apenas recompone parte del castigo. No es una señal uniforme de riesgo encendido; es una repricing selectiva.
+VOZ 2: ¿Qué puede validar o invalidar esa lectura esta semana?
+VOZ 1: Apple, AMD y Palantir mostrarán si la demanda tecnológica sostiene márgenes y caja. El ISM manufacturero y las nóminas probarán el escenario de tasas. En energía, la condición es que la diplomacia se traduzca en navegación, seguros y flujos más normales.
+VOZ 2: ¿Cuál sería la señal más clara?
+VOZ 1: Si el crudo continúa bajando, los diferenciales de crédito se estrechan y la tecnología rebota con participación amplia, habrá estabilización. Si el Brent cede pero el Treasury a diez años sigue cerca de 5% y la recuperación se limita a futuros, el mercado estará diciendo que el alivio energético no compensa el costo de capital ni las dudas sobre los retornos de la IA.
