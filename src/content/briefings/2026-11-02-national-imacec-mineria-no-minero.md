@@ -19,9 +19,9 @@ sources:
 highlights:
   - label: "El Imacec crece 0,2%"
     text: "La actividad volvió a una variación anual positiva después de la caída de 1,0% registrada en agosto."
-  - label: "La minería retrocede 12,1%"
+  - label: "La minería cae 12,1%"
     text: "Menores leyes del cobre y una suspensión temporal de faenas mantuvieron el principal lastre exportador."
-  - label: "La economía no minera avanza 2,0%"
+  - label: "No minero crece 2,0%"
     text: "Comercio, industria, servicios y generación eléctrica evitaron que la debilidad minera arrastrara al agregado."
 demo: false
 ---
