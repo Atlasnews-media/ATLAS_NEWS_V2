@@ -1,0 +1,115 @@
+{
+  "status": "READY",
+  "date": "2026-11-02",
+  "contract": "atlas-senales-del-dia-v1",
+  "senalesDelDia": {
+    "internacional": [
+      {
+        "slot": "technology",
+        "headline": "Brotli entra al catálogo de fallas explotadas de CISA",
+        "deck": "La vulnerabilidad CVE-2026-111497 afecta componentes usados por Node.js, .NET y otros sistemas; las agencias recomiendan actualizar de inmediato.",
+        "development": "CISA incorporó CVE-2026-111497 a su catálogo de vulnerabilidades explotadas después de confirmar actividad maliciosa contra el decodificador Brotli. La falla permite que datos comprimidos especialmente preparados corrompan memoria adyacente y, según el producto afectado, provoquen caída del proceso, filtración de información o ejecución remota de código sin autenticación. Brotli es una biblioteca de compresión abierta y ampliamente integrada: el riesgo no se limita a una aplicación, porque aparece en entornos como Node.js, .NET, PowerShell, Bun, Envoy, Istio y paquetes de Python. La inclusión en el catálogo fija para agencias civiles federales de Estados Unidos un plazo de mitigación al 10 de noviembre.\n\nEl alcance real depende de que un servicio vulnerable procese contenido Brotli controlado por un atacante; por eso la presencia de la biblioteca no demuestra por sí sola una intrusión. Las organizaciones deben identificar versiones incorporadas directa y transitivamente, priorizar servicios expuestos a internet y aplicar las versiones corregidas de cada proveedor. Cuando no sea posible actualizar de inmediato, las agencias recomiendan impedir la descompresión de entradas no confiables y vigilar fallas o conductas anómalas. La señal relevante es la transición desde una debilidad publicada a explotación confirmada: inventario, parche y revisión de exposición pasan a ser acciones operativas, no preventivas hipotéticas.",
+        "anchor": "brotli-cve-2026-111497-explotacion-confirmada",
+        "sources": [
+          {
+            "name": "CISA — incorporación de CVE-2026-111497 al catálogo KEV",
+            "url": "https://content.govdelivery.com/accounts/USDHSCISA/bulletins/430af9d"
+          },
+          {
+            "name": "Centro Canadiense de Ciberseguridad — alerta sobre Brotli",
+            "url": "https://www.cyber.gc.ca/en/alerts-advisories/al26-027-critical-vulnerability-impacting-google-brotli-cve-2026-111497"
+          }
+        ]
+      },
+      {
+        "slot": "world",
+        "headline": "Canadá y la Unión Europea lanzan una alianza más estrecha",
+        "deck": "El acuerdo abre seis frentes de cooperación y encarga definir para 2027 una asociación canadiense con la UE, sin membresía plena.",
+        "development": "Canadá y la Unión Europea lanzaron en Montreal la Alianza para el Futuro, un marco para coordinar comercio, tecnología, recursos críticos, mercados financieros, seguridad y movilidad. La declaración conjunta también confirmó el cierre sustantivo de las negociaciones de un acuerdo de comercio digital, un nuevo acuerdo de cooperación en competencia y la participación canadiense en la iniciativa europea de computación de alto rendimiento. En paralelo, Canadá y el Banco Europeo de Inversiones concluyeron una negociación destinada a facilitar inversión europea en recursos críticos canadienses. Cada instrumento aún debe completar sus procedimientos jurídicos antes de producir todos sus efectos.\n\nEl componente político va más allá de esos acuerdos sectoriales. Los líderes encargaron definir antes de la cumbre de 2027 una asociación cada vez más estrecha de Canadá con la UE, expresamente por debajo de la membresía plena. No fijaron todavía derechos de voto, obligaciones presupuestarias ni acceso automático al mercado único, por lo que no corresponde tratar el anuncio como una adhesión. Los próximos hitos verificables serán la firma y publicación del acuerdo digital, el texto definitivo sobre competencia y la delimitación institucional de la asociación. La novedad es un proceso formal con calendario y áreas concretas, no sólo una declaración general de afinidad transatlántica.",
+        "anchor": "canada-union-europea-alianza-futuro-2027",
+        "sources": [
+          {
+            "name": "Primer Ministro de Canadá — declaración conjunta de la cumbre",
+            "url": "https://www.pm.gc.ca/en/news/statements/2026/10/30/joint-statement-canada-and-european-union-building-together-alliance"
+          },
+          {
+            "name": "Consejo Europeo — resultados de la cumbre UE-Canadá",
+            "url": "https://www.consilium.europa.eu/en/meetings/international-summit/2026/10/29-30/"
+          }
+        ]
+      }
+    ],
+    "nacional": [
+      {
+        "slot": "ipsa_company",
+        "headline": "Cencosud fusiona dos filiales bajo Easy Retail",
+        "deck": "Easy Retail absorberá a Cencosud Retail dentro del plan Un solo Cencosud; la matriz no espera un efecto significativo en sus estados consolidados.",
+        "development": "Cencosud informó a la Comisión para el Mercado Financiero una reorganización interna en la que Easy Retail absorberá a Cencosud Retail. La sociedad absorbida se disolverá sin liquidación y Easy Retail la sucederá en todos sus derechos y obligaciones. La operación se inscribe en el proceso denominado Un solo Cencosud, con el que el grupo busca coordinar iniciativas entre unidades, reducir capas administrativas y simplificar su estructura societaria. Al tratarse de una fusión entre filiales de la misma matriz, la compañía señaló que no prevé efectos significativos en sus estados financieros consolidados.\n\nLa comunicación acota el alcance financiero inmediato: no anuncia venta de activos, ingreso de un tercero ni cambio de control de Cencosud. El efecto económico dependerá de si la integración reduce costos, elimina duplicidades o acelera decisiones comerciales, resultados que no pueden deducirse del acto societario por sí solo. Para los accionistas, los próximos datos relevantes serán la fecha efectiva de la fusión, eventuales costos de implementación y cualquier ahorro identificable en los reportes posteriores. También importará si el modelo se extiende a otras filiales. La señal es una simplificación corporativa ejecutada dentro del perímetro del grupo, no una modificación automática de sus negocios operativos ni de su valoración.",
+        "anchor": "cencosud-fusion-filiales-easy-retail",
+        "sources": [
+          {
+            "name": "BolsaChile — hecho esencial de Cencosud",
+            "url": "https://bolsachile.com/cl/hechos-esenciales"
+          },
+          {
+            "name": "La Tercera — reorganización entre filiales de Cencosud",
+            "url": "https://copesa-la-tercera-staging.web.arc-cdn.net/pulso/noticia/cencosud-reorganiza-su-sociedad-con-fusion-entre-filiales/"
+          }
+        ]
+      },
+      {
+        "slot": "policy_economy",
+        "headline": "Minvu abre un subsidio para viviendas de hasta 4.500 UF",
+        "deck": "El nuevo Tramo 4.000 contempla 2.500 cupos, exige ahorro mínimo de 200 UF y eleva el tope en zonas extremas del norte y sur.",
+        "development": "El Ministerio de Vivienda creó el Tramo 4.000 del subsidio DS1 para hogares de sectores medios que buscan comprar una vivienda nueva o usada. El beneficio cubre inmuebles de más de 2.200 y hasta 4.000 UF entre Coquimbo y Los Lagos, con un aporte estatal de 400 UF. En las regiones del extremo norte el rango llega a 4.500 UF y el subsidio es de 500 UF; en Aysén y Magallanes también admite hasta 4.500 UF y entrega 550 UF. La convocatoria considera 2.500 familias y otros 2.500 cupos para beneficiarios que ya poseen un subsidio y soliciten cambiar de tramo.\n\nLa postulación exige 200 UF de ahorro, Registro Social de Hogares y capacidad para obtener un crédito hipotecario. Las solicitudes presenciales estarán abiertas del 17 al 27 de noviembre y las digitales del 18 al 27, hasta las 16:00 horas. El subsidio reduce el monto a financiar, pero no reemplaza la evaluación crediticia ni asegura una tasa determinada; los ejemplos del ministerio utilizan 3,7% sólo como referencia. El impacto dependerá de la disponibilidad de viviendas elegibles y del acceso efectivo al crédito de quienes resulten seleccionados. Los datos a observar serán postulaciones, adjudicaciones, operaciones cerradas y distribución regional, no sólo el número inicial de cupos.",
+        "anchor": "minvu-subsidio-tramo-4000-viviendas",
+        "sources": [
+          {
+            "name": "Ministerio de Vivienda — requisitos del Tramo 4.000",
+            "url": "https://www.minvu.gob.cl/tramo-4000/"
+          },
+          {
+            "name": "Gobierno de Chile — anuncio del nuevo tramo DS1",
+            "url": "https://www.gob.cl/noticias/nuevo-subsidio-ds1-tramo-4-permitira-comprar-viviendas-de-hasta-4000-uf-conoce-los-requisitos-y-como-postular/"
+          }
+        ]
+      }
+    ],
+    "mercados": [
+      {
+        "slot": "markets_chile",
+        "headline": "Banco Central crea contingencia para subastas de deuda",
+        "deck": "La Carta Circular 772 establece una vía alternativa para recibir posturas cuando el canal habitual de licitación no esté disponible.",
+        "development": "El Banco Central de Chile publicó la Carta Circular 772, que incorpora un mecanismo de contingencia para recibir posturas en licitaciones de deuda cuando el sistema habitual no pueda utilizarse. La instrucción se dirige a bancos y a entidades no bancarias del Mercado Cambiario Formal y se apoya en los capítulos operativos del Compendio de Normas Monetarias y Financieras. Su alcance incluye las reglas aplicables a colocaciones del propio Banco Central y a bonos de la Tesorería General de la República administrados mediante esa infraestructura. La carta viene acompañada de anexos operativos para activar y ejecutar el canal alternativo.\n\nEl cambio no modifica por sí solo montos, tasas ni calendario de emisiones. Su efecto es de continuidad operativa: reduce el riesgo de que una interrupción tecnológica impida presentar ofertas o fuerce a postergar una subasta. Para los participantes, la utilidad dependerá de conocer el procedimiento, mantener contactos habilitados y probar que las posturas pueden autenticarse y registrarse dentro de los plazos. Para el mercado, una contingencia bien definida ayuda a preservar competencia y formación de precios durante una falla, aunque no elimina riesgos de conectividad o errores humanos. La prueba material llegará cuando se realicen simulacros o una activación real y pueda verificarse que las ofertas se reciben, validan y adjudican sin trato desigual.",
+        "anchor": "bcch-contingencia-licitaciones-deuda-circular-772",
+        "sources": [
+          {
+            "name": "Banco Central de Chile — Carta Circular 772",
+            "url": "https://www.bcentral.cl/web/banco-central/contenido/-/detalle/normativas/cartas-circulares/carta-circular-772"
+          },
+          {
+            "name": "Banco Central de Chile — programa de operaciones del 2 al 6 de noviembre",
+            "url": "https://www.bcentral.cl/web/banco-central/contenido/-/detalle/prensa/anuncio/programa-operaciones-30102026"
+          }
+        ]
+      },
+      {
+        "slot": "markets_global",
+        "headline": "La tasa del DEG del FMI baja a 3,093% esta semana",
+        "deck": "La referencia internacional, calculada con instrumentos a tres meses de cinco monedas, regirá entre el 2 y el 8 de noviembre.",
+        "development": "El Fondo Monetario Internacional fijó en 3,093% la tasa de interés del Derecho Especial de Giro para la semana del 2 al 8 de noviembre, por debajo de 3,127% en el período previo. El cálculo combina rendimientos representativos a tres meses de los mercados monetarios del dólar, euro, yuan, yen y libra, ponderados por las cantidades de cada moneda en la canasta del DEG. En la publicación vigente, el componente en dólares aporta la mayor parte del resultado, seguido por el euro y la libra. El FMI actualiza esta referencia semanalmente y aplica un piso de 0,05%, que hoy está lejos de ser vinculante.\n\nEl DEG no es una moneda negociada por hogares ni una tasa de política de un banco central. Es un activo de reserva y unidad de cuenta del FMI; su interés sirve de base para la remuneración de tenencias y para cargos asociados a financiamiento del organismo. La baja semanal de 3,4 puntos base refleja movimientos en los instrumentos subyacentes y no constituye una decisión discrecional de estímulo. Para países con posiciones o préstamos denominados en DEG, cambios persistentes alteran gradualmente costos e ingresos financieros. Los próximos datos relevantes serán la composición de la tasa semanal, los rendimientos monetarios de las cinco monedas y cualquier revisión de la canasta, no las variaciones diarias de una sola divisa.",
+        "anchor": "fmi-tasa-deg-3-093-noviembre-2026",
+        "sources": [
+          {
+            "name": "FMI — cálculo de la tasa del DEG para el 2 al 8 de noviembre",
+            "url": "https://www.imf.org/external/np/fin/data/sdr_ir.aspx"
+          },
+          {
+            "name": "FMI — preguntas y respuestas sobre los DEG",
+            "url": "https://www.imf.org/en/About/FAQ/special-drawing-right"
+          }
+        ]
+      }
+    ]
+  }
+}

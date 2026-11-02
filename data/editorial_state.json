@@ -4,13 +4,13 @@
       "id": "oil-geopolitics-inflation",
       "topic": "Petróleo, geopolítica e inflación",
       "thesis": "La guerra regional, las interrupciones del mar Negro y El Niño están convirtiendo el shock energético en un alza multicommodity que combina inflación, inseguridad alimentaria y menor crecimiento, con los países endeudados como principal punto de fragilidad.",
-      "status": "changed",
-      "last_evidence": "El 28 de octubre el Banco Mundial proyectó un alza de 23% para los commodities en 2026: energía subiría 32%, alimentos cerca de 10%, metales 25% y la oferta mundial de petróleo caería 5,2%.",
-      "effect": "Amplía el hilo desde petróleo, refinación y tasas hacia un shock de oferta simultáneo: energía, granos, fertilizantes y metales pueden reforzarse entre sí y trasladar la presión a inflación, crecimiento, seguridad alimentaria y espacio fiscal.",
+      "status": "confirmed",
+      "last_evidence": "El 2 de noviembre ADNOC informó que casi 1.000 millones de barriles habían salido de los inventarios globales desde la disrupción de Hormuz, que el diésel tocó mínimos estacionales de 35 años en algunos mercados y que logística, fletes y seguros ya superaban 30% del costo del barril.",
+      "effect": "Confirma el shock energético y precisa su mecanismo: el riesgo ya no depende sólo de producir crudo, sino de reservas agotadas, refinación insuficiente y una logística que multiplica costos, amplificando la transmisión hacia inflación, actividad y seguridad energética.",
       "base_scenario": "Los commodities permanecen altos en 2026 y se moderan parcialmente en 2027; el Brent promedia US$91 este año y US$79 el próximo, mientras alimentos y fertilizantes siguen presionados por el mar Negro, El Niño y costos energéticos.",
       "invalidate_if": "La normalización sostenida de Ormuz, el mar Rojo y el mar Negro, una recuperación durable de oferta e inventarios y buenas cosechas debilitarían la tesis; una escalada conjunta que lleve el Brent hacia US$105 y alimentos sobre la base la reforzaría.",
       "watch": "Tránsito por Ormuz y el mar Rojo, infraestructura petrolera rusa, embarques del mar Negro, oferta e inventarios de crudo, intensidad de El Niño, cosechas, fertilizantes, inflación alimentaria, subsidios y decisiones de bancos centrales.",
-      "last_publication": "/ediciones/2026-10-29-daily-banco-mundial-commodities-alimentos/"
+      "last_publication": "/ediciones/2026-11-02-daily-energia-agota-reservas-logistica/"
     },
     {
       "id": "us-employment-fed-rates",
