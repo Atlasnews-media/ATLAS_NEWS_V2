@@ -1,11 +1,11 @@
 ---
 title: "El petróleo cede, pero el alivio no alcanza para borrar la tensión por la inversión en IA"
 summary: "El Brent retrocede 1,5% por señales diplomáticas, mientras los futuros tecnológicos rebotan tras un octubre débil. Bonos y oro muestran que el mercado aún distingue entre alivio energético y riesgo de financiamiento."
-publishedAt: "2026-11-02T06:28:00-03:00"
+publishedAt: "2026-11-02T06:49:11-03:00"
 cutoffAt: "2026-11-02T06:27:00-03:00"
 section: "markets"
 editionSlot: "morning"
-status: "draft"
+status: "published"
 tags:
   - mercados
   - petroleo

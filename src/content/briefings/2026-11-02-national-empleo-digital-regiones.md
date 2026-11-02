@@ -1,11 +1,11 @@
 ---
 title: "El crédito al empleo digital debuta con una ventaja de cinco puntos para las regiones"
 summary: "El beneficio permite imputar 15% de remuneraciones elegibles y 20% fuera de la Región Metropolitana. Su efecto dependerá de que las empresas conviertan el alivio tributario en empleo formal y capacidad exportadora."
-publishedAt: "2026-11-02T06:25:30-03:00"
+publishedAt: "2026-11-02T06:49:11-03:00"
 cutoffAt: "2026-11-02T06:24:30-03:00"
 section: "national"
 editionSlot: "morning"
-status: "draft"
+status: "published"
 tags:
   - chile
   - empleo

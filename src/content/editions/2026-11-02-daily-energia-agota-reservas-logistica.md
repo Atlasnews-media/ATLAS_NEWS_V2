@@ -1,11 +1,11 @@
 ---
 title: "La energía mundial agota sus reservas y convierte la logística en el nuevo cuello de botella"
 summary: "Casi 1.000 millones de barriles salieron de los inventarios desde la disrupción de Hormuz. El diésel toca mínimos estacionales de 35 años y entregar energía ya cuesta tanto como producirla."
-publishedAt: "2026-11-02T06:06:40-03:00"
+publishedAt: "2026-11-02T06:49:11-03:00"
 cutoffAt: "2026-11-02T06:04:53-03:00"
 type: "daily"
 editionSlot: "morning"
-status: "draft"
+status: "published"
 tags:
   - energia
   - petroleo
