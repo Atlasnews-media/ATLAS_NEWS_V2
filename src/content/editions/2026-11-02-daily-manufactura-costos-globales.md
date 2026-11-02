@@ -1,11 +1,11 @@
 ---
 title: "Estados Unidos acelera a 55,5 y la eurozona resiste en 52,7, pero suben los costos fabriles"
 summary: "La manufactura mundial siguió expandiéndose en octubre: Estados Unidos sorprendió al alza y Europa mejoró su lectura preliminar, mientras energía y disrupciones logísticas comprimieron márgenes desde Asia hasta el Reino Unido."
-publishedAt: "2026-11-02T13:00:00-03:00"
+publishedAt: "2026-11-02T13:05:20-03:00"
 cutoffAt: "2026-11-02T12:00:00-03:00"
 type: "daily"
 editionSlot: "evening"
-status: "draft"
+status: "published"
 tags:
   - manufactura
   - economia-global

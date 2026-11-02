@@ -1,11 +1,11 @@
 ---
 title: "El Imacec vuelve a crecer 0,2%, pero la minería todavía cae 12,1%"
 summary: "La actividad de septiembre revirtió la caída anual de agosto y avanzó 1,9% mensual desestacionalizada. Comercio, industria y servicios sostuvieron el resultado mientras el cobre mantuvo una economía de dos velocidades."
-publishedAt: "2026-11-02T13:00:00-03:00"
+publishedAt: "2026-11-02T13:05:20-03:00"
 cutoffAt: "2026-11-02T12:00:00-03:00"
 section: "national"
 editionSlot: "evening"
-status: "draft"
+status: "published"
 tags:
   - chile
   - imacec

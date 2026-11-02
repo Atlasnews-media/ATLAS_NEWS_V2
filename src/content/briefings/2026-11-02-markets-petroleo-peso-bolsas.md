@@ -1,11 +1,11 @@
 ---
 title: "El Brent cae 6,5% y lleva al peso bajo $985 mientras las bolsas rebotan"
 summary: "El repliegue del crudo se amplió desde 1,5% al cierre AM hasta 6,5% durante la ventana. El cobre recuperó terreno, el dólar cayó a $984,75 y el IPSA subió 0,93%, aunque la diplomacia con Irán aún no produjo un acuerdo."
-publishedAt: "2026-11-02T13:00:00-03:00"
+publishedAt: "2026-11-02T13:05:20-03:00"
 cutoffAt: "2026-11-02T12:00:00-03:00"
 section: "markets"
 editionSlot: "evening"
-status: "draft"
+status: "published"
 tags:
   - mercados
   - petroleo
