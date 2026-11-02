@@ -23,6 +23,13 @@ highlights:
     text: "Menores leyes del cobre y una suspensión temporal de faenas mantuvieron el principal lastre exportador."
   - label: "No minero crece 2,0%"
     text: "Comercio, industria, servicios y generación eléctrica evitaron que la debilidad minera arrastrara al agregado."
+editorialVisual:
+  src: "https://commons.wikimedia.org/wiki/Special:FilePath/Chuquicamata%20copper%20mine%20chile.jpg?width=1280"
+  alt: "Vista aérea de la mina de cobre Chuquicamata en el norte de Chile."
+  source: "Wikimedia Commons"
+  sourceUrl: "https://commons.wikimedia.org/wiki/File:Chuquicamata%20copper%20mine%20chile.jpg"
+  author: "Owen Cliffe"
+  license: "CC BY-SA 3.0"
 demo: false
 ---
 
