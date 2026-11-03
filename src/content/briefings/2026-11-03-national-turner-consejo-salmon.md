@@ -20,11 +20,11 @@ sources:
   - name: "Salmonexpert — desafíos del nuevo director del Consejo del Salmón"
     url: "https://www.salmonexpert.cl/asociacion-consejo-del-salmon-crecimiento/guillermo-turner-asumira-la-conduccion-del-consejo-del-salmon-sus-desafios-al-mando/2205336"
 highlights:
-  - label: "Turner asume en diciembre"
+  - label: "Turner asume en dic."
     text: "El exejecutivo de CMPC y exdirector de medios encabezará la asociación de seis productores de salmón."
-  - label: "Seguel deja el cargo el 30 de noviembre"
+  - label: "Seguel sale el 30 de nov."
     text: "La actual directora ejecutiva cierra cuatro años de conducción y el relevo se hará sin vacancia."
-  - label: "El mandato combina competitividad y regulación"
+  - label: "Agenda del nuevo mandato"
     text: "El gremio prioriza crecimiento sostenible, empleo regional y modernización de las reglas del sector."
 demo: false
 ---
