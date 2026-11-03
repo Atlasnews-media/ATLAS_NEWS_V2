@@ -1,0 +1,115 @@
+{
+  "status": "READY",
+  "date": "2026-11-03",
+  "contract": "atlas-senales-del-dia-v1",
+  "senalesDelDia": {
+    "internacional": [
+      {
+        "slot": "technology",
+        "headline": "NASA consulta al mercado cómo prolongar la vida de Hubble",
+        "deck": "La agencia busca capacidades para elevar, reparar o retirar el telescopio; las respuestas vencen el 30 de noviembre y aún no hay contrato.",
+        "development": "NASA abrió una solicitud de información para conocer qué empresas podrían capturar y atender al telescopio espacial Hubble en órbita. La consulta cubre tres opciones: elevarlo a una órbita de al menos 600 kilómetros para extender su vida científica, realizar servicios que mejoren sus capacidades o ejecutar una reentrada controlada y segura cuando termine la misión. Hubble no dispone de propulsión propia para contrarrestar el arrastre atmosférico y la agencia calcula que podría reingresar entre 2033 y 2034. Por esa razón, una eventual misión tendría que realizarse a más tardar en 2032.\n\nLa solicitud no adjudica fondos, proveedor ni fecha de vuelo. Es una etapa de sondeo que permitirá comparar capacidades técnicas, riesgos y costos antes de decidir si se abre una contratación. Las empresas tienen hasta el 30 de noviembre para responder. El desafío combina encuentro orbital, captura de un activo que no fue diseñado para esta generación de vehículos y protección de instrumentos científicos que siguen operativos. Los próximos hitos verificables serán la respuesta industrial, una eventual estrategia de adquisición y los requisitos de seguridad. La señal tecnológica es el paso desde propuestas informales hacia una evaluación oficial de servicios comerciales en órbita para un observatorio de gran escala.",
+        "anchor": "nasa-consulta-servicio-comercial-hubble",
+        "sources": [
+          {
+            "name": "NASA — consulta sobre servicio comercial para Hubble",
+            "url": "https://science.nasa.gov/missions/hubble/nasa-explores-potential-commercial-servicing-for-hubble-telescope/"
+          },
+          {
+            "name": "The File — alcance y límites de la solicitud de información",
+            "url": "https://thefile.news/story/nasa-hubble-servicing-rfi-oct29"
+          }
+        ]
+      },
+      {
+        "slot": "world",
+        "headline": "COP17 adopta la Ruta de Ereván para acelerar metas de naturaleza",
+        "deck": "El acuerdo responde a la primera revisión global, que halló al mundo fuera de trayectoria para cumplir 23 objetivos de biodiversidad en 2030.",
+        "development": "Los países reunidos en la COP17 de biodiversidad adoptaron la Ruta de Ereván, una respuesta negociada a la primera revisión colectiva del Marco Mundial de Kunming-Montreal. El examen concluyó que el avance agregado no alcanza para cumplir los 23 objetivos fijados para 2030. El nuevo itinerario pide acelerar la reducción de subsidios e incentivos dañinos para la naturaleza, integrar la biodiversidad en presupuestos y decisiones económicas, ampliar el apoyo financiero, científico y técnico a países en desarrollo y fortalecer los sistemas de seguimiento y reporte. La conferencia aprobó cerca de 50 decisiones sobre implementación, ciencia, áreas protegidas, especies invasoras y biodiversidad marina, entre otras materias.\n\nEl acuerdo no crea sanciones automáticas ni garantiza que cada país cambie su gasto. Su eficacia dependerá de planes nacionales, presupuestos y métricas que permitan distinguir anuncios de resultados. En Ereván también se informaron casi US$2.000 millones en nuevos compromisos e iniciativas de financiamiento, pero organismos y delegaciones reconocieron que persiste una brecha considerable. Las partes acordaron además reglas para un órgano permanente sobre pueblos indígenas y comunidades locales. Los próximos controles serán la incorporación del itinerario a políticas nacionales, el desembolso efectivo de recursos y la revisión de avances antes de la COP18, que se celebrará en Ecuador.",
+        "anchor": "cop17-ruta-erevan-biodiversidad-2030",
+        "sources": [
+          {
+            "name": "Convenio sobre la Diversidad Biológica — cierre de la COP17",
+            "url": "https://prod.drupal.www.infra.cbd.int/article/cop-17-closes"
+          },
+          {
+            "name": "Reuters — acuerdo y brecha financiera en la COP17",
+            "url": "https://www.reuters.com/sustainability/cop/countries-reach-cop17-deal-speed-up-biodiversity-action-money-still-short-2026-10-31/"
+          }
+        ]
+      }
+    ],
+    "nacional": [
+      {
+        "slot": "ipsa_company",
+        "headline": "Entel acuerda un dividendo provisorio de $115 por acción",
+        "deck": "El pago comenzará el 2 de diciembre para los accionistas inscritos al corte del 26 de noviembre; el rendimiento indicado es 2,8%.",
+        "development": "El directorio de Entel acordó distribuir un dividendo provisorio de $115 por acción, según el hecho esencial informado después del cierre del lunes. El pago comenzará el 2 de diciembre y tendrán derecho quienes figuren inscritos en el registro de accionistas al corte del 26 de noviembre. Con 302.017.113 acciones emitidas, el desembolso implícito ronda $34.732 millones. La referencia publicada por BolsaChile equivale a un rendimiento aproximado de 2,8% sobre el precio utilizado al momento del anuncio, aunque ese porcentaje cambiará con la cotización de la acción.\n\nEl dividendo es una transferencia de caja a los accionistas y no debe confundirse con rentabilidad total: al llegar la fecha exdividendo, el precio puede ajustarse y seguirá expuesto a resultados, deuda y perspectivas operacionales. La compañía publicó sus cifras del tercer trimestre el 2 de noviembre y realizará la presentación a inversionistas este martes, por lo que allí podrán aclararse la cobertura del pago y las prioridades de capital. El hecho esencial no modifica por sí solo la política vigente, que contempla distribuir hasta 80% de las utilidades. Los próximos puntos verificables son el formulario definitivo del dividendo, la fecha ex y la explicación financiera entregada en la conferencia.",
+        "anchor": "entel-dividendo-provisorio-115-pesos",
+        "sources": [
+          {
+            "name": "BolsaChile — hecho esencial y calendario del dividendo de Entel",
+            "url": "https://bolsachile.com/cl/hechos-esenciales"
+          },
+          {
+            "name": "Entel — información para inversionistas y resultados 3Q26",
+            "url": "https://informacioncorporativa.entel.cl/inversionistas"
+          }
+        ]
+      },
+      {
+        "slot": "policy_economy",
+        "headline": "Gobierno flexibiliza el subsidio regional a nuevas contrataciones",
+        "deck": "El Decreto 95 reduce de tres meses a uno el período sin cotizaciones exigido y permite extender la línea hasta marzo de 2027.",
+        "development": "El Ministerio del Trabajo modificó la Línea de Activación Laboral para regiones con alto desempleo. Desde la publicación del Decreto 95, la persona contratada debe acreditar ausencia de cotizaciones sólo en el mes inmediatamente anterior al inicio laboral; antes se exigían tres meses. La norma también permite mantener la línea hasta el 31 de marzo de 2027, siempre que la Ley de Presupuestos contemple recursos, y dispone que los pagos terminen antes si se agota el monto asignado. El programa opera en todas las regiones y contempla hasta 25.000 cupos para apoyar contratación formal en empresas privadas.\n\nEl incentivo mensual equivale a 50% de un ingreso mínimo por cada trabajador nuevo y 60% por cada trabajadora, durante un máximo de cuatro meses. La remuneración bruta debe ser igual o inferior a tres ingresos mínimos y el contrato tiene que registrarse en la Dirección del Trabajo. Sence mantiene abiertas las postulaciones hasta el 30 de noviembre; la extensión legal de la línea no implica automáticamente que ese plazo administrativo cambie. Reducir el período sin cotizaciones amplía el universo elegible, pero no demuestra por sí solo empleo adicional. La evaluación deberá comparar contratos subsidiados, permanencia después del beneficio, distribución regional y eventuales reemplazos de trabajadores no subsidiados.",
+        "anchor": "decreto-95-subsidio-contratacion-regional",
+        "sources": [
+          {
+            "name": "Biblioteca del Congreso — Decreto 95 de 2026",
+            "url": "https://www.bcn.cl/leychile/navegar?idNorma=1229587&idParte=10615692&idVersion=2026-11-02"
+          },
+          {
+            "name": "Sence — extensión de postulaciones al subsidio de contratación",
+            "url": "https://cdn.sence.gob.cl/empresas/noticias/subsidio-la-contratacion-extiende-plazo-de-postulacion-hasta-el-30-de-noviembre"
+          }
+        ]
+      }
+    ],
+    "mercados": [
+      {
+        "slot": "markets_chile",
+        "headline": "Lobos y Laval completan el Consejo de la CMF por seis años",
+        "deck": "Los nuevos comisionados asumieron el 2 de noviembre tras la ratificación del Senado y reemplazan a Piedrabuena e Iglesias.",
+        "development": "Macarena Lobos y Juan Esteban Laval asumieron como integrantes del Consejo de la Comisión para el Mercado Financiero. Con su incorporación, el órgano colegiado vuelve a quedar compuesto por cinco miembros: la presidenta Catherine Tornel, el vicepresidente Beltrán de Ramón y los comisionados Osvaldo Adasme, Lobos y Laval. Ambos reemplazan a Bernardita Piedrabuena y Augusto Iglesias, cuyos períodos terminaron el 8 de octubre. El Senado aprobó las designaciones propuestas por el Ejecutivo el 20 de octubre, con 31 votos a favor, 11 en contra y tres abstenciones, para mandatos de seis años.\n\nLa composición importa porque el Consejo adopta decisiones regulatorias y sancionatorias sobre bancos, aseguradoras, emisores, fondos y otros participantes del mercado. Lobos aporta experiencia legislativa y de políticas públicas, incluida la tramitación de normas financieras; Laval fue abogado jefe del Banco Central y fiscal de la Asociación de Bancos. Esos antecedentes describen sus trayectorias, pero no permiten inferir cómo votarán ni anticipar cambios normativos. La señal verificable es institucional: se completó el órgano que resuelve las materias de la CMF. Los próximos datos relevantes serán sus votaciones, eventuales inhabilidades y las normas o sanciones adoptadas con la nueva integración.",
+        "anchor": "cmf-lobos-laval-asumen-consejo",
+        "sources": [
+          {
+            "name": "CMF — incorporación de los nuevos comisionados",
+            "url": "https://www.cmfchile.cl/portal/prensa/625/w4-article-114630.html"
+          },
+          {
+            "name": "Senado — ratificación de Lobos y Laval",
+            "url": "https://www.senado.cl/comunicaciones/noticias/respaldan-macarena-lobos-y-juan-laval-como-comisionados-de-la-cmf"
+          }
+        ]
+      },
+      {
+        "slot": "markets_global",
+        "headline": "HKEX acepta bonos chinos como garantía en derivados listados",
+        "deck": "Siete instituciones depositaron más de 400 millones de yuanes el primer día del nuevo esquema de colateral no monetario.",
+        "development": "Las cámaras de compensación de derivados listados de Hong Kong comenzaron a aceptar bonos soberanos chinos, títulos de bancos de política y deuda offshore del Ministerio de Finanzas como garantía para cubrir márgenes. La ampliación alcanza a HKFE Clearing Corporation y SEHK Options Clearing House, y permite que participantes usen valores mantenidos mediante Northbound Bond Connect sin venderlos ni convertirlos previamente en efectivo. En el primer día, siete instituciones entregaron más de 400 millones de yuanes en bonos elegibles. HKEX afirma que son las primeras cámaras de derivados listados fuera de China continental que aceptan bonos del gobierno chino como colateral.\n\nLa medida conecta tenencias de renta fija continental con la infraestructura de derivados de Hong Kong y puede reducir necesidades de liquidez para quienes ya poseen esos títulos. No elimina el riesgo: las cámaras aplican descuentos, límites, valoración diaria y reglas de concentración para protegerse frente a variaciones de precio y tipo de cambio. El esquema amplía a derivados listados una práctica ya disponible en OTC Clear, donde esos bonos representaban cerca de 16% del saldo de márgenes en septiembre. Los próximos indicadores serán el volumen depositado, la diversidad de participantes, los costos de financiación y cualquier ajuste de los parámetros de riesgo.",
+        "anchor": "hkex-bonos-chinos-colateral-derivados",
+        "sources": [
+          {
+            "name": "HKEX — inicio del uso de bonos chinos como colateral",
+            "url": "https://www.hkex.com.hk/News/News-Release/2026/2611022news?sc_lang=en"
+          },
+          {
+            "name": "CMU OmniClear — recepción de garantías mediante Bond Connect",
+            "url": "https://www.cmuomniclear.com/en/news-and-events/id/3917"
+          }
+        ]
+      }
+    ]
+  }
+}

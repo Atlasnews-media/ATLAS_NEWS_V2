@@ -1,0 +1,29 @@
+VOZ 1: Mercados abre con una reacción que parece extraña: Australia subió la tasa a 4,85%, pero su moneda cayó.
+VOZ 2: Normalmente una tasa más alta debería fortalecer la moneda. ¿Por qué ocurrió lo contrario?
+VOZ 1: Porque el alza estaba casi completamente descontada. El mercado asignaba 88% de probabilidad al movimiento. La información nueva no fue el cuarto de punto, sino una votación de seis contra tres y la eliminación de una referencia explícita a nuevas subidas.
+VOZ 2: Entonces el mercado miró más la posibilidad de una pausa que el aumento efectivo.
+VOZ 1: Exactamente. El dólar australiano cayó hasta 0,35%, cerca de 69,73 centavos de dólar estadounidense. La lectura fue que el ciclo de endurecimiento podría estar próximo a su techo y que diciembre sería una pausa.
+VOZ 2: ¿Qué enseña esa reacción?
+VOZ 1: Que los precios responden a la diferencia entre lo esperado y lo ocurrido. Una decisión puede ser restrictiva en términos absolutos, pero menos restrictiva que el escenario que ya estaba incorporado.
+VOZ 2: ¿La misma lógica aparece en las acciones?
+VOZ 1: Sí, aunque con otro catalizador. Las acciones tecnológicas asiáticas cayeron con fuerza. El índice regional fuera de Japón perdió hasta 1,4%, Corea del Sur 4,1% y Taiwán 3,3%. Japón estaba cerrado por feriado.
+VOZ 2: ¿Por qué Corea y Taiwán reciben el mayor golpe?
+VOZ 1: Porque están muy expuestos a semiconductores, memoria y cadenas de inteligencia artificial. Cuando aumenta la duda sobre cuánto retorno generará el gasto en IA, esos mercados reaccionan con mayor sensibilidad.
+VOZ 2: Apple presentó resultados. ¿Ayudó a despejar la duda?
+VOZ 1: Los resultados pasados fueron sólidos: ventas y utilidad superaron estimaciones. Pero la guía mostró presión futura. Apple proyectó un margen bruto de 45% a 46% para el trimestre navideño, por debajo del 47,9% anterior, y crecimiento de servicios de 8% a 9%, menor al 10,7% que esperaba el mercado.
+VOZ 2: ¿Qué está comprimiendo el margen?
+VOZ 1: Principalmente el aumento de los costos de memoria y parte del costo de operar funciones de IA en la nube. Las acciones llegaron a caer 4% durante la conferencia y después moderaron la baja.
+VOZ 2: Eso genera ganadores y perdedores dentro de la misma cadena tecnológica.
+VOZ 1: Correcto. Los productores de memoria pueden beneficiarse de precios altos. Los fabricantes de dispositivos deben absorber el costo, subir precios o aceptar menores márgenes. El mercado deja de comprar tecnología como un bloque y empieza a separar quién vende capacidad escasa y quién paga por ella.
+VOZ 2: ¿Qué dicen los bonos?
+VOZ 1: El Treasury a diez años subió 2,1 puntos base hasta 4,913%. Sigue cerca de 5%, un nivel que encarece el financiamiento y obliga a que los proyectos intensivos en capital entreguen retornos más rápidos.
+VOZ 2: Pero el petróleo cayó fuerte el lunes. ¿Eso no debería aliviar las tasas?
+VOZ 1: Ayuda, pero no basta. El Brent recuperó 0,5% hasta unos 105 dólares con 25 centavos después de caer más de 7% el lunes. El desplome previo redujo parte del temor inflacionario, pero las tasas también responden a déficit, emisión de deuda, crecimiento y política monetaria.
+VOZ 2: ¿Por qué el crudo rebota hoy?
+VOZ 1: Porque los ataques estadounidenses en Irán redujeron la confianza en que las conversaciones diplomáticas normalicen rápidamente el suministro. El rebote es pequeño frente a la caída previa, pero recuerda que la prima geopolítica sigue activa.
+VOZ 2: Entonces el cuadro cross-asset no entrega una sola dirección.
+VOZ 1: Exactamente. La moneda australiana cae pese al alza de tasas, Asia vende tecnología, el Treasury vuelve a subir y el petróleo recupera sólo una fracción. Cada activo está descontando un riesgo distinto.
+VOZ 2: ¿Qué señal debemos seguir primero?
+VOZ 1: Si el dólar australiano mantiene la caída, confirmará que el mercado ve una pausa próxima. En tecnología, importa si la venta queda concentrada en semiconductores y memoria o se extiende a crédito corporativo y sectores sensibles a tasas.
+VOZ 2: ¿Y en Estados Unidos?
+VOZ 1: Las elecciones legislativas y el anuncio trimestral de financiamiento del Tesoro pueden cambiar la lectura sobre déficit y oferta de bonos. Si el rendimiento a diez años sigue subiendo aun con petróleo más bajo, el riesgo fiscal y la emisión estarán dominando el alivio energético.
