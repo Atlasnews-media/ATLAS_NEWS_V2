@@ -24,7 +24,7 @@ sources:
 highlights:
   - label: "Brent baja a US$101,32"
     text: "El petróleo cayó 3,3% después de superar US$107 durante la mañana por el ataque estadounidense en Qeshm."
-  - label: "Las bolsas revierten pérdidas"
+  - label: "Las bolsas rebotan"
     text: "Europa pasó a terreno positivo y los futuros de Estados Unidos subieron tras el anuncio sobre la ayuda a Israel."
   - label: "El cobre cae 2,6%"
     text: "El metal operó cerca de US$6,33 por libra y limitó el apoyo del petróleo más barato al peso chileno."
