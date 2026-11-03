@@ -4,13 +4,13 @@
       "id": "oil-geopolitics-inflation",
       "topic": "Petróleo, geopolítica e inflación",
       "thesis": "La guerra regional, las interrupciones del mar Negro y El Niño están convirtiendo el shock energético en un alza multicommodity que combina inflación, inseguridad alimentaria y menor crecimiento, con los países endeudados como principal punto de fragilidad.",
-      "status": "confirmed",
-      "last_evidence": "El 3 de noviembre el Banco de la Reserva de Australia elevó su tasa a 4,85%, proyectó inflación de 4,5% al cierre de 2026 y sobre 3% hasta fines de 2027, y atribuyó parte del cambio a energía y commodities afectados por el conflicto de Medio Oriente.",
-      "effect": "Confirma que el shock energético ya se transmite desde inventarios, refinación y logística hacia política monetaria, inflación prevista y empleo: incluso con vivienda y consumo débiles, Australia endureció por quinta vez en 2026 mientras la inversión en IA sostiene demanda y costos.",
+      "status": "weakened",
+      "last_evidence": "El 3 de noviembre Trump anunció que Estados Unidos terminará al cierre de 2026 la ayuda anual de cerca de US$4.000 millones a Israel; el Brent revirtió un alza sobre US$107 y cayó a US$101,32, mientras Qatar informó que Washington y Teherán aún revisan propuestas sin un avance definitivo.",
+      "effect": "Debilita la prima inmediata de escalada y muestra que una señal política puede recortar con rapidez el precio del crudo, pero no invalida el shock físico: los términos del acuerdo con Israel no son públicos, la cooperación militar continúa y Hormuz, inventarios y refinación aún no se han normalizado.",
       "base_scenario": "Los commodities permanecen altos en 2026 y se moderan parcialmente en 2027; el Brent promedia US$91 este año y US$79 el próximo, mientras alimentos y fertilizantes siguen presionados por el mar Negro, El Niño y costos energéticos.",
       "invalidate_if": "La normalización sostenida de Ormuz, el mar Rojo y el mar Negro, una recuperación durable de oferta e inventarios y buenas cosechas debilitarían la tesis; una escalada conjunta que lleve el Brent hacia US$105 y alimentos sobre la base la reforzaría.",
       "watch": "Tránsito por Ormuz y el mar Rojo, infraestructura petrolera rusa, embarques del mar Negro, oferta e inventarios de crudo, intensidad de El Niño, cosechas, fertilizantes, inflación alimentaria, subsidios y decisiones de bancos centrales.",
-      "last_publication": "/ediciones/2026-11-03-daily-australia-confirma-retorno-alzas-globales/"
+      "last_publication": "/ediciones/2026-11-03-daily-trump-termina-ayuda-israel/"
     },
     {
       "id": "us-employment-fed-rates",
