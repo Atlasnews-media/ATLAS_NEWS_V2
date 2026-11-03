@@ -1,11 +1,11 @@
 ---
 title: "El Imacec rebota 1,9% en el mes, pero la minería mantiene casi plano el crecimiento anual"
 summary: "La actividad creció 0,2% interanual en septiembre y recuperó parte del retroceso de agosto. Comercio e industria sostuvieron el componente no minero, mientras la extracción de cobre cayó 12,1%."
-publishedAt: "2026-11-03T06:18:10-03:00"
+publishedAt: "2026-11-03T06:49:50-03:00"
 cutoffAt: "2026-11-03T06:17:10-03:00"
 section: "national"
 editionSlot: "morning"
-status: "draft"
+status: "published"
 tags:
   - chile
   - actividad

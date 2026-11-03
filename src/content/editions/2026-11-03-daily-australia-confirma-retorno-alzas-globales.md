@@ -1,11 +1,11 @@
 ---
 title: "Australia confirma que la energía y la IA están reabriendo el ciclo global de alzas"
 summary: "El RBA elevó su tasa a 4,85%, máximo en 18 años, y postergó la convergencia de la inflación hasta 2028. La decisión muestra cómo energía cara e inversión tecnológica endurecen la política monetaria aun cuando empleo, vivienda y consumo pierden fuerza."
-publishedAt: "2026-11-03T06:04:29-03:00"
+publishedAt: "2026-11-03T06:49:50-03:00"
 cutoffAt: "2026-11-03T06:02:51-03:00"
 type: "daily"
 editionSlot: "morning"
-status: "draft"
+status: "published"
 tags:
   - economia-global
   - bancos-centrales

@@ -1,11 +1,11 @@
 ---
 title: "El dólar australiano cae tras el alza y Asia vende tecnología: manda la expectativa, no el titular"
 summary: "El RBA elevó su tasa a 4,85%, pero la moneda bajó porque el movimiento estaba descontado y el voto dividido apuntó a una pausa. La venta tecnológica asiática y un Treasury cerca de 4,91% mantienen el costo de capital en el centro."
-publishedAt: "2026-11-03T06:21:20-03:00"
+publishedAt: "2026-11-03T06:49:50-03:00"
 cutoffAt: "2026-11-03T06:20:20-03:00"
 section: "markets"
 editionSlot: "morning"
-status: "draft"
+status: "published"
 tags:
   - mercados
   - australia
