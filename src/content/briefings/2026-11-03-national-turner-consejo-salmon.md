@@ -22,7 +22,7 @@ sources:
 highlights:
   - label: "Turner asume en dic."
     text: "El exejecutivo de CMPC y exdirector de medios encabezará la asociación de seis productores de salmón."
-  - label: "Seguel sale el 30 de nov."
+  - label: "Seguel sale el 30/11"
     text: "La actual directora ejecutiva cierra cuatro años de conducción y el relevo se hará sin vacancia."
   - label: "Agenda del nuevo mandato"
     text: "El gremio prioriza crecimiento sostenible, empleo regional y modernización de las reglas del sector."
