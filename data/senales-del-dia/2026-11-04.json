@@ -1,0 +1,127 @@
+{
+  "status": "READY",
+  "date": "2026-11-04",
+  "contract": "atlas-senales-del-dia-v1",
+  "senalesDelDia": {
+    "internacional": [
+      {
+        "slot": "technology",
+        "headline": "CrowdStrike compra dos firmas para vigilar y probar agentes de IA",
+        "deck": "Fiddler aportará trazabilidad y Dreadnode pruebas ofensivas; ambas operaciones deben cerrar en el cuarto trimestre fiscal de 2027.",
+        "development": "CrowdStrike firmó acuerdos para adquirir Fiddler AI y Dreadnode, dos compañías que cubren etapas distintas del control de sistemas de inteligencia artificial. Fiddler añade observabilidad y explicabilidad: registra decisiones, rutas de razonamiento y uso de herramientas para comprobar si un agente cumplió su tarea. Dreadnode automatiza pruebas de seguridad antes del despliegue, incluidas vulnerabilidades de modelos, aplicaciones y agentes. El comprador prevé integrar Fiddler como Falcon Observe y las capacidades de Dreadnode en su plataforma Falcon. Los precios no fueron divulgados oficialmente y el pago de cada operación será principalmente en efectivo, con una parte en acciones sujeta a condiciones de permanencia.\n\nAmbas transacciones están sujetas a condiciones habituales y CrowdStrike espera cerrarlas durante su cuarto trimestre fiscal de 2027. La disponibilidad general de Falcon Observe y de las pruebas automatizadas también está prevista para ese período, por lo que el anuncio todavía no equivale a productos operativos ni a ingresos materializados. La señal tecnológica es la convergencia entre ciberseguridad tradicional y supervisión del comportamiento de agentes autónomos: identificar al agente, probarlo antes de producción y reconstruir lo que hizo después. Los próximos hitos verificables serán el cierre de las compras, la integración técnica y la publicación de condiciones comerciales y métricas de adopción.",
+        "anchor": "crowdstrike-fiddler-dreadnode-seguridad-agentes-ia",
+        "sources": [
+          {
+            "name": "CrowdStrike — acuerdo para adquirir Fiddler AI",
+            "url": "https://ir.crowdstrike.com/news-releases/news-release-details/crowdstrike-acquire-fiddler-deliver-agent-observability-ai-trust/"
+          },
+          {
+            "name": "CrowdStrike — acuerdo para adquirir Dreadnode",
+            "url": "https://ir.crowdstrike.com/news-releases/news-release-details/crowdstrike-acquire-dreadnode-advance-ai-trust-and-deliver/"
+          },
+          {
+            "name": "CyberScoop — alcance de las dos adquisiciones",
+            "url": "https://cyberscoop.com/crowdstrike-acquires-fiddler-dreadnode-ai-security/"
+          }
+        ]
+      },
+      {
+        "slot": "world",
+        "headline": "OMS cuantifica el retorno global de seis medidas de salud climática",
+        "deck": "El organismo estima 1,6 millones de muertes evitables al año, pero advierte que el cálculo depende de escenarios ambiciosos de expansión.",
+        "development": "La Organización Mundial de la Salud publicó una evaluación económica de seis intervenciones que conectan clima y salud. El paquete incluye alertas frente al calor, agua potable resiliente al clima, saneamiento básico, instalaciones para higiene y lavado de manos, combustibles domésticos más limpios y políticas eficientes de precios para combustibles fósiles. Bajo los escenarios modelados de expansión global, la OMS estima que podrían evitarse alrededor de 1,6 millones de muertes cada año y 16.700 millones de toneladas de dióxido de carbono. Para cinco medidas sometidas a análisis de costo-beneficio, el retorno agregado calculado es de US$24 por cada dólar invertido.\n\nLas cifras son proyecciones, no resultados observados. El informe compara una expansión ambiciosa entre 2024 y 2075 con un escenario sin esa ampliación y reconoce incertidumbre de largo plazo, bases de evidencia todavía limitadas y ausencia de algunas interacciones entre medidas. La mayor contribución estimada proviene de corregir subsidios ineficientes y gravar adecuadamente los combustibles fósiles, una política que requiere decisiones nacionales y puede tener efectos distributivos. La publicación busca informar compromisos antes de la COP31, pero no impone obligaciones. Los controles relevantes serán los planes financiados, la cobertura efectiva de cada intervención y evaluaciones posteriores que contrasten los beneficios modelados con mortalidad, emisiones y costos reales.",
+        "anchor": "oms-retorno-medidas-salud-climatica",
+        "sources": [
+          {
+            "name": "OMS — seis acciones climáticas y sanitarias prioritarias",
+            "url": "https://www.who.int/news/item/04-11-2026-six-climate-and-health-actions-could-save-1.6-million-lives-and-deliver-trillions-in-benefits-each-year"
+          },
+          {
+            "name": "OMS — informe técnico sobre beneficios y costos",
+            "url": "https://www.who.int/publications/i/item/9789240124813"
+          }
+        ]
+      }
+    ],
+    "nacional": [
+      {
+        "slot": "ipsa_company",
+        "headline": "CCU eleva ventas y EBITDA trimestral, pero cae en nueve meses",
+        "deck": "La utilidad controladora subió 5% en el tercer trimestre y bajó 20,4% acumulada; el directorio acordó un dividendo de $66,87 por acción.",
+        "development": "CCU reportó ventas por $760.388 millones en el tercer trimestre de 2026, un aumento interanual de 15,5%, mientras el EBITDA llegó a $83.488 millones y creció 13,4%. La utilidad atribuible a los controladores fue de $16.271 millones, 5% superior a la del mismo período de 2025. La lectura acumulada es menos favorable: entre enero y septiembre la utilidad controladora alcanzó $49.415 millones, una baja de 20,4%. La compañía atribuyó parte del crecimiento trimestral a mayores volúmenes de cerveza y licores en Chile, a una base de comparación débil y a avances en Argentina; el segmento de vinos siguió presionado por menores volúmenes en Chile y exportaciones.\n\nEl directorio también aprobó un dividendo provisorio de $66,87 por acción, por un total cercano a $24.709 millones, con pago desde el 26 de noviembre para accionistas inscritos al cierre del 20 de noviembre. El dividendo se cargará a las utilidades de 2026 y no elimina la divergencia entre la recuperación trimestral y el resultado acumulado. Tampoco representa rentabilidad total, porque la acción puede ajustarse en la fecha exdividendo. Los próximos puntos verificables son la conferencia de resultados, la evolución de volúmenes y márgenes en Chile y Argentina, y si la mejora del tercer trimestre se sostiene durante la temporada de mayor consumo.",
+        "anchor": "ccu-resultados-tercer-trimestre-dividendo-2026",
+        "sources": [
+          {
+            "name": "CCU — resultados y documentos para inversionistas",
+            "url": "https://ccuinvestor.com/"
+          },
+          {
+            "name": "Diario Financiero — resultados del tercer trimestre de CCU",
+            "url": "https://www.df.cl/empresas/industria/ccu-mejora-sus-ganancias-en-el-tercer-trimestre-pero-anota-caida-de-20-en"
+          },
+          {
+            "name": "BolsaChile — hecho esencial del dividendo de CCU",
+            "url": "https://bolsachile.com/cl/hechos-esenciales"
+          }
+        ]
+      },
+      {
+        "slot": "policy_economy",
+        "headline": "Entra en vigor crédito tributario para empleo en servicios digitales",
+        "deck": "La Ley 21.850 permite descontar 15% de remuneraciones elegibles desde el 1 de noviembre y eleva la tasa a 20% fuera de Santiago o en comunas rurales.",
+        "development": "Desde el 1 de noviembre comenzó a regir el crédito tributario de la Ley 21.850 para empresas que exportan servicios vinculados con la economía digital. El beneficio permite imputar contra el impuesto de primera categoría 15% de la parte elegible de las remuneraciones pagadas a trabajadores domiciliados y residentes en Chile. La tasa aumenta en cinco puntos porcentuales cuando la empresa tiene casa matriz o sucursal en una región distinta de la Metropolitana, o en una comuna rural de ésta, y el trabajador desempeña allí principalmente sus labores. El incentivo forma parte de la Ley para la Reconstrucción Nacional y el Desarrollo Económico y Social.\n\nEl crédito no se activa sólo por contratar: exige servicios basados en conocimiento, susceptibles de entrega a distancia y calificados como exportación, además de rentas determinadas mediante contabilidad. La base se ajusta según la proporción que representan esas exportaciones en los ingresos anuales y tiene un tope de 75 UTM por trabajador. El remanente no se devuelve, aunque puede imputarse en ejercicios posteriores. Su impacto dependerá del número de firmas que lo utilicen, del empleo adicional atribuible y de la distribución regional. Los próximos hitos serán las instrucciones administrativas del Servicio de Impuestos Internos, la primera declaración en que pueda imputarse y los datos de uso, costo fiscal y permanencia de los puestos apoyados.",
+        "anchor": "credito-tributario-empleo-servicios-digitales",
+        "sources": [
+          {
+            "name": "SII — crédito por remuneraciones en servicios digitales",
+            "url": "https://www.sii.cl/destacados/ley_reconstruccion/medidas_tributarias/pago_de_remuneraciones/"
+          },
+          {
+            "name": "Biblioteca del Congreso — Ley 21.850 vigente al 1 de noviembre",
+            "url": "https://www.bcn.cl/leychile/Navegar?idNorma=1229250&idVersion=2026-11-01"
+          }
+        ]
+      }
+    ],
+    "mercados": [
+      {
+        "slot": "markets_chile",
+        "headline": "Transelec coloca UF 6 millones en un bono con vencimiento en 2051",
+        "deck": "La Serie AD se adjudicó a una tasa promedio de UF más 3,5%; los recursos financiarán inversiones u otros fines generales de la transmisora.",
+        "development": "Transelec colocó UF 6 millones de la Serie AD en el mercado local, equivalentes a cerca de $250.000 millones al momento de la operación. El bono se adjudicó mediante remate holandés a una tasa promedio de UF más 3,5%, 35 puntos base por debajo de la tasa de inscripción informada para la subasta. La deuda vence en 2051 y tiene estructura bullet: paga intereses durante su vigencia y amortiza el capital en una sola cuota al vencimiento. La transmisora dispone de una opción de rescate anticipado desde 2029, sujeta al mecanismo de compensación definido en los documentos de la emisión.\n\nLos fondos se destinarán a financiar inversiones u otros fines generales del emisor. Para el mercado chileno, la operación entrega una referencia de costo de deuda corporativa de muy largo plazo en unidades de fomento, respaldada por calificaciones AA+ de Feller Rate y Humphreys y AA de Fitch informadas en la colocación. Esas notas no eliminan el riesgo de crédito, refinanciamiento ni cambios regulatorios del negocio eléctrico. Tampoco basta el diferencial frente a la tasa de inscripción para medir la demanda sin conocer órdenes y asignaciones. Los próximos datos serán el hecho esencial definitivo, la distribución entre inversionistas, el uso efectivo de los recursos y la evolución del bono en el mercado secundario.",
+        "anchor": "transelec-bono-serie-ad-uf-seis-millones",
+        "sources": [
+          {
+            "name": "BolsaChile — hecho esencial de la colocación de Transelec",
+            "url": "https://bolsachile.com/cl/hechos-esenciales"
+          },
+          {
+            "name": "Diario Financiero — términos de la colocación Serie AD",
+            "url": "https://www.df.cl/mercados/renta-fija/la-mayor-transmisora-electrica-de-chile-obtiene-mas-de-us-250-millones-con"
+          },
+          {
+            "name": "Transelec — información para inversionistas",
+            "url": "https://www.transelec.cl/inversionistas/"
+          }
+        ]
+      },
+      {
+        "slot": "markets_global",
+        "headline": "Australia sube la tasa a 4,85%, máximo desde 2008",
+        "deck": "El banco central aprobó el alza de 25 puntos base por seis votos contra tres y retrasó hasta fines de 2027 el retorno de la inflación bajo 3%.",
+        "development": "El Banco de la Reserva de Australia elevó la tasa de efectivo en 25 puntos base, hasta 4,85%, su nivel más alto desde 2008. La decisión fue adoptada por seis votos contra tres; la minoría prefería mantenerla en 4,60%. Es el quinto incremento de 2026 y responde a una inflación que el banco considera más persistente de lo previsto. En su nueva proyección, la inflación no bajaría de 3% hasta fines de 2027, alrededor de tres trimestres después de la estimación anterior. La autoridad señaló que esa trayectoria eleva el riesgo de que las expectativas se ajusten al alza y prolonguen la presión sobre precios.\n\nEl movimiento encarece el crédito para hogares y empresas y refuerza el atractivo relativo de activos en dólares australianos, pero su efecto sobre la moneda y los bonos dependerá de cuánto del alza ya estuviera descontado. El voto dividido muestra que la dirección futura no es automática: nuevas subidas exigirán evidencia de inflación o demanda más resistentes, mientras una desaceleración abrupta podría justificar una pausa. La decisión australiana también aporta una señal comparativa para mercados globales, porque confirma que algunos bancos centrales siguen endureciendo política cuando otros evalúan recortes. Los próximos controles serán inflación, empleo, consumo y la próxima actualización de previsiones del banco.",
+        "anchor": "australia-tasa-485-noviembre-2026",
+        "sources": [
+          {
+            "name": "Banco de la Reserva de Australia — decisión de política monetaria",
+            "url": "https://www.rba.gov.au/media-releases/2026/mr-26-30.html"
+          },
+          {
+            "name": "ABC News Australia — votación y nuevas proyecciones",
+            "url": "https://www.abc.net.au/news/2026-11-03/rba-lifts-interest-rates-november-2026-highest-rate-in-18-years/107340050"
+          }
+        ]
+      }
+    ]
+  }
+}
