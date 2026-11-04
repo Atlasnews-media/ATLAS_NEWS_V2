@@ -1,11 +1,11 @@
 ---
 title: "Bonos ganan y la venta tecnológica se revierte tras el giro electoral de Estados Unidos"
 summary: "El barrido demócrata provocó una venta inicial de tecnología, dólar y futuros, pero las acciones recuperaron terreno. Los bonos conservaron la ganancia: el mercado separa un freno fiscal más probable de un cambio regulatorio todavía incierto."
-publishedAt: "2026-11-04T06:22:10-03:00"
+publishedAt: "2026-11-04T06:51:10-03:00"
 cutoffAt: "2026-11-04T06:21:40-03:00"
 section: "markets"
 editionSlot: "morning"
-status: "draft"
+status: "published"
 tags:
   - mercados
   - bonos

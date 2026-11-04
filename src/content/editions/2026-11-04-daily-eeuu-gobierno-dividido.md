@@ -1,11 +1,11 @@
 ---
 title: "Estados Unidos entra en gobierno dividido y limita la agenda de Trump"
 summary: "Los demócratas ganaron la Cámara y el Senado tras una elección marcada por el costo de vida y la guerra con Irán. El nuevo Congreso podrá frenar nombramientos y exigir cambios, aunque el veto presidencial conserva poder ejecutivo."
-publishedAt: "2026-11-04T06:08:56-03:00"
+publishedAt: "2026-11-04T06:51:10-03:00"
 cutoffAt: "2026-11-04T06:08:49-03:00"
 type: "daily"
 editionSlot: "morning"
-status: "draft"
+status: "published"
 tags:
   - estados-unidos
   - elecciones

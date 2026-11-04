@@ -1,11 +1,11 @@
 ---
 title: "La informalidad sube por composición aunque cae el número de trabajadores informales"
 summary: "La tasa de ocupación informal aumentó a 26,4% mientras el número de trabajadores informales bajó 0,3%. La divergencia revela que el deterioro del empleo formal pesa más que una expansión de la informalidad."
-publishedAt: "2026-11-04T06:20:20-03:00"
+publishedAt: "2026-11-04T06:51:10-03:00"
 cutoffAt: "2026-11-04T06:19:50-03:00"
 section: "national"
 editionSlot: "morning"
-status: "draft"
+status: "published"
 tags:
   - chile
   - empleo
