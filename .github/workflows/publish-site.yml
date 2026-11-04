@@ -297,6 +297,36 @@ jobs:
             '{edition_key:$edition_key,edition_date:$edition_date,edition_type:$edition_type,status:$status,source_commit:$source_commit,metadata:{run_url:$run_url}}' \
             | curl -fsSL -X POST "$ATLAS_STATE_ENDPOINT" -H "Authorization: Bearer $token" -H 'content-type: application/json' --data-binary @-
 
+      - name: Preparar acceso al repositorio público
+        if: github.event_name != 'pull_request'
+        env:
+          DEPLOY_KEY: ${{ secrets.ATLAS_PAGES_DEPLOY_KEY }}
+        run: |
+          install -m 700 -d ~/.ssh
+          printf '%s\n' "$DEPLOY_KEY" > ~/.ssh/atlas_news_pages
+          chmod 600 ~/.ssh/atlas_news_pages
+          ssh-keyscan -H github.com >> ~/.ssh/known_hosts
+
+      - name: Comprobar SSH público antes de construir
+        if: github.event_name != 'pull_request'
+        shell: bash
+        env:
+          GIT_SSH_COMMAND: ssh -i ~/.ssh/atlas_news_pages -o IdentitiesOnly=yes -o BatchMode=yes -o ConnectTimeout=12
+        run: |
+          set -euo pipefail
+          for attempt in 1 2 3 4; do
+            if git ls-remote git@github.com:Atlasnews-media/Atlasnews-media.github.io.git HEAD >/dev/null 2>&1; then
+              echo "Autenticación del publicador confirmada antes de construir."
+              exit 0
+            fi
+            if [[ "$attempt" -eq 4 ]]; then
+              echo "::error title=Publicador sin acceso::Revisar el secreto ATLAS_PAGES_DEPLOY_KEY y su deploy key autorizada en Atlasnews-media.github.io." >&2
+              exit 1
+            fi
+            echo "Acceso SSH fallido ($attempt/4); reintento sin compilar."
+            sleep $(( attempt * 5 ))
+          done
+
       - name: Preparar Node.js
         uses: actions/setup-node@v6
         with:
@@ -434,24 +464,26 @@ jobs:
             '{edition_key:$edition_key,edition_date:$edition_date,edition_type:$edition_type,status:$status,branch:$branch,pr_number:$pr_number,head_sha:$head_sha}' \
             | curl -fsSL -X POST "$ATLAS_STATE_ENDPOINT" -H "Authorization: Bearer $token" -H 'content-type: application/json' --data-binary @-
 
-      - name: Preparar acceso al repositorio público
-        if: github.event_name != 'pull_request'
-        env:
-          DEPLOY_KEY: ${{ secrets.ATLAS_PAGES_DEPLOY_KEY }}
-        run: |
-          install -m 700 -d ~/.ssh
-          printf '%s\n' "$DEPLOY_KEY" > ~/.ssh/atlas_news_pages
-          chmod 600 ~/.ssh/atlas_news_pages
-          ssh-keyscan -H github.com >> ~/.ssh/known_hosts
-
       - name: Publicar la salida estática
         id: deploy
         if: github.event_name != 'pull_request'
         env:
           GIT_SSH_COMMAND: ssh -i ~/.ssh/atlas_news_pages -o IdentitiesOnly=yes
         run: |
+          set -euo pipefail
           atlas_publish_dir="$RUNNER_TEMP/atlas-news-public"
-          git clone --depth 1 git@github.com:Atlasnews-media/Atlasnews-media.github.io.git "$atlas_publish_dir"
+          for attempt in 1 2 3; do
+            if git clone --depth 1 git@github.com:Atlasnews-media/Atlasnews-media.github.io.git "$atlas_publish_dir"; then
+              break
+            fi
+            rm -rf "$atlas_publish_dir"
+            if [[ "$attempt" -eq 3 ]]; then
+              echo "No fue posible clonar el repositorio público tras tres intentos SSH." >&2
+              exit 1
+            fi
+            echo "Fallo temporal al clonar el sitio ($attempt/3); reintentando sin reconstruir."
+            sleep $(( attempt * 5 ))
+          done
           rsync -a --delete --exclude='.git' --exclude='audio/' --exclude='lab/' --exclude='data/funds-beagf.json' --exclude='data/market-pulse.json' --exclude='data/economic-indicators.json' dist/ "$atlas_publish_dir/"
           cd "$atlas_publish_dir"
           git config user.name "ATLAS NEWS Publisher"

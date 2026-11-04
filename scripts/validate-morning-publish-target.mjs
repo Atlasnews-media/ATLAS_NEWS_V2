@@ -23,6 +23,7 @@ async function publishedRecord(path, label) {
   }
   return {
     editionSlot: normalizeEditionSlot(frontmatterValue(source, "editionSlot")),
+    publishedAt: frontmatterValue(source, "publishedAt"),
   };
 }
 
@@ -122,6 +123,33 @@ const manifest = JSON.parse(
   await readFile(new URL("dist/status.json", root), "utf8"),
 );
 
+// Una publicación histórica puede integrarse después de una edición más reciente.
+// En ese caso no debe desplazar la portada, pero sus tres rutas deben existir.
+const currentId = manifest.latestDaily?.id;
+const newerDayIsLive =
+  typeof currentId === "string" &&
+  currentId.slice(0, 10) > editionDate &&
+  Number.isFinite(Date.parse(general.publishedAt ?? "")) &&
+  Date.parse(manifest.latestDaily?.publishedAt ?? "") >
+    Date.parse(general.publishedAt);
+
+if (currentId !== editionId && newerDayIsLive) {
+  const historicalRoutes = [
+    `dist/ediciones/${editionId}/index.html`,
+    ...(nationalId ? [`dist/nacional/${nationalId}/index.html`] : []),
+    ...(marketsId ? [`dist/mercados/${marketsId}/index.html`] : []),
+  ];
+  for (const route of historicalRoutes) {
+    const html = await readFile(new URL(route, root), "utf8");
+    if (!html.includes("<html")) {
+      throw new Error(`Publicación histórica incompleta en ${route}.`);
+    }
+  }
+  console.log(
+    `Paquete ${editionSlot} histórico ${editionDate} validado en archivo sin desplazar portada ${currentId}.`,
+  );
+  process.exit(0);
+}
 if (manifest.latestDaily?.id !== editionId) {
   throw new Error(
     `El build no seleccionó la edición objetivo: expected=${editionId}, observed=${manifest.latestDaily?.id ?? "null"}.`,
