@@ -1,0 +1,25 @@
+VOZ 1: La señal de mercados no es sólo que ganó la oposición en Estados Unidos, sino cómo cambió la formación de precios durante la noche. Primero hubo una venta fuerte de tecnología, dólar y futuros; después las acciones recuperaron terreno. Los bonos, en cambio, conservaron buena parte de la ganancia.
+VOZ 2: ¿Qué magnitud tuvo ese giro?
+VOZ 1: Los futuros del Nasdaq llegaron a caer más de 2% durante Asia. El rendimiento del Treasury a diez años bajó hasta 4,89% y el dólar tocó un mínimo de un mes. Con Europa ya abierta, los futuros estadounidenses habían vuelto a terreno positivo, el índice global MSCI avanzaba 0,13% y el STOXX 600 ganaba 0,5%. El diez años seguía en 4,92%, tres puntos base abajo en el día.
+VOZ 2: Entonces las acciones deshicieron el susto, pero el bono mantuvo su lectura.
+VOZ 1: Exactamente. El primer movimiento mezcló tres ideas: más escrutinio sobre inteligencia artificial, menos espacio para gasto y rebajas tributarias, y mayor bloqueo legislativo. Después el mercado empezó a separarlas. Un Congreso dividido no implica automáticamente menores utilidades, por eso las bolsas rebotaron. Pero sí puede reducir la expansión fiscal, y esa posibilidad mantuvo la demanda por Treasuries.
+VOZ 2: ¿Fue una liquidación amplia o estuvo concentrada?
+VOZ 1: Estuvo concentrada en la infraestructura de inteligencia artificial. En Asia, chips, memoria y equipos para centros de datos sufrieron la mayor presión. El Nikkei cerró 1,42% abajo y el Taiex perdió 0,83%. Corea del Sur mostró el cambio más visible: el KOSPI llegó a caer cerca de 3% y terminó subiendo 0,62%.
+VOZ 2: Esa recuperación parece importante. ¿Niega el riesgo regulatorio?
+VOZ 1: No lo niega, pero evita declararlo estructural demasiado pronto. La nueva mayoría demócrata asumirá en enero. Cualquier ley federal enfrentará negociación, las reglas del Senado y el veto presidencial. Lo que cambió hoy es la prima de riesgo sobre proyectos de centros de datos, sobre todo en estados donde hay presión por electricidad, ambiente e infraestructura.
+VOZ 2: ¿Cómo encaja el dólar?
+VOZ 1: La baja de rendimientos debilitó al dólar. El euro subía 0,4% a 1,133 dólares y la libra 0,5% a 1,348. El dólar retrocedía 0,6% frente al franco suizo y 0,4% frente al yen. Parte del movimiento fue demanda de refugio hacia franco y yen, pero también hubo una revisión del crecimiento y del impulso fiscal estadounidense.
+VOZ 2: ¿Y el petróleo? General menciona que Irán sigue siendo un riesgo.
+VOZ 1: El petróleo siguió una lógica distinta. Brent caía 0,4% a 103,17 dólares por barril, con volatilidad entre conversaciones para terminar las guerras en Ucrania e Irán y el riesgo de nuevas interrupciones de oferta. La elección cambió la lectura de Congreso, gasto e inteligencia artificial, pero no resolvió el shock energético.
+VOZ 2: Entonces no conviene meter todos los activos en una sola narrativa.
+VOZ 1: Correcto. Bonos y dólar reaccionaron a una expectativa de menor expansión fiscal. Tecnología reaccionó a posible escrutinio regulatorio. Petróleo respondió a guerra y oferta. La señal cross-asset surge de comparar esos canales, no de repetir que todos los mercados estaban nerviosos.
+VOZ 2: ¿Qué podría invalidar la lectura de que los bonos son el ganador?
+VOZ 1: Si el rendimiento del diez años recupera por completo la baja y el dólar vuelve sobre su nivel previo, el mercado estaría retirando la tesis de freno fiscal. También podría cambiar si el petróleo sube con fuerza: más energía puede elevar inflación y borrar parte de la ganancia de los bonos.
+VOZ 2: ¿Y qué confirmaría que la inteligencia artificial enfrenta un riesgo más persistente?
+VOZ 1: Que semiconductores, equipos y centros de datos sigan rezagados incluso cuando los índices amplios y otros sectores se mantengan firmes. Hoy vimos una venta concentrada y luego compras de oportunidad. Para hablar de rotación duradera necesitamos varios días de flujos y desempeño relativo.
+VOZ 2: ¿Qué mirar en la apertura de Wall Street?
+VOZ 1: Primero, la apertura efectiva, porque hasta ahora Estados Unidos sólo ha negociado futuros. Segundo, el volumen en semiconductores, utilities, defensa, bancos y salud. Tercero, si el Treasury a diez años permanece bajo el nivel previo a la elección. Y cuarto, si el dólar sigue débil junto con rendimientos más bajos.
+VOZ 2: ¿Cómo se conecta esto con Chile sin repetir Nacional?
+VOZ 1: La conexión es externa. Un dólar global más débil y menores rendimientos pueden aliviar condiciones financieras, pero un petróleo sobre 100 dólares mantiene presión de costos. La pieza Nacional habla de la composición del empleo chileno; Mercados habla de precios globales y transmisión financiera. Son capas distintas.
+VOZ 2: La conclusión, entonces, es una corrección de convicciones.
+VOZ 1: Sí. Las acciones dudaron y recuperaron. Los bonos mantuvieron la apuesta por menor impulso fiscal. El dólar cedió y el petróleo siguió dominado por el conflicto. La novedad no es un nivel aislado, sino que el mercado desarmó la reacción inicial y dejó una señal más limpia: la elección pesa más sobre fiscalidad y tecnología que sobre el conjunto completo de activos.
