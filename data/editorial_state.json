@@ -41,12 +41,12 @@
       "topic": "Inflación, actividad y tasas en Chile",
       "thesis": "Chile entra en una combinación de señales cruzadas: el crecimiento de 2026 fue revisado a 0,25%-0,75%, el IPC de agosto sorprendió con 0,6% mensual aunque el componente sin volátiles avanzó solo 0,1%, y el petróleo sobre US$108 junto con tasas globales más altas endurece el entorno externo; menor demanda y shocks de costos actúan en direcciones opuestas.",
       "status": "confirmed",
-      "last_evidence": "Al 14 de septiembre, el IPoM mantenía la proyección de crecimiento 2026 en 0,25%-0,75% tras la sorpresa del IPC de agosto de 0,6% mensual y 4,1% anual; el IPC sin volátiles había subido 0,1% mensual y 3,3% anual, mientras el Brent volvió sobre US$108 y el Treasury estadounidense a diez años superó temporalmente 5%.",
-      "effect": "Confirma que el escenario chileno no puede leerse en una sola dirección: la debilidad de la demanda reduce presión interna, mientras energía y condiciones financieras externas mantienen riesgos alcistas sobre costos e inflación, sin fijar de antemano la próxima decisión de TPM.",
-      "base_scenario": "Actividad débil durante 2026, inflación subyacente más contenida que el índice general y riesgo de costos externos todavía elevado; la TPM permanece en 4,5% sin trayectoria predeterminada y la lectura depende de cuál de esas fuerzas gane persistencia.",
-      "invalidate_if": "Una aceleración sostenida de la inflación subyacente confirmaría una presión más amplia; una normalización durable del petróleo y de las tasas globales reduciría el riesgo externo; una recuperación clara de consumo, inversión y empleo debilitaría la tesis de demanda interna frágil.",
-      "watch": "Consumo, inversión, empleo, confianza, IPC sin volátiles, combustibles, Brent, Treasury a diez años, decisión de la Fed, expectativas de inflación y próximas RPM.",
-      "last_publication": "/lecturas/2026-09-14-reading-chile-cierra-semana-senales-cruzadas/"
+      "last_evidence": "El 4 de noviembre la minuta de la RPM de octubre reveló que el Consejo consideró plausibles mantener la TPM en 4,5% o subirla a 4,75%; la EDEP mantuvo la inflación empresarial esperada a doce meses en 4% y elevó la de 24 meses a 3,5%, mientras ventas y márgenes siguieron débiles.",
+      "effect": "Confirma la combinación de señales cruzadas: la opción formal de subir la TPM y el aumento de expectativas a dos años muestran mayor riesgo de persistencia, pero la caída de ventas y el deterioro de márgenes indican que la demanda aún limita el traspaso completo de costos.",
+      "base_scenario": "Actividad débil y márgenes estrechos durante 2026, con inflación de corto plazo elevada por energía y tipo de cambio; la TPM permanece en 4,5% sin trayectoria predeterminada, aunque un alza de 25 puntos base ya forma parte de las alternativas plausibles.",
+      "invalidate_if": "Una moderación sostenida de energía, tipo de cambio y expectativas hacia 3% junto con ventas débiles reduciría el riesgo de alza; una aceleración de inflación subyacente y expectativas por encima de la meta reforzaría la opción de 4,75%.",
+      "watch": "IPC total y sin volátiles, EEE, EOF y EDEP, tipo de cambio, petróleo, ventas, márgenes, empleo, RPM del 15 de diciembre y próximo IPoM.",
+      "last_publication": "/nacional/2026-11-04-national-banco-central-tpm-expectativas/"
     },
     {
       "id": "france-eurozone-fiscal-risk",
