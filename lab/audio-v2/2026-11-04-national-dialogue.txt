@@ -1,0 +1,21 @@
+VOZ 1: La señal local de hoy parece contradictoria, pero precisamente por eso importa. La tasa de ocupación informal subió a 26,4% en el trimestre julio-septiembre de 2026, aunque el número de personas con empleos informales disminuyó 0,3% y quedó en 2.451.443.
+VOZ 2: Si hay menos trabajadores informales, ¿cómo puede aumentar la tasa?
+VOZ 1: Porque la tasa mide la proporción de informales dentro del total de ocupados. Si el empleo formal cae más rápido, el peso relativo de la informalidad puede subir incluso cuando también disminuye el número de informales. Eso es lo que ayuda a explicar el dato: los asalariados formales retrocedieron 2,5% en el mismo trimestre, bastante más que la baja de 0,3% de los informales.
+VOZ 2: Entonces el titular no es que la economía esté creando una ola de empleos informales.
+VOZ 1: Exacto. El hecho observado es una tasa 0,2 puntos porcentuales mayor que hace un año. La interpretación es que cambió la composición del empleo porque el segmento protegido se debilitó con mayor intensidad. Esa diferencia evita una conclusión engañosa: menos informales no equivale automáticamente a mayor formalización.
+VOZ 2: ¿La caída fue pareja entre trabajadores y sectores?
+VOZ 1: No. Entre los hombres, el empleo informal cayó 0,8%, mientras entre las mujeres aumentó 0,3%. Por edad, la mayor disminución estuvo entre los jóvenes de 15 a 24 años, con 13,1%, y luego entre quienes tienen 25 a 34 años, con 1,7%.
+VOZ 2: Una baja fuerte entre jóvenes podría sonar positiva si pasaran a puestos formales. ¿Tenemos esa confirmación?
+VOZ 1: No. El dato por sí solo no prueba ese tránsito. Puede haber formalización, pero también pérdida de empleo o salida de la fuerza laboral. Por eso, la condición que cambiaría la lectura es ver en los próximos trimestres más asalariados formales y una menor tasa de informalidad, no sólo menos personas ocupadas informalmente.
+VOZ 2: ¿Qué ocurrió por actividad?
+VOZ 1: Comercio redujo sus ocupados informales en 6,0% y otras actividades de servicios en 10,8%. También bajaron los trabajadores por cuenta propia informales, en 1,9%, y los asalariados privados informales, en 0,6%. Esos dos grupos todavía representan 85,6% del total informal, así que siguen definiendo la estructura del fenómeno.
+VOZ 2: Pero hubo categorías que crecieron.
+VOZ 1: Sí. El servicio doméstico aumentó 11,3%, los familiares no remunerados del hogar 13,8% y los asalariados públicos informales 2,8%. Esa dispersión es importante: parte del ajuste se mueve hacia relaciones laborales con menor protección o sin remuneración directa, en vez de mostrar una mejora generalizada.
+VOZ 2: ¿Cuál es la consecuencia práctica para los hogares?
+VOZ 1: La informalidad significa trabajar sin la misma cobertura de salud y previsión asociada al vínculo laboral, o hacerlo en una unidad económica informal. Cuando su peso aumenta por destrucción de empleo formal, la economía pierde puestos protegidos y los ingresos pueden hacerse más inestables. Eso afecta cotizaciones, capacidad de consumo y resistencia frente a shocks.
+VOZ 2: ¿Debemos convertir esto en una conclusión inmediata sobre la TPM?
+VOZ 1: No. El mercado laboral débil es parte del cuadro económico, pero esta cifra no identifica por sí sola una causa monetaria ni determina una decisión de tasas. También intervienen la demanda, la composición sectorial y la capacidad de las empresas para contratar formalmente.
+VOZ 2: Entonces, ¿qué debemos mirar para saber si hay una mejora real?
+VOZ 1: Primero, si vuelve a crecer el empleo asalariado formal. Segundo, si la tasa de informalidad baja porque hay más puestos protegidos y no porque las personas dejan de trabajar. Tercero, si se revierte el aumento femenino y disminuye el peso del servicio doméstico y del trabajo familiar no remunerado. Esa combinación sí indicaría una mejora en la calidad del empleo.
+VOZ 2: La clave es separar cantidad y composición.
+VOZ 1: Exactamente. Hoy hay menos ocupados informales, pero una mayor proporción de informalidad. La evidencia no describe expansión uniforme del sector informal; muestra que el empleo formal perdió terreno con más fuerza. Esa es la diferencia entre una cifra que parece favorable y una lectura laboral que sigue siendo frágil.
