@@ -5,7 +5,7 @@ publishedAt: "2026-11-03T13:04:18-03:00"
 cutoffAt: "2026-11-03T12:00:00-03:00"
 type: "daily"
 editionSlot: "evening"
-status: "draft"
+status: "published"
 tags:
   - estados-unidos
   - israel
