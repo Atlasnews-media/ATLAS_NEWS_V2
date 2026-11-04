@@ -46,7 +46,7 @@
       "base_scenario": "Actividad débil y márgenes estrechos durante 2026, con inflación de corto plazo elevada por energía y tipo de cambio; la TPM permanece en 4,5% sin trayectoria predeterminada, aunque un alza de 25 puntos base ya forma parte de las alternativas plausibles.",
       "invalidate_if": "Una moderación sostenida de energía, tipo de cambio y expectativas hacia 3% junto con ventas débiles reduciría el riesgo de alza; una aceleración de inflación subyacente y expectativas por encima de la meta reforzaría la opción de 4,75%.",
       "watch": "IPC total y sin volátiles, EEE, EOF y EDEP, tipo de cambio, petróleo, ventas, márgenes, empleo, RPM del 15 de diciembre y próximo IPoM.",
-      "last_publication": "/nacional/2026-11-04-national-banco-central-tpm-expectativas/"
+      "last_publication": "/lecturas/2026-09-14-reading-chile-cierra-semana-senales-cruzadas/"
     },
     {
       "id": "france-eurozone-fiscal-risk",
