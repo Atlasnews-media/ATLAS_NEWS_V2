@@ -5,7 +5,7 @@ publishedAt: "2026-11-04T13:08:28-03:00"
 cutoffAt: "2026-11-04T12:00:00-03:00"
 section: "national"
 editionSlot: "evening"
-status: "draft"
+status: "published"
 tags:
   - chile
   - banco-central
