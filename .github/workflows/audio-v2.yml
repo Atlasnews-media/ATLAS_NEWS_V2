@@ -75,8 +75,19 @@ jobs:
         env:
           GIT_SSH_COMMAND: ssh -i ~/.ssh/atlas_news_pages -o IdentitiesOnly=yes
         run: |
-          git clone --depth 1 git@github.com:Atlasnews-media/Atlasnews-media.github.io.git \
-            "$RUNNER_TEMP/atlas-news-public"
+          set -euo pipefail
+          atlas_public_dir="$RUNNER_TEMP/atlas-news-public"
+          for attempt in 1 2 3 4; do
+            if git clone --depth 1 git@github.com:Atlasnews-media/Atlasnews-media.github.io.git "$atlas_public_dir"; then
+              break
+            fi
+            rm -rf "$atlas_public_dir"
+            if [[ "$attempt" -eq 4 ]]; then
+              echo "Audio V2: acceso SSH al repositorio público falló tras cuatro intentos." >&2
+              exit 1
+            fi
+            sleep $(( attempt * 5 ))
+          done
 
       - name: Esperar publicación web verificada
         env:
@@ -98,7 +109,11 @@ jobs:
 
           for attempt in $(seq 1 24); do
             cd "$atlas_public_dir"
-            git fetch --quiet origin main
+            if ! git fetch --quiet origin main; then
+              echo "Audio V2: lectura pública intermitente; reintentando verificación."
+              sleep 5
+              continue
+            fi
             git reset --hard origin/main >/dev/null
 
             observed_commit="$(jq -r '.sourceCommit // empty' status.json)"

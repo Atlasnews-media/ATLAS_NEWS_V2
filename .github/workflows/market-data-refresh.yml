@@ -126,7 +126,11 @@ jobs:
             # workspace antes de borrarlo evita getcwd() failed en el retry.
             cd "$GITHUB_WORKSPACE"
             rm -rf "$atlas_publish_dir"
-            git clone --depth 1 git@github.com:Atlasnews-media/Atlasnews-media.github.io.git "$atlas_publish_dir"
+            if ! git clone --depth 1 git@github.com:Atlasnews-media/Atlasnews-media.github.io.git "$atlas_publish_dir"; then
+              echo "Snapshot: autenticación SSH intermitente ($attempt/5); reintentando." >&2
+              sleep 3
+              continue
+            fi
             mkdir -p "$atlas_publish_dir/data"
             cp public/data/economic-indicators.json "$atlas_publish_dir/data/economic-indicators.json"
             cp public/data/market-pulse.json "$atlas_publish_dir/data/market-pulse.json"
