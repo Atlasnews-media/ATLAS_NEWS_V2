@@ -1,0 +1,29 @@
+VOZ 1: La novedad de mercados hoy no es sólo que el petróleo cayó bajo 100 dólares. Lo más informativo es cómo ese movimiento redistribuyó capital entre bonos, monedas, regiones y sectores.
+VOZ 2: ¿Por qué hablar de redistribución y no de una subida general del mercado?
+VOZ 1: Porque los índices amplios y los bonos mejoraron, pero los semiconductores y proveedores de centros de datos sufrieron una venta intensa. El Brent se mantenía cerca de 94,21 dólares por barril después de caer casi 9% el miércoles y alrededor de 20% en la semana. Eso alivió expectativas de inflación, pero no eliminó las dudas sobre la inversión en inteligencia artificial.
+VOZ 2: ¿Qué hicieron los bonos?
+VOZ 1: El Treasury a diez años bajó a 4,85%, su menor nivel en dos meses. El rendimiento a dos años, que refleja con más sensibilidad las expectativas sobre la Reserva Federal, cayó cerca de dos puntos base hasta 4,56%.
+VOZ 2: Entonces el mercado no sólo espera menos inflación de largo plazo.
+VOZ 1: Exacto. También está reduciendo la probabilidad de nuevas alzas de tasas si la energía permanece más barata. El dólar acompañó esa lectura: el euro llegó a 1,1273 dólares, un máximo de un mes frente a la moneda estadounidense.
+VOZ 2: Pero Wall Street había cerrado al alza.
+VOZ 1: Sí. El miércoles, el S&P 500 ganó 1,6%, el Nasdaq 1,4% y el Dow más de 3%. Sin embargo, la sesión asiática del jueves mostró la dispersión que esos índices escondían.
+VOZ 2: ¿Dónde estuvo la mayor presión?
+VOZ 1: En Corea del Sur, Taiwán y los proveedores japoneses de equipos para chips. El KOSPI cayó casi 6% y activó un freno temporal a las ventas. Taiwán perdió más de 3% y se encaminaba a una baja semanal cercana a 8%. En Japón, el Nikkei retrocedió por la tecnología, mientras el Topix, más amplio, subía 0,8%.
+VOZ 2: Esa diferencia entre Nikkei y Topix es una señal limpia.
+VOZ 1: Muy limpia. Indica que el problema no era Japón completo, sino su exposición a semiconductores y equipos de inteligencia artificial. Algo parecido ocurrió en la región: Hong Kong, India y Australia avanzaron porque se benefician más del petróleo barato o tienen menor concentración en chips.
+VOZ 2: ¿La elección estadounidense explica toda la venta tecnológica?
+VOZ 1: No. Añadió una prima regulatoria por el posible escrutinio a centros de datos, electricidad y costos para consumidores. Pero también aparecieron resultados de Qualcomm y Arm que reabrieron dudas sobre demanda de teléfonos, costos de memoria y retorno de la inversión. El índice de semiconductores de Filadelfia ya había cerrado 3,1% abajo, en un mínimo de seis meses.
+VOZ 2: Entonces hay política, resultados y valorización actuando juntos.
+VOZ 1: Exactamente. Por eso no conviene resumirlo como una simple reacción electoral. El mercado está diferenciando entre la demanda final por chips, el financiamiento del gasto y la capacidad de convertir centros de datos en utilidades.
+VOZ 2: ¿Qué sectores quedaron favorecidos?
+VOZ 1: Los bonos, varios mercados importadores de energía y las acciones solares. Estas últimas subieron ante la expectativa de mayor apoyo político a renovables. En cambio, petróleo, defensa e infraestructura de centros de datos quedaron rezagados.
+VOZ 2: ¿Cuál es la conexión con Chile?
+VOZ 1: El petróleo más barato reduce presión importada sobre combustibles y transporte, y las tasas estadounidenses más bajas pueden aliviar condiciones financieras globales. Pero la corrección tecnológica puede reducir apetito por riesgo e inversión. Además, la Nacional de hoy muestra que las empresas chilenas todavía enfrentan ventas débiles, márgenes deteriorados y mayor presión del tipo de cambio. El alivio externo debe durar antes de mejorar esa situación.
+VOZ 2: ¿Qué confirmaría que estamos ante una rotación persistente?
+VOZ 1: Que semiconductores y Nasdaq sigan rezagados mientras el S&P 500, bonos y sectores defensivos se mantienen firmes. También que los flujos salgan de centros de datos y entren de forma sostenida a mercados importadores de energía o renovables.
+VOZ 2: ¿Y qué invalidaría la lectura de alivio en tasas?
+VOZ 1: Una nueva escalada con Irán que haga rebotar el Brent, o una Reserva Federal que mantenga un sesgo más restrictivo pese a la baja de energía. Si el Treasury a diez años recupera rápidamente el nivel previo y el dólar rebota, el mercado estaría retirando parte de esta apuesta.
+VOZ 2: ¿Qué mirar primero durante el día?
+VOZ 1: La apertura efectiva de Wall Street, el volumen en semiconductores y Nasdaq, el Treasury a diez años alrededor de 4,85% y la capacidad del Brent para sostenerse bajo 100 dólares. Esos cuatro precios dirán si el movimiento es una corrección táctica o un cambio más duradero en el liderazgo de mercado.
+VOZ 2: La conclusión es que energía barata no beneficia a todos por igual.
+VOZ 1: Exactamente. Compra duración, debilita al dólar y favorece a importadores, pero al mismo tiempo deja expuestas las valorizaciones y el riesgo regulatorio de la IA. La señal de hoy es dispersión: menos inflación energética, más selección tecnológica.
