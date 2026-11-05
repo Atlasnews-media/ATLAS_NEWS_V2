@@ -1,11 +1,11 @@
 ---
 title: "El dólar opera bajo $968 y el IPSA sube 1,07% pese a una nueva caída del cobre"
 summary: "La baja del dólar global y del petróleo siguió apoyando a los activos chilenos después de la apertura. El cobre retrocedió 0,64%, por lo que la mejora local no responde a un impulso uniforme de materias primas."
-publishedAt: "2026-11-05T13:07:03-03:00"
+publishedAt: "2026-11-05T13:15:06-03:00"
 cutoffAt: "2026-11-05T12:00:00-03:00"
 section: "markets"
 editionSlot: "evening"
-status: "draft"
+status: "published"
 tags:
   - mercados
   - dolar

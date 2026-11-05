@@ -1,11 +1,11 @@
 ---
 title: "Banco de Inglaterra sube la tasa a 4% y proyecta inflación cercana a 5% en 2027"
 summary: "El banco central aplicó su primera alza en más de tres años, con una votación 8-1, y advirtió que el shock energético puede exigir otro aumento si se propaga a salarios y precios."
-publishedAt: "2026-11-05T13:07:03-03:00"
+publishedAt: "2026-11-05T13:15:06-03:00"
 cutoffAt: "2026-11-05T12:00:00-03:00"
 type: "daily"
 editionSlot: "evening"
-status: "draft"
+status: "published"
 tags:
   - reino-unido
   - banco-de-inglaterra

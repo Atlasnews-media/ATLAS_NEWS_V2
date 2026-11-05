@@ -1,11 +1,11 @@
 ---
 title: "Salarios reales suben 3,5%, pero los costos laborales crecen 8,4% y mantienen estrechos los márgenes"
 summary: "El INE informó una mejora real de remuneraciones, mientras el nuevo IPN muestra ventas débiles, menor uso de capacidad y capital de trabajo como principal motivo de financiamiento empresarial."
-publishedAt: "2026-11-05T13:07:03-03:00"
+publishedAt: "2026-11-05T13:15:06-03:00"
 cutoffAt: "2026-11-05T12:00:00-03:00"
 section: "national"
 editionSlot: "evening"
-status: "draft"
+status: "published"
 tags:
   - chile
   - salarios
