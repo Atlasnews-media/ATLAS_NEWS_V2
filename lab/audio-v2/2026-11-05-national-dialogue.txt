@@ -1,0 +1,27 @@
+VOZ 1: La señal local de hoy viene de las empresas. El Banco Central publicó la Encuesta de Determinantes y Expectativas de Precios correspondiente al trimestre móvil julio-septiembre, y el resultado combina un pequeño alivio de costos con ventas más débiles y expectativas de inflación que siguen sobre la meta.
+VOZ 2: ¿Qué significa exactamente pequeño alivio?
+VOZ 1: Las empresas reportan que el aumento de sus costos se moderó ligeramente respecto de los meses anteriores. Algo parecido ocurrió con sus precios de venta. Pero ambos indicadores todavía están por encima de los niveles de comienzos de 2026, así que no hablamos de una normalización completa.
+VOZ 2: ¿Y qué pasó con las ventas?
+VOZ 1: Disminuyeron nuevamente. Los márgenes de ganancia también se mantienen deteriorados. Esa combinación es importante: las firmas todavía enfrentan costos elevados, pero una demanda débil limita cuánto pueden trasladarlos a sus clientes.
+VOZ 2: Entonces no basta con que los insumos estén caros para que todos los precios suban en la misma proporción.
+VOZ 1: Exactamente. Una empresa puede intentar reajustar, pero si pierde volumen debe absorber parte del shock. Eso comprime márgenes y puede terminar afectando inventarios, inversión, contratación o necesidades de financiamiento.
+VOZ 2: ¿Qué factor sigue presionando más?
+VOZ 1: La mayoría de los factores que influyen en los precios se moderó gradualmente. La excepción fue el tipo de cambio, cuya presión siguió aumentando. Eso afecta especialmente a quienes importan insumos, reponen inventarios en dólares o contratan servicios vinculados a moneda extranjera.
+VOZ 2: ¿Qué dicen las expectativas?
+VOZ 1: La mediana de inflación esperada por las empresas se mantuvo en 4% a doce meses y subió a 3,5% a veinticuatro meses. Además, aumentó la proporción de firmas que espera mayores costos de insumos, pero no cambió la proporción que prevé subir sus precios de venta en el próximo año.
+VOZ 2: Esa diferencia parece anticipar más presión sobre los márgenes.
+VOZ 1: Esa es la interpretación razonable. Más empresas esperan costos al alza, pero no más empresas creen que podrán subir precios. Si las ventas no mejoran, la diferencia debe absorberse en alguna parte.
+VOZ 2: ¿La encuesta significa que la inflación necesariamente será 4% en un año?
+VOZ 1: No. La EDEP mide percepciones y expectativas de gerentes de grandes empresas; no es una proyección mecánica del IPC. Su valor está en mostrar cómo quienes fijan precios están viendo sus costos, ventas y capacidad de traspaso.
+VOZ 2: ¿Y esto lleva automáticamente a una conclusión sobre la TPM?
+VOZ 1: Tampoco. Hay dos fuerzas en tensión. Las expectativas de 4% y 3,5% justifican vigilancia porque están sobre la meta de 3%. Pero la caída de ventas y el deterioro de márgenes muestran una demanda débil que limita el traspaso de costos. Una decisión monetaria debe considerar ambas, no sólo una cifra.
+VOZ 2: ¿Qué empresas quedan más expuestas?
+VOZ 1: Las que dependen más de insumos importados, tienen poco poder para fijar precios o venden a consumidores muy sensibles al costo de vida. Para ellas, un tipo de cambio más alto puede elevar los costos antes de que exista espacio para reajustar.
+VOZ 2: ¿Cómo se conecta con la General de hoy, donde cae el petróleo?
+VOZ 1: Un petróleo global más bajo podría aliviar energía y transporte si la caída persiste, pero la EDEP tiene información levantada entre julio y septiembre y muestra que el tipo de cambio todavía ganaba influencia. La señal futura dependerá de cuánto del alivio externo llegue efectivamente a los costos locales y de si el peso se estabiliza.
+VOZ 2: ¿Qué confirmaría una mejora real?
+VOZ 1: Primero, costos efectivos bajando durante varias mediciones, no sólo moderándose. Segundo, ventas recuperándose sin nuevos reajustes generalizados. Tercero, expectativas a veinticuatro meses volviendo hacia 3%. Esa combinación reduciría la presión sobre márgenes y debilitaría el riesgo de persistencia inflacionaria.
+VOZ 2: ¿Y qué reforzaría la preocupación?
+VOZ 1: Que el tipo de cambio siga aumentando su influencia, que más empresas anticipen costos altos y que la expectativa a dos años se mantenga en 3,5% o suba, especialmente si las ventas continúan cayendo.
+VOZ 2: Entonces la novedad no es sólo que los costos estén elevados.
+VOZ 1: Correcto. Lo nuevo es la divergencia entre una leve moderación de costos, una nueva caída de ventas y expectativas de mediano plazo que se alejan de la meta. Las empresas no están describiendo una espiral inmediata de precios, sino una economía donde el shock de costos persiste y la demanda obliga a absorber una parte creciente en los márgenes.

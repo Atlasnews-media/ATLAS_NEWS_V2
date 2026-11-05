@@ -1,0 +1,119 @@
+{
+  "status": "READY",
+  "date": "2026-11-05",
+  "contract": "atlas-senales-del-dia-v1",
+  "senalesDelDia": {
+    "internacional": [
+      {
+        "slot": "technology",
+        "headline": "IonQ completa compra de Elisity por US$1.150 millones en acciones",
+        "deck": "La operación incorpora seguridad Zero Trust a la oferta cuántica; otro pago de hasta US$150 millones depende de metas de ingresos.",
+        "development": "IonQ completó la adquisición de Elisity y emitió acciones comunes valoradas en US$1.150 millones como contraprestación al cierre. El acuerdo mantiene un componente adicional de hasta US$150 millones en acciones, condicionado al cumplimiento de metas de ingresos de Elisity hasta enero de 2028. La empresa adquirida desarrolla una plataforma de seguridad Zero Trust que identifica dispositivos, usuarios y cargas de trabajo y aplica controles de acceso de manera dinámica. IonQ prevé combinarla con criptografía poscuántica y distribución cuántica de claves, mientras Elisity continuará operando bajo su actual equipo directivo. El comprador informó que la plataforma ya suma más de cien implementaciones empresariales y gubernamentales.\n\nEl cierre convierte en efectiva una transacción que hasta ahora estaba sujeta a condiciones, pero todavía no demuestra integración técnica, ventas adicionales ni sinergias. La emisión de acciones también traslada parte del costo a los actuales accionistas mediante dilución, y el pago contingente dependerá de resultados futuros verificables. La operación amplía el perímetro de IonQ desde hardware y redes cuánticas hacia seguridad de acceso para sistemas convencionales y preparados para amenazas cuánticas. Los próximos controles serán la incorporación del producto al catálogo de IonQ, la retención de clientes y personal, el reconocimiento contable de la compra y la divulgación de ingresos atribuibles a Elisity.",
+        "anchor": "ionq-cierra-compra-elisity-seguridad-cuantica",
+        "sources": [
+          {
+            "name": "IonQ — cierre de la adquisición de Elisity",
+            "url": "https://investors.ionq.com/news/news-details/2026/IonQ-Completes-Acquisition-of-Elisity-Extending-Quantum-Security-for-Enterprises-and-Government/default.aspx"
+          },
+          {
+            "name": "SEC — acuerdo y contraprestación de la transacción",
+            "url": "https://www.sec.gov/Archives/edgar/data/1824920/000119312526419609/ionq-20261009.htm"
+          }
+        ]
+      },
+      {
+        "slot": "world",
+        "headline": "Ensayo en RDC sumará dos vacunas candidatas contra el ébola",
+        "deck": "La OMS recomendó incorporar fórmulas dirigidas a la especie Bundibugyo al estudio Tumaini; su inclusión no equivale a eficacia demostrada.",
+        "development": "La Organización Mundial de la Salud recomendó incorporar dos vacunas candidatas al ensayo clínico Tumaini que se desarrolla en la República Democrática del Congo. Ambas están diseñadas específicamente contra la especie Bundibugyo del virus del Ébola, responsable del brote detectado en la provincia de Kasai. El estudio ya evalúa Ervebo, una vacuna autorizada contra la especie Zaire, con un diseño de vacunación en anillo que incluye contactos y contactos de contactos de casos confirmados. Los nuevos productos se agregarán después de completar los pasos regulatorios y logísticos correspondientes, según la OMS y Médicos Sin Fronteras, que participa en la ejecución del ensayo.\n\nLa recomendación de los grupos expertos no es una autorización comercial ni prueba que las candidatas prevengan la enfermedad. Su aporte será generar datos comparables de seguridad e inmunogenicidad y, si el número de participantes y casos lo permite, de eficacia frente a Bundibugyo, una especie para la cual no existe una vacuna aprobada. El diseño en anillo concentra la intervención alrededor de cadenas de transmisión identificadas, pero el avance dependerá de vigilancia, consentimiento y seguimiento en terreno. Los próximos hitos verificables serán la aprobación por las autoridades congoleñas y comités éticos, el inicio efectivo de cada brazo, el número de participantes reclutados y la publicación de resultados revisados.",
+        "anchor": "tumaini-dos-vacunas-ebola-bundibugyo-rdc",
+        "sources": [
+          {
+            "name": "OMS — nuevas vacunas candidatas para el ensayo Tumaini",
+            "url": "https://www.who.int/mongolia/news/detail-global/04-11-2026-two-new-candidate-vaccines-to-join-ebola-trial-as-treatment-research-advances"
+          },
+          {
+            "name": "Médicos Sin Fronteras — diseño y ejecución del ensayo",
+            "url": "https://msf.org.uk/article/drc-first-participant-vaccinated-pivotal-ebola-vaccine-trial"
+          }
+        ]
+      }
+    ],
+    "nacional": [
+      {
+        "slot": "ipsa_company",
+        "headline": "CAP capitaliza US$325,9 millones de créditos en filial siderúrgica",
+        "deck": "La compañía recibió 13,66 millones de acciones de CSH sin desembolso de caja y anticipa menores gastos financieros en la filial.",
+        "development": "CAP suscribió 13.658.446 acciones de Compañía Siderúrgica Huachipato, equivalentes a US$325.934.904, mediante la capitalización de créditos que mantenía contra esa filial. La operación se ejecutó el 2 de noviembre como parte de un aumento de capital de CSH y no requirió un desembolso de efectivo de la matriz. El hecho esencial señala que el objetivo es fortalecer el patrimonio de la siderúrgica y reducir sus gastos financieros. Para CAP, el intercambio sustituye una cuenta por cobrar intragrupo por una mayor participación contable en el capital de la filial; por eso la empresa indicó que no espera un efecto en sus resultados consolidados derivado únicamente de la transacción.\n\nLa capitalización mejora la estructura financiera de CSH, pero no genera caja nueva ni resuelve por sí sola su capacidad operativa o comercial. También concentra en patrimonio subordinado recursos que antes figuraban como deuda exigible dentro del grupo, de modo que el valor económico seguirá dependiendo del desempeño futuro de la filial. La neutralidad contable anunciada se refiere al registro consolidado inmediato y no elimina posibles deterioros, costos de reestructuración o necesidades adicionales de financiamiento. Los próximos puntos verificables serán los estados financieros de cierre, la evolución del patrimonio y los gastos financieros de CSH, cualquier nueva inyección de recursos y las decisiones operativas que CAP comunique para su negocio siderúrgico.",
+        "anchor": "cap-capitaliza-creditos-csh-noviembre-2026",
+        "sources": [
+          {
+            "name": "Bolsa de Santiago — hecho esencial de CAP",
+            "url": "https://bolsachile.com/cl/hechos-esenciales"
+          },
+          {
+            "name": "MarketScreener — reproducción del hecho esencial de CAP",
+            "url": "https://es.marketscreener.com/noticias/cap-s-a-hecho-esencial-ce785fdedf8bf323"
+          }
+        ]
+      },
+      {
+        "slot": "policy_economy",
+        "headline": "Start-Up Chile abre BIG13 con aportes de hasta $75 millones",
+        "deck": "La convocatoria separa proyectos en Build, Ignite y Growth; las postulaciones cierran el 24 de noviembre a las 13:00 horas.",
+        "development": "Corfo abrió las postulaciones a BIG13, la nueva generación de Start-Up Chile que comenzará su proceso de aceleración durante el primer semestre de 2027. La convocatoria divide a las empresas tecnológicas en tres programas según su etapa: Build para validación inicial, Ignite para startups con producto y primeras señales de tracción, y Growth para compañías que buscan escalar. El cofinanciamiento no exige ceder participación accionaria y alcanza hasta $15 millones, $30 millones y $75 millones, respectivamente. En Growth, Corfo cubre hasta 50% del costo total del proyecto; en Ignite, hasta 80%, con porcentajes mayores previstos en ciertos casos de liderazgo femenino conforme a las bases de cada línea.\n\nLa apertura no implica adjudicación automática: los equipos deben presentar antecedentes técnicos y comerciales, cumplir los criterios de elegibilidad y superar la evaluación competitiva. El aporte público financia proyectos y está sujeto a rendición, mientras la parte restante debe ser cubierta por el beneficiario según el programa. Las postulaciones estarán disponibles hasta el 24 de noviembre de 2026 a las 13:00 horas en los portales de Corfo y Start-Up Chile. Los próximos datos relevantes serán el número y origen de las postulaciones, la distribución entre las tres líneas, las resoluciones de selección y los montos finalmente adjudicados y ejecutados.",
+        "anchor": "startup-chile-big13-convocatoria-2027",
+        "sources": [
+          {
+            "name": "Corfo — convocatoria Start-Up Chile Growth 13",
+            "url": "https://www.corfo.gob.cl/sites/cpp/convocatoria/start-up-chile-growth-13/"
+          },
+          {
+            "name": "Emol — apertura y plazos de BIG13",
+            "url": "https://www.emol.com/noticias/Economia/2026/11/04/1216042/startup-chile-convocatoria.html"
+          },
+          {
+            "name": "Start-Up Chile — portal de postulaciones",
+            "url": "https://startupchile.org/postula/"
+          }
+        ]
+      }
+    ],
+    "mercados": [
+      {
+        "slot": "markets_chile",
+        "headline": "CMF fija tres hitos para registrar operadores de tarjetas",
+        "deck": "Las empresas del régimen transitorio deberán completar antecedentes entre enero y mayo de 2027 para obtener autorización de funcionamiento.",
+        "development": "La Comisión para el Mercado Financiero modificó la Circular N°1 de Empresas Operadoras de Tarjetas de Pago y estableció tres fechas para que las entidades acogidas al régimen transitorio completen su inscripción. El 31 de enero de 2027 vence el plazo para entregar todos los antecedentes requeridos para la autorización de existencia. El 31 de marzo deberán presentar el informe del plan de pruebas de funcionamiento y la documentación asociada. Finalmente, el 31 de mayo tendrán que aportar los antecedentes necesarios para obtener la autorización de funcionamiento. La norma entró en vigor con su publicación y se aplica a las empresas comprendidas en los numerales 1 y 2 de las disposiciones transitorias del Capítulo III.J.2 del Compendio de Normas Financieras del Banco Central.\n\nEl calendario entrega una secuencia regulatoria al mercado de adquirencia y procesamiento de pagos, pero no concede autorizaciones por anticipado. Cada operador deberá acreditar requisitos jurídicos, operacionales y de control y superar la evaluación de la CMF. El cumplimiento puede incidir en costos de adaptación y en qué participantes quedan habilitados bajo el régimen definitivo, aunque la norma no informa cuántas entidades están en transición ni anticipa su resultado. Los controles verificables serán las solicitudes presentadas en enero, los planes de prueba de marzo, las autorizaciones o rechazos posteriores y cualquier instrucción adicional que publique el supervisor antes de mayo.",
+        "anchor": "cmf-plazos-operadores-tarjetas-pago-2027",
+        "sources": [
+          {
+            "name": "CMF — nuevos plazos para operadores de tarjetas",
+            "url": "https://www.cmfchile.cl/portal/prensa/625/w4-article-114719.html"
+          },
+          {
+            "name": "Biblioteca del Congreso — marco transitorio del Banco Central",
+            "url": "https://www.bcn.cl/leychile/Navegar?idNorma=1225580"
+          }
+        ]
+      },
+      {
+        "slot": "markets_global",
+        "headline": "Bancos centrales sostienen la demanda de oro en el tercer trimestre",
+        "deck": "Las compras oficiales subieron 42% interanual a 321 toneladas y los ETF captaron 211 toneladas, mientras retrocedieron joyería y barras.",
+        "development": "La demanda mundial de oro, incluida la actividad extrabursátil, alcanzó 1.369 toneladas en el tercer trimestre de 2026, una baja interanual de 1%, según el World Gold Council. Su valor, sin embargo, aumentó 22% hasta US$188.000 millones por el mayor precio medio del metal. Los bancos centrales y otras instituciones oficiales compraron 321 toneladas netas, 42% más que un año antes y el mayor volumen trimestral desde fines de 2024. Los fondos cotizados respaldados físicamente por oro captaron otras 211 toneladas y revirtieron las salidas del trimestre previo. En contraste, la demanda de barras y monedas cayó 19% a 268 toneladas y la joyería retrocedió 17% a 313 toneladas.\n\nLa composición muestra una demanda más apoyada en instituciones que en compradores minoristas, pero el informe no prueba que esa pauta continúe. El propio consejo redujo su previsión de crecimiento anual de la inversión en oro por la debilidad de barras y monedas, mientras elevó la estimación para compras oficiales. La oferta total bajó 1%: la producción minera marcó un récord trimestral de 1.071 toneladas, pero el reciclaje cayó 8%. Los próximos controles serán los flujos semanales de ETF, las reservas declaradas por bancos centrales, las cifras de demanda física en China e India y el informe completo del cuarto trimestre.",
+        "anchor": "oro-demanda-tercer-trimestre-bancos-centrales-etf",
+        "sources": [
+          {
+            "name": "World Gold Council — Gold Demand Trends Q3 2026",
+            "url": "https://www.gold.org/goldhub/research/gold-demand-trends/gold-demand-trends-q3-2026"
+          },
+          {
+            "name": "Reuters — previsiones y composición de la demanda",
+            "url": "https://www.reuters.com/world/china/wgc-lowers-outlook-gold-investment-demand-growth-bar-buying-slows-2026-11-03/"
+          }
+        ]
+      }
+    ]
+  }
+}
