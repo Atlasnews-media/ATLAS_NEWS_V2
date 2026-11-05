@@ -1,11 +1,11 @@
 ---
 title: "Petróleo cae bajo US$100 y Asia castiga a los chips tras el giro político en Estados Unidos"
 summary: "La derrota republicana redujo la prima de escalada en Irán, pero abrió dudas sobre la inversión en centros de datos. El ajuste global combina alivio energético con una corrección tecnológica concentrada en Asia."
-publishedAt: "2026-11-05T06:09:26-03:00"
+publishedAt: "2026-11-05T06:45:33-03:00"
 cutoffAt: "2026-11-05T06:08:07-03:00"
 type: "daily"
 editionSlot: "morning"
-status: "draft"
+status: "published"
 tags:
   - estados-unidos
   - iran

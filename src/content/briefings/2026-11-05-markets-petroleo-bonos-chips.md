@@ -1,11 +1,11 @@
 ---
 title: "El alivio del petróleo compra duración, pero expulsa capital de los chips asiáticos"
 summary: "La caída del Brent redujo expectativas de inflación y favoreció bonos, dólar débil e índices amplios. El flujo no fue un risk-on uniforme: semiconductores, centros de datos y Nasdaq concentraron la venta mientras energía importadora y solares avanzaron."
-publishedAt: "2026-11-05T06:20:05-03:00"
+publishedAt: "2026-11-05T06:45:33-03:00"
 cutoffAt: "2026-11-05T06:19:35-03:00"
 section: "markets"
 editionSlot: "morning"
-status: "draft"
+status: "published"
 tags:
   - mercados
   - petroleo

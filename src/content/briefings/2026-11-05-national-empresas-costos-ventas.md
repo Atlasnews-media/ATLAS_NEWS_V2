@@ -1,11 +1,11 @@
 ---
 title: "Empresas moderan costos, pero ventas débiles y expectativas a dos años mantienen la presión"
 summary: "La EDEP muestra una leve moderación de costos y precios de venta, pero nuevas caídas de ventas, márgenes deteriorados y expectativas de inflación a 24 meses que suben a 3,5%. El tipo de cambio sigue aumentando su influencia."
-publishedAt: "2026-11-05T06:18:20-03:00"
+publishedAt: "2026-11-05T06:45:33-03:00"
 cutoffAt: "2026-11-05T06:17:50-03:00"
 section: "national"
 editionSlot: "morning"
-status: "draft"
+status: "published"
 tags:
   - chile
   - empresas
