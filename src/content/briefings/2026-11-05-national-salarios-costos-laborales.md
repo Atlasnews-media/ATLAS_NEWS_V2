@@ -22,11 +22,11 @@ sources:
   - name: "Banco Central de Chile — Informe de Percepciones de Negocios"
     url: "https://www.bcentral.cl/areas/politica-monetaria/informe-de-percepciones-de-negocios-ipn"
 highlights:
-  - label: "Remuneraciones reales suben 3,5%"
+  - label: "Salario real sube 3,5%"
     text: "Los salarios ajustados por IPC acumularon un avance de 2,4% durante 2026."
-  - label: "Costos laborales crecen 8,4%"
+  - label: "Costo laboral sube 8,4%"
     text: "El costo laboral aumentó más que las remuneraciones nominales, que avanzaron 7,7% interanual."
-  - label: "Empresas financian capital de trabajo"
+  - label: "Capital de trabajo manda"
     text: "Ventas débiles, costos altos y plazos de pago más largos mantienen el flujo de caja como prioridad."
 demo: false
 ---
