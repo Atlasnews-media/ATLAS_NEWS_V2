@@ -1,11 +1,11 @@
 ---
 title: "La corrección de la IA borra US$2,5 billones y eleva el riesgo para el crecimiento global"
 summary: "El Nasdaq sufrió su mayor caída desde abril de 2025 y arrastró a Asia. El ajuste revela que el costo financiero, la rentabilidad de los centros de datos y la resistencia política ya condicionan el impulso económico de la inteligencia artificial."
-publishedAt: "2026-11-06T06:04:06-03:00"
+publishedAt: "2026-11-06T09:12:32-03:00"
 cutoffAt: "2026-11-06T06:02:32-03:00"
 type: "daily"
 editionSlot: "morning"
-status: "draft"
+status: "published"
 tags:
   - inteligencia-artificial
   - tecnologia

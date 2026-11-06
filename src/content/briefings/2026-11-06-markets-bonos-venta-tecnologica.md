@@ -1,11 +1,11 @@
 ---
 title: "Los bonos reciben la búsqueda de refugio mientras la venta tecnológica se fragmenta"
 summary: "Tras la caída del Nasdaq el jueves, Asia amplificó la liquidación de semiconductores el viernes. Los bonos del Tesoro captaron demanda defensiva, el dólar mostró fortaleza selectiva y los futuros estadounidenses insinuaron un rebote desigual que todavía no equivale a un cierre."
-publishedAt: "2026-11-06T09:06:00-03:00"
+publishedAt: "2026-11-06T09:12:32-03:00"
 cutoffAt: "2026-11-06T08:55:00-03:00"
 section: "markets"
 editionSlot: "morning"
-status: "draft"
+status: "published"
 tags:
   - mercados-globales
   - renta-variable

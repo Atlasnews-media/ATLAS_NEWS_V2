@@ -1,11 +1,11 @@
 ---
 title: "El IPC de octubre revela un shock concentrado en transporte y alimentos"
 summary: "La inflación chilena subió 0,5% en octubre y llegó a 4,5% anual. Transporte y alimentos explicaron casi toda la presión positiva del mes, mientras vestuario restó. La composición importa para evaluar persistencia y poder adquisitivo."
-publishedAt: "2026-11-06T09:05:00-03:00"
+publishedAt: "2026-11-06T09:12:32-03:00"
 cutoffAt: "2026-11-06T08:55:00-03:00"
 section: "national"
 editionSlot: "morning"
-status: "draft"
+status: "published"
 tags:
   - chile
   - inflacion
