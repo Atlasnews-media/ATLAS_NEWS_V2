@@ -1,11 +1,11 @@
 ---
 title: "El empleo de EE.UU. corta el rally de bonos y devuelve fuerza al dólar tras la venta tecnológica"
 summary: "Las nóminas de octubre hicieron subir los rendimientos del Treasury y la probabilidad de otra alza de la Fed, mientras el dólar se fortaleció. En Chile, el peso ya operaba cerca de $980 y el IPSA rebotaba antes del informe, una secuencia que impide atribuir todos los movimientos locales al mismo catalizador."
-publishedAt: "2026-11-06T13:08:53-03:00"
+publishedAt: "2026-11-06T13:15:26-03:00"
 cutoffAt: "2026-11-06T12:00:00-03:00"
 section: "markets"
 editionSlot: "evening"
-status: "draft"
+status: "published"
 tags:
   - mercados
   - bonos
