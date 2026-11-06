@@ -1,11 +1,11 @@
 ---
 title: "Gobierno propone indexar fletes al costo del transporte para destrabar el paro de San Antonio"
 summary: "La fórmula incorpora contratación directa, una tarifa ajustada por el índice de costos del INE y garantías estatales para crédito. Las bases aún deben aprobarla mientras se acumulan 2.500 contenedores y la temporada de cerezas entra en una semana crítica."
-publishedAt: "2026-11-06T13:08:53-03:00"
+publishedAt: "2026-11-06T13:15:26-03:00"
 cutoffAt: "2026-11-06T12:00:00-03:00"
 section: "national"
 editionSlot: "evening"
-status: "draft"
+status: "published"
 tags:
   - chile
   - san-antonio
