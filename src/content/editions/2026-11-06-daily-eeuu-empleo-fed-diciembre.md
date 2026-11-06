@@ -1,11 +1,11 @@
 ---
 title: "Estados Unidos crea 165.000 empleos y deja abierta otra alza de la Fed en diciembre"
 summary: "Las nóminas de octubre superaron ampliamente las previsiones, el desempleo bajó a 4,1% y septiembre fue revisado al alza. El dato devuelve margen a la Reserva Federal para priorizar la inflación, aunque la contratación sigue concentrada y persisten señales de holgura."
-publishedAt: "2026-11-06T13:08:53-03:00"
+publishedAt: "2026-11-06T13:15:26-03:00"
 cutoffAt: "2026-11-06T12:00:00-03:00"
 type: "daily"
 editionSlot: "evening"
-status: "draft"
+status: "published"
 tags:
   - estados-unidos
   - empleo
