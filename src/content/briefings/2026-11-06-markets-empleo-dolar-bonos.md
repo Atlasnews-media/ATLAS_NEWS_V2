@@ -29,7 +29,7 @@ highlights:
     text: "El Treasury a dos años subió seis puntos base tras las nóminas y llegó a 4,52%."
   - label: "Dólar recupera fuerza"
     text: "El índice dólar avanzó 0,7% mientras la opción de un alza de la Fed llegó a 78%."
-  - label: "Chile no tuvo un solo motor"
+  - label: "Chile tuvo dos ritmos"
     text: "El peso se debilitaba y el IPSA rebotaba antes del empleo, por razones temporales distintas."
 demo: false
 ---
