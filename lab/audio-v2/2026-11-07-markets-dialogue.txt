@@ -1,0 +1,33 @@
+VOZ 1: La sesión del viernes produjo un rebote visible, pero no una normalización completa. El Nasdaq subió 1,1% y el S&P 500 avanzó 0,3%, aunque la semana terminó con pérdidas de 3,4% y 2,7%, respectivamente.
+VOZ 2: ¿Por qué no basta con mirar ese rebote?
+VOZ 1: Porque llegó después de una caída extrema. El jueves, el Nasdaq perdió 5,5% y el índice de semiconductores más de 12%, con un volumen muy superior al promedio reciente. El Nasdaq 100 recuperó cerca de 2% el viernes, pero sólo corrigió una parte del daño.
+VOZ 2: ¿La tensión sigue concentrada en acciones tecnológicas?
+VOZ 1: Ya no completamente. La señal más importante apareció en crédito. El costo de asegurar deuda de CoreWeave a cinco años superó 1.000 puntos base, aumentaron las coberturas sobre otros emisores ligados a inteligencia artificial y se ampliaron los diferenciales de bonos de alto rendimiento.
+VOZ 2: ¿Qué nos dice un CDS sobre una empresa?
+VOZ 1: Es el precio de protegerse frente a un incumplimiento. Cuando sube con fuerza, el mercado está exigiendo más compensación por el riesgo crediticio. No significa que el incumplimiento sea inevitable, pero sí que financiar una expansión intensiva en capital puede hacerse más difícil y caro.
+VOZ 2: Entonces el mercado pasó de discutir valoraciones a discutir capacidad de financiamiento.
+VOZ 1: Exactamente. La corrección comenzó en acciones, pero ahora pone a prueba balances, flujos de caja y acceso a capital. Esa transmisión importa más que un rebote de una sesión.
+VOZ 2: ¿Y qué muestran los flujos?
+VOZ 1: En la semana terminada el miércoles, los fondos globales de acciones recibieron 38.630 millones de dólares. Al mismo tiempo, los fondos monetarios captaron 172.710 millones, la mayor entrada desde abril de 2020, y los fondos de bonos sumaron 9.910 millones.
+VOZ 2: ¿No es contradictorio comprar acciones y acumular tanto efectivo?
+VOZ 1: No necesariamente. Refleja una cartera dividida: compras selectivas de riesgo y una reserva defensiva mucho mayor. Además, los flujos tienen corte al miércoles, antes de la gran caída del jueves. No describen toda la reacción posterior, pero prueban que la preferencia por liquidez ya estaba creciendo.
+VOZ 2: ¿Hay señales de una crisis de mercado más amplia?
+VOZ 1: Por ahora, no. La base de fondeo en dólares se deterioró brevemente y luego recuperó parte del movimiento. La liquidez de los Treasuries siguió ordenada, los diferenciales de swaps no se rompieron y el índice MOVE permaneció bajo su máximo de octubre.
+VOZ 2: ¿Cómo traduzco eso a una lectura simple?
+VOZ 1: El semáforo está en ámbar, no en rojo sistémico. Hay estrés real en tecnología, crédito de mayor riesgo y posicionamiento, pero no una falla visible en el mercado soberano que sostiene la liquidez global.
+VOZ 2: El dólar subió el viernes y los rendimientos del Tesoro están por debajo de sus máximos. ¿Eso ayuda?
+VOZ 1: Ayuda parcialmente. El dólar ganó 0,6% y los rendimientos están unos 50 puntos base bajo sus máximos recientes superiores a 5%. Tasas menores pueden apoyar activos de larga duración, pero también pueden expresar búsqueda de refugio. No abaratan automáticamente el crédito de empresas cuya percepción de riesgo empeoró.
+VOZ 2: ¿Dónde entra la General de hoy sobre Estados Unidos, Irán y Qatar?
+VOZ 1: Si el avance diplomático termina normalizando navegación y suministro, puede reducir la prima geopolítica del petróleo. Eso aliviaría presión sobre inflación y tasas. Pero todavía no hay acuerdo, y ese posible alivio energético no borra el ajuste financiero dentro del ecosistema tecnológico.
+VOZ 2: ¿Hay una conexión material con Chile?
+VOZ 1: Sí, pero acotada. En el IPC chileno de octubre, transporte y alimentos concentraron casi todo el avance mensual. Una baja sostenida de energía y logística podría aliviar presión futura. El foco de Mercados este fin de semana, sin embargo, es otro: si el estrés tecnológico queda contenido o se transmite al crédito global.
+VOZ 2: ¿Qué confirmaría que la corrección está contenida?
+VOZ 1: Que bajen los CDS, se estrechen los diferenciales de alto rendimiento, retroceda la volatilidad y la tecnología sostenga la recuperación con buena amplitud y volumen. También que Treasuries, swaps y fondeo en dólares sigan funcionando con normalidad.
+VOZ 2: ¿Y qué transformaría el episodio en algo más grave?
+VOZ 1: Que el crédito se deteriore fuera de inteligencia artificial, que el fondeo en dólares vuelva a tensarse y que aparezcan problemas de liquidez en Treasuries. Esa combinación indicaría contagio cross-asset, no sólo una corrección de posicionamiento.
+VOZ 2: ¿Qué debemos mirar en la reapertura del lunes?
+VOZ 1: Semiconductores, proveedores de infraestructura de inteligencia artificial, CDS tecnológicos y spreads de alto rendimiento. Más que un índice aislado, importa si la recuperación gana amplitud y si las empresas de mayor riesgo conservan acceso a financiamiento.
+VOZ 2: ¿Y los próximos datos macroeconómicos?
+VOZ 1: La inflación de Estados Unidos será una prueba clave. Un dato mayor al esperado puede reactivar ventas de bonos y quitar soporte a tecnología. Una moderación acompañada de crédito estable facilitaría consolidar el rebote.
+VOZ 2: Entonces, ¿cuál es la síntesis para este sábado?
+VOZ 1: El viernes cerró con un rebote, pero la semana dejó una migración del estrés desde acciones hacia crédito y efectivo. La infraestructura financiera central sigue ordenada, por eso no hablamos de crisis sistémica. La próxima señal decisiva será si esa contención se mantiene cuando vuelvan a abrir los mercados.
