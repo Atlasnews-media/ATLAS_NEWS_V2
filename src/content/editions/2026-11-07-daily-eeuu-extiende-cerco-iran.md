@@ -1,11 +1,11 @@
 ---
 title: "EE.UU. extiende el cerco sobre Irán desde el mar hacia sus rutas terrestres"
 summary: "La nueva Task Force Iron Gate amplía la presión estadounidense a fronteras terrestres, el mar Caspio, bienes de doble uso y flujos de ingresos, aun cuando Qatar mantiene abierta la mediación."
-publishedAt: "2026-11-07T12:58:00-03:00"
+publishedAt: "2026-11-07T13:04:34-03:00"
 cutoffAt: "2026-11-07T12:00:00-03:00"
 type: "daily"
 editionSlot: "evening"
-status: "draft"
+status: "published"
 tags:
   - iran
   - estados-unidos

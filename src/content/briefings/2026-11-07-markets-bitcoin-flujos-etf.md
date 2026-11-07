@@ -1,11 +1,11 @@
 ---
 title: "Bitcoin se estabiliza en US$76.000, pero los ETF pierden US$411,9 millones"
 summary: "La cotización de bitcoin casi no cambió durante la mañana del sábado, mientras el dato final de flujos mostró un segundo retiro diario superior a US$400 millones desde los ETF spot estadounidenses."
-publishedAt: "2026-11-07T12:58:00-03:00"
+publishedAt: "2026-11-07T13:04:34-03:00"
 cutoffAt: "2026-11-07T12:00:00-03:00"
 section: "markets"
 editionSlot: "evening"
-status: "draft"
+status: "published"
 tags:
   - bitcoin
   - etf

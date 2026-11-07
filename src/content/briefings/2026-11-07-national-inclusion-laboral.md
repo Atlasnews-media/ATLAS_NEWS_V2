@@ -1,11 +1,11 @@
 ---
 title: "Sólo 44% de las entidades obligadas cumple la Ley de Inclusión Laboral"
 summary: "Fundación Sofan cifró en 44% el cumplimiento de la cuota laboral para personas con discapacidad y expuso una brecha concreta para la agenda de intermediación y subsidios presentada por el Gobierno."
-publishedAt: "2026-11-07T12:58:00-03:00"
+publishedAt: "2026-11-07T13:04:34-03:00"
 cutoffAt: "2026-11-07T12:00:00-03:00"
 section: "national"
 editionSlot: "evening"
-status: "draft"
+status: "published"
 tags:
   - chile
   - empleo
