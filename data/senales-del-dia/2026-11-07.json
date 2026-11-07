@@ -1,0 +1,115 @@
+{
+  "status": "READY",
+  "date": "2026-11-07",
+  "contract": "atlas-senales-del-dia-v1",
+  "senalesDelDia": {
+    "internacional": [
+      {
+        "slot": "technology",
+        "headline": "Kiro convierte agentes de desarrollo en bots persistentes",
+        "deck": "Crew bots ya está disponible para crear agentes con memoria, permisos y tareas recurrentes; cada bot conserva sesiones y contexto propios.",
+        "development": "Kiro puso a disposición general crew bots, una función para crear agentes de desarrollo de software que permanecen activos más allá de una conversación individual. Cada bot tiene memoria, sesiones, notas y espacio de trabajo propios, y puede operar varias sesiones en paralelo, coordinar tareas y ejecutar trabajos recurrentes según un calendario. El usuario define su nombre, instrucciones, herramientas y permisos, mientras un panel reúne el historial y el estado de sus actividades. La propuesta busca trasladar a los agentes desde encargos aislados hacia funciones continuas dentro de un equipo, como revisar incidencias, mantener documentación o vigilar una base de código.\n\nLa disponibilidad general confirma que el producto salió de su etapa previa, pero no demuestra por sí sola mejoras de productividad, calidad ni seguridad. La persistencia aumenta la utilidad de un agente y también exige controlar qué herramientas puede usar, qué información retiene y qué acciones requieren aprobación humana. Kiro señala que los permisos se configuran por bot y que los controles de aprobación siguen disponibles. Los próximos indicadores verificables serán la adopción entre equipos, la calidad de las ejecuciones programadas, la trazabilidad de los cambios producidos y la publicación de métricas sobre errores, intervenciones humanas o incidentes asociados a tareas de larga duración.",
+        "anchor": "kiro-crew-bots-agentes-persistentes-desarrollo",
+        "sources": [
+          {
+            "name": "Kiro — disponibilidad general de crew bots",
+            "url": "https://kiro.dev/blog/crew-bots/"
+          },
+          {
+            "name": "VentureBeat — funciones y alcance de Kiro crew bots",
+            "url": "https://venturebeat.com/technology/aws-launches-agentic-ai-kiro-bots-with-memory-and-support-for-recurring-development-jobs"
+          }
+        ]
+      },
+      {
+        "slot": "world",
+        "headline": "UNICEF registra triple aumento de ataques contra sistemas de agua",
+        "deck": "El organismo documentó 883 incidentes en 15 países en conflicto y advierte que la falta de un registro global subestima la magnitud real.",
+        "development": "UNICEF informó que los ataques que dañaron o destruyeron sistemas de agua, saneamiento e higiene se triplicaron entre 2021 y 2025. Los casos pasaron de menos de 45 incidentes en ocho países a más de 135 en quince, según la cuarta edición de Water Under Fire. El organismo documentó 883 incidentes que afectaron infraestructura de agua en quince países en conflicto entre enero de 2021 y junio de 2026; 64% correspondió a daños o destrucción y 45% de los registros se concentró en el Estado de Palestina. La base incluye ataques directos y efectos sobre instalaciones esenciales para el suministro de agua potable y el saneamiento.\n\nEl informe no constituye un censo exhaustivo. UNICEF advierte que no existe un sistema mundial de seguimiento y que las restricciones de acceso, la inseguridad y la falta de reportes dejan casos fuera del registro. Por eso, el aumento observado describe la evidencia disponible y probablemente subestima la escala real. La pérdida de estos servicios incrementa la exposición de niños y comunidades a enfermedades, desplazamientos y cortes prolongados, especialmente cuando también faltan electricidad, combustible o repuestos. Los próximos controles serán la actualización de los registros por país, la verificación independiente de nuevos incidentes, la restauración efectiva de las instalaciones afectadas y la incorporación de mecanismos de protección y rendición de cuentas en operaciones humanitarias.",
+        "anchor": "unicef-ataques-sistemas-agua-conflictos-2026",
+        "sources": [
+          {
+            "name": "UNICEF — Water Under Fire, volumen 4",
+            "url": "https://www.unicef.org/reports/water-under-fire"
+          },
+          {
+            "name": "Naciones Unidas — briefing de Ginebra sobre el informe",
+            "url": "https://transcripts.un.org/en/briefing/geneva/2026-11-06"
+          }
+        ]
+      }
+    ],
+    "nacional": [
+      {
+        "slot": "ipsa_company",
+        "headline": "Aguas Andinas acuerda dividendo provisorio de $19,69 por acción",
+        "deck": "El directorio aprobó distribuir $120.272 millones con cargo a la utilidad de 2026; el pago está previsto para el 26 de noviembre.",
+        "development": "El directorio de Aguas Andinas acordó por unanimidad distribuir un dividendo provisorio de $19,69186 por acción, con cargo a las utilidades del ejercicio 2026. El desembolso total informado asciende a $120.272.505.178 y el pago quedó fijado para el 26 de noviembre. Tendrán derecho los accionistas inscritos en el registro de la sociedad al cierre del 20 de noviembre. La decisión fue comunicada como hecho esencial después de la sesión del 4 de noviembre y convierte una parte de la utilidad del año en una obligación de caja de corto plazo para la compañía.\n\nEl acuerdo define monto, fecha y beneficiarios, pero no anticipa la política de dividendos que la junta pueda resolver sobre el resultado definitivo del ejercicio. Tampoco equivale a una rentabilidad asegurada para quien compre la acción, porque el precio puede ajustarse al hacerse efectivo el derecho y variar por otros factores. Para evaluar el efecto financiero será necesario contrastar el pago con la caja disponible, el endeudamiento, las inversiones y el resultado anual auditado. Los próximos hitos verificables serán la fecha límite del registro, el desembolso del 26 de noviembre, su reflejo en los estados financieros y cualquier propuesta adicional de distribución que el directorio presente a la próxima junta de accionistas.",
+        "anchor": "aguas-andinas-dividendo-provisorio-noviembre-2026",
+        "sources": [
+          {
+            "name": "Aguas Andinas — hecho esencial del dividendo provisorio",
+            "url": "https://www.aguasandinasinversionistas.cl/documents/208629/455799/HE%2BAA%2B041126.pdf/13cdb82e-55a7-0f37-5065-d57590e2c0d3?download=true&t=1793805944902"
+          },
+          {
+            "name": "Bolsa de Santiago — hechos esenciales",
+            "url": "https://bolsachile.com/cl/hechos-esenciales"
+          }
+        ]
+      },
+      {
+        "slot": "policy_economy",
+        "headline": "Empleo 360 coordinará capacitación y vacantes en las 16 regiones",
+        "deck": "El sistema usará servicios existentes para anticipar demanda laboral, preparar perfiles y verificar contrataciones; su primer ciclo parte en enero.",
+        "development": "El Ministerio del Trabajo lanzó Empleo 360, un sistema de coordinación que conectará información sobre demanda de trabajadores con capacitación, certificación de competencias e intermediación laboral. El diseño contempla cuatro etapas: anticipar necesidades mediante RADAR Laboral y la Encuesta Nacional de Demanda Laboral; priorizarlas en instancias regionales; preparar perfiles a través de Sence, ChileValora, las OMIL y la Bolsa Nacional de Empleo; y verificar si las vacantes terminan en contrataciones formales. Entre noviembre y diciembre se constituirán comités en las dieciséis regiones y el primer ciclo operativo comenzará en enero de 2027.\n\nLa iniciativa ordena capacidades y programas existentes y, según la información oficial, no crea un beneficio automático ni incorpora por sí misma nuevos recursos operativos. Su resultado dependerá de la calidad y oportunidad de los datos empresariales, de la coordinación regional y de que la oferta de cursos responda a vacantes reales. La verificación de colocaciones será relevante para distinguir participación en capacitación de empleo efectivo y formal. El Gobierno prevé publicar los primeros reportes durante el segundo semestre de 2027. Los controles verificables serán la instalación de los comités, las ocupaciones priorizadas en cada región, el número de personas derivadas a formación o certificación y las contrataciones comprobadas después de cada ciclo.",
+        "anchor": "empleo-360-coordinacion-laboral-regiones-2027",
+        "sources": [
+          {
+            "name": "Ministerio del Trabajo — lanzamiento de Empleo 360",
+            "url": "https://www.mintrab.gob.cl/ministerio-del-trabajo-lanza-empleo-360-el-circulo-virtuoso-para-generar-mas-y-mejores-empleos-en-el-pais/"
+          },
+          {
+            "name": "Diario Financiero — operación y calendario de Empleo 360",
+            "url": "https://www.df.cl/economia-y-politica/laboral-personas/gobierno-lanza-empleo-360-apuesta-por-anticipar-demanda-de-trabajadores-y"
+          }
+        ]
+      }
+    ],
+    "mercados": [
+      {
+        "slot": "markets_chile",
+        "headline": "Arauco coloca UF 10 millones en bono híbrido sustentable",
+        "deck": "La emisión a 32 años y tres meses obtuvo una tasa de 4,13% y demanda equivalente a 1,45 veces el monto ofrecido.",
+        "development": "Arauco colocó en el mercado local un bono híbrido sustentable por UF 10 millones, equivalente a cerca de US$410 millones según la compañía. El instrumento tiene un plazo de 32 años y tres meses, una tasa de colocación de 4,13% y un spread de 163 puntos base sobre el referente utilizado en la subasta. Las órdenes alcanzaron 1,45 veces el monto ofrecido. La empresa informó que destinará los recursos a fortalecer su estructura financiera y respaldar proyectos alineados con su marco de financiamiento sustentable, entre ellos la construcción de la planta de celulosa Sucuriú en Brasil. Es la segunda emisión híbrida de Arauco en aproximadamente un año.\n\nLa demanda y la tasa muestran las condiciones obtenidas en esta colocación, pero no garantizan el desempeño posterior del bono ni reducen por sí mismas el riesgo del emisor. Su carácter híbrido combina rasgos de deuda y capital y exige revisar condiciones como subordinación, diferimiento de cupones y fechas de rescate antes de compararlo con deuda sénior. La etiqueta sustentable remite al uso y reporte de los fondos bajo el marco de la empresa; no constituye una evaluación independiente de impacto. Los próximos controles serán la liquidación de la emisión, el destino documentado de los recursos, los reportes de asignación y avance de Sucuriú, y la evolución del rendimiento del instrumento en el mercado secundario.",
+        "anchor": "arauco-bono-hibrido-sustentable-uf-10-millones",
+        "sources": [
+          {
+            "name": "Arauco — colocación del bono híbrido sustentable",
+            "url": "https://arauco.com/chile/arauco-concreta-colocacion-bono-hibrido-sustentable-por-uf-10-millones-a-32-25-anos/"
+          },
+          {
+            "name": "Diario Financiero — resultado de la subasta de Arauco",
+            "url": "https://www.df.cl/mercados/renta-fija/esperar-rindio-frutos-arauco-vende-bonos-hibridos-por-uf-10-millones-tras"
+          }
+        ]
+      },
+      {
+        "slot": "markets_global",
+        "headline": "Banco de Inglaterra sube la tasa a 4% tras más de tres años",
+        "deck": "El comité aprobó el alza de 25 puntos base por 8 votos contra 1; el disidente propuso elevarla medio punto porcentual.",
+        "development": "El Banco de Inglaterra elevó su tasa de referencia en 25 puntos base, hasta 4%, en la primera subida en más de tres años. El Comité de Política Monetaria aprobó la decisión por ocho votos contra uno; el miembro disidente prefirió un aumento de 50 puntos base, a 4,25%. La autoridad señaló que la inflación británica fue 3,5% en septiembre y proyectó que se acercará a 5% a mediados de 2027 antes de retroceder. También indicó que el curso futuro no está predeterminado y dependerá de la persistencia de las presiones de precios y salarios. La próxima decisión está programada para el 17 de diciembre.\n\nLa votación entrega una señal restrictiva, pero no compromete una secuencia automática de alzas. Después del anuncio, los rendimientos de los bonos británicos de corto plazo subieron y los mercados aumentaron la magnitud de endurecimiento que esperaban para fines de 2027, reflejo de una revisión de expectativas que puede cambiar con nuevos datos. El escenario combina inflación por encima de la meta con actividad débil, por lo que cada decisión dependerá de la transmisión a salarios, servicios y demanda. Los próximos controles serán los datos mensuales de inflación y empleo, las encuestas de expectativas, la evolución de los gilt a dos años y las proyecciones y votos que acompañen la reunión de diciembre.",
+        "anchor": "banco-inglaterra-sube-tasa-cuatro-por-ciento",
+        "sources": [
+          {
+            "name": "Banco de Inglaterra — decisión monetaria de noviembre",
+            "url": "https://www.bankofengland.co.uk/monetary-policy-summary-and-minutes/2026/november-2026"
+          },
+          {
+            "name": "Reuters — reacción del mercado a la decisión",
+            "url": "https://www.reuters.com/world/uk/view-bank-england-delivers-first-rate-hike-three-years-gilt-yields-rise-2026-11-05/"
+          }
+        ]
+      }
+    ]
+  }
+}
