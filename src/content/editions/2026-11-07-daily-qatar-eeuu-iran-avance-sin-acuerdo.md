@@ -1,11 +1,11 @@
 ---
 title: "Qatar reporta avances entre EE.UU. e Irán, pero Ormuz sigue sin acuerdo"
 summary: "Doha afirmó que la mediación logró un progreso significativo y que Washington conserva disposición a negociar después de las elecciones. La señal reduce el riesgo inmediato de escalada, aunque Irán mantiene exigencias rechazadas y el estrecho de Ormuz continúa condicionado."
-publishedAt: "2026-11-07T06:05:56-03:00"
+publishedAt: "2026-11-07T06:49:30-03:00"
 cutoffAt: "2026-11-07T06:05:14-03:00"
 type: "daily"
 editionSlot: "morning"
-status: "draft"
+status: "published"
 tags:
   - iran
   - estados-unidos

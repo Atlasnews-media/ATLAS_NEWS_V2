@@ -1,11 +1,11 @@
 ---
 title: "El rebote tecnológico no borra la señal de estrés en crédito y liquidez"
 summary: "El Nasdaq recuperó 1,1% el viernes, pero cerró la semana 3,4% abajo. La ampliación de coberturas crediticias, la volatilidad sobre 28 y el salto hacia fondos monetarios muestran que el ajuste todavía es defensivo, aunque los Treasuries siguieron ordenados."
-publishedAt: "2026-11-07T06:23:15-03:00"
+publishedAt: "2026-11-07T06:49:30-03:00"
 cutoffAt: "2026-11-07T06:22:45-03:00"
 section: "markets"
 editionSlot: "morning"
-status: "draft"
+status: "published"
 tags:
   - mercados
   - tecnologia

@@ -1,11 +1,11 @@
 ---
 title: "Transporte y alimentos concentran el IPC de octubre y muestran una presión poco extendida"
 summary: "El IPC subió 0,5% en octubre y 4,5% anual. Transporte y alimentos aportaron juntos 0,496 puntos porcentuales, prácticamente todo el avance mensual antes de compensaciones, mientras vestuario cayó 4,1%."
-publishedAt: "2026-11-07T06:21:20-03:00"
+publishedAt: "2026-11-07T06:49:30-03:00"
 cutoffAt: "2026-11-07T06:20:50-03:00"
 section: "national"
 editionSlot: "morning"
-status: "draft"
+status: "published"
 tags:
   - chile
   - inflacion
