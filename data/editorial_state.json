@@ -4,13 +4,13 @@
       "id": "oil-geopolitics-inflation",
       "topic": "Petróleo, geopolítica e inflación",
       "thesis": "La guerra regional, las interrupciones del mar Negro y El Niño están convirtiendo el shock energético en un alza multicommodity que combina inflación, inseguridad alimentaria y menor crecimiento, con los países endeudados como principal punto de fragilidad.",
-      "status": "confirmed",
-      "last_evidence": "El 5 de noviembre el Banco de Inglaterra elevó su tasa a 4%, su primera alza en más de tres años, y proyectó inflación cercana a 5% a mediados de 2027 por la presión energética; ocho miembros apoyaron 25 puntos base y uno pidió 50.",
-      "effect": "Confirma que el shock energético ya se convirtió en una respuesta monetaria efectiva fuera de los países que habían endurecido antes, aunque la caída reciente del petróleo bajo US$100 puede moderar la trayectoria si se sostiene y aún existe evidencia limitada de efectos de segunda ronda.",
+      "status": "weakened",
+      "last_evidence": "El 7 de noviembre el primer ministro de Qatar declaró avances significativos en la mediación entre Estados Unidos e Irán y confirmó que Washington mantiene disposición a negociar después de las elecciones de mitad de mandato, aunque todavía no existe un acuerdo y el plan iraní de siete días sigue rechazado.",
+      "effect": "Debilita el riesgo inmediato de una nueva escalada y abre una ruta de descompresión para Ormuz, pero no invalida la tesis: no hay términos aceptados, la vía marítima sigue condicionada y los reportes preliminares sobre nuevos impactos en Qeshm no cuentan aún con confirmación oficial independiente.",
       "base_scenario": "Los commodities permanecen altos y volátiles durante 2026, con traspaso desigual a inflación y tasas; algunos bancos centrales suben preventivamente mientras otros esperan evidencia de persistencia, y una normalización sostenida del crudo durante 2027 aliviaría gradualmente el ajuste.",
       "invalidate_if": "Una normalización sostenida de Ormuz, el mar Rojo y el mar Negro, petróleo estable bajo niveles previos al conflicto y desinflación amplia en salarios y precios debilitarían la tesis; nuevas interrupciones físicas y más alzas de bancos centrales la reforzarían.",
       "watch": "Tránsito por Ormuz y el mar Rojo, negociaciones con Irán, precios y facturas de energía, salarios e inflación de servicios británicos, reunión del Banco de Inglaterra del 17 de diciembre, decisiones de la Fed y el BCE.",
-      "last_publication": "/ediciones/2026-11-05-daily-banco-inglaterra-tasa-inflacion/"
+      "last_publication": "/ediciones/2026-11-07-daily-qatar-eeuu-iran-avance-sin-acuerdo/"
     },
     {
       "id": "us-employment-fed-rates",
