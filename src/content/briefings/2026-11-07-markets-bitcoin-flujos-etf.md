@@ -19,7 +19,7 @@ sources:
     url: "https://www.coindaro.com/bitcoin-price-today-etf-outflows-cpi-week/"
     publishedAt: "2026-11-07T06:59:00-03:00"
 highlights:
-  - label: "Bitcoin cerca de US$76 mil"
+  - label: "Bitcoin ronda US$76 mil"
     text: "La criptomoneda se mantuvo prácticamente plana y dentro de un rango acotado durante la mañana del sábado."
   - label: "ETF retiran US$411,9M"
     text: "Los fondos spot estadounidenses encadenaron una segunda salida diaria superior a US$400 millones."
