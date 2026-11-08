@@ -1,11 +1,11 @@
 ---
 title: "Chile Despega completa licitaciones, pero la ejecución aún depende de adjudicar 232 contratos"
 summary: "El MOP publicó las 241 licitaciones por $376.949 millones, pero al 4 de noviembre sólo nueve contratos estaban adjudicados. El impulso a empleo e inversión se juega ahora en convertir aperturas y ofertas en obras durante 2027."
-publishedAt: "2026-11-08T06:19:25-03:00"
+publishedAt: "2026-11-08T06:46:31-03:00"
 cutoffAt: "2026-11-08T06:18:55-03:00"
 section: "national"
 editionSlot: "morning"
-status: "draft"
+status: "published"
 tags:
   - chile
   - inversion-publica
