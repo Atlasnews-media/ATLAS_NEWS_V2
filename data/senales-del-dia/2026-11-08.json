@@ -1,0 +1,115 @@
+{
+  "status": "READY",
+  "date": "2026-11-08",
+  "contract": "atlas-senales-del-dia-v1",
+  "senalesDelDia": {
+    "internacional": [
+      {
+        "slot": "technology",
+        "headline": "IBM pone en operación su sistema cuántico más avanzado en Chicago",
+        "deck": "Quantum System Two funciona en Hyde Park Labs con el procesador Nighthawk r2 y será trasladado al futuro parque cuántico de Illinois.",
+        "development": "IBM y la Universidad de Chicago pusieron en operación un Quantum System Two en Hyde Park Labs, el primer computador cuántico de la compañía instalado en Illinois y el sistema más avanzado que IBM ofrece actualmente. La plataforma utiliza un procesador Nighthawk r2 de 120 cúbits y servirá como infraestructura del National Quantum Algorithm Center. Investigadores, universidades, laboratorios y empresas podrán acceder al sistema para desarrollar y escalar algoritmos. La instalación es provisional: cuando se complete el Illinois Quantum and Microelectronics Park, el equipo será trasladado a ese campus y funcionará como uno de sus componentes centrales.\n\nEl inicio de operaciones entrega capacidad física nueva, pero no prueba que ya existan aplicaciones cuánticas comercialmente útiles ni que el sistema supere a computadores clásicos en tareas productivas generales. El valor inmediato está en disponer de hardware y colaboración local para ensayar algoritmos, medir errores y formar especialistas. IBM afirma que el equipo puede producir resultados científicamente útiles, una afirmación que deberá contrastarse con publicaciones, cargas de trabajo reproducibles y uso efectivo por terceros. Los próximos controles serán el número de proyectos conectados al centro, los resultados revisados por pares, la disponibilidad real para organizaciones externas y el cumplimiento del traslado al parque definitivo.",
+        "anchor": "ibm-quantum-system-two-chicago-nighthawk",
+        "sources": [
+          {
+            "name": "IBM — puesta en operación de Quantum System Two en Chicago",
+            "url": "https://newsroom.ibm.com/2026-11-06-ibm-unveils-its-most-advanced-quantum-computer-in-chicago%2C-marking-a-milestone-for-illinoiss-quantum-future"
+          },
+          {
+            "name": "Universidad de Chicago — instalación en Hyde Park Labs",
+            "url": "https://news.uchicago.edu/story/ibms-most-advanced-quantum-computer-unveiled-uchicagos-hyde-park-labs"
+          }
+        ]
+      },
+      {
+        "slot": "world",
+        "headline": "ACNUR ubica a 90 millones de desplazados bajo alto riesgo climático",
+        "deck": "Tres de cada cuatro personas desplazadas viven en países muy expuestos a sequías, inundaciones o calor extremo, según el informe No Escape III.",
+        "development": "ACNUR estimó que cerca de 90 millones de personas desplazadas por la fuerza, equivalentes a tres de cada cuatro en el mundo, viven en países con exposición alta o extrema a peligros climáticos. Su informe No Escape III advierte además que más de dos tercios de los refugiados que regresaron a sus países durante el primer semestre de 2026 lo hicieron a territorios altamente vulnerables. En África subsahariana, uno de cada tres asentamientos de refugiados podría enfrentar al menos cien días de calor peligroso por año hacia 2050. El documento también registra más de 255 millones de desplazamientos internos provocados por desastres meteorológicos durante la última década.\n\nLas cifras describen exposición y movimientos, pero no atribuyen cada desplazamiento individual al cambio climático ni constituyen una predicción única para todos los países. ACNUR señala una brecha financiera: los Estados frágiles y afectados por conflictos reciben alrededor de 10% del financiamiento climático mundial, pese a concentrar poblaciones con menor capacidad de adaptación. La agencia llevará el informe a la COP31 y pedirá incluir a refugiados y comunidades receptoras en planes y mecanismos nacionales. Los próximos controles serán los compromisos verificables de financiamiento, su llegada a zonas de retorno y asentamientos, y la actualización de los escenarios de inundaciones, sequías y calor con datos observados.",
+        "anchor": "acnur-desplazados-riesgo-climatico-no-escape-iii",
+        "sources": [
+          {
+            "name": "ACNUR — informe No Escape III y cifras globales",
+            "url": "https://www.unhcr.org/news/press-releases/ahead-cop31-unhcr-warns-nearly-90-million-displaced-people-face-severe-climate"
+          },
+          {
+            "name": "Reuters — alcance y riesgos señalados por ACNUR",
+            "url": "https://www.reuters.com/sustainability/cop/90-million-displaced-people-risk-climate-threats-un-refugee-agency-says-2026-11-05/"
+          }
+        ]
+      }
+    ],
+    "nacional": [
+      {
+        "slot": "ipsa_company",
+        "headline": "Empresas Copec eleva 58% su utilidad acumulada a septiembre",
+        "deck": "El holding ganó US$1.001 millones en nueve meses y redujo su razón de deuda financiera neta sobre EBITDA ajustado de 3,13 a 2,95 veces.",
+        "development": "Empresas Copec reportó una utilidad acumulada de US$1.001 millones entre enero y septiembre de 2026, un aumento de 57,6% frente al mismo período de 2025. En el tercer trimestre ganó US$289 millones, 45,6% más interanual. El EBITDA ajustado de nueve meses alcanzó US$2.806 millones y creció 22,8%, mientras la razón de deuda financiera neta sobre EBITDA ajustado bajó de 3,13 a 2,95 veces. La compañía atribuyó el avance principalmente a energía, donde mejoraron el margen industrial, la revalorización de inventarios y el desempeño de Terpel y lubricantes, además de mayores resultados no operacionales en el negocio forestal.\n\nLa mejora de utilidad no implica que todos los negocios hayan avanzado al mismo ritmo ni que los efectos contables y ventas de activos sean recurrentes. Arauco informó una utilidad acumulada de US$100 millones, frente a una pérdida el año anterior, mientras el proyecto Sucuriú alcanzó 81,1% de avance y continúa demandando inversión elevada. La caída del indicador de apalancamiento es favorable, pero debe leerse junto con el gasto de capital, la generación de caja y las medidas de financiamiento anunciadas para completar el proyecto. Los próximos controles serán el flujo de caja operativo, la deuda al cierre anual, el avance físico y presupuestario de Sucuriú y la composición entre resultados operacionales, revalorizaciones y ventas de activos.",
+        "anchor": "empresas-copec-resultados-tercer-trimestre-2026",
+        "sources": [
+          {
+            "name": "Empresas Copec — resultados acumulados a septiembre de 2026",
+            "url": "https://www.empresascopec.cl/noticia/empresas-copec-eleva-su-utilidad-un-58-y-alcanza-los-us1-001-millones-a-septiembre/"
+          },
+          {
+            "name": "Diario Financiero — desglose de resultados de Empresas Copec",
+            "url": "https://www.df.cl/empresas/industria/empresas-copec-eleva-45-6-su-utilidad-en-el-tercer-trimestre-y-suma-us"
+          }
+        ]
+      },
+      {
+        "slot": "policy_economy",
+        "headline": "SAG elimina el peso neto de exigencias sanitarias de importación",
+        "deck": "La resolución suprime ese dato del etiquetado de productos de origen animal porque no aporta a la sanidad ni a la trazabilidad.",
+        "development": "El Servicio Agrícola y Ganadero eliminó la obligación de consignar el peso neto en el etiquetado exigido para importar determinados productos de origen animal destinados al consumo o uso humano. La Resolución Exenta N°10.640, publicada el 6 de noviembre en el Diario Oficial, modifica distintas normas sanitarias aplicables a esas internaciones. El SAG fundamentó el cambio en que el peso neto no constituye un requisito sanitario y tampoco entrega antecedentes relevantes para la trazabilidad del producto. La medida había sido sometida previamente a consulta pública y ahora quedó incorporada en las resoluciones específicas que regulan distintas categorías y países de origen.\n\nLa modificación acota una exigencia del control sanitario fronterizo, pero no elimina las obligaciones comerciales de rotulación que puedan imponer otras normas ni sustituye antecedentes sobre origen, establecimiento, lote, certificación o inocuidad. Su efecto económico directo será reducir una duplicación documental para importadores y proveedores alcanzados por las resoluciones modificadas; el tamaño del ahorro dependerá de cuántas operaciones requerían adaptar etiquetas sólo para cumplir con el SAG. No corresponde inferir un cambio en estándares de seguridad alimentaria, porque el organismo mantuvo los datos que considera pertinentes para sanidad y trazabilidad. Los próximos controles serán las instrucciones operativas a los puntos de ingreso, la aplicación uniforme por categoría y cualquier aclaración conjunta con las autoridades de salud y protección al consumidor.",
+        "anchor": "sag-elimina-peso-neto-etiquetado-importaciones",
+        "sources": [
+          {
+            "name": "Diario Oficial — Resolución Exenta SAG N°10.640",
+            "url": "https://www.diariooficial.interior.gob.cl/publicaciones/2026/11/06/44592/01/2896836.pdf"
+          },
+          {
+            "name": "SAG — consulta pública que antecedió a la resolución",
+            "url": "https://www.sag.gob.cl/content/consulta-publica-modifica-las-resoluciones-que-se-indican-eliminando-el-requisito-de-consignar-el-peso-neto-en-el-etiquetado-de-los-productos"
+          }
+        ]
+      }
+    ],
+    "mercados": [
+      {
+        "slot": "markets_chile",
+        "headline": "IPSA avanza 2,8% en la semana y recupera los 10.500 puntos",
+        "deck": "El índice cerró el viernes en 10.536,54 puntos tras subir 0,68%; el retorno semanal en dólares alcanzó 4,2%, con montos transados bajos.",
+        "development": "El MSCI IPSA cerró el viernes en 10.536,54 puntos, un avance diario de 0,68%, y completó una ganancia semanal de 2,8% en pesos. Medido en dólares, el retorno de la semana llegó a 4,2%, el mejor desempeño desde el 12 de junio, apoyado también por una apreciación del peso. La trayectoria fue volátil: el índice cayó 1,52% el jueves después de subir 2,52% el miércoles. Los resultados corporativos locales entregaron soporte en la sesión final, con Cencosud entre los principales impulsores, mientras el monto transado se mantuvo bajo. La recuperación dejó al índice sobre 10.500 puntos, pero todavía por debajo de su máximo de doce meses.\n\nEl balance semanal muestra resistencia relativa frente a la corrección tecnológica internacional, aunque no demuestra un cambio estructural de tendencia. La baja liquidez reduce la fuerza informativa de una sesión y la concentración del índice permite que unas pocas acciones expliquen una fracción importante del movimiento. El avance en dólares incorpora simultáneamente acciones y moneda, por lo que puede revertirse si cambia cualquiera de esos dos componentes. Los próximos controles serán el volumen efectivo al reabrir el mercado, la amplitud entre sectores, la reacción de las compañías después de resultados y el comportamiento del peso y las tasas locales frente a los nuevos riesgos externos.",
+        "anchor": "ipsa-semana-recupera-10500-noviembre-2026",
+        "sources": [
+          {
+            "name": "LarrainVial — cierre del IPSA y principales indicadores locales",
+            "url": "https://mercados.larrainvial.com/www/v2/index.html"
+          },
+          {
+            "name": "Diario Financiero — balance semanal de la Bolsa de Santiago",
+            "url": "https://www.df.cl/mercados/bolsa-monedas/bolsas-hoy-jbybu"
+          }
+        ]
+      },
+      {
+        "slot": "markets_global",
+        "headline": "Tesoro de EE.UU. prepara subastas por US$125.000 millones",
+        "deck": "La refinanciación ofrecerá bonos a tres, diez y treinta años y captará US$28.000 millones netos; las subastas parten el lunes.",
+        "development": "El Tesoro de Estados Unidos anunció una refinanciación trimestral por US$125.000 millones que comenzará el 9 de noviembre. La operación incluye US$58.000 millones en notas a tres años, US$42.000 millones a diez años y US$25.000 millones en bonos a treinta años. Los recursos reemplazarán cerca de US$97.000 millones de deuda privada que vence el 15 de noviembre y aportarán aproximadamente US$28.000 millones de caja nueva. Las subastas se realizarán lunes, martes y jueves, respectivamente, y los tres instrumentos liquidarán el 16 de noviembre. El departamento prevé mantener sin cambios los tamaños de cupones nominales y notas de tasa flotante durante los próximos trimestres.\n\nLa decisión mantiene estable la oferta inmediata, pero abre la posibilidad de modificar más adelante la composición por plazos. Analistas citados por Reuters interpretaron el cambio de lenguaje del Tesoro como margen para elevar emisiones cortas e intermedias y eventualmente reducir las de veinte y treinta años, donde la demanda ha sido más irregular. Esa lectura no constituye una decisión aprobada: las necesidades fiscales y la demanda estructural pueden obligar a otra combinación. La prueba de mercado estará en las tasas de corte, la demanda total, la participación indirecta y las diferencias frente al rendimiento previo a cada subasta. Un resultado débil en el tramo largo elevaría el costo de financiamiento; una demanda sólida reduciría la presión de oferta sobre la curva.",
+        "anchor": "tesoro-eeuu-refinanciacion-subastas-noviembre-2026",
+        "sources": [
+          {
+            "name": "Tesoro de Estados Unidos — refinanciación trimestral de noviembre",
+            "url": "https://home.treasury.gov/news/press-releases/sb0678"
+          },
+          {
+            "name": "Reuters — posible cambio futuro en la composición de subastas",
+            "url": "https://www.streetinsider.com/Reuters/US%2BTreasury%2Bshifts%2Blanguage%2C%2Bopening%2Bdoor%2Bto%2Bauction%2Bsize%2Bchanges/27286665.html"
+          }
+        ]
+      }
+    ]
+  }
+}
