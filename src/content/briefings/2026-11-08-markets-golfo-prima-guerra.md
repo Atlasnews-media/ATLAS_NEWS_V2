@@ -1,11 +1,11 @@
 ---
 title: "Las bolsas del Golfo reponen prima de guerra antes de que reabra el petróleo"
 summary: "Arabia Saudita cayó 1% y Qatar 1,3% el domingo tras nuevos incidentes en Hormuz y Riad. El ajuste regional ocurre con Brent y WTI todavía anclados al cierre del viernes, previo a la escalada, y convierte la reapertura del lunes en la prueba cross-asset decisiva."
-publishedAt: "2026-11-08T06:20:55-03:00"
+publishedAt: "2026-11-08T06:46:41-03:00"
 cutoffAt: "2026-11-08T06:20:20-03:00"
 section: "markets"
 editionSlot: "morning"
-status: "draft"
+status: "published"
 tags:
   - mercados
   - petroleo
