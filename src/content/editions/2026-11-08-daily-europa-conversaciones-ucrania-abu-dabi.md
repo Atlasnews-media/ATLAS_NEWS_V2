@@ -1,11 +1,11 @@
 ---
 title: "Europa se incorpora a las conversaciones de Ucrania y Rusia en Abu Dabi"
 summary: "Francia confirmó que Europa participará en las conversaciones del 10 y 11 de noviembre impulsadas por Estados Unidos. La ampliación incorpora a países que sostendrían garantías y reconstrucción, aunque aún no se conoce la delegación ni existe un acuerdo."
-publishedAt: "2026-11-08T13:05:33-03:00"
+publishedAt: "2026-11-08T13:14:14-03:00"
 cutoffAt: "2026-11-08T12:00:00-03:00"
 type: "daily"
 editionSlot: "evening"
-status: "draft"
+status: "published"
 tags:
   - ucrania
   - rusia
