@@ -1,11 +1,11 @@
 ---
 title: "Hormuz y Riad devuelven la escalada al centro pese a la mediación"
 summary: "Estados Unidos inutilizó un buque que intentó vulnerar el bloqueo iraní, Teherán informó dos tanqueros incendiados tras impactar minas y Arabia Saudita interceptó misiles dirigidos a Riad. Los incidentes amplían el riesgo físico mientras Qatar mantiene abierta una negociación todavía sin acuerdo."
-publishedAt: "2026-11-08T05:58:20-03:00"
+publishedAt: "2026-11-08T06:46:19-03:00"
 cutoffAt: "2026-11-08T05:57:58-03:00"
 type: "daily"
 editionSlot: "morning"
-status: "draft"
+status: "published"
 tags:
   - iran
   - estados-unidos
