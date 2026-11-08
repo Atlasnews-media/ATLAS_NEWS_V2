@@ -1,6 +1,6 @@
 ---
 title: "Qatar limita su caída a 0,5%, pero el recorte de gas hunde hasta 5,9% a fertilizantes egipcias"
-summary: "El cierre dominical reemplazó las pérdidas preliminares por una señal más diferenciada: Qatar recuperó parte de la caída, Arabia Saudita cedió 0,8% y Egipto bajó 0,7%, con castigo de 5,8% y 5,9% a dos fertilizantes tras un nuevo recorte de gas. El mercado trasladó parte del riesgo regional desde los índices hacia costos productivos concretos."
+summary: "Qatar recuperó parte de su caída y cerró en -0,5%; Arabia Saudita cedió 0,8% y Egipto 0,7%. El recorte adicional de gas hundió 5,8% y 5,9% a dos fertilizantes egipcias, trasladando el riesgo regional desde los índices hacia costos productivos concretos."
 publishedAt: "2026-11-08T13:05:33-03:00"
 cutoffAt: "2026-11-08T12:00:00-03:00"
 section: "markets"

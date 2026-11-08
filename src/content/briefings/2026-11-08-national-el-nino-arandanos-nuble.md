@@ -1,6 +1,6 @@
 ---
 title: "Una industria de US$125 millones enfrenta El Niño en Ñuble mientras el riesgo alcanza cobre y logística"
-summary: "Ñuble inicia la cosecha de arándanos con 3.250 hectáreas, 23% de la superficie nacional y antecedentes de exportaciones por más de US$125 millones. El riesgo de lluvias y granizo se suma a una exposición chilena más amplia en agricultura, cobre, energía e infraestructura, pero la evidencia exige leer impactos por sector y territorio."
+summary: "Ñuble inicia la cosecha de arándanos con 3.250 hectáreas, 23% de la superficie nacional y antecedentes de exportaciones por más de US$125 millones. Lluvias y granizo se suman a riesgos para agricultura, cobre y logística, con efectos que dependen del sector y el territorio."
 publishedAt: "2026-11-08T13:05:33-03:00"
 cutoffAt: "2026-11-08T12:00:00-03:00"
 section: "national"
