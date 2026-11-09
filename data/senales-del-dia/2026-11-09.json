@@ -1,0 +1,119 @@
+{
+  "status": "READY",
+  "date": "2026-11-09",
+  "contract": "atlas-senales-del-dia-v1",
+  "senalesDelDia": {
+    "internacional": [
+      {
+        "slot": "technology",
+        "headline": "OpenAI restringe GPT-6 Cyber a investigación autorizada",
+        "deck": "El modelo eleva a 48,5% su resultado en ExploitGym y queda limitado a clientes aprobados de Daybreak Red para pruebas de seguridad.",
+        "development": "OpenAI presentó GPT-6 Cyber, un modelo especializado en detectar, validar y ayudar a corregir vulnerabilidades bajo un alcance autorizado. La compañía informó un resultado de 48,5% en ExploitGym, frente a 32,1% de GPT-5.6 Cyber, y señaló que el sistema evitó actuar sobre servicios fuera de alcance en 99,93% de una evaluación sin el prompt de despliegue. El acceso no es abierto: se canaliza mediante Daybreak Red y requiere aprobación. OpenAI clasificó al modelo en nivel crítico de capacidad cibernética dentro de su marco de preparación y afirmó que fue utilizado para desarrollar 948 exploits de escalamiento de privilegios en Linux e identificar 81 vulnerabilidades de alta severidad antes desconocidas en Firefox.\n\nLas métricas y hallazgos principales provienen del desarrollador y no equivalen a una auditoría independiente completa del modelo. La restricción de acceso reduce exposición inmediata, pero no elimina riesgos de uso indebido, errores de alcance ni dependencia de entornos de prueba correctamente aislados. BleepingComputer confirmó el lanzamiento, las cifras divulgadas y que Mozilla comenzó a corregir varias fallas, sin validar por separado cada resultado experimental. Los próximos controles serán la publicación de la tarjeta de sistema completa, la trazabilidad de las correcciones, la expansión efectiva de Daybreak Red y evidencia externa sobre falsos positivos, cobertura y cumplimiento de límites en investigaciones reales.",
+        "anchor": "openai-gpt-6-cyber-acceso-autorizado",
+        "sources": [
+          {
+            "name": "OpenAI — lanzamiento y evaluaciones de GPT-6 Cyber",
+            "url": "https://openai.com/index/introducing-gpt-6-cyber/"
+          },
+          {
+            "name": "BleepingComputer — alcance, acceso y vulnerabilidades reportadas",
+            "url": "https://www.bleepingcomputer.com/news/security/openais-new-gpt-6-cyber-ai-finds-81-firefox-flaws-948-linux-bugs/"
+          }
+        ]
+      },
+      {
+        "slot": "world",
+        "headline": "La deuda externa de países en desarrollo alcanza US$9,4 billones",
+        "deck": "El Banco Mundial registra un alza de 5,5% en 2025; los países más pobres pagaron en promedio 9,4% por sus nuevos bonos.",
+        "development": "La deuda externa de los países de ingreso bajo y medio aumentó 5,5% en 2025 y llegó a un récord de US$9,4 billones, según el International Debt Report 2026 del Banco Mundial. Fue el mayor crecimiento desde 2021. La deuda de los países elegibles para financiamiento concesional de la Asociación Internacional de Fomento subió 8,1%, hasta US$1,3 billones. Al mismo tiempo, la emisión de bonos de entidades públicas creció cerca de 35% y alcanzó US$251.000 millones, el máximo en cinco años. Los países más pobres pagaron en promedio 8,2% por nuevos compromisos con acreedores privados y 9,4% por nuevos bonos, la tasa más alta de este último grupo en décadas.\n\nEl mayor acceso a los mercados no implica una reducción equivalente de vulnerabilidad. Muchos gobiernos emitieron deuda para recomprar o refinanciar vencimientos, extendiendo plazos sin disminuir sustancialmente el saldo y, en varios casos, a un costo mayor. Los pagos de capital e intereses totalizaron US$1,4 billones en 2025, mientras una parte del incremento contable reflejó la depreciación del dólar frente a otras monedas. Por eso, el récord combina nuevo financiamiento, refinanciación y efectos cambiarios. Los indicadores que permitirán evaluar sostenibilidad son el costo de las emisiones de 2026, la proporción destinada a inversión nueva, los vencimientos próximos, la transparencia de pasivos y cuánto gasto público desplaza el servicio de deuda.",
+        "anchor": "banco-mundial-deuda-externa-paises-desarrollo-2026",
+        "sources": [
+          {
+            "name": "Banco Mundial — International Debt Report 2026",
+            "url": "https://www.worldbank.org/en/news/press-release/2026/11/05/developing-countries-external-debt-surges-to-record-9-4-trillion"
+          },
+          {
+            "name": "Reuters — deuda, costos y servicio de países en desarrollo",
+            "url": "https://www.reuters.com/business/developing-countries-external-debt-hit-record-94-trillion-2025-world-bank-says-2026-11-05/"
+          }
+        ]
+      }
+    ],
+    "nacional": [
+      {
+        "slot": "ipsa_company",
+        "headline": "CMPC cierra el tercer trimestre con una pérdida de US$7 millones",
+        "deck": "Las ventas trimestrales crecieron 4%, pero el EBITDA ajustado cayó 3%; la utilidad acumulada retrocedió 84% a septiembre.",
+        "development": "CMPC registró una pérdida atribuible de aproximadamente US$7 millones en el tercer trimestre de 2026, frente a una utilidad cercana a US$34 millones en igual período de 2025. Las ventas trimestrales aumentaron 4%, hasta US$1.932 millones, mientras el EBITDA ajustado bajó 3% a US$252 millones y su margen se redujo desde 14,0% a 13,0%. En los primeros nueve meses, los ingresos alcanzaron US$5.665 millones, 1% más interanual, pero el EBITDA ajustado cayó 11% a US$777 millones y la utilidad acumulada disminuyó 84%, hasta US$26 millones. La empresa enfrentó mayores costos de madera, cosecha, transporte, materias primas y financiamiento.\n\nEl resultado neto también incorporó un gasto por impuesto diferido de US$11 millones asociado al acuerdo de venta del negocio de corrugados, por lo que no todo el deterioro corresponde a la operación recurrente. A la vez, el flujo de caja operacional acumulado creció 11% a US$849 millones, una señal distinta de la utilidad contable y que evita leer el trimestre sólo desde la última línea. El contraste relevante es entre ventas todavía crecientes y márgenes presionados, con celulosa afectada por costos y Softys aportando una compensación parcial. Los próximos controles serán el cierre de las desinversiones anunciadas, la entrada efectiva de caja, el apalancamiento, los costos logísticos y de madera, y la recuperación del margen por segmento.",
+        "anchor": "cmpc-resultados-tercer-trimestre-perdida-2026",
+        "sources": [
+          {
+            "name": "CMPC — reportes trimestrales e información para inversionistas",
+            "url": "https://ir.cmpc.com/reportes-trimestrales"
+          },
+          {
+            "name": "Diario Financiero — resultados de CMPC al tercer trimestre",
+            "url": "https://www.df.cl/empresas/industria/cmpc-registra-perdidas-en-el-tercer-trimestre-y-sus-ganancias-acumuladas"
+          }
+        ]
+      },
+      {
+        "slot": "policy_economy",
+        "headline": "Salud posterga 18 meses las nuevas reglas para alimentos sin gluten",
+        "deck": "El Decreto 68 amplía de 18 a 36 meses la entrada en vigencia de cambios de rotulación y exhibición para productos libres de gluten.",
+        "development": "El Ministerio de Salud amplió de 18 a 36 meses el plazo de entrada en vigencia del Decreto Supremo N°49 de 2022, que modifica el Reglamento Sanitario de los Alimentos para productos libres de gluten. El Decreto N°68, publicado el 6 de noviembre, agrega así 18 meses al período de implementación original. La autoridad fundamentó la postergación en la necesidad de tramitar una adecuación legal y resolver dificultades prácticas de la norma, especialmente las reglas vinculadas con rotulación y exhibición. El texto reconoce que el riesgo de contaminación cruzada se gestiona en la cadena productiva y el envasado y que la mera proximidad entre productos herméticamente sellados en una estantería no transfiere gluten.\n\nLa decisión posterga la aplicación de las nuevas disposiciones; no elimina la obligación de entregar información segura a personas con enfermedad celíaca ni modifica por sí sola todas las reglas vigentes de inocuidad y etiquetado. Tampoco aprueba todavía la adecuación del artículo 9 bis de la Ley N°20.606 mencionada en los fundamentos. El efecto inmediato es dar más tiempo a fabricantes, importadores y comercios para ajustar procesos y a la autoridad para definir el diseño definitivo. Los puntos a observar son el proyecto o modificación legal que se presente, la nueva fecha exacta de exigibilidad, las instrucciones de fiscalización, la definición de contaminación cruzada y la forma en que se mantendrá una identificación clara de los productos aptos.",
+        "anchor": "minsal-posterga-reglas-alimentos-libres-gluten",
+        "sources": [
+          {
+            "name": "Diario Oficial — Decreto N°68 del Ministerio de Salud",
+            "url": "https://www.diariooficial.interior.gob.cl/publicaciones/2026/11/06/44592/01/2898984.pdf"
+          },
+          {
+            "name": "Boletín Virtual — resumen y alcance del Decreto N°68",
+            "url": "https://boletinvirtual.cl/publicacion/2898984"
+          }
+        ]
+      }
+    ],
+    "mercados": [
+      {
+        "slot": "markets_chile",
+        "headline": "Tanner y Forum captan deuda corta en pesos y dólares",
+        "deck": "Tanner colocó $10.000 millones a 39 días y Forum emitió US$3 millones a 83 días mediante efectos de comercio locales.",
+        "development": "Tanner Servicios Financieros colocó el 6 de noviembre efectos de comercio por $10.000 millones en el mercado local, con vencimiento el 15 de diciembre de 2026, plazo de 39 días y una tasa informada de 0,410%. Un día antes, Forum Servicios Financieros emitió US$3 millones con vencimiento el 27 de enero de 2027, plazo de 83 días y tasa de 4,9000%. Ambas operaciones fueron comunicadas como hechos esenciales a la Comisión para el Mercado Financiero y corresponden a instrumentos de corto plazo bajo líneas inscritas. Las colocaciones muestran acceso efectivo a financiamiento en dos monedas y con vencimientos distintos dentro del segmento corporativo no bancario.\n\nLas tasas no deben compararse directamente sin ajustar moneda, convención, plazo, riesgo crediticio y condiciones específicas de cada serie. Tampoco dos operaciones permiten inferir por sí solas una baja general del costo de financiamiento o mayor profundidad de todo el mercado. Su valor informativo está en que existieron compradores para deuda breve en pesos y dólares y en las condiciones exactas reportadas por cada emisor. Los próximos controles serán la liquidación y pago al vencimiento, nuevas colocaciones bajo las mismas líneas, la evolución de tasas para plazos comparables y si otros emisores financieros logran financiar capital de trabajo sin ampliar de forma material sus diferenciales.",
+        "anchor": "tanner-forum-efectos-comercio-noviembre-2026",
+        "sources": [
+          {
+            "name": "CMF — colocación de Tanner Servicios Financieros del 6 de noviembre",
+            "url": "https://www.cmfchile.cl/sitio/aplic/serdoc/ver_sgd.php?s567=be9d1b6ece991808875efc03c7bf7062VFdwQmVVNXFSWGhOUkdONFRWUlJlVTVuUFQwPQ%3D%3D&secuencia=-1"
+          },
+          {
+            "name": "CMF — colocación de Forum Servicios Financieros del 5 de noviembre",
+            "url": "https://www.cmfchile.cl/sitio/aplic/serdoc/ver_sgd.php?s567=ed71db8a51c38002c9d6a4edbc1e14a6VFdwQmVVNXFSWGhOUkdOM1QwUmplazVCUFQwPQ%3D%3D&secuencia=-1"
+          },
+          {
+            "name": "Feller Rate — registro de hechos esenciales del mercado local",
+            "url": "https://www.feller-rate.com/clasificacion/hechos/CL"
+          }
+        ]
+      },
+      {
+        "slot": "markets_global",
+        "headline": "Meta coloca €9.000 millones en su debut de bonos en euros",
+        "deck": "La emisión se dividió en seis tramos hasta 2065 y recibió órdenes por unos €53.000 millones, según datos citados por Reuters.",
+        "development": "Meta Platforms emitió €9.000 millones en bonos sénior no garantizados distribuidos en seis tramos con vencimientos entre 2031 y 2065. Los cupones van desde 4,300% para la nota de 2031 hasta 6,400% para la de 2065, según el suplemento de prospecto presentado ante la SEC. La operación fue el debut de la compañía en el mercado de deuda denominado en euros y recibió órdenes cercanas a €53.000 millones, de acuerdo con datos de Bloomberg reproducidos por Reuters. La demanda equivale a casi seis veces el monto finalmente colocado, aunque las órdenes iniciales pueden reducirse o duplicarse durante el proceso de asignación.\n\nLa emisión amplía las fuentes y monedas de financiamiento de Meta en un período de fuerte inversión en infraestructura de inteligencia artificial. También llegó después de una colocación de US$15.000 millones en el mercado estadounidense, por lo que el dato relevante no es sólo el tamaño aislado, sino el mayor uso de deuda para sostener gasto de capital. Los títulos comparten rango con otras obligaciones sénior no garantizadas y exponen a inversionistas en euros al riesgo crediticio del emisor y a duraciones muy distintas. Los próximos controles serán el uso efectivo de los recursos, la evolución de deuda neta y gasto de capital, los diferenciales en mercado secundario y si la demanda se mantiene cuando otras grandes tecnológicas acudan al mercado.",
+        "anchor": "meta-debut-bonos-euros-noviembre-2026",
+        "sources": [
+          {
+            "name": "SEC — suplemento de prospecto de la emisión en euros de Meta",
+            "url": "https://www.sec.gov/Archives/edgar/data/1326801/000119312526450754/d44678d424b5.htm"
+          },
+          {
+            "name": "Reuters — demanda y estructura de la oferta de Meta",
+            "url": "https://www.marketscreener.com/news/meta-draws-record-orders-for-debut-euro-bond-sale-bloomberg-news-reports-ce785fdfdd8af52d"
+          }
+        ]
+      }
+    ]
+  }
+}
