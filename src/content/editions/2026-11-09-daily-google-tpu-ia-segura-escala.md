@@ -1,11 +1,11 @@
 ---
 title: "Google lanza dos TPUs para proteger datos y ampliar la escala de los agentes de IA"
 summary: "Los nuevos TPU 8tx y 8i Max apuntan a dos cuellos de botella de la inteligencia artificial empresarial: procesar información sensible con cifrado de hardware y sostener contextos masivos con mayor densidad de cómputo."
-publishedAt: "2026-11-09T13:09:32-03:00"
+publishedAt: "2026-11-09T13:13:51-03:00"
 cutoffAt: "2026-11-09T12:00:00-03:00"
 type: "daily"
 editionSlot: "evening"
-status: "draft"
+status: "published"
 tags:
   - inteligencia-artificial
   - semiconductores

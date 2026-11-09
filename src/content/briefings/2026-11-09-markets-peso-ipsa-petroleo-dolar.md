@@ -1,11 +1,11 @@
 ---
 title: "El peso y el IPSA avanzan mientras el dólar global y el petróleo revierten parte de la señal matutina"
 summary: "El dólar internacional cayó desde el impulso del viernes, el WTI perdió cerca de 3% y el USD/CLP bajó hacia $972, mientras el IPSA subió casi 1%. El cobre entregó apoyo parcial, pero la Fed sigue limitando el alivio."
-publishedAt: "2026-11-09T13:09:32-03:00"
+publishedAt: "2026-11-09T13:13:51-03:00"
 cutoffAt: "2026-11-09T12:00:00-03:00"
 section: "markets"
 editionSlot: "evening"
-status: "draft"
+status: "published"
 tags:
   - mercados
   - dolar

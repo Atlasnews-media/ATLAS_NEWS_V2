@@ -1,11 +1,11 @@
 ---
 title: "Hacienda usará ahorro fiscal para hacer más graduales las próximas alzas de combustibles"
 summary: "El ministro Jorge Quiroz anunció que el Gobierno empleará parte del ahorro fiscal para moderar el próximo ajuste de gasolinas y diésel, sin desligar los precios locales de su referencia internacional."
-publishedAt: "2026-11-09T13:09:32-03:00"
+publishedAt: "2026-11-09T13:13:51-03:00"
 cutoffAt: "2026-11-09T12:00:00-03:00"
 section: "national"
 editionSlot: "evening"
-status: "draft"
+status: "published"
 tags:
   - chile
   - combustibles
