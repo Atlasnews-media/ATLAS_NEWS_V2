@@ -1,11 +1,11 @@
 ---
 title: "Asia rebota, pero el dólar y las tasas mantienen frágil el alivio"
 summary: "El rebote tecnológico en Asia y la baja del petróleo alivian el riesgo inmediato, mientras el dólar firme y las apuestas por un alza de la Fed limitan el cambio de régimen."
-publishedAt: "2026-11-09T06:31:00-03:00"
+publishedAt: "2026-11-09T06:55:15-03:00"
 cutoffAt: "2026-11-09T06:28:00-03:00"
 section: "markets"
 editionSlot: "morning"
-status: "draft"
+status: "published"
 tags:
   - mercados
   - renta-variable

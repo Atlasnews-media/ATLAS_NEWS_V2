@@ -1,11 +1,11 @@
 ---
 title: "El shock energético dispara los costos fabriles de China, pero la demanda contiene el traspaso"
 summary: "La inflación industrial china llegó a 5,7%, su máximo desde junio de 2022, mientras el IPC bajó a 0,7%. Energía y materias primas presionan a las fábricas, pero el consumo débil limita por ahora el traslado a precios finales."
-publishedAt: "2026-11-09T06:17:10-03:00"
+publishedAt: "2026-11-09T06:55:15-03:00"
 cutoffAt: "2026-11-09T06:15:02-03:00"
 type: "daily"
 editionSlot: "morning"
-status: "draft"
+status: "published"
 tags:
   - china
   - inflacion-global

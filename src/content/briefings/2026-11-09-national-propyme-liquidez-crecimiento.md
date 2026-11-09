@@ -1,11 +1,11 @@
 ---
 title: "ProPyme llega a su fecha de ingreso con el foco puesto en liquidez y crecimiento"
 summary: "El compromiso de presentar hoy el proyecto ProPyme pone a prueba si la promesa tributaria se traduce en alivio de caja, pagos oportunos y menos barreras para crecer."
-publishedAt: "2026-11-09T06:25:00-03:00"
+publishedAt: "2026-11-09T06:55:15-03:00"
 cutoffAt: "2026-11-09T06:22:00-03:00"
 section: "national"
 editionSlot: "morning"
-status: "draft"
+status: "published"
 tags:
   - chile
   - pymes
