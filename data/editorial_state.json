@@ -29,12 +29,12 @@
       "topic": "Inteligencia artificial y selectividad bursátil",
       "thesis": "La inteligencia artificial ya impulsa inversión empresarial y actividad medible, pero el costo de capital, la concentración de infraestructura y la conversión del gasto en caja determinan qué empresas y economías capturan el beneficio.",
       "status": "confirmed",
-      "last_evidence": "El 1 de noviembre Corea del Sur informó exportaciones por US$115.280 millones en octubre, 93,7% más interanual y 76% más por día hábil; los semiconductores aportaron US$56.440 millones y el acumulado anual llegó a US$930.000 millones.",
-      "effect": "Confirma que la inversión global en IA ya se traduce en producción y comercio realizados a escala macroeconómica: chips y servidores impulsan a Corea hacia US$1 billón anual de exportaciones, aunque la concentración sectorial y un efecto base favorable mantienen abierta la prueba de sostenibilidad.",
+      "last_evidence": "El 9 de noviembre Google presentó los TPU 8tx y 8i Max: el primero añade cómputo confidencial con cifrado de hardware para sectores regulados y el segundo combina dos chips para ampliar memoria y densidad, mientras la empresa informó que sus TPUs ya contribuyeron materialmente a los resultados de Google Cloud.",
+      "effect": "Confirma que el ciclo de IA entra en una etapa de especialización comercial: seguridad de datos, memoria y densidad de cómputo se convierten en productos diferenciados para clientes externos, aunque adopción, precios y caja todavía deben demostrar el retorno del gasto.",
       "base_scenario": "La inversión en IA continúa apoyando crecimiento, equipos e infraestructura, pero los beneficios se distribuyen de forma desigual; proveedores y empresas con energía, redes, capital, demanda verificable y caja avanzan primero bajo un costo de financiamiento elevado.",
       "invalidate_if": "Una caída sostenida de pedidos, inversión y despachos, recortes generalizados de gasto o retornos insuficientes debilitarían la tesis de impulso macroeconómico; productividad amplia, caja creciente y adopción empresarial fuera de las grandes tecnológicas la reforzarían.",
-      "watch": "PIB e inversión en equipos de Estados Unidos, resultados de nube, gasto de capital, caja libre, emisiones de deuda y acciones, inflación PCE, tasas largas, energía, productividad y adopción empresarial.",
-      "last_publication": "/ediciones/2026-11-01-daily-corea-exportaciones-ia-billon/"
+      "watch": "Disponibilidad y precios de TPU 8tx y 8i Max, clientes externos, certificaciones de confidencialidad, comparaciones independientes, crecimiento de Google Cloud, gasto de capital, caja libre, energía y respuesta competitiva de Nvidia y AMD.",
+      "last_publication": "/ediciones/2026-11-09-daily-google-tpu-ia-segura-escala/"
     },
     {
       "id": "chile-inflation-activity-rates",
