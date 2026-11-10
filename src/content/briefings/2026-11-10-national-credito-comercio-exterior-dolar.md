@@ -1,11 +1,11 @@
 ---
 title: "El crédito de comercio exterior salta, pero el dólar explica parte del avance"
 summary: "Las colocaciones de comercio exterior crecieron 11,3% interanual en octubre, tras 0,3% en septiembre. El Banco Central advierte que la depreciación del peso elevó el valor contable de los créditos en moneda extranjera."
-publishedAt: "2026-11-10T06:20:00-03:00"
+publishedAt: "2026-11-10T06:45:32-03:00"
 cutoffAt: "2026-11-10T06:18:00-03:00"
 section: "national"
 editionSlot: "morning"
-status: "draft"
+status: "published"
 tags:
   - chile
   - credito

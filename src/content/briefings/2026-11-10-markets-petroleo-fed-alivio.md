@@ -1,11 +1,11 @@
 ---
 title: "El petróleo cae y sostiene el rebote, pero la Fed limita el alivio"
 summary: "Brent retrocedió a US$91,56 y Asia avanzó 1,5%, mientras el mercado elevó a 84% la probabilidad de un alza de la Fed en diciembre. El alivio energético convive con tasas cortas todavía restrictivas."
-publishedAt: "2026-11-10T06:26:00-03:00"
+publishedAt: "2026-11-10T06:45:32-03:00"
 cutoffAt: "2026-11-10T06:24:00-03:00"
 section: "markets"
 editionSlot: "morning"
-status: "draft"
+status: "published"
 tags:
   - mercados
   - petroleo

@@ -1,11 +1,11 @@
 ---
 title: "China supera US$1 billón de superávit y convierte el auge de IA en tensión comercial"
 summary: "Las exportaciones chinas crecieron 35,2% en octubre y el superávit acumulado llegó a US$1,04 billones. Semiconductores y alta tecnología sostienen la actividad frente al consumo débil, pero amplían el riesgo de nuevas barreras comerciales."
-publishedAt: "2026-11-10T06:08:10-03:00"
+publishedAt: "2026-11-10T06:45:32-03:00"
 cutoffAt: "2026-11-10T06:07:19-03:00"
 type: "daily"
 editionSlot: "morning"
-status: "draft"
+status: "published"
 tags:
   - china
   - comercio-global
