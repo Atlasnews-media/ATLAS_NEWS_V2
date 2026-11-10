@@ -1,0 +1,115 @@
+{
+  "status": "READY",
+  "date": "2026-11-10",
+  "contract": "atlas-senales-del-dia-v1",
+  "senalesDelDia": {
+    "internacional": [
+      {
+        "slot": "technology",
+        "headline": "Google especializa sus TPU para datos sensibles y gran contexto",
+        "deck": "TPU 8tx incorpora cómputo confidencial en uso y TPU 8i Max duplica cómputo y memoria frente a 8i para cargas de contexto extenso.",
+        "development": "Google presentó dos nuevas configuraciones de su octava generación de aceleradores: TPU 8tx, orientada a inferencia confidencial, y TPU 8i Max, diseñada para cargas con ventanas de contexto extensas. La 8tx combina el silicio de TPU 8t con procesadores AMD y protección de datos y pesos de modelos mientras están en uso. Google afirma que reduce hasta dos veces la latencia frente a TPU 8t con una penalización de rendimiento cercana a cero. La 8i Max integra dos chips 8i en un paquete y duplica cómputo, SRAM y ancho de banda HBM respecto de 8i. Son configuraciones de sistema, no dos arquitecturas de silicio completamente nuevas, una distinción relevante para evaluar el alcance del anuncio.\n\nLas cifras de desempeño provienen de Google y requieren validación independiente en cargas comparables, costos totales y disponibilidad real. La novedad competitiva está en segmentar infraestructura para dos restricciones concretas: mantener información protegida durante el procesamiento y evitar que memoria o comunicación limiten agentes y aplicaciones de gran contexto. AMD confirmó que sus EPYC de quinta generación soportan la infraestructura anfitriona de TPU 8tx y su capa de cómputo confidencial. Los próximos controles serán fechas y regiones de disponibilidad, precios, auditorías de seguridad, resultados reproducibles y adopción fuera de los servicios internos de Google.",
+        "anchor": "google-tpu-8tx-8i-max-computo-especializado",
+        "sources": [
+          {
+            "name": "Google Cloud — presentación de TPU 8tx y TPU 8i Max",
+            "url": "https://cloud.google.com/blog/topics/ai-infrastructure/tpu-8tx-and-tpu-8i-max"
+          },
+          {
+            "name": "AMD — EPYC en la infraestructura anfitriona de TPU 8tx",
+            "url": "https://www.amd.com/en/newsroom/press-releases/2026-11-9-amd-epyc-expands-its-leadership-at-the-foundati.html"
+          }
+        ]
+      },
+      {
+        "slot": "world",
+        "headline": "La OMM sitúa a 2026 entre los cuatro años más cálidos",
+        "deck": "La temperatura de enero a septiembre fue 1,47 °C superior al nivel preindustrial; El Niño podría elevar el promedio al cierre del año.",
+        "development": "La Organización Meteorológica Mundial estimó que 2026 terminará entre los cuatro años más cálidos registrados. Entre enero y septiembre, la temperatura media global de superficie estuvo 1,47 °C por encima del promedio de 1850–1900, con un margen de incertidumbre de 0,13 °C. La actualización combina nueve conjuntos internacionales de datos y señala que 2015–2026 serán los doce años más cálidos de la serie. La OMM también reportó un máximo del nivel medio del mar en el registro satelital iniciado en 1993 y datos preliminares que apuntan a un décimo año consecutivo de contenido récord de calor oceánico. El informe fue publicado al inicio de la COP31 en Antalya y utiliza información disponible principalmente hasta septiembre.\n\nLa cifra de nueve meses no es todavía el promedio anual definitivo. El Niño se intensificó desde agosto, se espera que continúe a comienzos de 2027 y normalmente añade entre 0,1 °C y 0,2 °C a la temperatura media global, por lo que el resultado final puede subir. La OMM aclara que El Niño redistribuye calor del océano; no sustituye la tendencia de calentamiento de largo plazo asociada a gases de efecto invernadero. Los próximos controles serán la intensidad observada del episodio, la actualización anual de marzo de 2027, la evolución del calor oceánico y del nivel del mar, y el despliegue de alertas tempranas frente a calor, sequías y precipitaciones extremas.",
+        "anchor": "omm-clima-2026-el-nino-calor-oceanico",
+        "sources": [
+          {
+            "name": "OMM — State of the Climate Update for COP31",
+            "url": "https://public.wmo.int/resources/publication-series/state-of-climate-update-cop/state-of-climate-update-cop31"
+          },
+          {
+            "name": "Reuters — temperatura global y señales climáticas de 2026",
+            "url": "https://www.reuters.com/sustainability/cop/year-set-be-one-four-hottest-record-un-report-says-2026-11-09/"
+          }
+        ]
+      }
+    ],
+    "nacional": [
+      {
+        "slot": "ipsa_company",
+        "headline": "SMU acumula una pérdida de $3.982 millones a septiembre",
+        "deck": "Los ingresos crecieron 2,4% a $2,13 billones, pero menores ventas de activos y costos de reorganización presionaron el resultado.",
+        "development": "SMU, matriz de Unimarc, Alvi y Super10, registró una pérdida atribuible de $3.982 millones en los primeros nueve meses de 2026, frente a una utilidad en igual período del año anterior. Los ingresos acumulados aumentaron 2,4% hasta $2,13 billones, con avances de 2,1% en Unimarc, 1,5% en los formatos de precio bajo y 15,3% en el negocio de supermercados en Perú. La divergencia entre ventas y resultado final estuvo influida por una menor ganancia en venta de activos y por mayores costos ligados a la reestructuración anunciada por la compañía. Esos componentes impiden atribuir toda la variación a la operación ordinaria de las tiendas o a una sola geografía.\n\nEl crecimiento de ingresos muestra expansión de la actividad, pero no garantiza recuperación de márgenes ni generación de caja equivalente. Para separar efectos transitorios de una presión persistente será necesario observar el EBITDA, los márgenes por formato, el capital de trabajo y el detalle de los cargos de reorganización en los estados financieros. También importa la integración de Ahorra Food Depot, cuyos activos comenzaron a operar en noviembre después de la autorización de la Fiscalía Nacional Económica. Los próximos controles serán la conferencia de resultados, las ventas comparables, la evolución de costos logísticos y laborales, el desempeño de Perú y si las medidas de eficiencia reducen gastos sin deteriorar disponibilidad, servicio o participación de mercado.",
+        "anchor": "smu-resultados-nueve-meses-perdida-2026",
+        "sources": [
+          {
+            "name": "SMU — reporte de resultados del tercer trimestre de 2026",
+            "url": "https://www.corporate.smu-labs.cl/inversionistas"
+          },
+          {
+            "name": "Diario Financiero — resultados acumulados de SMU a septiembre",
+            "url": "https://www.df.cl/empresas/retail/smu-registra-perdidas-por-casi-4-mil-millones-a-septiembre-pese-a"
+          }
+        ]
+      },
+      {
+        "slot": "policy_economy",
+        "headline": "Chile amplía a dos años el plazo del reglamento de plásticos",
+        "deck": "La Ley 21.847 ajusta la prohibición para consumo en locales y habilita acreditación técnica transitoria mientras no rija la certificación.",
+        "development": "La Ley N°21.847, publicada el 9 de noviembre, modificó la regulación de productos de un solo uso y botellas plásticas. Para el consumo dentro de establecimientos, prohíbe entregar productos de un solo uso salvo los elaborados de madera, papel o cartón. Además, reemplaza por dos años el plazo transitorio de seis meses asociado a la entrada en vigencia del reglamento y establece que el porcentaje de plástico reciclado fijado en el artículo 8 no podrá ser inferior a 30%. El texto también permite acreditar temporalmente requisitos de los artículos 4 y 7 mediante antecedentes técnicos idóneos, incluidos informes de ensayo y certificaciones de organismos de productos, mientras la certificación reglamentaria aún no sea exigible.\n\nLa modificación no elimina las obligaciones de la ley ni equivale a una autorización general para usar cualquier plástico. Ajusta materiales permitidos dentro del local, plazos de implementación y mecanismos provisionales de prueba. La aplicación concreta dependerá de la coordinación entre la ley modificada, el reglamento y las instrucciones de fiscalización; por eso, empresas y municipios deben verificar cada obligación y fecha en el texto vigente. No corresponde inferir desde la prórroga una reducción automática de costos o de residuos. Los próximos controles serán la fecha efectiva del reglamento, los criterios aceptados para los antecedentes técnicos, la fiscalización municipal y ambiental, y la capacidad de productores y comercios para acreditar contenido reciclado y condiciones de certificación.",
+        "anchor": "ley-21847-plasticos-plazo-certificacion-chile",
+        "sources": [
+          {
+            "name": "Biblioteca del Congreso Nacional — texto de la Ley N°21.847",
+            "url": "https://www.bcn.cl/leychile/navegar?idNorma=1229890"
+          },
+          {
+            "name": "Diario Oficial — publicación de la Ley N°21.847",
+            "url": "https://www.diariooficial.interior.gob.cl/publicaciones/2026/11/09/44594/01/2899831.pdf"
+          }
+        ]
+      }
+    ],
+    "mercados": [
+      {
+        "slot": "markets_chile",
+        "headline": "Fondos conservadores lideran la rentabilidad real de octubre",
+        "deck": "El Fondo E ganó 3,16% y el D 1,76%; el A perdió 0,30% por la caída de las acciones chilenas, según la Superintendencia.",
+        "development": "Los multifondos cerraron octubre con una dispersión marcada por tipo de activo. La rentabilidad real del sistema fue de -0,30% para el Fondo A, -0,03% para el B, 0,97% para el C, 1,76% para el D y 3,16% para el E, según la Superintendencia de Pensiones. El regulador atribuyó el resultado negativo de A y B principalmente a las acciones chilenas: el IPSA retrocedió 4,62% en la medición usada para valorar las carteras. En cambio, C, D y E se beneficiaron de deuda local y extranjera, cuyas tasas bajaron y generaron ganancias de capital. La depreciación del peso también favoreció posiciones externas sin cobertura y compensó parte de las bajas de bolsas internacionales.\n\nEl liderazgo mensual de los fondos conservadores no describe por sí solo su desempeño de largo plazo. En los doce meses terminados en octubre, A acumuló 8,43% real y B 5,32%, mientras D perdió 3,87% y E 7,01%; C quedó en 0,00%. La comparación muestra que un mes de caída de tasas puede invertir temporalmente el orden entre perfiles de riesgo sin alterar la relación entre horizonte, volatilidad y composición. El valor total de los fondos alcanzó $231,1 billones al cierre de octubre, 7,0% más que un año antes. Los próximos controles serán la evolución de tasas locales, peso, acciones chilenas y retornos acumulados, evitando extrapolar la rentabilidad de octubre a meses futuros.",
+        "anchor": "multifondos-rentabilidad-real-octubre-2026",
+        "sources": [
+          {
+            "name": "Superintendencia de Pensiones — inversiones y rentabilidad de octubre de 2026",
+            "url": "https://www.spensiones.cl/portal/institucional/594/articles-17208_recurso_1.pdf"
+          },
+          {
+            "name": "Superintendencia de Pensiones — archivo de rentabilidad mensual",
+            "url": "https://www.spensiones.cl/portal/institucional/594/w3-propertyvalue-10089.html"
+          }
+        ]
+      },
+      {
+        "slot": "markets_global",
+        "headline": "El cobre se concentra en EE.UU. y tensiona Londres y Shanghái",
+        "deck": "Bodegas CME reúnen más de 60% del stock visible global, mientras Shanghái cae a un mínimo de tres años y la prima Yangshan marca récord.",
+        "development": "El inventario visible de cobre quedó concentrado en Estados Unidos después de meses de flujos atraídos por la prima del contrato CME y por expectativas de aranceles. Según datos de bolsas y proveedores recopilados por Reuters, las bodegas CME reúnen más de 60% de las existencias registradas globales; al sumar depósitos LME ubicados en Estados Unidos, la participación del país llega a 85%. En paralelo, los inventarios de la Bolsa de Futuros de Shanghái bajaron a 33.848 toneladas, su menor nivel en tres años, y la prima Yangshan para importaciones chinas alcanzó un récord de US$230 por tonelada. En Londres, el cobre al contado cotizaba con una prima de US$195 sobre el contrato a tres meses.\n\nLa tensión física convive con una reducción de apuestas financieras alcistas. La posición neta larga de administradores de fondos en CME cayó de 82.649 contratos a mediados de septiembre a 34.444 en el último informe disponible de compromisos de operadores. Esa divergencia ayuda a explicar un mercado con ventas de inversionistas occidentales y demanda industrial china, sin que una sola señal determine el precio. La prima CME sobre Londres se redujo desde más de US$700 por tonelada en agosto a cerca de US$80, lo que puede modificar nuevamente el destino del metal. Los próximos controles serán inventarios CME, LME y Shanghái, primas de importación chinas, decisiones arancelarias estadounidenses y si el cobre almacenado en zonas francas entra a Estados Unidos o vuelve a otros mercados.",
+        "anchor": "cobre-inventarios-eeuu-londres-shanghai",
+        "sources": [
+          {
+            "name": "Reuters — inventarios, primas y posiciones del mercado de cobre",
+            "url": "https://www.reuters.com/commentary/reuters-open-interest/fund-sellers-china-buyers-squeeze-coppers-tariff-trade-2026-11-09/"
+          },
+          {
+            "name": "CFTC — Commitments of Traders para futuros de cobre COMEX",
+            "url": "https://www.cftc.gov/dea/futures/deacmxsf.htm"
+          }
+        ]
+      }
+    ]
+  }
+}
