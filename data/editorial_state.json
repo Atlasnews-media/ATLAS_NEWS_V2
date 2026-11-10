@@ -29,12 +29,12 @@
       "topic": "Inteligencia artificial y selectividad bursátil",
       "thesis": "La inteligencia artificial ya impulsa inversión empresarial y actividad medible, pero el costo de capital, la concentración de infraestructura y la conversión del gasto en caja determinan qué empresas y economías capturan el beneficio.",
       "status": "confirmed",
-      "last_evidence": "El 9 de noviembre Google presentó los TPU 8tx y 8i Max: el primero añade cómputo confidencial con cifrado de hardware para sectores regulados y el segundo combina dos chips para ampliar memoria y densidad, mientras la empresa informó que sus TPUs ya contribuyeron materialmente a los resultados de Google Cloud.",
-      "effect": "Confirma que el ciclo de IA entra en una etapa de especialización comercial: seguridad de datos, memoria y densidad de cómputo se convierten en productos diferenciados para clientes externos, aunque adopción, precios y caja todavía deben demostrar el retorno del gasto.",
+      "last_evidence": "El 10 de noviembre Anthropic abrió el roadshow de su OPI para vender 825 millones de acciones a US$70-US$78, con valoración diluida de hasta US$1,4 billones, ingresos anualizados de US$81.000 millones y compromisos de cómputo cercanos a US$900.000 millones.",
+      "effect": "Confirma demanda y monetización crecientes para la IA empresarial, pero también eleva la prueba de capital: la valoración y el retorno dependen de que los ingresos y la caja superen pérdidas y obligaciones de infraestructura de largo plazo.",
       "base_scenario": "La inversión en IA continúa apoyando crecimiento, equipos e infraestructura, pero los beneficios se distribuyen de forma desigual; proveedores y empresas con energía, redes, capital, demanda verificable y caja avanzan primero bajo un costo de financiamiento elevado.",
       "invalidate_if": "Una caída sostenida de pedidos, inversión y despachos, recortes generalizados de gasto o retornos insuficientes debilitarían la tesis de impulso macroeconómico; productividad amplia, caja creciente y adopción empresarial fuera de las grandes tecnológicas la reforzarían.",
-      "watch": "Disponibilidad y precios de TPU 8tx y 8i Max, clientes externos, certificaciones de confidencialidad, comparaciones independientes, crecimiento de Google Cloud, gasto de capital, caja libre, energía y respuesta competitiva de Nvidia y AMD.",
-      "last_publication": "/ediciones/2026-11-09-daily-google-tpu-ia-segura-escala/"
+      "watch": "Precio final y demanda de la OPI de Anthropic, valoración al debut, ingresos, pérdidas, caja libre, compromisos de cómputo, gasto de capital de proveedores, energía y respuesta competitiva de OpenAI, Google, Nvidia y AMD.",
+      "last_publication": "/ediciones/2026-11-10-daily-anthropic-ipo-costos-ia/"
     },
     {
       "id": "chile-inflation-activity-rates",
