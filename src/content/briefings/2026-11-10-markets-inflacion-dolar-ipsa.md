@@ -1,11 +1,11 @@
 ---
 title: "La inflación de EE.UU. supera lo previsto y devuelve el dólar a $973 mientras el IPSA borra su alza"
 summary: "El IPC estadounidense subió 0,4% en octubre y el subyacente 0,3%, ambos sobre el consenso. El Treasury a dos años saltó hacia 4,69%, el dólar se fortaleció y en Chile el tipo de cambio revirtió su baja inicial mientras el IPSA pasó a terreno negativo."
-publishedAt: "2026-11-10T13:08:49-03:00"
+publishedAt: "2026-11-10T13:14:52-03:00"
 cutoffAt: "2026-11-10T12:00:00-03:00"
 section: "markets"
 editionSlot: "evening"
-status: "draft"
+status: "published"
 tags:
   - mercados
   - inflacion

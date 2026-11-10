@@ -1,11 +1,11 @@
 ---
 title: "Economistas llevan a cero el crecimiento de 2026 mientras logística y minería añaden fricción"
 summary: "La encuesta del Banco Central recortó a 0% la proyección de crecimiento para 2026. Bloqueos de camioneros y una recuperación minera todavía incompleta no explican por sí solos ese pronóstico, pero muestran restricciones operativas que pueden pesar sobre el cierre del año."
-publishedAt: "2026-11-10T13:08:49-03:00"
+publishedAt: "2026-11-10T13:14:52-03:00"
 cutoffAt: "2026-11-10T12:00:00-03:00"
 section: "national"
 editionSlot: "evening"
-status: "draft"
+status: "published"
 tags:
   - chile
   - crecimiento

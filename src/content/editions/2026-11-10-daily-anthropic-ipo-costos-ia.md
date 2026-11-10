@@ -1,11 +1,11 @@
 ---
 title: "Anthropic apunta a US$1,4 billones y expone el costo de financiar la IA"
 summary: "La firma abrió su roadshow con un rango de US$70 a US$78 por acción y una valoración diluida de hasta US$1,4 billones. El crecimiento de ingresos valida la demanda, pero compromisos de cómputo cercanos a US$900.000 millones elevan el umbral de rentabilidad."
-publishedAt: "2026-11-10T13:08:49-03:00"
+publishedAt: "2026-11-10T13:14:52-03:00"
 cutoffAt: "2026-11-10T12:00:00-03:00"
 type: "daily"
 editionSlot: "evening"
-status: "draft"
+status: "published"
 tags:
   - inteligencia-artificial
   - mercados-de-capitales
