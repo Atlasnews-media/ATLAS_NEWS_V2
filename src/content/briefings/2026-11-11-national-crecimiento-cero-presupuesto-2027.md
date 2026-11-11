@@ -1,11 +1,11 @@
 ---
 title: "Expectativas de crecimiento de Chile caen a cero mientras se define el Presupuesto 2027"
 summary: "La EEE de noviembre recorta a 0% la mediana de crecimiento de 2026 y muestra una inversión prácticamente detenida. La Cámara discute las partidas presupuestarias de 2027 con diferencias sobre prioridades de gasto."
-publishedAt: "2026-11-11T07:56:25-03:00"
+publishedAt: "2026-11-11T10:01:34.435-03:00"
 cutoffAt: "2026-11-11T07:56:00-03:00"
 section: "national"
 editionSlot: "morning"
-status: "draft"
+status: "published"
 tags:
   - chile
   - actividad

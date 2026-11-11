@@ -1,11 +1,11 @@
 ---
 title: "Ucrania e Irán abren ventanas diplomáticas, pero la guerra sigue condicionando la economía"
 summary: "Ucrania y Rusia negocian en Abu Dabi sin tregua, mientras Estados Unidos pausa ataques a Irán pero mantiene el bloqueo de Ormuz. Alemania mejora, Japón busca salarios reales y COP31 mide su capacidad de ejecución."
-publishedAt: "2026-11-11T07:49:10.917-03:00"
+publishedAt: "2026-11-11T10:01:34.435-03:00"
 cutoffAt: "2026-11-11T07:46:52-03:00"
 type: "daily"
 editionSlot: "morning"
-status: "draft"
+status: "published"
 tags:
   - geopolitica
   - ucrania

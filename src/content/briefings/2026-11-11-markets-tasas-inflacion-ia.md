@@ -1,11 +1,11 @@
 ---
 title: "Mercados separan el shock de tasas en Estados Unidos del rebote tecnológico asiático"
 summary: "La sorpresa del IPC estadounidense elevó los rendimientos del Treasury y fortaleció el dólar, mientras las acciones vinculadas a inteligencia artificial repuntaron con resultados de CoreWeave. Oro y petróleo exhiben reacciones distintas."
-publishedAt: "2026-11-11T08:00:27-03:00"
+publishedAt: "2026-11-11T10:01:34.435-03:00"
 cutoffAt: "2026-11-11T08:00:00-03:00"
 section: "markets"
 editionSlot: "morning"
-status: "draft"
+status: "published"
 tags:
   - mercados-globales
   - treasury
