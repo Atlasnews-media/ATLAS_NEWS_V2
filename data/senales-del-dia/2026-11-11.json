@@ -1,0 +1,123 @@
+{
+  "status": "READY",
+  "date": "2026-11-11",
+  "contract": "atlas-senales-del-dia-v1",
+  "senalesDelDia": {
+    "internacional": [
+      {
+        "slot": "technology",
+        "headline": "TSMC autoriza hasta US$1.000 millones para OpenAI y Anthropic",
+        "deck": "El directorio reservó hasta US$500 millones para cada desarrollador; la aprobación no implica que las participaciones ya se hayan comprado.",
+        "development": "El directorio de Taiwan Semiconductor Manufacturing Company (TSMC) aprobó el 10 de noviembre dos inversiones potenciales en desarrolladores de inteligencia artificial: hasta US$500 millones para adquirir acciones ordinarias de Anthropic al precio de su oferta pública inicial y hasta US$500 millones para comprar acciones preferentes de OpenAI Group PBC. Se trata de autorizaciones máximas, no de desembolsos ya ejecutados. La resolución también aprobó, por separado, recursos para ampliar capacidad productiva y un vehículo de inversión en el ecosistema semiconductor. Conviene mantener esas partidas diferenciadas: el monto destinado a participaciones accionarias en Anthropic y OpenAI no debe confundirse con los presupuestos para nuevas fábricas o equipamiento.\n\nEl hecho modifica la relación económica que TSMC busca mantener con la cadena de inteligencia artificial. Además de producir semiconductores utilizados en equipos de cómputo, pretende exponerse al valor de empresas que desarrollan modelos y aplicaciones. Esa doble posición puede acercarla a clientes estratégicos, aunque también introduce riesgos de valoración, liquidez y eventuales conflictos comerciales que la aprobación por sí sola no despeja. La inversión vinculada a Anthropic depende de las condiciones de su salida a bolsa, mientras la de OpenAI corresponde a otra clase de instrumento. Los próximos puntos de verificación serán el cierre efectivo de ambas operaciones, las participaciones obtenidas, sus condiciones financieras y el tratamiento contable que TSMC comunique.",
+        "anchor": "tsmc-inversiones-aprobadas-openai-anthropic-2026",
+        "sources": [
+          {
+            "name": "TSMC — resoluciones oficiales del directorio del 10 de noviembre",
+            "url": "https://pr.tsmc.com/schinese/news/3352"
+          },
+          {
+            "name": "Reuters — autorización para invertir en Anthropic y OpenAI",
+            "url": "https://www.reuters.com/world/china/tsmc-invest-up-1-billion-anthropic-openai-2026-11-10/"
+          }
+        ]
+      },
+      {
+        "slot": "world",
+        "headline": "Paraguay nombra jefe del banco central tras crisis de Ueno",
+        "deck": "El Senado aprobó a Jorge Schreiner y a Fernando Rivarola para el BCP; la garantía a depositantes avanza por etapas y bajo requisitos específicos.",
+        "development": "El Senado de Paraguay otorgó el 9 de noviembre su acuerdo constitucional para designar a Jorge Luis Schreiner Marengo como presidente del Banco Central del Paraguay y a Fernando Javier Rivarola Angulo como integrante de su directorio. La resolución se produjo tras la intervención y el colapso de Ueno Bank, una crisis que involucró al sistema financiero y a la conducción política del país. La aprobación legislativa constituye una decisión institucional comprobable; no equivale a demostrar que la normalización bancaria haya concluido ni resuelve las responsabilidades que investigan las autoridades. Rivarola había encabezado la supervisión bancaria y Schreiner contaba con experiencia previa en el banco central y el mercado de valores.\n\nEl desafío operativo más inmediato es el tratamiento de los depósitos afectados. El Banco Central paraguayo informó que al 9 de noviembre los anticipos de garantía habían alcanzado a 1.738.804 beneficiarios por aproximadamente 2,126 billones de guaraníes. Ese desembolso acumulado no significa que todos los clientes estén cubiertos ni que el proceso de recuperación del banco haya terminado: las primeras etapas aplican condiciones de monto, deuda y disponibilidad de una cuenta receptora. La evolución debe observarse en tres planos distintos: pagos efectivamente acreditados, estabilidad del resto de las entidades y decisiones de supervisión adoptadas por las nuevas autoridades. La confianza pública dependerá de datos verificables y de la aplicación consistente de las normas.",
+        "anchor": "paraguay-senado-bcp-schreiner-ueno-crisis",
+        "sources": [
+          {
+            "name": "Senado de Paraguay — acuerdo para autoridades del Banco Central",
+            "url": "https://www.senado.gov.py/index.php/menu-dircom/sub-menu-noticias-presidencia/senado-otorgo-acuerdo-constitucional-para-autoridades-del-bcp.html"
+          },
+          {
+            "name": "Banco Central del Paraguay — comunicados sobre la garantía de depósitos",
+            "url": "https://www.bcp.gov.py/web/institucional/home"
+          },
+          {
+            "name": "Reuters — confirmación de nuevas autoridades tras la crisis bancaria",
+            "url": "https://www.investing.com/news/stock-market-news/paraguay-names-schreiner-as-central-bank-chief-following-ueno-collapse-5012981"
+          }
+        ]
+      }
+    ],
+    "nacional": [
+      {
+        "slot": "ipsa_company",
+        "headline": "Falabella eleva 18% sus ganancias trimestrales a US$196 millones",
+        "deck": "Los ingresos subieron 10% y el EBITDA 12%; retail, banca y negocios digitales contribuyeron al avance del tercer trimestre.",
+        "development": "Grupo Falabella informó el 10 de noviembre una utilidad de US$196 millones para el tercer trimestre de 2026, equivalente a un incremento interanual de 18%. Los ingresos consolidados llegaron a US$3.521 millones, cerca de 10% más que un año antes, mientras el EBITDA aumentó 12% hasta US$478 millones. El margen EBITDA alcanzó 13,6%, frente a 13,2% en igual trimestre de 2025. La combinación muestra crecimiento del negocio y una mejora moderada de rentabilidad operacional; el aumento de utilidades no debe atribuirse exclusivamente a un mayor volumen de ventas. El grupo también informó un aumento de 16% en el volumen bruto de mercancías vendido por canales digitales, incluida la participación de vendedores externos.\n\nLa información por segmentos permite observar fuentes distintas de crecimiento. Falabella Retail elevó ingresos, Tottus avanzó en supermercados y Sodimac presentó una expansión más acotada en las operaciones consolidadas. Banco Falabella reportó un alza interanual de 17% en su cartera de colocaciones, dato que requiere evaluarse junto con calidad crediticia y costos de financiamiento. La señal corporativa para inversionistas reside en la capacidad de convertir ventas en EBITDA y generación de caja, no solo en el número de clientes del ecosistema. Los controles siguientes serán la presentación detallada de resultados, márgenes por negocio, capital de trabajo, endeudamiento y evolución de los canales digitales.",
+        "anchor": "falabella-resultados-tercer-trimestre-2026-utilidades",
+        "sources": [
+          {
+            "name": "Grupo Falabella — comunicado de resultados del tercer trimestre",
+            "url": "https://investors.grupofalabella.com/blog/2026/11/10/utilidades-de-grupo-falabella-crecen-18-en-el-tercer-trimestre-y-alcanzan-us196-millones/"
+          },
+          {
+            "name": "Diario Financiero — resultados trimestrales de Falabella",
+            "url": "https://www.df.cl/empresas/retail/utilidades-de-falabella-crecen-18-en-el-tercer-trimestre-demostramos-la"
+          }
+        ]
+      },
+      {
+        "slot": "policy_economy",
+        "headline": "Costos del transporte de carga suben 3,3% en octubre en Chile",
+        "deck": "El INE reportó 15,6% acumulado en el año; combustibles aumentaron 12,3% y explicaron más que toda la variación mensual del índice.",
+        "development": "El Instituto Nacional de Estadísticas publicó el 10 de noviembre que el Índice de Costos del Transporte (ICT) aumentó 3,3% durante octubre de 2026 y acumuló 15,6% entre enero y octubre. El indicador sigue los precios de bienes y servicios que adquieren las empresas de transporte de carga por carretera; no es una medición directa de tarifas cobradas al cliente ni del IPC general. La principal presión provino de combustibles, cuyos costos crecieron 12,3% en el mes y aportaron 3,507 puntos porcentuales al índice total. Que esta incidencia supere el aumento neto del ICT se explica porque otros componentes compensaron parte del movimiento: recursos humanos disminuyó 0,5% y restó 0,245 puntos porcentuales.\n\nEl resultado agrega una medición efectiva al debate sobre los costos logísticos, distinta de cualquier anuncio previo sobre mecanismos de precios o políticas de combustibles. Para transportistas, el impacto sobre márgenes dependerá de contratos, cláusulas de reajuste, consumo de diésel y capacidad de trasladar aumentos a tarifas. Para empresas que utilizan transporte, el dato anticipa un posible foco de presión en distribución, pero no prueba automáticamente que los precios finales hayan subido en la misma magnitud. También se registraron variaciones menores en servicios financieros y mantenimiento. Será necesario observar la lectura de noviembre, el comportamiento del diésel y la transmisión efectiva a contratos comerciales para evaluar la persistencia del shock.",
+        "anchor": "ine-ict-costos-transporte-octubre-2026",
+        "sources": [
+          {
+            "name": "INE — Índice de Costos del Transporte, octubre de 2026",
+            "url": "https://www.ine.gob.cl/sala-de-prensa/prensa/general/noticia/2026/11/10/%C3%ADndice-de-costos-del-transporte-registr%C3%B3-una-variaci%C3%B3n-mensual-de-3-3-en-octubre-de-2026"
+          },
+          {
+            "name": "Diario Financiero — transporte presionado por combustibles",
+            "url": "https://www.df.cl/economia-y-politica/macro/vuelve-a-subir-el-indice-de-costos-del-transporte-ict-presionado-por-el"
+          }
+        ]
+      }
+    ],
+    "mercados": [
+      {
+        "slot": "markets_chile",
+        "headline": "Banco BICE coloca UF 2,5 millones en bonos perpetuos",
+        "deck": "La emisión AT1 se adjudicó a 3,93%, reunió demanda por 3,25 veces la oferta y busca fortalecer el capital regulatorio del banco.",
+        "development": "Banco BICE colocó el 10 de noviembre bonos perpetuos por UF 2,5 millones, equivalentes a aproximadamente US$108,5 millones, a una tasa de adjudicación de 3,93%, según informó Diario Financiero. La operación fue intermediada por BICE Inversiones mediante un remate holandés en la Bolsa de Comercio de Santiago y recibió posturas equivalentes a 3,25 veces el monto ofrecido. El instrumento, identificado como BBICAT1-A, corresponde a una emisión orientada a reforzar el capital regulatorio bancario. La elevada demanda observada describe el interés específico en esta colocación; no permite extrapolar una caída general de primas de riesgo en todo el sistema financiero chileno.\n\nLa estructura perpetua merece una lectura distinta de la de un bono bancario convencional con vencimiento fijo. Aunque se ofrecen pagos de intereses bajo condiciones contractuales, estos instrumentos pueden incorporar mecanismos para absorber pérdidas y restricciones de pago propios del capital adicional de nivel uno, de modo que su riesgo debe evaluarse mediante el prospecto y la regulación aplicable. Tampoco deben confundirse eventuales opciones de rescate del emisor con una fecha obligatoria de devolución al tenedor. Para el mercado local, la colocación aporta una referencia reciente de demanda y precio de deuda bancaria subordinada en UF. Los próximos controles serán las condiciones definitivas, posibles cláusulas de rescate, composición de los compradores y su efecto reportado en los indicadores de solvencia.",
+        "anchor": "banco-bice-colocacion-bonos-perpetuos-at1-noviembre",
+        "sources": [
+          {
+            "name": "Diario Financiero — colocación de bonos perpetuos Banco BICE",
+            "url": "https://www.df.cl/mercados/renta-fija/banco-bice-apuesta-por-los-bonos-perpetuos-y-levanta-mas-de-us-108"
+          },
+          {
+            "name": "Feller Rate — información de clasificación de Banco BICE",
+            "url": "https://www.feller-rate.cl/clasificacion-riesgo/14408/banco-bice"
+          }
+        ]
+      },
+      {
+        "slot": "markets_global",
+        "headline": "Barrick presenta ante la SEC su proyecto de salida a bolsa en EE.UU.",
+        "deck": "American Barrick Gold busca cotizar con símbolo ABGC; la solicitud sigue preliminar y no define aún precio ni cantidad de acciones.",
+        "development": "Barrick Mining informó el 10 de noviembre que su filial American Barrick Gold Corporation presentó ante la Comisión de Bolsa y Valores de Estados Unidos un registro preliminar Form S-1 para una posible oferta pública inicial. La nueva entidad reúne el proyecto de cotización de los activos auríferos norteamericanos del grupo y pretende solicitar su incorporación a la Bolsa de Nueva York bajo el símbolo ABGC. El prospecto todavía deja sin determinar tanto el número de acciones que se ofrecerían como el intervalo de precios. La presentación del documento ante el regulador no significa que la oferta esté autorizada, que se haya fijado una valoración definitiva ni que exista ya una acción negociable.\n\nLa operación podría crear un vehículo bursátil diferenciado para parte de los activos de una minera internacional, con una base de inversionistas y una valoración potencialmente distinta de la matriz. Barrick indicó que los ingresos netos de la oferta se distribuirían a la compañía, con intención de devolverlos posteriormente a sus accionistas; esa expectativa permanece sujeta a la ejecución del plan. Para los mercados, la señal relevante es la preparación formal de una nueva fuente de acciones mineras, no un movimiento puntual del precio internacional del oro. Los hitos verificables serán la efectividad del registro, el prospecto final, la participación accionaria que mantendrá Barrick, los términos de colocación y el inicio real de negociación.",
+        "anchor": "barrick-american-barrick-ipo-sec-registro-s1",
+        "sources": [
+          {
+            "name": "SEC — registro S-1 preliminar de American Barrick Gold",
+            "url": "https://www.sec.gov/Archives/edgar/data/2162540/000119312526455481/d338869ds1.htm"
+          },
+          {
+            "name": "Barrick — comunicado corporativo presentado ante la SEC",
+            "url": "https://www.sec.gov/Archives/edgar/data/756894/000119312526455707/d111970dex992.htm"
+          },
+          {
+            "name": "Reuters — Barrick presenta solicitud de IPO norteamericana",
+            "url": "https://www.reuters.com/world/americas/canadas-barrick-mining-files-ipo-north-america-business-new-york-2026-11-10/"
+          }
+        ]
+      }
+    ]
+  }
+}

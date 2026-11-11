@@ -3,14 +3,14 @@
     {
       "id": "oil-geopolitics-inflation",
       "topic": "Petróleo, geopolítica e inflación",
-      "thesis": "La guerra regional, las interrupciones del mar Negro y El Niño están convirtiendo el shock energético en un alza multicommodity que combina inflación, inseguridad alimentaria y menor crecimiento, con los países endeudados como principal punto de fragilidad.",
-      "status": "confirmed",
-      "last_evidence": "El 9 de noviembre el PPI de China subió 5,7% interanual, su mayor avance desde junio de 2022; los precios de compra industriales aumentaron 7,9%, combustibles y energía 18,6% y materias primas químicas 16,8%, mientras el IPC se moderó a 0,7% y la inflación subyacente a 0,8%.",
-      "effect": "Confirma que el shock energético ya se transmite desde la disrupción física y los costos globales hacia la principal plataforma manufacturera del mundo, pero la demanda doméstica débil limita por ahora el traspaso a precios finales y concentra el ajuste en márgenes, insumos y cadenas industriales.",
-      "base_scenario": "Los commodities permanecen altos y volátiles durante 2026, con traspaso desigual a inflación y tasas; algunos bancos centrales suben preventivamente mientras otros esperan evidencia de persistencia, y una normalización sostenida del crudo durante 2027 aliviaría gradualmente el ajuste.",
+      "thesis": "El shock energético sigue transmitiéndose a la industria global, pero la pausa de nuevos ataques estadounidenses contra Irán abre una desescalada militar parcial. El bloqueo de Ormuz y los incidentes marítimos impiden todavía normalizar costos logísticos, de energía y de abastecimiento.",
+      "status": "changed",
+      "last_evidence": "El 9 de noviembre Trump declaró que evitará por ahora nuevos ataques contra Irán a petición de gobiernos del Golfo, pero mantendrá el bloqueo naval de Ormuz. Qatar media sin acuerdo aceptado y Reuters reporta incidentes contra tanqueros que continúan pese a los contactos diplomáticos.",
+      "effect": "Cambia el balance de riesgo inmediato desde escalada militar abierta hacia una pausa condicionada, sin eliminar la transmisión inflacionaria: restricciones físicas y seguridad de la navegación siguen siendo el control clave para una caída sostenible de costos.",
+      "base_scenario": "La pausa militar reduce el riesgo de nuevos bombardeos en el corto plazo, pero el bloqueo y la incertidumbre marítima mantienen costos elevados y volátiles. Una normalización duradera requiere garantías de navegación y compromisos diplomáticos verificables.",
       "invalidate_if": "Una normalización sostenida de Ormuz, el mar Rojo y el mar Negro, petróleo estable bajo niveles previos al conflicto y desinflación amplia en salarios y precios debilitarían la tesis; nuevas interrupciones físicas y más alzas de bancos centrales la reforzarían.",
       "watch": "Tránsito por Ormuz y el mar Rojo, negociaciones con Irán, PPI y CPI de China, márgenes industriales, precios de combustibles y químicos, acuerdos de implementación y financiamiento de COP31, decisiones de la Fed, el BCE y el Banco de Inglaterra.",
-      "last_publication": "/ediciones/2026-11-09-daily-china-costos-energia-demanda/"
+      "last_publication": "/ediciones/2026-11-11-daily-diplomacia-ucrania-iran-sin-tregua/"
     },
     {
       "id": "us-employment-fed-rates",
