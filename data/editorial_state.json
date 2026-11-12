@@ -4,13 +4,13 @@
       "id": "oil-geopolitics-inflation",
       "topic": "Petróleo, geopolítica e inflación",
       "thesis": "El shock energético sigue transmitiéndose a la industria global, pero la pausa de nuevos ataques estadounidenses contra Irán abre una desescalada militar parcial. El bloqueo de Ormuz y los incidentes marítimos impiden todavía normalizar costos logísticos, de energía y de abastecimiento.",
-      "status": "changed",
-      "last_evidence": "El 9 de noviembre Trump declaró que evitará por ahora nuevos ataques contra Irán a petición de gobiernos del Golfo, pero mantendrá el bloqueo naval de Ormuz. Qatar media sin acuerdo aceptado y Reuters reporta incidentes contra tanqueros que continúan pese a los contactos diplomáticos.",
-      "effect": "Cambia el balance de riesgo inmediato desde escalada militar abierta hacia una pausa condicionada, sin eliminar la transmisión inflacionaria: restricciones físicas y seguridad de la navegación siguen siendo el control clave para una caída sostenible de costos.",
+      "status": "confirmed",
+      "last_evidence": "El 12 de noviembre la Guardia Revolucionaria iraní informó dos superpetroleros inutilizados por explosiones en Ormuz y atribuyó los hechos a minas, sin corroboración independiente de la causa. Reuters también documentó ataques contra sistemas de navegación en Didamar; pese a recuperar más de 80% de los flujos previos a la guerra, octubre registró 37 ataques a embarcaciones según un centro de estudios.",
+      "effect": "Confirma que la recuperación de volúmenes no equivale a normalización logística: incidentes contra buques e infraestructura sostienen riesgo de transporte, seguros y abastecimiento, incluso durante una pausa declarada de nuevos ataques estadounidenses.",
       "base_scenario": "La pausa militar reduce el riesgo de nuevos bombardeos en el corto plazo, pero el bloqueo y la incertidumbre marítima mantienen costos elevados y volátiles. Una normalización duradera requiere garantías de navegación y compromisos diplomáticos verificables.",
       "invalidate_if": "Una normalización sostenida de Ormuz, el mar Rojo y el mar Negro, petróleo estable bajo niveles previos al conflicto y desinflación amplia en salarios y precios debilitarían la tesis; nuevas interrupciones físicas y más alzas de bancos centrales la reforzarían.",
       "watch": "Tránsito por Ormuz y el mar Rojo, negociaciones con Irán, PPI y CPI de China, márgenes industriales, precios de combustibles y químicos, acuerdos de implementación y financiamiento de COP31, decisiones de la Fed, el BCE y el Banco de Inglaterra.",
-      "last_publication": "/ediciones/2026-11-11-daily-diplomacia-ucrania-iran-sin-tregua/"
+      "last_publication": "/ediciones/2026-11-12-daily-ormuz-inflacion-crecimiento-divergente/"
     },
     {
       "id": "us-employment-fed-rates",
