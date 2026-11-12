@@ -1,7 +1,7 @@
 ---
 title: "Ormuz mantiene el riesgo energético mientras Reino Unido e India divergen"
 summary: "Irán reporta explosiones en dos superpetroleros mientras la navegación sigue expuesta pese a recuperar flujos. Reino Unido crece 0,7% e India supera 6% de inflación: el shock energético no produce una respuesta económica uniforme."
-publishedAt: "2026-11-12T08:20:00-03:00"
+publishedAt: "2026-11-12T08:20:07-03:00"
 cutoffAt: "2026-11-12T08:19:36-03:00"
 type: "daily"
 editionSlot: "morning"
