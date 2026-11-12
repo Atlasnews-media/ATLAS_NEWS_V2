@@ -1,11 +1,11 @@
 ---
 title: "Paro camionero entra en su cuarto día y el Presupuesto 2027 expone decisiones de ejecución"
 summary: "La movilización del transporte sigue sin acuerdo pese a una propuesta para congelar combustibles; el Gobierno requiere aprobación legislativa. En la Cámara, las votaciones del Presupuesto 2027 revelan diferencias sobre programas y controles de gasto."
-publishedAt: "2026-11-12T08:25:42-03:00"
+publishedAt: "2026-11-12T08:51:52-03:00"
 cutoffAt: "2026-11-12T08:25:20-03:00"
 section: "national"
 editionSlot: "morning"
-status: "draft"
+status: "published"
 tags:
   - chile
   - transporte

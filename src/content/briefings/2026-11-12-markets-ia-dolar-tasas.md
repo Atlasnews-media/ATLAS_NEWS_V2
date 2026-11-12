@@ -1,11 +1,11 @@
 ---
 title: "Mercados castigan a la IA mientras dólar y tasas descuentan más restricción monetaria"
 summary: "Las acciones tecnológicas asiáticas caen por incertidumbre en Nvidia; el dólar marca su mayor nivel en 19 meses y los rendimientos del Tesoro estadounidense vuelven a acercarse a 5%. Las bolsas europeas resisten y el petróleo recupera terreno."
-publishedAt: "2026-11-12T08:27:40-03:00"
+publishedAt: "2026-11-12T08:51:52-03:00"
 cutoffAt: "2026-11-12T08:27:15-03:00"
 section: "markets"
 editionSlot: "morning"
-status: "draft"
+status: "published"
 tags:
   - mercados-internacionales
   - inteligencia-artificial
