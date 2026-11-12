@@ -33,7 +33,7 @@ featured: false
 demo: false
 highlights:
   - label: "Dos superpetroleros sufren explosiones en el estrecho de Ormuz"
-    text: "La Guardia Revolucionaria iraní atribuyó los incidentes a minas navales; la identificación de los buques y las circunstancias requieren corroboración independiente."
+    text: "Irán atribuye las explosiones a minas navales; faltan corroboración independiente y datos de los buques."
   - label: "Reino Unido crece 0,7% gracias en parte a la inversión en IA"
     text: "El PIB británico aceleró en el tercer trimestre, aunque el gasto energético y las tasas elevadas amenazan la continuidad del avance."
   - label: "La inflación de India supera el límite de 6% de su banco central"
