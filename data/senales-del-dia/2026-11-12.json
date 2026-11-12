@@ -1,0 +1,131 @@
+{
+  "status": "READY",
+  "date": "2026-11-12",
+  "contract": "atlas-senales-del-dia-v1",
+  "senalesDelDia": {
+    "internacional": [
+      {
+        "slot": "technology",
+        "headline": "DeepMind verifica matemáticamente código del protocolo Signal",
+        "deck": "AlphaProof Code utilizó agentes de IA y pruebas Lean para comprobar propiedades criptográficas del código implementado, bajo especificaciones revisadas por expertos.",
+        "development": "Google DeepMind presentó el 10 de noviembre AlphaProof Code, un sistema de agentes de inteligencia artificial para verificar formalmente partes centrales de la implementación criptográfica del protocolo Signal. La diferencia técnica respecto de una auditoría corriente es que el equipo convirtió objetivos de seguridad en especificaciones matemáticas y utilizó Lean para comprobar que el código compilado satisface esas propiedades. La investigación produjo más de seis millones de líneas de pruebas en Lean, según los autores. Las especificaciones fueron revisadas por especialistas humanos y los agentes señalaron una porción pequeña del trabajo para revisión adicional. DeepMind afirma que completar el proceso llevó cuatro semanas, un plazo que no constituye por sí mismo una comparación experimental con todos los métodos tradicionales de auditoría.\n\nLos investigadores también reintrodujeron en una versión aislada dos errores reales que habían sido corregidos anteriormente, y el procedimiento detectó que las versiones defectuosas no cumplían las condiciones de seguridad definidas. El resultado es relevante para comunicaciones privadas y programas de infraestructura crítica porque busca cerrar la distancia entre las garantías de un diseño criptográfico y la ejecución de ese diseño en software real. Sin embargo, demostrar propiedades bajo un modelo formal no equivale a garantizar que una aplicación completa carezca de vulnerabilidades, incluidos errores externos al alcance analizado. La publicación abre una línea de investigación sobre reproducibilidad de las pruebas, cobertura de nuevas versiones del código y adaptación de esta metodología a otros sistemas.",
+        "anchor": "deepmind-alphaproof-code-verificacion-protocolo-signal",
+        "sources": [
+          {
+            "name": "Google DeepMind — presentación y metodología de AlphaProof Code",
+            "url": "https://deepmind.google/blog/introducing-alphaproof-code/"
+          },
+          {
+            "name": "Axios — análisis periodístico del alcance de la verificación",
+            "url": "https://www.axios.com/2026/11/10/google-code-verification-signal"
+          }
+        ]
+      },
+      {
+        "slot": "world",
+        "headline": "Líbano proyecta 1,15 millones de personas en crisis alimentaria",
+        "deck": "La evaluación IPC estima 1,05 millones de personas en fase de Crisis o peor hasta febrero; el número podría aumentar hacia mediados de 2027.",
+        "development": "Una evaluación de inseguridad alimentaria presentada el 11 de noviembre por el Ministerio de Agricultura de Líbano, con apoyo técnico de la FAO y el Programa Mundial de Alimentos, estima que aproximadamente 1,05 millones de personas —21% de la población analizada— enfrentan condiciones clasificadas como Crisis o peores entre septiembre de 2026 y febrero de 2027. Dentro de ese grupo, 52.000 personas se encuentran en fase de Emergencia. La proyección para marzo-julio de 2027 eleva la cifra a 1,15 millones de personas, o 24% de la población estudiada, y a 97.000 el grupo en fase de Emergencia. Son resultados de una clasificación y una proyección por períodos, no un conteo diario de nuevos casos ni una previsión inevitable.\n\nEl informe identifica fragilidad de ingresos, agotamiento de ahorros, endeudamiento, daños agrícolas y limitaciones de acceso a tierras productivas. Las zonas del sur afectadas por el conflicto, así como Akkar y Baalbek-Hermel, enfrentan dificultades especiales. Entre las personas llegadas desde Siria después de diciembre de 2024, el porcentaje que se encuentra en Crisis o peor alcanza 45%, según el análisis. Que el porcentaje general esté por debajo de una proyección anterior no demuestra una recuperación duradera: pueden variar los desplazamientos mientras persiste la precariedad económica. La prioridad operativa, conforme a los organismos, combina asistencia alimentaria inmediata con recuperación de cultivos, activos productivos y medios de vida; los próximos controles serán la evolución de los desplazamientos, la financiación de la respuesta y el próximo análisis IPC.",
+        "anchor": "libano-ipc-inseguridad-alimentaria-proyeccion-2027",
+        "sources": [
+          {
+            "name": "Sistema IPC — análisis de seguridad alimentaria de Líbano",
+            "url": "https://www.ipcinfo.org/ipc-country-analysis/en/?country=LB"
+          },
+          {
+            "name": "Naciones Unidas en Líbano — comunicado del 11 de noviembre",
+            "url": "https://lebanon.un.org/en/326124-food-insecurity-persists-lebanon-fragile-conditions-stall-recovery-efforts-new-analysis"
+          },
+          {
+            "name": "FAO — situación humanitaria y agrícola en Líbano",
+            "url": "https://www.fao.org/emergencies/where-we-work/LBN/"
+          }
+        ]
+      }
+    ],
+    "nacional": [
+      {
+        "slot": "ipsa_company",
+        "headline": "Utilidad de Salmones Camanchaca cae 62% a septiembre",
+        "deck": "Ganó US$8,6 millones en nueve meses; cosechas menores y costos sanitarios redujeron el EBITDA pese a ingresos acumulados estables.",
+        "development": "Salmones Camanchaca informó el 11 de noviembre que su utilidad acumulada entre enero y septiembre de 2026 bajó desde US$22,5 millones a US$8,6 millones, un retroceso cercano a 62%. Los ingresos acumulados se mantuvieron alrededor de US$279 millones, pero el EBITDA cayó desde US$54 millones a US$41,2 millones, equivalente a una disminución aproximada de 24%. En el tercer trimestre los ingresos alcanzaron US$78 millones, 25% menos que en igual período del año anterior, mientras las cosechas de salmón Atlántico disminuyeron 18% hasta 16.300 toneladas equivalentes de pescado entero. Las cifras distinguen una contracción trimestral de volúmenes de un acumulado anual de ingresos prácticamente estable.\n\nLa compañía atribuyó parte de las dificultades a menor disponibilidad de oxígeno, situaciones sanitarias y cosechas anticipadas en centros afectados por SRS y por un caso de virus ISA en Aysén. El costo de producción del salmón Atlántico cosechado llegó a US$3,94 por kilogramo vivo en el trimestre, 9% más que un año antes. El resultado neto también incorpora efectos de valoración de biomasa, por lo que no todo el cambio se explica por operación y venta de pescado. Salmones Camanchaca mantuvo su estimación anual de cosechar entre 58.000 y 59.000 toneladas de Atlántico y aproximadamente 4.000 de coho. Para evaluar esa meta importarán los volúmenes del último trimestre, el costo unitario, la sanidad de centros y la gestión de riesgos ambientales.",
+        "anchor": "salmones-camanchaca-utilidad-2026-costos-sanitarios",
+        "sources": [
+          {
+            "name": "Salmones Camanchaca — información financiera y reportes a inversionistas",
+            "url": "https://salmonescamanchaca.cl/inversionistas/informacion-financiera/"
+          },
+          {
+            "name": "Diario Financiero — resultados acumulados y contingencias sanitarias",
+            "url": "https://www.df.cl/empresas/industria/ganancias-de-salmones-camanchaca-caen-62-en-medio-de-menores-cosechas-y-un"
+          },
+          {
+            "name": "Salmonexpert — desglose operativo del tercer trimestre",
+            "url": "https://www.salmonexpert.cl/camanchaca-isa-oxigeno/contingencias-sanitarias-desafian-a-salmones-camanchaca-pero-mantiene-numeros-azules/2209647"
+          }
+        ]
+      },
+      {
+        "slot": "policy_economy",
+        "headline": "CMF registra 203 mil clientes de asesorías de inversión en Chile",
+        "deck": "El sondeo 2026 muestra cerca del doble de clientes que un año antes y US$32.706 millones bajo asesoría, con fuerte concentración en cinco firmas.",
+        "development": "La Comisión para el Mercado Financiero presentó el 9 de noviembre, en el encuentro ACHAI 2026, un sondeo de la actividad de asesorías de inversión en Chile. De acuerdo con los datos divulgados por el regulador y recogidos por Diario Financiero, el número de clientes alcanzó 203.069 a marzo de 2026, frente a 103.471 un año antes. El patrimonio bajo asesoría llegó a US$32.706 millones, con un crecimiento interanual de 17%. Es importante diferenciar el patrimonio sobre el que un asesor realiza recomendaciones de recursos que administra directamente: los términos describen funciones y responsabilidades que no siempre son equivalentes. A comienzos de noviembre, el registro de la CMF contabilizaba 202 asesores autorizados, frente a 192 en octubre de 2025.\n\nEl crecimiento no fue uniforme entre participantes. Cinco firmas concentraron alrededor del 90% de las personas naturales asesoradas, frente al 77% señalado para el año anterior. Esa concentración puede aumentar la escala de atención, pero también obliga a distinguir cantidad de clientes, patrimonio asesorado y condiciones de competencia efectiva. La presentación se enmarca en la discusión sobre el desarrollo del mercado de capitales, incluido el acceso de distintos tipos de inversionistas a productos financieros. No constituye por sí sola una nueva norma ni una aprobación de reformas en trámite. Para una evaluación regulatoria consistente deberán observarse la metodología del sondeo, los deberes de información y conducta de asesores, la concentración del sector y los cambios normativos efectivamente promulgados.",
+        "anchor": "cmf-sondeo-asesorias-inversion-chile-clientes-2026",
+        "sources": [
+          {
+            "name": "CMF — presentación oficial Sondeo Asesorías de Inversión 2026",
+            "url": "https://www.cmfchile.cl/portal/prensa/625/w4-article-114835.html"
+          },
+          {
+            "name": "Diario Financiero — cifras de clientes, patrimonio y concentración",
+            "url": "https://www.df.cl/mercados/banca-fintech/asesores-de-inversion-ya-tienen-us-32-mil-millones-bajo-recomendacion-y"
+          }
+        ]
+      }
+    ],
+    "mercados": [
+      {
+        "slot": "markets_chile",
+        "headline": "Echeverría Izquierdo obtiene UF 1 millón en bonos a 4,08%",
+        "deck": "La constructora regresó a un remate holandés de deuda en el mercado local con un spread de 177 puntos base, frente a 293 en una operación privada previa.",
+        "development": "Echeverría Izquierdo concretó el 11 de noviembre una colocación de bonos serie G por UF 1 millón mediante un remate holandés en el mercado de capitales chileno. La operación, equivalente a unos $41.300 millones según la referencia utilizada en la jornada, se adjudicó a una tasa de UF más 4,08% y un spread de 177 puntos base. Diario Financiero destacó que la compañía no realizaba una colocación de este tipo mediante remate desde 2018. El hecho esencial de emisión fue registrado ante la Comisión para el Mercado Financiero en la misma fecha. Se trata de una transacción efectivamente realizada, distinta de una inscripción de línea o de un anuncio de intención de financiamiento.\n\nEl spread mencionado es inferior a los 293 puntos base de una transacción privada de 2025 citada por el medio, pero ambas operaciones no deben tratarse como instrumentos idénticos sin examinar plazo, garantías, estructura y condiciones de mercado. La reapertura del canal de colocaciones públicas para una constructora proporciona una referencia de apetito inversor por crédito corporativo ligado a ingeniería y obras, en un sector con oferta relativamente limitada en el mercado primario. Para evaluar qué cambió en el costo del capital de la empresa será necesario revisar el contrato de emisión, uso de fondos, vencimientos, covenants y clasificación de riesgo. Una colocación exitosa en un emisor concreto no demuestra una normalización general del financiamiento para toda la construcción.",
+        "anchor": "echeverria-izquierdo-bono-serie-g-uf-millon-noviembre",
+        "sources": [
+          {
+            "name": "Diario Financiero — detalles del remate y condiciones del bono",
+            "url": "https://www.df.cl/mercados/renta-fija/constructora-echeverria-izquierdo-vuelve-a-salir-al-mercado-de-capitales"
+          },
+          {
+            "name": "Feller Rate — hecho esencial del 11 de noviembre y clasificación del emisor",
+            "url": "https://fellerate.cl/clasificacion-riesgo/10720/echeverria-izquierdo"
+          },
+          {
+            "name": "CMF — registro de hechos esenciales del mercado",
+            "url": "https://www.cmfchile.cl/portal/principal/613/w3-propertyvalue-18590.html"
+          }
+        ]
+      },
+      {
+        "slot": "markets_global",
+        "headline": "Deuda de Alphabet en Asia reúne órdenes por más de US$7.000 millones",
+        "deck": "Las ofertas en dólares de Hong Kong y Singapur atraen demanda superior al objetivo inicial, aunque los pedidos incluyen bancos colocadores y no son ventas finales.",
+        "development": "Alphabet inició sus primeras ofertas de bonos denominados en dólares de Hong Kong y de Singapur, que al 12 de noviembre reunían indicaciones de demanda superiores a US$7.000 millones equivalentes, según estadísticas de la operación divulgadas por Reuters. El libro de órdenes para los tres tramos de Hong Kong superó HK$32.500 millones y el de los cuatro tramos de Singapur excedió S$4.000 millones. Las cifras incluyen interés de entidades que participan en la colocación, por lo que no representan exclusivamente demanda de inversionistas externos ni deben confundirse con el importe final emitido. La compañía había evaluado obtener alrededor de US$3.000 millones equivalentes. El tamaño final, las asignaciones y las tasas definitivas deben distinguirse de los indicativos de precio distribuidos durante la colocación.\n\nEl episodio permite observar financiamiento corporativo internacional en un momento de mayor selectividad hacia empresas tecnológicas. Los vencimientos previstos abarcan desde 2028 hasta 2056, según la divisa y el tramo, ampliando las fuentes de deuda fuera del dólar estadounidense y del euro. S&P Global Ratings asignó una calificación AA+ a los bonos senior no garantizados propuestos y señaló que los recursos podrían destinarse a fines corporativos generales, incluido refinanciamiento. Ese uso formal no exige atribuir todo el dinero obtenido a centros de datos, aunque Alphabet expande intensamente su infraestructura tecnológica. Los controles inmediatos serán montos efectivamente adjudicados, tasas de cada serie, participación de compradores finales y liquidación prevista para el 19 de noviembre.",
+        "anchor": "alphabet-bonos-asia-demanda-siete-mil-millones-2026",
+        "sources": [
+          {
+            "name": "Reuters — libros de órdenes para bonos de Alphabet en Asia",
+            "url": "https://www.reuters.com/world/asia-pacific/alphabet-sets-initial-price-guidance-hong-kong-singapore-bond-sales-term-sheet-2026-11-12/"
+          },
+          {
+            "name": "S&P Global Ratings — calificación AA+ de bonos propuestos",
+            "url": "https://spratings.spglobal.com/ratings/%5Blang%5D/regulatory/article/-/view/type/HTML/id/3657976"
+          },
+          {
+            "name": "Reuters — estructura inicial y monedas de las ofertas",
+            "url": "https://www.reuters.com/world/china/alphabet-eyes-3-billion-hong-kong-singapore-bond-sale-sources-say-2026-11-11/"
+          }
+        ]
+      }
+    ]
+  }
+}
