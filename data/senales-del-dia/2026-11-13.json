@@ -1,0 +1,131 @@
+{
+  "status": "READY",
+  "date": "2026-11-13",
+  "contract": "atlas-senales-del-dia-v1",
+  "senalesDelDia": {
+    "internacional": [
+      {
+        "slot": "technology",
+        "headline": "AMD y PsiQuantum diseñarán infraestructura de computación cuántica",
+        "deck": "La alianza combinará chips, aceleradores y fotónica de silicio para sistemas cuánticos resistentes a fallos; AMD también proyecta invertir capital.",
+        "development": "AMD y PsiQuantum anunciaron el 12 de noviembre una ampliación de su alianza para desarrollar la infraestructura computacional necesaria para operar máquinas cuánticas fotónicas a escala útil. La colaboración combina procesadores EPYC, aceleradores Instinct, tecnología adaptativa Versal y el software ROCm de AMD con la plataforma de fotónica de silicio de PsiQuantum. La meta es construir sistemas híbridos que unan cómputo clásico, inteligencia artificial y procesamiento cuántico, incluida la corrección de errores en tiempo real. AMD informó además que planea efectuar una inversión accionaria en PsiQuantum, pero las compañías no publicaron el monto. Es un compromiso de colaboración e inversión futura, no la entrega comercial de un computador cuántico tolerante a fallos.\n\nEl anuncio también tiene una vertiente de investigación biomédica. Las compañías dijeron que sus herramientas ya permitieron simulaciones de inhibidores covalentes, moléculas relevantes en el estudio de tratamientos oncológicos, mediante equipos de AMD. Estos resultados iniciales necesitan evaluarse según los métodos y conjuntos de comparación empleados; no equivalen a demostrar la eficacia clínica de medicamentos nuevos. La noticia importa porque los computadores cuánticos prácticos seguirán requiriendo una gran capa clásica para control, comunicación y corrección de errores. La alianza deberá demostrar que sus diseños funcionan al aumentar el número de componentes y que las aplicaciones ofrecen ventajas reproducibles frente a métodos convencionales.",
+        "anchor": "amd-psiquantum-alianza-infraestructura-cuantica",
+        "sources": [
+          {
+            "name": "PsiQuantum — anuncio oficial de alianza con AMD, 12 de noviembre",
+            "url": "https://www.psiquantum.com/"
+          },
+          {
+            "name": "Nasdaq / Business Wire — comunicado conjunto AMD y PsiQuantum",
+            "url": "https://www.nasdaq.com/press-release/psiquantum-and-amd-collaborate-build-computing-foundation-utility-scale-quantum"
+          },
+          {
+            "name": "Reuters — alcance de la inversión prevista y colaboración tecnológica",
+            "url": "https://www.reuters.com/business/amd-invest-psiquantum-advance-quantum-computing-infrastructure-2026-11-12/"
+          }
+        ]
+      },
+      {
+        "slot": "world",
+        "headline": "Japón estudia reducir pedidos militares por restricciones fiscales",
+        "deck": "Fuentes citadas por Reuters sitúan la propuesta quinquenal en 50 a 60 billones de yenes, lejos de los 80 billones pretendidos por sectores de defensa.",
+        "development": "El Ministerio de Finanzas de Japón propuso destinar entre 50 y 60 billones de yenes a defensa en el quinquenio que comenzará en abril de 2027, según cuatro fuentes conocedoras de las conversaciones citadas por Reuters el 13 de noviembre. La banda superaría los 43 billones asignados en el plan actual, pero quedaría claramente por debajo de los 80 billones que algunos responsables de defensa y legisladores del partido gobernante habían utilizado como referencia. Funcionarios ya habrían advertido a contratistas de posibles recortes en pedidos de aviones y misiles, incluidos equipos estadounidenses F-35. Se trata de una propuesta y de advertencias reportadas, no de un presupuesto oficialmente aprobado ni de cancelaciones contractuales verificadas.\n\nLa discrepancia combina un debate geopolítico con uno de sostenibilidad fiscal. El Gobierno japonés busca fortalecer sus capacidades frente a riesgos de seguridad en Asia oriental, pero también ha planteado iniciativas para estimular el crecimiento y reducir el impuesto al consumo de alimentos. Según las fuentes consultadas, esa última medida podría restar unos 4,3 billones de yenes anuales a la recaudación y obligaría a identificar financiamiento compensatorio. Para empresas japonesas y proveedores extranjeros, la incertidumbre recae sobre calendarios de producción, inversiones y empleo ligado a la defensa. La discusión continuará antes de la aprobación del siguiente plan, y el resultado puede diferir de la propuesta inicial.",
+        "anchor": "japon-propuesta-presupuesto-defensa-quinquenio-2027",
+        "sources": [
+          {
+            "name": "Reuters — propuesta presupuestaria y pedidos de defensa en Japón, 13 de noviembre",
+            "url": "https://www.reuters.com/business/retail-consumer/japan-warns-arms-suppliers-deep-order-cuts-budget-squeeze-hits-military-buildup-2026-11-13/"
+          },
+          {
+            "name": "The Japan Times — cobertura de las restricciones fiscales al plan de defensa",
+            "url": "https://www.japantimes.co.jp/news/2026/11/13/japan/defense-buildup-fiscal-constraints/"
+          }
+        ]
+      }
+    ],
+    "nacional": [
+      {
+        "slot": "ipsa_company",
+        "headline": "SMU pasa a pérdidas trimestrales pese a mayores ventas",
+        "deck": "La matriz de Unimarc y Alvi reportó pérdidas trimestrales cercanas a $5.657 millones; ingresos subieron 3,1%, pero desapareció un beneficio extraordinario de 2025.",
+        "development": "SMU informó el 9 de noviembre que el tercer trimestre de 2026 terminó con una pérdida atribuible a la controladora cercana a $5.657 millones, frente a una utilidad de aproximadamente $32.613 millones en igual lapso de 2025. Los ingresos del trimestre aumentaron 3,1%, desde cerca de $689.677 millones a $710.848 millones. La divergencia entre ventas y resultado final impide interpretar el cambio como un desplome uniforme de la demanda de supermercados. Los estados financieros muestran que el período comparable de 2025 incluía ganancias relevantes por venta de activos, una contribución que no se repitió con la misma magnitud en 2026. También aparecen gastos extraordinarios de reestructuración que afectaron la comparación.\n\nEn los primeros nueve meses, los ingresos acumulados alcanzaron alrededor de $2,125 billones de pesos, un aumento interanual de 2,4%, impulsado por operaciones de Unimarc, Alvi, Super10 y el negocio en Perú. Sin embargo, el resultado neto acumulado se ubicó en terreno negativo, según la comunicación de resultados. Para evaluar el desempeño recurrente conviene separar ventas comparables, margen operacional, gastos administrativos y resultados no habituales. La señal muestra que un avance de ingresos no se convierte automáticamente en utilidad para los accionistas. Los próximos estados financieros permitirán determinar cuánto del deterioro se explica por factores extraordinarios y cuánto por presión persistente sobre costos y márgenes.",
+        "anchor": "smu-resultados-tercer-trimestre-perdidas-2026",
+        "sources": [
+          {
+            "name": "SMU — información para inversionistas y reporte de resultados 3T26",
+            "url": "https://www.corporate.smu-labs.cl/inversionistas"
+          },
+          {
+            "name": "Diario Financiero — reporte de pérdidas acumuladas y factores extraordinarios",
+            "url": "https://www.df.cl/empresas/retail/smu-registra-perdidas-por-casi-4-mil-millones-a-septiembre-pese-a"
+          },
+          {
+            "name": "BolsaChile — cifras trimestrales declaradas a la CMF",
+            "url": "https://bolsachile.com/cl/resultados"
+          }
+        ]
+      },
+      {
+        "slot": "policy_economy",
+        "headline": "CMF consulta cambios al vencimiento del SOAP para vehículos nuevos",
+        "deck": "La propuesta modifica instrucciones sobre fechas de término de las pólizas y referencias legales; no es una norma definitiva y admite observaciones por dos semanas.",
+        "development": "La Comisión para el Mercado Financiero abrió el 9 de noviembre una consulta pública para modificar la Circular N°1.147, que contiene instrucciones sobre el término de vigencia del Seguro Obligatorio de Accidentes Personales, SOAP, en vehículos nuevos. El organismo fijó un período de consulta de dos semanas y explicó que busca adecuar las fechas de vencimiento y las referencias legales a las reglas vigentes sobre renovación de permisos de circulación. El hecho regulatorio es la publicación de una propuesta para recibir observaciones. No se ha informado que la modificación esté aprobada ni que cambien inmediatamente las pólizas ya contratadas.\n\nEl SOAP es un seguro obligatorio vinculado al permiso de circulación y está diseñado para cubrir determinados daños personales causados por accidentes de tránsito conforme a la ley. Una regla precisa sobre vencimientos es relevante para quienes venden automóviles, suscriben seguros y controlan la documentación necesaria para circular. Sin embargo, la comunicación de la CMF no equivale a un anuncio de nuevos precios, primas ni beneficios del seguro. El resultado dependerá de las observaciones recogidas y del texto que el supervisor emita después de cerrar el proceso. Conviene distinguir entre vigencia contractual, fecha del permiso y cobertura efectiva antes de inferir consecuencias comerciales o para conductores.",
+        "anchor": "cmf-consulta-vigencia-soap-vehiculos-nuevos",
+        "sources": [
+          {
+            "name": "CMF — consulta pública para modificar Circular 1.147 sobre SOAP, 9 de noviembre",
+            "url": "https://www.cmfchile.cl/portal/prensa/625/w4-article-114833.html"
+          },
+          {
+            "name": "Diario Estrategia — cobertura de la consulta regulatoria, 10 de noviembre",
+            "url": "https://www.diarioestrategia.cl/texto-diario/mostrar/6085834/cmf-publica-consulta-modificacion-circular-regula-vigencia-soap-vehiculos-nuevos"
+          }
+        ]
+      }
+    ],
+    "mercados": [
+      {
+        "slot": "markets_chile",
+        "headline": "AFP reducen pérdidas valorizadas en swaps de tasas extranjeras",
+        "deck": "El saldo negativo frente a bancos internacionales cayó de US$7.700 millones en septiembre a US$2.900 millones en octubre, según cifras previsionales.",
+        "development": "Las posiciones en derivados de tasas de interés que las AFP chilenas mantienen con bancos internacionales cerraron octubre con pérdidas por valoración cercanas a US$2.900 millones, frente a aproximadamente US$7.700 millones al terminar septiembre. La diferencia equivale a una reducción de 62% del saldo negativo informado, de acuerdo con cifras de la Superintendencia de Pensiones citadas por Bloomberg y publicadas el 10 de noviembre. El movimiento coincidió con una recuperación en los bonos del Tesoro de Estados Unidos durante octubre, después de las alzas de rendimiento que habían perjudicado posiciones sensibles a las tasas. Se trata de pérdidas o ganancias por valoración de contratos; no debe confundirse automáticamente con dinero realizado o desembolsado por las administradoras.\n\nLa mejoría también coincidió con retornos positivos en los multifondos de perfil más conservador: el D ganó alrededor de 1,8% y el E 3,2% durante octubre, según los reportes revisados. Esas rentabilidades no se explican exclusivamente por swaps, porque los fondos contienen otros activos y exposiciones. Tampoco se conoce con precisión cuánto de la reducción del saldo negativo provino de precios de mercado y cuánto del desarme de posiciones. El caso ilustra por qué los derivados pueden amplificar la sensibilidad de carteras previsionales al movimiento de tasas largas internacionales. El nuevo repunte de los rendimientos en noviembre exige vigilar el tamaño y las coberturas de la exposición remanente.",
+        "anchor": "afp-swaps-tasas-extranjeras-perdidas-octubre-2026",
+        "sources": [
+          {
+            "name": "Bloomberg Línea — pérdidas valorizadas en swaps de AFP al cierre de octubre",
+            "url": "https://bloomberglinea-bloomberglinea-prod.cdn.arcpublishing.com/latinoamerica/chile/afp-chilenas-reducen-perdidas-en-swaps-de-tasas-tras-repunte-de-bonos-de-eeuu/"
+          },
+          {
+            "name": "Diario Financiero / Bloomberg — cambios en posiciones de tasas y rentabilidades",
+            "url": "https://www.df.cl/mercados/pensiones/afp-chilenas-reducen-perdidas-por-swaps-de-tasas-tras-repunte-de-bonos-de"
+          },
+          {
+            "name": "Superintendencia de Pensiones — fuente regulatoria de información previsional",
+            "url": "https://www.spensiones.cl/"
+          }
+        ]
+      },
+      {
+        "slot": "markets_global",
+        "headline": "El yen perfora 160 por dólar y Japón reitera su advertencia",
+        "deck": "Tokio evalúa responder a movimientos cambiarios abruptos. Un reporte oficial revela que EE.UU. aportó cerca de US$497 millones a la intervención de julio.",
+        "development": "El yen japonés cayó brevemente a unas 160,03 unidades por dólar durante la jornada asiática del 13 de noviembre, cruzando por primera vez desde comienzos de septiembre una referencia que concentra atención de operadores y autoridades. La ministra de Finanzas Satsuki Katayama advirtió que Japón responderá de forma apropiada a movimientos cambiarios rápidos y unidireccionales. El cruce de 160 no constituye una paridad oficial defendida por ley ni prueba por sí mismo una nueva intervención. Su importancia radica en que un yen debilitado encarece importaciones denominadas en moneda extranjera y puede elevar el costo de vida, mientras los rendimientos estadounidenses y las expectativas de política monetaria favorecen al dólar.\n\nLa publicación del 12 de noviembre de la Reserva Federal de Nueva York aporta un dato nuevo sobre el episodio previo. En su condición de agente fiscal del Tesoro de Estados Unidos, el banco compró 79.400 millones de yenes el 31 de julio, equivalentes a unos US$497 millones, utilizando euros del Fondo de Estabilización Cambiaria. El documento aclara que la propia Reserva Federal no realizó intervención por cuenta de la política monetaria estadounidense durante el tercer trimestre. Japón, por su parte, destinó cerca de 15,4 billones de yenes a defender su moneda durante el mismo período. La asimetría cuantitativa ayuda a distinguir apoyo coordinado de aportes financieros equivalentes. El mercado observará nuevos movimientos del tipo de cambio, eventuales operaciones oficiales y decisiones del Banco de Japón.",
+        "anchor": "yen-160-intervencion-eeuu-japon-informe-nueva-york-fed",
+        "sources": [
+          {
+            "name": "Reserva Federal de Nueva York — operaciones cambiarias del tercer trimestre 2026",
+            "url": "https://www.newyorkfed.org/newsevents/news/markets/2026/20261112"
+          },
+          {
+            "name": "Reuters — reacción de Japón tras superar 160 yenes por dólar",
+            "url": "https://www.reuters.com/markets/us/japans-finance-minister-vows-action-yen-breaches-160-threshold-2026-11-13/"
+          },
+          {
+            "name": "Reuters — Tesoro estadounidense compró yenes en julio y Fed no intervino por cuenta propia",
+            "url": "https://www.reuters.com/business/us-treasury-bought-yen-july-fed-made-no-solo-fx-interventions-q3-2026-11-12/"
+          }
+        ]
+      }
+    ]
+  }
+}
