@@ -1,11 +1,11 @@
 ---
 title: "La salida de Huang de Nvidia pone a prueba la dependencia global de la inteligencia artificial"
 summary: "Nvidia pierde a su fundador y principal estratega en plena expansión de la IA. Una caída mundial de Microsoft y ataques a rutas energéticas refuerzan el riesgo de concentración, mientras la diplomacia y el financiamiento climático avanzan."
-publishedAt: "2026-11-13T07:46:46-03:00"
+publishedAt: "2026-11-13T08:11:09.928-03:00"
 cutoffAt: "2026-11-13T07:46:46-03:00"
 type: "daily"
 editionSlot: "morning"
-status: "draft"
+status: "published"
 tags:
   - inteligencia-artificial
   - tecnologia-global

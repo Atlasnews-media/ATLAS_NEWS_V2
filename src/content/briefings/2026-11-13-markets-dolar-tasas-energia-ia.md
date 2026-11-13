@@ -1,11 +1,11 @@
 ---
 title: "Dólar termina sobre $995 en Chile mientras tasas de EE.UU. y petróleo presionan a los activos"
 summary: "El último cierre cambiario chileno quedó cerca de $1.000 y el cobre retrocedió. En el exterior, las tasas del Tesoro y el dólar avanzan por expectativas de una Fed más restrictiva, mientras la crisis de Nvidia redistribuye valor entre tecnológicas."
-publishedAt: "2026-11-13T07:57:07-03:00"
+publishedAt: "2026-11-13T08:11:09.928-03:00"
 cutoffAt: "2026-11-13T07:57:07-03:00"
 section: "markets"
 editionSlot: "morning"
-status: "draft"
+status: "published"
 tags:
   - mercados-globales
   - dolar

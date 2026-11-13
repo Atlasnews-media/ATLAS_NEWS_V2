@@ -1,11 +1,11 @@
 ---
 title: "Acuerdo por el diésel espera ley mientras cinco partidas del Presupuesto 2027 son rechazadas"
 summary: "El Gobierno y gremios camioneros pactaron una rebaja de $142 por litro de diésel y un techo de precios hasta marzo, pero su aplicación depende del Congreso. En paralelo, la Cámara registró rechazos presupuestarios que obligan a negociar reasignaciones."
-publishedAt: "2026-11-13T07:55:01-03:00"
+publishedAt: "2026-11-13T08:11:09.928-03:00"
 cutoffAt: "2026-11-13T07:55:01-03:00"
 section: "national"
 editionSlot: "morning"
-status: "draft"
+status: "published"
 tags:
   - chile
   - combustibles
