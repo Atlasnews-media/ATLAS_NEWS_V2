@@ -1,11 +1,11 @@
 ---
 title: "La canasta básica sube 0,9% y lleva la línea de pobreza arrendataria a $379.838"
 summary: "El informe oficial de octubre elevó a $93.678 el costo mensual de la canasta alimentaria por persona. Los alimentos avanzaron más que el IPC general y ampliaron la presión sobre los hogares de menores ingresos."
-publishedAt: "2026-11-13T13:10:00-03:00"
+publishedAt: "2026-11-13T13:15:45-03:00"
 cutoffAt: "2026-11-13T12:00:00-03:00"
 section: "national"
 editionSlot: "evening"
-status: "draft"
+status: "published"
 tags:
   - chile
   - canasta-basica

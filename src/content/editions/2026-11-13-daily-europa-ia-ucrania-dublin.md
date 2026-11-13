@@ -1,11 +1,11 @@
 ---
 title: "Europa vincula soberanía en inteligencia artificial y garantías para Ucrania en Dublín"
 summary: "Los líderes de la Unión Europea abrieron su primera cumbre dedicada a la IA para resolver financiación, infraestructura y seguridad. En la misma reunión, Alemania exigió participación europea y garantías para Ucrania en las próximas negociaciones."
-publishedAt: "2026-11-13T13:10:00-03:00"
+publishedAt: "2026-11-13T13:15:45-03:00"
 cutoffAt: "2026-11-13T12:00:00-03:00"
 type: "daily"
 editionSlot: "evening"
-status: "draft"
+status: "published"
 tags:
   - union-europea
   - inteligencia-artificial

@@ -1,11 +1,11 @@
 ---
 title: "El dólar toca un máximo de 19 meses y reaparece una apuesta por un alza de 50 puntos de la Fed"
 summary: "La probabilidad implícita de un aumento de 50 puntos base en diciembre llegó a 12%, desde cero una semana antes. Subieron el dólar y los rendimientos, mientras acciones, petróleo y oro mostraron reacciones divergentes."
-publishedAt: "2026-11-13T13:10:00-03:00"
+publishedAt: "2026-11-13T13:15:45-03:00"
 cutoffAt: "2026-11-13T12:00:00-03:00"
 section: "markets"
 editionSlot: "evening"
-status: "draft"
+status: "published"
 tags:
   - mercados-globales
   - dolar
