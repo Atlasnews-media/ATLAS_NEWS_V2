@@ -1,0 +1,17 @@
+VOZ 1: La edición de Mercados de este viernes tiene una pregunta principal: ¿por qué el dólar se acerca a mil pesos en Chile mientras dentro de la industria de inteligencia artificial algunas acciones caen y otras suben?
+VOZ 2: Empecemos por Chile. ¿Qué precio del dólar tenemos efectivamente confirmado?
+VOZ 1: El último cierre verificado es el del jueves doce de noviembre. En el mercado local, las puntas de compra y venta quedaron cerca de novecientos noventa y cinco pesos, con la venta en novecientos noventa y cinco coma seis. Fue un avance de unos nueve pesos respecto de la sesión anterior.
+VOZ 2: ¿Y ese no es el mismo dólar observado que publica el Banco Central?
+VOZ 1: No. El dólar observado oficial del doce de noviembre fue de novecientos ochenta y cuatro coma cuarenta y nueve pesos. Esa referencia refleja transacciones bancarias del día hábil anterior. Mezclar las dos cifras daría una impresión equivocada del mercado.
+VOZ 2: ¿Qué está presionando al peso?
+VOZ 1: Una combinación de factores. El cobre en la Bolsa de Metales de Londres bajó desde seis dólares con treinta y ocho centavos por libra el miércoles a seis dólares con veintiséis el jueves. Al mismo tiempo, el dólar se fortaleció internacionalmente porque subieron los rendimientos de la deuda pública estadounidense.
+VOZ 2: ¿Por qué suben las tasas de esos bonos?
+VOZ 1: Los inversionistas vuelven a considerar que la Reserva Federal podría endurecer más su política. Reuters señala que el mercado asigna alrededor de trece por ciento de probabilidad a un aumento de cincuenta puntos base en diciembre, una posibilidad prácticamente inexistente una semana atrás. Es una probabilidad de mercado, no una decisión de la Fed.
+VOZ 2: Y en medio de eso aparece la crisis de Nvidia. ¿Cómo se leyó en las bolsas?
+VOZ 1: Nvidia cerró el jueves cuatro coma tres por ciento abajo, después de caer bastante más durante el día, tras la renuncia de Jensen Huang. Pero sus competidoras AMD y Broadcom subieron cinco coma nueve y cinco coma cinco por ciento, respectivamente.
+VOZ 2: Entonces, ¿el mercado está diciendo que ya no cree en la inteligencia artificial?
+VOZ 1: No necesariamente. Puede estar diferenciando el riesgo de continuidad de una empresa del potencial de demanda del sector. Esa rotación no demuestra que sus clientes hayan cambiado contratos. Para eso necesitamos pedidos, entregas y resultados verificables.
+VOZ 2: ¿Y qué hace el petróleo en toda esta historia?
+VOZ 1: Introduce otra presión. El Brent cerró el jueves cerca de noventa y cinco dólares con ochenta y dos centavos por barril, con un alza superior al tres por ciento. Responde a la incertidumbre sobre suministro en Oriente Medio. El viernes temprano en Asia seguía en torno a noventa y seis dólares.
+VOZ 2: En resumen, ¿qué debemos mirar hoy?
+VOZ 1: La apertura real del peso chileno y el cobre, el dato de precios al productor en Estados Unidos, los rendimientos del Tesoro y la reacción de Nvidia y sus competidores cuando abra Wall Street. El dólar cerca de mil pesos llama la atención, pero la explicación está en varias señales que debemos seguir por separado.
