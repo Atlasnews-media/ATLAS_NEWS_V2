@@ -19,11 +19,11 @@ sources:
   - name: "Reuters — acciones europeas y rotación tecnológica, 13 de noviembre"
     url: "https://www.reuters.com/world/china/global-markets-global-markets-2026-11-13/"
 highlights:
-  - label: "Dólar en máximo de 19 meses"
+  - label: "Dólar en máximo"
     text: "El índice del dólar llegó a 103,27 mientras el mercado elevó su estimación de un endurecimiento mayor de la Fed."
-  - label: "Vuelve el escenario de 50 puntos"
+  - label: "Escenario de 50 puntos"
     text: "La probabilidad implícita de un alza de 50 puntos base en diciembre subió a 12%, desde cero una semana antes."
-  - label: "Activos reaccionan sin un patrón único"
+  - label: "Reacción cross-asset"
     text: "Subieron los rendimientos y el oro; Europa conservó una ganancia semanal superior a 2% y Nvidia rebotó antes de la apertura."
 demo: false
 ---
