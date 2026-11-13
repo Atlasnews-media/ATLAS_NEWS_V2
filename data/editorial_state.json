@@ -3,14 +3,14 @@
     {
       "id": "oil-geopolitics-inflation",
       "topic": "Petróleo, geopolítica e inflación",
-      "thesis": "El shock energético sigue transmitiéndose a la industria global, pero la pausa de nuevos ataques estadounidenses contra Irán abre una desescalada militar parcial. El bloqueo de Ormuz y los incidentes marítimos impiden todavía normalizar costos logísticos, de energía y de abastecimiento.",
-      "status": "confirmed",
-      "last_evidence": "El 12 de noviembre la Guardia Revolucionaria iraní informó dos superpetroleros inutilizados por explosiones en Ormuz y atribuyó los hechos a minas, sin corroboración independiente de la causa. Reuters también documentó ataques contra sistemas de navegación en Didamar; pese a recuperar más de 80% de los flujos previos a la guerra, octubre registró 37 ataques a embarcaciones según un centro de estudios.",
-      "effect": "Confirma que la recuperación de volúmenes no equivale a normalización logística: incidentes contra buques e infraestructura sostienen riesgo de transporte, seguros y abastecimiento, incluso durante una pausa declarada de nuevos ataques estadounidenses.",
-      "base_scenario": "La pausa militar reduce el riesgo de nuevos bombardeos en el corto plazo, pero el bloqueo y la incertidumbre marítima mantienen costos elevados y volátiles. Una normalización duradera requiere garantías de navegación y compromisos diplomáticos verificables.",
+      "thesis": "La pausa de nuevos ataques directos estadounidenses contra Irán no equivale a desescalada logística: el bloqueo de Ormuz, los ataques a buques y ahora las amenazas a rutas alternativas saudíes mantienen el riesgo internacional de energía, seguros y suministro.",
+      "status": "changed",
+      "last_evidence": "El 12 de noviembre los hutíes afirmaron haber atacado una estación de bombeo del oleoducto saudí Este-Oeste y una instalación en Yanbu; la coalición liderada por Arabia Saudita informó haber interceptado dos drones, sin confirmar todos los ataques atribuidos. Irán declaró incidentes en cuatro petroleros de Ormuz, versión no corroborada independientemente por Reuters.",
+      "effect": "Amplía el riesgo más allá del paso marítimo de Ormuz: el oleoducto que desvía crudo hacia el mar Rojo también entra en el radio de amenaza, reduciendo la seguridad de las rutas alternativas sin demostrar una interrupción efectiva sostenida de los envíos.",
+      "base_scenario": "La contención de nuevos bombardeos reduce parte del riesgo de escalada directa, pero el suministro sigue condicionado por seguridad en Ormuz y rutas saudíes de desvío; normalizar costos exige evidencia de navegación e infraestructura operativas y acuerdos verificables.",
       "invalidate_if": "Una normalización sostenida de Ormuz, el mar Rojo y el mar Negro, petróleo estable bajo niveles previos al conflicto y desinflación amplia en salarios y precios debilitarían la tesis; nuevas interrupciones físicas y más alzas de bancos centrales la reforzarían.",
-      "watch": "Tránsito por Ormuz y el mar Rojo, negociaciones con Irán, PPI y CPI de China, márgenes industriales, precios de combustibles y químicos, acuerdos de implementación y financiamiento de COP31, decisiones de la Fed, el BCE y el Banco de Inglaterra.",
-      "last_publication": "/ediciones/2026-11-12-daily-ormuz-inflacion-crecimiento-divergente/"
+      "watch": "Identificación independiente de buques dañados, seguridad de la ruta saudí Este-Oeste y Yanbu, tránsito Ormuz/Bab el-Mandeb, primas de seguros, capacidad exportadora efectiva, negociaciones regionales, petróleo e inflación internacional.",
+      "last_publication": "/ediciones/2026-11-13-daily-nvidia-liderazgo-cadena-ia/"
     },
     {
       "id": "us-employment-fed-rates",
@@ -27,14 +27,14 @@
     {
       "id": "ai-monetization-selectivity",
       "topic": "Inteligencia artificial y selectividad bursátil",
-      "thesis": "La inteligencia artificial ya impulsa inversión empresarial y actividad medible, pero el costo de capital, la concentración de infraestructura y la conversión del gasto en caja determinan qué empresas y economías capturan el beneficio.",
-      "status": "confirmed",
-      "last_evidence": "El 10 de noviembre Anthropic abrió el roadshow de su OPI para vender 825 millones de acciones a US$70-US$78, con valoración diluida de hasta US$1,4 billones, ingresos anualizados de US$81.000 millones y compromisos de cómputo cercanos a US$900.000 millones.",
-      "effect": "Confirma demanda y monetización crecientes para la IA empresarial, pero también eleva la prueba de capital: la valoración y el retorno dependen de que los ingresos y la caja superen pérdidas y obligaciones de infraestructura de largo plazo.",
-      "base_scenario": "La inversión en IA continúa apoyando crecimiento, equipos e infraestructura, pero los beneficios se distribuyen de forma desigual; proveedores y empresas con energía, redes, capital, demanda verificable y caja avanzan primero bajo un costo de financiamiento elevado.",
-      "invalidate_if": "Una caída sostenida de pedidos, inversión y despachos, recortes generalizados de gasto o retornos insuficientes debilitarían la tesis de impulso macroeconómico; productividad amplia, caja creciente y adopción empresarial fuera de las grandes tecnológicas la reforzarían.",
-      "watch": "Precio final y demanda de la OPI de Anthropic, valoración al debut, ingresos, pérdidas, caja libre, compromisos de cómputo, gasto de capital de proveedores, energía y respuesta competitiva de OpenAI, Google, Nvidia y AMD.",
-      "last_publication": "/ediciones/2026-11-10-daily-anthropic-ipo-costos-ia/"
+      "thesis": "La inteligencia artificial mantiene un impulso real de inversión y adopción, pero su rentabilidad depende de capital, energía y caja, y su ejecución global está expuesta a la concentración de proveedores y liderazgos críticos.",
+      "status": "changed",
+      "last_evidence": "El 12 de noviembre Nvidia anunció la salida de su cofundador y CEO Jensen Huang y designó a la directora financiera Colette Kress como CEO interina. El cambio ocurre mientras el sector financia una expansión de cómputo de gran escala y somete a revisión sus perspectivas de rentabilidad.",
+      "effect": "Amplía la tesis desde selección financiera a riesgo de continuidad y gobernanza: la salida del liderazgo central de Nvidia crea incertidumbre sobre decisiones de producto, alianzas y exportación de chips; no prueba por sí sola cancelaciones de proyectos ni menor demanda de IA.",
+      "base_scenario": "La inversión empresarial en IA continúa, pero las empresas y economías más dependientes de proveedores clave ajustan sus decisiones a la transición de mando, la disponibilidad de chips, los costos energéticos y la conversión del gasto en caja.",
+      "invalidate_if": "Una transición estable de Nvidia, continuidad de pedidos, inversión y entregas y generación de caja sostenida reducirían el riesgo de ejecución; retrasos verificables en proyectos, cancelaciones, ventas débiles o pérdida duradera de capacidad de suministro lo reforzarían.",
+      "watch": "Nombramiento de CEO permanente de Nvidia, continuidad de productos y alianzas, pedidos y entregas de aceleradores, política de exportación de chips, resultados empresariales, próxima OPI de Anthropic, caja y costos de cómputo.",
+      "last_publication": "/ediciones/2026-11-13-daily-nvidia-liderazgo-cadena-ia/"
     },
     {
       "id": "chile-inflation-activity-rates",
