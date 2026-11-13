@@ -31,15 +31,15 @@ featured: false
 demo: false
 highlights:
   - label: "Nvidia cambia de líder en plena expansión mundial de la IA"
-    text: "Jensen Huang deja la dirección y el directorio; Colette Kress asume interinamente. El cambio añade incertidumbre sobre continuidad estratégica, sin demostrar una caída de la demanda."
+    text: "Jensen Huang deja la dirección y el directorio; Colette Kress asume interinamente. El cambio añade incertidumbre estratégica sin probar menor demanda."
   - label: "Una falla de Microsoft interrumpe servicios en todo el mundo"
-    text: "La incidencia de Microsoft 365 afectó Outlook, Teams y Copilot, y mostró la dependencia de empresas y organismos públicos de infraestructura tecnológica concentrada."
+    text: "La falla afectó Outlook, Teams y Copilot en varios países y mostró la dependencia de empresas y gobiernos de grandes servicios tecnológicos."
   - label: "Europa podría incorporarse a las negociaciones por Ucrania"
-    text: "Los enviados estadounidenses anuncian su participación en la próxima ronda; Kiev la respalda, mientras Moscú no ha confirmado plenamente el formato ni existe alto el fuego."
+    text: "EE. UU. anuncia presencia europea en próxima negociación; Kiev la respalda, Moscú no confirma plenamente el formato y aún no hay tregua."
   - label: "Los ataques amenazan una ruta petrolera alternativa a Ormuz"
-    text: "Los hutíes afirmaron atacar el oleoducto saudí hacia Yanbu; Arabia Saudita informó interceptaciones de drones. La interrupción efectiva de esa ruta no está acreditada."
+    text: "Los hutíes dijeron atacar el oleoducto hacia Yanbu; Arabia Saudita informó drones interceptados, sin confirmar una interrupción sostenida."
   - label: "Turquía obtiene US$1.600 millones para financiar su transición"
-    text: "El Banco Asiático de Inversión en Infraestructura acordó apoyo a reformas climáticas en COP31; el reto será movilizar inversión privada y ejecutar los proyectos."
+    text: "El AIIB pactó apoyo a reformas climáticas de Turquía durante COP31; el desafío es atraer capital privado y ejecutar proyectos."
 ---
 
 ## Hecho central
