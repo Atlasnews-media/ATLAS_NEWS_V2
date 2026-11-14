@@ -1,11 +1,11 @@
 ---
 title: "Una canasta básica comparable cuesta menos en España y pesa casi tres veces más sobre el salario chileno"
 summary: "Una comparación de 15 productos calculó un total de $50.610 en Chile y $45.870 en España. La diferencia de ingresos amplía la brecha: la compra equivale a 9,1% del salario mínimo chileno y 3,4% del español."
-publishedAt: "2026-11-14T13:04:25-03:00"
+publishedAt: "2026-11-14T13:08:17-03:00"
 cutoffAt: "2026-11-14T12:00:00-03:00"
 section: "national"
 editionSlot: "evening"
-status: "draft"
+status: "published"
 tags:
   - chile
   - costo-de-vida

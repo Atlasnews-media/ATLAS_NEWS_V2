@@ -1,11 +1,11 @@
 ---
 title: "Bitcoin cae bajo US$67.000 y las liquidaciones de posiciones largas dominan el fin de semana"
 summary: "El mercado cripto perdió 5,41% de valor y Bitcoin bajó a US$66.969 durante la mañana. Las liquidaciones sumaron US$358,7 millones, con US$282,3 millones concentrados en apuestas alcistas."
-publishedAt: "2026-11-14T13:04:25-03:00"
+publishedAt: "2026-11-14T13:08:17-03:00"
 cutoffAt: "2026-11-14T12:00:00-03:00"
 section: "markets"
 editionSlot: "evening"
-status: "draft"
+status: "published"
 tags:
   - mercados
   - bitcoin

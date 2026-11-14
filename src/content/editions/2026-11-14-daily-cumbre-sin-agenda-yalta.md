@@ -1,11 +1,11 @@
 ---
 title: "La cumbre Trump-Xi-Putin sigue sin agenda y reaviva el temor a una nueva Yalta"
 summary: "Las negociaciones de Shenzhen no han definido formato ni temario. China resiste discutir Ucrania y un pacto nuclear trilateral, mientras países excluidos temen que las potencias negocien sus intereses sin representación."
-publishedAt: "2026-11-14T13:04:25-03:00"
+publishedAt: "2026-11-14T13:08:17-03:00"
 cutoffAt: "2026-11-14T12:00:00-03:00"
 type: "daily"
 editionSlot: "evening"
-status: "draft"
+status: "published"
 tags:
   - geopolitica
   - china
