@@ -1,11 +1,11 @@
 ---
 title: "Las grandes potencias vuelven a negociar, pero sin acuerdos capaces de reducir el riesgo"
 summary: "Trump, Xi y Putin preparan una reunión inédita sobre armas nucleares en Shenzhen, mientras Europa ordena su representación para Ucrania. La inflación estadounidense y la división de COP31 limitan el margen económico de la diplomacia."
-publishedAt: "2026-11-14T06:01:39-03:00"
+publishedAt: "2026-11-14T06:47:15-03:00"
 cutoffAt: "2026-11-14T06:00:24-03:00"
 type: "daily"
 editionSlot: "morning"
-status: "draft"
+status: "published"
 tags:
   - geopolitica
   - china

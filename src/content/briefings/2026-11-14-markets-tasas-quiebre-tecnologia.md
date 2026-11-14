@@ -1,11 +1,11 @@
 ---
 title: "El salto de las tasas quiebra el rebote tecnológico antes del fin de semana"
 summary: "El Treasury cerró su peor semana en más de dieciocho meses y volvió a presionar a la tecnología. El petróleo terminó casi estable el viernes, señal de que el mercado separó el shock monetario del riesgo geopolítico."
-publishedAt: "2026-11-14T06:25:00-03:00"
+publishedAt: "2026-11-14T06:47:15-03:00"
 cutoffAt: "2026-11-14T06:23:00-03:00"
 section: "markets"
 editionSlot: "morning"
-status: "draft"
+status: "published"
 tags:
   - mercados
   - treasury

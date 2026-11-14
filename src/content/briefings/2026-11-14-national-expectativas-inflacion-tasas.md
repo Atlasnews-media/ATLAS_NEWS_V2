@@ -1,11 +1,11 @@
 ---
 title: "Operadores recortan la inflación esperada y descartan un alza local de tasas"
 summary: "La EOF redujo de 3,7% a 3,4% la inflación esperada a doce meses y mantuvo la TPM en 4,5% hasta 2028. La señal local diverge del endurecimiento que vuelve a descontarse en Estados Unidos."
-publishedAt: "2026-11-14T06:25:00-03:00"
+publishedAt: "2026-11-14T06:47:15-03:00"
 cutoffAt: "2026-11-14T06:22:00-03:00"
 section: "national"
 editionSlot: "morning"
-status: "draft"
+status: "published"
 tags:
   - chile
   - inflacion
