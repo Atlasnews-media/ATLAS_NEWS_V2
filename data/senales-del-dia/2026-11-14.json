@@ -1,0 +1,127 @@
+{
+  "status": "READY",
+  "date": "2026-11-14",
+  "contract": "atlas-senales-del-dia-v1",
+  "senalesDelDia": {
+    "internacional": [
+      {
+        "slot": "technology",
+        "headline": "Infineon procesa dispositivos de potencia en obleas SiC de 300 mm",
+        "deck": "La prueba produjo dispositivos funcionales en una fábrica a escala completa. La empresa aún no fijó una fecha para industrializar el proceso.",
+        "development": "Infineon informó el 9 de noviembre que procesó dispositivos de potencia funcionales sobre obleas de carburo de silicio, o SiC, de 300 milímetros en su fábrica de Villach, Austria. La compañía dijo que utilizó equipamiento existente para silicio y que una oblea de ese diámetro puede contener 2,3 veces más chips que una de 200 milímetros. El avance aborda una parte difícil de la fabricación de semiconductores de potencia: ampliar la superficie sin perder control del proceso. Esos componentes se usan en vehículos eléctricos, energías renovables, equipos industriales y fuentes de alimentación para centros de datos. La demostración acredita factibilidad dentro de una planta, pero no equivale a una línea comercial madura ni demuestra todavía costos finales, rendimiento por oblea o volúmenes de producción.\n\nLa empresa mantendrá en paralelo su hoja de ruta de SiC de 200 milímetros y definirá el calendario de la tecnología de 300 milímetros con clientes y socios. Esa cautela importa porque el aumento geométrico de chips potenciales no se convierte automáticamente en una reducción proporcional del costo: influyen los defectos, el suministro de cristales, la utilización de las máquinas y la demanda contratada. Un día después del anuncio, el presidente ejecutivo Jochen Hanebeck señaló que nuevas expansiones de capacidad necesitan compromisos de clientes para repartir el riesgo financiero. La próxima evidencia relevante será una decisión de industrialización acompañada por datos de rendimiento, capacidad comprometida y fechas de entrega.",
+        "anchor": "infineon-oblea-sic-300-mm-dispositivos-potencia",
+        "sources": [
+          {
+            "name": "Infineon — dispositivos funcionales en oblea SiC de 300 mm, 9 de noviembre",
+            "url": "https://www.infineon.com/press-release/2026/infpr202611-028"
+          },
+          {
+            "name": "Reuters — condiciones para ampliar capacidad de producción, 10 de noviembre",
+            "url": "https://www.reuters.com/business/infineon-cannot-expand-chip-capacity-alone-ceo-says-2026-11-10/"
+          }
+        ]
+      },
+      {
+        "slot": "world",
+        "headline": "La tuberculosis deja 2,2 millones de casos sin registrar",
+        "deck": "La OMS estima 10,6 millones de enfermos y 1,13 millones de muertes en 2025; el financiamiento interno subió, pero el aporte internacional cayó 14%.",
+        "development": "La Organización Mundial de la Salud estimó que 10,6 millones de personas enfermaron de tuberculosis en 2025 y que 1,13 millones murieron, según su informe global publicado el 12 de noviembre. Los países notificaron 8,4 millones de diagnósticos, por lo que unos 2,2 millones de casos quedaron sin diagnosticar o sin registrar. Solo 59% de los nuevos pacientes accedió inicialmente a una prueba rápida recomendada por la OMS. En tuberculosis resistente a rifampicina, el organismo calculó 370.000 casos y señaló que 42% recibió tratamiento. Las cifras proceden principalmente de información entregada por 187 países y territorios, que representan más de 99% de la población y de los casos mundiales; son estimaciones epidemiológicas y no un conteo individual completo.\n\nEl financiamiento muestra una sustitución parcial entre fuentes. Los recursos nacionales para prevención, diagnóstico y tratamiento en países de ingresos bajos y medios aumentaron 14% hasta US$5.600 millones en 2025. En cambio, el aporte de donantes internacionales cayó desde US$1.100 millones a US$940 millones, también 14%. El total disponible fue US$6.600 millones, todavía por debajo de los compromisos internacionales. La concentración importa: Brasil, Rusia, India, China y Sudáfrica explicaron 65% del financiamiento doméstico, mientras los países de menores ingresos dependen mucho más de donantes. El informe permite medir avances y brechas, pero la OMS advierte que las series actualizadas no deben compararse mecánicamente con estimaciones de ediciones antiguas.",
+        "anchor": "oms-tuberculosis-2026-casos-financiamiento",
+        "sources": [
+          {
+            "name": "OMS — Global Tuberculosis Report 2026, 12 de noviembre",
+            "url": "https://www.who.int/publications/i/item/9789240126480"
+          },
+          {
+            "name": "OMS — financiamiento para prevención, diagnóstico y tratamiento de TB",
+            "url": "https://www.who.int/teams/global-programme-on-tuberculosis-and-lung-health/tb-reports/global-tuberculosis-report-2026/tb-financing/4-1-financing-for-tb-prevention--diagnostic-and-treatment-services"
+          },
+          {
+            "name": "OMS — comunicado sobre carga, diagnóstico y tratamiento, 12 de noviembre",
+            "url": "https://www.who.int/news/item/12-11-2026-amid-challenges-countries-increase-domestic-investment-to-protect-progress-against-tuberculosis"
+          }
+        ]
+      }
+    ],
+    "nacional": [
+      {
+        "slot": "ipsa_company",
+        "headline": "Invercap reporta pérdida de US$32,6 millones en el tercer trimestre",
+        "deck": "Los ingresos consolidados bajaron 27,6% y el EBITDA cayó 90%. Las cifras reflejan la exposición de la sociedad de inversiones a CAP.",
+        "development": "Invercap reportó el 13 de noviembre una pérdida neta de US$32,6 millones para el tercer trimestre de 2026. Los ingresos consolidados alcanzaron US$363,8 millones, una disminución interanual de 27,6%, y el EBITDA fue de US$10,3 millones, 90% inferior al del mismo período de 2025, según las cifras financieras difundidas al mercado. Invercap es la sociedad de inversiones que controla CAP, por lo que sus estados consolidados recogen de forma dominante el desempeño de la siderúrgica y minera. De hecho, los ingresos informados para ambas sociedades coinciden en el trimestre, mientras el resultado final de Invercap incorpora su estructura societaria y financiera. La pérdida no debe interpretarse como una medida aislada de ventas o demanda de un único negocio.\n\nLa magnitud de la caída del EBITDA muestra que la reducción de ingresos tuvo un efecto mayor sobre la generación operacional antes de intereses, impuestos, depreciaciones y amortizaciones. Sin embargo, ese indicador no es equivalente al flujo de caja ni a la utilidad atribuible a cada accionista. Para separar las causas será necesario revisar el detalle de precios, volúmenes, costos, resultados financieros y participaciones no controladoras contenido en los estados financieros del período. La comparación también debe considerar que CAP informó su propio resultado trimestral y que las cifras de la matriz no se suman a las de la filial. La próxima referencia será la explicación de administración y la evolución del cuarto trimestre, no una extrapolación automática de esta pérdida.",
+        "anchor": "invercap-resultados-tercer-trimestre-2026",
+        "sources": [
+          {
+            "name": "Invercap — estados financieros y calendario de publicación 3T26",
+            "url": "https://invercap.cl/inversionistas/estados-financieros/"
+          },
+          {
+            "name": "BolsaChile — resultados de empresas del tercer trimestre de 2026",
+            "url": "https://bolsachile.com/cl/resultados"
+          }
+        ]
+      },
+      {
+        "slot": "policy_economy",
+        "headline": "Nueva ley reduce y gradúa multas por fertilizantes",
+        "deck": "La Ley 21.851 separa faltas formales de incumplimientos que afectan identidad, calidad, seguridad o trazabilidad de los productos.",
+        "development": "La Ley 21.851, publicada el 13 de noviembre, modificó el régimen de sanciones aplicable a fertilizantes y bioestimulantes. Los incumplimientos formales o administrativos que no afecten identidad, composición, calidad, seguridad o trazabilidad, ni induzcan a error, quedaron sujetos a multas de 10 a 100 unidades tributarias mensuales. La norma menciona entre esos casos errores de presentación, formato, unidades de medida o expresión de información. Para conductas que sí comprometan esas características, impidan identificar el producto, dificulten gravemente la fiscalización o puedan inducir a error, la banda se mantiene entre 100 y 1.000 UTM. La ley modifica el artículo 16 de la Ley 21.349; no elimina la fiscalización del Servicio Agrícola y Ganadero ni convierte toda infracción en una falta menor.\n\nLa reforma también fija criterios para determinar el monto dentro de cada rango. La autoridad deberá considerar la cantidad o valor de los productos involucrados, la gravedad de los daños, las medidas tomadas para reducirlos, el beneficio económico obtenido, la capacidad económica del infractor y sanciones previas del SAG en las mismas circunstancias. El cambio busca diferenciar errores administrativos de conductas que comprometen características sustantivas del producto, pero la sanción concreta seguirá dependiendo de los antecedentes de cada procedimiento. Productores, importadores, comercializadores y otros operadores deben mantener las obligaciones de composición, etiquetado y trazabilidad vigentes; la nueva ley altera la graduación de multas, no los estándares técnicos de los insumos.",
+        "anchor": "ley-21851-multas-fertilizantes-bioestimulantes",
+        "sources": [
+          {
+            "name": "Diario Oficial — texto íntegro de la Ley 21.851, 13 de noviembre",
+            "url": "https://boletinvirtual.cl/publicacion/2902373"
+          },
+          {
+            "name": "Senado de Chile — tramitación y alcance de la graduación de multas",
+            "url": "https://www.senado.cl/comunicaciones/noticias/tercer-tramite-graduacion-de-multas-por-mal-uso-de-fertilizantes"
+          },
+          {
+            "name": "Biblioteca del Congreso Nacional — sistema oficial Ley Chile",
+            "url": "https://nuevo.leychile.cl/"
+          }
+        ]
+      }
+    ],
+    "mercados": [
+      {
+        "slot": "markets_chile",
+        "headline": "Entel sube 12,2% tras acordar venta de su filial peruana",
+        "deck": "Millicom pactó pagar un valor empresa de US$1.714 millones. La operación y un eventual dividendo de $2.100 requieren condiciones y aprobaciones.",
+        "development": "La acción de Entel cerró el 13 de noviembre en $5.050, con un alza diaria de 12,22%, después de que la empresa informara un acuerdo para vender a Millicom el 100% de Entel Perú y Americatel Perú. El pacto asigna a los activos un valor empresa de US$1.714 millones y la compañía estima una utilidad neta extraordinaria cercana a $98.000 millones. El movimiento bursátil se sumó al avance de 10,84% del día anterior, cuando el mercado reaccionó a reportes todavía no confirmados sobre una posible operación. La confirmación posterior cambió la naturaleza de la información, pero el precio de la acción sigue reflejando expectativas y no garantiza que el valor final recibido por los accionistas coincida con el valor empresa anunciado.\n\nLa transacción requiere autorización de una junta extraordinaria convocada para el 30 de noviembre y está sujeta a otras condiciones necesarias para materializarla. Entel también propondrá un dividendo eventual de $2.100 por acción con cargo a utilidades acumuladas, condicionado al cierre de la venta. Por eso, el dividendo no es todavía un pago aprobado ni exigible. Entel Perú aporta más de un tercio de los ingresos del grupo y tiene más de 10 millones de clientes, de modo que la operación combina una entrada de recursos con la salida de un negocio relevante. El mercado deberá evaluar precio neto, deuda, impuestos, autorizaciones regulatorias, uso de fondos y la base de resultados de la compañía que permanece en Chile.",
+        "anchor": "entel-venta-peru-millicom-reaccion-bursatil",
+        "sources": [
+          {
+            "name": "Entel — información corporativa para inversionistas",
+            "url": "https://informacioncorporativa.entel.cl/inversionistas"
+          },
+          {
+            "name": "Agencia Andina — acuerdo Entel-Millicom y condiciones, 13 de noviembre",
+            "url": "https://andina.pe/agencia/noticia-entel-acuerda-venta-su-operacion-peru-un-valor-activo-1714-millones-1099896.aspx"
+          },
+          {
+            "name": "Financial Times — cierre y variación de la acción Entel, 13 de noviembre",
+            "url": "https://markets.ptc.ft.markitdigital.com/data/equities/tearsheet/historical?s=ENTEL%3ASGO"
+          }
+        ]
+      },
+      {
+        "slot": "markets_global",
+        "headline": "Fondos de acciones globales captan US$50.990 millones",
+        "deck": "Europa explicó US$35.130 millones en la semana al 11 de noviembre, el mayor monto desde 2021, mientras los fondos de bonos registraron salidas.",
+        "development": "Los fondos globales de acciones recibieron US$50.990 millones netos durante la semana terminada el 11 de noviembre, su mayor captación desde el 23 de septiembre, según datos de LSEG Lipper difundidos el 13 de noviembre. Europa concentró US$35.130 millones, el flujo semanal más alto hacia esa región desde junio de 2021. Los fondos estadounidenses sumaron US$6.600 millones y los asiáticos US$6.150 millones. La distribución sectorial fue menos uniforme: tecnología recibió US$2.620 millones, salud US$833 millones y finanzas US$820 millones, mientras industriales registró retiros por US$1.070 millones. Los datos describen compras y rescates en vehículos de inversión; no son equivalentes al volumen total negociado en bolsas ni prueban por sí solos una reasignación permanente.\n\nLa divergencia entre categorías aporta contexto adicional. Los fondos globales de bonos tuvieron salidas netas por US$507,9 millones, cortando siete semanas consecutivas de entradas, y los fondos monetarios registraron retiros de US$37.480 millones. En materias primas, los vehículos de metales preciosos captaron aproximadamente US$614 millones. El fuerte flujo hacia Europa coincidió con resultados corporativos favorables y con máximos del índice STOXX 600, aun cuando las acciones tecnológicas estadounidenses atravesaban una corrección. Una sola semana puede estar influida por operaciones grandes, cierres de mes o cambios tácticos. Para confirmar una rotación duradera habrá que observar si las entradas europeas se repiten, cómo evolucionan los fondos de renta fija y si el liderazgo sectorial se amplía más allá de tecnología, salud y finanzas.",
+        "anchor": "flujos-fondos-globales-acciones-europa-noviembre-2026",
+        "sources": [
+          {
+            "name": "Reuters / Euronext — flujos semanales de fondos según LSEG Lipper",
+            "url": "https://live.euronext.com/en/financial-news/demand-european-funds-boosts-global-equity-fund-inflows-seven-week-high"
+          },
+          {
+            "name": "LSEG FTSE Russell — Global Equity Insights, noviembre de 2026",
+            "url": "https://www.lseg.com/en/ftse-russell/market-insights/global-equity-insights/november-2026"
+          }
+        ]
+      }
+    ]
+  }
+}
