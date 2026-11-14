@@ -1,0 +1,23 @@
+VOZ 1: La señal local de esta mañana está en un cambio de expectativas. La Encuesta de Operadores Financieros redujo la inflación esperada a doce meses desde 3,7% a 3,4%, pero mantuvo la Tasa de Política Monetaria en 4,5% para diciembre, enero y también para los horizontes de 2027 y 2028.
+VOZ 2: ¿Eso significa que el Banco Central descartó subir la tasa?
+VOZ 1: No. La encuesta no es una decisión del Banco Central. Recoge la mediana de 65 participantes, entre bancos, AFP, aseguradoras, corredoras, fondos y otros operadores. Describe lo que espera el mercado después de la reunión de octubre, no lo que el Consejo está obligado a hacer.
+VOZ 2: Entonces la novedad es que el mercado no compró la alternativa de alza que apareció en la minuta.
+VOZ 1: Exactamente. El Consejo había considerado plausible mantener la TPM en 4,5% o subirla a 4,75%. La nueva EOF mantiene 4,5% como escenario central y, al mismo tiempo, baja la inflación prevista. Esa combinación sugiere que los operadores ven margen para una pausa prolongada.
+VOZ 2: ¿Cómo construyen esa moderación de inflación?
+VOZ 1: Esperan un IPC de 0,4% en noviembre, variación nula en diciembre y un avance de 0,3% en enero. A doce meses, la mediana cae a 3,4%, y para el período entre los meses 13 y 24 se mantiene en 3,2%. Es una convergencia gradual, no un retorno inmediato a 3%.
+VOZ 2: ¿Qué pasa con el dólar en esa lectura?
+VOZ 1: La encuesta lo sitúa cerca de 970 pesos tanto a siete como a veintiocho días. Ese dato importa porque el dólar es uno de los principales canales por los que el entorno global puede llegar a precios locales. Si sube de manera persistente, puede encarecer bienes importados y combustibles.
+VOZ 2: La General de hoy muestra justo lo contrario en Estados Unidos: inflación persistente y posibilidad de una Fed más dura.
+VOZ 1: Esa es la divergencia que vale desarrollar. En Estados Unidos, el IPC de octubre mantuvo presión subyacente y abrió el debate entre alzas de 25 o 50 puntos base. En Chile, los operadores esperan tasa estable e inflación descendente. La diferencia refleja condiciones domésticas distintas: actividad débil, demanda contenida y un traspaso de costos que todavía no es completo.
+VOZ 2: ¿Una Fed más restrictiva puede invalidar la pausa local?
+VOZ 1: Puede tensionarla, pero no de forma automática. Tasas estadounidenses más altas fortalecen al dólar y endurecen el financiamiento global. Para que eso cambie la decisión local tendría que transmitirse de manera persistente al tipo de cambio, a los precios internos y a las expectativas de inflación.
+VOZ 2: ¿Por qué no basta con que el dólar suba algunos días?
+VOZ 1: Porque el Banco Central evalúa magnitud, duración y propagación. Un movimiento transitorio puede revertirse sin dejar una huella importante. Un dólar alto durante meses, junto con energía cara y expectativas que dejan de converger, sería una señal más relevante.
+VOZ 2: ¿Y qué riesgo existe en confiar demasiado en la mediana?
+VOZ 1: Que oculta la dispersión. La respuesta central puede ser 4,5%, mientras una parte de los operadores asigna probabilidades a un alza. También puede cambiar rápido si aparecen nuevos datos. La EOF es una fotografía de expectativas tomada entre el 9 y el 10 de noviembre.
+VOZ 2: ¿Qué confirmaría esta lectura de pausa prolongada?
+VOZ 1: Que el IPC de noviembre se acerque al 0,4% esperado, que la inflación subyacente se modere y que las encuestas a uno y dos años sigan bajando. También que el dólar y la energía no generen un nuevo shock persistente.
+VOZ 2: ¿Qué la debilitaría?
+VOZ 1: Un IPC superior a lo previsto, una Fed más agresiva que impulse al dólar, o una escalada geopolítica que eleve energía y transporte. Si esas señales afectan expectativas locales, el escenario de 4,5% podría cambiar.
+VOZ 2: En resumen, ¿qué nos dice la encuesta?
+VOZ 1: Que el mercado local ve una inflación que baja lentamente y una TPM estable durante un período largo. No es una garantía ni una recomendación. Es una divergencia informativa frente al endurecimiento externo y una referencia para medir cuánto de ese shock global logra realmente transmitirse a Chile.

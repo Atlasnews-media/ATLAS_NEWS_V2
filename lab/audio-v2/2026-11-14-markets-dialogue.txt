@@ -1,0 +1,25 @@
+VOZ 1: El cierre del viernes dejó una señal más precisa que una simple caída de Wall Street: el mercado reprició las tasas de interés y castigó de manera selectiva a la tecnología.
+VOZ 2: ¿Qué tan grande fue ese movimiento en bonos?
+VOZ 1: El rendimiento del Treasury a diez años terminó en 5,14%, veintiocho puntos base por encima de la semana anterior. El de dos años subió treinta y tres puntos base hasta 4,85%. Para los bonos del Tesoro fue la peor semana en más de dieciocho meses.
+VOZ 2: ¿Qué está descontando el mercado con esa subida?
+VOZ 1: Un endurecimiento más claro de la Reserva Federal. Los precios incorporaron por completo un alza de veinticinco puntos base y mantuvieron abierta una acción de cincuenta. Esa discusión coincide con la General, que muestra inflación subyacente persistente en Estados Unidos.
+VOZ 2: Entonces, ¿por qué no cayeron todas las acciones por igual?
+VOZ 1: Porque una tasa de descuento más alta afecta con mayor intensidad a empresas cuyo valor depende de utilidades lejanas. El Nasdaq perdió 0,9% y el S&P 500 cayó 0,4%, pero el Dow avanzó 0,1%. El Russell 2000 retrocedió 0,3%.
+VOZ 2: ¿Eso descarta un episodio de aversión al riesgo?
+VOZ 1: No lo descarta para las próximas sesiones, pero el cierre del viernes no fue una venta indiscriminada. Los índices principales aún terminaron la semana con ganancias y la dispersión entre tecnología y Dow fue más informativa que el nivel agregado.
+VOZ 2: ¿Cuánto del golpe tecnológico vino de las tasas y cuánto de Nvidia?
+VOZ 1: Hubo ambos factores. El aumento de rendimientos elevó el costo de capital para todo el segmento, mientras la renuncia del responsable financiero de Nvidia agregó un catalizador corporativo. Separar los dos evita atribuir toda la caída a la Fed.
+VOZ 2: ¿Y el petróleo acompañó esa tensión?
+VOZ 1: No con la misma intensidad. Brent terminó casi sin cambios cerca de 95 dólares con 84 centavos, y WTI cedió 0,2% hasta 88 dólares con 56 centavos. Ambos completaron una segunda semana consecutiva a la baja.
+VOZ 2: ¿Cómo se interpreta que suban tanto las tasas y el crudo quede casi estable?
+VOZ 1: Como una divergencia cross-asset. Los bonos reaccionaron a inflación y política monetaria. El petróleo siguió ponderando oferta, inventarios y una prima geopolítica que todavía no se transformó en una escalada de precios.
+VOZ 2: La General habla de una futura reunión entre Trump, Xi y Putin. ¿El mercado ya reaccionó?
+VOZ 1: No a los titulares de este sábado. Los mercados estadounidenses están cerrados y no hay una sesión de futuros o de caja que permita afirmar una reacción. Los precios que comentamos son cierres efectivos del viernes.
+VOZ 2: Entonces, ¿qué podría cambiar cuando vuelva la negociación?
+VOZ 1: Un proceso diplomático verificable, con calendario y mecanismos concretos, podría reducir primas de incertidumbre. Una declaración general sin seguimiento tendría menos efecto, y dejaría a inflación y tasas como fuerzas dominantes.
+VOZ 2: ¿Qué señal debemos mirar primero en la apertura?
+VOZ 1: La combinación entre Treasury y amplitud accionaria. Si bajan los rendimientos y suben más sectores, la presión monetaria estaría cediendo. Si dos y diez años vuelven a subir mientras tecnología queda rezagada, el repricing se estaría confirmando.
+VOZ 2: ¿Y para Chile hay una conexión material?
+VOZ 1: Sí, pero indirecta. Tasas estadounidenses más altas pueden fortalecer al dólar y endurecer el financiamiento global. Nacional muestra que los operadores chilenos esperan una TPM estable e inflación descendente; la prueba es si el shock externo se transmite de forma persistente al tipo de cambio y a expectativas locales.
+VOZ 2: ¿Cuál es la síntesis del cierre?
+VOZ 1: El mercado separó tres historias: una Fed más dura en bonos, presión específica sobre tecnología y un petróleo contenido pese al riesgo geopolítico. Esa dispersión, más que un nivel aislado, es la clave para leer la próxima apertura.

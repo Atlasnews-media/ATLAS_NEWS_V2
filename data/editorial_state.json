@@ -15,14 +15,14 @@
     {
       "id": "us-employment-fed-rates",
       "topic": "Empleo de Estados Unidos y Reserva Federal",
-      "thesis": "La Fed inició un nuevo ciclo restrictivo en septiembre, pero la fuerte desaceleración del empleo reduce la urgencia de una segunda alza en octubre; energía e inflación mantienen abierta una acción posterior, con diciembre como ventana más plausible.",
-      "status": "changed",
-      "last_evidence": "El 6 de noviembre las nóminas estadounidenses aumentaron 165.000 en octubre, más del doble de las 65.000 esperadas; el desempleo bajó a 4,1%, septiembre fue revisado de 29.000 a 60.000 y la probabilidad implícita de un alza de la Fed en diciembre subió a 78%.",
-      "effect": "Cambia la lectura desde desaceleración laboral hacia resiliencia: la contratación, las revisiones y la caída del desempleo devuelven margen a la Fed para priorizar inflación y mantienen abierta una segunda alza, aunque el avance anual de salarios se moderó a 3,1% y aumentó el empleo parcial involuntario.",
-      "base_scenario": "La Fed mantiene abierta un alza de 25 puntos base en diciembre si el IPC y la energía confirman persistencia, mientras el empleo continúa en un régimen de baja contratación pero suficiente para sostener actividad y limitar recortes.",
-      "invalidate_if": "Un IPC débil, caída sostenida de energía y nuevos meses de nóminas bajas reducirían la probabilidad de alza; inflación persistente, salarios mensuales firmes y empleo por encima del equilibrio la reforzarían.",
-      "watch": "IPC del 10 de noviembre, PPI, salarios, revisiones de nóminas, empleo parcial involuntario, energía, comunicación de la Fed, probabilidad de diciembre y Treasury a dos y diez años.",
-      "last_publication": "/ediciones/2026-11-06-daily-eeuu-empleo-fed-diciembre/"
+      "thesis": "La resiliencia del empleo y tres meses consecutivos de inflación subyacente de 0,3% devuelven a la Fed una trayectoria restrictiva: diciembre ya concentra una probable alza y la discusión incluye 50 puntos base si persiste la amplitud de precios.",
+      "status": "confirmed",
+      "last_evidence": "El IPC de octubre subió 0,4% mensual y el componente sin alimentos ni energía avanzó 0,3% por tercer mes consecutivo; el resultado cumplió el umbral que Christopher Waller había señalado para considerar 50 puntos base en diciembre, mientras Mary Daly dijo el 13 de noviembre que probablemente será necesario subir tasas.",
+      "effect": "Confirma que la fortaleza laboral no fue una señal aislada: la persistencia de inflación en servicios y otros componentes transforma una segunda alza desde posibilidad abierta en escenario probable, aunque el tamaño de 50 puntos base continúa en debate y no está decidido.",
+      "base_scenario": "La Fed eleva la tasa al menos 25 puntos base en diciembre y conserva nuevas alzas para 2027; una acción de 50 puntos depende de que la inflación y las expectativas mantengan suficiente amplitud antes de la reunión.",
+      "invalidate_if": "Una desaceleración clara del IPC y PCE subyacentes, menor amplitud de precios y deterioro laboral reducirían el ritmo esperado; nuevas lecturas de 0,3% o más, traspaso desde márgenes y expectativas al alza reforzarían una acción de 50 puntos.",
+      "watch": "PPI de octubre, PCE, inflación de servicios y vivienda, expectativas, salarios, revisiones de nóminas, comunicación de la Fed, reunión del 8-9 de diciembre y curva de Treasury.",
+      "last_publication": "/ediciones/2026-11-14-daily-potencias-negocian-sin-acuerdos/"
     },
     {
       "id": "ai-monetization-selectivity",
