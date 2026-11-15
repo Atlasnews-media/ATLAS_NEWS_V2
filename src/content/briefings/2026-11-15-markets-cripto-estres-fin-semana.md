@@ -1,11 +1,11 @@
 ---
 title: "Cripto absorbe el estrés del fin de semana mientras los mercados tradicionales siguen cerrados"
 summary: "Bitcoin cayó a un mínimo de tres meses y las liquidaciones apalancadas bordearon US$1.900 millones. El movimiento entrega una señal de menor apetito por riesgo, pero no prueba cómo reaccionarán petróleo, bonos o acciones a la escalada regional."
-publishedAt: "2026-11-15T06:26:00-03:00"
+publishedAt: "2026-11-15T06:44:55-03:00"
 cutoffAt: "2026-11-15T06:24:00-03:00"
 section: "markets"
 editionSlot: "morning"
-status: "draft"
+status: "published"
 tags:
   - mercados
   - bitcoin

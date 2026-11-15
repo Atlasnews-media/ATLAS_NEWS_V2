@@ -1,11 +1,11 @@
 ---
 title: "Los nuevos topes de interés separan el costo del crédito por plazo y moneda"
 summary: "La CMF redujo el máximo para avances cortos y préstamos reajustables breves, pero elevó los límites del consumo a más de 90 días y del crédito en moneda extranjera. El cambio rige desde el 14 de noviembre."
-publishedAt: "2026-11-15T06:23:00-03:00"
+publishedAt: "2026-11-15T06:44:55-03:00"
 cutoffAt: "2026-11-15T06:21:00-03:00"
 section: "national"
 editionSlot: "morning"
-status: "draft"
+status: "published"
 tags:
   - chile
   - credito

@@ -1,11 +1,11 @@
 ---
 title: "El riesgo energético se expande desde Ormuz hacia bases del Golfo y Bab el-Mandeb"
 summary: "Bahréin interceptó ataques aéreos atribuidos a Irán y fuerzas yemeníes se retiraron de una zona próxima a Bab el-Mandeb. La escalada alcanza instalaciones militares y dos rutas marítimas clave mientras la diplomacia sigue sin acuerdo."
-publishedAt: "2026-11-15T06:00:28-03:00"
+publishedAt: "2026-11-15T06:44:55-03:00"
 cutoffAt: "2026-11-15T05:59:21-03:00"
 type: "daily"
 editionSlot: "morning"
-status: "draft"
+status: "published"
 tags:
   - geopolitica
   - iran
