@@ -43,7 +43,8 @@ concurrency:
 jobs:
   audio-v2:
     name: Generar Portada + Internacional + Nacional + Mercados
-    runs-on: ubuntu-latest
+    # Pin the runner: ubuntu-latest switched to 26.04, breaking torch==2.8.0 wheels.
+    runs-on: ubuntu-24.04
     timeout-minutes: 50
     env:
       ATLAS_SOURCE_SHA: ${{ github.sha }}
@@ -169,6 +170,12 @@ jobs:
           path: ~/.cache/huggingface
           key: audio-v2-alexc-v1-${{ runner.os }}
 
+      - name: Preparar Python compatible para motores de voz
+        if: steps.audio_v2_plan.outputs.needs_generation == 'true'
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
       - name: Preparar Kokoro + Alex C
         if: steps.audio_v2_plan.outputs.needs_generation == 'true'
         run: |
@@ -176,10 +183,12 @@ jobs:
           sudo apt-get update -qq
           sudo apt-get install -y -qq espeak-ng ffmpeg python3-venv
 
-          python3 -m venv "$RUNNER_TEMP/kokoro-v2-venv"
+          python3.11 -m venv "$RUNNER_TEMP/kokoro-v2-venv"
           source "$RUNNER_TEMP/kokoro-v2-venv/bin/activate"
           python -m pip install --quiet --upgrade pip
-          python -m pip install --quiet --index-url https://download.pytorch.org/whl/cpu             torch==2.8.0 torchaudio==2.8.0
+          # Detect incompatibilities immediately instead of silently skipping audio.
+          python -m pip install --quiet --index-url https://download.pytorch.org/whl/cpu torch==2.8.0 torchaudio==2.8.0
+          python -c "import sys, torch, torchaudio; assert sys.version_info[:2] == (3, 11); assert torch.__version__.startswith('2.8.0'); assert torchaudio.__version__.startswith('2.8.0'); print('Voice runtime verified:', sys.version, torch.__version__, torchaudio.__version__)"
           python -m pip install --quiet             "kokoro==0.9.4"             numpy==1.26.0             soundfile             resampy==0.4.3             librosa==0.10.0             s3tokenizer             transformers==4.46.3             diffusers==0.29.0             omegaconf==2.3.0             resemble-perth==1.0.1             silero-vad==5.1.2             conformer==0.3.2             safetensors             huggingface_hub
 
           git clone --quiet             https://huggingface.co/spaces/ResembleAI/Chatterbox-Multilingual-TTS-es-mx-latam             "$RUNNER_TEMP/chatterbox-latam"
