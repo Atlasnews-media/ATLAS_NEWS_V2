@@ -1,0 +1,25 @@
+VOZ 1: Desde este fin de semana rigen nuevos límites legales para los intereses que pueden cobrarse en Chile. La señal principal es que no todos los créditos se movieron en la misma dirección.
+VOZ 2: ¿Estamos hablando de una nueva decisión del Banco Central?
+VOZ 1: No. Estas tasas las publica la Comisión para el Mercado Financiero. El interés corriente resume lo que cobraron los bancos en operaciones del mes anterior, y el máximo convencional fija el techo legal que no puede superarse.
+VOZ 2: Entonces, ¿qué bajó concretamente?
+VOZ 1: En operaciones en pesos de menos de noventa días y hasta cinco mil UF, el máximo cayó desde 47,73% a 46,89% anual. Son 0,84 punto porcentual menos. También bajó el límite de operaciones reajustables a menos de un año, desde 5,51% a 5,12%.
+VOZ 2: ¿Eso significa que todos los avances y créditos en UF serán más baratos?
+VOZ 1: No necesariamente. El máximo es un límite, no el precio obligatorio. La tasa efectiva depende de la entidad, del riesgo del cliente, del plazo, de las garantías y de la competencia. Además, un crédito reajustable incorpora la variación de la UF.
+VOZ 2: ¿Qué segmentos subieron?
+VOZ 1: En créditos en pesos a noventa días o más y hasta cincuenta UF, el límite avanzó desde 41,02% a 41,12% anual. Entre cincuenta y doscientas UF subió también una décima, y entre doscientas y cinco mil UF aumentó quince centésimas.
+VOZ 2: Son cambios pequeños. ¿Por qué importan?
+VOZ 1: Porque muestran que el costo de referencia no está bajando de forma uniforme. Las operaciones cortas tuvieron alivio en el techo, mientras parte del crédito de consumo a mayor plazo permaneció caro o subió marginalmente.
+VOZ 2: ¿Dónde aparece el cambio más relevante para empresas?
+VOZ 1: En moneda extranjera. Hasta dos mil UF, el máximo subió desde 14,85% a 15,30%. Sobre dos mil UF pasó desde 8,37% a 9,18%, un aumento de 0,81 punto.
+VOZ 2: ¿Eso se conecta con el escenario internacional de la General?
+VOZ 1: Sí, como canal de riesgo y no como causalidad automática. La General describe mayor tensión sobre rutas energéticas y comerciales. Un entorno externo más incierto puede endurecer el financiamiento en dólares, pero el certificado chileno refleja operaciones realizadas durante octubre.
+VOZ 2: ¿Qué diferencia hace que una empresa exporte?
+VOZ 1: Una empresa que recibe dólares puede compensar parte de una deuda en esa moneda con sus propios ingresos. Una firma que vende en pesos y se endeuda en dólares agrega riesgo cambiario: si el dólar sube, aumenta su carga aun cuando la tasa contractual no cambie.
+VOZ 2: ¿Y para una familia qué lectura práctica deja?
+VOZ 1: Que debe mirar la tasa real de su oferta, el costo total y el plazo, no sólo el máximo legal. La baja del techo para operaciones cortas no convierte el crédito rotativo en financiamiento barato, y el aumento del límite en consumo largo tampoco obliga a que todos los emisores cobren más.
+VOZ 2: ¿Qué dato confirmaría que el cambio llegó efectivamente a los clientes?
+VOZ 1: Las tasas ofrecidas y contratadas durante las próximas semanas. También la morosidad, la demanda de crédito y la distancia entre la tasa cobrada y el máximo permitido.
+VOZ 2: ¿Qué podría cambiar esta lectura en diciembre?
+VOZ 1: El próximo certificado, las condiciones de captación de los bancos, el dólar, la UF y el riesgo de crédito. Si los máximos vuelven a moverse juntos, habría una señal más general. Si persiste la dispersión, habrá que seguir analizando cada segmento.
+VOZ 2: Entonces, ¿cuál es la conclusión?
+VOZ 1: El crédito chileno no recibió una sola señal. Bajaron algunos techos de corto plazo y reajustables, mientras subieron consumo largo y moneda extranjera. La composición por plazo, monto y divisa explica más que cualquier promedio.

@@ -1,0 +1,127 @@
+{
+  "status": "READY",
+  "date": "2026-11-15",
+  "contract": "atlas-senales-del-dia-v1",
+  "senalesDelDia": {
+    "internacional": [
+      {
+        "slot": "technology",
+        "headline": "EE.UU. desmantela infraestructura del esquema FaceStealer",
+        "deck": "La operación incautó servidores y más de 900 videos usados por hackers norcoreanos para engañar a trabajadores de cripto y desarrolladores de código abierto.",
+        "development": "El Departamento de Justicia de Estados Unidos informó el 12 de noviembre que incautó infraestructura en la nube utilizada en FaceStealer, un esquema atribuido por el FBI a actores norcoreanos. La técnica comenzaba con contactos dirigidos a trabajadores de criptomonedas y Web3, continuaba con reuniones falsas o versiones imitadas de plataformas de videoconferencia y terminaba con instrucciones que instalaban malware. El FBI dijo que recuperó más de 900 grabaciones de cámaras web que los atacantes reutilizaban para hacerse pasar por víctimas reales. Las autoridades vinculan la operación con robos superiores a US$400 millones durante los últimos 18 meses. Esa cifra describe pérdidas asociadas a la campaña investigada; no corresponde al valor de la infraestructura incautada ni implica que los fondos hayan sido recuperados en su totalidad.\n\nLa alerta amplía el foco más allá de las empresas cripto. El FBI señaló que los atacantes están apuntando con mayor frecuencia a mantenedores de software de código abierto para obtener acceso a dispositivos y cuentas de repositorios. Una cuenta comprometida podría abrir una vía hacia la cadena de suministro, aunque la incautación anunciada no demuestra que se haya distribuido código malicioso a gran escala. El cierre de servidores interrumpe recursos concretos y preserva evidencia, pero no elimina las identidades falsas, las técnicas de ingeniería social ni toda la infraestructura que el grupo pueda reemplazar. Para empresas y desarrolladores, la señal operativa es verificar por un canal independiente las reuniones inesperadas y evitar ejecutar supuestas correcciones técnicas enviadas durante una llamada.",
+        "anchor": "eeuu-face-stealer-infraestructura-norcorea",
+        "sources": [
+          {
+            "name": "Departamento de Justicia de EE.UU. — acciones contra FaceStealer, 12 de noviembre",
+            "url": "https://www.justice.gov/opa/pr/justice-department-announces-actions-disrupt-north-koreas-massive-theft-cryptocurrency"
+          },
+          {
+            "name": "FBI — esquema de robo de criptomonedas FaceStealer",
+            "url": "https://www.fbi.gov/investigate/cyber/facestealer-cryptocurrency-theft-scheme"
+          }
+        ]
+      },
+      {
+        "slot": "world",
+        "headline": "La OMS prolonga la emergencia internacional por poliovirus",
+        "deck": "El comité mantuvo por tres meses las recomendaciones temporales: en 2026 se registran 29 casos de virus salvaje en Afganistán y Pakistán.",
+        "development": "La Organización Mundial de la Salud mantuvo la propagación internacional de poliovirus como una emergencia de salud pública de importancia internacional y extendió por tres meses sus recomendaciones temporales. La decisión, comunicada el 13 de noviembre y efectiva desde el día 12, siguió la recomendación unánime del comité de emergencia del Reglamento Sanitario Internacional. En 2026 se han notificado 29 casos de poliovirus salvaje tipo 1: 25 en Afganistán y cuatro en Pakistán. Veinticinco aparecieron desde la reunión anterior del comité. La OMS también registró 204 muestras ambientales positivas en ambos países. El dato ambiental permite detectar circulación sin que necesariamente exista un caso paralítico asociado a cada muestra, por lo que no debe sumarse al recuento de personas enfermas.\n\nLas recomendaciones incluyen declarar o mantener el riesgo como emergencia nacional, reforzar vacunación y vigilancia, y aplicar medidas a viajeros internacionales según la categoría epidemiológica de cada Estado. La extensión no significa que todos los países enfrenten el mismo nivel de transmisión: el comité distingue entre Estados con infección activa y aquellos con detecciones dentro de los últimos 24 meses. Afganistán y Pakistán siguen siendo los dos países endémicos para el virus salvaje, con focos persistentes en el sur afgano, Khyber Pakhtunkhwa y Karachi. La próxima revisión deberá observar si disminuyen los casos y las detecciones ambientales y si las campañas alcanzan a comunidades móviles, fronterizas o con acceso sanitario limitado.",
+        "anchor": "oms-emergencia-poliovirus-noviembre-2026",
+        "sources": [
+          {
+            "name": "OMS — 46ª reunión del Comité de Emergencia sobre poliovirus, 13 de noviembre",
+            "url": "https://www.who.int/news/item/13-11-2026-statement-of-the-forty-sixth-meeting-of-the-polio-ihr-emergency-committee"
+          },
+          {
+            "name": "OMS — Comité de Emergencia del RSI sobre poliovirus",
+            "url": "https://www.who.int/groups/poliovirus-ihr-emergency-committee"
+          }
+        ]
+      }
+    ],
+    "nacional": [
+      {
+        "slot": "ipsa_company",
+        "headline": "Falabella eleva 18% su utilidad trimestral a US$196 millones",
+        "deck": "Los ingresos crecieron 10% y el EBITDA 12% en el tercer trimestre. Banco Falabella y el canal digital acompañaron la expansión del grupo.",
+        "development": "Falabella informó el 10 de noviembre una utilidad neta de US$196 millones en el tercer trimestre de 2026, 18% superior a la del mismo período del año anterior. Los ingresos consolidados llegaron a US$3.521 millones, con un aumento interanual de 10%, y el EBITDA alcanzó US$478 millones, 12% más. El margen EBITDA subió de 13,2% a 13,6%. En los primeros nueve meses, la utilidad acumulada fue de US$667 millones, también 18% mayor. Las cifras están expresadas por la compañía en dólares para facilitar la comparación regional; pueden diferir de agregados en pesos por conversión cambiaria y presentación contable. La mejora del trimestre combina negocios de retail, servicios financieros y centros comerciales, por lo que no corresponde atribuirla a una sola filial.\n\nEl reporte muestra que los ingresos de los tres retailers avanzaron 8%. Falabella Retail creció 9% y su volumen bruto de ventas en línea aumentó 17%. En los negocios financieros, las colocaciones de Banco Falabella alcanzaron US$8.500 millones, 17% más, mientras las compras con medios de pago del grupo sumaron US$7.500 millones, un alza de 14%. La empresa informó una morosidad consolidada de 2,7%, indicador que debe seguirse junto con provisiones y costo de riesgo antes de evaluar la calidad de la expansión crediticia. Para el próximo trimestre, las variables verificables serán la continuidad del crecimiento, la evolución de márgenes y cartera, y el efecto del consumo regional sobre ventas y financiamiento.",
+        "anchor": "falabella-resultados-tercer-trimestre-2026",
+        "sources": [
+          {
+            "name": "Grupo Falabella — resultados del tercer trimestre, 10 de noviembre",
+            "url": "https://investors.grupofalabella.com/blog/2026/11/10/utilidades-de-grupo-falabella-crecen-18-en-el-tercer-trimestre-y-alcanzan-us196-millones/"
+          },
+          {
+            "name": "Grupo Falabella — Earnings Release 3Q26",
+            "url": "https://investors.grupofalabella.com/app/uploads/2026/11/Earnings-Release-3Q26-ESP.pdf"
+          }
+        ]
+      },
+      {
+        "slot": "policy_economy",
+        "headline": "Pensiones regula el estudio actuarial del fondo previsional",
+        "deck": "La NCG 375 exige proyecciones de al menos 75 años, evaluación externa y un cronograma inicial antes del 1 de febrero de 2027.",
+        "development": "La Superintendencia de Pensiones emitió la Norma de Carácter General 375 para regular el estudio actuarial del Fondo Autónomo de Protección Previsional. La Ley 21.735 exige que el administrador realice ese ejercicio cada tres años para evaluar la sustentabilidad financiera del fondo y de las prestaciones que financia durante un horizonte mínimo de 75 años. La norma ordena proyectar ingresos, gastos, cotizaciones de empleadores, aportes del Estado, retornos de inversión y pagos de beneficios, incorporando escenarios adversos. También exige una evaluación externa realizada por profesionales independientes y una revisión técnica de la Superintendencia. El estudio es una herramienta de proyección bajo supuestos; no es una garantía de resultados ni reemplaza los estados financieros observados.\n\nPara iniciar el proceso, el administrador deberá remitir a la Superintendencia antes del 1 de febrero de 2027 un cronograma de actividades para elaborar el primer estudio. La ley establece que el informe final debe enviarse también a la Subsecretaría de Previsión Social y a la Dirección de Presupuestos, y que sus conclusiones pueden sustentar ajustes o explicar por qué no se proponen cambios. El FAPP informó previamente que espera presentar el primer estudio antes del plazo legal de agosto de 2028. La nueva regulación fija la metodología y los controles, pero no modifica por sí sola tasas de cotización, edades de jubilación ni montos de beneficios. Esas decisiones requieren los mecanismos legales y administrativos que correspondan.",
+        "anchor": "ncg-375-estudio-actuarial-fapp",
+        "sources": [
+          {
+            "name": "Veredictum — regulación del estudio actuarial del FAPP, 13 de noviembre",
+            "url": "https://veredictum.cl/superintendencia-de-pensiones-regula-estudio-actuarial/"
+          },
+          {
+            "name": "Superintendencia de Pensiones — Ley 21.735, artículo 51",
+            "url": "https://www.spensiones.cl/portal/institucional/594/articles-16483_recurso_1.pdf"
+          },
+          {
+            "name": "FAPP — primer balance económico y próximo estudio actuarial",
+            "url": "https://www.fapp.cl/noticias/presentacion-primer-balance-economico"
+          }
+        ]
+      }
+    ],
+    "mercados": [
+      {
+        "slot": "markets_chile",
+        "headline": "Tesorería coloca deuda a 4,28% en pesos y 2,86% en UF",
+        "deck": "La licitación del 12 de noviembre fijó esas tasas para bonos a uno y 30 años. El tramo largo en UF subió siete puntos base frente a octubre.",
+        "development": "Las licitaciones de deuda de la Tesorería realizadas el 12 de noviembre fijaron una tasa de 4,28% para el bono en pesos a un año y de 2,86% para el bono en UF a 30 años, según la Base de Datos Estadísticos del Banco Central. En el tramo largo indexado, la tasa aumentó siete puntos base frente al 2,79% registrado en la licitación del 29 de octubre. El cupo del BTU a 30 años fue de 500.000 UF y la demanda alcanzó 990.000 UF, cerca de dos veces la oferta. Esa relación muestra interés por el papel en esa subasta, pero no implica que su precio no pueda cambiar posteriormente ni mide por sí sola la demanda por toda la curva soberana chilena.\n\nLas dos tasas corresponden a plazos y unidades distintas: el bono de un año está denominado en pesos nominales, mientras el BTU de 30 años remunera sobre una unidad reajustable por inflación. Por ello, no son rendimientos directamente comparables ni deben interpretarse como dos estimaciones alternativas del mismo costo financiero. El nivel de adjudicación sirve como referencia primaria para la curva local y para inversionistas que valoran instrumentos públicos, aunque el mercado secundario puede incorporar después cambios en inflación esperada, política monetaria, liquidez y riesgo de duración. Las próximas licitaciones permitirán comprobar si el aumento del tramo largo en UF persiste o fue específico de esta colocación.",
+        "anchor": "tesoreria-licitacion-btp-btu-12-noviembre-2026",
+        "sources": [
+          {
+            "name": "Banco Central de Chile — tasa de licitación BTP a un año",
+            "url": "https://si3.bcentral.cl/siete/ES/Siete/Cuadro/CAP_EST_OMA/MN_EST_OMA/EM_OMA_BTP1?idSerie=F022.BTP.TIN.AN01.NO.Z.D"
+          },
+          {
+            "name": "Banco Central de Chile — licitación BTU a 30 años",
+            "url": "https://si3.bcentral.cl/Siete/ES/Siete/Cuadro/CAP_EST_OMA/MN_EST_OMA/EM_OMA_BTU30?id5=SI&idSerie=F022.BTU.TIN.AN30.UF.Z.D"
+          },
+          {
+            "name": "Ministerio de Hacienda — calendario de licitaciones",
+            "url": "https://www.hacienda.cl/areas-de-trabajo/finanzas-internacionales/oficina-de-la-deuda-publica/colocaciones-bcch-soma/calendario-de-licitaciones"
+          }
+        ]
+      },
+      {
+        "slot": "markets_global",
+        "headline": "El oro pierde 4,5% en su peor semana desde junio",
+        "deck": "El metal cerró cerca de US$3.880 por onza tras una fuerte corrección. Las expectativas de nuevas alzas de tasas volvieron a dominar su precio.",
+        "development": "El oro cerró la semana del 13 de noviembre con una caída cercana a 4,5%, la mayor desde junio. El contrato frontal de COMEX terminó alrededor de US$3.879,70 por onza, después de que el jueves tocara su nivel más bajo en más de un año. El viernes hubo una estabilización marginal: el oro al contado subió aproximadamente 0,1% y el futuro de diciembre se ubicó cerca de US$3.886,30. El rebote no compensó la corrección semanal. Los precios corresponden a referencias diferentes —contado, contrato frontal y futuro de diciembre—, por lo que sus niveles no deben mezclarse como si fueran una sola cotización. La señal común es la pérdida semanal del metal ante una nueva valoración del costo de mantener un activo que no paga intereses.\n\nEl dato de precios al productor de Estados Unidos moderó parcialmente la presión del viernes: el índice de demanda final aumentó 0,3% en octubre, frente a una expectativa de mercado de 0,4% citada por Reuters. Aun así, el aumento interanual fue de 6,5%, el mayor desde noviembre de 2022. Tras la publicación, los futuros de tasas reflejaban una probabilidad de 91,4% para un alza de 25 puntos base de la Reserva Federal en diciembre y de 8,6% para un incremento de 50 puntos. Esas probabilidades cambian con nuevos datos y no constituyen una decisión del banco central. La evolución del oro dependerá de cómo se actualicen las tasas reales, el dólar y la demanda de cobertura.",
+        "anchor": "oro-caida-semanal-noviembre-2026",
+        "sources": [
+          {
+            "name": "Reuters — oro y expectativas de tasas, 13 de noviembre",
+            "url": "https://www.reuters.com/world/india/gold-rises-bargain-hunting-heads-weekly-decline-2026-11-13/"
+          },
+          {
+            "name": "CME Group — liquidaciones diarias de futuros",
+            "url": "https://www.cmegroup.com/market-data/daily-settlements.html"
+          },
+          {
+            "name": "BLS — índice de precios al productor de octubre, 13 de noviembre",
+            "url": "https://www.bls.gov/news.release/archives/ppi_11132026.htm"
+          }
+        ]
+      }
+    ]
+  }
+}
