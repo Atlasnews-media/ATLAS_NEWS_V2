@@ -3,14 +3,14 @@
     {
       "id": "oil-geopolitics-inflation",
       "topic": "Petróleo, geopolítica e inflación",
-      "thesis": "La pausa de nuevos ataques directos estadounidenses contra Irán no equivale a desescalada logística: el bloqueo de Ormuz, los ataques a buques y ahora las amenazas a rutas alternativas saudíes mantienen el riesgo internacional de energía, seguros y suministro.",
+      "thesis": "La contención declarada entre Estados Unidos e Irán no equivale a desescalada regional: los ataques ya alcanzan bases del Golfo, rutas saudíes y territorio frente a Bab el-Mandeb, ampliando el riesgo internacional de energía, seguros y comercio más allá de Ormuz.",
       "status": "changed",
-      "last_evidence": "El 12 de noviembre los hutíes afirmaron haber atacado una estación de bombeo del oleoducto saudí Este-Oeste y una instalación en Yanbu; la coalición liderada por Arabia Saudita informó haber interceptado dos drones, sin confirmar todos los ataques atribuidos. Irán declaró incidentes en cuatro petroleros de Ormuz, versión no corroborada independientemente por Reuters.",
-      "effect": "Amplía el riesgo más allá del paso marítimo de Ormuz: el oleoducto que desvía crudo hacia el mar Rojo también entra en el radio de amenaza, reduciendo la seguridad de las rutas alternativas sin demostrar una interrupción efectiva sostenida de los envíos.",
-      "base_scenario": "La contención de nuevos bombardeos reduce parte del riesgo de escalada directa, pero el suministro sigue condicionado por seguridad en Ormuz y rutas saudíes de desvío; normalizar costos exige evidencia de navegación e infraestructura operativas y acuerdos verificables.",
-      "invalidate_if": "Una normalización sostenida de Ormuz, el mar Rojo y el mar Negro, petróleo estable bajo niveles previos al conflicto y desinflación amplia en salarios y precios debilitarían la tesis; nuevas interrupciones físicas y más alzas de bancos centrales la reforzarían.",
-      "watch": "Identificación independiente de buques dañados, seguridad de la ruta saudí Este-Oeste y Yanbu, tránsito Ormuz/Bab el-Mandeb, primas de seguros, capacidad exportadora efectiva, negociaciones regionales, petróleo e inflación internacional.",
-      "last_publication": "/ediciones/2026-11-13-daily-nvidia-liderazgo-cadena-ia/"
+      "last_evidence": "El 15 de noviembre Bahréin informó haber interceptado ataques aéreos mientras Irán afirmó lanzar seis drones contra un radar estadounidense, sin confirmación del impacto. Fuerzas yemeníes se retiraron de Dhubab y del área próxima a Bab el-Mandeb, dejando a los hutíes en territorio que domina el estrecho; Arabia Saudita informó nuevas intercepciones de misiles y drones.",
+      "effect": "Amplía el hilo desde buques y oleoductos hacia instalaciones militares y un segundo cuello de botella marítimo: el riesgo ya no depende solo del tránsito por Ormuz, aunque control territorial frente a Bab el-Mandeb no equivale a control efectivo de la navegación.",
+      "base_scenario": "La pausa de grandes ataques directos limita una guerra abierta, pero continúan incidentes de baja y mediana intensidad en el Golfo, Yemen y Arabia Saudita; los flujos se adaptan con mayores costos de seguridad, seguros, reservas y rutas alternativas.",
+      "invalidate_if": "Una reducción sostenida de ataques, navegación normal en Ormuz y Bab el-Mandeb, retiro de bloqueos y acuerdos verificables debilitarían la tesis; daños a bases, puertos, oleoductos o cierres efectivos de rutas la reforzarían.",
+      "watch": "Confirmación independiente de daños en Bahréin, respuesta estadounidense, despliegue hutí frente a Bab el-Mandeb, tránsito y seguros en Ormuz y mar Rojo, infraestructura saudí, capacidad exportadora, negociaciones y transmisión a inflación.",
+      "last_publication": "/ediciones/2026-11-15-daily-riesgo-energia-golfo-bab-el-mandeb/"
     },
     {
       "id": "us-employment-fed-rates",
