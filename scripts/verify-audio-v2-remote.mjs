@@ -16,8 +16,17 @@ function audioPath(value, label) {
   return value.slice(1);
 }
 
-export function verifyRemoteAudio({ plan, analysis, cover, date, sourceCommit }) {
-  requireCondition(plan?.date === date, "fecha del plan distinta de la edición.");
+export function verifyRemoteAudio({
+  plan,
+  analysis,
+  cover,
+  date,
+  sourceCommit,
+}) {
+  requireCondition(
+    plan?.date === date,
+    "fecha del plan distinta de la edición.",
+  );
   requireCondition(
     analysis?.date === date && analysis?.sourceCommit === sourceCommit,
     "manifiesto de análisis no pertenece a la edición y commit esperados.",
@@ -49,7 +58,9 @@ export function verifyRemoteAudio({ plan, analysis, cover, date, sourceCommit })
 
     requireCondition(
       !expected.unavailableReason,
-      section + " tiene fuente pero no puede producirse: " + expected.unavailableReason,
+      section +
+        " tiene fuente pero no puede producirse: " +
+        expected.unavailableReason,
     );
     requireCondition(
       observed.status === "published" &&
@@ -115,7 +126,9 @@ if (invokedAsScript) {
   const analysis = JSON.parse(
     git(repoDir, ["show", "origin/main:audio/analysis-latest.json"]),
   );
-  const cover = JSON.parse(git(repoDir, ["show", "origin/main:audio/latest.json"]));
+  const cover = JSON.parse(
+    git(repoDir, ["show", "origin/main:audio/latest.json"]),
+  );
   const result = verifyRemoteAudio({
     plan,
     analysis,
