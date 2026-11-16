@@ -1,11 +1,11 @@
 ---
 title: "China expone una economía partida entre exportaciones tecnológicas y demanda interna débil"
 summary: "La producción industrial china creció 4,8% en octubre, pero las ventas minoristas apenas avanzaron 0,4% y la inversión cayó 8,1% en diez meses. La manufactura avanzada sostiene la actividad mientras consumo y propiedad profundizan la brecha."
-publishedAt: "2026-11-16T06:46:09-03:00"
+publishedAt: "2026-11-16T07:44:26-03:00"
 cutoffAt: "2026-11-16T06:44:50-03:00"
 type: "daily"
 editionSlot: "morning"
-status: "draft"
+status: "published"
 tags:
   - china
   - economia-global
