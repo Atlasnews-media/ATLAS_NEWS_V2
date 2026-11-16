@@ -1,0 +1,25 @@
+VOZ 1: Los mercados comienzan la semana con una combinación que inquieta a los inversionistas: acciones tecnológicas a la baja y tasas de los bonos estadounidenses todavía muy elevadas.
+VOZ 2: ¿Dónde se observó la caída más clara?
+VOZ 1: Durante la sesión asiática del lunes, la bolsa de Taiwán retrocedía cerca de cinco por ciento y la de Corea del Sur alrededor de tres por ciento. En el seguimiento de Reuters, el índice global MSCI All World cedía cuatro décimas.
+VOZ 2: Pero Wall Street todavía no había cerrado el lunes.
+VOZ 1: Exactamente. Es importante distinguir horarios. Estas cifras describen la sesión asiática y las primeras operaciones europeas; no un cierre estadounidense que todavía no existía al momento de preparar la edición.
+VOZ 2: ¿Por qué fue especialmente fuerte el retroceso tecnológico?
+VOZ 1: Hay dos presiones simultáneas. La primera es empresarial: esta semana el mercado espera resultados de Nvidia y el previsto inicio de cotización de Anthropic. La segunda es financiera: el costo de los bonos hace más exigente la valoración de empresas cuyo crecimiento se proyecta muchos años hacia adelante.
+VOZ 2: ¿Qué significa un Treasury a diez años cerca de cinco coma catorce por ciento?
+VOZ 1: Que el rendimiento exigido a esa deuda soberana de Estados Unidos estaba alrededor de ese nivel. Venía de subir unos veintinueve puntos base la semana anterior. Cuando sube el rendimiento, cae el precio de los bonos ya emitidos.
+VOZ 2: ¿Y por qué un bono afecta a una empresa tecnológica?
+VOZ 1: Porque un inversionista compara alternativas y descuenta a valor presente ganancias futuras. Si aumenta la tasa de referencia, los flujos que llegarán dentro de muchos años valen menos hoy, todo lo demás constante.
+VOZ 2: ¿Podemos decir que esa es la única causa de la caída?
+VOZ 1: No. También están las noticias corporativas, los cambios de expectativas y la concentración de inversiones en un conjunto de compañías. Es una interpretación de transmisión financiera, no una prueba de causalidad exclusiva.
+VOZ 2: ¿Qué espera ahora el mercado de la Reserva Federal?
+VOZ 1: Los futuros de tasas reflejaban como escenario dominante un aumento de veinticinco puntos base en diciembre y una probabilidad menor a diez por ciento para una subida de cincuenta. Son probabilidades que cambian y no equivalen a una decisión oficial.
+VOZ 2: ¿Y el dólar?
+VOZ 1: Venía fortaleciéndose y, frente a una canasta de monedas, se ubicaba en su mayor nivel desde abril del año pasado. Rendimientos altos en Estados Unidos pueden favorecer esa demanda por dólares.
+VOZ 2: ¿El petróleo confirmó también un deterioro general de los mercados?
+VOZ 1: No de manera uniforme. En el registro citado por Reuters, Brent se situaba cerca de noventa y cinco dólares con ochenta y nueve centavos por barril, prácticamente estable en ese momento, después de dos semanas de bajas.
+VOZ 2: Entonces, ¿qué tiene de particular esta apertura?
+VOZ 1: Que la presión no se distribuye igual por sectores y geografías. El castigo a semiconductores en Asia fue mayor que la caída del índice mundial. Eso permite observar dónde se concentra el riesgo sin afirmar que todos los activos reaccionan de la misma manera.
+VOZ 2: ¿Qué información puede cambiar la lectura?
+VOZ 1: Los resultados y previsiones de Nvidia, la recepción bursátil de Anthropic y las minutas de la Reserva Federal. También será importante mirar los cierres efectivos de acciones, bonos y dólar con mayor liquidez.
+VOZ 2: ¿Cuál es la señal final de Mercados?
+VOZ 1: La semana abre con valoraciones tecnológicas bajo examen y un costo del dinero estadounidense superior a cinco por ciento en el plazo de diez años. La prueba será si nuevas cifras empresariales justifican los precios actuales o si continúa el ajuste.
