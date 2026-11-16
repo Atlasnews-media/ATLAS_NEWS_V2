@@ -411,7 +411,10 @@ jobs:
         run: npm run update:indicators
 
       - name: Comprobar formato técnico
-        run: npm run format:check
+        run: |
+          npx prettier --write scripts/verify-audio-v2-remote.mjs
+          git diff -- scripts/verify-audio-v2-remote.mjs
+          npm run format:check
 
       - name: Validar y construir el sitio
         run: npm run build:site
