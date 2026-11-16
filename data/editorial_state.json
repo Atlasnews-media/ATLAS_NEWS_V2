@@ -27,14 +27,14 @@
     {
       "id": "ai-monetization-selectivity",
       "topic": "Inteligencia artificial y selectividad bursátil",
-      "thesis": "La inteligencia artificial mantiene un impulso real de inversión y adopción, pero su rentabilidad depende de capital, energía y caja, y su ejecución global está expuesta a la concentración de proveedores y liderazgos críticos.",
+      "thesis": "La inversión en inteligencia artificial conserva impulso real, pero su rentabilidad y estabilidad dependen de transformar deuda, contratos y financiamiento circular en ingresos finales antes de que una corrección active contagios financieros y operacionales.",
       "status": "changed",
-      "last_evidence": "El 12 de noviembre Nvidia anunció la salida de su cofundador y CEO Jensen Huang y designó a la directora financiera Colette Kress como CEO interina. El cambio ocurre mientras el sector financia una expansión de cómputo de gran escala y somete a revisión sus perspectivas de rentabilidad.",
-      "effect": "Amplía la tesis desde selección financiera a riesgo de continuidad y gobernanza: la salida del liderazgo central de Nvidia crea incertidumbre sobre decisiones de producto, alianzas y exportación de chips; no prueba por sí sola cancelaciones de proyectos ni menor demanda de IA.",
-      "base_scenario": "La inversión empresarial en IA continúa, pero las empresas y economías más dependientes de proveedores clave ajustan sus decisiones a la transición de mando, la disponibilidad de chips, los costos energéticos y la conversión del gasto en caja.",
-      "invalidate_if": "Una transición estable de Nvidia, continuidad de pedidos, inversión y entregas y generación de caja sostenida reducirían el riesgo de ejecución; retrasos verificables en proyectos, cancelaciones, ventas débiles o pérdida duradera de capacidad de suministro lo reforzarían.",
-      "watch": "Nombramiento de CEO permanente de Nvidia, continuidad de productos y alianzas, pedidos y entregas de aceleradores, política de exportación de chips, resultados empresariales, próxima OPI de Anthropic, caja y costos de cómputo.",
-      "last_publication": "/ediciones/2026-11-13-daily-nvidia-liderazgo-cadena-ia/"
+      "last_evidence": "El 16 de noviembre Michael Barr advirtió que la deuda en balance de siete grandes firmas de IA superaría US$800.000 millones en 2026, mientras compromisos fuera de balance exceden US$3 billones y más de US$100.000 millones de inversiones circulares conectan proveedores con clientes.",
+      "effect": "Cambia el hilo desde riesgo de gobernanza y ejecución empresarial hacia estabilidad financiera: la exposición incluye deuda, garantías, contratos, fondos apalancados y algoritmos capaces de amplificar ventas o corridas; no equivale a una crisis ya materializada.",
+      "base_scenario": "La inversión en IA continúa y parte de la infraestructura resulta productiva, pero la selección aumenta: firmas con clientes finales y caja absorben tasas altas, mientras proyectos dependientes de financiamiento externo enfrentan spreads, refinanciamiento y revisión de garantías.",
+      "invalidate_if": "Un crecimiento sostenido de clientes pagadores, menor deuda y compromisos, spreads estables y ausencia de ventas forzadas debilitarían la tesis; incumplimientos, cancelaciones, uso de garantías, liquidaciones apalancadas o contagio bancario la reforzarían.",
+      "watch": "Ingresos y caja de grandes firmas y laboratorios, emisiones y spreads, crédito privado y financiamiento respaldado por activos, garantías de valor residual, exposiciones de fondos y bancos, volatilidad algorítmica, resultados de Nvidia y debut de Anthropic.",
+      "last_publication": "/ediciones/2026-11-16-daily-fed-ia-riesgo-financiero/"
     },
     {
       "id": "chile-inflation-activity-rates",
