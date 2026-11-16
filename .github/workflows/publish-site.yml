@@ -435,6 +435,26 @@ jobs:
             (.publications.markets >= 0)
           ' dist/status.json > /dev/null
 
+      - name: Bloquear despliegue de Matutina incompleta
+        if: github.event_name == 'push' && steps.edition.outputs.edition_type == 'daily' && steps.edition.outputs.edition_slot == 'morning'
+        env:
+          EDITION_DATE: ${{ steps.edition.outputs.edition_date }}
+        run: |
+          set -euo pipefail
+          observed_date="$(jq -r '.morningPackage.date // empty' dist/status.json)"
+          if [[ "$observed_date" != "$EDITION_DATE" ]]; then
+            echo "Edición histórica: no modifica la Matutina vigente; gate de completitud omitido."
+            exit 0
+          fi
+          if ! jq -e '
+            .morningPackage.generalPublished == true and
+            .morningPackage.nationalPublished == true and
+            .morningPackage.marketsPublished == true and
+            .morningPackage.completeness == 3
+          ' dist/status.json >/dev/null; then
+            echo "BLOQUEO: Matutina ${EDITION_DATE} incompleta; no se despliega la salida estática." >&2
+            exit 1
+          fi
       - name: Probar el auditor contra el build
         env:
           ATLAS_PUBLIC_DIR: dist
