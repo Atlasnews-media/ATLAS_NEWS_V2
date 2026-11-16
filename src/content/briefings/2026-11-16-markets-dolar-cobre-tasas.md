@@ -1,11 +1,11 @@
 ---
 title: "Dólar supera $1.000 mientras cobre y tasas endurecen la mañana chilena"
 summary: "El USD/CLP operaba en $1.001,2 a las 10:45, el cobre caía 0,74% y las tasas chilenas subían junto al Treasury. La coincidencia configura un ajuste cross-asset, aunque no prueba que un solo factor explique todos los movimientos."
-publishedAt: "2026-11-16T13:00:00-03:00"
+publishedAt: "2026-11-16T13:08:47-03:00"
 cutoffAt: "2026-11-16T12:00:00-03:00"
 section: "markets"
 editionSlot: "evening"
-status: "draft"
+status: "published"
 tags:
   - mercados
   - dolar

@@ -1,11 +1,11 @@
 ---
 title: "CMF multa a EY por auditoría insuficiente de Hipotecaria La Construcción"
 summary: "El regulador sancionó con UF 1.200 a la auditora y UF 400 a un socio por no reunir evidencia suficiente, no escalar deficiencias de control interno y tratar de forma incompleta alertas que afectaban estados financieros de 2022."
-publishedAt: "2026-11-16T13:00:00-03:00"
+publishedAt: "2026-11-16T13:08:47-03:00"
 cutoffAt: "2026-11-16T12:00:00-03:00"
 section: "national"
 editionSlot: "evening"
-status: "draft"
+status: "published"
 tags:
   - chile
   - cmf

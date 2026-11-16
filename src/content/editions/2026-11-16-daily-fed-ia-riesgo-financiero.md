@@ -1,11 +1,11 @@
 ---
 title: "La Fed alerta que la deuda y contratos de IA ya pueden amplificar una corrección"
 summary: "Michael Barr situó el riesgo de la inteligencia artificial más allá de las valoraciones: deuda acelerada, compromisos fuera de balance, financiamiento circular y automatización financiera pueden convertir una corrección sectorial en tensión sistémica."
-publishedAt: "2026-11-16T13:00:00-03:00"
+publishedAt: "2026-11-16T13:08:47-03:00"
 cutoffAt: "2026-11-16T12:00:00-03:00"
 type: "daily"
 editionSlot: "evening"
-status: "draft"
+status: "published"
 tags:
   - inteligencia-artificial
   - estabilidad-financiera
