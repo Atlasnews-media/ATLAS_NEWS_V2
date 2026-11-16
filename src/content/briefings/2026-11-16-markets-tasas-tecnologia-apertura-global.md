@@ -1,11 +1,11 @@
 ---
 title: "Tasas sobre 5% y tecnológicas presionan el inicio de semana"
 summary: "Las acciones tecnológicas lideraron las bajas en Asia y el índice mundial retrocedió 0,4%. El Treasury a diez años rondó 5,14% antes de resultados empresariales clave y señales de la Fed."
-publishedAt: "2026-11-16T08:31:00-03:00"
+publishedAt: "2026-11-16T08:42:46-03:00"
 cutoffAt: "2026-11-16T08:30:00-03:00"
 section: "markets"
 editionSlot: "morning"
-status: "draft"
+status: "published"
 tags:
   - mercados
   - renta-variable
