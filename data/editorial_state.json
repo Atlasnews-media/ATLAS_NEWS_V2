@@ -99,14 +99,14 @@
     {
       "id": "china-eu-industrial-trade",
       "topic": "Comercio industrial entre China y la Unión Europea",
-      "thesis": "El desequilibrio industrial entre China y Occidente ya es macroeconómico y tecnológico: China sostiene crecimiento con exportaciones y manufactura avanzada mientras administra la salida de modelos, datos y conocimiento, y sus socios responden con defensas comerciales y controles a chips y capital.",
-      "status": "confirmed",
-      "last_evidence": "El 10 de noviembre el superávit comercial de China alcanzó US$1,04 billones en los primeros diez meses; las exportaciones de octubre crecieron 35,2%, las de semiconductores 111,1% en el acumulado y los envíos de alta tecnología 47,9%, mientras la demanda interna siguió débil.",
-      "effect": "Confirma que China sostiene actividad y capacidad industrial mediante demanda externa y productos tecnológicos, pero el tamaño del superávit eleva la exposición a nuevas barreras de Estados Unidos y la Unión Europea y vincula el equilibrio comercial al ciclo global de inversión en inteligencia artificial.",
-      "base_scenario": "China conserva propiedad intelectual y capacidades estratégicas, exporta acceso mediante servicios y nube y exige licencias para transferencias sensibles; Estados Unidos y Europa mantienen controles sobre chips, capital e inversión, con mayor duplicación de infraestructura y cumplimiento.",
-      "invalidate_if": "Reglas finales amplias que permitan transferir modelos, datos e infraestructura sin licencias, junto con una apertura occidental sostenida a chips y capital, debilitarían la tesis; separaciones obligatorias de productos, bloqueos de centros de datos o represalias adicionales la reforzarían.",
-      "watch": "Cumbre APEC de Shenzhen y reunión Xi-Trump, extensión de la tregua comercial, aranceles y defensas europeas, exportaciones de semiconductores y vehículos, ciclo global de inversión en IA, consumo y propiedad en China, y composición de las importaciones.",
-      "last_publication": "/ediciones/2026-11-10-daily-china-superavit-ia-tension-comercial/"
+      "thesis": "El desequilibrio industrial entre China y Occidente se profundiza: exportaciones y manufactura avanzada sostienen el crecimiento mientras consumo, inversión y propiedad se debilitan, trasladando capacidad hacia mercados externos y elevando el riesgo de nuevas defensas comerciales.",
+      "status": "changed",
+      "last_evidence": "El 16 de noviembre la producción industrial de octubre creció 4,8% interanual y las ventas minoristas 0,4%, ambas por debajo de lo esperado; la inversión en activos fijos cayó 8,1% en enero-octubre y la inmobiliaria 21,6%, mientras la manufactura de alta tecnología avanzó 17,6%.",
+      "effect": "Profundiza la tesis desde el superávit comercial hacia su causa doméstica: la demanda interna y la propiedad no absorben toda la capacidad, por lo que tecnología y exportaciones sostienen la meta de crecimiento y aumentan la exposición a barreras externas.",
+      "base_scenario": "China alcanza su meta anual con exportaciones, equipos y alta tecnología, mientras aplica apoyo focalizado sin una reactivación amplia de consumo y propiedad; el crecimiento interno sigue desigual y sus socios refuerzan defensas comerciales.",
+      "invalidate_if": "Una recuperación sostenida de ventas minoristas, inversión privada y vivienda, acompañada de menor dependencia del superávit, debilitaría la tesis; nuevas caídas de demanda interna o medidas comerciales contra capacidad excedente la reforzarían.",
+      "watch": "Ventas minoristas, inversión fija e inmobiliaria, precios y ventas de vivienda, pedidos manufactureros, exportaciones de alta tecnología, cumbre APEC, reunión Xi-Trump, aranceles y defensas europeas, y ciclo global de inversión en IA.",
+      "last_publication": "/ediciones/2026-11-16-daily-china-demanda-interna-tecnologia/"
     },
     {
       "id": "developing-country-crisis-finance",
