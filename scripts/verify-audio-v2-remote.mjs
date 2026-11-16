@@ -9,8 +9,7 @@ function requireCondition(condition, message) {
 
 function audioPath(value, label) {
   requireCondition(
-    typeof value === "string" &&
-      /^\/audio\/[a-zA-Z0-9._-]+\.mp3$/.test(value),
+    typeof value === "string" && /^\/audio\/[a-zA-Z0-9._-]+\.mp3$/.test(value),
     label + " no tiene ruta MP3 pública válida.",
   );
   return value.slice(1);
