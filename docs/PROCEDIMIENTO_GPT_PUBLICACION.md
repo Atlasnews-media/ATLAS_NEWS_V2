@@ -91,7 +91,7 @@ Rama: editorial/AAAA-MM-DD-morning
 PR: Paquete editorial matutino — AAAA-MM-DD
 ```
 
-La rama se crea desde el `main` remoto vigente. Debe contener exactamente una edición General diaria de esa fecha y puede contener una pieza Nacional y una pieza Mercados. General es obligatoria; Nacional y Mercados son complementarias.
+La rama se crea desde el `main` remoto vigente. Durante su construcción debe contener exactamente una General de la fecha y puede incorporar Nacional y Mercados de forma progresiva. General es obligatoria para iniciar; **para promover y fusionar la Matutina deben existir las tres piezas válidas (3/3)**. Una validación verde del borrador parcial habilita las tareas siguientes, no la publicación web.
 
 No crear ramas o PR separados para Nacional y Mercados. Los tres contenidos comparten el mismo build, manifiesto, auditor, merge y despliegue.
 
@@ -101,7 +101,7 @@ No crear ramas o PR separados para Nacional y Mercados. Los tres contenidos comp
 2. Comprobar que no exista otra edición General diaria publicada o en preparación para la misma fecha.
 3. Crear o reutilizar únicamente la rama `editorial/AAAA-MM-DD-morning` para el paquete de esa fecha.
 4. Preparar General como `draft` con alcance exclusivamente internacional y evaluar solo la memoria editorial de los hilos efectivamente investigados por General.
-5. Preparar Nacional y Mercados como `draft` cuando estén disponibles; ambas pueden leer la memoria vigente, pero no escribirla.
+5. Preparar Nacional y Mercados como `draft` después de General; ambas pueden leer la memoria vigente, pero no escribirla. Si falta alguna, mantener abierto el PR y recuperar esa vertical antes de promoción.
 6. Actualizar `data/editorial_state.json` solo desde la evaluación de General, únicamente respecto de hilos efectivamente investigados y solo cuando exista un cambio editorial sustantivo.
 7. Incluir todos los archivos disponibles en la misma rama.
 8. Abrir o actualizar un único Pull Request normal, no Draft PR, titulado exactamente `Paquete editorial matutino — AAAA-MM-DD` contra `main`.
@@ -144,7 +144,7 @@ El check terminal autoritativo del núcleo web es `Validar, construir y publicar
 - La protección efectiva del merge está en comprobar el `head_sha` actual, esperar el check terminal de ese mismo SHA y fusionar con `expected_head_sha`; un verde de un SHA anterior nunca se reutiliza después de una corrección.
 - No se activa una exigencia de rama estrictamente actualizada con `main` mientras el Publicador no tenga un mecanismo de recuperación autónomo y probado para actualizar el PR morning cuando la base avance. Esa restricción, aplicada antes de disponer de recovery seguro, podría bloquear una edición válida por cambios concurrentes ajenos al paquete editorial.
 
-La edición General es obligatoria para completar el paquete matutino. Nacional y Mercados son componentes complementarios: su ausencia no debe provocar la creación de un segundo ciclo editorial ni bloquear una General válida cuando la política de publicación vigente permita continuar.
+La General puede estar validada como borrador antes de que Nacional y Mercados terminen. Sin embargo, la ausencia de cualquiera de las dos **bloquea la promoción y el merge del Morning Package**: conservar la rama y el PR, no republicar General de forma aislada, y mantener la versión pública previa hasta recuperar y validar las tres piezas. La comprobación final es siempre sobre el SHA real y terminal del PR.
 
 No es necesario ejecutar una aprobación humana ni convertir un Draft PR en Ready for review porque los PR editoriales se crean como PR normales. Si el paquete no se fusiona, la memoria editorial tampoco avanza en `main`.
 
@@ -178,7 +178,7 @@ El formato cosmético de los Markdown editoriales y de `data/editorial_state.jso
 
 La integridad se protege mediante validaciones objetivas: `validate:content`, esquema Astro, build, manifiesto y auditor. El formato técnico de código, workflows, componentes y documentación técnica continúa protegido por `format:check`.
 
-El workflow reconoce los paquetes matutino, Mediodía y Vespertino por sus ramas `editorial/AAAA-MM-DD-morning`, `editorial/AAAA-MM-DD-midday` y `editorial/AAAA-MM-DD-evening`. Cada uno exige exactamente una General de su propio `editionSlot` y admite como máximo una Nacional y una Mercados del mismo tramo. La tarea Vespertina exige las tres piezas. La memoria operacional se registra una sola vez por paquete usando la identidad de General; las verticales no crean secuencias operacionales separadas.
+El workflow reconoce los paquetes matutino, Mediodía y Vespertino por sus ramas `editorial/AAAA-MM-DD-morning`, `editorial/AAAA-MM-DD-midday` y `editorial/AAAA-MM-DD-evening`. Durante la construcción, cada rama exige General y admite como máximo una Nacional y una Mercados del mismo tramo; la Matutina y la Vespertina requieren las tres piezas para publicarse. La comprobación fail-closed del despliegue matutino se aplica únicamente cuando un push intenta promocionar la General de esa edición, sin bloquear builds de borradores ni recuperaciones históricas. La memoria operacional se registra una sola vez por paquete usando la identidad de General; las verticales no crean secuencias operacionales separadas.
 
 ## Panorama semanal
 
