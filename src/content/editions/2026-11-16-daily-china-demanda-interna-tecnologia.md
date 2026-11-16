@@ -33,7 +33,7 @@ highlights:
   - label: "La inversión inmobiliaria retrocede 21,6% este año"
     text: "La caída de propiedad siguió debilitando el patrimonio de los hogares y la demanda de sectores orientados al mercado interno."
   - label: "La manufactura de alta tecnología crece 17,6%"
-    text: "El avance contrasta con el conjunto de la industria y confirma que exportaciones, equipos e inteligencia artificial sostienen una economía cada vez más desigual."
+    text: "El avance contrasta con el conjunto de la industria y confirma que exportaciones, equipos e inteligencia artificial sostienen una economía desigual."
 ---
 
 ## Hecho central
