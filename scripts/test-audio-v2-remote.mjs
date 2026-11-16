@@ -171,4 +171,6 @@ assert.throws(
   /Portada actual/,
 );
 
-console.log("Contrato remoto Audio V2: parcial legítimo y completo válidos; fallos reales rechazados.");
+console.log(
+  "Contrato remoto Audio V2: parcial legítimo y completo válidos; fallos reales rechazados.",
+);
