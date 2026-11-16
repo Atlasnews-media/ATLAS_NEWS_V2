@@ -174,7 +174,7 @@ jobs:
         if: steps.audio_v2_plan.outputs.needs_generation == 'true'
         uses: actions/setup-python@v5
         with:
-          python-version: '3.11'
+          python-version: "3.11"
 
       - name: Preparar Kokoro + Alex C
         if: steps.audio_v2_plan.outputs.needs_generation == 'true'
