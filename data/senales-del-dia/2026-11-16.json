@@ -1,0 +1,115 @@
+{
+  "status": "READY",
+  "date": "2026-11-16",
+  "contract": "atlas-senales-del-dia-v1",
+  "senalesDelDia": {
+    "internacional": [
+      {
+        "slot": "technology",
+        "headline": "CISA prioriza dos fallas explotadas en Check Point y UnrealIRCd",
+        "deck": "La agencia estadounidense añadió dos vulnerabilidades a su catálogo de explotación conocida y fijó el 16 de noviembre como plazo federal de corrección.",
+        "development": "La agencia estadounidense CISA incorporó el 13 de noviembre dos vulnerabilidades al catálogo de fallas explotadas, conocido como KEV. La primera, CVE-2026-123039, afecta a productos de Check Point y está relacionada con permisos incorrectos sobre un recurso crítico; la segunda, CVE-2026-114713, corresponde a UnrealIRCd y permite manipular comandos entre servidores enlazados. La incorporación al catálogo responde a evidencia de explotación observada, no a una prueba de compromiso de todos los equipos que utilicen esos productos. Ambas entradas señalan el 16 de noviembre como fecha límite de mitigación para las agencias civiles federales de Estados Unidos bajo las directivas aplicables.\n\nLa diferencia operativa es importante: en Check Point, el riesgo destacado es la elevación de privilegios en un sistema de seguridad; en UnrealIRCd, el problema puede comprometer la autoridad de los servidores dentro de una red IRC conectada. La prioridad de una organización depende de sus versiones, exposición y controles, no únicamente del nombre de la vulnerabilidad. Los responsables deben comprobar los avisos y parches del fabricante, revisar registros e indicadores de compromiso cuando corresponda y documentar si los servicios vulnerables están efectivamente presentes. El plazo federal no es una obligación legal automática para todas las empresas del mundo, pero sí ofrece una referencia pública sobre la urgencia atribuida por CISA.",
+        "anchor": "cisa-kev-checkpoint-unrealircd-noviembre-2026",
+        "sources": [
+          {
+            "name": "CISA — catálogo de vulnerabilidades explotadas conocidas",
+            "url": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog"
+          },
+          {
+            "name": "ThaiCERT — inclusión de Check Point y UnrealIRCd en KEV, 16 de noviembre",
+            "url": "https://www.thaicert.or.th/en/2026/11/16/cisa-adds-check-point-and-unrealircd-vulnerabilities-to-kev-catalog-following-confirmed-active-exploitation/"
+          }
+        ]
+      },
+      {
+        "slot": "world",
+        "headline": "PMA pierde cobertura alimentaria para 900 mil personas en Sudán",
+        "deck": "La agencia de la ONU redujo su asistencia por falta de fondos y solicita US$520 millones para atender a 5,4 millones de personas hasta abril de 2027.",
+        "development": "El Programa Mundial de Alimentos de Naciones Unidas informó el 12 de noviembre que los recortes de financiamiento obligaron a retirar la asistencia alimentaria a unas 900.000 personas vulnerables de Sudán durante los últimos meses. Tras atender a más de cuatro millones en agosto, el organismo señaló que su cobertura actual supera apenas los tres millones. La advertencia llegó al término de la primera visita de su nuevo director ejecutivo, Luke Lindberg, a comunidades desplazadas y equipos humanitarios en el país. La reducción de beneficiarios no equivale a una caída de las necesidades: refleja la distancia creciente entre la población que requiere ayuda y los recursos disponibles.\n\nEl organismo calcula que necesita urgentemente US$520 millones para proveer asistencia alimentaria y nutricional que salve vidas a 5,4 millones de personas hasta abril de 2027. Esta cifra es una meta de atención y financiamiento, no un recuento de entregas ya efectuadas. La guerra, los desplazamientos, la inseguridad y el deterioro de carreteras impiden además distribuir víveres aun cuando existan suministros. El costo de alimentos y combustibles agrava la presión sobre las familias, especialmente en áreas de riesgo de hambruna. La próxima evidencia relevante será la movilización efectiva de recursos y la capacidad de llegar a los asentamientos, no sólo nuevos anuncios de apoyo internacional.",
+        "anchor": "pma-sudan-recorte-asistencia-900mil-noviembre-2026",
+        "sources": [
+          {
+            "name": "Programa Mundial de Alimentos — comunicado sobre Sudán, 12 de noviembre",
+            "url": "https://www.wfp.org/news/world-food-programme-executive-director-calls-end-fighting-sudan"
+          },
+          {
+            "name": "Sudan Tribune — reducción de ayuda alimentaria, 13 de noviembre",
+            "url": "https://sudantribune.com/article/321165"
+          }
+        ]
+      }
+    ],
+    "nacional": [
+      {
+        "slot": "ipsa_company",
+        "headline": "Ripley vuelve a bonos locales con UF 1 millón a UF más 3,78%",
+        "deck": "La compañía colocó deuda de la serie R por unos US$42 millones, su primera operación de este tipo desde 2021, para refinanciar pasivos.",
+        "development": "Ripley Corp concretó el 12 de noviembre una colocación de bonos por UF 1 millón en el mercado chileno, equivalente a aproximadamente $41.300 millones o US$42 millones a los valores informados de esa jornada. La emisión de la serie R se adjudicó mediante remate a una tasa promedio de UF más 3,78% anual. Es el retorno de la compañía a las colocaciones locales después de cinco años. Según la información publicada por Diario Financiero, la tasa representó un diferencial cercano a 115 puntos base sobre el bono soberano en UF utilizado como referencia. Ese diferencial compara riesgos y plazos de instrumentos específicos; no mide el costo promedio de toda la deuda corporativa de Ripley.\n\nLa emisión tiene como finalidad refinanciar obligaciones existentes y contempla tres años iniciales sin amortizar capital, seguidos de pagos hasta 2038. La empresa dispone de una opción de prepago desde 2029 bajo condiciones contractuales, por lo que no corresponde presentar ese año como vencimiento obligatorio. Feller Rate registró la clasificación A+ de las nuevas líneas, con perspectiva estable, aunque la calificación no elimina riesgo de crédito ni de precio. Para la estructura financiera de Ripley, el punto a seguir será cómo la sustitución de vencimientos modifica liquidez, gastos financieros y concentración de amortizaciones. Para los tenedores, la indexación a UF implica reajuste por inflación, pero la cotización de mercado seguirá cambiando cuando se muevan las tasas exigidas.",
+        "anchor": "ripley-bonos-uf-millon-noviembre-2026",
+        "sources": [
+          {
+            "name": "Diario Financiero — Ripley coloca su serie R, 12 de noviembre",
+            "url": "https://www.df.cl/mercados/renta-fija/ripley-corp-levanta-mas-de-us-40-millones-con-su-primera-oferta-de-bonos"
+          },
+          {
+            "name": "Feller Rate — clasificaciones y hechos esenciales de Ripley Corp",
+            "url": "https://www.fellerate.cl/clasificacion-riesgo/14537/ripley-corp"
+          }
+        ]
+      },
+      {
+        "slot": "policy_economy",
+        "headline": "Presupuesto 2027 pasa al Senado con siete partidas sin respaldo",
+        "deck": "Tras las votaciones en la Cámara, el Senado prepara tres jornadas de revisión. La discusión aún puede modificar gastos y reasignaciones.",
+        "development": "La Cámara de Diputadas y Diputados despachó el viernes 13 de noviembre el proyecto de Presupuestos para 2027 después de una tramitación intensa, con siete partidas que no obtuvieron el respaldo necesario en distintas etapas. Según el balance difundido el domingo por Emol, seis corresponden a gastos variables de Interior, Educación, Secretaría General de Gobierno, Minería, Mujer y Equidad de Género, y Culturas; la partida de Ciencia también había quedado sin reposición tras la revisión de la Comisión Mixta. El debate pasa ahora al Senado, donde se esperan tres jornadas de discusión y votación durante la semana. El despacho desde una cámara no equivale a aprobación definitiva de la Ley de Presupuestos.\n\nLa diferencia entre partidas rechazadas y gasto público efectivamente eliminado es esencial. El Senado puede reponer, ajustar o mantener disposiciones y, si persisten desacuerdos, deben activarse las etapas constitucionales correspondientes. El análisis de las glosas también importa: dos montos idénticos pueden implicar condiciones de ejecución muy distintas. La tramitación se produce mientras el Congreso discute separadamente la propuesta sobre combustibles; no es correcto tratar ambas iniciativas como si fueran una sola negociación o atribuirles automáticamente el mismo impacto financiero. Las señales a observar son las votaciones por partida, las indicaciones aprobadas y el texto de salida, antes de asignar efectos concretos a programas o beneficiarios.",
+        "anchor": "presupuesto-2027-senado-siete-partidas-noviembre",
+        "sources": [
+          {
+            "name": "Emol — balance de la Cámara y debate en el Senado, 15 de noviembre",
+            "url": "https://www.emol.com/noticias/Nacional/2026/11/15/1217153/senado-discusion-ley-presupuesto-2027.html"
+          },
+          {
+            "name": "Cámara de Diputadas y Diputados — tramitación boletín 18702-05",
+            "url": "https://www.camara.cl/legislacion/proyectosdeley/tramitacion.aspx?prmBOLETIN=18702-05&prmID=19391"
+          }
+        ]
+      }
+    ],
+    "mercados": [
+      {
+        "slot": "markets_chile",
+        "headline": "IPSA cierra semana al alza, pero el dólar reduce retorno externo",
+        "deck": "El índice chileno avanzó 1,17% en cinco sesiones hasta 10.660 puntos, mientras la depreciación del peso modificó el resultado para inversionistas medidos en dólares.",
+        "development": "La bolsa chilena cerró el viernes 13 de noviembre con una recuperación semanal cercana a 1,17% del índice MSCI IPSA, según el balance de Diario Financiero. La referencia de mercado de LarrainVial situó el cierre del indicador en 10.660,26 puntos, con un alza diaria de 0,33%, y mostró que 19 de los 28 componentes del índice ganaron terreno a lo largo de la semana. Los datos corresponden al cierre del viernes, no a una cotización abierta de este lunes. El avance agregado señala una mejora de precios en pesos, pero la amplitud tampoco implica que las 28 compañías hayan subido ni que la valorización fundamental de todas ellas cambiara en la misma proporción.\n\nLa divergencia aparece al medir el retorno en una moneda extranjera. La depreciación del peso chileno durante esos cinco días contrarrestó el rendimiento bursátil para un inversionista que convierte su cartera a dólares, según la comparación recogida por Diario Financiero. Un índice que sube en pesos puede mostrar un retorno plano o negativo en dólares cuando la variación cambiaria es suficientemente grande; la magnitud exacta depende de los puntos de entrada y salida de cada cálculo. La señal para esta semana será comprobar si el avance tiene continuidad entre sectores y si el tipo de cambio acompaña o neutraliza las ganancias locales. No debe confundirse el último cierre bursátil disponible con una predicción sobre la apertura del lunes.",
+        "anchor": "ipsa-semana-pesos-dolares-noviembre-2026",
+        "sources": [
+          {
+            "name": "Diario Financiero — balance de la Bolsa de Santiago, 13 de noviembre",
+            "url": "https://www.df.cl/mercados/bolsa-monedas/bolsas-hoy-pcuu6"
+          },
+          {
+            "name": "LarrainVial — indicadores de mercado Chile, último cierre 13 de noviembre",
+            "url": "https://mercados.larrainvial.com/www/v2/index.html?mercado=chile"
+          }
+        ]
+      },
+      {
+        "slot": "markets_global",
+        "headline": "AIE proyecta superávit petrolero de 1,7 millones de barriles",
+        "deck": "El informe de noviembre revisó al alza la oferta del cuarto trimestre por mayores exportaciones del Golfo, aunque advierte riesgos para el suministro.",
+        "development": "La Agencia Internacional de Energía revisó el 13 de noviembre el balance del mercado petrolero mundial y pasó a proyectar un excedente de oferta durante el último trimestre de 2026. Su informe estimó una producción media cercana a 105 millones de barriles diarios, aproximadamente 1,7 millones por encima de la demanda prevista para ese período. El organismo registró además un aumento de 2,3 millones de barriles diarios en el suministro de octubre, hasta 105,4 millones, apoyado en mayores exportaciones desde el Golfo. La revisión modifica la lectura sobre inventarios esperados, pero es una estimación de balance y no un conteo definitivo de barriles almacenados o disponibles en todos los puertos.\n\nEl informe llega en un entorno de riesgos físicos persistentes para rutas marítimas e instalaciones. La AIE informó que miembros de la agencia prevén poner a disposición 71 millones de barriles de reservas de emergencia hasta febrero, entre ellos unos 15 millones de diésel. Esas cantidades corresponden a disponibilidad planificada y no garantizan que todo el volumen llegue simultáneamente a consumidores. Un excedente mundial de crudo puede coexistir con escasez de productos refinados si refinerías, transporte o inventarios regionales están tensionados. El indicador a observar no es sólo el precio del Brent en una sesión, sino la relación entre exportaciones verificadas, procesamiento de refinerías, existencias y demanda de combustibles; los ataques o nuevas interrupciones podrían alterar rápidamente el escenario central.",
+        "anchor": "aie-petroleo-superavit-cuarto-trimestre-2026",
+        "sources": [
+          {
+            "name": "Agencia Internacional de Energía — Oil Market Report noviembre 2026",
+            "url": "https://www.iea.org/reports/oil-market-report-november-2026"
+          },
+          {
+            "name": "Reuters — AIE revisa balance global de petróleo, 13 de noviembre",
+            "url": "https://www.reuters.com/business/energy/world-oil-market-is-returning-surplus-gulf-exports-recover-iea-says-2026-11-13/"
+          }
+        ]
+      }
+    ]
+  }
+}
