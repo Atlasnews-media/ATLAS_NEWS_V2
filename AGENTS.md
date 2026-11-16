@@ -35,7 +35,7 @@ Mantener un periódico financiero digital donde el código, los datos y el conte
 - La rama canónica del paquete diario es `editorial/AAAA-MM-DD-morning`.
 - El Pull Request canónico se titula `Paquete editorial matutino — AAAA-MM-DD`.
 - El paquete contiene exactamente una edición General diaria y puede contener como máximo una pieza Nacional y una pieza Mercados para la misma fecha.
-- General es obligatoria. Nacional y Mercados son componentes complementarios y pueden faltar sin crear una segunda edición General ni un segundo pipeline.
+- General es obligatoria y se valida primero en el PR matutino. Nacional y Mercados se incorporan progresivamente, sin crear otra General ni otro pipeline. La validación intermedia de General no autoriza el merge ni la publicación: el Publicador sólo promueve y fusiona un paquete matutino completo 3/3 y validado en su SHA final. Si faltan verticales, conserva el PR y la última Portada pública válida.
 - Los tres contenidos, cuando existan, viajan en la misma rama y el mismo Pull Request y se validan con un solo build.
 - Un merge del paquete produce un solo despliegue del sitio.
 - No crear ramas, Pull Requests, merges o despliegues independientes para Nacional o Mercados durante el flujo matutino.
