@@ -1,11 +1,11 @@
 ---
 title: "Combustibles llegan al Congreso con costo fiscal por precisar"
 summary: "La Cámara abre el estudio del proyecto que busca materializar el acuerdo con transportistas. Hacienda revisó su estimación de costo y aún debe presentar el informe financiero actualizado."
-publishedAt: "2026-11-16T08:31:00-03:00"
+publishedAt: "2026-11-16T08:42:46-03:00"
 cutoffAt: "2026-11-16T08:30:00-03:00"
 section: "national"
 editionSlot: "morning"
-status: "draft"
+status: "published"
 tags:
   - chile
   - politica-fiscal
