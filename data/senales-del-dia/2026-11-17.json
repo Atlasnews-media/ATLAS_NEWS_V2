@@ -1,0 +1,131 @@
+{
+  "status": "READY",
+  "date": "2026-11-17",
+  "contract": "atlas-senales-del-dia-v1",
+  "senalesDelDia": {
+    "internacional": [
+      {
+        "slot": "technology",
+        "headline": "NIST convierte estándar biométrico en especificación procesable",
+        "deck": "El informe IR 8616 traduce requisitos de intercambio biométrico y forense a una arquitectura JSON que puede validarse y transformarse mediante software.",
+        "development": "El Instituto Nacional de Estándares y Tecnología de Estados Unidos publicó el 16 de noviembre el informe IR 8616, que documenta una representación legible por máquinas del estándar ANSI/NIST-ITL 1-2025 para intercambiar datos biométricos y forenses. El trabajo organiza los requisitos en una arquitectura modular de archivos JSON y describe un proceso automatizado para unirlos, validarlos y convertirlos en una especificación HTML. La finalidad no es crear una nueva base de datos de huellas, rostros u otras características personales, sino expresar en formato estructurado las reglas técnicas que ya gobiernan el intercambio de esos registros. El documento funciona como complemento digital del estándar principal y está dirigido a desarrolladores, integradores, equipos de pruebas y auditores.\n\nLa diferencia práctica está en que una aplicación puede procesar identificadores, campos, condiciones y límites sin depender exclusivamente de la interpretación manual de un texto extenso. NIST presenta además una prueba de concepto que genera la versión HTML a partir de la misma fuente estructurada, lo que puede reducir divergencias entre documentación e implementación. El informe no certifica automáticamente sistemas ni reemplaza las obligaciones jurídicas aplicables al tratamiento de biometría; tampoco convierte la especificación en un mecanismo de identificación por sí sola. La evidencia siguiente será su adopción en herramientas de conformidad y en implementaciones interoperables, junto con la capacidad de mantener sincronizadas las versiones humana y procesable del estándar.",
+        "anchor": "nist-ir8616-biometria-json-noviembre-2026",
+        "sources": [
+          {
+            "name": "NIST CSRC — anuncio del informe IR 8616, 16 de noviembre",
+            "url": "https://csrc.nist.gov/news/2026/nist-announces-the-publication-of-nist-ir-8616"
+          },
+          {
+            "name": "NIST — ficha y texto final de IR 8616",
+            "url": "https://csrc.nist.gov/pubs/ir/8616/final"
+          }
+        ]
+      },
+      {
+        "slot": "world",
+        "headline": "UE amplía sanciones con 113 nombres en banca, energía y petróleo",
+        "deck": "El Consejo añadió 12 personas y 101 entidades por ingresos vinculados a la guerra y apoyo a la flota clandestina rusa; los actos ya están vigentes.",
+        "development": "El Consejo de la Unión Europea incorporó el 16 de noviembre a 12 personas y 101 entidades a su régimen de sanciones por acciones que menoscaban la integridad territorial de Ucrania. Las nuevas designaciones abarcan actores de los sectores bancario, financiero y energético, junto con compañías y operadores relacionados con el comercio de petróleo ruso y la denominada flota clandestina. El reglamento de ejecución 2026/2574 fue publicado en el Diario Oficial de la UE, por lo que las medidas no son sólo una declaración política. Para los sujetos incluidos implican congelación de activos en la jurisdicción europea; además, queda prohibido que personas y empresas de la UE pongan fondos o recursos económicos a su disposición.\n\nEl paquete incluye cerca de 50 bancos e instituciones financieras rusas y alcanza también a entidades situadas fuera de Rusia, según la documentación europea. La lista de 113 corresponde a este régimen específico y no debe confundirse con otras 32 designaciones anunciadas el mismo día bajo el marco contra actividades desestabilizadoras, entre ellas operaciones cibernéticas y manipulación informativa. Reuters contabilizó 145 nombres y entidades al sumar ambos instrumentos. La ejecución dependerá de bancos, custodios, compañías comerciales y autoridades nacionales que identifiquen activos y relaciones cubiertas por las prohibiciones. La medida no equivale por sí sola a una interrupción inmediata de todos los flujos financieros o petroleros; su efecto verificable surgirá de bloqueos, rechazos de transacciones y cumplimiento en las jurisdicciones involucradas.",
+        "anchor": "ue-sanciones-rusia-banca-energia-noviembre-2026",
+        "sources": [
+          {
+            "name": "Consejo de la UE — 113 nuevas designaciones, 16 de noviembre",
+            "url": "https://www.consilium.europa.eu/en/press/press-releases/2026/11/16/ukraine-eu-lists-113-individuals-and-entities-to-further-restrict-russia-s-ability-to-finance-its-war-of-aggression/"
+          },
+          {
+            "name": "Diario Oficial de la UE — Reglamento de Ejecución 2026/2574",
+            "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/PDF/?uri=CELEX%3A32026R2574"
+          },
+          {
+            "name": "Reuters — ampliación de listas europeas, 16 de noviembre",
+            "url": "https://www.reuters.com/business/finance/eu-expands-russia-sanctions-list-by-145-names-entities-2026-11-16/"
+          }
+        ]
+      }
+    ],
+    "nacional": [
+      {
+        "slot": "ipsa_company",
+        "headline": "CMPC vende bosques argentinos por US$170 millones",
+        "deck": "La forestal transfirió a Grupo Faro Verde dos sociedades con unas 94 mil hectáreas en Corrientes y Misiones, y mantendrá su operación de Softys.",
+        "development": "CMPC concretó el 16 de noviembre la venta de toda su operación forestal en Argentina al Grupo Faro Verde por US$170 millones. La transacción comprende el 100% de las acciones de Forestal Bosques del Plata y Forestal Timbauva, sociedades que reúnen aproximadamente 94.000 hectáreas en las provincias de Corrientes y Misiones. De ese total, unas 65.000 hectáreas corresponden a terrenos plantables, principalmente con pino. La compañía chilena explicó que estos activos constituían su única operación forestal en el país y que no estaban integrados con otras instalaciones industriales de su red. La salida no incluye a Softys, por lo que CMPC conservará su negocio de productos de higiene en Argentina.\n\nLa operación se suma a la venta anunciada en septiembre de su negocio de corrugados en Chile por US$420 millones y a la enajenación de activos forestales en la Región del Maule por US$365,5 millones. Consideradas en conjunto, las tres transacciones superan los US$950 millones, aunque cada una tiene condiciones, perímetros y fechas de cierre propias. CMPC presentó la decisión como parte de una gestión más ágil del portafolio; no corresponde atribuir automáticamente todo el monto a una inversión específica mientras la empresa no lo formalice. Para evaluar el efecto financiero habrá que observar el reconocimiento contable de la venta, eventuales impuestos y costos asociados, y la forma en que el efectivo recibido se refleje en deuda, caja o nuevos proyectos.",
+        "anchor": "cmpc-venta-forestal-argentina-noviembre-2026",
+        "sources": [
+          {
+            "name": "CMPC — venta de la operación forestal argentina, 16 de noviembre",
+            "url": "https://www.cmpc.com/cmpc-concreta-venta-de-su-operacion-forestal-en-argentina-por-us170-millones/"
+          },
+          {
+            "name": "Emol — detalle de activos transferidos a Faro Verde",
+            "url": "https://www.emol.com/noticias/Economia/2026/11/16/1217247/cmpc-venta-argentina-us170-millones.html"
+          }
+        ]
+      },
+      {
+        "slot": "policy_economy",
+        "headline": "CMF multa compra de acciones en período de bloqueo",
+        "deck": "El regulador sancionó con UF 100 la adquisición de 698.557 títulos de Banco de Chile durante los 30 días previos a divulgar estados financieros.",
+        "development": "La Comisión para el Mercado Financiero informó el 16 de noviembre una multa de UF 100 contra Juan Enrique Concha Ureta por adquirir 698.557 acciones de Banco de Chile dentro del período de bloqueo previsto en la Ley de Mercado de Valores. La resolución N°12.263 señala que el sancionado tenía una relación de parentesco de segundo grado de afinidad con un ejecutivo principal del emisor. Esa relación lo incluía entre las personas sujetas a la prohibición de efectuar transacciones sobre valores de la compañía durante los 30 días anteriores a la divulgación de sus estados financieros. La decisión administrativa describe una infracción al inciso quinto del artículo 16; no afirma que la operación haya utilizado información privilegiada ni autoriza inferir una motivación distinta de los hechos establecidos.\n\nEl período de bloqueo es una regla temporal preventiva que opera sobre categorías definidas de personas vinculadas al emisor. Su aplicación no depende de demostrar que una transacción produjo ganancias o pérdidas, sino de verificar si la persona estaba alcanzada por la prohibición y si negoció dentro de la ventana restringida. La multa se expresa en unidades de fomento, de modo que su equivalente en pesos cambia con el valor vigente al momento de pago. La publicación de la resolución permite revisar el fundamento y las vías administrativas o judiciales que correspondan; el comunicado no implica que esas instancias hayan concluido. Para el mercado, la señal regulatoria es la aplicación concreta del deber de abstención, separada de la evolución bursátil de Banco de Chile.",
+        "anchor": "cmf-bloqueo-acciones-banco-chile-noviembre-2026",
+        "sources": [
+          {
+            "name": "CMF — sanción por compra en período de bloqueo, 16 de noviembre",
+            "url": "https://www.cmfchile.cl/portal/principal/623/w4-article-114972.html"
+          },
+          {
+            "name": "Finanzas PlanFibra — antecedentes de la Resolución N°12.263",
+            "url": "https://finanzas.planfibra.cl/noticia/9827-cmf-aplica-sancion-por-adquirir-acciones-dentro-del-periodo-de-bloqueo-del-articulo-16-de-la-ley-de-mercado-de-valores"
+          }
+        ]
+      }
+    ],
+    "mercados": [
+      {
+        "slot": "markets_chile",
+        "headline": "SQM-B cae 4,2% y toca mínimo anual junto al litio",
+        "deck": "La acción cerró en $51.300, su menor nivel de 52 semanas, mientras el carbonato de litio spot descendió a un nuevo mínimo del año.",
+        "development": "La serie B de SQM cerró el lunes 16 de noviembre en $51.300 en la Bolsa de Santiago, con una caída diaria de 4,2% y un volumen cercano a 222.000 acciones. Durante la sesión tocó $51.111, nuevo mínimo de 52 semanas, después de haber abierto en $53.450. El movimiento ocurrió mientras el carbonato de litio spot bajó a nuevos mínimos del año; la referencia seguida por Trading Economics se situó en 89.550 yuanes por tonelada, un descenso de 3,03% en la jornada. Diario Financiero identificó desde la mañana a SQM-B como la principal presión sobre el índice chileno en un entorno adverso para materias primas.\n\nEl MSCI IPSA terminó en 10.525,26 puntos, 1,27% por debajo del cierre previo, según las pantallas de mercado de LarrainVial. La coincidencia entre la baja del litio y la acción es una relación de mercado observable, pero no prueba que una sola variable explique toda la variación de SQM: también influyen expectativas de resultados, estructura de costos, regulación y el apetito general por riesgo. El mínimo intradía tampoco garantiza que se haya formado un piso. La evidencia posterior relevante será la evolución del precio físico y de los futuros del litio, los volúmenes transados en SQM-B y cualquier actualización corporativa que permita separar el efecto del producto básico de factores propios de la empresa.",
+        "anchor": "sqm-litio-minimo-anual-noviembre-2026",
+        "sources": [
+          {
+            "name": "LarrainVial — cierre del MSCI IPSA del 16 de noviembre",
+            "url": "https://mercados.larrainvial.com/www/v2/index.html?mercado=chile"
+          },
+          {
+            "name": "Investing.com — histórico diario de SQM-B",
+            "url": "https://es.investing.com/equities/soquimich-b-historical-data"
+          },
+          {
+            "name": "Diario Financiero — presión de SQM y del litio sobre la bolsa chilena",
+            "url": "https://www.df.cl/mercados/bolsa-monedas/bolsas-hoy-eumxy"
+          },
+          {
+            "name": "Trading Economics — precio del carbonato de litio",
+            "url": "https://es.tradingeconomics.com/commodity/lithium"
+          }
+        ]
+      },
+      {
+        "slot": "markets_global",
+        "headline": "Aluminio LME entra en backwardation extrema por falta de metal",
+        "deck": "El precio al contado superó en US$312 por tonelada al contrato a tres meses, con inventarios de 221.900 toneladas, los más bajos desde 1990.",
+        "development": "El aluminio de la Bolsa de Metales de Londres cerró el 16 de noviembre con una cotización oficial al contado de US$3.332 por tonelada y un precio a tres meses de US$3.020. La diferencia de US$312 a favor de la entrega inmediata configura una backwardation excepcionalmente amplia: el mercado paga una prima por metal disponible ahora frente al suministro futuro. Los inventarios registrados en bodegas de la LME bajaron a 221.900 toneladas, 2.250 menos que el viernes anterior. Reuters situó el volumen disponible en su nivel más bajo desde 1990 y describió la tensión como la más severa del aluminio desde fines de los años ochenta.\n\nLa señal no es un pronóstico automático de alza permanente. Una backwardation extrema puede moderarse si ingresan nuevas unidades a bodegas autorizadas, si se liberan existencias fuera del sistema o si cae la demanda inmediata. También importa la porción de inventario marcada para retiro, porque reduce el metal efectivamente ofrecido para liquidar contratos. Reuters indicó que una marca indonesia solicitó registro ante la LME, pero esa capacidad todavía no era entregable mientras la aprobación seguía pendiente. Para distinguir un episodio transitorio de una escasez más persistente habrá que seguir entradas y cancelaciones de warrants, el diferencial entre contado y tres meses y la disponibilidad regional. El precio de futuros por sí solo no revela dónde está físicamente el metal ni cuándo puede entregarse.",
+        "anchor": "lme-aluminio-backwardation-inventarios-noviembre-2026",
+        "sources": [
+          {
+            "name": "London Metal Exchange — precios oficiales del 16 de noviembre",
+            "url": "https://www.lme.com/en/market-data/reports-and-data/lme-official-prices"
+          },
+          {
+            "name": "Westmetall — serie diaria de precios e inventarios LME",
+            "url": "https://www.westmetall.com/en/markdaten.php?action=averages"
+          },
+          {
+            "name": "Reuters — tensión física en el mercado del aluminio, 16 de noviembre",
+            "url": "https://www.reuters.com/commentary/reuters-open-interest/crunch-time-aluminium-buyers-tap-metal-last-resort-2026-11-16/"
+          }
+        ]
+      }
+    ]
+  }
+}
