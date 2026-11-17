@@ -1,11 +1,11 @@
 ---
 title: "El castigo a tecnología se extiende a Asia, pero bonos y crudo cuentan historias distintas"
 summary: "Las nuevas restricciones estadounidenses a chips aceleraron las ventas en tecnología y arrastraron las bolsas asiáticas. La caída fue menos uniforme en bonos, dólar y petróleo, señal de un ajuste sectorial con riesgos macroeconómicos aún abiertos."
-publishedAt: "2026-11-17T06:24:00-03:00"
+publishedAt: "2026-11-17T06:51:10-03:00"
 cutoffAt: "2026-11-17T06:23:17-03:00"
 section: "markets"
 editionSlot: "morning"
-status: "draft"
+status: "published"
 tags:
   - mercados-globales
   - tecnologia

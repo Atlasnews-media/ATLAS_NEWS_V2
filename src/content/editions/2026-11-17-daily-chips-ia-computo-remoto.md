@@ -1,11 +1,11 @@
 ---
 title: "Estados Unidos extiende el cerco a chips de IA desde los envíos físicos al cómputo remoto"
 summary: "Washington exigirá licencias a centros de datos que den capacidad avanzada a empresas chinas y a envíos de chips hacia cinco países con riesgo de desvío. El control tecnológico pasa del hardware a la nube justo antes de la reunión Trump-Xi."
-publishedAt: "2026-11-17T06:01:42-03:00"
+publishedAt: "2026-11-17T06:51:10-03:00"
 cutoffAt: "2026-11-17T06:00:26-03:00"
 type: "daily"
 editionSlot: "morning"
-status: "draft"
+status: "published"
 tags:
   - inteligencia-artificial
   - semiconductores

@@ -1,11 +1,11 @@
 ---
 title: "Banco Central mantiene el colchón bancario en 1% ante riesgos externos"
 summary: "El instituto emisor mantuvo la convergencia del capital contracíclico a 1% de los activos ponderados por riesgo. La banca tiene holguras para completar el ajuste sin restringir el crédito."
-publishedAt: "2026-11-17T06:22:30-03:00"
+publishedAt: "2026-11-17T06:51:10-03:00"
 cutoffAt: "2026-11-17T06:22:03-03:00"
 section: "national"
 editionSlot: "morning"
-status: "draft"
+status: "published"
 tags:
   - banco-central
   - banca
