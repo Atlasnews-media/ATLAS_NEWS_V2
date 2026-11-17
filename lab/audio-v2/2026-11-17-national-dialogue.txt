@@ -1,0 +1,23 @@
+VOZ 1: La novedad local de esta mañana no viene de la tasa de interés, sino de la política financiera. El Banco Central decidió mantener la trayectoria del Requerimiento de Capital Contracíclico, el RCC, hacia un nivel neutral de 1% de los activos ponderados por riesgo.
+VOZ 2: Traduzcamos eso. ¿Es una exigencia que obliga a los bancos a prestar menos desde hoy?
+VOZ 1: No es esa la lectura del Banco Central. El RCC funciona como un colchón de capital que los bancos acumulan para absorber pérdidas en un escenario de estrés. Si aparece un shock sistémico, ese colchón puede liberarse para que el capital no se transforme en una restricción abrupta al crédito.
+VOZ 2: Entonces, ¿qué cambió ahora?
+VOZ 1: El Consejo confirmó por unanimidad el calendario acordado en mayo. El 1% será exigible en mayo de 2028, veinticuatro meses después de la decisión inicial. La confirmación importa porque llega con condiciones financieras más estrechas y con algún deterioro en la capacidad de pago de hogares y empresas.
+VOZ 2: Eso suena contradictorio. Si familias y empresas tienen más dificultades, ¿por qué mantener una exigencia adicional?
+VOZ 1: Porque el diagnóstico separa dos cosas. Una es que el crédito comercial, de consumo y de vivienda crece a tasas acotadas. Otra distinta es que los bancos estén frenando préstamos por falta de capital. El Banco Central dice que no hay evidencia de esa segunda situación.
+VOZ 2: ¿Qué respalda esa conclusión?
+VOZ 1: La banca mantiene condiciones de fondeo estables, una rentabilidad superior a sus promedios históricos y holguras de capital suficientes. Con esa base, el instituto emisor estima que puede completar la convergencia al 1% y seguir entregando un flujo de crédito coherente con la actividad económica.
+VOZ 2: O sea, no es una señal automática sobre la TPM.
+VOZ 1: Exactamente. Esta es una herramienta macroprudencial. Busca que los bancos sean más resistentes y que, si llega una tensión severa, no tengan que recortar servicios financieros esenciales justo cuando la economía más los necesita. La TPM cumple otra función y no debe inferirse una decisión de tasas desde este anuncio.
+VOZ 2: ¿Y cuál es el riesgo que justifica construir ese colchón?
+VOZ 1: El Banco Central ve riesgos globales elevados. Menciona valoraciones altas de activos riesgosos, mayor deuda en el sector relacionado con inteligencia artificial, tensiones geopolíticas y endeudamiento fiscal. Una combinación de shocks podría reducir el apetito por riesgo y endurecer todavía más las condiciones financieras.
+VOZ 2: Ahí aparece una conexión con la General de hoy, sobre Estados Unidos ampliando los controles a chips y cómputo remoto.
+VOZ 1: Sí, pero hay que mantener la escala correcta. La regla estadounidense agrega fricción regulatoria a la inversión tecnológica global y puede afectar infraestructura, financiamiento y cadenas de proveedores. Eso encaja con el entorno de riesgo que observa el Banco Central. No significa que la medida, por sí sola, haya deteriorado a los bancos chilenos.
+VOZ 2: ¿Qué podría invalidar esta lectura relativamente tranquila?
+VOZ 1: Tres señales serían importantes. Primero, que el capital comience efectivamente a limitar la oferta de préstamos. Segundo, que el costo o la estabilidad del fondeo bancario empeore de manera persistente. Tercero, que el aumento de morosidad o deuda en riesgo consuma las holguras disponibles.
+VOZ 2: ¿Y qué pasa si el shock llega antes de mayo de 2028?
+VOZ 1: El diseño permite liberar total o parcialmente el colchón ante riesgos sistémicos. Esa flexibilidad es justamente su propósito: acumular capacidad en tiempos normales para usarla cuando el sistema enfrenta tensión.
+VOZ 2: ¿Cuál es el siguiente dato concreto para evaluar el diagnóstico?
+VOZ 1: El Informe de Estabilidad Financiera se publica hoy a las nueve de la mañana. Ahí podremos revisar pruebas de tensión, deuda en riesgo y exposiciones con cifras completas. Antes de esa publicación no corresponde anticipar resultados.
+VOZ 2: Entonces la conclusión de esta mañana es acotada.
+VOZ 1: Sí. El Banco Central mantuvo el colchón bancario rumbo a 1%, considera que la banca tiene capital para absorber el ajuste sin restringir hoy el crédito y conserva la opción de liberar esa protección si un shock externo cambia el escenario.
