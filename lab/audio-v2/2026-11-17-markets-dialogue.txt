@@ -1,0 +1,25 @@
+VOZ 1: La señal dominante en mercados esta mañana es que la venta tecnológica se extendió desde Wall Street hacia Asia. Las nuevas restricciones de Estados Unidos a chips avanzados y cómputo remoto aumentaron la incertidumbre sobre quién puede comprar capacidad, dónde se pueden instalar centros de datos y cuánta demanda llegará finalmente a los fabricantes.
+VOZ 2: ¿Qué tan grande fue el movimiento?
+VOZ 1: En el cierre previo de Estados Unidos, el Nasdaq cayó 2,5% y el S&P 500 perdió 1,9%. Durante la sesión asiática, el Kospi surcoreano retrocedió 2,6% hasta un mínimo de seis meses. Samsung Electronics bajó 3,1% y SK Hynix 1,8%.
+VOZ 2: Eso parece una venta global de riesgo. ¿Es tan simple?
+VOZ 1: No del todo. La caída se concentra con más fuerza en tecnología y semiconductores. Además, estamos comparando momentos distintos: Estados Unidos ya cerró, Asia llevaba su sesión avanzada y Europa junto con los futuros estadounidenses seguían abiertos. Las bajas europeas y de futuros eran más moderadas.
+VOZ 2: ¿Qué está descontando el mercado en el sector?
+VOZ 1: Dos cosas. Primero, que las licencias estadounidenses pueden retrasar pedidos o reducir la utilización de infraestructura en países expuestos a los nuevos controles. Segundo, que Nvidia entrega resultados y guía, y esa información debe confirmar si el gasto en inteligencia artificial justifica las valoraciones actuales.
+VOZ 2: La General explica que la regla no es una prohibición total, sino un sistema de licencias. ¿El mercado distingue esa diferencia?
+VOZ 1: La distinción será decisiva, pero todavía no existe evidencia suficiente sobre el ritmo de autorizaciones. Por eso vemos una prima de incertidumbre. Si las licencias son rápidas y predecibles, el impacto puede concentrarse en costos de cumplimiento. Si se retrasan o se niegan, el efecto puede alcanzar ventas de chips, proyectos de centros de datos y proveedores de energía y redes.
+VOZ 2: ¿Los bonos actuaron como refugio?
+VOZ 1: Sólo parcialmente. El rendimiento del Treasury a diez años bajó a 5,13% desde 5,15%. Es una caída pequeña frente a la pérdida de las acciones. La inflación estadounidense superior a lo esperado y el tono restrictivo de la Reserva Federal mantienen vivas las expectativas de nuevas alzas de tasas.
+VOZ 2: Entonces una acción tecnológica enfrenta presión por dos lados.
+VOZ 1: Exacto. Puede perder demanda por las licencias y, al mismo tiempo, enfrentar una tasa de descuento más alta si los rendimientos permanecen elevados. Esa es la razón por la que el comportamiento del Treasury importa tanto como las noticias corporativas.
+VOZ 2: ¿Y el dólar?
+VOZ 1: Se mantuvo fuerte cerca de máximos de más de un año y medio. Acciones tecnológicas débiles, un alivio pequeño en los bonos y un dólar firme sugieren que no estamos ante una búsqueda de refugio pura. El mercado también reajusta inflación, política monetaria y riesgo regulatorio.
+VOZ 2: El petróleo también cayó. ¿Confirma temor a una desaceleración global?
+VOZ 1: No necesariamente. Brent y WTI retrocedieron durante la mañana, pero el catalizador principal fue la recuperación de flujos de Medio Oriente y la expectativa de un superávit de oferta. Hoy el crudo cuenta una historia distinta a la de los chips.
+VOZ 2: Esa diferencia cross-asset parece importante.
+VOZ 1: Lo es. Si acciones, bonos, dólar y petróleo reaccionaran todos a un mismo miedo de recesión, veríamos una señal macro más uniforme. En cambio, la tecnología responde a regulación y resultados, los bonos están limitados por inflación y el petróleo responde principalmente a oferta.
+VOZ 2: ¿Qué puede cambiar la lectura durante el día?
+VOZ 1: Primero, los resultados y la guía de Nvidia. Una demanda sólida y visibilidad sobre centros de datos podría separar a empresas con pedidos asegurados de las más expuestas a licencias. Una guía débil ampliaría la corrección desde regulación hacia inversión.
+VOZ 2: ¿Qué más hay que mirar?
+VOZ 1: Si el Treasury a diez años consigue bajar de manera sostenida, si el dólar extiende su fortaleza y si el petróleo continúa cayendo por mayores flujos. Para cobre e infraestructura, la pregunta es si los controles sólo trasladan proyectos entre jurisdicciones o reducen el gasto total.
+VOZ 2: Entonces la conclusión no es que todos los mercados estén diciendo lo mismo.
+VOZ 1: Correcto. La señal más clara es un castigo a tecnología que se propagó a Asia. Los demás activos muestran que el mercado todavía separa el riesgo de chips, la inflación estadounidense y la oferta de petróleo. Esa dispersión es la información útil de esta mañana.
