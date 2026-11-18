@@ -1,11 +1,11 @@
 ---
 title: "Cobre y peso sufren el ajuste del dólar mientras Nvidia desacopla a la tecnología de los metales"
 summary: "El cobre londinense cayó con fuerza y el dólar volvió a rondar $1.000 en Chile. Al mismo tiempo, el oro retrocedió por expectativas de alzas de la Fed y los futuros del Nasdaq reaccionaron positivamente a Nvidia: el mercado no está descontando un único riesgo."
-publishedAt: "2026-11-18T10:16:39-03:00"
+publishedAt: "2026-11-18T11:52:33-03:00"
 cutoffAt: "2026-11-18T10:16:39-03:00"
 section: "markets"
 editionSlot: "morning"
-status: "draft"
+status: "published"
 tags:
   - mercados-globales
   - cobre

@@ -1,11 +1,11 @@
 ---
 title: "PIB de Chile cae 1,1% en el tercer trimestre: inversión y minería profundizan la debilidad"
 summary: "Las Cuentas Nacionales publicadas hoy muestran que el PIB retrocedió 1,1% anual y la inversión fija cayó 6,7%, mientras el consumo sostuvo parte de la demanda. El nuevo dato vuelve más relevante el deterioro de capacidad de pago advertido por el Banco Central."
-publishedAt: "2026-11-18T10:13:47-03:00"
+publishedAt: "2026-11-18T11:52:33-03:00"
 cutoffAt: "2026-11-18T10:13:47-03:00"
 section: "national"
 editionSlot: "morning"
-status: "draft"
+status: "published"
 tags:
   - chile
   - actividad-economica

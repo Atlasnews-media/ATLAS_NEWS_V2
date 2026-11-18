@@ -1,11 +1,11 @@
 ---
 title: "APEC enfrenta el choque entre apertura comercial, deuda elevada y riesgo energético"
 summary: "Xi promete abrir el comercio ante Trump y Putin, mientras el BCE advierte sobre deuda y apalancamiento, Qatar diversifica el gas e Indonesia sube tasas. Las señales muestran una economía global bajo presiones simultáneas."
-publishedAt: "2026-11-18T09:38:25-03:00"
+publishedAt: "2026-11-18T11:52:33-03:00"
 cutoffAt: "2026-11-18T09:38:25-03:00"
 type: "daily"
 editionSlot: "morning"
-status: "draft"
+status: "published"
 tags:
   - geopolitica
   - comercio-internacional
