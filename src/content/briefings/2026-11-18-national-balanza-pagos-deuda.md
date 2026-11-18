@@ -1,11 +1,11 @@
 ---
 title: "Chile recibe capitales por US$3.503 millones mientras la deuda externa sube a 80,6% del PIB"
 summary: "La Balanza de Pagos del tercer trimestre muestra entradas financieras netas, un déficit corriente trimestral de US$2.227 millones y deuda externa por US$298.211 millones. La combinación separa financiamiento disponible de vulnerabilidad acumulada."
-publishedAt: "2026-11-18T13:03:11-03:00"
+publishedAt: "2026-11-18T13:11:57.252-03:00"
 cutoffAt: "2026-11-18T12:00:00-03:00"
 section: "national"
 editionSlot: "evening"
-status: "draft"
+status: "published"
 tags:
   - chile
   - balanza-de-pagos
