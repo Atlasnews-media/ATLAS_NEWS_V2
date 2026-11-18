@@ -1,0 +1,135 @@
+{
+  "status": "READY",
+  "date": "2026-11-18",
+  "contract": "atlas-senales-del-dia-v1",
+  "senalesDelDia": {
+    "internacional": [
+      {
+        "slot": "technology",
+        "headline": "Microsoft presenta siete modelos propios para código y seguridad",
+        "deck": "Ignite 2026 incorpora modelos MAI para programación, defensa digital, imágenes y voz. Microsoft habilitó Code 2 y Code 2 Flash en Copilot y Foundry.",
+        "development": "Microsoft anunció el 17 de noviembre, durante Ignite 2026, siete modelos especializados de inteligencia artificial bajo su familia MAI. Entre ellos se encuentran Code 2 y Code 2 Flash para programación, Cyber 2 Flash para seguridad, Image 2.7 para edición visual y Realtime 1 para voz, además de propuestas para transcripción y decisiones. La compañía informó que sus dos modelos de programación quedaron disponibles en GitHub Copilot y Foundry. También comunicó avances de Maia 200, un acelerador de inteligencia artificial que, según Microsoft, ya opera en producción. La novedad combina investigación, infraestructura computacional y canales comerciales para ejecutar tareas específicas, no solo una actualización de asistentes conversacionales.\n\nEl aspecto económico está en cómo las empresas comparan el costo por tarea resuelta, las opciones de despliegue y el control de datos. Microsoft publicitó ventajas de precio y calidad frente a competidores utilizando conjuntos de pruebas elegidos por la propia compañía; esos resultados deben leerse como afirmaciones comerciales y no como verificaciones independientes. Su anuncio de acceso licenciado a pesos de modelos para determinados clientes agrega otra modalidad frente a las API alojadas. Para evaluar el impacto real importarán la disponibilidad según región, la adopción empresarial, las evaluaciones externas y la fiabilidad en procesos de producción. El evento no altera por sí mismo las restricciones estadounidenses de exportación de chips discutidas en General.",
+        "anchor": "microsoft-ignite-siete-modelos-mai-codigo-seguridad-2026",
+        "sources": [
+          {
+            "name": "Microsoft AI — nuevos modelos en Ignite, 17 de noviembre",
+            "url": "https://microsoft.ai/news/microsoft-ignite-2026/"
+          },
+          {
+            "name": "Blog oficial Microsoft — ecosistema y disponibilidad, 17 de noviembre",
+            "url": "https://blogs.microsoft.com/blog/2026/11/17/ignite-2026-building-the-frontier-ecosystem/"
+          },
+          {
+            "name": "Axios — nuevos modelos Microsoft y competencia por costos",
+            "url": "https://www.axios.com/2026/11/17/microsoft-ai-models-openai-anthropic-ignite"
+          }
+        ]
+      },
+      {
+        "slot": "world",
+        "headline": "El Quad acuerda vigilancia marítima y cooperación tecnológica",
+        "deck": "Estados Unidos, Japón, India y Australia anunciaron en Manila ejercicios marítimos para 2027, proyectos de cables y cooperación en ciberseguridad.",
+        "development": "Los líderes de Estados Unidos, Australia, India y Japón se reunieron el 17 de noviembre en Manila en una cumbre del Quad, la primera de ese nivel en dos años. Según el comunicado conjunto, acordaron establecer la iniciativa Indo-Pacific Maritime Surveillance Collaboration para compartir información y ampliar el conocimiento de las actividades marítimas de la región. También anunciaron que aeronaves de patrullaje P-8 y P-3C de los socios participarían en 2027 en el primer ejercicio de ese tipo organizado bajo el marco del Quad. La declaración manifestó preocupación por acciones coercitivas y por restricciones arbitrarias a las exportaciones, pero no creó una nueva organización militar ni declaró un pacto de defensa mutua.\n\nLa reunión incluyó medidas económicas concretas: la convocatoria de un foro empresarial en 2027, iniciativas de resiliencia de cables submarinos, una ampliación de la cooperación australiana a cables eléctricos y nuevos compromisos de ciberseguridad. Estas actividades pueden afectar a empresas proveedoras de infraestructura, conectividad y servicios de seguridad, aunque todavía deben convertirse en proyectos y contratos verificables. Conviene distinguirlas de las conversaciones paralelas de APEC entre grandes potencias: el hecho aquí es un programa específico de coordinación entre cuatro gobiernos en Manila. Los próximos hitos serán la preparación del ejercicio marítimo, la organización del foro y la materialización de proyectos de cables, sin atribuirles anticipadamente resultados comerciales.",
+        "anchor": "quad-manila-vigilancia-maritima-cables-ejercicios-2027",
+        "sources": [
+          {
+            "name": "Gobierno de Australia — declaración conjunta Quad, 17 de noviembre",
+            "url": "https://www.pm.gov.au/media/quad-leaders-summit-joint-press-release"
+          },
+          {
+            "name": "Cancillería de Japón — resumen de la cumbre Quad",
+            "url": "https://www.mofa.go.jp/fp/nsp/page1e_000691_00003.html"
+          },
+          {
+            "name": "ABC Australia — defensa, cables y minerales críticos",
+            "url": "https://www.abc.net.au/news/2026-11-18/quad-meeting-india-japan-usa-anthony-albanese-donald-trump/107396716"
+          }
+        ]
+      }
+    ],
+    "nacional": [
+      {
+        "slot": "ipsa_company",
+        "headline": "Cencosud Shopping inicia pago de $40 por acción",
+        "deck": "La operadora de centros comerciales inicia el 18 de noviembre el dividendo provisorio aprobado en octubre; el corte para tener derecho fue el día 12.",
+        "development": "Cencosud Shopping, identificada en el mercado como CENCOMALLS, programó para el 18 de noviembre de 2026 el comienzo del pago de un dividendo provisorio de $40 por acción. El directorio había aprobado esta distribución el 26 de octubre con cargo a las utilidades del ejercicio 2026, designando a Servicios Corporativos SerCor para realizar los pagos. El calendario bursátil de BTG Pactual identifica el 12 de noviembre como la fecha límite para quedar habilitado para recibirlo. Por tanto, la noticia de hoy corresponde a la ejecución del calendario financiero ya anunciado, no a la aprobación de un nuevo reparto ni al resultado trimestral de su matriz.\n\nLa diferencia entre fecha límite de tenencia y fecha de pago es esencial para interpretar la cotización. Comprar acciones en la fecha de desembolso no otorga retroactivamente derecho a un dividendo cuyo corte ya ocurrió. Además, el ajuste de cotización asociado al exdividendo no representa por sí solo una pérdida patrimonial equivalente: el retorno completo de un accionista que recibió la distribución combina cambio de precio y efectivo, antes de impuestos y costos de transacción. No es correcto convertir los $40 por acción en una rentabilidad porcentual sin especificar un precio de referencia. Las próximas verificaciones son la confirmación efectiva de la distribución por el emisor, el monto desembolsado y la evolución de caja de Cencosud Shopping.",
+        "anchor": "cencomalls-dividendo-provisorio-pago-18-noviembre-2026",
+        "sources": [
+          {
+            "name": "BTG Pactual Chile — calendario de dividendos CENCOMALLS",
+            "url": "https://btgpactual.cl/inversiones-digitales/calendario-de-dividendos/"
+          },
+          {
+            "name": "Diario Estrategia — hecho esencial de dividendo provisorio",
+            "url": "https://www.diarioestrategia.cl/texto-diario/mostrar/6067565/cencosud-shopping-comunica-distribucion-dividendo-provisorio"
+          },
+          {
+            "name": "BolsaChile — hechos esenciales de emisores",
+            "url": "https://bolsachile.com/cl/hechos-esenciales"
+          }
+        ]
+      },
+      {
+        "slot": "policy_economy",
+        "headline": "Chile fija por ley techo a combustibles hasta abril de 2027",
+        "deck": "La Ley 21.857 limita componentes de gasolina y diésel hasta el 7 de abril de 2027 e incorpora mecanismos tributarios de alivio para transportistas.",
+        "development": "La Ley N° 21.857, publicada el 17 de noviembre de 2026, creó reglas temporales destinadas a contener el incremento de los combustibles. Hasta el 7 de abril de 2027, la suma del precio base y el componente variable de las gasolinas automotrices no podrá superar la referencia vigente el 5 de noviembre de 2026. Para el diésel, el techo corresponde a $100 menos por litro que esa referencia. La implementación requiere los decretos que determinen el componente variable del impuesto específico bajo la nueva norma. El Ministerio de Hacienda comunicó que los ajustes previstos desde el jueves 19 revertirían los aumentos de la semana pasada y agregarían una disminución adicional de $100 por litro para el diésel.\n\nLa normativa también introduce un tratamiento de saldos negativos de recuperación del impuesto específico aplicable a ciertos transportistas de carga y un crédito tributario para determinados operadores de buses durante 2027. Es importante distinguir los topes legales sobre componentes regulados de un precio final uniforme en todas las estaciones: la aplicación específica debe verificarse en los decretos y en las cotizaciones minoristas. Tampoco se elimina el riesgo de nuevas alzas internacionales del petróleo; el Estado asume instrumentos de estabilización cuyos costos dependen de la implementación efectiva. El próximo control será comprobar la publicación de los decretos, el precio de las gasolinas y el diésel desde el 19 de noviembre y el uso real de los beneficios tributarios en sectores habilitados.",
+        "anchor": "ley-21857-techo-gasolinas-diesel-chile-noviembre-2026",
+        "sources": [
+          {
+            "name": "Biblioteca del Congreso Nacional — Ley N° 21.857",
+            "url": "https://www.bcn.cl/leychile/navegar?idNorma=1230385"
+          },
+          {
+            "name": "Hacienda — medidas y calendario de rebajas, 17 de noviembre",
+            "url": "https://www.hacienda.cl/index.php/noticias-y-eventos/noticias/a2d638f1bbfa6"
+          },
+          {
+            "name": "Cámara de Diputadas y Diputados — boletín legislativo 18885-05",
+            "url": "https://www.camara.cl/legislacion/ProyectosDeLey/tramitacion.aspx?prmBOLETIN=18885-05&prmID=19564"
+          }
+        ]
+      }
+    ],
+    "mercados": [
+      {
+        "slot": "markets_chile",
+        "headline": "Bancos, retail y CAP arrastran al IPSA pese al rebote de SQM",
+        "deck": "El IPSA cerró el martes en 10.477,22 puntos (-0,5%). Bci, Cencosud y Santander cayeron, mientras SQM-B logró una recuperación parcial.",
+        "development": "El MSCI IPSA cerró el martes 17 de noviembre en 10.477,22 puntos, aproximadamente 0,5% por debajo de la sesión anterior, según Diario Financiero. Las bajas no se limitaron a una minera: CAP perdió 3,7%, Bci retrocedió 2,4%, Cencosud cayó 2,2% y Banco Santander Chile bajó 1,3%. Entel corrigió 3,3% después de su fuerte avance del lunes. En contraste, SQM-B se recuperó 0,6% tras las caídas previas. Se trata de precios y variaciones de un cierre verificado del martes, que no deben confundirse con las operaciones intradiarias del miércoles ni con los precios que siguieron a la publicación del PIB.\n\nLa señal está en la distribución sectorial de la debilidad: una recuperación puntual de SQM-B no compensó las ventas de acciones relevantes en banca, comercio y acero. Eso puede tener implicancias distintas para las carteras concentradas por sector, aunque no prueba por sí mismo que los participantes hayan anticipado la cifra de Cuentas Nacionales publicada el miércoles. Tampoco autoriza atribuir cada movimiento al dólar o al cobre del día siguiente, factores que la pieza principal de Mercados analiza por separado. La siguiente prueba será la reacción de los bancos y empresas comerciales al nuevo dato de actividad, los volúmenes transados y si el índice encuentra apoyo en otros sectores.",
+        "anchor": "ipsa-cierre-17-noviembre-bancos-retail-cap-presion",
+        "sources": [
+          {
+            "name": "Diario Financiero — IPSA y componentes, cierre 17 de noviembre",
+            "url": "https://www.df.cl/mercados/bolsa-monedas/bolsas-hoy-vmrcr"
+          },
+          {
+            "name": "Consorcio — panel de cotizaciones y acciones chilenas",
+            "url": "https://mercadosconsorcio.cl/"
+          },
+          {
+            "name": "Visfin — registro de acciones de Santiago",
+            "url": "https://visfin.cl/mercado"
+          }
+        ]
+      },
+      {
+        "slot": "markets_global",
+        "headline": "Subasta de bonos japoneses a 20 años exhibe demanda más débil",
+        "deck": "Japón colocó deuda a 20 años con rendimiento promedio de 3,756% y una brecha de adjudicación de ¥0,29, mayor que el mes anterior.",
+        "development": "El Ministerio de Finanzas de Japón divulgó el 18 de noviembre los resultados de una subasta de bonos a 20 años, emisión número 198, con vencimiento en septiembre de 2046 y cupón de 3,8%. Las ofertas competitivas sumaron 1.914.000 millones de yenes, frente a 525.800 millones aceptados mediante esa modalidad; la relación de cobertura fue cercana a 3,64 veces. El rendimiento del precio promedio adjudicado se situó en 3,756%, mientras el correspondiente al precio mínimo aceptado alcanzó 3,782%. El precio promedio de ¥100,49 superó en ¥0,29 al menor precio aceptado de ¥100,20 por cada ¥100 nominales. Son datos oficiales del evento de colocación, distintos de las cotizaciones del mercado secundario.\n\nLa brecha entre precio promedio y precio mínimo, denominada cola de subasta, aumentó desde ¥0,07 en octubre hasta ¥0,29, de acuerdo con Reuters. Esa ampliación indica que los compradores marginales exigieron mayor descuento. Tras conocerse el resultado, el rendimiento del bono japonés a 20 años llegó a subir 1,5 puntos base a 3,785%, mientras varios plazos más cortos presentaban descensos de rentabilidad. Por eso la lectura es específica de los vencimientos largos y no un movimiento homogéneo de toda la curva. El interés internacional radica en la capacidad de la deuda japonesa para competir por capital y modificar posiciones globales. Las próximas colocaciones, las demandas institucionales y la forma de la curva permitirán calibrar la persistencia del ajuste.",
+        "anchor": "japon-subasta-bonos-veinte-anos-18-noviembre-2026",
+        "sources": [
+          {
+            "name": "Ministerio de Finanzas de Japón — resultado oficial subasta a 20 años",
+            "url": "https://www.mof.go.jp/english/policy/jgbs/auction/calendar/eresul/eresul20261118.htm"
+          },
+          {
+            "name": "Reuters vía Zawya — demanda y reacción de bonos japoneses",
+            "url": "https://www.zawya.com/en/capital-markets/china-and-asia-pacific/japans-20-year-bond-yield-rises-after-auction-draws-weak-demand-2333674"
+          }
+        ]
+      }
+    ]
+  }
+}
