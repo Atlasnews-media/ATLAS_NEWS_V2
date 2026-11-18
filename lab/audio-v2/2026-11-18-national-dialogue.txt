@@ -1,0 +1,21 @@
+VOZ 1: La noticia chilena de hoy es un retroceso más profundo de la economía. El Banco Central publicó las Cuentas Nacionales del tercer trimestre y el producto interno bruto cayó 1,1 por ciento frente al mismo trimestre del año pasado.
+VOZ 2: ¿Ese dato cambia lo que habíamos visto en el Imacec?
+VOZ 1: Sí. La estimación preliminar sugería una caída de ocho décimas. Ahora la medición de Cuentas Nacionales muestra once décimas. Además, al comparar con el trimestre anterior y quitar efectos estacionales, el PIB disminuyó 1,8 por ciento. No hay que sumar esas variaciones porque sus bases de comparación son distintas.
+VOZ 2: ¿Qué actividad explica la caída?
+VOZ 1: La minería fue el principal factor desde el lado de la producción. Pero existe otra señal muy importante desde el gasto: la inversión fija, que considera maquinaria, equipos y construcción, cayó 6,7 por ciento anual.
+VOZ 2: ¿Por qué te preocupa tanto la inversión si también se sabe que la minería tuvo problemas?
+VOZ 1: Porque la inversión no solo incide en la actividad de hoy. Si las empresas suspenden proyectos, compran menos equipos o retrasan obras, también pueden reducir la capacidad de crecer más adelante. La minería explica una parte importante de la caída inmediata, pero la debilidad de la inversión permite entender un riesgo más persistente.
+VOZ 2: ¿Y qué pasó con el consumo?
+VOZ 1: No cayó en términos anuales. El consumo de los hogares aumentó 0,7 por ciento y el del gobierno 2,1 por ciento. Eso amortiguó la caída del producto, pero no logró compensar a la inversión y la minería. Por lo tanto, consumo positivo no equivale a economía fuerte.
+VOZ 2: Ayer también se habló mucho de la estabilidad financiera. ¿Qué tiene que ver?
+VOZ 1: El Banco Central publicó su Informe de Estabilidad Financiera y observa que algunas familias y empresas tienen mayor dificultad para pagar sus deudas. Destaca problemas de ventas en manufactura y comercio, empleo débil y un mayor uso de créditos rotativos en ciertos hogares.
+VOZ 2: Si juntamos PIB bajo y morosidad, ¿significa que los bancos están entrando en crisis?
+VOZ 1: No. Hay que separar vulnerabilidades de algunos deudores de una crisis del sistema financiero. El Banco Central considera que la banca mantiene condiciones de capital que permiten prestar y que el capital no está frenando de manera general el crédito.
+VOZ 2: ¿Eso se relaciona con el colchón de capital contracíclico?
+VOZ 1: Exactamente. El Consejo mantuvo el calendario para alcanzar un uno por ciento de los activos ponderados por riesgo, exigible en mayo de 2028. Ese colchón está diseñado para absorber pérdidas y poder liberarse durante una tensión severa.
+VOZ 2: ¿Y con esta caída del PIB bajará la tasa de política monetaria?
+VOZ 1: Ese salto sería apresurado. El Banco Central debe considerar inflación, expectativas, empleo, actividad y condiciones internacionales. El dato de hoy aumenta la evidencia de debilidad, pero no fija una decisión futura.
+VOZ 2: Entonces, ¿qué debería seguir alguien interesado en economía o crédito?
+VOZ 1: Primero, si la minería y la inversión vuelven a crecer. Segundo, si mejoran empleo y ventas. Y tercero, si la morosidad de los deudores más expuestos se estabiliza. Solo al seguir esas señales podremos distinguir un trimestre excepcionalmente débil de un deterioro más duradero.
+VOZ 2: La conclusión es que el PIB retrocedió 1,1 por ciento, la inversión fija cayó 6,7 y el consumo todavía avanzó, aunque poco.
+VOZ 1: Correcto. Y el diagnóstico serio conserva dos ideas juntas: existen vulnerabilidades financieras que merecen vigilancia, pero la información actual no demuestra una crisis bancaria ni determina por sí sola la trayectoria de la TPM.
