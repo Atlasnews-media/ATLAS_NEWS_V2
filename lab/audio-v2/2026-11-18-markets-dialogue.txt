@@ -1,0 +1,25 @@
+VOZ 1: La señal más interesante de mercados hoy es que el cobre, el dólar, el oro y la tecnología no se están moviendo por exactamente la misma razón. Hay ajustes globales, pero también diferencias claras entre activos.
+VOZ 2: Empecemos por Chile. ¿Qué pasó con el dólar?
+VOZ 1: El dólar volvió a rondar mil pesos al abrir. Diario Financiero reportaba, a las ocho treinta y cuatro de la mañana, una subida de unos seis pesos con sesenta frente al cierre previo. Al mismo tiempo, el dólar internacional se fortalecía y el cobre perdía valor.
+VOZ 2: ¿Cuán fuerte fue la caída del cobre?
+VOZ 1: En esa referencia matutina, un futuro de cobre cotizado en Londres retrocedía aproximadamente tres coma cinco por ciento y se situaba cerca de cinco dólares con setenta y nueve centavos por libra. Otra medición de Reuters, más temprano y en toneladas, mostraba una caída de uno coma uno por ciento. No son precios contradictorios: son contratos y horarios de observación distintos.
+VOZ 2: ¿Y por qué cae el cobre?
+VOZ 1: Hay una combinación de factores. La demanda china sigue mostrando debilidad en construcción e inversión, las expectativas de tasas altas fortalecen al dólar y los inversionistas se preguntan si el gasto en infraestructura de inteligencia artificial podrá crecer al ritmo que habían imaginado.
+VOZ 2: Pero si el cobre baja tanto, ¿eso significa que sobra metal?
+VOZ 1: No necesariamente. Reuters informó que la prima para importar cobre a China había subido con fuerza ante bajos inventarios. Un mercado de futuros presionado por ventas financieras puede convivir con un mercado físico relativamente ajustado. Esa diferencia es uno de los datos que conviene seguir.
+VOZ 2: Al mismo tiempo, Nvidia entregó resultados y los futuros tecnológicos subieron. ¿No parece una contradicción?
+VOZ 1: Es precisamente la dispersión que importa. Nvidia proyectó ventas trimestrales de unos ciento treinta mil millones de dólares, con un margen de tres por ciento, y su acción subía en negociaciones anteriores a la apertura. Eso alivia dudas sobre un proveedor específico, pero no elimina el problema de tasas altas, gasto industrial ni demanda china para el resto de los activos.
+VOZ 2: ¿Qué ocurrió con el oro? Siempre se dice que sirve de refugio cuando hay nerviosismo.
+VOZ 1: Hoy esa idea resulta insuficiente. Reuters registró una caída superior al dos por ciento del oro, a menos de tres mil setecientos setenta dólares por onza, en una observación matutina. Un dólar fuerte y las expectativas de nuevas alzas de la Reserva Federal elevan el costo de oportunidad de mantener un metal que no paga intereses.
+VOZ 2: ¿El mercado ya da por segura una subida de la Fed?
+VOZ 1: No es una decisión oficial. Los contratos de futuros reflejaban una probabilidad cercana al noventa y cinco por ciento para un alza de veinticinco puntos base en diciembre. Es una estimación de operadores y puede cambiar. Por eso importan las minutas de la Fed que se esperan más tarde.
+VOZ 2: ¿Y qué aporta el bono del Tesoro a diez años?
+VOZ 1: Se negociaba cerca de cinco coma uno por ciento en una referencia de primera hora. Esa tasa elevada ejerce presión sobre valoraciones de crecimiento y también sobre el oro. No basta para explicar por sí sola la baja del cobre, que depende además de China y del mercado físico.
+VOZ 2: Hoy también se informó que el PIB chileno cayó uno coma uno por ciento. ¿El dólar se movió por esa noticia?
+VOZ 1: Es un factor local relevante, pero no podemos atribuir toda la variación a un solo anuncio. El peso ya enfrentaba un dólar internacional fortalecido y un cobre en retroceso. La publicación del PIB añade una señal doméstica que los operadores evalúan durante la jornada.
+VOZ 2: Entonces no debemos suponer que todos los sectores de la bolsa chilena reaccionarán igual.
+VOZ 1: Exacto. Una empresa exportadora puede recibir más pesos por sus ingresos en dólares, mientras una importadora puede enfrentar costos mayores. Depende de cobertura cambiaria, márgenes y deuda. Tampoco hay que asignar un cierre del IPSA cuando la sesión continúa abierta.
+VOZ 2: Para terminar, ¿qué debería mirar alguien que sigue mercados esta tarde?
+VOZ 1: La respuesta de Wall Street tras la apertura, si el cobre confirma su ajuste, cómo evoluciona el dólar chileno y qué dicen las minutas de la Fed. Son cuatro pruebas para distinguir una corrección de posiciones de un cambio más duradero en demanda y tasas.
+VOZ 2: Resumen: cobre bajo presión, dólar fuerte, oro en baja y Nvidia ayudando a parte de la tecnología.
+VOZ 1: Así es. La conclusión es que no todos los precios narran el mismo episodio. La información útil está en esa dispersión y en los catalizadores que pueden confirmarla o revertirla.
