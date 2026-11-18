@@ -1,11 +1,11 @@
 ---
 title: "IPSA gira de +0,04% a −0,51% mientras dólar y cobre mantienen la presión"
 summary: "Entre las 09:35 y las 10:40, el índice chileno pasó de una leve alza a perder 53 puntos. El USD/CLP seguía sobre $1.000 y el cobre caía, pero la dispersión entre acciones impide atribuir toda la baja a un solo factor."
-publishedAt: "2026-11-18T13:03:11-03:00"
+publishedAt: "2026-11-18T13:11:57.252-03:00"
 cutoffAt: "2026-11-18T12:00:00-03:00"
 section: "markets"
 editionSlot: "evening"
-status: "draft"
+status: "published"
 tags:
   - mercados
   - ipsa
