@@ -22,9 +22,9 @@ sources:
   - name: "Santander Inversiones — tablero de mercados del 18 de noviembre"
     url: "https://bancosantanderinversiones.finmarketslive.cl/www/mercados.html"
 highlights:
-  - label: "IPSA revierte la apertura"
+  - label: "IPSA gira a negativo"
     text: "El índice pasó de 10.481,12 puntos y +0,04% a las 09:35 a 10.423,83 puntos y -0,51% a las 10:40."
-  - label: "Minería y centros comerciales caen"
+  - label: "Minería lidera bajas"
     text: "SQM-B, CAP y CENCOMALLS figuraban entre las mayores bajas, mientras COPEC avanzaba y evitaba una venta completamente uniforme."
   - label: "Dólar sigue sobre $1.000"
     text: "El USD/CLP operaba cerca de $1.000,57 y el cobre al contado caía 1,12%, manteniendo presión externa sobre activos chilenos."
