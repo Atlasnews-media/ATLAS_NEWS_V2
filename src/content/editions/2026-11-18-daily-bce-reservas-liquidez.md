@@ -1,11 +1,11 @@
 ---
 title: "El BCE evalúa duplicar las reservas bancarias y retirar liquidez de la eurozona"
 summary: "El Consejo de Gobierno discutirá elevar de 1% a 2% el coeficiente de reservas mínimas. La medida reduciría el pago de intereses del Eurosistema, inmovilizaría más depósitos bancarios y podría endurecer el crédito sin modificar todavía la tasa oficial."
-publishedAt: "2026-11-18T13:03:11-03:00"
+publishedAt: "2026-11-18T13:11:57.252-03:00"
 cutoffAt: "2026-11-18T12:00:00-03:00"
 type: "daily"
 editionSlot: "evening"
-status: "draft"
+status: "published"
 tags:
   - eurozona
   - bce
