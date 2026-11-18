@@ -23,9 +23,9 @@ sources:
 highlights:
   - label: "Entran US$3.503 millones"
     text: "La cuenta financiera registró entradas netas impulsadas por bonos externos, compras de deuda pública y reinversión de utilidades."
-  - label: "Deuda externa llega a 80,6% del PIB"
+  - label: "Deuda externa: 80,6%"
     text: "El stock alcanzó US$298.211 millones al cierre de septiembre, US$6.179 millones más que en el segundo trimestre."
-  - label: "Cuenta corriente mantiene superávit anual"
+  - label: "Superávit anual: 0,7%"
     text: "Aunque el tercer trimestre tuvo un déficit de US$2.227 millones, el saldo acumulado de cuatro trimestres equivalió a 0,7% del PIB."
 demo: false
 ---
