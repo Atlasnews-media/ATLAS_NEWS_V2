@@ -1,11 +1,11 @@
 ---
 title: "La caída de la inversión revela una debilidad más amplia que el retroceso minero"
 summary: "El PIB chileno cayó 1,1% anual en el tercer trimestre, pero la señal más persistente estuvo en la inversión: la formación bruta de capital retrocedió 7,4% y la inversión fija bajó 6,7%."
-publishedAt: "2026-11-19T06:16:20-03:00"
+publishedAt: "2026-11-19T06:46:27-03:00"
 cutoffAt: "2026-11-19T06:15:56-03:00"
 section: "national"
 editionSlot: "morning"
-status: "draft"
+status: "published"
 tags:
   - chile
   - actividad-economica

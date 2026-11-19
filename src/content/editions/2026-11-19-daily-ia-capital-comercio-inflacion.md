@@ -1,11 +1,11 @@
 ---
 title: "La inteligencia artificial ya redistribuye capital, comercio e inflación a escala global"
 summary: "La OPI récord de Anthropic, el billón de dólares exportado por Corea del Sur y la advertencia inflacionaria del FMI muestran que el auge de la IA dejó de ser sectorial y ya condiciona inversión, comercio y política monetaria."
-publishedAt: "2026-11-19T06:05:20-03:00"
+publishedAt: "2026-11-19T06:46:27-03:00"
 cutoffAt: "2026-11-19T06:04:48-03:00"
 type: "daily"
 editionSlot: "morning"
-status: "draft"
+status: "published"
 tags:
   - inteligencia-artificial
   - economia-global

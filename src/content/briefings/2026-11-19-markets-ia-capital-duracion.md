@@ -1,11 +1,11 @@
 ---
 title: "La IA absorbe capital, pero el mercado exige resultados y castiga la duración"
 summary: "La OPI de Anthropic no extendió de forma uniforme el entusiasmo por IA: Nvidia revirtió su alza, Asia tecnológica siguió bajo presión y el dólar alcanzó un máximo de 19 meses mientras petróleo, cobre y oro retrocedieron."
-publishedAt: "2026-11-19T06:18:20-03:00"
+publishedAt: "2026-11-19T06:46:27-03:00"
 cutoffAt: "2026-11-19T06:17:21-03:00"
 section: "markets"
 editionSlot: "morning"
-status: "draft"
+status: "published"
 tags:
   - mercados-globales
   - inteligencia-artificial
