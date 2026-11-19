@@ -1,0 +1,135 @@
+{
+  "status": "READY",
+  "date": "2026-11-19",
+  "contract": "atlas-senales-del-dia-v1",
+  "senalesDelDia": {
+    "internacional": [
+      {
+        "slot": "technology",
+        "headline": "NIST demuestra verificación cuántica de ubicación",
+        "deck": "Un experimento con fotones entrelazados verificó posición sin confiar en el dispositivo. La técnica superó a un protocolo clásico comparable, pero aún requiere redes cuánticas.",
+        "development": "Investigadores del Instituto Nacional de Estándares y Tecnología de Estados Unidos (NIST) y sus colaboradores presentaron el 18 de noviembre una demostración experimental completa de verificación cuántica de posición independiente del dispositivo. El ensayo usó fotones entrelazados y una prueba de Bell sin lagunas entre estaciones separadas por 195 metros. Los verificadores enviaron desafíos al equipo cuya ubicación querían comprobar y repitieron el procedimiento millones de veces. El resultado no identifica a una persona ni rastrea continuamente un objeto: demuestra que un dispositivo respondió desde una zona compatible con los límites temporales y estadísticos del protocolo.\n\nSegún el artículo publicado en Nature, la región lineal compatible con la posición fue 2,47 veces menor que la obtenida con el mejor protocolo clásico comparable bajo las mismas condiciones; expresada como volumen, la reducción fue de 4,53 veces. La ventaja apunta a autenticación de terminales bancarios, centros de datos o infraestructura crítica cuando la localización física forma parte de la seguridad. El avance sigue lejos de una aplicación comercial: exige redes cuánticas de alta fidelidad, sincronización precisa y equipos que todavía no están desplegados a escala. NIST estima que una implementación práctica podría tardar más de una década. La prueba, por tanto, valida un principio y una arquitectura experimental, no un producto listo para instalar.",
+        "anchor": "nist-verificacion-cuantica-ubicacion-prueba-bell-2026",
+        "sources": [
+          {
+            "name": "NIST — demostración de verificación cuántica de ubicación",
+            "url": "https://www.nist.gov/news-events/news/2026/11/quantum-physics-can-verify-persons-location-nist-researchers-show"
+          },
+          {
+            "name": "Nature — artículo experimental de verificación cuántica de posición",
+            "url": "https://www.nature.com/articles/s41586-026-11247-3"
+          },
+          {
+            "name": "Nature — comentario sobre alcance y limitaciones",
+            "url": "https://www.nature.com/articles/d41586-026-03378-4"
+          }
+        ]
+      },
+      {
+        "slot": "world",
+        "headline": "La UE autoriza la firma de su acuerdo comercial con Indonesia",
+        "deck": "El Consejo habilitó la firma y aplicación provisional del CEPA y del acuerdo de inversión. Falta el consentimiento del Parlamento Europeo para su conclusión formal.",
+        "development": "El Consejo de la Unión Europea autorizó el 18 de noviembre la firma y la aplicación provisional del Acuerdo de Asociación Económica Integral con Indonesia y de un convenio separado de protección de inversiones. El paso permite que ambos textos sean firmados y que comiencen a aplicarse provisionalmente una vez que las partes notifiquen el cumplimiento de sus procedimientos internos. No equivale todavía a la entrada en vigor definitiva: el Parlamento Europeo debe otorgar su consentimiento y el Consejo deberá adoptar después las decisiones de conclusión. Las negociaciones comenzaron en 2016 y concluyeron en septiembre de 2025.\n\nEl CEPA liberalizará hasta 98,5% de las líneas arancelarias cuando se aplique plenamente; el Consejo afirma que 96% de los aranceles indonesios desaparecerá dentro de cinco años y estima un ahorro anual de unos €600 millones en derechos aduaneros. El texto también cubre servicios, contratación pública, propiedad intelectual, comercio digital, energía y materias primas. Productos europeos como automóviles, hoy sujetos en Indonesia a gravámenes de hasta 50%, quedarían sin arancel dentro de cinco años, mientras arroz, azúcar y etanol permanecen fuera de la liberalización europea general. El calendario es relevante porque Indonesia dejará el 1 de enero de 2027 el sistema europeo de preferencias generalizadas. La señal verificable es la autorización jurídica para firmar, no una reducción arancelaria ya operativa ni una garantía de mayores flujos comerciales.",
+        "anchor": "ue-indonesia-autoriza-firma-cepa-inversion-2026",
+        "sources": [
+          {
+            "name": "Consejo de la UE — autorización de firma y aplicación provisional",
+            "url": "https://www.consilium.europa.eu/en/press/press-releases/2026/11/18/eu-indonesia-council-greenlights-signature-of-landmark-trade-and-investment-agreements/"
+          },
+          {
+            "name": "Comisión Europea — elementos del CEPA y acuerdo de inversión",
+            "url": "https://policy.trade.ec.europa.eu/eu-trade-relationships-country-and-region/countries-and-regions/indonesia/eu-indonesia-agreements/key-elements-eu-indonesia-trade-agreement-and-investment-protection-agreement_en"
+          },
+          {
+            "name": "Reuters — gobiernos europeos autorizan la firma",
+            "url": "https://www.reuters.com/markets/emerging/eu-governments-authorise-signature-trade-deal-agreement-with-indonesia-2026-11-18/"
+          }
+        ]
+      }
+    ],
+    "nacional": [
+      {
+        "slot": "ipsa_company",
+        "headline": "LATAM extiende líneas rotativas por US$1.810 millones",
+        "deck": "La aerolínea llevó a noviembre de 2031 el vencimiento de dos líneas bancarias. La principal subió a US$1.060 millones y ambas permanecen sin giros.",
+        "development": "LATAM Airlines Group informó a la Comisión para el Mercado Financiero el 18 de noviembre que modificó dos líneas de crédito rotativas y extendió su vencimiento hasta el 18 de noviembre de 2031. Los compromisos de la primera facilidad aumentaron desde US$800 millones a US$1.060 millones, mientras la segunda se mantuvo en US$750 millones. El total disponible de ambas líneas quedó así en US$1.810 millones. La compañía indicó que las dos facilidades estaban completamente disponibles y sin montos girados al momento del anuncio, por lo que la operación amplía liquidez contingente y no representa una entrada inmediata de efectivo ni un aumento equivalente de deuda utilizada.\n\nLas enmiendas también permiten incorporar compromisos adicionales de hasta US$240 millones en la primera línea y US$200 millones en la segunda, sujetos a condiciones. LATAM comunicó mejoras en tasas y comisiones, pero el hecho esencial no entrega una comparación completa que permita cuantificar el ahorro futuro. La liberación de determinadas garantías depende de calificaciones crediticias y otras condiciones contractuales. Los estados financieros a septiembre mostraban que, antes de esta modificación, las dos líneas sumaban US$1.550 millones y vencían en julio de 2029. Para evaluar el efecto financiero importarán el costo efectivo, el uso futuro de las facilidades, los covenants y la evolución del perfil de vencimientos; disponibilidad no debe confundirse con caja ya recibida.",
+        "anchor": "latam-extiende-lineas-rotativas-1810-millones-2031",
+        "sources": [
+          {
+            "name": "CMF — hecho esencial LATAM del 18 de noviembre",
+            "url": "https://www.cmfchile.cl/portal/principal/613/w3-propertyvalue-26849.html"
+          },
+          {
+            "name": "LATAM Airlines Group — archivo de hechos esenciales",
+            "url": "https://www.latamairlinesgroup.net/es/material-fact"
+          },
+          {
+            "name": "SEC — estados financieros de LATAM al tercer trimestre de 2026",
+            "url": "https://www.sec.gov/Archives/edgar/data/1047716/000104771626000107/d1-freetranslationinglsxla.htm"
+          }
+        ]
+      },
+      {
+        "slot": "policy_economy",
+        "headline": "CMF consulta nuevos datos de cajeros y ciberincidentes bancarios",
+        "deck": "La propuesta agrega georreferenciación de oficinas y cajeros, redefine reportes de ciberseguridad y actualiza archivos de vivienda y créditos transfronterizos.",
+        "development": "La Comisión para el Mercado Financiero abrió el 17 de noviembre una consulta pública de cuatro semanas para modificar seis archivos del Manual del Sistema de Información de bancos. La propuesta incorpora coordenadas de latitud y longitud a los reportes I06 e I11 sobre oficinas, personal, horarios, cajeros automáticos y tiempos de indisponibilidad. La CMF busca usar esa georreferenciación para construir indicadores de inclusión financiera. En el archivo I12, dedicado a incidentes de ciberseguridad, plantea ajustar definiciones de incidentes y alertas y añadir campos que permitan caracterizarlos con mayor detalle para la supervisión.\n\nEl proyecto también actualiza el archivo D05 para aceptar vencimientos de operaciones transfronterizas iguales o superiores a 10.000 días. En vivienda subsidiada, modifica D42 para identificar programas vigentes y D43 para distinguir valores originales sobre 2.000 UF; ambos pasarían a periodicidad trimestral. Estas son obligaciones de información propuestas para las entidades supervisadas, no nuevas exigencias de capital ni cambios en las condiciones de créditos al público. El período para enviar observaciones termina el 15 de diciembre de 2026. Después, la CMF deberá evaluar los comentarios y resolver el texto y calendario definitivos. El efecto inmediato es regulatorio y operativo: bancos y proveedores de datos pueden revisar formatos, definiciones y sistemas, pero aún no corresponde tratar los campos propuestos como norma vigente.",
+        "anchor": "cmf-consulta-datos-cajeros-ciberincidentes-bancos-2026",
+        "sources": [
+          {
+            "name": "CMF — consulta sobre archivos del MSI de bancos",
+            "url": "https://www.cmfchile.cl/portal/prensa/625/w4-article-115004.html"
+          },
+          {
+            "name": "CMF — normativa en consulta",
+            "url": "https://www.cmfchile.cl/institucional/legislacion_normativa/normativa_tramite.php"
+          }
+        ]
+      }
+    ],
+    "mercados": [
+      {
+        "slot": "markets_chile",
+        "headline": "SQM-B cae 3,88% tras utilidad trimestral bajo el consenso",
+        "deck": "La acción presionó al IPSA, que terminó en 10.362,70 puntos (-1,09%). SQM ganó US$544,2 millones en el trimestre, pero el beneficio por acción quedó bajo lo esperado.",
+        "development": "SQM-B retrocedió 3,88% hasta $49.600 en la sesión del 18 de noviembre y fue el principal lastre de una jornada en que el IPSA cerró en 10.362,70 puntos, una caída de 1,09%. El movimiento siguió a la publicación de resultados del tercer trimestre: SQM informó una utilidad neta de US$544,2 millones, equivalente a US$1,91 por acción, frente a US$178,4 millones y US$0,62 por acción un año antes. Aunque la ganancia creció con fuerza, el beneficio por acción quedó por debajo de los US$1,97 que esperaba el consenso citado por reportes de mercado. Esa diferencia ayuda a explicar la reacción, pero no demuestra que todo el descenso proviniera de un solo dato.\n\nLos ingresos trimestrales alcanzaron US$2.112 millones y la ganancia bruta llegó a US$963,8 millones. Litio y derivados aportaron US$1.517 millones de ventas, con mayores volúmenes y precios frente al año anterior según la empresa. La lectura bursátil separa nivel absoluto y sorpresa: un resultado puede mejorar interanualmente y aun así decepcionar una expectativa incorporada en la cotización. El IPSA también recibió presión de otras acciones y del entorno externo, de modo que no corresponde atribuir su variación completa a SQM. Las próximas referencias serán la conferencia con inversionistas, las proyecciones de producción y precios y cualquier revisión de estimaciones de analistas.",
+        "anchor": "sqm-b-cae-resultados-tercer-trimestre-ipsa-2026",
+        "sources": [
+          {
+            "name": "SQM — resultados del tercer trimestre de 2026",
+            "url": "https://ir.sqm.com/system/files-encrypted/nasdaq_kms/assets/2026/11/17/18-57-21/6-K_3Q2026%20Earnings%20release_eng_VF.pdf"
+          },
+          {
+            "name": "LarrainVial — cierre del IPSA y acciones chilenas",
+            "url": "https://mercados.larrainvial.com/www/v2/index.html"
+          },
+          {
+            "name": "SEC — reporte 6-K de SQM",
+            "url": "https://www.sec.gov/Archives/edgar/data/909037/000090903726000042/a6-ksqmx3q2026earningsrele.htm"
+          }
+        ]
+      },
+      {
+        "slot": "markets_global",
+        "headline": "Permisos de carbono europeos caen más de 6%",
+        "deck": "El contrato de referencia cerró en €81,78 por tonelada. Las negociaciones sobre el ETS y señales débiles de energía y acciones ampliaron la venta.",
+        "development": "El permiso de emisión de referencia de la Unión Europea cayó 6,38% el 18 de noviembre y terminó en €81,78 por tonelada, después de tocar €82,63 durante la sesión. El descenso ocurrió mientras gobiernos y Parlamento debatían cambios al Sistema de Comercio de Emisiones y los mercados de energía y acciones mostraban debilidad. LSEG identificó varios factores concurrentes, por lo que la magnitud del movimiento no puede asignarse únicamente a una declaración política. Cada permiso representa el derecho a emitir una tonelada de dióxido de carbono dentro del sistema y su precio incide en el costo marginal de instalaciones eléctricas e industriales cubiertas.\n\nLa discusión regulatoria incluye la trayectoria del límite de emisiones después de 2030, la reserva de estabilidad y la asignación gratuita a industrias expuestas a competencia exterior. El Consejo y el Parlamento ya habían acordado el 12 de noviembre aumentar permisos gratuitos para ciertos sectores intensivos en energía entre 2026 y 2030, mientras la reforma más amplia sigue abierta. Una caída diaria reduce temporalmente el costo de cobertura para compradores, pero también modifica el valor de inventarios y posiciones financieras; no equivale a una reducción automática de las metas climáticas ni de las obligaciones de entrega. Para confirmar si el ajuste es duradero habrá que observar los textos negociadores, los volúmenes, la estructura de vencimientos y la respuesta de empresas eléctricas e industriales.",
+        "anchor": "permisos-carbono-europa-caen-reforma-ets-2026",
+        "sources": [
+          {
+            "name": "Reuters — caída de permisos europeos y factores de mercado",
+            "url": "https://www.investing.com/news/economy-news/eu-carbon-prices-drop-over-5-on-reform-talks-and-weaker-markets-93CH-5036284"
+          },
+          {
+            "name": "Consejo de la UE — acuerdo sobre permisos gratuitos industriales",
+            "url": "https://www.consilium.europa.eu/en/press/press-releases/2026/11/12/emissions-trading-system-council-and-parliament-agree-to-boost-free-carbon-allowances-for-energy-intensive-industries/"
+          },
+          {
+            "name": "Consejo de la UE — reforma del sistema de comercio de emisiones",
+            "url": "https://www.consilium.europa.eu/en/policies/climate-change/reform-eu-ets/"
+          }
+        ]
+      }
+    ]
+  }
+}

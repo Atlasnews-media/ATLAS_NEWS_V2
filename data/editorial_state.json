@@ -27,14 +27,14 @@
     {
       "id": "ai-monetization-selectivity",
       "topic": "Inteligencia artificial y selectividad bursátil",
-      "thesis": "La inversión en inteligencia artificial conserva impulso real, pero su rentabilidad y estabilidad dependen de transformar deuda, contratos y financiamiento circular en ingresos finales antes de que una corrección active contagios financieros y operacionales.",
-      "status": "changed",
-      "last_evidence": "El 16 de noviembre Michael Barr advirtió que la deuda en balance de siete grandes firmas de IA superaría US$800.000 millones en 2026, mientras compromisos fuera de balance exceden US$3 billones y más de US$100.000 millones de inversiones circulares conectan proveedores con clientes.",
-      "effect": "Cambia el hilo desde riesgo de gobernanza y ejecución empresarial hacia estabilidad financiera: la exposición incluye deuda, garantías, contratos, fondos apalancados y algoritmos capaces de amplificar ventas o corridas; no equivale a una crisis ya materializada.",
-      "base_scenario": "La inversión en IA continúa y parte de la infraestructura resulta productiva, pero la selección aumenta: firmas con clientes finales y caja absorben tasas altas, mientras proyectos dependientes de financiamiento externo enfrentan spreads, refinanciamiento y revisión de garantías.",
+      "thesis": "La inversión en inteligencia artificial conserva impulso real y acceso excepcional a capital, pero su rentabilidad y estabilidad dependen de transformar deuda, contratos, ofertas públicas y financiamiento circular en ingresos finales antes de que una corrección active contagios financieros y operacionales.",
+      "status": "confirmed",
+      "last_evidence": "El 18 de noviembre Anthropic fijó 980 millones de acciones a US$83 y recaudó US$81.310 millones en la mayor OPI registrada, con una valoración cercana a US$1,5 billones; el 19 de noviembre Corea del Sur informó que chips de IA impulsaron sus exportaciones por encima de US$1 billón.",
+      "effect": "Confirma que el ciclo de IA conserva capacidad extraordinaria para atraer capital público y sostener comercio físico, pero aumenta la concentración y la exigencia de monetización: la liquidez obtenida reduce el riesgo inmediato de fondeo sin demostrar todavía ingresos suficientes para justificar la escala de inversión y valoración.",
+      "base_scenario": "La inversión en IA continúa y las firmas con acceso a mercados públicos financian infraestructura a gran escala, pero la selección aumenta: empresas con clientes finales y caja absorben tasas altas, mientras proyectos dependientes de deuda, contratos circulares o nuevas emisiones enfrentan refinanciamiento y revisión de valoraciones.",
       "invalidate_if": "Un crecimiento sostenido de clientes pagadores, menor deuda y compromisos, spreads estables y ausencia de ventas forzadas debilitarían la tesis; incumplimientos, cancelaciones, uso de garantías, liquidaciones apalancadas o contagio bancario la reforzarían.",
-      "watch": "Ingresos y caja de grandes firmas y laboratorios, emisiones y spreads, crédito privado y financiamiento respaldado por activos, garantías de valor residual, exposiciones de fondos y bancos, volatilidad algorítmica, resultados de Nvidia y debut de Anthropic.",
-      "last_publication": "/ediciones/2026-11-16-daily-fed-ia-riesgo-financiero/"
+      "watch": "Debut y desempeño de Anthropic, uso de los fondos, ingresos y caja de grandes firmas y laboratorios, exportaciones coreanas de semiconductores, emisiones y spreads, crédito privado, garantías de valor residual, exposiciones de fondos y bancos y volatilidad algorítmica.",
+      "last_publication": "/ediciones/2026-11-19-daily-ia-capital-comercio-inflacion/"
     },
     {
       "id": "chile-inflation-activity-rates",
