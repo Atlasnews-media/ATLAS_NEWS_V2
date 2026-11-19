@@ -1,11 +1,11 @@
 ---
 title: "Chile firma con Filipinas un acuerdo que dará preferencias al 90% de sus exportaciones"
 summary: "El CEPA suscrito en APEC convierte a Chile en el primer país latinoamericano con un acuerdo comercial con Filipinas y abre tratamiento preferencial para 10.467 líneas arancelarias, aunque su efecto dependerá de la ratificación y entrada en vigor."
-publishedAt: "2026-11-19T13:07:51-03:00"
+publishedAt: "2026-11-19T13:11:51-03:00"
 cutoffAt: "2026-11-19T12:00:00-03:00"
 section: "national"
 editionSlot: "evening"
-status: "draft"
+status: "published"
 tags:
   - chile
   - filipinas
