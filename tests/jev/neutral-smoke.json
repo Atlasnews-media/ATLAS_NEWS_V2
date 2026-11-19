@@ -1,0 +1,24 @@
+{
+  "schemaVersion": 1,
+  "requestId": "JEV-SMOKE-NEUTRAL-20260929",
+  "consumer": "PRODUCTION_SMOKE",
+  "sourceCommit": "e67a319b230cbeafde5edb6a0662fee6403f8e48",
+  "editorialDate": "2026-09-29",
+  "candidates": [
+    {
+      "candidateKey": "smoke:neutral:1",
+      "section": "general",
+      "title": "Synthetic JEV migration smoke candidate",
+      "description": "Synthetic technical candidate used only to verify the canonical JEV TypeSafe execution path without publishing editorial content.",
+      "sourceName": "ATLAS technical smoke",
+      "publishedAt": "2026-09-29T10:00:00Z",
+      "historicalPriors": [
+        {
+          "id": "smoke-prior-1",
+          "title": "Synthetic prior",
+          "description": "Synthetic historical prior used only for JEV migration verification."
+        }
+      ]
+    }
+  ]
+}

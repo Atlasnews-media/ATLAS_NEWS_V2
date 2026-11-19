@@ -1,0 +1,80 @@
+name: JEV — Canonical migration gate
+
+on:
+  push:
+    branches:
+      - "refactor/jev-canonical-core"
+  pull_request:
+    paths:
+      - "scripts/jev/**"
+      - "scripts/lab/radar-editorial/run-jev-memory-judge.mjs"
+      - "scripts/lab/radar-editorial/typesafe-jev-client.mjs"
+      - ".github/workflows/jev-engine.yml"
+      - ".github/workflows/lab-radar-jev-resolver.yml"
+      - "tests/jev/**"
+
+permissions:
+  contents: read
+
+jobs:
+  architecture:
+    name: JEV architecture contract
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: Contract tests
+        run: node scripts/jev/test-jev-architecture.mjs
+      - name: Static single-engine and isolation gates
+        shell: bash
+        run: |
+          set -euo pipefail
+          ! grep -R --line-number --fixed-string 'LAB_ONLY' scripts/jev/jev-core.mjs scripts/jev/typesafe-jev-client.mjs scripts/jev/run-jev.mjs
+          ! grep -R --line-number --fixed-string 'radar-ingress/editorial' scripts/jev .github/workflows/jev-engine.yml
+          ! grep -R --line-number --fixed-string 'lab/radar-editorial' scripts/jev .github/workflows/jev-engine.yml
+          ! grep -R --line-number --fixed-string 'productionWritesAllowed' scripts/jev/jev-core.mjs scripts/jev/typesafe-jev-client.mjs scripts/jev/run-jev.mjs
+          test "$(grep -R -l --include='*.mjs' 'class TypeSafeJevClient' scripts | wc -l | tr -d ' ')" = "1"
+          test "$(grep -R -l --include='*.mjs' 'function jevQuestions' scripts | wc -l | tr -d ' ')" = "1"
+          ! grep -R --line-number -E 'from .*(scripts/)?lab/|from .*lab/radar-editorial' scripts/jev
+          echo "STATIC_JEV_SINGLE_ENGINE=PASS"
+
+  real-smokes:
+    name: Real TypeSafe — neutral + LAB + production
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    env:
+      TYPESAFE_API_KEY: ${{ secrets.TYPESAFE_API_KEY }}
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: Credential gate
+        run: test -n "${TYPESAFE_API_KEY:-}"
+      - name: Neutral core smoke
+        run: node scripts/jev/run-jev.mjs --request tests/jev/neutral-smoke.json --output "$RUNNER_TEMP/neutral.json"
+      - name: LAB adapter smoke
+        run: node scripts/jev/adapters/lab-radar-adapter.mjs --request tests/jev/lab-radar-smoke.json --output "$RUNNER_TEMP/lab.json"
+      - name: Production adapter smoke
+        run: node scripts/jev/adapters/production-adapter.mjs --request tests/jev/production-smoke.json --output "$RUNNER_TEMP/production.json"
+      - name: Verify all three use real TypeSafe contract
+        run: |
+          node - "$RUNNER_TEMP/neutral.json" "$RUNNER_TEMP/lab.json" "$RUNNER_TEMP/production.json" <<'NODE'
+          const fs=require("fs");
+          for(const file of process.argv.slice(2)){
+            const r=JSON.parse(fs.readFileSync(file,"utf8"));
+            if(r.engine!=="JEV_TYPESAFE"||r.modelRequested!=="jev-latest"||r.thresholdsApplied!==false||r.status!=="PASS") throw new Error(file+" invalid");
+            if(!r.modelObserved||!Array.isArray(r.judgments)||r.judgments.length<1) throw new Error(file+" lacks real evidence");
+          }
+          console.log("REAL_TYPESAFE_THREE_PATHS=PASS");
+          NODE
+
+  reusable-neutral:
+    name: Reusable neutral workflow smoke
+    uses: ./.github/workflows/jev-engine.yml
+    with:
+      request_path: tests/jev/neutral-smoke.json
+      request_ref: ${{ github.sha }}
+    secrets: inherit
