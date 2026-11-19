@@ -1,11 +1,11 @@
 ---
 title: "La OCDE crece 0,6%, pero Estados Unidos acelera mientras Europa pierde impulso"
 summary: "El PIB de la OCDE aumentó 0,6% en el tercer trimestre, una décima menos que en el período previo. El promedio oculta una divergencia mayor: Estados Unidos avanzó 0,8%, la eurozona bajó a 0,4% y Francia se contrajo."
-publishedAt: "2026-11-19T13:07:51-03:00"
+publishedAt: "2026-11-19T13:11:51-03:00"
 cutoffAt: "2026-11-19T12:00:00-03:00"
 type: "daily"
 editionSlot: "evening"
-status: "draft"
+status: "published"
 tags:
   - crecimiento-global
   - ocde
