@@ -1,11 +1,11 @@
 ---
 title: "Dólar toca $1.009, máximo desde enero de 2025, mientras el IPSA resiste plano"
 summary: "El peso extendió la debilidad de la mañana y el dólar llegó a $1.009,43 en la apertura local. El cobre siguió a la baja, pero el IPSA se mantuvo prácticamente sin cambios: la presión cambiaria no se convirtió en una liquidación general de acciones chilenas."
-publishedAt: "2026-11-19T13:07:51-03:00"
+publishedAt: "2026-11-19T13:11:51-03:00"
 cutoffAt: "2026-11-19T12:00:00-03:00"
 section: "markets"
 editionSlot: "evening"
-status: "draft"
+status: "published"
 tags:
   - dolar
   - peso-chileno
