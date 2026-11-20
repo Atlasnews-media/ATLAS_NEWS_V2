@@ -1,11 +1,11 @@
 ---
 title: "El dólar supera $1.020 mientras el cobre cae a mínimos de marzo y el IPSA retrocede"
 summary: "El peso chileno tocó su nivel más débil desde julio de 2022 mientras el cobre profundizó la caída y la bolsa local cedió. El movimiento coincide con aversión global al riesgo, pero cada activo incorpora además factores propios."
-publishedAt: "2026-11-20T13:02:58-03:00"
+publishedAt: "2026-11-20T13:07:48-03:00"
 cutoffAt: "2026-11-20T12:00:00-03:00"
 section: "markets"
 editionSlot: "evening"
-status: "draft"
+status: "published"
 tags:
   - dolar
   - peso-chileno
