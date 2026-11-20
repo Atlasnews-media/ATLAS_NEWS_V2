@@ -1,11 +1,11 @@
 ---
 title: "Reino Unido y la UE cierran acuerdos para alimentos, carbono y movilidad juvenil"
 summary: "Londres y Bruselas concluyeron acuerdos para reducir controles agroalimentarios, enlazar sus mercados de carbono desde 2028 y permitir movilidad juvenil recíproca por hasta tres años."
-publishedAt: "2026-11-20T13:02:58-03:00"
+publishedAt: "2026-11-20T13:07:48-03:00"
 cutoffAt: "2026-11-20T12:00:00-03:00"
 type: "daily"
 editionSlot: "evening"
-status: "draft"
+status: "published"
 tags:
   - reino-unido
   - union-europea
