@@ -1,0 +1,135 @@
+{
+  "status": "READY",
+  "date": "2026-11-20",
+  "contract": "atlas-senales-del-dia-v1",
+  "senalesDelDia": {
+    "internacional": [
+      {
+        "slot": "technology",
+        "headline": "Un algoritmo reduce de siglos a horas la búsqueda de púlsares",
+        "deck": "El método basado en retículas halló PSR J1622-7204 en datos de Fermi con diez horas de CPU. Abre búsquedas antes impracticables, pero aún debe probarse en sistemas binarios.",
+        "development": "Un equipo internacional presentó el 19 de noviembre un método que encontró un púlsar de rayos gamma en 15 años de datos públicos del telescopio Fermi de la NASA usando unas diez horas de procesamiento en un solo núcleo. PSR J1622-7204 es una estrella de neutrones aislada que gira 261 veces por segundo. El enfoque transforma la búsqueda de periodicidad en un problema geométrico de vectores cortos dentro de retículas de alta dimensión y emplea herramientas desarrolladas originalmente para investigación criptográfica. El artículo de Physical Review Letters compara ese costo con el método anterior más avanzado: este último no detectó la señal pese a consumir recursos equivalentes a unos 600 años de CPU.\n\nLa mejora no significa que todos los púlsares puedan identificarse ahora en un computador doméstico. Fermi registra muy pocos fotones de cada fuente y el algoritmo debe explorar posición, frecuencia de rotación y desaceleración sin confundir la señal con ruido de fondo. La demostración confirma que la formulación por retículas puede recuperar un objeto que había pasado inadvertido y reduce de forma material la barrera computacional. El siguiente paso declarado por los autores es extender la técnica a púlsares en sistemas binarios, donde el movimiento orbital distorsiona los tiempos de llegada. Esa aplicación todavía es una meta de investigación, no un resultado ya obtenido.",
+        "anchor": "fermi-algoritmo-reticulas-pulsar-j1622-7204-2026",
+        "sources": [
+          {
+            "name": "Physical Review Letters — artículo sobre el método basado en retículas",
+            "url": "https://journals.aps.org/prl/abstract/10.1103/vlt2-xzgk"
+          },
+          {
+            "name": "NASA — datos Fermi y descubrimiento de PSR J1622-7204",
+            "url": "https://science.nasa.gov/open-science/fermi-data-pulsar-discovery/"
+          },
+          {
+            "name": "APS Physics — evaluación independiente del avance",
+            "url": "https://physics.aps.org/articles/v19/s144"
+          }
+        ]
+      },
+      {
+        "slot": "world",
+        "headline": "La CIJ declara responsable a Myanmar por genocidio rohinyá",
+        "deck": "La corte ordenó cesar violaciones, investigar responsables y reparar daños. La cuantía y modalidades de la compensación se definirán en una fase posterior.",
+        "development": "La Corte Internacional de Justicia concluyó el 19 de noviembre que Myanmar incurrió en genocidio contra la población rohinyá durante las operaciones de 2017 en el norte del estado de Rakáin. En el caso presentado por Gambia, el tribunal también determinó que el Estado incumplió sus obligaciones de prevenir y castigar actos de genocidio y violó la orden provisional de 2020 destinada a preservar evidencia. La CIJ resuelve responsabilidad entre Estados; no juzga ni condena penalmente a personas. Por eso, el fallo no sustituye investigaciones criminales individuales ni identifica por sí solo qué funcionarios deben recibir una pena.\n\nLa sentencia ordenó a Myanmar cesar las violaciones, dar efecto interno a la Convención sobre Genocidio, investigar a personas razonablemente sospechosas y, cuando corresponda, procesarlas. También exige garantías de no repetición, medidas para la restitución —incluido facilitar retornos seguros, voluntarios y dignos y reunificación familiar— y compensación por los daños. El monto y las modalidades de reparación quedaron para una etapa posterior; Myanmar deberá informar en dos años sobre las medidas adoptadas. El gobierno rechazó públicamente el fallo como injusto, pero esa reacción no modifica la obligación internacional establecida por la corte. La ejecución dependerá ahora de las medidas estatales y del seguimiento internacional.",
+        "anchor": "cij-myanmar-genocidio-rohinya-sentencia-2026",
+        "sources": [
+          {
+            "name": "Corte Internacional de Justicia — sentencia del caso Gambia contra Myanmar",
+            "url": "https://www.icj-cij.org/sites/default/files/case-related/178/178-20261119-jud-01-00-en.pdf"
+          },
+          {
+            "name": "Mecanismo Independiente de la ONU para Myanmar — alcance y órdenes",
+            "url": "https://iimm.un.org/icj-gambia-v-myanmar"
+          },
+          {
+            "name": "Reuters — reacción del gobierno de Myanmar al fallo",
+            "url": "https://www.reuters.com/world/asia-pacific/myanmar-calls-icj-ruling-genocide-unfair-2026-11-20/"
+          }
+        ]
+      }
+    ],
+    "nacional": [
+      {
+        "slot": "ipsa_company",
+        "headline": "CAP y Aclara logran metal NdPr de grado para imanes",
+        "deck": "La planta demostrativa de Huachipato produjo 767 kilos y alcanzó 175 kilos diarios. El hito valida pureza y capacidad, pero aún falta calificación comercial y escalamiento.",
+        "development": "Aclara Metals, sociedad conjunta en partes iguales entre Aclara Resources y CAP, informó el 17 de noviembre que produjo metal de neodimio-praseodimio de grado para imanes en su planta demostrativa de Huachipato. Cuatro campañas generaron muestras por 57 kilos que un laboratorio internacional analizó con una pureza ponderada de 99,4%. En una campaña adicional, la celda alcanzó su capacidad nominal de diseño de 175 kilos diarios y produjo 560 kilos durante algo más de tres días continuos. La producción acumulada llegó a 767 kilos. El proceso usa electrólisis en sales fundidas para transformar óxidos de tierras raras en metal.\n\nEl resultado valida parámetros técnicos de una planta demostrativa y no equivale todavía a operación comercial rentable. Aclara Metals pretende producir más de una tonelada adicional en diciembre y usar los datos para optimizar el proceso y apoyar la ingeniería de una futura instalación industrial en Estados Unidos. La empresa también debe enviar material a fabricantes de imanes para pruebas de calificación; esas evaluaciones determinarán si el producto cumple especificaciones de clientes en aplicaciones reales. Para CAP, el avance aporta evidencia operativa a su asociación de minerales críticos y a la reconversión industrial de Huachipato, pero el impacto financiero dependerá del escalamiento, la inversión requerida, los contratos comerciales y la repetición estable de pureza y rendimiento.",
+        "anchor": "cap-aclara-ndpr-grado-imanes-huachipato-2026",
+        "sources": [
+          {
+            "name": "Aclara Resources — producción de metal NdPr de grado para imanes",
+            "url": "https://www.newswire.ca/news-releases/aclara-achieves-magnet-grade-ndpr-metal-production-847358843.html"
+          },
+          {
+            "name": "CAP — planta demostrativa de Aclara Metals en Huachipato",
+            "url": "https://www.cap.cl/cap-y-aclara-inauguran-en-huachipato-planta-demostrativa-para-desarrollar-tecnologia-en-metales-y-aleaciones-de-tierras-raras/"
+          },
+          {
+            "name": "Mining Weekly — verificación independiente del hito productivo",
+            "url": "https://www.miningweekly.com/article/aclara-produces-first-magnet-grade-ndpr-metal-at-demo-plant-2026-11-18"
+          }
+        ]
+      },
+      {
+        "slot": "policy_economy",
+        "headline": "Cochilco eleva a US$111.149 millones la cartera minera",
+        "deck": "El catastro 2026-2035 reúne 72 proyectos y crece 6,3%. El litio explica cerca de 92% del aumento, pero la cartera combina distintas etapas y no es gasto comprometido.",
+        "development": "Cochilco publicó el 19 de noviembre su cartera de inversión minera 2026-2035, que suma US$111.149 millones en 72 proyectos estatales y privados. El monto es 6,3% mayor que los US$104.549 millones del catastro anterior y el más alto informado en 13 años. El cobre concentra 84,5% del total. El cambio más marcado proviene del litio: sus iniciativas pasan de US$4.700 millones a US$10.800 millones y explican cerca de 92% del incremento neto. Entre las incorporaciones figuran Salar Futuro, de la asociación entre Codelco y SQM, por US$3.000 millones, y la transición de Albemarle hacia extracción directa, por US$3.100 millones; ambos proyectos están en evaluación ambiental.\n\nEl catastro es una estimación de inversión potencial distribuida por etapa, mineral y región, no un calendario de desembolsos ya asegurados. Cochilco identifica 22 proyectos en ejecución por US$36.727 millones, aproximadamente un tercio del total, mientras el resto enfrenta distintos grados de ingeniería, permisos, evaluación o decisión empresarial. Antofagasta concentra US$51.544 millones, cerca de 46% de la cartera nacional. La lectura económica exige separar tamaño de pipeline y materialización efectiva: cambios de costos, precios, permisos, financiamiento o diseño pueden modificar montos y fechas. La próxima evidencia será el avance ambiental y de construcción de los proyectos incorporados, especialmente los de litio que explican casi todo el aumento.",
+        "anchor": "cochilco-cartera-inversion-minera-2026-2035",
+        "sources": [
+          {
+            "name": "Cochilco — cartera de inversión minera 2026-2035",
+            "url": "https://www.cochilco.cl/web/cartera-de-inversion-minera-alcanza-us111-149-millones-el-mayor-monto-en-13-anos/"
+          },
+          {
+            "name": "Reuters — cartera minera chilena y composición por mineral",
+            "url": "https://es.marketscreener.com/noticias/cartera-de-inversiones-mineras-en-chile-alcanza-111-149-millones-de-d-lares-en-2026-2035-cochilco-ce785ed2d88fff2d"
+          }
+        ]
+      }
+    ],
+    "mercados": [
+      {
+        "slot": "markets_chile",
+        "headline": "Los Héroes coloca UF 2 millones con su menor spread inicial",
+        "deck": "El bono social se adjudicó a UF+3,68%, con 113 puntos base sobre la referencia soberana y demanda de 1,4 veces. Los fondos financiarán créditos sociales.",
+        "development": "Caja Los Héroes colocó el 19 de noviembre un bono social por UF 2 millones, equivalentes a unos $82.700 millones, en el mercado chileno. La emisión indexada a la inflación se adjudicó a una tasa de UF más 3,68%, con un spread de 113 puntos base sobre la referencia soberana. Según fuentes citadas por Diario Financiero, la demanda alcanzó cerca de 1,4 veces el monto ofrecido. La entidad obtuvo así el menor spread que ha pagado en una primera colocación, frente a 120 puntos base en una operación comparable de mediados de 2025. El dato describe el precio de esta emisión y no implica por sí solo una compresión general del crédito corporativo local.\n\nLos recursos se destinarán a ampliar créditos sociales para afiliados. El bono, con calificación AA, concede tres años de gracia para el capital; desde el cuarto año amortizará de forma constante hasta 2032 y contempla una opción de prepago en 2029 con sobretasa. Es el séptimo bono social de Los Héroes. La etiqueta vincula el uso de fondos a un objetivo definido, pero no elimina el riesgo crediticio ni garantiza condiciones específicas para cada préstamo que se otorgue. Para evaluar la señal de mercado importarán la evolución posterior del spread, la composición de inversionistas, el crecimiento de la cartera y el cumplimiento del marco de uso y reporte de fondos.",
+        "anchor": "los-heroes-bono-social-uf-dos-millones-2026",
+        "sources": [
+          {
+            "name": "Diario Financiero — términos y demanda de la colocación",
+            "url": "https://www.df.cl/mercados/renta-fija/caja-los-heroes-vende-bonos-por-mas-de-us-80-millones-para-entregar-nuevos"
+          },
+          {
+            "name": "CMF — ficha pública del emisor Caja Los Héroes",
+            "url": "https://www.cmfchile.cl/institucional/mercados/entidad.php?control=svs&mercado=V&pestania=1&rut=70016330&tipoentidad=RVEMI&vig=VI"
+          },
+          {
+            "name": "Los Héroes — información para inversionistas y emisiones",
+            "url": "https://www.losheroes.cl/trabajadores/nuestra-empresa/relacion-con-inversionistas"
+          }
+        ]
+      },
+      {
+        "slot": "markets_global",
+        "headline": "El robusta toca su menor precio en dos años y medio",
+        "deck": "El futuro de Londres cayó hasta US$2.972 por tonelada con el ingreso de la cosecha vietnamita. Arabica subió, una divergencia que refleja balances de oferta distintos.",
+        "development": "Los futuros de café robusta en Londres tocaron el 19 de noviembre US$2.972 por tonelada, su nivel más bajo en dos años y medio, y operaban con una baja diaria de 0,9% en US$2.993. El movimiento prolongó el descenso observado durante la semana mientras comienzan a llegar granos de la nueva cosecha de Vietnam, el mayor productor mundial de robusta. La debilidad del real brasileño también incentivó ventas externas desde Brasil. En contraste, el arabica subió 0,9% hasta US$2,779 por libra. La divergencia muestra que los dos contratos enfrentan disponibilidad, inventarios y composición de demanda diferentes y no deben tratarse como una sola cotización mundial del café.\n\nLos datos de oferta respaldan parte del ajuste, aunque no determinan por sí solos el precio diario. El Departamento de Agricultura de Estados Unidos proyectó para Vietnam una producción 2026/27 de 32,5 millones de sacos de 60 kilos, incluidos 31,4 millones de robusta, con áreas renovadas entrando en una fase de mayor rendimiento. Fuentes oficiales vietnamitas también esperaban mejores exportaciones al cierre de 2026 por la entrada de la nueva cosecha. El mínimo de futuros no garantiza un traslado inmediato ni proporcional al precio minorista: intervienen calidad, cobertura, transporte, procesamiento, inventarios y tipo de cambio. La confirmación de la señal dependerá del ritmo real de cosecha y exportación y de si los inventarios certificados comienzan a aumentar.",
+        "anchor": "robusta-minimo-dos-anos-medio-cosecha-vietnam-2026",
+        "sources": [
+          {
+            "name": "Reuters — robusta cae a mínimo de dos años y medio",
+            "url": "https://www.brecorder.com/news/40449780/robusta-coffee-falls-to-2-12-year-low-cocoa-climbs"
+          },
+          {
+            "name": "USDA — informe anual de café de Vietnam 2026/27",
+            "url": "https://apps.fas.usda.gov/newgainapi/api/Report/DownloadReportByFileName?fileName=Coffee+Annual_Ho+Chi+Minh+City_Vietnam_VM2026-0016.pdf"
+          },
+          {
+            "name": "Ministerio de Agricultura y Medio Ambiente de Vietnam — oferta y exportaciones",
+            "url": "https://en.mae.gov.vn/quality-processing-and-market-development/coffee-exports-reach-657-billion-how-will-prices-come-under-pressure-late-this-year-9781.htm"
+          }
+        ]
+      }
+    ]
+  }
+}
