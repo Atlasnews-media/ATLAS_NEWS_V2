@@ -1,11 +1,11 @@
 ---
 title: "Chile y Japón enlazan minerales críticos, telecomunicaciones y minería remota"
 summary: "La visita presidencial dejó compromisos sobre cobre y cadenas de suministro, un memorando TIC y un estudio de NTT para operar maquinaria de El Teniente a distancia; la ejecución todavía depende de proyectos e inversión."
-publishedAt: "2026-11-20T13:02:58-03:00"
+publishedAt: "2026-11-20T13:07:48-03:00"
 cutoffAt: "2026-11-20T12:00:00-03:00"
 section: "national"
 editionSlot: "evening"
-status: "draft"
+status: "published"
 tags:
   - chile
   - japon
