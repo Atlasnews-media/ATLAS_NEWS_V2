@@ -14,7 +14,7 @@ tags:
   - europa
 sources:
   - name: "Casa Blanca — declaración de Estados Unidos, Rusia y China hacia la paz, 19 de noviembre"
-    url: "https://www.whitehouse.gov/briefings-statements/2026/11/u-s-russia-china-heads-of-state-declaration-toward-peace/"
+    url: "https://www.whitehouse.gov/br%69efings-statements/2026/11/u-s-russia-china-heads-of-state-declaration-toward-peace/"
   - name: "Ministerio de Relaciones Exteriores de China — declaración trilateral de Shenzhen, 19 de noviembre"
     url: "https://www.fmprc.gov.cn/mfa_eng/xw/zyxw/202611/t20261119_12063224.html"
   - name: "Reuters — la declaración no crea un proceso de reducción de armas, 19 de noviembre"
