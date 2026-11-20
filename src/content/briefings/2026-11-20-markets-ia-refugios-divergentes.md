@@ -1,11 +1,11 @@
 ---
 title: "La liquidación de IA se extiende a Asia y separa los refugios"
 summary: "El retroceso bursátil pasó de Wall Street a Asia, mientras Treasuries y dólar recibieron flujos defensivos pero el oro siguió cayendo. El petróleo subió en la sesión, aunque acumulaba su tercera baja semanal."
-publishedAt: "2026-11-20T06:19:00-03:00"
+publishedAt: "2026-11-20T06:47:07-03:00"
 cutoffAt: "2026-11-20T06:18:00-03:00"
 section: "markets"
 editionSlot: "morning"
-status: "draft"
+status: "published"
 tags:
   - mercados-globales
   - inteligencia-artificial

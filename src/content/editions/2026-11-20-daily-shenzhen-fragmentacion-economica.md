@@ -1,11 +1,11 @@
 ---
 title: "Shenzhen coordina a las potencias, pero deja intacta la fragmentación económica"
 summary: "Trump, Xi y Putin acordaron diálogo nuclear y estabilidad energética, pero no extendieron la tregua comercial, no modificaron los controles tecnológicos ni cerraron el gasoducto ruso hacia China."
-publishedAt: "2026-11-20T06:00:43-03:00"
+publishedAt: "2026-11-20T06:47:07-03:00"
 cutoffAt: "2026-11-20T06:00:31-03:00"
 type: "daily"
 editionSlot: "morning"
-status: "draft"
+status: "published"
 tags:
   - geopolitica
   - comercio-internacional

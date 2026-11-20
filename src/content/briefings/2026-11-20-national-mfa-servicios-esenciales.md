@@ -1,11 +1,11 @@
 ---
 title: "Chile abre consulta para exigir autenticación multifactor en servicios esenciales"
 summary: "La ANCI propuso MFA obligatoria, registros de acceso y controles reforzados para servicios esenciales y operadores vitales; el diseño reduce el riesgo de credenciales robadas, pero exige adaptación tecnológica y presupuestaria."
-publishedAt: "2026-11-20T06:17:00-03:00"
+publishedAt: "2026-11-20T06:47:07-03:00"
 cutoffAt: "2026-11-20T06:16:00-03:00"
 section: "national"
 editionSlot: "morning"
-status: "draft"
+status: "published"
 tags:
   - chile
   - ciberseguridad
