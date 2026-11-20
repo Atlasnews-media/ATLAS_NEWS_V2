@@ -99,14 +99,14 @@
     {
       "id": "china-eu-industrial-trade",
       "topic": "Comercio industrial entre China y la Unión Europea",
-      "thesis": "La competencia industrial entre China y Estados Unidos ya no se limita al comercio físico: Washington extiende los controles desde chips y capital hacia cómputo remoto, centros de datos y propiedad indirecta, mientras China sostiene su crecimiento con manufactura avanzada y busca reducir dependencias.",
-      "status": "changed",
-      "last_evidence": "El 16 de noviembre Estados Unidos emitió una regla que exige licencias a centros de datos extranjeros que entreguen capacidad avanzada a empresas chinas o de otros países restringidos; además somete a autorización los envíos de chips cubiertos hacia Indonesia, Malasia, Singapur, Tailandia y Brasil.",
-      "effect": "Amplía el hilo desde aranceles y semiconductores físicos hacia servicios de nube e infraestructura en terceros países: la separación tecnológica ahora alcanza quién usa el cómputo, quién controla al cliente y dónde puede instalarse capacidad avanzada.",
-      "base_scenario": "Estados Unidos aplica licencias caso a caso y debida diligencia sobre chips y cómputo remoto; China acelera chips propios, nubes soberanas y proveedores alternativos, mientras terceros países adaptan sus centros de datos para conservar acceso a tecnología estadounidense.",
+      "thesis": "La competencia industrial entre China y Estados Unidos ya no se limita al comercio físico: Washington extiende los controles desde chips y capital hacia cómputo remoto, centros de datos y propiedad indirecta, mientras el diálogo presidencial estabiliza la relación sin desmontar la fragmentación tecnológica.",
+      "status": "confirmed",
+      "last_evidence": "El 19 de noviembre la cumbre Trump-Xi-Putin terminó sin extender la tregua comercial de enero ni modificar los controles estadounidenses al cómputo avanzado; la declaración conjunta se limitó a riesgos nucleares, Naciones Unidas, inmunidades y estabilidad de flujos energéticos.",
+      "effect": "Confirma que la cooperación política de alto nivel puede coexistir con separación tecnológica: Shenzhen preservó el canal diplomático, pero no cambió licencias de chips, acceso remoto, obligaciones de debida diligencia ni la incertidumbre arancelaria.",
+      "base_scenario": "Estados Unidos y China mantienen diálogo y evitan una ruptura abrupta, pero Washington aplica licencias caso a caso sobre chips y cómputo remoto; China acelera chips propios, nubes soberanas y proveedores alternativos, mientras terceros países adaptan sus centros de datos para conservar acceso a tecnología estadounidense.",
       "invalidate_if": "Autorizaciones amplias, rápidas y estables que mantengan el acceso remoto chino sin restricciones materiales debilitarían la tesis; represalias, más países bajo licencia, bloqueos de nube o sustitución acelerada por tecnología china la reforzarían.",
-      "watch": "Publicación y aclaraciones de la regla, solicitudes durante los 90 días, licencias concedidas, respuesta de China, cumbre Trump-Xi, cooperación de Indonesia, Malasia, Singapur, Tailandia y Brasil, expansión de nubes soberanas y demanda por chips alternativos.",
-      "last_publication": "/ediciones/2026-11-17-daily-chips-ia-computo-remoto/"
+      "watch": "Extensión o vencimiento de la tregua comercial en enero, solicitudes y licencias durante los 90 días, respuesta de China, cooperación de Indonesia, Malasia, Singapur, Tailandia y Brasil, expansión de nubes soberanas, demanda por chips alternativos y próxima reunión Trump-Xi.",
+      "last_publication": "/ediciones/2026-11-20-daily-shenzhen-fragmentacion-economica/"
     },
     {
       "id": "developing-country-crisis-finance",
