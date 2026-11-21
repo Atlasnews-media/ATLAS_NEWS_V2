@@ -1,0 +1,139 @@
+{
+  "status": "READY",
+  "date": "2026-11-21",
+  "contract": "atlas-senales-del-dia-v1",
+  "senalesDelDia": {
+    "internacional": [
+      {
+        "slot": "technology",
+        "headline": "Google lleva la contextualidad cuántica hasta 105 cúbits",
+        "deck": "Willow superó límites clásicos en varias pruebas y ganó el juego del cuadrado mágico 98,3% de las veces. Es un benchmark físico, no una ventaja útil general.",
+        "development": "Google Quantum AI publicó el 19 de noviembre una batería de experimentos de contextualidad en procesadores superconductores Willow. En el juego del cuadrado mágico, una prueba con pocos cúbits, el hardware ganó el 98,3% de las rondas frente al límite clásico de 88,9%. El equipo también superó estrategias clásicas restringidas en tareas de hasta 105 cúbits y verificó correlaciones multipartitas en configuraciones más grandes. El trabajo, publicado en Science, usa la contextualidad —la dependencia de los resultados respecto del conjunto de mediciones compatibles— como recurso cuantificable y como prueba directa de que ciertas correlaciones sobreviven al ruido del dispositivo.\n\nEl resultado no demuestra una ventaja cuántica general ni resuelve un problema comercial mejor que todos los computadores clásicos. Las cifras corresponden a tareas diseñadas con límites clásicos específicos; además, el hito de 105 cúbits pertenece a una prueba distinta del juego que produjo el 98,3%. Su utilidad inmediata está en la evaluación del hardware: los autores sostienen que estos ensayos detectan errores coherentes sutiles que pueden pasar inadvertidos en benchmarks de circuitos aleatorios. La siguiente validación será establecer cuánto ayudan esas métricas a mejorar procesadores y algoritmos con aplicaciones prácticas.",
+        "anchor": "google-willow-contextualidad-cuantica-105-qubits-2026",
+        "sources": [
+          {
+            "name": "Google Quantum AI — pruebas de contextualidad en procesadores Willow",
+            "url": "https://blog.google/innovation-and-ai/models-and-research/quantum-computing/putting-one-of-quantum-mechanics-deepest-features-to-test-at-scale/"
+          },
+          {
+            "name": "Google Research — diseño y resultados de las tareas experimentales",
+            "url": "https://research.google/blog/a-game-you-cannot-win-unless-you-have-a-quantum-computer/"
+          },
+          {
+            "name": "PubMed — registro del artículo publicado en Science",
+            "url": "https://pubmed.ncbi.nlm.nih.gov/43056468/"
+          }
+        ]
+      },
+      {
+        "slot": "world",
+        "headline": "Reino Unido y la UE cierran tres acuerdos pos-Brexit",
+        "deck": "Concluyeron negociaciones sobre alimentos, carbono y movilidad juvenil. La aplicación se proyecta desde 2028 y aún exige completar los marcos legales.",
+        "development": "El Reino Unido y la Unión Europea concluyeron el 20 de noviembre negociaciones sobre tres piezas de su relación pos-Brexit. El esquema de experiencia juvenil permitirá que hasta 100.000 jóvenes de cada lado por año residan durante un máximo de tres años para trabajar, estudiar, hacer voluntariado o viajar. El área sanitaria y fitosanitaria común busca eliminar la mayoría de los certificados y controles hoy exigidos para animales, alimentos y plantas entre Gran Bretaña, las dependencias de la Corona y la UE. Un tercer acuerdo conectará los sistemas británico y europeo de comercio de emisiones, con reconocimiento mutuo de permisos y una vía para eximir bienes de los respectivos ajustes fronterizos de carbono.\n\nLa declaración conjunta fija objetivos de aplicación, no una entrada en vigor inmediata. El bloque sanitario apunta al 1 de marzo de 2028 y el enlace de mercados de carbono a 2028; el programa juvenil también debe completarse conforme a los marcos legales de ambas partes. Quedó pendiente un acuerdo separado sobre aranceles universitarios, que las partes esperan negociar dentro de seis meses. Por eso, el alcance económico dependerá todavía de textos jurídicos, ratificaciones, procedimientos internos y calendarios de implementación. El hecho nuevo es el cierre negociador con cupos y fechas concretas, no la eliminación ya consumada de las barreras.",
+        "anchor": "reino-unido-ue-acuerdos-posbrexit-2026",
+        "sources": [
+          {
+            "name": "Gobierno del Reino Unido — declaración conjunta de la cumbre",
+            "url": "https://www.gov.uk/government/publications/ukeu-summit-2026-key-documents/uk-eu-summit-2026-joint-statement-html"
+          },
+          {
+            "name": "Consejo Europeo — resultados de la cumbre UE-Reino Unido",
+            "url": "https://www.consilium.europa.eu/en/meetings/international-summit/2026/11/20/"
+          },
+          {
+            "name": "Reuters — términos negociados sobre alimentos, movilidad y carbono",
+            "url": "https://www.reuters.com/world/uk/what-eu-uk-have-agreed-summit-2026-11-20/"
+          }
+        ]
+      }
+    ],
+    "nacional": [
+      {
+        "slot": "ipsa_company",
+        "headline": "Cencosud aprueba la fusión de sus filiales de retail chileno",
+        "deck": "Easy Retail absorberá a Cencosud Retail dentro de “Un Solo Cencosud”. La matriz no espera un efecto consolidado significativo por tratarse de filiales.",
+        "development": "Cencosud registró ante la Comisión para el Mercado Financiero el 20 de noviembre un hecho esencial de aprobación de fusión, actualización que también incorporó a su repositorio corporativo. La operación corresponde al proyecto informado el 30 de octubre: Easy Retail será la sociedad absorbente e incorporará el patrimonio de Cencosud Retail, que se disolverá sin liquidación, mientras la primera la sucederá en sus derechos y obligaciones. La reorganización abarca las operaciones de retail del grupo en Chile y forma parte del programa “Un Solo Cencosud”, orientado por la empresa a coordinar iniciativas comunes y reducir complejidad administrativa.\n\nEl cambio relevante es el avance desde un proyecto aprobado por el directorio a una fusión aprobada, pero no equivale por sí mismo a una nueva adquisición ni a un aumento del perímetro económico del grupo. Cencosud había señalado que, al tratarse de sociedades filiales, no esperaba efectos significativos en sus estados financieros consolidados. Tampoco corresponde inferir sin el texto legal definitivo ahorros, plazos de captura o efectos operativos específicos. Las siguientes comprobaciones serán la fecha efectiva de la fusión, las inscripciones societarias y la forma en que la compañía refleje la estructura absorbente en sus próximos reportes financieros.",
+        "anchor": "cencosud-aprueba-fusion-filiales-retail-chile-2026",
+        "sources": [
+          {
+            "name": "CMF — registro del hecho esencial de Cencosud del 20 de noviembre",
+            "url": "https://www.cmfchile.cl/portal/principal/623/w4-channel.html"
+          },
+          {
+            "name": "Cencosud — hechos esenciales 2026 y aprobación de fusión",
+            "url": "https://www.cencosud.com/documentos-legales"
+          },
+          {
+            "name": "Hecho esencial de Cencosud — términos del proyecto de fusión",
+            "url": "https://docs.publicnow.com/viewDoc?filename=50324%5CEXT%5C826EE3A16ACAA7D7D4C6550DDA2F77D85D291A89_ED9D63945BFECA98FA611CB1F812C28A8BE37F5C.PDF"
+          }
+        ]
+      },
+      {
+        "slot": "policy_economy",
+        "headline": "Banco Central mantiene la convergencia del colchón bancario al 1%",
+        "deck": "El RCC será exigible en mayo de 2028 y la decisión fue unánime. El instituto estima que la banca tiene capital suficiente para absorberlo sin frenar el crédito.",
+        "development": "El Consejo del Banco Central de Chile resolvió por unanimidad mantener el calendario que lleva el Requerimiento de Capital Contracíclico al nivel neutral de 1% de los activos ponderados por riesgo. La exigencia se hará efectiva 24 meses después de la reunión del 18 de mayo de 2026, es decir, en mayo de 2028. El RCC es un colchón macroprudencial: obliga al sistema bancario a acumular capital en condiciones normales para disponer de mayor capacidad de absorción ante episodios de tensión severa. La decisión de noviembre no eleva nuevamente la meta, sino que ratifica el nivel y el plazo fijados en mayo.\n\nEl Banco Central sostuvo que los bancos cuentan con holguras de capital, fondeo estable y rentabilidad superior a sus promedios históricos, y que no hay evidencia de que el capital esté restringiendo el crédito. Al mismo tiempo, observó algún deterioro en la capacidad de pago de hogares y empresas y un crecimiento acotado de las carteras de consumo, vivienda y crédito comercial. Esas evaluaciones describen el diagnóstico oficial y no garantizan que la transición sea neutra para cada entidad. La minuta de la reunión se publicará el 1 de diciembre; allí se conocerá el detalle de la discusión que sostuvo la ratificación.",
+        "anchor": "banco-central-chile-rcc-neutral-uno-por-ciento-2026",
+        "sources": [
+          {
+            "name": "Banco Central de Chile — comunicado de la Reunión de Política Financiera",
+            "url": "https://www.bcentral.cl/web/banco-central/contenido/-/details/prensa/comunicados-rpf/reunion-de-politica-financiera-segundo-semestre-2026"
+          },
+          {
+            "name": "Banco Central de Chile — resumen del IEF del segundo semestre",
+            "url": "https://www.bcentral.cl/resumen-ief/-/detalle/resumen-ief-segundo-semestre-2026"
+          },
+          {
+            "name": "Diario Financiero — ratificación del calendario del RCC",
+            "url": "https://www.df.cl/mercados/banca-fintech/banco-central-mantiene-exigencia-de-capital-para-la-banca-en-medio-de"
+          }
+        ]
+      }
+    ],
+    "mercados": [
+      {
+        "slot": "markets_chile",
+        "headline": "La curva swap chilena baja hasta 10 puntos base",
+        "deck": "Las tasas nominales a dos, tres y cinco años cerraron en 5,08%, 5,21% y 5,42%. El ajuste fue amplio, pero no garantiza una baja equivalente del costo de crédito.",
+        "development": "La curva de swaps promedio cámara en pesos de Chile descendió el 20 de noviembre en sus tramos intermedios. La tasa a dos años cerró en 5,08%, ocho puntos base menos que en la sesión previa; la de tres años bajó diez puntos base a 5,21%, y la de cinco años retrocedió otros diez puntos a 5,42%, de acuerdo con series del Banco Central recopiladas por MacroClave. También cedieron los contratos indexados a la UF: los plazos entre uno y cinco años bajaron entre cuatro y cinco puntos base, mientras el tramo a diez años cayó seis puntos. La coincidencia entre tasas nominales y reales muestra un movimiento amplio de la curva local, no un cambio aislado en un solo vencimiento.\n\nLos swaps intercambian una tasa fija por una variable asociada al Índice Cámara Promedio y reflejan precios de mercado, liquidez y expectativas; no constituyen una decisión de política monetaria. Por eso, el descenso diario no implica por sí solo que el Banco Central recortará la TPM ni que créditos hipotecarios, comerciales o de consumo bajarán en la misma magnitud. Esos precios incorporan primas y pueden revertirse con nueva información. La señal relevante es la compresión simultánea de varios plazos; su persistencia deberá comprobarse en las próximas sesiones y contrastarse con bonos soberanos, inflación implícita y volúmenes transados.",
+        "anchor": "curva-swap-chile-baja-tramos-intermedios-2026",
+        "sources": [
+          {
+            "name": "MacroClave — cierre de tasas y swaps chilenos del 20 de noviembre",
+            "url": "https://macroclave.cl/mercados"
+          },
+          {
+            "name": "Banco Central de Chile — series de Swap Promedio Cámara",
+            "url": "https://si3.bcentral.cl/Search/Buscar/Index/?or=pop&pageID=1&st=camara+de+la&t=Swap"
+          },
+          {
+            "name": "Banco Central de Chile — definición y mercado de derivados SPC",
+            "url": "https://www.bcentral.cl/documents/33528/8793003/Notas%2Bt%C3%A9cnicas_IEF%2Bsegundo%2Bsemestre%2B2026.pdf/59d3ce75-d818-e075-1890-8b709f517712?t=1795198907811"
+          }
+        ]
+      },
+      {
+        "slot": "markets_global",
+        "headline": "El Baltic Dry cierra la semana con una caída de 2,8%",
+        "deck": "El índice terminó en 2.898 puntos: Capesize y supramax retrocedieron, mientras Panamax subió. La divergencia separa presiones por tamaño y tipo de carga.",
+        "development": "El Baltic Dry Index terminó el 20 de noviembre en 2.898 puntos, tres unidades o 0,1% por debajo del día anterior, y acumuló una caída semanal de 2,8%. El ajuste estuvo concentrado en dos segmentos. El índice Capesize cedió 0,3% a 4.502 puntos y perdió 4,6% en la semana; las ganancias diarias promedio de esos buques bajaron US$114, hasta US$37.324. El supramax retrocedió 0,2% a 1.810 puntos y marcó una baja semanal de 1,4%. En contraste, el Panamax avanzó ocho puntos a 2.140, su mayor nivel desde el 22 de octubre, y ganó 1% en la semana.\n\nEl indicador sintetiza tarifas de transporte marítimo de graneles secos, pero no es una medida directa del comercio mundial ni del precio de una sola materia prima. Los Capesize suelen transportar mineral de hierro y carbón, mientras los Panamax también tienen exposición relevante a granos; rutas, disponibilidad de naves, congestión y estacionalidad pueden separar sus movimientos. La baja semanal, además, convivió con un nivel mensual todavía superior, por lo que no basta para afirmar un giro sostenido de la demanda global. La confirmación requerirá observar si el retroceso de Capesize persiste y si la fortaleza de Panamax se extiende a más rutas y cargas.",
+        "anchor": "baltic-dry-caida-semanal-segmentos-divergentes-2026",
+        "sources": [
+          {
+            "name": "Reuters — cierre semanal del Baltic Dry y desglose por segmento",
+            "url": "https://www.bairdmaritime.com/amp/story/shipping/dry-cargo/bulkers/baltic-dry-bulk-index-ends-lower-to-cap-a-losing-week"
+          },
+          {
+            "name": "Trading Economics — niveles del Baltic Dry al 20 de noviembre",
+            "url": "https://tradingeconomics.com/commodity/baltic/news/603235"
+          },
+          {
+            "name": "Trading Economics — serie y composición del Baltic Dry Index",
+            "url": "https://tradingeconomics.com/commodity/baltic"
+          }
+        ]
+      }
+    ]
+  }
+}
