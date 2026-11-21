@@ -1,11 +1,11 @@
 ---
 title: "La OTAN promete defender Polonia tras una incursión aérea atribuida a Rusia"
 summary: "Mark Rutte comprometió la defensa de todo el territorio polaco y la alianza convocó a su Consejo para el lunes, después de que Varsovia atribuyera a Rusia la entrada de dos posibles misiles y un dron."
-publishedAt: "2026-11-21T13:01:19-03:00"
+publishedAt: "2026-11-21T13:09:35-03:00"
 cutoffAt: "2026-11-21T12:00:00-03:00"
 type: "daily"
 editionSlot: "evening"
-status: "draft"
+status: "published"
 tags:
   - otan
   - polonia

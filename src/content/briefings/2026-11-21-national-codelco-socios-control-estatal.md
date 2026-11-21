@@ -1,11 +1,11 @@
 ---
 title: "Congreso respalda socios privados para Codelco, con control estatal como condición"
 summary: "Diputados apoyaron atraer capital para una cartera inicial de 60 propiedades mineras y cerca de un millón de hectáreas, pero exigieron mayoría estatal y una convocatoria más amplia que China."
-publishedAt: "2026-11-21T13:01:19-03:00"
+publishedAt: "2026-11-21T13:09:35-03:00"
 cutoffAt: "2026-11-21T12:00:00-03:00"
 section: "national"
 editionSlot: "evening"
-status: "draft"
+status: "published"
 tags:
   - chile
   - codelco

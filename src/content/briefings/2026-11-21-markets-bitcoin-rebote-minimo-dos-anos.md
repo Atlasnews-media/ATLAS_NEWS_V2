@@ -1,11 +1,11 @@
 ---
 title: "Bitcoin recupera los US$60.000 tras caer a mínimos de dos años"
 summary: "La criptomoneda pasó de cerca de US$57.500 a unos US$60.500 entre las 10:00 y las 11:00 de Chile, después de tocar US$55.130 antes de la ventana; el rebote redujo la pérdida, pero no confirmó un cambio de tendencia."
-publishedAt: "2026-11-21T13:01:19-03:00"
+publishedAt: "2026-11-21T13:09:35-03:00"
 cutoffAt: "2026-11-21T12:00:00-03:00"
 section: "markets"
 editionSlot: "evening"
-status: "draft"
+status: "published"
 tags:
   - bitcoin
   - criptomonedas
