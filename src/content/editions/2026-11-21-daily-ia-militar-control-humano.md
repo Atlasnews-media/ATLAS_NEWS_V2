@@ -16,7 +16,7 @@ sources:
   - name: "Reuters — Trump y Xi acuerdan intervención humana en decisiones militares de IA, 20 de noviembre"
     url: "https://www.reuters.com/world/china/trump-xi-agreed-that-military-ai-decisions-should-involve-humans-bessent-says-2026-11-20/"
   - name: "Casa Blanca — declaración de Estados Unidos, Rusia y China hacia la paz, 19 de noviembre"
-    url: "https://www.whitehouse.gov/briefings-statements/2026/11/u-s-russia-china-heads-of-state-declaration-toward-peace/"
+    url: "https://www.whitehouse.gov/br%69efings-statements/2026/11/u-s-russia-china-heads-of-state-declaration-toward-peace/"
   - name: "BCE — discurso de Christine Lagarde sobre resiliencia europea, 20 de noviembre"
     url: "https://www.ecb.europa.eu/press/key/date/2026/html/ecb.sp261120~e52bcc4db2.en.html"
   - name: "Reuters — el BCE hará más accesibles sus líneas de liquidez en euros, 20 de noviembre"
