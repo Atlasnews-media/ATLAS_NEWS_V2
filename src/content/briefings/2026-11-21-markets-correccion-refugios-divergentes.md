@@ -1,11 +1,11 @@
 ---
 title: "Wall Street confirma una corrección y los refugios vuelven a divergir"
 summary: "El S&P 500 y el Dow cerraron más de 10% bajo sus máximos, mientras el Nasdaq perdió 5,3% el viernes. Los Treasuries recibieron demanda defensiva, pero oro, plata y criptoactivos siguieron cayendo."
-publishedAt: "2026-11-21T06:17:00-03:00"
+publishedAt: "2026-11-21T06:51:45-03:00"
 cutoffAt: "2026-11-21T06:16:00-03:00"
 section: "markets"
 editionSlot: "morning"
-status: "draft"
+status: "published"
 tags:
   - mercados-globales
   - renta-variable

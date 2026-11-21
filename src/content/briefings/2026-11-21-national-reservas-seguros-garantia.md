@@ -1,11 +1,11 @@
 ---
 title: "CMF propone reservar íntegramente los reclamos en seguros de garantía"
 summary: "La segunda consulta sobre seguros a primer requerimiento exige reconocer el monto reclamado, con tope en la cobertura. El ajuste busca alinear la reserva contable con una obligación de pago inmediato."
-publishedAt: "2026-11-21T06:15:00-03:00"
+publishedAt: "2026-11-21T06:51:45-03:00"
 cutoffAt: "2026-11-21T06:14:00-03:00"
 section: "national"
 editionSlot: "morning"
-status: "draft"
+status: "published"
 tags:
   - chile
   - seguros

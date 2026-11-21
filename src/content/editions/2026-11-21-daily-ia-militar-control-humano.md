@@ -1,11 +1,11 @@
 ---
 title: "Trump y Xi fijan un límite humano para la IA militar sin crear un mecanismo de control"
 summary: "Estados Unidos y China acordaron mantener intervención humana en decisiones militares de inteligencia artificial. El principio reduce un riesgo extremo, pero aún carece de definición operativa, verificación y alcance vinculante."
-publishedAt: "2026-11-21T06:02:36-03:00"
+publishedAt: "2026-11-21T06:51:45-03:00"
 cutoffAt: "2026-11-21T06:01:13-03:00"
 type: "daily"
 editionSlot: "morning"
-status: "draft"
+status: "published"
 tags:
   - inteligencia-artificial
   - geopolitica
