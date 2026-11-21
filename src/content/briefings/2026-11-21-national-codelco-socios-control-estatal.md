@@ -20,11 +20,11 @@ sources:
     url: "https://www.df.cl/empresas/mineria/codelco-sale-a-buscar-socios-a-china-ofrece-un-millon-de-hectareas-que-no"
     publishedAt: "2026-11-20T12:40:00-03:00"
 highlights:
-  - label: "Cartera inicial de 60 propiedades"
+  - label: "60 propiedades mineras"
     text: "Codelco abrió a socios privados activos con distintos grados de exploración dentro de cerca de un millón de hectáreas."
-  - label: "Control estatal como condición"
+  - label: "Control estatal"
     text: "Parlamentarios oficialistas y de oposición respaldaron capital privado, pero pidieron que Codelco conserve la mayoría."
-  - label: "Capital antes que más deuda"
+  - label: "Capital sin más deuda"
     text: "La búsqueda responde a producción declinante y pasivos superiores a US$27.000 millones, que limitan el financiamiento propio."
 demo: false
 ---

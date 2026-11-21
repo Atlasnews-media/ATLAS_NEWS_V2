@@ -22,11 +22,11 @@ sources:
   - name: "BlockchainReporter — precios horarios, interés abierto y financiamiento"
     url: "https://blockchainreporter.net/why-is-bitcoin-down-today-btc-rebounds-58k/"
 highlights:
-  - label: "Rebote de casi US$3.000 en una hora"
+  - label: "Rebote de US$3.000"
     text: "La referencia de CF Benchmarks pasó de alrededor de US$57.500 a unos US$60.500 entre las 10:00 y 11:00 de Chile."
-  - label: "Mínimo desde septiembre de 2024"
+  - label: "Mínimo de dos años"
     text: "Antes de la ventana, bitcoin había tocado US$55.130 en Binance y quebrado el piso de cierre que sostenía durante 2026."
-  - label: "Recuperación todavía frágil"
+  - label: "Recuperación frágil"
     text: "El precio subió mientras el interés abierto había caído, una señal compatible con cierre de posiciones cortas más que con nueva demanda apalancada."
 demo: false
 ---
