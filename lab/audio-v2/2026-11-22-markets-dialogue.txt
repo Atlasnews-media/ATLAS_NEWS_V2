@@ -1,0 +1,29 @@
+VOZ 1: Bitcoin volvió sobre sesenta mil dólares durante el sábado. Subió cerca de 2,1% hasta sesenta mil ciento noventa y dos dólares, después de caer el viernes bajo cincuenta y siete mil setecientos cuarenta y dos, su menor nivel desde septiembre de 2024.
+VOZ 2: ¿Ese rebote significa que terminó la corrección global?
+VOZ 1: Todavía no. Bitcoin opera durante el fin de semana, pero las bolsas, los Treasuries y los principales mercados de metales estaban cerrados. Tenemos una señal nueva en un activo de negociación continua, no una confirmación cross-asset.
+VOZ 2: ¿Qué valor tiene entonces el movimiento?
+VOZ 1: Muestra que la venta no siguió acelerándose durante toda la ventana del fin de semana y que aparecieron compradores bajo sesenta mil. Eso reduce el riesgo de una liquidación sin pausa, pero no dice cuánto capital institucional entrará cuando reabran los mercados tradicionales.
+VOZ 2: ¿Por qué la liquidez del fin de semana cambia la interpretación?
+VOZ 1: Porque suele ser menor. Con menos órdenes, una compra o una venta puede mover más el precio. El rebote puede ser una señal temprana de estabilización o sólo un movimiento técnico amplificado. La diferencia se verá cuando vuelvan futuros, acciones y fondos grandes.
+VOZ 2: ¿Cuál es el punto de comparación que dejó el viernes?
+VOZ 1: Una sesión muy defensiva. El Nasdaq perdió 5,3%, el S&P 500 cayó 3,7% y el índice de semiconductores bajó 10,7%. El VIX subió alrededor de 33% hasta treinta y siete. La venta fue amplia y ocurrió incluso después de resultados sólidos de Nvidia y del gran debut de Anthropic.
+VOZ 2: O sea, las buenas noticias dejaron de sostener el precio.
+VOZ 1: Exactamente. El mercado empezó a cuestionar cuánto valen las ganancias futuras y cómo se financiarán centros de datos, chips y energía con tasas elevadas. Cuando buenos resultados no frenan la caída, el problema suele estar en valoración y posicionamiento, no sólo en el trimestre de una empresa.
+VOZ 2: ¿Qué dijeron los bonos?
+VOZ 1: Los Treasuries recibieron demanda. El rendimiento a diez años cayó algo más de diez puntos base hasta cerca de 4,95%, y el de dos años bajó trece puntos base hasta 4,65%. Fue una búsqueda de refugio, aunque el mercado todavía esperaba una subida de la Reserva Federal en diciembre.
+VOZ 2: ¿No es contradictorio que bajen los rendimientos y siga esperándose un alza?
+VOZ 1: No necesariamente. Los inversionistas pueden comprar bonos por seguridad y hacer caer los rendimientos, mientras siguen creyendo que la Fed subirá la tasa oficial por la inflación. La curva refleja a la vez refugio, crecimiento esperado y política monetaria.
+VOZ 2: ¿Y los metales? Normalmente el oro también funciona como refugio.
+VOZ 1: Esta vez no. El oro cayó 2,8% a unos tres mil quinientos veinte dólares por onza, la plata perdió 4,2% y el cobre 2,9%. Eso sugiere ventas para obtener liquidez, presión del dólar y reducción de exposición. No todos los activos defensivos se comportan igual durante un ajuste apalancado.
+VOZ 2: El petróleo sí terminó arriba. ¿Es una excepción?
+VOZ 1: En la sesión, sí. Brent cerró cerca de noventa y dos dólares con cincuenta y siete centavos y WTI en ochenta y tres con noventa y ocho, ambos al alza. Pero acumularon su tercera semana de pérdidas. El cierre respondió a riesgo geopolítico y cobertura antes de Acción de Gracias; la semana completa siguió reflejando oferta más holgada y dudas de demanda.
+VOZ 2: ¿Qué tendría que pasar el lunes para hablar de un piso?
+VOZ 1: Una recuperación amplia, no sólo Bitcoin o dos tecnológicas. Deberían mejorar semiconductores, industriales, bancos y empresas pequeñas; bajar el VIX; estabilizarse el crédito; y sostenerse los metales. Si esos activos convergen, el rebote del sábado gana credibilidad.
+VOZ 2: ¿Qué señal sería más preocupante?
+VOZ 1: Que se amplíen los spreads de bonos corporativos, se suspendan emisiones o aparezcan problemas de financiamiento en compañías ligadas a IA. Eso convertiría una corrección de acciones en un endurecimiento financiero más serio.
+VOZ 2: ¿Qué catalizadores trae la semana?
+VOZ 1: Los índices de actividad del lunes, datos de inflación, confianza y una actualización del PIB estadounidense. También resultados de Dell y Analog Devices, que pueden influir en la lectura tecnológica. Y la temporada de Black Friday mostrará si el consumidor puede sostener utilidades fuera de la inversión en IA.
+VOZ 2: ¿Cuál es la conexión con Chile?
+VOZ 1: Menor apetito por riesgo, metales débiles y un dólar global todavía firme pueden pesar sobre activos locales. La demanda por Treasuries puede aliviar tasas largas, pero no compensa un cobre bajo presión. El rebote de Bitcoin es una señal útil, aunque todavía insuficiente para cambiar esa lectura.
+VOZ 2: Entonces la conclusión es esperar confirmación.
+VOZ 1: Sí. Bitcoin aportó el único precio nuevo y dejó de profundizar la caída, pero el mercado global estaba cerrado. El lunes sabremos si fue el primer indicio de estabilización o una pausa dentro de una corrección que todavía busca equilibrio.
