@@ -1,0 +1,123 @@
+{
+  "status": "READY",
+  "date": "2026-11-22",
+  "contract": "atlas-senales-del-dia-v1",
+  "senalesDelDia": {
+    "internacional": [
+      {
+        "slot": "technology",
+        "headline": "Lean verifica una prueba formal de la hipótesis de Riemann",
+        "deck": "La comunidad certificó que 17 millones de líneas prueban el enunciado correcto. Falta traducir el argumento y completar la evaluación matemática tradicional.",
+        "development": "Las comunidades de Lean y Mathlib informaron el 21 de noviembre que verificaron la biblioteca publicada un día antes por el matemático Levent Alpöge como prueba de la hipótesis de Riemann. El repositorio contiene 17 millones de líneas de código Lean y depende directamente de Mathlib. Para comprobarlo, distintos participantes reprodujeron la compilación, aislaron el enunciado y lo compararon con la formulación ya revisada de Mathlib mediante dos herramientas independientes. El archivo de prueba exportado también fue aceptado por el núcleo oficial de Lean y por verificadores adicionales implementados de manera separada. La declaración conjunta sostiene que el código demuestra exactamente el enunciado previsto, no una variante debilitada.\n\nEl resultado formal no cierra por sí solo el proceso científico e institucional. La prueba todavía debe convertirse en una exposición que permita a especialistas comprender las ideas matemáticas y revisar sus dependencias conceptuales; además, el Clay Mathematics Institute mantenía el problema como no resuelto tras el anuncio y su evaluación requiere tiempo. Associated Press informó que Alpöge atribuyó a Claude una participación decisiva en el trabajo, pero esa procedencia no reemplaza la verificación del enunciado ni equivale a una aceptación automática del premio. La señal tecnológica es la combinación de generación asistida por IA y comprobación formal reproducible a una escala inédita, con una frontera clara entre corrección mecánica, comprensión humana y reconocimiento académico.",
+        "anchor": "lean-prueba-formal-hipotesis-riemann-2026",
+        "sources": [
+          {
+            "name": "Lean y Mathlib — declaración conjunta de verificación",
+            "url": "https://leanprover-community.github.io/blog/posts/riemann-hypothesis/"
+          },
+          {
+            "name": "Associated Press — anuncio, revisión matemática y estado del premio",
+            "url": "https://apnews.com/article/anthropic-claude-math-solution-ai-4fe8b69a891f160f9e7f0c85af8c55c8"
+          }
+        ]
+      },
+      {
+        "slot": "world",
+        "headline": "Aliados delinean garantías para Ucrania tras un alto el fuego",
+        "deck": "El marco contempla monitoreo liderado por EE.UU., una fuerza multinacional europea y compromisos legales. Son opciones sujetas a negociación y trámites nacionales.",
+        "development": "Alemania, Francia, el Reino Unido y Ucrania publicaron el 19 de noviembre un marco común para las garantías de seguridad que acompañarían un eventual alto el fuego. El documento, surgido de una reunión en Berlín con la Coalición de los Dispuestos y Estados Unidos, enumera apoyo militar, financiero y técnico de largo plazo; participación en un mecanismo de monitoreo y verificación propuesto bajo liderazgo estadounidense; y una fuerza multinacional europea respaldada por Washington, con medidas en aire, mar y tierra. También plantea un compromiso jurídicamente vinculante, sujeto a los procedimientos de cada país, para adoptar medidas destinadas a restaurar la paz y la seguridad ante un nuevo ataque ruso.\n\nLa declaración fija una arquitectura posible, no un tratado vigente ni un despliegue autorizado. Los gobiernos todavía deben acordar la forma jurídica, las contribuciones nacionales, las reglas de operación y el vínculo con una negociación de paz. El texto apoya además un diálogo directo entre Ucrania y Rusia con participación estadounidense y europea, pero Reuters informó el 21 de noviembre que aún no estaban definidos la agenda ni el calendario de otra ronda. Tampoco existe un alto el fuego que active las garantías. El avance verificable es que los aliados detallaron componentes antes tratados de modo general y los vincularon expresamente a procedimientos nacionales; la prueba siguiente será convertirlos en compromisos ejecutables sin anticipar el resultado de las conversaciones.",
+        "anchor": "aliados-marco-garantias-ucrania-alto-el-fuego-2026",
+        "sources": [
+          {
+            "name": "Presidencia de Ucrania — declaración conjunta de Berlín",
+            "url": "https://www.president.gov.ua/en/news/spilna-zayava-lideriv-nimechchini-franciyi-velikoyi-britaniy-107409"
+          },
+          {
+            "name": "Reuters — estado de la próxima ronda de conversaciones",
+            "url": "https://www.reuters.com/world/europe/trump-told-european-leaders-they-were-spending-lot-ukraine-zelenskiy-says-2026-11-21/"
+          }
+        ]
+      }
+    ],
+    "nacional": [
+      {
+        "slot": "ipsa_company",
+        "headline": "Arauco pacta vender activos forestales por US$470 millones",
+        "deck": "La filial de Empresas Copec traspasaría 445 predios y derechos de cosecha en el Maule. Estima un efecto positivo antes de impuestos de US$283 millones.",
+        "development": "Forestal Arauco, filial de Empresas Copec, suscribió una promesa con Forestal Tregualemu para vender 445 predios rurales y ceder derechos de cosecha sobre plantaciones ubicadas en otros 20 terrenos de terceros en la Región del Maule. Los activos incluyen cerca de 59.000 hectáreas forestalmente productivas. El precio total previsto es de aproximadamente US$470 millones más IVA y la empresa estima de manera preliminar un efecto positivo cercano a US$283 millones antes de impuestos. El comprador es controlado por Public Sector Pension Investment Board de Canadá y administrado por Global Forest Partners. La operación fue informada como hecho esencial y también quedó registrada ante la SEC.\n\nSe trata de una promesa y no de una venta totalmente consumada. Las partes tienen hasta el 8 de enero de 2027 para completar las gestiones necesarias: entonces se firmarían escrituras por unos US$400 millones y los predios restantes se transferirían en los meses siguientes, junto con cesiones de derechos. El paquete también considera acuerdos de suministro de madera, opciones de compra, servicios de combate de incendios y administración transitoria. Arauco señaló a Diario Financiero que el cambio de propiedad no afectaría su abastecimiento industrial, afirmación que deberá contrastarse con la ejecución efectiva de esos contratos. Para Empresas Copec, las próximas verificaciones son el cierre, el calendario de cobro y el reconocimiento contable definitivo del efecto anunciado.",
+        "anchor": "arauco-promesa-venta-activos-forestales-maule-2026",
+        "sources": [
+          {
+            "name": "Empresas Copec — términos de la promesa de venta",
+            "url": "https://www.empresascopec.cl/noticia/arauco-suscribe-promesa-de-venta-de-activos-forestales-por-us470-millones/"
+          },
+          {
+            "name": "SEC — comunicación de Empresas Copec sobre la operación",
+            "url": "https://www.sec.gov/Archives/edgar/data/1004156/000157587226000805/ara036_ex99-1.htm"
+          },
+          {
+            "name": "Diario Financiero — alcance industrial y calendario",
+            "url": "https://www.df.cl/empresas/industria/arauco-acuerda-venta-de-activos-forestales-por-us-470-millones-en-el-maule"
+          }
+        ]
+      },
+      {
+        "slot": "policy_economy",
+        "headline": "El PIB chileno cae 1,1% anual en el tercer trimestre",
+        "deck": "La minería retrocedió 14,7% y la inversión disminuyó, mientras el PIB no minero creció 1,0%. La composición separa el choque minero del resto de la economía.",
+        "development": "El Banco Central informó el 18 de noviembre que el producto interno bruto de Chile disminuyó 1,1% interanual en el tercer trimestre de 2026. La minería cayó 14,7% y explicó la mayor parte del retroceso, mientras el PIB no minero aumentó 1,0%. Por el lado del gasto, la demanda interna bajó 1,1% y la formación bruta de capital se contrajo 7,4%; el consumo total creció 1,0% y amortiguó el resultado. La construcción retrocedió 5,0%, pero las actividades agropecuario-silvícola, comercio y electricidad, gas, agua y gestión de desechos aportaron positivamente. El trimestre tuvo dos días hábiles adicionales, con un efecto calendario estimado en 0,3 puntos porcentuales.\n\nLa comparación trimestral corregida por estacionalidad muestra un deterioro adicional: el PIB bajó 1,8% respecto del segundo trimestre, con una caída de 12,9% en minería y de 0,2% en el resto de la economía. Esas cifras permiten distinguir entre la contracción anual agregada y el desempeño de los sectores no mineros, pero no determinan por sí solas una decisión futura de política monetaria ni el crecimiento del cuarto trimestre. El informe atribuye la menor extracción de cobre a menores leyes del mineral, mantenciones y condiciones climáticas adversas; son factores observados, no una proyección. La evaluación de política deberá incorporar los próximos datos de actividad, empleo, inflación y producción minera, además de las revisiones habituales de las cuentas nacionales.",
+        "anchor": "pib-chile-tercer-trimestre-caida-mineria-2026",
+        "sources": [
+          {
+            "name": "Banco Central de Chile — Cuentas Nacionales del tercer trimestre",
+            "url": "https://www.bcentral.cl/web/banco-central/contenido/-/details/publicaciones/estadistica/cuentas-nacionales-de-chile-evolucion-de-la-actividad-economica-tercer-trimestre-2026"
+          },
+          {
+            "name": "Diario Financiero — desglose sectorial y comparación con expectativas",
+            "url": "https://www.df.cl/economia-y-politica/macro/pib-del-tercer-trimestre-sorprende-con-caida-de-1-1-determinado-por-la"
+          }
+        ]
+      }
+    ],
+    "mercados": [
+      {
+        "slot": "markets_chile",
+        "headline": "Grupo Marina coloca UF 2 millones en bonos locales",
+        "deck": "Las series a 2032 y 2047 salieron a 3,34% y 3,54%, con spreads de 68 y 72 puntos base. La operación extiende plazos y refinancia pasivos.",
+        "development": "Inmobiliaria Mall Viña del Mar, operadora de Grupo Marina, colocó en la Bolsa de Comercio de Santiago dos series de bonos por un total de UF 2 millones, equivalentes a cerca de US$83 millones al momento de la operación. La Serie I recaudó UF 1 millón, vence el 15 de septiembre de 2032 y se adjudicó a una tasa anual de 3,34%, con un spread de 68 puntos base. La Serie K sumó otra UF 1 millón, vence el 15 de septiembre de 2047, contempla diez años de gracia para amortizar capital y se colocó a 3,54%, con un spread de 72 puntos base. Ambas se asignaron mediante remate holandés.\n\nLa sociedad informó que destinará los recursos a refinanciar pasivos de corto y largo plazo y a fines corporativos generales. Las clasificaciones divulgadas fueron AA+ por Feller Rate y AA por Moody’s Local, pero esos ratings son opiniones de riesgo y no eliminan la exposición a tasas, liquidez o crédito. Las tasas de colocación describen estas emisiones y no equivalen al costo de financiamiento de todas las empresas chilenas ni garantizan una valorización posterior. El dato relevante para el mercado local es que un emisor inmobiliario obtuvo financiamiento en UF en dos tramos largos con spreads inferiores a 75 puntos base; el seguimiento será su negociación secundaria y el efecto del refinanciamiento en el perfil de vencimientos.",
+        "anchor": "grupo-marina-colocacion-bonos-uf-mercado-local-2026",
+        "sources": [
+          {
+            "name": "Diario Estrategia — hecho esencial y condiciones de las series",
+            "url": "https://www.diarioestrategia.cl/texto-diario/mostrar/6100644/grupo-marina-coloca-bonos-serie-i-serie-k-mercado-local"
+          },
+          {
+            "name": "Diario Financiero — monto, spreads y estructura de los bonos",
+            "url": "https://www.df.cl/mercados/renta-fija/grupo-marina-coloca-bonos-por-us-41-5-millones-en-medio-de-sus-planes-para"
+          }
+        ]
+      },
+      {
+        "slot": "markets_global",
+        "headline": "El cacao de Londres rebota en todos sus plazos",
+        "deck": "Los contratos subieron entre 1,4% y 1,8% el viernes, tras una semana volátil. Inventarios, llegadas africanas y clima mantienen señales contrapuestas.",
+        "development": "Los futuros de cacao en ICE Futures Europe cerraron el 20 de noviembre con avances a lo largo de toda la curva visible. El contrato de diciembre terminó en 3.940 libras esterlinas por tonelada, un alza de 1,63%; marzo de 2027 cerró en 4.098 libras, 1,54% más, y los vencimientos hasta septiembre de 2028 registraron aumentos de entre 1,25% y 1,78%. La amplitud del movimiento muestra un rebote que no quedó limitado al contrato cercano. En Nueva York, distintas series continuas y contratos también terminaron al alza, aunque sus porcentajes no son directamente comparables por el vencimiento y la metodología utilizada.\n\nEl repunte ocurrió en un mercado con señales fundamentales enfrentadas. Reportes de Reuters del día anterior señalaron que las bajas llegadas a puerto en Costa de Marfil y el riesgo climático asociado a El Niño apoyaban los precios, mientras la disponibilidad de la cosecha 2025/26 y existencias de bolsa superiores a las de un año antes limitaban el avance. Esos antecedentes ofrecen contexto, pero no demuestran una causa única para la sesión del viernes. Tampoco un alza diaria revierte por sí sola la caída acumulada de algunos contratos durante 2026. La confirmación de un cambio de tendencia dependerá de las llegadas semanales de África occidental, los inventarios certificados, la molienda y la evolución del clima para la cosecha 2026/27.",
+        "anchor": "cacao-londres-rebote-curva-futuros-2026",
+        "sources": [
+          {
+            "name": "ICE Futures Europe — precios de futuros de cacao de Londres",
+            "url": "https://www.ice.com/products/37089076/London-Cocoa-Futures/data?span=1"
+          },
+          {
+            "name": "Reuters vía Business Recorder — llegadas, inventarios y clima",
+            "url": "https://epaper.brecorder.com/2026/11/20/91-page/1128012-news.html"
+          },
+          {
+            "name": "Cocoa Market Hub — recapitulación de la sesión del 20 de noviembre",
+            "url": "https://cocoamarkethub.com/live-desk/daily-cocoa-market-briefing-2026-11-20"
+          }
+        ]
+      }
+    ]
+  }
+}
