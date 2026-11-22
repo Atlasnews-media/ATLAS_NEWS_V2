@@ -1,11 +1,11 @@
 ---
 title: "La ONU abre dos años para regular armas autónomas sin asegurar normas vinculantes"
 summary: "Los 128 Estados de la Convención sobre Armas Convencionales acordaron desarrollar nuevas reglas antes de 2028. Cerca de cien países querían obligaciones jurídicas, pero la oposición de grandes potencias dejó abierta su naturaleza."
-publishedAt: "2026-11-22T06:07:52-03:00"
+publishedAt: "2026-11-22T06:47:47-03:00"
 cutoffAt: "2026-11-22T06:06:45-03:00"
 type: "daily"
 editionSlot: "morning"
-status: "draft"
+status: "published"
 tags:
   - armas-autonomas
   - inteligencia-artificial

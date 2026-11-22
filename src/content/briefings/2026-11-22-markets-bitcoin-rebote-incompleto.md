@@ -1,11 +1,11 @@
 ---
 title: "Bitcoin recupera US$60.000, pero el rebote del fin de semana aún no valida un piso global"
 summary: "La criptomoneda subió 2,1% el sábado tras tocar su menor nivel desde 2024. Con acciones, bonos y metales cerrados, el movimiento aporta una señal de liquidez, pero no confirma que la corrección tecnológica haya terminado."
-publishedAt: "2026-11-22T06:20:15-03:00"
+publishedAt: "2026-11-22T06:47:47-03:00"
 cutoffAt: "2026-11-22T06:19:50-03:00"
 section: "markets"
 editionSlot: "morning"
-status: "draft"
+status: "published"
 tags:
   - mercados-globales
   - bitcoin

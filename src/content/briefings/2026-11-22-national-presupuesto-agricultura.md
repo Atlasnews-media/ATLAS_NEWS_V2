@@ -1,11 +1,11 @@
 ---
 title: "El Presupuesto 2027 vuelve a la Cámara con Agricultura como único capítulo rechazado"
 summary: "El Senado restituyó la mayoría de las partidas y devolvió el erario al tercer trámite, pero Agricultura quedó sin acuerdo por un doble empate. La disputa concentra el riesgo de una comisión mixta antes del plazo del 29 de noviembre."
-publishedAt: "2026-11-22T06:18:20-03:00"
+publishedAt: "2026-11-22T06:47:47-03:00"
 cutoffAt: "2026-11-22T06:18:00-03:00"
 section: "national"
 editionSlot: "morning"
-status: "draft"
+status: "published"
 tags:
   - chile
   - presupuesto-2027
