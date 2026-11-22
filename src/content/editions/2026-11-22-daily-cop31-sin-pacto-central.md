@@ -1,11 +1,11 @@
 ---
 title: "La COP31 termina sin pacto central tras el rechazo a omitir los combustibles fósiles"
 summary: "La Unión Europea, Reino Unido y otros países bloquearon el Pacto de Antalya porque no nombraba carbón, petróleo ni gas. La cumbre cerró sin una decisión política general, aunque conservó acuerdos parciales."
-publishedAt: "2026-11-22T13:01:42-03:00"
+publishedAt: "2026-11-22T13:06:18-03:00"
 cutoffAt: "2026-11-22T12:00:00-03:00"
 type: "daily"
 editionSlot: "evening"
-status: "draft"
+status: "published"
 tags:
   - cop31
   - cambio-climatico

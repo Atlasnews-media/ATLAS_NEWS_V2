@@ -1,11 +1,11 @@
 ---
 title: "El dólar a $1.017 reduce de 30,4% a 21,2% la caída anual de Bitcoin en pesos"
 summary: "La depreciación del peso amortigua la pérdida medida por un inversionista chileno, aunque no cambia la caída del criptoactivo en dólares. La diferencia es aritmética y no valida un piso."
-publishedAt: "2026-11-22T13:01:42-03:00"
+publishedAt: "2026-11-22T13:06:18-03:00"
 cutoffAt: "2026-11-22T12:00:00-03:00"
 section: "markets"
 editionSlot: "evening"
-status: "draft"
+status: "published"
 tags:
   - bitcoin
   - peso-chileno

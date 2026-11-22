@@ -1,11 +1,11 @@
 ---
 title: "Deshielos dejan 2.032 aislados y 38 viviendas dañadas en Atacama y Coquimbo"
 summary: "Senapred informó interrupciones de rutas, problemas de agua potable y daños menores por crecidas y quebradas activadas. La emergencia preventiva se extiende hasta fines de enero."
-publishedAt: "2026-11-22T13:01:42-03:00"
+publishedAt: "2026-11-22T13:06:18-03:00"
 cutoffAt: "2026-11-22T12:00:00-03:00"
 section: "national"
 editionSlot: "evening"
-status: "draft"
+status: "published"
 tags:
   - chile
   - atacama
