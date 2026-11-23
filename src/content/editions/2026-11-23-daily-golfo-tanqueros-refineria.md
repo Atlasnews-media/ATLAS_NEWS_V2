@@ -1,11 +1,11 @@
 ---
 title: "Ataques a tanqueros y una refinería amplían el riesgo energético del Golfo"
 summary: "Tres tanqueros fueron alcanzados en cuatro días cerca de Ormuz, Bahréin reportó daños en una instalación civil y los hutíes afirmaron atacar la refinería saudita de Rabigh. La atribución y el daño siguen bajo investigación."
-publishedAt: "2026-11-23T06:04:40-03:00"
+publishedAt: "2026-11-23T08:25:08-03:00"
 cutoffAt: "2026-11-23T06:03:14-03:00"
 type: "daily"
 editionSlot: "morning"
-status: "draft"
+status: "published"
 tags:
   - energia
   - golfo

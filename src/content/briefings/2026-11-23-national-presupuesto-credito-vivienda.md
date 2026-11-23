@@ -1,11 +1,11 @@
 ---
 title: "Presupuesto y crédito hipotecario entran a una semana decisiva en el Congreso"
 summary: "La Cámara inicia hoy el tercer trámite del Presupuesto 2027, mientras la Comisión de Hacienda del Senado retoma la reforma al mercado de capitales y al financiamiento de viviendas. Son dos decisiones distintas para el gasto público y el crédito privado."
-publishedAt: "2026-11-23T07:15:00-03:00"
+publishedAt: "2026-11-23T08:25:08-03:00"
 cutoffAt: "2026-11-23T07:10:00-03:00"
 section: "national"
 editionSlot: "morning"
-status: "draft"
+status: "published"
 tags:
   - chile
   - presupuesto-2027

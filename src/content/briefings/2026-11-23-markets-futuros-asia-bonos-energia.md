@@ -1,11 +1,11 @@
 ---
 title: "Futuros de Wall Street rebotan, pero la divergencia con Asia mantiene abierto el ajuste"
 summary: "Los futuros del Nasdaq avanzaban 3,3% mientras el KOSPI caía cerca de 3,3%. El Treasury a diez años recuperaba rendimiento, el oro rebotaba y el petróleo cedía pese al riesgo en el Golfo: una reapertura cross-asset todavía desigual."
-publishedAt: "2026-11-23T07:15:00-03:00"
+publishedAt: "2026-11-23T08:25:08-03:00"
 cutoffAt: "2026-11-23T07:10:00-03:00"
 section: "markets"
 editionSlot: "morning"
-status: "draft"
+status: "published"
 tags:
   - mercados-globales
   - futuros-estadounidenses
