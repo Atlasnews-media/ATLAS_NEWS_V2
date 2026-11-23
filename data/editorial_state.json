@@ -3,14 +3,14 @@
     {
       "id": "oil-geopolitics-inflation",
       "topic": "Petróleo, geopolítica e inflación",
-      "thesis": "La contención declarada entre Estados Unidos e Irán no equivale a desescalada regional: los ataques ya alcanzan bases del Golfo, rutas saudíes y territorio frente a Bab el-Mandeb, ampliando el riesgo internacional de energía, seguros y comercio más allá de Ormuz.",
-      "status": "changed",
-      "last_evidence": "El 15 de noviembre Bahréin informó haber interceptado ataques aéreos mientras Irán afirmó lanzar seis drones contra un radar estadounidense, sin confirmación del impacto. Fuerzas yemeníes se retiraron de Dhubab y del área próxima a Bab el-Mandeb, dejando a los hutíes en territorio que domina el estrecho; Arabia Saudita informó nuevas intercepciones de misiles y drones.",
-      "effect": "Amplía el hilo desde buques y oleoductos hacia instalaciones militares y un segundo cuello de botella marítimo: el riesgo ya no depende solo del tránsito por Ormuz, aunque control territorial frente a Bab el-Mandeb no equivale a control efectivo de la navegación.",
-      "base_scenario": "La pausa de grandes ataques directos limita una guerra abierta, pero continúan incidentes de baja y mediana intensidad en el Golfo, Yemen y Arabia Saudita; los flujos se adaptan con mayores costos de seguridad, seguros, reservas y rutas alternativas.",
-      "invalidate_if": "Una reducción sostenida de ataques, navegación normal en Ormuz y Bab el-Mandeb, retiro de bloqueos y acuerdos verificables debilitarían la tesis; daños a bases, puertos, oleoductos o cierres efectivos de rutas la reforzarían.",
-      "watch": "Confirmación independiente de daños en Bahréin, respuesta estadounidense, despliegue hutí frente a Bab el-Mandeb, tránsito y seguros en Ormuz y mar Rojo, infraestructura saudí, capacidad exportadora, negociaciones y transmisión a inflación.",
-      "last_publication": "/ediciones/2026-11-15-daily-riesgo-energia-golfo-bab-el-mandeb/"
+      "thesis": "La contención declarada entre Estados Unidos e Irán no equivale a desescalada: ataques recurrentes ya alcanzan tanqueros en Ormuz, infraestructura civil en Bahréin y objetivos energéticos sauditas reclamados por los hutíes, extendiendo el riesgo físico sobre energía, seguros y comercio.",
+      "status": "confirmed",
+      "last_evidence": "Entre el 18 y el 21 de noviembre UKMTO registró tres tanqueros alcanzados cerca de Ormuz, incluido uno con incendio y otro con un tripulante desaparecido; el 22 informó otro incidente con fuerzas militares en el Golfo de Omán. Bahréin atribuyó a Irán daños e incendio en una instalación industrial civil y los hutíes afirmaron un impacto directo sobre la refinería saudita de Rabigh, sin confirmación independiente ni evaluación de daños.",
+      "effect": "Confirma la expansión anticipada desde bases y cuellos de botella hacia navegación comercial e infraestructura civil. La frecuencia de impactos ya crea riesgo operativo verificable, aunque la reclamación sobre Rabigh todavía no permite afirmar pérdida de capacidad de refinación.",
+      "base_scenario": "Persisten ataques de baja y mediana intensidad contra navegación e infraestructura del Golfo sin cierre completo de Ormuz; los flujos continúan con mayores costos de seguridad, seguros y capacidad ociosa, mientras las afirmaciones sobre refinerías requieren verificación caso a caso.",
+      "invalidate_if": "Una reducción sostenida de incidentes, tránsito normal, ausencia de daños y acuerdos verificables debilitarían la tesis; nuevos impactos confirmados sobre puertos, refinerías, oleoductos, tripulaciones o cierres efectivos de rutas la reforzarían.",
+      "watch": "Atribución y daños de los incidentes UKMTO, situación de Rabigh, objetivo industrial en Bahréin, respuesta estadounidense e iraní, tránsito y seguros en Ormuz y mar Rojo, infraestructura saudita, capacidad de refinación, OPEC+ del 29 de noviembre y transmisión a inflación.",
+      "last_publication": "/ediciones/2026-11-23-daily-golfo-tanqueros-refineria/"
     },
     {
       "id": "us-employment-fed-rates",
