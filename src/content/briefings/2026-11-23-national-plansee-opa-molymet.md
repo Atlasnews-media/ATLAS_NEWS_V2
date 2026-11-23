@@ -1,11 +1,11 @@
 ---
 title: "Plansee lanza una OPA para tomar el control de Molymet por hasta $354.198 millones"
 summary: "El grupo austriaco ofrece $11.400 por acción para adquirir hasta 23,36% adicional de Molymet. La operación tiene un umbral mínimo de aceptación y busca llevar a Plansee desde 31,18% hasta 54,55% del capital."
-publishedAt: "2026-11-23T12:00:00-03:00"
+publishedAt: "2026-11-23T16:11:20-03:00"
 cutoffAt: "2026-11-23T12:00:00-03:00"
 section: "national"
 editionSlot: "evening"
-status: "draft"
+status: "published"
 tags:
   - chile
   - mineria
