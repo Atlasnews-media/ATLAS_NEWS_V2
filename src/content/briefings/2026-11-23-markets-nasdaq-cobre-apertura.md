@@ -1,11 +1,11 @@
 ---
 title: "Nasdaq salta 6,9% y el cobre repunta 4,3% al abrir Wall Street"
 summary: "El regreso de Jensen Huang a Nvidia coincide con una apertura de fuerte recuperación tecnológica: el S&P 500 sube 4,8%, los futuros del cobre recuperan 4,3% y el IPSA avanza 0,4%. Los bonos también ajustan."
-publishedAt: "2026-11-23T12:00:00-03:00"
+publishedAt: "2026-11-23T16:11:20-03:00"
 cutoffAt: "2026-11-23T12:00:00-03:00"
 section: "markets"
 editionSlot: "evening"
-status: "draft"
+status: "published"
 tags:
   - mercados
   - nasdaq
