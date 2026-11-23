@@ -1,0 +1,131 @@
+{
+  "status": "READY",
+  "date": "2026-11-23",
+  "contract": "atlas-senales-del-dia-v1",
+  "senalesDelDia": {
+    "internacional": [
+      {
+        "slot": "technology",
+        "headline": "OVHcloud presenta 55 productos para llevar IA a producción",
+        "deck": "El proveedor europeo amplía infraestructura, agentes y búsqueda empresarial; su oferta apunta a simplificar el despliegue, no a probar adopción masiva.",
+        "development": "OVHcloud presentó el 19 de noviembre, durante su AI Summit en París, un conjunto de 55 lanzamientos vinculados a computación en la nube e inteligencia artificial. La compañía francesa organizó la oferta desde infraestructura hasta aplicaciones, con servicios de inferencia, herramientas de despliegue y opciones de gobernanza. Entre las novedades figuran AI Fabric, pensado para ejecutar entornos aislados de agentes en Python; AI Agents, que permite hospedar, escalar y supervisar agentes conectados a herramientas empresariales; y AI Search, orientado a combinar búsqueda semántica y lexical sobre documentos corporativos. La empresa también anunció capacidades de transcripción y síntesis de voz junto a Gladia y modalidades de implementación pública, privada y en instalaciones del cliente.\n\nLa novedad comercial está en ofrecer varias capas del ciclo de IA bajo una misma estructura de servicios, en un contexto europeo de preocupación por la residencia de datos y la dependencia tecnológica. Pero la presentación es un anuncio del proveedor: no demuestra todavía que los 55 productos estén disponibles en todas las regiones, que su rendimiento haya sido probado por terceros ni que disminuya el costo total de operación para cada cliente. Reuters destacó que el grupo busca convertir prototipos de IA en soluciones alojadas en Europa. La prueba será observar disponibilidad efectiva, adopción empresarial, precios, controles de seguridad y compatibilidad con aplicaciones ya existentes, sin confundir una hoja de ruta anunciada con resultados comprobados.",
+        "anchor": "ovhcloud-55-productos-ia-cloud-europa-2026",
+        "sources": [
+          {
+            "name": "OVHcloud — comunicado oficial del AI Summit del 19 de noviembre",
+            "url": "https://corporate.ovhcloud.com/en/newsroom/news/ovh-ai-turn-55-products/"
+          },
+          {
+            "name": "Reuters — OVHcloud lanza servicios de IA alojados en Europa",
+            "url": "https://www.reuters.com/business/ovhcloud-launches-ai-cloud-products-hosted-europe-2026-11-19/"
+          }
+        ]
+      },
+      {
+        "slot": "world",
+        "headline": "Corte Internacional declara genocidio contra los rohinyás en Myanmar",
+        "deck": "El fallo del 19 de noviembre establece responsabilidad estatal por las operaciones de 2017 y abre una etapa de cumplimiento y reparación, sin ejecución automática.",
+        "development": "La Corte Internacional de Justicia concluyó el 19 de noviembre que Myanmar incurrió en genocidio contra la población rohinyá durante las operaciones militares de 2017 en el norte de Rakhine. La sentencia resolvió el proceso iniciado por Gambia en 2019 bajo la Convención para la Prevención y la Sanción del Delito de Genocidio. Naciones Unidas informó que el tribunal estableció violaciones relacionadas con asesinatos, daños graves y medidas destinadas a impedir nacimientos, además de incumplimientos de las obligaciones de prevención, sanción e investigación. Es una declaración de responsabilidad de un Estado ante la jurisdicción internacional; no debe confundirse con una condena penal individual dictada por la Corte Penal Internacional.\n\nLa decisión es definitiva y vinculante para las partes, pero su puesta en práctica requiere actuaciones concretas de Myanmar y seguimiento internacional. Según el secretario general de la ONU, entre las obligaciones señaladas están investigar y sancionar responsables, impedir nuevas violaciones, garantizar la no repetición y ofrecer reparación, incluyendo condiciones de retorno voluntario y seguro. El gobierno de Myanmar cuestionó públicamente el fallo. Esa discrepancia política no cambia su naturaleza jurídica, aunque sí muestra la dificultad de llevarlo a la práctica durante un conflicto interno persistente. Para Bangladesh y los refugiados, la diferencia entre reconocimiento jurídico y retorno real dependerá de seguridad territorial, acceso humanitario y medidas verificables, no solo de declaraciones diplomáticas.",
+        "anchor": "cij-sentencia-genocidio-rohinya-myanmar-2026",
+        "sources": [
+          {
+            "name": "Naciones Unidas — declaración del secretario general sobre el fallo",
+            "url": "https://myanmar.un.org/en/326406-statement-secretary-general-international-court-justice-judgment-%E2%80%9C-gambia-v-myanmar%E2%80%9D"
+          },
+          {
+            "name": "Corte Internacional de Justicia — comunicado del 19 de noviembre, archivo oficial",
+            "url": "https://www.refworld.org/sites/default/files/2026-11/178-20261119-pre-01-00-en.pdf"
+          },
+          {
+            "name": "Reuters — alcance y desafíos del fallo sobre los rohinyás",
+            "url": "https://www.reuters.com/world/asia-pacific/myanmars-rohingya-win-landmark-genocide-ruling-return-home-remains-distant-2026-11-20/"
+          }
+        ]
+      }
+    ],
+    "nacional": [
+      {
+        "slot": "ipsa_company",
+        "headline": "Vapores vuelve a utilidades trimestrales por aporte de Hapag-Lloyd",
+        "deck": "CSAV ganó US$290,8 millones en el tercer trimestre, aunque el resultado acumulado a septiembre sigue por debajo del registrado en 2025.",
+        "development": "Compañía Sud Americana de Vapores comunicó el 20 de noviembre un beneficio de US$290,8 millones en el tercer trimestre de 2026, suficiente para revertir las pérdidas que acumulaba durante el primer semestre. A septiembre registró una utilidad de US$158,2 millones. El factor decisivo fue el desempeño de su participación en Hapag-Lloyd, naviera que durante los primeros nueve meses aumentó ingresos en 9,9% hasta US$17.641 millones, apoyada en mayores tarifas promedio y un incremento moderado del volumen transportado. El negocio operativo de la naviera alemana también reflejó mayor utilización de sus rutas y una capacidad limitada para incorporar nuevos barcos en el período.\n\nLa mejora del tercer trimestre no equivale a un año sin presiones. La propia compañía explicó que la utilidad acumulada sigue afectada por una menor participación en resultados de Hapag-Lloyd y por diferencias cambiarias, compensadas parcialmente por menor gasto tributario. CSAV es una compañía chilena cuya exposición económica depende de forma importante de un operador naviero internacional: los cambios en fletes, gastos de transporte, congestión y decisiones de inversión se transmiten hacia sus estados financieros sin que sea necesario que la empresa chilena transporte directamente toda la carga. El seguimiento se concentra en resultados de cierre de año, generación de efectivo, eventuales distribuciones y el comportamiento de tarifas de transporte marítimo; el dato reportado no permite anticipar por sí solo el precio de la acción.",
+        "anchor": "vapores-utilidades-tercer-trimestre-hapag-lloyd-2026",
+        "sources": [
+          {
+            "name": "Diario Financiero — resultado de CSAV del 20 de noviembre",
+            "url": "https://www.df.cl/empresas/industria/csav-gano-us-290-8-millones-en-tercer-trimestre-revirtiendo-perdidas-de"
+          },
+          {
+            "name": "Empresa Océano — comunicado sobre resultados de CSAV",
+            "url": "https://empresaoceano.cl/csav-mejora-sus-resultados-impulsada-por-un-solido-tercer-trimestre-de"
+          },
+          {
+            "name": "Hapag-Lloyd — resultados acumulados oficiales a septiembre de 2026",
+            "url": "https://www.hapag-lloyd.com/content/dam/website/downloads/pdf/HLAG_9M_2026_EN.pdf"
+          }
+        ]
+      },
+      {
+        "slot": "policy_economy",
+        "headline": "CMF reabre consulta sobre reservas en seguros de caución",
+        "deck": "La propuesta exige provisionar el total reclamado, con tope en la suma asegurada, y contempla una transición para siniestros pendientes.",
+        "development": "La Comisión para el Mercado Financiero abrió el 20 de noviembre una segunda consulta pública sobre cambios a la Norma de Carácter General número 306, que regula reservas técnicas en determinadas pólizas. La propuesta apunta a seguros de caución o garantía a primer requerimiento, en los que una compañía debe responder a una solicitud de pago del asegurado según las condiciones contractuales. El borrador plantea que la reserva por un siniestro corresponda al total reclamado, sin superar el monto asegurado. Este punto importa porque la reserva es un reconocimiento contable y prudencial de obligaciones potenciales: una estimación insuficiente puede distorsionar la lectura de los compromisos que mantiene una aseguradora.\n\nLa segunda versión incorporó ajustes tras las observaciones recibidas en octubre. La CMF propuso que la regla alcance siniestros pendientes de pago cuando entre en vigor y un mecanismo gradual para quienes no hayan reflejado ya el pasivo: al menos 50% de la reserva desde la entrada en vigencia y el saldo para completar 100% dentro de 120 días. El organismo recibirá comentarios hasta el 14 de diciembre. Todavía no es una norma definitiva ni corresponde tratar la consulta como un endurecimiento ya aplicado. La evaluación relevante es si la versión final equilibra reflejo oportuno de riesgos, exigencias de capital y capacidad de las compañías para responder a asegurados, sin proyectar efectos cuantitativos que el regulador aún no haya establecido.",
+        "anchor": "cmf-consulta-reservas-seguros-caucion-ncg306-2026",
+        "sources": [
+          {
+            "name": "CMF — segunda consulta de la NCG 306, 20 de noviembre",
+            "url": "https://www.cmfchile.cl/portal/prensa/625/w4-article-115094.html"
+          },
+          {
+            "name": "CMF — primera consulta de octubre como antecedente comparativo",
+            "url": "https://www.cmfchile.cl/portal/prensa/625/w4-article-114118.html"
+          }
+        ]
+      }
+    ],
+    "mercados": [
+      {
+        "slot": "markets_chile",
+        "headline": "IPSA cierra la semana con pérdida de 2,91% pese al alza del viernes",
+        "deck": "La bolsa chilena recuperó 0,16% en la última sesión, pero la lectura semanal revela una presión mayor que el movimiento puntual.",
+        "development": "El MSCI IPSA terminó el viernes 20 de noviembre con un avance de 0,16%, pero el balance de la semana fue una caída de 2,91%, según el cierre divulgado por Diario Estrategia. La referencia de mercado de LarrainVial situó el indicador alrededor de 10.350,41 puntos en su actualización de esa tarde. El contraste entre una recuperación marginal al cierre del viernes y una pérdida semanal mucho mayor evita una conclusión apresurada: un día positivo no compensa la reducción de valor acumulada en las jornadas anteriores. Además, el desempeño se debe leer como cierre efectivo del viernes; el lunes por la mañana todavía no constituía un resultado negociado de la nueva sesión.\n\nLa semana venía marcada por cambios en resultados y expectativas de distintas empresas locales, junto con una percepción de menor dinamismo económico, pero el retorno agregado del índice no permite atribuir toda la baja a una única noticia. Diario Financiero destacó el 20 de noviembre que el desempeño anual de la bolsa chilena en dólares se encontraba rezagado frente a otros mercados latinoamericanos, una comparación distinta de la variación semanal medida en pesos. Separar rendimiento local, tipo de cambio y horizonte temporal es clave para interpretar esa comparación. En la próxima rueda importará si mejora la amplitud de las acciones del índice, si se estabilizan los papeles de mayor ponderación y si el volumen sostiene cualquier rebote; no basta extrapolar el cierre del viernes.",
+        "anchor": "ipsa-cierre-semanal-caida-noviembre-2026",
+        "sources": [
+          {
+            "name": "Diario Estrategia — balance de la bolsa del 20 de noviembre",
+            "url": "https://www.diarioestrategia.cl/texto-diario/mostrar/6102845/msci-ipsa-bolsa-santiago-viernes-alza-marginal-016-semana-vario-291"
+          },
+          {
+            "name": "LarrainVial — indicadores de mercado Chile, corte del 20 de noviembre",
+            "url": "https://mercados.larrainvial.com/www/v2/index.html?mercado=chile"
+          },
+          {
+            "name": "Diario Financiero — posición relativa del IPSA en la región",
+            "url": "https://www.df.cl/senal-df/senales-financieras/la-bolsa-chilena-se-encamina-a-cerrar-el-ano-entre-las-peores-de-la-region"
+          }
+        ]
+      },
+      {
+        "slot": "markets_global",
+        "headline": "Gas natural de EE.UU. inicia el invierno con reservas sobre el promedio",
+        "deck": "La EIA registró 3.882 Bcf almacenados, 2,1% sobre el promedio quinquenal, tras una inyección semanal de 20 Bcf.",
+        "development": "La Administración de Información Energética estadounidense publicó el 19 de noviembre su informe de almacenamiento de gas natural para la semana terminada el día 13. El volumen útil bajo tierra alcanzó 3.882 miles de millones de pies cúbicos, conocido como Bcf, después de una inyección neta de 20 Bcf frente a la semana anterior. Ese nivel se encontraba 2,1% sobre la media de los cinco años comparables, pero 1,7% por debajo del mismo período de 2025. El contraste importa: hay una holgura relativa respecto del patrón estacional, aunque no un máximo absoluto ni una señal de abundancia garantizada para todo el invierno.\n\nEl gas estadounidense enfrenta un equilibrio propio entre demanda de calefacción, generación eléctrica y exportación de gas natural licuado. Según la EIA, la temporada previa de inyección terminó con inventarios superiores al promedio y su escenario de noviembre contemplaba un invierno relativamente templado, más producción y retiradas acumuladas cercanas a 1.900 Bcf entre noviembre y marzo. Esa proyección no reemplaza la lectura semanal, porque un cambio en temperaturas, interrupciones de producción o mayor demanda de terminales de GNL puede alterar rápidamente el balance. Mientras el petróleo incorpora preocupaciones de navegación y oferta de crudo, esta señal se enfoca en almacenamiento físico de gas en Estados Unidos. El próximo informe, adelantado por el feriado estadounidense, permitirá saber si comienza una reducción sostenida de inventarios.",
+        "anchor": "eia-gas-natural-almacenamiento-invierno-2026",
+        "sources": [
+          {
+            "name": "EIA — Weekly Natural Gas Storage Report del 19 de noviembre",
+            "url": "https://www.eia.gov/naturalgas/storage/"
+          },
+          {
+            "name": "EIA — análisis de cierre de temporada de inyección de gas",
+            "url": "https://www.eia.gov/todayinEnergy/detail.php?id=68484"
+          },
+          {
+            "name": "Energy Edge — recapitulación independiente del reporte EIA",
+            "url": "https://energyedge.com/natural-gas-weekly-storage-report-11-19-2026/"
+          }
+        ]
+      }
+    ]
+  }
+}
