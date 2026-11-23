@@ -1,11 +1,11 @@
 ---
 title: "Nvidia devuelve el mando a Jensen Huang y refuerza la vigilancia de exportaciones"
 summary: "El directorio restituyó a Jensen Huang como CEO y consejero, revirtiendo su salida del 12 de noviembre. Nvidia mantendrá una investigación independiente y crea nuevos controles de seguridad y cumplimiento comercial."
-publishedAt: "2026-11-23T12:00:00-03:00"
+publishedAt: "2026-11-23T16:11:20-03:00"
 cutoffAt: "2026-11-23T12:00:00-03:00"
 type: "daily"
 editionSlot: "evening"
-status: "draft"
+status: "published"
 tags:
   - nvidia
   - inteligencia-artificial
