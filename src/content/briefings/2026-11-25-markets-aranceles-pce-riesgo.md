@@ -1,11 +1,11 @@
 ---
 title: "Aranceles y tasas amplían la venta tecnológica y llevan al peso cerca de mínimos históricos"
 summary: "El Nasdaq cayó más de 4% durante la mañana, el cobre rondó mínimos de un año y el dólar abrió sobre $1.046. La propuesta arancelaria y datos firmes de Estados Unidos reforzaron una aversión al riesgo ya instalada."
-publishedAt: "2026-11-25T13:03:14-03:00"
+publishedAt: "2026-11-25T13:11:44-03:00"
 cutoffAt: "2026-11-25T11:58:00-03:00"
 section: "markets"
 editionSlot: "evening"
-status: "draft"
+status: "published"
 tags:
   - mercados
   - tecnologia
