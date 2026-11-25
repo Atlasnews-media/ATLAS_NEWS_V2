@@ -1,11 +1,11 @@
 ---
 title: "Chile enfrenta el cierre del Presupuesto 2027 con estrecho margen de deuda"
 summary: "La Comisión Mixta despachó sus diferencias presupuestarias mientras el riesgo de superar el nivel prudente de deuda aumenta por el tipo de cambio y la debilidad del crecimiento. Los precios industriales también presionan los costos."
-publishedAt: "2026-11-25T08:51:46-03:00"
+publishedAt: "2026-11-25T09:46:33-03:00"
 cutoffAt: "2026-11-25T08:51:46-03:00"
 section: "national"
 editionSlot: "morning"
-status: "draft"
+status: "published"
 tags:
   - chile
   - presupuesto

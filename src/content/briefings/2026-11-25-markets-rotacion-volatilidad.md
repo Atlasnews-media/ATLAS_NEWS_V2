@@ -1,11 +1,11 @@
 ---
 title: "El rebote tecnológico pierde fuerza y la demanda de protección sigue elevada"
 summary: "La caída del Nasdaq frente al avance del Dow muestra una rotación desigual. Los futuros de volatilidad mantienen una curva invertida, el dólar recupera terreno y el petróleo cede antes de una jornada clave de datos estadounidenses."
-publishedAt: "2026-11-25T08:52:44-03:00"
+publishedAt: "2026-11-25T09:46:33-03:00"
 cutoffAt: "2026-11-25T08:52:44-03:00"
 section: "markets"
 editionSlot: "morning"
-status: "draft"
+status: "published"
 tags:
   - renta-variable
   - volatilidad

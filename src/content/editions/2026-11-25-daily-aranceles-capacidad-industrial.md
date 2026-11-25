@@ -1,11 +1,11 @@
 ---
 title: "Estados Unidos prepara otro frente arancelario mientras Europa busca autonomía tecnológica"
 summary: "Washington se dispone a divulgar los resultados de una investigación sobre capacidad industrial en 16 economías. Europa estudia financiar tecnología propia y Alemania revisa a la baja su crecimiento."
-publishedAt: "2026-11-25T08:25:35-03:00"
+publishedAt: "2026-11-25T09:46:33-03:00"
 cutoffAt: "2026-11-25T08:25:31-03:00"
 type: "daily"
 editionSlot: "morning"
-status: "draft"
+status: "published"
 tags:
   - comercio-internacional
   - aranceles
