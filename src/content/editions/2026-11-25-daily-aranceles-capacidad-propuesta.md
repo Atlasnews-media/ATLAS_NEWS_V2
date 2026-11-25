@@ -1,11 +1,11 @@
 ---
 title: "Estados Unidos propone nuevos aranceles a 14 economías por exceso de capacidad industrial"
 summary: "USTR pasó de investigar a proponer gravámenes sobre 14 economías. China y Vietnam enfrentan topes de 20%, mientras Europa, Japón, Corea del Sur y otros socios quedan expuestos a nuevas barreras."
-publishedAt: "2026-11-25T13:03:14-03:00"
+publishedAt: "2026-11-25T13:11:44-03:00"
 cutoffAt: "2026-11-25T11:58:00-03:00"
 type: "daily"
 editionSlot: "evening"
-status: "draft"
+status: "published"
 tags:
   - comercio-internacional
   - aranceles
