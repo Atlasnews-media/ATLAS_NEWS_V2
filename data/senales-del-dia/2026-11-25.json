@@ -1,0 +1,135 @@
+{
+  "status": "READY",
+  "date": "2026-11-25",
+  "contract": "atlas-senales-del-dia-v1",
+  "senalesDelDia": {
+    "internacional": [
+      {
+        "slot": "technology",
+        "headline": "China incorpora a su primer astronauta extranjero en Tiangong",
+        "deck": "La misión Shenzhou-24 lleva a un especialista pakistaní que realizará experimentos de biología y materiales en la estación espacial china.",
+        "development": "La misión Shenzhou-24 llegó el 25 de noviembre a la estación espacial Tiangong con dos astronautas chinos y Muhammad Zeeshan Ali, el primer ciudadano de Pakistán en viajar al espacio y el primer tripulante extranjero en incorporarse a esa instalación. Ali participa como especialista de carga útil y tiene prevista una permanencia de entre cinco y diez días. La agencia espacial china informó que la misión incluye cuatro proyectos de cooperación bilateral en biotecnología y materiales, además de un experimento sobre cianobacterias fotosintéticas. Reuters señaló que entre las investigaciones figura también el estudio de compuestos de fibra de carbono capaces de reparar pequeñas fisuras.\n\nEl avance relevante no es solamente la nacionalidad de un integrante de la tripulación. Una estación orbital que admite investigadores de otro país necesita coordinar formación, protocolos de seguridad, instrumentos científicos y manejo de resultados entre organizaciones distintas. La misión permite comprobar esa capacidad en una operación concreta. Para Pakistán, ofrece experiencia experimental que sería difícil obtener mediante infraestructura orbital propia; para China, amplía las posibilidades de cooperación de Tiangong. El éxito científico dependerá de los experimentos efectivamente completados y de sus resultados reproducibles, no simplemente del acceso a la estación.",
+        "anchor": "shenzhou-24-primer-astronauta-pakistan-tiangong-2026",
+        "sources": [
+          {
+            "name": "Xinhua — lanzamiento y proyectos científicos",
+            "url": "https://chinaview.cn/20261125/8c10fecee0604862a954bf7d410a2e4d/c.html"
+          },
+          {
+            "name": "Reuters — llegada a Tiangong y cooperación científica",
+            "url": "https://www.reuters.com/science/chinas-shenzhou-24-space-flight-takes-off-with-pakistani-national-first-foreign-2026-11-25/"
+          },
+          {
+            "name": "Associated Press — misión Shenzhou-24",
+            "url": "https://apnews.com/article/543306bfe17419395d10fae107500564"
+          }
+        ]
+      },
+      {
+        "slot": "world",
+        "headline": "Australia e Islas Salomón firman tratado de seguridad y desarrollo",
+        "deck": "El pacto firmado en Canberra combina cooperación policial, apoyo presupuestario, infraestructura y acceso laboral, con Australia como principal socio de seguridad.",
+        "development": "Australia e Islas Salomón suscribieron el 25 de noviembre un tratado bilateral que reúne compromisos de seguridad y desarrollo económico. La declaración conjunta de ambos gobiernos establece a Australia como el principal socio de seguridad del archipiélago y señala que no habrá bases militares o de seguridad extranjeras en territorio salomonense. El acuerdo contempla cooperación para fortalecer la policía y el control fronterizo, junto con recursos para infraestructura sostenible, apoyo al sistema educativo y ampliación de oportunidades laborales para trabajadores de las islas en Australia.\n\nLa firma debe entenderse en el contexto de la diversificación de relaciones exteriores de las economías insulares del Pacífico. Honiara mantiene capacidad soberana para definir sus vínculos y prioridades. Associated Press recordó que el país había firmado un acuerdo de seguridad con China en 2022; la nueva arquitectura no debe interpretarse automáticamente como la ruptura de todas sus relaciones económicas con Pekín. Para evaluar sus efectos importará distinguir las obligaciones de seguridad de los proyectos de desarrollo, observar los recursos efectivamente comprometidos y verificar la implementación de las disposiciones de movilidad laboral. El tratado es un cambio institucional concreto, pero sus resultados prácticos dependerán de la ejecución posterior.",
+        "anchor": "australia-islas-salomon-tratado-seguridad-desarrollo-2026",
+        "sources": [
+          {
+            "name": "Gobierno australiano — declaración conjunta de ambos primeros ministros",
+            "url": "https://www.pm.gov.au/media/signing-australia-solomon-islands-treaty"
+          },
+          {
+            "name": "Departamento de Asuntos Exteriores de Australia — tratado bilateral",
+            "url": "https://www.dfat.gov.au/news/australia-solomon-islands-treaty"
+          },
+          {
+            "name": "Associated Press — contexto del nuevo acuerdo",
+            "url": "https://apnews.com/article/6eaee893cd625ad71bd34dbe887ac73a"
+          }
+        ]
+      }
+    ],
+    "nacional": [
+      {
+        "slot": "ipsa_company",
+        "headline": "LATAM y Siemens prueban venta de atributos de combustible sostenible",
+        "deck": "El acuerdo permite atribuir a viajes corporativos una reducción equivalente a 40 toneladas de CO₂e sin exigir que el combustible se use en cada vuelo contratado.",
+        "development": "LATAM Airlines informó el 24 de noviembre un acuerdo con Siemens Chile para comercializar atributos ambientales asociados a combustible sostenible de aviación, conocido por la sigla SAF. La operación vincula una reducción equivalente a 40 toneladas de dióxido de carbono con los desplazamientos laborales realizados por colaboradores de Siemens entre enero y septiembre de 2026. La aerolínea presentó el convenio como el primero de estas características entre ambas empresas en Sudamérica. La publicación especializada Aviación News explicó que el mecanismo utiliza certificados registrados para separar el beneficio ambiental de la entrega física del combustible.\n\nEsto cambia la forma en que una compañía puede contratar servicios vinculados a la reducción de su huella de viajes. En lugar de exigir que cada avión utilizado por sus trabajadores cargue combustible sostenible, el cliente adquiere el atributo correspondiente a una cantidad incorporada al sistema de aviación. La posibilidad de contabilizar ese beneficio depende de la trazabilidad del instrumento y de evitar que dos participantes reclamen la misma reducción. Desde la perspectiva comercial de LATAM, el acuerdo constituye una experiencia de venta a clientes empresariales, no una evidencia de impacto significativo sobre ingresos o márgenes consolidados. No se informó el precio de la operación ni un volumen futuro contratado.",
+        "anchor": "latam-siemens-atributos-saf-viajes-corporativos-2026",
+        "sources": [
+          {
+            "name": "LATAM — comunicado corporativo del 24 de noviembre",
+            "url": "https://www.latamairlines.com/cl/es/prensa/comunicados/latam-y-siemens-concretan-su-primer-acuerdo-en-sudamerica-para-r"
+          },
+          {
+            "name": "Aviación News — mecanismo de certificación y contexto comercial",
+            "url": "https://www.aviacionnews.com/2026/11/latam-saf-siemens/"
+          }
+        ]
+      },
+      {
+        "slot": "policy_economy",
+        "headline": "CMF expone ante el Senado sobre la reforma al mercado de capitales",
+        "deck": "La Comisión de Hacienda recibió al regulador y a especialistas el 24 de noviembre; el Ejecutivo renovó la urgencia de discusión inmediata del proyecto.",
+        "development": "La Comisión de Hacienda del Senado recibió el martes 24 de noviembre una presentación de la Comisión para el Mercado Financiero sobre el proyecto de reforma al mercado de capitales y financiamiento de la vivienda propia, boletín 18643-05. El registro de la sesión incluye además exposiciones de Guillermo Larraín, Bernardita Piedrabuena y Felipe Larraín. La ficha de tramitación de la Cámara de Diputadas y Diputados consigna ese mismo día la renovación de la urgencia de discusión inmediata por parte del Ejecutivo. La novedad corresponde a la actividad legislativa efectiva y a la incorporación de antecedentes técnicos durante el segundo trámite constitucional.\n\nEl proyecto, ya despachado por la Cámara, reúne instrumentos para fomentar el ahorro destinado a vivienda y facilitar el acceso a financiamiento, además de cambios en regulación financiera. Hacienda ha descrito entre sus propuestas un instrumento de ahorro para el pie de la primera vivienda. En esta fase conviene diferenciar los objetivos del proyecto de las reglas que puedan quedar finalmente aprobadas. La presentación de la CMF no constituye por sí sola una aprobación del texto ni permite dar por vigentes las medidas propuestas. El seguimiento debe centrarse en las indicaciones, el texto que acuerde la comisión y las votaciones posteriores, especialmente en las condiciones de acceso y los resguardos prudenciales.",
+        "anchor": "cmf-senado-reforma-capitales-audiencia-24-noviembre-2026",
+        "sources": [
+          {
+            "name": "CMF — presentación ante la Comisión de Hacienda",
+            "url": "https://www.cmfchile.cl/portal/prensa/625/w4-article-115155.html"
+          },
+          {
+            "name": "Senado — registro de sesiones de la Comisión de Hacienda",
+            "url": "https://tramitacion.senado.cl/appsenado/index.php?ac=sesiones_celebradas&idcomision=188&mo=comisiones&t="
+          },
+          {
+            "name": "Cámara — ficha legislativa del boletín 18643-05",
+            "url": "https://www.camara.cl/legislacion/proyectosdeley/tramitacion.aspx?prmBOLETIN=18643-05&prmID=19325"
+          },
+          {
+            "name": "Hacienda — antecedentes de la propuesta",
+            "url": "https://www.hacienda.cl/noticias-y-eventos/noticias/ministro-de-hacienda-presenta-proyecto-de-ley-de-reforma-al-mercado-de"
+          }
+        ]
+      }
+    ],
+    "mercados": [
+      {
+        "slot": "markets_chile",
+        "headline": "El IPSA pierde 1,13% con presión en comercio y materiales",
+        "deck": "El índice cerró el martes en 10.331,15 puntos; CAP, Cencosud, Falabella y SQM-B retrocedieron, mientras Copec y Santander avanzaron.",
+        "development": "El índice de referencia de la Bolsa de Santiago finalizó la rueda del martes 24 de noviembre en 10.331,15 puntos, con un descenso de 118,47 puntos, equivalente a 1,13%, según el registro de cierre de LarrainVial. Entre sus acciones, CAP retrocedió 5,23%, Cencosud 2,96%, Falabella 2,26% y SQM-B 2,19%. En cambio, Copec avanzó 0,87% y Banco Santander Chile ganó 0,19%. Diario Financiero destacó la incidencia de los retrocesos de las acciones de mayor ponderación. La cifra corresponde a una sesión ya concluida, no a una cotización de la jornada del miércoles.\n\nLos movimientos muestran una diferencia entre el resultado agregado y la experiencia de quien mantiene una cartera con composición sectorial distinta. La pérdida de una acción no se traduce directamente en una contribución equivalente al índice: también influye su ponderación. El registro de operaciones exhibe además a Santander y Banco de Chile entre los títulos más transados, aunque sus variaciones fueron de menor magnitud que las de varios papeles industriales y comerciales. Los montos negociados representan intercambio entre compradores y vendedores y no permiten identificar por sí solos retiros netos de inversionistas. El siguiente punto de control será comprobar si persiste la concentración de pérdidas o si se amplía a más sectores.",
+        "anchor": "ipsa-cierre-24-noviembre-comercio-materiales-2026",
+        "sources": [
+          {
+            "name": "LarrainVial — cierre e indicadores de acciones chilenas, 24 de noviembre",
+            "url": "https://mercados.larrainvial.com/www/v2/index.html"
+          },
+          {
+            "name": "Diario Financiero — balance de la rueda del 24 de noviembre",
+            "url": "https://www.df.cl/mercados/bolsa-monedas/bolsas-hoy-yemej"
+          }
+        ]
+      },
+      {
+        "slot": "markets_global",
+        "headline": "ETF de bitcoin registran seis ruedas consecutivas de salidas",
+        "deck": "Los fondos estadounidenses al contado perdieron US$231,4 millones netos el martes; el balance mensual se acerca a US$5.000 millones en retiros.",
+        "development": "Los fondos cotizados estadounidenses que mantienen bitcoin al contado registraron salidas netas de US$231,4 millones el martes 24 de noviembre, de acuerdo con el seguimiento de Farside Investors. El lunes habían registrado US$569,7 millones de retiros netos. La nueva jornada negativa completó seis sesiones consecutivas con salidas y dejó el acumulado de noviembre cercano a US$4.940 millones, todavía con operaciones pendientes antes de finalizar el mes. El fondo de BlackRock registró el mayor retiro individual de la sesión del martes, por US$175,3 millones, aunque algunos vehículos de menor tamaño tuvieron entradas netas.\n\nLa información permite distinguir entre variaciones del precio de bitcoin y cambios en el capital efectivamente aportado o retirado de los fondos cotizados. Una caída de las cotizaciones puede reducir el patrimonio administrado sin producir un rescate, mientras una salida neta refleja el balance entre nuevas participaciones y cancelaciones durante la sesión. Las dos magnitudes pueden coincidir en dirección, pero no son intercambiables. El retroceso de las salidas respecto del lunes tampoco equivale a una recuperación de demanda: el balance sigue siendo negativo. Será relevante observar si los flujos se estabilizan de forma sostenida y si la concentración de retiros en los vehículos de mayor tamaño disminuye.",
+        "anchor": "bitcoin-etf-seis-sesiones-salidas-noviembre-2026",
+        "sources": [
+          {
+            "name": "Farside Investors — flujos diarios de ETF de bitcoin",
+            "url": "https://farside.co.uk/btc/"
+          },
+          {
+            "name": "Farside Investors — histórico de flujos",
+            "url": "https://farside.co.uk/bitcoin-etf-flow-all-data/"
+          },
+          {
+            "name": "TFTC — balance actualizado al 24 de noviembre",
+            "url": "https://www.tftc.io/bitcoin-etf-flows"
+          }
+        ]
+      }
+    ]
+  }
+}
