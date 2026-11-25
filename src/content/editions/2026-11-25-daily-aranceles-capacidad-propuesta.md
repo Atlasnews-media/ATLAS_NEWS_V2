@@ -1,5 +1,5 @@
 ---
-title: "Estados Unidos propone aranceles de hasta 20% por exceso de capacidad industrial"
+title: "Estados Unidos propone nuevos aranceles a 14 economías por exceso de capacidad industrial"
 summary: "USTR pasó de investigar a proponer gravámenes sobre 14 economías. China y Vietnam enfrentan topes de 20%, mientras Europa, Japón, Corea del Sur y otros socios quedan expuestos a nuevas barreras."
 publishedAt: "2026-11-25T13:03:14-03:00"
 cutoffAt: "2026-11-25T11:58:00-03:00"
@@ -28,7 +28,7 @@ demo: false
 highlights:
   - label: "USTR convierte la investigación en propuestas arancelarias"
     text: "La decisión conocida esta mañana abarca 14 economías y abre una etapa de consultas antes de fijar medidas finales."
-  - label: "China y Vietnam enfrentan los topes más altos"
+  - label: "China y Vietnam enfrentan topes de 20%"
     text: "La propuesta contempla hasta 20% para ambos países, con tratamientos y excepciones que dependen de cada expediente."
   - label: "Los nuevos gravámenes se acumularían con barreras previas"
     text: "En el caso chino, el tope por exceso de capacidad se añadiría a aranceles heredados de la primera administración Trump."
