@@ -1,0 +1,19 @@
+VOZ 1: La pregunta de hoy en los mercados es si el fuerte rebote tecnológico del lunes representó una recuperación duradera. El cierre del martes nos obliga a mirar con más detalle.
+VOZ 2: Porque no todos los índices se movieron igual, ¿verdad?
+VOZ 1: Exactamente. El Nasdaq perdió uno coma cinco por ciento y el S&P quinientos cayó medio punto porcentual. Pero el Dow Jones subió cero coma nueve por ciento y el índice Russell dos mil, que sigue empresas de menor capitalización, ganó cero coma seis.
+VOZ 2: Eso es interesante. Si sólo veo el S&P quinientos, podría pensar que prácticamente todas las acciones bajaron.
+VOZ 1: Y sería una lectura incompleta. Una parte importante de la caída se concentró en tecnología. En la mañana de hoy, los futuros estadounidenses vuelven a mostrar más presión sobre el Nasdaq que sobre el S&P quinientos. La incertidumbre comercial que analizamos en la edición internacional añade otro factor de riesgo.
+VOZ 2: ¿Cómo podemos saber si los inversionistas realmente consideran que la corrección terminó?
+VOZ 1: Una pista viene del mercado de opciones. Reuters informó que el índice VIX bajó desde cuarenta el viernes hasta veintisiete. Es una reducción importante de la volatilidad esperada, pero sus contratos de futuros cercanos todavía cuestan más que los de vencimientos posteriores.
+VOZ 2: Explícame eso con un ejemplo.
+VOZ 1: Si necesitas protección para las próximas semanas, el mercado exige relativamente más que si la buscas para un horizonte posterior. Esa estructura sugiere que la preocupación inmediata sigue siendo elevada. No significa que conozcamos la dirección del próximo movimiento, pero sí que la tranquilidad del lunes no se ha consolidado.
+VOZ 2: ¿Y cómo se conecta eso con los bonos y el dólar?
+VOZ 1: El dólar recuperaba terreno esta mañana, mientras el rendimiento del bono del Tesoro estadounidense a diez años bajaba ligeramente hacia cuatro coma nueve por ciento. Al mismo tiempo, los futuros de tasas seguían asignando una probabilidad cercana al noventa y siete por ciento a un aumento de la tasa de la Reserva Federal en diciembre.
+VOZ 2: Parece extraño que se espere una subida de tasas y que a la vez bajen los rendimientos de un bono largo.
+VOZ 1: Son horizontes distintos. El banco central decide la tasa de corto plazo, mientras el precio de un bono a diez años también responde a expectativas sobre crecimiento e inflación futura. Además, cuando aumenta la demanda por protección, los bonos pueden recibir compras que eleven su precio y reduzcan su rendimiento.
+VOZ 2: El petróleo también está retrocediendo. ¿Eso significa que desapareció el riesgo energético?
+VOZ 1: No. Los futuros del Brent bajaban esta mañana a cerca de noventa y un dólares por barril, después de haber subido más de dos por ciento el martes. El mercado considera tanto las posibles interrupciones en Oriente Medio como el riesgo de que exista más oferta que demanda.
+VOZ 2: Entonces, el movimiento de un solo precio no basta para entender lo que está ocurriendo.
+VOZ 1: Así es. Hoy tenemos señales que debemos evaluar juntas: dispersión entre sectores bursátiles, protección inmediata todavía costosa, dólar firme y petróleo a la baja. El próximo dato de inflación estadounidense ayudará a entender cuánto de esta presión depende del costo del dinero y cuánto de los riesgos propios de cada sector.
+VOZ 2: Y habrá que tener presente el feriado estadounidense de mañana, porque las condiciones de liquidez pueden cambiar.
+VOZ 1: Exactamente. La clave es distinguir las señales de una sesión de una tendencia confirmada. Para eso observaremos la amplitud de mercado, la curva de volatilidad y la reacción de las tasas después de los datos.
