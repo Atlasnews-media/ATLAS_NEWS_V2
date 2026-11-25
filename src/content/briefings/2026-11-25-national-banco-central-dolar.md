@@ -1,11 +1,11 @@
 ---
 title: "Costa descarta intervenir el dólar mientras el peso absorbe la caída del cobre"
 summary: "La presidenta del Banco Central dijo que el mercado cambiario funciona con normalidad pese al dólar sobre $1.000. Vinculó el movimiento con el cobre, la fortaleza global de la divisa y la debilidad local."
-publishedAt: "2026-11-25T13:03:14-03:00"
+publishedAt: "2026-11-25T13:11:44-03:00"
 cutoffAt: "2026-11-25T11:58:00-03:00"
 section: "national"
 editionSlot: "evening"
-status: "draft"
+status: "published"
 tags:
   - chile
   - banco-central
