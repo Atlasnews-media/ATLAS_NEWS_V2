@@ -1,0 +1,29 @@
+VOZ 1: La señal de mercado de esta mañana es un rebote con coberturas todavía activas. Asia sube porque los nuevos aranceles propuestos por Estados Unidos parecieron menos dañinos de lo temido, pero los bonos, el franco suizo y el petróleo muestran que el riesgo no desapareció.
+VOZ 2: ¿Qué cambió exactamente en la lectura arancelaria?
+VOZ 1: La propuesta alcanza a catorce socios comerciales, entre ellos China, Japón y la Unión Europea. Lo que alivió al mercado es que las nuevas tasas no se acumularían sobre las impuestas en julio y probablemente no entrarían en vigor hasta febrero o marzo.
+VOZ 2: Eso reduce el golpe inmediato sobre márgenes y cadenas de suministro.
+VOZ 1: Sí. El Nikkei subió 1,6%, el principal índice coreano 1,9% y Taiwán 1,4%. El índice de Asia-Pacífico fuera de Japón avanzó 1,8%. El mercado retiró parte de la prima por un escenario arancelario más extremo.
+VOZ 2: Pero vienes diciendo que es un rebote, no un cambio completo de tendencia. ¿Por qué?
+VOZ 1: Porque las pérdidas acumuladas siguen siendo grandes. Japón todavía caía 8% en el mes, Corea del Sur 16% y Taiwán 15%. Además, Nvidia perdió 3,9% el miércoles y continuó bajo revisión crediticia de S&P. Hay alivio por comercio, pero sigue la duda sobre cuánto retorno producirá toda la inversión en inteligencia artificial.
+VOZ 2: La General habló del alza de tasas en Corea y del impulso de los chips. ¿Cómo se conecta sin repetirla?
+VOZ 1: La conexión de mercado es la dispersión. La economía coreana recibe crecimiento e inflación desde los semiconductores, pero sus acciones vienen de una corrección fuerte. Eso significa que una industria puede impulsar la actividad real y, al mismo tiempo, enfrentar valoraciones más exigentes y un costo de capital mayor.
+VOZ 2: ¿Qué dijeron los bonos?
+VOZ 1: El Treasury a diez años se ubicó en torno a 4,848%, cerca de un mínimo de once semanas. Es llamativo porque el crecimiento estadounidense del tercer trimestre fue revisado a 4,3% y la inflación subyacente PCE llegó a 3,3%.
+VOZ 2: Datos fuertes e inflación alta normalmente deberían empujar los rendimientos hacia arriba.
+VOZ 1: Exacto. Que los rendimientos bajen indica demanda defensiva. Los inversores están cubriendo el riesgo de que la corrección tecnológica enfríe inversión y crecimiento. Aun así, los futuros asignaban 98% de probabilidad a un alza de 25 puntos base de la Reserva Federal en diciembre.
+VOZ 2: Entonces los bonos no están anticipando necesariamente recortes. Están reduciendo el riesgo de una subida de medio punto.
+VOZ 1: Esa es la distinción. La expectativa de un cuarto de punto sigue casi completa, pero perdió fuerza el escenario más agresivo. El mercado separa la política monetaria inmediata del riesgo de que el ciclo de IA se desacelere más adelante.
+VOZ 2: ¿Y el dólar?
+VOZ 1: El índice dólar rondaba 103,8. La Reserva Federal restrictiva lo sostiene, pero la caída de rendimientos limita su avance. El franco suizo conservó parte de su demanda de refugio y el yen se mantuvo cerca de 159,2 por dólar, con 160 como nivel sensible a una eventual intervención japonesa.
+VOZ 2: No parece un apetito por riesgo limpio.
+VOZ 1: No lo es. Las acciones suben, pero las monedas defensivas y los bonos siguen protegidos. Esa combinación dice que los inversores están aprovechando precios castigados sin retirar por completo sus seguros.
+VOZ 2: Falta el petróleo, que afecta directamente la lectura inflacionaria.
+VOZ 1: El Brent estaba en 94 dólares con 52 centavos por barril a las 07:58 GMT, casi sin cambios, después de subir 3,5% el miércoles. El WTI marcaba 83 dólares con 83 centavos, pero hoy no tendrá liquidación oficial por el feriado de Acción de Gracias en Estados Unidos.
+VOZ 2: ¿El mercado ya descuenta una pérdida efectiva de suministro?
+VOZ 1: Todavía no hay evidencia suficiente para afirmar eso. Lo que incorpora es una prima de riesgo por los ataques reclamados sobre Ras Tanura y por incidentes con minas en el estrecho de Ormuz. Los flujos del Golfo venían recuperándose y una interrupción física podría frenar esa mejora.
+VOZ 2: ¿Qué puede cambiar la lectura durante las próximas sesiones?
+VOZ 1: Primero, si el rebote se amplía desde tecnología hacia bancos, industria y consumo cuando Estados Unidos reabra el viernes en una sesión abreviada. Segundo, si el Treasury a diez años vuelve a subir con las acciones, señal de que la inflación recupera el control. Y tercero, si aparece evidencia verificable de daños o interrupciones en Ormuz y Ras Tanura.
+VOZ 2: También viene OPEC+ el 29 de noviembre.
+VOZ 1: Sí. La reunión deberá equilibrar la política de producción con un entorno geopolítico más incierto. Para Chile importa la combinación, no una cifra aislada: energía cara presiona costos, mientras una recuperación asiática más amplia podría apoyar la demanda por cobre.
+VOZ 2: La conclusión es que el mercado redujo un riesgo extremo, pero no declaró cerrado ninguno de los problemas de fondo.
+VOZ 1: Así es. Asia rebota porque el arancel parece más gradual y menos acumulativo; los bonos cubren dudas sobre IA; y el petróleo conserva una prima por oferta. Es un alivio táctico dentro de un régimen todavía frágil.
