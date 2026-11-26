@@ -1,11 +1,11 @@
 ---
 title: "Sala Cuna Universal elimina la barrera de las 20 trabajadoras y cambia su financiamiento"
 summary: "El Congreso despachó a ley un sistema que amplía gradualmente el beneficio a dependientes e independientes y reemplaza la obligación por empresa con un fondo solidario."
-publishedAt: "2026-11-26T06:27:00-03:00"
+publishedAt: "2026-11-26T06:50:12-03:00"
 cutoffAt: "2026-11-26T06:25:00-03:00"
 section: "national"
 editionSlot: "morning"
-status: "draft"
+status: "published"
 tags:
   - chile
   - empleo

@@ -1,11 +1,11 @@
 ---
 title: "Asia rebota, pero bonos y petróleo mantienen abiertas las coberturas defensivas"
 summary: "Las bolsas asiáticas recuperaron terreno al moderarse el impacto esperado de nuevos aranceles de Estados Unidos, mientras Treasury, franco suizo y crudo siguieron reflejando riesgos sobre IA, inflación y oferta."
-publishedAt: "2026-11-26T06:29:00-03:00"
+publishedAt: "2026-11-26T06:50:12-03:00"
 cutoffAt: "2026-11-26T06:28:00-03:00"
 section: "markets"
 editionSlot: "morning"
-status: "draft"
+status: "published"
 tags:
   - mercados-globales
   - renta-variable

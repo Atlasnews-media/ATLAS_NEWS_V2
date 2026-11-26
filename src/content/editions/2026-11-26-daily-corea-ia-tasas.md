@@ -1,11 +1,11 @@
 ---
 title: "Corea del Sur sube tasas: el auge de la IA ya presiona crecimiento e inflación"
 summary: "El Banco de Corea elevó su tasa a 3,25% y proyectó 4,1% de crecimiento para 2027 por el impulso de los semiconductores. El ciclo tecnológico convive con riesgos de energía, comercio y seguridad."
-publishedAt: "2026-11-26T06:05:36-03:00"
+publishedAt: "2026-11-26T06:50:12-03:00"
 cutoffAt: "2026-11-26T06:04:05-03:00"
 type: "daily"
 editionSlot: "morning"
-status: "draft"
+status: "published"
 tags:
   - corea-del-sur
   - inteligencia-artificial
