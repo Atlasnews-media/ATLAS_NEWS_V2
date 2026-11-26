@@ -1,0 +1,131 @@
+{
+  "status": "READY",
+  "date": "2026-11-26",
+  "contract": "atlas-senales-del-dia-v1",
+  "senalesDelDia": {
+    "internacional": [
+      {
+        "slot": "technology",
+        "headline": "Nanorobots llevan cinco veces más fármaco al cerebro de ratones",
+        "deck": "BrainBots activados con luz cruzaron la barrera hematoencefálica y mejoraron la entrega de quimioterapia. El trabajo aún no ha pasado a estudios en humanos.",
+        "development": "Investigadores de Caltech publicaron el 25 de noviembre en Science Robotics un sistema de nanorobots de unos 250 nanómetros diseñado para transportar medicamentos a través de la barrera hematoencefálica. Las cápsulas, fabricadas con materiales biocompatibles y biodegradables, contienen bicarbonato de amonio y una compuerta sensible al calor. Una fuente de luz infrarroja cercana aplicada sobre el cráneo genera calor localizado, abre la compuerta y produce gas que impulsa las partículas hacia las células de la barrera. Moléculas de ADN llamadas aptámeros facilitan el reconocimiento y la unión a esas células. En los experimentos, los dispositivos activados entregaron aproximadamente cinco veces más medicamento al cerebro que las versiones no activadas.\n\nEl equipo probó BrainBots cargados con doxorrubicina en ratones con glioblastoma. El tratamiento redujo el crecimiento tumoral, prolongó la supervivencia y disminuyó la toxicidad sistémica frente a la administración convencional del fármaco, sin que los investigadores detectaran una alteración de la barrera. El resultado corresponde a un modelo animal: solo una fracción de las partículas llegó al cerebro y todavía deben evaluarse la seguridad de largo plazo, la estabilidad, la degradación en el organismo y la optimización de la iluminación. La publicación demuestra un mecanismo experimental de entrega dirigida; no acredita eficacia clínica ni permite anticipar su uso en pacientes.",
+        "anchor": "brainbots-luz-farmaco-barrera-cerebral-ratones-2026",
+        "sources": [
+          {
+            "name": "Caltech — descripción del sistema y resultados experimentales",
+            "url": "https://www.caltech.edu/about/news/tiny-robots-deliver-treatments-to-the-brain"
+          },
+          {
+            "name": "Science Robotics — artículo y DOI del estudio",
+            "url": "https://www.science.org/doi/10.1126/scirobotics.aef1928"
+          },
+          {
+            "name": "Financial Times — evaluación independiente y alcance preclínico",
+            "url": "https://www.ft.com/content/95b7e73d-a884-42bb-9845-f0e305699664"
+          }
+        ]
+      },
+      {
+        "slot": "world",
+        "headline": "Justicia keniana frena centro de cuarentena para el ébola",
+        "deck": "El tribunal exigió revelar el acuerdo con EE.UU. y acreditar participación pública antes de continuar u operar la instalación de Laikipia.",
+        "development": "El Tribunal Superior de Kenia resolvió el 26 de noviembre que el gobierno incumplió obligaciones constitucionales de transparencia y participación pública al avanzar en un centro de cuarentena para el ébola financiado por Estados Unidos dentro de la base aérea de Laikipia. La jueza Patricia Nyaundi prohibió continuar las obras o poner en funcionamiento la instalación de 50 camas hasta que el Ministerio de Salud revele el acuerdo bilateral, las evaluaciones de seguridad y las autorizaciones regulatorias requeridas. Medios kenianos informaron que el ministerio dispone de 45 días para entregar los documentos y que el tribunal deberá comprobar el cumplimiento antes de levantar la prohibición.\n\nLa sentencia no declara innecesaria la preparación sanitaria ni ordena abandonar de manera definitiva el proyecto. El Ministerio de Salud había defendido las instalaciones de aislamiento como parte de la capacidad preventiva ante brotes regionales y documentó ante la propia justicia que la construcción estaba suspendida desde mayo. Kenia registró en octubre casos de la variante Bundibugyo importados desde la República Democrática del Congo y el 12 de noviembre inició el conteo de 42 días sin nuevos contagios tras dar de alta al último paciente. La decisión separa dos planos: la autoridad sanitaria puede preparar respuestas, pero debe hacerlo con información pública, consulta y control judicial. El próximo hito verificable será la entrega de antecedentes y la evaluación de cumplimiento.",
+        "anchor": "kenia-corte-centro-cuarentena-ebola-laikipia-2026",
+        "sources": [
+          {
+            "name": "Ministerio de Salud de Kenia — antecedente oficial del proceso judicial",
+            "url": "https://health.go.ke/sites/default/files/2026-06/MoH%20Daily%20Newsletter_23rd%20June%202026.pdf"
+          },
+          {
+            "name": "Reuters — sentencia y condiciones impuestas al proyecto",
+            "url": "https://www.reuters.com/world/africa/kenya-government-breached-constitution-building-us-backed-ebola-quarantine-site-2026-11-26/"
+          },
+          {
+            "name": "Citizen Digital — plazo de divulgación y alcance de las órdenes",
+            "url": "https://citizen.digital/article/blow-to-moh-as-court-blocks-establishment-of-laikipia-ebola-facility-n394577"
+          }
+        ]
+      }
+    ],
+    "nacional": [
+      {
+        "slot": "ipsa_company",
+        "headline": "Andina acuerda nuevo dividendo provisorio para diciembre",
+        "deck": "La embotelladora pagará $51 por acción Serie A y $56,1 por Serie B desde el 17 de diciembre, con cargo a las utilidades de 2026.",
+        "development": "El directorio de Embotelladora Andina acordó el 24 de noviembre distribuir un dividendo provisorio de $51 por cada acción Serie A y de $56,1 por cada acción Serie B. La compañía comunicó la decisión al mercado el día siguiente y señaló que el pago estará disponible desde el 17 de diciembre, con cargo a los resultados del ejercicio 2026. El registro de accionistas se cerrará el quinto día hábil anterior a esa fecha. La decisión se apoya en la autorización entregada por la junta ordinaria de accionistas del 16 de abril y no requiere inferir una modificación de la política general de dividendos.\n\nEl anuncio corresponde a una nueva distribución, aunque repite los montos por serie de un dividendo provisorio acordado en julio y pagado en agosto. Esa comparación ayuda a distinguir la fecha y el derecho económico de cada operación: no se trata de corregir el pago anterior, sino de una distribución adicional con su propio corte de registro. El hecho esencial no informa un desembolso agregado ni altera por sí solo las proyecciones operacionales de la embotelladora. Para el accionista, las variables verificables son la serie que mantiene, la fecha de registro y el pago efectivo; para la empresa, el seguimiento deberá considerar el efecto acumulado de las distribuciones sobre caja y patrimonio al cierre del ejercicio.",
+        "anchor": "andina-dividendo-provisorio-diciembre-series-a-b-2026",
+        "sources": [
+          {
+            "name": "SEC — comunicación oficial de Embotelladora Andina",
+            "url": "https://www.sec.gov/Archives/edgar/data/925261/000110465926131995/tm2630670d1_6k.htm"
+          },
+          {
+            "name": "MarketScreener — confirmación independiente del calendario",
+            "url": "https://www.marketscreener.com/news/embotelladora-andina-s-a-declares-interim-dividend-payable-beginning-on-december-17-2026-ce7851d8df8df327"
+          },
+          {
+            "name": "Espabila — archivo de hechos esenciales y antecedente del pago previo",
+            "url": "https://www.espabila.cl/ANDINA-A"
+          }
+        ]
+      },
+      {
+        "slot": "policy_economy",
+        "headline": "Ventas minoristas nominales suben 8,01% anual en octubre",
+        "deck": "El indicador experimental del Banco Central llegó a 205,61 puntos. Se construye con boletas electrónicas y puede recibir revisiones relevantes.",
+        "development": "El Índice de Ventas Diarias del Comercio Minorista del Banco Central registró 205,61 puntos en octubre de 2026 y una variación de 8,01% frente al mismo mes del año anterior, según la actualización publicada el 23 de noviembre. El indicador es nominal: recoge montos de venta y, por lo tanto, no equivale directamente a una medida de volumen descontando inflación. Su fuente son registros administrativos de boletas electrónicas entregados por el Servicio de Impuestos Internos, que abarcan transacciones entre empresas y consumidores finales, sin distinguir por medio de pago o canal de venta. Para mantener una serie consistente, el Banco Central utiliza una muestra de empresas seleccionadas por estabilidad de reporte.\n\nLa cifra ofrece una lectura oportuna del comercio, pero conserva el carácter de estadística experimental. El instituto emisor advierte que este tipo de productos permanece en desarrollo o consolidación y puede enfrentar revisiones importantes. La muestra del IVDCM se renueva anualmente y la serie histórica se revisa en mayo; además, el nivel mensual resulta de agregar los índices diarios. Por esas características, el dato no sustituye a las estadísticas oficiales de actividad o consumo real ni permite atribuir por sí solo el aumento a precios o cantidades. El próximo contraste útil será observar las series sectoriales y las publicaciones regulares de actividad económica.",
+        "anchor": "ivdcm-ventas-minoristas-nominales-octubre-2026",
+        "sources": [
+          {
+            "name": "Banco Central de Chile — serie mensual y variación anual del IVDCM",
+            "url": "https://si3.bcentral.cl/siete/ES/Siete/Cuadro/CAP_ESTADIST_EXPERIM/MN_EXPERIM01/EST_EXP_002?idSerie=F034.VDCM.TAS12M.DBC.2018.0.M"
+          },
+          {
+            "name": "Banco Central de Chile — metodología y carácter experimental",
+            "url": "https://www.bcentral.cl/web/banco-central/areas/estadisticas/estadisticas-experimentales/ivdcm"
+          }
+        ]
+      }
+    ],
+    "mercados": [
+      {
+        "slot": "markets_chile",
+        "headline": "Derivados bancarios vigentes crecen 1% en octubre",
+        "deck": "El mercado alcanzó US$2,056 billones; las tasas de interés concentraron 57% del monto, mientras las nuevas operaciones bajaron 2,9% mensual.",
+        "development": "El monto vigente del mercado chileno de derivados bancarios llegó a US$2.056.123 millones al cierre de octubre, un aumento de 1% frente a septiembre, de acuerdo con el informe publicado por el Banco Central el 23 de noviembre. Los contratos de tasas de interés representaron US$1.172.851 millones, cerca de 57% del total; los de tipo de cambio sumaron US$517.143 millones y los vinculados a UF-peso chileno alcanzaron US$366.129 millones. Durante el mes, los bancos celebraron nuevas operaciones por US$356.901 millones, 2,9% menos que en septiembre. De esa actividad, US$198.305 millones correspondieron a monedas, US$140.655 millones a tasas y US$17.941 millones a UF-peso.\n\nEl monto vigente mide el valor nocional de contratos aún abiertos y no debe interpretarse como dinero desembolsado, pérdida potencial ni exposición neta equivalente para el sistema. Los derivados se emplean para cobertura, inversión y administración de riesgos, y una misma entidad puede mantener posiciones en sentidos opuestos. El registro SIID-TR también muestra que la posición vendedora de dólares frente a no residentes disminuyó a US$25.455 millones desde US$27.126 millones en septiembre. Como el informe mensual revisa los tres meses previos, las comparaciones pueden cambiar en publicaciones posteriores; la señal actual describe la estructura y actividad reportadas, no una recomendación sobre tasas o monedas.",
+        "anchor": "derivados-bancarios-chile-octubre-monto-vigente-2026",
+        "sources": [
+          {
+            "name": "Banco Central de Chile — resumen del mercado de derivados",
+            "url": "https://www.bcentral.cl/areas/estadisticas/derivados-y-spot"
+          },
+          {
+            "name": "SIID-TR — informe de derivados de octubre de 2026",
+            "url": "https://www.siid.cl/web/siid/informe-derivados-financieros"
+          },
+          {
+            "name": "Diario Estrategia — variaciones mensuales y composición",
+            "url": "https://www.diarioestrategia.cl/texto-diario/mostrar/6104975/banco-central-mercado-derivados-bancarios-crecio-1-cierre-octubre"
+          }
+        ]
+      },
+      {
+        "slot": "markets_global",
+        "headline": "Azúcar cruda sube 2,8% tras recorte de cosecha india",
+        "deck": "El contrato llegó a 18,14 centavos por libra después de que la industria estimara una producción 2026/27 de 26,52 millones de toneladas.",
+        "development": "Los futuros de azúcar cruda en ICE avanzaron 2,8% el miércoles 25 de noviembre y cerraron en 18,14 centavos de dólar por libra, mientras el azúcar blanca ganó 2,4% hasta US$513,10 por tonelada. El movimiento siguió a la estimación preliminar de la Asociación India de Fabricantes de Azúcar y Bioenergía, que proyectó una producción de 26,52 millones de toneladas para la temporada 2026/27, el menor nivel en una década. La cifra quedó por debajo del rango de 27,5 a 28 millones de toneladas que operadores citados por Reuters atribuían al consenso del mercado y también por debajo de los 28 millones de la campaña anterior.\n\nIndia es el mayor consumidor mundial de azúcar y la diferencia entre cosecha, consumo y existencias influye en sus necesidades de importación. La estimación industrial atribuye el descenso a una menor superficie de caña y a condiciones meteorológicas desiguales; además, el país extendió hasta el 31 de marzo de 2027 el plazo para importar sin arancel un millón de toneladas de azúcar cruda. El alza diaria refleja el ajuste inmediato de expectativas, no confirma por sí sola un déficit global ni una tendencia permanente. La próxima evaluación dependerá de la molienda efectiva en India, el ritmo de importaciones y la oferta de otros productores, especialmente Brasil.",
+        "anchor": "azucar-cruda-alza-cosecha-india-2026-27",
+        "sources": [
+          {
+            "name": "Business Recorder/Reuters — cierre de futuros y reacción del mercado",
+            "url": "https://www.brecorder.com/news/amp/40450759"
+          },
+          {
+            "name": "Economic Times — estimación preliminar de ISMA",
+            "url": "https://economictimes.indiatimes.com/news/economy/agriculture/indias-sugar-production-to-fall-5-4-to-265-lakh-tonnes-in-2026-27-isma/articleshow/136178440.cms"
+          }
+        ]
+      }
+    ]
+  }
+}
