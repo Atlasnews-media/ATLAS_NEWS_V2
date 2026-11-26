@@ -27,14 +27,14 @@
     {
       "id": "ai-monetization-selectivity",
       "topic": "Inteligencia artificial y selectividad bursátil",
-      "thesis": "La inversión en inteligencia artificial conserva impulso real y acceso excepcional a capital, pero su rentabilidad y estabilidad dependen de transformar deuda, contratos, ofertas públicas y financiamiento circular en ingresos finales antes de que una corrección active contagios financieros y operacionales.",
+      "thesis": "La inversión en inteligencia artificial conserva impulso real y acceso excepcional a capital, y ya se transmite desde comercio e inversión hacia crecimiento e inflación; en economías exportadoras de chips puede exigir tasas más altas antes de que la monetización final del ciclo quede plenamente demostrada.",
       "status": "confirmed",
-      "last_evidence": "El 18 de noviembre Anthropic fijó 980 millones de acciones a US$83 y recaudó US$81.310 millones en la mayor OPI registrada, con una valoración cercana a US$1,5 billones; el 19 de noviembre Corea del Sur informó que chips de IA impulsaron sus exportaciones por encima de US$1 billón.",
-      "effect": "Confirma que el ciclo de IA conserva capacidad extraordinaria para atraer capital público y sostener comercio físico, pero aumenta la concentración y la exigencia de monetización: la liquidez obtenida reduce el riesgo inmediato de fondeo sin demostrar todavía ingresos suficientes para justificar la escala de inversión y valoración.",
-      "base_scenario": "La inversión en IA continúa y las firmas con acceso a mercados públicos financian infraestructura a gran escala, pero la selección aumenta: empresas con clientes finales y caja absorben tasas altas, mientras proyectos dependientes de deuda, contratos circulares o nuevas emisiones enfrentan refinanciamiento y revisión de valoraciones.",
-      "invalidate_if": "Un crecimiento sostenido de clientes pagadores, menor deuda y compromisos, spreads estables y ausencia de ventas forzadas debilitarían la tesis; incumplimientos, cancelaciones, uso de garantías, liquidaciones apalancadas o contagio bancario la reforzarían.",
-      "watch": "Debut y desempeño de Anthropic, uso de los fondos, ingresos y caja de grandes firmas y laboratorios, exportaciones coreanas de semiconductores, emisiones y spreads, crédito privado, garantías de valor residual, exposiciones de fondos y bancos y volatilidad algorítmica.",
-      "last_publication": "/ediciones/2026-11-19-daily-ia-capital-comercio-inflacion/"
+      "last_evidence": "El 26 de noviembre el Banco de Corea elevó su tasa desde 3,00% hasta 3,25%, revisó el crecimiento de 2027 desde 2,9% hasta 4,1% por el auge de semiconductores y proyectó inflación subyacente de 2,6% tanto en 2026 como en 2027.",
+      "effect": "Confirma que el ciclo de IA ya produce efectos macroeconómicos fuera de las empresas tecnológicas: exportaciones, inversión y demanda elevan el crecimiento, pero también estrechan el margen monetario. El impulso físico reduce el riesgo de una tesis puramente financiera sin resolver la concentración ni la rentabilidad final.",
+      "base_scenario": "La inversión en IA continúa, sostiene exportaciones y capacidad manufacturera asiática y mantiene acceso selectivo a capital; los bancos centrales de economías beneficiadas retiran estímulo gradualmente, mientras proyectos dependientes de deuda, contratos circulares o nuevas emisiones enfrentan mayor costo de financiamiento.",
+      "invalidate_if": "Una caída sostenida de pedidos de chips, revisiones fuertes a la baja de crecimiento e inversión, menor inflación y recortes de tasas debilitarían la transmisión macroeconómica; continuidad exportadora, ampliación sectorial y nuevos ajustes monetarios la reforzarían.",
+      "watch": "Exportaciones coreanas de semiconductores, crecimiento de 2027, inflación subyacente, próximas decisiones del Banco de Corea, gasto de capital de grandes tecnológicas, pedidos de servidores y memoria, ingresos y caja, crédito privado, spreads, garantías y volatilidad algorítmica.",
+      "last_publication": "/ediciones/2026-11-26-daily-corea-ia-tasas/"
     },
     {
       "id": "chile-inflation-activity-rates",
