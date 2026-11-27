@@ -1,11 +1,11 @@
 ---
 title: "Estados Unidos desafía la cohesión de OPEC mientras busca más producción"
 summary: "Washington alentó a Venezuela e Irak a considerar una salida del cartel y bloqueó el pago venezolano de su cuota. La presión revela una disputa por producción, inversión y soberanía energética."
-publishedAt: "2026-11-27T06:03:54-03:00"
+publishedAt: "2026-11-27T06:46:26-03:00"
 cutoffAt: "2026-11-27T06:03:05-03:00"
 type: "daily"
 editionSlot: "morning"
-status: "draft"
+status: "published"
 tags:
   - energia
   - opec

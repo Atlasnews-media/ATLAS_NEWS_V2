@@ -1,11 +1,11 @@
 ---
 title: "Corfo avanza como inversionista ancla para cerrar la brecha de capital de riesgo"
 summary: "La Comisión de Economía aprobó en general el proyecto que permite a Corfo invertir de forma minoritaria en fondos de fondos y vehículos de venture capital. El debate pasa ahora a gobernanza, adicionalidad y reparto de riesgos."
-publishedAt: "2026-11-27T06:21:42-03:00"
+publishedAt: "2026-11-27T06:46:26-03:00"
 cutoffAt: "2026-11-27T06:21:30-03:00"
 section: "national"
 editionSlot: "morning"
-status: "draft"
+status: "published"
 tags:
   - chile
   - corfo

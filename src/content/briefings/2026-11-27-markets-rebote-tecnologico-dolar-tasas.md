@@ -1,11 +1,11 @@
 ---
 title: "El rebote tecnológico convive con dólar y tasas al alza antes de diciembre"
 summary: "Asia recuperó parte de las pérdidas del mes y los futuros de Wall Street subieron, pero el dólar y los rendimientos del Treasury avanzaron con una subida de la Fed casi totalmente descontada. El petróleo añadió un riesgo de oferta antes de OPEC+."
-publishedAt: "2026-11-27T06:23:24-03:00"
+publishedAt: "2026-11-27T06:46:26-03:00"
 cutoffAt: "2026-11-27T06:23:15-03:00"
 section: "markets"
 editionSlot: "morning"
-status: "draft"
+status: "published"
 tags:
   - mercados-globales
   - tecnologia
