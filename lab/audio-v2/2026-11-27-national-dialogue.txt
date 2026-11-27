@@ -1,0 +1,23 @@
+VOZ 1: La novedad local de esta mañana no es un nuevo dato macroeconómico, sino un cambio de instrumento. La Comisión de Economía de la Cámara aprobó en general el proyecto que permitiría a Corfo invertir como aportante minoritario en fondos de capital de riesgo.
+VOZ 2: ¿Qué significa exactamente “aprobó en general”? Porque puede sonar a que el Fondo de Fondos ya está funcionando.
+VOZ 1: No. Es una aprobación inicial del contenido central del proyecto. La votación fue de doce a favor, ninguno en contra y una abstención, pero todavía faltan las indicaciones, la discusión artículo por artículo y el resto de la tramitación legislativa.
+VOZ 2: Entonces, el hecho nuevo es que la iniciativa avanzó, no que ya exista dinero invertido.
+VOZ 1: Exactamente. Y el cambio relevante está en cómo podría operar Corfo. Hoy gran parte de su apoyo al capital de riesgo pasa por crédito preferente. La propuesta le permitiría comprar cuotas y actuar como inversionista ancla, siempre de manera minoritaria.
+VOZ 2: ¿Con qué límites?
+VOZ 1: Hasta treinta y cinco por ciento del capital en un fondo de fondos y hasta treinta por ciento en fondos nacionales que inviertan directamente en empresas. La administración quedaría en una administradora general de fondos y bajo supervisión de la Comisión para el Mercado Financiero.
+VOZ 2: ¿Por qué se necesita otro vehículo si Chile ya tiene programas para startups?
+VOZ 1: Porque la brecha que intenta abordar aparece más tarde. Muchas empresas consiguen apoyo para iniciar operaciones, pero encuentran menos capital cuando necesitan rondas mayores para escalar, internacionalizarse o contratar equipos especializados. El proyecto busca que un aporte público inicial atraiga inversionistas privados de largo plazo.
+VOZ 2: ¿Cuánto capital público está comprometido?
+VOZ 1: El Ministerio de Economía planteó una capitalización inicial de veinticinco millones de dólares durante el primer año. Hay que distinguir esa cifra de cualquier tamaño objetivo más amplio: todavía no equivale a compromisos privados cerrados ni a desembolsos efectivos.
+VOZ 2: ¿Cuál sería la ventaja de que Corfo sea minoritario?
+VOZ 1: Puede diversificar el riesgo entre varios fondos y dejar la selección de inversiones en gestores profesionales. Además, su presencia podría reducir la incertidumbre inicial para aseguradoras, fondos de pensiones, family offices u otros inversionistas.
+VOZ 2: Pero el Estado también podría terminar asumiendo las pérdidas mientras los privados capturan las ganancias.
+VOZ 1: Ese es uno de los puntos decisivos. Las reglas de valorización, compra y salida deben repartir riesgos y retornos de forma coherente. Si una opción de salida es demasiado favorable para el privado, el vehículo puede socializar pérdidas sin una compensación suficiente para Corfo.
+VOZ 2: ¿Y cómo se evita financiar operaciones que igual habrían ocurrido?
+VOZ 1: Midiendo adicionalidad. No basta con contar dólares invertidos. Hay que demostrar cuánto capital privado nuevo se movilizó y si llegó a empresas con una brecha real de escalamiento, en vez de desplazar financiamiento disponible.
+VOZ 2: También hay fondos chilenos que usan estructuras legales en el extranjero. ¿Eso contradice el objetivo local?
+VOZ 1: No necesariamente, pero obliga a medir el impacto. Una estructura extranjera puede facilitar inversión internacional; lo importante es que se traduzca en actividad, empleo, propiedad intelectual o decisiones de crecimiento vinculadas a Chile.
+VOZ 2: Entonces, ¿qué debería mirar el lector en las próximas semanas?
+VOZ 1: Primero, las indicaciones y la votación particular. Segundo, la contabilidad auditada, la selección de administradoras y las reglas de salida de Corfo. Tercero, recursos presupuestarios identificables y compromisos privados verificables.
+VOZ 2: En resumen, el avance legislativo abre una vía para que Corfo sea inversionista ancla, pero el éxito dependerá menos del anuncio y más de la gobernanza y del capital privado que realmente logre atraer.
+VOZ 1: Esa es la lectura. El proyecto modifica la arquitectura de financiamiento; todavía falta probar que esa arquitectura produzca profundidad financiera y escalamiento empresarial sin trasladar de forma desequilibrada el riesgo al Estado.

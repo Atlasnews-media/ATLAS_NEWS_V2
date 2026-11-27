@@ -1,0 +1,139 @@
+{
+  "status": "READY",
+  "date": "2026-11-27",
+  "contract": "atlas-senales-del-dia-v1",
+  "senalesDelDia": {
+    "internacional": [
+      {
+        "slot": "technology",
+        "headline": "Neuralink recibe autorización para estudio pivotal en ELA",
+        "deck": "El ensayo LINK evaluará seguridad y eficacia del implante para controlar dispositivos con el pensamiento. La autorización no permite todavía su venta.",
+        "development": "Neuralink informó el 25 de noviembre que la Administración de Alimentos y Medicamentos de Estados Unidos autorizó el inicio del estudio pivotal LINK, dirigido a personas con parálisis grave causada por esclerosis lateral amiotrófica. El ensayo evaluará si los participantes pueden controlar dispositivos digitales mediante señales cerebrales, junto con resultados funcionales vinculados a la independencia cotidiana, la seguridad y la confiabilidad del sistema a largo plazo. La empresa señaló que el reclutamiento está abierto y que el estudio se realizará en varios centros. LINK se apoya en programas tempranos desarrollados en Estados Unidos, Canadá y Reino Unido, donde Neuralink afirma haber implantado a más de 30 participantes.\n\nUn estudio pivotal busca producir evidencia para una eventual solicitud regulatoria posterior; no equivale a aprobación comercial del implante ni demuestra por sí mismo beneficio clínico. Neuralink no detalló en el anuncio el número previsto de participantes, todos los criterios de evaluación ni un calendario de resultados, y la FDA no había publicado una comunicación específica del evento al cierre de la verificación. Tampoco existen resultados de LINK, porque el ensayo aún comienza. El avance verificable es el paso desde estudios iniciales hacia una evaluación más amplia y estructurada. Las próximas pruebas serán el registro completo del protocolo, la incorporación efectiva de centros y pacientes, y datos comparables sobre seguridad, desempeño y autonomía.",
+        "anchor": "neuralink-estudio-pivotal-link-ela-2026",
+        "sources": [
+          {
+            "name": "Neuralink — anuncio y objetivos del estudio LINK",
+            "url": "https://neuralink.com/updates/neuralink-receives-fda-approval-to-launch-link-pivotal-study/"
+          },
+          {
+            "name": "Bloomberg Law — autorización estadounidense y alcance del ensayo",
+            "url": "https://news.bloomberglaw.com/health-law-and-business/neuralink-gets-clearance-for-brain-implant-trial-in-als-patients"
+          },
+          {
+            "name": "MobiHealthNews — contexto clínico del estudio pivotal",
+            "url": "https://www.mobihealthnews.com/news/neuralink-receives-fda-approval-launch-pivotal-brain-implant-trial-als"
+          }
+        ]
+      },
+      {
+        "slot": "world",
+        "headline": "Nueva Zelanda abre negociación tras quedar sin mayoría",
+        "deck": "El conteo oficial dejó al bloque gobernante con 65 de 130 escaños. National buscará apoyo del nuevo partido centrista Opportunity, que obtuvo siete.",
+        "development": "La Comisión Electoral de Nueva Zelanda publicó el 27 de noviembre el resultado oficial de la elección general celebrada el día 7. National obtuvo 40 escaños, ACT 13 y New Zealand First 12: en conjunto, los tres partidos del gobierno saliente suman 65 asientos, uno menos que la mayoría de 66 en un Parlamento de 130 miembros. Opportunity, una fuerza centrista que entra por primera vez a la Cámara, consiguió siete escaños con 6,06% del voto partidario. Labour obtuvo 36; los resultados definitivos incorporaron los votos especiales emitidos fuera de la circunscripción o desde el extranjero y modificaron la distribución preliminar.\n\nEl primer ministro Christopher Luxon anunció que National negociará con Opportunity, además de sus socios ACT y New Zealand First, para intentar formar gobierno. La líder de Opportunity, Qiulae Wong, confirmó que conversará primero con el partido que obtuvo más escaños, sin anticipar la forma de un eventual acuerdo. Las opciones institucionales incluyen una coalición o un pacto de confianza y suministro; mientras se resuelve, el gobierno incumbente permanece en funciones de manera interina y evita decisiones relevantes salvo necesidad. Si no se solicitan recuentos, la Comisión devolverá el acta electoral el 3 de diciembre. El resultado abre una negociación, no confirma aún un nuevo gabinete ni autoriza inferir su programa final.",
+        "anchor": "nueva-zelanda-resultados-oficiales-negociacion-gobierno-2026",
+        "sources": [
+          {
+            "name": "Comisión Electoral de Nueva Zelanda — resultados oficiales",
+            "url": "https://elections.nz/media-and-news/2026/2026-general-election-official-results"
+          },
+          {
+            "name": "Reuters — aritmética parlamentaria y apertura de negociaciones",
+            "url": "https://www.reuters.com/world/asia-pacific/new-zealands-ruling-coalition-falls-just-short-majority-final-election-count-2026-11-27/"
+          },
+          {
+            "name": "Associated Press — efecto de los votos especiales y balance de poder",
+            "url": "https://apnews.com/article/a19a838d8256a0762703ff0572aca3e6"
+          }
+        ]
+      }
+    ],
+    "nacional": [
+      {
+        "slot": "ipsa_company",
+        "headline": "Aguas Andinas eleva 8,9% su EBITDA acumulado a septiembre",
+        "deck": "La sanitaria alcanzó $276.916 millones de EBITDA y $105.258 millones de utilidad. Tarifas y consumo elevaron ingresos, mientras los costos crecieron 4%.",
+        "development": "Aguas Andinas reportó el 26 de noviembre ingresos acumulados por $554.145 millones durante los primeros nueve meses de 2026, un aumento de 6,4% frente al mismo período del año anterior. El EBITDA llegó a $276.916 millones, con un avance de 8,9%, y la utilidad neta atribuible alcanzó $105.258 millones, 8,2% más. En el tercer trimestre, la ganancia fue de $27.731 millones, superior en 28,8% interanual, mientras los ingresos trimestrales subieron 5,9% hasta $167.761 millones. La compañía atribuyó $26.745 millones de mayores ingresos acumulados a consumo y efecto tarifario; el volumen consumido aumentó 0,4%.\n\nLos costos y gastos operacionales crecieron 4% hasta $277.228 millones. La sanitaria explicó que las indexaciones, el octavo proceso tarifario y mayores exigencias normativas convivieron con eficiencias que mitigaron parte de la inflación. El resultado financiero acumulado fue negativo en $72.415 millones, 10,3% más que un año antes, por lo que el crecimiento operacional no se transmite íntegramente a la utilidad. A septiembre, el embalse El Yeso almacenaba 141 hectómetros cúbicos, equivalentes a 64,2% de su capacidad, condición que la empresa consideró favorable para la disponibilidad de los próximos meses. Son cifras reportadas por la compañía y no una proyección de rentabilidad bursátil; el seguimiento se concentrará en consumo, tarifas, costos y ejecución de inversiones.",
+        "anchor": "aguas-andinas-resultados-tercer-trimestre-2026",
+        "sources": [
+          {
+            "name": "Aguas Andinas — resultados consolidados al tercer trimestre",
+            "url": "https://www.aguasandinasinversionistas.cl/documents/208629/855625/analisis_razonado_AA_3Q26.pdf/6b1a46df-3400-4852-b9f6-ed7ddf4a6506?download=true&t=1795709185889"
+          },
+          {
+            "name": "Aguas Andinas — estado de resultados acumulado",
+            "url": "https://www.aguasandinasinversionistas.cl/en/financial-information/latest-results"
+          },
+          {
+            "name": "La Tercera — resultados trimestrales y situación hídrica",
+            "url": "https://www.latercera.com/pulso/noticia/aguas-andinas-mejora-sus-resultados-y-ve-favorables-perspectivas-de-disponibilidad-hibrica/"
+          }
+        ]
+      },
+      {
+        "slot": "policy_economy",
+        "headline": "CMF propone ampliar reporte de educación financiera",
+        "deck": "La consulta extiende la obligación a seguros, valores y prestadores financieros. No exige crear programas y prevé el primer reporte en enero de 2028.",
+        "development": "La Comisión para el Mercado Financiero abrió el 26 de noviembre una consulta pública de cuatro semanas sobre una norma que ampliaría el reporte anual de programas e iniciativas de educación financiera. La obligación vigente, originada en cartas circulares de 2017, alcanza a bancos, cooperativas de ahorro y crédito, sociedades de apoyo al giro y emisores de tarjetas. La propuesta incorpora a otras industrias supervisadas, entre ellas compañías de seguros, entidades del mercado de valores y prestadores de servicios financieros, con el objetivo de reunir información comparable sobre las actividades dirigidas a clientes minoristas y público general.\n\nEl texto no obliga a las entidades a desarrollar programas. Quienes los realicen deberían informarlos mediante el nuevo archivo normativo EDF01 y evaluar su adhesión a seis principios: utilidad, oportunidad, transparencia, imparcialidad, calidad e inclusión. Los lineamientos plantean separar la educación de la promoción comercial, utilizar diagnósticos del público objetivo, recurrir a personas ajenas a la fuerza de venta e incorporar perspectiva de género. Si la norma se adopta en los términos consultados, el primer envío sería en enero de 2028 con datos de 2027 y se derogarían las cartas circulares anteriores. Al tratarse de una consulta, el contenido puede cambiar tras recibir observaciones; no corresponde presentarlo como obligación vigente.",
+        "anchor": "cmf-consulta-reporte-educacion-financiera-edf01-2026",
+        "sources": [
+          {
+            "name": "CMF — comunicado de apertura de la consulta pública",
+            "url": "https://www.cmfchile.cl/portal/prensa/625/w4-article-115206.html"
+          },
+          {
+            "name": "CMF — propuesta normativa y archivo EDF01",
+            "url": "https://www.cmfchile.cl/portal/principal/623/w4-article-115212.html"
+          },
+          {
+            "name": "OCDE — recomendación actualizada sobre alfabetización financiera",
+            "url": "https://legalinstruments.oecd.org/en/instruments/OECD-LEGAL-0461"
+          }
+        ]
+      }
+    ],
+    "mercados": [
+      {
+        "slot": "markets_chile",
+        "headline": "Besalco coloca UF 2 millones en bonos a 2036",
+        "deck": "La Serie F recaudó cerca de $83.000 millones a UF+4,19%. Al menos 80% se destinará a refinanciar pasivos y el resto a inversiones.",
+        "development": "Besalco colocó el 26 de noviembre UF 2 millones en bonos Serie F, equivalentes a cerca de $83.000 millones o US$79 millones, mediante el primer remate holandés realizado por la compañía. La tasa promedio fue UF más 4,19%, 36 puntos base por debajo de la tasa inscrita y con un diferencial de 144 puntos base sobre la curva soberana en UF, según los antecedentes de la operación. Los títulos vencen en octubre de 2036 y contemplan cinco años de gracia antes de iniciar amortizaciones constantes de capital. La emisión tiene clasificación A+ y permite prepago desde 2029 con compensación para los tenedores.\n\nLa empresa indicó durante el proceso de colocación que destinará al menos 80% de los recursos a refinanciar pasivos y el saldo a inversiones. Esa composición apunta principalmente a extender o reorganizar obligaciones existentes, no a financiar por completo un proyecto nuevo. Fondos mutuos, compañías de seguros y administradoras de pensiones participaron en un libro descrito como diversificado. Un remate holandés reduce gradualmente el precio hasta adjudicar la oferta y ayuda a descubrir la tasa exigida por los inversionistas; no garantiza que el costo financiero total disminuya una vez incluidos gastos y deuda reemplazada. Los próximos datos relevantes serán el uso efectivo de fondos, el perfil de vencimientos y la evolución del apalancamiento.",
+        "anchor": "besalco-bonos-serie-f-uf-dos-millones-2026",
+        "sources": [
+          {
+            "name": "Besalco — presentación de la emisión de bonos",
+            "url": "https://www.besalco.cl/inversionistas/presentaciones/"
+          },
+          {
+            "name": "CMF — registro del hecho esencial de colocación",
+            "url": "https://www.cmfchile.cl/portal/principal/623/w4-channel.html"
+          },
+          {
+            "name": "Diario Financiero — resultado y condiciones del remate",
+            "url": "https://www.df.cl/mercados/renta-fija/besalco-sale-al-mercado-de-bonos-y-obtiene-casi-us-80-millones-gracias-al"
+          }
+        ]
+      },
+      {
+        "slot": "markets_global",
+        "headline": "LME interviene reglas ante tensión extrema en aluminio",
+        "deck": "La prima del metal al contado sobre el contrato a tres meses llegó a US$405 por tonelada. El ajuste temporal de préstamos la redujo con rapidez.",
+        "development": "La Bolsa de Metales de Londres modificó temporalmente sus reglas de préstamo para el contrato de aluminio después de que la prima del metal al contado sobre el futuro a tres meses alcanzara US$405 por tonelada el lunes 23 de noviembre, su mayor nivel desde 1988. La estructura, conocida como backwardation, reflejó la escasez de metal disponible para entrega inmediata frente a vencimientos posteriores. La LME señaló condiciones excepcionales, inventarios bajos y una entrada limitada de nuevas existencias a sus almacenes. Datos citados por Reuters mostraron 205.300 toneladas disponibles, menos de la mitad del nivel de comienzos de año, y una elevada concentración de warrants en pocos participantes.\n\nEl cambio obliga a determinados tenedores de inventarios y posiciones de corto plazo a prestar metal bajo límites de precio recalibrados, con el objetivo de reducir la influencia indebida de posiciones significativas. Tras el anuncio, la prima bajó a alrededor de US$105,75 el miércoles y luego cerca de US$95, mientras el precio absoluto del aluminio tocaba mínimos de trece meses. Esa combinación distingue una tensión de entrega inmediata de una subida general del metal: puede existir escasez en el punto más corto de la curva al mismo tiempo que cae la cotización a plazos mayores. La medida es temporal y será revisada por el comité especial de la bolsa; la prueba será si los inventarios y la liquidez se normalizan sin nuevas restricciones.",
+        "anchor": "lme-aluminio-backwardation-reglas-prestamo-2026",
+        "sources": [
+          {
+            "name": "London Metal Exchange — modificación temporal de reglas",
+            "url": "https://www.lme.com/-/media/files/news/notices/2026/11/general-updates-26-284-lme-aluminium--amendment-to-tomnext-lending-rules.pdf"
+          },
+          {
+            "name": "Reuters — intervención, inventarios y concentración de posiciones",
+            "url": "https://www.reuters.com/business/davos/lme-tightens-rules-response-aluminium-squeeze-2026-11-25/"
+          },
+          {
+            "name": "Business Recorder/Reuters — evolución posterior de la prima",
+            "url": "https://www.brecorder.com/news/amp/40450763"
+          }
+        ]
+      }
+    ]
+  }
+}
