@@ -1,0 +1,27 @@
+VOZ 1: Los mercados abren con un rebote visible en acciones, pero la señal cross-asset es menos cómoda de lo que sugiere el color verde de las pantallas.
+VOZ 2: ¿Dónde está el rebote y por qué no alcanza para hablar de un giro?
+VOZ 1: Japón cerró con una subida de dos coma uno por ciento, Corea del Sur avanzó cuatro por ciento y las acciones líderes de China ganaron tres coma ocho por ciento tras nuevas señales de apoyo oficial al mercado. El índice de Asia sin Japón subió uno coma siete por ciento.
+VOZ 2: Esas son alzas fuertes.
+VOZ 1: Sí, pero llegan después de un mes muy duro. Ese índice regional todavía caía siete coma dos por ciento en noviembre. Por eso hablamos de recuperación parcial, no de una tendencia ya reparada.
+VOZ 2: ¿Qué está ocurriendo en Estados Unidos?
+VOZ 1: Wall Street estuvo cerrado el jueves por Acción de Gracias y reabre hoy en una sesión abreviada. Antes de la apertura, los futuros del Nasdaq subían dos coma cuatro por ciento y los del S&P 500, uno coma siete por ciento.
+VOZ 2: Entonces esos porcentajes no son cierres efectivos.
+VOZ 1: Correcto. Son precios de futuros en una jornada festiva y con menor liquidez. La prueba será si el movimiento se convierte en compras amplias cuando abra el mercado al contado.
+VOZ 2: ¿Qué hace desconfiar del rebote?
+VOZ 1: Los bonos y el dólar. El rendimiento del Treasury a dos años subió cinco puntos base, a cuatro coma seis ocho nueve uno por ciento, y el de diez años avanzó siete puntos base, a cuatro coma nueve uno cinco seis por ciento.
+VOZ 2: Cuando sube el rendimiento, cae el precio del bono. ¿Qué está descontando el mercado?
+VOZ 1: Una política monetaria todavía restrictiva. Los futuros asignaban noventa y nueve por ciento de probabilidad a una subida de veinticinco puntos base de la Reserva Federal en diciembre. El índice dólar se encaminaba, además, a su tercera ganancia mensual.
+VOZ 2: Acciones al alza, pero también dólar y rendimientos al alza. ¿Cómo se lee esa combinación?
+VOZ 1: Como alivio táctico en tecnología, no como relajación de las condiciones financieras. Los compradores vuelven después de la corrección, mientras la tasa de descuento para activos de larga duración sigue elevada.
+VOZ 2: ¿Tecnología continúa siendo el punto más frágil?
+VOZ 1: Continúa siendo el centro de la formación de precios. Hay renovado apetito por semiconductores, pero persisten dudas sobre el financiamiento de la inversión en inteligencia artificial. Nvidia sigue bajo observación para una posible rebaja de su calificación.
+VOZ 2: Pasemos al petróleo. ¿El movimiento confirma la tensión que describe la General?
+VOZ 1: La complementa, pero no permite una conclusión lineal. Brent subía cero coma tres por ciento, a noventa y seis dólares con ochenta y cinco centavos por barril, y acumulaba cuatro coma seis por ciento en la semana, su primera semana positiva en cuatro.
+VOZ 2: Pero la perspectiva mensual es distinta.
+VOZ 1: Exactamente. Brent todavía caía cerca de dieciocho por ciento en noviembre. La semana recoge preocupación por interrupciones de oferta; el mes sigue reflejando un mercado con señales de demanda y suministro más holgados.
+VOZ 2: ¿Qué puede cambiar la reunión de OPEC+ del domingo?
+VOZ 1: Puede modificar expectativas sobre cuotas y capacidades, pero hay que separar un anuncio de la producción efectiva. Mantener cuotas, revisar cuánto puede producir cada país y alterar barriles reales son decisiones distintas.
+VOZ 2: ¿Cuáles son las tres comprobaciones para hoy?
+VOZ 1: Primero, si los futuros se transforman en una subida amplia de Wall Street durante la sesión abreviada. Segundo, si la curva del Treasury y el dólar sostienen la lectura de una Fed restrictiva. Tercero, si OPEC+ entrega una señal verificable sobre oferta en vez de sólo una negociación institucional.
+VOZ 2: Entonces la lectura no es “volvió el apetito por riesgo”, a secas.
+VOZ 1: No. Volvió de forma selectiva. Las acciones compran alivio, los bonos exigen más rendimiento y el petróleo rebota en la semana mientras conserva una caída mensual profunda. Esa dispersión es la información más importante de la mañana.
