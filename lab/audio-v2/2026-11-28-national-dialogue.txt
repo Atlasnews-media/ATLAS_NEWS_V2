@@ -1,0 +1,29 @@
+VOZ 1: La cifra que abre la conversación laboral en Chile es un desempleo de diez por ciento en el trimestre agosto-octubre, pero el dato más útil está debajo de ese titular.
+VOZ 2: ¿Por qué no basta con decir que más personas entraron a buscar trabajo y por eso subió la tasa?
+VOZ 1: Porque ocurrieron las dos cosas. La fuerza laboral aumentó uno coma tres por ciento en doce meses, pero el número de ocupados cayó cero coma cuatro por ciento. No es sólo mayor participación: también hay menos empleo que un año atrás.
+VOZ 2: ¿Cuánto aumentó el número de personas desocupadas?
+VOZ 1: Diecinueve coma siete por ciento anual. Subieron tanto los cesantes como quienes buscaban trabajo por primera vez.
+VOZ 2: ¿Qué revela la composición por tipo de empleo?
+VOZ 1: Una pérdida de calidad. Los asalariados formales disminuyeron dos coma seis por ciento y la tasa de ocupación informal subió a veintisiete por ciento, ocho décimas más que un año antes.
+VOZ 2: ¿La cantidad de horas cuenta una historia parecida?
+VOZ 1: Sí. El volumen total de horas efectivas trabajadas cayó uno por ciento y el promedio semanal bajó cero coma seis por ciento, a treinta y seis coma tres horas. Parte de quienes conservan empleo está trabajando menos.
+VOZ 2: Eso puede afectar ingresos y consumo aunque el número de ocupados empiece a estabilizarse.
+VOZ 1: Exactamente. Menos empleo formal y menos horas reducen estabilidad de ingresos, cotizaciones y acceso al crédito. Por eso el deterioro es más amplio que el umbral de diez por ciento.
+VOZ 2: El Gobierno destacó que se crearon setenta y seis mil empleos frente al trimestre móvil anterior. ¿Eso contradice la caída anual?
+VOZ 1: No. Puede haber una mejora en el margen y, al mismo tiempo, un nivel inferior al de hace un año. Además, los trimestres móviles comparten dos de sus tres meses, de modo que una sola variación secuencial no confirma todavía un giro.
+VOZ 2: ¿Qué pasó con las mujeres?
+VOZ 1: La fuerza laboral femenina creció dos coma tres por ciento y la participación llegó a cincuenta y tres coma ocho por ciento. Sin embargo, el número de ocupadas sólo aumentó cero coma dos por ciento. La desocupación femenina subió a diez coma siete por ciento.
+VOZ 2: Entonces hay una señal positiva de participación, pero el mercado no absorbió esa oferta adicional.
+VOZ 1: Esa es la distinción. Más mujeres están disponibles y buscando trabajo, pero la creación de puestos no avanzó al mismo ritmo.
+VOZ 2: ¿Y entre los hombres?
+VOZ 1: La fuerza laboral aumentó cero coma cinco por ciento, mientras la ocupación cayó cero coma ocho por ciento. Su tasa de desempleo llegó a nueve coma cuatro por ciento.
+VOZ 2: ¿Hay sectores donde la debilidad sea especialmente visible?
+VOZ 1: En la Región Metropolitana, el empleo cayó cero coma seis por ciento. Información y comunicaciones retrocedió veintitrés coma cinco por ciento e industria manufacturera nueve coma cuatro por ciento. Son estimaciones sectoriales que pueden ser volátiles, pero muestran una debilidad que no está concentrada en un solo rubro.
+VOZ 2: ¿Este dato obliga al Banco Central a bajar la tasa?
+VOZ 1: No por sí solo. La política monetaria también depende de inflación, salarios, actividad y tipo de cambio. El efecto más directo está en la economía real: empleo formal, horas e ingreso de los hogares.
+VOZ 2: ¿Qué tendría que cambiar en el próximo informe para hablar de mejora más sólida?
+VOZ 1: Que la ocupación crezca también en doce meses, que se recuperen los asalariados formales, que baje la informalidad y que aumenten las horas efectivas. Una caída aislada del desempleo sería insuficiente si la calidad del trabajo continúa deteriorándose.
+VOZ 2: Y los subsidios a la contratación, ¿cómo se evalúan?
+VOZ 1: Por empleos adicionales, permanencia y cotizaciones, no sólo por postulaciones. La prueba es si generan puestos que no habrían existido sin apoyo y si esos contratos sobreviven cuando termina el subsidio.
+VOZ 2: En resumen, el diez por ciento es importante, pero la lectura económica está en la combinación de menos ocupados, menos formalidad y menos horas.
+VOZ 1: Así es. El próximo dato deberá mostrar si la mejora secuencial fue el inicio de una recuperación o sólo una pausa dentro de un mercado laboral todavía debilitado.
