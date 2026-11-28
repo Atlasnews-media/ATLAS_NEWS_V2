@@ -1,11 +1,11 @@
 ---
 title: "El petróleo no confirma la escalada mientras acciones rebotan y tasas suben"
 summary: "Wall Street cerró su mejor semana en más de un año, pero los Treasury perdieron valor y el dólar siguió cerca de máximos. Brent cayó el viernes pese a la tensión con Irán: el mercado exige evidencia de oferta físicamente restringida."
-publishedAt: "2026-11-28T06:20:00-03:00"
+publishedAt: "2026-11-28T06:49:22-03:00"
 cutoffAt: "2026-11-28T06:19:50-03:00"
 section: "markets"
 editionSlot: "morning"
-status: "draft"
+status: "published"
 tags:
   - mercados-globales
   - renta-variable

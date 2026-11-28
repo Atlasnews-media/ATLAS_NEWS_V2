@@ -1,11 +1,11 @@
 ---
 title: "El deterioro laboral se concentra en empleo formal y horas trabajadas"
 summary: "La desocupación llegó a 10%, pero la señal más profunda está en la caída anual de ocupados, asalariados formales y horas efectivas, junto con una mayor informalidad. La participación femenina aumentó sin una absorción equivalente de empleo."
-publishedAt: "2026-11-28T06:18:13-03:00"
+publishedAt: "2026-11-28T06:49:22-03:00"
 cutoffAt: "2026-11-28T06:18:00-03:00"
 section: "national"
 editionSlot: "morning"
-status: "draft"
+status: "published"
 tags:
   - chile
   - empleo

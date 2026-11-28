@@ -1,11 +1,11 @@
 ---
 title: "Estados Unidos convierte el bloqueo a Irán en una intervención militar directa"
 summary: "Washington inutilizó un buque comercial que salió de Bandar Abbas. Teherán promete romper el embargo y mantener cerrado el estrecho de Ormuz."
-publishedAt: "2026-11-28T06:03:39-03:00"
+publishedAt: "2026-11-28T06:49:22-03:00"
 cutoffAt: "2026-11-28T06:02:13-03:00"
 type: "daily"
 editionSlot: "morning"
-status: "draft"
+status: "published"
 tags:
   - iran
   - estados-unidos
