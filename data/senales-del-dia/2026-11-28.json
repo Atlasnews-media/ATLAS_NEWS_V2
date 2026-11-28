@@ -1,0 +1,139 @@
+{
+  "status": "READY",
+  "date": "2026-11-28",
+  "contract": "atlas-senales-del-dia-v1",
+  "senalesDelDia": {
+    "internacional": [
+      {
+        "slot": "technology",
+        "headline": "Atlas 3D armoniza 3.458 mapas de bosques a un metro",
+        "deck": "El Global Canopy Atlas integra levantamientos LiDAR de 56 países y deja 87% de sus productos abiertos para calibrar satélites y estudiar carbono y biodiversidad.",
+        "development": "Un equipo internacional liderado por la Universidad de Bristol publicó el 27 de noviembre el Global Canopy Atlas, una base armonizada de 3.458 levantamientos LiDAR aéreos sobre bosques, sabanas y otras formaciones leñosas. El conjunto cubre 56.554 kilómetros cuadrados en 56 países y transforma los datos originales en mapas comparables de altura del dosel y elevación del terreno, con resolución de un metro cuadrado. La investigación, aparecida en Nature Ecology & Evolution, aplicó una misma cadena de procesamiento a registros obtenidos por aviones, helicópteros y drones. Cerca de 19% de la superficie fue observada más de una vez, lo que permite analizar cambios y no sólo una fotografía estática.\n\nEl aporte tecnológico está en convertir archivos dispersos, con formatos y estándares distintos, en productos listos para análisis. El 87% de los mapas, equivalente a 95% del área cubierta, queda disponible públicamente, junto con metadatos y capas de calidad. Los autores muestran aplicaciones para contrastar estimaciones satelitales de altura, medir claros del bosque y estudiar recambio de vegetación; la Agencia Espacial Europea prevé usar el atlas para calibrar y validar misiones como BIOMASS. La cobertura, sin embargo, no representa cada bosque del planeta y depende de dónde existían vuelos LiDAR. El siguiente paso será ampliar regiones subrepresentadas y comprobar cuánto mejoran las estimaciones globales de carbono y biodiversidad.",
+        "anchor": "global-canopy-atlas-mapas-lidar-bosques-2026",
+        "sources": [
+          {
+            "name": "University of Bristol — presentación del Global Canopy Atlas",
+            "url": "https://www.bristol.ac.uk/news/2026/november/groundbreaking-study-puts-global-forest-structures-in-laser-focus.html"
+          },
+          {
+            "name": "Nature Ecology & Evolution — artículo y metodología del atlas",
+            "url": "https://www.nature.com/articles/s41559-026-03218-8"
+          },
+          {
+            "name": "Global Canopy Atlas — acceso al conjunto de datos",
+            "url": "https://globalcanopyatlas.org/"
+          }
+        ]
+      },
+      {
+        "slot": "world",
+        "headline": "Canadá valida la ley de laicidad de Quebec con una excepción",
+        "deck": "La Corte Suprema confirmó la prohibición de símbolos religiosos para ciertos funcionarios, pero excluyó a legisladores provinciales por sus derechos democráticos.",
+        "development": "La Corte Suprema de Canadá confirmó el 27 de noviembre la validez general de la Ley sobre la laicidad del Estado de Quebec, conocida como Bill 21. La norma impide que determinados funcionarios en posiciones de autoridad, entre ellos docentes de escuelas públicas, policías y fiscales, usen símbolos religiosos durante sus funciones. El tribunal concluyó que la legislatura provincial utilizó válidamente las cláusulas derogatorias de la Carta canadiense y de la Carta de Quebec. También sostuvo que la igualdad entre hombres y mujeres del artículo 28 orienta la interpretación de otros derechos, pero no crea por sí sola un derecho independiente capaz de invalidar la ley.\n\nLa sentencia no avaló todo el texto. La Corte determinó que la prohibición vulnera el derecho democrático a ser candidato cuando se aplica a miembros de la Asamblea Nacional de Quebec, por lo que esa disposición no puede regir para legisladores provinciales. Además, confirmó que invocar la cláusula derogatoria no impide a los tribunales examinar si una ley es incompatible con derechos protegidos, aunque en este caso no emitió una declaración general de incompatibilidad. Organizaciones de derechos civiles sostienen que el régimen afecta de manera desproporcionada a mujeres musulmanas; el fallo resuelve la controversia constitucional planteada, no elimina ese debate social. La implementación deberá reflejar la excepción legislativa definida por la Corte.",
+        "anchor": "canada-corte-suprema-ley-laicidad-quebec-2026",
+        "sources": [
+          {
+            "name": "Corte Suprema de Canadá — resumen oficial de la sentencia",
+            "url": "https://www.scc-csc.ca/judgments-jugements/cb/2026/41231/"
+          },
+          {
+            "name": "Corte Suprema de Canadá — documento Case in Brief",
+            "url": "https://www.scc-csc.gc.ca/pdf/cb/2026/41231-eng.pdf"
+          },
+          {
+            "name": "Reuters — alcance político y reacciones al fallo",
+            "url": "https://www.reuters.com/legal/government/canadas-supreme-court-rule-quebecs-law-religious-symbols-test-canadian-unity-2026-11-27/"
+          }
+        ]
+      }
+    ],
+    "nacional": [
+      {
+        "slot": "ipsa_company",
+        "headline": "Quiñenco eleva 5% su utilidad acumulada a septiembre",
+        "deck": "El holding ganó $580.146 millones en nueve meses. Banco de Chile y Enex impulsaron el resultado, mientras CCU y SAAM redujeron su contribución.",
+        "development": "Quiñenco reportó el 27 de noviembre una utilidad neta acumulada de $580.146 millones a septiembre de 2026, un incremento interanual de 5%. En el tercer trimestre, la ganancia atribuible a los propietarios de la controladora alcanzó $248.793 millones, 15,4% más que un año antes. Banco de Chile siguió como principal aportante, con $242.230 millones para el holding y una utilidad propia de $946.928 millones. Enex elevó su contribución desde $39.091 millones a $84.765 millones, apoyada por una revalorización positiva de inventarios y un aumento de 1,5% en sus volúmenes de venta.\n\nLa composición muestra resultados dispares dentro del portafolio. CSAV revirtió las pérdidas del primer semestre y aportó $101.628 millones, aunque su contribución acumulada fue 9,7% inferior a la de 2025 porque Hapag-Lloyd ganó menos en nueve meses. SM SAAM redujo 5,6% su aporte, hasta $35.760 millones, por mayores costos de combustible, monedas más fuertes frente al dólar e inflación. CCU disminuyó 20,4% su ganancia neta y aportó $13.695 millones. A nivel corporativo, una mayor inflación sobre pasivos reajustables y más impuestos presionaron el resultado, parcialmente compensados por Nexans. Las cifras describen el balance reportado por la compañía; no anticipan por sí solas el precio de la acción ni futuras distribuciones.",
+        "anchor": "quinenco-resultados-tercer-trimestre-septiembre-2026",
+        "sources": [
+          {
+            "name": "Quiñenco — resultados acumulados a septiembre de 2026",
+            "url": "https://www.quinenco.cl/quinenco-reporta-utilidades-por-580-146-millones-a-septiembre/"
+          },
+          {
+            "name": "Diario Financiero — desglose por empresas del holding",
+            "url": "https://www.df.cl/empresas/industria/holding-del-grupo-luksic-eleva-sus-ganancias-en-5-a-septiembre-impulsado"
+          },
+          {
+            "name": "La Tercera — resultado trimestral y contribuciones",
+            "url": "https://www.latercera.com/pulso/noticia/quinenco-del-grupo-luksic-anota-alza-en-sus-ganancias-ante-positivo-aporte-de-su-filial-de-combustibles/"
+          }
+        ]
+      },
+      {
+        "slot": "policy_economy",
+        "headline": "Congreso despacha Presupuesto 2027 con gasto real 1,7% mayor",
+        "deck": "La comisión mixta resolvió las discrepancias y ambas cámaras aprobaron su informe. El plan suma $105,8 billones y US$6.297 millones en moneda extranjera.",
+        "development": "El Congreso despachó el 25 de noviembre la Ley de Presupuestos del Sector Público para 2027, después de que una comisión mixta resolviera las diferencias entre la Cámara de Diputadas y Diputados y el Senado. La propuesta de la mixta fue aprobada por la Cámara con 113 votos a favor, nueve en contra y nueve abstenciones; el Senado la respaldó por 44 votos contra cuatro. La Cámara informó que el texto consolidado contempla $105,8 billones en moneda nacional y US$6.297 millones en moneda extranjera. Con esas votaciones concluyó la tramitación parlamentaria, aunque la ejecución de cada partida comenzará durante 2027 y quedará sujeta a los controles presupuestarios habituales.\n\nLa Dirección de Presupuestos indicó que el gasto público crecerá 1,7% real respecto de 2026 y señaló como prioridades crecimiento, empleo, seguridad y niñez. Esas categorías describen la asignación declarada por el Ejecutivo; su efecto dependerá de la ejecución efectiva, las reasignaciones autorizadas y la evolución de ingresos durante el año. El acuerdo de la comisión mixta restituyó recursos en partidas donde persistían discrepancias e incorporó ajustes negociados durante el trámite final. El despacho fija un marco legal de gasto, no garantiza por sí mismo resultados económicos ni equivale a desembolsar inmediatamente el total autorizado. Los próximos hitos verificables serán la promulgación, publicación y ejecución mensual informada por Dipres.",
+        "anchor": "congreso-despacha-presupuesto-chile-2027",
+        "sources": [
+          {
+            "name": "Cámara de Diputadas y Diputados — despacho y monto consolidado",
+            "url": "https://www.camara.cl/cms/2026/11/27/sala-de-la-camara-despacho-presupuesto-2027-y-otros-cuatro-proyectos/"
+          },
+          {
+            "name": "Dipres — aprobación, prioridades y variación real del gasto",
+            "url": "https://www.dipres.gob.cl/598/w3-article-437467.html"
+          },
+          {
+            "name": "Senado de Chile — votación del informe de comisión mixta",
+            "url": "https://tramitacion.senado.cl/appsenado/index.php?ac=listaVotaciones&boletin=18702-05&mo=sesionessala&sesion=10341"
+          }
+        ]
+      }
+    ],
+    "mercados": [
+      {
+        "slot": "markets_chile",
+        "headline": "IPSA completa tres alzas y supera los 10.700 puntos",
+        "deck": "El índice ganó 1,68% el viernes y cerró en 10.718,56 puntos. El cobre avanzó cerca de 3% y el dólar bajó de $1.040 tras tocar $1.050 en la semana.",
+        "development": "El MSCI IPSA cerró el viernes 27 de noviembre en 10.718,56 puntos, con un avance diario de 1,68% y su tercera sesión consecutiva al alza. La secuencia comenzó después de la caída del martes y llevó al índice desde 10.331,15 puntos al cierre del día 24 hasta superar 10.700. En la última rueda, SQM-B y Latam estuvieron entre los papeles de mayor contribución por su ponderación, mientras CAP también destacó dentro de las alzas. El movimiento permitió recuperar parte del retroceso acumulado durante noviembre, pero el índice aún se mantenía por debajo de sus niveles de tres y seis meses según los registros de mercado.\n\nEl cierre coincidió con un rebote del cobre, que se aproximó a US$5,58 por libra en referencias locales, y con una baja del dólar hasta la zona de $1.030, después de haber tocado $1.050 durante la semana. Esa combinación alivió simultáneamente la presión sobre acciones ligadas a materias primas y sobre activos sensibles al tipo de cambio. La causalidad no es exclusiva: también mejoró el apetito global por riesgo y regresaron compradores a acciones tecnológicas. Tres sesiones positivas constituyen una recuperación verificable, no una tendencia asegurada. La próxima prueba será si el avance conserva amplitud y volumen cuando se normalice la liquidez tras el feriado estadounidense.",
+        "anchor": "ipsa-tres-alzas-supera-10700-noviembre-2026",
+        "sources": [
+          {
+            "name": "LarrainVial — cierre del IPSA y referencias de mercado",
+            "url": "https://mercados.larrainvial.com/www/v2/index.html"
+          },
+          {
+            "name": "Scotiabank Chile — precio, variación y métricas del IPSA",
+            "url": "https://scotiabankchile.finmarketslive.cl/www/corredora.html"
+          },
+          {
+            "name": "Diario Financiero — composición del avance bursátil",
+            "url": "https://www.df.cl/mercados/bolsa-monedas/bolsas-hoy-s7b3f"
+          }
+        ]
+      },
+      {
+        "slot": "markets_global",
+        "headline": "Oro y plata rebotan desde mínimos pese a tasas altas",
+        "deck": "El oro spot subió 2,1% y la plata 4,7% el viernes. El movimiento siguió a mínimos de quince meses, pero el dólar firme y la expectativa de alzas de la Fed permanecen.",
+        "development": "El oro spot avanzó 2,1% hasta US$3.639,61 por onza a las 14:01 de Nueva York del viernes 27 de noviembre, mientras el futuro estadounidense de diciembre subió 2,9% a US$3.637,60. La plata spot ganó 4,7% y llegó a US$43,44 por onza; platino y paladio también cerraban con avances. El rebote siguió a la caída del oro hasta US$3.426,35 el miércoles, su menor nivel desde agosto de 2025. Con ello, el metal se encaminó a su primera ganancia semanal en tres semanas, apoyado por compras a precios reducidos y una mejora de la demanda física en India y China.\n\nLa recuperación no eliminó los factores que provocaron la baja previa. El dólar permanecía cerca de máximos de 22 meses y el rendimiento del Treasury a diez años volvió a subir, mientras el mercado mantenía la expectativa de un alza de tasas de la Reserva Federal en diciembre. Tasas reales elevadas aumentan el costo de oportunidad de mantener metales que no pagan intereses. La magnitud del movimiento también debe leerse con cautela porque la sesión posterior a Acción de Gracias tuvo horarios reducidos. El dato verificable es un rebote amplio de metales preciosos desde mínimos recientes; su continuidad dependerá de inflación, empleo estadounidense, dólar y trayectoria de tasas, no sólo de una jornada de cobertura.",
+        "anchor": "oro-plata-rebote-minimos-noviembre-2026",
+        "sources": [
+          {
+            "name": "Reuters — precios, mínimos recientes y factores del rebote",
+            "url": "https://www.reuters.com/world/india/gold-rebounds-one-year-low-ai-jitters-ease-2026-11-27/"
+          },
+          {
+            "name": "CME Group — cotizaciones de futuros de oro",
+            "url": "https://www.cmegroup.com/markets/metals/precious/gold/quotes.html"
+          },
+          {
+            "name": "CME Group — horarios especiales posteriores a Thanksgiving",
+            "url": "https://www.cmegroup.com/tools-information/holiday-calendar.html"
+          }
+        ]
+      }
+    ]
+  }
+}
