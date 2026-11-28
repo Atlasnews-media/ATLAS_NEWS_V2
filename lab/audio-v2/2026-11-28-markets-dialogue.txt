@@ -1,0 +1,29 @@
+VOZ 1: Los mercados cerraron la semana con una paradoja: Wall Street rebotó con fuerza, pero los bonos, el dólar y el petróleo no confirmaron una relajación amplia del riesgo.
+VOZ 2: Empecemos por las acciones. ¿Qué ocurrió en la sesión del viernes?
+VOZ 1: El S&P 500 subió uno coma seis por ciento, el Dow Jones uno coma dos por ciento y el Nasdaq dos coma tres por ciento. En la semana ganaron alrededor de cinco coma seis, cinco coma cinco y seis coma siete por ciento.
+VOZ 2: Fue la mejor semana de Wall Street en más de un año. ¿Por qué no hablar directamente de un cambio de tendencia?
+VOZ 1: Porque fue una recuperación después de ventas muy fuertes y el viernes tuvo una sesión abreviada por Acción de Gracias. El mercado cerró a la una de la tarde de Nueva York y la menor liquidez reduce la fuerza de la señal.
+VOZ 2: ¿Qué parte puede haber sido técnica?
+VOZ 1: Cobertura de posiciones vendidas y recomposición de carteras después de la corrección en inteligencia artificial. La amplitud fue positiva, pero un solo cierre festivo no prueba que hayan desaparecido las dudas sobre valoraciones y financiamiento tecnológico.
+VOZ 2: ¿Qué hicieron los Treasury?
+VOZ 1: El rendimiento a diez años subió desde cuatro coma ochenta y cinco por ciento el miércoles a cuatro coma noventa y cuatro por ciento el viernes. Cuando sube el rendimiento, cae el precio del bono.
+VOZ 2: Entonces los bonos no entregaron la misma señal de alivio.
+VOZ 1: Exactamente. El mercado compró acciones, pero mantuvo una tasa de descuento elevada. El dólar, además, siguió cerca de un máximo de veintidós meses.
+VOZ 2: ¿Cómo se conecta esto con la General sobre el bloqueo a Irán?
+VOZ 1: A través del petróleo, y allí aparece la divergencia más importante. A pesar de la intervención estadounidense contra un buque y de las amenazas sobre Ormuz, Brent cayó uno coma dos por ciento el viernes y cerró en noventa y cinco dólares con cuarenta y cuatro centavos.
+VOZ 2: Pero la semana sí terminó positiva.
+VOZ 1: Brent ganó cerca de tres por ciento semanal y cortó tres semanas de pérdidas. WTI, en cambio, bajó cero coma siete por ciento el viernes, a ochenta y tres dólares con ocho centavos, y perdió cero coma nueve por ciento en la semana.
+VOZ 2: ¿Por qué el crudo no subió más ante una escalada militar?
+VOZ 1: Porque el mercado distingue entre amenaza y barriles efectivamente retirados. Para sostener una ruptura sobre cien dólares necesita evidencia de cargamentos bloqueados, inventarios más bajos o capacidad de entrega dañada. Los titulares elevan la prima de riesgo, pero no sustituyen el flujo físico.
+VOZ 2: Este domingo se reúne OPEC+. ¿Qué se espera?
+VOZ 1: La expectativa es mantener sin cambios los objetivos de producción del primer trimestre de dos mil veintisiete. Sin embargo, también se revisan capacidades y Irak negocia un techo mayor.
+VOZ 2: Entonces una cuota agregada estable no significa que todo siga igual.
+VOZ 1: Correcto. Puede cambiar la distribución interna o la referencia para futuras cuotas. Hay que mirar el detalle, no sólo el titular de “sin cambios”.
+VOZ 2: ¿Cuál es el riesgo para las acciones después del rebote?
+VOZ 1: Que los próximos datos de empleo e inflación de Estados Unidos refuercen una Reserva Federal más restrictiva. Con el Treasury cerca de cuatro coma noventa y cuatro por ciento, una nueva subida de tasas puede volver a presionar a tecnología y otros activos de larga duración.
+VOZ 2: ¿Qué se puede observar durante el fin de semana si los mercados están cerrados?
+VOZ 1: Hechos físicos y decisiones oficiales: movimiento de buques por Ormuz, daños a instalaciones, seguros marítimos y el acuerdo de OPEC+. Los próximos precios negociados con liquidez suficiente llegarán con la apertura asiática y los futuros del lunes.
+VOZ 2: ¿Y la conexión con Chile?
+VOZ 1: Combustibles, inflación importada y tasas globales. El escenario más difícil sería petróleo nuevamente sobre cien dólares junto con rendimientos estadounidenses altos. Un rebote de acciones, por sí solo, no elimina ninguno de esos dos canales.
+VOZ 2: En resumen, Wall Street recuperó terreno, pero la señal cross-asset sigue dividida.
+VOZ 1: Esa es la lectura. Acciones al alza, Treasury más barato, dólar firme y petróleo incapaz de sostener el avance diario pese a la escalada. La información está en esa dispersión, no en un único índice.
